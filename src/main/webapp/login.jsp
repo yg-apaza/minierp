@@ -31,7 +31,7 @@
             <div class="col-md-4 col-md-offset-4">
                 <div class="login-panel panel panel-default">
                     <div class="panel-heading">
-                        <img src="<c:url value = "/img/logo.png" />"/>
+                        <img src="<c:url value = "/img/logo.png" />" class="img-responsive" alt="MiniERP"/>
                     </div>
                     <div class="panel-body">
                         <form role="form" method="post" action="/login">
@@ -42,7 +42,7 @@
                                 <div class="form-group">
                                     <input class="form-control" placeholder="Contraseña" name="password" type="password" value="">
                                 </div>                                
-                                <a href="<c:url value = "/login" />" class="btn btn-lg btn-success btn-block">Login</a>
+                                <a href="<c:url value = "/app/" />" class="btn btn-lg btn-success btn-block">Ingresar</a>
                             </fieldset>
                         </form>
                     </div>

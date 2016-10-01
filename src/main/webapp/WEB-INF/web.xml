@@ -1,17 +1,81 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
-  <display-name>MiniERPServlet</display-name>
-  <welcome-file-list>
-    <welcome-file>index.jsp</welcome-file>
-  </welcome-file-list>
-  <servlet>
-    <description></description>
-    <display-name>UsuarioController</display-name>
-    <servlet-name>UsuarioController</servlet-name>
-    <servlet-class>org.epis.minierp.controller.UsuarioController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>UsuarioController</servlet-name>
-    <url-pattern>/UserController</url-pattern>
-  </servlet-mapping>
+<web-app id="WebApp_ID" version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+    <display-name>MiniERPServlet</display-name>
+    <welcome-file-list>
+        <welcome-file>login.jsp</welcome-file>
+    </welcome-file-list>
+
+    <!-- Security -->
+    <filter>
+        <filter-name>loginFilter</filter-name>
+        <filter-class>org.epis.minierp.security.LoginFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>loginFilter</filter-name>
+        <url-pattern>/secured/*</url-pattern>
+    </filter-mapping>
+    
+    <!-- Login -->
+    <servlet>
+        <description/>
+        <display-name>LoginController</display-name>
+        <servlet-name>LoginController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.LoginController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoginController</servlet-name>
+        <url-pattern></url-pattern>
+    </servlet-mapping>
+    
+    <!-- Modulo de Compras -->
+    <servlet>
+        <description/>
+        <display-name>ComprasController</display-name>
+        <servlet-name>ComprasController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.compras.ComprasController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ComprasController</servlet-name>
+        <url-pattern>/secured/compras</url-pattern>
+    </servlet-mapping>
+    
+    <!-- Modulo de Contabilidad -->
+    <servlet>
+        <description/>
+        <display-name>ContabilidadController</display-name>
+        <servlet-name>ContabilidadController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.contabilidad.ContabilidadController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ContabilidadController</servlet-name>
+        <url-pattern>/secured/contabilidad</url-pattern>
+    </servlet-mapping>
+    
+    <!-- Modulo de Perifericos -->
+    <servlet>
+        <description/>
+        <display-name>PerifericosController</display-name>
+        <servlet-name>PerifericosController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.perifericos.PerifericosController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PerifericosController</servlet-name>
+        <url-pattern>/secured/perifericos</url-pattern>
+    </servlet-mapping>
+    
+    <!-- Modulo de Ventas -->
+    <servlet>
+        <description/>
+        <display-name>VentasController</display-name>
+        <servlet-name>VentasController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.ventas.VentasController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>VentasController</servlet-name>
+        <url-pattern>/secured/ventas</url-pattern>
+    </servlet-mapping>
+    
+    <error-page>
+        <location>/error.jsp</location>
+    </error-page>
 </web-app>

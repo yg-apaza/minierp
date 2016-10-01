@@ -1,0 +1,22 @@
+package org.epis.minierp.controller.contabilidad;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class ContabilidadController extends HttpServlet
+{	
+    private static final long serialVersionUID = 1L;
+
+    public ContabilidadController()
+    {
+        super();
+    }
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+         request.getRequestDispatcher("/WEB-INF/contabilidad/index.jsp").forward(request, response);
+    }
+}
