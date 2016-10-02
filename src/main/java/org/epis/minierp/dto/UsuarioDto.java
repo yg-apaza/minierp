@@ -1,33 +1,20 @@
-package org.epis.minierp.model;
+package org.epis.minierp.dto;
 
 import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
 
-@Entity
-@Table(name="en_p1m_usuario")
-public class Usuario implements Serializable
+public class UsuarioDto implements Serializable
 {
-    @Id
     private String usuCod;
-    @Column(name="UsuNom")
     private String usuNom;
-    @Column(name="UsuApePat")
     private String usuApePat;
-    @Column(name="UsuApeMat")
     private String usuApeMat;
-    @Column(name="UsuPas")
     private String usuPas;
-    @Column(name="TipUsuCod")
     private int tipUsuCod;
-    @Column(name="UsuFecNac")
+    private String tipUsuDet;
     private Date usuFecNac;
-    @Column(name="EstCivCod")
     private int estCivCod;
-    @Column(name="EstRegCod")
+    private String estCivDet;
     private char estRegCod;
 
     public String getUsuCod() {
@@ -36,7 +23,7 @@ public class Usuario implements Serializable
 
     public void setUsuCod(String usuCod) {
         this.usuCod = usuCod;
-    }  
+    }
 
     public String getUsuNom() {
         return usuNom;
@@ -78,6 +65,14 @@ public class Usuario implements Serializable
         this.tipUsuCod = tipUsuCod;
     }
 
+    public String getTipUsuDet() {
+        return tipUsuDet;
+    }
+
+    public void setTipUsuDet(String tipUsuDet) {
+        this.tipUsuDet = tipUsuDet;
+    }
+
     public Date getUsuFecNac() {
         return usuFecNac;
     }
@@ -94,6 +89,14 @@ public class Usuario implements Serializable
         this.estCivCod = estCivCod;
     }
 
+    public String getEstCivDet() {
+        return estCivDet;
+    }
+
+    public void setEstCivDet(String estCivDet) {
+        this.estCivDet = estCivDet;
+    }
+
     public char getEstRegCod() {
         return estRegCod;
     }
@@ -104,6 +107,6 @@ public class Usuario implements Serializable
 
     @Override
     public String toString() {
-        return "Usuario{" + "usuCod=" + usuCod + ", usuNom=" + usuNom + ", usuApePat=" + usuApePat + ", usuApeMat=" + usuApeMat + ", usuPas=" + usuPas + ", tipUsuCod=" + tipUsuCod + ", usuFecNac=" + usuFecNac + ", estCivCod=" + estCivCod + ", estRegCod=" + estRegCod + '}';
+        return "UsuarioDto{" + "usuCod=" + usuCod + ", usuNom=" + usuNom + ", usuApePat=" + usuApePat + ", usuApeMat=" + usuApeMat + ", usuPas=" + usuPas + ", tipUsuCod=" + tipUsuCod + ", tipUsuDet=" + tipUsuDet + ", usuFecNac=" + usuFecNac + ", estCivCod=" + estCivCod + ", estCivDet=" + estCivDet + ", estRegCod=" + estRegCod + '}';
     }
 }

@@ -35,7 +35,9 @@
                                 <div class="form-group">
                                     <input class="form-control" placeholder="Contraseña" name="password" type="password" value="">
                                 </div>                                
-                                <button type="submit" class="btn btn-lg btn-success btn-block">Ingresar</button>
+                                <button type="submit" class="btn btn-lg btn-success btn-block">
+                                    <i class="fa fa-sign-in"></i> Ingresar
+                                </button>
                             </fieldset>
                         </form>
                     </div>

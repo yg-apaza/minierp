@@ -75,6 +75,7 @@
         <servlet-name>LogoutController</servlet-name>
         <url-pattern>/logout</url-pattern>
     </servlet-mapping>
+    
     <!-- General - Administrador -->
     <servlet>
         <description/>
@@ -85,6 +86,17 @@
     <servlet-mapping>
         <servlet-name>GeneralController</servlet-name>
         <url-pattern>/secured/general</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <description/>
+        <display-name>UsuariosController</display-name>
+        <servlet-name>UsuariosController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.general.UsuariosController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UsuariosController</servlet-name>
+        <url-pattern>/secured/general/usuarios</url-pattern>
     </servlet-mapping>
     
     <!-- Modulo de Compras -->

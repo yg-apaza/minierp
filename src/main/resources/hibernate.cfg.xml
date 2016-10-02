@@ -11,5 +11,7 @@
         <property name="hibernate.format_sql">true</property>
         <!--   Mapeo de clases -->
         <mapping class="org.epis.minierp.model.Usuario"/>
+        <mapping class="org.epis.minierp.model.TipoUsuario"/>
+        <mapping class="org.epis.minierp.model.EstadoCivil"/>
     </session-factory>
 </hibernate-configuration>

@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.epis.minierp.dao.general.UsuarioDao;
-import org.epis.minierp.model.Usuario;
+import org.epis.minierp.dto.UsuarioDto;
 
 public class LoginController extends HttpServlet
 {
@@ -23,7 +23,7 @@ public class LoginController extends HttpServlet
             request.getRequestDispatcher("/login.jsp").forward(request, response);
         else
         {
-            Usuario u = (Usuario) session.getAttribute("usuario");
+            UsuarioDto u = (UsuarioDto) session.getAttribute("usuario");
             switch(u.getTipUsuCod())
             {
                 case 1:
@@ -51,7 +51,7 @@ public class LoginController extends HttpServlet
         HttpSession session = request.getSession(true);
         String username = (String)request.getParameter("usuario");
         String password = (String)request.getParameter("password");
-        Usuario u = UsuarioDao.getUsuario(username);
+        UsuarioDto u = UsuarioDao.getUsuario(username);
         
         if(u != null && u.getUsuPas().equals(Hashing.sha256().hashString(password, StandardCharsets.UTF_8).toString()))
         {

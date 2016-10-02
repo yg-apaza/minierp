@@ -12,7 +12,7 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import org.epis.minierp.model.Usuario;
+import org.epis.minierp.dto.UsuarioDto;
 
 @WebFilter("/secured/ventas/*")
 public class VentasFilter implements Filter
@@ -33,7 +33,7 @@ public class VentasFilter implements Filter
         }
         else
         {
-            Usuario u = (Usuario) session.getAttribute("usuario");
+            UsuarioDto u = (UsuarioDto) session.getAttribute("usuario");
             if(u.getTipUsuCod() == 1 || u.getTipUsuCod() == 2)
                 chain.doFilter(req, res);
             else
