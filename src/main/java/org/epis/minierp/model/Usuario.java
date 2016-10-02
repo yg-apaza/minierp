@@ -11,7 +11,7 @@ import javax.persistence.Table;
 public class Usuario
 {
     @Id
-    private int usuCod;
+    private String usuCod;
     @Column(name="UsuNom")
     private String usuNom;
     @Column(name="UsuApePat")
@@ -29,13 +29,13 @@ public class Usuario
     @Column(name="EstRegCod")
     private String estRegCod;
 
-    public int getUsuCod() {
+    public String getUsuCod() {
         return usuCod;
     }
 
-    public void setUsuCod(int usuCod) {
+    public void setUsuCod(String usuCod) {
         this.usuCod = usuCod;
-    }
+    }  
 
     public String getUsuNom() {
         return usuNom;

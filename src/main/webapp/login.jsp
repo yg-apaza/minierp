@@ -34,7 +34,7 @@
                         <img src="<c:url value = "/img/logo.png" />" class="img-responsive" alt="MiniERP"/>
                     </div>
                     <div class="panel-body">
-                        <form role="form" method="post" action="/login">
+                        <form role="form" method="post" action="<c:url value = "/" />">
                             <fieldset>
                                 <div class="form-group">
                                     <input class="form-control" placeholder="Usuario" name="usuario" autofocus>
@@ -42,7 +42,7 @@
                                 <div class="form-group">
                                     <input class="form-control" placeholder="Contraseña" name="password" type="password" value="">
                                 </div>                                
-                                <a href="<c:url value = "/app/" />" class="btn btn-lg btn-success btn-block">Ingresar</a>
+                                <button type="submit" class="btn btn-lg btn-success btn-block">Ingresar</button>
                             </fieldset>
                         </form>
                     </div>
