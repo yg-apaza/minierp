@@ -2,7 +2,7 @@
 <%@ attribute name="contenido" fragment="true" %>
 <!DOCTYPE html>
  
-<html>
+<html lang="es">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -31,6 +31,9 @@
                 </div>
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">      	
                     <ul class="nav navbar-nav navbar-right">
+                        <li><a href="${pageContext.request.contextPath}/">
+                            <i class="fa fa-home" aria-hidden="true"></i> Inicio
+                        </a></li>
                         <li><a href="${pageContext.request.contextPath}/perfil">
                             <i class="fa fa-user" aria-hidden="true"></i> Perfil
                         </a></li>

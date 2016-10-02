@@ -23,7 +23,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <a href="#">
+                                    <a href="${pageContext.request.contextPath}/secured/ventas">
                                         <div class="panel-footer">
                                             <span class="pull-left">Ingresar</span>
                                             <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -46,7 +46,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <a href="#">
+                                    <a href="${pageContext.request.contextPath}/secured/compras">
                                         <div class="panel-footer">
                                             <span class="pull-left">Ingresar</span>
                                             <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -69,7 +69,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <a href="#">
+                                    <a href="${pageContext.request.contextPath}/secured/contabilidad">
                                         <div class="panel-footer">
                                             <span class="pull-left">Ingresar</span>
                                             <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -79,7 +79,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-4 col-md-6">
+                            <div class="col-lg-4 col-md-6 col-lg-offset-2 col-md-offset-0">
                                 <div class="panel panel-yellow">
                                     <div class="panel-heading">
                                         <div class="row">
@@ -92,7 +92,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <a href="#">
+                                    <a href="${pageContext.request.contextPath}/secured/perifericos">
                                         <div class="panel-footer">
                                             <span class="pull-left">Ingresar</span>
                                             <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -102,7 +102,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-4 col-md-6">
+                            <div class="col-lg-4 col-md-6 col-lg-offset-0 col-md-offset-3">
                                 <div class="panel panel-green">
                                     <div class="panel-heading">
                                         <div class="row">
@@ -115,7 +115,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <a href="#">
+                                    <a href="${pageContext.request.contextPath}/secured/general/usuarios">
                                         <div class="panel-footer">
                                             <span class="pull-left">Ingresar</span>
                                             <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
