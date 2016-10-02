@@ -9,25 +9,33 @@ import org.hibernate.Session;
 
 public class EstadoCivilDao
 {
-    public static List<EstadoCivil> getAll()
+    private static EstadoCivilDao estadoCivilDao;
+    private Session session = SessionUtil.getSession();
+
+    public static EstadoCivilDao getInstance()
     {
-        Session session = SessionUtil.getSession();    
+        if (estadoCivilDao == null){
+            estadoCivilDao = new EstadoCivilDao();
+        }
+        return estadoCivilDao;
+    }
+    
+    public List<EstadoCivil> getAll()
+    {
         Query query = session.createQuery("from EstadoCivil");
         List<EstadoCivil> estados =  query.list();
         return estados;
     }
     
-    public static List<EstadoCivil> getAllActive()
+    public List<EstadoCivil> getAllActive()
     {
-        Session session = SessionUtil.getSession();    
         Query query = session.createQuery("from EstadoCivil E where E.estRegCod = 'A'");
         List<EstadoCivil> estados =  query.list();
         return estados;
     }
     
-    public static EstadoCivil getById(int id)
+    public EstadoCivil getById(int id)
     {
-        Session session = SessionUtil.getSession();
         EstadoCivil estado = null;
         try {
             estado = (EstadoCivil)session.load(EstadoCivil.class, id);

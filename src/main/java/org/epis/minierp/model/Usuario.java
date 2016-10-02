@@ -27,6 +27,8 @@ public class Usuario implements Serializable
     private Date usuFecNac;
     @Column(name="EstCivCod")
     private int estCivCod;
+    @Column(name="UsuSex")
+    private char usuSex;
     @Column(name="EstRegCod")
     private char estRegCod;
 
@@ -102,8 +104,16 @@ public class Usuario implements Serializable
         this.estRegCod = estRegCod;
     }
 
+    public char getUsuSex() {
+        return usuSex;
+    }
+
+    public void setUsuSex(char usuSex) {
+        this.usuSex = usuSex;
+    }
+
     @Override
     public String toString() {
-        return "Usuario{" + "usuCod=" + usuCod + ", usuNom=" + usuNom + ", usuApePat=" + usuApePat + ", usuApeMat=" + usuApeMat + ", usuPas=" + usuPas + ", tipUsuCod=" + tipUsuCod + ", usuFecNac=" + usuFecNac + ", estCivCod=" + estCivCod + ", estRegCod=" + estRegCod + '}';
+        return "Usuario{" + "usuCod=" + usuCod + ", usuNom=" + usuNom + ", usuApePat=" + usuApePat + ", usuApeMat=" + usuApeMat + ", usuPas=" + usuPas + ", tipUsuCod=" + tipUsuCod + ", usuFecNac=" + usuFecNac + ", estCivCod=" + estCivCod + ", usuSex=" + usuSex + ", estRegCod=" + estRegCod + '}';
     }
 }

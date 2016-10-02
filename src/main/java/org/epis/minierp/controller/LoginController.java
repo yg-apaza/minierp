@@ -51,7 +51,7 @@ public class LoginController extends HttpServlet
         HttpSession session = request.getSession(true);
         String username = (String)request.getParameter("usuario");
         String password = (String)request.getParameter("password");
-        UsuarioDto u = UsuarioDao.getByIdActive(username);
+        UsuarioDto u = UsuarioDao.getInstance().getByIdActive(username);
         System.out.println(u);
         if(u != null && u.getUsuPas().equals(Hashing.sha256().hashString(password, StandardCharsets.UTF_8).toString()))
         {

@@ -1,11 +1,14 @@
 package org.epis.minierp.controller.general;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.epis.minierp.dao.general.UsuarioDao;
+import org.epis.minierp.dto.UsuarioDto;
 
 public class UsuariosController extends HttpServlet
 {	
@@ -13,6 +16,8 @@ public class UsuariosController extends HttpServlet
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-         request.getRequestDispatcher("/WEB-INF/general/usuarios.jsp").forward(request, response);
+        List<UsuarioDto> usuarios = UsuarioDao.getInstance().getAll();
+        request.setAttribute("usuarios", usuarios);
+        request.getRequestDispatcher("/WEB-INF/general/usuarios.jsp").forward(request, response);
     }
 }

@@ -9,25 +9,33 @@ import org.hibernate.Session;
 
 public class TipoUsuarioDao
 {
-    public static List<TipoUsuario> getAll()
+    private static TipoUsuarioDao tipoUsuarioDao;
+    private Session session = SessionUtil.getSession();
+
+    public static TipoUsuarioDao getInstance()
     {
-        Session session = SessionUtil.getSession();    
+        if (tipoUsuarioDao == null){
+            tipoUsuarioDao = new TipoUsuarioDao();
+        }
+        return tipoUsuarioDao;
+    }
+    
+    public List<TipoUsuario> getAll()
+    {
         Query query = session.createQuery("from TipoUsuario T");
         List<TipoUsuario> tipos =  query.list();
         return tipos;
     }
     
-    public static List<TipoUsuario> getAllActive()
+    public List<TipoUsuario> getAllActive()
     {
-        Session session = SessionUtil.getSession();    
         Query query = session.createQuery("from TipoUsuario T where T.estRegCod = 'A'");
         List<TipoUsuario> tipos =  query.list();
         return tipos;
     }
     
-    public static TipoUsuario getById(int id)
+    public TipoUsuario getById(int id)
     {
-        Session session = SessionUtil.getSession();
         TipoUsuario tipo = null;
         try {
             tipo = (TipoUsuario)session.load(TipoUsuario.class, id);
