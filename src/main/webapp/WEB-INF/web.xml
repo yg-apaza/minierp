@@ -5,7 +5,8 @@
         <welcome-file>login.jsp</welcome-file>
     </welcome-file-list>
 
-    <!-- Filters Security -->
+    <!--         FILTERS         -->
+    
     <filter>
         <filter-name>loginFilter</filter-name>
         <filter-class>org.epis.minierp.security.LoginFilter</filter-class>
@@ -134,6 +135,7 @@
         <url-pattern>/secured/ventas</url-pattern>
     </servlet-mapping>
     
+    <!--         ERRORS         -->
     <error-page>
         <location>/error.jsp</location>
     </error-page>

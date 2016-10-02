@@ -41,11 +41,16 @@
                 </div>
             </div>
         </nav>
-        <jsp:invoke fragment="contenido"/>
-        <footer class="footer">
-        <div class="container">
-            <p class="text-muted">MiniERP Web 2016 - Tecnologías de la Información</p>
+        <div id="wrapper">
+            <div id="main">
+                <jsp:invoke fragment="contenido"/>
+            </div>
         </div>
+        <footer class="footer">
+            <div class="container">
+                <p class="text-muted">MiniERP Web - Tecnologías de la Información</p>
+                <p class="text-muted">UNSA - Escuela Profesional Ingeniería de Sistemas</p>
+            </div>
         </footer>
     </body>
 </html>

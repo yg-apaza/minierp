@@ -6,14 +6,35 @@
 body {
   background-color: #f8f8f8;
 }
-#wrapper {
-  width: 100%;
-}
+
 #page-wrapper {
   padding: 0 15px;
   min-height: 568px;
   background-color: white;
 }
+
+html, body {
+  height: 100%;
+}
+
+#wrapper {
+  min-height: 100%;
+}
+
+#main {
+  overflow:auto;
+  padding-bottom:100px;
+}
+
+.footer {
+  position: relative;
+  background: #eee;
+  margin-top: -80px;
+  height: 80px;
+  clear:both;
+  padding-top:20px;
+} 
+
 @media (min-width: 768px) {
   #page-wrapper {
     position: inherit;
@@ -29,7 +50,7 @@ body {
 
 .navbar-brand>img {
   height: 100%;
-  padding: 15px;
+  padding: 8px;
   width: auto;
 }
 
@@ -79,16 +100,8 @@ body {
   left: auto;
 }
 
-.footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 60px;
-    background-color: #f5f5f5;
-}
-
 .container .text-muted {
-    margin: 20px 0;
+    margin: 0;
     text-align: center;
 }
 

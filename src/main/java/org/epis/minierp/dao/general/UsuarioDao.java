@@ -1,4 +1,4 @@
-package org.epis.minierp.dao;
+package org.epis.minierp.dao.general;
 
 import org.epis.minierp.model.Usuario;
 import org.epis.minierp.util.SessionUtil;
