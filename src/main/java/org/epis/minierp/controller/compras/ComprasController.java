@@ -11,11 +11,6 @@ public class ComprasController extends HttpServlet
 {	
     private static final long serialVersionUID = 1L;
 
-    public ComprasController()
-    {
-        super();
-    }
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
          request.getRequestDispatcher("/WEB-INF/compras/index.jsp").forward(request, response);

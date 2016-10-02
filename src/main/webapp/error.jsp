@@ -1,5 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -13,14 +11,9 @@
 
     <title>MiniERP - Error</title>
 
-    <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="<c:url value = "/css/bootstrap.min.css" />"/>
-
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="<c:url value = "/css/error.css" />"/>
-
-    <!-- Custom Fonts -->
-    <link href="<c:url value = "/css/font-awesome.css" />" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/css/error.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/css/font-awesome.css" rel="stylesheet" type="text/css" >
     
 </head>
 
@@ -30,14 +23,14 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="error-template">
-                    <img src="<c:url value = "/img/logo.png" />" width=25% alt="MiniERP">
+                    <img src="${pageContext.request.contextPath}/img/logo.png" width=25% alt="MiniERP">
                     <h1>Oops!</h1>
                     <h2>Error</h2>
                     <div class="error-details">
                         Ha ocurrido un error. Contacte con el administrador.
                     </div>
                     <div class="error-actions">
-                        <a href="<c:url value = "/" />" class="btn btn-primary btn-lg">
+                        <a href="${pageContext.request.contextPath}/" class="btn btn-primary btn-lg">
                             <i class="fa fa-home" aria-hidden="true"></i> Regresar
                         </a>
                     </div>
@@ -45,10 +38,7 @@
             </div>
         </div>
     </div>
-    
-    <!-- Bootstrap Core JavaScript -->
-    <script src="<c:url value = "/js/bootstrap.min.js" />"></script>
-
+    <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 </body>
 
 </html>

@@ -1,5 +1,6 @@
 package org.epis.minierp.model;
 
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="en_p1m_usuario")
-public class Usuario
+public class Usuario implements Serializable
 {
     @Id
     private String usuCod;

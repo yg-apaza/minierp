@@ -1,18 +1,20 @@
-package org.epis.minierp.controller.perifericos;
+package org.epis.minierp.controller;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-public class PerifericosController extends HttpServlet
-{	
+public class LogoutController extends HttpServlet
+{
     private static final long serialVersionUID = 1L;
-
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-         request.getRequestDispatcher("/WEB-INF/perifericos/index.jsp").forward(request, response);
+        HttpSession session = request.getSession(false);
+        session.invalidate();
+        response.sendRedirect(request.getContextPath() + "/");
     }
 }

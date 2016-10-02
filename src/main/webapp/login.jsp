@@ -1,5 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -11,16 +9,11 @@
     <meta name="description" content="MiniERP web">
     <meta name="author" content="episunsa">
 
-    <title>MiniERP - Iniciar sesiÃ³n</title>
+    <title>MiniERP - Iniciar sesión</title>
 
-    <!-- Bootstrap Core CSS -->
-    <link  rel="stylesheet" href="<c:url value = "/css/bootstrap.min.css" />"/>
-
-    <!-- Custom CSS -->
-    <link  rel="stylesheet" href="<c:url value = "/css/sb-admin-2.css" />"/>
-
-    <!-- Custom Fonts -->
-    <link href="<c:url value = "/css/font-awesome.css" />" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/sb-admin-2.css" type="text/css" >
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/font-awesome.css" type="text/css" >
     
 </head>
 
@@ -31,16 +24,16 @@
             <div class="col-md-4 col-md-offset-4">
                 <div class="login-panel panel panel-default">
                     <div class="panel-heading">
-                        <img src="<c:url value = "/img/logo.png" />" class="img-responsive" alt="MiniERP"/>
+                        <img src="${pageContext.request.contextPath}/img/logo.png" class="img-responsive" alt="MiniERP"/>
                     </div>
                     <div class="panel-body">
-                        <form role="form" method="post" action="<c:url value = "/" />">
+                        <form role="form" method="post" action="${pageContext.request.contextPath}/">
                             <fieldset>
                                 <div class="form-group">
                                     <input class="form-control" placeholder="Usuario" name="usuario" autofocus>
                                 </div>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="ContraseÃ±a" name="password" type="password" value="">
+                                    <input class="form-control" placeholder="Contraseña" name="password" type="password" value="">
                                 </div>                                
                                 <button type="submit" class="btn btn-lg btn-success btn-block">Ingresar</button>
                             </fieldset>
@@ -51,11 +44,8 @@
         </div>
     </div>
 
-    <!-- jQuery -->
-    <script src="<c:url value = "/js/jquery-1.11.1.min.js" />"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="<c:url value = "/js/bootstrap.min.js" />"></script>
+    <script src="${pageContext.request.contextPath}/js/jquery-1.11.1.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 
 </body>
 

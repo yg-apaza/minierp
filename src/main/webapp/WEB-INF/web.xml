@@ -5,7 +5,7 @@
         <welcome-file>login.jsp</welcome-file>
     </welcome-file-list>
 
-    <!-- Security -->
+    <!-- Filters Security -->
     <filter>
         <filter-name>loginFilter</filter-name>
         <filter-class>org.epis.minierp.security.LoginFilter</filter-class>
@@ -14,6 +14,44 @@
         <filter-name>loginFilter</filter-name>
         <url-pattern>/secured/*</url-pattern>
     </filter-mapping>
+    
+    <filter>
+        <filter-name>generalFilter</filter-name>
+        <filter-class>org.epis.minierp.security.GeneralFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>generalFilter</filter-name>
+        <url-pattern>/secured/general/*</url-pattern>
+    </filter-mapping>
+    
+    <filter>
+        <filter-name>ventasFilter</filter-name>
+        <filter-class>org.epis.minierp.security.VentasFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>ventasFilter</filter-name>
+        <url-pattern>/secured/ventas/*</url-pattern>
+    </filter-mapping>
+    
+    <filter>
+        <filter-name>comprasFilter</filter-name>
+        <filter-class>org.epis.minierp.security.ComprasFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>comprasFilter</filter-name>
+        <url-pattern>/secured/compras/*</url-pattern>
+    </filter-mapping>
+    
+    <filter>
+        <filter-name>contabilidadFilter</filter-name>
+        <filter-class>org.epis.minierp.security.ContabilidadFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>contabilidadFilter</filter-name>
+        <url-pattern>/secured/contabilidad/*</url-pattern>
+    </filter-mapping>
+
+    <!--         SERVLETS         -->
     
     <!-- Login -->
     <servlet>
@@ -26,7 +64,16 @@
         <servlet-name>LoginController</servlet-name>
         <url-pattern></url-pattern>
     </servlet-mapping>
-    
+    <servlet>
+        <description/>
+        <display-name>LogoutController</display-name>
+        <servlet-name>LogoutController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.LogoutController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LogoutController</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
     <!-- General - Administrador -->
     <servlet>
         <description/>

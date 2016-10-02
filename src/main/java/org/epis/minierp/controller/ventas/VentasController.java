@@ -11,11 +11,6 @@ public class VentasController extends HttpServlet
 {	
     private static final long serialVersionUID = 1L;
 
-    public VentasController()
-    {
-        super();
-    }
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
          request.getRequestDispatcher("/WEB-INF/ventas/index.jsp").forward(request, response);
