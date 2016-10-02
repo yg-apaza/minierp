@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="minierptemplate" %>
 <minierptemplate:template>
     <jsp:attribute name="titulo">
@@ -9,7 +10,7 @@
         <div class="container">
             <h1 class="page-header">Usuarios</h1>
             <br>
-            <a class="btn btn-success" href="#" role="button">
+            <a class="btn btn-success" href="${pageContext.request.contextPath}/secured/general/usuarios/add" role="button">
                 <i class="fa fa-plus"></i>
                 Agregar usuario
             </a>
@@ -36,7 +37,7 @@
                             <td>${u.usuNom}</td>
                             <td>${u.usuApePat} ${u.usuApeMat}</td>
                             <td>${u.tipUsuDet}</td>
-                            <td>${u.fecNac}</td>
+                            <td><fmt:formatDate value="${u.usuFecNac}"/></td>
                             <td>${u.estCivDet}</td>
                             <td>${u.usuSex}</td>
                             <td>${u.estRegCod}</td>
@@ -46,7 +47,6 @@
                             </td>
                         </tr>
                     </c:forEach>
-                    
                 </tbody>
             </table>
         </div>

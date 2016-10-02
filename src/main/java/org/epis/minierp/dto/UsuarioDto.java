@@ -13,7 +13,6 @@ public class UsuarioDto implements Serializable
     private int tipUsuCod;
     private String tipUsuDet;
     private Date usuFecNac;
-    private String fecNac;
     private int estCivCod;
     private String estCivDet;
     private char usuSex;
@@ -83,14 +82,6 @@ public class UsuarioDto implements Serializable
         this.usuFecNac = usuFecNac;
     }
 
-    public String getFecNac() {
-        return fecNac;
-    }
-
-    public void setFecNac(String fecNac) {
-        this.fecNac = fecNac;
-    }
-
     public int getEstCivCod() {
         return estCivCod;
     }
@@ -125,6 +116,6 @@ public class UsuarioDto implements Serializable
 
     @Override
     public String toString() {
-        return "UsuarioDto{" + "usuCod=" + usuCod + ", usuNom=" + usuNom + ", usuApePat=" + usuApePat + ", usuApeMat=" + usuApeMat + ", usuPas=" + usuPas + ", tipUsuCod=" + tipUsuCod + ", tipUsuDet=" + tipUsuDet + ", usuFecNac=" + usuFecNac + ", fecNac=" + fecNac + ", estCivCod=" + estCivCod + ", estCivDet=" + estCivDet + ", usuSex=" + usuSex + ", estRegCod=" + estRegCod + '}';
+        return "UsuarioDto{" + "usuCod=" + usuCod + ", usuNom=" + usuNom + ", usuApePat=" + usuApePat + ", usuApeMat=" + usuApeMat + ", usuPas=" + usuPas + ", tipUsuCod=" + tipUsuCod + ", tipUsuDet=" + tipUsuDet + ", usuFecNac=" + usuFecNac + ", estCivCod=" + estCivCod + ", estCivDet=" + estCivDet + ", usuSex=" + usuSex + ", estRegCod=" + estRegCod + '}';
     }
 }

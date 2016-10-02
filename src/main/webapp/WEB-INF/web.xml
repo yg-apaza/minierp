@@ -99,6 +99,28 @@
         <url-pattern>/secured/general/usuarios</url-pattern>
     </servlet-mapping>
     
+    <servlet>
+        <description/>
+        <display-name>AddUsuarioController</display-name>
+        <servlet-name>AddUsuarioController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.general.AddUsuarioController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddUsuarioController</servlet-name>
+        <url-pattern>/secured/general/usuarios/add</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <description/>
+        <display-name>PerfilController</display-name>
+        <servlet-name>PerfilController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.general.PerfilController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PerfilController</servlet-name>
+        <url-pattern>/perfil</url-pattern>
+    </servlet-mapping>
+    
     <!-- Modulo de Compras -->
     <servlet>
         <description/>

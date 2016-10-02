@@ -13,7 +13,7 @@
 
     <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/css/error.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/css/font-awesome.css" rel="stylesheet" type="text/css" >
+    <link href="${pageContext.request.contextPath}/css/font-awesome.min.css" rel="stylesheet" type="text/css" >
     
 </head>
 

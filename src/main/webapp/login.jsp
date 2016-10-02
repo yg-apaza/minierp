@@ -13,7 +13,7 @@
 
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/sb-admin-2.css" type="text/css" >
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/font-awesome.css" type="text/css" >
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/font-awesome.min.css" type="text/css" >
     
 </head>
 
@@ -46,7 +46,7 @@
         </div>
     </div>
 
-    <script src="${pageContext.request.contextPath}/js/jquery-1.11.1.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 
 </body>

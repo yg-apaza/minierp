@@ -37,7 +37,6 @@ public class UsuarioDao
             BeanUtils.copyProperties(newUsuario, usuario);
             newUsuario.setTipUsuDet(TipoUsuarioDao.getInstance().getById(usuario.getTipUsuCod()).getTipUsuDet());
             newUsuario.setEstCivDet(EstadoCivilDao.getInstance().getById(usuario.getEstCivCod()).getEstCivDet());
-            newUsuario.setFecNac(dt.format(usuario.getUsuFecNac()));
         } catch(ObjectNotFoundException e) {
             return null;
         } catch (IllegalAccessException | InvocationTargetException ex) {
@@ -60,7 +59,6 @@ public class UsuarioDao
             BeanUtils.copyProperties(newUsuario, usuario);
             newUsuario.setTipUsuDet(TipoUsuarioDao.getInstance().getById(usuario.getTipUsuCod()).getTipUsuDet());
             newUsuario.setEstCivDet(EstadoCivilDao.getInstance().getById(usuario.getEstCivCod()).getEstCivDet());
-            newUsuario.setFecNac(dt.format(usuario.getUsuFecNac()));
         } catch (IllegalAccessException | InvocationTargetException | IndexOutOfBoundsException ex) {
             Logger.getLogger(UsuarioDao.class.getName()).log(Level.SEVERE, null, ex);
             return null;
@@ -80,7 +78,6 @@ public class UsuarioDao
                 BeanUtils.copyProperties(nuevo, usuarios.get(i));
                 nuevo.setTipUsuDet(TipoUsuarioDao.getInstance().getById(nuevo.getTipUsuCod()).getTipUsuDet());
                 nuevo.setEstCivDet(EstadoCivilDao.getInstance().getById(nuevo.getEstCivCod()).getEstCivDet());
-                nuevo.setFecNac(dt.format(usuarios.get(i).getUsuFecNac()));
                 nuevos.add(nuevo);
             } catch (IllegalAccessException ex) {
                 return null;
