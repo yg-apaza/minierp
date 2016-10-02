@@ -11,7 +11,7 @@ public class SessionUtil
     private SessionFactory sessionFactory;
 
     public static SessionUtil getInstance(){
-            return instance;
+        return instance;
     }
 
     private SessionUtil()

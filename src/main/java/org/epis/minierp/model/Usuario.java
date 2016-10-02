@@ -21,11 +21,11 @@ public class Usuario
     @Column(name="UsuPas")
     private String usuPas;
     @Column(name="TipUsuCod")
-    private String tipUsuCod;
+    private int tipUsuCod;
     @Column(name="UsuFecNac")
     private Date usuFecNac;
     @Column(name="EstCivCod")
-    private String estCivCod;
+    private int estCivCod;
     @Column(name="EstRegCod")
     private String estRegCod;
 
@@ -69,11 +69,11 @@ public class Usuario
         this.usuPas = usuPas;
     }
 
-    public String getTipUsuCod() {
+    public int getTipUsuCod() {
         return tipUsuCod;
     }
 
-    public void setTipUsuCod(String tipUsuCod) {
+    public void setTipUsuCod(int tipUsuCod) {
         this.tipUsuCod = tipUsuCod;
     }
 
@@ -85,11 +85,11 @@ public class Usuario
         this.usuFecNac = usuFecNac;
     }
 
-    public String getEstCivCod() {
+    public int getEstCivCod() {
         return estCivCod;
     }
 
-    public void setEstCivCod(String estCivCod) {
+    public void setEstCivCod(int estCivCod) {
         this.estCivCod = estCivCod;
     }
 

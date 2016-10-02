@@ -16,6 +16,7 @@ public class ContabilidadController extends HttpServlet
         super();
     }
 
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
          request.getRequestDispatcher("/WEB-INF/contabilidad/index.jsp").forward(request, response);
     }

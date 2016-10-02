@@ -32,12 +32,12 @@
                 <div class="error-template">
                     <img src="<c:url value = "/img/logo.png" />" width=25% alt="MiniERP">
                     <h1>Oops!</h1>
-                    <h2>404 Not Found</h2>
+                    <h2>Error</h2>
                     <div class="error-details">
-                        Ha ocurrido un error, la página solicitada no fue encontrada
+                        Ha ocurrido un error. Contacte con el administrador.
                     </div>
                     <div class="error-actions">
-                        <a href="<c:url value = "/secured/" />" class="btn btn-primary btn-lg">
+                        <a href="<c:url value = "/" />" class="btn btn-primary btn-lg">
                             <i class="fa fa-home" aria-hidden="true"></i> Regresar
                         </a>
                     </div>

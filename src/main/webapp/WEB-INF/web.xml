@@ -27,6 +27,18 @@
         <url-pattern></url-pattern>
     </servlet-mapping>
     
+    <!-- General - Administrador -->
+    <servlet>
+        <description/>
+        <display-name>GeneralController</display-name>
+        <servlet-name>GeneralController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.general.GeneralController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GeneralController</servlet-name>
+        <url-pattern>/secured/general</url-pattern>
+    </servlet-mapping>
+    
     <!-- Modulo de Compras -->
     <servlet>
         <description/>

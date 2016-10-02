@@ -12,9 +12,10 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import org.epis.minierp.model.Usuario;
 
-@WebFilter("/secured/*")
-public class LoginFilter implements Filter
+@WebFilter("/secured/ventas/*")
+public class VentasFilter implements Filter
 {
     @Override
     public void init(FilterConfig config) throws ServletException {
@@ -27,9 +28,17 @@ public class LoginFilter implements Filter
         HttpServletResponse response = (HttpServletResponse) res;
         HttpSession session = request.getSession(false);
         if (session == null || session.getAttribute("usuario") == null)
+        {
             response.sendRedirect(request.getContextPath() + "/");
+        }
         else
-            chain.doFilter(req, res);
+        {
+            Usuario u = (Usuario) session.getAttribute("usuario");
+            if(u.getTipUsuCod() == 1 || u.getTipUsuCod() == 2)
+                chain.doFilter(req, res);
+            else
+                response.sendRedirect(request.getContextPath() + "/");
+        }
     }
 
     @Override
