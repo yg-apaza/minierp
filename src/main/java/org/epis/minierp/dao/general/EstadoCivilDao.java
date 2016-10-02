@@ -10,8 +10,7 @@ import org.hibernate.Session;
 public class EstadoCivilDao
 {
     private static EstadoCivilDao estadoCivilDao;
-    private Session session = SessionUtil.getSession();
-
+    
     public static EstadoCivilDao getInstance()
     {
         if (estadoCivilDao == null){
@@ -22,20 +21,26 @@ public class EstadoCivilDao
     
     public List<EstadoCivil> getAll()
     {
+        Session session = SessionUtil.getSession();
         Query query = session.createQuery("from EstadoCivil");
-        List<EstadoCivil> estados =  query.list();
+        List<EstadoCivil> estados = query.list();
+        session.close();
         return estados;
     }
     
     public List<EstadoCivil> getAllActive()
     {
+        Session session = SessionUtil.getSession();
         Query query = session.createQuery("from EstadoCivil E where E.estRegCod = 'A'");
         List<EstadoCivil> estados =  query.list();
+        System.out.println(estados);
+        session.close();
         return estados;
     }
     
     public EstadoCivil getById(int id)
     {
+        Session session = SessionUtil.getSession();
         EstadoCivil estado = null;
         try {
             estado = (EstadoCivil)session.load(EstadoCivil.class, id);
@@ -43,6 +48,7 @@ public class EstadoCivilDao
         {
             return null;
         }
+        session.close();
         return estado;
     }
 }

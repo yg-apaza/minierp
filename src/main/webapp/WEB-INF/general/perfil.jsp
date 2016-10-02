@@ -8,7 +8,7 @@
         <div class="container">
             <h1 class="page-header">Mi perfil</h1>
             <div class="row">
-                <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3">
+                <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
                             Usuario

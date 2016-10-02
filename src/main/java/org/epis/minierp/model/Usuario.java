@@ -13,22 +13,31 @@ public class Usuario implements Serializable
 {
     @Id
     private String usuCod;
+    
     @Column(name="UsuNom")
     private String usuNom;
+    
     @Column(name="UsuApePat")
     private String usuApePat;
+    
     @Column(name="UsuApeMat")
     private String usuApeMat;
+    
     @Column(name="UsuPas")
     private String usuPas;
+    
     @Column(name="TipUsuCod")
     private int tipUsuCod;
+    
     @Column(name="UsuFecNac")
     private Date usuFecNac;
+    
     @Column(name="EstCivCod")
     private int estCivCod;
+    
     @Column(name="UsuSex")
     private char usuSex;
+    
     @Column(name="EstRegCod")
     private char estRegCod;
 

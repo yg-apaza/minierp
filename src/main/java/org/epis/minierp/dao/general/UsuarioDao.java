@@ -18,7 +18,6 @@ public class UsuarioDao
 {
     private static UsuarioDao usuarioDao;
     private SimpleDateFormat dt = new SimpleDateFormat("yyyy/MM/dd");
-    private Session session = SessionUtil.getSession();
 
     public static UsuarioDao getInstance()
     {
@@ -30,6 +29,7 @@ public class UsuarioDao
     
     public UsuarioDto getById(String id)
     {
+        Session session = SessionUtil.getSession();
         Usuario usuario = null;
         UsuarioDto newUsuario = new UsuarioDto();
         try {
@@ -43,11 +43,13 @@ public class UsuarioDao
             Logger.getLogger(UsuarioDao.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
+        session.close();
         return newUsuario;
     }
     
     public UsuarioDto getByIdActive(String id)
     {
+        Session session = SessionUtil.getSession();
         Usuario usuario = null;
         UsuarioDto newUsuario = new UsuarioDto();
         Query query = session.createQuery("from Usuario U where U.usuCod = :id and U.estRegCod = 'A'");
@@ -63,11 +65,13 @@ public class UsuarioDao
             Logger.getLogger(UsuarioDao.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
+        session.close();
         return newUsuario;
     }
     
     public List<UsuarioDto> getAll()
     {
+        Session session = SessionUtil.getSession();
         Query query = session.createQuery("from Usuario");
         List<Usuario> usuarios =  query.list();
         List<UsuarioDto> nuevos = new ArrayList<UsuarioDto>();
@@ -85,6 +89,7 @@ public class UsuarioDao
                 return null;
             }
         }
+        session.close();
         return nuevos;
     }
 }
