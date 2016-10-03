@@ -29,16 +29,7 @@ public class DbUtil
                 String password = prop.getProperty("password");
                 Class.forName(driver);
                 connection = DriverManager.getConnection(url, user, password);
-            } catch (ClassNotFoundException e)
-            {
-                e.printStackTrace();
-            } catch (SQLException e)
-            {
-                e.printStackTrace();
-            } catch (FileNotFoundException e)
-            {
-                e.printStackTrace();
-            } catch (IOException e)
+            } catch (ClassNotFoundException | SQLException | IOException e)
             {
                 e.printStackTrace();
             }

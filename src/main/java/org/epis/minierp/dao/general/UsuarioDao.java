@@ -13,7 +13,6 @@ import org.epis.minierp.util.HibernateUtil;
 import org.hibernate.ObjectNotFoundException;
 import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
 
 public class UsuarioDao
 {
@@ -25,14 +24,6 @@ public class UsuarioDao
     {  
         session = HibernateUtil.getSessionFactory().getCurrentSession();  
     }
-    /*
-    public static UsuarioDao getInstance()
-    {
-        if (usuarioDao == null){
-            usuarioDao = new UsuarioDao();
-        }
-        return usuarioDao;
-    }*/
     
     public UsuarioDto getById(String id)
     {

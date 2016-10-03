@@ -16,15 +16,7 @@ public class TipoUsuarioDao
     {  
         session = HibernateUtil.getSessionFactory().getCurrentSession();  
     }
-    
-//    public static TipoUsuarioDao getInstance()
-//    {
-//        if (tipoUsuarioDao == null){
-//            tipoUsuarioDao = new TipoUsuarioDao();
-//        }
-//        return tipoUsuarioDao;
-//    }
-    
+        
     public List<TipoUsuario> getAll()
     {
         Query query = session.createQuery("from TipoUsuario T");

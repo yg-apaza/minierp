@@ -17,14 +17,6 @@ public class EstadoCivilDao
         session = HibernateUtil.getSessionFactory().getCurrentSession();
     }
     
-//    public static EstadoCivilDao getInstance()
-//    {
-//        if (estadoCivilDao == null){
-//            estadoCivilDao = new EstadoCivilDao();
-//        }
-//        return estadoCivilDao;
-//    }
-    
     public List<EstadoCivil> getAll()
     {
         Query query = session.createQuery("from EstadoCivil");
