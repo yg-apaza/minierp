@@ -1,5 +1,6 @@
 # MiniERP WEB
-Curso: Tecnologías de la Información
+
+![alt tag](screenshot.png)
 
 ## Requerimientos
 
@@ -14,8 +15,6 @@ Curso: Tecnologías de la Información
 - Instalar las dependencias del archivo pom.xml con Maven.
 - Lanzarlo con un servidor
 - Usuario: admin, Contraseña: admin
-
-![alt tag](screenshot.png)
 
 ## Arquitectura
 
