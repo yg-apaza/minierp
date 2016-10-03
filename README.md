@@ -30,7 +30,7 @@ Cada capa está representada por un paquete y contiene 4 modulos (subpaquetes), 
 Para crear dinamicamente páginas HTML, están dentro de la carpeta WEB-INF para impedir el acceso directo.
 Solo la página de login.jsp y error.jsp estan disponibles para acceso directo. Las demás paginas deben accederse por medio de los servlets.
 En WEB-INF/tags está el archivo template.tag, que debe ser una plantilla para la creación de todos los JSP, porque contiene la cabecera y el pie de página.
-template.tag tiene dos atributos que pueden ser modificados: 'titulo' que debe ser una etiqueta tipo <title> dependiendo de la página y 'contenido' para agregar contenido en el <body>
+template.tag tiene dos atributos que pueden ser modificados: 'titulo' que debe ser una etiqueta HTML tipo title dependiendo de la página y 'contenido' para agregar contenido en el body
 
 ### Controller
 
