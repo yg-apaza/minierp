@@ -12,8 +12,10 @@ public class TipoUsuario implements Serializable
 {
     @Id
     private int tipUsuCod;
+    
     @Column(name="TipUsuDet")
     private String tipUsuDet;
+    
     @Column(name="EstRegCod")
     private char estRegCod;
 

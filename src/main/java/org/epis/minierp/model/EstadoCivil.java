@@ -12,8 +12,10 @@ public class EstadoCivil implements Serializable
 {
     @Id
     private int estCivCod;
+    
     @Column(name="EstCivDet")
     private String estCivDet;
+    
     @Column(name="EstRegCod")
     private char estRegCod;
 

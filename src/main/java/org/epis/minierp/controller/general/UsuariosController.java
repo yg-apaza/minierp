@@ -16,7 +16,8 @@ public class UsuariosController extends HttpServlet
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<UsuarioDto> usuarios = UsuarioDao.getInstance().getAll();
+        UsuarioDao daoUsu = new UsuarioDao();
+        List<UsuarioDto> usuarios = daoUsu.getAll();
         request.setAttribute("usuarios", usuarios);
         request.getRequestDispatcher("/WEB-INF/general/usuarios.jsp").forward(request, response);
     }

@@ -15,69 +15,74 @@
                             Usuario
                         </div>
                         <div class="panel-body">
-                            <div class="form-group">
-                                <label>Usuario</label>
-                                <div class="form-group input-group">
-                                    <span class="input-group-addon"><i class="fa fa-user"></i>
-                                    </span>
-                                    <input type="text" class="form-control" placeholder="Usuario" name="usuCod">
-                                </div>
-                                <label>Nombres</label>
-                                <div class="form-group input-group">
-                                    <span class="input-group-addon"><i class="fa fa-user"></i>
-                                    </span>
-                                    <input type="text" class="form-control" placeholder="Nombres" name="usuNom">
-                                </div>
-                                <label>Apellido Paterno</label>
-                                <div class="form-group input-group">
-                                    <span class="input-group-addon"><i class="fa fa-user"></i>
-                                    </span>
-                                    <input type="text" class="form-control" placeholder="Apellido Paterno" name="usuApePat">
-                                </div>
-                                <label>Apellido Materno</label>
-                                <div class="form-group input-group">
-                                    <span class="input-group-addon"><i class="fa fa-user"></i>
-                                    </span>
-                                    <input type="text" class="form-control" placeholder="Apellido Materno" name="usuApeMat">
-                                </div>
-                                <label>Contraseña</label>
-                                <div class="form-group input-group">
-                                    <span class="input-group-addon"><i class="fa fa-lock"></i>
-                                    </span>
-                                    <input type="password" class="form-control" placeholder="Contraseña" name="usuPas">
-                                </div>
-                                <label>Tipo de usuario</label>
+                            <form role=form" method="post" action="${pageContext.request.contextPath}/secured/general/usuarios/add">
                                 <div class="form-group">
-                                    <select class="form-control" name="tipUsuCod">
-                                        <c:forEach items="${tipos}" var="t">
-                                            <option value="${t.tipUsuCod}">${t.tipUsuDet}</option>
-                                        </c:forEach>
-                                    </select>
+                                    <label>Usuario</label>
+                                    <div class="form-group input-group">
+                                        <span class="input-group-addon"><i class="fa fa-user"></i>
+                                        </span>
+                                        <input type="text" class="form-control" placeholder="Usuario" name="usuCod">
+                                    </div>
+                                    <label>Nombres</label>
+                                    <div class="form-group input-group">
+                                        <span class="input-group-addon"><i class="fa fa-user"></i>
+                                        </span>
+                                        <input type="text" class="form-control" placeholder="Nombres" name="usuNom">
+                                    </div>
+                                    <label>Apellido Paterno</label>
+                                    <div class="form-group input-group">
+                                        <span class="input-group-addon"><i class="fa fa-user"></i>
+                                        </span>
+                                        <input type="text" class="form-control" placeholder="Apellido Paterno" name="usuApePat">
+                                    </div>
+                                    <label>Apellido Materno</label>
+                                    <div class="form-group input-group">
+                                        <span class="input-group-addon"><i class="fa fa-user"></i>
+                                        </span>
+                                        <input type="text" class="form-control" placeholder="Apellido Materno" name="usuApeMat">
+                                    </div>
+                                    <label>Contraseña</label>
+                                    <div class="form-group input-group">
+                                        <span class="input-group-addon"><i class="fa fa-lock"></i>
+                                        </span>
+                                        <input type="password" class="form-control" placeholder="Contraseña" name="usuPas">
+                                    </div>
+                                    <label>Tipo de usuario</label>
+                                    <div class="form-group">
+                                        <select class="form-control" name="tipUsuCod">
+                                            <c:forEach items="${tipos}" var="t">
+                                                <option value="${t.tipUsuCod}">${t.tipUsuDet}</option>
+                                            </c:forEach>
+                                        </select>
+                                    </div>
+                                    <label>Fecha de nacimiento</label>
+                                    <div class='form-group input-group date' id='datetimepicker1'>
+                                        <input placeholder="Fecha de nacimiento" type='text' class="form-control" name="usuFecNac"/>
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </span>
+                                    </div>
+                                    <label>Estado Civil</label>
+                                    <div class="form-group">
+                                        <select class="form-control" name="estCivCod">
+                                            <c:forEach items="${estados}" var="e">
+                                                <option value="${e.estCivCod}">${e.estCivDet}</option>
+                                            </c:forEach>
+                                        </select>
+                                    </div>
+                                    <label>Género</label>
+                                    <div class="form-group">
+                                        <select class="form-control" name="usuSex">
+                                            <option value="M">Masculino</option>
+                                            <option value="F">Femenino</option>
+                                            <option value="N" selected="selected">No especifica</option>
+                                        </select>
+                                    </div>
                                 </div>
-                                <label>Fecha de nacimiento</label>
-                                <div class='form-group input-group date' id='datetimepicker1'>
-                                    <input placeholder="Fecha de nacimiento" type='text' class="form-control" name="usuFecNac"/>
-                                    <span class="input-group-addon">
-                                        <i class="fa fa-calendar"></i>
-                                    </span>
-                                </div>
-                                <label>Estado Civil</label>
-                                <div class="form-group">
-                                    <select class="form-control" name="estCivCod">
-                                        <c:forEach items="${estados}" var="e">
-                                            <option value="${e.estCivCod}">${e.estCivDet}</option>
-                                        </c:forEach>
-                                    </select>
-                                </div>
-                                <label>Género</label>
-                                <div class="form-group">
-                                    <select class="form-control" name="usuSex">
-                                        <option value="M">Masculino</option>
-                                        <option value="F">Femenino</option>
-                                        <option value="N">No especifica</option>
-                                    </select>
-                                </div>
-                            </div>
+                                <button type="submit" class="btn btn-lg btn-success btn-block">
+                                    <i class="fa fa-user-plus"></i> Agregar usuario
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </div>

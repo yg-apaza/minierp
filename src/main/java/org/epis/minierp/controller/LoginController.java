@@ -1,6 +1,5 @@
 package org.epis.minierp.controller;
 
-import com.google.common.hash.Hashing;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
@@ -9,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.epis.minierp.dao.general.UsuarioDao;
 import org.epis.minierp.dto.UsuarioDto;
 
@@ -48,12 +48,14 @@ public class LoginController extends HttpServlet
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
+        UsuarioDao daoUsu = new UsuarioDao();
         HttpSession session = request.getSession(true);
         String username = (String)request.getParameter("usuario");
         String password = (String)request.getParameter("password");
-        UsuarioDto u = UsuarioDao.getInstance().getByIdActive(username);
+        UsuarioDto u = daoUsu.getByIdActive(username);
         System.out.println(u);
-        if(u != null && u.getUsuPas().equals(Hashing.sha256().hashString(password, StandardCharsets.UTF_8).toString()))
+        
+        if(u != null && u.getUsuPas().equals(DigestUtils.sha256Hex(password)))
         {
             session.setAttribute("usuario", u);
             switch(u.getTipUsuCod())

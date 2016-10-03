@@ -4,9 +4,15 @@
     <welcome-file-list>
         <welcome-file>login.jsp</welcome-file>
     </welcome-file-list>
-
     <!--         FILTERS         -->
-    
+    <filter>
+        <filter-name>HibernateFilter</filter-name>
+        <filter-class>org.epis.minierp.security.HibernateSessionRequestFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>HibernateFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
     <filter>
         <filter-name>loginFilter</filter-name>
         <filter-class>org.epis.minierp.security.LoginFilter</filter-class>
@@ -15,7 +21,6 @@
         <filter-name>loginFilter</filter-name>
         <url-pattern>/secured/*</url-pattern>
     </filter-mapping>
-    
     <filter>
         <filter-name>generalFilter</filter-name>
         <filter-class>org.epis.minierp.security.GeneralFilter</filter-class>
@@ -24,7 +29,6 @@
         <filter-name>generalFilter</filter-name>
         <url-pattern>/secured/general/*</url-pattern>
     </filter-mapping>
-    
     <filter>
         <filter-name>ventasFilter</filter-name>
         <filter-class>org.epis.minierp.security.VentasFilter</filter-class>
@@ -33,7 +37,6 @@
         <filter-name>ventasFilter</filter-name>
         <url-pattern>/secured/ventas/*</url-pattern>
     </filter-mapping>
-    
     <filter>
         <filter-name>comprasFilter</filter-name>
         <filter-class>org.epis.minierp.security.ComprasFilter</filter-class>
@@ -42,7 +45,6 @@
         <filter-name>comprasFilter</filter-name>
         <url-pattern>/secured/compras/*</url-pattern>
     </filter-mapping>
-    
     <filter>
         <filter-name>contabilidadFilter</filter-name>
         <filter-class>org.epis.minierp.security.ContabilidadFilter</filter-class>
@@ -51,9 +53,7 @@
         <filter-name>contabilidadFilter</filter-name>
         <url-pattern>/secured/contabilidad/*</url-pattern>
     </filter-mapping>
-
     <!--         SERVLETS         -->
-    
     <!-- Login -->
     <servlet>
         <description/>
@@ -63,7 +63,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginController</servlet-name>
-        <url-pattern></url-pattern>
+        <url-pattern/>
     </servlet-mapping>
     <servlet>
         <description/>
@@ -75,7 +75,6 @@
         <servlet-name>LogoutController</servlet-name>
         <url-pattern>/logout</url-pattern>
     </servlet-mapping>
-    
     <!-- General - Administrador -->
     <servlet>
         <description/>
@@ -87,7 +86,6 @@
         <servlet-name>GeneralController</servlet-name>
         <url-pattern>/secured/general</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <description/>
         <display-name>UsuariosController</display-name>
@@ -98,7 +96,6 @@
         <servlet-name>UsuariosController</servlet-name>
         <url-pattern>/secured/general/usuarios</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <description/>
         <display-name>AddUsuarioController</display-name>
@@ -109,7 +106,6 @@
         <servlet-name>AddUsuarioController</servlet-name>
         <url-pattern>/secured/general/usuarios/add</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <description/>
         <display-name>PerfilController</display-name>
@@ -120,7 +116,6 @@
         <servlet-name>PerfilController</servlet-name>
         <url-pattern>/perfil</url-pattern>
     </servlet-mapping>
-    
     <!-- Modulo de Compras -->
     <servlet>
         <description/>
@@ -132,7 +127,6 @@
         <servlet-name>ComprasController</servlet-name>
         <url-pattern>/secured/compras</url-pattern>
     </servlet-mapping>
-    
     <!-- Modulo de Contabilidad -->
     <servlet>
         <description/>
@@ -144,7 +138,6 @@
         <servlet-name>ContabilidadController</servlet-name>
         <url-pattern>/secured/contabilidad</url-pattern>
     </servlet-mapping>
-    
     <!-- Modulo de Perifericos -->
     <servlet>
         <description/>
@@ -156,7 +149,6 @@
         <servlet-name>PerifericosController</servlet-name>
         <url-pattern>/secured/perifericos</url-pattern>
     </servlet-mapping>
-    
     <!-- Modulo de Ventas -->
     <servlet>
         <description/>
@@ -168,7 +160,6 @@
         <servlet-name>VentasController</servlet-name>
         <url-pattern>/secured/ventas</url-pattern>
     </servlet-mapping>
-    
     <!--         ERRORS         -->
     <error-page>
         <location>/error.jsp</location>
