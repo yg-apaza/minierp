@@ -3,7 +3,6 @@ package org.epis.minierp.dao.general;
 import java.util.List;
 import org.epis.minierp.model.EstadoCivil;
 import org.epis.minierp.util.HibernateUtil;
-import org.epis.minierp.util.SessionUtil;
 import org.hibernate.ObjectNotFoundException;
 import org.hibernate.Query;
 import org.hibernate.Session;
