@@ -57,9 +57,13 @@ Ejemplo:
 
 ### Model
 
+org.epis.minierp.model.*
+
 Refleja una entidad de la base de datos mapeada como objeto, deben estar registradas en el archivo hibernate.cfg.xml. Los atributos de las clases de esta capa deben ser los mismos que en la base de datos. Todas las clases deben tener 'implements Serializable' para poder funcionar.
 
 ### Security
+
+org.epis.minierp.security.*
 
 Aqui están los filtros para impedir el acceso de usuarios no autorizados
 
@@ -76,6 +80,8 @@ El modulo de periféricos se encuentra dentro de la ruta /secured/perifericos/*,
 Existe un filtro especial aplicado a cualquier ruta: HibernateSessionRequestFilter, se encarga de abrir una sesión con la base de datos y luego de ejecutar la llamada al servlet, cierra la sesión. No restringe el acceso a ninguna ruta en especial.
 
 ### Util
+
+org.epis.minierp.util.*
 
 Contiene las clases de conexion a la base de datos. HibernateUtil es para la conexion con Hibernate (asociado con hibernate.cfg.xml), mientras que DbUtil para la conexión normal con el JDBC (asociado con db.properties).
 
