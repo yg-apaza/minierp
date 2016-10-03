@@ -1,3 +1,3 @@
 # MiniERP WEB
 
-Capa DAO para el modulo general.
+Capa DAO para el modulo de contabilidad.
