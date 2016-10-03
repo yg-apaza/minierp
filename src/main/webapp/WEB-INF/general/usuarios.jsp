@@ -37,7 +37,7 @@
                             <td>${u.usuNom}</td>
                             <td>${u.usuApePat} ${u.usuApeMat}</td>
                             <td>${u.tipUsuDet}</td>
-                            <td><fmt:formatDate value="${u.usuFecNac}"/></td>
+                            <td><fmt:formatDate value="${u.usuFecNac}" pattern="dd/MM/yyyy"/></td>
                             <td>${u.estCivDet}</td>
                             <td>${u.usuSex}</td>
                             <td>${u.estRegCod}</td>
