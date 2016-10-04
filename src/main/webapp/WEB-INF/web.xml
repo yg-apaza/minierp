@@ -148,6 +148,16 @@
         <servlet-name>PlanContableController</servlet-name>
         <url-pattern>/secured/contabilidad/plan</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <description/>
+        <display-name>BalanceGeneralController</display-name>
+        <servlet-name>BalanceGeneralController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.contabilidad.BalanceGeneralController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>BalanceGeneralController</servlet-name>
+        <url-pattern>/secured/contabilidad/balance</url-pattern>
+    </servlet-mapping>
     <!-- Modulo de Perifericos -->
     <servlet>
         <description/>
