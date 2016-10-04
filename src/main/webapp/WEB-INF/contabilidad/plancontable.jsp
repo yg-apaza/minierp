@@ -24,12 +24,38 @@
                             <div class="panel-heading">
                                 <h4 class="panel-title">
                                     <a data-toggle="collapse" data-parent="#accordion" href="#${c.cueCod}">
-                                    ${c.cueDes}</a>
+                                    ${c.cueNum} - ${c.cueDes}</a>
                                 </h4>
                             </div>
                             <div id="${c.cueCod}" class="panel-collapse collapse">
                                 <div>
-                                    
+                                    <div class="table-responsive">
+                                        <table class="table table-striped table-bordered table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>Número</th>
+                                                    <th>Descripción</th>
+                                                    <th>Acción</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <c:forEach items="${c.childs}" var="s">
+                                                    <c:choose>
+                                                        <c:when test="${s.cueNiv == 2}">
+                                                            <tr class="info">
+                                                        </c:when>    
+                                                        <c:otherwise>
+                                                            <tr>
+                                                        </c:otherwise>
+                                                    </c:choose>
+                                                        <td>${s.cueNum}</td>
+                                                        <td>${s.cueDes}</td>
+                                                        <td>:c</td>
+                                                    </tr>
+                                                </c:forEach>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>
