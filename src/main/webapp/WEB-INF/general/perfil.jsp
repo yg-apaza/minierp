@@ -20,7 +20,7 @@
                             <br>
                             <form role="form">
                                 <div class="form-group">
-                                    <label>Usuario:</label>
+                                    <label>Codigo de usuario:</label>
                                     <input class="form-control" value="${sessionScope.usuario.usuCod}" disabled>
                                 </div>
                                 <div class="form-group">
@@ -30,6 +30,10 @@
                                 <div class="form-group">
                                     <label>Apellidos:</label>
                                     <input class="form-control" value="${sessionScope.usuario.usuApePat} ${sessionScope.usuario.usuApeMat}" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label>Login:</label>
+                                    <input class="form-control" value="${sessionScope.usuario.usuLog}" disabled>
                                 </div>
                                 <div class="form-group">
                                     <label>Rol:</label>
