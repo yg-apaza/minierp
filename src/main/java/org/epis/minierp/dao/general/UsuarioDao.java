@@ -67,6 +67,28 @@ public class UsuarioDao
         return newUsuario;
     }
     
+    public UsuarioDto getByUsername(String username)
+    {
+        TipoUsuarioDao daoTipUsu = new TipoUsuarioDao();
+        EstadoCivilDao daoEstCiv = new EstadoCivilDao();
+        Usuario usuario = null;
+        UsuarioDto newUsuario = new UsuarioDto();
+        Query query = session.createQuery("from Usuario U where U.usuLog = :id and U.estRegCod = 'A'");
+        query.setParameter("id", username);
+        query.setMaxResults(1);
+        try {
+            List<Usuario> usuarios = query.list();
+            usuario =  usuarios.get(0);
+            BeanUtils.copyProperties(newUsuario, usuario);
+            newUsuario.setTipUsuDet(daoTipUsu.getById(usuario.getTipUsuCod()).getTipUsuDet());
+            newUsuario.setEstCivDet(daoEstCiv.getById(usuario.getEstCivCod()).getEstCivDet());
+        } catch (IllegalAccessException | InvocationTargetException | IndexOutOfBoundsException ex) {
+            Logger.getLogger(UsuarioDao.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+        return newUsuario;
+    }
+    
     public List<UsuarioDto> getAll()
     {
         TipoUsuarioDao daoTipUsu = new TipoUsuarioDao();

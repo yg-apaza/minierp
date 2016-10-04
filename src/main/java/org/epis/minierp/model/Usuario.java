@@ -23,8 +23,14 @@ public class Usuario implements Serializable
     @Column(name="UsuApeMat")
     private String usuApeMat;
     
+    @Column(name="UsuLog")
+    private String usuLog;
+    
     @Column(name="UsuPas")
     private String usuPas;
+    
+    @Column(name="UsuHue")
+    private byte[] usuHue;
     
     @Column(name="TipUsuCod")
     private int tipUsuCod;
@@ -73,6 +79,14 @@ public class Usuario implements Serializable
         this.usuApeMat = usuApeMat;
     }
 
+    public String getUsuLog() {
+        return usuLog;
+    }
+
+    public void setUsuLog(String usuLog) {
+        this.usuLog = usuLog;
+    }
+    
     public String getUsuPas() {
         return usuPas;
     }
@@ -81,6 +95,14 @@ public class Usuario implements Serializable
         this.usuPas = usuPas;
     }
 
+    public byte[] getUsuHue() {
+        return usuHue;
+    }
+
+    public void setUsuHue(byte[] usuHue) {
+        this.usuHue = usuHue;
+    }
+    
     public int getTipUsuCod() {
         return tipUsuCod;
     }
@@ -123,6 +145,6 @@ public class Usuario implements Serializable
 
     @Override
     public String toString() {
-        return "Usuario{" + "usuCod=" + usuCod + ", usuNom=" + usuNom + ", usuApePat=" + usuApePat + ", usuApeMat=" + usuApeMat + ", usuPas=" + usuPas + ", tipUsuCod=" + tipUsuCod + ", usuFecNac=" + usuFecNac + ", estCivCod=" + estCivCod + ", usuSex=" + usuSex + ", estRegCod=" + estRegCod + '}';
+        return "Usuario{" + "usuCod=" + usuCod + ", usuNom=" + usuNom + ", usuApePat=" + usuApePat + ", usuApeMat=" + usuApeMat + ", usuLog=" + usuLog + ", tipUsuCod=" + tipUsuCod + ", usuFecNac=" + usuFecNac + ", estCivCod=" + estCivCod + ", usuSex=" + usuSex + ", estRegCod=" + estRegCod + '}';
     }
 }

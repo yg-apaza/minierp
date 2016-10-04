@@ -9,7 +9,9 @@ public class UsuarioDto implements Serializable
     private String usuNom;
     private String usuApePat;
     private String usuApeMat;
+    private String usuLog;
     private String usuPas;
+    private byte[] usuHue;
     private int tipUsuCod;
     private String tipUsuDet;
     private Date usuFecNac;
@@ -50,12 +52,28 @@ public class UsuarioDto implements Serializable
         this.usuApeMat = usuApeMat;
     }
 
+    public String getUsuLog() {
+        return usuLog;
+    }
+
+    public void setUsuLog(String usuLog) {
+        this.usuLog = usuLog;
+    }
+    
     public String getUsuPas() {
         return usuPas;
     }
 
     public void setUsuPas(String usuPas) {
         this.usuPas = usuPas;
+    }
+
+    public byte[] getUsuHue() {
+        return usuHue;
+    }
+
+    public void setUsuHue(byte[] usuHue) {
+        this.usuHue = usuHue;
     }
 
     public int getTipUsuCod() {
@@ -116,6 +134,6 @@ public class UsuarioDto implements Serializable
 
     @Override
     public String toString() {
-        return "UsuarioDto{" + "usuCod=" + usuCod + ", usuNom=" + usuNom + ", usuApePat=" + usuApePat + ", usuApeMat=" + usuApeMat + ", usuPas=" + usuPas + ", tipUsuCod=" + tipUsuCod + ", tipUsuDet=" + tipUsuDet + ", usuFecNac=" + usuFecNac + ", estCivCod=" + estCivCod + ", estCivDet=" + estCivDet + ", usuSex=" + usuSex + ", estRegCod=" + estRegCod + '}';
+        return "UsuarioDto{" + "usuCod=" + usuCod + ", usuNom=" + usuNom + ", usuApePat=" + usuApePat + ", usuApeMat=" + usuApeMat + ", usuLog=" + usuLog + ", tipUsuCod=" + tipUsuCod + ", tipUsuDet=" + tipUsuDet + ", usuFecNac=" + usuFecNac + ", estCivCod=" + estCivCod + ", estCivDet=" + estCivDet + ", usuSex=" + usuSex + ", estRegCod=" + estRegCod + '}';
     }
 }

@@ -1,7 +1,6 @@
 package org.epis.minierp.controller;
 
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -52,7 +51,7 @@ public class LoginController extends HttpServlet
         HttpSession session = request.getSession(true);
         String username = (String)request.getParameter("usuario");
         String password = (String)request.getParameter("password");
-        UsuarioDto u = daoUsu.getByIdActive(username);
+        UsuarioDto u = daoUsu.getByUsername(username);
         System.out.println(u);
         
         if(u != null && u.getUsuPas().equals(DigestUtils.sha256Hex(password)))

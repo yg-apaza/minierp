@@ -17,11 +17,11 @@
                         <div class="panel-body">
                             <form role=form" method="post" action="${pageContext.request.contextPath}/secured/general/usuarios/add">
                                 <div class="form-group">
-                                    <label>Usuario</label>
+                                    <label>Código de usuario</label>
                                     <div class="form-group input-group">
                                         <span class="input-group-addon"><i class="fa fa-user"></i>
                                         </span>
-                                        <input type="text" class="form-control" placeholder="Usuario" name="usuCod">
+                                        <input type="text" class="form-control" placeholder="Codigo" name="usuCod">
                                     </div>
                                     <label>Nombres</label>
                                     <div class="form-group input-group">
@@ -40,6 +40,12 @@
                                         <span class="input-group-addon"><i class="fa fa-user"></i>
                                         </span>
                                         <input type="text" class="form-control" placeholder="Apellido Materno" name="usuApeMat">
+                                    </div>
+                                    <label>Login</label>
+                                    <div class="form-group input-group">
+                                        <span class="input-group-addon"><i class="fa fa-user"></i>
+                                        </span>
+                                        <input type="text" class="form-control" placeholder="Login" name="usuLog">
                                     </div>
                                     <label>Contraseña</label>
                                     <div class="form-group input-group">

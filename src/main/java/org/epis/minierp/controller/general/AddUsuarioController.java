@@ -44,14 +44,16 @@ public class AddUsuarioController extends HttpServlet
             u.setUsuNom(request.getParameter("usuNom"));
             u.setUsuApePat(request.getParameter("usuApePat"));
             u.setUsuApeMat(request.getParameter("usuApeMat"));
+            u.setUsuLog(request.getParameter("usuLog"));
             u.setUsuPas(DigestUtils.sha256Hex(request.getParameter("usuPas")));
+            u.setUsuHue(null);
             u.setTipUsuCod(Integer.parseInt(request.getParameter("tipUsuCod")));
             u.setUsuFecNac(dt.parse(request.getParameter("usuFecNac")));
             u.setEstCivCod(Integer.parseInt(request.getParameter("estCivCod")));
             u.setUsuSex(request.getParameter("usuSex").charAt(0));
             u.setEstRegCod('A');
             daoUsu.save(u);
-            //request.getRequestDispatcher("/WEB-INF/general/addUsuario.jsp").forward(request, response);
+            response.sendRedirect(request.getContextPath() + "/secured/general/usuarios");
         } catch (ParseException ex) {
             Logger.getLogger(AddUsuarioController.class.getName()).log(Level.SEVERE, null, ex);
         }
