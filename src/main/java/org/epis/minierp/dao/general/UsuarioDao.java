@@ -16,7 +16,6 @@ import org.hibernate.Session;
 
 public class UsuarioDao
 {
-    private static UsuarioDao usuarioDao;
     private SimpleDateFormat dt = new SimpleDateFormat("yyyy/MM/dd");
     private Session session;
     

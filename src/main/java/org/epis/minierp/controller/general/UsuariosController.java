@@ -11,7 +11,7 @@ import org.epis.minierp.dao.general.UsuarioDao;
 import org.epis.minierp.dto.UsuarioDto;
 
 public class UsuariosController extends HttpServlet
-{	
+{
     private static final long serialVersionUID = 1L;
 
     @Override
