@@ -62,7 +62,7 @@
                                     <a href="#">Kardex</a>
                                 </li>
                                 <li>
-                                    <a href="#">Clasificación ABC</a>
+                                    <a href="/minierp/secured/compras/clasificacionABC">Clasificación ABC</a>
                                 </li>
                                 <li>
                                     <a href="#">Inventarios</a>

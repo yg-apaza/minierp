@@ -127,6 +127,17 @@
         <servlet-name>ComprasController</servlet-name>
         <url-pattern>/secured/compras</url-pattern>
     </servlet-mapping>
+    <!-- Modulo de Compras -->
+    <servlet>
+        <description/>
+        <display-name>ClasificacionABCController</display-name>
+        <servlet-name>ClasificacionABCController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.compras.ClasificacionABCController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ClasificacionABCController</servlet-name>
+        <url-pattern>/secured/compras/clasificacionABC</url-pattern>
+    </servlet-mapping>
     <!-- Modulo de Contabilidad -->
     <servlet>
         <description/>

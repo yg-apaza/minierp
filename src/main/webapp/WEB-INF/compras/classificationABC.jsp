@@ -6,7 +6,7 @@
     </jsp:attribute>
     <jsp:attribute name="contenido">
         <h1>Clasificación ABC</h1>
-        <!--div>
+        <div class = "side-body">
             <label for = "clase"> Clase del producto: </label>
             <select id = "clase">
                 <option>A</option>
