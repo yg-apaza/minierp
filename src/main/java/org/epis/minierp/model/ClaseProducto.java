@@ -2,6 +2,7 @@ package org.epis.minierp.model;
 
 import java.io.Serializable;
 import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -10,22 +11,14 @@ import javax.persistence.Table;
 @Table(name="en_p2m_clase_producto")
 public class ClaseProducto implements Serializable
 {
-    @Id
-    private String claProCod;
+    @EmbeddedId
+    private ClaseProductoId claProId;
     
     @Column(name="ClaProDet")
     private String claProDet;
     
     @Column(name="EstRegCod")
-    private String estRegCod;
-    
-    public String getClaProCod() {
-        return claProCod;
-    }
-    
-    public void setUsuCod(String claProCod) {
-        this.claProCod = claProCod;
-    }  
+    private String estRegCod; 
 
     public String getClaProDet() {
         return claProDet;
@@ -39,13 +32,13 @@ public class ClaseProducto implements Serializable
         return estRegCod;
     }
     
-    public void setestRegCod(String estRegCod) {
+    public void setEstRegCod(String estRegCod) {
         this.estRegCod = estRegCod;
     }
     
     @Override
     public String toString() {
-        return "ClaseProducto{" + "claProCod=" + claProCod + ", claProDet=" + claProDet + ", estRegCod=" + estRegCod + '}';
+        return "ClaseProducto{" + "claProCod=" + claProId + ", claProDet=" + claProDet + ", estRegCod=" + estRegCod + '}';
     }
 }
     
