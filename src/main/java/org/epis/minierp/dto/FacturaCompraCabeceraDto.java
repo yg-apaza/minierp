@@ -16,12 +16,13 @@ public class FacturaCompraCabeceraDto implements Serializable {
     private int facComCabIGV; 
     private String FacComCabObs; 
     private int estFacCod;
+    private String estFacDes; /*Ojo*/
     private int metPagCod;
     private String metPagDes; /*Ojo*/
     private int tipPagCod;
     private String tipPagDes; /*Ojo*/
     private int monCod;
-    private String tipMonDes; /*Ojo*/
+    private String monDes; /*Ojo*/
     private char estRegCod;
 
     public String getFacComCabCod() {
@@ -120,6 +121,14 @@ public class FacturaCompraCabeceraDto implements Serializable {
         this.estFacCod = estFacCod;
     }
 
+    public String getEstFacDes() {
+        return estFacDes;
+    }
+
+    public void setEstFacDes(String estFacDes) {
+        this.estFacDes = estFacDes;
+    }
+
     public int getMetPagCod() {
         return metPagCod;
     }
@@ -160,12 +169,12 @@ public class FacturaCompraCabeceraDto implements Serializable {
         this.monCod = monCod;
     }
 
-    public String getTipMonDes() {
-        return tipMonDes;
+    public String getMonDes() {
+        return monDes;
     }
 
-    public void setTipMonDes(String tipMonDes) {
-        this.tipMonDes = tipMonDes;
+    public void setMonDes(String monDes) {
+        this.monDes = monDes;
     }
 
     public char getEstRegCod() {
@@ -178,6 +187,6 @@ public class FacturaCompraCabeceraDto implements Serializable {
 
     @Override
     public String toString() {
-        return "FacturaCompraCabeceraDto{" + "facComCabCod=" + facComCabCod + ", proCod=" + proCod + ", proDes=" + proDes + ", usuCod=" + usuCod + ", usuDes=" + usuDes + ", facComCabFec=" + facComCabFec + ", facComCabTot=" + facComCabTot + ", facComCabDes=" + facComCabDes + ", facComCabSubTot=" + facComCabSubTot + ", facComCabIGV=" + facComCabIGV + ", FacComCabObs=" + FacComCabObs + ", estFacCod=" + estFacCod + ", metPagCod=" + metPagCod + ", metPagDes=" + metPagDes + ", tipPagCod=" + tipPagCod + ", tipPagDes=" + tipPagDes + ", monCod=" + monCod + ", tipMonDes=" + tipMonDes + ", estRegCod=" + estRegCod + '}';
+        return "FacturaCompraCabeceraDto{" + "facComCabCod=" + facComCabCod + ", proCod=" + proCod + ", proDes=" + proDes + ", usuCod=" + usuCod + ", usuDes=" + usuDes + ", facComCabFec=" + facComCabFec + ", facComCabTot=" + facComCabTot + ", facComCabDes=" + facComCabDes + ", facComCabSubTot=" + facComCabSubTot + ", facComCabIGV=" + facComCabIGV + ", FacComCabObs=" + FacComCabObs + ", estFacCod=" + estFacCod + ", estFacDes=" + estFacDes + ", metPagCod=" + metPagCod + ", metPagDes=" + metPagDes + ", tipPagCod=" + tipPagCod + ", tipPagDes=" + tipPagDes + ", monCod=" + monCod + ", monDes=" + monDes + ", estRegCod=" + estRegCod + '}';
     }
 }

@@ -26,7 +26,7 @@ public class ProveedorDao {
         return proveedors;
     }
     
-    public Proveedor getById(int id) {
+    public Proveedor getById(String id) {
         Proveedor proveedor = null;
         try {
             proveedor = (Proveedor)session.load(Proveedor.class, id);

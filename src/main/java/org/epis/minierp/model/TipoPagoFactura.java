@@ -18,18 +18,30 @@ public class TipoPagoFactura implements Serializable {
     @Column(name="EstRegCod")
     private char estRegCod;
 
+    public int getTipPagCod() {
+        return tipPagCod;
+    }
+
     public void setTipPagCod(int tipPagCod) {
         this.tipPagCod = tipPagCod;
+    }
+
+    public String getTipPagDet() {
+        return tipPagDet;
     }
 
     public void setTipPagDet(String tipPagDet) {
         this.tipPagDet = tipPagDet;
     }
 
+    public char getEstRegCod() {
+        return estRegCod;
+    }
+
     public void setEstRegCod(char estRegCod) {
         this.estRegCod = estRegCod;
     }
-
+    
     @Override
     public String toString() {
         return "TipoPagoFactura{" + "tipPagCod=" + tipPagCod + ", tipPagDet=" + tipPagDet + ", estRegCod=" + estRegCod + '}';
