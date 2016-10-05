@@ -6,16 +6,6 @@
     </jsp:attribute>
     <jsp:attribute name="contenido">
         <h1>Clasificación ABC</h1>
-        <div class = "side-menu">
-            <div id ="search">
-            <div class = "panel-body">
-            <div class ="navbar-form">
-                <button class = "btn">Hi</button>
-            </div>
-            </div>
-            </div>
-            
-        </div>
         <!--div>
             <label for = "clase"> Clase del producto: </label>
             <select id = "clase">
