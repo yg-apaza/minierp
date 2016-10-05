@@ -12,7 +12,7 @@ import javax.persistence.Table;
 public class SubClaseProducto implements Serializable
 {
     @EmbeddedId
-    private ClaseProducto claProCod;
+    private ClaseProductoId claProCod;
     
     @Id
     private String subClaProcCod;
