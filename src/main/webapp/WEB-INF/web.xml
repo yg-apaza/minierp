@@ -127,7 +127,7 @@
         <servlet-name>ComprasController</servlet-name>
         <url-pattern>/secured/compras</url-pattern>
     </servlet-mapping>
-    <!-- Modulo de Compras -->
+    <!-- Modulo de Compras Clasificacion ABC -->
     <servlet>
         <description/>
         <display-name>ClasificacionABCController</display-name>

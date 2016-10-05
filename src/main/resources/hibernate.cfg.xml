@@ -20,5 +20,7 @@
         <mapping class="org.epis.minierp.model.Moneda"/>
         <mapping class="org.epis.minierp.model.Proveedor"/>
         <mapping class="org.epis.minierp.model.FacturaCompraCabecera"/>
+        <mapping class="org.epis.minierp.model.Producto"/>
+        
     </session-factory>
 </hibernate-configuration>

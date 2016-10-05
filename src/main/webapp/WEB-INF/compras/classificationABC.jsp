@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="minierptemplate" %>
 <minierptemplate:template>
@@ -67,7 +68,12 @@
                         </tr>               
                     </thead>
                     <tbody>
-
+                        <c:forEach items ="${productos}" var = "producto">
+                        <td><c:out value="#" /></td>
+                        <td><c:out value="${producto.proDet}" /></td>
+                        <td><c:out value="${producto.proValUni}" /></td>
+                        <td><c:out value="${producto.proStk}" /></td>
+                        </c:forEach>                    
                     </tbody>
                 </table>            
                 </div> 
