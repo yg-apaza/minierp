@@ -44,13 +44,13 @@
             <table class="table table-hover">
             <thread>
                 <tr>
-                    <td>Numero Correlativo del Registro o código único de óperación</td>
-                    <td>Fecha de operación</td>
-                    <td>Descripción de operación</td>
-                    <td>Código de la Cuenta</td>
-                    <td>Denominación de la Cuenta</td>
-                    <td>Deudor</td>
-                    <td>Acreedor</td>
+                    <th>Numero Correlativo del Registro o código único de óperación</th>
+                    <th>Fecha de operación</th>
+                    <th>Descripción de operación</th>
+                    <th>Código de la Cuenta</th>
+                    <th>Denominación de la Cuenta</th>
+                    <th>Deudor</th>
+                    <th>Acreedor</th>
                 </tr>
             </thread>
             <tbody>
@@ -107,9 +107,9 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td>Totales</td>
-                    <td>939393</td>
-                    <td>379124.3625</td>
+                    <th>Totales</th>
+                    <th>939393</th>
+                    <th>379124.3625</th>
                 </tr>
                 <!---Fin Ejemplos-->
             </tbody>
