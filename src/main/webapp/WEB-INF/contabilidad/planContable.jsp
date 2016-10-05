@@ -62,5 +62,6 @@
                     </c:forEach>
                 </div>
             </div>
+        </div>
     </jsp:attribute>
 </minierptemplate:template>
