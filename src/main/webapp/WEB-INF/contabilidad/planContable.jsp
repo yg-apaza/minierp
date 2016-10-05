@@ -12,6 +12,7 @@
             <br>
             <br>
             <div class="col-md-4">
+                <p>Plan Contable General Empresarial</p>
                 <a class="btn btn-success" href="${pageContext.request.contextPath}/secured/general/plancontable/add" role="button">
                     <i class="fa fa-plus"></i>
                     Agregar cuenta
@@ -50,7 +51,11 @@
                                                     </c:choose>
                                                         <td>${s.cueNum}</td>
                                                         <td>${s.cueDes}</td>
-                                                        <td>:c</td>
+                                                        <td>
+                                                            <a href="#"><i class="fa fa-plus-square-o fa-2x"></i></a>
+                                                            <a href="#"><i class="fa fa-pencil-square-o fa-2x"></i></a>
+                                                            <a href="#"><i class="fa fa-trash-o fa-2x"></i></a>
+                                                        </td>
                                                     </tr>
                                                 </c:forEach>
                                             </tbody>
