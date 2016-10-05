@@ -1,4 +1,4 @@
-package org.epis.minierp.dao.general;
+package org.epis.minierp.dao.compras;
 
 import java.text.SimpleDateFormat;
 import org.apache.commons.beanutils.BeanUtils;

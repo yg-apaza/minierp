@@ -1,4 +1,4 @@
-package org.epis.minierp.dao.general;
+package org.epis.minierp.dao.compras;
 
 import java.util.List;
 import org.epis.minierp.model.Moneda;
