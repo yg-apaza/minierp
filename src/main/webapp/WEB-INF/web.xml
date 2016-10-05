@@ -158,6 +158,26 @@
         <servlet-name>BalanceGeneralController</servlet-name>
         <url-pattern>/secured/contabilidad/balance</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <description/>
+        <display-name>CajaController</display-name>
+        <servlet-name>CajaController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.contabilidad.CajaController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CajaController</servlet-name>
+        <url-pattern>/secured/contabilidad/caja</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <description/>
+        <display-name>BancosController</display-name>
+        <servlet-name>BancosController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.contabilidad.BancosController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>BancosController</servlet-name>
+        <url-pattern>/secured/contabilidad/bancos</url-pattern>
+    </servlet-mapping>
     <!-- Modulo de Perifericos -->
     <servlet>
         <description/>
