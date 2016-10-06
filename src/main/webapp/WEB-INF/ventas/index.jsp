@@ -6,7 +6,7 @@
     <jsp:attribute name="contenido">
         <h1>Módulo de Ventas</h1>
         
-        
+        <!-- Test -->
         <!-- CREAR FACTURA-->
         <div class="col-lg-4 col-md-6">
             <div class="panel panel-primary">
