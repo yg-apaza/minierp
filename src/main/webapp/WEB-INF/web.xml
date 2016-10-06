@@ -149,6 +149,16 @@
         <servlet-name>PerifericosController</servlet-name>
         <url-pattern>/secured/perifericos</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <description/>
+        <display-name>GenCodBarrasController</display-name>
+        <servlet-name>GenCodBarrasController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.perifericos.GenCodBarrasController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GenCodBarrasController</servlet-name>
+        <url-pattern>/secured/perifericos/genCodBarras</url-pattern>
+    </servlet-mapping>
     <!-- Modulo de Ventas -->
     <servlet>
         <description/>
