@@ -3,10 +3,13 @@ package org.epis.minierp.dao.contabilidad;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.apache.commons.beanutils.BeanUtils;
 import org.epis.minierp.dto.CuentaDto;
 import org.epis.minierp.model.Cuenta;
 import org.epis.minierp.util.HibernateUtil;
+import org.hibernate.ObjectNotFoundException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
@@ -59,7 +62,7 @@ public class CuentaDao
         return nuevos;
     }
     
-    public List<CuentaDto> getChildsActive(int cuePad){
+    public List<CuentaDto> getChildsActive(int cuePad) {
         Query query = session.createQuery("from Cuenta C where C.estRegCod = 'A' and C.cuePad = :pad order by C.cueNum ASC");
         query.setParameter("pad", cuePad);
         List<Cuenta> cuentas =  query.list();
@@ -78,5 +81,24 @@ public class CuentaDao
             }
         }
         return nuevos;
+    }
+    
+    public CuentaDto getByIdActive(int id)
+    {
+        Cuenta cuenta = null;
+        CuentaDto newCuenta = new CuentaDto();
+        Query query = session.createQuery("from Cuenta C where C.cueCod = :id and C.estRegCod = 'A'");
+        query.setParameter("id", id);
+        query.setMaxResults(1);
+        try {
+            List<Cuenta> usuarios = query.list();
+            cuenta =  usuarios.get(0);
+            BeanUtils.copyProperties(newCuenta, cuenta);
+            newCuenta.setChilds(new ArrayList<CuentaDto>());
+        } catch (IllegalAccessException | InvocationTargetException | IndexOutOfBoundsException ex) {
+            Logger.getLogger(CuentaDao.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+        return newCuenta;
     }
 }

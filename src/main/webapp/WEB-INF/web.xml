@@ -138,16 +138,29 @@
         <servlet-name>ContabilidadController</servlet-name>
         <url-pattern>/secured/contabilidad</url-pattern>
     </servlet-mapping>
+    
     <servlet>
         <description/>
         <display-name>PlanContableController</display-name>
         <servlet-name>PlanContableController</servlet-name>
-        <servlet-class>org.epis.minierp.controller.contabilidad.PlanContableController</servlet-class>
+        <servlet-class>org.epis.minierp.controller.contabilidad.plancontable.PlanContableController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>PlanContableController</servlet-name>
         <url-pattern>/secured/contabilidad/plan</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <description/>
+        <display-name>SubcuentaController</display-name>
+        <servlet-name>SubcuentaController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.contabilidad.plancontable.SubcuentaController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SubcuentaController</servlet-name>
+        <url-pattern>/secured/contabilidad/plan/subcuenta</url-pattern>
+    </servlet-mapping>
+    
     <servlet>
         <description/>
         <display-name>BalanceGeneralController</display-name>
