@@ -325,53 +325,7 @@ INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `
 INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (320, 59, 3, '626', 'Gerentes', 'A');
 INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (321, 59, 3, '627', 'Seguridad, previsión social y otras contribuciones', 'A');
 INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (322, 59, 3, '628', 'Retribuciones al directorio', NULL);
-INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (NULL, 59, 3, '629', 'Beneficios sociales de los trabajadores', NULL);
+INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (323, 59, 3, '629', 'Beneficios sociales de los trabajadores', NULL);
 
 COMMIT;
 
-
--- -----------------------------------------------------
--- Data for table `episerp`.`ta_gzz_banco`
--- -----------------------------------------------------
-START TRANSACTION;
-USE `episerp`;
-INSERT INTO `episerp`.`ta_gzz_banco` (`BanCod`, `BanDet`, `EstRegCod`) VALUES (1, 'CENTRAL DE RESERVA DEL PERU', 'A');
-INSERT INTO `episerp`.`ta_gzz_banco` (`BanCod`, `BanDet`, `EstRegCod`) VALUES (2, 'DE CREDITO DEL PERU', 'A');
-INSERT INTO `episerp`.`ta_gzz_banco` (`BanCod`, `BanDet`, `EstRegCod`) VALUES (3, 'INTERNACIONAL DEL PERU', 'A');
-INSERT INTO `episerp`.`ta_gzz_banco` (`BanCod`, `BanDet`, `EstRegCod`) VALUES (5, 'LATINO', 'A');
-INSERT INTO `episerp`.`ta_gzz_banco` (`BanCod`, `BanDet`, `EstRegCod`) VALUES (7, 'CITIBANK DEL PERU S.A.', 'A');
-INSERT INTO `episerp`.`ta_gzz_banco` (`BanCod`, `BanDet`, `EstRegCod`) VALUES (8, 'STANDARD CHARTERED', 'A');
-INSERT INTO `episerp`.`ta_gzz_banco` (`BanCod`, `BanDet`, `EstRegCod`) VALUES (9, 'SCOTIABANK PERU', 'A');
-INSERT INTO `episerp`.`ta_gzz_banco` (`BanCod`, `BanDet`, `EstRegCod`) VALUES (11, 'CONTINENTAL', 'A');
-INSERT INTO `episerp`.`ta_gzz_banco` (`BanCod`, `BanDet`, `EstRegCod`) VALUES (12, 'DE LIMA', 'A');
-INSERT INTO `episerp`.`ta_gzz_banco` (`BanCod`, `BanDet`, `EstRegCod`) VALUES (16, 'MERCANTIL', 'A');
-INSERT INTO `episerp`.`ta_gzz_banco` (`BanCod`, `BanDet`, `EstRegCod`) VALUES (18, 'NACION', 'A');
-INSERT INTO `episerp`.`ta_gzz_banco` (`BanCod`, `BanDet`, `EstRegCod`) VALUES (22, 'SANTANDER CENTRAL HISPANO', 'A');
-INSERT INTO `episerp`.`ta_gzz_banco` (`BanCod`, `BanDet`, `EstRegCod`) VALUES (23, 'DE COMERCIO', 'A');
-INSERT INTO `episerp`.`ta_gzz_banco` (`BanCod`, `BanDet`, `EstRegCod`) VALUES (25, 'REPUBLICA', 'A');
-INSERT INTO `episerp`.`ta_gzz_banco` (`BanCod`, `BanDet`, `EstRegCod`) VALUES (26, 'NBK BANK', 'A');
-INSERT INTO `episerp`.`ta_gzz_banco` (`BanCod`, `BanDet`, `EstRegCod`) VALUES (29, 'BANCOSUR', 'A');
-INSERT INTO `episerp`.`ta_gzz_banco` (`BanCod`, `BanDet`, `EstRegCod`) VALUES (35, 'FINANCIERO DEL PERU', 'A');
-INSERT INTO `episerp`.`ta_gzz_banco` (`BanCod`, `BanDet`, `EstRegCod`) VALUES (37, 'DEL PROGRESO', 'A');
-INSERT INTO `episerp`.`ta_gzz_banco` (`BanCod`, `BanDet`, `EstRegCod`) VALUES (38, 'INTERAMERICANO FINANZAS', 'A');
-INSERT INTO `episerp`.`ta_gzz_banco` (`BanCod`, `BanDet`, `EstRegCod`) VALUES (39, 'BANEX', 'A');
-INSERT INTO `episerp`.`ta_gzz_banco` (`BanCod`, `BanDet`, `EstRegCod`) VALUES (40, 'NUEVO MUNDO', 'A');
-INSERT INTO `episerp`.`ta_gzz_banco` (`BanCod`, `BanDet`, `EstRegCod`) VALUES (41, 'SUDAMERICANO', 'A');
-INSERT INTO `episerp`.`ta_gzz_banco` (`BanCod`, `BanDet`, `EstRegCod`) VALUES (42, 'DEL LIBERTADOR', 'A');
-INSERT INTO `episerp`.`ta_gzz_banco` (`BanCod`, `BanDet`, `EstRegCod`) VALUES (43, 'DEL TRABAJO', 'A');
-INSERT INTO `episerp`.`ta_gzz_banco` (`BanCod`, `BanDet`, `EstRegCod`) VALUES (44, 'SOLVENTA', 'A');
-INSERT INTO `episerp`.`ta_gzz_banco` (`BanCod`, `BanDet`, `EstRegCod`) VALUES (45, 'SERBANCO S.A.', 'A');
-INSERT INTO `episerp`.`ta_gzz_banco` (`BanCod`, `BanDet`, `EstRegCod`) VALUES (46, 'BANK OF BOSTON', 'A');
-INSERT INTO `episerp`.`ta_gzz_banco` (`BanCod`, `BanDet`, `EstRegCod`) VALUES (47, 'ORION', 'A');
-INSERT INTO `episerp`.`ta_gzz_banco` (`BanCod`, `BanDet`, `EstRegCod`) VALUES (48, 'DEL PAIS', 'A');
-INSERT INTO `episerp`.`ta_gzz_banco` (`BanCod`, `BanDet`, `EstRegCod`) VALUES (49, 'MI BANCO', 'A');
-INSERT INTO `episerp`.`ta_gzz_banco` (`BanCod`, `BanDet`, `EstRegCod`) VALUES (50, 'BNP PARIBAS', 'A');
-INSERT INTO `episerp`.`ta_gzz_banco` (`BanCod`, `BanDet`, `EstRegCod`) VALUES (51, 'AGROBANCO', 'A');
-INSERT INTO `episerp`.`ta_gzz_banco` (`BanCod`, `BanDet`, `EstRegCod`) VALUES (53, 'HSBC BANK PERU S.A.', 'A');
-INSERT INTO `episerp`.`ta_gzz_banco` (`BanCod`, `BanDet`, `EstRegCod`) VALUES (54, 'BANCO FALABELLA S.A.', 'A');
-INSERT INTO `episerp`.`ta_gzz_banco` (`BanCod`, `BanDet`, `EstRegCod`) VALUES (55, 'BANCO RIPLEY', 'A');
-INSERT INTO `episerp`.`ta_gzz_banco` (`BanCod`, `BanDet`, `EstRegCod`) VALUES (56, 'BANCO SANTANDER PERU S.A.', 'A');
-INSERT INTO `episerp`.`ta_gzz_banco` (`BanCod`, `BanDet`, `EstRegCod`) VALUES (58, 'BANCO AZTECA DEL PERU', 'A');
-INSERT INTO `episerp`.`ta_gzz_banco` (`BanCod`, `BanDet`, `EstRegCod`) VALUES (99, 'OTROS', 'A');
-
-COMMIT;
