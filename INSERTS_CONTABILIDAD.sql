@@ -324,8 +324,7 @@ INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `
 INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (319, 59, 3, '625', 'Atención al personal', 'A');
 INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (320, 59, 3, '626', 'Gerentes', 'A');
 INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (321, 59, 3, '627', 'Seguridad, previsión social y otras contribuciones', 'A');
-INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (322, 59, 3, '628', 'Retribuciones al directorio', NULL);
-INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (323, 59, 3, '629', 'Beneficios sociales de los trabajadores', NULL);
+INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (322, 59, 3, '628', 'Retribuciones al directorio', 'A');
+INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (323, 59, 3, '629', 'Beneficios sociales de los trabajadores', 'A');
 
 COMMIT;
-
