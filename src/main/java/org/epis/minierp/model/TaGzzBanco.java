@@ -1,12 +1,16 @@
 package org.epis.minierp.model;
-// Generated 07/10/2016 09:29:17 AM by Hibernate Tools 4.3.1
+// Generated 07/10/2016 10:46:31 AM by Hibernate Tools 4.3.1
 
 
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -22,13 +26,20 @@ public class TaGzzBanco  implements java.io.Serializable {
      private Integer banCod;
      private String banDet;
      private char estRegCod;
+     private Set enP3mCuentaBancos = new HashSet(0);
 
     public TaGzzBanco() {
     }
 
+	
     public TaGzzBanco(String banDet, char estRegCod) {
+        this.banDet = banDet;
+        this.estRegCod = estRegCod;
+    }
+    public TaGzzBanco(String banDet, char estRegCod, Set enP3mCuentaBancos) {
        this.banDet = banDet;
        this.estRegCod = estRegCod;
+       this.enP3mCuentaBancos = enP3mCuentaBancos;
     }
    
      @Id @GeneratedValue(strategy=IDENTITY)
@@ -61,6 +72,15 @@ public class TaGzzBanco  implements java.io.Serializable {
     
     public void setEstRegCod(char estRegCod) {
         this.estRegCod = estRegCod;
+    }
+
+@OneToMany(fetch=FetchType.LAZY, mappedBy="taGzzBanco")
+    public Set getEnP3mCuentaBancos() {
+        return this.enP3mCuentaBancos;
+    }
+    
+    public void setEnP3mCuentaBancos(Set enP3mCuentaBancos) {
+        this.enP3mCuentaBancos = enP3mCuentaBancos;
     }
 
 

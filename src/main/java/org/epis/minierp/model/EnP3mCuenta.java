@@ -1,5 +1,5 @@
 package org.epis.minierp.model;
-// Generated 07/10/2016 09:29:17 AM by Hibernate Tools 4.3.1
+// Generated 07/10/2016 10:46:31 AM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -30,6 +30,7 @@ public class EnP3mCuenta  implements java.io.Serializable {
      private String cueDes;
      private char estRegCod;
      private Set enP3tAsientoDets = new HashSet(0);
+     private Set enP3mCuentaBancos = new HashSet(0);
      private Set enP3mCuentas = new HashSet(0);
      private Set enP3tPlantillaDets = new HashSet(0);
 
@@ -44,7 +45,7 @@ public class EnP3mCuenta  implements java.io.Serializable {
         this.cueDes = cueDes;
         this.estRegCod = estRegCod;
     }
-    public EnP3mCuenta(int cueCod, EnP3mCuenta enP3mCuenta, int cueNiv, String cueNum, String cueDes, char estRegCod, Set enP3tAsientoDets, Set enP3mCuentas, Set enP3tPlantillaDets) {
+    public EnP3mCuenta(int cueCod, EnP3mCuenta enP3mCuenta, int cueNiv, String cueNum, String cueDes, char estRegCod, Set enP3tAsientoDets, Set enP3mCuentaBancos, Set enP3mCuentas, Set enP3tPlantillaDets) {
        this.cueCod = cueCod;
        this.enP3mCuenta = enP3mCuenta;
        this.cueNiv = cueNiv;
@@ -52,6 +53,7 @@ public class EnP3mCuenta  implements java.io.Serializable {
        this.cueDes = cueDes;
        this.estRegCod = estRegCod;
        this.enP3tAsientoDets = enP3tAsientoDets;
+       this.enP3mCuentaBancos = enP3mCuentaBancos;
        this.enP3mCuentas = enP3mCuentas;
        this.enP3tPlantillaDets = enP3tPlantillaDets;
     }
@@ -125,6 +127,15 @@ public class EnP3mCuenta  implements java.io.Serializable {
     
     public void setEnP3tAsientoDets(Set enP3tAsientoDets) {
         this.enP3tAsientoDets = enP3tAsientoDets;
+    }
+
+@OneToMany(fetch=FetchType.LAZY, mappedBy="enP3mCuenta")
+    public Set getEnP3mCuentaBancos() {
+        return this.enP3mCuentaBancos;
+    }
+    
+    public void setEnP3mCuentaBancos(Set enP3mCuentaBancos) {
+        this.enP3mCuentaBancos = enP3mCuentaBancos;
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="enP3mCuenta")
