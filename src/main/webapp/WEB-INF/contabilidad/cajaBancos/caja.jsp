@@ -54,9 +54,9 @@
                 </tr>
             </thread>
             <tbody>
-               <!--<c:forEach items="${operaciones}" var="u"> -->
+               <c:forEach items="${operaciones}" var="u"> 
                         <tr>
-                            <td>num</td>
+                            <td>${u.numDet}</td>
                             <td>fech</td>
                             <td>desc</td>
                             <td>cod</td>
@@ -64,7 +64,7 @@
                             <td>deudo</td>
                             <td>acred</td>
                         </tr>
-                <!--</c:forEach>     -->
+                </c:forEach>     
                 <!---Ejemplos-->
                 <tr>
                     <td>1</td>

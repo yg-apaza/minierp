@@ -10,27 +10,31 @@ import org.hibernate.annotations.Immutable;
 
 @Entity
 @Immutable
+@Table(name="caja",catalog="episerp")
 public class CajaModel implements Serializable{
-
-    @Column(name="numCorr")
+    @Id 
+    @Column(name="AsiDetCod")
+    private String numDet;
+    
+    @Column(name="AsiCabCod")
     private String numCorr;
     
-    @Column(name="fecOpe")
-    private String fecOpe;
+    @Column(name="AsiCabFec")
+    private Date fecOpe;
     
-    @Column(name="desOpe")
+    @Column(name="AsiCabTip")
     private String desOpe;
     
-    @Column(name="codCuen")
+    @Column(name="CueCod")
     private String codCue;
     
-    @Column(name="denOpe")
+    @Column(name="CueDes")
     private String denOpe;
     
-    @Column(name="deudor")
+    @Column(name="debe")
     private String deudor;
     
-    @Column(name="acreedor")
+    @Column(name="haber")
     private String acreedor;
 
     public String getNumCorr() {
@@ -41,11 +45,11 @@ public class CajaModel implements Serializable{
         this.numCorr = numCorr;
     }
 
-    public String getFecOpe() {
+    public Date getFecOpe() {
         return fecOpe;
     }
 
-    public void setFecOpe(String fecOpe) {
+    public void setFecOpe(Date fecOpe) {
         this.fecOpe = fecOpe;
     }
 
@@ -92,6 +96,5 @@ public class CajaModel implements Serializable{
     @Override
     public String toString() {
         return "Caja{" + "numCorr=" + numCorr + ", fecOpe=" + fecOpe + ", desOpe=" + desOpe + ", codCue=" + codCue + ", denOpe=" + denOpe + ", deudor=" + deudor + ", acreedor=" + acreedor + '}';
-    }
-    
+    }   
 }
