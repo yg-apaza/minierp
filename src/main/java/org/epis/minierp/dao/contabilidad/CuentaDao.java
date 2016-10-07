@@ -17,7 +17,7 @@ public class CuentaDao
     private Session session;
     
     public CuentaDao()
-    {  
+    {
         session = HibernateUtil.getSessionFactory().getCurrentSession();  
     }
     
@@ -82,7 +82,7 @@ public class CuentaDao
         return nuevos;
     }
     
-    public List<CuentaDto> getMainChilds(){
+    public List<CuentaDto> getMainChilds() {
         Query query = session.createQuery("from Cuenta C where C.estRegCod = 'A' and C.cueNiv = :niv order by C.cueNum ASC");
         query.setParameter("niv", 1);
         List<Cuenta> cuentas = query.list();
