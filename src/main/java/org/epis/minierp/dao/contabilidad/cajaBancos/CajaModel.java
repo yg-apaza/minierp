@@ -5,96 +5,120 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
 import javax.persistence.Table;
-import org.hibernate.annotations.Immutable;
 
 @Entity
-@Immutable
-@Table(name="caja",catalog="episerp")
-public class CajaModel implements Serializable{
+@IdClass(CajaPK.class)
+@Table(name="LibroCaja")
+public class CajaModel implements Serializable {
     @Id 
+    @Column(name="LibDiaCod")
+    private String libDiaCod;
+
+    @Id
     @Column(name="AsiDetCod")
-    private String numDet;
+    private int asiDetCod;
     
+    @Id
     @Column(name="AsiCabCod")
-    private String numCorr;
+    private int asiCabCod;
     
     @Column(name="AsiCabFec")
-    private Date fecOpe;
+    private Date asiCabFec;
     
     @Column(name="AsiCabTip")
-    private String desOpe;
+    private String asiCabTip;
     
     @Column(name="CueCod")
-    private String codCue;
+    private String cueCod;
     
     @Column(name="CueDes")
-    private String denOpe;
+    private String cueDes;
     
     @Column(name="debe")
-    private String deudor;
+    private String debe;
     
     @Column(name="haber")
-    private String acreedor;
+    private String haber;
 
-    public String getNumCorr() {
-        return numCorr;
+    public String getLibDiaCod() {
+        return libDiaCod;
     }
 
-    public void setNumCorr(String numCorr) {
-        this.numCorr = numCorr;
+    public void setLibDiaCod(String libDiaCod) {
+        this.libDiaCod = libDiaCod;
     }
 
-    public Date getFecOpe() {
-        return fecOpe;
+    public int getAsiDetCod() {
+        return asiDetCod;
     }
 
-    public void setFecOpe(Date fecOpe) {
-        this.fecOpe = fecOpe;
+    public void setAsiDetCod(int asiDetCod) {
+        this.asiDetCod = asiDetCod;
     }
 
-    public String getDesOpe() {
-        return desOpe;
+    public int getAsiCabCod() {
+        return asiCabCod;
     }
 
-    public void setDesOpe(String desOpe) {
-        this.desOpe = desOpe;
+    public void setAsiCabCod(int asiCabCod) {
+        this.asiCabCod = asiCabCod;
     }
 
-    public String getCodCue() {
-        return codCue;
+    public Date getAsiCabFec() {
+        return asiCabFec;
     }
 
-    public void setCodCue(String codCue) {
-        this.codCue = codCue;
+    public void setAsiCabFec(Date asiCabFec) {
+        this.asiCabFec = asiCabFec;
     }
 
-    public String getDenOpe() {
-        return denOpe;
+    public String getAsiCabTip() {
+        return asiCabTip;
     }
 
-    public void setDenOpe(String denOpe) {
-        this.denOpe = denOpe;
+    public void setAsiCabTip(String asiCabTip) {
+        this.asiCabTip = asiCabTip;
     }
 
-    public String getDeudor() {
-        return deudor;
+    public String getCueCod() {
+        return cueCod;
     }
 
-    public void setDeudor(String deudor) {
-        this.deudor = deudor;
+    public void setCueCod(String cueCod) {
+        this.cueCod = cueCod;
     }
 
-    public String getAcreedor() {
-        return acreedor;
+    public String getCueDes() {
+        return cueDes;
     }
 
-    public void setAcreedor(String acreedor) {
-        this.acreedor = acreedor;
-    } 
+    public void setCueDes(String cueDes) {
+        this.cueDes = cueDes;
+    }
+
+    public String getDebe() {
+        return debe;
+    }
+
+    public void setDebe(String debe) {
+        this.debe = debe;
+    }
+
+    public String getHaber() {
+        return haber;
+    }
+
+    public void setHaber(String haber) {
+        this.haber = haber;
+    }
+    
+    
+
     
     @Override
     public String toString() {
-        return "Caja{" + "numCorr=" + numCorr + ", fecOpe=" + fecOpe + ", desOpe=" + desOpe + ", codCue=" + codCue + ", denOpe=" + denOpe + ", deudor=" + deudor + ", acreedor=" + acreedor + '}';
+        return "Caja{" + "asiDetCod=" + asiDetCod + ", asiCabCod=" + asiCabCod + ", asiCabFec=" + asiCabFec + ", asiCabTip=" + asiCabTip + ", cueCod=" + cueCod + ", cueDes=" + cueDes + ", debe=" + debe + ", haber=" + haber + '}';
     }   
 }
