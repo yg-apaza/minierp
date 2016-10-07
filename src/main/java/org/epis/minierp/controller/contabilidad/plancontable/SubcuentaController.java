@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.epis.minierp.dao.contabilidad.CuentaDao;
 import org.epis.minierp.dto.CuentaDto;
-import org.epis.minierp.model.Cuenta;
+import org.epis.minierp.model.EnP3mCuenta;
 
 public class SubcuentaController extends HttpServlet
 {
@@ -39,8 +39,8 @@ public class SubcuentaController extends HttpServlet
         CuentaDao dao = new CuentaDao();
         switch(action){
             case "add":
-                Cuenta c = new Cuenta();
-                c.setCuePad(cuePad);
+                EnP3mCuenta c = new EnP3mCuenta();
+                //c.setCuePad(cuePad); <- Aqui modificar
                 c.setCueNiv(cueNiv);
                 c.setCueDes(cueDes);
                 c.setCueNum(cueNum);
