@@ -8,7 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="MiniERP web">
     <meta name="author" content="episunsa">
-
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/favicon.ico" />
+    
     <title>MiniERP - Iniciar sesión</title>
 
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
