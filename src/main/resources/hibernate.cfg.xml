@@ -14,8 +14,7 @@
         <mapping class="org.epis.minierp.model.Usuario"/>
         <mapping class="org.epis.minierp.model.TipoUsuario"/>
         <mapping class="org.epis.minierp.model.EstadoCivil"/>
-        <mapping class="org.epis.minierp.model.Cuenta"/>
-        <mapping class="org.epis.minierp.model.AsientoDet"/>
-        <mapping class="org.epis.minierp.model.AsientoDetId"/>
+        <mapping class="org.epis.minierp.model.EnP3mCuenta"/>
+
     </session-factory>
 </hibernate-configuration>

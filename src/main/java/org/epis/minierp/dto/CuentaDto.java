@@ -1,11 +1,12 @@
 package org.epis.minierp.dto;
 
 import java.util.List;
+import org.epis.minierp.model.EnP3mCuenta;
 
 public class CuentaDto
 {
     public int cueCod;   
-    public Integer cuePad;
+    public EnP3mCuenta enP3mCuenta;
     public int cueNiv;
     public String cueNum;
     public String cueDes;
@@ -21,12 +22,12 @@ public class CuentaDto
         this.cueCod = cueCod;
     }
 
-    public int getCuePad() {
-        return cuePad;
+    public EnP3mCuenta getCuePad() {
+        return enP3mCuenta;
     }
 
-    public void setCuePad(Integer cuePad) {
-        this.cuePad = cuePad;
+    public void setCuePad(EnP3mCuenta enP3mCuenta) {
+        this.enP3mCuenta = enP3mCuenta;
     }
 
     public int getCueNiv() {
@@ -71,6 +72,6 @@ public class CuentaDto
 
     @Override
     public String toString() {
-        return "CuentaDto{" + "cueCod=" + cueCod + ", cuePad=" + cuePad + ", cueNiv=" + cueNiv + ", cueNum=" + cueNum + ", cueDes=" + cueDes + ", estRegCod=" + estRegCod + '}';
-    }
+        return "CuentaDto{" + "cueCod=" + cueCod + ", cueNiv=" + cueNiv + ", cueNum=" + cueNum + ", cueDes=" + cueDes + ", estRegCod=" + estRegCod + '}';
+    }   
 }

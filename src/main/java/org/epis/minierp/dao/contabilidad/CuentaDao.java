@@ -7,7 +7,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.apache.commons.beanutils.BeanUtils;
 import org.epis.minierp.dto.CuentaDto;
-import org.epis.minierp.model.Cuenta;
+import org.epis.minierp.model.EnP3mCuenta;
 import org.epis.minierp.util.HibernateUtil;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -23,9 +23,9 @@ public class CuentaDao
     
     public List<CuentaDto> getAllActive()
     {
-        Query query = session.createQuery("from Cuenta C where C.estRegCod = 'A' and C.cueNiv = :niv order by C.cueNum ASC");
+        Query query = session.createQuery("from EnP3mCuenta C where C.estRegCod = 'A' and C.cueNiv = :niv order by C.cueNum ASC");
         query.setParameter("niv", 1);
-        List<Cuenta> cuentas = query.list();
+        List<EnP3mCuenta> cuentas = query.list();
         List<CuentaDto> nuevos = new ArrayList<CuentaDto>();
         for(int i = 0; i < cuentas.size(); i++){
             try {
@@ -43,9 +43,9 @@ public class CuentaDao
     
     public List<CuentaDto> getAllActiveRecursive(int cuePad)
     {
-        Query query = session.createQuery("from Cuenta C where C.estRegCod = 'A' and C.cuePad = :pad order by C.cueNum ASC");
+        Query query = session.createQuery("from EnP3mCuenta C where C.estRegCod = 'A' and C.cuePad = :pad order by C.cueNum ASC");
         query.setParameter("pad", cuePad);
-        List<Cuenta> cuentas =  query.list();
+        List<EnP3mCuenta> cuentas =  query.list();
         List<CuentaDto> nuevos = new ArrayList<CuentaDto>();
         for(int i = 0; i < cuentas.size(); i++)
         {
@@ -62,9 +62,9 @@ public class CuentaDao
     }
     
     public List<CuentaDto> getAllActive(int cuePad) {
-        Query query = session.createQuery("from Cuenta C where C.estRegCod = 'A' and C.cuePad = :pad order by C.cueNum ASC");
+        Query query = session.createQuery("from EnP3mCuenta C where C.estRegCod = 'A' and C.cuePad = :pad order by C.cueNum ASC");
         query.setParameter("pad", cuePad);
-        List<Cuenta> cuentas =  query.list();
+        List<EnP3mCuenta> cuentas =  query.list();
         List<CuentaDto> nuevos = new ArrayList<CuentaDto>();
         
         for(int i = 0; i < cuentas.size(); i++)
@@ -82,10 +82,10 @@ public class CuentaDao
         return nuevos;
     }
     
-    public List<CuentaDto> getMainChilds() {
-        Query query = session.createQuery("from Cuenta C where C.estRegCod = 'A' and C.cueNiv = :niv order by C.cueNum ASC");
+    public List<CuentaDto> getMainChilds(){
+        Query query = session.createQuery("from EnP3mCuenta C where C.estRegCod = 'A' and C.cueNiv = :niv order by C.cueNum ASC");
         query.setParameter("niv", 1);
-        List<Cuenta> cuentas = query.list();
+        List<EnP3mCuenta> cuentas = query.list();
         List<CuentaDto> nuevos = new ArrayList<CuentaDto>();
         for(int i = 0; i < cuentas.size(); i++){
             try {
@@ -102,9 +102,9 @@ public class CuentaDao
     }
     
     public List<CuentaDto> getChilds(int cuePad) {
-        Query query = session.createQuery("from Cuenta C where C.estRegCod = 'A' and C.cuePad = :pad order by C.cueNum ASC");
+        Query query = session.createQuery("from EnP3mCuenta C where C.estRegCod = 'A' and C.cuePad = :pad order by C.cueNum ASC");
         query.setParameter("pad", cuePad);
-        List<Cuenta> cuentas =  query.list();
+        List<EnP3mCuenta> cuentas =  query.list();
         List<CuentaDto> nuevos = new ArrayList<CuentaDto>();
         
         for(int i = 0; i < cuentas.size(); i++)
@@ -121,26 +121,23 @@ public class CuentaDao
         return nuevos;
     }
     
-    public CuentaDto getByIdActive(int id)
+    public EnP3mCuenta getByIdActive(int id)
     {
-        Cuenta cuenta = null;
-        CuentaDto newCuenta = new CuentaDto();
-        Query query = session.createQuery("from Cuenta C where C.cueCod = :id and C.estRegCod = 'A'");
+        EnP3mCuenta cuenta = null;
+        Query query = session.createQuery("from EnP3mCuenta C where C.cueCod = :id and C.estRegCod = 'A'");
         query.setParameter("id", id);
         query.setMaxResults(1);
         try {
-            List<Cuenta> usuarios = query.list();
-            cuenta =  usuarios.get(0);
-            BeanUtils.copyProperties(newCuenta, cuenta);
-            newCuenta.setChilds(new ArrayList<CuentaDto>());
-        } catch (IllegalAccessException | InvocationTargetException | IndexOutOfBoundsException ex) {
+            List<EnP3mCuenta> cuentas = query.list();
+            cuenta =  cuentas.get(0);
+        } catch (IndexOutOfBoundsException ex) {
             Logger.getLogger(CuentaDao.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
-        return newCuenta;
+        return cuenta;
     }
     
-    public void save(Cuenta cuenta) {
+    public void save(EnP3mCuenta cuenta) {
         session.save(cuenta);     
     }
 }

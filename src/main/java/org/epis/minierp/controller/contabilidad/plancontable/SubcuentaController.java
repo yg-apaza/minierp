@@ -1,13 +1,17 @@
 package org.epis.minierp.controller.contabilidad.plancontable;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.apache.commons.beanutils.BeanUtils;
 import org.epis.minierp.dao.contabilidad.CuentaDao;
 import org.epis.minierp.dto.CuentaDto;
-import org.epis.minierp.model.Cuenta;
+import org.epis.minierp.model.EnP3mCuenta;
 
 public class SubcuentaController extends HttpServlet
 {
@@ -17,12 +21,20 @@ public class SubcuentaController extends HttpServlet
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if(request.getParameterMap().containsKey("cuenta"))
         {
-            int cuentaId = Integer.parseInt(request.getParameter("cuenta"));
-            CuentaDao dao = new CuentaDao();
-            CuentaDto cuenta = dao.getByIdActive(cuentaId);
-            cuenta.setChilds(dao.getAllActive(cuentaId));
-            request.setAttribute("cuenta", cuenta);
-            request.getRequestDispatcher("/WEB-INF/contabilidad/plancontable/subcuenta.jsp").forward(request, response);
+            try {
+                int cuentaId = Integer.parseInt(request.getParameter("cuenta"));
+                CuentaDao dao = new CuentaDao();
+                EnP3mCuenta cuenta = dao.getByIdActive(cuentaId);
+                CuentaDto cuentaDto = new CuentaDto();
+                BeanUtils.copyProperties(cuentaDto, cuenta);
+                cuentaDto.setChilds(dao.getAllActive(cuentaId));
+                request.setAttribute("cuenta", cuenta);
+                request.getRequestDispatcher("/WEB-INF/contabilidad/plancontable/subcuenta.jsp").forward(request, response);
+            } catch (IllegalAccessException ex) {
+                Logger.getLogger(SubcuentaController.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (InvocationTargetException ex) {
+                Logger.getLogger(SubcuentaController.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         else
             response.sendRedirect(request.getContextPath() + "/secured/contabilidad/plan");
@@ -39,8 +51,8 @@ public class SubcuentaController extends HttpServlet
         CuentaDao dao = new CuentaDao();
         switch(action){
             case "add":
-                Cuenta c = new Cuenta();
-                c.setCuePad(cuePad);
+                EnP3mCuenta c = new EnP3mCuenta();
+                c.setEnP3mCuenta(dao.getByIdActive(cuePad));
                 c.setCueNiv(cueNiv);
                 c.setCueDes(cueDes);
                 c.setCueNum(cueNum);
