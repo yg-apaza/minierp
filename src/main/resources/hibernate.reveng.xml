@@ -2,14 +2,14 @@
 <!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
 <hibernate-reverse-engineering>
   <schema-selection match-catalog="episerp"/>
-  <table-filter match-name="en_p3m_cuenta"/>
-  <table-filter match-name="en_p3m_libro_diario"/>
-  <table-filter match-name="en_p3m_cuenta_banco"/>
+  <table-filter match-name="en_p3m_plantilla_cab"/>
+  <table-filter match-name="ta_gzz_moneda"/>
   <table-filter match-name="ta_gzz_banco"/>
+  <table-filter match-name="en_p3t_asiento_det"/>
+  <table-filter match-name="en_p3t_plantilla_det"/>
+  <table-filter match-name="en_p3m_cuenta"/>
+  <table-filter match-name="en_p3m_cuenta_banco"/>
   <table-filter match-name="en_p3m_asiento_cab"/>
   <table-filter match-name="ta_gzz_tipo_comprobante"/>
-  <table-filter match-name="en_p3t_plantilla_det"/>
-  <table-filter match-name="ta_gzz_moneda"/>
-  <table-filter match-name="en_p3m_plantilla_cab"/>
-  <table-filter match-name="en_p3t_asiento_det"/>
+  <table-filter match-name="en_p3m_libro_diario"/>
 </hibernate-reverse-engineering>
