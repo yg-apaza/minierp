@@ -29,7 +29,7 @@
                         <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand" href="${pageContext.request.contextPath}/">
-                        <img src="${pageContext.request.contextPath}/img/logo.png">
+                        <!-- <img src="${pageContext.request.contextPath}/img/logo.png"> -->
                     </a>
                 </div>
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">      	

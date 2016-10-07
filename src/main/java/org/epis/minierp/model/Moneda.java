@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="ta_gzz_metodo_pago_factura")
+@Table(name="ta_gzz_moneda")
 public class Moneda implements Serializable {
     @Id
     private int monCod;

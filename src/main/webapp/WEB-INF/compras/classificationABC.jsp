@@ -17,7 +17,7 @@
                                     <a href="#">Kardex</a>
                                 </li>
                                 <li>
-                                    <a href="/minierp/secured/compras/clasificacionABC">Clasificación ABC</a>
+                                    <a href="${pageContext.request.contextPath}/secured/compras/clasificacionABC">Clasificación ABC</a>
                                 </li>
                                 <li>
                                     <a href="#">Inventarios</a>
@@ -28,7 +28,7 @@
                             <a href="#"><i class="fa fa-truck fa-fw"></i> Compras<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="#">Registrar Factura</a>
+                                    <a href="${pageContext.request.contextPath}/secured/compras/registerPurchase">Registrar Factura</a>
                                 </li>
                             </ul>
                         </li>
