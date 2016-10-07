@@ -1,12 +1,13 @@
-CREATE OR REPLACE VIEW Balance AS (
+CREATE OR REPLACE VIEW LibroDiario AS (
 	SELECT
-		libDia.EstRegCod, 
 		libDia.LibDiaCod,
 		asiCab.AsiCabCod,
+		asiDet.AsiDetCod,
 		cue.CueNum, 
 		asiDet.AsiDetDebHab, 
 		asiDet.AsiDetMon,
-		asiCab.AsiCabFec
+		asiCab.AsiCabFec,
+		libDia.EstRegCod
 	FROM en_p3t_asiento_det asiDet
 		INNER JOIN en_p3m_cuenta cue
 			ON asiDet.CueCod = cue.CueCod
