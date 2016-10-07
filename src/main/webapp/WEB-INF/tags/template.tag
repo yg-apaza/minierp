@@ -16,6 +16,7 @@
         <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
         <script src="${pageContext.request.contextPath}/js/bootstrap-datetimepicker.min.js"></script>
         <script src="${pageContext.request.contextPath}/js/sb-admin-2.js"></script>
+        <script src="${pageContext.request.contextPath}/js/jquery.validate.min.js"></script>
         <jsp:invoke fragment="titulo"/>
     </head>
     <body>
