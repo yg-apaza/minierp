@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 07/10/2016 10:46:32 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 07/10/2016 11:13:23 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="domain.EnP3mAsientoCab" table="en_p3m_asiento_cab" catalog="episerp" optimistic-lock="version">
-        <composite-id name="id" class="domain.EnP3mAsientoCabId">
+    <class name="org.epis.minierp.model.EnP3mAsientoCab" table="en_p3m_asiento_cab" catalog="episerp" optimistic-lock="version">
+        <composite-id name="id" class="org.epis.minierp.model.EnP3mAsientoCabId">
             <key-property name="asiCabCod" type="int">
                 <column name="AsiCabCod" />
             </key-property>
@@ -12,13 +12,13 @@
                 <column name="LibDiaCod" length="10" />
             </key-property>
         </composite-id>
-        <many-to-one name="enP3mLibroDiario" class="domain.EnP3mLibroDiario" update="false" insert="false" fetch="select">
+        <many-to-one name="enP3mLibroDiario" class="org.epis.minierp.model.EnP3mLibroDiario" update="false" insert="false" fetch="select">
             <column name="LibDiaCod" length="10" not-null="true" />
         </many-to-one>
-        <many-to-one name="taGzzMoneda" class="domain.TaGzzMoneda" fetch="select">
+        <many-to-one name="taGzzMoneda" class="org.epis.minierp.model.TaGzzMoneda" fetch="select">
             <column name="MonCod" not-null="true" />
         </many-to-one>
-        <many-to-one name="taGzzTipoComprobante" class="domain.TaGzzTipoComprobante" fetch="select">
+        <many-to-one name="taGzzTipoComprobante" class="org.epis.minierp.model.TaGzzTipoComprobante" fetch="select">
             <column name="TipComCod" not-null="true" />
         </many-to-one>
         <property name="asiCabTip" type="char">
@@ -41,7 +41,7 @@
                 <column name="AsiCabCod" not-null="true" />
                 <column name="LibDiaCod" length="10" not-null="true" />
             </key>
-            <one-to-many class="domain.EnP3tAsientoDet" />
+            <one-to-many class="org.epis.minierp.model.EnP3tAsientoDet" />
         </set>
     </class>
 </hibernate-mapping>
