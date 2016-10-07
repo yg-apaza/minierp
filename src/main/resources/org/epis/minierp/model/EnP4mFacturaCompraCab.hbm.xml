@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 07/10/2016 12:11:51 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="org.epis.minierp.model.EnP4mFacturaCompraCab" table="en_p4m_factura_compra_cab" catalog="episerp" optimistic-lock="version">
+        <id name="facComCabCod" type="string">
+            <column name="FacComCabCod" length="10" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="enP1mUsuario" class="org.epis.minierp.model.EnP1mUsuario" fetch="select">
+            <column name="UsuCod" length="15" not-null="true" />
+        </many-to-one>
+        <many-to-one name="enP4mProveedor" class="org.epis.minierp.model.EnP4mProveedor" fetch="select">
+            <column name="ProCod" length="15" not-null="true" />
+        </many-to-one>
+        <many-to-one name="taGzzEstadoFactura" class="org.epis.minierp.model.TaGzzEstadoFactura" fetch="select">
+            <column name="EstFacCod" not-null="true" />
+        </many-to-one>
+        <many-to-one name="taGzzMetodoPagoFactura" class="org.epis.minierp.model.TaGzzMetodoPagoFactura" fetch="select">
+            <column name="MetPagCod" not-null="true" />
+        </many-to-one>
+        <many-to-one name="taGzzMoneda" class="org.epis.minierp.model.TaGzzMoneda" fetch="select">
+            <column name="MonCod" not-null="true" />
+        </many-to-one>
+        <many-to-one name="taGzzTipoPagoFactura" class="org.epis.minierp.model.TaGzzTipoPagoFactura" fetch="select">
+            <column name="TipPagCod" not-null="true" />
+        </many-to-one>
+        <property name="facComCabFec" type="date">
+            <column name="FacComCabFec" length="10" not-null="true" />
+        </property>
+        <property name="facComCabTot" type="double">
+            <column name="FacComCabTot" precision="10" not-null="true" />
+        </property>
+        <property name="facComCabDes" type="double">
+            <column name="FacComCabDes" precision="10" not-null="true" />
+        </property>
+        <property name="facComCabSubTot" type="double">
+            <column name="FacComCabSubTot" precision="10" not-null="true" />
+        </property>
+        <property name="facComCabIgv" type="int">
+            <column name="FacComCabIGV" not-null="true" />
+        </property>
+        <property name="facComCabObs" type="string">
+            <column name="FacComCabObs" length="90" not-null="true" />
+        </property>
+        <property name="estRegCod" type="char">
+            <column name="EstRegCod" length="1" not-null="true" />
+        </property>
+        <set name="enP4mGuiaCompraCabs" table="en_p4m_guia_compra_cab" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="FacComCabCod" length="10" not-null="true" />
+            </key>
+            <one-to-many class="org.epis.minierp.model.EnP4mGuiaCompraCab" />
+        </set>
+        <set name="enP4tFacturaCompraDets" table="en_p4t_factura_compra_det" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="FacComCabCod" length="10" not-null="true" />
+            </key>
+            <one-to-many class="org.epis.minierp.model.EnP4tFacturaCompraDet" />
+        </set>
+    </class>
+</hibernate-mapping>

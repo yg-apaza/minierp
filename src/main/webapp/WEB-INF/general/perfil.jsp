@@ -37,7 +37,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Rol:</label>
-                                    <input class="form-control" value="${sessionScope.usuario.tipUsuDet}" disabled>
+                                    <input class="form-control" value="${sessionScope.usuario.taGzzTipoUsuario.tipUsuDet}" disabled>
                                 </div>
                                 <div class="form-group">
                                     <label>Fecha de nacimiento:</label>
@@ -45,7 +45,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Estado Civil:</label>
-                                    <input class="form-control" value="${sessionScope.usuario.estCivDet}" disabled>
+                                    <input class="form-control" value="${sessionScope.usuario.taGzzEstadoCivil.estCivDet}" disabled>
                                 </div>
                                 <div class="form-group">
                                     <label>Género:</label>

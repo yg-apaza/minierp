@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 07/10/2016 12:11:51 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="org.epis.minierp.model.EnP1mPagosCuotasCab" table="en_p1m_pagos_cuotas_cab" catalog="episerp" optimistic-lock="version">
+        <id name="facVenCabCod" type="string">
+            <column name="FacVenCabCod" length="10" />
+            <generator class="foreign">
+                <param name="property">enP1mFacturaVentaCab</param>
+            </generator>
+        </id>
+        <one-to-one name="enP1mFacturaVentaCab" class="org.epis.minierp.model.EnP1mFacturaVentaCab" constrained="true"></one-to-one>
+        <property name="pagCuoNum" type="int">
+            <column name="PagCuoNum" not-null="true" />
+        </property>
+        <property name="pagCuoNumPag" type="int">
+            <column name="PagCuoNumPag" not-null="true" />
+        </property>
+        <property name="pagCuoDeuTot" type="double">
+            <column name="PagCuoDeuTot" precision="10" not-null="true" />
+        </property>
+        <property name="pagCuoTotPag" type="double">
+            <column name="PagCuoTotPag" precision="10" not-null="true" />
+        </property>
+        <property name="pagCuoFecIni" type="date">
+            <column name="PagCuoFecIni" length="10" not-null="true" />
+        </property>
+        <property name="pagCuoFecFin" type="date">
+            <column name="PagCuoFecFin" length="10" not-null="true" />
+        </property>
+        <property name="pagCuoFecPag" type="date">
+            <column name="PagCuoFecPag" length="10" not-null="true" />
+        </property>
+        <property name="estRegCod" type="char">
+            <column name="EstRegCod" length="1" not-null="true" />
+        </property>
+        <set name="enP1tPagosCuotasDets" table="en_p1t_pagos_cuotas_det" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="FacVenCabCod" length="10" not-null="true" />
+            </key>
+            <one-to-many class="org.epis.minierp.model.EnP1tPagosCuotasDet" />
+        </set>
+    </class>
+</hibernate-mapping>

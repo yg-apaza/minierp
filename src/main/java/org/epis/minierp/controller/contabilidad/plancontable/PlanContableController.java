@@ -18,6 +18,7 @@ public class PlanContableController extends HttpServlet
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         CuentaDao dao = new CuentaDao();
         List<CuentaDto> cuentas = dao.getMainChilds();
+        System.out.println(cuentas.size());
         request.setAttribute("cuentas", cuentas);
         request.getRequestDispatcher("/WEB-INF/contabilidad/plancontable/planContable.jsp").forward(request, response);
     }
