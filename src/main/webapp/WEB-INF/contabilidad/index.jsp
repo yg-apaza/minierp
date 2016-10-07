@@ -11,7 +11,7 @@
                     <div class="panel-body">
                         <div class="form-group">
                             
-                            <div class="col-lg-3 col-md-4">
+                            <div class="col-lg-3 col-md-4 col-sm-6">
                                 <div class="panel panel-red">
                                     <div class="panel-heading">
                                         <div class="row">
@@ -34,7 +34,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-3 col-md-4">
+                            <div class="col-lg-3 col-md-4 col-sm-6">
                                 <div class="panel panel-primary">
                                     <div class="panel-heading">
                                         <div class="row">
@@ -57,7 +57,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-3 col-md-4">
+                            <div class="col-lg-3 col-md-4 col-sm-6">
                                 <div class="panel panel-primary">
                                     <div class="panel-heading">
                                         <div class="row">
@@ -80,7 +80,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-3 col-md-4">
+                            <div class="col-lg-3 col-md-4 col-sm-6">
                                 <div class="panel panel-primary">
                                     <div class="panel-heading">
                                         <div class="row">
@@ -103,7 +103,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-3 col-md-4">
+                            <div class="col-lg-3 col-md-4 col-sm-6">
                                 <div class="panel panel-primary">
                                     <div class="panel-heading">
                                         <div class="row">
@@ -125,7 +125,7 @@
                                     </a>
                                 </div>
                             </div>
-                            <div class="col-lg-3 col-md-4">
+                            <div class="col-lg-3 col-md-4 col-sm-6">
                                 <div class="panel panel-primary">
                                     <div class="panel-heading">
                                         <div class="row">
@@ -133,7 +133,7 @@
                                                 <i class="fa fa-line-chart fa-5x"></i>
                                             </div>
                                             <div class="col-xs-9 text-right">
-                                                <div class="huge">5</div>
+                                                <div class="huge">6</div>
                                                 <div><h3>Balance General</h3></div>
                                             </div>
                                         </div>
@@ -147,7 +147,8 @@
                                     </a>
                                 </div>
                             </div>
-                            <div class="col-lg-3 col-md-4 col-lg-offset-0 col-md-offset-4">
+                            
+                            <div class="col-lg-3 col-md-4 col-sm-6 col-lg-offset-0 col-md-offset-4 col-sm-offset-3">
                                 <div class="panel panel-yellow">
                                     <div class="panel-heading">
                                         <div class="row">
@@ -155,7 +156,7 @@
                                                 <i class="fa fa-gears fa-5x"></i>
                                             </div>
                                             <div class="col-xs-9 text-right">
-                                                <div class="huge">5</div>
+                                                <div class="huge">7</div>
                                                 <div><h3>Configuraciones</h3></div>
                                             </div>
                                         </div>

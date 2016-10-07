@@ -46,7 +46,7 @@
                             </div>
                         </div>
                         <div class="panel-footer text-center">
-                            <a href="#" type="button" class="btn btn-outline btn-default">Regresar al Plan Contable General</a>
+                            <a href="${pageContext.request.contextPath}/secured/contabilidad/plan" type="button" class="btn btn-outline btn-default">Regresar al Plan Contable General</a>
                         </div>
                     </div>
                 </div>
@@ -59,7 +59,7 @@
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                             <h4 class="modal-title">Agregar cuenta</h4>
                         </div>
-                        <form role="form" method="post" action="#">
+                        <form role="form" method="post" action="${pageContext.request.contextPath}/secured/contabilidad/plan/subcuenta">
                             <div class="modal-body">
                                 <div class="form-group">
                                     <div class="alert alert-danger alert-dismissable" id="error">
@@ -68,25 +68,28 @@
                                     </div>
                                     <label>Número de cuenta</label>
                                     <div class="input-group">
-                                        <input class="form-control" disabled id="addCueNum">
+                                        <input type="hidden" name="accion" value="add">
+                                        <input type="hidden" name="cuePad" id="addCuePad">
+                                        <input type="hidden" name="cueNiv" id="addCueNiv">
+                                        <input class="form-control" name="cueNum1" id="addCueNum1" disabled>
                                         <span class="input-group-addon">-</span>
-                                        <select class="form-control">
-                                            <option>0</option>
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
-                                            <option>6</option>
-                                            <option>7</option>
-                                            <option>8</option>
-                                            <option>9</option>
+                                        <select class="form-control" name="cueNum2">
+                                            <option value="0">0</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                            <option value="9">9</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label>Nombre de cuenta:</label>
-                                    <input class="form-control" id="addCueDes">
+                                    <input class="form-control" id="addCueDes" required>
                                 </div>
                             </div>
                             <div class="modal-footer">
@@ -100,12 +103,13 @@
         </div>
         <script>
             var addModal = $("#agregarModal");
-            var addCueNum = $("#addCueNum");
-            addModal.on('show.bs.modal', function(){
-                console.log("modal cargado");
-                //addCueNum.val($(this).data('numero'));
-                console.log(addModal.data('numero'));
-                console.log(">:v")
+            var addCuePad = $("#addCuePad");
+            var addCueNiv = $("#addCueNiv");
+            var addCueNum = $("#addCueNum1");
+            addModal.on('show.bs.modal', function(e){
+                addCuePad.val($(e.relatedTarget).data('codigo'));
+                addCueNiv.val($(e.relatedTarget).data('nivel') + 1);
+                addCueNum.val($(e.relatedTarget).data('numero'));
             });
         </script>
     </jsp:attribute>
