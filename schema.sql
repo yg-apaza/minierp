@@ -345,16 +345,14 @@ CREATE INDEX IX_Relationship36 ON en_p3t_plantilla_det (CueCod)
 
 CREATE TABLE en_p3m_cuenta
 (
-  CueCod Int(10) ZEROFILL NOT NULL,
+  CueCod Int(10) ZEROFILL NOT NULL AUTO_INCREMENT,
   CuePad Int(10) ZEROFILL,
   CueNiv Int(2) NOT NULL,
   CueNum Char(10) NOT NULL,
-  CueDes Char(90) NOT NULL,
-  EstRegCod Char(1) NOT NULL
+  CueDes Char(150) NOT NULL,
+  EstRegCod Char(1) NOT NULL,
+ PRIMARY KEY (CueCod)
 )
-;
-
-ALTER TABLE en_p3m_cuenta ADD PRIMARY KEY (CueCod)
 ;
 
 CREATE INDEX IX_Relationship37 ON en_p3m_cuenta (CuePad)
@@ -894,7 +892,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `episerp`;
-INSERT INTO `episerp`.`en_p1m_usuario` (`UsuCod`, `UsuNom`, `UsuApePat`, `UsuApeMat`, `UsuLog`, `UsuPas`, `UsuHue`, `TipUsuCod`, `UsuFecNac`, `EstCivCod`, `UsuSex`, `EstRegCod`) VALUES ('1', 'Administrador', 'Administrador', 'Administrador', 'admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', NULL, 1, '1990-01-01', 1, 'N', 'A');
+INSERT INTO `episerp`.`en_p1m_usuario` (`UsuCod`, `UsuNom`, `UsuApePat`, `UsuApeMat`, `UsuLog`, `UsuPas`, `UsuHue`, `TipUsuCod`, `UsuFecNac`, `EstCivCod`, `UsuSex`, `EstRegCod`) VALUES ('41379060', 'Administrador', 'Administrador', 'Administrador', 'admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', NULL, 1, '1990-01-01', 1, 'N', 'A');
 
 COMMIT;
 

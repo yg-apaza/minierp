@@ -24,7 +24,7 @@
                                         <tr>
                                             <th>Número</th>
                                             <th>Descripción</th>
-                                            <th>Acciones</th>
+                                            <th class="text-right">Acciones</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -32,12 +32,12 @@
                                             <tr>
                                                 <td>${s.cueNum}</td>
                                                 <td>${s.cueDes}</td>
-                                                <td>
+                                                <td class="text-right">
                                                     <a href="#" data-toggle="modal" data-target="#agregarModal" data-codigo="${s.cueCod}" data-nivel="${s.cueNiv}" data-numero="${s.cueNum}">
-                                                        <i class="fa fa-plus-square-o fa-2x"></i>
+                                                        <i class="fa fa-plus-square-o fa-2x" style="color: black;"></i>
                                                     </a>
-                                                    <a href="#"><i class="fa fa-pencil-square-o fa-2x"></i></a>
-                                                    <a href="#"><i class="fa fa-trash-o fa-2x"></i></a>
+                                                    <a href="#"><i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i></a>
+                                                    <a href="#"><i class="fa fa-trash-o fa-2x" style="color: black;"></i></a>
                                                 </td>
                                             </tr>
                                         </c:forEach>
@@ -59,19 +59,16 @@
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                             <h4 class="modal-title">Agregar cuenta</h4>
                         </div>
-                        <form role="form" method="post" action="${pageContext.request.contextPath}/secured/contabilidad/plan/subcuenta">
+                        <form id="addForm" method="post" action="${pageContext.request.contextPath}/secured/contabilidad/plan/subcuenta">
                             <div class="modal-body">
                                 <div class="form-group">
-                                    <div class="alert alert-danger alert-dismissable" id="error">
-                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                                        Ingrese un nombre para la cuenta
-                                    </div>
                                     <label>Número de cuenta</label>
                                     <div class="input-group">
                                         <input type="hidden" name="accion" value="add">
+                                        <input type="hidden" name="origen" value="${cuenta.cueCod}">
                                         <input type="hidden" name="cuePad" id="addCuePad">
                                         <input type="hidden" name="cueNiv" id="addCueNiv">
-                                        <input class="form-control" name="cueNum1" id="addCueNum1" disabled>
+                                        <input class="form-control" name="cueNum1" id="addCueNum1" readonly>
                                         <span class="input-group-addon">-</span>
                                         <select class="form-control" name="cueNum2">
                                             <option value="0">0</option>
@@ -89,11 +86,11 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Nombre de cuenta:</label>
-                                    <input class="form-control" id="addCueDes" required>
+                                    <input class="form-control" id="addCueDes" name="cueDes">
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-outline btn-success">Agregar</button>
+                                <button type="submit" class="btn btn-outline btn-success">Agregar</button>
                                 <button type="button" class="btn btn-outline btn-danger" data-dismiss="modal">Cancelar</button>
                             </div>
                         </form>
@@ -111,6 +108,23 @@
                 addCueNiv.val($(e.relatedTarget).data('nivel') + 1);
                 addCueNum.val($(e.relatedTarget).data('numero'));
             });
+            
+            $("#addForm").validate({
+                rules: {
+                    cueDes: {
+                        required: true
+                    }
+                },
+                messages: {
+                    cueDes: {
+                        required: "Ingrese el nombre de cuenta"
+                    }
+                },
+                submitHandler: function(form) {
+                    form.submit();
+                }
+            });
+            
         </script>
     </jsp:attribute>
 </minierptemplate:template>
