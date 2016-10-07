@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 07/10/2016 10:46:32 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 07/10/2016 11:13:23 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="domain.TaGzzBanco" table="ta_gzz_banco" catalog="episerp" optimistic-lock="version">
+    <class name="org.epis.minierp.model.TaGzzBanco" table="ta_gzz_banco" catalog="episerp" optimistic-lock="version">
         <id name="banCod" type="java.lang.Integer">
             <column name="BanCod" />
             <generator class="identity" />
@@ -18,7 +18,7 @@
             <key>
                 <column name="BanCod" not-null="true" />
             </key>
-            <one-to-many class="domain.EnP3mCuentaBanco" />
+            <one-to-many class="org.epis.minierp.model.EnP3mCuentaBanco" />
         </set>
     </class>
 </hibernate-mapping>

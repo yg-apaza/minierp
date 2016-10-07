@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 07/10/2016 11:13:23 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="org.epis.minierp.model.Usuario" table="en_p1m_usuario">
+        <id name="usuCod" type="java.lang.String" access="field">
+            <column name="usuCod" />
+            <generator class="assigned"></generator>
+        </id>
+        <property name="estCivCod" type="int" access="field">
+            <column name="EstCivCod" />
+        </property>
+        <property name="estRegCod" type="char" access="field">
+            <column name="EstRegCod" />
+        </property>
+        <property name="tipUsuCod" type="int" access="field">
+            <column name="TipUsuCod" />
+        </property>
+        <property name="usuApeMat" type="java.lang.String" access="field">
+            <column name="UsuApeMat" />
+        </property>
+        <property name="usuApePat" type="java.lang.String" access="field">
+            <column name="UsuApePat" />
+        </property>
+        <property name="usuFecNac" type="java.util.Date" access="field">
+            <column name="UsuFecNac" />
+        </property>
+        <property name="usuHue" type="[B" access="field">
+            <column name="UsuHue" />
+        </property>
+        <property name="usuLog" type="java.lang.String" access="field">
+            <column name="UsuLog" />
+        </property>
+        <property name="usuNom" type="java.lang.String" access="field">
+            <column name="UsuNom" />
+        </property>
+        <property name="usuPas" type="java.lang.String" access="field">
+            <column name="UsuPas" />
+        </property>
+        <property name="usuSex" type="char" access="field">
+            <column name="UsuSex" />
+        </property>
+    </class>
+</hibernate-mapping>

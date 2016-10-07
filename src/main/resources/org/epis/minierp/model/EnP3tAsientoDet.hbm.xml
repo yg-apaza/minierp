@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 07/10/2016 10:46:32 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 07/10/2016 11:13:23 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="domain.EnP3tAsientoDet" table="en_p3t_asiento_det" catalog="episerp" optimistic-lock="version">
-        <composite-id name="id" class="domain.EnP3tAsientoDetId">
+    <class name="org.epis.minierp.model.EnP3tAsientoDet" table="en_p3t_asiento_det" catalog="episerp" optimistic-lock="version">
+        <composite-id name="id" class="org.epis.minierp.model.EnP3tAsientoDetId">
             <key-property name="asiDetCod" type="int">
                 <column name="AsiDetCod" />
             </key-property>
@@ -15,11 +15,11 @@
                 <column name="LibDiaCod" length="10" />
             </key-property>
         </composite-id>
-        <many-to-one name="enP3mAsientoCab" class="domain.EnP3mAsientoCab" update="false" insert="false" fetch="select">
+        <many-to-one name="enP3mAsientoCab" class="org.epis.minierp.model.EnP3mAsientoCab" update="false" insert="false" fetch="select">
             <column name="AsiCabCod" not-null="true" />
             <column name="LibDiaCod" length="10" not-null="true" />
         </many-to-one>
-        <many-to-one name="enP3mCuenta" class="domain.EnP3mCuenta" fetch="select">
+        <many-to-one name="enP3mCuenta" class="org.epis.minierp.model.EnP3mCuenta" fetch="select">
             <column name="CueCod" not-null="true" />
         </many-to-one>
         <property name="asiDetDebHab" type="boolean">
