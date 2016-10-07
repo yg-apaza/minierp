@@ -1,5 +1,5 @@
 package org.epis.minierp.model;
-// Generated 07/10/2016 09:29:17 AM by Hibernate Tools 4.3.1
+// Generated 07/10/2016 10:46:31 AM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;

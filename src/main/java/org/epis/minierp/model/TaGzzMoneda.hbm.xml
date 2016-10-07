@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 07/10/2016 10:46:32 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="domain.TaGzzMoneda" table="ta_gzz_moneda" catalog="episerp" optimistic-lock="version">
+        <id name="monCod" type="java.lang.Integer">
+            <column name="MonCod" />
+            <generator class="identity" />
+        </id>
+        <property name="monDet" type="string">
+            <column name="MonDet" length="90" not-null="true" />
+        </property>
+        <property name="estRegCod" type="char">
+            <column name="EstRegCod" length="1" not-null="true" />
+        </property>
+        <set name="enP3mAsientoCabs" table="en_p3m_asiento_cab" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="MonCod" not-null="true" />
+            </key>
+            <one-to-many class="domain.EnP3mAsientoCab" />
+        </set>
+    </class>
+</hibernate-mapping>
