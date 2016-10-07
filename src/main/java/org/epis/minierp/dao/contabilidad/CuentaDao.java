@@ -43,8 +43,9 @@ public class CuentaDao
     
     public List<CuentaDto> getAllActiveRecursive(int cuePad)
     {
-        Query query = session.createQuery("from EnP3mCuenta C where C.estRegCod = 'A' and C.cuePad = :pad order by C.cueNum ASC");
-        query.setParameter("pad", cuePad);
+        EnP3mCuenta cuePadE = getByIdActive(cuePad);
+        Query query = session.createQuery("from EnP3mCuenta C where C.estRegCod = 'A' and C.enP3mCuenta = :pad order by C.cueNum ASC");
+        query.setParameter("pad", cuePadE);
         List<EnP3mCuenta> cuentas =  query.list();
         List<CuentaDto> nuevos = new ArrayList<CuentaDto>();
         for(int i = 0; i < cuentas.size(); i++)
@@ -62,8 +63,9 @@ public class CuentaDao
     }
     
     public List<CuentaDto> getAllActive(int cuePad) {
-        Query query = session.createQuery("from EnP3mCuenta C where C.estRegCod = 'A' and C.cuePad = :pad order by C.cueNum ASC");
-        query.setParameter("pad", cuePad);
+        EnP3mCuenta cuePadE = getByIdActive(cuePad);
+        Query query = session.createQuery("from EnP3mCuenta C where C.estRegCod = 'A' and C.enP3mCuenta = :pad order by C.cueNum ASC");
+        query.setParameter("pad", cuePadE);
         List<EnP3mCuenta> cuentas =  query.list();
         List<CuentaDto> nuevos = new ArrayList<CuentaDto>();
         
@@ -102,8 +104,9 @@ public class CuentaDao
     }
     
     public List<CuentaDto> getChilds(int cuePad) {
-        Query query = session.createQuery("from EnP3mCuenta C where C.estRegCod = 'A' and C.cuePad = :pad order by C.cueNum ASC");
-        query.setParameter("pad", cuePad);
+        EnP3mCuenta cuePadE = getByIdActive(cuePad);
+        Query query = session.createQuery("from EnP3mCuenta C where C.estRegCod = 'A' and C.enP3mCuenta = :pad order by C.cueNum ASC");
+        query.setParameter("pad", cuePadE);
         List<EnP3mCuenta> cuentas =  query.list();
         List<CuentaDto> nuevos = new ArrayList<CuentaDto>();
         

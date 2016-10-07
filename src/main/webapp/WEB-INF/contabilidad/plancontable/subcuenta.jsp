@@ -94,7 +94,7 @@
                                 <button type="button" class="btn btn-outline btn-danger" data-dismiss="modal">Cancelar</button>
                             </div>
                         </form>
-                    </div>
+                    </div>                                        
                 </div>
             </div>
         </div>

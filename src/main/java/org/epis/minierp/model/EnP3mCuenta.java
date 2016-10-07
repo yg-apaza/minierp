@@ -29,6 +29,7 @@ public class EnP3mCuenta  implements java.io.Serializable {
      private String cueNum;
      private String cueDes;
      private char estRegCod;
+     
      private Set enP3tAsientoDets = new HashSet(0);
      private Set enP3mCuentaBancos = new HashSet(0);
      private Set enP3mCuentas = new HashSet(0);

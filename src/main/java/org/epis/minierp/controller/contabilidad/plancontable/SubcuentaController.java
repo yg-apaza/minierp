@@ -28,7 +28,7 @@ public class SubcuentaController extends HttpServlet
                 CuentaDto cuentaDto = new CuentaDto();
                 BeanUtils.copyProperties(cuentaDto, cuenta);
                 cuentaDto.setChilds(dao.getAllActive(cuentaId));
-                request.setAttribute("cuenta", cuenta);
+                request.setAttribute("cuenta", cuentaDto);
                 request.getRequestDispatcher("/WEB-INF/contabilidad/plancontable/subcuenta.jsp").forward(request, response);
             } catch (IllegalAccessException ex) {
                 Logger.getLogger(SubcuentaController.class.getName()).log(Level.SEVERE, null, ex);
@@ -49,7 +49,7 @@ public class SubcuentaController extends HttpServlet
         String cueDes = request.getParameter("cueDes");
         String cueNum = request.getParameter("cueNum1") + request.getParameter("cueNum2");
         CuentaDao dao = new CuentaDao();
-        switch(action){
+        switch(action) {
             case "add":
                 EnP3mCuenta c = new EnP3mCuenta();
                 c.setEnP3mCuenta(dao.getByIdActive(cuePad));
