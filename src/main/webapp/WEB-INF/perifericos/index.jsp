@@ -20,7 +20,7 @@
                                             </div>
                                             <div class="col-xs-9 text-right">
                                                 <div class="huge">1</div>
-                                                <div><h3>Código de barras</h3></div>
+                                                <div><h3>Generador de Código de barras</h3></div>
                                             </div>
                                         </div>
                                     </div>
