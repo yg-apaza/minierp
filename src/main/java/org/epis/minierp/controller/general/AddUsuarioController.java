@@ -15,9 +15,9 @@ import org.apache.commons.codec.digest.DigestUtils;
 import org.epis.minierp.dao.general.EstadoCivilDao;
 import org.epis.minierp.dao.general.TipoUsuarioDao;
 import org.epis.minierp.dao.general.UsuarioDao;
-import org.epis.minierp.model.EstadoCivil;
-import org.epis.minierp.model.TipoUsuario;
-import org.epis.minierp.model.Usuario;
+import org.epis.minierp.model.EnP1mUsuario;
+import org.epis.minierp.model.TaGzzEstadoCivil;
+import org.epis.minierp.model.TaGzzTipoUsuario;
 
 public class AddUsuarioController extends HttpServlet
 {
@@ -28,8 +28,8 @@ public class AddUsuarioController extends HttpServlet
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         TipoUsuarioDao daoTipUsu = new TipoUsuarioDao();
         EstadoCivilDao daoEstCiv = new EstadoCivilDao();
-        List<TipoUsuario> tipos = daoTipUsu.getAllActive();
-        List<EstadoCivil> estados = daoEstCiv.getAllActive();
+        List<TaGzzTipoUsuario> tipos = daoTipUsu.getAllActive();
+        List<TaGzzEstadoCivil> estados = daoEstCiv.getAllActive();
         request.setAttribute("tipos", tipos);
         request.setAttribute("estados", estados);
         request.getRequestDispatcher("/WEB-INF/general/addUsuario.jsp").forward(request, response);
@@ -39,7 +39,7 @@ public class AddUsuarioController extends HttpServlet
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         UsuarioDao daoUsu = new UsuarioDao();
         try {
-            Usuario u = new Usuario();
+            EnP1mUsuario u = new EnP1mUsuario();
             u.setUsuCod(request.getParameter("usuCod"));
             u.setUsuNom(request.getParameter("usuNom"));
             u.setUsuApePat(request.getParameter("usuApePat"));
@@ -47,9 +47,13 @@ public class AddUsuarioController extends HttpServlet
             u.setUsuLog(request.getParameter("usuLog"));
             u.setUsuPas(DigestUtils.sha256Hex(request.getParameter("usuPas")));
             u.setUsuHue(null);
-            u.setTipUsuCod(Integer.parseInt(request.getParameter("tipUsuCod")));
+            TaGzzTipoUsuario tipoUsu = new TaGzzTipoUsuario();
+            tipoUsu.setTipUsuCod(Integer.parseInt(request.getParameter("tipUsuCod")));
+            u.setTaGzzTipoUsuario(tipoUsu);
             u.setUsuFecNac(dt.parse(request.getParameter("usuFecNac")));
-            u.setEstCivCod(Integer.parseInt(request.getParameter("estCivCod")));
+            TaGzzEstadoCivil estadoCiv = new TaGzzEstadoCivil();
+            estadoCiv.setEstCivCod(Integer.parseInt(request.getParameter("estCivCod")));
+            u.setTaGzzEstadoCivil(estadoCiv);
             u.setUsuSex(request.getParameter("usuSex").charAt(0));
             u.setEstRegCod('A');
             daoUsu.save(u);

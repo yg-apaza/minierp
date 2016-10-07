@@ -1,7 +1,7 @@
 package org.epis.minierp.dao.compras;
 
 import java.util.List;
-import org.epis.minierp.model.Moneda;
+import org.epis.minierp.model.TaGzzMoneda;
 import org.epis.minierp.util.HibernateUtil;
 import org.hibernate.ObjectNotFoundException;
 import org.hibernate.Query;
@@ -14,22 +14,22 @@ public class MonedaDao {
         session = HibernateUtil.getSessionFactory().getCurrentSession();  
     }
     
-    public List <Moneda> getAll() {
-        Query query = session.createQuery("from Moneda T");
-        List <Moneda> monedas =  query.list();
+    public List <TaGzzMoneda> getAll() {
+        Query query = session.createQuery("from TaGzzMoneda T");
+        List <TaGzzMoneda> monedas =  query.list();
         return monedas;
     }
     
-    public List <Moneda> getAllActive() {
-        Query query = session.createQuery("from Moneda T where T.estRegCod = 'A'");
-        List <Moneda> monedas =  query.list();
+    public List <TaGzzMoneda> getAllActive() {
+        Query query = session.createQuery("from TaGzzMoneda T where T.estRegCod = 'A'");
+        List <TaGzzMoneda> monedas =  query.list();
         return monedas;
     }
     
-    public Moneda getById(int id) {
-        Moneda moneda = null;
+    public TaGzzMoneda getById(int id) {
+        TaGzzMoneda moneda = null;
         try {
-            moneda = (Moneda)session.load(Moneda.class, id);
+            moneda = (TaGzzMoneda)session.load(TaGzzMoneda.class, id);
         } catch(ObjectNotFoundException e) {
             return null;
         }

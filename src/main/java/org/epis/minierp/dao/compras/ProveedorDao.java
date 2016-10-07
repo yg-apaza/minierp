@@ -1,7 +1,7 @@
 package org.epis.minierp.dao.compras;
 
 import java.util.List;
-import org.epis.minierp.model.Proveedor;
+import org.epis.minierp.model.EnP4mProveedor;
 import org.epis.minierp.util.HibernateUtil;
 import org.hibernate.ObjectNotFoundException;
 import org.hibernate.Query;
@@ -14,22 +14,22 @@ public class ProveedorDao {
         session = HibernateUtil.getSessionFactory().getCurrentSession();  
     }
     
-    public List <Proveedor> getAll() {
-        Query query = session.createQuery("from Proveedor T");
-        List <Proveedor> proveedores =  query.list();
+    public List <EnP4mProveedor> getAll() {
+        Query query = session.createQuery("from EnP4mProveedor T");
+        List <EnP4mProveedor> proveedores =  query.list();
         return proveedores;
     }
     
-    public List <Proveedor> getAllActive() {
-        Query query = session.createQuery("from Proveedor T where T.estRegCod = 'A'");
-        List <Proveedor> proveedors =  query.list();
+    public List <EnP4mProveedor> getAllActive() {
+        Query query = session.createQuery("from EnP4mProveedor T where T.estRegCod = 'A'");
+        List <EnP4mProveedor> proveedors =  query.list();
         return proveedors;
     }
     
-    public Proveedor getById(String id) {
-        Proveedor proveedor = null;
+    public EnP4mProveedor getById(String id) {
+        EnP4mProveedor proveedor = null;
         try {
-            proveedor = (Proveedor)session.load(Proveedor.class, id);
+            proveedor = (EnP4mProveedor)session.load(EnP4mProveedor.class, id);
         } catch(ObjectNotFoundException e) {
             return null;
         }

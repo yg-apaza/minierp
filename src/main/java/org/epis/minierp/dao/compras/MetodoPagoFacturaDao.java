@@ -1,7 +1,7 @@
 package org.epis.minierp.dao.compras;
 
 import java.util.List;
-import org.epis.minierp.model.MetodoPagoFactura;
+import org.epis.minierp.model.TaGzzMetodoPagoFactura;
 import org.epis.minierp.util.HibernateUtil;
 import org.hibernate.ObjectNotFoundException;
 import org.hibernate.Query;
@@ -14,22 +14,22 @@ public class MetodoPagoFacturaDao {
         session = HibernateUtil.getSessionFactory().getCurrentSession();  
     }
     
-    public List <MetodoPagoFactura> getAll() {
-        Query query = session.createQuery("from MetodoPagoFactura T");
-        List <MetodoPagoFactura> metodos =  query.list();
+    public List <TaGzzMetodoPagoFactura> getAll() {
+        Query query = session.createQuery("from TaGzzMetodoPagoFactura T");
+        List <TaGzzMetodoPagoFactura> metodos =  query.list();
         return metodos;
     }
     
-    public List <MetodoPagoFactura> getAllActive() {
-        Query query = session.createQuery("from MetodoPagoFactura T where T.estRegCod = 'A'");
-        List <MetodoPagoFactura> metodos =  query.list();
+    public List <TaGzzMetodoPagoFactura> getAllActive() {
+        Query query = session.createQuery("from TaGzzMetodoPagoFactura T where T.estRegCod = 'A'");
+        List <TaGzzMetodoPagoFactura> metodos =  query.list();
         return metodos;
     }
     
-    public MetodoPagoFactura getById(int id) {
-        MetodoPagoFactura metodo = null;
+    public TaGzzMetodoPagoFactura getById(int id) {
+        TaGzzMetodoPagoFactura metodo = null;
         try {
-            metodo = (MetodoPagoFactura)session.load(MetodoPagoFactura.class, id);
+            metodo = (TaGzzMetodoPagoFactura)session.load(TaGzzMetodoPagoFactura.class, id);
         } catch(ObjectNotFoundException e) {
             return null;
         }

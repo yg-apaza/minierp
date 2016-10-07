@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import org.epis.minierp.model.Producto;
+import org.epis.minierp.model.EnP2mProducto;
 import org.epis.minierp.util.HibernateUtil;
 import org.hibernate.ObjectNotFoundException;
 import org.hibernate.Query;
@@ -18,29 +18,22 @@ public class ProductoDao {
         session = HibernateUtil.getSessionFactory().getCurrentSession();  
     }
     
-    public List <Producto> getAll() {
-        Query query = session.createQuery("from Producto T");
-        List <Producto> productos =  query.list();
+    public List <EnP2mProducto> getAll() {
+        Query query = session.createQuery("from EnP2mProducto T");
+        List <EnP2mProducto> productos =  query.list();
         return productos;
     }
     
-    public List <Producto> getAllActive() {
-        Query query = session.createQuery("from Producto T where T.estRegCod = 'A'");
-        List <Producto> productos =  query.list();
+    public List <EnP2mProducto> getAllActive() {
+        Query query = session.createQuery("from EnP2mProducto T where T.estRegCod = 'A'");
+        List <EnP2mProducto> productos =  query.list();
         return productos;
     }
     
-    public List<Producto> getAllProductsActive() {
-        List<Producto> productos = new ArrayList<Producto>();
-        Query query = session.createQuery("select p.proDet, p.proValUni, p.proStk from Producto where p.estRegCod = 'A'");
-
-        return productos;
-    }
-    
-    public Producto getById(String id) {
-        Producto producto = null;
+    public EnP2mProducto getById(String id) {
+        EnP2mProducto producto = null;
         try {
-            producto = (Producto)session.load(Producto.class, id);
+            producto = (EnP2mProducto)session.load(EnP2mProducto.class, id);
         } catch(ObjectNotFoundException e) {
             return null;
         }

@@ -1,7 +1,7 @@
 package org.epis.minierp.dao.compras;
 
 import java.util.List;
-import org.epis.minierp.model.EstadoFactura;
+import org.epis.minierp.model.TaGzzEstadoFactura;
 import org.epis.minierp.util.HibernateUtil;
 import org.hibernate.ObjectNotFoundException;
 import org.hibernate.Query;
@@ -14,22 +14,22 @@ public class EstadoFacturaDao {
         session = HibernateUtil.getSessionFactory().getCurrentSession();  
     }
     
-    public List <EstadoFactura> getAll() {
-        Query query = session.createQuery("from EstadoFactura T");
-        List <EstadoFactura> estados =  query.list();
+    public List <TaGzzEstadoFactura> getAll() {
+        Query query = session.createQuery("from TaGzzEstadoFactura T");
+        List <TaGzzEstadoFactura> estados =  query.list();
         return estados;
     }
     
-    public List <EstadoFactura> getAllActive() {
-        Query query = session.createQuery("from EstadoFactura T where T.estRegCod = 'A'");
-        List <EstadoFactura> estados =  query.list();
+    public List <TaGzzEstadoFactura> getAllActive() {
+        Query query = session.createQuery("from TaGzzEstadoFactura T where T.estRegCod = 'A'");
+        List <TaGzzEstadoFactura> estados =  query.list();
         return estados;
     }
     
-    public EstadoFactura getById(int id) {
-        EstadoFactura estado = null;
+    public TaGzzEstadoFactura getById(int id) {
+        TaGzzEstadoFactura estado = null;
         try {
-            estado = (EstadoFactura)session.load(EstadoFactura.class, id);
+            estado = (TaGzzEstadoFactura)session.load(TaGzzEstadoFactura.class, id);
         } catch(ObjectNotFoundException e) {
             return null;
         }

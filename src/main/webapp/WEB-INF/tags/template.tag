@@ -16,6 +16,8 @@
         <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
         <script src="${pageContext.request.contextPath}/js/bootstrap-datetimepicker.min.js"></script>
         <script src="${pageContext.request.contextPath}/js/sb-admin-2.js"></script>
+        <script src="${pageContext.request.contextPath}/js/jquery.validate.min.js"></script>
+        <link rel="shortcut icon" href="${pageContext.request.contextPath}/favicon.ico" />
         <jsp:invoke fragment="titulo"/>
     </head>
     <body>
@@ -29,7 +31,7 @@
                         <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand" href="${pageContext.request.contextPath}/">
-                        <!-- <img src="${pageContext.request.contextPath}/img/logo.png"> -->
+                        <img src="${pageContext.request.contextPath}/img/logo.png">
                     </a>
                 </div>
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">      	
