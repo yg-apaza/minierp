@@ -1,14 +1,15 @@
-package org.epis.minierp.dao.contabilidad;
+package org.epis.minierp.dao.contabilidad.cajaBancos;
 
 import org.epis.minierp.util.HibernateUtil;
 import org.hibernate.Session;
 
-public class BancosDAO {
+public class CajaDAO {
     private static CajaDAO cajaDAO;
     private Session session;
     
-    public BancosDAO()
+    public CajaDAO()
     {  
         session = HibernateUtil.getSessionFactory().getCurrentSession();  
     }
+    
 }
