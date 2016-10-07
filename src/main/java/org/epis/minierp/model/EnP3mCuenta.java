@@ -1,5 +1,5 @@
 package org.epis.minierp.model;
-// Generated 07/10/2016 11:13:21 AM by Hibernate Tools 4.3.1
+// Generated 07/10/2016 11:43:49 AM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -7,6 +7,8 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -23,7 +25,7 @@ import javax.persistence.Table;
 public class EnP3mCuenta  implements java.io.Serializable {
 
 
-     private int cueCod;
+     private Integer cueCod;
      private EnP3mCuenta enP3mCuenta;
      private int cueNiv;
      private String cueNum;
@@ -39,15 +41,13 @@ public class EnP3mCuenta  implements java.io.Serializable {
     }
 
 	
-    public EnP3mCuenta(int cueCod, int cueNiv, String cueNum, String cueDes, char estRegCod) {
-        this.cueCod = cueCod;
+    public EnP3mCuenta(int cueNiv, String cueNum, String cueDes, char estRegCod) {
         this.cueNiv = cueNiv;
         this.cueNum = cueNum;
         this.cueDes = cueDes;
         this.estRegCod = estRegCod;
     }
-    public EnP3mCuenta(int cueCod, EnP3mCuenta enP3mCuenta, int cueNiv, String cueNum, String cueDes, char estRegCod, Set enP3tAsientoDets, Set enP3mCuentaBancos, Set enP3mCuentas, Set enP3tPlantillaDets) {
-       this.cueCod = cueCod;
+    public EnP3mCuenta(EnP3mCuenta enP3mCuenta, int cueNiv, String cueNum, String cueDes, char estRegCod, Set enP3tAsientoDets, Set enP3mCuentaBancos, Set enP3mCuentas, Set enP3tPlantillaDets) {
        this.enP3mCuenta = enP3mCuenta;
        this.cueNiv = cueNiv;
        this.cueNum = cueNum;
@@ -59,15 +59,15 @@ public class EnP3mCuenta  implements java.io.Serializable {
        this.enP3tPlantillaDets = enP3tPlantillaDets;
     }
    
-     @Id 
+     @Id @GeneratedValue(strategy=IDENTITY)
 
     
     @Column(name="CueCod", unique=true, nullable=false)
-    public int getCueCod() {
+    public Integer getCueCod() {
         return this.cueCod;
     }
     
-    public void setCueCod(int cueCod) {
+    public void setCueCod(Integer cueCod) {
         this.cueCod = cueCod;
     }
 
@@ -102,7 +102,7 @@ public class EnP3mCuenta  implements java.io.Serializable {
     }
 
     
-    @Column(name="CueDes", nullable=false, length=90)
+    @Column(name="CueDes", nullable=false, length=150)
     public String getCueDes() {
         return this.cueDes;
     }
