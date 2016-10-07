@@ -62,7 +62,6 @@ public class UsuarioDao
     
     public List<EnP1mUsuario> getAll()
     {
-        
         Query query = session.createQuery("from EnP1mUsuario");
         List<EnP1mUsuario> usuarios =  query.list();
 

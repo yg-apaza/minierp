@@ -112,12 +112,12 @@
             $("#addForm").validate({
                 rules: {
                     cueDes: {
-                        required: true
+                        required: true,
                     }
                 },
                 messages: {
                     cueDes: {
-                        required: "Ingrese el nombre de cuenta"
+                        required: "Ingrese el nombre de cuenta",
                     }
                 },
                 submitHandler: function(form) {
