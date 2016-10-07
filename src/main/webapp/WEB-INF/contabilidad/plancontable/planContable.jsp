@@ -13,9 +13,9 @@
             <br>
             <div class="col-md-4">
                 <p>Plan Contable General Empresarial</p>
-                <a class="btn btn-success" href="${pageContext.request.contextPath}/secured/general/plancontable/add" role="button">
+                <a class="btn btn-success" href="${pageContext.request.contextPath}/secured/contabilidad" role="button">
                     <i class="fa fa-plus"></i>
-                    Agregar cuenta
+                    Regresar al Menú Principal
                 </a>
             </div>
             <div class="col-md-8">
@@ -36,25 +36,16 @@
                                                 <tr>
                                                     <th>Número</th>
                                                     <th>Descripción</th>
-                                                    <th>Acción</th>
+                                                    <th>Ir</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <c:forEach items="${c.childs}" var="s">
-                                                    <c:choose>
-                                                        <c:when test="${s.cueNiv == 2}">
-                                                            <tr class="info">
-                                                        </c:when>    
-                                                        <c:otherwise>
-                                                            <tr>
-                                                        </c:otherwise>
-                                                    </c:choose>
+                                                    <tr>
                                                         <td>${s.cueNum}</td>
                                                         <td>${s.cueDes}</td>
                                                         <td>
-                                                            <a href="#"><i class="fa fa-plus-square-o fa-2x"></i></a>
-                                                            <a href="#"><i class="fa fa-pencil-square-o fa-2x"></i></a>
-                                                            <a href="#"><i class="fa fa-trash-o fa-2x"></i></a>
+                                                            <a href="${pageContext.request.contextPath}/secured/contabilidad/plan/subcuenta?cuenta=${s.cueCod}"><i class="fa fa-sign-in fa-2x" style="color: black;"></i></a>
                                                         </td>
                                                     </tr>
                                                 </c:forEach>

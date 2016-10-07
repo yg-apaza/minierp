@@ -1,4 +1,4 @@
-package org.epis.minierp.controller.contabilidad;
+package org.epis.minierp.controller.contabilidad.plancontable;
 
 import java.io.IOException;
 import java.util.List;
@@ -17,8 +17,8 @@ public class PlanContableController extends HttpServlet
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         CuentaDao dao = new CuentaDao();
-        List<CuentaDto> cuentas = dao.getAllActive();
+        List<CuentaDto> cuentas = dao.getMainChilds();
         request.setAttribute("cuentas", cuentas);
-        request.getRequestDispatcher("/WEB-INF/contabilidad/planContable.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/contabilidad/plancontable/planContable.jsp").forward(request, response);
     }
 }

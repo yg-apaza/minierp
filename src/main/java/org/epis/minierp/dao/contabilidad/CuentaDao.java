@@ -3,6 +3,8 @@ package org.epis.minierp.dao.contabilidad;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.apache.commons.beanutils.BeanUtils;
 import org.epis.minierp.dto.CuentaDto;
 import org.epis.minierp.model.Cuenta;
@@ -29,7 +31,7 @@ public class CuentaDao
             try {
                 CuentaDto nuevo = new CuentaDto();
                 BeanUtils.copyProperties(nuevo, cuentas.get(i));
-                nuevo.setChilds(getChildsActive(nuevo.getCueCod()));
+                nuevo.setChilds(getAllActive(nuevo.getCueCod()));
                 nuevos.add(nuevo);
             } catch (IllegalAccessException | InvocationTargetException ex) {
                 return null;
@@ -39,7 +41,7 @@ public class CuentaDao
         return nuevos;
     }
     
-    public List<CuentaDto> getChildsActiveRecursive(int cuePad)
+    public List<CuentaDto> getAllActiveRecursive(int cuePad)
     {
         Query query = session.createQuery("from Cuenta C where C.estRegCod = 'A' and C.cuePad = :pad order by C.cueNum ASC");
         query.setParameter("pad", cuePad);
@@ -50,7 +52,7 @@ public class CuentaDao
             try{
                 CuentaDto nuevo = new CuentaDto();
                 BeanUtils.copyProperties(nuevo, cuentas.get(i));
-                nuevo.setChilds(getChildsActiveRecursive(nuevo.getCueCod()));
+                nuevo.setChilds(getAllActiveRecursive(nuevo.getCueCod()));
                 nuevos.add(nuevo);
             } catch (IllegalAccessException | InvocationTargetException ex) {
                 return null;
@@ -59,7 +61,7 @@ public class CuentaDao
         return nuevos;
     }
     
-    public List<CuentaDto> getChildsActive(int cuePad){
+    public List<CuentaDto> getAllActive(int cuePad) {
         Query query = session.createQuery("from Cuenta C where C.estRegCod = 'A' and C.cuePad = :pad order by C.cueNum ASC");
         query.setParameter("pad", cuePad);
         List<Cuenta> cuentas =  query.list();
@@ -67,10 +69,10 @@ public class CuentaDao
         
         for(int i = 0; i < cuentas.size(); i++)
         {
-            try{
+            try {
                 CuentaDto nuevo = new CuentaDto();
                 BeanUtils.copyProperties(nuevo, cuentas.get(i));
-                List<CuentaDto> childs = getChildsActive(nuevo.getCueCod());
+                List<CuentaDto> childs = getAllActive(nuevo.getCueCod());
                 nuevos.add(nuevo);
                 nuevos.addAll(childs);
             } catch (IllegalAccessException | InvocationTargetException ex) {
@@ -78,5 +80,67 @@ public class CuentaDao
             }
         }
         return nuevos;
+    }
+    
+    public List<CuentaDto> getMainChilds(){
+        Query query = session.createQuery("from Cuenta C where C.estRegCod = 'A' and C.cueNiv = :niv order by C.cueNum ASC");
+        query.setParameter("niv", 1);
+        List<Cuenta> cuentas = query.list();
+        List<CuentaDto> nuevos = new ArrayList<CuentaDto>();
+        for(int i = 0; i < cuentas.size(); i++){
+            try {
+                CuentaDto nuevo = new CuentaDto();
+                BeanUtils.copyProperties(nuevo, cuentas.get(i));
+                nuevo.setChilds(getChilds(nuevo.getCueCod()));
+                nuevos.add(nuevo);
+            } catch (IllegalAccessException | InvocationTargetException ex) {
+                return null;
+            }
+        }
+        
+        return nuevos;
+    }
+    
+    public List<CuentaDto> getChilds(int cuePad) {
+        Query query = session.createQuery("from Cuenta C where C.estRegCod = 'A' and C.cuePad = :pad order by C.cueNum ASC");
+        query.setParameter("pad", cuePad);
+        List<Cuenta> cuentas =  query.list();
+        List<CuentaDto> nuevos = new ArrayList<CuentaDto>();
+        
+        for(int i = 0; i < cuentas.size(); i++)
+        {
+            try {
+                CuentaDto nuevo = new CuentaDto();
+                BeanUtils.copyProperties(nuevo, cuentas.get(i));
+                nuevos.add(nuevo);
+            } catch (IllegalAccessException | InvocationTargetException ex) {
+                return null;
+            }
+        }
+        
+        return nuevos;
+    }
+    
+    public CuentaDto getByIdActive(int id)
+    {
+        Cuenta cuenta = null;
+        CuentaDto newCuenta = new CuentaDto();
+        Query query = session.createQuery("from Cuenta C where C.cueCod = :id and C.estRegCod = 'A'");
+        query.setParameter("id", id);
+        query.setMaxResults(1);
+        try {
+            List<Cuenta> usuarios = query.list();
+            cuenta =  usuarios.get(0);
+            BeanUtils.copyProperties(newCuenta, cuenta);
+            newCuenta.setChilds(new ArrayList<CuentaDto>());
+        } catch (IllegalAccessException | InvocationTargetException | IndexOutOfBoundsException ex) {
+            Logger.getLogger(CuentaDao.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+        return newCuenta;
+    }
+    
+    public void save(Cuenta cuenta) {
+        session.save(cuenta);     
     }
 }
