@@ -2,6 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="minierptemplate" %>
+
 <minierptemplate:template>
     <jsp:attribute name="titulo">
         <title>MiniERP - Usuarios</title>
@@ -36,9 +37,9 @@
                             <td>${u.usuCod}</td>
                             <td>${u.usuNom}</td>
                             <td>${u.usuApePat} ${u.usuApeMat}</td>
-                            <td>${u.tipUsuDet}</td>
+                            <td>${u.taGzzTipoUsuario.tipUsuDet}</td>
                             <td><fmt:formatDate value="${u.usuFecNac}" pattern="dd/MM/yyyy"/></td>
-                            <td>${u.estCivDet}</td>
+                            <td>${u.taGzzEstadoCivil.estCivDet}</td>
                             <td>${u.usuSex}</td>
                             <td>${u.estRegCod}</td>
                             <td>

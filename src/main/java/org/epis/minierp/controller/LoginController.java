@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.epis.minierp.dao.general.UsuarioDao;
-import org.epis.minierp.dto.UsuarioDto;
+import org.epis.minierp.model.EnP1mUsuario;
 
 public class LoginController extends HttpServlet
 {
@@ -22,8 +22,8 @@ public class LoginController extends HttpServlet
             request.getRequestDispatcher("/login.jsp").forward(request, response);
         else
         {
-            UsuarioDto u = (UsuarioDto) session.getAttribute("usuario");
-            switch(u.getTipUsuCod())
+            EnP1mUsuario u = (EnP1mUsuario) session.getAttribute("usuario");
+            switch(u.getTaGzzTipoUsuario().getTipUsuCod())
             {
                 case 1:
                     response.sendRedirect(request.getContextPath() + "/secured/general");
@@ -51,13 +51,14 @@ public class LoginController extends HttpServlet
         HttpSession session = request.getSession(true);
         String username = (String)request.getParameter("usuario");
         String password = (String)request.getParameter("password");
-        UsuarioDto u = daoUsu.getByUsername(username);
+        EnP1mUsuario u = daoUsu.getByUsername(username);
+        System.out.println(u);
         System.out.println(u);
         
         if(u != null && u.getUsuPas().equals(DigestUtils.sha256Hex(password)))
         {
             session.setAttribute("usuario", u);
-            switch(u.getTipUsuCod())
+            switch(u.getTaGzzTipoUsuario().getTipUsuCod())
             {
                 case 1:
                     response.sendRedirect(request.getContextPath() + "/secured/general");
