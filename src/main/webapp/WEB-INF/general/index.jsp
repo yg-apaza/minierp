@@ -42,7 +42,7 @@
                                             </div>
                                             <div class="col-xs-9 text-right">
                                                 <div class="huge">2</div>
-                                                <div><h3>Logistica y Compras</h3></div>
+                                                <div><h3>Logística y Compras</h3></div>
                                             </div>
                                         </div>
                                     </div>

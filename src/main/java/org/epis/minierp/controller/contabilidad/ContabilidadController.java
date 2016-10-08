@@ -13,6 +13,6 @@ public class ContabilidadController extends HttpServlet
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-         request.getRequestDispatcher("/WEB-INF/compras/purchases.jsp").forward(request, response);
+         request.getRequestDispatcher("/WEB-INF/contabilidad/index.jsp").forward(request, response);
     }
 }
