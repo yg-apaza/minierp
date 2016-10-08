@@ -74,10 +74,12 @@
                     </thead>
                     <tbody>
                         <c:forEach items ="${productos}" var = "producto">
-                        <td><c:out value="#" /></td>
-                        <td><c:out value="${producto.proDet}" /></td>
-                        <td><c:out value="${producto.proValUni}" /></td>
-                        <td><c:out value="${producto.proStk}" /></td>
+                            <tr>
+                                <td><c:out value="${producto.id.proCod}" /></td>
+                                <td><c:out value="${producto.proDet}" /></td>
+                                <td><c:out value="${producto.proPreUni}" /></td>
+                                <td><c:out value="${producto.proStk}" /></td>
+                            </tr>
                         </c:forEach>                    
                     </tbody>
                 </table>            
