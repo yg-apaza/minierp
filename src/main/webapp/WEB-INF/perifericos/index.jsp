@@ -16,11 +16,11 @@
                                     <div class="panel-heading">
                                         <div class="row">
                                             <div class="col-xs-3">
-                                                <i class="fa fa-barcode fa-5x"></i>
+                                                <i class="fa fa-printer fa-5x"></i>
                                             </div>
                                             <div class="col-xs-9 text-right">
                                                 <div class="huge">1</div>
-                                                <div><h3>Generador de Código de barras</h3></div>
+                                                <div><h3>Impresora de Código de barras</h3></div>
                                             </div>
                                         </div>
                                     </div>
@@ -33,6 +33,28 @@
                                     </a>
                                 </div>
                             </div>
+                            <div class="col-lg-4 col-md-6">
+                                <div class="panel panel-yellow">
+                                    <div class="panel-heading">
+                                        <div class="row">
+                                            <div class="col-xs-3">
+                                                <i class="fa fa-barcode fa-5x"></i>
+                                            </div>
+                                            <div class="col-xs-9 text-right">
+                                                <div class="huge">2</div>
+                                                <div><h3>Lectora de Código de barras</h3></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a href="${pageContext.request.contextPath}/secured/perifericos/lecCodBarras">
+                                        <div class="panel-footer">
+                                            <span class="pull-left">Ingresar</span>
+                                               <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>             
                         </div>
                     </div>
                 </div>
