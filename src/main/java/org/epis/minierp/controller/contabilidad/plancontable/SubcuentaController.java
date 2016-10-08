@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.beanutils.BeanUtils;
 import org.epis.minierp.dao.contabilidad.CuentaDao;
-import org.epis.minierp.dto.CuentaDto;
 import org.epis.minierp.model.EnP3mCuenta;
 
 public class SubcuentaController extends HttpServlet
