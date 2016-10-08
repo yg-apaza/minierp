@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.apache.commons.beanutils.BeanUtils;
-import org.epis.minierp.dto.CuentaDto;
+//import org.epis.minierp.dto.CuentaDto;
 import org.epis.minierp.model.EnP3mCuenta;
 import org.epis.minierp.util.HibernateUtil;
 import org.hibernate.Query;
@@ -21,107 +21,11 @@ public class CuentaDao
         session = HibernateUtil.getSessionFactory().getCurrentSession();  
     }
     
-    public List<CuentaDto> getAllActive()
+    public List<EnP3mCuenta> getAllActive()
     {
         Query query = session.createQuery("from EnP3mCuenta C where C.estRegCod = 'A' and C.cueNiv = :niv order by C.cueNum ASC");
         query.setParameter("niv", 1);
-        List<EnP3mCuenta> cuentas = query.list();
-        List<CuentaDto> nuevos = new ArrayList<CuentaDto>();
-        for(int i = 0; i < cuentas.size(); i++){
-            try {
-                CuentaDto nuevo = new CuentaDto();
-                BeanUtils.copyProperties(nuevo, cuentas.get(i));
-                nuevo.setChilds(getAllActive(nuevo.getCueCod()));
-                nuevos.add(nuevo);
-            } catch (IllegalAccessException | InvocationTargetException ex) {
-                return null;
-            }
-        }
-        
-        return nuevos;
-    }
-    
-    public List<CuentaDto> getAllActiveRecursive(int cuePad)
-    {
-        EnP3mCuenta cuePadE = getByIdActive(cuePad);
-        Query query = session.createQuery("from EnP3mCuenta C where C.estRegCod = 'A' and C.enP3mCuenta = :pad order by C.cueNum ASC");
-        query.setParameter("pad", cuePadE);
-        List<EnP3mCuenta> cuentas =  query.list();
-        List<CuentaDto> nuevos = new ArrayList<CuentaDto>();
-        for(int i = 0; i < cuentas.size(); i++)
-        {
-            try{
-                CuentaDto nuevo = new CuentaDto();
-                BeanUtils.copyProperties(nuevo, cuentas.get(i));
-                nuevo.setChilds(getAllActiveRecursive(nuevo.getCueCod()));
-                nuevos.add(nuevo);
-            } catch (IllegalAccessException | InvocationTargetException ex) {
-                return null;
-            }
-        }
-        return nuevos;
-    }
-    
-    public List<CuentaDto> getAllActive(int cuePad) {
-        EnP3mCuenta cuePadE = getByIdActive(cuePad);
-        Query query = session.createQuery("from EnP3mCuenta C where C.estRegCod = 'A' and C.enP3mCuenta = :pad order by C.cueNum ASC");
-        query.setParameter("pad", cuePadE);
-        List<EnP3mCuenta> cuentas =  query.list();
-        List<CuentaDto> nuevos = new ArrayList<CuentaDto>();
-        
-        for(int i = 0; i < cuentas.size(); i++)
-        {
-            try {
-                CuentaDto nuevo = new CuentaDto();
-                BeanUtils.copyProperties(nuevo, cuentas.get(i));
-                List<CuentaDto> childs = getAllActive(nuevo.getCueCod());
-                nuevos.add(nuevo);
-                nuevos.addAll(childs);
-            } catch (IllegalAccessException | InvocationTargetException ex) {
-                return null;
-            }
-        }
-        return nuevos;
-    }
-    
-    public List<CuentaDto> getMainChilds(){
-        Query query = session.createQuery("from EnP3mCuenta C where C.estRegCod = 'A' and C.cueNiv = :niv order by C.cueNum ASC");
-        query.setParameter("niv", 1);
-        List<EnP3mCuenta> cuentas = query.list();
-        List<CuentaDto> nuevos = new ArrayList<CuentaDto>();
-        for(int i = 0; i < cuentas.size(); i++){
-            try {
-                CuentaDto nuevo = new CuentaDto();
-                BeanUtils.copyProperties(nuevo, cuentas.get(i));
-                nuevo.setChilds(getChilds(nuevo.getCueCod()));
-                nuevos.add(nuevo);
-            } catch (IllegalAccessException | InvocationTargetException ex) {
-                return null;
-            }
-        }
-        
-        return nuevos;
-    }
-    
-    public List<CuentaDto> getChilds(int cuePad) {
-        EnP3mCuenta cuePadE = getByIdActive(cuePad);
-        Query query = session.createQuery("from EnP3mCuenta C where C.estRegCod = 'A' and C.enP3mCuenta = :pad order by C.cueNum ASC");
-        query.setParameter("pad", cuePadE);
-        List<EnP3mCuenta> cuentas =  query.list();
-        List<CuentaDto> nuevos = new ArrayList<CuentaDto>();
-        
-        for(int i = 0; i < cuentas.size(); i++)
-        {
-            try {
-                CuentaDto nuevo = new CuentaDto();
-                BeanUtils.copyProperties(nuevo, cuentas.get(i));
-                nuevos.add(nuevo);
-            } catch (IllegalAccessException | InvocationTargetException ex) {
-                return null;
-            }
-        }
-        
-        return nuevos;
+        return query.list();
     }
     
     public EnP3mCuenta getByIdActive(int id)

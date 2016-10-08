@@ -40,7 +40,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <c:forEach items="${c.childs}" var="s">
+                                                <c:forEach items="${c.enP3mCuentas}" var="s">
                                                     <tr>
                                                         <td>${s.cueNum}</td>
                                                         <td>${s.cueDes}</td>

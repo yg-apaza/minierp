@@ -1,14 +1,10 @@
 package org.epis.minierp.controller.contabilidad.plancontable;
 
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.apache.commons.beanutils.BeanUtils;
 import org.epis.minierp.dao.contabilidad.CuentaDao;
 import org.epis.minierp.model.EnP3mCuenta;
 
@@ -20,20 +16,11 @@ public class SubcuentaController extends HttpServlet
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if(request.getParameterMap().containsKey("cuenta"))
         {
-            try {
-                int cuentaId = Integer.parseInt(request.getParameter("cuenta"));
-                CuentaDao dao = new CuentaDao();
-                EnP3mCuenta cuenta = dao.getByIdActive(cuentaId);
-                CuentaDto cuentaDto = new CuentaDto();
-                BeanUtils.copyProperties(cuentaDto, cuenta);
-                cuentaDto.setChilds(dao.getAllActive(cuentaId));
-                request.setAttribute("cuenta", cuentaDto);
-                request.getRequestDispatcher("/WEB-INF/contabilidad/plancontable/subcuenta.jsp").forward(request, response);
-            } catch (IllegalAccessException ex) {
-                Logger.getLogger(SubcuentaController.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (InvocationTargetException ex) {
-                Logger.getLogger(SubcuentaController.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            int cuentaId = Integer.parseInt(request.getParameter("cuenta"));
+            CuentaDao dao = new CuentaDao();
+            EnP3mCuenta cuenta = dao.getByIdActive(cuentaId);
+            request.setAttribute("cuenta", cuenta);
+            request.getRequestDispatcher("/WEB-INF/contabilidad/plancontable/subcuenta.jsp").forward(request, response);
         }
         else
             response.sendRedirect(request.getContextPath() + "/secured/contabilidad/plan");
