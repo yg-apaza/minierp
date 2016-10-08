@@ -38,7 +38,7 @@
                                     </form>
                                 </div>
                                 <div class="col-md-6 form-group">
-                                    <form role=form" method="post" action="${pageContext.request.contextPath}/secured/perifericos/impCodBarras">
+                                    <form role=form" method="post" action="${pageContext.request.contextPath}/secured/perifericos/lecCodBarras">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="text-xs-center">

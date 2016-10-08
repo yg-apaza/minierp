@@ -1,14 +1,17 @@
 package org.epis.minierp.dao.perifericos;
 
 import com.google.zxing.BinaryBitmap;
+import com.google.zxing.ChecksumException;
 import com.google.zxing.FormatException;
 import com.google.zxing.LuminanceSource;
+import com.google.zxing.MultiFormatReader;
 import com.google.zxing.NotFoundException;
+import com.google.zxing.Reader;
 import com.google.zxing.Result;
 import com.google.zxing.WriterException;
+import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.common.HybridBinarizer;
-import com.google.zxing.oned.Code128Reader;
 import com.google.zxing.oned.Code128Writer;
 import java.awt.Color;
 import java.awt.Graphics2D;
@@ -69,22 +72,23 @@ public class CodigoBarrasDao {
      * @return retorna un <code>String</code> con el código leido
      */
     public String readCodeBar(BufferedImage image){
-        /*int width = image.getWidth();
+        int width = image.getWidth();
         int height = image.getHeight();
         int[] pixels = new int[width * height];
  
         LuminanceSource source = new BufferedImageLuminanceSource(image);
         BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
         
-        Code128Reader reader = new Code128Reader();
+        Reader reader = new MultiFormatReader();
         Result result = null;
+    
         try {
             result = reader.decode(bitmap);
-        } catch (NotFoundException | FormatException ex) {
+        } catch (NotFoundException | FormatException | ChecksumException ex) {
             Logger.getLogger(CodigoBarrasDao.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return new String(result.getText());*/
-        return "codigo";
+         
+        return new String(result.getText());
     }
 
 }
