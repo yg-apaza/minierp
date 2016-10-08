@@ -37,7 +37,16 @@ public class ClasificacionABCController extends HttpServlet {
         request.setAttribute("productos",productos);
         request.getRequestDispatcher("/WEB-INF/compras/classificationABC.jsp").forward(request, response);
         
-        //request.setAttribute("productos", productoDao.getAllProductsActive()); 
+        /*if(request.getParameter("class_selected").equals("A"))
+        {
+            /*request.setAttribute("", "");
+            request.getRequestDispatcher("/WEB-INF/compras/index.jsp").forward(request, response);
+            System.out.println("faiiiiiil");
+            
+        }
+    
+        
+        request.setAttribute("productos", productoDao.getAllProductsActive()); */
         
     }   
 }

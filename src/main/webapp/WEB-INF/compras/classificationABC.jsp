@@ -46,7 +46,7 @@
                         <div class="panel panel-primary">
                             <div class="panel-heading">
                                 <label for = "clase" style = "margin-right: 20px;"> Clase del producto: </label>
-                                <select class = "form-control" style = "width: 70px; display: inline-block;">
+                                <select class = "form-control" id="class_select" style = "width: 70px; display: inline-block;" onchange="changeData()">
                                     <option> A </option>
                                     <option> B </option>
                                     <option> C </option>
@@ -58,7 +58,7 @@
                 </div>
                 <br>
                 <div>
-                    <table class = "table table-bordered table-condensed table-striped">
+                    <table class = "table table-bordered table-condensed">
                     <thead>
                         <tr>
                             <th>Código</th>
@@ -81,5 +81,15 @@
                 </div> 
         </div>
         
+        <script languaje="javascript">
+            
+            var clase;
+            
+            function changeData(){
+                clase = document.getElementById("class_select").value;
+                alert(clase);    
+            }
+                       
+        </script>
     </jsp:attribute>  
 </minierptemplate:template>
