@@ -37,7 +37,7 @@ public class SubcuentaController extends HttpServlet
         String cueNum = request.getParameter("cueNum1") + request.getParameter("cueNum2");
         CuentaDao dao = new CuentaDao();
         switch(action) {
-            case "add":
+            case "create":
                 EnP3mCuenta c = new EnP3mCuenta();
                 c.setEnP3mCuenta(dao.getByIdActive(cuePad));
                 c.setCueNiv(cueNiv);
@@ -46,6 +46,10 @@ public class SubcuentaController extends HttpServlet
                 c.setEstRegCod('A');
                 dao.save(c);
                 break;
+            case "update":
+                
+                break;
+                
         }
         response.sendRedirect(request.getContextPath() + "/secured/contabilidad/plan/subcuenta?cuenta=" + origen);
     }

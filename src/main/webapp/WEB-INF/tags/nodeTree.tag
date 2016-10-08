@@ -10,7 +10,7 @@
         <a href="#" data-toggle="modal" data-target="#agregarModal" data-codigo="${node.cueCod}" data-nivel="${node.cueNiv}" data-numero="${node.cueNum}">
             <i class="fa fa-plus-square-o fa-2x" style="color: black;"></i>
         </a>
-        <a href="#" data-toggle="modal" data-target="#modificarModal" data-codigo="${node.enP3mCuenta.cueCod}" data-nivel="${node.cueNiv}" data-numero="${node.cueNum}" data-nombre="${node.cueDes}">
+        <a href="#" data-toggle="modal" data-target="#modificarModal" data-codigo="${node.cueCod}" data-numero="${node.cueNum}" data-nombre="${node.cueDes}">
             <i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i>
         </a>
         <a href="#"><i class="fa fa-trash-o fa-2x" style="color: black;"></i></a>

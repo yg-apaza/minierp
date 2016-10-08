@@ -99,26 +99,10 @@
                             <div class="modal-body">
                                 <div class="form-group">
                                     <label>Número de cuenta</label>
-                                    <div class="input-group">
-                                        <input type="hidden" name="accion" value="update">
-                                        <input type="hidden" name="origen" value="${cuenta.cueCod}">
-                                        <input type="hidden" name="cuePad" id="updateCuePad">
-                                        <input type="hidden" name="cueNiv" id="updateCueNiv">
-                                        <input class="form-control" name="cueNum1" id="updateCueNum" readonly>
-                                        <span class="input-group-addon">-</span>
-                                        <select class="form-control" name="cueNum2">
-                                            <option value="0">0</option>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                            <option value="6">6</option>
-                                            <option value="7">7</option>
-                                            <option value="8">8</option>
-                                            <option value="9">9</option>
-                                        </select>
-                                    </div>
+                                    <input type="hidden" name="accion" value="update">
+                                    <input type="hidden" name="origen" value="${cuenta.cueCod}">
+                                    <input type="hidden" name="cueCod" id="updateCueCod">
+                                    <input class="form-control" id="updateCueNum" readonly>
                                 </div>
                                 <div class="form-group">
                                     <label>Nombre de cuenta:</label>
@@ -126,7 +110,7 @@
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <button type="submit" class="btn btn-outline btn-success">Agregar</button>
+                                <button type="submit" class="btn btn-outline btn-success">Modificar</button>
                                 <button type="button" class="btn btn-outline btn-danger" data-dismiss="modal">Cancelar</button>
                             </div>
                         </form>
@@ -143,8 +127,7 @@
             var addCueNiv = $("#addCueNiv");
             var addCueNum = $("#addCueNum1");
             
-            var updateCuePad = $("#updateCuePad");
-            var updateCueNiv = $("#updateCueNiv");
+            var updateCueCod = $("#updateCueCod");
             var updateCueNum = $("#updateCueNum");
             var updateCueDes = $("#updateCueDes");
             
@@ -155,8 +138,7 @@
             });
             
             updateModal.on('show.bs.modal', function(e){
-                updateCuePad.val($(e.relatedTarget).data('codigo'));
-                updateCueNiv.val($(e.relatedTarget).data('nivel'));
+                updateCueCod.val($(e.relatedTarget).data('codigo'));
                 updateCueNum.val($(e.relatedTarget).data('numero'));
                 updateCueDes.val($(e.relatedTarget).data('nombre'));
             });
@@ -177,6 +159,21 @@
                 }
             });
             
+            $("#updateForm").validate({
+                rules: {
+                    cueDes: {
+                        required: true,
+                    }
+                },
+                messages: {
+                    cueDes: {
+                        required: "Ingrese el nombre de cuenta",
+                    }
+                },
+                submitHandler: function(form) {
+                    form.submit();
+                }
+            });
         </script>
     </jsp:attribute>
 </minierptemplate:template>
