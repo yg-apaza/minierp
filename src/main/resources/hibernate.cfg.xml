@@ -51,6 +51,7 @@
     <mapping resource="org/epis/minierp/model/EnP3tPlantillaDet.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP3mCuenta.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/TaGzzTipoUsuario.hbm.xml"/>
+    <mapping class="org.epis.minierp.dao.contabilidad.cajaBancos.CajaModel"/>
     <mapping class="org.epis.minierp.dao.contabilidad.LibroDiario"/>
   </session-factory>
 </hibernate-configuration>

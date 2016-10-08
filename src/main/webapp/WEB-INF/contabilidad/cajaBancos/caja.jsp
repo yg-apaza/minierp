@@ -42,7 +42,7 @@
             </div>
             
             <table class="table table-hover">
-            <thread>
+            <thead>
                 <tr>
                     <th>Numero Correlativo del Registro o código único de óperación</th>
                     <th>Fecha de operación</th>
@@ -52,66 +52,19 @@
                     <th>Deudor</th>
                     <th>Acreedor</th>
                 </tr>
-            </thread>
+            </thead>
             <tbody>
-               <!--<c:forEach items="${operaciones}" var="u"> -->
+               <c:forEach items="${operaciones}" var="u"> 
                         <tr>
-                            <td>num</td>
-                            <td>fech</td>
-                            <td>desc</td>
-                            <td>cod</td>
-                            <td>denomi</td>
-                            <td>deudo</td>
-                            <td>acred</td>
+                            <td>${u.asiDetCod}</td>
+                            <td><fmt:formatDate value="${u.asiCabFec}" pattern="dd/MM/yyyy" /></td>
+                            <td>${u.asiCabTip}</td>
+                            <td>${u.cueCod}</td>
+                            <td>${u.cueDes}</td>
+                            <td>${u.debe}</td>
+                            <td>${u.haber}</td>
                         </tr>
-                <!--</c:forEach>     -->
-                <!---Ejemplos-->
-                <tr>
-                    <td>1</td>
-                    <td>01-Feb-16</td>
-                    <td>Deposito</td>
-                    <td>104</td>
-                    <td>Cuenta Corriente</td>
-                    <td>939393</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>15-Mar-16</td>
-                    <td>Gira Cheque 01</td>
-                    <td>104</td>
-                    <td>Cuenta Corriente</td>
-                    <td></td>
-                    <td>939</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>18-Mar-16</td>
-                    <td>Gira Cheque 02</td>
-                    <td>104</td>
-                    <td>Cuenta Corriente</td>
-                    <td></td>
-                    <td>939</td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>19-Mar-16</td>
-                    <td>Gira Cheque 03</td>
-                    <td>104</td>
-                    <td>Cuenta Corriente</td>
-                    <td></td>
-                    <td>377246.363</td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <th>Totales</th>
-                    <th>939393</th>
-                    <th>379124.3625</th>
-                </tr>
-                <!---Fin Ejemplos-->
+                </c:forEach>     
             </tbody>
         </table>
         </div>
