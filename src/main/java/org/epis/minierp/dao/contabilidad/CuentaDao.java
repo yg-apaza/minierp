@@ -1,12 +1,8 @@
 package org.epis.minierp.dao.contabilidad;
 
-import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.apache.commons.beanutils.BeanUtils;
-//import org.epis.minierp.dto.CuentaDto;
 import org.epis.minierp.model.EnP3mCuenta;
 import org.epis.minierp.util.HibernateUtil;
 import org.hibernate.Query;

@@ -2,6 +2,7 @@ package org.epis.minierp.model;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.SortedSet;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -15,7 +16,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "en_p3m_cuenta",catalog = "episerp")
-public class EnP3mCuenta implements java.io.Serializable {
+public class EnP3mCuenta implements java.io.Serializable, Comparable<EnP3mCuenta> {
     private Integer cueCod;
     private EnP3mCuenta enP3mCuenta;
     private int cueNiv;
@@ -24,7 +25,7 @@ public class EnP3mCuenta implements java.io.Serializable {
     private char estRegCod;
     private Set enP3tAsientoDets = new HashSet(0);
     private Set enP3mCuentaBancos = new HashSet(0);
-    private Set enP3mCuentas = new HashSet(0);
+    private SortedSet enP3mCuentas;
     private Set enP3tPlantillaDets = new HashSet(0);
 
     public EnP3mCuenta() {
@@ -37,7 +38,7 @@ public class EnP3mCuenta implements java.io.Serializable {
         this.estRegCod = estRegCod;
     }
 
-    public EnP3mCuenta(EnP3mCuenta enP3mCuenta, int cueNiv, String cueNum, String cueDes, char estRegCod, Set enP3tAsientoDets, Set enP3mCuentaBancos, Set enP3mCuentas, Set enP3tPlantillaDets) {
+    public EnP3mCuenta(EnP3mCuenta enP3mCuenta, int cueNiv, String cueNum, String cueDes, char estRegCod, Set enP3tAsientoDets, Set enP3mCuentaBancos, SortedSet enP3mCuentas, Set enP3tPlantillaDets) {
         this.enP3mCuenta = enP3mCuenta;
         this.cueNiv = cueNiv;
         this.cueNum = cueNum;
@@ -125,11 +126,11 @@ public class EnP3mCuenta implements java.io.Serializable {
     }
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "enP3mCuenta")
-    public Set getEnP3mCuentas() {
+    public SortedSet getEnP3mCuentas() {
         return this.enP3mCuentas;
     }
 
-    public void setEnP3mCuentas(Set enP3mCuentas) {
+    public void setEnP3mCuentas(SortedSet enP3mCuentas) {
         this.enP3mCuentas = enP3mCuentas;
     }
 
@@ -146,4 +147,25 @@ public class EnP3mCuenta implements java.io.Serializable {
     public String toString() {
         return "EnP3mCuenta{" + "cueCod=" + cueCod + ", enP3mCuenta=" + enP3mCuenta + ", cueNiv=" + cueNiv + ", cueNum=" + cueNum + ", cueDes=" + cueDes + ", estRegCod=" + estRegCod + '}';
     }
+
+    @Override
+    public int compareTo(EnP3mCuenta that){
+      final int BEFORE = -1;
+      final int AFTER = 1;
+
+      if (that == null) {
+         return BEFORE;
+      }
+
+      Comparable thisCertificate = this.getCueNum();
+      Comparable thatCertificate = that.getCueNum();
+
+      if(thisCertificate == null) {
+         return AFTER;
+      } else if(thatCertificate == null) {
+         return BEFORE;
+      } else {
+         return thisCertificate.compareTo(thatCertificate);
+      }
+   }
 }

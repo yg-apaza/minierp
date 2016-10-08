@@ -28,20 +28,8 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <c:forEach items="${cuenta.childs}" var="s">
-                                            <tr>
-                                                <td>${s.cueNum}</td>
-                                                <td>${s.cueDes}</td>
-                                                <td class="text-right">
-                                                    <a href="#" data-toggle="modal" data-target="#agregarModal" data-codigo="${s.cueCod}" data-nivel="${s.cueNiv}" data-numero="${s.cueNum}">
-                                                        <i class="fa fa-plus-square-o fa-2x" style="color: black;"></i>
-                                                    </a>
-                                                    <a href="#" data-toggle="modal" data-target="#modificarModal" data-codigo="${s.enP3mCuenta.cueCod}" data-nivel="${s.cueNiv}" data-numero="${s.cueNum}" data-nombre="${s.cueDes}">
-                                                        <i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i>
-                                                    </a>
-                                                    <a href="#"><i class="fa fa-trash-o fa-2x" style="color: black;"></i></a>
-                                                </td>
-                                            </tr>
+                                        <c:forEach var="child" items="${cuenta.enP3mCuentas}">
+                                            <minierptemplate:nodeTree node="${child}"/>
                                         </c:forEach>
                                     </tbody>
                                 </table>

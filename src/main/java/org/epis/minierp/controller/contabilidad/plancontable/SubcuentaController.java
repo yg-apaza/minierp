@@ -19,6 +19,7 @@ public class SubcuentaController extends HttpServlet
             int cuentaId = Integer.parseInt(request.getParameter("cuenta"));
             CuentaDao dao = new CuentaDao();
             EnP3mCuenta cuenta = dao.getByIdActive(cuentaId);
+            System.out.println(cuenta);
             request.setAttribute("cuenta", cuenta);
             request.getRequestDispatcher("/WEB-INF/contabilidad/plancontable/subcuenta.jsp").forward(request, response);
         }
