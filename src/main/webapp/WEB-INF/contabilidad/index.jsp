@@ -4,6 +4,6 @@
         <title>MiniERP - Contabilidad</title>
     </jsp:attribute>
     <jsp:attribute name="contenido">
-        <h1>Módulo de Contabilidad</h1>
+        <h1>Modulo Contabilidad</h1>
     </jsp:attribute>
 </minierptemplate:template>

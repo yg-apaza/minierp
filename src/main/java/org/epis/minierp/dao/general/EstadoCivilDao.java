@@ -1,7 +1,7 @@
 package org.epis.minierp.dao.general;
 
 import java.util.List;
-import org.epis.minierp.model.EstadoCivil;
+import org.epis.minierp.model.TaGzzEstadoCivil;
 import org.epis.minierp.util.HibernateUtil;
 import org.hibernate.ObjectNotFoundException;
 import org.hibernate.Query;
@@ -9,7 +9,6 @@ import org.hibernate.Session;
 
 public class EstadoCivilDao
 {
-    private static EstadoCivilDao estadoCivilDao;
     private Session session;
     
     public EstadoCivilDao()
@@ -17,26 +16,26 @@ public class EstadoCivilDao
         session = HibernateUtil.getSessionFactory().getCurrentSession();
     }
     
-    public List<EstadoCivil> getAll()
+    public List<TaGzzEstadoCivil> getAll()
     {
-        Query query = session.createQuery("from EstadoCivil");
-        List<EstadoCivil> estados = query.list();
+        Query query = session.createQuery("from TaGzzEstadoCivil");
+        List<TaGzzEstadoCivil> estados = query.list();
         return estados;
     }
     
-    public List<EstadoCivil> getAllActive()
+    public List<TaGzzEstadoCivil> getAllActive()
     {
-        Query query = session.createQuery("from EstadoCivil E where E.estRegCod = 'A'");
-        List<EstadoCivil> estados =  query.list();
+        Query query = session.createQuery("from TaGzzEstadoCivil E where E.estRegCod = 'A'");
+        List<TaGzzEstadoCivil> estados =  query.list();
         System.out.println(estados);
         return estados;
     }
     
-    public EstadoCivil getById(int id)
+    public TaGzzEstadoCivil getById(int id)
     {
-        EstadoCivil estado = null;
+        TaGzzEstadoCivil estado = null;
         try {
-            estado = (EstadoCivil)session.load(EstadoCivil.class, id);
+            estado = (TaGzzEstadoCivil)session.load(TaGzzEstadoCivil.class, id);
         } catch(ObjectNotFoundException e)
         {
             return null;
