@@ -5,6 +5,8 @@
         <title>MiniERP - Compras y Logística</title>
     </jsp:attribute>
     <jsp:attribute name="contenido">
+        <script src="${pageContext.request.contextPath}/js/metisMenu.min.js"></script>
+        <script src="${pageContext.request.contextPath}/js/sb-admin-2.min.js"></script>
         <script language="javascript">
             function addRow(tableID) {
                 var table = document.getElementById(tableID);
@@ -56,6 +58,9 @@
             <div class="navbar-default sidebar">
                 <div class="sidebar-nav">
                     <ul class="nav" id="side-menu">
+                        <li>
+                            <a href="${pageContext.request.contextPath}/secured/compras"><i class="fa fa-dashboard fa-fw"></i> Panel General</a>
+                        </li>
                         <li>
                             <a href="#"><i class="fa fa-group fa-fw"></i> Logística<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
@@ -223,7 +228,7 @@
                                         <div class="form-group input-group" >
                                             <span class="input-group-addon">IGV</span>
                                             <input type="number" class="form-control">
-                                            <span class="input-group-addon"><i class="fa fa-bank"></i></span>
+                                            <span class="input-group-addon"><i class="fa fa-percent"></i></span>
                                         </div>
                                         <div class="form-group input-group" >
                                             <span class="input-group-addon">Descuento</span>
