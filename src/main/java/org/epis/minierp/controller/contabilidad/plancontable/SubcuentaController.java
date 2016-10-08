@@ -31,13 +31,14 @@ public class SubcuentaController extends HttpServlet
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("accion");
         int origen = Integer.parseInt(request.getParameter("origen"));
-        int cuePad = Integer.parseInt(request.getParameter("cuePad"));
-        int cueNiv = Integer.parseInt(request.getParameter("cueNiv"));
-        String cueDes = request.getParameter("cueDes");
-        String cueNum = request.getParameter("cueNum1") + request.getParameter("cueNum2");
+        
         CuentaDao dao = new CuentaDao();
         switch(action) {
             case "create":
+                int cuePad = Integer.parseInt(request.getParameter("cuePad"));
+                int cueNiv = Integer.parseInt(request.getParameter("cueNiv"));
+                String cueDes = request.getParameter("cueDes");
+                String cueNum = request.getParameter("cueNum1") + request.getParameter("cueNum2");
                 EnP3mCuenta c = new EnP3mCuenta();
                 c.setEnP3mCuenta(dao.getByIdActive(cuePad));
                 c.setCueNiv(cueNiv);
@@ -47,9 +48,13 @@ public class SubcuentaController extends HttpServlet
                 dao.save(c);
                 break;
             case "update":
-                
+                int updateCueCod = Integer.parseInt(request.getParameter("cueCod"));
+                String updateCueDes = request.getParameter("cueDes");
+                dao.update(updateCueCod, updateCueDes);
                 break;
-                
+            case "delete":
+                int deleteCueCod = Integer.parseInt(request.getParameter("cueCod"));
+                dao.delete(deleteCueCod);
         }
         response.sendRedirect(request.getContextPath() + "/secured/contabilidad/plan/subcuenta?cuenta=" + origen);
     }

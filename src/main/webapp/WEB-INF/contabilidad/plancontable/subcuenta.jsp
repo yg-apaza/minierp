@@ -43,7 +43,6 @@
             </div>
             <div id="agregarModal" class="modal fade" role="dialog">
                 <div class="modal-dialog modal-sm">
-                    <!-- Modal content-->
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -89,7 +88,6 @@
             </div>
             <div id="modificarModal" class="modal fade" role="dialog">
                 <div class="modal-dialog modal-sm">
-                    <!-- Modal content-->
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -117,11 +115,35 @@
                     </div>              
                 </div>
             </div>
+            <div id="eliminarModal" class="modal fade" role="dialog">
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Eliminar cuenta</h4>
+                        </div>
+                        <form id="updateForm" method="post" action="${pageContext.request.contextPath}/secured/contabilidad/plan/subcuenta">
+                            <div class="modal-body">
+                                <input type="hidden" name="accion" value="delete">
+                                <input type="hidden" name="origen" value="${cuenta.cueCod}">
+                                <input type="hidden" name="cueCod" id="deleteCueCod">
+                                <p> ¿Desea eliminar la cuenta Nº <span id="deleteCueNum"></span>?</p>
+                                <p>Esta acción también eliminará sus subcuentas.</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-outline btn-success">Si</button>
+                                <button type="button" class="btn btn-outline btn-danger" data-dismiss="modal">Cancelar</button>
+                            </div>
+                        </form>
+                    </div>              
+                </div>
+            </div>
         </div>
                                         
         <script>
             var addModal = $("#agregarModal");
             var updateModal = $("#modificarModal");
+            var deleteModal = $("#eliminarModal");
             
             var addCuePad = $("#addCuePad");
             var addCueNiv = $("#addCueNiv");
@@ -130,6 +152,9 @@
             var updateCueCod = $("#updateCueCod");
             var updateCueNum = $("#updateCueNum");
             var updateCueDes = $("#updateCueDes");
+            
+            var deleteCueCod = $("#deleteCueCod");
+            var deleteCueNum = $("#deleteCueNum");
             
             addModal.on('show.bs.modal', function(e){
                 addCuePad.val($(e.relatedTarget).data('codigo'));
@@ -141,6 +166,11 @@
                 updateCueCod.val($(e.relatedTarget).data('codigo'));
                 updateCueNum.val($(e.relatedTarget).data('numero'));
                 updateCueDes.val($(e.relatedTarget).data('nombre'));
+            });
+            
+            deleteModal.on('show.bs.modal', function(e){
+                deleteCueCod.val($(e.relatedTarget).data('codigo'));
+                deleteCueNum.text($(e.relatedTarget).data('numero'));
             });
             
             $("#createForm").validate({

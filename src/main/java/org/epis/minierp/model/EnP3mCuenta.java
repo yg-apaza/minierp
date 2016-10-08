@@ -150,22 +150,13 @@ public class EnP3mCuenta implements java.io.Serializable, Comparable<EnP3mCuenta
 
     @Override
     public int compareTo(EnP3mCuenta that){
-      final int BEFORE = -1;
-      final int AFTER = 1;
-
-      if (that == null) {
-         return BEFORE;
-      }
-
-      Comparable thisCertificate = this.getCueNum();
-      Comparable thatCertificate = that.getCueNum();
-
-      if(thisCertificate == null) {
-         return AFTER;
-      } else if(thatCertificate == null) {
-         return BEFORE;
-      } else {
-         return thisCertificate.compareTo(thatCertificate);
-      }
-   }
+        final int BEFORE = -1;
+        final int AFTER = 1;
+        if (that == null)
+            return BEFORE;
+        if(this.getCueNum().compareTo(that.getCueNum()) == 0)
+            return AFTER;
+        else
+            return this.getCueNum().compareTo(that.getCueNum());
+    }
 }
