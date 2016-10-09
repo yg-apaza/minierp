@@ -447,5 +447,7 @@ INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `
 INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (442, 101, 4, '1113', 'Valores emitidos por empresa', 'A');
 INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (443, 101, 4, '1114', 'Otros títulos representativos de deuda', 'A');
 INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (444, 101, 4, '1115', 'Participaciones en entidades', 'A');
+INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (445, 102, 4, '1121', 'Valores emitidos o garantizados por el estado', 'A');
+INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (446, 102, 4, '1122', 'Valores emitidos por el sistema financiero', 'A');
 
 COMMIT;
