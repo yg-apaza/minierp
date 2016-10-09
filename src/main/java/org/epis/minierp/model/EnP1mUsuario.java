@@ -15,8 +15,9 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "en_p1m_usuario",catalog = "episerp")
+@Table(name = "en_p1m_usuario", catalog = "episerp")
 public class EnP1mUsuario implements java.io.Serializable {
+
     private String usuCod;
     private TaGzzEstadoCivil taGzzEstadoCivil;
     private TaGzzTipoUsuario taGzzTipoUsuario;
@@ -25,7 +26,6 @@ public class EnP1mUsuario implements java.io.Serializable {
     private String usuApeMat;
     private String usuLog;
     private String usuPas;
-    private byte[] usuHue;
     private Date usuFecNac;
     private char usuSex;
     private char estRegCod;
@@ -47,7 +47,7 @@ public class EnP1mUsuario implements java.io.Serializable {
         this.estRegCod = estRegCod;
     }
 
-    public EnP1mUsuario(String usuCod, TaGzzEstadoCivil taGzzEstadoCivil, TaGzzTipoUsuario taGzzTipoUsuario, String usuNom, String usuApePat, String usuApeMat, String usuLog, String usuPas, byte[] usuHue, Date usuFecNac, char usuSex, char estRegCod, Set enP1mPreventaCabs, Set enP4mFacturaCompraCabs, Set enP1mDocumentoUsuarios, Set enP1mFacturaVentaCabs) {
+    public EnP1mUsuario(String usuCod, TaGzzEstadoCivil taGzzEstadoCivil, TaGzzTipoUsuario taGzzTipoUsuario, String usuNom, String usuApePat, String usuApeMat, String usuLog, String usuPas, Date usuFecNac, char usuSex, char estRegCod, Set enP1mPreventaCabs, Set enP4mFacturaCompraCabs, Set enP1mDocumentoUsuarios, Set enP1mFacturaVentaCabs) {
         this.usuCod = usuCod;
         this.taGzzEstadoCivil = taGzzEstadoCivil;
         this.taGzzTipoUsuario = taGzzTipoUsuario;
@@ -56,7 +56,6 @@ public class EnP1mUsuario implements java.io.Serializable {
         this.usuApeMat = usuApeMat;
         this.usuLog = usuLog;
         this.usuPas = usuPas;
-        this.usuHue = usuHue;
         this.usuFecNac = usuFecNac;
         this.usuSex = usuSex;
         this.estRegCod = estRegCod;
@@ -67,6 +66,7 @@ public class EnP1mUsuario implements java.io.Serializable {
     }
 
     @Id
+
     @Column(name = "UsuCod", unique = true, nullable = false, length = 15)
     public String getUsuCod() {
         return this.usuCod;
@@ -141,15 +141,6 @@ public class EnP1mUsuario implements java.io.Serializable {
         this.usuPas = usuPas;
     }
 
-    @Column(name = "UsuHue")
-    public byte[] getUsuHue() {
-        return this.usuHue;
-    }
-
-    public void setUsuHue(byte[] usuHue) {
-        this.usuHue = usuHue;
-    }
-
     @Temporal(TemporalType.DATE)
     @Column(name = "UsuFecNac", length = 10)
     public Date getUsuFecNac() {
@@ -216,6 +207,6 @@ public class EnP1mUsuario implements java.io.Serializable {
 
     @Override
     public String toString() {
-        return "EnP1mUsuario{" + "usuCod=" + usuCod + ", taGzzEstadoCivil=" + taGzzEstadoCivil + ", taGzzTipoUsuario=" + taGzzTipoUsuario + ", usuNom=" + usuNom + ", usuApePat=" + usuApePat + ", usuApeMat=" + usuApeMat + ", usuLog=" + usuLog + ", usuPas=" + usuPas + ", usuHue=" + usuHue + ", usuFecNac=" + usuFecNac + ", usuSex=" + usuSex + ", estRegCod=" + estRegCod + '}';
+        return "EnP1mUsuario{" + "usuCod=" + usuCod + ", taGzzEstadoCivil=" + taGzzEstadoCivil + ", taGzzTipoUsuario=" + taGzzTipoUsuario + ", usuNom=" + usuNom + ", usuApePat=" + usuApePat + ", usuApeMat=" + usuApeMat + ", usuLog=" + usuLog + ", usuPas=" + usuPas + ", usuFecNac=" + usuFecNac + ", usuSex=" + usuSex + ", estRegCod=" + estRegCod + '}';
     }
 }

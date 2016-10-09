@@ -5,42 +5,48 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "en_p3m_plantilla_cab",catalog = "episerp")
+@Table(name = "en_p3m_plantilla_cab", catalog = "episerp")
 public class EnP3mPlantillaCab implements java.io.Serializable {
-    private String plaCod;
+
+    private Integer plaCod;
     private String plaDet;
     private String plaGlo;
+    private boolean plaHab;
     private char estRegCod;
     private Set enP3tPlantillaDets = new HashSet(0);
 
     public EnP3mPlantillaCab() {
     }
 
-    public EnP3mPlantillaCab(String plaCod, char estRegCod) {
-        this.plaCod = plaCod;
+    public EnP3mPlantillaCab(boolean plaHab, char estRegCod) {
+        this.plaHab = plaHab;
         this.estRegCod = estRegCod;
     }
 
-    public EnP3mPlantillaCab(String plaCod, String plaDet, String plaGlo, char estRegCod, Set enP3tPlantillaDets) {
-        this.plaCod = plaCod;
+    public EnP3mPlantillaCab(String plaDet, String plaGlo, boolean plaHab, char estRegCod, Set enP3tPlantillaDets) {
         this.plaDet = plaDet;
         this.plaGlo = plaGlo;
+        this.plaHab = plaHab;
         this.estRegCod = estRegCod;
         this.enP3tPlantillaDets = enP3tPlantillaDets;
     }
 
     @Id
-    @Column(name = "PlaCod", unique = true, nullable = false, length = 10)
-    public String getPlaCod() {
+    @GeneratedValue(strategy = IDENTITY)
+
+    @Column(name = "PlaCod", unique = true, nullable = false)
+    public Integer getPlaCod() {
         return this.plaCod;
     }
 
-    public void setPlaCod(String plaCod) {
+    public void setPlaCod(Integer plaCod) {
         this.plaCod = plaCod;
     }
 
@@ -60,6 +66,15 @@ public class EnP3mPlantillaCab implements java.io.Serializable {
 
     public void setPlaGlo(String plaGlo) {
         this.plaGlo = plaGlo;
+    }
+
+    @Column(name = "PlaHab", nullable = false)
+    public boolean isPlaHab() {
+        return this.plaHab;
+    }
+
+    public void setPlaHab(boolean plaHab) {
+        this.plaHab = plaHab;
     }
 
     @Column(name = "EstRegCod", nullable = false, length = 1)
@@ -82,6 +97,6 @@ public class EnP3mPlantillaCab implements java.io.Serializable {
 
     @Override
     public String toString() {
-        return "EnP3mPlantillaCab{" + "plaCod=" + plaCod + ", plaDet=" + plaDet + ", plaGlo=" + plaGlo + ", estRegCod=" + estRegCod + '}';
+        return "EnP3mPlantillaCab{" + "plaCod=" + plaCod + ", plaDet=" + plaDet + ", plaGlo=" + plaGlo + ", plaHab=" + plaHab + ", estRegCod=" + estRegCod + '}';
     }
 }

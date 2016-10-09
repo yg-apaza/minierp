@@ -16,6 +16,7 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name = "en_p1c_preventa_realizadas", catalog = "episerp")
 public class EnP1cPreventaRealizadas implements java.io.Serializable {
+
     private EnP1cPreventaRealizadasId id;
     private EnP1mFacturaVentaCab enP1mFacturaVentaCab;
     private EnP1mPreventaCab enP1mPreventaCab;

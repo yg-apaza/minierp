@@ -5,6 +5,7 @@ import javax.persistence.Embeddable;
 
 @Embeddable
 public class EnP1tPreventaDetId implements java.io.Serializable {
+
     private int preVenDetCod;
     private String preVenCabCod;
 
@@ -58,8 +59,4 @@ public class EnP1tPreventaDetId implements java.io.Serializable {
         return result;
     }
 
-    @Override
-    public String toString() {
-        return "EnP1tPreventaDetId{" + "preVenDetCod=" + preVenDetCod + ", preVenCabCod=" + preVenCabCod + '}';
-    }
 }
