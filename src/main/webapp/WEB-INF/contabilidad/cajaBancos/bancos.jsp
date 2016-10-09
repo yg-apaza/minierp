@@ -64,9 +64,6 @@
                 <tr>
                     <th>Numero Correlativo del Registro o código único de óperación</th>
                     <th>Fecha de operación</th>
-                    <th>Medio de Pago</th>
-                    <th>Descripción de la operación</th>
-                    <th>Apellidos y Nombres, Denominación o Razón Social</th>
                     <th>Número de transacción Bancaria, de documento sustentatorio o Control interno de la operación</th>
                     <th>Código de la Cuenta</th>
                     <th>Denominación de la Cuenta</th>
@@ -85,9 +82,6 @@
                 </c:forEach> 
                              
                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -111,9 +105,6 @@
                 <tr>
                     <td>1</td>
                     <td>01-Mar-16</td>
-                    <td>Tarjeta</td>
-                    <td></td>
-                    <td>ChocoChips Misti S.A.</td>
                     <td>1</td>
                     <td>121</td>
                     <td>Saldo Inicial</td>
@@ -124,9 +115,6 @@
                 <tr>
                     <td>2</td>
                     <td>06-Mar-16</td>
-                    <td>Tarjeta</td>
-                    <td>Cobranza del 50% de ventas</td>
-                    <td>ChocoChips Misti S.A.</td>
                     <td>2</td>
                     <td>121</td>
                     <td>Facturas por cobrar</td>
@@ -137,9 +125,6 @@
                 <tr>
                     <td>3</td>
                     <td>15-Mar-16</td>
-                    <td>Tarjeta</td>
-                    <td>Ingreso de Cheque 01</td>
-                    <td>ADIREF SA</td>
                     <td>3</td>
                     <td>121</td>
                     <td>Cuenta Corriente</td>
@@ -150,9 +135,6 @@
                 <tr>
                     <td>4</td>
                     <td>01-Mar-16</td>
-                    <td>Tarjeta</td>
-                    <td>Cancelación de licencia</td>
-                    <td>ChocoChips Misti S.A.</td>
                     <td>2</td>
                     <td>406</td>
                     <td>Gobiernos Locales</td>
@@ -164,9 +146,6 @@
                 <tr>
                     <td>5</td>
                     <td>18-Mar-16</td>
-                    <td>Tarjeta</td>
-                    <td>Ingreso Cheque 02</td>
-                    <td>Ciag S.A.</td>
                     <td>3</td>
                     <td>104</td>
                     <td>Cuenta Corriente</td>
@@ -177,9 +156,6 @@
                 <tr>
                     <td>6</td>
                     <td>18-Mar-16</td>
-                    <td>Tarjeta</td>
-                    <td>Pago de honorarios</td>
-                    <td>Ciag S.A.</td>
                     <td>4</td>
                     <td>424</td>
                     <td>Honorarios por Pagar</td>
@@ -190,9 +166,6 @@
                 <tr>
                     <td>7</td>
                     <td>19-Mar-16</td>
-                    <td>Tarjeta</td>
-                    <td>Pago del 50% en efectivo</td>
-                    <td>Ciag S.A.</td>
                     <td>5</td>
                     <td>421</td>
                     <td>Facturas por Pagar</td>
@@ -203,9 +176,6 @@
                 <tr>
                     <td>8</td>
                     <td>19-Mar-16</td>
-                    <td>Tarjeta</td>
-                    <td>Ingreso de Cheque 03</td>
-                    <td>Ralkings S.A.</td>
                     <td>7</td>
                     <td>424</td>
                     <td>Cuenta Corriente</td>
@@ -216,9 +186,6 @@
                 <tr>
                     <td>9</td>
                     <td>19-Mar-16</td>
-                    <td>Tarjeta</td>
-                    <td>Pago del 50% del cheque</td>
-                    <td>Ralkings S.A.</td>
                     <td>8</td>
                     <td>424</td>
                     <td>Facturas por Pagar</td>
@@ -229,9 +196,6 @@
                 <tr>
                     <td>10</td>
                     <td>19-Mar-16</td>
-                    <td>Tarjeta</td>
-                    <td>Cobranza de venta al contado</td>
-                    <td>Ralkings S.A.</td>
                     <td>9</td>
                     <td>424</td>
                     <td>Facturas por Cobrar</td>
@@ -242,9 +206,6 @@
                 <tr>
                     <td>11</td>
                     <td>20-Mar-16</td>
-                    <td>Tarjeta</td>
-                    <td>Pago de remuneraciones del mes</td>
-                    <td>Ralkings S.A.</td>
                     <td>11</td>
                     <td>411</td>
                     <td>Remunerciones por P</td>
@@ -255,9 +216,6 @@
                 <tr>
                     <td>12</td>
                     <td>31-Mar-16</td>
-                    <td>Tarjeta</td>
-                    <td>Cancelación del IGV Mar 2016</td>
-                    <td>Ralkings S.A.</td>
                     <td>12</td>
                     <td>4011</td>
                     <td>IGV</td>
@@ -270,19 +228,16 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
                     <th>Totales</th>
                     <th>1793456</th>
                     <th>859835</th>
                 </tr>
-                <!---Fin Ejemplos-->
-                 
-                             
+                <!---Fin Ejemplos-->          
             </tbody>
         </table>
         </div>
-        
+        <div>
+            <button class="btn btn-default center-block" type="submit">Imprimir</button>
+        </div>
     </jsp:attribute>
 </minierptemplate:template>
