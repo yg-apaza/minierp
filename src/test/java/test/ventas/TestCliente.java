@@ -1,5 +1,6 @@
 package test.ventas;
 
+import java.util.List;
 import org.epis.minierp.dao.ventas.EnP1mClienteDao;
 import org.epis.minierp.model.EnP1mCliente;
 import org.epis.minierp.model.TaGzzEstadoCivil;
@@ -28,7 +29,7 @@ public class TestCliente {
         soltero.setEstRegCod('A');
         
         clienteStd = new EnP1mCliente();
-        clienteStd.setCliCod("79343510");
+        clienteStd.setCliCod("72343510");
         clienteStd.setCliNom("Ernesto");
         clienteStd.setCliApePat("Cuadros");
         clienteStd.setCliApeMat("Vargas");
@@ -59,10 +60,65 @@ public class TestCliente {
     public void tearDown() {
     }
 
-    @Test
+    //@Test
     public void save() {
         clienteStdDao.save(clienteStd);
         //hibernate
         sf.getCurrentSession().getTransaction().commit();
     }
+    
+    @Test
+    public void getAll() {
+        List temp = clienteStdDao.getAll();
+        int j;
+        for(int i = 0; i<temp.size(); i++){
+            j = i+1;
+            System.out.println("Elemento "+j+": "+temp.get(i).toString());
+        }
+        //hibernate
+        sf.getCurrentSession().getTransaction().commit();
+    }
+    
+    @Test
+    public void getAllActive(){
+        List temp = clienteStdDao.getAllActive();
+        int j;
+        for(int i = 0; i<temp.size(); i++){
+            j = i+1;
+            System.out.println("Elemento Activo "+j+": "+temp.get(i).toString());
+        }
+        //hibernate
+        sf.getCurrentSession().getTransaction().commit();
+    }
+    
+    @Test
+    public void getById(){
+        //verificar que exista el cliente en la bd
+        EnP1mCliente cliente = clienteStdDao.getById("72343510");
+        System.out.println("Cliente por ID: "+cliente.toString());
+ 
+        //hibernate
+        sf.getCurrentSession().getTransaction().commit();
+    }
+    
+    @Test
+    public void update(){
+        clienteStd.setCliApePat("Virgolio");
+        clienteStdDao.update(clienteStd);
+        
+        //hibernate
+        sf.getCurrentSession().getTransaction().commit();
+    }
+    
+    @Test
+    public void saveOrUpdate(){
+        clienteStd.setCliCod("26154875");
+        clienteStd.setCliApePat("PapaNoel");
+        clienteStdDao.saveOrUpdate(clienteStd);
+        
+        //hibernate
+        sf.getCurrentSession().getTransaction().commit();
+    }
+    
+    
 }
