@@ -451,3 +451,4 @@ INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `
 INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (446, 102, 4, '1122', 'Valores emitidos por el sistema financiero', 'A');
 
 COMMIT;
+
