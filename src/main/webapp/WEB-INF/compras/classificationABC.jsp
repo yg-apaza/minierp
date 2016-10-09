@@ -30,6 +30,9 @@
                                 <li>
                                     <a href="#">Inventarios</a>
                                 </li>
+                                 <li>
+                                    <a href="${pageContext.request.contextPath}/secured/compras/limiteMaximo">Stock</a>
+                                </li>
                             </ul>
                         </li>
                         <li>
@@ -84,36 +87,6 @@
                 </div>
                 
         </div>
-        
-        <script>
-            $(document).ready(
-                    
-                function(){
-                    $("#class_select").change(
-                        function(){
-                            
-                            var clase = $("#class_select").val();
-                            $("#id_table").find("tr:gt(0)").remove();
-                            $.get('clasificacionABC',{clase: clase},function(productosR){
-                            
-                            
-                            <c:forEach items = "${productos}" var = "producto">    
-                            $("#id_table").append(
-                                    $("<tr>").append(
-                                        "<td>"+ "<c:out value="${producto.id.proCod}" /> "+ "</td>"+
-                                        "<td>"+ "<c:out value="${producto.proDet}" />" + "</td>" +
-                                        "<td>"+ "<c:out value="${producto.proPreUni}" />" + "</td>" +
-                                        "<td>"+ "<c:out value="${producto.proStk}" /> "+ "</td>"
-                                    )
-                            );
-                            </c:forEach>
-                            });                        
-                        }
-                    );
-                }
-            );
-        </script>
-        
-    </jsp:attribute>
-        
+        </div>
+    </jsp:attribute>  
 </minierptemplate:template>

@@ -26,6 +26,9 @@
                                 <li>
                                    <a href="${pageContext.request.contextPath}/secured/compras/inventario">Inventario</a>
                                 </li>
+                                <li>
+                                    <a href="${pageContext.request.contextPath}/secured/compras/limiteMaximo">Stock</a>
+                                </li>
                             </ul>
                         </li>
                         <li>
