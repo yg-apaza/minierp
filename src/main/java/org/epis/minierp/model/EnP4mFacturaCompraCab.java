@@ -15,8 +15,9 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "en_p4m_factura_compra_cab",catalog = "episerp")
+@Table(name = "en_p4m_factura_compra_cab", catalog = "episerp")
 public class EnP4mFacturaCompraCab implements java.io.Serializable {
+
     private String facComCabCod;
     private EnP1mUsuario enP1mUsuario;
     private EnP4mProveedor enP4mProveedor;
@@ -74,6 +75,7 @@ public class EnP4mFacturaCompraCab implements java.io.Serializable {
     }
 
     @Id
+
     @Column(name = "FacComCabCod", unique = true, nullable = false, length = 10)
     public String getFacComCabCod() {
         return this.facComCabCod;
@@ -228,5 +230,5 @@ public class EnP4mFacturaCompraCab implements java.io.Serializable {
     @Override
     public String toString() {
         return "EnP4mFacturaCompraCab{" + "facComCabCod=" + facComCabCod + ", enP1mUsuario=" + enP1mUsuario + ", enP4mProveedor=" + enP4mProveedor + ", taGzzEstadoFactura=" + taGzzEstadoFactura + ", taGzzMetodoPagoFactura=" + taGzzMetodoPagoFactura + ", taGzzMoneda=" + taGzzMoneda + ", taGzzTipoPagoFactura=" + taGzzTipoPagoFactura + ", facComCabFec=" + facComCabFec + ", facComCabTot=" + facComCabTot + ", facComCabDes=" + facComCabDes + ", facComCabSubTot=" + facComCabSubTot + ", facComCabIgv=" + facComCabIgv + ", facComCabObs=" + facComCabObs + ", estRegCod=" + estRegCod + '}';
-    }    
+    }
 }

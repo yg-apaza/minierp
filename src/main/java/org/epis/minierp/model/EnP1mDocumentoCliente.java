@@ -13,6 +13,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "en_p1m_documento_cliente", catalog = "episerp")
 public class EnP1mDocumentoCliente implements java.io.Serializable {
+
     private EnP1mDocumentoClienteId id;
     private EnP1mCliente enP1mCliente;
     private TaGzzTipoDocCliente taGzzTipoDocCliente;
@@ -31,6 +32,7 @@ public class EnP1mDocumentoCliente implements java.io.Serializable {
     }
 
     @EmbeddedId
+
     @AttributeOverrides({
         @AttributeOverride(name = "cliCod", column = @Column(name = "CliCod", nullable = false, length = 15)),
         @AttributeOverride(name = "tipDocCliCod", column = @Column(name = "TipDocCliCod", nullable = false))})

@@ -5,14 +5,17 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "en_p3m_libro_diario",catalog = "episerp")
+@Table(name = "en_p3m_libro_diario", catalog = "episerp")
 public class EnP3mLibroDiario implements java.io.Serializable {
-    private String libDiaCod;
+
+    private Integer libDiaCod;
     private String libDiaPer;
     private char estRegCod;
     private Set enP3mAsientoCabs = new HashSet(0);
@@ -20,26 +23,26 @@ public class EnP3mLibroDiario implements java.io.Serializable {
     public EnP3mLibroDiario() {
     }
 
-    public EnP3mLibroDiario(String libDiaCod, String libDiaPer, char estRegCod) {
-        this.libDiaCod = libDiaCod;
+    public EnP3mLibroDiario(String libDiaPer, char estRegCod) {
         this.libDiaPer = libDiaPer;
         this.estRegCod = estRegCod;
     }
 
-    public EnP3mLibroDiario(String libDiaCod, String libDiaPer, char estRegCod, Set enP3mAsientoCabs) {
-        this.libDiaCod = libDiaCod;
+    public EnP3mLibroDiario(String libDiaPer, char estRegCod, Set enP3mAsientoCabs) {
         this.libDiaPer = libDiaPer;
         this.estRegCod = estRegCod;
         this.enP3mAsientoCabs = enP3mAsientoCabs;
     }
 
     @Id
-    @Column(name = "LibDiaCod", unique = true, nullable = false, length = 10)
-    public String getLibDiaCod() {
+    @GeneratedValue(strategy = IDENTITY)
+
+    @Column(name = "LibDiaCod", unique = true, nullable = false)
+    public Integer getLibDiaCod() {
         return this.libDiaCod;
     }
 
-    public void setLibDiaCod(String libDiaCod) {
+    public void setLibDiaCod(Integer libDiaCod) {
         this.libDiaCod = libDiaCod;
     }
 

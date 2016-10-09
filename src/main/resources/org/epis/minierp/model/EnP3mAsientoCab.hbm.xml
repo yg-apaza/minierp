@@ -1,19 +1,19 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 07/10/2016 12:11:51 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 09/10/2016 12:57:37 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="org.epis.minierp.model.EnP3mAsientoCab" table="en_p3m_asiento_cab" catalog="episerp" optimistic-lock="version">
         <composite-id name="id" class="org.epis.minierp.model.EnP3mAsientoCabId">
             <key-property name="asiCabCod" type="int">
                 <column name="AsiCabCod" />
             </key-property>
-            <key-property name="libDiaCod" type="string">
-                <column name="LibDiaCod" length="10" />
+            <key-property name="libDiaCod" type="int">
+                <column name="LibDiaCod" />
             </key-property>
         </composite-id>
         <many-to-one name="enP3mLibroDiario" class="org.epis.minierp.model.EnP3mLibroDiario" update="false" insert="false" fetch="select">
-            <column name="LibDiaCod" length="10" not-null="true" />
+            <column name="LibDiaCod" not-null="true" />
         </many-to-one>
         <many-to-one name="taGzzMoneda" class="org.epis.minierp.model.TaGzzMoneda" fetch="select">
             <column name="MonCod" not-null="true" />
@@ -39,7 +39,7 @@
         <set name="enP3tAsientoDets" table="en_p3t_asiento_det" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="AsiCabCod" not-null="true" />
-                <column name="LibDiaCod" length="10" not-null="true" />
+                <column name="LibDiaCod" not-null="true" />
             </key>
             <one-to-many class="org.epis.minierp.model.EnP3tAsientoDet" />
         </set>

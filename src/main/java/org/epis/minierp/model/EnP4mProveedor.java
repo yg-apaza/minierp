@@ -10,8 +10,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "en_p4m_proveedor",catalog = "episerp")
+@Table(name = "en_p4m_proveedor", catalog = "episerp")
 public class EnP4mProveedor implements java.io.Serializable {
+
     private String proCod;
     private String proDet;
     private String proCon;
@@ -52,6 +53,7 @@ public class EnP4mProveedor implements java.io.Serializable {
     }
 
     @Id
+
     @Column(name = "ProCod", unique = true, nullable = false, length = 15)
     public String getProCod() {
         return this.proCod;

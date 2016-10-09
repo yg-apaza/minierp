@@ -14,8 +14,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "en_p3m_cuenta",catalog = "episerp")
+@Table(name = "en_p3m_cuenta", catalog = "episerp")
 public class EnP3mCuenta implements java.io.Serializable {
+
     private Integer cueCod;
     private EnP3mCuenta enP3mCuenta;
     private int cueNiv;
@@ -51,6 +52,7 @@ public class EnP3mCuenta implements java.io.Serializable {
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
+
     @Column(name = "CueCod", unique = true, nullable = false)
     public Integer getCueCod() {
         return this.cueCod;
@@ -144,6 +146,6 @@ public class EnP3mCuenta implements java.io.Serializable {
 
     @Override
     public String toString() {
-        return "EnP3mCuenta{" + "cueCod=" + cueCod + ", enP3mCuenta=" + enP3mCuenta + ", cueNiv=" + cueNiv + ", cueNum=" + cueNum + ", cueDes=" + cueDes + ", estRegCod=" + estRegCod + '}';
+        return "EnP3mCuenta{" + "cueCod=" + cueCod + ", cueNiv=" + cueNiv + ", cueNum=" + cueNum + ", cueDes=" + cueDes + ", estRegCod=" + estRegCod + '}';
     }
 }

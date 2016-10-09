@@ -5,13 +5,14 @@ import javax.persistence.Embeddable;
 
 @Embeddable
 public class EnP3tPlantillaDetId implements java.io.Serializable {
+
     private int plaDetCod;
-    private String plaCod;
+    private int plaCod;
 
     public EnP3tPlantillaDetId() {
     }
 
-    public EnP3tPlantillaDetId(int plaDetCod, String plaCod) {
+    public EnP3tPlantillaDetId(int plaDetCod, int plaCod) {
         this.plaDetCod = plaDetCod;
         this.plaCod = plaCod;
     }
@@ -25,12 +26,12 @@ public class EnP3tPlantillaDetId implements java.io.Serializable {
         this.plaDetCod = plaDetCod;
     }
 
-    @Column(name = "PlaCod", nullable = false, length = 10)
-    public String getPlaCod() {
+    @Column(name = "PlaCod", nullable = false)
+    public int getPlaCod() {
         return this.plaCod;
     }
 
-    public void setPlaCod(String plaCod) {
+    public void setPlaCod(int plaCod) {
         this.plaCod = plaCod;
     }
 
@@ -47,19 +48,15 @@ public class EnP3tPlantillaDetId implements java.io.Serializable {
         EnP3tPlantillaDetId castOther = (EnP3tPlantillaDetId) other;
 
         return (this.getPlaDetCod() == castOther.getPlaDetCod())
-                && ((this.getPlaCod() == castOther.getPlaCod()) || (this.getPlaCod() != null && castOther.getPlaCod() != null && this.getPlaCod().equals(castOther.getPlaCod())));
+                && (this.getPlaCod() == castOther.getPlaCod());
     }
 
     public int hashCode() {
         int result = 17;
 
         result = 37 * result + this.getPlaDetCod();
-        result = 37 * result + (getPlaCod() == null ? 0 : this.getPlaCod().hashCode());
+        result = 37 * result + this.getPlaCod();
         return result;
     }
 
-    @Override
-    public String toString() {
-        return "EnP3tPlantillaDetId{" + "plaDetCod=" + plaDetCod + ", plaCod=" + plaCod + '}';
-    }
 }

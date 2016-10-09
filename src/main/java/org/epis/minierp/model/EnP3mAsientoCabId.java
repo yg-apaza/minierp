@@ -5,13 +5,14 @@ import javax.persistence.Embeddable;
 
 @Embeddable
 public class EnP3mAsientoCabId implements java.io.Serializable {
+
     private int asiCabCod;
-    private String libDiaCod;
+    private int libDiaCod;
 
     public EnP3mAsientoCabId() {
     }
 
-    public EnP3mAsientoCabId(int asiCabCod, String libDiaCod) {
+    public EnP3mAsientoCabId(int asiCabCod, int libDiaCod) {
         this.asiCabCod = asiCabCod;
         this.libDiaCod = libDiaCod;
     }
@@ -25,12 +26,12 @@ public class EnP3mAsientoCabId implements java.io.Serializable {
         this.asiCabCod = asiCabCod;
     }
 
-    @Column(name = "LibDiaCod", nullable = false, length = 10)
-    public String getLibDiaCod() {
+    @Column(name = "LibDiaCod", nullable = false)
+    public int getLibDiaCod() {
         return this.libDiaCod;
     }
 
-    public void setLibDiaCod(String libDiaCod) {
+    public void setLibDiaCod(int libDiaCod) {
         this.libDiaCod = libDiaCod;
     }
 
@@ -47,19 +48,15 @@ public class EnP3mAsientoCabId implements java.io.Serializable {
         EnP3mAsientoCabId castOther = (EnP3mAsientoCabId) other;
 
         return (this.getAsiCabCod() == castOther.getAsiCabCod())
-                && ((this.getLibDiaCod() == castOther.getLibDiaCod()) || (this.getLibDiaCod() != null && castOther.getLibDiaCod() != null && this.getLibDiaCod().equals(castOther.getLibDiaCod())));
+                && (this.getLibDiaCod() == castOther.getLibDiaCod());
     }
 
     public int hashCode() {
         int result = 17;
 
         result = 37 * result + this.getAsiCabCod();
-        result = 37 * result + (getLibDiaCod() == null ? 0 : this.getLibDiaCod().hashCode());
+        result = 37 * result + this.getLibDiaCod();
         return result;
     }
 
-    @Override
-    public String toString() {
-        return "EnP3mAsientoCabId{" + "asiCabCod=" + asiCabCod + ", libDiaCod=" + libDiaCod + '}';
-    }
 }

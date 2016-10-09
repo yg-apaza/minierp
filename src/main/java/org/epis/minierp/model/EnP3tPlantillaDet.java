@@ -11,8 +11,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "en_p3t_plantilla_det",catalog = "episerp")
+@Table(name = "en_p3t_plantilla_det", catalog = "episerp")
 public class EnP3tPlantillaDet implements java.io.Serializable {
+
     private EnP3tPlantillaDetId id;
     private EnP3mCuenta enP3mCuenta;
     private EnP3mPlantillaCab enP3mPlantillaCab;
@@ -31,9 +32,10 @@ public class EnP3tPlantillaDet implements java.io.Serializable {
     }
 
     @EmbeddedId
+
     @AttributeOverrides({
         @AttributeOverride(name = "plaDetCod", column = @Column(name = "PlaDetCod", nullable = false)),
-        @AttributeOverride(name = "plaCod", column = @Column(name = "PlaCod", nullable = false, length = 10))})
+        @AttributeOverride(name = "plaCod", column = @Column(name = "PlaCod", nullable = false))})
     public EnP3tPlantillaDetId getId() {
         return this.id;
     }
