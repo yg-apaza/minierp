@@ -107,4 +107,33 @@ public class DbMoreUtil {
         DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         return format.parse(myDate);
     }
+    
+    /**
+     * Retorna un int de un Object siempre y cuando este sea un Entero y no letras
+     * o simbolos, similar a (int)subInt
+     * @param supInt
+     * @return 
+     */
+    public static int getInt(Object supInt){
+        return Integer.parseInt(supInt.toString());
+    }
+    
+    /**
+     * Retorna un char de un Object, la primera letra en caso de una palabra
+     * compuesta
+     * @param supChar
+     * @return 
+     */
+    public static char getChar(Object supChar){
+        return supChar.toString().charAt(0);
+    }
+    
+    /**
+     * Casteo de un Object a String
+     * @param supString
+     * @return 
+     */
+    public static String getString(Object supString){
+        return (String) supString;
+    }
 }
