@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 07/10/2016 12:11:51 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 09/10/2016 12:57:37 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="org.epis.minierp.model.EnP3mPlantillaCab" table="en_p3m_plantilla_cab" catalog="episerp" optimistic-lock="version">
-        <id name="plaCod" type="string">
-            <column name="PlaCod" length="10" />
-            <generator class="assigned" />
+        <id name="plaCod" type="java.lang.Integer">
+            <column name="PlaCod" />
+            <generator class="identity" />
         </id>
         <property name="plaDet" type="string">
             <column name="PlaDet" length="90" />
@@ -14,12 +14,15 @@
         <property name="plaGlo" type="string">
             <column name="PlaGlo" length="60" />
         </property>
+        <property name="plaHab" type="boolean">
+            <column name="PlaHab" not-null="true" />
+        </property>
         <property name="estRegCod" type="char">
             <column name="EstRegCod" length="1" not-null="true" />
         </property>
         <set name="enP3tPlantillaDets" table="en_p3t_plantilla_det" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="PlaCod" length="10" not-null="true" />
+                <column name="PlaCod" not-null="true" />
             </key>
             <one-to-many class="org.epis.minierp.model.EnP3tPlantillaDet" />
         </set>

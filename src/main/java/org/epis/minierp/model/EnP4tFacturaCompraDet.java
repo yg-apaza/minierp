@@ -12,8 +12,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "en_p4t_factura_compra_det",catalog = "episerp")
+@Table(name = "en_p4t_factura_compra_det", catalog = "episerp")
 public class EnP4tFacturaCompraDet implements java.io.Serializable {
+
     private EnP4tFacturaCompraDetId id;
     private EnP2mProducto enP2mProducto;
     private EnP4mFacturaCompraCab enP4mFacturaCompraCab;
@@ -32,6 +33,7 @@ public class EnP4tFacturaCompraDet implements java.io.Serializable {
     }
 
     @EmbeddedId
+
     @AttributeOverrides({
         @AttributeOverride(name = "facComDetCod", column = @Column(name = "FacComDetCod", nullable = false)),
         @AttributeOverride(name = "facComCabCod", column = @Column(name = "FacComCabCod", nullable = false, length = 10))})

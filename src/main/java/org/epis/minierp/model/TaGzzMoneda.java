@@ -12,8 +12,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "ta_gzz_moneda",catalog = "episerp")
+@Table(name = "ta_gzz_moneda", catalog = "episerp")
 public class TaGzzMoneda implements java.io.Serializable {
+
     private Integer monCod;
     private String monDet;
     private char estRegCod;
@@ -43,6 +44,7 @@ public class TaGzzMoneda implements java.io.Serializable {
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
+
     @Column(name = "MonCod", unique = true, nullable = false)
     public Integer getMonCod() {
         return this.monCod;

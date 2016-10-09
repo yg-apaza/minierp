@@ -3,15 +3,18 @@ package org.epis.minierp.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "en_p3m_cuenta_banco",catalog = "episerp")
+@Table(name = "en_p3m_cuenta_banco", catalog = "episerp")
 public class EnP3mCuentaBanco implements java.io.Serializable {
-    private int cueBanCod;
+
+    private Integer cueBanCod;
     private EnP3mCuenta enP3mCuenta;
     private TaGzzBanco taGzzBanco;
     private String cueBanNum;
@@ -20,8 +23,7 @@ public class EnP3mCuentaBanco implements java.io.Serializable {
     public EnP3mCuentaBanco() {
     }
 
-    public EnP3mCuentaBanco(int cueBanCod, EnP3mCuenta enP3mCuenta, TaGzzBanco taGzzBanco, String cueBanNum, char estRegCod) {
-        this.cueBanCod = cueBanCod;
+    public EnP3mCuentaBanco(EnP3mCuenta enP3mCuenta, TaGzzBanco taGzzBanco, String cueBanNum, char estRegCod) {
         this.enP3mCuenta = enP3mCuenta;
         this.taGzzBanco = taGzzBanco;
         this.cueBanNum = cueBanNum;
@@ -29,12 +31,14 @@ public class EnP3mCuentaBanco implements java.io.Serializable {
     }
 
     @Id
+    @GeneratedValue(strategy = IDENTITY)
+
     @Column(name = "CueBanCod", unique = true, nullable = false)
-    public int getCueBanCod() {
+    public Integer getCueBanCod() {
         return this.cueBanCod;
     }
 
-    public void setCueBanCod(int cueBanCod) {
+    public void setCueBanCod(Integer cueBanCod) {
         this.cueBanCod = cueBanCod;
     }
 

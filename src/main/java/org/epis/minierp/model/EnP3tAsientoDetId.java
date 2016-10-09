@@ -5,14 +5,15 @@ import javax.persistence.Embeddable;
 
 @Embeddable
 public class EnP3tAsientoDetId implements java.io.Serializable {
+
     private int asiDetCod;
     private int asiCabCod;
-    private String libDiaCod;
+    private int libDiaCod;
 
     public EnP3tAsientoDetId() {
     }
 
-    public EnP3tAsientoDetId(int asiDetCod, int asiCabCod, String libDiaCod) {
+    public EnP3tAsientoDetId(int asiDetCod, int asiCabCod, int libDiaCod) {
         this.asiDetCod = asiDetCod;
         this.asiCabCod = asiCabCod;
         this.libDiaCod = libDiaCod;
@@ -36,12 +37,12 @@ public class EnP3tAsientoDetId implements java.io.Serializable {
         this.asiCabCod = asiCabCod;
     }
 
-    @Column(name = "LibDiaCod", nullable = false, length = 10)
-    public String getLibDiaCod() {
+    @Column(name = "LibDiaCod", nullable = false)
+    public int getLibDiaCod() {
         return this.libDiaCod;
     }
 
-    public void setLibDiaCod(String libDiaCod) {
+    public void setLibDiaCod(int libDiaCod) {
         this.libDiaCod = libDiaCod;
     }
 
@@ -59,7 +60,7 @@ public class EnP3tAsientoDetId implements java.io.Serializable {
 
         return (this.getAsiDetCod() == castOther.getAsiDetCod())
                 && (this.getAsiCabCod() == castOther.getAsiCabCod())
-                && ((this.getLibDiaCod() == castOther.getLibDiaCod()) || (this.getLibDiaCod() != null && castOther.getLibDiaCod() != null && this.getLibDiaCod().equals(castOther.getLibDiaCod())));
+                && (this.getLibDiaCod() == castOther.getLibDiaCod());
     }
 
     public int hashCode() {
@@ -67,12 +68,8 @@ public class EnP3tAsientoDetId implements java.io.Serializable {
 
         result = 37 * result + this.getAsiDetCod();
         result = 37 * result + this.getAsiCabCod();
-        result = 37 * result + (getLibDiaCod() == null ? 0 : this.getLibDiaCod().hashCode());
+        result = 37 * result + this.getLibDiaCod();
         return result;
     }
 
-    @Override
-    public String toString() {
-        return "EnP3tAsientoDetId{" + "asiDetCod=" + asiDetCod + ", asiCabCod=" + asiCabCod + ", libDiaCod=" + libDiaCod + '}';
-    }
 }

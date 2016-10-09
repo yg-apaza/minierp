@@ -18,6 +18,7 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name = "en_p1m_factura_venta_cab", catalog = "episerp")
 public class EnP1mFacturaVentaCab implements java.io.Serializable {
+
     private String facVenCabCod;
     private EnP1mCliente enP1mCliente;
     private EnP1mUsuario enP1mUsuario;
@@ -77,6 +78,7 @@ public class EnP1mFacturaVentaCab implements java.io.Serializable {
     }
 
     @Id
+
     @Column(name = "FacVenCabCod", unique = true, nullable = false, length = 10)
     public String getFacVenCabCod() {
         return this.facVenCabCod;

@@ -5,6 +5,7 @@ import javax.persistence.Embeddable;
 
 @Embeddable
 public class EnP1mDocumentoClienteId implements java.io.Serializable {
+
     private String cliCod;
     private int tipDocCliCod;
 
@@ -58,8 +59,4 @@ public class EnP1mDocumentoClienteId implements java.io.Serializable {
         return result;
     }
 
-    @Override
-    public String toString() {
-        return "EnP1mDocumentoClienteId{" + "cliCod=" + cliCod + ", tipDocCliCod=" + tipDocCliCod + '}';
-    }
 }

@@ -48,6 +48,12 @@ org.epis.minierp.controller.*
 
 Servlets que interactuan directamente con los JSP. Todos los servlets deben estar registrados en el archivo WEB-INF/web.xml
 
+### Business
+
+org.epis.minierp.business.*
+
+Capa de la Lógica del Negocio
+
 ### DAO (Data Access Object)
 
 org.epis.minierp.dao.*
