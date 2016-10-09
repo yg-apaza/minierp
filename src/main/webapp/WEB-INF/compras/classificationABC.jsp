@@ -27,6 +27,9 @@
                                 <li>
                                     <a href="#">Inventarios</a>
                                 </li>
+                                 <li>
+                                    <a href="${pageContext.request.contextPath}/secured/compras/limiteMaximo">Stock</a>
+                                </li>
                             </ul>
                         </li>
                         <li>
@@ -85,6 +88,6 @@
                 </table>            
                 </div> 
         </div>
-        
+        </div>
     </jsp:attribute>  
 </minierptemplate:template>

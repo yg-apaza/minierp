@@ -149,6 +149,18 @@
         <servlet-name>ClasificacionABCController</servlet-name>
         <url-pattern>/secured/compras/clasificacionABC</url-pattern>
     </servlet-mapping>
+    <!--Modulo de Compras Limite Maximo -->
+     <servlet>
+        <description/>
+        <display-name>LimiteMaximoController</display-name>
+        <servlet-name>LimiteMaximoController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.compras.LimiteMaximoController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LimiteMaximoController</servlet-name>
+        <url-pattern>/secured/compras/limiteMaximo</url-pattern>
+    </servlet-mapping>
+
     <!-- Modulo de Contabilidad -->
     <servlet>
         <description/>
