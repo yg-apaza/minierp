@@ -76,17 +76,17 @@
                 
             </thread>
             <tbody>
-               <!--<c:forEach items="${operaciones}" var="u"> -->
-                        <tr>
-                            <td>num</td>
-                            <td>fech</td>
-                            <td>desc</td>
-                            <td>cod</td>
-                            <td>denomi</td>
-                            <td>deudo</td>
-                            <td>acred</td>
-                        </tr>
-                <!--</c:forEach>     -->
+                <c:forEach items="${operaciones}" var="u"> 
+                         <tr>
+                             <td>${u.asiDetCod}</td>
+                             <td><fmt:formatDate value="${u.asiCabFec}" pattern="dd/MM/yyyy" /></td>
+                             <td>${u.cueCod}</td>
+                             <td>${u.cueCod}</td>
+                             <td>${u.cueDes}</td>
+                             <td>${u.debe}</td>
+                             <td>${u.haber}</td>
+                         </tr>
+                 </c:forEach>  
                 <!---Ejemplos-->
                 <tr>
                     <td>1</td>
