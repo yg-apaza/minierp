@@ -151,13 +151,13 @@
     </servlet-mapping>
     <servlet>
         <description/>
-        <display-name>GenCodBarrasController</display-name>
-        <servlet-name>GenCodBarrasController</servlet-name>
-        <servlet-class>org.epis.minierp.controller.perifericos.GenCodBarrasController</servlet-class>
+        <display-name>ImpresoraBarrasController</display-name>
+        <servlet-name>ImpresoraBarrasController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.perifericos.ImpresoraBarrasController</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>GenCodBarrasController</servlet-name>
-        <url-pattern>/secured/perifericos/genCodBarras</url-pattern>
+        <servlet-name>ImpresoraBarrasController</servlet-name>
+        <url-pattern>/secured/perifericos/impresoraBarras</url-pattern>
     </servlet-mapping>
     <servlet>
         <description/>
