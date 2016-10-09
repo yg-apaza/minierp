@@ -169,6 +169,26 @@
         <servlet-name>LecCodBarrasController</servlet-name>
         <url-pattern>/secured/perifericos/lecCodBarras</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <description/>
+        <display-name>BarCodeInventarioController</display-name>
+        <servlet-name>BarCodeInventarioController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.perifericos.BarCodeInventarioController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>BarCodeInventarioController</servlet-name>
+        <url-pattern>/secured/perifericos/barCodeInventario</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <description/>
+        <display-name>AddStockController</display-name>
+        <servlet-name>AddStockController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.perifericos.AddStockController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddStockController</servlet-name>
+        <url-pattern>/secured/perifericos/addStock</url-pattern>
+    </servlet-mapping>
     <!-- Modulo de Ventas -->
     <servlet>
         <description/>

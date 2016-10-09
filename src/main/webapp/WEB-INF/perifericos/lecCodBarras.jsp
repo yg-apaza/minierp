@@ -37,7 +37,19 @@
                         </div>
                     </div>
                 </div>
-            </div>            
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <a class="btn btn-success" href="${pageContext.request.contextPath}/secured/perifericos/barCodeInventario" role="button">
+                                <i class="fa fa-plus"></i>
+                                Inventario
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>                         
         </div>
     </jsp:attribute>
 </minierptemplate:template>
