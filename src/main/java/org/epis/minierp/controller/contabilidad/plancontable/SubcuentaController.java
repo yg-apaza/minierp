@@ -1,13 +1,12 @@
 package org.epis.minierp.controller.contabilidad.plancontable;
 
 import java.io.IOException;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.epis.minierp.dao.contabilidad.CuentaDao;
-import org.epis.minierp.dto.CuentaDto;
+import org.epis.minierp.model.EnP3mCuenta;
 
 public class SubcuentaController extends HttpServlet
 {
@@ -15,12 +14,48 @@ public class SubcuentaController extends HttpServlet
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Redireccionar al Plan Contable general si es que no hay cuenta
-        int cuentaId = Integer.parseInt(request.getParameter("cuenta"));
+        if(request.getParameterMap().containsKey("cuenta"))
+        {
+            int cuentaId = Integer.parseInt(request.getParameter("cuenta"));
+            CuentaDao dao = new CuentaDao();
+            EnP3mCuenta cuenta = dao.getByIdActive(cuentaId);
+            System.out.println(cuenta);
+            request.setAttribute("cuenta", cuenta);
+            request.getRequestDispatcher("/WEB-INF/contabilidad/plancontable/subcuenta.jsp").forward(request, response);
+        }
+        else
+            response.sendRedirect(request.getContextPath() + "/secured/contabilidad/plan");
+    }
+    
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String action = request.getParameter("accion");
+        int origen = Integer.parseInt(request.getParameter("origen"));
+        
         CuentaDao dao = new CuentaDao();
-        CuentaDto cuenta = dao.getByIdActive(cuentaId);
-        cuenta.setChilds(dao.getChildsActive(cuentaId));
-        request.setAttribute("cuenta", cuenta);
-        request.getRequestDispatcher("/WEB-INF/contabilidad/plancontable/subcuenta.jsp").forward(request, response);
+        switch(action) {
+            case "create":
+                int cuePad = Integer.parseInt(request.getParameter("cuePad"));
+                int cueNiv = Integer.parseInt(request.getParameter("cueNiv"));
+                String cueDes = request.getParameter("cueDes");
+                String cueNum = request.getParameter("cueNum1") + request.getParameter("cueNum2");
+                EnP3mCuenta c = new EnP3mCuenta();
+                c.setEnP3mCuenta(dao.getByIdActive(cuePad));
+                c.setCueNiv(cueNiv);
+                c.setCueDes(cueDes);
+                c.setCueNum(cueNum);
+                c.setEstRegCod('A');
+                dao.save(c);
+                break;
+            case "update":
+                int updateCueCod = Integer.parseInt(request.getParameter("cueCod"));
+                String updateCueDes = request.getParameter("cueDes");
+                dao.update(updateCueCod, updateCueDes);
+                break;
+            case "delete":
+                int deleteCueCod = Integer.parseInt(request.getParameter("cueCod"));
+                dao.delete(deleteCueCod);
+        }
+        response.sendRedirect(request.getContextPath() + "/secured/contabilidad/plan/subcuenta?cuenta=" + origen);
     }
 }

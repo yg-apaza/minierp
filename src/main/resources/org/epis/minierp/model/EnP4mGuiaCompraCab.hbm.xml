@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 09/10/2016 12:57:37 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="org.epis.minierp.model.EnP4mGuiaCompraCab" table="en_p4m_guia_compra_cab" catalog="episerp" optimistic-lock="version">
+        <id name="guiComCabCod" type="string">
+            <column name="GuiComCabCod" length="10" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="enP4mFacturaCompraCab" class="org.epis.minierp.model.EnP4mFacturaCompraCab" fetch="select">
+            <column name="FacComCabCod" length="10" not-null="true" />
+        </many-to-one>
+        <many-to-one name="enP4mProveedor" class="org.epis.minierp.model.EnP4mProveedor" fetch="select">
+            <column name="ProCod" length="15" not-null="true" />
+        </many-to-one>
+        <property name="guiComCabPunPar" type="string">
+            <column name="GuiComCabPunPar" length="30" />
+        </property>
+        <property name="guiComCabPunLle" type="string">
+            <column name="GuiComCabPunLle" length="30" />
+        </property>
+        <property name="guiComCabFec" type="date">
+            <column name="GuiComCabFec" length="10" not-null="true" />
+        </property>
+        <property name="estRegCod" type="char">
+            <column name="EstRegCod" length="1" not-null="true" />
+        </property>
+        <set name="enP4tGuiaCompraDets" table="en_p4t_guia_compra_det" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="GuiComCabCod" length="10" not-null="true" />
+            </key>
+            <one-to-many class="org.epis.minierp.model.EnP4tGuiaCompraDet" />
+        </set>
+    </class>
+</hibernate-mapping>

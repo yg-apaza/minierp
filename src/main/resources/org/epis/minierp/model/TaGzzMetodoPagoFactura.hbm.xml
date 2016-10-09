@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 09/10/2016 12:57:37 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="org.epis.minierp.model.TaGzzMetodoPagoFactura" table="ta_gzz_metodo_pago_factura" catalog="episerp" optimistic-lock="version">
+        <id name="metPagCod" type="java.lang.Integer">
+            <column name="MetPagCod" />
+            <generator class="identity" />
+        </id>
+        <property name="metPagDet" type="string">
+            <column name="MetPagDet" length="10" not-null="true" />
+        </property>
+        <property name="estRegCod" type="char">
+            <column name="EstRegCod" length="1" not-null="true" />
+        </property>
+        <set name="enP4mFacturaCompraCabs" table="en_p4m_factura_compra_cab" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="MetPagCod" not-null="true" />
+            </key>
+            <one-to-many class="org.epis.minierp.model.EnP4mFacturaCompraCab" />
+        </set>
+        <set name="enP1mFacturaVentaCabs" table="en_p1m_factura_venta_cab" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="MetPagCod" not-null="true" />
+            </key>
+            <one-to-many class="org.epis.minierp.model.EnP1mFacturaVentaCab" />
+        </set>
+    </class>
+</hibernate-mapping>

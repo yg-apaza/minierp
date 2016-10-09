@@ -5,6 +5,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.epis.minierp.dao.contabilidad.BalanceDao;
 
 public class BalanceGeneralController extends HttpServlet {
 
@@ -20,6 +21,9 @@ public class BalanceGeneralController extends HttpServlet {
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        BalanceDao dao = new BalanceDao();
+        System.out.println(dao.getAll());
         request.getRequestDispatcher("/WEB-INF/contabilidad/balanceGeneral.jsp").forward(request, response);
     }
+    
 }

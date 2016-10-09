@@ -1,21 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
-    <session-factory name="hibernateSessionFactory">
-        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="hibernate.connection.password">1234</property>
-        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/episerp</property>
-        <property name="hibernate.connection.username">alumno</property>
-        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
-        <property name="hibernate.show_sql">true</property>
-        <property name="hibernate.format_sql">true</property>
-        <property name="hibernate.current_session_context_class">thread</property>
-        <!--   Mapeo de clases -->
-        <mapping class="org.epis.minierp.model.Usuario"/>
-        <mapping class="org.epis.minierp.model.TipoUsuario"/>
-        <mapping class="org.epis.minierp.model.EstadoCivil"/>
-        <mapping class="org.epis.minierp.model.Cuenta"/>
-        <mapping class="org.epis.minierp.model.AsientoDet"/>
-        <mapping class="org.epis.minierp.model.AsientoDetId"/>
-    </session-factory>
+  <session-factory name="hibernateSessionFactory">
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.password">1234</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/episerp</property>
+    <property name="hibernate.connection.username">alumno</property>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.show_sql">true</property>
+    <property name="hibernate.format_sql">true</property>
+    <property name="hibernate.current_session_context_class">thread</property>
+    <property name="hibernate.enable_lazy_load_no_trans">true</property>
+    <!--   Mapeo de clases -->
+    <mapping resource="org/epis/minierp/model/TaGzzTipoDocCliente.hbm.xml"/>
+    <mapping resource="org/epis/minierp/model/TaGzzTipoDocUsuario.hbm.xml"/>
+    <mapping resource="org/epis/minierp/model/TaGzzTipoComprobante.hbm.xml"/>
+    <mapping resource="org/epis/minierp/model/EnP1tPreventaDet.hbm.xml"/>
+    <mapping resource="org/epis/minierp/model/EnP3mPlantillaCab.hbm.xml"/>
+    <mapping resource="org/epis/minierp/model/EnP1cPreventaRealizadas.hbm.xml"/>
+    <mapping resource="org/epis/minierp/model/EnP3mAsientoCab.hbm.xml"/>
+    <mapping resource="org/epis/minierp/model/EnP2mAlmacen.hbm.xml"/>
+    <mapping resource="org/epis/minierp/model/EnP4tGuiaCompraDet.hbm.xml"/>
+    <mapping resource="org/epis/minierp/model/EnP1mUsuario.hbm.xml"/>
+    <mapping resource="org/epis/minierp/model/EnP2mClaseProducto.hbm.xml"/>
+    <mapping resource="org/epis/minierp/model/EnP1mDocumentoCliente.hbm.xml"/>
+    <mapping resource="org/epis/minierp/model/EnP2mProducto.hbm.xml"/>
+    <mapping resource="org/epis/minierp/model/TaGzzEstadoFactura.hbm.xml"/>
+    <mapping resource="org/epis/minierp/model/TaGzzEstadoCivil.hbm.xml"/>
+    <mapping resource="org/epis/minierp/model/TaGzzTipoPagoFactura.hbm.xml"/>
+    <mapping resource="org/epis/minierp/model/EnP3mLibroDiario.hbm.xml"/>
+    <mapping resource="org/epis/minierp/model/EnP1tFacturaVentaDet.hbm.xml"/>
+    <mapping resource="org/epis/minierp/model/EnP1mFacturaVentaCab.hbm.xml"/>
+    <mapping resource="org/epis/minierp/model/EnP1mPreventaCab.hbm.xml"/>
+    <mapping resource="org/epis/minierp/model/EnP3mCuentaBanco.hbm.xml"/>
+    <mapping resource="org/epis/minierp/model/EnP2mSubclaseProducto.hbm.xml"/>
+    <mapping resource="org/epis/minierp/model/TaGzzTipoDocProveedor.hbm.xml"/>
+    <mapping resource="org/epis/minierp/model/EnP4mDocumentoProveedor.hbm.xml"/>
+    <mapping resource="org/epis/minierp/model/EnP4tFacturaCompraDet.hbm.xml"/>
+    <mapping resource="org/epis/minierp/model/TaGzzUnidadMed.hbm.xml"/>
+    <mapping resource="org/epis/minierp/model/TaGzzMoneda.hbm.xml"/>
+    <mapping resource="org/epis/minierp/model/EnP4mFacturaCompraCab.hbm.xml"/>
+    <mapping resource="org/epis/minierp/model/EnP4mGuiaCompraCab.hbm.xml"/>
+    <mapping resource="org/epis/minierp/model/TaGzzBanco.hbm.xml"/>
+    <mapping resource="org/epis/minierp/model/EnP1mDocumentoUsuario.hbm.xml"/>
+    <mapping resource="org/epis/minierp/model/EnP1tPagosCuotasDet.hbm.xml"/>
+    <mapping resource="org/epis/minierp/model/EnP1mCliente.hbm.xml"/>
+    <mapping resource="org/epis/minierp/model/EnP4mProveedor.hbm.xml"/>
+    <mapping resource="org/epis/minierp/model/TaGzzMetodoPagoFactura.hbm.xml"/>
+    <mapping resource="org/epis/minierp/model/EnP1mPagosCuotasCab.hbm.xml"/>
+    <mapping resource="org/epis/minierp/model/EnP3tAsientoDet.hbm.xml"/>
+    <mapping resource="org/epis/minierp/model/EnP3tPlantillaDet.hbm.xml"/>
+    <mapping resource="org/epis/minierp/model/EnP3mCuenta.hbm.xml"/>
+    <mapping resource="org/epis/minierp/model/TaGzzTipoUsuario.hbm.xml"/>
+    <mapping class="org.epis.minierp.dao.contabilidad.cajaBancos.CajaModel"/>
+    <mapping class="org.epis.minierp.dao.contabilidad.cajaBancos.BancosModel"/>
+    <mapping class="org.epis.minierp.dao.contabilidad.LibroDiario"/>
+  </session-factory>
 </hibernate-configuration>

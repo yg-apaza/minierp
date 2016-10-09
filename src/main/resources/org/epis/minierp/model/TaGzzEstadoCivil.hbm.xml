@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 09/10/2016 12:57:37 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="org.epis.minierp.model.TaGzzEstadoCivil" table="ta_gzz_estado_civil" catalog="episerp" optimistic-lock="version">
+        <id name="estCivCod" type="java.lang.Integer">
+            <column name="EstCivCod" />
+            <generator class="identity" />
+        </id>
+        <property name="estCivDet" type="string">
+            <column name="EstCivDet" length="20" not-null="true" />
+        </property>
+        <property name="estRegCod" type="char">
+            <column name="EstRegCod" length="1" not-null="true" />
+        </property>
+        <set name="enP1mClientes" table="en_p1m_cliente" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="EstCivCod" not-null="true" />
+            </key>
+            <one-to-many class="org.epis.minierp.model.EnP1mCliente" />
+        </set>
+        <set name="enP1mUsuarios" table="en_p1m_usuario" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="EstCivCod" not-null="true" />
+            </key>
+            <one-to-many class="org.epis.minierp.model.EnP1mUsuario" />
+        </set>
+    </class>
+</hibernate-mapping>

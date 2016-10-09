@@ -13,9 +13,9 @@
             <br>
             <div class="col-md-4">
                 <p>Plan Contable General Empresarial</p>
-                <a class="btn btn-success" href="${pageContext.request.contextPath}/secured/general/plancontable/add" role="button">
+                <a class="btn btn-success" href="${pageContext.request.contextPath}/secured/contabilidad" role="button">
                     <i class="fa fa-plus"></i>
-                    Agregar cuenta
+                    Regresar al Menú Principal
                 </a>
             </div>
             <div class="col-md-8">
@@ -36,25 +36,16 @@
                                                 <tr>
                                                     <th>Número</th>
                                                     <th>Descripción</th>
-                                                    <th>Acción</th>
+                                                    <th>Ir</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <c:forEach items="${c.childs}" var="s">
-                                                    <c:choose>
-                                                        <c:when test="${s.cueNiv == 2}">
-                                                            <tr class="info">
-                                                        </c:when>    
-                                                        <c:otherwise>
-                                                            <tr>
-                                                        </c:otherwise>
-                                                    </c:choose>
+                                                <c:forEach items="${c.enP3mCuentas}" var="s">
+                                                    <tr>
                                                         <td>${s.cueNum}</td>
                                                         <td>${s.cueDes}</td>
                                                         <td>
-                                                            <a href="#" data-toggle="modal" data-target="#agregarModal"><i class="fa fa-plus-square-o fa-2x"></i></a>
-                                                            <a href="#"><i class="fa fa-pencil-square-o fa-2x"></i></a>
-                                                            <a href="#"><i class="fa fa-trash-o fa-2x"></i></a>
+                                                            <a href="${pageContext.request.contextPath}/secured/contabilidad/plan/subcuenta?cuenta=${s.cueCod}"><i class="fa fa-sign-in fa-2x" style="color: black;"></i></a>
                                                         </td>
                                                     </tr>
                                                 </c:forEach>
@@ -65,50 +56,6 @@
                             </div>
                         </div>
                     </c:forEach>
-                </div>
-            </div>
-            <div id="agregarModal" class="modal fade" role="dialog">
-                <div class="modal-dialog">
-                    <!-- Modal content-->
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Agregar cuenta</h4>
-                        </div>
-                        <div class="modal-body">
-                            <div class="form-group">
-                                <div class="alert alert-danger alert-dismissable" id="error">
-                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                                    Ingrese un nombre para la cuenta
-                                </div>
-                                <label>Número de cuenta</label>
-                                <div class="input-group">
-                                    <input class="form-control" disabled>
-                                    <span class="input-group-addon">-</span>
-                                    <select class="form-control">
-                                        <option>0</option>
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
-                                        <option>6</option>
-                                        <option>7</option>
-                                        <option>8</option>
-                                        <option>9</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label>Nombre de cuenta:</label>
-                                <input class="form-control" id="cueNom">
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-outline btn-success">Agregar</button>
-                            <button type="button" class="btn btn-outline btn-danger" data-dismiss="modal">Cancelar</button>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

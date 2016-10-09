@@ -1,16 +1,12 @@
 package org.epis.minierp.dao.general;
 
-import java.lang.reflect.InvocationTargetException;
+
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.apache.commons.beanutils.BeanUtils;
-import org.epis.minierp.dto.UsuarioDto;
-import org.epis.minierp.model.Usuario;
+import org.epis.minierp.model.EnP1mUsuario;
 import org.epis.minierp.util.HibernateUtil;
-import org.hibernate.ObjectNotFoundException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
@@ -24,96 +20,55 @@ public class UsuarioDao
         session = HibernateUtil.getSessionFactory().getCurrentSession();  
     }
     
-    public UsuarioDto getById(String id)
+    public EnP1mUsuario getById(String id)
     {
-        TipoUsuarioDao daoTipUsu = new TipoUsuarioDao();
-        EstadoCivilDao daoEstCiv = new EstadoCivilDao();
-        Usuario usuario = null;
-        UsuarioDto newUsuario = new UsuarioDto();
-        try {
-            usuario =  (Usuario)session.load(Usuario.class, id);
-            BeanUtils.copyProperties(newUsuario, usuario);
-            newUsuario.setTipUsuDet(daoTipUsu.getById(usuario.getTipUsuCod()).getTipUsuDet());
-            newUsuario.setEstCivDet(daoEstCiv.getById(usuario.getEstCivCod()).getEstCivDet());
-        } catch(ObjectNotFoundException e) {
-            return null;
-        } catch (IllegalAccessException | InvocationTargetException ex) {
-            Logger.getLogger(UsuarioDao.class.getName()).log(Level.SEVERE, null, ex);
-            return null;
-        }
-        return newUsuario;
+        EnP1mUsuario usuario = null;
+        usuario =  (EnP1mUsuario)session.load(EnP1mUsuario.class, id);
+        return usuario;
     }
     
-    public UsuarioDto getByIdActive(String id)
+    public EnP1mUsuario getByIdActive(String id)
     {
-        TipoUsuarioDao daoTipUsu = new TipoUsuarioDao();
-        EstadoCivilDao daoEstCiv = new EstadoCivilDao();
-        Usuario usuario = null;
-        UsuarioDto newUsuario = new UsuarioDto();
-        Query query = session.createQuery("from Usuario U where U.usuCod = :id and U.estRegCod = 'A'");
+        EnP1mUsuario usuario = null;
+
+        Query query = session.createQuery("from EnP1mUsuario U where U.usuCod = :id and U.estRegCod = 'A'");
         query.setParameter("id", id);
         query.setMaxResults(1);
         try {
-            List<Usuario> usuarios = query.list();
+            List<EnP1mUsuario> usuarios = query.list();
             usuario =  usuarios.get(0);
-            BeanUtils.copyProperties(newUsuario, usuario);
-            newUsuario.setTipUsuDet(daoTipUsu.getById(usuario.getTipUsuCod()).getTipUsuDet());
-            newUsuario.setEstCivDet(daoEstCiv.getById(usuario.getEstCivCod()).getEstCivDet());
-        } catch (IllegalAccessException | InvocationTargetException | IndexOutOfBoundsException ex) {
+        } catch (IndexOutOfBoundsException ex) {
             Logger.getLogger(UsuarioDao.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
-        return newUsuario;
+        return usuario;
     }
     
-    public UsuarioDto getByUsername(String username)
+    public EnP1mUsuario getByUsername(String username)
     {
-        TipoUsuarioDao daoTipUsu = new TipoUsuarioDao();
-        EstadoCivilDao daoEstCiv = new EstadoCivilDao();
-        Usuario usuario = null;
-        UsuarioDto newUsuario = new UsuarioDto();
-        Query query = session.createQuery("from Usuario U where U.usuLog = :id and U.estRegCod = 'A'");
+        EnP1mUsuario usuario = null;
+        Query query = session.createQuery("from EnP1mUsuario U where U.usuLog = :id and U.estRegCod = 'A'");
         query.setParameter("id", username);
         query.setMaxResults(1);
         try {
-            List<Usuario> usuarios = query.list();
+            List<EnP1mUsuario> usuarios = query.list();
             usuario =  usuarios.get(0);
-            BeanUtils.copyProperties(newUsuario, usuario);
-            newUsuario.setTipUsuDet(daoTipUsu.getById(usuario.getTipUsuCod()).getTipUsuDet());
-            newUsuario.setEstCivDet(daoEstCiv.getById(usuario.getEstCivCod()).getEstCivDet());
-        } catch (IllegalAccessException | InvocationTargetException | IndexOutOfBoundsException ex) {
+        } catch (IndexOutOfBoundsException ex) {
             Logger.getLogger(UsuarioDao.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
-        return newUsuario;
+        return usuario;
     }
     
-    public List<UsuarioDto> getAll()
+    public List<EnP1mUsuario> getAll()
     {
-        TipoUsuarioDao daoTipUsu = new TipoUsuarioDao();
-        EstadoCivilDao daoEstCiv = new EstadoCivilDao();
-        
-        Query query = session.createQuery("from Usuario");
-        List<Usuario> usuarios =  query.list();
-        List<UsuarioDto> nuevos = new ArrayList<UsuarioDto>();
-        
-        for(int i = 0; i < usuarios.size(); i++)
-        {
-            try {
-                UsuarioDto nuevo = new UsuarioDto();
-                BeanUtils.copyProperties(nuevo, usuarios.get(i));
-                nuevo.setTipUsuDet(daoTipUsu.getById(nuevo.getTipUsuCod()).getTipUsuDet());
-                nuevo.setEstCivDet(daoEstCiv.getById(nuevo.getEstCivCod()).getEstCivDet());
-                nuevos.add(nuevo);
-            } catch (IllegalAccessException | InvocationTargetException ex) {
-                return null;
-            }
-        }
-        
-        return nuevos;
+        Query query = session.createQuery("from EnP1mUsuario");
+        List<EnP1mUsuario> usuarios =  query.list();
+
+        return usuarios;
     }
     
-    public void save(Usuario usuario) {
+    public void save(EnP1mUsuario usuario) {
         session.save(usuario);     
     }
 }

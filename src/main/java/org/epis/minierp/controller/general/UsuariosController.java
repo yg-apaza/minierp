@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.epis.minierp.dao.general.UsuarioDao;
-import org.epis.minierp.dto.UsuarioDto;
+import org.epis.minierp.model.EnP1mUsuario;
 
 public class UsuariosController extends HttpServlet
 {
@@ -17,7 +17,7 @@ public class UsuariosController extends HttpServlet
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         UsuarioDao daoUsu = new UsuarioDao();
-        List<UsuarioDto> usuarios = daoUsu.getAll();
+        List<EnP1mUsuario> usuarios = daoUsu.getAll();
         request.setAttribute("usuarios", usuarios);
         request.getRequestDispatcher("/WEB-INF/general/usuarios.jsp").forward(request, response);
     }

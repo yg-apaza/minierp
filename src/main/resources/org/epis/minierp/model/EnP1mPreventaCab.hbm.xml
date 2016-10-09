@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 09/10/2016 12:57:37 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="org.epis.minierp.model.EnP1mPreventaCab" table="en_p1m_preventa_cab" catalog="episerp" optimistic-lock="version">
+        <id name="preVenCabCod" type="string">
+            <column name="PreVenCabCod" length="10" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="enP1mCliente" class="org.epis.minierp.model.EnP1mCliente" fetch="select">
+            <column name="CliCod" length="15" not-null="true" />
+        </many-to-one>
+        <many-to-one name="enP1mUsuario" class="org.epis.minierp.model.EnP1mUsuario" fetch="select">
+            <column name="UsuCod" length="15" not-null="true" />
+        </many-to-one>
+        <many-to-one name="taGzzMoneda" class="org.epis.minierp.model.TaGzzMoneda" fetch="select">
+            <column name="MonCod" not-null="true" />
+        </many-to-one>
+        <property name="preVenCabFec" type="date">
+            <column name="PreVenCabFec" length="10" not-null="true" />
+        </property>
+        <property name="preVenCabPla" type="int">
+            <column name="PreVenCabPla" not-null="true" />
+        </property>
+        <property name="preVenCabTot" type="double">
+            <column name="PreVenCabTot" precision="10" not-null="true" />
+        </property>
+        <property name="preVenCabDes" type="double">
+            <column name="PreVenCabDes" precision="10" not-null="true" />
+        </property>
+        <property name="preVenCabSubTot" type="double">
+            <column name="PreVenCabSubTot" precision="10" not-null="true" />
+        </property>
+        <property name="preVenCabIgv" type="int">
+            <column name="PreVenCabIGV" not-null="true" />
+        </property>
+        <property name="preVenCabObs" type="string">
+            <column name="PreVenCabObs" length="90" not-null="true" />
+        </property>
+        <property name="estRegCod" type="char">
+            <column name="EstRegCod" length="1" not-null="true" />
+        </property>
+        <set name="enP1cPreventaRealizadases" table="en_p1c_preventa_realizadas" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="PreVenCabCod" length="10" not-null="true" />
+            </key>
+            <one-to-many class="org.epis.minierp.model.EnP1cPreventaRealizadas" />
+        </set>
+        <set name="enP1tPreventaDets" table="en_p1t_preventa_det" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="PreVenCabCod" length="10" not-null="true" />
+            </key>
+            <one-to-many class="org.epis.minierp.model.EnP1tPreventaDet" />
+        </set>
+    </class>
+</hibernate-mapping>

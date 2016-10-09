@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 09/10/2016 12:57:37 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="org.epis.minierp.model.EnP3tPlantillaDet" table="en_p3t_plantilla_det" catalog="episerp" optimistic-lock="version">
+        <composite-id name="id" class="org.epis.minierp.model.EnP3tPlantillaDetId">
+            <key-property name="plaDetCod" type="int">
+                <column name="PlaDetCod" />
+            </key-property>
+            <key-property name="plaCod" type="int">
+                <column name="PlaCod" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="enP3mCuenta" class="org.epis.minierp.model.EnP3mCuenta" fetch="select">
+            <column name="CueCod" not-null="true" />
+        </many-to-one>
+        <many-to-one name="enP3mPlantillaCab" class="org.epis.minierp.model.EnP3mPlantillaCab" update="false" insert="false" fetch="select">
+            <column name="PlaCod" not-null="true" />
+        </many-to-one>
+        <property name="plaDetDebHab" type="boolean">
+            <column name="PlaDetDebHab" not-null="true" />
+        </property>
+        <property name="plaDetPor" type="double">
+            <column name="PlaDetPor" precision="5" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
