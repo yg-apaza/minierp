@@ -4,6 +4,7 @@ CREATE OR REPLACE VIEW LibroDiario AS (
 		asiCab.AsiCabCod,
 		asiDet.AsiDetCod,
 		cue.CueNum, 
+		cue.CueDes,
 		asiDet.AsiDetDebHab, 
 		asiDet.AsiDetMon,
 		asiCab.AsiCabFec,

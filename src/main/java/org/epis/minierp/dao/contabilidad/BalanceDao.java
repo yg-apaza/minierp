@@ -14,6 +14,15 @@ public class BalanceDao {
     
     public List<LibroDiario> getAll(){
         Query query = session.createQuery("FROM LibroDiario");
-        return query.list();
+        String NumeroCuenta = null;
+        List<LibroDiario> libros = query.list();
+        LibroDiario libro = new LibroDiario();
+        for(int i = 0; i < libros.size(); i++)
+        {
+            libro = libros.get(i);
+            NumeroCuenta = libro.getCueNum();
+            System.out.println("Numero cuenta libro " + i + " de " + libros.size() + " " + NumeroCuenta);
+        }
+        return libros;
     }
 }

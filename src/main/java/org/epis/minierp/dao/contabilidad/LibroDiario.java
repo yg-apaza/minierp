@@ -2,108 +2,94 @@ package org.epis.minierp.dao.contabilidad;
 
 import java.io.Serializable;
 import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.IdClass;
+import javax.persistence.Table;
 
 @Entity
-@IdClass(LibroDiarioPK.class)
+@Table(name = "LibroDiario")
 public class LibroDiario implements Serializable
 {
-    @Id
-    @Column(name="LibDiaCod")
-    private String LibDiaCod;
-    
-    @Id
-    @Column(name="AsiCabCod")
-    private int AsiCabCod;
-    
-    @Id
-    @Column(name="AsiDetCod")
-    private int AsiDetCod;
+    @EmbeddedId
+    private LibroDiarioPK idPK;
     
     @Column(name="CueNum")
-    private String CueNum;
+    private String cueNum;
+    
+    @Column(name="CueDes")
+    private String cueDes;
     
     @Column(name="AsiDetDebHab")
-    private boolean AsiDetDebHab;
+    private boolean asiDetDebHab;
     
     @Column(name="AsiDetMon")
-    private double AsiDetMon;
+    private double asiDetMon;
     
     @Column(name="AsiCabFec")
-    private String AsiCabFec;
+    private String asiCabFec;
     
     @Column(name="EstRegCod")
-    private String EstRegCod;
+    private String estRegCod;
 
-    public String getLibDiaCod() {
-        return LibDiaCod;
+    public LibroDiarioPK getIdPK() {
+        return idPK;
     }
 
-    public void setLibDiaCod(String LibDiaCod) {
-        this.LibDiaCod = LibDiaCod;
-    }
-
-    public int getAsiCabCod() {
-        return AsiCabCod;
-    }
-
-    public void setAsiCabCod(int AsiCabCod) {
-        this.AsiCabCod = AsiCabCod;
-    }
-
-    public int getAsiDetCod() {
-        return AsiDetCod;
-    }
-
-    public void setAsiDetCod(int AsiDetCod) {
-        this.AsiDetCod = AsiDetCod;
+    public void setIdPK(LibroDiarioPK idPK) {
+        this.idPK = idPK;
     }
 
     public String getCueNum() {
-        return CueNum;
+        return cueNum;
     }
 
-    public void setCueNum(String CueNum) {
-        this.CueNum = CueNum;
+    public void setCueNum(String cueNum) {
+        this.cueNum = cueNum;
+    }
+
+    public String getCueDes() {
+        return cueDes;
+    }
+
+    public void setCueDes(String cueDes) {
+        this.cueDes = cueDes;
     }
 
     public boolean isAsiDetDebHab() {
-        return AsiDetDebHab;
+        return asiDetDebHab;
     }
 
-    public void setAsiDetDebHab(boolean AsiDetDebHab) {
-        this.AsiDetDebHab = AsiDetDebHab;
+    public void setAsiDetDebHab(boolean asiDetDebHab) {
+        this.asiDetDebHab = asiDetDebHab;
     }
 
     public double getAsiDetMon() {
-        return AsiDetMon;
+        return asiDetMon;
     }
 
-    public void setAsiDetMon(double AsiDetMon) {
-        this.AsiDetMon = AsiDetMon;
+    public void setAsiDetMon(double asiDetMon) {
+        this.asiDetMon = asiDetMon;
     }
 
     public String getAsiCabFec() {
-        return AsiCabFec;
+        return asiCabFec;
     }
 
-    public void setAsiCabFec(String AsiCabFec) {
-        this.AsiCabFec = AsiCabFec;
+    public void setAsiCabFec(String asiCabFec) {
+        this.asiCabFec = asiCabFec;
     }
 
     public String getEstRegCod() {
-        return EstRegCod;
+        return estRegCod;
     }
 
-    public void setEstRegCod(String EstRegCod) {
-        this.EstRegCod = EstRegCod;
+    public void setEstRegCod(String estRegCod) {
+        this.estRegCod = estRegCod;
     }
 
     @Override
     public String toString() {
-        return "LibroDiario{" + "LibDiaCod=" + LibDiaCod + ", AsiCabCod=" + AsiCabCod + ", AsiDetCod=" + AsiDetCod + ", CueNum=" + CueNum + ", AsiDetDebHab=" + AsiDetDebHab + ", AsiDetMon=" + AsiDetMon + ", AsiCabFec=" + AsiCabFec + ", EstRegCod=" + EstRegCod + '}';
+        return "LibroDiario{" + "idPK=" + idPK + ", cueNum=" + cueNum + ", cueDes=" + cueDes + ", asiDetDebHab=" + asiDetDebHab + ", asiDetMon=" + asiDetMon + ", asiCabFec=" + asiCabFec + ", estRegCod=" + estRegCod + '}';
     }
     
 }
