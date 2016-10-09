@@ -225,11 +225,12 @@
                                                         <input type="number" class="form-control" min="0" step="1" value="0">
                                                     </div>
                                                 </td>
-                                                <td>
+                                                <td>                                                    
                                                     <select class="form-control">
-                                                        <option>Seleccione artículo</option>
-                                                        <option>2</option>
-                                                    </select>
+                                                        <c:forEach items="${productos}" var="producto">
+                                                          <option value="${producto.id}">${producto.proDet}</option>
+                                                        </c:forEach>
+                                                    </select>                                                    
                                                 </td>
                                                 <td style="width: 166px;">
                                                     <div class="form-group input-group" >
