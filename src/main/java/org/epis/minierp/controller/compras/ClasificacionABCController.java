@@ -6,15 +6,14 @@
 package org.epis.minierp.controller.compras;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.epis.minierp.dao.compras.MonedaDao;
 import org.epis.minierp.dao.compras.ProductoDao;
 import org.epis.minierp.model.EnP2mProducto;
-import org.epis.minierp.model.TaGzzMoneda;
 
 /**
  *
@@ -22,31 +21,53 @@ import org.epis.minierp.model.TaGzzMoneda;
  */
 public class ClasificacionABCController extends HttpServlet {
     private static final long serialVersionUID = 1L;
-    private ProductoDao productoDao;
- 
-    public ClasificacionABCController() {
-        super();
-        productoDao = new ProductoDao();
-    }
-
+    
+       
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //String action = request.getParameter("action");
-        ProductoDao producto = new ProductoDao();
-        List <EnP2mProducto> productos = producto.getAllActive();
-        request.setAttribute("productos",productos);
-        request.getRequestDispatcher("/WEB-INF/compras/classificationABC.jsp").forward(request, response);
         
-        /*if(request.getParameter("class_selected").equals("A"))
-        {
-            /*request.setAttribute("", "");
-            request.getRequestDispatcher("/WEB-INF/compras/index.jsp").forward(request, response);
-            System.out.println("faiiiiiil");
+        ProductoDao producto = new ProductoDao();
+        List <EnP2mProducto> productosA = producto.getAllActive();
+        //List <EnP2mProducto> productosB = null;
+        
+        String resp = (String) request.getParameter("clase");
+        
+        
+        if(resp != null){
+            
+            PrintWriter out = response.getWriter();
+            
+            if(resp.equals("A")){
+                
+                response.setContentType("text/html;charset=UTF-8");
+                
+                List <EnP2mProducto> productosAm = producto.getA();
+                request.setAttribute("productos", productosA);
+                
+                out.println(productosAm);
+                
+                                
+            } else if(resp.equals("B")){
+                response.setContentType("text/html;charset=UTF-8");
+                List <EnP2mProducto> productosB = producto.getB();
+                request.setAttribute("productos", productosB);
+                
+                out.println(productosB);
+                
+            } else if(resp.equals("C")){
+                response.setContentType("text/html;charset=UTF-8");
+                List <EnP2mProducto> productosC = producto.getC();
+                request.setAttribute("productos", productosC);
+                
+                out.println(productosC);
+                
+            }
             
         }
-    
-        
-        request.setAttribute("productos", productoDao.getAllProductsActive()); */
-        
-    }   
+        else
+        {
+            request.setAttribute("productos",productosA);        
+            request.getRequestDispatcher("/WEB-INF/compras/classificationABC.jsp").forward(request, response);
+        }
+    }  
 }

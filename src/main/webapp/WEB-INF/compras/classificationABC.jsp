@@ -8,6 +8,9 @@
     <jsp:attribute name="contenido">
         <script src="${pageContext.request.contextPath}/js/metisMenu.min.js"></script>
         <script src="${pageContext.request.contextPath}/js/sb-admin-2.min.js"></script>
+        <script src="${pageContext.request.contextPath}/js/jquery.min"></script>
+        <script src="${pageContext.request.contextPath}/js/jquery.validate.min"></script>
+        
         <div id ="wrapper">
             <div class="navbar-default sidebar">
                 <div class="sidebar-nav">
@@ -51,50 +54,66 @@
                         <div class="panel panel-primary">
                             <div class="panel-heading">
                                 <label for = "clase" style = "margin-right: 20px;"> Clase del producto: </label>
-                                <select class = "form-control" id="class_select" style = "width: 70px; display: inline-block;" onchange="changeData()">
-                                    <option> A </option>
-                                    <option> B </option>
-                                    <option> C </option>
-                                </select>
-                                <button class="btn btn-success" style="float: right; display: block;"> Generar reporte </button>
+                                <form>
+                                    <select class = "form-control" name = "clase" id="class_select" style = "width: 70px; display: inline-block;">
+                                        <option> A </option>
+                                        <option> B </option>
+                                        <option> C </option>
+                                    </select>
+                                    <button class="btn btn-success" style="float: right; display: block;" onclick=""> Generar reporte </button>
+                                </form>    
                             </div>
                         </div>
                     </div>
                 </div>
                 <br>
                 <div>
-                    <table class = "table table-bordered table-condensed">
+                    <table class = "table table-bordered table-condensed"  id = "id_table">
                     <thead>
                         <tr>
-                            <th>Código</th>
-                            <th>Descripción del producto</th>
-                            <th>Precio</th>
-                            <th>Cantidad</th>
+                            <th style="text-align: center">Código</th>
+                            <th style="text-align: center">Descripción del producto</th>
+                            <th style="text-align: center">Precio</th>
+                            <th style="text-align: center">Cantidad</th>
                         </tr>               
                     </thead>
                     <tbody>
-                        <c:forEach items ="${productos}" var = "producto">
-                            <tr>
-                                <td><c:out value="${producto.id.proCod}" /></td>
-                                <td><c:out value="${producto.proDet}" /></td>
-                                <td><c:out value="${producto.proPreUni}" /></td>
-                                <td><c:out value="${producto.proStk}" /></td>
-                            </tr>
-                        </c:forEach>                    
+                                   
                     </tbody>
                 </table>            
-                </div> 
+                </div>
+                
         </div>
         
-        <script languaje="javascript">
-            
-            var clase;
-            
-            function changeData(){
-                clase = document.getElementById("class_select").value;
-                alert(clase);    
-            }
-                       
+        <script>
+            $(document).ready(
+                    
+                function(){
+                    $("#class_select").change(
+                        function(){
+                            
+                            var clase = $("#class_select").val();
+                            $("#id_table").find("tr:gt(0)").remove();
+                            $.get('clasificacionABC',{clase: clase},function(productosR){
+                            
+                            
+                            <c:forEach items = "${productos}" var = "producto">    
+                            $("#id_table").append(
+                                    $("<tr>").append(
+                                        "<td>"+ "<c:out value="${producto.id.proCod}" /> "+ "</td>"+
+                                        "<td>"+ "<c:out value="${producto.proDet}" />" + "</td>" +
+                                        "<td>"+ "<c:out value="${producto.proPreUni}" />" + "</td>" +
+                                        "<td>"+ "<c:out value="${producto.proStk}" /> "+ "</td>"
+                                    )
+                            );
+                            </c:forEach>
+                            });                        
+                        }
+                    );
+                }
+            );
         </script>
-    </jsp:attribute>  
+        
+    </jsp:attribute>
+        
 </minierptemplate:template>
