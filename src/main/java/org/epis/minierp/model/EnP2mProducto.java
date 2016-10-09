@@ -15,8 +15,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "en_p2m_producto",catalog = "episerp")
+@Table(name = "en_p2m_producto", catalog = "episerp")
 public class EnP2mProducto implements java.io.Serializable {
+
     private EnP2mProductoId id;
     private EnP2mAlmacen enP2mAlmacen;
     private EnP2mSubclaseProducto enP2mSubclaseProducto;
@@ -28,6 +29,7 @@ public class EnP2mProducto implements java.io.Serializable {
     private double proStkPreVen;
     private Double volUniAlm;
     private Double proStkMin;
+    private Double proStkMax;
     private String proObs;
     private char estRegCod;
     private Set enP1tFacturaVentaDets = new HashSet(0);
@@ -52,7 +54,7 @@ public class EnP2mProducto implements java.io.Serializable {
         this.estRegCod = estRegCod;
     }
 
-    public EnP2mProducto(EnP2mProductoId id, EnP2mAlmacen enP2mAlmacen, EnP2mSubclaseProducto enP2mSubclaseProducto, TaGzzMoneda taGzzMoneda, TaGzzUnidadMed taGzzUnidadMed, String proDet, double proPreUni, double proStk, double proStkPreVen, Double volUniAlm, Double proStkMin, String proObs, char estRegCod, Set enP1tFacturaVentaDets, Set enP1tPreventaDets, Set enP4tGuiaCompraDets, Set enP4tFacturaCompraDets) {
+    public EnP2mProducto(EnP2mProductoId id, EnP2mAlmacen enP2mAlmacen, EnP2mSubclaseProducto enP2mSubclaseProducto, TaGzzMoneda taGzzMoneda, TaGzzUnidadMed taGzzUnidadMed, String proDet, double proPreUni, double proStk, double proStkPreVen, Double volUniAlm, Double proStkMin, Double proStkMax, String proObs, char estRegCod, Set enP1tFacturaVentaDets, Set enP1tPreventaDets, Set enP4tGuiaCompraDets, Set enP4tFacturaCompraDets) {
         this.id = id;
         this.enP2mAlmacen = enP2mAlmacen;
         this.enP2mSubclaseProducto = enP2mSubclaseProducto;
@@ -64,6 +66,7 @@ public class EnP2mProducto implements java.io.Serializable {
         this.proStkPreVen = proStkPreVen;
         this.volUniAlm = volUniAlm;
         this.proStkMin = proStkMin;
+        this.proStkMax = proStkMax;
         this.proObs = proObs;
         this.estRegCod = estRegCod;
         this.enP1tFacturaVentaDets = enP1tFacturaVentaDets;
@@ -73,6 +76,7 @@ public class EnP2mProducto implements java.io.Serializable {
     }
 
     @EmbeddedId
+
     @AttributeOverrides({
         @AttributeOverride(name = "proCod", column = @Column(name = "ProCod", nullable = false, length = 15)),
         @AttributeOverride(name = "subClaProCod", column = @Column(name = "SubClaProCod", nullable = false, length = 2)),
@@ -181,6 +185,15 @@ public class EnP2mProducto implements java.io.Serializable {
         this.proStkMin = proStkMin;
     }
 
+    @Column(name = "ProStkMax", precision = 10)
+    public Double getProStkMax() {
+        return this.proStkMax;
+    }
+
+    public void setProStkMax(Double proStkMax) {
+        this.proStkMax = proStkMax;
+    }
+
     @Column(name = "ProObs", nullable = false, length = 90)
     public String getProObs() {
         return this.proObs;
@@ -237,6 +250,6 @@ public class EnP2mProducto implements java.io.Serializable {
 
     @Override
     public String toString() {
-        return "EnP2mProducto{" + "id=" + id + ", enP2mAlmacen=" + enP2mAlmacen + ", enP2mSubclaseProducto=" + enP2mSubclaseProducto + ", taGzzMoneda=" + taGzzMoneda + ", taGzzUnidadMed=" + taGzzUnidadMed + ", proDet=" + proDet + ", proPreUni=" + proPreUni + ", proStk=" + proStk + ", proStkPreVen=" + proStkPreVen + ", volUniAlm=" + volUniAlm + ", proStkMin=" + proStkMin + ", proObs=" + proObs + ", estRegCod=" + estRegCod + '}';
+        return "EnP2mProducto{" + "id=" + id + ", enP2mAlmacen=" + enP2mAlmacen + ", enP2mSubclaseProducto=" + enP2mSubclaseProducto + ", taGzzMoneda=" + taGzzMoneda + ", taGzzUnidadMed=" + taGzzUnidadMed + ", proDet=" + proDet + ", proPreUni=" + proPreUni + ", proStk=" + proStk + ", proStkPreVen=" + proStkPreVen + ", volUniAlm=" + volUniAlm + ", proStkMin=" + proStkMin + ", proStkMax=" + proStkMax + ", proObs=" + proObs + ", estRegCod=" + estRegCod + '}';
     }
 }

@@ -17,6 +17,7 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name = "en_p1m_preventa_cab", catalog = "episerp")
 public class EnP1mPreventaCab implements java.io.Serializable {
+
     private String preVenCabCod;
     private EnP1mCliente enP1mCliente;
     private EnP1mUsuario enP1mUsuario;

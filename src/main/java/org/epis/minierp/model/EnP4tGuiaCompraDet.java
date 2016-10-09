@@ -12,8 +12,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "en_p4t_guia_compra_det",catalog = "episerp")
+@Table(name = "en_p4t_guia_compra_det", catalog = "episerp")
 public class EnP4tGuiaCompraDet implements java.io.Serializable {
+
     private EnP4tGuiaCompraDetId id;
     private EnP2mProducto enP2mProducto;
     private EnP4mGuiaCompraCab enP4mGuiaCompraCab;

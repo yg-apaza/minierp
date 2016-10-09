@@ -5,6 +5,7 @@ import javax.persistence.Embeddable;
 
 @Embeddable
 public class EnP2mProductoId implements java.io.Serializable {
+
     private String proCod;
     private String subClaProCod;
     private String claProCod;
@@ -71,8 +72,4 @@ public class EnP2mProductoId implements java.io.Serializable {
         return result;
     }
 
-    @Override
-    public String toString() {
-        return "EnP2mProductoId{" + "proCod=" + proCod + ", subClaProCod=" + subClaProCod + ", claProCod=" + claProCod + '}';
-    }
 }

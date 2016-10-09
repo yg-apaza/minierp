@@ -5,6 +5,7 @@ import javax.persistence.Embeddable;
 
 @Embeddable
 public class EnP4tGuiaCompraDetId implements java.io.Serializable {
+
     private int guiComDetCod;
     private String guiComCabCod;
 
@@ -58,8 +59,4 @@ public class EnP4tGuiaCompraDetId implements java.io.Serializable {
         return result;
     }
 
-    @Override
-    public String toString() {
-        return "EnP4tGuiaCompraDetId{" + "guiComDetCod=" + guiComDetCod + ", guiComCabCod=" + guiComCabCod + '}';
-    }
 }

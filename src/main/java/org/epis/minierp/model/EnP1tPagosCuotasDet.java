@@ -11,8 +11,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "en_p1t_pagos_cuotas_det",catalog = "episerp")
+@Table(name = "en_p1t_pagos_cuotas_det", catalog = "episerp")
 public class EnP1tPagosCuotasDet implements java.io.Serializable {
+
     private EnP1tPagosCuotasDetId id;
     private EnP1mPagosCuotasCab enP1mPagosCuotasCab;
     private double pagCuoDetTotPag;
@@ -27,6 +28,7 @@ public class EnP1tPagosCuotasDet implements java.io.Serializable {
     }
 
     @EmbeddedId
+
     @AttributeOverrides({
         @AttributeOverride(name = "pagCuoDetCod", column = @Column(name = "PagCuoDetCod", nullable = false)),
         @AttributeOverride(name = "facVenCabCod", column = @Column(name = "FacVenCabCod", nullable = false, length = 10))})

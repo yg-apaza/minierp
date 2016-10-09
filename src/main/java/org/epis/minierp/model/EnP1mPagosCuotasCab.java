@@ -23,6 +23,7 @@ public class EnP1mPagosCuotasCab implements java.io.Serializable {
 
     private String facVenCabCod;
     private EnP1mFacturaVentaCab enP1mFacturaVentaCab;
+    private String pagCuoNumDoc;
     private int pagCuoNum;
     private int pagCuoNumPag;
     private double pagCuoDeuTot;
@@ -36,8 +37,9 @@ public class EnP1mPagosCuotasCab implements java.io.Serializable {
     public EnP1mPagosCuotasCab() {
     }
 
-    public EnP1mPagosCuotasCab(EnP1mFacturaVentaCab enP1mFacturaVentaCab, int pagCuoNum, int pagCuoNumPag, double pagCuoDeuTot, double pagCuoTotPag, Date pagCuoFecIni, Date pagCuoFecFin, Date pagCuoFecPag, char estRegCod) {
+    public EnP1mPagosCuotasCab(EnP1mFacturaVentaCab enP1mFacturaVentaCab, String pagCuoNumDoc, int pagCuoNum, int pagCuoNumPag, double pagCuoDeuTot, double pagCuoTotPag, Date pagCuoFecIni, Date pagCuoFecFin, Date pagCuoFecPag, char estRegCod) {
         this.enP1mFacturaVentaCab = enP1mFacturaVentaCab;
+        this.pagCuoNumDoc = pagCuoNumDoc;
         this.pagCuoNum = pagCuoNum;
         this.pagCuoNumPag = pagCuoNumPag;
         this.pagCuoDeuTot = pagCuoDeuTot;
@@ -48,8 +50,9 @@ public class EnP1mPagosCuotasCab implements java.io.Serializable {
         this.estRegCod = estRegCod;
     }
 
-    public EnP1mPagosCuotasCab(EnP1mFacturaVentaCab enP1mFacturaVentaCab, int pagCuoNum, int pagCuoNumPag, double pagCuoDeuTot, double pagCuoTotPag, Date pagCuoFecIni, Date pagCuoFecFin, Date pagCuoFecPag, char estRegCod, Set enP1tPagosCuotasDets) {
+    public EnP1mPagosCuotasCab(EnP1mFacturaVentaCab enP1mFacturaVentaCab, String pagCuoNumDoc, int pagCuoNum, int pagCuoNumPag, double pagCuoDeuTot, double pagCuoTotPag, Date pagCuoFecIni, Date pagCuoFecFin, Date pagCuoFecPag, char estRegCod, Set enP1tPagosCuotasDets) {
         this.enP1mFacturaVentaCab = enP1mFacturaVentaCab;
+        this.pagCuoNumDoc = pagCuoNumDoc;
         this.pagCuoNum = pagCuoNum;
         this.pagCuoNumPag = pagCuoNumPag;
         this.pagCuoDeuTot = pagCuoDeuTot;
@@ -64,6 +67,7 @@ public class EnP1mPagosCuotasCab implements java.io.Serializable {
     @GenericGenerator(name = "generator", strategy = "foreign", parameters = @Parameter(name = "property", value = "enP1mFacturaVentaCab"))
     @Id
     @GeneratedValue(generator = "generator")
+
     @Column(name = "FacVenCabCod", unique = true, nullable = false, length = 10)
     public String getFacVenCabCod() {
         return this.facVenCabCod;
@@ -81,6 +85,15 @@ public class EnP1mPagosCuotasCab implements java.io.Serializable {
 
     public void setEnP1mFacturaVentaCab(EnP1mFacturaVentaCab enP1mFacturaVentaCab) {
         this.enP1mFacturaVentaCab = enP1mFacturaVentaCab;
+    }
+
+    @Column(name = "PagCuoNumDoc", nullable = false, length = 50)
+    public String getPagCuoNumDoc() {
+        return this.pagCuoNumDoc;
+    }
+
+    public void setPagCuoNumDoc(String pagCuoNumDoc) {
+        this.pagCuoNumDoc = pagCuoNumDoc;
     }
 
     @Column(name = "PagCuoNum", nullable = false)
@@ -169,6 +182,6 @@ public class EnP1mPagosCuotasCab implements java.io.Serializable {
 
     @Override
     public String toString() {
-        return "EnP1mPagosCuotasCab{" + "facVenCabCod=" + facVenCabCod + ", enP1mFacturaVentaCab=" + enP1mFacturaVentaCab + ", pagCuoNum=" + pagCuoNum + ", pagCuoNumPag=" + pagCuoNumPag + ", pagCuoDeuTot=" + pagCuoDeuTot + ", pagCuoTotPag=" + pagCuoTotPag + ", pagCuoFecIni=" + pagCuoFecIni + ", pagCuoFecFin=" + pagCuoFecFin + ", pagCuoFecPag=" + pagCuoFecPag + ", estRegCod=" + estRegCod + '}';
+        return "EnP1mPagosCuotasCab{" + "facVenCabCod=" + facVenCabCod + ", enP1mFacturaVentaCab=" + enP1mFacturaVentaCab + ", pagCuoNumDoc=" + pagCuoNumDoc + ", pagCuoNum=" + pagCuoNum + ", pagCuoNumPag=" + pagCuoNumPag + ", pagCuoDeuTot=" + pagCuoDeuTot + ", pagCuoTotPag=" + pagCuoTotPag + ", pagCuoFecIni=" + pagCuoFecIni + ", pagCuoFecFin=" + pagCuoFecFin + ", pagCuoFecPag=" + pagCuoFecPag + ", estRegCod=" + estRegCod + '}';
     }
 }
