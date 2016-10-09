@@ -44,7 +44,11 @@ CREATE OR REPLACE VIEW VIEW_CAJA_BANCOS AS
 CREATE OR REPLACE VIEW VIEW_BANCOS_SWAP AS(
 		(SELECT CueDes AS CueDes FROM VIEW_CAJA_BANCOS 
 					WHERE AsiDetCod = (SELECT AsiDetCod-1 AS AsiDet
-								FROM VIEW_CAJA_BANCOS WHERE CueCod = '12'))
+								FROM VIEW_CAJA_BANCOS WHERE CueCod = '104' 
+														OR CueCod = '1041' 
+                                                        OR CueCod = '10411' 
+                                                        OR CueCod = '10412'
+                                                        OR CueCod = '10413'))
 );
 CREATE OR REPLACE VIEW VIEW_BANCOS AS
 		SELECT `VIEW_CAJA_BANCOS`.`LibDiaCod` AS `LibDiaCod`,
@@ -59,7 +63,11 @@ CREATE OR REPLACE VIEW VIEW_BANCOS AS
         `VIEW_CAJA_BANCOS`.`Haber` AS `Haber`
         FROM VIEW_BANCOS_SWAP 
 		JOIN VIEW_CAJA_BANCOS
-        WHERE CueCod = '12'
+        WHERE CueCod = '104' 
+			OR CueCod = '1041' 
+			OR CueCod = '10411' 
+			OR CueCod = '10412'
+			OR CueCod = '10413'
 		ORDER BY AsiCabFec ASC;
 
 CREATE OR REPLACE VIEW VIEW_CAJA_SWAP AS(
