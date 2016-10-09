@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @IdClass(CajaPK.class)
-@Table(name="LibroCaja")
+@Table(name="VIEW_CAJA")
 public class CajaModel implements Serializable {
     @Id 
     @Column(name="LibDiaCod")
@@ -36,10 +36,10 @@ public class CajaModel implements Serializable {
     @Column(name="CueDes")
     private String cueDes;
     
-    @Column(name="debe")
+    @Column(name="Debe")
     private String debe;
     
-    @Column(name="haber")
+    @Column(name="Haber")
     private String haber;
 
     public String getLibDiaCod() {
@@ -115,10 +115,8 @@ public class CajaModel implements Serializable {
     }
     
     
-
-    
     @Override
     public String toString() {
-        return "Caja{" + "asiDetCod=" + asiDetCod + ", asiCabCod=" + asiCabCod + ", asiCabFec=" + asiCabFec + ", asiCabTip=" + asiCabTip + ", cueCod=" + cueCod + ", cueDes=" + cueDes + ", debe=" + debe + ", haber=" + haber + '}';
+        return "VIEW_CAJA{" + "asiDetCod=" + asiDetCod + ", asiCabCod=" + asiCabCod + ", asiCabFec=" + asiCabFec + ", asiCabTip=" + asiCabTip + ", cueCod=" + cueCod + ", cueDes=" + cueDes + ", debe=" + debe + ", haber=" + haber + '}';
     }   
 }

@@ -46,7 +46,6 @@
                 <tr>
                     <th>Numero Correlativo del Registro o código único de óperación</th>
                     <th>Fecha de operación</th>
-                    <th>Descripción de operación</th>
                     <th>Código de la Cuenta</th>
                     <th>Denominación de la Cuenta</th>
                     <th>Deudor</th>
@@ -58,7 +57,6 @@
                         <tr>
                             <td>${u.asiDetCod}</td>
                             <td><fmt:formatDate value="${u.asiCabFec}" pattern="dd/MM/yyyy" /></td>
-                            <td>${u.asiCabTip}</td>
                             <td>${u.cueCod}</td>
                             <td>${u.cueDes}</td>
                             <td>${u.debe}</td>
