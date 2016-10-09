@@ -113,6 +113,4 @@ public class BancosModel implements Serializable {
     public void setHaber(String haber) {
         this.haber = haber;
     }
-    
-    
 }

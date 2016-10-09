@@ -13,9 +13,7 @@ public class BancosController extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         BancosDAO bancosDAO = new BancosDAO();
-        
         request.setAttribute("operaciones",bancosDAO.getView());
-        
         request.getRequestDispatcher("/WEB-INF/contabilidad/cajaBancos/bancos.jsp").forward(request, response);
     }
 }

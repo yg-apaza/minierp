@@ -76,6 +76,26 @@
                 
             </thread>
             <tbody>
+                <c:set var="debeTotal" value="${0}" />
+                <c:set var="haberTotal" value="${0}" />
+                <c:forEach items="${operaciones}" var="u"> 
+                <c:set var="debeTotal" value="${debeTotal + 1 +u.debe}" />
+                <c:set var="haberTotal" value="${haberTotal +1+ u.haber}" />
+                <tr><td>${u.debe}<td><td>${u.haber}</td></tr>
+                </c:forEach> 
+                             
+                 <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <th>Totales</th>
+                    <th>${debeTotal}</th>
+                    <th>${haberTotal}</th>
+                </tr> 
                 <c:forEach items="${operaciones}" var="u"> 
                          <tr>
                              <td>${u.asiDetCod}</td>
@@ -258,6 +278,8 @@
                     <th>859835</th>
                 </tr>
                 <!---Fin Ejemplos-->
+                 
+                             
             </tbody>
         </table>
         </div>
