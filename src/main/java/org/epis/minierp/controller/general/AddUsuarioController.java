@@ -46,7 +46,6 @@ public class AddUsuarioController extends HttpServlet
             u.setUsuApeMat(request.getParameter("usuApeMat"));
             u.setUsuLog(request.getParameter("usuLog"));
             u.setUsuPas(DigestUtils.sha256Hex(request.getParameter("usuPas")));
-            u.setUsuHue(null);
             TaGzzTipoUsuario tipoUsu = new TaGzzTipoUsuario();
             tipoUsu.setTipUsuCod(Integer.parseInt(request.getParameter("tipUsuCod")));
             u.setTaGzzTipoUsuario(tipoUsu);

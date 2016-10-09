@@ -19,8 +19,8 @@
     <mapping resource="org/epis/minierp/model/EnP1cPreventaRealizadas.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP3mAsientoCab.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP2mAlmacen.hbm.xml"/>
-    <mapping resource="org/epis/minierp/model/EnP1mUsuario.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP4tGuiaCompraDet.hbm.xml"/>
+    <mapping resource="org/epis/minierp/model/EnP1mUsuario.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP2mClaseProducto.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP1mDocumentoCliente.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP2mProducto.hbm.xml"/>
@@ -36,13 +36,13 @@
     <mapping resource="org/epis/minierp/model/TaGzzTipoDocProveedor.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP4mDocumentoProveedor.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP4tFacturaCompraDet.hbm.xml"/>
-    <mapping resource="org/epis/minierp/model/TaGzzMoneda.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/TaGzzUnidadMed.hbm.xml"/>
+    <mapping resource="org/epis/minierp/model/TaGzzMoneda.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP4mFacturaCompraCab.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP4mGuiaCompraCab.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/TaGzzBanco.hbm.xml"/>
-    <mapping resource="org/epis/minierp/model/EnP1tPagosCuotasDet.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP1mDocumentoUsuario.hbm.xml"/>
+    <mapping resource="org/epis/minierp/model/EnP1tPagosCuotasDet.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP1mCliente.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP4mProveedor.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/TaGzzMetodoPagoFactura.hbm.xml"/>
