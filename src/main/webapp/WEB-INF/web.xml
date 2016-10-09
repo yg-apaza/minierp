@@ -191,6 +191,16 @@
         <servlet-name>BancosController</servlet-name>
         <url-pattern>/secured/contabilidad/bancos</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <description/>
+        <display-name>ReporteContabilidadController</display-name>
+        <servlet-name>ReporteContabilidadController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.contabilidad.ReporteContabilidadController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ReporteContabilidadController</servlet-name>
+        <url-pattern>/secured/contabilidad/reporte</url-pattern>
+    </servlet-mapping>
     <!-- Modulo de Perifericos -->
     <servlet>
         <description/>
