@@ -38,19 +38,17 @@
                     <div class="panel panel-default">
                         <div class="panel-body">
                             <div class="row">
-                                <div class="col-md-12-offset-5 form-group">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div id="barcodeTarget"></div>
-                                            </div>
-                                        </div>    
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <button onclick=PrintElem("#barcodeTarget") class="btn btn-lg btn-success btn-block">
-                                                    <i class="fa fa-print"></i> Imprimir
-                                                </button>
-                                            </div>
-                                        </div>    
+                                <div class="col-md-12 form-group">
+                                    <div class="row-centered">
+                                        <div class="col-md-12" id="barcodeTarget"></div>
+                                    </div>    
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <button onclick=PrintElem("#barcodeTarget") class="btn btn-lg btn-success btn-block">
+                                                <i class="fa fa-print"></i> Imprimir
+                                            </button>
+                                        </div>
+                                    </div>    
                                 </div> 
                             </div>
                         </div>
@@ -66,8 +64,13 @@
                 Popup($(elem).html());
             }
             function Popup(data){
-                var w = window.open('', 'print_div', 'height=400,width=600');
+                var w = window.open('', 'print_div', 'height=300,width=300');
                 w.document.write('<html><head><title>Print Barcode</title>');
+                w.document.write('<style type="text/css" media="print">');
+                w.document.write('@page { size: auto; margin: 0mm; }');
+                w.document.write('html { background-color: #FFFFFF; margin: 0px;');
+                w.document.write('body { margin: 15mm 15mm 15mm 15mm; }');
+                w.document.write('</style>');
                 w.document.write('</head><body >');
                 w.document.write(data);
                 w.document.write('</body></html>');
@@ -79,7 +82,7 @@
             function generateBarcode(){
                 $("#printer").show();
                 var value = $("#proCod").val();
-                var btype = "code93";
+                var btype = "code39";
                 var settings = {
                     output: "bmp",
                     bgColor: "#FFFFFF",
