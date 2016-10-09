@@ -66,6 +66,8 @@
             </tbody>
         </table>
         </div>
-        
+        <div>
+            <button class="btn btn-default center-block" type="submit">Imprimir</button>
+        </div>
     </jsp:attribute>
 </minierptemplate:template>
