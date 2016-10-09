@@ -28,14 +28,13 @@ public class ReporteContabilidad {
     }
     
     public void report(String path, String fileName) {
-        System.out.println("e.e");
         param.put(JRHibernateQueryExecuterFactory.PARAMETER_HIBERNATE_SESSION, session);
         String file = fileName +
                 sf.format(date.getTime()) + ".pdf";
         try {
             JasperReport jasperReport = JasperCompileManager.compileReport(path);
             JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, param);
-            JasperExportManager.exportReportToPdfFile(jasperPrint, file);
+            JasperExportManager.exportReportToPdfFile(jasperPrint, "/home/yuli/pdf/" + file);
         } catch (JRException ex) {
             Logger.getLogger(ReporteContabilidad.class.getName()).log(Level.SEVERE, null, ex);
         }
