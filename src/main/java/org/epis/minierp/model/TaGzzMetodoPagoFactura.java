@@ -12,8 +12,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "ta_gzz_metodo_pago_factura",catalog = "episerp")
+@Table(name = "ta_gzz_metodo_pago_factura", catalog = "episerp")
 public class TaGzzMetodoPagoFactura implements java.io.Serializable {
+
     private Integer metPagCod;
     private String metPagDet;
     private char estRegCod;
@@ -37,6 +38,7 @@ public class TaGzzMetodoPagoFactura implements java.io.Serializable {
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
+
     @Column(name = "MetPagCod", unique = true, nullable = false)
     public Integer getMetPagCod() {
         return this.metPagCod;
@@ -84,6 +86,6 @@ public class TaGzzMetodoPagoFactura implements java.io.Serializable {
 
     @Override
     public String toString() {
-        return "TaGzzMetodoPagoFactura{" + "metPagCod=" + metPagCod + ", metPagDet=" + metPagDet + ", estRegCod=" + estRegCod + '}';
+        return "TaGzzMetodoPagoFactura{" + "metPagCod=" + metPagCod + ", metPagDet=" + metPagDet + ", estRegCod=" + estRegCod + ", enP4mFacturaCompraCabs=" + enP4mFacturaCompraCabs + '}';
     }
 }

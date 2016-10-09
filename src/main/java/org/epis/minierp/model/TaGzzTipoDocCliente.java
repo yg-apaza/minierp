@@ -12,8 +12,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "ta_gzz_tipo_doc_cliente",catalog = "episerp")
+@Table(name = "ta_gzz_tipo_doc_cliente", catalog = "episerp")
 public class TaGzzTipoDocCliente implements java.io.Serializable {
+
     private Integer tipDocCliCod;
     private String tipDocCliDet;
     private char estRegCod;
@@ -35,6 +36,7 @@ public class TaGzzTipoDocCliente implements java.io.Serializable {
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
+
     @Column(name = "TipDocCliCod", unique = true, nullable = false)
     public Integer getTipDocCliCod() {
         return this.tipDocCliCod;

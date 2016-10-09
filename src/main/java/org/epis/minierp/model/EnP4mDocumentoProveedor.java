@@ -11,8 +11,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "en_p4m_documento_proveedor",catalog = "episerp")
+@Table(name = "en_p4m_documento_proveedor", catalog = "episerp")
 public class EnP4mDocumentoProveedor implements java.io.Serializable {
+
     private EnP4mDocumentoProveedorId id;
     private EnP4mProveedor enP4mProveedor;
     private TaGzzTipoDocProveedor taGzzTipoDocProveedor;
@@ -31,6 +32,7 @@ public class EnP4mDocumentoProveedor implements java.io.Serializable {
     }
 
     @EmbeddedId
+
     @AttributeOverrides({
         @AttributeOverride(name = "proCod", column = @Column(name = "ProCod", nullable = false, length = 15)),
         @AttributeOverride(name = "tipDocProCod", column = @Column(name = "TipDocProCod", nullable = false))})

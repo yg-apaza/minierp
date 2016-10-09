@@ -14,6 +14,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "en_p1m_cliente", catalog = "episerp")
 public class EnP1mCliente implements java.io.Serializable {
+
     private String cliCod;
     private TaGzzEstadoCivil taGzzEstadoCivil;
     private String cliNom;
@@ -59,6 +60,7 @@ public class EnP1mCliente implements java.io.Serializable {
     }
 
     @Id
+
     @Column(name = "CliCod", unique = true, nullable = false, length = 15)
     public String getCliCod() {
         return this.cliCod;
@@ -188,6 +190,6 @@ public class EnP1mCliente implements java.io.Serializable {
 
     @Override
     public String toString() {
-        return "EnP1mCliente{" + "cliCod=" + cliCod + ", taGzzEstadoCivil=" + taGzzEstadoCivil + ", cliNom=" + cliNom + ", cliApePat=" + cliApePat + ", cliApeMat=" + cliApeMat + ", cliSex=" + cliSex + ", cliDir=" + cliDir + ", cliTelFij=" + cliTelFij + ", cliTelCel=" + cliTelCel + ", cliEmail=" + cliEmail + ", estRegCod=" + estRegCod + '}';
+        return "EnP1mCliente{" + "cliCod=" + cliCod + ", taGzzEstadoCivil=" + taGzzEstadoCivil + ", cliNom=" + cliNom + ", cliApePat=" + cliApePat + ", cliApeMat=" + cliApeMat + ", cliSex=" + cliSex + ", cliDir=" + cliDir + ", cliTelFij=" + cliTelFij + ", cliTelCel=" + cliTelCel + ", cliEmail=" + cliEmail + ", estRegCod=" + estRegCod + ", enP1mDocumentoClientes=" + enP1mDocumentoClientes + '}';
     }
 }

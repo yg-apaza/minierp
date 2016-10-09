@@ -14,8 +14,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "en_p2m_subclase_producto",catalog = "episerp")
+@Table(name = "en_p2m_subclase_producto", catalog = "episerp")
 public class EnP2mSubclaseProducto implements java.io.Serializable {
+
     private EnP2mSubclaseProductoId id;
     private EnP2mClaseProducto enP2mClaseProducto;
     private String subClaProDet;
@@ -41,6 +42,7 @@ public class EnP2mSubclaseProducto implements java.io.Serializable {
     }
 
     @EmbeddedId
+
     @AttributeOverrides({
         @AttributeOverride(name = "subClaProCod", column = @Column(name = "SubClaProCod", nullable = false, length = 2)),
         @AttributeOverride(name = "claProCod", column = @Column(name = "ClaProCod", nullable = false, length = 2))})

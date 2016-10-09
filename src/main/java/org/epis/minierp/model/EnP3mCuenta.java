@@ -52,6 +52,7 @@ public class EnP3mCuenta implements java.io.Serializable, Comparable<EnP3mCuenta
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
+
     @Column(name = "CueCod", unique = true, nullable = false)
     public Integer getCueCod() {
         return this.cueCod;
@@ -145,7 +146,7 @@ public class EnP3mCuenta implements java.io.Serializable, Comparable<EnP3mCuenta
 
     @Override
     public String toString() {
-        return "EnP3mCuenta{" + "cueCod=" + cueCod + ", enP3mCuenta=" + enP3mCuenta + ", cueNiv=" + cueNiv + ", cueNum=" + cueNum + ", cueDes=" + cueDes + ", estRegCod=" + estRegCod + '}';
+        return "EnP3mCuenta{" + "cueCod=" + cueCod + ", cueNiv=" + cueNiv + ", cueNum=" + cueNum + ", cueDes=" + cueDes + ", estRegCod=" + estRegCod + '}';
     }
 
     @Override
