@@ -138,6 +138,19 @@
         <servlet-name>PurchasesController</servlet-name>
         <url-pattern>/secured/compras/registerPurchase</url-pattern>
     </servlet-mapping>
+    
+     <!-- Modulo de Compras Inventario -->
+    <servlet>
+        <description/>
+        <display-name>InventoryController</display-name>
+        <servlet-name>InventoryController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.compras.InventoryController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>InventoryController</servlet-name>
+        <url-pattern>/secured/compras/inventario</url-pattern>
+    </servlet-mapping>
+    
     <!-- Modulo de Compras Clasificacion ABC -->
     <servlet>
         <description/>

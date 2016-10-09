@@ -24,7 +24,7 @@
                                     <a href="${pageContext.request.contextPath}/secured/compras/clasificacionABC">Clasificación ABC</a>
                                 </li>
                                 <li>
-                                    <a href="#">Inventarios</a>
+                                   <a href="${pageContext.request.contextPath}/secured/compras/inventario">Inventario</a>
                                 </li>
                             </ul>
                         </li>
@@ -125,7 +125,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="#">
+                            <a href="${pageContext.request.contextPath}/secured/compras/inventario">
                                 <div class="panel-footer">
                                     <span class="pull-left">Ingresar</span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
