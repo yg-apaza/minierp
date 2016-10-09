@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 07/10/2016 12:11:51 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 09/10/2016 12:57:37 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="org.epis.minierp.model.EnP1mUsuario" table="en_p1m_usuario" catalog="episerp" optimistic-lock="version">
         <id name="usuCod" type="string">
@@ -28,9 +28,6 @@
         </property>
         <property name="usuPas" type="string">
             <column name="UsuPas" length="80" not-null="true" />
-        </property>
-        <property name="usuHue" type="binary">
-            <column name="UsuHue" />
         </property>
         <property name="usuFecNac" type="date">
             <column name="UsuFecNac" length="10" />

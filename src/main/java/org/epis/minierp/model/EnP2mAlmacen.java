@@ -10,8 +10,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "en_p2m_almacen",catalog = "episerp")
+@Table(name = "en_p2m_almacen", catalog = "episerp")
 public class EnP2mAlmacen implements java.io.Serializable {
+
     private String almCod;
     private String almDet;
     private Double almVolTot;
@@ -38,6 +39,7 @@ public class EnP2mAlmacen implements java.io.Serializable {
     }
 
     @Id
+
     @Column(name = "AlmCod", unique = true, nullable = false, length = 15)
     public String getAlmCod() {
         return this.almCod;

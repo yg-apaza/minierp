@@ -17,8 +17,9 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "en_p3m_asiento_cab",catalog = "episerp")
+@Table(name = "en_p3m_asiento_cab", catalog = "episerp")
 public class EnP3mAsientoCab implements java.io.Serializable {
+
     private EnP3mAsientoCabId id;
     private EnP3mLibroDiario enP3mLibroDiario;
     private TaGzzMoneda taGzzMoneda;
@@ -57,9 +58,10 @@ public class EnP3mAsientoCab implements java.io.Serializable {
     }
 
     @EmbeddedId
+
     @AttributeOverrides({
         @AttributeOverride(name = "asiCabCod", column = @Column(name = "AsiCabCod", nullable = false)),
-        @AttributeOverride(name = "libDiaCod", column = @Column(name = "LibDiaCod", nullable = false, length = 10))})
+        @AttributeOverride(name = "libDiaCod", column = @Column(name = "LibDiaCod", nullable = false))})
     public EnP3mAsientoCabId getId() {
         return this.id;
     }

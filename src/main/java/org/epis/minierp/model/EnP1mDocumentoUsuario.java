@@ -1,4 +1,5 @@
 package org.epis.minierp.model;
+// Generated 09/10/2016 12:57:36 AM by Hibernate Tools 4.3.1
 
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
@@ -13,6 +14,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "en_p1m_documento_usuario", catalog = "episerp")
 public class EnP1mDocumentoUsuario implements java.io.Serializable {
+
     private EnP1mDocumentoUsuarioId id;
     private EnP1mUsuario enP1mUsuario;
     private TaGzzTipoDocUsuario taGzzTipoDocUsuario;
@@ -31,6 +33,7 @@ public class EnP1mDocumentoUsuario implements java.io.Serializable {
     }
 
     @EmbeddedId
+
     @AttributeOverrides({
         @AttributeOverride(name = "usuCod", column = @Column(name = "UsuCod", nullable = false, length = 15)),
         @AttributeOverride(name = "tipDocUsuCod", column = @Column(name = "TipDocUsuCod", nullable = false))})

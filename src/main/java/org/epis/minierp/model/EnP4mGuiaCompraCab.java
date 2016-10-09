@@ -15,8 +15,9 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "en_p4m_guia_compra_cab",catalog = "episerp")
+@Table(name = "en_p4m_guia_compra_cab", catalog = "episerp")
 public class EnP4mGuiaCompraCab implements java.io.Serializable {
+
     private String guiComCabCod;
     private EnP4mFacturaCompraCab enP4mFacturaCompraCab;
     private EnP4mProveedor enP4mProveedor;
@@ -49,6 +50,7 @@ public class EnP4mGuiaCompraCab implements java.io.Serializable {
     }
 
     @Id
+
     @Column(name = "GuiComCabCod", unique = true, nullable = false, length = 10)
     public String getGuiComCabCod() {
         return this.guiComCabCod;
