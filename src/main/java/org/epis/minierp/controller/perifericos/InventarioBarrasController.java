@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.epis.minierp.dao.perifericos.ProductoDao;
 import org.epis.minierp.model.EnP2mProducto;
 
-public class BarCodeInventarioController extends HttpServlet
+public class InventarioBarrasController extends HttpServlet
 {	
     private static final long serialVersionUID = 1L;
 
@@ -18,6 +18,6 @@ public class BarCodeInventarioController extends HttpServlet
         ProductoDao daoPro = new ProductoDao();
         List<EnP2mProducto> productos = daoPro.getAll();
         request.setAttribute("productos", productos);
-        request.getRequestDispatcher("/WEB-INF/perifericos/barCodeInventario.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/perifericos/inventarioBarras.jsp").forward(request, response);
     }
 }
