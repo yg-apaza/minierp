@@ -149,6 +149,7 @@
         <servlet-name>PerifericosController</servlet-name>
         <url-pattern>/secured/perifericos</url-pattern>
     </servlet-mapping>
+    
     <!-- Modulo de Ventas -->
     <servlet>
         <description/>
@@ -230,6 +231,7 @@
         <servlet-name>addPagoController</servlet-name>
         <url-pattern>/secured/ventas/pagos/addPago</url-pattern>
     </servlet-mapping>
+    
     <!--         ERRORS         -->
     <error-page>
         <location>/error.jsp</location>

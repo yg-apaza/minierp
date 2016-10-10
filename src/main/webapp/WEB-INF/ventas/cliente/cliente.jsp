@@ -2,6 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="minierptemplate" %>
+
 <jsp:declaration> private String codCliSelec;</jsp:declaration>
 <% session.setAttribute("codCliSelec", codCliSelec);%>
 <minierptemplate:template>
@@ -10,7 +11,7 @@
     </jsp:attribute>
     <jsp:attribute name="contenido">
         <div class="container">
-            <form role=form" method="post" action="${pageContext.request.contextPath}/secured/clientes">
+            <form role="form" method="post" action="${pageContext.request.contextPath}/secured/clientes">
             <h1 class="page-header">Clientes</h1>
             <div class="form-horizontal">
                     <div class="form-group">
