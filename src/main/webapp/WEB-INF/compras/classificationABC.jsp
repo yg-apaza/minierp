@@ -90,8 +90,10 @@
                     </tbody>
                 </table>            
                 </div>
+            </div>
         </div>
         <script>
+            document.getElementById("class_select").selectedIndex = 0;
             $(document).ready(
                     
                 function(){
@@ -128,12 +130,6 @@
                                     posdet = subcadena.search("proDet");
                                     productos = subcadena;
                                 }
-                            /*$("#productitos").data(productosR);
-                            
-                            var productillos = $("#productitos");
-                            
-                            alert(productillos.attr('proDet'));*/
-                                   
                             
                             });                        
                         }
