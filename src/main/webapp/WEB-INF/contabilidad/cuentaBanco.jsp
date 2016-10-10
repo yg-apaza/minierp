@@ -186,11 +186,13 @@
                 rules: {
                     cueBanNum: {
                         required: true,
+                        number: true
                     }
                 },
                 messages: {
                     cueBanNum: {
                         required: "Ingrese N° de cuenta bancaria",
+                        number: "Solo puede contener números"
                     }
                 },
                 submitHandler: function(form) {
@@ -202,11 +204,13 @@
                 rules: {
                     cueBanNum: {
                         required: true,
+                        number: true
                     }
                 },
                 messages: {
                     cueBanNum: {
                         required: "Ingrese N° de cuenta bancaria",
+                        number: "Solo puede contener números"
                     }
                 },
                 submitHandler: function(form) {

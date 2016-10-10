@@ -47,6 +47,10 @@ public class CuentaBancoDao
     }
 
     public void delete(int deleteCueBanCod) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        EnP3mCuentaBanco cuentaBanco = (EnP3mCuentaBanco)session.get(EnP3mCuentaBanco.class, deleteCueBanCod);
+        CuentaDao cuentaDao = new CuentaDao();
+        cuentaDao.delete(cuentaBanco.getEnP3mCuenta().getCueCod());
+        cuentaBanco.setEstRegCod('*');
+	session.update(cuentaBanco);
     }
 }

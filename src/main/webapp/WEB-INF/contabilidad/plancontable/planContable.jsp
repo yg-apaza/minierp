@@ -28,6 +28,7 @@
                     <i class="fa fa-arrow-left"></i>
                     Regresar al Menú Principal
                 </a>
+                <br>
             </div>
             <div class="col-md-8">
                 <div class="panel-group" id="accordion">
