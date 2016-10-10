@@ -43,8 +43,14 @@
                             <td>${u.usuSex}</td>
                             <td>${u.estRegCod}</td>
                             <td>
-                                <i class="fa fa-pencil-square-o fa-2x"></i>
+                                 <a href="${pageContext.request.contextPath}/eliminar?id=<c:out value='${u.usuCod}'/>" >
                                 <i class="fa fa-trash-o fa-2x"></i>
+                                   
+                                </a>
+                                
+                                 <a href="${pageContext.request.contextPath}/updatecontroller?id=<c:out value='${u.usuCod}'/>">
+                                    <i class="fa fa-pencil-square-o fa-2x"></i>
+                                 </a>
                             </td>
                         </tr>
                     </c:forEach>
