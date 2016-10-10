@@ -12,6 +12,7 @@ import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.export.JRXlsExporter;
 import net.sf.jasperreports.engine.query.JRHibernateQueryExecuterFactory;
 import org.epis.minierp.util.HibernateUtil;
 import org.hibernate.Session;
@@ -27,16 +28,17 @@ public class ReporteContabilidad {
         session = HibernateUtil.getSessionFactory().getCurrentSession();
     }
     
-    public void report(String path, String fileName) {
+    public String report(String path, String fileName) {
         param.put(JRHibernateQueryExecuterFactory.PARAMETER_HIBERNATE_SESSION, session);
         String file = fileName +
                 sf.format(date.getTime()) + ".pdf";
         try {
             JasperReport jasperReport = JasperCompileManager.compileReport(path);
             JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, param);
-            JasperExportManager.exportReportToPdfFile(jasperPrint, "/home/yuli/pdf/" + file);
+            JasperExportManager.exportReportToPdfFile(jasperPrint, ReporteContabilidad.class.getClassLoader().getResource("org/epis/minierp/reporte/contabilidad/").getPath() + file);
         } catch (JRException ex) {
             Logger.getLogger(ReporteContabilidad.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return ReporteContabilidad.class.getClassLoader().getResource("org/epis/minierp/reporte/contabilidad/").getPath() + file;
     }
 }

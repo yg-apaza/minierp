@@ -1,6 +1,8 @@
 package org.epis.minierp.controller.contabilidad;
 
 import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import javax.servlet.ServletException;
@@ -21,35 +23,23 @@ public class ReporteContabilidadController  extends HttpServlet
         
         switch(report)
         {
-            case "plancontable":
-                System.out.println("Generando reporte ...");
-                
+            case "plancontable":                
                 String path = ReporteContabilidad.class.getClassLoader().getResource("org/epis/minierp/reporte/contabilidad/planContable.jrxml").getPath();
-                System.out.println("Path: " + path);
-                generador.report(path, "PlanContable_");
-                /*
-                String string = "Servlet Technology";
-                int size = string.length();
-                byte[] bite = string.getBytes();
-                byte[] data = new byte[size]; // allocate byte array of right size
-                ByteArrayInputStream byteStream = new ByteArrayInputStream(bite);
-                int in = byteStream.read( data, 0, size ); // read into byte array
+                String fileGenerated = generador.report(path, "PlanContable_");
+		File pdfFile = new File(fileGenerated);
 
-                byteStream.close();
-                response.setContentType("application/pdf");
+		response.setContentType("application/pdf");
+		response.addHeader("Content-Disposition", "attachment; filename=" + fileGenerated);
+		response.setContentLength((int) pdfFile.length());
 
-                response.setHeader("Content-Disposition","inline; filename=architect.pdf");
-                response.setHeader("Cache-Control", "no-cache");
-                response.setDateHeader("Expires", 0);
-                response.setHeader("Pragma", "No-cache"); 
-
-                OutputStream OutStream = response.getOutputStream();
-                OutStream.write(data);
-                OutStream.flush();
-                OutStream.close();
-                */
+		FileInputStream fileInputStream = new FileInputStream(pdfFile);
+		OutputStream responseOutputStream = response.getOutputStream();
+		int bytes;
+		while ((bytes = fileInputStream.read()) != -1) {
+                    responseOutputStream.write(bytes);
+                }
                 break;
         }
-        response.sendRedirect(request.getContextPath() + "/secured/contabilidad");
+        //response.sendRedirect(request.getContextPath() + "/secured/contabilidad");
     }
 }
