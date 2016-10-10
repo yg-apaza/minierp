@@ -55,4 +55,8 @@ public class ProductoDao {
         
         return producto;
     }
+    
+    public void save(EnP2mProducto producto) {
+        session.save(producto);     
+    }
 }
