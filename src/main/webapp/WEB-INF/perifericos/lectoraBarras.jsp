@@ -34,10 +34,10 @@
                 <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
                     <div class="panel panel-default">
                         <div class="panel-body">
-                            <div text-align="center">
-                                <label id="codigo">${codigo}</label>
-                                <div class="container" id="barcodeTarget"></div>
-                            </div>
+                            <div class="container">
+                                <label id="codigo">${codigo}</label></div>
+                            <div class="container" id="barcodeTarget"></div>
+                            
                             <button class="btn btn-md btn-success btn-block" onclick=generateBarcode()>
                                 <i class="fa fa-barcode"></i> Mostrar código
                             </button>

@@ -14,7 +14,7 @@ public class AddStockController extends HttpServlet
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ProductoDao dao = new ProductoDao();
-        dao.update(Integer.parseInt(request.getParameter("p")));
-        request.getRequestDispatcher("/WEB-INF/perifericos/barCodeInventario.jsp").forward(request, response);
+        dao.increaseStock(Integer.parseInt(request.getParameter("p")));
+        request.getRequestDispatcher("/WEB-INF/perifericos/inventarioBarras.jsp").forward(request, response);
     }
 }

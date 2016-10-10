@@ -177,7 +177,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>InventarioBarrasController</servlet-name>
-        <url-pattern>/secured/perifericos/inventarioBarrasController</url-pattern>
+        <url-pattern>/secured/perifericos/inventarioBarras</url-pattern>
     </servlet-mapping>
     <servlet>
         <description/>

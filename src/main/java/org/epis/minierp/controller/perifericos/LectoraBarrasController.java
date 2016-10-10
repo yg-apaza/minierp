@@ -34,7 +34,6 @@ public class LectoraBarrasController extends HttpServlet
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 	String directory = getServletContext().getRealPath("/")+"img\\barcodes";
-        System.out.println(directory);
         File file = null;
         if(ServletFileUpload.isMultipartContent(request)){
             try {

@@ -56,7 +56,7 @@ public class ProductoDao
         session.save(producto);     
     }
     
-    public void update(int proCod) {
+    public void increaseStock(int proCod) {
         EnP2mProducto producto = (EnP2mProducto)session.get(EnP2mProducto.class, proCod); 
         producto.setProStk(producto.getProStk()+1);
 	session.update(producto); 
