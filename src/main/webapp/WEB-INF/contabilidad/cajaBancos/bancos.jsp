@@ -239,5 +239,24 @@
         <div>
             <button class="btn btn-default center-block" type="submit">Imprimir</button>
         </div>
+        <p align=center>
+    <table>
+        <tr>
+            <td><h3><a href="report.jsp?txtCallFlag=WORD"> PRINT WORD</a></h3></td>
+                                                        <tr>
+            <td><h3><a href="report.jsp?txtCallFlag=EXCEL"> PRINT EXCEL</a></h3></td>
+                                                        <tr>
+            <td><h3><a href="report.jsp?txtCallFlag=PDF">PRINT PDF </a></h3></td>
+                                                        <tr>
+             <td><h3><a href="report.jsp?txtCallFlag=TEXT"> PRINT TEXT</a></h3></td>
+                                                        <tr>
+            <td><h3><a href="report.jsp?txtCallFlag=CSV">PRINT CSV</a></h3></td>
+                                                        <tr>
+            <td><h3><a href="report.jsp?txtCallFlag=XML">PRINT XML</a></h3></td>
+                                                        <tr>
+            <td><h3><a href="report.jsp?txtCallFlag=RPT">PRINT RPT</a></h3></td>
+         
+        </tr>
+    </table>
     </jsp:attribute>
 </minierptemplate:template>
