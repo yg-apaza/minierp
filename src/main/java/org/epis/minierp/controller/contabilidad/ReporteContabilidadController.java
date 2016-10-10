@@ -28,6 +28,9 @@ public class ReporteContabilidadController  extends HttpServlet
             case "xls":
                 response.setContentType("application/vnd.ms-excel");
                 break;
+            case "doc":
+                response.setContentType("application/msword");
+                break;
         }
         
         String path = "";

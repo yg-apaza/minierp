@@ -1,5 +1,6 @@
 package org.epis.minierp.dao.contabilidad.reporte;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -14,7 +15,11 @@ import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.export.JRXlsExporter;
+import net.sf.jasperreports.engine.export.ooxml.JRDocxExporter;
 import net.sf.jasperreports.engine.query.JRHibernateQueryExecuterFactory;
+import net.sf.jasperreports.export.Exporter;
+import net.sf.jasperreports.export.SimpleExporterInput;
+import net.sf.jasperreports.export.SimpleOutputStreamExporterOutput;
 import org.epis.minierp.util.HibernateUtil;
 import org.hibernate.Session;
 
@@ -43,10 +48,18 @@ public class ReporteContabilidad {
                     JasperExportManager.exportReportToPdfFile(jasperPrint, fullPath + "." + fileType);
                     break;
                 case "xls":
-                    JRXlsExporter exporter = new JRXlsExporter();
-                    exporter.setParameter(JRExporterParameter.JASPER_PRINT, jasperPrint);
-                    exporter.setParameter(JRExporterParameter.OUTPUT_FILE_NAME, fullPath + "." + fileType);
-                    exporter.exportReport();
+                    JRXlsExporter exporterXls = new JRXlsExporter();
+                    exporterXls.setParameter(JRExporterParameter.JASPER_PRINT, jasperPrint);
+                    exporterXls.setParameter(JRExporterParameter.OUTPUT_FILE_NAME, fullPath + "." + fileType);
+                    exporterXls.exportReport();
+                    break;
+                case "doc":
+                    Exporter exporterDoc = new JRDocxExporter();
+                    exporterDoc.setExporterInput(new SimpleExporterInput(jasperPrint));
+                    File docFile = new File(fullPath + "." + fileType);
+                    exporterDoc.setExporterOutput(new SimpleOutputStreamExporterOutput(docFile));
+                    System.out.println("Doc exportando ...........");
+                    exporterDoc.exportReport();
                     break;
             }
         } catch (JRException ex) {

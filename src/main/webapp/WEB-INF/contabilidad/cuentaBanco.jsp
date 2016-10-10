@@ -12,16 +12,22 @@
             <br>
             <br>
             <div class="row">
-                <div class="col-md-5 col-md-offset-1">
+                <div class="col-md-4">
                     <a href="${pageContext.request.contextPath}/secured/contabilidad/reporte?type=pdf&&report=cuentabancaria" class="btn btn-outline btn-danger btn-lg btn-block">
                         <i class="fa fa-file-pdf-o"></i>
                         Reporte Cuenta Bancaria [PDF]
                     </a>
                 </div>
-                <div class="col-md-5">
+                <div class="col-md-4">
                     <a href="${pageContext.request.contextPath}/secured/contabilidad/reporte?type=xls&&report=cuentabancaria" class="btn btn-outline btn-success btn-lg btn-block">
                         <i class="fa fa-file-excel-o"></i>
                         Reporte Cuenta Bancaria [XLS]
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <a href="${pageContext.request.contextPath}/secured/contabilidad/reporte?type=doc&&report=cuentabancaria" class="btn btn-outline btn-primary btn-lg btn-block">
+                        <i class="fa fa-file-word-o"></i>
+                        Reporte Cuenta Bancaria [DOC]
                     </a>
                 </div>
             </div>

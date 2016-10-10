@@ -24,6 +24,11 @@
                     Descargar Plan Contable [XLS]
                 </a>
                 <br>
+                <a href="${pageContext.request.contextPath}/secured/contabilidad/reporte?type=doc&&report=plancontable" class="btn btn-outline btn-primary btn-lg btn-block">
+                    <i class="fa fa-file-word-o"></i>
+                    Descargar Plan Contable [DOC]
+                </a>
+                <br>
                 <a href="${pageContext.request.contextPath}/secured/contabilidad" class="btn btn-outline btn-default btn-lg btn-block">
                     <i class="fa fa-arrow-left"></i>
                     Regresar al Menú Principal
