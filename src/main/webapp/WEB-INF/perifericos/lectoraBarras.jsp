@@ -18,7 +18,7 @@
                     <div class="panel panel-default">
                         <div class="panel-body">
                            <form role="form" enctype="multipart/form-data" method="post" action="${pageContext.request.contextPath}/secured/perifericos/lectoraBarras">                             
-                               <label>Cargar imagen </label>
+                                <label>Cargar imagen </label>
                                 <div class="form-group input-group">
                                     <input type="file" name="fileName">                                  
                                 </div>
@@ -34,10 +34,9 @@
                 <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
                     <div class="panel panel-default">
                         <div class="panel-body">
-                            <div class="container">
+                            <div style="text-align: center">
                                 <label id="codigo">${codigo}</label></div>
                             <div class="container" id="barcodeTarget"></div>
-                            
                             <button class="btn btn-md btn-success btn-block" onclick=generateBarcode()>
                                 <i class="fa fa-barcode"></i> Mostrar código
                             </button>
