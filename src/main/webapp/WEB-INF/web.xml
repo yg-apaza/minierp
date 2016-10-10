@@ -141,6 +141,17 @@
     
     <servlet>
         <description/>
+        <display-name>LibroDiarioController</display-name>
+        <servlet-name>LibroDiarioController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.contabilidad.libroDiario.LibroDiarioController</servlet-class>
+    </servlet>
+     <servlet-mapping>
+        <servlet-name>LibroDiarioController</servlet-name>
+        <url-pattern>/secured/contabilidad/librodiario</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <description/>
         <display-name>PlanContableController</display-name>
         <servlet-name>PlanContableController</servlet-name>
         <servlet-class>org.epis.minierp.controller.contabilidad.plancontable.PlanContableController</servlet-class>
