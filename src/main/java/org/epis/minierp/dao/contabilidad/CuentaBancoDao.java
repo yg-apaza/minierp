@@ -33,4 +33,20 @@ public class CuentaBancoDao
         }
         return banco;
     }
+
+    public void save(EnP3mCuentaBanco cb) {
+        session.save(cb);
+    }
+
+    public void update(int updateCueBanCod, int updateBanCod, String updateCueBanNum) {
+        EnP3mCuentaBanco cuenta = (EnP3mCuentaBanco)session.get(EnP3mCuentaBanco.class, updateCueBanCod); 
+        BancoDao bancoDao = new BancoDao();
+        cuenta.setTaGzzBanco(bancoDao.getById(updateBanCod));
+        cuenta.setCueBanNum(updateCueBanNum);
+	session.update(cuenta);
+    }
+
+    public void delete(int deleteCueBanCod) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

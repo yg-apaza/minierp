@@ -55,13 +55,10 @@ public class CuentaDao
         EnP3mCuenta cuenta = (EnP3mCuenta)session.get(EnP3mCuenta.class, cueCod); 
         cuenta.setEstRegCod('*');
 	session.update(cuenta);
-        //user =  (User) session.get(User.class, user_id);
         Iterator<EnP3mCuenta> iterator = cuenta.getEnP3mCuentas().iterator();
         while(iterator.hasNext()) {
             EnP3mCuenta c = iterator.next();
             delete(c.getCueCod());
-            //c.setEstRegCod('*');
-            //session.update(c);
         }
     }
 }

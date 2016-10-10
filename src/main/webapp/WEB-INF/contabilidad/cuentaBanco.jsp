@@ -7,11 +7,11 @@
     </jsp:attribute>
     <jsp:attribute name="contenido">
         <div class="container">
-            <h1 class="page-header">Cuentas Bancarias</h1>
-            <a href="#" class="btn btn-success btn-circle btn-xl" data-toggle="modal" data-target="#agregarModal"><i class="fa fa-plus"></i></a>
+            <h1 class="page-header">Cuentas Bancarias
+            <a href="#" class="btn btn-success btn-circle" data-toggle="modal" data-target="#agregarModal"><i class="fa fa-plus"></i></a></h1>
             <br>
             <br>
-            <div class="col-md-8 col-md-offset-2">
+            <div class="col-md-10 col-md-offset-1">
                 <div class="table-responsive">
                     <table class="table table-striped table-bordered table-hover">
                         <thead>
@@ -31,10 +31,10 @@
                                     <td>${cb.cueBanNum}</td>
                                     <td>${cb.enP3mCuenta.cueNum}</td>
                                     <td class="text-right">
-                                        <a href="#" data-toggle="modal" data-target="#modificarModal">
+                                        <a href="#" data-toggle="modal" data-target="#modificarModal" data-codigo="${cb.cueBanCod}" data-nrocuenta="${cb.cueBanNum}" data-codbanco="${cb.taGzzBanco.banCod}" data-cuenum="${cb.enP3mCuenta.cueNum}">
                                             <i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i>
                                         </a>
-                                        <a href="#" data-toggle="modal" data-target="#eliminarModal">
+                                        <a href="#" data-toggle="modal" data-target="#eliminarModal" data-codigo="${cb.cueBanCod}"data-nrocuenta="${cb.cueBanNum}" data-detbanco="${cb.taGzzBanco.banDet}">
                                             <i class="fa fa-trash-o fa-2x" style="color: black;"></i>
                                         </a>
                                     </td>
@@ -122,26 +122,11 @@
                             </div>
                             <div class="form-group">
                                 <label>Cuenta contable asociada:</label>
-                                <div class="input-group">
-                                    <input class="form-control" value="1041" readonly>
-                                    <span class="input-group-addon">-</span>
-                                    <select class="form-control" name="cueNum">
-                                        <option value="0">0</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                        <option value="6">6</option>
-                                        <option value="7">7</option>
-                                        <option value="8">8</option>
-                                        <option value="9">9</option>
-                                    </select>
-                                </div>
+                                <input class="form-control" id="updateCueNum" readonly>
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-outline btn-success">Agregar</button>
+                            <button type="submit" class="btn btn-outline btn-success">Modificar</button>
                             <button type="button" class="btn btn-outline btn-danger" data-dismiss="modal">Cancelar</button>
                         </div>
                     </form>
@@ -177,6 +162,7 @@
             var updateCueBanCod = $("#updateCueBanCod");
             var updateCueBanNum = $("#updateCueBanNum");
             var updateBanCod = $("#updateBanCod");
+            var updateCueNum = $("#updateCueNum");
             
             var deleteCueBanCod = $("#deleteCueBanCod");
             var deleteCueBanNum = $("#deleteCueBanNum");
@@ -184,14 +170,15 @@
             
             
             updateModal.on('show.bs.modal', function(e){
-                updateCueBanCod.text($(e.relatedTarget).data('codigo'));
+                updateCueBanCod.val($(e.relatedTarget).data('codigo'));
                 updateCueBanNum.val($(e.relatedTarget).data('nrocuenta'));
                 updateBanCod.val($(e.relatedTarget).data('codbanco'));
+                updateCueNum.val($(e.relatedTarget).data('cuenum'));
             });
             
             deleteModal.on('show.bs.modal', function(e){
-                deleteCueBanCod.text($(e.relatedTarget).data('codigo'));
-                deleteCueBanNum.val($(e.relatedTarget).data('nrocuenta'));
+                deleteCueBanCod.val($(e.relatedTarget).data('codigo'));
+                deleteCueBanNum.text($(e.relatedTarget).data('nrocuenta'));
                 deleteBanDet.text($(e.relatedTarget).data('detbanco'));
             });
             
