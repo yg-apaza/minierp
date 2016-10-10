@@ -29,6 +29,18 @@
                     min.removeAttribute('hidden');
                 }    
             }
+            
+       
+	function imprSelec(nombre) 
+	{ 
+            var articulo = document.getElementById(nombre); 
+            var ventimp = window.open(' ','limitMax','no','no','50','no','no','no','no','no','no','no','no','50'); 
+            ventimp.document.write(articulo.innerHTML ); 
+            ventimp.document.close(); 
+            ventimp.print( ); 
+            ventimp.close(); 
+	} 
+        
         </script>
         
         
@@ -82,7 +94,8 @@
                                    <select class = "form-control" style = "width: 170px; display: inline-block;" onChange="window.location.href=this.value">
                                    <option value="${pageContext.request.contextPath}/secured/compras/limiteMaximo"> Stock Minimo </option> -->
                                 </select>
-                                <button class="btn btn-success" style="float: right; display: block;"> Generar reporte </button>
+                               <button onClick = "imprSelec('limitMax')" target="_parent" class="btn btn-success" style="float: right; display: block;"> Imprimir reporte </button> 
+                             
                             </div>
                     </div>
                    
