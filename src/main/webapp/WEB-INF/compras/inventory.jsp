@@ -1,6 +1,8 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="minierptemplate" %>
+
 <minierptemplate:template>
     <jsp:attribute name="titulo">
         <title>Inventario</title>
@@ -17,13 +19,13 @@
                             <a href="${pageContext.request.contextPath}/secured/compras"><i class="fa fa-dashboard fa-fw"></i> Panel General</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-group fa-fw"></i> Logística<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-group fa-fw"></i> LogÃ­stica<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="#">Kardex</a>
                                 </li>
                                 <li>
-                                    <a href="${pageContext.request.contextPath}/secured/compras/clasificacionABC">Clasificación ABC</a>
+                                    <a href="${pageContext.request.contextPath}/secured/compras/clasificacionABC">ClasificaciÃ³n ABC</a>
                                 </li>
                                 <li>
                                     <a href="${pageContext.request.contextPath}/secured/compras/inventario">Inventario</a>
@@ -55,26 +57,24 @@
                     <table class = "table table-bordered table-condensed"  id = "id_table">
                         <thead>
                             <tr>
-                                <th style="text-align: center">Código</th>
-                                <th style="text-align: center">Descripción del producto</th>
+                                <th style="text-align: center">CÃ³digo</th>
+                                <th style="text-align: center">DescripciÃ³n del producto</th>
                                 <th style="text-align: center">Precio</th>
                                 <th style="text-align: center">Cantidad</th>
                             </tr>               
                         </thead>
                         <tbody>
-                            <c:forEach items="${productos}" var="p">
+                            <c:forEach items = "${productos}" var = "producto">    
                                 <tr>
-                                    <td>${p.id.proCod}</td>
-                                    <td>${p.proDet}</td>
-                                    <td>${p.proPreUni}</td>
-                                    <td>${p.proStk}</td>
+                                    <td><c:out value="${producto.id.proCod}"/> </td>
+                                    <td><c:out value="${producto.proDet}"/></td>
+                                    <td><c:out value="${producto.proPreUni}"/></td>
+                                    <td><c:out value="${producto.proStk}"/></td>
                                 </tr>
-                            </c:forEach>
+                            </c:forEach>  
                         </tbody>
-
                     </table>            
                 </div>
-
             </div>
 
         </jsp:attribute>
