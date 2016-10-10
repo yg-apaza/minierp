@@ -21,25 +21,33 @@ public class ReporteContabilidadController  extends HttpServlet
         String report = request.getParameter("report");
         ReporteContabilidad generador = new ReporteContabilidad();
         
+        switch(fileType)
+        {
+            case "pdf":
+                response.setContentType("application/pdf");
+                break;
+            case "xls":
+                response.setContentType("application/vnd.ms-excel");
+                break;
+        }
+        
+        String path = ReporteContabilidad.class.getClassLoader().getResource("org/epis/minierp/reporte/contabilidad/planContable.jrxml").getPath();
+        String fileGenerated = "";
+        
         switch(report)
         {
             case "plancontable":                
-                String path = ReporteContabilidad.class.getClassLoader().getResource("org/epis/minierp/reporte/contabilidad/planContable.jrxml").getPath();
-                String fileGenerated = generador.report(path, "PlanContable_");
-		File pdfFile = new File(fileGenerated);
-
-		response.setContentType("application/pdf");
-		response.addHeader("Content-Disposition", "attachment; filename=" + fileGenerated);
-		response.setContentLength((int) pdfFile.length());
-
-		FileInputStream fileInputStream = new FileInputStream(pdfFile);
-		OutputStream responseOutputStream = response.getOutputStream();
-		int bytes;
-		while ((bytes = fileInputStream.read()) != -1) {
-                    responseOutputStream.write(bytes);
-                }
+                fileGenerated = generador.report(path, "PlanContable_", fileType);
                 break;
         }
-        //response.sendRedirect(request.getContextPath() + "/secured/contabilidad");
+        
+        File file = new File(fileGenerated);
+        response.addHeader("Content-Disposition", "attachment; filename=" + file.getName());
+        response.setContentLength((int) file.length());
+        FileInputStream fileInputStream = new FileInputStream(file);
+        OutputStream responseOutputStream = response.getOutputStream();
+        int bytes;
+        while ((bytes = fileInputStream.read()) != -1)
+            responseOutputStream.write(bytes);
     }
 }

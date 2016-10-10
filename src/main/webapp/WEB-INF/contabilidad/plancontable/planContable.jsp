@@ -17,6 +17,10 @@
                     <i class="fa fa-plus"></i>
                     Descargar Plan Contable [PDF]
                 </a>
+                    <a class="btn btn-primary" href="${pageContext.request.contextPath}/secured/contabilidad/reporte?type=xls&&report=plancontable" role="button">
+                    <i class="fa fa-plus"></i>
+                    Descargar Plan Contable [XLS]
+                </a>
                 <a class="btn btn-default" href="${pageContext.request.contextPath}/secured/contabilidad" role="button">
                     <i class="fa fa-plus"></i>
                     Regresar al Menú Principal

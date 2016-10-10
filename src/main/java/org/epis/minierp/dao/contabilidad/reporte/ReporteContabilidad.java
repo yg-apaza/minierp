@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JRExporterParameter;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -28,17 +29,29 @@ public class ReporteContabilidad {
         session = HibernateUtil.getSessionFactory().getCurrentSession();
     }
     
-    public String report(String path, String fileName) {
+    public String report(String path, String fileName, String fileType) {
         param.put(JRHibernateQueryExecuterFactory.PARAMETER_HIBERNATE_SESSION, session);
-        String file = fileName +
-                sf.format(date.getTime()) + ".pdf";
+        String file = fileName + sf.format(date.getTime());
+        String fullPath = ReporteContabilidad.class.getClassLoader().getResource("org/epis/minierp/reporte/contabilidad/").getPath() + file;
+        
         try {
             JasperReport jasperReport = JasperCompileManager.compileReport(path);
             JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, param);
-            JasperExportManager.exportReportToPdfFile(jasperPrint, ReporteContabilidad.class.getClassLoader().getResource("org/epis/minierp/reporte/contabilidad/").getPath() + file);
+            switch(fileType)
+            {
+                case "pdf":
+                    JasperExportManager.exportReportToPdfFile(jasperPrint, fullPath + "." + fileType);
+                    break;
+                case "xls":
+                    JRXlsExporter exporter = new JRXlsExporter();
+                    exporter.setParameter(JRExporterParameter.JASPER_PRINT, jasperPrint);
+                    exporter.setParameter(JRExporterParameter.OUTPUT_FILE_NAME, fullPath + "." + fileType);
+                    exporter.exportReport();
+                    break;
+            }
         } catch (JRException ex) {
             Logger.getLogger(ReporteContabilidad.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return ReporteContabilidad.class.getClassLoader().getResource("org/epis/minierp/reporte/contabilidad/").getPath() + file;
+        return fullPath + "." + fileType;
     }
 }
