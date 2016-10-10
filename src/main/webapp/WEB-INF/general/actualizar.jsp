@@ -7,7 +7,7 @@
     </jsp:attribute>
     <jsp:attribute name="contenido">
         <div class="container">
-            <h1 class="page-header">Agregar Usuario</h1>
+            <h1 class="page-header">Actualizar Usuario</h1>
             <br>
             <div class="row">
                 <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
