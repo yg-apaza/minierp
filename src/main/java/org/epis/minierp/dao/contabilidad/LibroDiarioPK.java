@@ -9,7 +9,7 @@ import javax.persistence.Embeddable;
 public class LibroDiarioPK implements Serializable {
     
     @Column(name="LibDiaCod")
-    protected String libDiaCod;
+    protected Integer libDiaCod;
     
     @Column(name="AsiCabCod")
     protected Integer asiCabCod;
@@ -19,17 +19,17 @@ public class LibroDiarioPK implements Serializable {
     
     public LibroDiarioPK() {}
 
-    public LibroDiarioPK(String libDiaCod, Integer asiCabCod, Integer AsiDetCod) {
+    public LibroDiarioPK(Integer libDiaCod, Integer asiCabCod, Integer asiDetCod) {
         this.libDiaCod = libDiaCod;
         this.asiCabCod = asiCabCod;
         this.asiDetCod = asiDetCod;
     }
 
-    public String getLibDiaCod() {
+    public Integer getLibDiaCod() {
         return libDiaCod;
     }
 
-    public void setLibDiaCod(String libDiaCod) {
+    public void setLibDiaCod(Integer libDiaCod) {
         this.libDiaCod = libDiaCod;
     }
 
