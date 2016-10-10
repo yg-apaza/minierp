@@ -49,45 +49,39 @@
             <div id="page-wrapper">
                 <div class="row">
                     <div class="col-lg-12">
-                        <br><h1 class="page-header"> Proveedores </h1>
+                        <br><h1 class="page-header"> Agregar nuevo proveedor </h1>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="panel panel-primary">
-                            <div class="panel-heading" style="height: 55px;">
-                                <button class="btn btn-success" id="addbtn" style="float: right; display: block;"> Agregar nuevo </button> 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <br>
-                <div id="printarea">
-                    <table class = "table table-bordered table-condensed"  id = "id_table">
-                    <thead>
-                        <tr>
-                            <th style="text-align: center">Código</th>
-                            <th style="text-align: center">Nombre del proveedor</th>
-                            <th style="text-align: center">Contacto</th>
-                            <th style="text-align: center">Dirección</th>
-                            <th style="text-align: center">Celular</th>
-                            <th style="text-align: center">Email</th>
-                        </tr>               
-                    </thead>
-                    <tbody>
-                         <c:forEach items = "${proveedores}" var = "proveedor">    
-                            <tr>
-                                <td><c:out value="${proveedor.proCod}"/> </td>
-                                <td><c:out value="${proveedor.proDet}"/></td>
-                                <td><c:out value="${proveedor.proCon}"/></td>
-                                <td><c:out value="${proveedor.proDir}"/></td>
-                                <td style="text-align: center"><c:out value="${proveedor.proTelCel}"/></td>
-                                <td style="text-align: center"><c:out value="${proveedor.proEmail}"/></td>
-                            </tr>
-                        </c:forEach>  
-                    </tbody>
-                </table>            
-                </div>
+                <form class="form-group-sm">
+                    <label class = "form-control" style="background: #A9E2F3;" for = "nombre"> Nombre del proveedor: </label>
+                    <input class = "form-control" name = "nombre" type = "text" placeholder = "Nombre del Proveedor">
+                    <br>
+                    <label class = "form-control" style="background: #A9E2F3;" for = "contacto"> Nombre del contacto: </label>
+                    <input class = "form-control" name = "contacto" type = "text" placeholder = "Nombre del contacto">
+                    <br>
+                    <label class = "form-control" style="background: #A9E2F3;"  for = "direccion"> Dirección: </label>
+                    <input class = "form-control" name = "direccion" type = "text" placeholder = "Distrito, Provincia,País">
+                    <br>
+                    <label class = "form-control" style="background: #A9E2F3;" for = "telefono"> Teléfono: </label>
+                    <input class = "form-control" name = "telefono" type = "text" placeholder = "Ej. 054425689">
+                    <br>
+                    <label class = "form-control" style="background: #A9E2F3;" for = "celular"> Celular: </label>
+                    <input class = "form-control" name = "celular" type = "text" placeholder = "Ej. 940562312">
+                    <br>
+                    <label class = "form-control" style="background: #A9E2F3;" for = "email"> Email: </label>
+                    <input class = "form-control" name = "email" type = "text" placeholder = "Ej. example@example.com">
+                    <br>
+                    <label class = "form-control" style="background: #A9E2F3;" for = "pagina"> Página Web: </label>
+                    <input class = "form-control" name = "pagina" type = "text" placeholder = "Ej. wwww.proveedores.com">
+                    <br>
+                    <label class = "form-control" style="background: #A9E2F3;" for = "observaciones"> Observaciones: </label>
+                    <br>
+                    <textarea class = "form-control" name = "observaciones" placeholder = "Comentarios"></textarea>
+                    <br>
+                    <br>
+                    <button class="btn btn-success" id="addbtn" style="float: right; display: block;"> Agregar</button> 
+                </form>
+                
             </div>
         </div>
         <script>
@@ -97,7 +91,7 @@
                      
                     $("#addbtn").click(
                         function(){
-                            window.location.href="${pageContext.request.contextPath}/secured/compras/form_proveedor";
+                            window.location.href="#";
                         }
                     );
                  }
