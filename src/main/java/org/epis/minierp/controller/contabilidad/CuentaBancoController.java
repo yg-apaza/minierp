@@ -5,6 +5,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.epis.minierp.dao.contabilidad.BancoDao;
+import org.epis.minierp.dao.contabilidad.CuentaBancoDao;
 
 public class CuentaBancoController extends HttpServlet
 {
@@ -12,6 +14,10 @@ public class CuentaBancoController extends HttpServlet
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/WEB-INF/contabilidad/cuentasBanco.jsp").forward(request, response);
+        CuentaBancoDao dao = new CuentaBancoDao();
+        BancoDao bancoDao = new BancoDao();
+        request.setAttribute("cuentasbanco", dao.getAllActive());
+        request.setAttribute("bancos", bancoDao.getAllActive());
+        request.getRequestDispatcher("/WEB-INF/contabilidad/cuentaBanco.jsp").forward(request, response);
     }
 }
