@@ -116,6 +116,7 @@
         <servlet-name>PerfilController</servlet-name>
         <url-pattern>/perfil</url-pattern>
     </servlet-mapping>
+    
     <!-- Modulo de Compras -->
     <servlet>
         <description/>
