@@ -62,6 +62,14 @@
         <servlet-class>org.epis.minierp.controller.LoginController</servlet-class>
     </servlet>
     <servlet-mapping>
+        <servlet-name>UpdateController</servlet-name>
+        <url-pattern>/updatecontroller</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateControllerPost</servlet-name>
+        <url-pattern>/updatecontrollerpost</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>LoginController</servlet-name>
         <url-pattern/>
     </servlet-mapping>
