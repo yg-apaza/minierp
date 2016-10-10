@@ -12,7 +12,8 @@ import com.google.zxing.WriterException;
 import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.common.HybridBinarizer;
-import com.google.zxing.oned.Code128Writer;
+import com.google.zxing.oned.Code39Writer;
+import com.google.zxing.oned.Code39Reader;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
@@ -33,8 +34,8 @@ public class CodigoBarrasDao {
         BufferedImage image = null;
         if (productCode != null){
             try {
-                Code128Writer writer = new Code128Writer();
-                BitMatrix matrix = writer.encode(productCode, com.google.zxing.BarcodeFormat.CODE_128, 300, 100);
+                Code39Writer writer = new Code39Writer();
+                BitMatrix matrix = writer.encode(productCode, com.google.zxing.BarcodeFormat.CODE_39, 300, 100);
                 image = new BufferedImage(matrix.getWidth(), matrix.getHeight(), BufferedImage.TYPE_INT_RGB);
                 image.createGraphics();
                 Graphics2D graphics = (Graphics2D) image.getGraphics();
@@ -75,20 +76,16 @@ public class CodigoBarrasDao {
         int width = image.getWidth();
         int height = image.getHeight();
         int[] pixels = new int[width * height];
- 
         LuminanceSource source = new BufferedImageLuminanceSource(image);
         BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
-        
-        Reader reader = new MultiFormatReader();
+        Code39Reader reader = new Code39Reader();
         Result result = null;
-    
         try {
             result = reader.decode(bitmap);
-        } catch (NotFoundException | FormatException | ChecksumException ex) {
+        } catch (NotFoundException | FormatException ex) {
             Logger.getLogger(CodigoBarrasDao.class.getName()).log(Level.SEVERE, null, ex);
         }
-         
-        return new String(result.getText());
+        return result.getText();
     }
 
 }

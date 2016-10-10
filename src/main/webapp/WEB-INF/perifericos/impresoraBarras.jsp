@@ -9,6 +9,10 @@
         <div class="container">
             <h1 class="page-header">Impresora de código de barras</h1>
             <br>
+            <a class="btn btn-success" href="${pageContext.request.contextPath}/secured/perifericos" role="button">
+                <i class="fa fa-arrow-left"></i>
+                Regresar
+            </a>
             <div class="row">
                 <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
                     <div class="panel panel-default">
@@ -17,7 +21,7 @@
                                 <div class="col-md-12 form-group">
                                     <label>Código </label>
                                     <div class="form-group input-group">
-                                        <span class="input-group-addon"><i class="fa fa-product-hunt"></i></span>
+                                        <span class="input-group-addon"><i class="fa fa-barcode"></i></span>
                                         <input type="text" class="form-control" placeholder="Codigo" id="proCod">
                                     </div>
                                 </div>
@@ -40,7 +44,7 @@
                             <div class="row">
                                 <div class="col-md-12 form-group">
                                     <div class="row-centered">
-                                        <div class="col-md-12" id="barcodeTarget"></div>
+                                        <div class="container" id="barcodeTarget"></div>
                                     </div>    
                                     <div class="row">
                                         <div class="col-md-12">
