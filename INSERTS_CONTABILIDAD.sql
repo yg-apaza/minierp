@@ -545,6 +545,7 @@ INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `
 INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (540, 434, 5, '10410', 'CENTRAL DE RESERVA DEL PERU', 'A');
 INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (541, 434, 5, '10411', 'NACION', 'A');
 INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (542, 434, 5, '10412', 'SCOTIABANK PERU', 'A');
+INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (543, 9, 2, '94', 'Gastos Administrativos', 'A');
 
 COMMIT;
 
