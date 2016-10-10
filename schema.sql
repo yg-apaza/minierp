@@ -395,7 +395,7 @@ CREATE TABLE en_p3m_asiento_cab
   LibDiaCod Int(6) ZEROFILL NOT NULL,
   AsiCabCod Int(10) ZEROFILL NOT NULL AUTO_INCREMENT,
   AsiCabTip Char(1) NOT NULL,
-  AsiCabGlo Char(60),
+  AsiCabGlo Char(100),
   AsiCabFec Date NOT NULL,
   TipComCod Int(2) ZEROFILL NOT NULL,
   AsiCabNumCom Char(15),

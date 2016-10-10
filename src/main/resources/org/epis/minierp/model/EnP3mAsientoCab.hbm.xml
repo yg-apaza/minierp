@@ -25,7 +25,7 @@
             <column name="AsiCabTip" length="1" not-null="true" />
         </property>
         <property name="asiCabGlo" type="string">
-            <column name="AsiCabGlo" length="60" />
+            <column name="AsiCabGlo" length="100" />
         </property>
         <property name="asiCabFec" type="date">
             <column name="AsiCabFec" length="10" not-null="true" />
