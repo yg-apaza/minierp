@@ -2,6 +2,7 @@ package org.epis.minierp.dao.compras;
 
 import java.util.List;
 import org.epis.minierp.model.EnP2mProducto;
+import org.epis.minierp.model.EnP2mProductoId;
 import org.epis.minierp.util.HibernateUtil;
 import org.hibernate.ObjectNotFoundException;
 import org.hibernate.Query;
@@ -45,7 +46,7 @@ public class ProductoDao {
         return productos;
     }
     
-    public EnP2mProducto getById(String id) {
+    public EnP2mProducto getById(EnP2mProductoId id) {
         EnP2mProducto producto = null;
         try {
             producto = (EnP2mProducto)session.load(EnP2mProducto.class, id);
@@ -58,5 +59,9 @@ public class ProductoDao {
     
     public void save(EnP2mProducto producto) {
         session.save(producto);     
+    }
+    
+    public void update(EnP2mProducto producto) {
+        session.update(producto);     
     }
 }

@@ -84,20 +84,28 @@
             
             function updateDescription(){
                 try {
+                        var amounts = new Array();
+                        var descriptions = new Array();
+                        var prices = new Array();
                         var table = document.getElementById('productTable');
                         var rowCount = table.rows.length;
                         var subtotal = 0;
                         
                         for(var i=1; i<rowCount; i++) {
                             var row = table.rows[i];
-                            console.dir(row);
                             var quant = row.cells[1].childNodes[1].childNodes[3].value;
+                            amounts.push(quant);
+                            descriptions.push(row.cells[2].childNodes[1].value);
                             var price = row.cells[3].childNodes[1].childNodes[3].value;
+                            prices.push(price);
                             row.cells[4].childNodes[1].childNodes[3].value = quant*price;
                             subtotal += quant*price;
                         }
                         $('#facSub').val(subtotal);
                         $('#facTot').val((subtotal*(1+$('#facIgv').val())/100)-($('#facDes').val()));
+                        $('#proAmo').val(amounts);
+                        $('#proDes').val(descriptions);
+                        $('#proPri').val(prices);                        
                     } catch(e) {
                         alert(e);
                     }
@@ -172,25 +180,36 @@
                             <div class="panel panel-primary">
                                 <div class="panel-heading">
                                     <h4>Información General</h4>
-                                    <div class="col-xs-12 col-sm-6 col-md-8">
+                                    <div class="col-md-4">
                                         <div class="form-group input-group" >
                                             <span class="input-group-addon"><i class="fa fa-shopping-cart"></i></span>
                                             <input type="text" class="form-control" name="facComCabCod" placeholder="Número de Factura">
                                         </div>
                                     </div>
-                                    <div class="col-xs-6 col-md-4">
+                                    <div class="col-md-4">
                                         <div class="form-group input-group" >
                                             <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                                             <input type="date" class="form-control" name="facComCabFec">
                                         </div>
                                     </div>
-                                    <div class="col-xs-12 col-sm-6 col-md-6">
+                                    <div class="col-md-4">
+                                        <div class="form-group input-group" >
+                                            <span class="input-group-addon">Estado</span>
+                                            <select class="form-control" name="estFacCod">
+                                                <c:forEach items="${estados}" var="estado">
+                                                  <option value="${estado.estFacCod}">${estado.estFacDet}</option>
+                                                </c:forEach>
+                                            </select>
+                                            <span class="input-group-addon"><i class="fa fa-money"></i></span>
+                                        </div>
+                                    </div>                               
+                                    <div class="col-md-6">
                                         <div class="form-group input-group" >
                                             <span class="input-group-addon"><i class="fa fa-child"></i></span>
-                                            <input type="text" class="form-control" value="${usuario.usuCod}" readonly>
+                                            <input type="text" class="form-control" name="usuCod" value="${usuario.usuCod}" readonly>
                                         </div>
                                     </div>
-                                    <div class="col-xs-6 col-md-6">
+                                    <div class="col-md-6">
                                         <div class="form-group input-group" >
                                             <span class="input-group-addon"><i class="fa fa-globe"></i></span>
                                             <input type="hidden" class="form-control" name="supplierCode" id="proCod">
@@ -226,20 +245,20 @@
                                                 <td style="width: 130px;">
                                                     <div class="form-group input-group">
                                                         <span class="input-group-addon"><i class="fa fa-gear"></i></span>
-                                                        <input type="number" class="form-control" min="0" step="1" value="0">
+                                                        <input type="number" class="form-control" min="0" step="any" value="0">
                                                     </div>
                                                 </td>
-                                                <td>                                                    
+                                                <td>
                                                     <select class="form-control">
                                                         <c:forEach items="${productos}" var="producto">
-                                                          <option value="${producto.id}">${producto.proDet}</option>
+                                                          <option value="${producto.id.proCod}/${producto.id.subClaProCod}/${producto.id.claProCod}">${producto.proDet}</option>
                                                         </c:forEach>
                                                     </select>                                                    
                                                 </td>
                                                 <td style="width: 166px;">
                                                     <div class="form-group input-group" >
                                                         <span class="input-group-addon"><i class="fa fa-money"></i></span>
-                                                        <input type="number" class="form-control" min="0.0" step="1" value="0.0">
+                                                        <input type="number" class="form-control" min="0.0" step="any" value="0.0">
                                                     </div>
                                                 </td>
                                                 <td style="width: 166px;">
@@ -251,11 +270,14 @@
                                             </tr>
                                         </tbody>
                                     </table>
+                                    <input type="hidden" class="form-control" name="productsAmounts" id="proAmo">
+                                    <input type="hidden" class="form-control" name="productsDescriptions" id="proDes">
+                                    <input type="hidden" class="form-control" name="productsPrices" id="proPri">
                                     <div>
                                         <div class="col-xs-12 col-sm-6 col-md-8">
                                             <div class="panel panel-default">
                                                 <div class="panel-heading">
-                                                    Observaciones<br><br><textarea class="form-control" rows="2" name="facComCabObs"></textarea>
+                                                    Observaciones<br><br><textarea class="form-control" rows="2" name="facComCabObs" placeholder="No hay comentarios"></textarea>
                                                 </div>
                                                 <div class="panel-body">
                                                     <div class="col-md-12">
@@ -297,22 +319,22 @@
                                         <div class="col-xs-6 col-md-4">
                                             <div class="form-group input-group" >
                                                 <span class="input-group-addon">SubTotal</span>
-                                                <input type="number" class="form-control" name="facComCabSubTot" id="facSub" readonly>
+                                                <input type="number" class="form-control" name="facComCabSubTot" id="facSub" value="0" readonly>
                                                 <span class="input-group-addon"><i class="fa fa-usd"></i></span>
                                             </div>
                                             <div class="form-group input-group" >
                                                 <span class="input-group-addon">IGV</span>
-                                                <input type="number" class="form-control" name="facComCabIgv" min="0" step="1" max="100" value="18" id="facIgv">
+                                                <input type="number" class="form-control" name="facComCabIgv" min="0" step="any" max="100" value="18" id="facIgv">
                                                 <span class="input-group-addon"><i class="fa fa-percent"></i></span>
                                             </div>
                                             <div class="form-group input-group" >
                                                 <span class="input-group-addon">Descuento</span>
-                                                <input type="number" class="form-control" name="facComCabDes" min="0" step="1" value="0" id="facDes">
+                                                <input type="number" class="form-control" name="facComCabDes" min="0" step="any" value="0" id="facDes">
                                                 <span class="input-group-addon"><i class="fa fa-sort-amount-asc"></i></span>
                                             </div>
                                             <div class="form-group input-group" >
                                                 <span class="input-group-addon">Total</i></span>
-                                                <input type="number" class="form-control" name="facComCabTot" id="facTot" readonly>
+                                                <input type="number" class="form-control" name="facComCabTot" id="facTot" value="0" readonly>
                                                 <span class="input-group-addon"><i class="fa fa-usd"></i></span>
                                             </div>
                                             <button type="submit" class="btn btn-primary">Registrar Factura</button>
