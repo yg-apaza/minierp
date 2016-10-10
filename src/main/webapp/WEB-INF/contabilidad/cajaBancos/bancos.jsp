@@ -1,3 +1,4 @@
+<%@page import="java.text.SimpleDateFormat" %> 
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -16,15 +17,19 @@
                             <div class="form-group">
                                 <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Periodo: </label>
                                 <div class="col-sm-9">
-                                        <input type="date" id="form-field-1" placeholder="Mar-16" class="col-xs-10 col-sm-3">
+                                        <input id = "fecIn" type="month" id="form-field-1" placeholder="Mar-16" class="col-xs-10 col-sm-4">
                                 </div>
                             </div>
-
+                            <script>
+                                document.getElementById("fecIn").value = moment().format('YYYY-MM');;
+                            </script>
+                            
                             <br><br>
+                            
                             <div class="form-group">
                                 <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> RUC: </label>
                                 <div class="col-sm-9">
-                                        <input type="text" id="form-field-1" placeholder="23234345621" class="col-xs-10 col-sm-3">
+                                        <input type="text" id="form-field-1" placeholder="23234345621" class="col-xs-10 col-sm-4">
                                 </div>
                             </div>
 
@@ -240,23 +245,6 @@
             <button class="btn btn-default center-block" type="submit">Imprimir</button>
         </div>
         <p align=center>
-    <table>
-        <tr>
-            <td><h3><a href="report.jsp?txtCallFlag=WORD"> PRINT WORD</a></h3></td>
-                                                        <tr>
-            <td><h3><a href="report.jsp?txtCallFlag=EXCEL"> PRINT EXCEL</a></h3></td>
-                                                        <tr>
-            <td><h3><a href="report.jsp?txtCallFlag=PDF">PRINT PDF </a></h3></td>
-                                                        <tr>
-             <td><h3><a href="report.jsp?txtCallFlag=TEXT"> PRINT TEXT</a></h3></td>
-                                                        <tr>
-            <td><h3><a href="report.jsp?txtCallFlag=CSV">PRINT CSV</a></h3></td>
-                                                        <tr>
-            <td><h3><a href="report.jsp?txtCallFlag=XML">PRINT XML</a></h3></td>
-                                                        <tr>
-            <td><h3><a href="report.jsp?txtCallFlag=RPT">PRINT RPT</a></h3></td>
-         
-        </tr>
-    </table>
+    
     </jsp:attribute>
 </minierptemplate:template>
