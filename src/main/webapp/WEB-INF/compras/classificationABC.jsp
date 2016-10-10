@@ -1,5 +1,4 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="minierptemplate" %>
 <minierptemplate:template>
     <jsp:attribute name="titulo">
@@ -10,6 +9,7 @@
         <script src="${pageContext.request.contextPath}/js/sb-admin-2.min.js"></script>
         <script src="${pageContext.request.contextPath}/js/jquery.min"></script>
         <script src="${pageContext.request.contextPath}/js/jquery.validate.min"></script>
+        <script src="${pageContext.request.contextPath}/js/jquery.PrintArea.js"></script>
         
         <div id ="wrapper">
             <div class="navbar-default sidebar">
@@ -62,13 +62,13 @@
                                         <option> B </option>
                                         <option> C </option>
                                     </select>
-                                    <button class="btn btn-success" style="float: right; display: block;" onclick=""> Generar reporte </button> 
+                                <button class="btn btn-success" id="printbtn" style="float: right; display: block;"> Generar reporte </button> 
                             </div>
                         </div>
                     </div>
                 </div>
                 <br>
-                <div>
+                <div id="printarea">
                     <table class = "table table-bordered table-condensed"  id = "id_table">
                     <thead>
                         <tr>
@@ -90,8 +90,10 @@
                     </tbody>
                 </table>            
                 </div>
+            </div>
         </div>
         <script>
+            document.getElementById("class_select").selectedIndex = 0;
             $(document).ready(
                     
                 function(){
@@ -128,18 +130,23 @@
                                     posdet = subcadena.search("proDet");
                                     productos = subcadena;
                                 }
-                            /*$("#productitos").data(productosR);
-                            
-                            var productillos = $("#productitos");
-                            
-                            alert(productillos.attr('proDet'));*/
-                                   
                             
                             });                        
                         }
                     );
+            
+                    $("#printbtn").click(
+                        function print(){
+                            var mode = 'iframe';
+                            var close = mode == "popup";
+                            var options = {mode: mode, popClose: close};
+                            $("#printarea").printArea(options);
+                        }
+
+                    );
                 }
             );
+            
         </script>
     </jsp:attribute>  
 </minierptemplate:template>

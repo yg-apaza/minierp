@@ -20,18 +20,15 @@ import org.epis.minierp.model.EnP2mProducto;
  * @author usuario
  */
 public class ClasificacionABCController extends HttpServlet {
-    private static final long serialVersionUID = 1L;
-    
+    private static final long serialVersionUID = 1L;    
        
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
         ProductoDao producto = new ProductoDao();
         List <EnP2mProducto> productosA = producto.getA();
-        //List <EnP2mProducto> productosB = null;
         
         String resp = (String) request.getParameter("clase");
-        
         
         if(resp != null){
             
@@ -44,8 +41,7 @@ public class ClasificacionABCController extends HttpServlet {
                 List <EnP2mProducto> productosAm = producto.getA();
                 request.setAttribute("productos", productosA);
                 
-                out.println(productosAm);
-                
+                out.println(productosAm);                
                                 
             } else if(resp.equals("B")){
                 response.setContentType("text/html;charset=UTF-8");
@@ -59,10 +55,8 @@ public class ClasificacionABCController extends HttpServlet {
                 List <EnP2mProducto> productosC = producto.getC();
                 request.setAttribute("productos", productosC);
                 
-                out.println(productosC);
-                
-            }
-            
+                out.println(productosC);                
+            }            
         }
         else
         {
