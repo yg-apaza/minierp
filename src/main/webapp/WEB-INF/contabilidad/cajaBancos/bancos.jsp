@@ -59,7 +59,20 @@
                                         <input type="text" id="form-field-1" placeholder="777567" class="col-xs-10 col-sm-10">
                                 </div>
                             </div>
+                            <div id="main"></div>
                         </fieldset>
+                        
+                        <script type="text/javascript">
+                        
+       
+        var fs = require('fs');
+fs.readFile('empresa.txt', function(err,data) {
+  if ( err ) throw err;
+  console.log("Contents of file.txt: %s",data);
+});
+      
+                        </script>
+                        
                     </div>
                 </div>
             </div>
