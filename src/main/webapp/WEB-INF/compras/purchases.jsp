@@ -90,6 +90,7 @@
                         
                         for(var i=1; i<rowCount; i++) {
                             var row = table.rows[i];
+                            console.dir(row);
                             var quant = row.cells[1].childNodes[1].childNodes[3].value;
                             var price = row.cells[3].childNodes[1].childNodes[3].value;
                             row.cells[4].childNodes[1].childNodes[3].value = quant*price;
