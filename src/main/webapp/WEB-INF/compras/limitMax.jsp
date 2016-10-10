@@ -49,7 +49,7 @@
                                     <a href="${pageContext.request.contextPath}/secured/compras/clasificacionABC">Clasificación ABC</a>
                                 </li>
                                 <li>
-                                    <a href="${pageContext.request.contextPath}/secured/compras/inventario">Inventario/a>
+                                    <a href="${pageContext.request.contextPath}/secured/compras/inventario">Inventario</a>
                                 </li>
                                 <li>
                                     <a href="${pageContext.request.contextPath}/secured/compras/limiteMaximo">Stock</a>
