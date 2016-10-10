@@ -11,6 +11,21 @@
             <a href="#" class="btn btn-success btn-circle" data-toggle="modal" data-target="#agregarModal"><i class="fa fa-plus"></i></a></h1>
             <br>
             <br>
+            <div class="row">
+                <div class="col-md-5 col-md-offset-1">
+                    <a href="${pageContext.request.contextPath}/secured/contabilidad/reporte?type=pdf&&report=cuentabancaria" class="btn btn-outline btn-danger btn-lg btn-block">
+                        <i class="fa fa-file-pdf-o"></i>
+                        Reporte Cuenta Bancaria [PDF]
+                    </a>
+                </div>
+                <div class="col-md-5">
+                    <a href="${pageContext.request.contextPath}/secured/contabilidad/reporte?type=xls&&report=cuentabancaria" class="btn btn-outline btn-success btn-lg btn-block">
+                        <i class="fa fa-file-excel-o"></i>
+                        Reporte Cuenta Bancaria [XLS]
+                    </a>
+                </div>
+            </div>
+            <br>
             <div class="col-md-10 col-md-offset-1">
                 <div class="table-responsive">
                     <table class="table table-striped table-bordered table-hover">

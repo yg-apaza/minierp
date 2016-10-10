@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9bc8c0bc-e9f9-451d-ad9e-0c8ee74c6130">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="hql">
+		<![CDATA[from EnP3mCuentaBanco C WHERE C.estRegCod = 'A']]>
+	</queryString>
+	<field name="cueBanCod" class="java.lang.Integer"/>
+	<field name="cueBanNum" class="java.lang.String"/>
+	<field name="enP3mCuenta" class="org.epis.minierp.model.EnP3mCuenta"/>
+	<field name="estRegCod" class="java.lang.Character"/>
+	<field name="taGzzBanco" class="org.epis.minierp.model.TaGzzBanco"/>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="2733575f-c68c-4893-a067-cc5b77989072"/>
+				<staticText>
+					<reportElement x="20" y="20" width="416" height="43" forecolor="#FFFFFF" uuid="9daa5f2c-650d-4926-bfa8-1410625ed632"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[CUENTAS BANCARIAS]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="395" y="63" width="180" height="20" forecolor="#FFFFFF" uuid="5125a56b-166d-424f-acf8-4b3f6c498b67"/>
+					<textElement textAlignment="Right">
+						<font size="14" isBold="false"/>
+					</textElement>
+					<text><![CDATA[MiniERP]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="13"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21">
+			<line>
+				<reportElement x="-20" y="20" width="595" height="1" forecolor="#666666" uuid="bd3bd1cd-c42f-4fd7-b771-c95d64b36d88"/>
+			</line>
+			<staticText>
+				<reportElement x="0" y="1" width="41" height="20" uuid="eadfea19-2eff-469b-9492-aaa6926f96ca"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[N°]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="52" y="1" width="189" height="20" uuid="8f00ec8f-498e-4a90-878b-6f1196ff2e01"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Banco]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="254" y="0" width="128" height="20" uuid="a3a89bf9-d473-4bac-81d9-820bb9dcce29"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[N° de Cuenta Bancaria]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="393" y="0" width="162" height="20" uuid="bc98b849-2416-41b0-91e8-97a4422f313d"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cuenta contable asociada]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1" uuid="50f69df2-d74d-4088-a59c-82710f752af1"/>
+			</line>
+			<textField>
+				<reportElement x="0" y="0" width="41" height="20" uuid="3c22dbeb-9843-4867-b8a9-995c598232c1"/>
+				<textFieldExpression><![CDATA[$F{cueBanCod}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="52" y="0" width="189" height="20" uuid="c759d48a-8c4f-43dd-b6d0-f637da871226"/>
+				<textFieldExpression><![CDATA[$F{taGzzBanco}.getBanDet()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="254" y="0" width="128" height="20" uuid="e5fea147-cb3e-4963-9a71-b96235bf4c59"/>
+				<textFieldExpression><![CDATA[$F{cueBanNum}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="393" y="0" width="162" height="20" uuid="16dcf9e4-c90d-42cd-80f1-1089a539015c"/>
+				<textFieldExpression><![CDATA[$F{enP3mCuenta}.getCueNum()]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="c4b54920-ecc8-4b8c-9524-f458aa888b97"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="d1d957d5-4c5d-4803-925c-66926e7cc30e"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="4" width="100" height="13" uuid="a425968e-c001-4875-b824-3feb74831d14"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

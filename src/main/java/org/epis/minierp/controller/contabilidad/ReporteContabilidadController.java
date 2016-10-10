@@ -39,6 +39,10 @@ public class ReporteContabilidadController  extends HttpServlet
                 path = ReporteContabilidad.class.getClassLoader().getResource("org/epis/minierp/reporte/contabilidad/planContable.jrxml").getPath();
                 fileGenerated = generador.report(path, "PlanContable_", fileType);
                 break;
+            case "cuentabancaria":
+                path = ReporteContabilidad.class.getClassLoader().getResource("org/epis/minierp/reporte/contabilidad/cuentaBancaria.jrxml").getPath();
+                fileGenerated = generador.report(path, "CuentaBancaria_", fileType);
+                break;
         }
         
         File file = new File(fileGenerated);
