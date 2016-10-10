@@ -27,7 +27,7 @@ public class ClasificacionABCController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
         ProductoDao producto = new ProductoDao();
-        List <EnP2mProducto> productosA = producto.getAllActive();
+        List <EnP2mProducto> productosA = producto.getA();
         //List <EnP2mProducto> productosB = null;
         
         String resp = (String) request.getParameter("clase");
