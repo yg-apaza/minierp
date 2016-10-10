@@ -52,23 +52,6 @@
                         <br><h1 class="page-header"> Inventario </h1>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="panel panel-primary">
-                            <div class="panel-heading">
-                                <label for = "clase" style = "margin-right: 20px;"> Clase del producto: </label>
-                                <form>
-                                    <select class = "form-control" name = "clase" id="class_select" style = "width: 70px; display: inline-block;">
-                                        <option> A </option>
-                                        <option> B </option>
-                                        <option> C </option>
-                                    </select>
-                                    <button class="btn btn-success" style="float: right; display: block;" onclick=""> Generar reporte </button>
-                                </form>    
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <br>
                 <div>
                     <table class = "table table-bordered table-condensed"  id = "id_table">
