@@ -29,7 +29,7 @@
                             <div class="form-group">
                                 <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> RUC: </label>
                                 <div class="col-sm-9">
-                                        <input type="text" id="form-field-1" placeholder="23234345621" class="col-xs-10 col-sm-4">
+                                        <input id="emp0" type="text" id="form-field-1" placeholder="23234345621" class="col-xs-10 col-sm-4">
                                 </div>
                             </div>
 
@@ -38,7 +38,7 @@
                             <div class="form-group">
                                 <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Apellidos y Nombres, Denominación o Razón Social:  </label>
                                 <div class="col-sm-9">
-                                        <input type="text" id="form-field-1" placeholder="Motos Import SA" class="col-xs-10 col-sm-10">
+                                        <input id="emp1" type="text" id="form-field-1" placeholder="Motos Import SA" class="col-xs-10 col-sm-10">
                                 </div>
                             </div>
                             
@@ -47,7 +47,7 @@
                             <div class="form-group">
                                 <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Entidad Financiera:  </label>
                                 <div class="col-sm-9">
-                                        <input type="text" id="form-field-1" placeholder="Banco de Credito del Peru" class="col-xs-10 col-sm-10">
+                                        <input id="emp2" type="text" id="form-field-1" placeholder="Banco de Credito del Peru" class="col-xs-10 col-sm-10">
                                 </div>
                             </div>
                             
@@ -56,23 +56,38 @@
                             <div class="form-group">
                                 <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Código de la Cuenta Corriente:  </label>
                                 <div class="col-sm-9">
-                                        <input type="text" id="form-field-1" placeholder="777567" class="col-xs-10 col-sm-10">
+                                        <input id="emp3" type="text" id="form-field-1" placeholder="777567" class="col-xs-10 col-sm-10">
                                 </div>
                             </div>
-                            <div id="main"></div>
+                            
+                            <br><br>
+                            
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Seleccione archivo de la entidad:  </label>
+                                <input type="file" name="file" id="file">
+                                <script>
+                                    document.getElementById('file').onchange = function(){
+
+                                    var file = this.files[0];
+
+                                    var reader = new FileReader();
+                                    reader.onload = function(progressEvent){
+                                      // Entire file
+                                      console.log(this.result);
+
+                                      // By lines
+                                      var lines = this.result.split('\n');
+                                      for(var line = 0; line < lines.length; line++){
+                                        console.log(lines[line]);
+                                        document.getElementById("emp"+line).value = lines[line];
+                                      }
+                                    };
+                                    reader.readAsText(file);
+                                  };
+                                </script>
+                            </div>
                         </fieldset>
-                        
-                        <script type="text/javascript">
-                        
-       
-        var fs = require('fs');
-fs.readFile('empresa.txt', function(err,data) {
-  if ( err ) throw err;
-  console.log("Contents of file.txt: %s",data);
-});
-      
-                        </script>
-                        
+
                     </div>
                 </div>
             </div>
@@ -253,11 +268,10 @@ fs.readFile('empresa.txt', function(err,data) {
                 <!---Fin Ejemplos-->          
             </tbody>
         </table>
-        </div>
         <div>
             <button class="btn btn-default center-block" type="submit">Imprimir</button>
         </div>
-        <p align=center>
-    
+        </div>
+
     </jsp:attribute>
 </minierptemplate:template>

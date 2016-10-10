@@ -16,11 +16,15 @@
                             <div class="form-group">
                                 <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Periodo: </label>
                                 <div class="col-sm-9">
-                                        <input type="date" id="form-field-1" placeholder="Mar-16" class="col-xs-10 col-sm-3">
+                                        <input id = "fecIn" type="month" id="form-field-1" placeholder="Mar-16" class="col-xs-10 col-sm-4">
                                 </div>
                             </div>
+                            <script>
+                                document.getElementById("fecIn").value = moment().format('YYYY-MM');;
+                            </script>
 
                             <br><br>
+                            
                             <div class="form-group">
                                 <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> RUC: </label>
                                 <div class="col-sm-9">
@@ -36,6 +40,34 @@
                                         <input type="text" id="form-field-1" placeholder="Motos Import SA" class="col-xs-10 col-sm-10">
                                 </div>
                             </div>
+                            
+                            <br><br>
+                            
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Seleccione archivo de la entidad:  </label>
+                                <input type="file" name="file" id="file">
+                                <script>
+                                    document.getElementById('file').onchange = function(){
+
+                                    var file = this.files[0];
+
+                                    var reader = new FileReader();
+                                    reader.onload = function(progressEvent){
+                                      // Entire file
+                                      console.log(this.result);
+
+                                      // By lines
+                                      var lines = this.result.split('\n');
+                                      for(var line = 0; line < lines.length; line++){
+                                        console.log(lines[line]);
+                                        document.getElementById("emp"+line).value = lines[line];
+                                      }
+                                    };
+                                    reader.readAsText(file);
+                                  };
+                                </script>
+                            </div>
+                            
                         </fieldset>
                     </div>
                 </div>
@@ -65,9 +97,9 @@
                 </c:forEach>     
             </tbody>
         </table>
-        </div>
         <div>
             <button class="btn btn-default center-block" type="submit">Imprimir</button>
+        </div>
         </div>
     </jsp:attribute>
 </minierptemplate:template>
