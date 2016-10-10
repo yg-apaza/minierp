@@ -12,17 +12,20 @@
             <br>
             <br>
             <div class="col-md-4">
-                <p>Plan Contable General Empresarial</p>
-                <a class="btn btn-primary" href="${pageContext.request.contextPath}/secured/contabilidad/reporte?type=pdf&&report=plancontable" role="button">
-                    <i class="fa fa-plus"></i>
+                <p>Basado en el Plan Contable General Empresarial</p>
+                
+                <a href="${pageContext.request.contextPath}/secured/contabilidad/reporte?type=pdf&&report=plancontable" class="btn btn-outline btn-danger btn-lg btn-block">
+                    <i class="fa fa-file-pdf-o"></i>
                     Descargar Plan Contable [PDF]
                 </a>
-                    <a class="btn btn-primary" href="${pageContext.request.contextPath}/secured/contabilidad/reporte?type=xls&&report=plancontable" role="button">
-                    <i class="fa fa-plus"></i>
+                <br>
+                <a href="${pageContext.request.contextPath}/secured/contabilidad/reporte?type=xls&&report=plancontable" class="btn btn-outline btn-success btn-lg btn-block">
+                    <i class="fa fa-file-excel-o"></i>
                     Descargar Plan Contable [XLS]
                 </a>
-                <a class="btn btn-default" href="${pageContext.request.contextPath}/secured/contabilidad" role="button">
-                    <i class="fa fa-plus"></i>
+                <br>
+                <a href="${pageContext.request.contextPath}/secured/contabilidad" class="btn btn-outline btn-default btn-lg btn-block">
+                    <i class="fa fa-arrow-left"></i>
                     Regresar al Menú Principal
                 </a>
             </div>

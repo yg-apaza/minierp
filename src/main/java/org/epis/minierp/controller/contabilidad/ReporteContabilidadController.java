@@ -1,6 +1,5 @@
 package org.epis.minierp.controller.contabilidad;
 
-import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -31,12 +30,13 @@ public class ReporteContabilidadController  extends HttpServlet
                 break;
         }
         
-        String path = ReporteContabilidad.class.getClassLoader().getResource("org/epis/minierp/reporte/contabilidad/planContable.jrxml").getPath();
+        String path = "";
         String fileGenerated = "";
         
         switch(report)
         {
-            case "plancontable":                
+            case "plancontable":
+                path = ReporteContabilidad.class.getClassLoader().getResource("org/epis/minierp/reporte/contabilidad/planContable.jrxml").getPath();
                 fileGenerated = generador.report(path, "PlanContable_", fileType);
                 break;
         }
