@@ -1191,6 +1191,11 @@ INSERT INTO `en_p2m_subclase_producto` (`ClaProCod`, `SubClaProCod`, `SubClaProD
 INSERT INTO `en_p2m_subclase_producto` (`ClaProCod`, `SubClaProCod`, `SubClaProDet`, `EstRegCod`) VALUES ('05', '02', 'Cereales Familiares', 'A');
 INSERT INTO `en_p2m_subclase_producto` (`ClaProCod`, `SubClaProCod`, `SubClaProDet`, `EstRegCod`) VALUES ('05', '03', 'Cereales infantiles', 'A');
 
-
 COMMIT;
 
+
+-- -----------------------------------------------------
+-- Data for table `episerp`.`en_p2m_subclase_producto`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `episerp`;

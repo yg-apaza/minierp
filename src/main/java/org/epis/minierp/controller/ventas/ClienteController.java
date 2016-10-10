@@ -27,7 +27,7 @@ public class ClienteController extends HttpServlet
         EnP1mClienteDao clienteDao=new EnP1mClienteDao();                
         if(request.getParameter("buscarCliente")!=null){
             EnP1mCliente cliente=clienteDao.getById(request.getParameter("dniCli"));
-            List<EnP1mCliente> clientes=new ArrayList<EnP1mCliente>();
+            List<EnP1mCliente> clientes=new ArrayList<>();
             clientes.add(cliente);
             request.setAttribute("clientes", clientes);
             request.getRequestDispatcher("/WEB-INF/ventas/cliente/cliente.jsp").forward(request, response);
