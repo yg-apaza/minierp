@@ -81,10 +81,44 @@
                         </tr>               
                     </thead>
                     <tbody>
-                                   
+                         <c:forEach items = "${productos}" var = "producto">    
+                            <tr>
+                                <td><c:out value="${producto.id.proCod}"/> </td>
+                                <td><c:out value="${producto.proDet}"/></td>
+                                <td><c:out value="${producto.proPreUni}"/></td>
+                                <td><c:out value="${producto.proStk}"/></td>
+                            </tr>
+                        </c:forEach>  
                     </tbody>
                 </table>            
                 </div>
-        </div>               
+        </div>
+        <script>
+            $(document).ready(
+                    
+                function(){
+                    $("#class_select").change(
+                        function(){
+                            
+                            var clase = $("#class_select").val();
+                            $("#id_table").find("tr:gt(0)").remove();
+                            $.get('clasificacionABC',{clase: clase},function(productosR){
+                            
+                            $(productosR).each(function(indice, elemento) {
+                                console.log('El elemento con el índice '+indice+' contiene '+$(elemento).text());
+                              });
+                            /*$("#productitos").data(productosR);
+                            
+                            var productillos = $("#productitos");
+                            
+                            alert(productillos.attr('proDet'));*/
+                                   
+                            
+                            });                        
+                        }
+                    );
+                }
+            );
+        </script>
     </jsp:attribute>  
 </minierptemplate:template>
