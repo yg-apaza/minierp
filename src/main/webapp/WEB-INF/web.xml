@@ -173,6 +173,17 @@
         <servlet-name>LimiteMaximoController</servlet-name>
         <url-pattern>/secured/compras/limiteMaximo</url-pattern>
     </servlet-mapping>
+    <!--Modulo de Compras Proveedores -->
+     <servlet>
+        <description/>
+        <display-name>SuppliersController</display-name>
+        <servlet-name>SuppliersController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.compras.SuppliersController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SuppliersController</servlet-name>
+        <url-pattern>/secured/compras/proveedores</url-pattern>
+    </servlet-mapping>
 
     <!-- Modulo de Contabilidad -->
     <servlet>

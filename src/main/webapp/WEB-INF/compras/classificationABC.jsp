@@ -1,5 +1,4 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="minierptemplate" %>
 <minierptemplate:template>
     <jsp:attribute name="titulo">
