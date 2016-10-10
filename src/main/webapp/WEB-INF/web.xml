@@ -161,23 +161,23 @@
     </servlet-mapping>
     <servlet>
         <description/>
-        <display-name>LecCodBarrasController</display-name>
-        <servlet-name>LecCodBarrasController</servlet-name>
-        <servlet-class>org.epis.minierp.controller.perifericos.LecCodBarrasController</servlet-class>
+        <display-name>LectoraBarrasController</display-name>
+        <servlet-name>LectoraBarrasController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.perifericos.LectoraBarrasController</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>LecCodBarrasController</servlet-name>
-        <url-pattern>/secured/perifericos/lecCodBarras</url-pattern>
+        <servlet-name>LectoraBarrasController</servlet-name>
+        <url-pattern>/secured/perifericos/lectoraBarras</url-pattern>
     </servlet-mapping>
     <servlet>
         <description/>
-        <display-name>BarCodeInventarioController</display-name>
-        <servlet-name>BarCodeInventarioController</servlet-name>
-        <servlet-class>org.epis.minierp.controller.perifericos.BarCodeInventarioController</servlet-class>
+        <display-name>InventarioBarrasController</display-name>
+        <servlet-name>InventarioBarrasController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.perifericos.InventarioBarrasController</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>BarCodeInventarioController</servlet-name>
-        <url-pattern>/secured/perifericos/barCodeInventario</url-pattern>
+        <servlet-name>InventarioBarrasController</servlet-name>
+        <url-pattern>/secured/perifericos/inventarioBarrasController</url-pattern>
     </servlet-mapping>
     <servlet>
         <description/>
