@@ -9,13 +9,19 @@
     <jsp:attribute name="contenido">
         <div class="container">
             <h1 class="page-header">Clientes</h1>
-            <br>
-            <a class="btn btn-success" href="${pageContext.request.contextPath}/secured/clientes/addCliente" role="button">
-                <i class="fa fa-plus"></i>
-                Agregar cliente
-            </a>
-            <br>
-            <br>
+            <div class="form-horizontal">
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">DNI</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" placeholder="DNI" name="dniCli">
+                        </div>
+                        <button type="button" class="btn btn-primary">Buscar <i class="fa fa-search-plus fa-1x"></i></button>
+                        <a class="btn btn-success" href="${pageContext.request.contextPath}/secured/clientes/addCliente" role="button">
+                            <i class="fa fa-plus"></i>
+                            Agregar cliente
+                        </a>
+                    </div>
+                </div>            
             <table class="table table-hover">
                 <thead>
                     <tr>

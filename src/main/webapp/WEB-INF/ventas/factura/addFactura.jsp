@@ -4,210 +4,152 @@
         <title>MiniERP - Factura</title>
     </jsp:attribute>
     <jsp:attribute name="contenido">
+        
         <div class="container">
             <h1 class="page-header">Agregar Factura</h1>
-            <br>
-            <div class="row">
-                <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+            <br>			
+            <div class="form-horizontal">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Añadir Factura
+                            <div class=form-group>
+                                    <label class="col-sm-2"><h4>Añadir Factura</h4></label>
+                            </div>
+                            <div class="form-group"> 
+                                    <div class="col-sm-6">                               
+                                            <input type="text" class="form-control" placeholder="Codidgo Factura" name="CodCabFac">
+                                    </div>
+                                    <div class="col-sm-6">
+                                            <select class="form-control" name="cliCod">
+                                                    <option hidden>Cliente</option>
+                                                    <option value="1">Roberto Perez Linares</option>
+                                                    <option value="2">Josep Pedrerol Tamudo</option>
+                                                    <option value="3">Diana Gamarra Florez</option>
+                                                    <option value="4">Lucia Quispe Mamani</option>
+                                                    <option value="5">Jose Perez Condo</option>
+                                                    <option value="6">Juan Carlos Villarin</option>
+                                            </select>
+                                    </div>                                  
+                            </div>
+
+                            <div class="form-group">
+                                    <div class="col-sm-6">
+                                            <select class="form-control" name="usuCod">
+                                                    <option hidden>Usuario</option>
+                                                    <option value="1">Roberto Perez Linares</option>
+                                                    <option value="2">Josep Pedrerol Tamudo</option>
+                                                    <option value="3">Diana Gamarra Florez</option>
+                                                    <option value="4">Lucia Quispe Mamani</option>
+                                                    <option value="5">Jose Perez Condo</option>
+                                                    <option value="6">Juan Carlos Villarin</option>
+                                            </select>
+                                    </div> 
+                                    <div class="col-sm-3">
+                                            <input placeholder="Fecha de venta" type='text' class="form-control" name="usuFecVen"/>
+                                    </div>
+
+                                    <div class="col-sm-3">
+                                            <div class="input-group">
+                                                    <input type="text" class="form-control" placeholder="Total" name="total">
+                                                    <span class="input-group-addon"><i class="fa fa-money"></i>
+                                                    </span>                                        
+                                            </div>                                              
+                                    </div>
+
+                            </div>
                         </div>
                         <div class="panel-body">
                             <form role=form" method="post" action="${pageContext.request.contextPath}/secured/ventas/factura/addFactura">
                                 <div class="form-group">
-                                    <div class="row">                                        
-                                        <div class="col-sm-3">
-                                            <label>Cliente</label>                                            
-                                        </div>
-                                        <div class="col-sm-5">
-                                            <select class="form-control" name="cliCod">
-                                                <option value="1">Roberto Perez Linares</option>
-                                                <option value="2">Josep Pedrerol Tamudo</option>
-                                                <option value="3">Diana Gamarra Florez</option>
-                                                <option value="4">Lucia Quispe Mamani</option>
-                                                <option value="5">Jose Perez Condo</option>
-                                                <option value="6" selected="selected">Juan Carlos Villarin</option>
+                                    <div class="col-sm-6">
+                                            <label class="control-label">Método de Pago</label> 
+                                            <select class="form-control" name="metPagCod">
+                                                    <option value="1">Credito</option>
+                                                    <option value="2">Al Contado</option>
+                                                    <option value="6" selected="selected">Ninguna</option>
                                             </select>
-                                        </div>                                        
-                                    </div>
-                                    <hr>
-                                    <div class="row">
-                                        <div class="col-sm-3">
-                                            <label>Usuario</label>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <div class="form-group input-group">
-                                                <span class="input-group-addon"><i class="fa fa-user"></i>
-                                                </span>
-                                                <input type="text" class="form-control" placeholder="Nombres" name="cliNom">
-                                            </div>                                            
-                                        </div>                                        
-                                    </div>
-                                    <hr>
-                                    <div class="row">
-                                        <div class="col-sm-3">
-                                            <label>Fecha de venta</label>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <div class='form-group input-group date' id='datetimepicker1'>
-                                                <input placeholder="Fecha de venta" type='text' class="form-control" name="usuFecNac"/>
-                                                <span class="input-group-addon">
-                                                    <i class="fa fa-calendar"></i>
-                                                </span>
-                                            </div>                                            
-                                        </div>                                        
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-sm-3">
-                                            <label>Total</label>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <div class="form-group input-group">
-                                                <span class="input-group-addon"><i class="fa fa-money"></i>
-                                                </span>
-                                                <input type="text" class="form-control" placeholder="Nombres" name="cliNom">
+                                            <label class="control-label">Tipo de Moneda</label>                                
+                                            <select class="form-control" name="tipMon">
+                                                    <option value="1">Soles</option>
+                                                    <option value="2">Dolares</option>
+                                                    <option value="6" selected="selected">Ninguna</option>
+                                            </select>
+                                            <label class="control-label">IGV</label>  
+                                            <div class="input-group">                                        
+                                                    <input type="text" class="form-control" placeholder="19%" name="igv">
+                                                    <span class="input-group-addon"><i class="fa fa-money"></i>
+                                                    </span>
                                             </div>
-                                        </div>                                        
-                                    </div>                                    
-                                    
-                                    <div class="row">
-                                        <div class="col-sm-3">
-                                            <label>IGV</label>                                            
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <div class="form-group input-group">
-                                                <span class="input-group-addon"><i class="fa fa-money"></i>
-                                                </span>
-                                                <input type="text" class="form-control" placeholder="Nombres" name="cliNom">
-                                            </div>                                              
-                                        </div>                                        
-                                    </div>    
-
-                                    <div class="row">
-                                        <div class="col-sm-3">
-                                            <label>Método de Pago</label> 
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <select class="form-control" name="cliCod">
-                                                <option value="1">Credito</option>
-                                                <option value="2">Al Contado</option>
-                                                <option value="6" selected="selected">Ninguna</option>
-                                            </select>                                            
-                                        </div>                                        
-                                    </div>                                    
-
-
-                                    <div class="row">
-                                        <div class="col-sm-3">
-                                            <label>Tipo de Pago</label> 
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <select class="form-control" name="cliCod">
-                                                <option value="1">Letras</option>
-                                                <option value="2">Pago ünico</option>
-                                                <option value="6" selected="selected">Ninguno</option>
-                                            </select>                                                                                        
-                                        </div>                                        
                                     </div>
-                                    
-                                    <hr>
-                                    <div class="row">
-                                        <div class="col-sm-3">
-                                            <label>Observaciones</label>                                            
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <div class="form-group input-group">
-                                                <span class="input-group-addon"><i class="fa fa-eye"></i>
-                                                </span>
-                                                <input type="text" class="form-control" placeholder="Observaciones" name="cliNom">
-                                            </div>                                              
-                                        </div>                                        
-                                    </div>                                    
-                                    
-                                    <hr>
-                                    
+                                    <div class="col-sm-6">
+                                            <label class="control-label">Observaciones</label>
+                                            <textarea class="form-control" rows="7">
+
+                                            </textarea>
+                                    </div>
+                                </div>                                                                                                    
                             </form>
-                        </div>
-                    </div>
-                                
-                                
-                </div>
-            </div>
-        </div>
-                                <div class="row">
-                                    <label><h3>Detalle Factura</h3></label>
-                                 <table id="tabla_productos" class="table table-hover">
+                            <div class="form-group">
+                                <label class="col-sm-2"><h4>Detalle Factura</h4></label>
+                                <table id="tabla_productos" class="table table-hover table-bordered" style="width:100%">
                                     <thead>
                                         <tr>
-                                            <th>Producto</th>
-                                            <th>Clase</th>
-                                            <th>Cantidad</th>
-                                            <th>Valor Unitario</th>
-                                            <th>Acciones</th>
+                                            <th style="width: 20%">Producto</th>
+                                            <th style="width: 20%">Clase</th>
+                                            <th style="width: 20%">Cantidad</th>
+                                            <th style="width: 20%">Valor Unitario</th>
+                                            <th style="width: 20%">Acciones</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                        <td>Calzado</td>
-                                        <td>Doméstico</td>
-                                        <td>2</td>
-                                        <td>60</td>
-                                        <td>
-                                            <i class="fa fa-pencil-square-o fa-2x"></i>
-                                            <i class="fa fa-trash-o fa-2x"></i>
-                                        </td>
-                                        </tr>
-                                        
-                                        <tr>
-                                        <td>Cuaderno</td>
-                                        <td>Doméstico</td>
-                                        <td>10</td>
-                                        <td>5</td>
-                                        <td>
-                                            <i class="fa fa-pencil-square-o fa-2x"></i>
-                                            <i class="fa fa-trash-o fa-2x"></i>
-                                        </td>
-                                        </tr>
-                                        
+
                                     </tbody>
                                 </table>  
-                                    <table class="table table-hover">
-                                        
-                                        <tbody>                                            
-                                            <tr>
-                                                <td><input type="text" class="form-control" placeholder="Producto" name="cliNom"></td>
-                                                <td><input type="text" class="form-control" placeholder="Clase" name="cliNom" ></td>
-                                                <td><input type="text" class="form-control" placeholder="Cnt" name="cliNom" ></td>
-                                                <td><input type="text" class="form-control" placeholder="Pre. Uni" name="cliNom" ></td>
-                                                <td>
-                                                    <button onclick="agregarProducto('5')"><i class="fa fa-plus fa-2x"></i></button>
-                                                    <button><i class="fa fa-trash-o fa-2x"></i></button>
-                                                    <script>
-                                                        function agregarProducto(colCount,producto,clase, cantidad, valor unitario){
-                                                                var table = document.getElementById('tabla_productos');
-                                                               var rowCount = table.rows.length;
-                                                               var row = table.insertRow(rowCount);  
-                                                               for(var i=0; i<colCount; i++){
-                                                                        row.insertCell(i);
-                                                                }
-                                                      }
-                                                    </script>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-
-                                  
-                                                                                                           
+                                <table class="table table-hover">
+                                    <tbody>                      
+                                        <tr name="fila">
+                                            <td><input type="text" class="form-control" placeholder="Producto" id="form_col1"></td>
+                                            <td><input type="text" class="form-control" placeholder="Clase" id="form_col2" ></td>
+                                            <td><input type="text" class="form-control" placeholder="Cnt" id="form_col3" ></td>
+                                            <td><input type="text" class="form-control" placeholder="Pre. Uni" id="form_col4" ></td>
+                                            <td name="lel">
+                                                <button onclick="capturar(4)"><i class="fa fa-plus fa-2x"></i></button>
+                                                <button onclick="limpiarFila(4)"><i class="fa fa-trash-o fa-2x"></i></button>
+                                                <script>
+                                                    function capturar(numCol){
+                                                        var table=document.getElementById("tabla_productos");
+                                                        var rowCount = table.rows.length;
+                                                        var tr=table.insertRow(rowCount);
+                                                        var cell=tr.insertCell(0);
+                                                        cell.innerHTML='<button onclick="eliminarFila(this.parentNode.parentNode.rowIndex)"><i class="fa fa-trash-o fa-2x"></i></button></td>';
+                                                        for(var i=0;i<numCol;i++){
+                                                            var cell=tr.insertCell(i);
+                                                            var valor=document.getElementById("form_col"+(i+1)).value;
+                                                            cell.innerHTML='<td>'+valor+'</td>';
+                                                        }
+                                                    };
+                                                    function eliminarFila(i){
+                                                        console.log("Temp");
+                                                            console.log(i);
+                                                            document.getElementById("tabla_productos").deleteRow(i);
+                                                    };
+                                                    function limpiarFila(numCol){
+                                                        for(var i=0;i<numCol;i++){
+                                                            document.getElementById("form_col"+(i+1)).value="";
+                                                        }
+                                                    }
+                                                </script>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>                                                              
                                 <button type="submit" class="btn btn-lg btn-success btn-block">
-                                    <i class="fa fa-plus"></i> Agregar factura
+                                    <i class="fa fa-plus"></i>Agregar Factura
                                 </button>
-                                </div>     
-                                
-                                
-                                
+                            </div>    
+                        </div>                                                                
+                    </div>
+            </div>
+        
         <script type="text/javascript">
             $(document).ready(function(){
                 $('#datetimepicker1').datetimepicker({

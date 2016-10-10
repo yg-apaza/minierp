@@ -6,7 +6,7 @@
     <jsp:attribute name="contenido">
         <h1>Módulo de Ventas</h1>
         
-        <!-- Test -->
+        
         <!-- CREAR FACTURA-->
         <div class="col-lg-4 col-md-6">
             <div class="panel panel-primary">
@@ -57,7 +57,7 @@
         </div>
                     
                     
-         <!-- CLIENTE-->
+         <!-- PAGOS CUOTAS-->
          <div class="col-lg-4 col-md-6">
             <div class="panel panel-green">
                 <div class="panel-heading">
@@ -80,5 +80,31 @@
                 </a>
             </div>
         </div>
+        
+                    <!-- PAGOS CUOTAS-->
+         <div class="col-lg-4 col-md-6">
+            <div class="panel panel-green">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <i class="fa fa-paypal fa-5x"></i>
+                        </div>
+                        <div class="col-xs-9 text-right">
+                            <div class="huge">4</div>
+                            <div><h3>Pagos y Cuotas</h3></div>
+                        </div>
+                    </div>
+                </div>
+                <a href="${pageContext.request.contextPath}/secured/ventas/pagos">
+                    <div class="panel-footer">
+                        <span class="pull-left">Ingresar a Pagos y Cuotas</span>
+                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                        <div class="clearfix"></div>
+                    </div>
+                </a>
+            </div>
+        </div>
+                   
+                    
     </jsp:attribute>
 </minierptemplate:template>

@@ -7,6 +7,44 @@
         <div class="container">
             <h1 class="page-header">Agregar Cliente</h1>
             <br>
+            <div class="form-horizontal">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class=form-group>
+                                <label class="col-sm-2"><h4>Añadir Cliente</h4></label>
+                        </div>                        
+                        <div class="form-group">
+                            <div class="col-sm-6">                               
+                                    <input type="text" class="form-control" placeholder="Codidgo Cliente" name="codCli">
+                            </div>
+                            <div class="col-sm-6">                               
+                                    <input type="text" class="form-control" placeholder="Nombre Cliente" name="nomli">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-6">                               
+                                    <input type="text" class="form-control" placeholder="Apellido Paterno Cliente" name="apePatCli">
+                            </div>
+                            <div class="col-sm-6">                               
+                                    <input type="text" class="form-control" placeholder="Apellido Materno Cliente" name="apeMatCli">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <form role=form" method="post" action="${pageContext.request.contextPath}/secured/ventas/addCliente">
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <label class="control-label">Direccion</label>
+                                    <input type="text" class="form-control" placeholder="Dirección" name="dirCli">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
                     <div class="panel panel-default">
