@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.apache.commons.codec.digest.DigestUtils;
-import org.epis.minierp.dao.general.UsuarioDao;
+import org.epis.minierp.dao.ventas.EnP1mUsuarioDao;
 import org.epis.minierp.model.EnP1mUsuario;
 
 public class LoginController extends HttpServlet
@@ -47,13 +47,11 @@ public class LoginController extends HttpServlet
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-        UsuarioDao daoUsu = new UsuarioDao();
+        EnP1mUsuarioDao daoUsu = new EnP1mUsuarioDao();
         HttpSession session = request.getSession(true);
         String username = (String)request.getParameter("usuario");
         String password = (String)request.getParameter("password");
         EnP1mUsuario u = daoUsu.getByUsername(username);
-        System.out.println(u);
-        System.out.println(u);
         
         if(u != null && u.getUsuPas().equals(DigestUtils.sha256Hex(password)))
         {

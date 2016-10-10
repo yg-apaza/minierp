@@ -36,7 +36,7 @@
     <filter-mapping>
         <filter-name>ventasFilter</filter-name>
         <url-pattern>/secured/ventas/*</url-pattern>
-    </filter-mapping>        
+    </filter-mapping>
     <filter>
         <filter-name>comprasFilter</filter-name>
         <filter-class>org.epis.minierp.security.ComprasFilter</filter-class>
@@ -156,12 +156,10 @@
         <servlet-name>VentasController</servlet-name>
         <servlet-class>org.epis.minierp.controller.ventas.VentasController</servlet-class>
     </servlet>
-   
     <servlet-mapping>
         <servlet-name>VentasController</servlet-name>
         <url-pattern>/secured/ventas</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <description/>
         <display-name>VentasFacturaController</display-name>
@@ -172,8 +170,6 @@
         <servlet-name>VentasFacturaController</servlet-name>
         <url-pattern>/secured/ventas/factura</url-pattern>
     </servlet-mapping>
-    
-    
     <servlet>
         <description/>
         <display-name>VentasPreVentaController</display-name>
@@ -184,8 +180,6 @@
         <servlet-name>VentasPreVentaController</servlet-name>
         <url-pattern>/secured/ventas/preventa</url-pattern>
     </servlet-mapping>
-    
-    
     <servlet>
         <description/>
         <display-name>ClienteController</display-name>
@@ -196,8 +190,6 @@
         <servlet-name>ClienteController</servlet-name>
         <url-pattern>/secured/clientes</url-pattern>
     </servlet-mapping>
-    
-    
     <servlet>
         <description/>
         <display-name>addClienteController</display-name>
@@ -208,8 +200,6 @@
         <servlet-name>addClienteController</servlet-name>
         <url-pattern>/secured/clientes/addCliente</url-pattern>
     </servlet-mapping>
-    
-    
     <servlet>
         <description/>
         <display-name>addFacturaController</display-name>
@@ -220,8 +210,6 @@
         <servlet-name>addFacturaController</servlet-name>
         <url-pattern>/secured/ventas/factura/addFactura</url-pattern>
     </servlet-mapping>
-    
-     
     <servlet>
         <description/>
         <display-name>PagosController</display-name>
@@ -232,7 +220,16 @@
         <servlet-name>PagosController</servlet-name>
         <url-pattern>/secured/ventas/pagos</url-pattern>
     </servlet-mapping>
-    
+     <servlet>
+        <description/>
+        <display-name>addPagoController</display-name>
+        <servlet-name>addPagoController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.ventas.addPagoController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>addPagoController</servlet-name>
+        <url-pattern>/secured/ventas/pagos/addPago</url-pattern>
+    </servlet-mapping>
     <!--         ERRORS         -->
     <error-page>
         <location>/error.jsp</location>

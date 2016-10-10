@@ -8,6 +8,7 @@
     </jsp:attribute>
     <jsp:attribute name="contenido">
         <div class="container">
+        <form role=form" method="post" action="${pageContext.request.contextPath}/secured/ventas/pagos">            
             <h1 class="page-header">Pagos y Cuotas</h1>
                 <div class="form-horizontal">
                     <div class="form-group">
@@ -15,7 +16,8 @@
                         <div class="col-sm-6">
                             <input type="text" class="form-control" placeholder="Codidgo Factura" name="CodCabFac">
                         </div>
-                        <button type="button" class="btn btn-primary">Buscar <i class="fa fa-search-plus fa-1x"></i></button>
+                        <button type="submit" class="btn btn-primary" name="buscarFactura">Buscar <i class="fa fa-search-plus fa-1x"></i></button>
+                        <button type="submit" class="btn btn-primary" name="todos">Todos <i class="fa fa-child"></i></button>
                     </div>
                 </div>
                 <table class="table table-hover">
@@ -32,24 +34,26 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <c:forEach items="${clientes}" var="c">
-                            <tr>
-                                <td>${c.usuCod}</td>
-                                <td>${c.usuNom}</td>
-                                <td>${c.usuApePat} ${u.usuApeMat}</td>
-                                <td>${c.tipUsuDet}</td>
-                                <td><fmt:formatDate value="${u.usuFecNac}" pattern="dd/MM/yyyy"/></td>
-                                <td>${u.estCivDet}</td>
-                                <td>${u.usuSex}</td>
-                                <td>${u.estRegCod}</td>
+                        <c:forEach items="${pagos}" var="c">
+                            <tr>                            
+                                <td>${c.enP1mFacturaVentaCab.facVenCabCod}</td>
+                                <td>${c.pagCuoNum}</td>
+                                <td>${c.pagCuoNumPag}</td>
+                                <td>${c.pagCuoDeuTot}</td>
+                                <td><fmt:formatDate value="${c.pagCuoFecIni}" pattern="dd/MM/yyyy"/></td>
+                                <td><fmt:formatDate value="${c.pagCuoFecFin}" pattern="dd/MM/yyyy"/></td>
+                                <td><fmt:formatDate value="${c.pagCuoFecPag}" pattern="dd/MM/yyyy"/></td>
                                 <td>
-                                    <i class="fa fa-pencil-square-o fa-2x"></i>
-                                    <i class="fa fa-trash-o fa-2x"></i>
+                                    <button class="btn btn-primary" type="submit" name="pagar" value="${c.enP1mFacturaVentaCab.facVenCabCod}" > <i class="fa fa-dollar fa-1x"></i></button>
+                                    <!--
+                                    <button class="btn btn-danger" type="submit" name="factura" value="${c.enP1mFacturaVentaCab.facVenCabCod}" type="submit" ><i class="fa fa-trash-o fa-1x"></i></button>    
+                                    -->
                                 </td>
                             </tr>
                         </c:forEach>
                     </tbody>
-                </table>          
+                </table> 
+</form>
         </div>
     </jsp:attribute>
 </minierptemplate:template>

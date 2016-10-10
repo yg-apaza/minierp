@@ -16,10 +16,10 @@
                             </div>
                             <div class="form-group"> 
                                     <div class="col-sm-6">                               
-                                            <input type="text" class="form-control" placeholder="Codidgo Factura" name="CodCabFac">
+                                            <input type="text" class="form-control" placeholder="Codidgo Factura" name="CodCabFac">                                                                                                         
                                     </div>
                                     <div class="col-sm-6">
-                                            <select class="form-control" name="cliCod">
+                                            <select class="form-control" id="cliCod">
                                                     <option hidden>Cliente</option>
                                                     <option value="1">Roberto Perez Linares</option>
                                                     <option value="2">Josep Pedrerol Tamudo</option>
@@ -33,7 +33,7 @@
 
                             <div class="form-group">
                                     <div class="col-sm-6">
-                                            <select class="form-control" name="usuCod">
+                                            <select class="form-control" id="usuCod">
                                                     <option hidden>Usuario</option>
                                                     <option value="1">Roberto Perez Linares</option>
                                                     <option value="2">Josep Pedrerol Tamudo</option>
@@ -44,12 +44,12 @@
                                             </select>
                                     </div> 
                                     <div class="col-sm-3">
-                                            <input placeholder="Fecha de venta" type='text' class="form-control" name="usuFecVen"/>
+                                            <input placeholder="Fecha de venta" type='text' class="form-control" id="usuFecVen"/>
                                     </div>
 
                                     <div class="col-sm-3">
                                             <div class="input-group">
-                                                    <input type="text" class="form-control" placeholder="Total" name="total">
+                                                    <input type="text" class="form-control" placeholder="Total" id="total">
                                                     <span class="input-group-addon"><i class="fa fa-money"></i>
                                                     </span>                                        
                                             </div>                                              
@@ -62,27 +62,27 @@
                                 <div class="form-group">
                                     <div class="col-sm-6">
                                             <label class="control-label">Método de Pago</label> 
-                                            <select class="form-control" name="metPagCod">
+                                            <select class="form-control" id="metPagCod">
                                                     <option value="1">Credito</option>
                                                     <option value="2">Al Contado</option>
                                                     <option value="6" selected="selected">Ninguna</option>
                                             </select>
                                             <label class="control-label">Tipo de Moneda</label>                                
-                                            <select class="form-control" name="tipMon">
+                                            <select class="form-control" id="tipMon">
                                                     <option value="1">Soles</option>
                                                     <option value="2">Dolares</option>
-                                                    <option value="6" selected="selected">Ninguna</option>
+                                                    <option value="3" selected="selected">Ninguna</option>
                                             </select>
                                             <label class="control-label">IGV</label>  
                                             <div class="input-group">                                        
-                                                    <input type="text" class="form-control" placeholder="19%" name="igv">
+                                                    <input type="text" class="form-control" placeholder="19%" id="igv">
                                                     <span class="input-group-addon"><i class="fa fa-money"></i>
                                                     </span>
                                             </div>
                                     </div>
                                     <div class="col-sm-6">
                                             <label class="control-label">Observaciones</label>
-                                            <textarea class="form-control" rows="7">
+                                            <textarea class="form-control" rows="7" id="obsrs">
 
                                             </textarea>
                                     </div>
@@ -100,7 +100,7 @@
                                             <th style="width: 20%">Acciones</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody id="body_tabl_prods">
 
                                     </tbody>
                                 </table>  
@@ -115,6 +115,40 @@
                                                 <button onclick="capturar(4)"><i class="fa fa-plus fa-2x"></i></button>
                                                 <button onclick="limpiarFila(4)"><i class="fa fa-trash-o fa-2x"></i></button>
                                                 <script>
+                                                    var cliFldFctr=localStorage.getItem('cliFld');
+                                                    var usrFldFctr=localStorage.getItem('usrFld');
+                                                    var dateFldFctr=localStorage.getItem('dateFld');
+                                                    var crncyFldFctr=localStorage.getItem('crncyFld');
+                                                    var igvFldFctr=localStorage.getItem('igvFld');
+                                                    var ttlFldFctr=localStorage.getItem('ttlFld');
+                                                    var obsFldFctr=localStorage.getItem('obsFld');
+                                                    document.getElementById("cliCod").getElementsByTagName("option")[cliFldFctr].selected='selected';
+                                                    document.getElementById("usuCod").getElementsByTagName("option")[usrFldFctr].selected='selected';
+                                                    document.getElementById("usuFecVen").value=dateFldFctr;
+                                                    document.getElementById("tipMon").getElementsByTagName("option")[crncyFldFctr-1].selected='selected';
+                                                    document.getElementById("igv").value=igvFldFctr;
+                                                    document.getElementById("total").value=ttlFldFctr;
+                                                    document.getElementById("obsrs").value=obsFldFctr;
+                                                    
+                                                    
+                                                    
+                                                    localStorage.removeItem('cliFld');
+                                                    localStorage.removeItem('usrFld');
+                                                    localStorage.removeItem('dateFld');
+                                                    localStorage.removeItem('crncyFld');
+                                                    localStorage.removeItem('igvFld');
+                                                    localStorage.removeItem('ttlFld');
+                                                    localStorage.removeItem('obsFld');
+                                                    
+                                                    /*ACCEDIENDO A LOS ITEMS DE LA TABLA GUARDADOS EN LS*/
+                                                    var html="",length=localStorage.length;
+                                                    for(var j=0;j<length;j++){
+                                                        html+='<tr>'+localStorage.getItem('prod_fila'+(j+1))+'</tr>';
+                                                        document.getElementById("body_tabl_prods").innerHTML=html;
+                                                    }
+                                                    for(var k=0;k<length;k++){
+                                                        localStorage.removeItem('prod_fila'+(k+1));
+                                                    }
                                                     function capturar(numCol){
                                                         var table=document.getElementById("tabla_productos");
                                                         var rowCount = table.rows.length;
