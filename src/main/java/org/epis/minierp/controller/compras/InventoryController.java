@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.epis.minierp.dao.compras.ProductoDao;
+import org.epis.minierp.dao.general.UsuarioDao;
+import org.epis.minierp.model.EnP1mUsuario;
 import org.epis.minierp.model.EnP2mProducto;
 
 /**
@@ -27,6 +29,9 @@ public class InventoryController extends HttpServlet{
         ProductoDao daoPro = new ProductoDao();
         List<EnP2mProducto> productos = daoPro.getAll();
         request.setAttribute("productos", productos);
+       /* UsuarioDao daoUsu = new UsuarioDao();
+        List<EnP1mUsuario> usuarios = daoUsu.getAll();
+        request.setAttribute("usuarios", usuarios);*/
         request.getRequestDispatcher("/WEB-INF/compras/inventory.jsp").forward(request, response);
     }
     
