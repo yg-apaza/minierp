@@ -75,7 +75,6 @@
                     <input class = "form-control" name = "pagina" type = "text" placeholder = "Ej. wwww.proveedores.com">
                     <br>
                     <label class = "form-control" style="background: #A9E2F3;" for = "observaciones"> Observaciones: </label>
-                    <br>
                     <textarea class = "form-control" name = "observaciones" placeholder = "Comentarios"></textarea>
                     <br>
                     <br>
