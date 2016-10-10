@@ -1,6 +1,8 @@
 package org.epis.minierp.controller.contabilidad;
 
 import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import javax.servlet.ServletException;
@@ -19,37 +21,33 @@ public class ReporteContabilidadController  extends HttpServlet
         String report = request.getParameter("report");
         ReporteContabilidad generador = new ReporteContabilidad();
         
-        switch(report)
+        switch(fileType)
         {
-            case "plancontable":
-                System.out.println("Generando reporte ...");
-                
-                String path = ReporteContabilidad.class.getClassLoader().getResource("org/epis/minierp/reporte/contabilidad/planContable.jrxml").getPath();
-                System.out.println("Path: " + path);
-                generador.report(path, "PlanContable_");
-                /*
-                String string = "Servlet Technology";
-                int size = string.length();
-                byte[] bite = string.getBytes();
-                byte[] data = new byte[size]; // allocate byte array of right size
-                ByteArrayInputStream byteStream = new ByteArrayInputStream(bite);
-                int in = byteStream.read( data, 0, size ); // read into byte array
-
-                byteStream.close();
+            case "pdf":
                 response.setContentType("application/pdf");
-
-                response.setHeader("Content-Disposition","inline; filename=architect.pdf");
-                response.setHeader("Cache-Control", "no-cache");
-                response.setDateHeader("Expires", 0);
-                response.setHeader("Pragma", "No-cache"); 
-
-                OutputStream OutStream = response.getOutputStream();
-                OutStream.write(data);
-                OutStream.flush();
-                OutStream.close();
-                */
+                break;
+            case "xls":
+                response.setContentType("application/vnd.ms-excel");
                 break;
         }
-        response.sendRedirect(request.getContextPath() + "/secured/contabilidad");
+        
+        String path = ReporteContabilidad.class.getClassLoader().getResource("org/epis/minierp/reporte/contabilidad/planContable.jrxml").getPath();
+        String fileGenerated = "";
+        
+        switch(report)
+        {
+            case "plancontable":                
+                fileGenerated = generador.report(path, "PlanContable_", fileType);
+                break;
+        }
+        
+        File file = new File(fileGenerated);
+        response.addHeader("Content-Disposition", "attachment; filename=" + file.getName());
+        response.setContentLength((int) file.length());
+        FileInputStream fileInputStream = new FileInputStream(file);
+        OutputStream responseOutputStream = response.getOutputStream();
+        int bytes;
+        while ((bytes = fileInputStream.read()) != -1)
+            responseOutputStream.write(bytes);
     }
 }
