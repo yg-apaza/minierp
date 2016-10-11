@@ -1,4 +1,5 @@
-<%@ taglib tagdir="/WEB-INF/tags" prefix="minierptemplate" %>
+    <%@ taglib tagdir="/WEB-INF/tags" prefix="minierptemplate" %>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <minierptemplate:template>
     <jsp:attribute name="titulo">
         <title>MiniERP - Factura</title>
@@ -12,7 +13,7 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <div class=form-group>
-                                    <label class="col-sm-2"><h4>Añadir Factura</h4></label>
+                                    <h4 class="col-sm-2"> Añadir Factura</h4>
                             </div>
                             <div class="form-group"> 
                                     <div class="col-sm-6">                               
@@ -58,14 +59,20 @@
                             </div>
                         </div>
                         <div class="panel-body">
-                            <form role=form" method="post" action="${pageContext.request.contextPath}/secured/ventas/factura/addFactura">
+                            <form role="form" method="post" action="${pageContext.request.contextPath}/secured/ventas/factura/addFactura">
                                 <div class="form-group">
                                     <div class="col-sm-6">
                                             <label class="control-label">Método de Pago</label> 
-                                            <select class="form-control" id="metPagCod">
-                                                    <option value="1">Credito</option>
-                                                    <option value="2">Al Contado</option>
-                                                    <option value="6" selected="selected">Ninguna</option>
+                                            <select class="form-control" id="metPagCod" name="selecMetodoPago">
+                                                <c:forEach items="${metodosPago}" var="t">    
+                                                    <option value="${t.metPagCod}">${t.metPagDet}</option>
+                                                </c:forEach>
+                                            </select>
+                                            <label class="control-label">Tipo de Pago</label>                                
+                                            <select class="form-control" id="tipMon">
+                                                    <option value="1">Cheque</option>
+                                                    <option value="2">Tarjeta</option>
+                                                    <option value="3" selected="selected">Ninguna</option>
                                             </select>
                                             <label class="control-label">Tipo de Moneda</label>                                
                                             <select class="form-control" id="tipMon">
@@ -73,16 +80,18 @@
                                                     <option value="2">Dolares</option>
                                                     <option value="3" selected="selected">Ninguna</option>
                                             </select>
+                                            
                                             <label class="control-label">IGV</label>  
                                             <div class="input-group">                                        
                                                     <input type="text" class="form-control" placeholder="19%" id="igv">
                                                     <span class="input-group-addon"><i class="fa fa-money"></i>
                                                     </span>
                                             </div>
+                                            
                                     </div>
                                     <div class="col-sm-6">
                                             <label class="control-label">Observaciones</label>
-                                            <textarea class="form-control" rows="7" id="obsrs">
+                                            <textarea class="form-control" rows="10" id="obsrs">
 
                                             </textarea>
                                     </div>

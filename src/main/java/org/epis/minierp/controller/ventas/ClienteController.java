@@ -18,7 +18,7 @@ public class ClienteController extends HttpServlet
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         EnP1mClienteDao clienteDao=new EnP1mClienteDao();
-        List<EnP1mCliente> clientes=clienteDao.getAllActive();    
+        List<EnP1mCliente> clientes=clienteDao.getAll();    
         request.setAttribute("clientes",clientes);
         request.getRequestDispatcher("/WEB-INF/ventas/cliente/cliente.jsp").forward(request, response);
     }
