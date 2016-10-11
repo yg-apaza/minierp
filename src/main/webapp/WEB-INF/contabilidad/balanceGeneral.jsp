@@ -5,18 +5,22 @@
         <title>MiniERP - Contabilidad</title>
     </jsp:attribute>
     <jsp:attribute name="contenido">
-        <div class="container">
+    <script type="text/javascript">
+function imprSelec(muestra)
+{var ficha=document.getElementById(muestra);var ventimp=window.open(' ','popimpr');ventimp.document.write(ficha.innerHTML);ventimp.document.close();ventimp.print();ventimp.close();}
+</script>
+        <div id="muestra" class="container">
         	<div class="row-fluid">
         		<div class="span12">
         			<div class="well">
         				<h1 class="text-center">BALANCE GENERAL</h1>
-        				<button class="btn btn-default pull-right" type="submit onclick="window.print();">Imprimir</button>
+        				<a href="javascript:imprSelec('muestra')">Imprimir</a>
         			</div>
         		</div>
         	</div>
         	<div class="row-fluid">
         		<div class="span12">
-        			<ul class="nav nav-tabs nav-justified">
+        			<ul class="nav nav-tabs nav-">
         				<li class="active"><a data-toggle="tab" href="#detalle">Detalle</a></li>
         				<li><a data-toggle="tab" href="#resumen">Resumen</a></li>
         			</ul>
