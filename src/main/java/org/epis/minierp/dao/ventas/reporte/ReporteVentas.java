@@ -17,9 +17,9 @@ import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.export.JRXlsExporter;
 import net.sf.jasperreports.engine.export.ooxml.JRDocxExporter;
 import net.sf.jasperreports.engine.query.JRHibernateQueryExecuterFactory;
-/*import net.sf.jasperreports.export.Exporter;
+import net.sf.jasperreports.export.Exporter;
 import net.sf.jasperreports.export.SimpleExporterInput;
-import net.sf.jasperreports.export.SimpleOutputStreamExporterOutput;*/
+import net.sf.jasperreports.export.SimpleOutputStreamExporterOutput;
 import org.epis.minierp.util.HibernateUtil;
 import org.hibernate.Session;
 
@@ -53,14 +53,14 @@ public class ReporteVentas {
                     exporterXls.setParameter(JRExporterParameter.OUTPUT_FILE_NAME, fullPath + "." + fileType);
                     exporterXls.exportReport();
                     break;
-                /*case "doc":
+                case "doc":
                     Exporter exporterDoc = new JRDocxExporter();
                     exporterDoc.setExporterInput(new SimpleExporterInput(jasperPrint));
                     File docFile = new File(fullPath + "." + fileType);
                     exporterDoc.setExporterOutput(new SimpleOutputStreamExporterOutput(docFile));
                     System.out.println("Doc exportando ...........");
                     exporterDoc.exportReport();
-                    break;*/
+                    break;
             }
         } catch (JRException ex) {
             Logger.getLogger(ReporteVentas.class.getName()).log(Level.SEVERE, null, ex);
