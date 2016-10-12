@@ -8,7 +8,7 @@
     </jsp:attribute>
     <jsp:attribute name="contenido">
         <div class="container">
-        <form role=form" method="post" action="${pageContext.request.contextPath}/secured/ventas/pagos/addPago"> 
+        <form role="form" method="post" action="${pageContext.request.contextPath}/secured/ventas/pagos/addPago"> 
             <h1 class="page-header">Pagos y Cuotas</h1>
                 <div class="form-horizontal">
                     <div class="panel panel-default">
