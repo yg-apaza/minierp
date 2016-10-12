@@ -37,7 +37,7 @@ public class ReporteVentas {
     public String report(String path, String fileName, String fileType) {
         param.put(JRHibernateQueryExecuterFactory.PARAMETER_HIBERNATE_SESSION, session);
         String file = fileName + sf.format(date.getTime());
-        String fullPath = ReporteVentas.class.getClassLoader().getResource("org/epis/minierp/reporte/ventas/").getPath() + file;
+        String fullPath = ReporteVentas.class.getClassLoader().getResource("org/epis/minierp/reportes/").getPath() + file;
         
         try {
             JasperReport jasperReport = JasperCompileManager.compileReport(path);

@@ -4,8 +4,7 @@
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<queryString language="hql">
-		<![CDATA[From EnP1mFacturaVentaCab
-]]>
+		<![CDATA[From EnP1mFacturaVentaCab]]>
 	</queryString>
 	<field name="enP1cPreventaRealizadases" class="java.util.Set"/>
 	<field name="enP1mCliente" class="org.epis.minierp.model.EnP1mCliente"/>
@@ -34,14 +33,14 @@
 				<staticText>
 					<reportElement x="20" y="20" width="234" height="43" forecolor="#FFFFFF" uuid="aad78750-4d48-403b-ab57-64cccc1cc7fe"/>
 					<textElement>
-						<font size="34" isBold="true"/>
+						<font fontName="Arial" size="34" isBold="true"/>
 					</textElement>
 					<text><![CDATA[MiniERP]]></text>
 				</staticText>
 				<staticText>
 					<reportElement x="326" y="43" width="249" height="20" forecolor="#FFFFFF" uuid="487d3072-cefb-4f5c-9e9c-f949be61fc7c"/>
 					<textElement textAlignment="Right">
-						<font size="14" isBold="false"/>
+						<font fontName="Arial" size="14" isBold="false"/>
 					</textElement>
 					<text><![CDATA[Registro de Ventas e Ingresos]]></text>
 				</staticText>
@@ -52,7 +51,9 @@
 		<band height="20">
 			<staticText>
 				<reportElement x="200" y="0" width="230" height="20" uuid="bd575d78-5742-4720-8947-3292869032bc"/>
-				<textElement textAlignment="Center"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial"/>
+				</textElement>
 				<text><![CDATA[Información del Cliente]]></text>
 			</staticText>
 		</band>
@@ -64,27 +65,37 @@
 			</line>
 			<staticText>
 				<reportElement x="0" y="0" width="100" height="20" uuid="959acfc5-30e2-4f33-bd13-9bfc51abf660"/>
-				<textElement textAlignment="Center"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial"/>
+				</textElement>
 				<text><![CDATA[Número de Factura]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="100" y="0" width="100" height="20" uuid="e723d2a8-32c8-46d9-a01e-b2c9cae36f03"/>
-				<textElement textAlignment="Center"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial"/>
+				</textElement>
 				<text><![CDATA[Fecha de Emisión]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="200" y="0" width="130" height="20" uuid="23359793-839e-46bc-a07b-35301f9836ce"/>
-				<textElement textAlignment="Center"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial"/>
+				</textElement>
 				<text><![CDATA[Documento de Identidad]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="330" y="1" width="100" height="20" uuid="2111bc5b-366f-4b29-9b65-17aa941d1bbd"/>
-				<textElement textAlignment="Center"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial"/>
+				</textElement>
 				<text><![CDATA[Número]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="430" y="1" width="100" height="20" uuid="ed5dccdc-2b04-4631-86d6-a4027fdf273c"/>
-				<textElement textAlignment="Center"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial"/>
+				</textElement>
 				<text><![CDATA[Importe Total]]></text>
 			</staticText>
 		</band>
@@ -96,22 +107,37 @@
 			</line>
 			<textField>
 				<reportElement x="0" y="0" width="100" height="20" uuid="61d02b91-f449-46a8-a45e-dd4ef93fa63c"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{facVenCabCod}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="200" y="0" width="130" height="20" uuid="a1bf0002-c914-4c77-a16b-e4e23adacd04"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{enP1mCliente}.getEnP1mDocumentoClientes().iterator().next().getTaGzzTipoDocCliente().getDet()]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="100" y="0" width="100" height="20" uuid="043fc19c-ca46-4391-a362-be5186f305ca"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{facVenCabFec}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="330" y="0" width="100" height="20" uuid="c812a117-af04-4213-a473-d501c4362b7b"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{enP1mCliente}.getEnP1mDocumentoClientes().iterator().next().getDocCliNum()]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="430" y="0" width="100" height="20" uuid="7afbbe60-4b22-43ac-b2e7-62e540f71f41"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{facVenCabTot}]]></textFieldExpression>
 			</textField>
 		</band>
@@ -123,15 +149,23 @@
 		<band height="18">
 			<textField>
 				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="87090f1e-1131-4aa9-8af9-9c9c69aaf105"/>
-				<textElement textAlignment="Right"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial"/>
+				</textElement>
 				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
 			</textField>
 			<textField evaluationTime="Report">
 				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="82b3117f-fb43-4f6c-b4bb-f72cff01da15"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
 				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 			<textField pattern="EEEEE dd MMMMM yyyy">
 				<reportElement x="0" y="4" width="100" height="13" uuid="598cf239-afad-4063-b9b1-4a3ec515b389"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 		</band>

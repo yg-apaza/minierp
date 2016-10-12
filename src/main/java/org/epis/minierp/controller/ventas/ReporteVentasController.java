@@ -38,8 +38,8 @@ public class ReporteVentasController  extends HttpServlet
         
         switch(report)
         {
-            case "registroventas":
-                path = ReporteVentas.class.getClassLoader().getResource("org/epis/minierp/reporte/ventas/registroVentas.jrxml").getPath();
+            case "registroVentas":
+                path = ReporteVentas.class.getClassLoader().getResource("org/epis/minierp/reportes/registroVentas.jrxml").getPath();
                 fileGenerated = generador.report(path, "RegistroVentas_", fileType);
                 break;
         }
@@ -53,4 +53,5 @@ public class ReporteVentasController  extends HttpServlet
         while ((bytes = fileInputStream.read()) != -1)
             responseOutputStream.write(bytes);
     }
+    
 }
