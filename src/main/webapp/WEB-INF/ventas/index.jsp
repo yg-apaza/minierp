@@ -117,7 +117,7 @@
                         </div>
                     </div>
                 </div>
-                <a href="${pageContext.request.contextPath}/secured/ventas/registroVentas">
+                <a href="${pageContext.request.contextPath}/secured/ventas/reporteVentas">
                     <div class="panel-footer">
                         <span class="pull-left">Ingresar al Registro de Ventas</span>
                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>

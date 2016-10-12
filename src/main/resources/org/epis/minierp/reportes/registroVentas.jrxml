@@ -4,33 +4,26 @@
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<queryString language="hql">
-		<![CDATA[From EnP1mFacturaVentaCab f inner join f.enP1mCliente as c inner join c.enP1mDocumentoClientes as dc inner join dc.taGzzTipoDocCliente as tdc
-
+		<![CDATA[From EnP1mFacturaVentaCab
 ]]>
 	</queryString>
+	<field name="enP1cPreventaRealizadases" class="java.util.Set"/>
 	<field name="enP1mCliente" class="org.epis.minierp.model.EnP1mCliente"/>
+	<field name="enP1mPagosCuotasCab" class="org.epis.minierp.model.EnP1mPagosCuotasCab"/>
 	<field name="enP1mUsuario" class="org.epis.minierp.model.EnP1mUsuario"/>
+	<field name="enP1tFacturaVentaDets" class="java.util.Set"/>
 	<field name="estRegCod" class="java.lang.Character"/>
 	<field name="facVenCabCod" class="java.lang.String"/>
 	<field name="facVenCabDes" class="java.lang.Double"/>
 	<field name="facVenCabFec" class="java.util.Date"/>
+	<field name="facVenCabIgv" class="java.lang.Integer"/>
+	<field name="facVenCabObs" class="java.lang.String"/>
+	<field name="facVenCabSubTot" class="java.lang.Double"/>
 	<field name="facVenCabTot" class="java.lang.Double"/>
 	<field name="taGzzEstadoFactura" class="org.epis.minierp.model.TaGzzEstadoFactura"/>
 	<field name="taGzzMetodoPagoFactura" class="org.epis.minierp.model.TaGzzMetodoPagoFactura"/>
 	<field name="taGzzMoneda" class="org.epis.minierp.model.TaGzzMoneda"/>
 	<field name="taGzzTipoPagoFactura" class="org.epis.minierp.model.TaGzzTipoPagoFactura"/>
-	<field name="cliApeMat" class="java.lang.String"/>
-	<field name="cliApePat" class="java.lang.String"/>
-	<field name="cliCod" class="java.lang.String"/>
-	<field name="cliNom" class="java.lang.String"/>
-	<field name="enP1mDocumentoClientes" class="java.util.Set"/>
-	<field name="enP1mPreventaCabs" class="java.util.Set"/>
-	<field name="taGzzEstadoCivil" class="org.epis.minierp.model.TaGzzEstadoCivil"/>
-	<field name="docCliNum" class="java.lang.String"/>
-	<field name="id" class="org.epis.minierp.model.EnP1mDocumentoClienteId"/>
-	<field name="taGzzTipoDocCliente" class="org.epis.minierp.model.TaGzzTipoDocCliente"/>
-	<field name="tipDocCliCod" class="java.lang.Integer"/>
-	<field name="tipDocCliDet" class="java.lang.String"/>
 	<background>
 		<band/>
 	</background>
@@ -107,7 +100,7 @@
 			</textField>
 			<textField>
 				<reportElement x="200" y="0" width="130" height="20" uuid="a1bf0002-c914-4c77-a16b-e4e23adacd04"/>
-				<textFieldExpression><![CDATA[$F{tipDocCliDet}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{enP1mCliente}.getEnP1mDocumentoClientes().iterator().next().getTaGzzTipoDocCliente().getDet()]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="100" y="0" width="100" height="20" uuid="043fc19c-ca46-4391-a362-be5186f305ca"/>
@@ -115,7 +108,7 @@
 			</textField>
 			<textField>
 				<reportElement x="330" y="0" width="100" height="20" uuid="c812a117-af04-4213-a473-d501c4362b7b"/>
-				<textFieldExpression><![CDATA[$F{docCliNum}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{enP1mCliente}.getEnP1mDocumentoClientes().iterator().next().getDocCliNum()]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="430" y="0" width="100" height="20" uuid="7afbbe60-4b22-43ac-b2e7-62e540f71f41"/>
