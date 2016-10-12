@@ -2,7 +2,6 @@ package org.epis.minierp.controller.ventas;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -14,20 +13,12 @@ import org.epis.minierp.dao.general.TaGzzEstadoFacturaDao;
 import org.epis.minierp.dao.general.TaGzzMetodoPagoFacturaDao;
 import org.epis.minierp.dao.general.TaGzzMonedaDao;
 import org.epis.minierp.dao.general.TaGzzTipoPagoFacturaDao;
-import org.epis.minierp.dao.logistica.EnP2mClaseProductoDao;
-import org.epis.minierp.dao.logistica.EnP2mProductoDao;
-import org.epis.minierp.dao.logistica.EnP2mSubclaseProductoDao;
 import org.epis.minierp.dao.ventas.EnP1mClienteDao;
 import org.epis.minierp.dao.ventas.EnP1mFacturaVentaCabDao;
 import org.epis.minierp.dao.ventas.EnP1mUsuarioDao;
 import org.epis.minierp.model.EnP1mCliente;
 import org.epis.minierp.model.EnP1mFacturaVentaCab;
 import org.epis.minierp.model.EnP1mUsuario;
-import org.epis.minierp.model.EnP1tFacturaVentaDet;
-import org.epis.minierp.model.EnP2mClaseProducto;
-import org.epis.minierp.model.EnP2mProducto;
-import org.epis.minierp.model.EnP2mProductoId;
-import org.epis.minierp.model.EnP2mSubclaseProducto;
 import org.epis.minierp.model.TaGzzEstadoFactura;
 import org.epis.minierp.model.TaGzzMetodoPagoFactura;
 import org.epis.minierp.model.TaGzzMoneda;
@@ -62,7 +53,7 @@ public class addFacturaController extends HttpServlet
 //        request.setAttribute("productos",productos);
         
         EnP1mClienteDao clienteDao=new EnP1mClienteDao();
-        List<EnP1mCliente> clientes=clienteDao.getAllActive();
+        List<EnP1mCliente> clientes=clienteDao.getAll();
         EnP1mUsuarioDao userDao=new EnP1mUsuarioDao();
         List<EnP1mUsuario> users=userDao.getAllActive();
         request.setAttribute("clientes",clientes);

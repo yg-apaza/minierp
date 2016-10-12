@@ -32,8 +32,8 @@ public class VentasPreVentaController extends HttpServlet{
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         TaGzzMonedaDao monedaDao=new TaGzzMonedaDao();
         EnP1mClienteDao clientDao=new EnP1mClienteDao(); 
-        List<TaGzzMoneda> monedas = monedaDao.getAllActive();
-        List<EnP1mCliente> clientes = clientDao.getAllActive();
+        List<TaGzzMoneda> monedas = monedaDao.getAll();
+        List<EnP1mCliente> clientes = clientDao.getAll();
         request.setAttribute("monedas", monedas);
         request.setAttribute("clientes", clientes);
         request.getRequestDispatcher("/WEB-INF/ventas/preventa/preventa.jsp").forward(request, response);

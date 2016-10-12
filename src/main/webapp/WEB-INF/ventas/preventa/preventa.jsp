@@ -1,5 +1,8 @@
 <%@ taglib tagdir="/WEB-INF/tags" prefix="minierptemplate" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib tagdir="/WEB-INF/tags" prefix="minierptemplate" %>
+
 <minierptemplate:template>
     <jsp:attribute name="titulo">
         <title>MiniERP - Preventa</title>
