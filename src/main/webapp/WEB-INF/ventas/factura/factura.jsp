@@ -31,13 +31,7 @@
                 <tbody>
                     <c:forEach items="${facturas}" var="c">
                        <tr>
-                           <td>${c.facVenCabFec}</td>
-                           <td> Factura </td>
-                           <td> ${c.id.cliCod} </td>
-                           <td> -- </td>
-                           <td> ${c.enP1mCliente.cliTelCel} </td>
-                           <td> ${c.enP1mCliente.cliApePat} ${c.enP1mCliente.cliApeMat} ${c.enP1mCliente.cliNom} </td>
-                           <td>${c.facVenCabTot} </td>
+                          <td value="${facturas}">${facturas.facVenCabFec}</td>
                        </tr>
                     </c:forEach>
                 </tbody>
