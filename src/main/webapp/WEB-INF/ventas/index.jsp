@@ -104,7 +104,28 @@
                 </a>
             </div>
         </div>
-                   
+        <div class="col-lg-4 col-md-6">
+            <div class="panel panel-green">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <i class="fa fa-bookmark fa-5x"></i>
+                        </div>
+                        <div class="col-xs-9 text-right">
+                            <div class="huge">5</div>
+                            <div><h3>Registro de Ventas</h3></div>
+                        </div>
+                    </div>
+                </div>
+                <a href="${pageContext.request.contextPath}/secured/ventas/registroVentas">
+                    <div class="panel-footer">
+                        <span class="pull-left">Ingresar al Registro de Ventas</span>
+                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                        <div class="clearfix"></div>
+                    </div>
+                </a>
+            </div>
+        </div>           
                     
     </jsp:attribute>
 </minierptemplate:template>
