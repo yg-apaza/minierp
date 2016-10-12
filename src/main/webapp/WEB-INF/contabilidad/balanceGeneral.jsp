@@ -14,7 +14,7 @@ function imprSelec(muestra)
         		<div class="span12">
         			<div class="well">
         				<h1 class="text-center">BALANCE GENERAL</h1>
-        				<a href="javascript:imprSelec('muestra')">Imprimir</a>
+        				<a href="javascript:imprSelec('muestra')">Imprimir Tabla</a>
         			</div>
         		</div>
         	</div>
