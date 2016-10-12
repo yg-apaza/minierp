@@ -19,31 +19,29 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th>Cliente</th>
-                        <th>Nombres</th>
-                        <th>Apellidos</th>
-                        <th>Estado Civil</th>
-                        <th>Género</th>
-                        <th>Estado de Registro</th>
-                        <th>Acciones</th>
+                        <th>Fecha de Emision</th>
+                        <th>Tipo de Comprobante</th>
+                        <th>N° de Comprobante</th>
+                        <!--Los siguientes 2 deberian ser D. de Identidad y Numero de documento -->
+                        <th>Dirección</th>
+                        <th>Celular</th>
+                        <th>Apellidos y Nombres</th>
+                        <th>Importe Total</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <c:forEach items="${clientes}" var="c">
+                    <c:forEach items="${facturas}" var="facturas">
+                        
                         <tr>
-                            <td>${c.usuCod}</td>
-                            <td>${c.usuNom}</td>
-                            <td>${c.usuApePat} ${u.usuApeMat}</td>
-                            <td>${c.tipUsuDet}</td>
-                            <td><fmt:formatDate value="${u.usuFecNac}" pattern="dd/MM/yyyy"/></td>
-                            <td>${u.estCivDet}</td>
-                            <td>${u.usuSex}</td>
-                            <td>${u.estRegCod}</td>
-                            <td>
-                                <i class="fa fa-pencil-square-o fa-2x"></i>
-                                <i class="fa fa-trash-o fa-2x"></i>
-                            </td>
-                        </tr>
+                           <td > ${facturas.facVenCabFec}</td>
+                           <td > Factura </td>
+                           <td > ${facturas.facVenCabCod} </td>
+                           <td > ${facturas.enP1mCliente.cliDir} </td>
+                           <td > ${facturas.enP1mCliente.cliTelCel} </td>
+                           <td > ${facturas.enP1mCliente.cliApePat} ${facturas.enP1mCliente.cliApeMat} ${facturas.enP1mCliente.cliNom} </td>
+                           <td > ${facturas.facVenCabTot} </td>  
+
+                       </tr>
                     </c:forEach>
                 </tbody>
             </table>
