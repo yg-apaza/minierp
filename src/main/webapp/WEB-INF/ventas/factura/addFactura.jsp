@@ -1,5 +1,5 @@
-    <%@ taglib tagdir="/WEB-INF/tags" prefix="minierptemplate" %>
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib tagdir="/WEB-INF/tags" prefix="minierptemplate" %>
+ <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <minierptemplate:template>
     <jsp:attribute name="titulo">
         <title>MiniERP - Factura</title>
@@ -11,118 +11,149 @@
             <br>			
             <div class="form-horizontal">
                     <div class="panel panel-default">
+                        <form role=form" method="post" action="${pageContext.request.contextPath}/secured/ventas/factura/addFactura">
                         <div class="panel-heading">
+                             
                             <div class=form-group>
-                                    <h4 class="col-sm-2"> Añadir Factura</h4>
+                                    <label class="col-sm-2"><h4>Añadir Factura</h4></label>
                             </div>
                             <div class="form-group"> 
                                     <div class="col-sm-6">                               
                                             <input type="text" class="form-control" placeholder="Codidgo Factura" name="CodCabFac">                                                                                                         
                                     </div>
                                     <div class="col-sm-6">
-                                            <select class="form-control" id="cliCod">
-                                                    <option hidden>Cliente</option>
-                                                    <option value="1">Roberto Perez Linares</option>
-                                                    <option value="2">Josep Pedrerol Tamudo</option>
-                                                    <option value="3">Diana Gamarra Florez</option>
-                                                    <option value="4">Lucia Quispe Mamani</option>
-                                                    <option value="5">Jose Perez Condo</option>
-                                                    <option value="6">Juan Carlos Villarin</option>
+                                            <select class="form-control" name="cliCod" id="cliCod">
+                                                   <c:forEach items="${clientes}" var="t">    
+                                                        <option value="${t.cliCod}">${t.cliNom} ${t.cliApePat} ${t.cliApeMat}</option>
+                                                    </c:forEach>
                                             </select>
                                     </div>                                  
                             </div>
 
                             <div class="form-group">
                                     <div class="col-sm-6">
-                                            <select class="form-control" id="usuCod">
-                                                    <option hidden>Usuario</option>
-                                                    <option value="1">Roberto Perez Linares</option>
-                                                    <option value="2">Josep Pedrerol Tamudo</option>
-                                                    <option value="3">Diana Gamarra Florez</option>
-                                                    <option value="4">Lucia Quispe Mamani</option>
-                                                    <option value="5">Jose Perez Condo</option>
-                                                    <option value="6">Juan Carlos Villarin</option>
+                                            <select class="form-control" name="usuCod" id="usuCod">
+                                                    <c:forEach items="${users}" var="t">    
+                                                        <option value="${t.usuCod}">${t.usuNom} ${t.usuApePat} ${t.usuApeMat}</option>
+                                                    </c:forEach>
                                             </select>
                                     </div> 
                                     <div class="col-sm-3">
-                                            <input placeholder="Fecha de venta" type='text' class="form-control" id="usuFecVen"/>
+                                            <input placeholder="Fecha de venta" type='text' class="form-control" name="usuFecVen" id="usuFecVen"/>
                                     </div>
 
                                     <div class="col-sm-3">
                                             <div class="input-group">
-                                                    <input type="text" class="form-control" placeholder="Total" id="total">
+                                                    <input type="text" class="form-control" placeholder="Total" name="total" id="total">
                                                     <span class="input-group-addon"><i class="fa fa-money"></i>
                                                     </span>                                        
                                             </div>                                              
                                     </div>
 
                             </div>
+                             
                         </div>
-                        <div class="panel-body">
-                            <form role="form" method="post" action="${pageContext.request.contextPath}/secured/ventas/factura/addFactura">
+                                                                      
+                        <div class="panel-body"> 
+                            
                                 <div class="form-group">
+                                    
                                     <div class="col-sm-6">
                                             <label class="control-label">Método de Pago</label> 
-                                            <select class="form-control" id="metPagCod" name="selecMetodoPago">
-                                                <c:forEach items="${metodosPago}" var="t">    
+                                            <select class="form-control" name="selecMetodoPago" id="metPagCod">
+                                                    <c:forEach items="${metodosPago}" var="t">    
                                                     <option value="${t.metPagCod}">${t.metPagDet}</option>
                                                 </c:forEach>
                                             </select>
-                                            <label class="control-label">Tipo de Pago</label>                                
-                                            <select class="form-control" id="tipMon">
-                                                    <option value="1">Cheque</option>
-                                                    <option value="2">Tarjeta</option>
-                                                    <option value="3" selected="selected">Ninguna</option>
+                                                <label class="control-label">Tipo de Pago</label>                                
+                                            <select class="form-control" id="tipPag" name="selectTipPag">
+                                                    <c:forEach items="${tipoPagos}" var="t">
+                                                        <option value="${t.tipPagCod}">${t.tipPagDet}</option>
+                                                    </c:forEach>
                                             </select>
                                             <label class="control-label">Tipo de Moneda</label>                                
-                                            <select class="form-control" id="tipMon">
-                                                    <option value="1">Soles</option>
-                                                    <option value="2">Dolares</option>
-                                                    <option value="3" selected="selected">Ninguna</option>
+                                            <select class="form-control" name="selectTipMon" id="tipMon">
+                                                   <c:forEach items="${monedas}" var="t">
+                                                        <option value="${t.monCod}">${t.monDet}</option>
+                                                    </c:forEach>
                                             </select>
-                                            
                                             <label class="control-label">IGV</label>  
                                             <div class="input-group">                                        
-                                                    <input type="text" class="form-control" placeholder="19%" id="igv">
+                                                    <input type="text" class="form-control" placeholder="19%" name="igv" id="igv">
                                                     <span class="input-group-addon"><i class="fa fa-money"></i>
                                                     </span>
                                             </div>
-                                            
                                     </div>
                                     <div class="col-sm-6">
                                             <label class="control-label">Observaciones</label>
-                                            <textarea class="form-control" rows="10" id="obsrs">
+                                            <textarea class="form-control" rows="7" name="obsrs" id="obsrs">
 
                                             </textarea>
                                     </div>
+                                                                
                                 </div>                                                                                                    
-                            </form>
                             <div class="form-group">
+                            <div>
+                                
                                 <label class="col-sm-2"><h4>Detalle Factura</h4></label>
                                 <table id="tabla_productos" class="table table-hover table-bordered" style="width:100%">
                                     <thead>
                                         <tr>
+                                            <th style="width: 15%">Clase</th>
+                                            <th style="width: 20%">SubClase</th>
                                             <th style="width: 20%">Producto</th>
-                                            <th style="width: 20%">Clase</th>
-                                            <th style="width: 20%">Cantidad</th>
-                                            <th style="width: 20%">Valor Unitario</th>
-                                            <th style="width: 20%">Acciones</th>
-                                        </tr>
+                                            <th style="width: 15%">Cantidad</th>
+                                            <th style="width: 15%">Valor Unitario</th>
+                                            <th style="width: 15%">Acciones</th>
                                     </thead>
                                     <tbody id="body_tabl_prods">
-
+                                           <td>
+                                               <select class="form-control" name="clases" id="clases">
+                                                   <option value=1>Domestico</option>
+                                                   <option value=2>Casero</option>
+                                                   <option value=3>De Hogar</option>
+                                                   <option value=4>Grifos</option>
+                                                   <option value=5>Varios</option>
+                                                </select>
+                                           </td>
+                                           <td>
+                                               <select class="form-control" name="subclases" id="subclases">
+                                                   <option value=1>Barato</option>
+                                                   <option value=2>No tan barato</option>
+                                                   <option value=3>Caro y para Hogar</option>
+                                                   <option value=4>Grifos</option>
+                                                   <option value=5>Varios</option>
+                                                </select>
+                                           </td>
+                                           <td>
+                                               <select class="form-control" name="productos" id="productos">
+                                                   <option value=1>Pollo</option>
+                                                   <option value=2>Carne</option>
+                                                   <option value=3>De Zapatos</option>
+                                                   <option value=4>Escritorio</option>
+                                                   <option value=5>Mesa</option>
+                                                </select>
+                                           </td>
+                                           <td><input type="text" class="form-control" placeholder="Cantidad" name="cnt" ></td>
+                                           <td><input type="text" class="form-control" placeholder="Pre. Uni" pre="pre" >${precio}</td>
+                                           <td><button onclick="capturar(5)" action="" method=""><i class="fa fa-plus fa-2x"></i></button>
+                                                <button onclick="limpiarFila(5)" action="" method=""><i class="fa fa-trash-o fa-2x"></i></button></td>
                                     </tbody>
-                                </table>  
+                                </table>
+                                                      </div>
+                            </div>
+                             <!--
                                 <table class="table table-hover">
                                     <tbody>                      
                                         <tr name="fila">
-                                            <td><input type="text" class="form-control" placeholder="Producto" id="form_col1"></td>
-                                            <td><input type="text" class="form-control" placeholder="Clase" id="form_col2" ></td>
+                                            <td><input type="text" class="form-control" placeholder="Clase" id="form_col0" ></td>  
+                                            <td><input type="text" class="form-control" placeholder="SubClase" id="form_col1" ></td>
+                                            <td><input type="text" class="form-control" placeholder="Producto" id="form_col2"></td>                                            
                                             <td><input type="text" class="form-control" placeholder="Cnt" id="form_col3" ></td>
                                             <td><input type="text" class="form-control" placeholder="Pre. Uni" id="form_col4" ></td>
                                             <td name="lel">
-                                                <button onclick="capturar(4)"><i class="fa fa-plus fa-2x"></i></button>
-                                                <button onclick="limpiarFila(4)"><i class="fa fa-trash-o fa-2x"></i></button>
+                                                <button onclick="capturar(5)" action="" method=""><i class="fa fa-plus fa-2x"></i></button>
+                                                <button onclick="limpiarFila(5)" action="" method=""><i class="fa fa-trash-o fa-2x"></i></button>
                                                 <script>
                                                     var cliFldFctr=localStorage.getItem('cliFld');
                                                     var usrFldFctr=localStorage.getItem('usrFld');
@@ -166,7 +197,7 @@
                                                         cell.innerHTML='<button onclick="eliminarFila(this.parentNode.parentNode.rowIndex)"><i class="fa fa-trash-o fa-2x"></i></button></td>';
                                                         for(var i=0;i<numCol;i++){
                                                             var cell=tr.insertCell(i);
-                                                            var valor=document.getElementById("form_col"+(i+1)).value;
+                                                            var valor=document.getElementById("form_col"+(i)).value;
                                                             cell.innerHTML='<td>'+valor+'</td>';
                                                         }
                                                     };
@@ -177,19 +208,22 @@
                                                     };
                                                     function limpiarFila(numCol){
                                                         for(var i=0;i<numCol;i++){
-                                                            document.getElementById("form_col"+(i+1)).value="";
+                                                            document.getElementById("form_col"+(i)).value="";
                                                         }
                                                     }
                                                 </script>
                                             </td>
                                         </tr>
                                     </tbody>
-                                </table>                                                              
-                                <button type="submit" class="btn btn-lg btn-success btn-block">
+                                </table>  
+                               -->
+                                <button type="submit" class="btn btn-lg btn-success btn-block" name="agregarFactura">
                                     <i class="fa fa-plus"></i>Agregar Factura
                                 </button>
-                            </div>    
-                        </div>                                                                
+                               
+                                             </div> 
+                                </form>
+                                                </div>                                                                
                     </div>
             </div>
         

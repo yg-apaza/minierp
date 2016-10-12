@@ -29,7 +29,7 @@ public class addClienteController extends HttpServlet
         EnP1mClienteDao clienteDao=new EnP1mClienteDao();
         EnP1mCliente cliente=new EnP1mCliente();
         cliente.setCliCod(request.getParameter("codCli"));
-        System.out.println("Prueba: "+request.getParameter("codCli"));
+        
         cliente.setCliNom(request.getParameter("nomCli"));
         cliente.setCliApePat(request.getParameter("apePatCli"));
         cliente.setCliApeMat(request.getParameter("apeMatCli"));

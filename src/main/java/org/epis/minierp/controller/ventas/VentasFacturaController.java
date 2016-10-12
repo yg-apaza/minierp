@@ -10,7 +10,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import org.epis.minierp.dao.ventas.EnP1mFacturaVentaCabDao;
+import org.epis.minierp.model.EnP1mFacturaVentaCab;
+import java.util.List;
 /**
  *
  * @author Ylnner
@@ -20,6 +22,10 @@ public class VentasFacturaController extends HttpServlet{
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+          EnP1mFacturaVentaCabDao dao=new EnP1mFacturaVentaCabDao();
+          List <EnP1mFacturaVentaCab> facturas=dao.getAll();
+          
+          request.setAttribute("facturas", facturas);
          request.getRequestDispatcher("/WEB-INF/ventas/factura/factura.jsp").forward(request, response);
     }
 }

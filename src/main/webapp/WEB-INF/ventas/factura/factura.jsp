@@ -19,26 +19,28 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
+                        <th>Codigo</th>
                         <th>Cliente</th>
-                        <th>Nombres</th>
-                        <th>Apellidos</th>
-                        <th>Estado Civil</th>
-                        <th>Género</th>
-                        <th>Estado de Registro</th>
-                        <th>Acciones</th>
+                        <th>Usuario</th>
+                        <th>Fecha</th>
+                        <th>Total</th>
+                        <th>Descuento</th>
+                        <th>Estado Factura</th>
+                        <th>Metodo Pago</th>
+                        <th>Tipo Pago</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <c:forEach items="${clientes}" var="c">
+                    <c:forEach items="${facturas}" var="c">
                         <tr>
-                            <td>${c.usuCod}</td>
-                            <td>${c.usuNom}</td>
-                            <td>${c.usuApePat} ${u.usuApeMat}</td>
-                            <td>${c.tipUsuDet}</td>
-                            <td><fmt:formatDate value="${u.usuFecNac}" pattern="dd/MM/yyyy"/></td>
-                            <td>${u.estCivDet}</td>
-                            <td>${u.usuSex}</td>
-                            <td>${u.estRegCod}</td>
+                            <td>${c.facVenCabCod}</td>
+                            <td>${c.enP1mCliente.cliNom} ${c.enP1mCliente.cliApePat} ${c.enP1mCliente.cliApeMat}</td>
+                            <td>${c.enP1mUsuario.usuNom} ${c.enP1mUsuario.usuApePat}</td>
+                            <td><fmt:formatDate value="${u.facVenCabFec}" pattern="dd/MM/yyyy"/></td>
+                            <td>${c.facVenCabTot}</td>                            
+                            <td>${c.taGzzEstadoFactura.estFacDet}</td>
+                            <td>${c.taGzzMetodoPagoFactura.metPagDet}</td>
+                            <td>${c.taGzzTipoPagoFactura.tipPagDet}</td>
                             <td>
                                 <i class="fa fa-pencil-square-o fa-2x"></i>
                                 <i class="fa fa-trash-o fa-2x"></i>
