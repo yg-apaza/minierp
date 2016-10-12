@@ -149,6 +149,7 @@
         <servlet-name>PerifericosController</servlet-name>
         <url-pattern>/secured/perifericos</url-pattern>
     </servlet-mapping>
+    
     <!-- Modulo de Ventas -->
     <servlet>
         <description/>
@@ -160,6 +161,77 @@
         <servlet-name>VentasController</servlet-name>
         <url-pattern>/secured/ventas</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <description/>
+        <display-name>VentasFacturaController</display-name>
+        <servlet-name>VentasFacturaController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.ventas.VentasFacturaController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>VentasFacturaController</servlet-name>
+        <url-pattern>/secured/ventas/factura</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <description/>
+        <display-name>VentasPreVentaController</display-name>
+        <servlet-name>VentasPreVentaController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.ventas.VentasPreVentaController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>VentasPreVentaController</servlet-name>
+        <url-pattern>/secured/ventas/preventa</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <description/>
+        <display-name>ClienteController</display-name>
+        <servlet-name>ClienteController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.ventas.ClienteController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ClienteController</servlet-name>
+        <url-pattern>/secured/clientes</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <description/>
+        <display-name>addClienteController</display-name>
+        <servlet-name>addClienteController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.ventas.addClienteController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>addClienteController</servlet-name>
+        <url-pattern>/secured/clientes/addCliente</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <description/>
+        <display-name>addFacturaController</display-name>
+        <servlet-name>addFacturaController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.ventas.addFacturaController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>addFacturaController</servlet-name>
+        <url-pattern>/secured/ventas/factura/addFactura</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <description/>
+        <display-name>PagosController</display-name>
+        <servlet-name>PagosController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.ventas.PagosController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PagosController</servlet-name>
+        <url-pattern>/secured/ventas/pagos</url-pattern>
+    </servlet-mapping>
+     <servlet>
+        <description/>
+        <display-name>addPagoController</display-name>
+        <servlet-name>addPagoController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.ventas.addPagoController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>addPagoController</servlet-name>
+        <url-pattern>/secured/ventas/pagos/addPago</url-pattern>
+    </servlet-mapping>
+    
     <!--         ERRORS         -->
     <error-page>
         <location>/error.jsp</location>
