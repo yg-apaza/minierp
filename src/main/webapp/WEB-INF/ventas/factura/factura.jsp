@@ -22,16 +22,25 @@
                         <th>Fecha de Emision</th>
                         <th>Tipo de Comprobante</th>
                         <th>N° de Comprobante</th>
-                        <th>D. Identidad</th>
+                        <!--Los siguientes 2 deberian ser D. de Identidad y Numero de documento -->
+                        <th>Dirección</th>
                         <th>Celular</th>
                         <th>Apellidos y Nombres</th>
                         <th>Importe Total</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <c:forEach items="${facturas}" var="c">
-                       <tr>
-                          <td value="${facturas}">${facturas.facVenCabFec}</td>
+                    <c:forEach items="${facturas}" var="facturas">
+                        
+                        <tr>
+                           <td > ${facturas.facVenCabFec}</td>
+                           <td > Factura </td>
+                           <td > ${facturas.facVenCabCod} </td>
+                           <td > ${facturas.enP1mCliente.cliDir} </td>
+                           <td > ${facturas.enP1mCliente.cliTelCel} </td>
+                           <td > ${facturas.enP1mCliente.cliApePat} ${facturas.enP1mCliente.cliApeMat} ${facturas.enP1mCliente.cliNom} </td>
+                           <td > ${facturas.facVenCabTot} </td>  
+
                        </tr>
                     </c:forEach>
                 </tbody>
