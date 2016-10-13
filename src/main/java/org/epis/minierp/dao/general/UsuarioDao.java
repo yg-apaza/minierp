@@ -9,6 +9,8 @@ import org.epis.minierp.model.EnP1mUsuario;
 import org.epis.minierp.util.HibernateUtil;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 
 public class UsuarioDao
 {
@@ -71,4 +73,26 @@ public class UsuarioDao
     public void save(EnP1mUsuario usuario) {
         session.save(usuario);     
     }
+    
+     public void deleteUsuario(String id){
+         SessionFactory factory=HibernateUtil.getSessionFactory();
+         Session sesion=factory.openSession();
+         Transaction tx= sesion.beginTransaction();
+         
+         EnP1mUsuario usr=(EnP1mUsuario) sesion.get(EnP1mUsuario.class,id);
+        
+         sesion.delete(usr);
+         tx.commit();
+         sesion.close();
+         
+     }
+     
+     public void updateUsuario(EnP1mUsuario usuario){
+         SessionFactory factory=HibernateUtil.getSessionFactory();
+         Session sesion=factory.openSession();
+         Transaction tx= sesion.beginTransaction();
+         sesion.update(usuario);
+         tx.commit();
+         sesion.close();
+     }
 }

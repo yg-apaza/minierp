@@ -62,6 +62,14 @@
         <servlet-class>org.epis.minierp.controller.LoginController</servlet-class>
     </servlet>
     <servlet-mapping>
+        <servlet-name>UpdateController</servlet-name>
+        <url-pattern>/updatecontroller</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateControllerPost</servlet-name>
+        <url-pattern>/updatecontrollerpost</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>LoginController</servlet-name>
         <url-pattern/>
     </servlet-mapping>
@@ -116,6 +124,7 @@
         <servlet-name>PerfilController</servlet-name>
         <url-pattern>/perfil</url-pattern>
     </servlet-mapping>
+    
     <!-- Modulo de Compras -->
     <servlet>
         <description/>
@@ -232,6 +241,46 @@
     <servlet-mapping>
         <servlet-name>PerifericosController</servlet-name>
         <url-pattern>/secured/perifericos</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <description/>
+        <display-name>ImpresoraBarrasController</display-name>
+        <servlet-name>ImpresoraBarrasController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.perifericos.ImpresoraBarrasController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ImpresoraBarrasController</servlet-name>
+        <url-pattern>/secured/perifericos/impresoraBarras</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <description/>
+        <display-name>LectoraBarrasController</display-name>
+        <servlet-name>LectoraBarrasController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.perifericos.LectoraBarrasController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LectoraBarrasController</servlet-name>
+        <url-pattern>/secured/perifericos/lectoraBarras</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <description/>
+        <display-name>InventarioBarrasController</display-name>
+        <servlet-name>InventarioBarrasController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.perifericos.InventarioBarrasController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>InventarioBarrasController</servlet-name>
+        <url-pattern>/secured/perifericos/inventarioBarras</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <description/>
+        <display-name>AddStockController</display-name>
+        <servlet-name>AddStockController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.perifericos.AddStockController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddStockController</servlet-name>
+        <url-pattern>/secured/perifericos/addStock</url-pattern>
     </servlet-mapping>
     <!-- Modulo de Ventas -->
     <servlet>

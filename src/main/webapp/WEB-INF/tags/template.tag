@@ -18,6 +18,7 @@
         <script src="${pageContext.request.contextPath}/js/sb-admin-2.js"></script>
         <script src="${pageContext.request.contextPath}/js/Chart.js"></script>
         <script src="${pageContext.request.contextPath}/js/jquery.validate.min.js"></script>
+        <script src="${pageContext.request.contextPath}/js/jquery-barcode.js"></script>
         <link rel="shortcut icon" href="${pageContext.request.contextPath}/favicon.ico" />
         <jsp:invoke fragment="titulo"/>
     </head>
