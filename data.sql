@@ -25,11 +25,31 @@ COMMIT;
 
 
 -- -----------------------------------------------------
+-- Data for table `episerp`.`en_p1m_sucursal`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `episerp`;
+INSERT INTO `episerp`.`en_p1m_sucursal` (`SucCod`, `SucDes`, `SucDir`, `EstRegCod`) VALUES (1, 'Sucursal Arequipa', 'Av. Venezuela s/n', 'A');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
 -- Data for table `episerp`.`en_p1m_usuario`
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `episerp`;
-INSERT INTO `episerp`.`en_p1m_usuario` (`UsuCod`, `UsuNom`, `UsuApePat`, `UsuApeMat`, `UsuLog`, `UsuPas`, `TipUsuCod`, `UsuFecNac`, `EstCivCod`, `UsuSex`, `EstRegCod`) VALUES ('41379060', 'Administrador', 'Administrador', 'Administrador', 'admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', 1, '1990-01-01', 1, 'N', 'A');
+INSERT INTO `episerp`.`en_p1m_usuario` (`UsuCod`, `UsuNom`, `UsuApePat`, `UsuApeMat`, `UsuLog`, `UsuPas`, `TipUsuCod`, `SucCod`, `UsuFecNac`, `EstCivCod`, `UsuSex`, `EstRegCod`) VALUES ('41273392', 'Administrador', 'Administrador', 'Administrador', 'admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', 1, 1, '1990-01-01', 1, 'N', 'A');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `episerp`.`en_p1m_empresa`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `episerp`;
+INSERT INTO `episerp`.`en_p1m_empresa` (`EmpCod`, `EmpNom`, `EmpDir`, `EmpTel`, `EmpCor`, `EmpIGV`, `EmpRUC`) VALUES (1, 'MOT S.A.', 'Av. Venezuela s/n', '054202212', 'mot@episunsa.edu.pe', 18, '10230499411');
 
 COMMIT;
 
