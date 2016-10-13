@@ -12,9 +12,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.codec.digest.DigestUtils;
-import org.epis.minierp.dao.general.EstadoCivilDao;
-import org.epis.minierp.dao.general.TipoUsuarioDao;
-import org.epis.minierp.dao.general.UsuarioDao;
+import org.epis.minierp.dao.general.TaGzzEstadoCivilDao;
+import org.epis.minierp.dao.general.TaGzzTipoUsuarioDao;
+import org.epis.minierp.dao.ventas.EnP1mUsuarioDao;
 import org.epis.minierp.model.EnP1mUsuario;
 import org.epis.minierp.model.TaGzzEstadoCivil;
 import org.epis.minierp.model.TaGzzTipoUsuario;
@@ -26,8 +26,8 @@ public class AddUsuarioController extends HttpServlet
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        TipoUsuarioDao daoTipUsu = new TipoUsuarioDao();
-        EstadoCivilDao daoEstCiv = new EstadoCivilDao();
+        TaGzzTipoUsuarioDao daoTipUsu = new TaGzzTipoUsuarioDao();
+        TaGzzEstadoCivilDao daoEstCiv = new TaGzzEstadoCivilDao();
         List<TaGzzTipoUsuario> tipos = daoTipUsu.getAllActive();
         List<TaGzzEstadoCivil> estados = daoEstCiv.getAllActive();
         request.setAttribute("tipos", tipos);
@@ -37,7 +37,7 @@ public class AddUsuarioController extends HttpServlet
     
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        UsuarioDao daoUsu = new UsuarioDao();
+        EnP1mUsuarioDao daoUsu = new EnP1mUsuarioDao();
         try {
             EnP1mUsuario u = new EnP1mUsuario();
             u.setUsuCod(request.getParameter("usuCod"));
