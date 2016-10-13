@@ -9,10 +9,10 @@ import org.hibernate.ObjectNotFoundException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-public class FacturaCompraCabeceraDao {
+public class EnP4mFacturaCompraCabDao {
     private Session session;
     
-    public FacturaCompraCabeceraDao() {  
+    public EnP4mFacturaCompraCabDao() {  
         session = HibernateUtil.getSessionFactory().getCurrentSession();  
     }
     
@@ -33,7 +33,7 @@ public class FacturaCompraCabeceraDao {
         } catch(ObjectNotFoundException e) {
             return null;
         } catch (IndexOutOfBoundsException ex) {
-            Logger.getLogger(FacturaCompraCabeceraDao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EnP4mFacturaCompraCabDao.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
         return facturaCompraCabecera;

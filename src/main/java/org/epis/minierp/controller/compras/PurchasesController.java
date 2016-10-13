@@ -14,15 +14,16 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.epis.minierp.dao.compras.EstadoFacturaDao;
-import org.epis.minierp.dao.compras.FacturaCompraCabeceraDao;
-import org.epis.minierp.dao.compras.FacturaCompraDetalleDao;
-import org.epis.minierp.dao.compras.MetodoPagoFacturaDao;
-import org.epis.minierp.dao.compras.MonedaDao;
-import org.epis.minierp.dao.compras.ProductoDao;
-import org.epis.minierp.dao.compras.ProveedorDao;
-import org.epis.minierp.dao.compras.TipoPagoFacturaDao;
-import org.epis.minierp.dao.general.UsuarioDao;
+import org.epis.minierp.dao.compras.TaGzzEstadoFacturaDao;
+import org.epis.minierp.dao.compras.EnP4mFacturaCompraCabDao;
+import org.epis.minierp.dao.compras.EnP4tFacturaCompraDetDao;
+import org.epis.minierp.dao.compras.TaGzzMetodoPagoFacturaDao;
+import org.epis.minierp.dao.compras.TaGzzMonedaDao;
+import org.epis.minierp.dao.compras.EnP2mProductoDao;
+import org.epis.minierp.dao.compras.EnP4mProveedorDao;
+import org.epis.minierp.dao.compras.TaGzzTipoPagoFacturaDao;
+import org.epis.minierp.dao.ventas.EnP1mUsuarioDao;
+import org.epis.minierp.model.EnP1mUsuario;
 import org.epis.minierp.model.EnP2mProducto;
 import org.epis.minierp.model.EnP2mProductoId;
 import org.epis.minierp.model.EnP4mFacturaCompraCab;
@@ -39,12 +40,12 @@ public class PurchasesController extends HttpServlet {
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List <EnP4mProveedor> proveedores = (new ProveedorDao()).getAll();
-        List <TaGzzMetodoPagoFactura> metodosPagoFactura = (new MetodoPagoFacturaDao()).getAll();
-        List <TaGzzMoneda> monedas = (new MonedaDao()).getAll();
-        List <TaGzzTipoPagoFactura> tiposPagoFactura = (new TipoPagoFacturaDao()).getAll(); 
-        List <EnP2mProducto> productos = (new ProductoDao()).getAll(); 
-        List <TaGzzEstadoFactura> estados = (new EstadoFacturaDao().getAll());
+        List <EnP4mProveedor> proveedores = (new EnP4mProveedorDao()).getAll();
+        List <TaGzzMetodoPagoFactura> metodosPagoFactura = (new TaGzzMetodoPagoFacturaDao()).getAll();
+        List <TaGzzMoneda> monedas = (new TaGzzMonedaDao()).getAll();
+        List <TaGzzTipoPagoFactura> tiposPagoFactura = (new TaGzzTipoPagoFacturaDao()).getAll(); 
+        List <EnP2mProducto> productos = (new EnP2mProductoDao()).getAll(); 
+        List <TaGzzEstadoFactura> estados = (new TaGzzEstadoFacturaDao().getAll());
         
         request.setAttribute("proveedores", proveedores);
         request.setAttribute("metodosPagoFactura", metodosPagoFactura);
@@ -93,27 +94,27 @@ public class PurchasesController extends HttpServlet {
             System.out.println("List D " + productsDescriptions);
             System.out.println("List P " + productsPrices);
             
-            FacturaCompraCabeceraDao factura = new FacturaCompraCabeceraDao();
+            EnP4mFacturaCompraCabDao factura = new EnP4mFacturaCompraCabDao();
             EnP4mFacturaCompraCab header = new EnP4mFacturaCompraCab();
             
             header.setFacComCabCod(facComCabCod);
-            header.setEnP4mProveedor((new ProveedorDao()).getById(proCod));
-            header.setEnP1mUsuario((new UsuarioDao()).getById(usuCod));
+            header.setEnP4mProveedor((new EnP4mProveedorDao()).getById(proCod));
+            header.setEnP1mUsuario((new EnP1mUsuarioDao()).getById(usuCod));
             header.setFacComCabFec(facComCabFec);
             header.setFacComCabTot(facComCabTot);
             header.setFacComCabDes(facComCabDes);
             header.setFacComCabSubTot(facComCabSubTot);
             header.setFacComCabIgv(facComCabIgv);
             header.setFacComCabObs(facComCabObs);
-            header.setTaGzzEstadoFactura((new EstadoFacturaDao()).getById(estFacCod));
-            header.setTaGzzMetodoPagoFactura((new MetodoPagoFacturaDao()).getById(metPagCod));
-            header.setTaGzzTipoPagoFactura((new TipoPagoFacturaDao()).getById(tipPagCod));
-            header.setTaGzzMoneda((new MonedaDao()).getById(monCod));
+            header.setTaGzzEstadoFactura((new TaGzzEstadoFacturaDao()).getById(estFacCod));
+            header.setTaGzzMetodoPagoFactura((new TaGzzMetodoPagoFacturaDao()).getById(metPagCod));
+            header.setTaGzzTipoPagoFactura((new TaGzzTipoPagoFacturaDao()).getById(tipPagCod));
+            header.setTaGzzMoneda((new TaGzzMonedaDao()).getById(monCod));
             header.setEstRegCod('A');
             
             factura.save(header);
             
-            FacturaCompraDetalleDao detalles = new FacturaCompraDetalleDao();
+            EnP4tFacturaCompraDetDao detalles = new EnP4tFacturaCompraDetDao();
             
             for(int i = 0;i < productsDescriptions.size();i++) {
                 StringTokenizer st = new StringTokenizer(productsDescriptions.get(i),"/");
@@ -123,7 +124,7 @@ public class PurchasesController extends HttpServlet {
                 productId.setSubClaProCod(st.nextToken());
                 productId.setClaProCod(st.nextToken());
                 
-                ProductoDao productDao = new ProductoDao();
+                EnP2mProductoDao productDao = new EnP2mProductoDao();
                 EnP2mProducto product = productDao.getById(productId);
                 product.setProStk(product.getProStk() + Double.parseDouble(productsAmounts.get(i))); /* Updating stock */
                 productDao.update(product);

@@ -4,10 +4,10 @@ import org.epis.minierp.model.EnP4tFacturaCompraDet;
 import org.epis.minierp.util.HibernateUtil;
 import org.hibernate.Session;
 
-public class FacturaCompraDetalleDao {
+public class EnP4tFacturaCompraDetDao {
     private Session session;
     
-    public FacturaCompraDetalleDao() {  
+    public EnP4tFacturaCompraDetDao() {  
         session = HibernateUtil.getSessionFactory().getCurrentSession();  
     }
     

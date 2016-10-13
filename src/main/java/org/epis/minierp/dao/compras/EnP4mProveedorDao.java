@@ -7,10 +7,10 @@ import org.hibernate.ObjectNotFoundException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-public class ProveedorDao {
+public class EnP4mProveedorDao {
     private Session session;
     
-    public ProveedorDao() {  
+    public EnP4mProveedorDao() {  
         session = HibernateUtil.getSessionFactory().getCurrentSession();  
     }
     

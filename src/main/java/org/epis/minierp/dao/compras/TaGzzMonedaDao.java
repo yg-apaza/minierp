@@ -7,10 +7,10 @@ import org.hibernate.ObjectNotFoundException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-public class MonedaDao { 
+public class TaGzzMonedaDao { 
     private Session session;
     
-    public MonedaDao() {  
+    public TaGzzMonedaDao() {  
         session = HibernateUtil.getSessionFactory().getCurrentSession();  
     }
     

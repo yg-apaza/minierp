@@ -12,7 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.epis.minierp.dao.compras.ProductoDao;
+import org.epis.minierp.dao.compras.EnP2mProductoDao;
 import org.epis.minierp.model.EnP2mProducto;
 
 /**
@@ -25,7 +25,7 @@ public class ClasificacionABCController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
-        ProductoDao producto = new ProductoDao();
+        EnP2mProductoDao producto = new EnP2mProductoDao();
         List <EnP2mProducto> productosA = producto.getA();
         
         String resp = (String) request.getParameter("clase");

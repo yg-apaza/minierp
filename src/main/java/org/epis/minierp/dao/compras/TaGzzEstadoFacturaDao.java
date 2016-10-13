@@ -7,10 +7,10 @@ import org.hibernate.ObjectNotFoundException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-public class EstadoFacturaDao {
+public class TaGzzEstadoFacturaDao {
     private Session session;
 
-    public EstadoFacturaDao() {
+    public TaGzzEstadoFacturaDao() {
         session = HibernateUtil.getSessionFactory().getCurrentSession();  
     }
     

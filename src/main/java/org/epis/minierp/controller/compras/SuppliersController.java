@@ -12,7 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.epis.minierp.dao.compras.ProveedorDao;
+import org.epis.minierp.dao.compras.EnP4mProveedorDao;
 import org.epis.minierp.model.EnP4mProveedor;
 
 /**
@@ -25,7 +25,7 @@ public class SuppliersController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
-        ProveedorDao proveedor = new ProveedorDao();
+        EnP4mProveedorDao proveedor = new EnP4mProveedorDao();
         List <EnP4mProveedor> proveedores = proveedor.getAllActive();
         
         request.setAttribute("proveedores",proveedores);        

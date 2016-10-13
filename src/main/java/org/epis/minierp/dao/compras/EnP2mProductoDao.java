@@ -8,10 +8,10 @@ import org.hibernate.ObjectNotFoundException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-public class ProductoDao {
+public class EnP2mProductoDao {
     private Session session;
     
-    public ProductoDao() {  
+    public EnP2mProductoDao() {  
         session = HibernateUtil.getSessionFactory().getCurrentSession();  
     }
     

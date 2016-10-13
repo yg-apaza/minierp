@@ -11,7 +11,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.epis.minierp.dao.compras.ProveedorDao;
+import org.epis.minierp.dao.compras.EnP4mProveedorDao;
 import org.epis.minierp.model.EnP4mProveedor;
 
 /**
