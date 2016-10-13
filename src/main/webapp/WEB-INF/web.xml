@@ -116,7 +116,7 @@
         <servlet-name>PerfilController</servlet-name>
         <url-pattern>/perfil</url-pattern>
     </servlet-mapping>
-    <!-- Modulo de Compras -->
+    <!-- Modulo de Compras y Logística -->
     <servlet>
         <description/>
         <display-name>ComprasController</display-name>
@@ -127,6 +127,75 @@
         <servlet-name>ComprasController</servlet-name>
         <url-pattern>/secured/compras</url-pattern>
     </servlet-mapping>
+    <!-- Modulo de Compras -->
+    <servlet>
+        <description/>
+        <display-name>PurchasesController</display-name>
+        <servlet-name>PurchasesController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.compras.PurchasesController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PurchasesController</servlet-name>
+        <url-pattern>/secured/compras/registerPurchase</url-pattern>
+    </servlet-mapping>
+    
+     <!-- Modulo de Compras Inventario -->
+    <servlet>
+        <description/>
+        <display-name>InventoryController</display-name>
+        <servlet-name>InventoryController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.compras.InventoryController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>InventoryController</servlet-name>
+        <url-pattern>/secured/compras/inventario</url-pattern>
+    </servlet-mapping>
+    
+    <!-- Modulo de Compras Clasificacion ABC -->
+    <servlet>
+        <description/>
+        <display-name>ClasificacionABCController</display-name>
+        <servlet-name>ClasificacionABCController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.compras.ClasificacionABCController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ClasificacionABCController</servlet-name>
+        <url-pattern>/secured/compras/clasificacionABC</url-pattern>
+    </servlet-mapping>
+    <!--Modulo de Compras Limite Maximo -->
+     <servlet>
+        <description/>
+        <display-name>LimiteMaximoController</display-name>
+        <servlet-name>LimiteMaximoController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.compras.LimiteMaximoController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LimiteMaximoController</servlet-name>
+        <url-pattern>/secured/compras/limiteMaximo</url-pattern>
+    </servlet-mapping>
+    <!--Modulo de Compras Proveedores -->
+     <servlet>
+        <description/>
+        <display-name>SuppliersController</display-name>
+        <servlet-name>SuppliersController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.compras.SuppliersController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SuppliersController</servlet-name>
+        <url-pattern>/secured/compras/proveedores</url-pattern>
+    </servlet-mapping>
+    <!--Modulo de Compras Nuevo Proveedor -->
+     <servlet>
+        <description/>
+        <display-name>AddSupplierController</display-name>
+        <servlet-name>AddSupplierController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.compras.AddSupplierController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddSupplierController</servlet-name>
+        <url-pattern>/secured/compras/form_proveedor</url-pattern>
+    </servlet-mapping>
+
     <!-- Modulo de Contabilidad -->
     <servlet>
         <description/>
