@@ -15,6 +15,11 @@
                 Agregar factura
             </a>
             <br>
+            <a href="${pageContext.request.contextPath}/secured/ventas/reporteVentas?type=pdf&&report=registroVentas" class="btn btn-outline btn-danger btn-lg btn-block">
+                    <i class="fa fa-file-pdf-o"></i>
+                    Descargar Registro de Ventas e Ingresos [PDF]
+            </a>
+            <br>
             <br>
             <table class="table table-hover">
                 <thead>
@@ -28,6 +33,14 @@
                         <th>Estado Factura</th>
                         <th>Metodo Pago</th>
                         <th>Tipo Pago</th>
+                        <th>Fecha de Emision</th>
+                        <th>Tipo de Comprobante</th>
+                        <th>N° de Comprobante</th>
+                        <!--Los siguientes 2 deberian ser D. de Identidad y Numero de documento -->
+                        <th>Dirección</th>
+                        <th>Celular</th>
+                        <th>Apellidos y Nombres</th>
+                        <th>Importe Total</th>
                     </tr>
                 </thead>
                 <tbody>

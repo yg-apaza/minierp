@@ -290,7 +290,7 @@
         <servlet-name>PagosController</servlet-name>
         <url-pattern>/secured/ventas/pagos</url-pattern>
     </servlet-mapping>
-     <servlet>
+    <servlet>
         <description/>
         <display-name>addPagoController</display-name>
         <servlet-name>addPagoController</servlet-name>
@@ -300,7 +300,16 @@
         <servlet-name>addPagoController</servlet-name>
         <url-pattern>/secured/ventas/pagos/addPago</url-pattern>
     </servlet-mapping>
-    
+    <servlet>
+        <description/>
+        <display-name>ReporteVentasController</display-name>
+        <servlet-name>ReporteVentasController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.ventas.ReporteVentasController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ReporteVentasController</servlet-name>
+        <url-pattern>/secured/ventas/reporteVentas</url-pattern>
+    </servlet-mapping>
     <!--         ERRORS         -->
     <error-page>
         <location>/error.jsp</location>
