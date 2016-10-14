@@ -7,7 +7,7 @@
         <title>MiniERP - Contabilidad</title>
     </jsp:attribute>
     <jsp:attribute name="contenido">
-        <div class="container">
+        <div class="panel-body">
             <h1 class="page-header">Plan Contable</h1>
             <br>
             <br>

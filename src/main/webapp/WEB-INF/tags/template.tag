@@ -93,6 +93,9 @@
                                         <a href="#">Logística <span class="fa arrow"></span></a>
                                         <ul class="nav nav-third-level">
                                             <li>
+                                                <a href="${pageContext.request.contextPath}/secured/compras/proveedores">Proveedores</a>
+                                            </li>
+                                            <li>
                                                 <a href="${pageContext.request.contextPath}/secured/compras/kardexInicio">Kardex</a>
                                             </li>
                                             <li>
@@ -103,6 +106,12 @@
                                             </li>
                                             <li>
                                                 <a href="${pageContext.request.contextPath}/secured/compras/limiteMaximo">Stock</a>
+                                            </li>
+                                            <li>
+                                                <a href = "${pageContext.request.contextPath}/secured/compras/form_proveedor">Añadir Proveedor</a>
+                                            </li>                                            
+                                            <li>
+                                                <a href="${pageContext.request.contextPath}/secured/compras/inventario/nuevoProducto">Añadir Producto</a>
                                             </li>
                                         </ul>
                                     </li>
