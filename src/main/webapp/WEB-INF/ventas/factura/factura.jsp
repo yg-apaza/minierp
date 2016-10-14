@@ -10,12 +10,12 @@
         <div class="container">
             <h1 class="page-header">Factura</h1>
             <br>
-            <a class="btn btn-success" href="${pageContext.request.contextPath}/secured/ventas/factura/addFactura" role="button">
+            <a class="btn btn-success" href="${pageContext.request.contextPath}/secured/factura/addFactura" role="button">
                 <i class="fa fa-plus"></i>
                 Agregar factura
             </a>
             <br>
-            <a href="${pageContext.request.contextPath}/secured/ventas/reporteVentas?type=pdf&&report=registroventas" class="btn btn-outline btn-danger btn-lg btn-block">
+            <a href="${pageContext.request.contextPath}/secured/reporteVentas?type=pdf&&report=registroventas" class="btn btn-outline btn-danger btn-lg btn-block">
                 <i class="fa fa-file-pdf-o"></i>
                 Descargar Registro de Ventas e Ingresos [PDF]
             </a>
