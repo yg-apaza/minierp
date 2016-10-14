@@ -1,6 +1,6 @@
 package org.epis.minierp.dao.contabilidad;
 
-import org.epis.minierp.model.view.contabilidad.CajaModel;
+import org.epis.minierp.view.contabilidad.CajaModel;
 import java.util.List;
 import org.epis.minierp.util.HibernateUtil;
 import org.hibernate.Query;

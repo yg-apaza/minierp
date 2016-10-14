@@ -1,6 +1,6 @@
 package org.epis.minierp.dao.contabilidad;
 
-import org.epis.minierp.model.view.contabilidad.LibroDiario;
+import org.epis.minierp.view.contabilidad.LibroDiario;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
