@@ -1,3 +1,0 @@
-# MiniERP WEB
-
-Capa Business

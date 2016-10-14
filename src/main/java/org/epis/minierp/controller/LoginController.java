@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.apache.commons.codec.digest.DigestUtils;
-import org.epis.minierp.dao.ventas.EnP1mUsuarioDao;
+import org.epis.minierp.dao.general.EnP1mUsuarioDao;
 import org.epis.minierp.model.EnP1mUsuario;
 
 public class LoginController extends HttpServlet

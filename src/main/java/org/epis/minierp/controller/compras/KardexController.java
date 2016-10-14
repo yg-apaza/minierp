@@ -1,48 +1,32 @@
 package org.epis.minierp.controller.compras;
 
-import java.io.File;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.text.ParseException;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import net.sf.jasperreports.engine.JREmptyDataSource;
 import net.sf.jasperreports.engine.JRException;
-import net.sf.jasperreports.engine.JasperCompileManager;
-import net.sf.jasperreports.engine.JasperExportManager;
-import net.sf.jasperreports.engine.JasperFillManager;
-import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.JasperRunManager;
-import net.sf.jasperreports.engine.design.JasperDesign;
-import net.sf.jasperreports.engine.xml.JRXmlLoader;
-import org.epis.minierp.controller.general.AddUsuarioController;
-import org.epis.minierp.dao.compras.kardexDao;
+import org.epis.minierp.dao.compras.KardexDao;
 import org.epis.minierp.dto.ProductoDto;
-import org.epis.minierp.dto.kardexDto;
+import org.epis.minierp.dto.KardexDto;
 
 public class KardexController extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
   
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        kardexDao daoUsu = new kardexDao();
+        KardexDao daoUsu = new KardexDao();
         List<ProductoDto> listaProd = daoUsu.listarProducto();
         request.setAttribute("productos", listaProd);
         request.getRequestDispatcher("/WEB-INF/compras/kardex.jsp").forward(request, response);
@@ -54,12 +38,12 @@ public class KardexController extends HttpServlet {
         try {
             String button = request.getParameter("button");
             if ("btn_ver".equals(button)) {
-                kardexDao daoUsu = new kardexDao();
+                KardexDao daoUsu = new KardexDao();
                 String proCod = request.getParameter("item");
                 
                 if (proCod.length() > 0) {
                   
-                    List<kardexDto> registros = daoUsu.getAll(proCod);
+                    List<KardexDto> registros = daoUsu.getAll(proCod);
                     
                     request.setAttribute("registros", registros);
                 }
@@ -98,7 +82,7 @@ public class KardexController extends HttpServlet {
             conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/episerp","alumno","1234");
             String path = getServletContext().getRealPath("/WEB-INF/");
 
-            path=path+"reportes\\reporte_kardex_fisico.jasper";
+            path=path+"reportes/reporte_kardex_fisico.jasper";
 //            jasperDesign = JRXmlLoader.load(path+"/reportes/reporte_kardex_fisico.jrxml");
       
             HashMap hm = null;
@@ -142,7 +126,7 @@ public class KardexController extends HttpServlet {
             conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/episerp","alumno","1234");
             String path = getServletContext().getRealPath("/WEB-INF/");
             System.out.println(path);
-            path=path+"reportes\\reporte_kardex_valorizado.jasper";
+            path=path+"reportes/reporte_kardex_valorizado.jasper";
 //            jasperDesign = JRXmlLoader.load(path+"/reportes/reporte_kardex_fisico.jrxml");
             
             String jrxmlFileName = path;

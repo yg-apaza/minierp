@@ -12,7 +12,10 @@
 
 ## Instalación
 
-- Ejecutar schema.sql en una base de datos 'episerp'
+- Ejecutar SCHEMA.sql en una base de datos 'episerp'
+- Ejecutar DATA.sql
+- Ejecutar VIEWS.sql
+- Ejecutar PROCEDURES.sql
 - Crear el usuario alumno
 ``` sql
 CREATE USER 'alumno'@'%' IDENTIFIED BY '1234';
