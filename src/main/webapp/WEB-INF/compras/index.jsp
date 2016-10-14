@@ -18,7 +18,7 @@
                             <a href="#"><i class="fa fa-group fa-fw"></i> Logística<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="#">Kardex</a>
+                                    <a href="${pageContext.request.contextPath}/secured/compras/kardexInicio">Kardex</a>
                                 </li>
                                 <li>
                                     <a href="${pageContext.request.contextPath}/secured/compras/clasificacionABC">Clasificación ABC</a>
@@ -150,7 +150,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="#">
+                            <a href="${pageContext.request.contextPath}/secured/compras/kardexInicio">
                                 <div class="panel-footer">
                                     <span class="pull-left">Ingresar</span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>

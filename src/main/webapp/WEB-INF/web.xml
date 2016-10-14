@@ -146,7 +146,16 @@
         <servlet-name>PurchasesController</servlet-name>
         <url-pattern>/secured/compras/registerPurchase</url-pattern>
     </servlet-mapping>
-    
+    <servlet>
+        <description/>
+        <display-name>KardexController</display-name>
+        <servlet-name>KardexController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.compras.KardexController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>KardexController</servlet-name>
+        <url-pattern>/secured/compras/kardexInicio</url-pattern>
+    </servlet-mapping>
      <!-- Modulo de Compras Inventario -->
     <servlet>
         <description/>
