@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.epis.minierp.dao.general.TaGzzMonedaDao;
 import org.epis.minierp.dao.ventas.EnP1mClienteDao;
 import org.epis.minierp.dao.ventas.EnP1mPreventaCabDao;
-import org.epis.minierp.dao.ventas.EnP1mUsuarioDao;
+import org.epis.minierp.dao.general.EnP1mUsuarioDao;
 import org.epis.minierp.model.EnP1mCliente;
 import org.epis.minierp.model.EnP1mPreventaCab;
 import org.epis.minierp.model.EnP1mUsuario;

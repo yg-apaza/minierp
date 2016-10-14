@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -15,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
-import org.epis.minierp.dao.perifericos.CodigoBarrasDao;
+import org.epis.minierp.business.perifericos.CodigoBarrasBusiness;
 
 public class LectoraBarrasController extends HttpServlet
 {	
@@ -51,7 +50,7 @@ public class LectoraBarrasController extends HttpServlet
             }
         } 
         BufferedImage image = ImageIO.read(file);
-        CodigoBarrasDao daoCodBar = new CodigoBarrasDao();
+        CodigoBarrasBusiness daoCodBar = new CodigoBarrasBusiness();
         String codigo = daoCodBar.readCodeBar(image);
         response.sendRedirect(request.getContextPath() + "/secured/perifericos/lectoraBarras?codigo=" + codigo);
     }

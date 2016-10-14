@@ -5,7 +5,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.epis.minierp.dao.perifericos.ProductoDao;
+import org.epis.minierp.dao.logistica.EnP2mProductoDao;
 
 public class AddStockController extends HttpServlet
 {	
@@ -13,7 +13,7 @@ public class AddStockController extends HttpServlet
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        ProductoDao dao = new ProductoDao();
+        EnP2mProductoDao dao = new EnP2mProductoDao();
         dao.increaseStock(Integer.parseInt(request.getParameter("p")));
         request.getRequestDispatcher("/WEB-INF/perifericos/inventarioBarras.jsp").forward(request, response);
     }
