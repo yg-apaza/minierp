@@ -2,14 +2,14 @@ package org.epis.minierp.view.contabilidad;
 
 import java.io.Serializable;
 
-public class BancosPK implements Serializable {
+public class CajaPKView implements Serializable {
     protected String libDiaCod;
     protected int asiCabCod;
     protected int asiDetCod;
     
-    public BancosPK(){}
+    public CajaPKView(){}
 
-    public BancosPK(String LibDiaCod, int AsiCabCod, int AsiDetCod) {
+    public CajaPKView(String LibDiaCod, int AsiCabCod, int AsiDetCod) {
         this.libDiaCod = LibDiaCod;
         this.asiCabCod = AsiCabCod;
         this.asiDetCod = AsiDetCod;
@@ -46,10 +46,10 @@ public class BancosPK implements Serializable {
         if ((other == null)) {
             return false;
         }
-        if (!(other instanceof CajaPK)) {
+        if (!(other instanceof CajaPKView)) {
             return false;
         }
-        CajaPK castOther = (CajaPK) other;
+        CajaPKView castOther = (CajaPKView) other;
 
         return (this.getAsiDetCod() == castOther.getAsiDetCod())
                 && (this.getAsiCabCod() == castOther.getAsiCabCod())

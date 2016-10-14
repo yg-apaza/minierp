@@ -9,9 +9,9 @@ import javax.persistence.IdClass;
 import javax.persistence.Table;
 
 @Entity
-@IdClass(CajaPK.class)
-@Table(name="VIEW_BANCOS")
-public class BancosModel implements Serializable {
+@IdClass(CajaPKView.class)
+@Table(name="VIEW_CAJA")
+public class CajaView implements Serializable {
     @Id 
     @Column(name="LibDiaCod")
     private String libDiaCod;
@@ -27,8 +27,8 @@ public class BancosModel implements Serializable {
     @Column(name="AsiCabFec")
     private Date asiCabFec;
     
-    @Column(name="CueBanNum")
-    private String cueBanNum;
+    @Column(name="AsiCabTip")
+    private String asiCabTip;
     
     @Column(name="CueCod")
     private String cueCod;
@@ -74,12 +74,12 @@ public class BancosModel implements Serializable {
         this.asiCabFec = asiCabFec;
     }
 
-    public String getCueBanNum() {
-        return cueBanNum;
+    public String getAsiCabTip() {
+        return asiCabTip;
     }
 
-    public void setCueBanNum(String cueBanNum) {
-        this.cueBanNum = cueBanNum;
+    public void setAsiCabTip(String asiCabTip) {
+        this.asiCabTip = asiCabTip;
     }
 
     public String getCueCod() {
@@ -113,4 +113,10 @@ public class BancosModel implements Serializable {
     public void setHaber(String haber) {
         this.haber = haber;
     }
+    
+    
+    @Override
+    public String toString() {
+        return "VIEW_CAJA{" + "asiDetCod=" + asiDetCod + ", asiCabCod=" + asiCabCod + ", asiCabFec=" + asiCabFec + ", asiCabTip=" + asiCabTip + ", cueCod=" + cueCod + ", cueDes=" + cueDes + ", debe=" + debe + ", haber=" + haber + '}';
+    }   
 }

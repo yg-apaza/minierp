@@ -7,11 +7,11 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "LibroDiario")
-public class LibroDiario implements Serializable
+@Table(name = "VIEW_LIBRO_DIARIO")
+public class LibroDiarioView implements Serializable
 {
     @EmbeddedId
-    private LibroDiarioPK idPK;
+    private LibroDiarioPKView idPK;
     
     @Column(name="CueNum")
     private String cueNum;
@@ -31,11 +31,11 @@ public class LibroDiario implements Serializable
     @Column(name="EstRegCod")
     private String estRegCod;
 
-    public LibroDiarioPK getIdPK() {
+    public LibroDiarioPKView getIdPK() {
         return idPK;
     }
 
-    public void setIdPK(LibroDiarioPK idPK) {
+    public void setIdPK(LibroDiarioPKView idPK) {
         this.idPK = idPK;
     }
 

@@ -1,6 +1,6 @@
 package org.epis.minierp.dao.contabilidad;
 
-import org.epis.minierp.view.contabilidad.CajaModel;
+import org.epis.minierp.view.contabilidad.CajaView;
 import java.util.List;
 import org.epis.minierp.util.HibernateUtil;
 import org.hibernate.Query;
@@ -14,7 +14,7 @@ public class BancosDAO {
     {  
         session = HibernateUtil.getSessionFactory().getCurrentSession();  
     }
-    public List<CajaModel> getView(){
+    public List<CajaView> getView(){
         Query query = session.createQuery("from BancosModel");
         return query.list();
     }
