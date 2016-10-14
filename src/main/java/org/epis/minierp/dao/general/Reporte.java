@@ -1,4 +1,4 @@
-package org.epis.minierp.dao.contabilidad.reporte;
+package org.epis.minierp.dao.general;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -23,21 +23,29 @@ import net.sf.jasperreports.export.SimpleOutputStreamExporterOutput;
 import org.epis.minierp.util.HibernateUtil;
 import org.hibernate.Session;
 
-public class ReporteContabilidad {
+public class Reporte {
     
     private Session session;
     private Map<String, Object> param = new HashMap<String, Object>();
     private Date date = new Date();
     private SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
         
-    public ReporteContabilidad(){
+    public Reporte(){
         session = HibernateUtil.getSessionFactory().getCurrentSession();
     }
     
-    public String report(String path, String fileName, String fileType) {
+    public String report(String path, String fileName, String fileType, String module) {
         param.put(JRHibernateQueryExecuterFactory.PARAMETER_HIBERNATE_SESSION, session);
         String file = fileName + sf.format(date.getTime());
-        String fullPath = ReporteContabilidad.class.getClassLoader().getResource("org/epis/minierp/reporte/contabilidad/").getPath() + file;
+        String fullPath = null;
+        switch(module){
+            case "Contabilidad":
+                fullPath = Reporte.class.getClassLoader().getResource("org/epis/minierp/reporte/contabilidad/").getPath() + file;
+                break;
+            case "Ventas":
+                fullPath = Reporte.class.getClassLoader().getResource("org/epis/minierp/reporte/ventas/").getPath() + file;
+                break;
+        }
         
         try {
             JasperReport jasperReport = JasperCompileManager.compileReport(path);
@@ -63,7 +71,7 @@ public class ReporteContabilidad {
                     break;
             }
         } catch (JRException ex) {
-            Logger.getLogger(ReporteContabilidad.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Reporte.class.getName()).log(Level.SEVERE, null, ex);
         }
         return fullPath + "." + fileType;
     }

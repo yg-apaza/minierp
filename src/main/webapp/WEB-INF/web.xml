@@ -121,6 +121,16 @@
         <servlet-class>org.epis.minierp.controller.general.PerfilController</servlet-class>
     </servlet>
     <servlet-mapping>
+        <servlet-name>ReporteController</servlet-name>
+        <url-pattern>/secured/reporte</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <description/>
+        <display-name>ReporteController</display-name>
+        <servlet-name>ReporteController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.general.ReporteController</servlet-class>
+    </servlet>
+    <servlet-mapping>
         <servlet-name>PerfilController</servlet-name>
         <url-pattern>/perfil</url-pattern>
     </servlet-mapping>
@@ -155,7 +165,7 @@
         <servlet-name>KardexController</servlet-name>
         <url-pattern>/secured/compras/kardexInicio</url-pattern>
     </servlet-mapping>
-     <!-- Modulo de Compras Inventario -->
+    <!-- Modulo de Compras Inventario -->
     <servlet>
         <description/>
         <display-name>InventoryController</display-name>
@@ -279,16 +289,6 @@
     <servlet-mapping>
         <servlet-name>BancosController</servlet-name>
         <url-pattern>/secured/contabilidad/bancos</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <description/>
-        <display-name>ReporteContabilidadController</display-name>
-        <servlet-name>ReporteContabilidadController</servlet-name>
-        <servlet-class>org.epis.minierp.controller.contabilidad.ReporteContabilidadController</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>ReporteContabilidadController</servlet-name>
-        <url-pattern>/secured/contabilidad/reporte</url-pattern>
     </servlet-mapping>
     <servlet>
         <description/>
@@ -431,16 +431,6 @@
     <servlet-mapping>
         <servlet-name>addPagoController</servlet-name>
         <url-pattern>/secured/ventas/pagos/addPago</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <description/>
-        <display-name>ReporteVentasController</display-name>
-        <servlet-name>ReporteVentasController</servlet-name>
-        <servlet-class>org.epis.minierp.controller.ventas.ReporteVentasController</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>ReporteVentasController</servlet-name>
-        <url-pattern>/secured/ventas/reporteVentas</url-pattern>
     </servlet-mapping>
     <!--         ERRORS         -->
     <error-page>
