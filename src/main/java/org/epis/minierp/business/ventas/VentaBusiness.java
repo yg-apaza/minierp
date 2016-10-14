@@ -12,8 +12,8 @@ import org.epis.minierp.dao.ventas.EnP1tFacturaVentaDetDao;
 import org.epis.minierp.model.EnP1mFacturaVentaCab;
 import org.epis.minierp.model.EnP1tFacturaVentaDet;
 
-
 public class VentaBusiness {
+
     EnP1mFacturaVentaCabDao cabDao;
     EnP1tFacturaVentaDetDao detDao;
     EnP1mClienteDao cli;
@@ -33,14 +33,14 @@ public class VentaBusiness {
         mon = new TaGzzMonedaDao();
         tipPag = new TaGzzTipoPagoFacturaDao();
     }
-    
-    public void GenerarFacturaVenta(EnP1mFacturaVentaCab cab, List<EnP1tFacturaVentaDet> dets ){
+
+    public void GenerarFacturaVenta(EnP1mFacturaVentaCab cab, List<EnP1tFacturaVentaDet> dets) {
         cabDao.save(cab);
         for (EnP1tFacturaVentaDet next : dets) {
             detDao.save(next);
         }
     }
-  
+
     public void GenerarFacturaVenta(EnP1mFacturaVentaCab facturaCab,
             String cliCod, String usuCod, int estFacCod, int metPagFac,
             int monCod, int tipPagCod, List<EnP1tFacturaVentaDet> dets) {
@@ -50,13 +50,13 @@ public class VentaBusiness {
             detDao.save(next);
         }
     }
-    
-    public String GenerarNumFactura(int numLote){
+
+    public String GenerarNumFactura(int numLote) {
         String numFactura = "";
-        
+
         return numFactura;
     }
-  
+
     public EnP1mFacturaVentaCab GenerarFacturaCab(EnP1mFacturaVentaCab facturaCab,
             String cliCod, String usuCod, int estFacCod, int metPagFac,
             int monCod, int tipPagCod) {
