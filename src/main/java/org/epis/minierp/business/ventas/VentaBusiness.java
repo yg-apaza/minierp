@@ -13,7 +13,7 @@ import org.epis.minierp.model.EnP1mFacturaVentaCab;
 import org.epis.minierp.model.EnP1tFacturaVentaDet;
 
 
-public class EnP1mVentas {
+public class VentaBusiness {
     EnP1mFacturaVentaCabDao cabDao;
     EnP1tFacturaVentaDetDao detDao;
     EnP1mClienteDao cli;
@@ -23,7 +23,7 @@ public class EnP1mVentas {
     TaGzzMonedaDao mon;
     TaGzzTipoPagoFacturaDao tipPag;
 
-    public EnP1mVentas() {
+    public VentaBusiness() {
         cabDao = new EnP1mFacturaVentaCabDao();
         detDao = new EnP1tFacturaVentaDetDao();
         cli = new EnP1mClienteDao();

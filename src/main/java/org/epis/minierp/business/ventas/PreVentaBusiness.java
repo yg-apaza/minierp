@@ -11,14 +11,14 @@ import org.epis.minierp.model.EnP1mFacturaVentaCab;
 import org.epis.minierp.model.EnP1mPreventaCab;
 import org.epis.minierp.model.EnP1tPreventaDet;
 
-public class EnP1mPreVentas {
+public class PreVentaBusiness {
     EnP1mPreventaCabDao cabPreVenDao;
     EnP1tPreventaDetDao detPreVenDao;
     EnP1cPreventaRealizadasDao daoPreVenOk;
     EnP1mFacturaVentaCabDao cabVenDao;
     EnP1tFacturaVentaDetDao detVenDao;
 
-    public EnP1mPreVentas() {
+    public PreVentaBusiness() {
         cabPreVenDao = new EnP1mPreventaCabDao();
         detPreVenDao = new EnP1tPreventaDetDao();
         daoPreVenOk = new EnP1cPreventaRealizadasDao();
