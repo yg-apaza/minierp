@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Registro de Ventas" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="798" leftMargin="25" rightMargin="19" topMargin="19" bottomMargin="10" uuid="e02fcbba-6f3b-4fbe-a19b-ed2b2ac006e7">
 	<property name="ireport.zoom" value="0.9090909090909091"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="23"/>
 	<queryString language="hql">
 		<![CDATA[From EnP1mFacturaVentaCab]]>
 	</queryString>
@@ -322,6 +322,7 @@
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{enP1mCliente}.getEnP1mDocumentoClientes().iterator().next().getDocCliNum()]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
