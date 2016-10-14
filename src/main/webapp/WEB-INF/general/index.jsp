@@ -5,7 +5,7 @@
     </jsp:attribute>
     <jsp:attribute name="contenido">
         
-        <div class="container-fluid">
+        <div class="panel-body">
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">Blank</h1>

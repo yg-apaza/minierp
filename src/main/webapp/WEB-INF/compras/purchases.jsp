@@ -5,15 +5,7 @@
         <title>MiniERP - Compras y Logística</title>
     </jsp:attribute>
     <jsp:attribute name="contenido">       
-        <link href="${pageContext.request.contextPath}/css/dataTables.bootstrap.css" rel="stylesheet">   
-        <link href="${pageContext.request.contextPath}/css/sb-admin-2.other.css" rel="stylesheet">
-        <script src="${pageContext.request.contextPath}/js/jquery.min.other.js"></script>
-        <script src="${pageContext.request.contextPath}/js/jquery.dataTables.min.js"></script>
-        <script src="${pageContext.request.contextPath}/js/dataTables.bootstrap.min.js"></script>
-        
-        
-        <script src="${pageContext.request.contextPath}/js/metisMenu.min.js"></script>
-        <script src="${pageContext.request.contextPath}/js/sb-admin-2.min.js"></script>
+
         <script language="javascript">
             function addRow(tableID) {
                 var table = document.getElementById(tableID);
@@ -110,13 +102,7 @@
                         alert(e);
                     }
             }
-            
-            $(document).ready(function() {
-                $('#tableSuppliers').DataTable({
-                    responsive: true
-                });
-            });
-            
+
             $(document).ready(function() {
                 $("#productTable").change(updateDescription);
             });
@@ -133,42 +119,8 @@
                 });
             });
         </script>
-        <div id="wrapper">
-            <div class="navbar-default sidebar">
-                <div class="sidebar-nav">
-                    <ul class="nav" id="side-menu">
-                        <li>
-                            <a href="${pageContext.request.contextPath}/secured/compras"><i class="fa fa-dashboard fa-fw"></i> Panel General</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-group fa-fw"></i> Logística<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="#">Kardex</a>
-                                </li>
-                                <li>
-                                    <a href="${pageContext.request.contextPath}/secured/compras/clasificacionABC">Clasificación ABC</a>
-                                </li>
-                                <li>
-                                    <a href="${pageContext.request.contextPath}/secured/compras/inventario">Inventario</a>
-                                </li>
-                                <li>
-                                    <a href="${pageContext.request.contextPath}/secured/compras/limiteMaximo">Stock</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-truck fa-fw"></i> Compras<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="${pageContext.request.contextPath}/secured/compras/registerPurchase">Registrar Factura</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div id="page-wrapper">
+
+            <div id="pagel-body">
                 <div class="row">
                     <div class="col-lg-12">
                         <br><h1 class="page-header"> Registrar Factura de Compra</h1>

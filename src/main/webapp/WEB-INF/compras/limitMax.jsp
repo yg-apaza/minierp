@@ -43,44 +43,7 @@
         
         </script>
         
-        
-        <div id ="wrapper">
-            <div class="navbar-default sidebar">
-                <div class="sidebar-nav">
-                    <ul class="nav" id="side-menu">
-                        <li>
-                            <a href="${pageContext.request.contextPath}/secured/compras"><i class="fa fa-dashboard fa-fw"></i> Panel General</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-group fa-fw"></i> Logística<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="#">Kardex</a>
-                                </li>
-                                <li>
-                                    <a href="${pageContext.request.contextPath}/secured/compras/clasificacionABC">Clasificación ABC</a>
-                                </li>
-                                <li>
-                                    <a href="${pageContext.request.contextPath}/secured/compras/inventario">Inventario</a>
-                                </li>
-                                <li>
-                                    <a href="${pageContext.request.contextPath}/secured/compras/limiteMaximo">Stock</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-truck fa-fw"></i> Compras<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="${pageContext.request.contextPath}/secured/compras/registerPurchase">Registrar Factura</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div> 
-       <div id="page-wrapper">
+       <div id="pagel-body">
 	<!--Barra de opciones-->
             <div class="row">
                 <br/>
