@@ -13,6 +13,7 @@
         <title>Libro Diario</title>
     </jsp:attribute>
     <jsp:attribute name="contenido">
+        
         <!--  PANEL PRINCIPAL -->
         <div class="col-md-12 content">
             <!-- Trigger the modal with a button -->

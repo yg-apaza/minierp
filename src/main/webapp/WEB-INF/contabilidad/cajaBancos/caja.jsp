@@ -7,7 +7,7 @@
         <title>Caja</title>
     </jsp:attribute>
     <jsp:attribute name="contenido">
-        <div class="container" >
+        <div class="panel-body" >
             <h1 class="page-header">Caja</h1> 
             <div class="row-fluid">
                 <div class="span12">
