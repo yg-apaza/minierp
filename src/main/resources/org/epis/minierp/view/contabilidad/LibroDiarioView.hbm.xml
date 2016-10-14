@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 14/10/2016 06:01:42 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="org.epis.minierp.view.contabilidad.LibroDiarioView" table="VIEW_LIBRO_DIARIO">
+        <composite-id name="idPK" class="org.epis.minierp.view.contabilidad.LibroDiarioPKView" access="field">
+            <key-property name="asiCabCod" type="java.lang.Integer">
+                <column name="AsiCabCod" />
+            </key-property>
+            <key-property name="asiDetCod" type="java.lang.Integer">
+                <column name="AsiDetCod" />
+            </key-property>
+            <key-property name="libDiaCod" type="java.lang.Integer">
+                <column name="LibDiaCod" />
+            </key-property>
+        </composite-id>
+        <property name="asiCabFec" type="java.lang.String" access="field">
+            <column name="AsiCabFec" />
+        </property>
+        <property name="asiDetDebHab" type="boolean" access="field">
+            <column name="AsiDetDebHab" />
+        </property>
+        <property name="asiDetMon" type="double" access="field">
+            <column name="AsiDetMon" />
+        </property>
+        <property name="cueDes" type="java.lang.String" access="field">
+            <column name="CueDes" />
+        </property>
+        <property name="cueNum" type="java.lang.String" access="field">
+            <column name="CueNum" />
+        </property>
+        <property name="estRegCod" type="java.lang.String" access="field">
+            <column name="EstRegCod" />
+        </property>
+    </class>
+</hibernate-mapping>

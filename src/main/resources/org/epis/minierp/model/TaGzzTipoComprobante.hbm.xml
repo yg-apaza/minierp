@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 14/10/2016 03:47:37 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 14/10/2016 06:01:42 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="org.epis.minierp.model.TaGzzTipoComprobante" table="ta_gzz_tipo_comprobante" catalog="episerp" optimistic-lock="version">
         <id name="tipComCod" type="java.lang.Integer">
@@ -19,6 +19,12 @@
                 <column name="TipComCod" not-null="true" />
             </key>
             <one-to-many class="org.epis.minierp.model.EnP3mAsientoCab" />
+        </set>
+        <set name="enP1mMovimientoPuntoVens" table="en_p1m_movimiento_punto_ven" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="TipComCod" not-null="true" />
+            </key>
+            <one-to-many class="org.epis.minierp.model.EnP1mMovimientoPuntoVen" />
         </set>
     </class>
 </hibernate-mapping>

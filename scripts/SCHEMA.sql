@@ -1098,7 +1098,7 @@ CREATE TABLE IF NOT EXISTS `episerp`.`en_p1m_movimiento_punto_ven` (
   `MovPunVenCod` INT(10) ZEROFILL NOT NULL AUTO_INCREMENT,
   `SucCod` INT(5) ZEROFILL NOT NULL,
   `PunVenCod` INT(6) ZEROFILL NOT NULL,
-  `MovPunVenCom` INT(2) NOT NULL,
+  `TipComCod` INT(2) ZEROFILL NOT NULL,
   `MovPunVenComCod` CHAR(10) NOT NULL,
   `UsuCod` CHAR(15) NOT NULL,
   `MovPunVenFec` DATE NOT NULL,
@@ -1107,6 +1107,7 @@ CREATE TABLE IF NOT EXISTS `episerp`.`en_p1m_movimiento_punto_ven` (
   PRIMARY KEY (`MovPunVenCod`, `SucCod`, `PunVenCod`),
   INDEX `fk_en_p1m_movimiento_punto_ven_en_p1m_punto_venta1_idx` (`SucCod` ASC, `PunVenCod` ASC),
   INDEX `fk_en_p1m_movimiento_punto_ven_en_p1m_usuario1_idx` (`UsuCod` ASC),
+  INDEX `fk_en_p1m_movimiento_punto_ven_ta_gzz_tipo_comprobante1_idx` (`TipComCod` ASC),
   CONSTRAINT `fk_en_p1m_movimiento_punto_ven_en_p1m_punto_venta1`
     FOREIGN KEY (`SucCod` , `PunVenCod`)
     REFERENCES `episerp`.`en_p1m_punto_venta` (`SucCod` , `PunVenCod`)
@@ -1115,6 +1116,11 @@ CREATE TABLE IF NOT EXISTS `episerp`.`en_p1m_movimiento_punto_ven` (
   CONSTRAINT `fk_en_p1m_movimiento_punto_ven_en_p1m_usuario1`
     FOREIGN KEY (`UsuCod`)
     REFERENCES `episerp`.`en_p1m_usuario` (`UsuCod`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_en_p1m_movimiento_punto_ven_ta_gzz_tipo_comprobante1`
+    FOREIGN KEY (`TipComCod`)
+    REFERENCES `episerp`.`ta_gzz_tipo_comprobante` (`TipComCod`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;

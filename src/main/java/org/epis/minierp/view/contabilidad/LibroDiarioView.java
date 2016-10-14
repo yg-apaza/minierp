@@ -91,5 +91,4 @@ public class LibroDiarioView implements Serializable
     public String toString() {
         return "LibroDiario{" + "idPK=" + idPK + ", cueNum=" + cueNum + ", cueDes=" + cueDes + ", asiDetDebHab=" + asiDetDebHab + ", asiDetMon=" + asiDetMon + ", asiCabFec=" + asiCabFec + ", estRegCod=" + estRegCod + '}';
     }
-    
 }
