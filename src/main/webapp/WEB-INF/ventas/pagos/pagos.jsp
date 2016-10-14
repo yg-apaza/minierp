@@ -7,7 +7,7 @@
         <title>MiniERP - Pagos y Cuotas</title>
     </jsp:attribute>
     <jsp:attribute name="contenido">
-        <div class="container">
+        <div class="panel-body">
         <form role="form" method="post" action="${pageContext.request.contextPath}/secured/ventas/pagos">            
             <h1 class="page-header">Pagos y Cuotas</h1>
                 <div class="form-horizontal">

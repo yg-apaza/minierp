@@ -9,7 +9,7 @@
     </jsp:attribute>
     <jsp:attribute name="contenido">
 
-        <div class="container">
+        <div class="panel-body">
             <h1 class="page-header">Agregar Factura</h1>
             <br>			
             <div class="form-horizontal">
