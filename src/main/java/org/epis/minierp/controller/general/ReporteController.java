@@ -8,14 +8,14 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.epis.minierp.dao.general.Reporte;
+import org.epis.minierp.business.general.Reporte;
 
 public class ReporteController  extends HttpServlet
 {
     private static final long serialVersionUID = 1L;
     private static final String VENTAS = "Ventas";
+    private static final String COMPRAS = "Compras";
     private static final String CONTABILIDAD = "Contabilidad";
-    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String fileType = request.getParameter("type");
@@ -41,6 +41,7 @@ public class ReporteController  extends HttpServlet
         
         switch(report)
         {
+            //Reportes de Contabilidad
             case "plancontable":
                 path = Reporte.class.getClassLoader().getResource("org/epis/minierp/reporte/contabilidad/planContable.jrxml").getPath();
                 fileGenerated = generador.report(path, "PlanContable_", fileType, CONTABILIDAD);
@@ -49,6 +50,8 @@ public class ReporteController  extends HttpServlet
                 path = Reporte.class.getClassLoader().getResource("org/epis/minierp/reporte/contabilidad/cuentaBancaria.jrxml").getPath();
                 fileGenerated = generador.report(path, "CuentaBancaria_", fileType, CONTABILIDAD);
                 break;
+            
+            //Reportes de Ventas
             case "registroventas":
                 path = Reporte.class.getClassLoader().getResource("org/epis/minierp/reporte/ventas/registroVentas.jrxml").getPath();
                 fileGenerated = generador.report(path, "RegistroDeVentas_", fileType, VENTAS);
@@ -61,6 +64,8 @@ public class ReporteController  extends HttpServlet
                 path = Reporte.class.getClassLoader().getResource("org/epis/minierp/reporte/ventas/puntoVentas.jrxml").getPath();
                 fileGenerated = generador.report(path, "PuntoDeVentas_", fileType, VENTAS);
                 break;
+                
+            //Reportes de Compras
         }
         
         File file = new File(fileGenerated);

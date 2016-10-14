@@ -1,4 +1,4 @@
-package org.epis.minierp.dao.general;
+package org.epis.minierp.business.general;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -44,6 +44,9 @@ public class Reporte {
                 break;
             case "Ventas":
                 fullPath = Reporte.class.getClassLoader().getResource("org/epis/minierp/reporte/ventas/").getPath() + file;
+                break;
+            case "Compras":
+                fullPath = Reporte.class.getClassLoader().getResource("org/epis/minierp/reporte/compras/").getPath() + file;
                 break;
         }
         
