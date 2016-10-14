@@ -230,6 +230,81 @@
         <servlet-name>AddProductController</servlet-name>
         <url-pattern>/secured/compras/inventario/nuevoProducto</url-pattern>
     </servlet-mapping>
+    
+    <!--Modulo de Configuraciones-->
+    <servlet>
+        <description/>
+        <display-name>ConfiguracionController</display-name>
+        <servlet-name>ConfiguracionController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.configuracion.ConfiguracionController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ConfiguracionController</servlet-name>
+        <url-pattern>/secured/configuracion</url-pattern>
+    </servlet-mapping>
+    
+    <!--Sub Modulo Compañia Datos-->
+       
+     <servlet>
+        <description/>
+        <display-name>CompanyDataController</display-name>
+        <servlet-name>CompanyDataController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.configuracion.CompanyDataController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CompanyDataController</servlet-name>
+        <url-pattern>/secured/configuracion/empresa</url-pattern>
+    </servlet-mapping>
+    
+    <!--Sub Modulo Sucursal-->
+    
+    <servlet>
+        <description/>
+        <display-name>SucursalController</display-name>
+        <servlet-name>SucursalController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.configuracion.SucursalController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SucursalController</servlet-name>
+        <url-pattern>/secured/configuracion/sucursal</url-pattern>
+    </servlet-mapping>
+    
+     <servlet>
+        <description/>
+        <display-name>AddSucursalController</display-name>
+        <servlet-name>AddSucursalController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.configuracion.AddSucursalController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddSucursalController</servlet-name>
+        <url-pattern>/secured/configuracion/addsucursal</url-pattern>
+    </servlet-mapping>
+    
+    <!--Sub Modulo Punto de venta-->
+
+    <servlet>
+        <description/>
+        <display-name>PointSaleController</display-name>
+        <servlet-name>PointSaleController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.configuracion.PointSaleController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PointSaleController</servlet-name>
+        <url-pattern>/secured/configuracion/puntodeventa</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <description/>
+        <display-name>AddPointSaleController</display-name>
+        <servlet-name>AddPointSaleController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.configuracion.AddPointSaleController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddPointSaleController</servlet-name>
+        <url-pattern>/secured/configuracion/addpuntoventa</url-pattern>
+    </servlet-mapping>
+    
+    
     <!-- Modulo de Contabilidad -->
     <servlet>
         <description/>
