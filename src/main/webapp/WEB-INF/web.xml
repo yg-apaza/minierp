@@ -219,6 +219,17 @@
         <servlet-name>AddSupplierController</servlet-name>
         <url-pattern>/secured/compras/form_proveedor</url-pattern>
     </servlet-mapping>
+    <!--Modulo de Compras Nuevo Producto -->
+    <servlet>
+        <description/>
+        <display-name>AddProductController</display-name>
+        <servlet-name>AddProductController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.compras.AddProductController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddProductController</servlet-name>
+        <url-pattern>/secured/compras/inventario/nuevoProducto</url-pattern>
+    </servlet-mapping>
     <!-- Modulo de Contabilidad -->
     <servlet>
         <description/>
