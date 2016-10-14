@@ -1,5 +1,5 @@
 package org.epis.minierp.model;
-// Generated 14/10/2016 03:47:35 PM by Hibernate Tools 4.3.1
+// Generated 14/10/2016 06:01:40 PM by Hibernate Tools 4.3.1
 
 
 import javax.persistence.Column;

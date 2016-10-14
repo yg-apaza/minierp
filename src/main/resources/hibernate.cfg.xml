@@ -11,11 +11,15 @@
     <property name="hibernate.format_sql">true</property>
     <property name="hibernate.current_session_context_class">thread</property>
     <property name="hibernate.enable_lazy_load_no_trans">true</property>
+    <!-- Vistas -->
+    <mapping class="org.epis.minierp.view.contabilidad.CajaView"/>
+    <mapping class="org.epis.minierp.view.contabilidad.BancosView"/>
+    <mapping class="org.epis.minierp.view.contabilidad.LibroDiarioView"/>
     <!--   Mapeo de clases -->
     <mapping resource="org/epis/minierp/model/TaGzzTipoDocCliente.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/TaGzzTipoDocUsuario.hbm.xml"/>
-    <mapping resource="org/epis/minierp/model/EnP1tPreventaDet.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/TaGzzTipoComprobante.hbm.xml"/>
+    <mapping resource="org/epis/minierp/model/EnP1tPreventaDet.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP3mPlantillaCab.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP1cPreventaRealizadas.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP3mAsientoCab.hbm.xml"/>
@@ -24,8 +28,8 @@
     <mapping resource="org/epis/minierp/model/EnP4tGuiaCompraDet.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP2mClaseProducto.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP1mDocumentoCliente.hbm.xml"/>
-    <mapping resource="org/epis/minierp/model/TaGzzEstadoFactura.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP2mProducto.hbm.xml"/>
+    <mapping resource="org/epis/minierp/model/TaGzzEstadoFactura.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/TaGzzEstadoCivil.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP1mPuntoVenta.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP1mEmpresa.hbm.xml"/>
@@ -42,12 +46,12 @@
     <mapping resource="org/epis/minierp/model/EnP4tFacturaCompraDet.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/TaGzzMoneda.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/TaGzzUnidadMed.hbm.xml"/>
-    <mapping resource="org/epis/minierp/model/EnP4mGuiaCompraCab.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP4mFacturaCompraCab.hbm.xml"/>
+    <mapping resource="org/epis/minierp/model/EnP4mGuiaCompraCab.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/TaGzzBanco.hbm.xml"/>
+    <mapping resource="org/epis/minierp/model/EnP1tPagosCuotasDet.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP1mDocumentoUsuario.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP1mCliente.hbm.xml"/>
-    <mapping resource="org/epis/minierp/model/EnP1tPagosCuotasDet.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP1mMovimientoPuntoVen.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP4mProveedor.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/TaGzzMetodoPagoFactura.hbm.xml"/>
@@ -56,9 +60,5 @@
     <mapping resource="org/epis/minierp/model/EnP3tPlantillaDet.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP3mCuenta.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/TaGzzTipoUsuario.hbm.xml"/>
-    <!-- Vistas -->
-    <mapping class="org.epis.minierp.view.contabilidad.CajaView"/>
-    <mapping class="org.epis.minierp.view.contabilidad.BancosView"/>
-    <mapping class="org.epis.minierp.view.contabilidad.LibroDiarioView"/>
   </session-factory>
 </hibernate-configuration>

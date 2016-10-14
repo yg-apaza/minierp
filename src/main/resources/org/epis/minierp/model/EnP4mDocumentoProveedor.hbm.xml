@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 14/10/2016 03:47:37 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 14/10/2016 06:01:42 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="org.epis.minierp.model.EnP4mDocumentoProveedor" table="en_p4m_documento_proveedor" catalog="episerp" optimistic-lock="version">
         <composite-id name="id" class="org.epis.minierp.model.EnP4mDocumentoProveedorId">

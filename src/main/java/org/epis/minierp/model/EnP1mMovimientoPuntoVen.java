@@ -1,5 +1,5 @@
 package org.epis.minierp.model;
-// Generated 14/10/2016 03:47:35 PM by Hibernate Tools 4.3.1
+// Generated 14/10/2016 06:01:40 PM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -29,7 +29,7 @@ public class EnP1mMovimientoPuntoVen  implements java.io.Serializable {
      private EnP1mMovimientoPuntoVenId id;
      private EnP1mPuntoVenta enP1mPuntoVenta;
      private EnP1mUsuario enP1mUsuario;
-     private int movPunVenCom;
+     private TaGzzTipoComprobante taGzzTipoComprobante;
      private String movPunVenComCod;
      private Date movPunVenFec;
      private double movPunVenMon;
@@ -38,11 +38,11 @@ public class EnP1mMovimientoPuntoVen  implements java.io.Serializable {
     public EnP1mMovimientoPuntoVen() {
     }
 
-    public EnP1mMovimientoPuntoVen(EnP1mMovimientoPuntoVenId id, EnP1mPuntoVenta enP1mPuntoVenta, EnP1mUsuario enP1mUsuario, int movPunVenCom, String movPunVenComCod, Date movPunVenFec, double movPunVenMon, char estRegCod) {
+    public EnP1mMovimientoPuntoVen(EnP1mMovimientoPuntoVenId id, EnP1mPuntoVenta enP1mPuntoVenta, EnP1mUsuario enP1mUsuario, TaGzzTipoComprobante taGzzTipoComprobante, String movPunVenComCod, Date movPunVenFec, double movPunVenMon, char estRegCod) {
        this.id = id;
        this.enP1mPuntoVenta = enP1mPuntoVenta;
        this.enP1mUsuario = enP1mUsuario;
-       this.movPunVenCom = movPunVenCom;
+       this.taGzzTipoComprobante = taGzzTipoComprobante;
        this.movPunVenComCod = movPunVenComCod;
        this.movPunVenFec = movPunVenFec;
        this.movPunVenMon = movPunVenMon;
@@ -86,14 +86,14 @@ public class EnP1mMovimientoPuntoVen  implements java.io.Serializable {
         this.enP1mUsuario = enP1mUsuario;
     }
 
-    
-    @Column(name="MovPunVenCom", nullable=false)
-    public int getMovPunVenCom() {
-        return this.movPunVenCom;
+@ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="TipComCod", nullable=false)
+    public TaGzzTipoComprobante getTaGzzTipoComprobante() {
+        return this.taGzzTipoComprobante;
     }
     
-    public void setMovPunVenCom(int movPunVenCom) {
-        this.movPunVenCom = movPunVenCom;
+    public void setTaGzzTipoComprobante(TaGzzTipoComprobante taGzzTipoComprobante) {
+        this.taGzzTipoComprobante = taGzzTipoComprobante;
     }
 
     

@@ -1,4 +1,4 @@
-CREATE OR REPLACE VIEW VIEW_CAJA_BANCOS A	
+CREATE OR REPLACE VIEW VIEW_CAJA_BANCOS AS
 	(SELECT en_p3m_asiento_cab.LibDiaCod,
 			en_p3m_asiento_cab.AsiCabCod,
 			en_p3t_asiento_det.AsiDetCod,

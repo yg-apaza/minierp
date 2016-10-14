@@ -1,5 +1,5 @@
 package org.epis.minierp.model;
-// Generated 14/10/2016 03:47:35 PM by Hibernate Tools 4.3.1
+// Generated 14/10/2016 06:01:40 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -27,6 +27,7 @@ public class TaGzzTipoComprobante  implements java.io.Serializable {
      private String tipComDet;
      private char estRegCod;
      private Set enP3mAsientoCabs = new HashSet(0);
+     private Set enP1mMovimientoPuntoVens = new HashSet(0);
 
     public TaGzzTipoComprobante() {
     }
@@ -36,10 +37,11 @@ public class TaGzzTipoComprobante  implements java.io.Serializable {
         this.tipComDet = tipComDet;
         this.estRegCod = estRegCod;
     }
-    public TaGzzTipoComprobante(String tipComDet, char estRegCod, Set enP3mAsientoCabs) {
+    public TaGzzTipoComprobante(String tipComDet, char estRegCod, Set enP3mAsientoCabs, Set enP1mMovimientoPuntoVens) {
        this.tipComDet = tipComDet;
        this.estRegCod = estRegCod;
        this.enP3mAsientoCabs = enP3mAsientoCabs;
+       this.enP1mMovimientoPuntoVens = enP1mMovimientoPuntoVens;
     }
    
      @Id @GeneratedValue(strategy=IDENTITY)
@@ -81,6 +83,15 @@ public class TaGzzTipoComprobante  implements java.io.Serializable {
     
     public void setEnP3mAsientoCabs(Set enP3mAsientoCabs) {
         this.enP3mAsientoCabs = enP3mAsientoCabs;
+    }
+
+@OneToMany(fetch=FetchType.LAZY, mappedBy="taGzzTipoComprobante")
+    public Set getEnP1mMovimientoPuntoVens() {
+        return this.enP1mMovimientoPuntoVens;
+    }
+    
+    public void setEnP1mMovimientoPuntoVens(Set enP1mMovimientoPuntoVens) {
+        this.enP1mMovimientoPuntoVens = enP1mMovimientoPuntoVens;
     }
 
 
