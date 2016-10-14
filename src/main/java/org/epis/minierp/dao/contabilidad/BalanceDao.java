@@ -1,6 +1,6 @@
 package org.epis.minierp.dao.contabilidad;
 
-import org.epis.minierp.view.contabilidad.LibroDiario;
+import org.epis.minierp.view.contabilidad.LibroDiarioView;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -19,7 +19,7 @@ public class BalanceDao {
         session = HibernateUtil.getSessionFactory().getCurrentSession();
     }
     
-    public List<LibroDiario> getAll(){
+    public List<LibroDiarioView> getAll(){
         Query query = session.createQuery("FROM LibroDiario");
         return query.list();
     }
@@ -28,20 +28,20 @@ public class BalanceDao {
         /*Atributos*/
         String NumeroCuenta = null;
         double monto = 0.0;
-        List<LibroDiario> libros = getAll();
+        List<LibroDiarioView> libros = getAll();
         Map<String, Double> sumas = new TreeMap<>();
         
         /*Ordenando la lista de libros por el numero de cuenta*/
-        Collections.sort(libros, new Comparator<LibroDiario>(){
+        Collections.sort(libros, new Comparator<LibroDiarioView>(){
 
             @Override
-            public int compare(LibroDiario o1, LibroDiario o2) {
+            public int compare(LibroDiarioView o1, LibroDiarioView o2) {
                 return new Integer(o1.getCueNum().substring(0,1)).compareTo(new Integer(o2.getCueNum().substring(0,1)));
             }
             
         });
         
-        LibroDiario libro = new LibroDiario();
+        LibroDiarioView libro = new LibroDiarioView();
         for(int i = 0; i < libros.size(); i++)
         {
             libro = libros.get(i);

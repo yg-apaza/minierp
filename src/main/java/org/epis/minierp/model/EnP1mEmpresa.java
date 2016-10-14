@@ -1,5 +1,5 @@
 package org.epis.minierp.model;
-// Generated 13/10/2016 06:03:52 PM by Hibernate Tools 4.3.1
+// Generated 14/10/2016 03:47:35 PM by Hibernate Tools 4.3.1
 
 
 import javax.persistence.Column;
@@ -21,11 +21,13 @@ public class EnP1mEmpresa  implements java.io.Serializable {
 
      private Integer empCod;
      private String empNom;
+     private String empDes;
      private String empDir;
      private String empTel;
      private String empCor;
      private double empIgv;
      private String empRuc;
+     private byte[] empImg;
 
     public EnP1mEmpresa() {
     }
@@ -37,13 +39,15 @@ public class EnP1mEmpresa  implements java.io.Serializable {
         this.empIgv = empIgv;
         this.empRuc = empRuc;
     }
-    public EnP1mEmpresa(String empNom, String empDir, String empTel, String empCor, double empIgv, String empRuc) {
+    public EnP1mEmpresa(String empNom, String empDes, String empDir, String empTel, String empCor, double empIgv, String empRuc, byte[] empImg) {
        this.empNom = empNom;
+       this.empDes = empDes;
        this.empDir = empDir;
        this.empTel = empTel;
        this.empCor = empCor;
        this.empIgv = empIgv;
        this.empRuc = empRuc;
+       this.empImg = empImg;
     }
    
      @Id @GeneratedValue(strategy=IDENTITY)
@@ -66,6 +70,16 @@ public class EnP1mEmpresa  implements java.io.Serializable {
     
     public void setEmpNom(String empNom) {
         this.empNom = empNom;
+    }
+
+    
+    @Column(name="EmpDes", length=200)
+    public String getEmpDes() {
+        return this.empDes;
+    }
+    
+    public void setEmpDes(String empDes) {
+        this.empDes = empDes;
     }
 
     
@@ -116,6 +130,16 @@ public class EnP1mEmpresa  implements java.io.Serializable {
     
     public void setEmpRuc(String empRuc) {
         this.empRuc = empRuc;
+    }
+
+    
+    @Column(name="EmpImg")
+    public byte[] getEmpImg() {
+        return this.empImg;
+    }
+    
+    public void setEmpImg(byte[] empImg) {
+        this.empImg = empImg;
     }
 
 

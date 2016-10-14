@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 13/10/2016 06:03:54 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 14/10/2016 03:47:37 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="org.epis.minierp.model.EnP1mEmpresa" table="en_p1m_empresa" catalog="episerp" optimistic-lock="version">
         <id name="empCod" type="java.lang.Integer">
@@ -10,6 +10,9 @@
         </id>
         <property name="empNom" type="string">
             <column name="EmpNom" length="80" not-null="true" />
+        </property>
+        <property name="empDes" type="string">
+            <column name="EmpDes" length="200" />
         </property>
         <property name="empDir" type="string">
             <column name="EmpDir" length="100" not-null="true" />
@@ -25,6 +28,9 @@
         </property>
         <property name="empRuc" type="string">
             <column name="EmpRUC" length="11" not-null="true" />
+        </property>
+        <property name="empImg" type="binary">
+            <column name="EmpImg" />
         </property>
     </class>
 </hibernate-mapping>

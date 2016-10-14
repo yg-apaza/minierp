@@ -1,5 +1,4 @@
-CREATE OR REPLACE VIEW VIEW_CAJA_BANCOS AS
-	
+CREATE OR REPLACE VIEW VIEW_CAJA_BANCOS A	
 	(SELECT en_p3m_asiento_cab.LibDiaCod,
 			en_p3m_asiento_cab.AsiCabCod,
 			en_p3t_asiento_det.AsiDetCod,
@@ -50,6 +49,7 @@ CREATE OR REPLACE VIEW VIEW_BANCOS_SWAP AS(
                                                         OR CueCod = '10412'
                                                         OR CueCod = '10413'))
 );
+
 CREATE OR REPLACE VIEW VIEW_BANCOS AS
 		SELECT `VIEW_CAJA_BANCOS`.`LibDiaCod` AS `LibDiaCod`,
         `VIEW_CAJA_BANCOS`.`AsiCabCod` AS `AsiCabCod`,
@@ -75,6 +75,7 @@ CREATE OR REPLACE VIEW VIEW_CAJA_SWAP AS(
 					WHERE AsiDetCod = (SELECT AsiDetCod-1 AS AsiDet
 								FROM VIEW_CAJA_BANCOS WHERE CueCod = '10'))
 );
+
 CREATE OR REPLACE VIEW VIEW_CAJA AS
 		SELECT `VIEW_CAJA_BANCOS`.`LibDiaCod` AS `LibDiaCod`,
         `VIEW_CAJA_BANCOS`.`AsiCabCod` AS `AsiCabCod`,
@@ -90,7 +91,7 @@ CREATE OR REPLACE VIEW VIEW_CAJA AS
         WHERE CueCod = '10'
 		ORDER BY AsiCabFec ASC;
 
-CREATE OR REPLACE VIEW LibroDiario AS (
+CREATE OR REPLACE VIEW VIEW_LIBRO_DIARIO AS (
 	SELECT
 		libDia.LibDiaCod,
 		asiCab.AsiCabCod,
@@ -110,4 +111,4 @@ CREATE OR REPLACE VIEW LibroDiario AS (
 			ON libDia.LibDiaCod = asiCab.LibDiaCod
 	WHERE libDia.EstRegCod = 'A'
 	ORDER BY asiCab.AsiCabFec
-)
+);

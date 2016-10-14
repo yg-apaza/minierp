@@ -49,7 +49,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `episerp`;
-INSERT INTO `episerp`.`en_p1m_empresa` (`EmpCod`, `EmpNom`, `EmpDir`, `EmpTel`, `EmpCor`, `EmpIGV`, `EmpRUC`) VALUES (1, 'MOT S.A.', 'Av. Venezuela s/n', '054202212', 'mot@episunsa.edu.pe', 18, '10230499411');
+INSERT INTO `episerp`.`en_p1m_empresa` (`EmpCod`, `EmpNom`, `EmpDes`, `EmpDir`, `EmpTel`, `EmpCor`, `EmpIGV`, `EmpRUC`, `EmpImg`) VALUES (1, 'MOT S.A.', 'Empresa de Desarrollo de Software', 'Av. Venezuela s/n', '054202212', 'mot@episunsa.edu.pe', 18, '10230499411', NULL);
 
 COMMIT;
 
@@ -802,6 +802,4 @@ INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `
 INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (543, 9, 2, '94', 'Gastos Administrativos', 'A');
 
 COMMIT;
-
-INSERT INTO `en_p3m_cuenta_banco` VALUES (0000000001,01,'3001033189',0000000540,'A'),(0000000002,18,'4120239490',0000000541,'A'),(0000000003,09,'2003993301',0000000542,'A');
 

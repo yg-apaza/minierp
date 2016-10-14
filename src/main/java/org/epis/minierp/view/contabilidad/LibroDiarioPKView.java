@@ -6,7 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 @Embeddable
-public class LibroDiarioPK implements Serializable {
+public class LibroDiarioPKView implements Serializable {
     
     @Column(name="LibDiaCod")
     protected Integer libDiaCod;
@@ -17,9 +17,9 @@ public class LibroDiarioPK implements Serializable {
     @Column(name="AsiDetCod")
     protected Integer asiDetCod;
     
-    public LibroDiarioPK() {}
+    public LibroDiarioPKView() {}
 
-    public LibroDiarioPK(Integer libDiaCod, Integer asiCabCod, Integer asiDetCod) {
+    public LibroDiarioPKView(Integer libDiaCod, Integer asiCabCod, Integer asiDetCod) {
         this.libDiaCod = libDiaCod;
         this.asiCabCod = asiCabCod;
         this.asiDetCod = asiDetCod;
@@ -66,7 +66,7 @@ public class LibroDiarioPK implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final LibroDiarioPK other = (LibroDiarioPK) obj;
+        final LibroDiarioPKView other = (LibroDiarioPKView) obj;
         if (!Objects.equals(this.libDiaCod, other.libDiaCod)) {
             return false;
         }
