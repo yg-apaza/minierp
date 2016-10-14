@@ -30,7 +30,7 @@
             <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
                 
                 <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
                         <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
@@ -42,13 +42,13 @@
                 </div>
                     
                 <ul class="nav navbar-top-links navbar-right">
-                    <li><a href="${pageContext.request.contextPath}/">
+                    <li class="dropdown"><a href="${pageContext.request.contextPath}/">
                         <i class="fa fa-home" aria-hidden="true"></i> Inicio
                     </a></li>
-                    <li><a href="${pageContext.request.contextPath}/perfil">
+                    <li class="dropdown"><a href="${pageContext.request.contextPath}/perfil">
                         <i class="fa fa-user" aria-hidden="true"></i> Perfil
                     </a></li>
-                    <li><a href="${pageContext.request.contextPath}/logout">
+                    <li class="dropdown"><a href="${pageContext.request.contextPath}/logout">
                         <i class="fa fa-sign-out" aria-hidden="true"></i> Salir
                     </a></li>
                 </ul>
@@ -58,7 +58,7 @@
                         <ul class="nav" id="side-menu">
                             <li class="sidebar-search">
                                 <div class="input-group custom-search-form">
-                                    <input type="text" class="form-control" placeholder="Search...">
+                                    <input type="text" class="form-control" placeholder="Buscar...">
                                     <span class="input-group-btn">
                                     <button class="btn btn-default" type="button">
                                         <i class="fa fa-search"></i>
