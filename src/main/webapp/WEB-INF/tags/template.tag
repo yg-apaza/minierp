@@ -153,10 +153,10 @@
                                 <a href="#"><i class="fa fa-gears fa-fw"></i> Configuraciones<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="#">Sucursal</a>
+                                        <a href="${pageContext.request.contextPath}/secured/configuracion/sucursal">Sucursal</a>
                                     </li>
                                     <li>
-                                        <a href="#">Punto de Venta</a>
+                                        <a href="${pageContext.request.contextPath}/secured/configuracion/puntodeventa">Punto de Venta</a>
                                     </li>
                                     <li>
                                         <a href="#">Usuarios</a>
