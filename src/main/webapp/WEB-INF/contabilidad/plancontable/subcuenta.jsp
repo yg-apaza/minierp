@@ -6,7 +6,7 @@
         <title>MiniERP - Contabilidad</title>
     </jsp:attribute>
     <jsp:attribute name="contenido">
-        <div class="container">
+        <div class="panel-body">
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
                     <div class="well">

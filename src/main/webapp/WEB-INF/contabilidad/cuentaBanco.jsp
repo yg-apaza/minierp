@@ -6,7 +6,7 @@
         <title>MiniERP - Cuentas Bancarias</title>
     </jsp:attribute>
     <jsp:attribute name="contenido">
-        <div class="container">
+        <div class="panel-body">
             <h1 class="page-header">Cuentas Bancarias
             <a href="#" class="btn btn-success btn-circle" data-toggle="modal" data-target="#agregarModal"><i class="fa fa-plus"></i></a></h1>
             <br>
