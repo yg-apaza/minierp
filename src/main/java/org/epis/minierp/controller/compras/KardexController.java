@@ -82,7 +82,7 @@ public class KardexController extends HttpServlet {
             conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/episerp","alumno","1234");
             String path = getServletContext().getRealPath("/WEB-INF/");
 
-            path=path+"reportes\\reporte_kardex_fisico.jasper";
+            path=path+"reportes/reporte_kardex_fisico.jasper";
 //            jasperDesign = JRXmlLoader.load(path+"/reportes/reporte_kardex_fisico.jrxml");
       
             HashMap hm = null;
@@ -126,7 +126,7 @@ public class KardexController extends HttpServlet {
             conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/episerp","alumno","1234");
             String path = getServletContext().getRealPath("/WEB-INF/");
             System.out.println(path);
-            path=path+"reportes\\reporte_kardex_valorizado.jasper";
+            path=path+"reportes/reporte_kardex_valorizado.jasper";
 //            jasperDesign = JRXmlLoader.load(path+"/reportes/reporte_kardex_fisico.jrxml");
             
             String jrxmlFileName = path;
