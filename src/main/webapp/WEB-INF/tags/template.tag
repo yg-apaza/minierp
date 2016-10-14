@@ -90,21 +90,53 @@
                                 <a href="#"><i class="fa fa-truck fa-fw"></i> Logística y Compras<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="#">1</a>
+                                        <a href="#">Logística <span class="fa arrow"></span></a>
+                                        <ul class="nav nav-third-level">
+                                            <li>
+                                                <a href="${pageContext.request.contextPath}/secured/compras/kardexInicio">Kardex</a>
+                                            </li>
+                                            <li>
+                                                <a href="${pageContext.request.contextPath}/secured/compras/clasificacionABC">Clasificación ABC</a>
+                                            </li>
+                                            <li>
+                                                <a href="${pageContext.request.contextPath}/secured/compras/inventario">Inventario</a>
+                                            </li>
+                                            <li>
+                                                <a href="${pageContext.request.contextPath}/secured/compras/limiteMaximo">Stock</a>
+                                            </li>
+                                        </ul>
                                     </li>
                                     <li>
-                                        <a href="#">2</a>
+                                        <a href="#">Compras <span class="fa arrow"></span></a>
+                                        <ul class="nav nav-third-level">
+                                            <li>
+                                                <a href="${pageContext.request.contextPath}/secured/compras/registerPurchase">Registrar Factura</a>
+                                            </li>
+                                        </ul>
                                     </li>
                                 </ul>
                             </li>
+                            
                             <li>
                                 <a href="#"><i class="fa fa-book fa-fw"></i> Contabilidad<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="#">1</a>
+                                        <a href="${pageContext.request.contextPath}/secured/contabilidad/plan">Plan Contable</a>
                                     </li>
                                     <li>
-                                        <a href="#">2</a>
+                                        <a href="${pageContext.request.contextPath}/secured/contabilidad/cuentabancaria">Cuentas bancarias</a>
+                                    </li>
+                                    <li>
+                                        <a href="${pageContext.request.contextPath}/secured/contabilidad/librodiario">Libro Diario</a>
+                                    </li>
+                                    <li>
+                                        <a href="${pageContext.request.contextPath}/secured/contabilidad/caja">Caja</a>
+                                    </li>
+                                    <li>
+                                        <a href="${pageContext.request.contextPath}/secured/contabilidad/bancos">Bancos</a>
+                                    </li>
+                                    <li>
+                                        <a href="${pageContext.request.contextPath}/secured/contabilidad/balance">Balance General</a>
                                     </li>
                                 </ul>
                             </li>
@@ -112,10 +144,13 @@
                                 <a href="#"><i class="fa fa-gears fa-fw"></i> Configuraciones<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="#">1</a>
+                                        <a href="#">Sucursal</a>
                                     </li>
                                     <li>
-                                        <a href="#">2</a>
+                                        <a href="#">Punto de Venta</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Usuarios</a>
                                     </li>
                                 </ul>
                             </li>
