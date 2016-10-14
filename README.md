@@ -12,10 +12,7 @@
 
 ## Instalación
 
-- Ejecutar SCHEMA.sql en una base de datos 'episerp'
-- Ejecutar DATA.sql
-- Ejecutar VIEWS.sql
-- Ejecutar PROCEDURES.sql
+- Ejecutar los archivos SQL que están dentro de la carpeta scripts en una base de datos 'episerp'
 - Crear el usuario alumno
 ``` sql
 CREATE USER 'alumno'@'%' IDENTIFIED BY '1234';
@@ -126,3 +123,7 @@ Si se utiliza el template.tag (WEB-INF/tags/template.tag), ya incluye:
 - Font Awesome (iconos)
 - Bootstrap Datetimepicker para incluir inputs tipo Fecha
 - CSS y JS de la plantila web [SB-Admin2](https://startbootstrap.com/template-overviews/sb-admin-2/)
+
+## Modelo Entidad - Relación
+
+![alt tag](scripts/modelo_er.png)
