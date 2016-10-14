@@ -1,4 +1,4 @@
-package org.epis.minierp.dao.perifericos;
+package org.epis.minierp.business.perifericos;
 
 import com.google.zxing.BinaryBitmap;
 import com.google.zxing.FormatException;
@@ -20,7 +20,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 
-public class CodigoBarrasDao {
+public class CodigoBarrasBusiness {
     
     /**
      * Genera el código de barras
@@ -44,7 +44,7 @@ public class CodigoBarrasDao {
                         if (matrix.get(i, j))
                             graphics.fillRect(i, j, 1, 1); 
             } catch (WriterException ex) {
-                Logger.getLogger(CodigoBarrasDao.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(CodigoBarrasBusiness.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         return image;
@@ -60,7 +60,7 @@ public class CodigoBarrasDao {
         try {
             ImageIO.write(image, "png", file);
         } catch (IOException ex) {
-            Logger.getLogger(CodigoBarrasDao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CodigoBarrasBusiness.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -77,7 +77,7 @@ public class CodigoBarrasDao {
         try {
             result = reader.decode(bitmap);
         } catch (NotFoundException | FormatException ex) {
-            Logger.getLogger(CodigoBarrasDao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CodigoBarrasBusiness.class.getName()).log(Level.SEVERE, null, ex);
         }
         return result.getText();
     }

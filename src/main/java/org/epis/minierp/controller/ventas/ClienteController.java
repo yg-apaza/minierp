@@ -22,6 +22,7 @@ public class ClienteController extends HttpServlet
         request.setAttribute("clientes",clientes);
         request.getRequestDispatcher("/WEB-INF/ventas/cliente/cliente.jsp").forward(request, response);
     }
+    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         EnP1mClienteDao clienteDao=new EnP1mClienteDao();                

@@ -53,5 +53,4 @@ public class ReporteVentasController  extends HttpServlet
         while ((bytes = fileInputStream.read()) != -1)
             responseOutputStream.write(bytes);
     }
-    
 }

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.epis.minierp.controller.ventas;
 
 import java.io.IOException;
@@ -17,11 +12,7 @@ import org.epis.minierp.model.EnP1mPagosCuotasCab;
 import org.epis.minierp.model.EnP1tPagosCuotasDet;
 import org.epis.minierp.model.EnP1tPagosCuotasDetId;
 
-/**
- *
- * @author Ylnner
- */
-public class AddPagoController extends HttpServlet{
+public class AddPagoController extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     @Override
@@ -54,8 +45,6 @@ public class AddPagoController extends HttpServlet{
         cab.setPagCuoNumPag(cab.getPagCuoNumPag()+1);
         cab.setPagCuoTotPag(cab.getPagCuoTotPag()+det.getPagCuoDetTotPag());
         cabDao.update(cab);
-        
-        
         response.sendRedirect(request.getContextPath() + "/secured/ventas/pagos");
     }
 }

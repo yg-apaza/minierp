@@ -7,7 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.epis.minierp.dao.ventas.EnP1mUsuarioDao;
+import org.epis.minierp.dao.general.EnP1mUsuarioDao;
 import org.epis.minierp.model.EnP1mUsuario;
 
 public class UsuariosController extends HttpServlet

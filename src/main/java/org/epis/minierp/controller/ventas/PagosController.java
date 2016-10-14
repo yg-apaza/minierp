@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.epis.minierp.controller.ventas;
 
 import java.io.IOException;
@@ -16,11 +11,7 @@ import javax.servlet.http.HttpSession;
 import org.epis.minierp.dao.ventas.EnP1mPagosCuotasCabDao;
 import org.epis.minierp.model.EnP1mPagosCuotasCab;
 
-/**
- *
- * @author Ylnner
- */
-public class PagosController extends HttpServlet{
+public class PagosController extends HttpServlet {
          private static final long serialVersionUID = 1L;
 
     @Override
@@ -33,21 +24,21 @@ public class PagosController extends HttpServlet{
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         EnP1mPagosCuotasCabDao pagosDao=new EnP1mPagosCuotasCabDao();
-        if(request.getParameter("buscarFactura")!=null){
+        if(request.getParameter("buscarFactura")!=null) {
             EnP1mPagosCuotasCab p=pagosDao.getById(request.getParameter("CodCabFac"));
             List<EnP1mPagosCuotasCab> pagos=new ArrayList<EnP1mPagosCuotasCab>();
             request.setAttribute("pagos",pagos);
             request.getRequestDispatcher("/WEB-INF/ventas/pagos/pagos.jsp").forward(request, response);
-        }else if(request.getParameter("todos")!=null){
+        } else if(request.getParameter("todos")!=null) {
             List<EnP1mPagosCuotasCab> pagos=pagosDao.getAll();
             request.setAttribute("pagos",pagos);
             request.getRequestDispatcher("/WEB-INF/ventas/pagos/pagos.jsp").forward(request, response);
-        }else if(request.getParameter("pagar")!=null){
+        } else if(request.getParameter("pagar")!=null) {
             String cod=request.getParameter("pagar");
             HttpSession misession= request.getSession(true);
             misession.setAttribute("cod", cod);
             response.sendRedirect(request.getContextPath() + "/secured/ventas/pagos/addPago");
-        }else if(request.getParameter("eliminar")!=null){
+        } else if(request.getParameter("eliminar")!=null){
             
         }
     }

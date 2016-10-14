@@ -1,4 +1,4 @@
-package org.epis.minierp.dao.ventas;
+package org.epis.minierp.dao.general;
 
 import java.util.List;
 import org.epis.minierp.model.EnP1mUsuario;
@@ -68,4 +68,12 @@ public class EnP1mUsuarioDao {
         session.delete(usuario);
     }
     
+    public void deleteUsuario(String id) {
+        EnP1mUsuario usr=(EnP1mUsuario) session.get(EnP1mUsuario.class,id);
+        session.delete(usr);
+    }
+     
+    public void updateUsuario(EnP1mUsuario usuario) {
+        session.update(usuario);
+    }
 }

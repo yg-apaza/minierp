@@ -1,15 +1,15 @@
-package org.epis.minierp.dao.contabilidad.cajaBancos;
+package org.epis.minierp.model.view.contabilidad;
 
 import java.io.Serializable;
 
-public class BancosPK implements Serializable {
+public class CajaPK implements Serializable {
     protected String libDiaCod;
     protected int asiCabCod;
     protected int asiDetCod;
     
-    public BancosPK(){}
+    public CajaPK(){}
 
-    public BancosPK(String LibDiaCod, int AsiCabCod, int AsiDetCod) {
+    public CajaPK(String LibDiaCod, int AsiCabCod, int AsiDetCod) {
         this.libDiaCod = LibDiaCod;
         this.asiCabCod = AsiCabCod;
         this.asiDetCod = AsiDetCod;

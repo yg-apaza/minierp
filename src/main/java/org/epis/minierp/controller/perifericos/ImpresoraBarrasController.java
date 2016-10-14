@@ -14,5 +14,4 @@ public class ImpresoraBarrasController extends HttpServlet
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.getRequestDispatcher("/WEB-INF/perifericos/impresoraBarras.jsp").forward(request, response);
     }
-
 }

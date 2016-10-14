@@ -7,16 +7,11 @@ import java.sql.ResultSet;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import org.epis.minierp.dto.ProductoDto;
 
 import org.epis.minierp.dto.KardexDto;
-import org.epis.minierp.util.DateUtil;
 import org.epis.minierp.util.DbUtil;
-import org.epis.minierp.util.HibernateUtil;
-
-import org.hibernate.Session;
 
 public class KardexDao {
 

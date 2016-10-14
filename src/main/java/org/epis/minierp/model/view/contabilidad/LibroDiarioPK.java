@@ -1,4 +1,4 @@
-package org.epis.minierp.dao.contabilidad;
+package org.epis.minierp.model.view.contabilidad;
 
 import java.io.Serializable;
 import java.util.Objects;

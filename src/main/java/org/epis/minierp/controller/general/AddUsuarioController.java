@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.epis.minierp.dao.general.TaGzzEstadoCivilDao;
 import org.epis.minierp.dao.general.TaGzzTipoUsuarioDao;
-import org.epis.minierp.dao.ventas.EnP1mUsuarioDao;
+import org.epis.minierp.dao.general.EnP1mUsuarioDao;
 import org.epis.minierp.model.EnP1mUsuario;
 import org.epis.minierp.model.TaGzzEstadoCivil;
 import org.epis.minierp.model.TaGzzTipoUsuario;

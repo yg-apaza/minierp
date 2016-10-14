@@ -6,7 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.epis.minierp.dao.perifericos.ProductoDao;
+import org.epis.minierp.dao.logistica.EnP2mProductoDao;
 import org.epis.minierp.model.EnP2mProducto;
 
 public class InventarioBarrasController extends HttpServlet
@@ -15,7 +15,7 @@ public class InventarioBarrasController extends HttpServlet
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        ProductoDao daoPro = new ProductoDao();
+        EnP2mProductoDao daoPro = new EnP2mProductoDao();
         List<EnP2mProducto> productos = daoPro.getAll();
         request.setAttribute("productos", productos);
         request.getRequestDispatcher("/WEB-INF/perifericos/inventarioBarras.jsp").forward(request, response);

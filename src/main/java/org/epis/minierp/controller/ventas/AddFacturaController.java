@@ -15,7 +15,7 @@ import org.epis.minierp.dao.general.TaGzzMonedaDao;
 import org.epis.minierp.dao.general.TaGzzTipoPagoFacturaDao;
 import org.epis.minierp.dao.ventas.EnP1mClienteDao;
 import org.epis.minierp.dao.ventas.EnP1mFacturaVentaCabDao;
-import org.epis.minierp.dao.ventas.EnP1mUsuarioDao;
+import org.epis.minierp.dao.general.EnP1mUsuarioDao;
 import org.epis.minierp.model.EnP1mCliente;
 import org.epis.minierp.model.EnP1mFacturaVentaCab;
 import org.epis.minierp.model.EnP1mUsuario;
@@ -76,8 +76,7 @@ public class AddFacturaController extends HttpServlet
             cliente=new EnP1mClienteDao().getById((request.getParameter("cliCod")));       
             cabecera.setEnP1mCliente(cliente);
 
-            EnP1mUsuario user=new EnP1mUsuario();
-            user= new EnP1mUsuarioDao().getById(request.getParameter("usuCod"));
+            EnP1mUsuario user = new EnP1mUsuarioDao().getById(request.getParameter("usuCod"));
             cabecera.setEnP1mUsuario(user);
             Date fecha=new Date();
             cabecera.setFacVenCabFec(fecha);
@@ -87,20 +86,15 @@ public class AddFacturaController extends HttpServlet
             cabecera.setFacVenCabTot(Double.parseDouble(request.getParameter("total")));
             cabecera.setFacVenCabIgv(18);
             cabecera.setFacVenCabObs(request.getParameter("obsrs"));
-            TaGzzEstadoFactura estFac=new TaGzzEstadoFactura();
-            estFac=new TaGzzEstadoFacturaDao().getById(2);
+            TaGzzEstadoFactura estFac = new TaGzzEstadoFacturaDao().getById(2);
             cabecera.setTaGzzEstadoFactura(estFac);
 
-            TaGzzMetodoPagoFactura metPag=new TaGzzMetodoPagoFactura();
-            metPag=new TaGzzMetodoPagoFacturaDao().getById(Integer.parseInt(request.getParameter("selecMetodoPago")));
+            TaGzzMetodoPagoFactura metPag = new TaGzzMetodoPagoFacturaDao().getById(Integer.parseInt(request.getParameter("selecMetodoPago")));
             cabecera.setTaGzzMetodoPagoFactura(metPag);
 
-            TaGzzTipoPagoFactura tipPag= new TaGzzTipoPagoFactura();
-
-            tipPag= new TaGzzTipoPagoFacturaDao().getById(Integer.parseInt(request.getParameter("selectTipPag")));
+            TaGzzTipoPagoFactura tipPag = new TaGzzTipoPagoFacturaDao().getById(Integer.parseInt(request.getParameter("selectTipPag")));
             cabecera.setTaGzzTipoPagoFactura(tipPag);
-            TaGzzMoneda mon=new TaGzzMoneda();
-            mon=new TaGzzMonedaDao().getById(Integer.parseInt(request.getParameter("selectTipMon")));
+            TaGzzMoneda mon = new TaGzzMonedaDao().getById(Integer.parseInt(request.getParameter("selectTipMon")));
             cabecera.setTaGzzMoneda(mon);
             cabecera.setEstRegCod('A');
 
