@@ -24,7 +24,7 @@ import org.epis.minierp.model.TaGzzMetodoPagoFactura;
 import org.epis.minierp.model.TaGzzMoneda;
 import org.epis.minierp.model.TaGzzTipoPagoFactura;
 
-public class addFacturaController extends HttpServlet
+public class AddFacturaController extends HttpServlet
 {	
     private static final long serialVersionUID = 1L;
     private SimpleDateFormat dt= new SimpleDateFormat("dd/MM/yyyy");

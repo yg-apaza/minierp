@@ -1,4 +1,4 @@
-package org.epis.minierp.controller.contabilidad.plancontable;
+package org.epis.minierp.controller.contabilidad;
 
 import java.io.IOException;
 import javax.servlet.ServletException;

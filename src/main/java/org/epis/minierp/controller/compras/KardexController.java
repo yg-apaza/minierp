@@ -33,16 +33,16 @@ import net.sf.jasperreports.engine.JasperRunManager;
 import net.sf.jasperreports.engine.design.JasperDesign;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import org.epis.minierp.controller.general.AddUsuarioController;
-import org.epis.minierp.dao.compras.kardexDao;
+import org.epis.minierp.dao.compras.KardexDao;
 import org.epis.minierp.dto.ProductoDto;
-import org.epis.minierp.dto.kardexDto;
+import org.epis.minierp.dto.KardexDto;
 
 public class KardexController extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
   
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        kardexDao daoUsu = new kardexDao();
+        KardexDao daoUsu = new KardexDao();
         List<ProductoDto> listaProd = daoUsu.listarProducto();
         request.setAttribute("productos", listaProd);
         request.getRequestDispatcher("/WEB-INF/compras/kardex.jsp").forward(request, response);
@@ -54,12 +54,12 @@ public class KardexController extends HttpServlet {
         try {
             String button = request.getParameter("button");
             if ("btn_ver".equals(button)) {
-                kardexDao daoUsu = new kardexDao();
+                KardexDao daoUsu = new KardexDao();
                 String proCod = request.getParameter("item");
                 
                 if (proCod.length() > 0) {
                   
-                    List<kardexDto> registros = daoUsu.getAll(proCod);
+                    List<KardexDto> registros = daoUsu.getAll(proCod);
                     
                     request.setAttribute("registros", registros);
                 }

@@ -1,11 +1,9 @@
 package org.epis.minierp.dto;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
-import java.sql.Timestamp;
 import java.util.Date;
 
-public class kardexDto implements Serializable {
+public class KardexDto implements Serializable {
 
     private Double precioUnitarioEntrada;
     private Double precioUnitarioSalida;
@@ -22,7 +20,7 @@ public class kardexDto implements Serializable {
     private Double precioUniSaldo;
     private Double precioTotSaldo;
 
-    public kardexDto() {
+    public KardexDto() {
     }
 
     public Double getPrecioUnitarioEntrada() {

@@ -1,12 +1,9 @@
 package org.epis.minierp.dao.perifericos;
 
 import com.google.zxing.BinaryBitmap;
-import com.google.zxing.ChecksumException;
 import com.google.zxing.FormatException;
 import com.google.zxing.LuminanceSource;
-import com.google.zxing.MultiFormatReader;
 import com.google.zxing.NotFoundException;
-import com.google.zxing.Reader;
 import com.google.zxing.Result;
 import com.google.zxing.WriterException;
 import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
@@ -73,9 +70,6 @@ public class CodigoBarrasDao {
      * @return retorna un <code>String</code> con el código leido
      */
     public String readCodeBar(BufferedImage image){
-        int width = image.getWidth();
-        int height = image.getHeight();
-        int[] pixels = new int[width * height];
         LuminanceSource source = new BufferedImageLuminanceSource(image);
         BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
         Code39Reader reader = new Code39Reader();

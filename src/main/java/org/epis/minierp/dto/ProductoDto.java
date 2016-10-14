@@ -1,17 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.epis.minierp.dto;
 
 import java.io.Serializable;
 
-/**
- *
- * @author carlos
- */
-public class ProductoDto implements Serializable{
+public class ProductoDto implements Serializable {
+    
     private String claseCod;
     private String subclaseCod;
     private String codigo;
@@ -141,8 +133,4 @@ public class ProductoDto implements Serializable{
     public void setEstadoRegistro(String estadoRegistro) {
         this.estadoRegistro = estadoRegistro;
     }
-
-  
-    
-    
 }

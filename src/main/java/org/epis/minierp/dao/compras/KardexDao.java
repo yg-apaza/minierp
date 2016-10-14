@@ -11,26 +11,26 @@ import java.util.Date;
 import java.util.List;
 import org.epis.minierp.dto.ProductoDto;
 
-import org.epis.minierp.dto.kardexDto;
+import org.epis.minierp.dto.KardexDto;
 import org.epis.minierp.util.DateUtil;
 import org.epis.minierp.util.DbUtil;
 import org.epis.minierp.util.HibernateUtil;
 
 import org.hibernate.Session;
 
-public class kardexDao {
+public class KardexDao {
 
-    private static kardexDao _kardexDao;
+    private static KardexDao _kardexDao;
     private SimpleDateFormat dt = new SimpleDateFormat("yyyy/MM/dd");
     private Connection session;
 
-    public kardexDao() {
+    public KardexDao() {
         session = DbUtil.getConnection();
     }
 
-    public List<kardexDto> getAll(String codProd) {
+    public List<KardexDto> getAll(String codProd) {
 
-        List<kardexDto> resultados = new ArrayList<>();
+        List<KardexDto> resultados = new ArrayList<>();
         try {
             String simpleProc = "{call kardex_prom_ponderado(?)}";
             CallableStatement cs = session.prepareCall(simpleProc);
@@ -39,10 +39,10 @@ public class kardexDao {
            
 
             ResultSet rs = cs.executeQuery();
-            kardexDto obj = null;
+            KardexDto obj = null;
 
             while (rs.next()) {
-                obj = new kardexDto();
+                obj = new KardexDto();
                 obj.setFecha(rs.getDate("fecha"));
                 obj.setFactura(rs.getString("numero_factura"));
                 obj.setProducto(rs.getString("producto"));

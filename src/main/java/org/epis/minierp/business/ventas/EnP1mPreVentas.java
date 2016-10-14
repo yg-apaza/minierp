@@ -1,4 +1,4 @@
-package org.epis.minierp.business;
+package org.epis.minierp.business.ventas;
 
 import java.util.List;
 import java.util.Set;

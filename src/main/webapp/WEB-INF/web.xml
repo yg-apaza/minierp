@@ -124,7 +124,6 @@
         <servlet-name>PerfilController</servlet-name>
         <url-pattern>/perfil</url-pattern>
     </servlet-mapping>
-    
     <!-- Modulo de Compras -->
     <servlet>
         <description/>
@@ -156,7 +155,7 @@
         <servlet-name>KardexController</servlet-name>
         <url-pattern>/secured/compras/kardexInicio</url-pattern>
     </servlet-mapping>
-     <!-- Modulo de Compras Inventario -->
+    <!-- Modulo de Compras Inventario -->
     <servlet>
         <description/>
         <display-name>InventoryController</display-name>
@@ -178,7 +177,7 @@
         <url-pattern>/secured/compras/clasificacionABC</url-pattern>
     </servlet-mapping>
     <!--Modulo de Compras Limite Maximo -->
-     <servlet>
+    <servlet>
         <description/>
         <display-name>LimiteMaximoController</display-name>
         <servlet-name>LimiteMaximoController</servlet-name>
@@ -189,7 +188,7 @@
         <url-pattern>/secured/compras/limiteMaximo</url-pattern>
     </servlet-mapping>
     <!--Modulo de Compras Proveedores -->
-     <servlet>
+    <servlet>
         <description/>
         <display-name>SuppliersController</display-name>
         <servlet-name>SuppliersController</servlet-name>
@@ -200,7 +199,7 @@
         <url-pattern>/secured/compras/proveedores</url-pattern>
     </servlet-mapping>
     <!--Modulo de Compras Nuevo Proveedor -->
-     <servlet>
+    <servlet>
         <description/>
         <display-name>AddSupplierController</display-name>
         <servlet-name>AddSupplierController</servlet-name>
@@ -210,7 +209,6 @@
         <servlet-name>AddSupplierController</servlet-name>
         <url-pattern>/secured/compras/form_proveedor</url-pattern>
     </servlet-mapping>
-
     <!-- Modulo de Contabilidad -->
     <servlet>
         <description/>
@@ -222,40 +220,36 @@
         <servlet-name>ContabilidadController</servlet-name>
         <url-pattern>/secured/contabilidad</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <description/>
         <display-name>LibroDiarioController</display-name>
         <servlet-name>LibroDiarioController</servlet-name>
-        <servlet-class>org.epis.minierp.controller.contabilidad.libroDiario.LibroDiarioController</servlet-class>
+        <servlet-class>org.epis.minierp.controller.contabilidad.LibroDiarioController</servlet-class>
     </servlet>
-     <servlet-mapping>
+    <servlet-mapping>
         <servlet-name>LibroDiarioController</servlet-name>
         <url-pattern>/secured/contabilidad/librodiario</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <description/>
         <display-name>PlanContableController</display-name>
         <servlet-name>PlanContableController</servlet-name>
-        <servlet-class>org.epis.minierp.controller.contabilidad.plancontable.PlanContableController</servlet-class>
+        <servlet-class>org.epis.minierp.controller.contabilidad.PlanContableController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>PlanContableController</servlet-name>
         <url-pattern>/secured/contabilidad/plan</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <description/>
         <display-name>SubcuentaController</display-name>
         <servlet-name>SubcuentaController</servlet-name>
-        <servlet-class>org.epis.minierp.controller.contabilidad.plancontable.SubcuentaController</servlet-class>
+        <servlet-class>org.epis.minierp.controller.contabilidad.SubcuentaController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>SubcuentaController</servlet-name>
         <url-pattern>/secured/contabilidad/plan/subcuenta</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <description/>
         <display-name>BalanceGeneralController</display-name>
@@ -402,7 +396,7 @@
         <description/>
         <display-name>addClienteController</display-name>
         <servlet-name>addClienteController</servlet-name>
-        <servlet-class>org.epis.minierp.controller.ventas.addClienteController</servlet-class>
+        <servlet-class>org.epis.minierp.controller.ventas.AddClienteController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>addClienteController</servlet-name>
@@ -412,7 +406,7 @@
         <description/>
         <display-name>addFacturaController</display-name>
         <servlet-name>addFacturaController</servlet-name>
-        <servlet-class>org.epis.minierp.controller.ventas.addFacturaController</servlet-class>
+        <servlet-class>org.epis.minierp.controller.ventas.AddFacturaController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>addFacturaController</servlet-name>
@@ -432,7 +426,7 @@
         <description/>
         <display-name>addPagoController</display-name>
         <servlet-name>addPagoController</servlet-name>
-        <servlet-class>org.epis.minierp.controller.ventas.addPagoController</servlet-class>
+        <servlet-class>org.epis.minierp.controller.ventas.AddPagoController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>addPagoController</servlet-name>

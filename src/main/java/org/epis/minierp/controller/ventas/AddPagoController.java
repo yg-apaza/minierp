@@ -21,7 +21,7 @@ import org.epis.minierp.model.EnP1tPagosCuotasDetId;
  *
  * @author Ylnner
  */
-public class addPagoController extends HttpServlet{
+public class AddPagoController extends HttpServlet{
     private static final long serialVersionUID = 1L;
 
     @Override

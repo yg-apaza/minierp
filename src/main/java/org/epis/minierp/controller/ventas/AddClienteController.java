@@ -12,7 +12,7 @@ import org.epis.minierp.dao.ventas.EnP1mClienteDao;
 import org.epis.minierp.model.EnP1mCliente;
 import org.epis.minierp.model.TaGzzEstadoCivil;
 
-public class addClienteController extends HttpServlet
+public class AddClienteController extends HttpServlet
 {	
     private static final long serialVersionUID = 1L;
 
