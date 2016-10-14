@@ -1058,11 +1058,13 @@ DROP TABLE IF EXISTS `episerp`.`en_p1m_empresa` ;
 CREATE TABLE IF NOT EXISTS `episerp`.`en_p1m_empresa` (
   `EmpCod` INT(2) ZEROFILL NOT NULL AUTO_INCREMENT,
   `EmpNom` CHAR(80) NOT NULL,
+  `EmpDes` VARCHAR(200) NULL,
   `EmpDir` CHAR(100) NOT NULL,
   `EmpTel` CHAR(20) NULL,
   `EmpCor` CHAR(50) NULL,
   `EmpIGV` DOUBLE(5,2) NOT NULL,
   `EmpRUC` CHAR(11) NOT NULL,
+  `EmpImg` BLOB NULL,
   PRIMARY KEY (`EmpCod`))
 ENGINE = InnoDB;
 
@@ -1098,12 +1100,21 @@ CREATE TABLE IF NOT EXISTS `episerp`.`en_p1m_movimiento_punto_ven` (
   `PunVenCod` INT(6) ZEROFILL NOT NULL,
   `MovPunVenCom` INT(2) NOT NULL,
   `MovPunVenComCod` CHAR(10) NOT NULL,
+  `UsuCod` CHAR(15) NOT NULL,
+  `MovPunVenFec` DATE NOT NULL,
+  `MovPunVenMon` DOUBLE(10,2) NOT NULL,
   `EstRegCod` CHAR(1) NOT NULL,
   PRIMARY KEY (`MovPunVenCod`, `SucCod`, `PunVenCod`),
   INDEX `fk_en_p1m_movimiento_punto_ven_en_p1m_punto_venta1_idx` (`SucCod` ASC, `PunVenCod` ASC),
+  INDEX `fk_en_p1m_movimiento_punto_ven_en_p1m_usuario1_idx` (`UsuCod` ASC),
   CONSTRAINT `fk_en_p1m_movimiento_punto_ven_en_p1m_punto_venta1`
     FOREIGN KEY (`SucCod` , `PunVenCod`)
     REFERENCES `episerp`.`en_p1m_punto_venta` (`SucCod` , `PunVenCod`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_en_p1m_movimiento_punto_ven_en_p1m_usuario1`
+    FOREIGN KEY (`UsuCod`)
+    REFERENCES `episerp`.`en_p1m_usuario` (`UsuCod`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -1112,4 +1123,3 @@ ENGINE = InnoDB;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
-
