@@ -52,7 +52,7 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-4">
-                         <a href="${pageContext.request.contextPath}/secured/reporte?type=pdf&&report=registroVentas" class="btn btn-outline btn-danger">
+                         <a href="${pageContext.request.contextPath}/secured/reporte?type=pdf&&report=registroventas" class="btn btn-outline btn-danger">
                             <i class="fa fa-file-pdf-o"></i>
                             Descargar Registro [PDF]
                         </a>
