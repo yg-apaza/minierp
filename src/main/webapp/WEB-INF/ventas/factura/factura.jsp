@@ -32,18 +32,18 @@
                                     <th>Cliente</th>
                                     <th>Vendedor</th>
                                     <th>Importe</th>
-                                    <th>Estado</th>
+                                    <th>Tipo</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <c:forEach items="${facturas}" var="c">
                                     <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>                            
-                                        <td></td>
+                                        <td>${c.facVenCabFec}</td>
+                                        <td>${c.facVenCabCod}</td>
+                                        <td>${c.enP1mCliente.cliNom}</td>
+                                        <td>${c.enP1mUsuario.usuNom}</td>
+                                        <td>${c.facVenCabTot}</td>                            
+                                        <td>${c.taGzzTipoPagoFactura.tipPagDet}</td>
                                     </tr>
                                 </c:forEach>
                             </tbody>
@@ -67,7 +67,7 @@
              
             <!-- TITULO-->
             <div class="modal-header"> <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Agregar Cliente</h4>
+                <h4 class="modal-title">Agregar Factura</h4>
             </div>
             <!-- FIN_TITULO -->
 
@@ -215,7 +215,7 @@
             <!-- PIE -->
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                <button type="submit" data-dismiss="modal" class="btn btn-default">Agregar</button>
+                <button type="submit" class="btn btn-default" name="agregarFactura">Agregar</button>
             </div>
             <!-- FIN PIE -->
             </form>

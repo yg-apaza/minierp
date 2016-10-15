@@ -142,7 +142,7 @@
             <!-- PIE -->
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                <button type="submit" data-dismiss="modal" class="btn btn-default">Agregar</button>
+                <button type="submit" class="btn btn-default" >Agregar</button>
             </div>
             <!-- FIN PIE -->
             </form>
