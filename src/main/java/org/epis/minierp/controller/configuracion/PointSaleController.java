@@ -16,7 +16,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.epis.minierp.dao.configuracion.EnP1mPuntoVentaDao;
+import org.epis.minierp.dao.general.EnP1mPuntoVentaDao;
 import org.epis.minierp.model.EnP1mPuntoVenta;
 
 public class PointSaleController extends HttpServlet

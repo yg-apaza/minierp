@@ -17,8 +17,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import static javax.xml.bind.DatatypeConverter.parseInteger;
-import org.epis.minierp.dao.configuracion.EnP1mPuntoVentaDao;
-import org.epis.minierp.dao.configuracion.EnP1mSucursalDao;
+import org.epis.minierp.dao.general.EnP1mPuntoVentaDao;
+import org.epis.minierp.dao.general.EnP1mSucursalDao;
 import org.epis.minierp.model.EnP1mPuntoVenta;
 import org.epis.minierp.model.EnP1mPuntoVentaId;
 

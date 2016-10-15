@@ -1,4 +1,4 @@
-package org.epis.minierp.dao.configuracion;
+package org.epis.minierp.dao.general;
 
 import java.util.List;
 import org.epis.minierp.model.EnP1mPuntoVenta;

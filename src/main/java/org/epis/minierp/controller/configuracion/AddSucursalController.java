@@ -15,7 +15,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.epis.minierp.dao.configuracion.EnP1mSucursalDao;
+import org.epis.minierp.dao.general.EnP1mSucursalDao;
 import org.epis.minierp.model.EnP1mSucursal;
 
 public class AddSucursalController extends HttpServlet
