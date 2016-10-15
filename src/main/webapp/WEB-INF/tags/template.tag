@@ -1,3 +1,4 @@
+<%@ taglib prefix='cc' uri='http://java.sun.com/jsp/jstl/core' %>
 <%@ attribute name="titulo" fragment="true" %>
 <%@ attribute name="contenido" fragment="true" %>
 <!DOCTYPE html>
@@ -40,7 +41,7 @@
                         <img src="${pageContext.request.contextPath}/img/logo.png">
                     </a>
                 </div>
-                    
+                
                 <ul class="nav navbar-top-links navbar-right">
                     <li class="dropdown"><a href="${pageContext.request.contextPath}/">
                         <i class="fa fa-home" aria-hidden="true"></i> Inicio
@@ -52,7 +53,7 @@
                         <i class="fa fa-sign-out" aria-hidden="true"></i> Salir
                     </a></li>
                 </ul>
-
+                    
                 <div class="navbar-default sidebar" role="navigation">
                     <div class="sidebar-nav navbar-collapse">
                         <ul class="nav" id="side-menu">
@@ -69,9 +70,10 @@
                             <li>
                                 <a href="${pageContext.request.contextPath}/"><i class="fa fa-home fa-fw"></i> Inicio</a>
                             </li>
+                            <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()==1 || sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()==2}">
                             <li>
                                 <a href="#"><i class="fa fa-cart-arrow-down fa-fw"></i> Venta y Preventa<span class="fa arrow"></span></a>
-                                <ul class="nav nav-second-level">
+                                <ul class="nav nav-second-level">     
                                     <li>
                                         <a href="${pageContext.request.contextPath}/secured/ventas/factura">Facturas</a>
                                     </li>
@@ -86,6 +88,8 @@
                                     </li>
                                 </ul>
                             </li>
+                            </cc:if>
+                            <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()==1 || sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()==3}">
                             <li>
                                 <a href="#"><i class="fa fa-truck fa-fw"></i> Logística y Compras<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
@@ -125,7 +129,8 @@
                                     </li>
                                 </ul>
                             </li>
-                            
+                            </cc:if>
+                            <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()==1 || sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()==4}">
                             <li>
                                 <a href="#"><i class="fa fa-book fa-fw"></i> Contabilidad<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
@@ -149,6 +154,8 @@
                                     </li>
                                 </ul>
                             </li>
+                            </cc:if>
+                            <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()==1}">
                             <li>
                                 <a href="#"><i class="fa fa-gears fa-fw"></i> Configuraciones<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
@@ -163,7 +170,7 @@
                                     </li>
                                 </ul>
                             </li>
-
+                            </cc:if>
                         </ul>
                     </div>
                 </div>  
