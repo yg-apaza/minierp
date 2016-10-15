@@ -15,7 +15,7 @@ public class BancosDAO {
         session = HibernateUtil.getSessionFactory().getCurrentSession();  
     }
     public List<CajaView> getView(){
-        Query query = session.createQuery("from BancosModel");
+        Query query = session.createQuery("from BancosView");
         return query.list();
     }
 }

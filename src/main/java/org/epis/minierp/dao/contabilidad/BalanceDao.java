@@ -20,7 +20,7 @@ public class BalanceDao {
     }
     
     public List<LibroDiarioView> getAll(){
-        Query query = session.createQuery("FROM LibroDiario");
+        Query query = session.createQuery("FROM LibroDiarioView");
         return query.list();
     }
     
