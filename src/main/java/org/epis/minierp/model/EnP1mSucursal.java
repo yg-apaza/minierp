@@ -27,9 +27,9 @@ public class EnP1mSucursal  implements java.io.Serializable {
      private String sucDes;
      private String sucDir;
      private char estRegCod;
-     private Set enP1mPuntoVentas = new HashSet(0);
-     private Set enP1mUsuarios = new HashSet(0);
-     private Set enP2mAlmacens = new HashSet(0);
+     private Set<EnP1mPuntoVenta> enP1mPuntoVentas = new HashSet(0);
+     private Set<EnP1mUsuario> enP1mUsuarios = new HashSet(0);
+     private Set<EnP2mAlmacen> enP2mAlmacens = new HashSet(0);
 
     public EnP1mSucursal() {
     }
@@ -38,7 +38,7 @@ public class EnP1mSucursal  implements java.io.Serializable {
     public EnP1mSucursal(char estRegCod) {
         this.estRegCod = estRegCod;
     }
-    public EnP1mSucursal(String sucDes, String sucDir, char estRegCod, Set enP1mPuntoVentas, Set enP1mUsuarios, Set enP2mAlmacens) {
+    public EnP1mSucursal(String sucDes, String sucDir, char estRegCod, Set<EnP1mPuntoVenta> enP1mPuntoVentas, Set<EnP1mUsuario> enP1mUsuarios, Set<EnP2mAlmacen> enP2mAlmacens) {
        this.sucDes = sucDes;
        this.sucDir = sucDir;
        this.estRegCod = estRegCod;
@@ -90,29 +90,29 @@ public class EnP1mSucursal  implements java.io.Serializable {
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="enP1mSucursal")
-    public Set getEnP1mPuntoVentas() {
+    public Set<EnP1mPuntoVenta> getEnP1mPuntoVentas() {
         return this.enP1mPuntoVentas;
     }
     
-    public void setEnP1mPuntoVentas(Set enP1mPuntoVentas) {
+    public void setEnP1mPuntoVentas(Set<EnP1mPuntoVenta> enP1mPuntoVentas) {
         this.enP1mPuntoVentas = enP1mPuntoVentas;
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="enP1mSucursal")
-    public Set getEnP1mUsuarios() {
+    public Set<EnP1mUsuario> getEnP1mUsuarios() {
         return this.enP1mUsuarios;
     }
     
-    public void setEnP1mUsuarios(Set enP1mUsuarios) {
+    public void setEnP1mUsuarios(Set<EnP1mUsuario> enP1mUsuarios) {
         this.enP1mUsuarios = enP1mUsuarios;
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="enP1mSucursal")
-    public Set getEnP2mAlmacens() {
+    public Set<EnP2mAlmacen> getEnP2mAlmacens() {
         return this.enP2mAlmacens;
     }
     
-    public void setEnP2mAlmacens(Set enP2mAlmacens) {
+    public void setEnP2mAlmacens(Set<EnP2mAlmacen> enP2mAlmacens) {
         this.enP2mAlmacens = enP2mAlmacens;
     }
 

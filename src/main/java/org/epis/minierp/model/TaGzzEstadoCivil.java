@@ -26,8 +26,8 @@ public class TaGzzEstadoCivil  implements java.io.Serializable {
      private Integer estCivCod;
      private String estCivDet;
      private char estRegCod;
-     private Set enP1mClientes = new HashSet(0);
-     private Set enP1mUsuarios = new HashSet(0);
+     private Set<EnP1mCliente> enP1mClientes = new HashSet(0);
+     private Set<EnP1mUsuario> enP1mUsuarios = new HashSet(0);
 
     public TaGzzEstadoCivil() {
     }
@@ -37,7 +37,7 @@ public class TaGzzEstadoCivil  implements java.io.Serializable {
         this.estCivDet = estCivDet;
         this.estRegCod = estRegCod;
     }
-    public TaGzzEstadoCivil(String estCivDet, char estRegCod, Set enP1mClientes, Set enP1mUsuarios) {
+    public TaGzzEstadoCivil(String estCivDet, char estRegCod, Set<EnP1mCliente> enP1mClientes, Set<EnP1mUsuario> enP1mUsuarios) {
        this.estCivDet = estCivDet;
        this.estRegCod = estRegCod;
        this.enP1mClientes = enP1mClientes;
@@ -77,20 +77,20 @@ public class TaGzzEstadoCivil  implements java.io.Serializable {
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="taGzzEstadoCivil")
-    public Set getEnP1mClientes() {
+    public Set<EnP1mCliente> getEnP1mClientes() {
         return this.enP1mClientes;
     }
     
-    public void setEnP1mClientes(Set enP1mClientes) {
+    public void setEnP1mClientes(Set<EnP1mCliente> enP1mClientes) {
         this.enP1mClientes = enP1mClientes;
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="taGzzEstadoCivil")
-    public Set getEnP1mUsuarios() {
+    public Set<EnP1mUsuario> getEnP1mUsuarios() {
         return this.enP1mUsuarios;
     }
     
-    public void setEnP1mUsuarios(Set enP1mUsuarios) {
+    public void setEnP1mUsuarios(Set<EnP1mUsuario> enP1mUsuarios) {
         this.enP1mUsuarios = enP1mUsuarios;
     }
 

@@ -34,9 +34,9 @@ public class EnP1mCliente  implements java.io.Serializable {
      private String cliTelCel;
      private String cliEmail;
      private char estRegCod;
-     private Set enP1mPreventaCabs = new HashSet(0);
-     private Set enP1mDocumentoClientes = new HashSet(0);
-     private Set enP1mFacturaVentaCabs = new HashSet(0);
+     private Set<EnP1mPreventaCab> enP1mPreventaCabs = new HashSet(0);
+     private Set<EnP1mDocumentoCliente> enP1mDocumentoClientes = new HashSet(0);
+     private Set<EnP1mFacturaVentaCab> enP1mFacturaVentaCabs = new HashSet(0);
 
     public EnP1mCliente() {
     }
@@ -50,7 +50,7 @@ public class EnP1mCliente  implements java.io.Serializable {
         this.cliEmail = cliEmail;
         this.estRegCod = estRegCod;
     }
-    public EnP1mCliente(String cliCod, TaGzzEstadoCivil taGzzEstadoCivil, String cliNom, String cliApePat, String cliApeMat, char cliSex, String cliDir, String cliTelFij, String cliTelCel, String cliEmail, char estRegCod, Set enP1mPreventaCabs, Set enP1mDocumentoClientes, Set enP1mFacturaVentaCabs) {
+    public EnP1mCliente(String cliCod, TaGzzEstadoCivil taGzzEstadoCivil, String cliNom, String cliApePat, String cliApeMat, char cliSex, String cliDir, String cliTelFij, String cliTelCel, String cliEmail, char estRegCod, Set<EnP1mPreventaCab> enP1mPreventaCabs, Set<EnP1mDocumentoCliente> enP1mDocumentoClientes, Set<EnP1mFacturaVentaCab> enP1mFacturaVentaCabs) {
        this.cliCod = cliCod;
        this.taGzzEstadoCivil = taGzzEstadoCivil;
        this.cliNom = cliNom;
@@ -180,29 +180,29 @@ public class EnP1mCliente  implements java.io.Serializable {
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="enP1mCliente")
-    public Set getEnP1mPreventaCabs() {
+    public Set<EnP1mPreventaCab> getEnP1mPreventaCabs() {
         return this.enP1mPreventaCabs;
     }
     
-    public void setEnP1mPreventaCabs(Set enP1mPreventaCabs) {
+    public void setEnP1mPreventaCabs(Set<EnP1mPreventaCab> enP1mPreventaCabs) {
         this.enP1mPreventaCabs = enP1mPreventaCabs;
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="enP1mCliente")
-    public Set getEnP1mDocumentoClientes() {
+    public Set<EnP1mDocumentoCliente> getEnP1mDocumentoClientes() {
         return this.enP1mDocumentoClientes;
     }
     
-    public void setEnP1mDocumentoClientes(Set enP1mDocumentoClientes) {
+    public void setEnP1mDocumentoClientes(Set<EnP1mDocumentoCliente> enP1mDocumentoClientes) {
         this.enP1mDocumentoClientes = enP1mDocumentoClientes;
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="enP1mCliente")
-    public Set getEnP1mFacturaVentaCabs() {
+    public Set<EnP1mFacturaVentaCab> getEnP1mFacturaVentaCabs() {
         return this.enP1mFacturaVentaCabs;
     }
     
-    public void setEnP1mFacturaVentaCabs(Set enP1mFacturaVentaCabs) {
+    public void setEnP1mFacturaVentaCabs(Set<EnP1mFacturaVentaCab> enP1mFacturaVentaCabs) {
         this.enP1mFacturaVentaCabs = enP1mFacturaVentaCabs;
     }
 

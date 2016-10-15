@@ -26,7 +26,7 @@ public class TaGzzTipoDocProveedor  implements java.io.Serializable {
      private Integer tipDocProCod;
      private String tipDocProDet;
      private char estRegCod;
-     private Set enP4mDocumentoProveedors = new HashSet(0);
+     private Set<EnP4mDocumentoProveedor> enP4mDocumentoProveedors = new HashSet(0);
 
     public TaGzzTipoDocProveedor() {
     }
@@ -36,7 +36,7 @@ public class TaGzzTipoDocProveedor  implements java.io.Serializable {
         this.tipDocProDet = tipDocProDet;
         this.estRegCod = estRegCod;
     }
-    public TaGzzTipoDocProveedor(String tipDocProDet, char estRegCod, Set enP4mDocumentoProveedors) {
+    public TaGzzTipoDocProveedor(String tipDocProDet, char estRegCod, Set<EnP4mDocumentoProveedor> enP4mDocumentoProveedors) {
        this.tipDocProDet = tipDocProDet;
        this.estRegCod = estRegCod;
        this.enP4mDocumentoProveedors = enP4mDocumentoProveedors;
@@ -75,11 +75,11 @@ public class TaGzzTipoDocProveedor  implements java.io.Serializable {
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="taGzzTipoDocProveedor")
-    public Set getEnP4mDocumentoProveedors() {
+    public Set<EnP4mDocumentoProveedor> getEnP4mDocumentoProveedors() {
         return this.enP4mDocumentoProveedors;
     }
     
-    public void setEnP4mDocumentoProveedors(Set enP4mDocumentoProveedors) {
+    public void setEnP4mDocumentoProveedors(Set<EnP4mDocumentoProveedor> enP4mDocumentoProveedors) {
         this.enP4mDocumentoProveedors = enP4mDocumentoProveedors;
     }
 

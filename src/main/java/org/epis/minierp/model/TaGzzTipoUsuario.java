@@ -26,7 +26,7 @@ public class TaGzzTipoUsuario  implements java.io.Serializable {
      private Integer tipUsuCod;
      private String tipUsuDet;
      private char estRegCod;
-     private Set enP1mUsuarios = new HashSet(0);
+     private Set<EnP1mUsuario> enP1mUsuarios = new HashSet(0);
 
     public TaGzzTipoUsuario() {
     }
@@ -36,7 +36,7 @@ public class TaGzzTipoUsuario  implements java.io.Serializable {
         this.tipUsuDet = tipUsuDet;
         this.estRegCod = estRegCod;
     }
-    public TaGzzTipoUsuario(String tipUsuDet, char estRegCod, Set enP1mUsuarios) {
+    public TaGzzTipoUsuario(String tipUsuDet, char estRegCod, Set<EnP1mUsuario> enP1mUsuarios) {
        this.tipUsuDet = tipUsuDet;
        this.estRegCod = estRegCod;
        this.enP1mUsuarios = enP1mUsuarios;
@@ -75,11 +75,11 @@ public class TaGzzTipoUsuario  implements java.io.Serializable {
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="taGzzTipoUsuario")
-    public Set getEnP1mUsuarios() {
+    public Set<EnP1mUsuario> getEnP1mUsuarios() {
         return this.enP1mUsuarios;
     }
     
-    public void setEnP1mUsuarios(Set enP1mUsuarios) {
+    public void setEnP1mUsuarios(Set<EnP1mUsuario> enP1mUsuarios) {
         this.enP1mUsuarios = enP1mUsuarios;
     }
 

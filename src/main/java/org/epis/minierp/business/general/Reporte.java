@@ -34,21 +34,12 @@ public class Reporte {
         session = HibernateUtil.getSessionFactory().getCurrentSession();
     }
     
-    public String report(String path, String fileName, String fileType, String module) {
+    public String report(String path, String fileName, String fileType) {
         param.put(JRHibernateQueryExecuterFactory.PARAMETER_HIBERNATE_SESSION, session);
         String file = fileName + sf.format(date.getTime());
-        String fullPath = null;
-        switch(module){
-            case "Contabilidad":
-                fullPath = Reporte.class.getClassLoader().getResource("org/epis/minierp/reporte/contabilidad/").getPath() + file;
-                break;
-            case "Ventas":
-                fullPath = Reporte.class.getClassLoader().getResource("org/epis/minierp/reporte/ventas/").getPath() + file;
-                break;
-            case "Compras":
-                fullPath = Reporte.class.getClassLoader().getResource("org/epis/minierp/reporte/compras/").getPath() + file;
-                break;
-        }
+        String fullPath = file;
+        System.out.println("xasdasd "+path);
+        
         
         try {
             JasperReport jasperReport = JasperCompileManager.compileReport(path);

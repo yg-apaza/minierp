@@ -31,9 +31,9 @@ public class EnP4mProveedor  implements java.io.Serializable {
      private String proPagWeb;
      private String proObs;
      private char estRegCod;
-     private Set enP4mFacturaCompraCabs = new HashSet(0);
-     private Set enP4mDocumentoProveedors = new HashSet(0);
-     private Set enP4mGuiaCompraCabs = new HashSet(0);
+     private Set<EnP4mFacturaCompraCab> enP4mFacturaCompraCabs = new HashSet(0);
+     private Set<EnP4mDocumentoProveedor> enP4mDocumentoProveedors = new HashSet(0);
+     private Set<EnP4mGuiaCompraCab> enP4mGuiaCompraCabs = new HashSet(0);
 
     public EnP4mProveedor() {
     }
@@ -44,7 +44,7 @@ public class EnP4mProveedor  implements java.io.Serializable {
         this.proDet = proDet;
         this.estRegCod = estRegCod;
     }
-    public EnP4mProveedor(String proCod, String proDet, String proCon, String proDir, String proTelFij, String proTelCel, String proEmail, String proPagWeb, String proObs, char estRegCod, Set enP4mFacturaCompraCabs, Set enP4mDocumentoProveedors, Set enP4mGuiaCompraCabs) {
+    public EnP4mProveedor(String proCod, String proDet, String proCon, String proDir, String proTelFij, String proTelCel, String proEmail, String proPagWeb, String proObs, char estRegCod, Set<EnP4mFacturaCompraCab> enP4mFacturaCompraCabs, Set<EnP4mDocumentoProveedor> enP4mDocumentoProveedors, Set<EnP4mGuiaCompraCab> enP4mGuiaCompraCabs) {
        this.proCod = proCod;
        this.proDet = proDet;
        this.proCon = proCon;
@@ -163,29 +163,29 @@ public class EnP4mProveedor  implements java.io.Serializable {
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="enP4mProveedor")
-    public Set getEnP4mFacturaCompraCabs() {
+    public Set<EnP4mFacturaCompraCab> getEnP4mFacturaCompraCabs() {
         return this.enP4mFacturaCompraCabs;
     }
     
-    public void setEnP4mFacturaCompraCabs(Set enP4mFacturaCompraCabs) {
+    public void setEnP4mFacturaCompraCabs(Set<EnP4mFacturaCompraCab> enP4mFacturaCompraCabs) {
         this.enP4mFacturaCompraCabs = enP4mFacturaCompraCabs;
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="enP4mProveedor")
-    public Set getEnP4mDocumentoProveedors() {
+    public Set<EnP4mDocumentoProveedor> getEnP4mDocumentoProveedors() {
         return this.enP4mDocumentoProveedors;
     }
     
-    public void setEnP4mDocumentoProveedors(Set enP4mDocumentoProveedors) {
+    public void setEnP4mDocumentoProveedors(Set<EnP4mDocumentoProveedor> enP4mDocumentoProveedors) {
         this.enP4mDocumentoProveedors = enP4mDocumentoProveedors;
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="enP4mProveedor")
-    public Set getEnP4mGuiaCompraCabs() {
+    public Set<EnP4mGuiaCompraCab> getEnP4mGuiaCompraCabs() {
         return this.enP4mGuiaCompraCabs;
     }
     
-    public void setEnP4mGuiaCompraCabs(Set enP4mGuiaCompraCabs) {
+    public void setEnP4mGuiaCompraCabs(Set<EnP4mGuiaCompraCab> enP4mGuiaCompraCabs) {
         this.enP4mGuiaCompraCabs = enP4mGuiaCompraCabs;
     }
 

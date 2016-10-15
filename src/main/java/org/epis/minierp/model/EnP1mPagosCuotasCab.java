@@ -40,7 +40,7 @@ public class EnP1mPagosCuotasCab  implements java.io.Serializable {
      private Date pagCuoFecFin;
      private Date pagCuoFecPag;
      private char estRegCod;
-     private Set enP1tPagosCuotasDets = new HashSet(0);
+     private Set<EnP1tPagosCuotasDet> enP1tPagosCuotasDets = new HashSet(0);
 
     public EnP1mPagosCuotasCab() {
     }
@@ -58,7 +58,7 @@ public class EnP1mPagosCuotasCab  implements java.io.Serializable {
         this.pagCuoFecPag = pagCuoFecPag;
         this.estRegCod = estRegCod;
     }
-    public EnP1mPagosCuotasCab(EnP1mFacturaVentaCab enP1mFacturaVentaCab, String pagCuoNumDoc, int pagCuoNum, int pagCuoNumPag, double pagCuoDeuTot, double pagCuoTotPag, Date pagCuoFecIni, Date pagCuoFecFin, Date pagCuoFecPag, char estRegCod, Set enP1tPagosCuotasDets) {
+    public EnP1mPagosCuotasCab(EnP1mFacturaVentaCab enP1mFacturaVentaCab, String pagCuoNumDoc, int pagCuoNum, int pagCuoNumPag, double pagCuoDeuTot, double pagCuoTotPag, Date pagCuoFecIni, Date pagCuoFecFin, Date pagCuoFecPag, char estRegCod, Set<EnP1tPagosCuotasDet> enP1tPagosCuotasDets) {
        this.enP1mFacturaVentaCab = enP1mFacturaVentaCab;
        this.pagCuoNumDoc = pagCuoNumDoc;
        this.pagCuoNum = pagCuoNum;
@@ -184,11 +184,11 @@ public class EnP1mPagosCuotasCab  implements java.io.Serializable {
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="enP1mPagosCuotasCab")
-    public Set getEnP1tPagosCuotasDets() {
+    public Set<EnP1tPagosCuotasDet> getEnP1tPagosCuotasDets() {
         return this.enP1tPagosCuotasDets;
     }
     
-    public void setEnP1tPagosCuotasDets(Set enP1tPagosCuotasDets) {
+    public void setEnP1tPagosCuotasDets(Set<EnP1tPagosCuotasDet> enP1tPagosCuotasDets) {
         this.enP1tPagosCuotasDets = enP1tPagosCuotasDets;
     }
 

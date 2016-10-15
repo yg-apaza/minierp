@@ -18,16 +18,17 @@ import javax.servlet.http.HttpServletResponse;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperRunManager;
 import org.epis.minierp.dao.compras.KardexDao;
-import org.epis.minierp.dto.ProductoDto;
-import org.epis.minierp.dto.KardexDto;
+import org.epis.minierp.dao.logistica.EnP2mProductoDao;
+import org.epis.minierp.model.EnP2mProducto;
+import org.epis.minierp.model.Kardex;
 
 public class KardexController extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
   
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        KardexDao daoUsu = new KardexDao();
-        List<ProductoDto> listaProd = daoUsu.listarProducto();
+        EnP2mProductoDao daoProd = new EnP2mProductoDao();
+        List<EnP2mProducto> listaProd = daoProd.getAllActive();
         request.setAttribute("productos", listaProd);
         request.getRequestDispatcher("/WEB-INF/compras/kardex.jsp").forward(request, response);
 
@@ -39,16 +40,17 @@ public class KardexController extends HttpServlet {
             String button = request.getParameter("button");
             if ("btn_ver".equals(button)) {
                 KardexDao daoUsu = new KardexDao();
+                EnP2mProductoDao prodDao=new EnP2mProductoDao();
                 String proCod = request.getParameter("item");
                 
                 if (proCod.length() > 0) {
                   
-                    List<KardexDto> registros = daoUsu.getAll(proCod);
+                    List<Kardex> registros = daoUsu.getAll(proCod);
                     
                     request.setAttribute("registros", registros);
                 }
 
-                List<ProductoDto> listaProd = daoUsu.listarProducto();
+                List<EnP2mProducto> listaProd = prodDao.getAllActive();
                 request.setAttribute("productos", listaProd);
                 request.getRequestDispatcher("/WEB-INF/compras/kardex.jsp").forward(request, response);
             } else if ("btn_reporteFisico".equals(button)) {
@@ -82,7 +84,7 @@ public class KardexController extends HttpServlet {
             conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/episerp","alumno","1234");
             String path = getServletContext().getRealPath("/WEB-INF/");
 
-            path=path+"reportes/reporte_kardex_fisico.jasper";
+            path=path+"reportes/logistica/reporte_kardex_fisico.jasper";
 //            jasperDesign = JRXmlLoader.load(path+"/reportes/reporte_kardex_fisico.jrxml");
       
             HashMap hm = null;
@@ -126,7 +128,7 @@ public class KardexController extends HttpServlet {
             conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/episerp","alumno","1234");
             String path = getServletContext().getRealPath("/WEB-INF/");
             System.out.println(path);
-            path=path+"reportes/reporte_kardex_valorizado.jasper";
+            path=path+"reportes/logistica/reporte_kardex_valorizado.jasper";
 //            jasperDesign = JRXmlLoader.load(path+"/reportes/reporte_kardex_fisico.jrxml");
             
             String jrxmlFileName = path;

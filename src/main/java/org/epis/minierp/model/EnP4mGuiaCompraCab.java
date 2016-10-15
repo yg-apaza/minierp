@@ -33,7 +33,7 @@ public class EnP4mGuiaCompraCab  implements java.io.Serializable {
      private String guiComCabPunLle;
      private Date guiComCabFec;
      private char estRegCod;
-     private Set enP4tGuiaCompraDets = new HashSet(0);
+     private Set<EnP4tGuiaCompraDet> enP4tGuiaCompraDets = new HashSet(0);
 
     public EnP4mGuiaCompraCab() {
     }
@@ -46,7 +46,7 @@ public class EnP4mGuiaCompraCab  implements java.io.Serializable {
         this.guiComCabFec = guiComCabFec;
         this.estRegCod = estRegCod;
     }
-    public EnP4mGuiaCompraCab(String guiComCabCod, EnP4mFacturaCompraCab enP4mFacturaCompraCab, EnP4mProveedor enP4mProveedor, String guiComCabPunPar, String guiComCabPunLle, Date guiComCabFec, char estRegCod, Set enP4tGuiaCompraDets) {
+    public EnP4mGuiaCompraCab(String guiComCabCod, EnP4mFacturaCompraCab enP4mFacturaCompraCab, EnP4mProveedor enP4mProveedor, String guiComCabPunPar, String guiComCabPunLle, Date guiComCabFec, char estRegCod, Set<EnP4tGuiaCompraDet> enP4tGuiaCompraDets) {
        this.guiComCabCod = guiComCabCod;
        this.enP4mFacturaCompraCab = enP4mFacturaCompraCab;
        this.enP4mProveedor = enP4mProveedor;
@@ -57,9 +57,7 @@ public class EnP4mGuiaCompraCab  implements java.io.Serializable {
        this.enP4tGuiaCompraDets = enP4tGuiaCompraDets;
     }
    
-     @Id 
-
-    
+     @Id   
     @Column(name="GuiComCabCod", unique=true, nullable=false, length=10)
     public String getGuiComCabCod() {
         return this.guiComCabCod;
@@ -130,11 +128,11 @@ public class EnP4mGuiaCompraCab  implements java.io.Serializable {
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="enP4mGuiaCompraCab")
-    public Set getEnP4tGuiaCompraDets() {
+    public Set<EnP4tGuiaCompraDet> getEnP4tGuiaCompraDets() {
         return this.enP4tGuiaCompraDets;
     }
     
-    public void setEnP4tGuiaCompraDets(Set enP4tGuiaCompraDets) {
+    public void setEnP4tGuiaCompraDets(Set<EnP4tGuiaCompraDet> enP4tGuiaCompraDets) {
         this.enP4tGuiaCompraDets = enP4tGuiaCompraDets;
     }
 
