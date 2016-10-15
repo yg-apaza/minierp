@@ -219,18 +219,17 @@
         <servlet-name>AddSupplierController</servlet-name>
         <url-pattern>/secured/compras/form_proveedor</url-pattern>
     </servlet-mapping>
-    <!--Modulo de Compras Nuevo Producto -->
+    <!--Modulo de Compras Producto -->
     <servlet>
         <description/>
-        <display-name>AddProductController</display-name>
-        <servlet-name>AddProductController</servlet-name>
-        <servlet-class>org.epis.minierp.controller.compras.AddProductController</servlet-class>
+        <display-name>ProductController</display-name>
+        <servlet-name>ProductController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.compras.ProductController</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>AddProductController</servlet-name>
-        <url-pattern>/secured/compras/inventario/nuevoProducto</url-pattern>
+        <servlet-name>ProductController</servlet-name>
+        <url-pattern>/secured/compras/productos</url-pattern>
     </servlet-mapping>
-    
     <!--Modulo de Configuraciones-->
     <servlet>
         <description/>
@@ -242,10 +241,8 @@
         <servlet-name>ConfiguracionController</servlet-name>
         <url-pattern>/secured/configuracion</url-pattern>
     </servlet-mapping>
-    
     <!--Sub Modulo Compañia Datos-->
-       
-     <servlet>
+    <servlet>
         <description/>
         <display-name>CompanyDataController</display-name>
         <servlet-name>CompanyDataController</servlet-name>
@@ -255,9 +252,7 @@
         <servlet-name>CompanyDataController</servlet-name>
         <url-pattern>/secured/configuracion/empresa</url-pattern>
     </servlet-mapping>
-    
     <!--Sub Modulo Sucursal-->
-    
     <servlet>
         <description/>
         <display-name>SucursalController</display-name>
@@ -268,8 +263,7 @@
         <servlet-name>SucursalController</servlet-name>
         <url-pattern>/secured/configuracion/sucursal</url-pattern>
     </servlet-mapping>
-    
-     <servlet>
+    <servlet>
         <description/>
         <display-name>AddSucursalController</display-name>
         <servlet-name>AddSucursalController</servlet-name>
@@ -279,9 +273,7 @@
         <servlet-name>AddSucursalController</servlet-name>
         <url-pattern>/secured/configuracion/addsucursal</url-pattern>
     </servlet-mapping>
-    
     <!--Sub Modulo Punto de venta-->
-
     <servlet>
         <description/>
         <display-name>PointSaleController</display-name>
@@ -292,7 +284,6 @@
         <servlet-name>PointSaleController</servlet-name>
         <url-pattern>/secured/configuracion/puntodeventa</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <description/>
         <display-name>AddPointSaleController</display-name>
@@ -303,8 +294,6 @@
         <servlet-name>AddPointSaleController</servlet-name>
         <url-pattern>/secured/configuracion/addpuntoventa</url-pattern>
     </servlet-mapping>
-    
-    
     <!-- Modulo de Contabilidad -->
     <servlet>
         <description/>

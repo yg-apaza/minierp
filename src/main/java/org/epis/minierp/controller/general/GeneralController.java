@@ -13,6 +13,7 @@ public class GeneralController extends HttpServlet
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-         request.getRequestDispatcher("/WEB-INF/general/index.jsp").forward(request, response);
+        request.setAttribute("tipo",1);
+        request.getRequestDispatcher("/WEB-INF/general/index.jsp").forward(request, response);
     }
 }

@@ -17,7 +17,7 @@
                     <select class="form-control input-small" name="item">
                         <option value="">Seleccione:</option>
                         <c:forEach items="${productos}" var="p">  
-                            <option  value="${p.codigo}" >${p.detalle}</option>
+                            <option  value="${p.id.proCod}" >${p.proDet}</option>
                         </c:forEach>
                     </select>
                 </div>
@@ -56,17 +56,17 @@
                         <c:forEach items="${registros}" var="u">
                             <tr>
                                 <td style="text-align: center;"><fmt:formatDate value="${u.fecha}" pattern="dd/MM/yyyy"/></td>
-                                <td style="text-align: center;">${u.factura}</td>
+                                <td style="text-align: center;">${u.numero_factura}</td>
                                 <td style="text-align: center;">${u.producto}</td>
-                                <td style="text-align: center;">${u.cantidadEntrada}</td>
-                                <td style="text-align: center;">${u.precioUnitarioEntrada}</td>
-                                <td class="info" style="text-align: center;">${u.precioTotalEntrada}</td>
-                                <td style="text-align: center;">${u.cantidadSalida}</td>
-                                <td style="text-align: center;">${u.precioUnitarioSalida}</td>
-                                <td class="info" style="text-align: center;">${u.precioTotalSalida}</td>
-                                <td style="text-align: center;">${u.cantidadSaldo}</td>
-                                <td style="text-align: center;">${u.precioUniSaldo}</td>
-                                <td class="info" style="text-align: center;">${u.precioTotSaldo}</td>
+                                <td style="text-align: center;">${u.cantidad_entrada}</td>
+                                <td style="text-align: center;">${u.precio_unitario_entrada}</td>
+                                <td class="info" style="text-align: center;">${u.precio_total_entrada}</td>
+                                <td style="text-align: center;">${u.cantidad_salida}</td>
+                                <td style="text-align: center;">${u.precio_unitario_salida}</td>
+                                <td class="info" style="text-align: center;">${u.precio_total_salida}</td>
+                                <td style="text-align: center;">${u.cantidad_saldo}</td>
+                                <td style="text-align: center;">${u.precio_unitario_saldo}</td>
+                                <td class="info" style="text-align: center;">${u.precio_total_saldo}</td>
 
                             </tr>
                         </c:forEach>

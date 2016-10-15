@@ -15,6 +15,7 @@
         <mapping class="org.epis.minierp.model.contabilidad.CajaView"/>
         <mapping class="org.epis.minierp.model.contabilidad.BancosView"/>
         <mapping class="org.epis.minierp.model.contabilidad.LibroDiarioView"/>
+        <mapping class="org.epis.minierp.model.Kardex"/>
         <!--   Mapeo de clases -->
         <mapping class="org.epis.minierp.model.TaGzzTipoDocCliente"/>
         <mapping class="org.epis.minierp.model.TaGzzTipoDocUsuario"/>

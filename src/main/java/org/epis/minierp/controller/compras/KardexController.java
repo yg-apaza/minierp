@@ -20,6 +20,7 @@ import net.sf.jasperreports.engine.JasperRunManager;
 import org.epis.minierp.dao.compras.KardexDao;
 import org.epis.minierp.dao.logistica.EnP2mProductoDao;
 import org.epis.minierp.model.EnP2mProducto;
+import org.epis.minierp.model.EnP2mProductoId;
 import org.epis.minierp.model.Kardex;
 
 public class KardexController extends HttpServlet {
