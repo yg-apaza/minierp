@@ -20,12 +20,14 @@ import net.sf.jasperreports.engine.JasperRunManager;
 import org.epis.minierp.dao.compras.KardexDao;
 import org.epis.minierp.dao.logistica.EnP2mProductoDao;
 import org.epis.minierp.model.EnP2mProducto;
+import org.epis.minierp.model.EnP2mProductoId;
 import org.epis.minierp.model.Kardex;
 
 public class KardexController extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
   
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         EnP2mProductoDao daoProd = new EnP2mProductoDao();
         List<EnP2mProducto> listaProd = daoProd.getAllActive();

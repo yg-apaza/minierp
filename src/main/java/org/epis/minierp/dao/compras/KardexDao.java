@@ -15,29 +15,14 @@ public class KardexDao {
         
         session = HibernateUtil.getSessionFactory().getCurrentSession();  
     }
-    public <T> List<T> findByNamedQuery(String namedQuery, int firstResult, int maxResults, Object... values) {
-
-        final Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-        final Query query = session.getNamedQuery(namedQuery);
-
-        for (int i = 0; i < values.length; i++) {
-            query.setParameter(i, values[i]);
-        }
-
-        if (firstResult > 0) {
-            query.setFirstResult(firstResult);
-        }
-
-        if (maxResults > 0) {
-            query.setMaxResults(maxResults);
-        }
-
-        return query.list();
-    }
 
     public List<Kardex> getAll(String codProd) {
         List<Kardex> resultados=null;
-        resultados=findByNamedQuery("Kardex.findByProducto",0,0);
+        Query query = session.createSQLQuery(
+	"CALL kardex_prom_ponderado(:prodCode)")
+	.addEntity(Kardex.class)
+	.setParameter("prodCode",codProd );
+        resultados=query.list();
         return resultados;
     }
 }
