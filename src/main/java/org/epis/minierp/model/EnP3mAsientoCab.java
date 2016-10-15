@@ -37,7 +37,7 @@ public class EnP3mAsientoCab  implements java.io.Serializable {
      private Date asiCabFec;
      private String asiCabNumCom;
      private char estRegCod;
-     private Set enP3tAsientoDets = new HashSet(0);
+     private Set<EnP3tAsientoDet> enP3tAsientoDets = new HashSet(0);
 
     public EnP3mAsientoCab() {
     }
@@ -52,7 +52,7 @@ public class EnP3mAsientoCab  implements java.io.Serializable {
         this.asiCabFec = asiCabFec;
         this.estRegCod = estRegCod;
     }
-    public EnP3mAsientoCab(EnP3mAsientoCabId id, EnP3mLibroDiario enP3mLibroDiario, TaGzzMoneda taGzzMoneda, TaGzzTipoComprobante taGzzTipoComprobante, char asiCabTip, String asiCabGlo, Date asiCabFec, String asiCabNumCom, char estRegCod, Set enP3tAsientoDets) {
+    public EnP3mAsientoCab(EnP3mAsientoCabId id, EnP3mLibroDiario enP3mLibroDiario, TaGzzMoneda taGzzMoneda, TaGzzTipoComprobante taGzzTipoComprobante, char asiCabTip, String asiCabGlo, Date asiCabFec, String asiCabNumCom, char estRegCod, Set<EnP3tAsientoDet> enP3tAsientoDets) {
        this.id = id;
        this.enP3mLibroDiario = enP3mLibroDiario;
        this.taGzzMoneda = taGzzMoneda;
@@ -160,11 +160,11 @@ public class EnP3mAsientoCab  implements java.io.Serializable {
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="enP3mAsientoCab")
-    public Set getEnP3tAsientoDets() {
+    public Set<EnP3tAsientoDet> getEnP3tAsientoDets() {
         return this.enP3tAsientoDets;
     }
     
-    public void setEnP3tAsientoDets(Set enP3tAsientoDets) {
+    public void setEnP3tAsientoDets(Set<EnP3tAsientoDet> enP3tAsientoDets) {
         this.enP3tAsientoDets = enP3tAsientoDets;
     }
 

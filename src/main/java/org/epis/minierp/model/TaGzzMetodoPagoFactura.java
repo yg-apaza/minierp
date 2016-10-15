@@ -26,8 +26,8 @@ public class TaGzzMetodoPagoFactura  implements java.io.Serializable {
      private Integer metPagCod;
      private String metPagDet;
      private char estRegCod;
-     private Set enP4mFacturaCompraCabs = new HashSet(0);
-     private Set enP1mFacturaVentaCabs = new HashSet(0);
+     private Set<EnP4mFacturaCompraCab> enP4mFacturaCompraCabs = new HashSet(0);
+     private Set<EnP1mFacturaVentaCab> enP1mFacturaVentaCabs = new HashSet(0);
 
     public TaGzzMetodoPagoFactura() {
     }
@@ -37,7 +37,7 @@ public class TaGzzMetodoPagoFactura  implements java.io.Serializable {
         this.metPagDet = metPagDet;
         this.estRegCod = estRegCod;
     }
-    public TaGzzMetodoPagoFactura(String metPagDet, char estRegCod, Set enP4mFacturaCompraCabs, Set enP1mFacturaVentaCabs) {
+    public TaGzzMetodoPagoFactura(String metPagDet, char estRegCod, Set<EnP4mFacturaCompraCab> enP4mFacturaCompraCabs, Set<EnP1mFacturaVentaCab> enP1mFacturaVentaCabs) {
        this.metPagDet = metPagDet;
        this.estRegCod = estRegCod;
        this.enP4mFacturaCompraCabs = enP4mFacturaCompraCabs;
@@ -77,20 +77,20 @@ public class TaGzzMetodoPagoFactura  implements java.io.Serializable {
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="taGzzMetodoPagoFactura")
-    public Set getEnP4mFacturaCompraCabs() {
+    public Set<EnP4mFacturaCompraCab> getEnP4mFacturaCompraCabs() {
         return this.enP4mFacturaCompraCabs;
     }
     
-    public void setEnP4mFacturaCompraCabs(Set enP4mFacturaCompraCabs) {
+    public void setEnP4mFacturaCompraCabs(Set<EnP4mFacturaCompraCab> enP4mFacturaCompraCabs) {
         this.enP4mFacturaCompraCabs = enP4mFacturaCompraCabs;
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="taGzzMetodoPagoFactura")
-    public Set getEnP1mFacturaVentaCabs() {
+    public Set<EnP1mFacturaVentaCab> getEnP1mFacturaVentaCabs() {
         return this.enP1mFacturaVentaCabs;
     }
     
-    public void setEnP1mFacturaVentaCabs(Set enP1mFacturaVentaCabs) {
+    public void setEnP1mFacturaVentaCabs(Set<EnP1mFacturaVentaCab> enP1mFacturaVentaCabs) {
         this.enP1mFacturaVentaCabs = enP1mFacturaVentaCabs;
     }
 

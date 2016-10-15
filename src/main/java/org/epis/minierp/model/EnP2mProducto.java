@@ -40,10 +40,10 @@ public class EnP2mProducto  implements java.io.Serializable {
      private Double proStkMax;
      private String proObs;
      private char estRegCod;
-     private Set enP1tFacturaVentaDets = new HashSet(0);
-     private Set enP1tPreventaDets = new HashSet(0);
-     private Set enP4tGuiaCompraDets = new HashSet(0);
-     private Set enP4tFacturaCompraDets = new HashSet(0);
+     private Set<EnP1tFacturaVentaDet> enP1tFacturaVentaDets = new HashSet(0);
+     private Set<EnP1tPreventaDet> enP1tPreventaDets = new HashSet(0);
+     private Set<EnP4tGuiaCompraDet> enP4tGuiaCompraDets = new HashSet(0);
+     private Set<EnP4tFacturaCompraDet> enP4tFacturaCompraDets = new HashSet(0);
 
     public EnP2mProducto() {
     }
@@ -62,7 +62,7 @@ public class EnP2mProducto  implements java.io.Serializable {
         this.proObs = proObs;
         this.estRegCod = estRegCod;
     }
-    public EnP2mProducto(EnP2mProductoId id, EnP2mAlmacen enP2mAlmacen, EnP2mSubclaseProducto enP2mSubclaseProducto, TaGzzMoneda taGzzMoneda, TaGzzUnidadMed taGzzUnidadMed, String proDet, double proPreUni, double proStk, double proStkPreVen, Double volUniAlm, Double proStkMin, Double proStkMax, String proObs, char estRegCod, Set enP1tFacturaVentaDets, Set enP1tPreventaDets, Set enP4tGuiaCompraDets, Set enP4tFacturaCompraDets) {
+    public EnP2mProducto(EnP2mProductoId id, EnP2mAlmacen enP2mAlmacen, EnP2mSubclaseProducto enP2mSubclaseProducto, TaGzzMoneda taGzzMoneda, TaGzzUnidadMed taGzzUnidadMed, String proDet, double proPreUni, double proStk, double proStkPreVen, Double volUniAlm, Double proStkMin, Double proStkMax, String proObs, char estRegCod, Set<EnP1tFacturaVentaDet> enP1tFacturaVentaDets, Set<EnP1tPreventaDet> enP1tPreventaDets, Set<EnP4tGuiaCompraDet> enP4tGuiaCompraDets, Set<EnP4tFacturaCompraDet> enP4tFacturaCompraDets) {
        this.id = id;
        this.enP2mAlmacen = enP2mAlmacen;
        this.enP2mSubclaseProducto = enP2mSubclaseProducto;
@@ -231,38 +231,38 @@ public class EnP2mProducto  implements java.io.Serializable {
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="enP2mProducto")
-    public Set getEnP1tFacturaVentaDets() {
+    public Set<EnP1tFacturaVentaDet> getEnP1tFacturaVentaDets() {
         return this.enP1tFacturaVentaDets;
     }
     
-    public void setEnP1tFacturaVentaDets(Set enP1tFacturaVentaDets) {
+    public void setEnP1tFacturaVentaDets(Set<EnP1tFacturaVentaDet> enP1tFacturaVentaDets) {
         this.enP1tFacturaVentaDets = enP1tFacturaVentaDets;
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="enP2mProducto")
-    public Set getEnP1tPreventaDets() {
+    public Set<EnP1tPreventaDet> getEnP1tPreventaDets() {
         return this.enP1tPreventaDets;
     }
     
-    public void setEnP1tPreventaDets(Set enP1tPreventaDets) {
+    public void setEnP1tPreventaDets(Set<EnP1tPreventaDet> enP1tPreventaDets) {
         this.enP1tPreventaDets = enP1tPreventaDets;
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="enP2mProducto")
-    public Set getEnP4tGuiaCompraDets() {
+    public Set<EnP4tGuiaCompraDet> getEnP4tGuiaCompraDets() {
         return this.enP4tGuiaCompraDets;
     }
     
-    public void setEnP4tGuiaCompraDets(Set enP4tGuiaCompraDets) {
+    public void setEnP4tGuiaCompraDets(Set<EnP4tGuiaCompraDet> enP4tGuiaCompraDets) {
         this.enP4tGuiaCompraDets = enP4tGuiaCompraDets;
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="enP2mProducto")
-    public Set getEnP4tFacturaCompraDets() {
+    public Set<EnP4tFacturaCompraDet> getEnP4tFacturaCompraDets() {
         return this.enP4tFacturaCompraDets;
     }
     
-    public void setEnP4tFacturaCompraDets(Set enP4tFacturaCompraDets) {
+    public void setEnP4tFacturaCompraDets(Set<EnP4tFacturaCompraDet> enP4tFacturaCompraDets) {
         this.enP4tFacturaCompraDets = enP4tFacturaCompraDets;
     }
 

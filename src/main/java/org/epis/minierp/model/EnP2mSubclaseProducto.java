@@ -29,7 +29,7 @@ public class EnP2mSubclaseProducto  implements java.io.Serializable {
      private EnP2mClaseProducto enP2mClaseProducto;
      private String subClaProDet;
      private char estRegCod;
-     private Set enP2mProductos = new HashSet(0);
+     private Set<EnP2mProducto> enP2mProductos = new HashSet(0);
 
     public EnP2mSubclaseProducto() {
     }
@@ -41,7 +41,7 @@ public class EnP2mSubclaseProducto  implements java.io.Serializable {
         this.subClaProDet = subClaProDet;
         this.estRegCod = estRegCod;
     }
-    public EnP2mSubclaseProducto(EnP2mSubclaseProductoId id, EnP2mClaseProducto enP2mClaseProducto, String subClaProDet, char estRegCod, Set enP2mProductos) {
+    public EnP2mSubclaseProducto(EnP2mSubclaseProductoId id, EnP2mClaseProducto enP2mClaseProducto, String subClaProDet, char estRegCod, Set<EnP2mProducto> enP2mProductos) {
        this.id = id;
        this.enP2mClaseProducto = enP2mClaseProducto;
        this.subClaProDet = subClaProDet;
@@ -94,11 +94,11 @@ public class EnP2mSubclaseProducto  implements java.io.Serializable {
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="enP2mSubclaseProducto")
-    public Set getEnP2mProductos() {
+    public Set<EnP2mProducto> getEnP2mProductos() {
         return this.enP2mProductos;
     }
     
-    public void setEnP2mProductos(Set enP2mProductos) {
+    public void setEnP2mProductos(Set<EnP2mProducto> enP2mProductos) {
         this.enP2mProductos = enP2mProductos;
     }
 

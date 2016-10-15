@@ -26,8 +26,8 @@ public class TaGzzTipoComprobante  implements java.io.Serializable {
      private Integer tipComCod;
      private String tipComDet;
      private char estRegCod;
-     private Set enP3mAsientoCabs = new HashSet(0);
-     private Set enP1mMovimientoPuntoVens = new HashSet(0);
+     private Set<EnP3mAsientoCab> enP3mAsientoCabs = new HashSet(0);
+     private Set<EnP1mMovimientoPuntoVen> enP1mMovimientoPuntoVens = new HashSet(0);
 
     public TaGzzTipoComprobante() {
     }
@@ -37,7 +37,7 @@ public class TaGzzTipoComprobante  implements java.io.Serializable {
         this.tipComDet = tipComDet;
         this.estRegCod = estRegCod;
     }
-    public TaGzzTipoComprobante(String tipComDet, char estRegCod, Set enP3mAsientoCabs, Set enP1mMovimientoPuntoVens) {
+    public TaGzzTipoComprobante(String tipComDet, char estRegCod, Set<EnP3mAsientoCab> enP3mAsientoCabs, Set<EnP1mMovimientoPuntoVen> enP1mMovimientoPuntoVens) {
        this.tipComDet = tipComDet;
        this.estRegCod = estRegCod;
        this.enP3mAsientoCabs = enP3mAsientoCabs;
@@ -77,20 +77,20 @@ public class TaGzzTipoComprobante  implements java.io.Serializable {
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="taGzzTipoComprobante")
-    public Set getEnP3mAsientoCabs() {
+    public Set<EnP3mAsientoCab> getEnP3mAsientoCabs() {
         return this.enP3mAsientoCabs;
     }
     
-    public void setEnP3mAsientoCabs(Set enP3mAsientoCabs) {
+    public void setEnP3mAsientoCabs(Set<EnP3mAsientoCab> enP3mAsientoCabs) {
         this.enP3mAsientoCabs = enP3mAsientoCabs;
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="taGzzTipoComprobante")
-    public Set getEnP1mMovimientoPuntoVens() {
+    public Set<EnP1mMovimientoPuntoVen> getEnP1mMovimientoPuntoVens() {
         return this.enP1mMovimientoPuntoVens;
     }
     
-    public void setEnP1mMovimientoPuntoVens(Set enP1mMovimientoPuntoVens) {
+    public void setEnP1mMovimientoPuntoVens(Set<EnP1mMovimientoPuntoVen> enP1mMovimientoPuntoVens) {
         this.enP1mMovimientoPuntoVens = enP1mMovimientoPuntoVens;
     }
 

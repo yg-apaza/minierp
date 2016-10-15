@@ -36,33 +36,33 @@ public class ReporteController  extends HttpServlet
                 break;
         }
         
-        String path = "";
+        String path = getServletContext().getRealPath("/WEB-INF/");
         String fileGenerated = "";
         
         switch(report)
         {
             //Reportes de Contabilidad
             case "plancontable":
-                path = Reporte.class.getClassLoader().getResource("org/epis/minierp/reporte/contabilidad/planContable.jrxml").getPath();
-                fileGenerated = generador.report(path, "PlanContable_", fileType, CONTABILIDAD);
+                path=path+"reportes/contabilidad/planContable.jrxml";
+                fileGenerated = generador.report(path, "PlanContable_", fileType);
                 break;
             case "cuentabancaria":
-                path = Reporte.class.getClassLoader().getResource("org/epis/minierp/reporte/contabilidad/cuentaBancaria.jrxml").getPath();
-                fileGenerated = generador.report(path, "CuentaBancaria_", fileType, CONTABILIDAD);
+                path=path+"reportes/contabilidad/cuentaBancaria.jrxml";
+                fileGenerated = generador.report(path, "CuentaBancaria_", fileType);
                 break;
             
             //Reportes de Ventas
             case "registroventas":
-                path = Reporte.class.getClassLoader().getResource("org/epis/minierp/reporte/ventas/registroVentas.jrxml").getPath();
-                fileGenerated = generador.report(path, "RegistroDeVentas_", fileType, VENTAS);
+                 path=path+"reportes/ventas/registroVentas.jrxml";
+                fileGenerated = generador.report(path, "RegistroDeVentas_", fileType);
                 break;
             case "clientes":
-                path = Reporte.class.getClassLoader().getResource("org/epis/minierp/reporte/ventas/clientes.jrxml").getPath();
-                fileGenerated = generador.report(path, "Clientes_", fileType, VENTAS);
+                 path=path+"reportes/ventas/clientes.jrxml";
+                fileGenerated = generador.report(path, "Clientes_", fileType);
                 break;
             case "puntodeventas":
-                path = Reporte.class.getClassLoader().getResource("org/epis/minierp/reporte/ventas/puntoVentas.jrxml").getPath();
-                fileGenerated = generador.report(path, "PuntoDeVentas_", fileType, VENTAS);
+                 path=path+"reportes/ventas/puntoVentas.jrxml";
+                fileGenerated = generador.report(path, "PuntoDeVentas_", fileType);
                 break;
                 
             //Reportes de Compras

@@ -26,7 +26,7 @@ public class TaGzzUnidadMed  implements java.io.Serializable {
      private Integer uniMedCod;
      private String uniMedDet;
      private char estRegCod;
-     private Set enP2mProductos = new HashSet(0);
+     private Set<EnP2mProducto> enP2mProductos = new HashSet(0);
 
     public TaGzzUnidadMed() {
     }
@@ -36,7 +36,7 @@ public class TaGzzUnidadMed  implements java.io.Serializable {
         this.uniMedDet = uniMedDet;
         this.estRegCod = estRegCod;
     }
-    public TaGzzUnidadMed(String uniMedDet, char estRegCod, Set enP2mProductos) {
+    public TaGzzUnidadMed(String uniMedDet, char estRegCod, Set<EnP2mProducto> enP2mProductos) {
        this.uniMedDet = uniMedDet;
        this.estRegCod = estRegCod;
        this.enP2mProductos = enP2mProductos;
@@ -75,11 +75,11 @@ public class TaGzzUnidadMed  implements java.io.Serializable {
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="taGzzUnidadMed")
-    public Set getEnP2mProductos() {
+    public Set<EnP2mProducto> getEnP2mProductos() {
         return this.enP2mProductos;
     }
     
-    public void setEnP2mProductos(Set enP2mProductos) {
+    public void setEnP2mProductos(Set<EnP2mProducto> enP2mProductos) {
         this.enP2mProductos = enP2mProductos;
     }
 

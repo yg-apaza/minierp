@@ -23,12 +23,13 @@
                 </div>
             
                
-                <div class="col-xs-5">
+                <div class="col-sm-4">
                 <button type="submit" class="btn btn-primary" name="button" value="btn_ver">Ver</button>
                 </div>
+                
                 <button type="submit" class="btn btn-danger" name="button" value="btn_reporteFisico">Reporte Fisico</button>
                 <button type="submit" class="btn btn-danger" name="button" value="btn_reporteValor">Reporte Valorizado</button>
-                 
+            
             </form>
 
                 <br><br>

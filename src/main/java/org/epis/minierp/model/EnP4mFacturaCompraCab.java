@@ -40,8 +40,8 @@ public class EnP4mFacturaCompraCab  implements java.io.Serializable {
      private int facComCabIgv;
      private String facComCabObs;
      private char estRegCod;
-     private Set enP4mGuiaCompraCabs = new HashSet(0);
-     private Set enP4tFacturaCompraDets = new HashSet(0);
+     private Set<EnP4mGuiaCompraCab> enP4mGuiaCompraCabs = new HashSet(0);
+     private Set<EnP4tFacturaCompraDet> enP4tFacturaCompraDets = new HashSet(0);
 
     public EnP4mFacturaCompraCab() {
     }
@@ -63,7 +63,7 @@ public class EnP4mFacturaCompraCab  implements java.io.Serializable {
         this.facComCabObs = facComCabObs;
         this.estRegCod = estRegCod;
     }
-    public EnP4mFacturaCompraCab(String facComCabCod, EnP1mUsuario enP1mUsuario, EnP4mProveedor enP4mProveedor, TaGzzEstadoFactura taGzzEstadoFactura, TaGzzMetodoPagoFactura taGzzMetodoPagoFactura, TaGzzMoneda taGzzMoneda, TaGzzTipoPagoFactura taGzzTipoPagoFactura, Date facComCabFec, double facComCabTot, double facComCabDes, double facComCabSubTot, int facComCabIgv, String facComCabObs, char estRegCod, Set enP4mGuiaCompraCabs, Set enP4tFacturaCompraDets) {
+    public EnP4mFacturaCompraCab(String facComCabCod, EnP1mUsuario enP1mUsuario, EnP4mProveedor enP4mProveedor, TaGzzEstadoFactura taGzzEstadoFactura, TaGzzMetodoPagoFactura taGzzMetodoPagoFactura, TaGzzMoneda taGzzMoneda, TaGzzTipoPagoFactura taGzzTipoPagoFactura, Date facComCabFec, double facComCabTot, double facComCabDes, double facComCabSubTot, int facComCabIgv, String facComCabObs, char estRegCod, Set<EnP4mGuiaCompraCab> enP4mGuiaCompraCabs, Set<EnP4tFacturaCompraDet> enP4tFacturaCompraDets) {
        this.facComCabCod = facComCabCod;
        this.enP1mUsuario = enP1mUsuario;
        this.enP4mProveedor = enP4mProveedor;
@@ -225,20 +225,20 @@ public class EnP4mFacturaCompraCab  implements java.io.Serializable {
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="enP4mFacturaCompraCab")
-    public Set getEnP4mGuiaCompraCabs() {
+    public Set<EnP4mGuiaCompraCab> getEnP4mGuiaCompraCabs() {
         return this.enP4mGuiaCompraCabs;
     }
     
-    public void setEnP4mGuiaCompraCabs(Set enP4mGuiaCompraCabs) {
+    public void setEnP4mGuiaCompraCabs(Set<EnP4mGuiaCompraCab> enP4mGuiaCompraCabs) {
         this.enP4mGuiaCompraCabs = enP4mGuiaCompraCabs;
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="enP4mFacturaCompraCab")
-    public Set getEnP4tFacturaCompraDets() {
+    public Set<EnP4tFacturaCompraDet> getEnP4tFacturaCompraDets() {
         return this.enP4tFacturaCompraDets;
     }
     
-    public void setEnP4tFacturaCompraDets(Set enP4tFacturaCompraDets) {
+    public void setEnP4tFacturaCompraDets(Set<EnP4tFacturaCompraDet> enP4tFacturaCompraDets) {
         this.enP4tFacturaCompraDets = enP4tFacturaCompraDets;
     }
 

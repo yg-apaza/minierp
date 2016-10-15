@@ -29,7 +29,7 @@ public class EnP2mAlmacen  implements java.io.Serializable {
      private Double almVolTot;
      private String almObs;
      private char estRegCod;
-     private Set enP2mProductos = new HashSet(0);
+     private Set<EnP2mProducto> enP2mProductos = new HashSet(0);
 
     public EnP2mAlmacen() {
     }
@@ -41,7 +41,7 @@ public class EnP2mAlmacen  implements java.io.Serializable {
         this.almObs = almObs;
         this.estRegCod = estRegCod;
     }
-    public EnP2mAlmacen(String almCod, EnP1mSucursal enP1mSucursal, String almDet, Double almVolTot, String almObs, char estRegCod, Set enP2mProductos) {
+    public EnP2mAlmacen(String almCod, EnP1mSucursal enP1mSucursal, String almDet, Double almVolTot, String almObs, char estRegCod, Set<EnP2mProducto> enP2mProductos) {
        this.almCod = almCod;
        this.enP1mSucursal = enP1mSucursal;
        this.almDet = almDet;
@@ -114,11 +114,11 @@ public class EnP2mAlmacen  implements java.io.Serializable {
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="enP2mAlmacen")
-    public Set getEnP2mProductos() {
+    public Set<EnP2mProducto> getEnP2mProductos() {
         return this.enP2mProductos;
     }
     
-    public void setEnP2mProductos(Set enP2mProductos) {
+    public void setEnP2mProductos(Set<EnP2mProducto> enP2mProductos) {
         this.enP2mProductos = enP2mProductos;
     }
 

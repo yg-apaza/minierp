@@ -26,7 +26,7 @@ public class EnP3mLibroDiario  implements java.io.Serializable {
      private Integer libDiaCod;
      private String libDiaPer;
      private char estRegCod;
-     private Set enP3mAsientoCabs = new HashSet(0);
+     private Set<EnP3mAsientoCab> enP3mAsientoCabs = new HashSet(0);
 
     public EnP3mLibroDiario() {
     }
@@ -36,7 +36,7 @@ public class EnP3mLibroDiario  implements java.io.Serializable {
         this.libDiaPer = libDiaPer;
         this.estRegCod = estRegCod;
     }
-    public EnP3mLibroDiario(String libDiaPer, char estRegCod, Set enP3mAsientoCabs) {
+    public EnP3mLibroDiario(String libDiaPer, char estRegCod, Set<EnP3mAsientoCab> enP3mAsientoCabs) {
        this.libDiaPer = libDiaPer;
        this.estRegCod = estRegCod;
        this.enP3mAsientoCabs = enP3mAsientoCabs;
@@ -75,11 +75,11 @@ public class EnP3mLibroDiario  implements java.io.Serializable {
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="enP3mLibroDiario")
-    public Set getEnP3mAsientoCabs() {
+    public Set<EnP3mAsientoCab> getEnP3mAsientoCabs() {
         return this.enP3mAsientoCabs;
     }
     
-    public void setEnP3mAsientoCabs(Set enP3mAsientoCabs) {
+    public void setEnP3mAsientoCabs(Set<EnP3mAsientoCab> enP3mAsientoCabs) {
         this.enP3mAsientoCabs = enP3mAsientoCabs;
     }
 

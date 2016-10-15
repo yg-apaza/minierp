@@ -1,4 +1,4 @@
-package org.epis.minierp.view.contabilidad;
+package org.epis.minierp.model.contabilidad;
 // Generated 14/10/2016 06:01:40 PM by Hibernate Tools 4.3.1
 
 

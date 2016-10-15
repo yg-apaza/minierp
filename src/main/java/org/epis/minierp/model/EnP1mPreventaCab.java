@@ -38,8 +38,8 @@ public class EnP1mPreventaCab  implements java.io.Serializable {
      private int preVenCabIgv;
      private String preVenCabObs;
      private char estRegCod;
-     private Set enP1cPreventaRealizadases = new HashSet(0);
-     private Set enP1tPreventaDets = new HashSet(0);
+     private Set<EnP1cPreventaRealizadas> enP1cPreventaRealizadases = new HashSet(0);
+     private Set<EnP1tPreventaDet> enP1tPreventaDets = new HashSet(0);
 
     public EnP1mPreventaCab() {
     }
@@ -59,7 +59,7 @@ public class EnP1mPreventaCab  implements java.io.Serializable {
         this.preVenCabObs = preVenCabObs;
         this.estRegCod = estRegCod;
     }
-    public EnP1mPreventaCab(String preVenCabCod, EnP1mCliente enP1mCliente, EnP1mUsuario enP1mUsuario, TaGzzMoneda taGzzMoneda, Date preVenCabFec, int preVenCabPla, double preVenCabTot, double preVenCabDes, double preVenCabSubTot, int preVenCabIgv, String preVenCabObs, char estRegCod, Set enP1cPreventaRealizadases, Set enP1tPreventaDets) {
+    public EnP1mPreventaCab(String preVenCabCod, EnP1mCliente enP1mCliente, EnP1mUsuario enP1mUsuario, TaGzzMoneda taGzzMoneda, Date preVenCabFec, int preVenCabPla, double preVenCabTot, double preVenCabDes, double preVenCabSubTot, int preVenCabIgv, String preVenCabObs, char estRegCod, Set<EnP1cPreventaRealizadas> enP1cPreventaRealizadases, Set<EnP1tPreventaDet> enP1tPreventaDets) {
        this.preVenCabCod = preVenCabCod;
        this.enP1mCliente = enP1mCliente;
        this.enP1mUsuario = enP1mUsuario;
@@ -199,20 +199,20 @@ public class EnP1mPreventaCab  implements java.io.Serializable {
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="enP1mPreventaCab")
-    public Set getEnP1cPreventaRealizadases() {
+    public Set<EnP1cPreventaRealizadas> getEnP1cPreventaRealizadases() {
         return this.enP1cPreventaRealizadases;
     }
     
-    public void setEnP1cPreventaRealizadases(Set enP1cPreventaRealizadases) {
+    public void setEnP1cPreventaRealizadases(Set<EnP1cPreventaRealizadas> enP1cPreventaRealizadases) {
         this.enP1cPreventaRealizadases = enP1cPreventaRealizadases;
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="enP1mPreventaCab")
-    public Set getEnP1tPreventaDets() {
+    public Set<EnP1tPreventaDet> getEnP1tPreventaDets() {
         return this.enP1tPreventaDets;
     }
     
-    public void setEnP1tPreventaDets(Set enP1tPreventaDets) {
+    public void setEnP1tPreventaDets(Set<EnP1tPreventaDet> enP1tPreventaDets) {
         this.enP1tPreventaDets = enP1tPreventaDets;
     }
 

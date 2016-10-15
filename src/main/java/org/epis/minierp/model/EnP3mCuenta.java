@@ -23,10 +23,10 @@ public class EnP3mCuenta implements java.io.Serializable, Comparable<EnP3mCuenta
     private String cueNum;
     private String cueDes;
     private char estRegCod;
-    private Set enP3tAsientoDets = new HashSet(0);
-    private Set enP3mCuentaBancos = new HashSet(0);
-    private Set enP3mCuentas = new HashSet(0);
-    private Set enP3tPlantillaDets = new HashSet(0);
+    private Set<EnP3tAsientoDet> enP3tAsientoDets = new HashSet(0);
+    private Set<EnP3mCuentaBanco> enP3mCuentaBancos = new HashSet(0);
+    private Set<EnP3mCuenta> enP3mCuentas = new HashSet(0);
+    private Set<EnP3tPlantillaDet> enP3tPlantillaDets = new HashSet(0);
 
     public EnP3mCuenta() {
     }
@@ -38,7 +38,7 @@ public class EnP3mCuenta implements java.io.Serializable, Comparable<EnP3mCuenta
         this.estRegCod = estRegCod;
     }
 
-    public EnP3mCuenta(EnP3mCuenta enP3mCuenta, int cueNiv, String cueNum, String cueDes, char estRegCod, Set enP3tAsientoDets, Set enP3mCuentaBancos, Set enP3mCuentas, Set enP3tPlantillaDets) {
+    public EnP3mCuenta(EnP3mCuenta enP3mCuenta, int cueNiv, String cueNum, String cueDes, char estRegCod, Set<EnP3tAsientoDet> enP3tAsientoDets, Set<EnP3mCuentaBanco> enP3mCuentaBancos, Set<EnP3mCuenta> enP3mCuentas, Set<EnP3tPlantillaDet> enP3tPlantillaDets) {
         this.enP3mCuenta = enP3mCuenta;
         this.cueNiv = cueNiv;
         this.cueNum = cueNum;
@@ -109,38 +109,38 @@ public class EnP3mCuenta implements java.io.Serializable, Comparable<EnP3mCuenta
     }
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "enP3mCuenta")
-    public Set getEnP3tAsientoDets() {
+    public Set<EnP3tAsientoDet> getEnP3tAsientoDets() {
         return this.enP3tAsientoDets;
     }
 
-    public void setEnP3tAsientoDets(Set enP3tAsientoDets) {
+    public void setEnP3tAsientoDets(Set<EnP3tAsientoDet> enP3tAsientoDets) {
         this.enP3tAsientoDets = enP3tAsientoDets;
     }
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "enP3mCuenta")
-    public Set getEnP3mCuentaBancos() {
+    public Set<EnP3mCuentaBanco> getEnP3mCuentaBancos() {
         return this.enP3mCuentaBancos;
     }
 
-    public void setEnP3mCuentaBancos(Set enP3mCuentaBancos) {
+    public void setEnP3mCuentaBancos(Set<EnP3mCuentaBanco> enP3mCuentaBancos) {
         this.enP3mCuentaBancos = enP3mCuentaBancos;
     }
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "enP3mCuenta")
-    public Set getEnP3mCuentas() {
+    public Set<EnP3mCuenta> getEnP3mCuentas() {
         return this.enP3mCuentas;
     }
 
-    public void setEnP3mCuentas(Set enP3mCuentas) {
+    public void setEnP3mCuentas(Set<EnP3mCuenta> enP3mCuentas) {
         this.enP3mCuentas = enP3mCuentas;
     }
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "enP3mCuenta")
-    public Set getEnP3tPlantillaDets() {
+    public Set<EnP3tPlantillaDet> getEnP3tPlantillaDets() {
         return this.enP3tPlantillaDets;
     }
 
-    public void setEnP3tPlantillaDets(Set enP3tPlantillaDets) {
+    public void setEnP3tPlantillaDets(Set<EnP3tPlantillaDet> enP3tPlantillaDets) {
         this.enP3tPlantillaDets = enP3tPlantillaDets;
     }
 

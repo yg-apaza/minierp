@@ -29,7 +29,7 @@ public class EnP1mPuntoVenta  implements java.io.Serializable {
      private EnP1mSucursal enP1mSucursal;
      private String punVenDes;
      private char estRegCod;
-     private Set enP1mMovimientoPuntoVens = new HashSet(0);
+     private Set<EnP1mMovimientoPuntoVen> enP1mMovimientoPuntoVens = new HashSet(0);
 
     public EnP1mPuntoVenta() {
     }
@@ -41,7 +41,7 @@ public class EnP1mPuntoVenta  implements java.io.Serializable {
         this.punVenDes = punVenDes;
         this.estRegCod = estRegCod;
     }
-    public EnP1mPuntoVenta(EnP1mPuntoVentaId id, EnP1mSucursal enP1mSucursal, String punVenDes, char estRegCod, Set enP1mMovimientoPuntoVens) {
+    public EnP1mPuntoVenta(EnP1mPuntoVentaId id, EnP1mSucursal enP1mSucursal, String punVenDes, char estRegCod, Set<EnP1mMovimientoPuntoVen> enP1mMovimientoPuntoVens) {
        this.id = id;
        this.enP1mSucursal = enP1mSucursal;
        this.punVenDes = punVenDes;
@@ -94,11 +94,11 @@ public class EnP1mPuntoVenta  implements java.io.Serializable {
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="enP1mPuntoVenta")
-    public Set getEnP1mMovimientoPuntoVens() {
+    public Set<EnP1mMovimientoPuntoVen> getEnP1mMovimientoPuntoVens() {
         return this.enP1mMovimientoPuntoVens;
     }
     
-    public void setEnP1mMovimientoPuntoVens(Set enP1mMovimientoPuntoVens) {
+    public void setEnP1mMovimientoPuntoVens(Set<EnP1mMovimientoPuntoVen> enP1mMovimientoPuntoVens) {
         this.enP1mMovimientoPuntoVens = enP1mMovimientoPuntoVens;
     }
 

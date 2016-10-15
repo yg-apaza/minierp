@@ -26,7 +26,7 @@ public class TaGzzTipoDocUsuario  implements java.io.Serializable {
      private Integer tipDocUsuCod;
      private String tipDocUsuDet;
      private char estRegCod;
-     private Set enP1mDocumentoUsuarios = new HashSet(0);
+     private Set<EnP1mDocumentoUsuario> enP1mDocumentoUsuarios = new HashSet(0);
 
     public TaGzzTipoDocUsuario() {
     }
@@ -36,7 +36,7 @@ public class TaGzzTipoDocUsuario  implements java.io.Serializable {
         this.tipDocUsuDet = tipDocUsuDet;
         this.estRegCod = estRegCod;
     }
-    public TaGzzTipoDocUsuario(String tipDocUsuDet, char estRegCod, Set enP1mDocumentoUsuarios) {
+    public TaGzzTipoDocUsuario(String tipDocUsuDet, char estRegCod, Set<EnP1mDocumentoUsuario> enP1mDocumentoUsuarios) {
        this.tipDocUsuDet = tipDocUsuDet;
        this.estRegCod = estRegCod;
        this.enP1mDocumentoUsuarios = enP1mDocumentoUsuarios;
@@ -75,11 +75,11 @@ public class TaGzzTipoDocUsuario  implements java.io.Serializable {
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="taGzzTipoDocUsuario")
-    public Set getEnP1mDocumentoUsuarios() {
+    public Set<EnP1mDocumentoUsuario> getEnP1mDocumentoUsuarios() {
         return this.enP1mDocumentoUsuarios;
     }
     
-    public void setEnP1mDocumentoUsuarios(Set enP1mDocumentoUsuarios) {
+    public void setEnP1mDocumentoUsuarios(Set<EnP1mDocumentoUsuario> enP1mDocumentoUsuarios) {
         this.enP1mDocumentoUsuarios = enP1mDocumentoUsuarios;
     }
 
