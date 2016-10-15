@@ -111,7 +111,7 @@
                                                 <a href = "${pageContext.request.contextPath}/secured/compras/form_proveedor">Añadir Proveedor</a>
                                             </li>                                            
                                             <li>
-                                                <a href="${pageContext.request.contextPath}/secured/compras/inventario/nuevoProducto">Añadir Producto</a>
+                                                <a href="${pageContext.request.contextPath}/secured/compras/productos">Productos</a>
                                             </li>
                                         </ul>
                                     </li>
