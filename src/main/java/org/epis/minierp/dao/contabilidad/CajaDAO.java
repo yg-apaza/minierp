@@ -15,7 +15,7 @@ public class CajaDAO {
     }
     
     public List<CajaView> getView(){
-        Query query = session.createQuery("from CajaModel");
+        Query query = session.createQuery("from CajaView");
         return query.list();
     }
 }
