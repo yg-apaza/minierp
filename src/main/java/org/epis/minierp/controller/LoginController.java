@@ -29,6 +29,7 @@ public class LoginController extends HttpServlet
                     response.sendRedirect(request.getContextPath() + "/secured/general");
                     break;
                 case 2:
+                    System.out.println("VENTAS 1");
                     response.sendRedirect(request.getContextPath() + "/secured/ventas");
                     break;
                 case 3:
@@ -62,6 +63,7 @@ public class LoginController extends HttpServlet
                     response.sendRedirect(request.getContextPath() + "/secured/general");
                     break;
                 case 2:
+                    System.out.println("VENTAS POST");
                     response.sendRedirect(request.getContextPath() + "/secured/ventas");
                     break;
                 case 3:
