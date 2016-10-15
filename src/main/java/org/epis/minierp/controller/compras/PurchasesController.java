@@ -76,23 +76,7 @@ public class PurchasesController extends HttpServlet {
             List <String> productsAmounts = Arrays.asList((request.getParameter("productsAmounts")).split("\\s*,\\s*"));
             List <String> productsDescriptions = Arrays.asList((request.getParameter("productsDescriptions")).split("\\s*,\\s*"));
             List <String> productsPrices = Arrays.asList((request.getParameter("productsPrices")).split("\\s*,\\s*"));
-         
-            System.out.println("Estado Extraído " + estFacCod);
-            System.out.println("Numero Extraído " + facComCabCod);
-            System.out.println("Codigo Extraído " + proCod);
-            System.out.println("Fecha Extraído " + facComCabFec);
-            System.out.println("Moneda Extraído " + monCod);
-            System.out.println("Tipo Pago Extraído " + tipPagCod);
-            System.out.println("Metodo Pago Extraído " + metPagCod);
-            System.out.println("Observaciones Extraídas " + facComCabObs);
-            System.out.println("IGV Extraído " + facComCabIgv);
-            System.out.println("Total Extraído " + facComCabTot);
-            System.out.println("Descuento Extraído " + facComCabDes);
-            System.out.println("Subtotal Extraído " + facComCabSubTot);
-            System.out.println("List A " + productsAmounts);
-            System.out.println("List D " + productsDescriptions);
-            System.out.println("List P " + productsPrices);
-            
+                     
             EnP4mFacturaCompraCabDao factura = new EnP4mFacturaCompraCabDao();
             EnP4mFacturaCompraCab header = new EnP4mFacturaCompraCab();
             
