@@ -9,6 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.epis.minierp.dao.general.EnP1mEmpresaDao;
 import org.epis.minierp.dao.general.TaGzzEstadoFacturaDao;
 import org.epis.minierp.dao.general.TaGzzMetodoPagoFacturaDao;
 import org.epis.minierp.dao.general.TaGzzMonedaDao;
@@ -16,11 +17,16 @@ import org.epis.minierp.dao.general.TaGzzTipoPagoFacturaDao;
 import org.epis.minierp.dao.ventas.EnP1mClienteDao;
 import org.epis.minierp.dao.ventas.EnP1mFacturaVentaCabDao;
 import org.epis.minierp.dao.general.EnP1mUsuarioDao;
+import org.epis.minierp.dao.logistica.EnP2mClaseProductoDao;
 import org.epis.minierp.dao.logistica.EnP2mProductoDao;
+import org.epis.minierp.dao.logistica.EnP2mSubclaseProductoDao;
 import org.epis.minierp.model.EnP1mCliente;
+import org.epis.minierp.model.EnP1mEmpresa;
 import org.epis.minierp.model.EnP1mFacturaVentaCab;
 import org.epis.minierp.model.EnP1mUsuario;
+import org.epis.minierp.model.EnP2mClaseProducto;
 import org.epis.minierp.model.EnP2mProducto;
+import org.epis.minierp.model.EnP2mSubclaseProducto;
 import org.epis.minierp.model.TaGzzEstadoFactura;
 import org.epis.minierp.model.TaGzzMetodoPagoFactura;
 import org.epis.minierp.model.TaGzzMoneda;
@@ -39,6 +45,10 @@ public class AddFacturaController extends HttpServlet
         List <EnP2mProducto> productos = (new EnP2mProductoDao()).getAllActive(); 
         List <TaGzzEstadoFactura> estados = (new TaGzzEstadoFacturaDao()).getAllActive();
         List <EnP1mCliente> clientes = (new EnP1mClienteDao()).getAllActive();
+        List <EnP2mClaseProducto> clases = (new EnP2mClaseProductoDao()).getAllActive();
+        List <EnP2mSubclaseProducto> subclases = (new EnP2mSubclaseProductoDao()).getAllActive();
+        EnP1mEmpresa empresa = (new EnP1mEmpresaDao()).getAll().get(0);
+        System.out.println(empresa.getEmpIgv());
         
         request.setAttribute("metodosPagoFactura", metodosPagoFactura);
         request.setAttribute("monedas", monedas);
@@ -46,6 +56,9 @@ public class AddFacturaController extends HttpServlet
         request.setAttribute("productos", productos);
         request.setAttribute("estados", estados);
         request.setAttribute("clientes", clientes);
+        request.setAttribute("clases", clases);
+        request.setAttribute("subclases", subclases);
+        request.setAttribute("empresa", empresa);
         
         request.getRequestDispatcher("/WEB-INF/ventas/factura/addFactura.jsp").forward(request, response);
     }
