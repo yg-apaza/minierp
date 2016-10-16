@@ -284,16 +284,7 @@
         <servlet-name>PointSaleController</servlet-name>
         <url-pattern>/secured/configuracion/puntodeventa</url-pattern>
     </servlet-mapping>
-    <servlet>
-        <description/>
-        <display-name>AddPointSaleController</display-name>
-        <servlet-name>AddPointSaleController</servlet-name>
-        <servlet-class>org.epis.minierp.controller.configuracion.AddPointSaleController</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>AddPointSaleController</servlet-name>
-        <url-pattern>/secured/configuracion/addpuntoventa</url-pattern>
-    </servlet-mapping>
+    
     <!-- Modulo de Contabilidad -->
     <servlet>
         <description/>
@@ -507,6 +498,7 @@
         <servlet-name>addPagoController</servlet-name>
         <url-pattern>/secured/ventas/pagos/addPago</url-pattern>
     </servlet-mapping>
+    
     <!--         ERRORS         -->
     <error-page>
         <location>/error.jsp</location>
