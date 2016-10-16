@@ -52,7 +52,7 @@ public class UpdateControllerPost extends HttpServlet {
             op.updateUsuario(u);
         }catch (Exception e) {
         }
-        response.sendRedirect(request.getContextPath() + "/secured/configuracion/usuarios");
+        response.sendRedirect(request.getContextPath() + "/secured/configuracion/usuario/usuarios");
     }
     
     @Override

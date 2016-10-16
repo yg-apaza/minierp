@@ -56,7 +56,7 @@ public class AddUsuarioController extends HttpServlet
             u.setUsuSex(request.getParameter("usuSex").charAt(0));
             u.setEstRegCod('A');
             daoUsu.save(u);
-            response.sendRedirect(request.getContextPath() + "/secured/general/usuarios");
+            response.sendRedirect(request.getContextPath() + "/secured/configuracion/usuario/usuarios");
         } catch (ParseException ex) {
             Logger.getLogger(AddUsuarioController.class.getName()).log(Level.SEVERE, null, ex);
         }
