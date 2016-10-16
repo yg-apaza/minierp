@@ -63,42 +63,42 @@
                         <div class="row">
 
                             <div class="col-md-12">
-
-                                <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
-                                    <thead>
-                                      <tr >
-                                        <th rowspan="2">NÚMERO CORRELATIVO <br>DE LA OPERACION</th>
-                                        <th rowspan="2">FECHA DE LA <br>OPERACION</th>
-                                        <th rowspan="2">GLOSA O DESCRIPCION DE LA <br>OPERACION</th>
-                                        <th colspan="2">REFERENCIA DE LA OPERACION</th>
-                                        <th colspan="2">CUENTA CONTABLE ASOCIADA A LA OPERACION</th>
-                                        <th colspan="2">MOVIMIENTO</th>
-                                      </tr>
-                                      <tr>
-                                        <th>CODIGO DEL LIBRO O<br>REGISTRO</th>
-                                        <th>NUMERO DEL DOCUMENTO<br>SUSTENTATORIO</th>
-                                        <th>CODIGO</th>
-                                        <th>DENOMINACION</th>
-                                        <th>DEBE</th>
-                                        <th>HABER</th>
-                                      </tr>
-                                    </thead>
-                                    <tbody>
-                                          <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-
+                                <div class="table-responsive">
+                                    <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                        <thead>
+                                          <tr >
+                                            <th rowspan="2">NÚMERO CORRELATIVO <br>DE LA OPERACION</th>
+                                            <th rowspan="2">FECHA DE LA <br>OPERACION</th>
+                                            <th rowspan="2">GLOSA O DESCRIPCION DE LA <br>OPERACION</th>
+                                            <th colspan="2">REFERENCIA DE LA OPERACION</th>
+                                            <th colspan="2">CUENTA CONTABLE ASOCIADA A LA OPERACION</th>
+                                            <th colspan="2">MOVIMIENTO</th>
                                           </tr>
-                                    </tbody>
-                                </table>
-                                
+                                          <tr>
+                                            <th>CODIGO DEL LIBRO O<br>REGISTRO</th>
+                                            <th>NUMERO DEL DOCUMENTO<br>SUSTENTATORIO</th>
+                                            <th>CODIGO</th>
+                                            <th>DENOMINACION</th>
+                                            <th>DEBE</th>
+                                            <th>HABER</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                              <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+
+                                              </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                             
                         </div>

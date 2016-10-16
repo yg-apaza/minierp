@@ -5,7 +5,7 @@
 
 <minierptemplate:template>
     <jsp:attribute name="titulo">
-        <title>MiniERP - Factura</title>
+        <title>Ventas - Factura</title>
     </jsp:attribute>
     <jsp:attribute name="contenido">       
         <div id="pagel-body">
@@ -171,18 +171,20 @@
                                         </div>                                    
                                     </div>
                                 </form>
-                                <table width="100%" class="table table-striped table-bordered table-hover" id="productTable">
-                                    <thead align="center">
-                                        <tr >
-                                            <th>Código</th>
-                                            <th>Cantidad</th>
-                                            <th>Descripción del Producto</th>
-                                            <th colspan="2">Precio Unitario</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>                                        
-                                    </tbody>
-                                </table>
+                                <div class="table-responsive">
+                                    <table width="100%" class="table table-striped table-bordered table-hover" id="productTable">
+                                        <thead align="center">
+                                            <tr >
+                                                <th>Código</th>
+                                                <th>Cantidad</th>
+                                                <th>Descripción del Producto</th>
+                                                <th colspan="2">Precio Unitario</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>                                        
+                                        </tbody>
+                                    </table>
+                                </div>
                                 <input type="hidden" class="form-control" name="productsAmounts" id="proAmo">
                                 <input type="hidden" class="form-control" name="productsDescriptions" id="proDes">
                                 <div class="row">

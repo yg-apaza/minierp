@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <minierptemplate:template>
     <jsp:attribute name="titulo">
-        <title>MiniERP - Clientes</title>
+        <title>Ventas - Clientes</title>
     </jsp:attribute>
     <jsp:attribute name="contenido">
         <div class="container">
