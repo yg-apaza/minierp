@@ -10,6 +10,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.epis.minierp.business.configuracion.EnP1mPuntoVentaBusiness;
 import org.epis.minierp.dao.general.EnP1mPuntoVentaDao;
 import org.epis.minierp.dao.general.EnP1mSucursalDao;
 import org.epis.minierp.model.EnP1mPuntoVenta;
@@ -24,6 +25,7 @@ public class PointSaleController extends HttpServlet {
     private static final long serialVersionUID = 1L;
     EnP1mPuntoVentaDao puntoVentaDao;
     EnP1mSucursalDao sucursalDao;
+    EnP1mPuntoVentaBusiness puntoVentaBusiness;
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -40,53 +42,39 @@ public class PointSaleController extends HttpServlet {
         String action = request.getParameter("accion");
         puntoVentaDao = new EnP1mPuntoVentaDao();
         sucursalDao = new EnP1mSucursalDao();
+        puntoVentaBusiness = new EnP1mPuntoVentaBusiness();
+        
         switch(action) {
             case "create":
-                EnP1mPuntoVenta pv = new EnP1mPuntoVenta();
                 int sucCodCreate = Integer.parseInt(request.getParameter("sucCod"));
                 String punVenDesCreate = request.getParameter("punVenDes");
                 int punVenCodCreate = puntoVentaDao.getLastPunVenCod();
-                pv.setId(new EnP1mPuntoVentaId(punVenCodCreate, sucCodCreate));
-                pv.setPunVenDes(punVenDesCreate);
-                pv.setEstRegCod('A');
-                puntoVentaDao.save(pv);
-                puntoVentaDao.getLastPunVenCod();
+                puntoVentaBusiness.create(sucCodCreate, punVenCodCreate, punVenDesCreate, 'A');
                 break;
                 
             case "update":
                 int sucCodUpdate = Integer.parseInt(request.getParameter("sucCod"));
                 int punVenCodUpdate = Integer.parseInt(request.getParameter("punVenCod"));
                 String punVenDesUpdate = request.getParameter("punVenDes");
-                EnP1mPuntoVenta pvLoad = puntoVentaDao.getById(new EnP1mPuntoVentaId(punVenCodUpdate, sucCodUpdate));
-                pvLoad.setPunVenDes(punVenDesUpdate);
-                puntoVentaDao.update(pvLoad);
+                puntoVentaBusiness.update(sucCodUpdate, punVenCodUpdate, punVenDesUpdate);
                 break;
                 
             case "disable":
                 int sucCodDisable = Integer.parseInt(request.getParameter("sucCod"));
                 int punVenCodDisable = Integer.parseInt(request.getParameter("punVenCod"));
-                EnP1mPuntoVentaId key4Disable = new EnP1mPuntoVentaId(punVenCodDisable, sucCodDisable);
-                EnP1mPuntoVenta pvDisable = puntoVentaDao.getById(key4Disable);
-                pvDisable.setEstRegCod('I');
-                puntoVentaDao.update(pvDisable);
+                puntoVentaBusiness.disable(sucCodDisable, punVenCodDisable);
                 break;
                 
             case "activate":
                 int sucCodActivate = Integer.parseInt(request.getParameter("sucCod"));
                 int punVenCodActivate = Integer.parseInt(request.getParameter("punVenCod"));
-                EnP1mPuntoVentaId key4Activate = new EnP1mPuntoVentaId(punVenCodActivate, sucCodActivate);
-                EnP1mPuntoVenta pvActivate = puntoVentaDao.getById(key4Activate);
-                pvActivate.setEstRegCod('A');
-                puntoVentaDao.update(pvActivate);
+                puntoVentaBusiness.activate(sucCodActivate, punVenCodActivate);
                 break;
                 
             case "delete":
                 int sucCodDelete = Integer.parseInt(request.getParameter("sucCod"));
                 int punVenCodDelete = Integer.parseInt(request.getParameter("punVenCod"));
-                EnP1mPuntoVentaId key4Delete = new EnP1mPuntoVentaId(punVenCodDelete, sucCodDelete);
-                EnP1mPuntoVenta pvDelete = puntoVentaDao.getById(key4Delete);
-                pvDelete.setEstRegCod('*');
-                puntoVentaDao.update(pvDelete);
+                puntoVentaBusiness.delete(sucCodDelete, punVenCodDelete);
                 break;
                 
         }
