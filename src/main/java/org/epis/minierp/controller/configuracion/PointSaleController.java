@@ -40,16 +40,13 @@ public class PointSaleController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("accion");
-        puntoVentaDao = new EnP1mPuntoVentaDao();
-        sucursalDao = new EnP1mSucursalDao();
         puntoVentaBusiness = new EnP1mPuntoVentaBusiness();
         
         switch(action) {
             case "create":
                 int sucCodCreate = Integer.parseInt(request.getParameter("sucCod"));
                 String punVenDesCreate = request.getParameter("punVenDes");
-                int punVenCodCreate = puntoVentaDao.getLastPunVenCod();
-                puntoVentaBusiness.create(sucCodCreate, punVenCodCreate, punVenDesCreate, 'A');
+                puntoVentaBusiness.create(sucCodCreate, punVenDesCreate, 'A');
                 break;
                 
             case "update":

@@ -12,7 +12,8 @@ public class EnP1mPuntoVentaBusiness {
         pvDao = new EnP1mPuntoVentaDao();
     }
 
-    public void create(int sucCod, int punVenCod, String punVenDes, char estRegCod) {
+    public void create(int sucCod, String punVenDes, char estRegCod) {
+        int punVenCod = pvDao.getLastPunVenCod();
         EnP1mPuntoVenta pv = new EnP1mPuntoVenta();
         pv.setId(new EnP1mPuntoVentaId(punVenCod, sucCod));
         pv.setPunVenDes(punVenDes);
