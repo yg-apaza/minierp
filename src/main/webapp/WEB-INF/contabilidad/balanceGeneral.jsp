@@ -28,22 +28,24 @@ function imprSelec(muestra)
         				<table class="table" width="100%">
         				<tr>
         				<td width="50%">
+                                            <div class="table-responsive">
         					<table id="tablaActivo" class="table table-hover table-bordered table-striped">
-	        					<thead>
-	        						<tr class="info">
-	        							<th>ACTIVO</th>
-	        							<th>EJERCICIO O PERIODO</th>
-	        						</tr>
-	        					</thead>
-	        					<tbody>
-	        						<c:forEach items="${lista.get(0)}" var="la">
-	        						<tr>
-	        							<td> ${la.get(0)} </td>
-	        							<td> ${la.get(1)} </td>
-                                    </tr>
-		        					</c:forEach>
-	        					</tbody>
+                                                    <thead>
+                                                            <tr class="info">
+                                                                    <th>ACTIVO</th>
+                                                                    <th>EJERCICIO O PERIODO</th>
+                                                            </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <c:forEach items="${lista.get(0)}" var="la">
+                                                            <tr>
+                                                                    <td> ${la.get(0)} </td>
+                                                                    <td> ${la.get(1)} </td>
+                                                            </tr>
+                                                            </c:forEach>
+                                                    </tbody>
 	        				</table>
+                                            </div>
 	        			</td>
 	        			<td width="50%">
 		        			<table id="tablaPasivo" class="table table-hover table-bordered table-striped">

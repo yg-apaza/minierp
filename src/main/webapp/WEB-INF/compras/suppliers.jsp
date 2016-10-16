@@ -15,39 +15,38 @@
             </div>
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading" style="height: 55px;">
-                            <button class="btn btn-success" id="addbtn" style="float: right; display: block;"> Agregar nuevo </button> 
-                        </div>
-                    </div>
+                    <button class="btn btn-success" id="addbtn"> Agregar nuevo </button> 
                 </div>
             </div>
             <br>
             <div id="printarea">
-                <table class = "table table-bordered table-condensed"  id = "id_table">
-                    <thead>
-                        <tr>
-                            <th style="text-align: center">Código</th>
-                            <th style="text-align: center">Nombre del proveedor</th>
-                            <th style="text-align: center">Contacto</th>
-                            <th style="text-align: center">Dirección</th>
-                            <th style="text-align: center">Celular</th>
-                            <th style="text-align: center">Email</th>
-                        </tr>               
-                    </thead>
-                    <tbody>
-                        <c:forEach items = "${proveedores}" var = "proveedor">    
+                <div class="table-responsive">
+                    <table class = "table table-bordered table-condensed"  id = "id_table">
+                        <thead>
                             <tr>
-                                <td><c:out value="${proveedor.proCod}"/> </td>
-                                <td><c:out value="${proveedor.proDet}"/></td>
-                                <td><c:out value="${proveedor.proCon}"/></td>
-                                <td><c:out value="${proveedor.proDir}"/></td>
-                                <td style="text-align: center"><c:out value="${proveedor.proTelCel}"/></td>
-                                <td style="text-align: center"><c:out value="${proveedor.proEmail}"/></td>
-                            </tr>
-                        </c:forEach>  
-                    </tbody>
-                </table>            
+                                <th style="text-align: center">Código</th>
+                                <th style="text-align: center">Nombre del proveedor</th>
+                                <th style="text-align: center">Contacto</th>
+                                <th style="text-align: center">Dirección</th>
+                                <th style="text-align: center">Celular</th>
+                                <th style="text-align: center">Email</th>
+                            </tr>               
+                        </thead>
+                        <tbody>
+                            <c:forEach items = "${proveedores}" var = "proveedor">    
+                                <tr>
+                                    <td><c:out value="${proveedor.proCod}"/> </td>
+                                    <td><c:out value="${proveedor.proDet}"/></td>
+                                    <td><c:out value="${proveedor.proCon}"/></td>
+                                    <td><c:out value="${proveedor.proDir}"/></td>
+                                    <td style="text-align: center"><c:out value="${proveedor.proTelCel}"/></td>
+                                    <td style="text-align: center"><c:out value="${proveedor.proEmail}"/></td>
+                                </tr>
+                            </c:forEach>  
+                        </tbody>
+                    </table>       
+                </div>
+                         
             </div>
         </div>
         <script>

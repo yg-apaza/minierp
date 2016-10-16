@@ -52,108 +52,116 @@
             </div> 
         
             <div class="row">
-                <br/>
-                    <div class="panel panel-primary" style="margin-bottom: -20px;">
-                            <div class="panel-heading">
-                                <label for = "clase" style = "margin-right: 20px;"> Stock: </label>
-                                <select class = "form-control" style = "width: 170px; display: inline-block;" onChange="Show(value,limitMin,limitMax);">
-                                    <option value="1"> Stock Maximo </option>
-                                    <option value="2"> Stock Minimo </option>
-                                   <!--
-                                   <select class = "form-control" style = "width: 170px; display: inline-block;" onChange="window.location.href=this.value">
-                                   <option value="${pageContext.request.contextPath}/secured/compras/stock"> Stock Minimo </option> -->
-                                </select>
-                               <button onClick = "imprSelec('limitMax')" target="_parent" class="btn btn-success" style="float: right; display: block;"> Imprimir reporte </button> 
-                             
-                            </div>
-                    </div>
-                   
+                <br>
+                <div class="col-lg-12">
+                
+                    <label for = "clase" style = "margin-right: 20px;"> Stock: </label>
+                    <select class = "form-control" style = "width: 170px; display: inline-block;" onChange="Show(value,limitMin,limitMax);">
+                        <option value="1"> Stock Maximo </option>
+                        <option value="2"> Stock Minimo </option>
+                       <!--
+                       <select class = "form-control" style = "width: 170px; display: inline-block;" onChange="window.location.href=this.value">
+                       <option value="${pageContext.request.contextPath}/secured/compras/stock"> Stock Minimo </option> -->
+                    </select>
                 </div>
+            </div>
            <!--Contenido de Stock Maximo-->
            <div id="limitMax">
 		<div class="row">
+                    <div class="col-lg-12">
                         <br><br>
-			<label> Los siguientes productos han sobrepasado el límite maximo: </label>
+                        <label> Los siguientes productos han sobrepasado el límite maximo: </label>
                         <br>
-			<table class="table table-bordered table-striped table-hover" id="productTableM">
-				<tr>    
-                                       <th> Codigo </th>
-					<th>Producto</th>
-					<th>Stock Actual</th>
-					<th>Stock Maximo</th>
-					<th>Stock-StockMax</th>
-				</tr>
-                                <c:forEach items="${productos}" var="productos">
-                                    <c:if test="${productos.proStk > productos.proStkMax}">
-                                    <tr>
-                                        <td value="${productos}"> ${productos.id.proCod} </td> 
-                                        <td value="${productos}"> ${productos.proDet} </td> 
-                                        <td value="${productos}"> ${productos.proStk} </td> 
-                                        <td value="${productos}"> ${productos.proStkMax} </td>
-                                        <td value="${productos}"> ${productos.proStk-productos.proStkMax} </td>
-                                    </tr> 
-                                    </c:if>
-                                </c:forEach>
-				
-				
-			</table>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped table-hover" id="productTableM">
+                                    <tr>    
+                                           <th> Codigo </th>
+                                            <th>Producto</th>
+                                            <th>Stock Actual</th>
+                                            <th>Stock Maximo</th>
+                                            <th>Stock-StockMax</th>
+                                    </tr>
+                                    <c:forEach items="${productos}" var="productos">
+                                        <c:if test="${productos.proStk > productos.proStkMax}">
+                                        <tr>
+                                            <td value="${productos}"> ${productos.id.proCod} </td> 
+                                            <td value="${productos}"> ${productos.proDet} </td> 
+                                            <td value="${productos}"> ${productos.proStk} </td> 
+                                            <td value="${productos}"> ${productos.proStkMax} </td>
+                                            <td value="${productos}"> ${productos.proStk-productos.proStkMax} </td>
+                                        </tr> 
+                                        </c:if>
+                                    </c:forEach>
+
+
+                            </table>
+                        </div>
+                    </div>
 		</div>
 
 		<div class="row">
-                        <div class="col-md-1">
-                            <br/>
-                        <img src="${pageContext.request.contextPath}/img/Alerta4.PNG" class="img-responsive" alt="MiniERP"/>
+                        <div class="col-lg-12">
+                            <div class="alert alert-warning alert-dismissable">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                Para una posterior adquisición de productos se debe tomar en cuenta el limite maximo de compra de cada producto que podria ser perjudicial para el futuro financiero de la empresa
+                            </div>
                         </div>
-			<div class="col-md-11"><h3>Para una posterior adquisición de productos se debe tomar en cuenta el limite maximo de compra de cada producto que podria ser perjudicial para el futuro financiero de la empresa </h3>
-			</div>
 		</div>
             </div>
             <!--Contenido de Stock minimo-->
             <div id="limitMin" hidden="hidden">
 		<div class="row">
-			<h2 class="page-header"> Los siguientes productos han bajado del limite minimo: </h2>
-			<table class="table table-bordered table-striped table-hover" id="productTableM">
-				<tr>    
-                                       <th> Codigo </th>
-					<th>Producto</th>
-					<th>Stock Actual</th>
-					<th>Stock Minimo</th>
-					<th>Stock-StockMin</th>
-				</tr>
-                                <c:forEach items="${productos}" var="productos">
-                                    <c:if test="${productos.proStk < productos.proStkMin}">
-                                    <tr>
-                                        <td value="${productos}"> ${productos.id.proCod} </td> 
-                                        <td value="${productos}"> ${productos.proDet} </td> 
-                                        <td value="${productos}"> ${productos.proStk} </td> 
-                                        <td value="${productos}"> ${productos.proStkMin} </td>
-                                        <td value="${productos}"> ${productos.proStk-productos.proStkMin} </td>
-                                    </tr> 
-                                    </c:if>
-                                </c:forEach>
-				
-				
-			</table>
+                        <div class="col-lg-12">
+                            <h2 class="page-header"> Los siguientes productos han bajado del limite minimo: </h2>
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped table-hover" id="productTableM">
+                                        <tr>    
+                                               <th> Codigo </th>
+                                                <th>Producto</th>
+                                                <th>Stock Actual</th>
+                                                <th>Stock Minimo</th>
+                                                <th>Stock-StockMin</th>
+                                        </tr>
+                                        <c:forEach items="${productos}" var="productos">
+                                            <c:if test="${productos.proStk < productos.proStkMin}">
+                                            <tr>
+                                                <td value="${productos}"> ${productos.id.proCod} </td> 
+                                                <td value="${productos}"> ${productos.proDet} </td> 
+                                                <td value="${productos}"> ${productos.proStk} </td> 
+                                                <td value="${productos}"> ${productos.proStkMin} </td>
+                                                <td value="${productos}"> ${productos.proStk-productos.proStkMin} </td>
+                                            </tr> 
+                                            </c:if>
+                                        </c:forEach>
+
+
+                                </table>
+                            </div>
+                        </div>
 		</div>
 
 		<div class="row">
-                        <div class="col-md-1">
-                            <br/>
-                        <img src="${pageContext.request.contextPath}/img/Alerta4.PNG" class="img-responsive" alt="MiniERP"/>
+                        <div class="col-lg-12">
+                            <div class="alert alert-warning alert-dismissable">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                Se ha sobrepasado el limite minimo permitido de dichos productos en stock
+                                es necesario hacer el pedido de dichos productos lo antes posible
+                            </div>
                         </div>
-			<div class="col-md-11"><h3>Se ha sobrepasado el limite minimo permitido de dichos productos en stock
-                            es necesario hacer el pedido de dichos productos lo antes posible </h3>
-			</div>
 		</div>
             </div>
-	<!--Contenido de stock minimo-->
-		<br/>
+            <!--Contenido de stock minimo-->
+            <br>
 
-		<!--<div class="row">
-			 <center> <button class="btn btn-primary btn-lg">  Continuar </button> </center></div> 
-		</div>
-		-->
-		
+            <!--<div class="row">
+                     <center> <button class="btn btn-primary btn-lg">  Continuar </button> </center></div> 
+            </div>
+            -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <button onClick = "imprSelec('limitMax')" target="_parent" class="btn btn-success"> Imprimir reporte </button>    
+                </div>
+            </div>
 	</div>    
         
             </jsp:attribute>  

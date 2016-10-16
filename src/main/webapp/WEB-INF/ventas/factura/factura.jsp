@@ -23,30 +23,32 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-12">
-                        <table class="table table-striped table-bordered table-hover">
-                            <thead>
-                                <tr>
-                                    <th>Fecha</th>
-                                    <th>Factura</th>
-                                    <th>Cliente</th>
-                                    <th>Vendedor</th>
-                                    <th>Importe</th>
-                                    <th>Tipo</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <c:forEach items="${facturas}" var="c">
+                        <div class="table-responsive">    
+                            <table class="table table-striped table-bordered table-hover">
+                                <thead>
                                     <tr>
-                                        <td>${c.facVenCabFec}</td>
-                                        <td>${c.facVenCabCod}</td>
-                                        <td>${c.enP1mCliente.cliNom}</td>
-                                        <td>${c.enP1mUsuario.usuNom}</td>
-                                        <td>${c.facVenCabTot}</td>                            
-                                        <td>${c.taGzzTipoPagoFactura.tipPagDet}</td>
+                                        <th>Fecha</th>
+                                        <th>Factura</th>
+                                        <th>Cliente</th>
+                                        <th>Vendedor</th>
+                                        <th>Importe</th>
+                                        <th>Tipo</th>
                                     </tr>
-                                </c:forEach>
-                            </tbody>
-                        </table>  
+                                </thead>
+                                <tbody>
+                                    <c:forEach items="${facturas}" var="c">
+                                        <tr>
+                                            <td>${c.facVenCabFec}</td>
+                                            <td>${c.facVenCabCod}</td>
+                                            <td>${c.enP1mCliente.cliNom}</td>
+                                            <td>${c.enP1mUsuario.usuNom}</td>
+                                            <td>${c.facVenCabTot}</td>                            
+                                            <td>${c.taGzzTipoPagoFactura.tipPagDet}</td>
+                                        </tr>
+                                    </c:forEach>
+                                </tbody>
+                            </table>  
+                        </div>
                     </div>
                 </div>
                 <div class="row">
