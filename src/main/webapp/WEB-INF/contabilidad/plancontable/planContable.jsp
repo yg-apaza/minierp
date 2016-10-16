@@ -4,7 +4,7 @@
 <%@ taglib tagdir="/WEB-INF/tags" prefix="minierptemplate" %>
 <minierptemplate:template>
     <jsp:attribute name="titulo">
-        <title>MiniERP - Contabilidad</title>
+        <title>Contabilidad - Plan Contable</title>
     </jsp:attribute>
     <jsp:attribute name="contenido">
         <div class="panel-body">
@@ -27,11 +27,6 @@
                 <a href="${pageContext.request.contextPath}/secured/reporte?type=doc&&report=plancontable&&jdbc=false&&key=null&&value=null" class="btn btn-outline btn-primary btn-lg btn-block">
                     <i class="fa fa-file-word-o"></i>
                     Descargar Plan Contable [DOC]
-                </a>
-                <br>
-                <a href="${pageContext.request.contextPath}/secured/contabilidad" class="btn btn-outline btn-default btn-lg btn-block">
-                    <i class="fa fa-arrow-left"></i>
-                    Regresar al Menú Principal
                 </a>
                 <br>
             </div>

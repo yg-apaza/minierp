@@ -43,6 +43,6 @@ public class AddClienteController extends HttpServlet
         cliente.setCliEmail(request.getParameter("emailCli"));
         cliente.setEstRegCod('A');
         clienteDao.save(cliente);
-        response.sendRedirect(request.getContextPath() + "/secured/clientes");
+        response.sendRedirect(request.getContextPath() + "/secured/ventas/clientes");
     }
 }

@@ -7,11 +7,11 @@
 <% session.setAttribute("codCliSelec", codCliSelec);%>
 <minierptemplate:template>
     <jsp:attribute name="titulo">
-        <title>MiniERP - Clientes</title>
+        <title>Ventas - Clientes</title>
     </jsp:attribute>
     <jsp:attribute name="contenido">
         <div class="panel-body">
-            <form role="form" method="post" action="${pageContext.request.contextPath}/secured/clientes">
+            <form role="form" method="post" action="${pageContext.request.contextPath}/secured/ventas/clientes">
             <h1 class="page-header">Clientes</h1>
             <div class="form-horizontal">
                     <div class="form-group">
@@ -68,7 +68,7 @@
             </div>
             <!-- FIN_TITULO -->
 
-            <form role="form" method="post" action="${pageContext.request.contextPath}/secured/clientes/addCliente">
+            <form role="form" method="post" action="${pageContext.request.contextPath}/secured/ventas/clientes/addCliente">
             <!-- CONTENIDO -->
             <div class="modal-body">   
                 <div class="form-horizontal">

@@ -10,7 +10,7 @@
             <br>
             <div class="form-horizontal">
                 <div class="panel panel-default">
-                    <form role="form" method="post" action="${pageContext.request.contextPath}/secured/clientes/addCliente">
+                    <form role="form" method="post" action="${pageContext.request.contextPath}/secured/ventas/clientes/addCliente">
                     <div class="panel-heading">
                         <div class=form-group>
                                 <label class="col-sm-2"><h4>Añadir Cliente</h4></label>

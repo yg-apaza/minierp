@@ -137,23 +137,13 @@
     <!-- Modulo de Compras -->
     <servlet>
         <description/>
-        <display-name>ComprasController</display-name>
-        <servlet-name>ComprasController</servlet-name>
-        <servlet-class>org.epis.minierp.controller.compras.ComprasController</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>ComprasController</servlet-name>
-        <url-pattern>/secured/compras</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <description/>
         <display-name>PurchasesController</display-name>
         <servlet-name>PurchasesController</servlet-name>
         <servlet-class>org.epis.minierp.controller.compras.PurchasesController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>PurchasesController</servlet-name>
-        <url-pattern>/secured/compras/registerPurchase</url-pattern>
+        <url-pattern>/secured/compras/factura</url-pattern>
     </servlet-mapping>
     <servlet>
         <description/>
@@ -195,7 +185,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>LimiteMaximoController</servlet-name>
-        <url-pattern>/secured/compras/limiteMaximo</url-pattern>
+        <url-pattern>/secured/compras/stock</url-pattern>
     </servlet-mapping>
     <!--Modulo de Compras Proveedores -->
     <servlet>
@@ -231,16 +221,6 @@
         <url-pattern>/secured/compras/productos</url-pattern>
     </servlet-mapping>
     <!--Modulo de Configuraciones-->
-    <servlet>
-        <description/>
-        <display-name>ConfiguracionController</display-name>
-        <servlet-name>ConfiguracionController</servlet-name>
-        <servlet-class>org.epis.minierp.controller.configuracion.ConfiguracionController</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>ConfiguracionController</servlet-name>
-        <url-pattern>/secured/configuracion</url-pattern>
-    </servlet-mapping>
     <!--Sub Modulo Compañia Datos-->
     <servlet>
         <description/>
@@ -295,16 +275,6 @@
         <url-pattern>/secured/configuracion/addpuntoventa</url-pattern>
     </servlet-mapping>
     <!-- Modulo de Contabilidad -->
-    <servlet>
-        <description/>
-        <display-name>ContabilidadController</display-name>
-        <servlet-name>ContabilidadController</servlet-name>
-        <servlet-class>org.epis.minierp.controller.contabilidad.ContabilidadController</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>ContabilidadController</servlet-name>
-        <url-pattern>/secured/contabilidad</url-pattern>
-    </servlet-mapping>
     <servlet>
         <description/>
         <display-name>LibroDiarioController</display-name>
@@ -378,16 +348,6 @@
     <!-- Modulo de Perifericos -->
     <servlet>
         <description/>
-        <display-name>PerifericosController</display-name>
-        <servlet-name>PerifericosController</servlet-name>
-        <servlet-class>org.epis.minierp.controller.perifericos.PerifericosController</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>PerifericosController</servlet-name>
-        <url-pattern>/secured/perifericos</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <description/>
         <display-name>ImpresoraBarrasController</display-name>
         <servlet-name>ImpresoraBarrasController</servlet-name>
         <servlet-class>org.epis.minierp.controller.perifericos.ImpresoraBarrasController</servlet-class>
@@ -429,16 +389,6 @@
     <!-- Modulo de Ventas -->
     <servlet>
         <description/>
-        <display-name>VentasController</display-name>
-        <servlet-name>VentasController</servlet-name>
-        <servlet-class>org.epis.minierp.controller.ventas.VentasController</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>VentasController</servlet-name>
-        <url-pattern>/secured/ventas</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <description/>
         <display-name>VentasFacturaController</display-name>
         <servlet-name>VentasFacturaController</servlet-name>
         <servlet-class>org.epis.minierp.controller.ventas.VentasFacturaController</servlet-class>
@@ -465,7 +415,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>ClienteController</servlet-name>
-        <url-pattern>/secured/clientes</url-pattern>
+        <url-pattern>/secured/ventas/clientes</url-pattern>
     </servlet-mapping>
     <servlet>
         <description/>
@@ -475,7 +425,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>addClienteController</servlet-name>
-        <url-pattern>/secured/clientes/addCliente</url-pattern>
+        <url-pattern>/secured/ventas/clientes/addCliente</url-pattern>
     </servlet-mapping>
     <servlet>
         <description/>

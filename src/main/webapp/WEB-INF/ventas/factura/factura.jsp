@@ -4,7 +4,7 @@
 <%@ taglib tagdir="/WEB-INF/tags" prefix="minierptemplate" %>
 <minierptemplate:template>
     <jsp:attribute name="titulo">
-        <title>MiniERP - Factura</title>
+        <title>Ventas - Factura</title>
     </jsp:attribute>
     <jsp:attribute name="contenido">
         

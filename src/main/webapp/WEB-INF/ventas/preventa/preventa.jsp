@@ -5,7 +5,7 @@
 
 <minierptemplate:template>
     <jsp:attribute name="titulo">
-        <title>MiniERP - Preventa</title>
+        <title>Ventas - Preventa</title>
     </jsp:attribute>
     <jsp:attribute name="contenido">
         
