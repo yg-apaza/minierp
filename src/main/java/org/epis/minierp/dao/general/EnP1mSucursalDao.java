@@ -28,7 +28,7 @@ public class EnP1mSucursalDao {
         return estados;
     }
 
-    public EnP1mSucursal getById(String id) {
+    public EnP1mSucursal getById(int id) {
         EnP1mSucursal estado = null;
         try {
             estado = (EnP1mSucursal) session.load(EnP1mSucursal.class, id);
