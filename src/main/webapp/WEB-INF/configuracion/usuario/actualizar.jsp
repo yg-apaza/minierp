@@ -6,7 +6,7 @@
         <title>MiniERP - Usuarios</title>
     </jsp:attribute>
     <jsp:attribute name="contenido">
-        <div class="container">
+        <div class="panel-body">
             <h1 class="page-header">Actualizar Usuario</h1>
             <br>
             <div class="row">
