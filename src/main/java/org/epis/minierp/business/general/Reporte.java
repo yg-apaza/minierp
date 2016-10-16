@@ -1,6 +1,7 @@
 package org.epis.minierp.business.general;
 
 import java.io.File;
+import java.sql.Connection;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -20,32 +21,47 @@ import net.sf.jasperreports.engine.query.JRHibernateQueryExecuterFactory;
 import net.sf.jasperreports.export.Exporter;
 import net.sf.jasperreports.export.SimpleExporterInput;
 import net.sf.jasperreports.export.SimpleOutputStreamExporterOutput;
+import org.epis.minierp.util.DbUtil;
 import org.epis.minierp.util.HibernateUtil;
 import org.hibernate.Session;
 
 public class Reporte {
-    
+
     private Session session;
+    private Connection sessionc;
     private Map<String, Object> param = new HashMap<String, Object>();
     private Date date = new Date();
     private SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
-        
-    public Reporte(){
+    String key, value;
+
+    public Reporte() {
         session = HibernateUtil.getSessionFactory().getCurrentSession();
     }
-    
+
+    public Reporte(boolean isjdbc, String key, String value) {
+        if (isjdbc) {
+            sessionc = DbUtil.getConnection();
+            this.key = key;
+            this.value=value;
+        } else {
+            session = HibernateUtil.getSessionFactory().getCurrentSession();
+        }
+    }
+
     public String report(String path, String fileName, String fileType) {
-        param.put(JRHibernateQueryExecuterFactory.PARAMETER_HIBERNATE_SESSION, session);
+        if (session != null) {
+            param.put(JRHibernateQueryExecuterFactory.PARAMETER_HIBERNATE_SESSION, session);
+        } else {
+            param.put(key, value);
+        }
+
         String file = fileName + sf.format(date.getTime());
         String fullPath = file;
-        System.out.println("xasdasd "+path);
-        
-        
+
         try {
-            JasperReport jasperReport = JasperCompileManager.compileReport(path);
-            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, param);
-            switch(fileType)
-            {
+            //JasperReport jasperReport = JasperCompileManager.compileReport(path);
+            JasperPrint jasperPrint = JasperFillManager.fillReport(path, param, sessionc);
+            switch (fileType) {
                 case "pdf":
                     JasperExportManager.exportReportToPdfFile(jasperPrint, fullPath + "." + fileType);
                     break;
