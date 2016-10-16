@@ -72,31 +72,32 @@
                     </div>
                 </div>
             </div>
-            
-            <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th>Numero Correlativo del Registro o código único de óperación</th>
-                    <th>Fecha de operación</th>
-                    <th>Código de la Cuenta</th>
-                    <th>Denominación de la Cuenta</th>
-                    <th>Deudor</th>
-                    <th>Acreedor</th>
-                </tr>
-            </thead>
-            <tbody>
-               <c:forEach items="${operaciones}" var="u"> 
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
                         <tr>
-                            <td>${u.asiDetCod}</td>
-                            <td><fmt:formatDate value="${u.asiCabFec}" pattern="dd/MM/yyyy" /></td>
-                            <td>${u.cueBanNum}</td>
-                            <td>${u.cueDes}</td>
-                            <td>${u.debe}</td>
-                            <td>${u.haber}</td>
+                            <th>Numero Correlativo del Registro o código único de óperación</th>
+                            <th>Fecha de operación</th>
+                            <th>Código de la Cuenta</th>
+                            <th>Denominación de la Cuenta</th>
+                            <th>Deudor</th>
+                            <th>Acreedor</th>
                         </tr>
-                </c:forEach>     
-            </tbody>
-        </table>
+                    </thead>
+                    <tbody>
+                       <c:forEach items="${operaciones}" var="u"> 
+                                <tr>
+                                    <td>${u.asiDetCod}</td>
+                                    <td><fmt:formatDate value="${u.asiCabFec}" pattern="dd/MM/yyyy" /></td>
+                                    <td>${u.cueBanNum}</td>
+                                    <td>${u.cueDes}</td>
+                                    <td>${u.debe}</td>
+                                    <td>${u.haber}</td>
+                                </tr>
+                        </c:forEach>     
+                    </tbody>
+                </table>
+            </div>
         <div>
             <button class="btn btn-default center-block" type="submit">Imprimir</button>
         </div>

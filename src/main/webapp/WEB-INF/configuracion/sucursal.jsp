@@ -12,34 +12,42 @@
            <br>
            <div id="sucursal">
 		<div class="row">
+                    <div class="col-lg-12">
 			<h2 class="page-header"> Sucursales 
-                        <a href="#" class="btn btn-success btn-circle" data-toggle="modal" data-target="#agregarModal"><i class="fa fa-plus"></i></a></h2>
-            
-			<table class="table table-bordered table-striped table-hover" id="productTableM">
-				<tr>    
-                                        <th> Codigo </th>
-					<th>Descripcion</th>
-					<th>Direccion</th>
-                                        <th class="text-right">Acciones </th>
-					
-				</tr>
-                                <c:forEach items="${sucursales}" var="sucursales">
-                                    
-                                    <tr>
-                                      <td value="${sucursales}"> ${sucursales.sucCod} </td> 
-                                      <td value="${sucursales}"> ${sucursales.sucDes} </td> 
-                                      <td value="${sucursales}"> ${sucursales.sucDir} </td>
-                                      <td class="text-left">
-                                          <a href="#" data-toggle="modal" data-target="#modificarModal" data-cod="${sucursales.sucCod}" data-des="${sucursales.sucDes}" data-dir="${sucursales.sucDir}" >
-                                            <i class="fa fa-pencil-square-o fa-2x"></i> </a> 
-                                          <a href="#" data-toggle="modal" data-target="#eliminarModal" data-cod="${sucursales.sucCod}" data-des="${sucursales.sucDes}" data-dir="${sucursales.sucDir}" >
-                                            <i class="fa fa-trash-o fa-2x"></i> </a>                                   
-                                       </td>
-                                    </tr> 
-                                    
-                                </c:forEach>		
-			</table>
+                            <a href="#" class="btn btn-success btn-circle" data-toggle="modal" data-target="#agregarModal"><i class="fa fa-plus"></i></a>
+                        </h2>
+                    </div>        
 		</div>
+               <div class="row">
+                   <div class="col-lg-12">
+                       <div class="table-responsive">
+                            <table class="table table-bordered table-striped table-hover" id="productTableM">
+                                    <tr>    
+                                            <th> Codigo </th>
+                                            <th>Descripcion</th>
+                                            <th>Direccion</th>
+                                            <th class="text-right">Acciones </th>
+
+                                    </tr>
+                                    <c:forEach items="${sucursales}" var="sucursales">
+
+                                        <tr>
+                                          <td value="${sucursales}"> ${sucursales.sucCod} </td> 
+                                          <td value="${sucursales}"> ${sucursales.sucDes} </td> 
+                                          <td value="${sucursales}"> ${sucursales.sucDir} </td>
+                                          <td class="text-left">
+                                              <a href="#" data-toggle="modal" data-target="#modificarModal" data-cod="${sucursales.sucCod}" data-des="${sucursales.sucDes}" data-dir="${sucursales.sucDir}" >
+                                                <i class="fa fa-pencil-square-o fa-2x"></i> </a> 
+                                              <a href="#" data-toggle="modal" data-target="#eliminarModal" data-cod="${sucursales.sucCod}" data-des="${sucursales.sucDes}" data-dir="${sucursales.sucDir}" >
+                                                <i class="fa fa-trash-o fa-2x"></i> </a>                                   
+                                           </td>
+                                        </tr> 
+
+                                    </c:forEach>		
+                            </table>
+                        </div>
+                   </div>
+               </div>
             </div>            
                                 
         </div>       

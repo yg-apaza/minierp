@@ -27,6 +27,13 @@ public class EnP1mSucursalDao {
         System.out.println(estados);
         return estados;
     }
+    
+    public List<EnP1mSucursal> getAllInactives() {
+        Query query = session.createQuery("from EnP1mSucursal E where E.estRegCod = 'I'");
+        List<EnP1mSucursal> estados = query.list();
+        System.out.println(estados);
+        return estados;
+    }
 
     public EnP1mSucursal getById(int id) {
         EnP1mSucursal estado = null;

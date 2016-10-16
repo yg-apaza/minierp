@@ -13,7 +13,7 @@
             </a>
             <br>
             <br>
-            <div>
+            <div class="table-responsive">
                 <table class = "table table-bordered table-condensed" id = "id_table">
                     <thead>
                         <tr>

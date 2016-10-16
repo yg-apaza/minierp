@@ -20,37 +20,40 @@
                             </div>
                         </div>
                         <div class="panel-body">
-                            <table width="100%" class="table table-striped table-bordered table-hover" id="tableSuppliers">
-                                <thead>
-                                    <tr>
-                                        <th>Clase</th>
-                                        <th>SubClase</th>
-                                        <th>Código</th>
-                                        <th>Descripción</th>
-                                        <th>Estado</th>
-                                        <th>Acciones</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <c:forEach items="${productos}" var="p">
-                                        <tr>
-                                            <td width="150px">${p.enP2mSubclaseProducto.enP2mClaseProducto.claProDet}</td>
-                                            <td width="200px">${p.enP2mSubclaseProducto.subClaProDet}</td>                                        
-                                            <td width="100px">${p.id.proCod}</td>
-                                            <td width="300px">${p.proDet}</td>
-                                            <td class="text-center" width="50px">${p.estRegCod}</td>
-                                            <td class="text-center" width="50px">
-                                                <a href="#" data-target="#modificarModal">
-                                                    <i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i>
-                                                </a>
-                                                <a href="#" data-toggle="modal" data-target="#deleteProduct" data-codeProduct="${p.id.proCod}/${p.id.subClaProCod}/${p.id.claProCod}" data-descriptionProduct="${p.proDet}">
-                                                    <i class="fa fa-trash-o fa-2x" style="color: black;"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    </c:forEach>
-                                </tbody>
-                            </table>  
+                            <div class="table-responsive">
+                                <table width="100%" class="table table-striped table-bordered table-hover" id="tableSuppliers">
+                                   <thead>
+                                       <tr>
+                                           <th>Clase</th>
+                                           <th>SubClase</th>
+                                           <th>Código</th>
+                                           <th>Descripción</th>
+                                           <th>Estado</th>
+                                           <th>Acciones</th>
+                                       </tr>
+                                   </thead>
+                                   <tbody>
+                                       <c:forEach items="${productos}" var="p">
+                                           <tr>
+                                               <td width="150px">${p.enP2mSubclaseProducto.enP2mClaseProducto.claProDet}</td>
+                                               <td width="200px">${p.enP2mSubclaseProducto.subClaProDet}</td>                                        
+                                               <td width="100px">${p.id.proCod}</td>
+                                               <td width="300px">${p.proDet}</td>
+                                               <td class="text-center" width="50px">${p.estRegCod}</td>
+                                               <td class="text-center" width="50px">
+                                                   <a href="#" data-target="#modificarModal">
+                                                       <i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i>
+                                                   </a>
+                                                   <a href="#" data-toggle="modal" data-target="#deleteProduct" data-codeProduct="${p.id.proCod}/${p.id.subClaProCod}/${p.id.claProCod}" data-descriptionProduct="${p.proDet}">
+                                                       <i class="fa fa-trash-o fa-2x" style="color: black;"></i>
+                                                   </a>
+                                               </td>
+                                           </tr>
+                                       </c:forEach>
+                                   </tbody>
+                               </table>     
+                            </div>
+                            
                         </div>
                         <div class="modal fade" id="addProduct">
                             <div class="modal-dialog">
