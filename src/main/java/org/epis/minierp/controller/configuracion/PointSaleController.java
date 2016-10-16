@@ -13,13 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.epis.minierp.business.configuracion.EnP1mPuntoVentaBusiness;
 import org.epis.minierp.dao.general.EnP1mPuntoVentaDao;
 import org.epis.minierp.dao.general.EnP1mSucursalDao;
-import org.epis.minierp.model.EnP1mPuntoVenta;
-import org.epis.minierp.model.EnP1mPuntoVentaId;
 
-/**
- *
- * @author Christian
- */
 public class PointSaleController extends HttpServlet {
     
     private static final long serialVersionUID = 1L;
