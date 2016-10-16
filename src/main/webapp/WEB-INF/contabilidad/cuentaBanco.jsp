@@ -11,6 +11,7 @@
             <a href="#" class="btn btn-success btn-circle" data-toggle="modal" data-target="#agregarModal"><i class="fa fa-plus"></i></a></h1>
             <br>
             <br>
+            <div class="col-md-3">
                 <a href="${pageContext.request.contextPath}/secured/general/reporte?type=pdf&&report=cuentabancaria&&jdbc=false&&key=null&&value=null" class="btn btn-outline btn-danger btn-lg btn-block">
                     <i class="fa fa-file-pdf-o"></i>
                     Reporte [PDF]
@@ -21,11 +22,12 @@
                     Reporte [XLS]
                 </a>
                 <br>
+                <a href="${pageContext.request.contextPath}/secured/general/reporte?type=doc&&report=cuentabancaria&&jdbc=false&&key=null&&value=null" class="btn btn-outline btn-primary btn-lg btn-block">
                     <i class="fa fa-file-word-o"></i>
                     Reporte [DOC]
                 </a>
-                <br>
             </div>
+            <br>
             <br>
             <div class="col-md-9">
                 <div class="table-responsive">
@@ -61,7 +63,7 @@
                 </div>
             </div>
         </div>
-        
+                    
         <div id="agregarModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-sm">
                 <div class="modal-content">
