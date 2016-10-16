@@ -161,5 +161,5 @@ public class EnP3mCuenta implements java.io.Serializable, Comparable<EnP3mCuenta
         } else {
             return this.getCueNum().compareTo(that.getCueNum());
         }
-    }
+    }   
 }
