@@ -103,6 +103,7 @@
                     </form>
                 </div>
             </div>
+          </div>
         </div>
         
         <div id="eliminarModal" class="modal fade" role="dialog">
