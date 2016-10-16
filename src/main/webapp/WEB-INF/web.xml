@@ -153,7 +153,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>PurchasesController</servlet-name>
-        <url-pattern>/secured/compras/registerPurchase</url-pattern>
+        <url-pattern>/secured/compras/factura</url-pattern>
     </servlet-mapping>
     <servlet>
         <description/>
@@ -195,7 +195,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>LimiteMaximoController</servlet-name>
-        <url-pattern>/secured/compras/limiteMaximo</url-pattern>
+        <url-pattern>/secured/compras/stock</url-pattern>
     </servlet-mapping>
     <!--Modulo de Compras Proveedores -->
     <servlet>
@@ -465,7 +465,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>ClienteController</servlet-name>
-        <url-pattern>/secured/clientes</url-pattern>
+        <url-pattern>/secured/ventas/clientes</url-pattern>
     </servlet-mapping>
     <servlet>
         <description/>
@@ -475,7 +475,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>addClienteController</servlet-name>
-        <url-pattern>/secured/clientes/addCliente</url-pattern>
+        <url-pattern>/secured/ventas/clientes/addCliente</url-pattern>
     </servlet-mapping>
     <servlet>
         <description/>
