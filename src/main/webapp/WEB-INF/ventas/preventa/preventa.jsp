@@ -20,8 +20,8 @@
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <label for = "filtro" style = "margin-right: 20px;"> Tipo de Filtro </label>
-                                    <select class = "form-control" name = "tipoFiltro" id="filter_select" style = "width: 180px; display: inline-block;">
+                                    <label> Tipo de Filtro </label>
+                                    <select class = "form-control" name = "tipoFiltro" id="filterSelect" style = "width: 180px; display: inline-block;">
                                         <option> Código de Preventa </option>
                                         <option> Código de Cliente </option>
                                         <option> Código de Usuario </option>
@@ -29,16 +29,17 @@
                                         <option> Fecha </option>
                                         <option> Moneda </option>
                                     </select>
-                                    <label style = "margin-right: 20px;"> Filtro </label>
-                                    <input type="text" name="nombreFiltro" value=" ">
-                                    <button class="btn btn-success" > Agregar Filtro </button>
-                                    <button class="btn btn-success" > Filtrar! </button> 
+                                    <label> Filtro </label>
+                                    <input type="text" class="form-control" id="filterName" style = "width: 180px; display: inline-block;">  
+                                    <button class="btn btn-success" id="addFiltro"> Agregar Filtro </button>
+                                    <button class="btn btn-success" > Filtrar! </button>
+                                    <button type="button" class="btn btn-info pull-right" data-toggle="modal" data-target="#configurarModal"> Transformar a Ventas </button>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#configurarModal" style="float: right; display: block;"> Transformar a Ventas </button>
-                                </div>
+                                    <div id="filters"></div>
+                                </div>  
                             </div>
                         </div>
                     </div>
@@ -100,15 +101,17 @@
                                         <c:forEach items="${metodos}" var="metodo">
                                             <option value="${metodo.metPagCod}">${metodo.metPagDet}</option>
                                         </c:forEach>
-                                    </select>                          </div>
+                                    </select>                          
+                              </div>
                               <div class="form-group">
                                   <label> Tipo de Pago de las Facturas </label>
                                     <select class="form-control" name="tipPagCod">
                                         <c:forEach items="${tipos}" var="tipo">
                                             <option value="${tipo.tipPagCod}">${tipo.tipPagDet}</option>
                                         </c:forEach>
-                                    </select>                          </div>
-                                </form>
+                                    </select>                         
+                              </div>
+                            </form>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-outline btn-danger" data-dismiss="modal"> Cancelar </button>
@@ -136,4 +139,17 @@
             </div>
         </div>
     </jsp:attribute>  
-</minierptemplate:template>
+</minierptemplate:template>   
+<script>
+    function addFiltro() {
+        var filterName = $("#filterName").val();
+        var filterSelect = $("#filterSelect").val();
+        $("#filters").append($("<button type=\"button\" class=\"btn btn-outline\">"+filterSelect+": "+ filterName+"</button>"));
+    }
+    
+  $(document).ready(function(){
+    $('#addFiltro').click(function(){
+       addFiltro();
+    });
+  });
+</script>
