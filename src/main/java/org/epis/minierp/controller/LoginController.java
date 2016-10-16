@@ -36,6 +36,7 @@ public class LoginController extends HttpServlet
                     response.sendRedirect(request.getContextPath() + "/secured/compras");
                     break;
                 case 4:
+                    System.out.println("CONTABILIDAD 1");
                     response.sendRedirect(request.getContextPath() + "/secured/contabilidad");
                     break;
                 default:
@@ -70,6 +71,7 @@ public class LoginController extends HttpServlet
                     response.sendRedirect(request.getContextPath() + "/secured/compras");
                     break;
                 case 4:
+                    System.out.println("CONTABILIDAD POST");
                     response.sendRedirect(request.getContextPath() + "/secured/contabilidad");
                     break;
                 default:
