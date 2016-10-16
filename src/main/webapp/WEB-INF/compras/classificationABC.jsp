@@ -44,7 +44,7 @@
                     </tr>               
                 </thead>
                 <tbody>
-                     <c:forEach items = "${productos}" var = "producto">    
+                    <c:forEach items = "${productosA}" var = "producto">    
                         <tr>
                             <td><c:out value="${producto.id.proCod}"/> </td>
                             <td><c:out value="${producto.proDet}"/></td>
@@ -66,36 +66,36 @@
                             
                             var clase = $("#class_select").val();
                             $("#id_table").find("tr:gt(0)").remove();
-                            $.get('clasificacionABC',{clase: clase},function(productosR){
                             
-                                var productos = productosR;
+                            switch (clase){
                                 
-                                var posdet = productos.search("proDet");
-                                
-                                while(posdet!=-1)
-                                {
-                                    var subcadena = productos.substring(posdet+7);
-                                    var poscom = subcadena.search(",");
-                                    var detalle = subcadena.substring(0,poscom);
-                                                                       
-                                    subcadena = subcadena.substring(poscom+12);
-                                    poscom = subcadena.search(",");
-                                    var precio = subcadena.substring(0,poscom);
-
-                                    subcadena = subcadena.substring(poscom+9);
-                                    poscom = subcadena.search(",");
-                                    var cantidad = subcadena.substring(0,poscom);
-                                    
-                                    $("#id_table").append($("<tr>").append("<td>#</td>"+
-                                                                        "<td>"+detalle+"</td>"+
-                                                                        "<td>"+precio+"</td>"+
-                                                                        "<td>"+cantidad+"</td>"));
-                                    
-                                    posdet = subcadena.search("proDet");
-                                    productos = subcadena;
-                                }
-                            
-                            });                        
+                                case 'A':   <c:forEach items = "${productosA}" var = "producto">
+                                            $("#id_table").append($("<tr>").append(
+                                                                    "<td>"+"<c:out value="${producto.id.proCod}"/>"+"</td>"+
+                                                                    "<td>"+"<c:out value="${producto.proDet}"/>"+"</td>"+
+                                                                    "<td>"+"<c:out value="${producto.proPreUni}"/>"+"</td>"+
+                                                                    "<td>"+"<c:out value="${producto.proStk}"/>"+"</td>"));
+                                            </c:forEach>
+                                    break;
+                                case 'B':   <c:forEach items = "${productosB}" var = "producto">
+                                            $("#id_table").append($("<tr>").append(
+                                                                    "<td>"+"<c:out value="${producto.id.proCod}"/>"+"</td>"+
+                                                                    "<td>"+"<c:out value="${producto.proDet}"/>"+"</td>"+
+                                                                    "<td>"+"<c:out value="${producto.proPreUni}"/>"+"</td>"+
+                                                                    "<td>"+"<c:out value="${producto.proStk}"/>"+"</td>"));
+                                            </c:forEach>
+                                    break;
+                                case 'C':    <c:forEach items = "${productosC}" var = "producto">
+                                            $("#id_table").append($("<tr>").append(
+                                                                    "<td>"+"<c:out value="${producto.id.proCod}"/>"+"</td>"+
+                                                                    "<td>"+"<c:out value="${producto.proDet}"/>"+"</td>"+
+                                                                    "<td>"+"<c:out value="${producto.proPreUni}"/>"+"</td>"+
+                                                                    "<td>"+"<c:out value="${producto.proStk}"/>"+"</td>"));
+                                            </c:forEach>
+                                    break;
+                                default:
+                                    break;
+                            }
                         }
                     );
             
