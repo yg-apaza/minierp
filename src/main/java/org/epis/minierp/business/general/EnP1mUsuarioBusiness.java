@@ -1,7 +1,11 @@
 package org.epis.minierp.business.general;
 
 import java.util.Date;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.epis.minierp.dao.general.EnP1mUsuarioDao;
+import org.epis.minierp.dao.ventas.EnP1mDocumentoUsuarioDao;
+import org.epis.minierp.model.EnP1mDocumentoUsuario;
+import org.epis.minierp.model.EnP1mDocumentoUsuarioId;
 import org.epis.minierp.model.EnP1mSucursal;
 import org.epis.minierp.model.EnP1mUsuario;
 import org.epis.minierp.model.TaGzzEstadoCivil;
@@ -9,9 +13,11 @@ import org.epis.minierp.model.TaGzzTipoUsuario;
 
 public class EnP1mUsuarioBusiness {
     EnP1mUsuarioDao usuDao;
+    EnP1mDocumentoUsuarioDao docUsuDao;
 
     public EnP1mUsuarioBusiness() {
         usuDao = new EnP1mUsuarioDao();
+        docUsuDao = new EnP1mDocumentoUsuarioDao();
     }
     
     public void create(String usuCod, String usuNom, String usuApePat, String usuApeMat, 
@@ -30,7 +36,7 @@ public class EnP1mUsuarioBusiness {
         usu.setUsuApePat(usuApePat);
         usu.setUsuApeMat(usuApeMat);
         usu.setUsuLog(usuLog);
-        usu.setUsuPas(usuPas);
+        usu.setUsuPas(DigestUtils.sha256Hex(usuPas));
         usu.setTaGzzTipoUsuario(tu);
         usu.setEnP1mSucursal(suc);
         usu.setUsuFecNac(usuFecNac);
@@ -38,6 +44,13 @@ public class EnP1mUsuarioBusiness {
         usu.setUsuSex(usuSex);
         usu.setEstRegCod(estRegCod);
         usuDao.save(usu);
+        
+        EnP1mDocumentoUsuario docUsu = new EnP1mDocumentoUsuario();
+        docUsu.setId(new EnP1mDocumentoUsuarioId(usuCod, 1)); //DNI
+        docUsu.setDocUsuNum(usuCod);
+        docUsu.setEstRegCod('A');
+        docUsuDao.save(docUsu);
+        
     }
     
     public void update(String usuCod, String usuNom, String usuApePat, String usuApeMat, 
@@ -55,7 +68,7 @@ public class EnP1mUsuarioBusiness {
         usuUpdate.setUsuApePat(usuApePat);
         usuUpdate.setUsuApeMat(usuApeMat);
         usuUpdate.setUsuLog(usuLog);
-        usuUpdate.setUsuPas(usuPas);
+        usuUpdate.setUsuPas(DigestUtils.sha256Hex(usuPas));
         usuUpdate.setTaGzzTipoUsuario(tuUpdate);
         usuUpdate.setEnP1mSucursal(sucUpdate);
         usuUpdate.setUsuFecNac(usuFecNac);
