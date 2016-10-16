@@ -5,10 +5,6 @@
         <title>Logística - Proveedores</title>
     </jsp:attribute>
     <jsp:attribute name="contenido">
-        <script src="${pageContext.request.contextPath}/js/metisMenu.min.js"></script>
-        <script src="${pageContext.request.contextPath}/js/sb-admin-2.min.js"></script>
-        <script src="${pageContext.request.contextPath}/js/jquery.min"></script>
-        <script src="${pageContext.request.contextPath}/js/jquery.validate.min"></script>
         <script src="${pageContext.request.contextPath}/js/jquery.PrintArea.js"></script>
 
         <div id ="wrapper">

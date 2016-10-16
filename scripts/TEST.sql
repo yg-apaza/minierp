@@ -1,60 +1,90 @@
 -- -----------------------------------------------------
--- Data for table `episerp`.`en_p3m_cuenta_banco`
+-- Data for table `episerp`.`en_p1m_sucursal`
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `episerp`;
-INSERT INTO `en_p3m_cuenta_banco` VALUES (0000000001,01,'3001033189',0000000540,'A');
-INSERT INTO `en_p3m_cuenta_banco` VALUES (0000000002,18,'4120239490',0000000541,'A');
-INSERT INTO `en_p3m_cuenta_banco` VALUES (0000000003,09,'2003993301',0000000542,'A');
+INSERT INTO `en_p1m_sucursal` (`SucCod`, `SucDes`, `SucDir`, `EstRegCod`) VALUES ('00101', 'Cercado Arequipa Sucursal ', 'Calle Portal de Flores 102 - Cercado', 'A');
+INSERT INTO `en_p1m_sucursal` (`SucCod`, `SucDes`, `SucDir`, `EstRegCod`) VALUES ('00102', 'Cerro Colorado Arequipa Sucursal ', 'Ciudad Municipal Call. Los Arces 52 – Cerro Colorado', 'A');
+INSERT INTO `en_p1m_sucursal` (`SucCod`, `SucDes`, `SucDir`, `EstRegCod`) VALUES ('00103', 'Cayma Arequipa Sucursal ', 'Calle La Unión Comité 25 - Cayma', 'A');
+INSERT INTO `en_p1m_sucursal` (`SucCod`, `SucDes`, `SucDir`, `EstRegCod`) VALUES ('00104', ' Yanahuara Arequipa Sucursal ', 'Av. Bolognesi Nº 142 - Yanahuara', 'A');
+INSERT INTO `en_p1m_sucursal` (`SucCod`, `SucDes`, `SucDir`, `EstRegCod`) VALUES ('00105', ' Hunter Arequipa Sucursal ', 'Calle los Arces Psje. 23 Lt 32', 'A');
+INSERT INTO `en_p1m_sucursal` (`SucCod`, `SucDes`, `SucDir`, `EstRegCod`) VALUES ('00106', 'La Joya Sucursal ', 'El Cruce, Psje Ordoñez Lt 34', 'A');
+INSERT INTO `en_p1m_sucursal` (`SucCod`, `SucDes`, `SucDir`, `EstRegCod`) VALUES ('00107', 'Pedregal Majes Sucursal ', 'Av Arequipa Mz J Lt 34', 'A');
+INSERT INTO `en_p1m_sucursal` (`SucCod`, `SucDes`, `SucDir`, `EstRegCod`) VALUES ('00108', 'La Punta Camana  Sucursal ', 'La Punta Mz H2 Lt 12', 'A');
+INSERT INTO `en_p1m_sucursal` (`SucCod`, `SucDes`, `SucDir`, `EstRegCod`) VALUES ('00109', 'Miraflores Lima Sucursal ', 'Urb Los Guindos Mz D Lt 15', 'A');
+INSERT INTO `en_p1m_sucursal` (`SucCod`, `SucDes`, `SucDir`, `EstRegCod`) VALUES ('00110', 'Los Olivos Lima Sucursal ', 'Calle La Merced 413 Of 34 ', 'A');
 
 COMMIT;
 
 
 -- -----------------------------------------------------
--- Data for table `episerp`.`en_p1m_cliente`
+-- Data for table `episerp`.`en_p1m_punto_venta`
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `episerp`;
-INSERT INTO `en_p1m_cliente` (`CliCod`, `CliNom`, `CliApePat`, `CliApeMat`, `CliSex`, `CliDir`, `CliTelFij`, `CliTelCel`, `CliEmail`, `EstCivCod`, `EstRegCod`) VALUES ('72748574', 'Manuel', 'Ramiro', 'Saavedra', 'M', 'Desconocida', '747484', '958142511', 'Desconocido', '01', 'A');
-INSERT INTO `en_p1m_cliente` (`CliCod`, `CliNom`, `CliApePat`, `CliApeMat`, `CliSex`, `CliDir`, `CliTelFij`, `CliTelCel`, `CliEmail`, `EstCivCod`, `EstRegCod`) VALUES ('39337484', 'Diego', 'Ticona', 'chavez', 'M', 'Desconocida', '194875', '959362541', 'Desconocido', '02', 'A');
-INSERT INTO `en_p1m_cliente` (`CliCod`, `CliNom`, `CliApePat`, `CliApeMat`, `CliSex`, `CliDir`, `CliTelFij`, `CliTelCel`, `CliEmail`, `EstCivCod`, `EstRegCod`) VALUES ('29854147', 'Geraldine', 'Choque', 'Pumaroles', 'F', 'Desconocida', '332145', '959164578', 'Desconocido', '03', 'A');
-INSERT INTO `en_p1m_cliente` (`CliCod`, `CliNom`, `CliApePat`, `CliApeMat`, `CliSex`, `CliDir`, `CliTelFij`, `CliTelCel`, `CliEmail`, `EstCivCod`, `EstRegCod`) VALUES ('19584714', 'Alex', 'Flores', 'Neyra', 'M', 'Desconocida', '162635', '959368574', 'Desconocido', '01', 'A');
-INSERT INTO `en_p1m_cliente` (`CliCod`, `CliNom`, `CliApePat`, `CliApeMat`, `CliSex`, `CliDir`, `CliTelFij`, `CliTelCel`, `CliEmail`, `EstCivCod`, `EstRegCod`) VALUES ('39286411', 'Juan', 'Quispe', 'Alvarado', 'M', 'Desconocida', '879568', '957487514', 'Desconocido', '01', 'A');
-INSERT INTO `en_p1m_cliente` (`CliCod`, `CliNom`, `CliApePat`, `CliApeMat`, `CliSex`, `CliDir`, `CliTelFij`, `CliTelCel`, `CliEmail`, `EstCivCod`, `EstRegCod`) VALUES ('12345874', 'Maria', 'Loza', 'Luna', 'F', 'Desconocida', '134679', '958214521', 'Desconocido', '02', 'A');
-INSERT INTO `en_p1m_cliente` (`CliCod`, `CliNom`, `CliApePat`, `CliApeMat`, `CliSex`, `CliDir`, `CliTelFij`, `CliTelCel`, `CliEmail`, `EstCivCod`, `EstRegCod`) VALUES ('98745212', 'Antonio', 'Barcarcel', 'Ruiz', 'M', 'Desconocida', '968574', '956362541', 'Desconocido', '01', 'A');
-INSERT INTO `en_p1m_cliente` (`CliCod`, `CliNom`, `CliApePat`, `CliApeMat`, `CliSex`, `CliDir`, `CliTelFij`, `CliTelCel`, `CliEmail`, `EstCivCod`, `EstRegCod`) VALUES ('15987412', 'Jose', 'Ortiz', 'Mendoza', 'M', 'Desconocida', '658964', '957841524', 'Desconocido', '02', 'A');
-INSERT INTO `en_p1m_cliente` (`CliCod`, `CliNom`, `CliApePat`, `CliApeMat`, `CliSex`, `CliDir`, `CliTelFij`, `CliTelCel`, `CliEmail`, `EstCivCod`, `EstRegCod`) VALUES ('85749632', 'Mario', 'Llanos', 'Valderrama', 'M', 'Desconocida', '178945', '958325544', 'Desconocido', '01', 'A');
-INSERT INTO `en_p1m_cliente` (`CliCod`, `CliNom`, `CliApePat`, `CliApeMat`, `CliSex`, `CliDir`, `CliTelFij`, `CliTelCel`, `CliEmail`, `EstCivCod`, `EstRegCod`) VALUES ('28741222', 'Max', 'Zarate', 'Zegarra', 'M', 'Desconocida', '369877', '959687511', 'Desconocido', '02', 'A');
+INSERT INTO `en_p1m_punto_venta` (`PunVenCod`, `SucCod`, `PunVenDes`, `EstRegCod`) VALUES ('1', '00101', 'Punto de Venta Calle Mercaderes', 'A');
+INSERT INTO `en_p1m_punto_venta` (`PunVenCod`, `SucCod`, `PunVenDes`, `EstRegCod`) VALUES ('2', '00102', 'VILLEGAS ASOCIADOS', 'A');
+INSERT INTO `en_p1m_punto_venta` (`PunVenCod`, `SucCod`, `PunVenDes`, `EstRegCod`) VALUES ('3', '00108', 'ZETTA COMUNICADORES LIMITADA', 'A');
+INSERT INTO `en_p1m_punto_venta` (`PunVenCod`, `SucCod`, `PunVenDes`, `EstRegCod`) VALUES ('4', '00105', 'CARTOPEL', 'A');
+INSERT INTO `en_p1m_punto_venta` (`PunVenCod`, `SucCod`, `PunVenDes`, `EstRegCod`) VALUES ('5', '00101', 'YASAKI METREX', 'A');
+INSERT INTO `en_p1m_punto_venta` (`PunVenCod`, `SucCod`, `PunVenDes`, `EstRegCod`) VALUES ('6', '00110', 'FEPCO ZONA FRANCA', 'A');
+INSERT INTO `en_p1m_punto_venta` (`PunVenCod`, `SucCod`, `PunVenDes`, `EstRegCod`) VALUES ('7', '00105', 'RAPISCOL', 'A');
+INSERT INTO `en_p1m_punto_venta` (`PunVenCod`, `SucCod`, `PunVenDes`, `EstRegCod`) VALUES ('8', '00109', 'TEXTILES WAMSUTTA LTDA.', 'A');
+INSERT INTO `en_p1m_punto_venta` (`PunVenCod`, `SucCod`, `PunVenDes`, `EstRegCod`) VALUES ('9', '00109', 'DISTRIBUIDORA DE CONFECCIONES Y TEXTILES DISCONYTEX LTDA', 'A');
+INSERT INTO `en_p1m_punto_venta` (`PunVenCod`, `SucCod`, `PunVenDes`, `EstRegCod`) VALUES ('10', '00103', 'SERRANO GOMEZ PRETECOR LTDA.', 'A');
+INSERT INTO `en_p1m_punto_venta` (`PunVenCod`, `SucCod`, `PunVenDes`, `EstRegCod`) VALUES ('11', '00105', 'PREMOLDA LTDA', 'A');
+INSERT INTO `en_p1m_punto_venta` (`PunVenCod`, `SucCod`, `PunVenDes`, `EstRegCod`) VALUES ('12', '00106', 'PRODUCTOS ESPECIALES DE CONCRETO', 'A');
+INSERT INTO `en_p1m_punto_venta` (`PunVenCod`, `SucCod`, `PunVenDes`, `EstRegCod`) VALUES ('13', '00106', 'TRIMCO', 'A');
+INSERT INTO `en_p1m_punto_venta` (`PunVenCod`, `SucCod`, `PunVenDes`, `EstRegCod`) VALUES ('14', '00102', 'DITE', 'A');
+INSERT INTO `en_p1m_punto_venta` (`PunVenCod`, `SucCod`, `PunVenDes`, `EstRegCod`) VALUES ('15', '00108', 'GRUPO INDUCILEMAN LTDA.', 'A');
+INSERT INTO `en_p1m_punto_venta` (`PunVenCod`, `SucCod`, `PunVenDes`, `EstRegCod`) VALUES ('16', '00102', 'COMPAÑIA METALICA ASOCIADA C M A LTDA', 'A');
+INSERT INTO `en_p1m_punto_venta` (`PunVenCod`, `SucCod`, `PunVenDes`, `EstRegCod`) VALUES ('17', '00102', 'CONSTRUCTORA SANTA ANA', 'A');
+INSERT INTO `en_p1m_punto_venta` (`PunVenCod`, `SucCod`, `PunVenDes`, `EstRegCod`) VALUES ('18', '00106', 'PRODUCTORA ANDINA DE DULCES', 'A');
+INSERT INTO `en_p1m_punto_venta` (`PunVenCod`, `SucCod`, `PunVenDes`, `EstRegCod`) VALUES ('19', '00103', 'TELESENTINEL LTDA.', 'A');
+INSERT INTO `en_p1m_punto_venta` (`PunVenCod`, `SucCod`, `PunVenDes`, `EstRegCod`) VALUES ('20', '00108', 'IMPULSO Y MERCADEO', 'A');
+INSERT INTO `en_p1m_punto_venta` (`PunVenCod`, `SucCod`, `PunVenDes`, `EstRegCod`) VALUES ('21', '00107', 'SOMOS SOLUCIONES LABORALES', 'A');
+INSERT INTO `en_p1m_punto_venta` (`PunVenCod`, `SucCod`, `PunVenDes`, `EstRegCod`) VALUES ('22', '00102', 'KORN/FERRY INTERNATIONAL COLOMBIA', 'A');
+INSERT INTO `en_p1m_punto_venta` (`PunVenCod`, `SucCod`, `PunVenDes`, `EstRegCod`) VALUES ('23', '00105', 'SOCIEDAD DE COMERCIALIZACION INTERNACIONAL CICOLTA', 'A');
+INSERT INTO `en_p1m_punto_venta` (`PunVenCod`, `SucCod`, `PunVenDes`, `EstRegCod`) VALUES ('24', '00103', 'ANCLA LIMITADA', 'A');
+INSERT INTO `en_p1m_punto_venta` (`PunVenCod`, `SucCod`, `PunVenDes`, `EstRegCod`) VALUES ('25', '00104', 'CONSULTORES UNIDOS', 'A');
+INSERT INTO `en_p1m_punto_venta` (`PunVenCod`, `SucCod`, `PunVenDes`, `EstRegCod`) VALUES ('26', '00103', 'TECNICONTROL', 'A');
+INSERT INTO `en_p1m_punto_venta` (`PunVenCod`, `SucCod`, `PunVenDes`, `EstRegCod`) VALUES ('27', '00103', 'GARCIA WERNHER Y CIA S EN C.', 'A');
+INSERT INTO `en_p1m_punto_venta` (`PunVenCod`, `SucCod`, `PunVenDes`, `EstRegCod`) VALUES ('28', '00102', 'VENTAS Y SERVICIOS', 'A');
+INSERT INTO `en_p1m_punto_venta` (`PunVenCod`, `SucCod`, `PunVenDes`, `EstRegCod`) VALUES ('29', '00107', 'LISTOS', 'A');
+INSERT INTO `en_p1m_punto_venta` (`PunVenCod`, `SucCod`, `PunVenDes`, `EstRegCod`) VALUES ('30', '00109', 'LABORALES MEDELLIN', 'A');
+INSERT INTO `en_p1m_punto_venta` (`PunVenCod`, `SucCod`, `PunVenDes`, `EstRegCod`) VALUES ('31', '00106', 'COMPAÑIA MANUFACTURERA ONIX', 'A');
+INSERT INTO `en_p1m_punto_venta` (`PunVenCod`, `SucCod`, `PunVenDes`, `EstRegCod`) VALUES ('32', '00108', 'INDUSTRIA DE MUEBLES DEL VALLE LTDA INVAL', 'A');
+INSERT INTO `en_p1m_punto_venta` (`PunVenCod`, `SucCod`, `PunVenDes`, `EstRegCod`) VALUES ('33', '00107', 'INDUSTRIAS ZABRA', 'A');
+INSERT INTO `en_p1m_punto_venta` (`PunVenCod`, `SucCod`, `PunVenDes`, `EstRegCod`) VALUES ('34', '00102', 'ALUMINIO DEL PACIFICO', 'A');
+INSERT INTO `en_p1m_punto_venta` (`PunVenCod`, `SucCod`, `PunVenDes`, `EstRegCod`) VALUES ('35', '00109', 'AGROPECUARIA BERGINIE', 'A');
+INSERT INTO `en_p1m_punto_venta` (`PunVenCod`, `SucCod`, `PunVenDes`, `EstRegCod`) VALUES ('36', '00110', 'COMERCIALIZADORA INTERNACIONAL MOBILER', 'A');
+INSERT INTO `en_p1m_punto_venta` (`PunVenCod`, `SucCod`, `PunVenDes`, `EstRegCod`) VALUES ('37', '00103', 'COMPAÑIA ATUNERA DEL PACIFICO', 'A');
+INSERT INTO `en_p1m_punto_venta` (`PunVenCod`, `SucCod`, `PunVenDes`, `EstRegCod`) VALUES ('38', '00108', 'SOCIEDAD AGROMARINA TUMACO LTDA', 'A');
+INSERT INTO `en_p1m_punto_venta` (`PunVenCod`, `SucCod`, `PunVenDes`, `EstRegCod`) VALUES ('39', '00110', 'ESPUMAS SANTANDER LTDA', 'A');
+INSERT INTO `en_p1m_punto_venta` (`PunVenCod`, `SucCod`, `PunVenDes`, `EstRegCod`) VALUES ('40', '00106', 'INDUSTRIAS ALBERT LTDA', 'A');
+INSERT INTO `en_p1m_punto_venta` (`PunVenCod`, `SucCod`, `PunVenDes`, `EstRegCod`) VALUES ('41', '00105', 'INDUSTRIAL DE POLIETILENO LTDA', 'A');
+INSERT INTO `en_p1m_punto_venta` (`PunVenCod`, `SucCod`, `PunVenDes`, `EstRegCod`) VALUES ('42', '00104', 'NOVAMED', 'A');
+INSERT INTO `en_p1m_punto_venta` (`PunVenCod`, `SucCod`, `PunVenDes`, `EstRegCod`) VALUES ('43', '00102', 'COMERCIALIZADORA INTERNACIONAL DE COLORANTES', 'A');
+INSERT INTO `en_p1m_punto_venta` (`PunVenCod`, `SucCod`, `PunVenDes`, `EstRegCod`) VALUES ('44', '00103', 'SIMONIZ', 'A');
+INSERT INTO `en_p1m_punto_venta` (`PunVenCod`, `SucCod`, `PunVenDes`, `EstRegCod`) VALUES ('45', '00104', 'VICAR DE COLOMBIA', 'A');
+INSERT INTO `en_p1m_punto_venta` (`PunVenCod`, `SucCod`, `PunVenDes`, `EstRegCod`) VALUES ('46', '00104', 'FIAMME', 'A');
+INSERT INTO `en_p1m_punto_venta` (`PunVenCod`, `SucCod`, `PunVenDes`, `EstRegCod`) VALUES ('47', '00105', 'PROMOTORA DE PUBLICIDAD RADIAL', 'A');
+INSERT INTO `en_p1m_punto_venta` (`PunVenCod`, `SucCod`, `PunVenDes`, `EstRegCod`) VALUES ('48', '00102', 'MARITIMA PROVIDENCIA LTDA', 'A');
+INSERT INTO `en_p1m_punto_venta` (`PunVenCod`, `SucCod`, `PunVenDes`, `EstRegCod`) VALUES ('49', '00102', 'COCO COMPAÑIA DE CONSTRUCCIONES LTDA', 'A');
+INSERT INTO `en_p1m_punto_venta` (`PunVenCod`, `SucCod`, `PunVenDes`, `EstRegCod`) VALUES ('50', '00104', 'INDUSTRIAL DE MEZCLAS ASFALTICA LTDA', 'A');
+INSERT INTO `en_p1m_punto_venta` (`PunVenCod`, `SucCod`, `PunVenDes`, `EstRegCod`) VALUES ('51', '00109', 'INGENIEROS CONTRATISTAS CONSTRUCTORES', 'A');
 
 COMMIT;
 
-
--- -----------------------------------------------------
--- Data for table `episerp`.`en_p1m_documento_cliente`
--- -----------------------------------------------------
-START TRANSACTION;
-USE `episerp`;
-INSERT INTO `en_p1m_documento_cliente` (`CliCod`, `TipDocCliCod`, `DocCliNum`, `EstRegCod`) VALUES ('72748574', '01', '72748574', 'A');
-INSERT INTO `en_p1m_documento_cliente` (`CliCod`, `TipDocCliCod`, `DocCliNum`, `EstRegCod`) VALUES ('39337484', '01', '39337484', 'A');
-INSERT INTO `en_p1m_documento_cliente` (`CliCod`, `TipDocCliCod`, `DocCliNum`, `EstRegCod`) VALUES ('29854147', '01', '29854147', 'A');
-INSERT INTO `en_p1m_documento_cliente` (`CliCod`, `TipDocCliCod`, `DocCliNum`, `EstRegCod`) VALUES ('19584714', '01', '19584714', 'A');
-INSERT INTO `en_p1m_documento_cliente` (`CliCod`, `TipDocCliCod`, `DocCliNum`, `EstRegCod`) VALUES ('39286411', '01', '39286411', 'A');
-INSERT INTO `en_p1m_documento_cliente` (`CliCod`, `TipDocCliCod`, `DocCliNum`, `EstRegCod`) VALUES ('12345874', '01', '12345874', 'A');
-INSERT INTO `en_p1m_documento_cliente` (`CliCod`, `TipDocCliCod`, `DocCliNum`, `EstRegCod`) VALUES ('98745212', '01', '98745212', 'A');
-INSERT INTO `en_p1m_documento_cliente` (`CliCod`, `TipDocCliCod`, `DocCliNum`, `EstRegCod`) VALUES ('15987412', '01', '15987412', 'A');
-INSERT INTO `en_p1m_documento_cliente` (`CliCod`, `TipDocCliCod`, `DocCliNum`, `EstRegCod`) VALUES ('85749632', '01', '85749632', 'A');
-INSERT INTO `en_p1m_documento_cliente` (`CliCod`, `TipDocCliCod`, `DocCliNum`, `EstRegCod`) VALUES ('28741222', '01', '28741222', 'A');
-
-COMMIT;
 
 -- -----------------------------------------------------
 -- Data for table `episerp`.`en_p1m_usuario`
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `episerp`;
-INSERT INTO `episerp`.`en_p1m_usuario` (`UsuCod`, `UsuNom`, `UsuApePat`, `UsuApeMat`, `UsuLog`, `UsuPas`, `TipUsuCod`, `SucCod`, `UsuFecNac`, `EstCivCod`, `UsuSex`, `EstRegCod`) VALUES ('72743604', 'Christian', 'Incalla', 'Nina', 'vendedor', 'e8827f3c0bcc90509b7d6841d446b163a671cac807a5f1bf41218667546ce80b', 2, 1, '1990-11-20', 1, 'M', 'A');
-INSERT INTO `episerp`.`en_p1m_usuario` (`UsuCod`, `UsuNom`, `UsuApePat`, `UsuApeMat`, `UsuLog`, `UsuPas`, `TipUsuCod`, `SucCod`, `UsuFecNac`, `EstCivCod`, `UsuSex`, `EstRegCod`) VALUES ('76308492', 'Kevin', 'Fernández', 'Nieto', 'comprador', '17f77242a319cd8bf5fac8fd615115a09af269b8d7ec43e84e1ba7005b5c5383', 3, 1,  '1992-05-24', 1, 'M', 'A');
-INSERT INTO `episerp`.`en_p1m_usuario` (`UsuCod`, `UsuNom`, `UsuApePat`, `UsuApeMat`, `UsuLog`, `UsuPas`, `TipUsuCod`, `SucCod`, `UsuFecNac`, `EstCivCod`, `UsuSex`, `EstRegCod`) VALUES ('70299350', 'Gladys', 'Calle', 'Condori', 'contador', '145e0447253dba54dce5e527e28bcc0f7c160332bfcb7cf5cf4f5b4692aebead', 4, 1, '1995-01-11', 1, 'F', 'A');
+INSERT INTO `episerp`.`en_p1m_usuario` (`UsuCod`, `UsuNom`, `UsuApePat`, `UsuApeMat`, `UsuLog`, `UsuPas`, `TipUsuCod`, `SucCod`, `UsuFecNac`, `EstCivCod`, `UsuSex`, `EstRegCod`) VALUES ('2', 'Christian', 'Incalla', 'Nina', 'vendedor', 'e8827f3c0bcc90509b7d6841d446b163a671cac807a5f1bf41218667546ce80b', 2, 1, '1990-11-20', 1, 'M', 'A');
+INSERT INTO `episerp`.`en_p1m_usuario` (`UsuCod`, `UsuNom`, `UsuApePat`, `UsuApeMat`, `UsuLog`, `UsuPas`, `TipUsuCod`, `SucCod`, `UsuFecNac`, `EstCivCod`, `UsuSex`, `EstRegCod`) VALUES ('3', 'Kevin', 'Fernández', 'Nieto', 'comprador', '17f77242a319cd8bf5fac8fd615115a09af269b8d7ec43e84e1ba7005b5c5383', 3, 1,  '1992-05-24', 1, 'M', 'A');
+INSERT INTO `episerp`.`en_p1m_usuario` (`UsuCod`, `UsuNom`, `UsuApePat`, `UsuApeMat`, `UsuLog`, `UsuPas`, `TipUsuCod`, `SucCod`, `UsuFecNac`, `EstCivCod`, `UsuSex`, `EstRegCod`) VALUES ('4', 'Gladys', 'Calle', 'Condori', 'contador', '145e0447253dba54dce5e527e28bcc0f7c160332bfcb7cf5cf4f5b4692aebead', 4, 1, '1995-01-11', 1, 'F', 'A');
 
 COMMIT;
 
@@ -64,9 +94,47 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `episerp`;
-INSERT INTO `en_p1m_documento_usuario` (`UsuCod`, `TipDocUsuCod`, `DocUsuNum`, `EstRegCod`) VALUES ('72743604', 1, '72743604', 'A');
-INSERT INTO `en_p1m_documento_usuario` (`UsuCod`, `TipDocUsuCod`, `DocUsuNum`, `EstRegCod`) VALUES ('76308492', 1, '76308492', 'A');
-INSERT INTO `en_p1m_documento_usuario` (`UsuCod`, `TipDocUsuCod`, `DocUsuNum`, `EstRegCod`) VALUES ('70299350', 1, '70299350', 'A');
+INSERT INTO `en_p1m_documento_usuario` (`UsuCod`, `TipDocUsuCod`, `DocUsuNum`, `EstRegCod`) VALUES ('2', 1, '72743604', 'A');
+INSERT INTO `en_p1m_documento_usuario` (`UsuCod`, `TipDocUsuCod`, `DocUsuNum`, `EstRegCod`) VALUES ('3', 1, '76308492', 'A');
+INSERT INTO `en_p1m_documento_usuario` (`UsuCod`, `TipDocUsuCod`, `DocUsuNum`, `EstRegCod`) VALUES ('4', 1, '70299350', 'A');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `episerp`.`en_p1m_cliente`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `episerp`;
+INSERT INTO `en_p1m_cliente` (`CliCod`, `CliNom`, `CliApePat`, `CliApeMat`, `CliSex`, `CliDir`, `CliTelFij`, `CliTelCel`, `CliEmail`, `EstCivCod`, `EstRegCod`) VALUES ('1', 'Manuel', 'Ramiro', 'Saavedra', 'M', 'Desconocida', '747484', '958142511', 'Desconocido', '01', 'A');
+INSERT INTO `en_p1m_cliente` (`CliCod`, `CliNom`, `CliApePat`, `CliApeMat`, `CliSex`, `CliDir`, `CliTelFij`, `CliTelCel`, `CliEmail`, `EstCivCod`, `EstRegCod`) VALUES ('2', 'Diego', 'Ticona', 'chavez', 'M', 'Desconocida', '194875', '959362541', 'Desconocido', '02', 'A');
+INSERT INTO `en_p1m_cliente` (`CliCod`, `CliNom`, `CliApePat`, `CliApeMat`, `CliSex`, `CliDir`, `CliTelFij`, `CliTelCel`, `CliEmail`, `EstCivCod`, `EstRegCod`) VALUES ('3', 'Geraldine', 'Choque', 'Pumaroles', 'F', 'Desconocida', '332145', '959164578', 'Desconocido', '03', 'A');
+INSERT INTO `en_p1m_cliente` (`CliCod`, `CliNom`, `CliApePat`, `CliApeMat`, `CliSex`, `CliDir`, `CliTelFij`, `CliTelCel`, `CliEmail`, `EstCivCod`, `EstRegCod`) VALUES ('4', 'Alex', 'Flores', 'Neyra', 'M', 'Desconocida', '162635', '959368574', 'Desconocido', '01', 'A');
+INSERT INTO `en_p1m_cliente` (`CliCod`, `CliNom`, `CliApePat`, `CliApeMat`, `CliSex`, `CliDir`, `CliTelFij`, `CliTelCel`, `CliEmail`, `EstCivCod`, `EstRegCod`) VALUES ('5', 'Juan', 'Quispe', 'Alvarado', 'M', 'Desconocida', '879568', '957487514', 'Desconocido', '01', 'A');
+INSERT INTO `en_p1m_cliente` (`CliCod`, `CliNom`, `CliApePat`, `CliApeMat`, `CliSex`, `CliDir`, `CliTelFij`, `CliTelCel`, `CliEmail`, `EstCivCod`, `EstRegCod`) VALUES ('6', 'Maria', 'Loza', 'Luna', 'F', 'Desconocida', '134679', '958214521', 'Desconocido', '02', 'A');
+INSERT INTO `en_p1m_cliente` (`CliCod`, `CliNom`, `CliApePat`, `CliApeMat`, `CliSex`, `CliDir`, `CliTelFij`, `CliTelCel`, `CliEmail`, `EstCivCod`, `EstRegCod`) VALUES ('7', 'Antonio', 'Barcarcel', 'Ruiz', 'M', 'Desconocida', '968574', '956362541', 'Desconocido', '01', 'A');
+INSERT INTO `en_p1m_cliente` (`CliCod`, `CliNom`, `CliApePat`, `CliApeMat`, `CliSex`, `CliDir`, `CliTelFij`, `CliTelCel`, `CliEmail`, `EstCivCod`, `EstRegCod`) VALUES ('8', 'Jose', 'Ortiz', 'Mendoza', 'M', 'Desconocida', '658964', '957841524', 'Desconocido', '02', 'A');
+INSERT INTO `en_p1m_cliente` (`CliCod`, `CliNom`, `CliApePat`, `CliApeMat`, `CliSex`, `CliDir`, `CliTelFij`, `CliTelCel`, `CliEmail`, `EstCivCod`, `EstRegCod`) VALUES ('9', 'Mario', 'Llanos', 'Valderrama', 'M', 'Desconocida', '178945', '958325544', 'Desconocido', '01', 'A');
+INSERT INTO `en_p1m_cliente` (`CliCod`, `CliNom`, `CliApePat`, `CliApeMat`, `CliSex`, `CliDir`, `CliTelFij`, `CliTelCel`, `CliEmail`, `EstCivCod`, `EstRegCod`) VALUES ('10', 'Max', 'Zarate', 'Zegarra', 'M', 'Desconocida', '369877', '959687511', 'Desconocido', '02', 'A');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `episerp`.`en_p1m_documento_cliente`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `episerp`;
+INSERT INTO `en_p1m_documento_cliente` (`CliCod`, `TipDocCliCod`, `DocCliNum`, `EstRegCod`) VALUES ('1', '01', '72748574', 'A');
+INSERT INTO `en_p1m_documento_cliente` (`CliCod`, `TipDocCliCod`, `DocCliNum`, `EstRegCod`) VALUES ('2', '01', '39337484', 'A');
+INSERT INTO `en_p1m_documento_cliente` (`CliCod`, `TipDocCliCod`, `DocCliNum`, `EstRegCod`) VALUES ('3', '01', '29854147', 'A');
+INSERT INTO `en_p1m_documento_cliente` (`CliCod`, `TipDocCliCod`, `DocCliNum`, `EstRegCod`) VALUES ('4', '01', '19584714', 'A');
+INSERT INTO `en_p1m_documento_cliente` (`CliCod`, `TipDocCliCod`, `DocCliNum`, `EstRegCod`) VALUES ('5', '01', '39286411', 'A');
+INSERT INTO `en_p1m_documento_cliente` (`CliCod`, `TipDocCliCod`, `DocCliNum`, `EstRegCod`) VALUES ('6', '01', '12345874', 'A');
+INSERT INTO `en_p1m_documento_cliente` (`CliCod`, `TipDocCliCod`, `DocCliNum`, `EstRegCod`) VALUES ('7', '01', '98745212', 'A');
+INSERT INTO `en_p1m_documento_cliente` (`CliCod`, `TipDocCliCod`, `DocCliNum`, `EstRegCod`) VALUES ('8', '01', '15987412', 'A');
+INSERT INTO `en_p1m_documento_cliente` (`CliCod`, `TipDocCliCod`, `DocCliNum`, `EstRegCod`) VALUES ('9', '01', '85749632', 'A');
+INSERT INTO `en_p1m_documento_cliente` (`CliCod`, `TipDocCliCod`, `DocCliNum`, `EstRegCod`) VALUES ('10', '01', '28741222', 'A');
 
 COMMIT;
 
@@ -78,6 +146,14 @@ START TRANSACTION;
 USE `episerp`;
 INSERT INTO `en_p2m_almacen` (`AlmCod`, `AlmDet`, `SucCod`, `AlmVolTot`, `AlmObs`, `EstRegCod`) VALUES ('ALM01', 'Almacen Principal', 1, '1500', 'Ninguna', 'A');
 INSERT INTO `en_p2m_almacen` (`AlmCod`, `AlmDet`, `SucCod`, `AlmVolTot`, `AlmObs`, `EstRegCod`) VALUES ('ALM02', 'Almacen Secundario', 1, '1000', 'Ninguna', 'A');
+INSERT INTO `en_p2m_almacen` (`AlmCod`, `AlmDet`, `SucCod`, `AlmVolTot`, `AlmObs`, `EstRegCod`) VALUES ('ALM03', 'Almacen 01', 1, '50000', 'Almacen en buenas Condiciones', 'A');
+INSERT INTO `en_p2m_almacen` (`AlmCod`, `AlmDet`, `SucCod`, `AlmVolTot`, `AlmObs`, `EstRegCod`) VALUES ('ALM04', 'Almacen 02', 1, 50000, 'Almacen en buenas Condiciones', 'A');
+INSERT INTO `en_p2m_almacen` (`AlmCod`, `AlmDet`, `SucCod`, `AlmVolTot`, `AlmObs`, `EstRegCod`) VALUES ('ALM05', 'Almacen 03', 1, 50000, 'Almacen en buenas Condiciones', 'A');
+INSERT INTO `en_p2m_almacen` (`AlmCod`, `AlmDet`, `SucCod`, `AlmVolTot`, `AlmObs`, `EstRegCod`) VALUES ('ALM06', 'Almacen 04', 1, 50000, 'Almacen en buenas Condiciones', 'A');
+INSERT INTO `en_p2m_almacen` (`AlmCod`, `AlmDet`, `SucCod`, `AlmVolTot`, `AlmObs`, `EstRegCod`) VALUES ('ALM07', 'Almacen 05', 1, 50000, 'Almacen en buenas Condiciones', 'A');
+INSERT INTO `en_p2m_almacen` (`AlmCod`, `AlmDet`, `SucCod`, `AlmVolTot`, `AlmObs`, `EstRegCod`) VALUES ('ALM08', 'Almacen 06', 1, 50000, 'En mantenimiento', 'I');
+INSERT INTO `en_p2m_almacen` (`AlmCod`, `AlmDet`, `SucCod`, `AlmVolTot`, `AlmObs`, `EstRegCod`) VALUES ('ALM09', 'Almacen 07', 1, 50000, 'En mantenimiento', 'I');
+INSERT INTO `en_p2m_almacen` (`AlmCod`, `AlmDet`, `SucCod`, `AlmVolTot`, `AlmObs`, `EstRegCod`) VALUES ('ALM10', 'Almacen 08', 1, 50000, 'Almacen en buenas Condiciones', 'A');
 
 COMMIT;
 
@@ -92,8 +168,17 @@ INSERT INTO `en_p2m_clase_producto` (`ClaProCod`, `ClaProDet`, `EstRegCod`) VALU
 INSERT INTO `en_p2m_clase_producto` (`ClaProCod`, `ClaProDet`, `EstRegCod`) VALUES ('03', 'Fruta', 'A');
 INSERT INTO `en_p2m_clase_producto` (`ClaProCod`, `ClaProDet`, `EstRegCod`) VALUES ('04', 'Verduras y Hortalizas', 'A');
 INSERT INTO `en_p2m_clase_producto` (`ClaProCod`, `ClaProDet`, `EstRegCod`) VALUES ('05', 'Cereales', 'A');
+INSERT INTO `en_p2m_clase_producto` (`ClaProCod`, `ClaProDet`, `EstRegCod`) VALUES ('06','Bebidas','A');
+INSERT INTO `en_p2m_clase_producto` (`ClaProCod`, `ClaProDet`, `EstRegCod`) VALUES ('07', 'Aceite','A');
+INSERT INTO `en_p2m_clase_producto` (`ClaProCod`, `ClaProDet`, `EstRegCod`) VALUES ('08', 'Conservas','A');
+INSERT INTO `en_p2m_clase_producto` (`ClaProCod`, `ClaProDet`, `EstRegCod`) VALUES ('09', 'Embutidos','A');
+INSERT INTO `en_p2m_clase_producto` (`ClaProCod`, `ClaProDet`, `EstRegCod`) VALUES ('10', 'Helado','A');
+INSERT INTO `en_p2m_clase_producto` (`ClaProCod`, `ClaProDet`, `EstRegCod`) VALUES ('11', 'Leche','A');
+INSERT INTO `en_p2m_clase_producto` (`ClaProCod`, `ClaProDet`, `EstRegCod`) VALUES ('12', 'Golosinas','A');
+INSERT INTO `en_p2m_clase_producto` (`ClaProCod`, `ClaProDet`, `EstRegCod`) VALUES ('13', 'Refrescos','A');
 
 COMMIT;
+
 
 -- -----------------------------------------------------
 -- Data for table `episerp`.`en_p2m_subclase_producto`
@@ -119,6 +204,16 @@ INSERT INTO `en_p2m_subclase_producto` (`ClaProCod`, `SubClaProCod`, `SubClaProD
 INSERT INTO `en_p2m_subclase_producto` (`ClaProCod`, `SubClaProCod`, `SubClaProDet`, `EstRegCod`) VALUES ('05', '01', 'Barritas Cereales', 'A');
 INSERT INTO `en_p2m_subclase_producto` (`ClaProCod`, `SubClaProCod`, `SubClaProDet`, `EstRegCod`) VALUES ('05', '02', 'Cereales Familiares', 'A');
 INSERT INTO `en_p2m_subclase_producto` (`ClaProCod`, `SubClaProCod`, `SubClaProDet`, `EstRegCod`) VALUES ('05', '03', 'Cereales infantiles', 'A');
+INSERT INTO `en_p2m_subclase_producto` (`ClaProCod`, `SubClaProCod`, `SubClaProDet`, `EstRegCod`) VALUES ('08', '01', 'Confitura','A');
+INSERT INTO `en_p2m_subclase_producto` (`ClaProCod`, `SubClaProCod`, `SubClaProDet`, `EstRegCod`) VALUES ('08', '02', 'Mermelada','A');
+INSERT INTO `en_p2m_subclase_producto` (`ClaProCod`, `SubClaProCod`, `SubClaProDet`, `EstRegCod`) VALUES ('08', '03', 'Frutas en almibar', 'A');
+INSERT INTO `en_p2m_subclase_producto` (`ClaProCod`, `SubClaProCod`, `SubClaProDet`, `EstRegCod`) VALUES ('09' ,'01', 'Salchichas', 'A');
+INSERT INTO `en_p2m_subclase_producto` (`ClaProCod`, `SubClaProCod`, `SubClaProDet`, `EstRegCod`) VALUES ('09', '02', 'Mortadela', 'A');
+INSERT INTO `en_p2m_subclase_producto` (`ClaProCod`, `SubClaProCod`, `SubClaProDet`, `EstRegCod`) VALUES ('12', '01', 'Caramelo', 'A');
+INSERT INTO `en_p2m_subclase_producto` (`ClaProCod`, `SubClaProCod`, `SubClaProDet`, `EstRegCod`) VALUES ('12', '02', 'Chicles', 'A');
+INSERT INTO `en_p2m_subclase_producto` (`ClaProCod`, `SubClaProCod`, `SubClaProDet`, `EstRegCod`) VALUES ('12', '03', 'Gomitas', 'A');
+INSERT INTO `en_p2m_subclase_producto` (`ClaProCod`, `SubClaProCod`, `SubClaProDet`, `EstRegCod`) VALUES ('12', '04', 'Chocolate', 'A');
+INSERT INTO `en_p2m_subclase_producto` (`ClaProCod`, `SubClaProCod`, `SubClaProDet`, `EstRegCod`) VALUES ('12', '05', 'Toffie', 'A');
 
 COMMIT;
 
@@ -171,6 +266,17 @@ INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, 
 INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUni`, `MonCod`, `ProStk`, `ProStkPreVen`, `AlmCod`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('05', '03', '7755523050320', 'mini cereales kellogs', '04', '6.00', '02', '120', '50', 'ALM01', '100', '10', '100', 'Ninguna','A');
 INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUni`, `MonCod`, `ProStk`, `ProStkPreVen`, `AlmCod`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('05', '03', '7755523050339', 'mini cereales corn flakes', '04', '6.00', '02', '120', '50', 'ALM01', '100', '10', '100', 'Ninguna','A');
 
+INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUni`, `MonCod`, `ProStk`, `ProStkPreVen`,  `AlmCod`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('08', '02', '7755523050340', 'Mermelada Gloria 500', 3, 5.50, 1, 50, 10, 'ALM01', 100, 10, 20, 'Altamente comercializado','A');
+INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUni`, `MonCod`, `ProStk`, `ProStkPreVen`, `AlmCod`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('08', '02', '7755523050341', 'Mermelada Fanny 500', 3, 6.00, 1, 50, 10, 'ALM01', 100, 10, 20, 'Altamente comercializado','A');
+INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUni`, `MonCod`, `ProStk`, `ProStkPreVen`, `AlmCod`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('08', '03', '7755523050342', 'Aconcagua Durazno 250', 3, 5.50, 1, 150, 100, 'ALM01', 100, 10, 20, 'Altamente comercializado','A');
+INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUni`, `MonCod`, `ProStk`, `ProStkPreVen`, `AlmCod`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('08', '03', '7755523050343', 'Aconcagua Piña 250', 3, 5.50, 1, 90, 10, 'ALM01', 100, 10, 20, 'Altamente comercializado','A');
+INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUni`, `MonCod`, `ProStk`, `ProStkPreVen`, `AlmCod`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('09', '02', '7755523050344', 'San Fernando 100', 3, 1.50, 1, 150, 10, 'ALM01', 100, 10, 20, 'Altamente comercializado','A');
+INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUni`, `MonCod`, `ProStk`, `ProStkPreVen`, `AlmCod`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('09', '02', '7755523050345', 'La Calera 100', 3, 1.50, 1, 100, 10, 'ALM01', 100, 10, 20, 'Altamente comercializado','A');
+INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUni`, `MonCod`, `ProStk`, `ProStkPreVen`, `AlmCod`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('12', '01', '7755523050346', 'Trident Menta', 3, 0.20,1, 500, 10, 'ALM01', 100, 10, 20, 'Altamente comercializado','A');
+INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUni`, `MonCod`, `ProStk`, `ProStkPreVen`, `AlmCod`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('12', '01', '7755523050347', 'Chiclets Menta', 3, 0.20, 1, 500, 10, 'ALM01', 100, 10, 20, 'Altamente comercializado','A');
+INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUni`, `MonCod`, `ProStk`, `ProStkPreVen`, `AlmCod`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('12', '04', '7755523050348', 'Nikolo', 3, 0.70, 1, 100, 10, 'ALM01', 100, 10, 20, 'Altamente comercializado','A');
+INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUni`, `MonCod`, `ProStk`, `ProStkPreVen`, `AlmCod`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('12', '04', '7755523050349', 'Mecano', 3, 1.00, 1, 100, 10, 'ALM01', 100, 10, 20, 'Altamente comercializado','A');
+
 COMMIT;
 
 
@@ -179,16 +285,116 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `episerp`;
-INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000001', '72748574', '72743604', '2016-10-09', '1500', '285', '1215', '19', 'Ninguna', '01', '01', '01', '01', 'A');
-INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000002', '39337484', '72743604', '2016-10-09', '1800', '342', '1458', '19', 'Ninguna', '01', '01', '01', '01', 'A');
-INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000003', '29854147', '72743604', '2016-10-10', '2000', '380', '1620', '19', 'Ninguna', '01', '01', '01', '01', 'A');
-INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000004', '19584714', '72743604', '2016-10-10', '1750', '322.5', '1417.5', '19', 'Ninguna', '01', '01', '01', '01', 'A');
-INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000005', '39286411', '72743604', '2016-10-10', '2500', '475', '2025', '19', 'Ninguna', '01', '01', '01', '01', 'A');
-INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000006', '12345874', '72743604', '2016-10-10', '950', '180.5', '769.5', '19', 'Ninguna', '01', '01', '01', '01', 'A');
-INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000007', '98745212', '72743604', '2016-10-11', '650', '123.5', '526.5', '19', 'Ninguna', '01', '01', '01', '01', 'A');
-INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000008', '15987412', '72743604', '2016-10-11', '555', '105.45', '449.55', '19', 'Ninguna', '02', '02', '02', '01', 'A');
-INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000009', '85749632', '72743604', '2016-10-11', '850', '161.5', '688.5', '19', 'Ninguna', '02', '02', '02', '01', 'A');
-INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000010', '28741222', '72743604', '2016-10-11', '740', '140.6', '599.4', '19', 'Ninguna', '02', '02', '02', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000001', '1', '2', '2016-10-09', '1500', '285', '1215', '19', 'Ninguna', '01', '01', '01', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000002', '2', '2', '2016-10-09', '23424.20', '342', '1458', '19', 'Ninguna', '01', '01', '01', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000003', '3', '2', '2016-10-09', '23424.20', '380', '1620', '19', 'Ninguna', '01', '01', '01', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000004', '4', '2', '2016-10-09', '724', '322.5', '1417.5', '19', 'Ninguna', '01', '01', '01', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000005', '5', '2', '2016-10-09', '961', '475', '2025', '19', 'Ninguna', '01', '01', '01', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000006', '6', '2', '2016-10-09', '153', '180.5', '769.5', '19', 'Ninguna', '01', '01', '01', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000007', '7', '2', '2016-10-09', '771', '123.5', '526.5', '19', 'Ninguna', '01', '01', '01', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000008', '8', '2', '2016-10-09', '811', '105.45', '449.55', '19', 'Ninguna', '02', '02', '02', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000009', '9', '2', '2016-10-09', '547', '161.5', '688.5', '19', 'Ninguna', '02', '02', '02', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000010', '10', '2', '2016-10-09', '778', '140.6', '599.4', '19', 'Ninguna', '02', '02', '02', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000011', '1', '2', '2016-10-09', '264', '285', '1215', '19', 'Ninguna', '01', '01', '01', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000012', '2', '2', '2016-10-09', '101', '342', '1458', '19', 'Ninguna', '01', '01', '01', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000013', '3', '2', '2016-10-09', '966', '380', '1620', '19', 'Ninguna', '01', '01', '01', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000014', '4', '2', '2016-10-09', '538', '322.5', '1417.5', '19', 'Ninguna', '01', '01', '01', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000015', '5', '2', '2016-10-09', '724', '475', '2025', '19', 'Ninguna', '01', '01', '01', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000016', '6', '2', '2016-10-09', '961', '180.5', '769.5', '19', 'Ninguna', '01', '01', '01', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000017', '7', '2', '2016-10-09', '153', '123.5', '526.5', '19', 'Ninguna', '01', '01', '01', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000018', '8', '2', '2016-10-09', '771', '105.45', '449.55', '19', 'Ninguna', '02', '02', '02', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000019', '9', '2', '2016-10-09', '724', '161.5', '688.5', '19', 'Ninguna', '02', '02', '02', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000020', '10', '2', '2016-10-09', '961', '140.6', '599.4', '19', 'Ninguna', '02', '02', '02', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000021', '1', '2', '2016-10-09', '153', '285', '1215', '19', 'Ninguna', '01', '01', '01', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000022', '2', '2', '2016-10-09', '771', '342', '1458', '19', 'Ninguna', '01', '01', '01', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000023', '3', '2', '2016-10-09', '811', '380', '1620', '19', 'Ninguna', '01', '01', '01', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000024', '4', '2', '2016-10-09', '547', '322.5', '1417.5', '19', 'Ninguna', '01', '01', '01', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000025', '5', '2', '2016-10-09', '778', '475', '2025', '19', 'Ninguna', '01', '01', '01', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000026', '6', '2', '2016-10-09', '264', '180.5', '769.5', '19', 'Ninguna', '01', '01', '01', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000027', '7', '2', '2016-10-09', '101', '123.5', '526.5', '19', 'Ninguna', '01', '01', '01', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000028', '8', '2', '2016-10-09', '966', '105.45', '449.55', '19', 'Ninguna', '02', '02', '02', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000029', '9', '2', '2016-10-09', '538', '161.5', '688.5', '19', 'Ninguna', '02', '02', '02', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000030', '10', '2', '2016-10-09', '704', '140.6', '599.4', '19', 'Ninguna', '02', '02', '02', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000031', '1', '2', '2016-10-09', '72', '285', '1215', '19', 'Ninguna', '01', '01', '01', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000032', '2', '2', '2016-10-09', '724', '342', '1458', '19', 'Ninguna', '01', '01', '01', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000033', '3', '2', '2016-10-09', '961', '380', '1620', '19', 'Ninguna', '01', '01', '01', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000034', '4', '2', '2016-10-09', '153', '322.5', '1417.5', '19', 'Ninguna', '01', '01', '01', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000035', '5', '2', '2016-10-09', '771', '475', '2025', '19', 'Ninguna', '01', '01', '01', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000036', '6', '2', '2016-10-09', '811', '180.5', '769.5', '19', 'Ninguna', '01', '01', '01', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000037', '7', '2', '2016-10-09', '547', '123.5', '526.5', '19', 'Ninguna', '01', '01', '01', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000038', '8', '2', '2016-10-09', '778', '105.45', '449.55', '19', 'Ninguna', '02', '02', '02', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000039', '9', '2', '2016-10-09', '101', '161.5', '688.5', '19', 'Ninguna', '02', '02', '02', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000040', '10', '2', '2016-10-09', '966', '140.6', '599.4', '19', 'Ninguna', '02', '02', '02', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000041', '1', '2', '2016-10-09', '538', '285', '1215', '19', 'Ninguna', '01', '01', '01', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000042', '2', '2', '2016-10-09', '704', '342', '1458', '19', 'Ninguna', '01', '01', '01', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000043', '3', '2', '2016-10-09', '72', '380', '1620', '19', 'Ninguna', '01', '01', '01', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000044', '4', '2', '2016-10-09', '724', '322.5', '1417.5', '19', 'Ninguna', '01', '01', '01', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000045', '5', '2', '2016-10-09', '2500', '475', '2025', '19', 'Ninguna', '01', '01', '01', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000046', '6', '2', '2016-10-09', '961', '180.5', '769.5', '19', 'Ninguna', '01', '01', '01', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000047', '7', '2', '2016-10-09', '153', '123.5', '526.5', '19', 'Ninguna', '01', '01', '01', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000048', '8', '2', '2016-10-09', '771', '105.45', '449.55', '19', 'Ninguna', '02', '02', '02', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000049', '9', '2', '2016-10-09', '811', '161.5', '688.5', '19', 'Ninguna', '02', '02', '02', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000050', '10', '2', '2016-10-09', '547', '140.6', '599.4', '19', 'Ninguna', '02', '02', '02', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000051', '1', '2', '2016-10-09', '778', '285', '1215', '19', 'Ninguna', '01', '01', '01', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000052', '2', '2', '2016-10-09', '264', '342', '1458', '19', 'Ninguna', '01', '01', '01', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000053', '3', '2', '2016-10-09', '101', '380', '1620', '19', 'Ninguna', '01', '01', '01', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000054', '4', '2', '2016-10-09', '966', '322.5', '1417.5', '19', 'Ninguna', '01', '01', '01', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000055', '5', '2', '2016-10-09', '538', '475', '2025', '19', 'Ninguna', '01', '01', '01', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000056', '6', '2', '2016-10-09', '704', '180.5', '769.5', '19', 'Ninguna', '01', '01', '01', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000057', '7', '2', '2016-10-09', '72', '123.5', '526.5', '19', 'Ninguna', '01', '01', '01', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000058', '8', '2', '2016-10-09', '724', '105.45', '449.55', '19', 'Ninguna', '02', '02', '02', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000059', '9', '2', '2016-10-09', '961', '161.5', '688.5', '19', 'Ninguna', '02', '02', '02', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000060', '10', '2', '2016-10-09', '153', '140.6', '599.4', '19', 'Ninguna', '02', '02', '02', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000061', '1', '2', '2016-10-09', '771', '285', '1215', '19', 'Ninguna', '01', '01', '01', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000062', '2', '2', '2016-10-09', '811', '811', '1458', '19', 'Ninguna', '01', '01', '01', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000063', '3', '2', '2016-10-09', '547', '547', '1620', '19', 'Ninguna', '01', '01', '01', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000064', '4', '2', '2016-10-09', '778', '322.5', '1417.5', '19', 'Ninguna', '01', '01', '01', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000065', '5', '2', '2016-10-09', '264', '475', '2025', '19', 'Ninguna', '01', '01', '01', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000066', '6', '2', '2016-10-09', '101', '180.5', '769.5', '19', 'Ninguna', '01', '01', '01', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000067', '7', '2', '2016-10-09', '966', '123.5', '526.5', '19', 'Ninguna', '01', '01', '01', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000068', '8', '2', '2016-10-09', '538', '105.45', '449.55', '19', 'Ninguna', '02', '02', '02', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000069', '9', '2', '2016-10-09', '704', '161.5', '688.5', '19', 'Ninguna', '02', '02', '02', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000070', '10', '2', '2016-10-09', '72', '140.6', '599.4', '19', 'Ninguna', '02', '02', '02', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000071', '1', '2', '2016-10-09', '161', '285', '1215', '19', 'Ninguna', '01', '01', '01', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000072', '2', '2', '2016-10-09', '150', '342', '1458', '19', 'Ninguna', '01', '01', '01', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000073', '3', '2', '2016-10-09', '457', '380', '1620', '19', 'Ninguna', '01', '01', '01', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000074', '4', '2', '2016-10-09', '589', '322.5', '1417.5', '19', 'Ninguna', '01', '01', '01', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000075', '5', '2', '2016-10-09', '762', '475', '2025', '19', 'Ninguna', '01', '01', '01', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000076', '6', '2', '2016-10-09', '41', '180.5', '769.5', '19', 'Ninguna', '01', '01', '01', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000077', '7', '2', '2016-10-09', '348', '123.5', '526.5', '19', 'Ninguna', '01', '01', '01', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000078', '8', '2', '2016-10-09', '938', '105.45', '449.55', '19', 'Ninguna', '02', '02', '02', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000079', '9', '2', '2016-10-09', '807', '161.5', '688.5', '19', 'Ninguna', '02', '02', '02', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000080', '10', '2', '2016-10-09', '451', '140.6', '599.4', '19', 'Ninguna', '02', '02', '02', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000081', '1', '2', '2016-10-09', '844', '285', '1215', '19', 'Ninguna', '01', '01', '01', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000082', '2', '2', '2016-10-09', '587', '342', '1458', '19', 'Ninguna', '01', '01', '01', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000083', '3', '2', '2016-10-09', '798', '380', '1620', '19', 'Ninguna', '01', '01', '01', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000084', '4', '2', '2016-10-09', '292', '322.5', '1417.5', '19', 'Ninguna', '01', '01', '01', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000085', '5', '2', '2016-10-09', '156', '475', '2025', '19', 'Ninguna', '01', '01', '01', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000086', '6', '2', '2016-10-09', '886', '180.5', '769.5', '19', 'Ninguna', '01', '01', '01', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000087', '7', '2', '2016-10-09', '322', '123.5', '526.5', '19', 'Ninguna', '01', '01', '01', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000088', '8', '2', '2016-10-09', '712', '105.45', '449.55', '19', 'Ninguna', '02', '02', '02', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000089', '9', '2', '2016-10-09', '255', '161.5', '688.5', '19', 'Ninguna', '02', '02', '02', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000090', '10', '2', '2016-10-09', '757', '140.6', '599.4', '19', 'Ninguna', '02', '02', '02', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000091', '1', '2', '2016-10-09', '368', '285', '1215', '19', 'Ninguna', '01', '01', '01', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000092', '2', '2', '2016-10-09', '60', '342', '1458', '19', 'Ninguna', '01', '01', '01', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000093', '3', '2', '2016-10-09', '549', '380', '1620', '19', 'Ninguna', '01', '01', '01', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000094', '4', '2', '2016-10-09', '105', '322.5', '1417.5', '19', 'Ninguna', '01', '01', '01', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000095', '5', '2', '2016-10-09', '786', '475', '2025', '19', 'Ninguna', '01', '01', '01', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000096', '6', '2', '2016-10-09', '945', '180.5', '769.5', '19', 'Ninguna', '01', '01', '01', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000097', '7', '2', '2016-10-09', '196', '123.5', '526.5', '19', 'Ninguna', '01', '01', '01', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000098', '8', '2', '2016-10-09', '659', '105.45', '449.55', '19', 'Ninguna', '02', '02', '02', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000099', '9', '2', '2016-10-09', '186', '161.5', '688.5', '19', 'Ninguna', '02', '02', '02', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000100', '10', '2', '2016-10-09', '391', '140.6', '599.4', '19', 'Ninguna', '02', '02', '02', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000101', '1', '2', '2016-10-09', '372', '285', '1215', '19', 'Ninguna', '01', '01', '01', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000102', '2', '2', '2016-10-09', '270', '342', '1458', '19', 'Ninguna', '01', '01', '01', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000103', '3', '2', '2016-10-09', '802', '380', '1620', '19', 'Ninguna', '01', '01', '01', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000104', '4', '2', '2016-10-09', '181', '322.5', '1417.5', '19', 'Ninguna', '01', '01', '01', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000105', '5', '2', '2016-10-09', '222', '475', '2025', '19', 'Ninguna', '01', '01', '01', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000106', '6', '2', '2016-10-09', '170', '180.5', '769.5', '19', 'Ninguna', '01', '01', '01', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000107', '7', '2', '2016-10-09', '140', '123.5', '526.5', '19', 'Ninguna', '01', '01', '01', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000108', '8', '2', '2016-10-09', '302', '105.45', '449.55', '19', 'Ninguna', '02', '02', '02', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000109', '9', '2', '2016-10-09', '119', '161.5', '688.5', '19', 'Ninguna', '02', '02', '02', '01', 'A');
+INSERT INTO `en_p1m_factura_venta_cab` (`FacVenCabCod`, `CliCod`, `UsuCod`, `FacVenCabFec`, `FacVenCabTot`, `FacVenCabDes`, `FacVenCabSubTot`, `FacVenCabIGV`, `FacVenCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000110', '10', '2', '2016-10-09', '315', '140.6', '599.4', '19', 'Ninguna', '02', '02', '02', '01', 'A');
 
 COMMIT;
 
@@ -201,42 +407,152 @@ USE `episerp`;
 INSERT INTO `en_p1t_factura_venta_det` (`FacVenCabCod`, `FacVenDetCod`, `ClaProCod`, `SubClaProCod`, `ProCod`, `FacVenDetCan`, `FacVenDetValUni`) VALUES ('001-000001', '1', '01', '01', '7755523010128', '3', '15.00');
 INSERT INTO `en_p1t_factura_venta_det` (`FacVenCabCod`, `FacVenDetCod`, `ClaProCod`, `SubClaProCod`, `ProCod`, `FacVenDetCan`, `FacVenDetValUni`) VALUES ('001-000001', '2', '01', '01', '7755523010137', '5', '11.00');
 INSERT INTO `en_p1t_factura_venta_det` (`FacVenCabCod`, `FacVenDetCod`, `ClaProCod`, `SubClaProCod`, `ProCod`, `FacVenDetCan`, `FacVenDetValUni`) VALUES ('001-000001', '3', '01', '01', '7755523010146', '7', '15.00');
-
 INSERT INTO `en_p1t_factura_venta_det` (`FacVenCabCod`, `FacVenDetCod`, `ClaProCod`, `SubClaProCod`, `ProCod`, `FacVenDetCan`, `FacVenDetValUni`) VALUES ('001-000002', '1', '01', '02', '7755523010216', '3', '15.00');
 INSERT INTO `en_p1t_factura_venta_det` (`FacVenCabCod`, `FacVenDetCod`, `ClaProCod`, `SubClaProCod`, `ProCod`, `FacVenDetCan`, `FacVenDetValUni`) VALUES ('001-000002', '2', '01', '02', '7755523010225', '8', '7.00');
 INSERT INTO `en_p1t_factura_venta_det` (`FacVenCabCod`, `FacVenDetCod`, `ClaProCod`, `SubClaProCod`, `ProCod`, `FacVenDetCan`, `FacVenDetValUni`) VALUES ('001-000002', '3', '01', '02', '7755523010234', '11', '15.00');
-
 INSERT INTO `en_p1t_factura_venta_det` (`FacVenCabCod`, `FacVenDetCod`, `ClaProCod`, `SubClaProCod`, `ProCod`, `FacVenDetCan`, `FacVenDetValUni`) VALUES ('001-000003', '1', '01', '03', '7755523010313', '8', '6.00');
 INSERT INTO `en_p1t_factura_venta_det` (`FacVenCabCod`, `FacVenDetCod`, `ClaProCod`, `SubClaProCod`, `ProCod`, `FacVenDetCan`, `FacVenDetValUni`) VALUES ('001-000003', '2', '01', '03', '7755523010322', '4', '7.00');
 INSERT INTO `en_p1t_factura_venta_det` (`FacVenCabCod`, `FacVenDetCod`, `ClaProCod`, `SubClaProCod`, `ProCod`, `FacVenDetCan`, `FacVenDetValUni`) VALUES ('001-000003', '3', '01', '03', '7755523010331', '10', '7.00');
-
 INSERT INTO `en_p1t_factura_venta_det` (`FacVenCabCod`, `FacVenDetCod`, `ClaProCod`, `SubClaProCod`, `ProCod`, `FacVenDetCan`, `FacVenDetValUni`) VALUES ('001-000004', '1', '02', '01', '7755523020116', '8', '10.00');
 INSERT INTO `en_p1t_factura_venta_det` (`FacVenCabCod`, `FacVenDetCod`, `ClaProCod`, `SubClaProCod`, `ProCod`, `FacVenDetCan`, `FacVenDetValUni`) VALUES ('001-000004', '2', '02', '01', '7755523020125', '7', '8.00');
 INSERT INTO `en_p1t_factura_venta_det` (`FacVenCabCod`, `FacVenDetCod`, `ClaProCod`, `SubClaProCod`, `ProCod`, `FacVenDetCan`, `FacVenDetValUni`) VALUES ('001-000004', '3', '02', '01', '7755523020134', '6', '10.00');
-
 INSERT INTO `en_p1t_factura_venta_det` (`FacVenCabCod`, `FacVenDetCod`, `ClaProCod`, `SubClaProCod`, `ProCod`, `FacVenDetCan`, `FacVenDetValUni`) VALUES ('001-000005', '1', '02', '02', '7755523020213', '9', '10.00');
 INSERT INTO `en_p1t_factura_venta_det` (`FacVenCabCod`, `FacVenDetCod`, `ClaProCod`, `SubClaProCod`, `ProCod`, `FacVenDetCan`, `FacVenDetValUni`) VALUES ('001-000005', '2', '02', '02', '7755523020222', '4', '10.00');
 INSERT INTO `en_p1t_factura_venta_det` (`FacVenCabCod`, `FacVenDetCod`, `ClaProCod`, `SubClaProCod`, `ProCod`, `FacVenDetCan`, `FacVenDetValUni`) VALUES ('001-000005', '3', '02', '02', '7755523020231', '15', '10.00');
-
 INSERT INTO `en_p1t_factura_venta_det` (`FacVenCabCod`, `FacVenDetCod`, `ClaProCod`, `SubClaProCod`, `ProCod`, `FacVenDetCan`, `FacVenDetValUni`) VALUES ('001-000006', '1', '02', '03', '7755523020310', '12', '10.00');
 INSERT INTO `en_p1t_factura_venta_det` (`FacVenCabCod`, `FacVenDetCod`, `ClaProCod`, `SubClaProCod`, `ProCod`, `FacVenDetCan`, `FacVenDetValUni`) VALUES ('001-000006', '2', '02', '03', '7755523020329', '9', '10.00');
 INSERT INTO `en_p1t_factura_venta_det` (`FacVenCabCod`, `FacVenDetCod`, `ClaProCod`, `SubClaProCod`, `ProCod`, `FacVenDetCan`, `FacVenDetValUni`) VALUES ('001-000006', '3', '02', '03', '7755523020338', '8', '8.00');
-
 INSERT INTO `en_p1t_factura_venta_det` (`FacVenCabCod`, `FacVenDetCod`, `ClaProCod`, `SubClaProCod`, `ProCod`, `FacVenDetCan`, `FacVenDetValUni`) VALUES ('001-000007', '1', '03', '01', '7755523030113', '10', '5.00');
 INSERT INTO `en_p1t_factura_venta_det` (`FacVenCabCod`, `FacVenDetCod`, `ClaProCod`, `SubClaProCod`, `ProCod`, `FacVenDetCan`, `FacVenDetValUni`) VALUES ('001-000007', '2', '03', '01', '7755523030122', '8', '5.00');
 INSERT INTO `en_p1t_factura_venta_det` (`FacVenCabCod`, `FacVenDetCod`, `ClaProCod`, `SubClaProCod`, `ProCod`, `FacVenDetCan`, `FacVenDetValUni`) VALUES ('001-000007', '3', '03', '01', '7755523030131', '7', '5.00');
-
 INSERT INTO `en_p1t_factura_venta_det` (`FacVenCabCod`, `FacVenDetCod`, `ClaProCod`, `SubClaProCod`, `ProCod`, `FacVenDetCan`, `FacVenDetValUni`) VALUES ('001-000008', '1', '03', '02', '7755523030210', '10', '6.00');
 INSERT INTO `en_p1t_factura_venta_det` (`FacVenCabCod`, `FacVenDetCod`, `ClaProCod`, `SubClaProCod`, `ProCod`, `FacVenDetCan`, `FacVenDetValUni`) VALUES ('001-000008', '2', '03', '02', '7755523030229', '15', '6.00');
 INSERT INTO `en_p1t_factura_venta_det` (`FacVenCabCod`, `FacVenDetCod`, `ClaProCod`, `SubClaProCod`, `ProCod`, `FacVenDetCan`, `FacVenDetValUni`) VALUES ('001-000008', '3', '03', '02', '7755523030238', '12', '6.00');
-
 INSERT INTO `en_p1t_factura_venta_det` (`FacVenCabCod`, `FacVenDetCod`, `ClaProCod`, `SubClaProCod`, `ProCod`, `FacVenDetCan`, `FacVenDetValUni`) VALUES ('001-000009', '1', '05', '03', '7755523050311', '3', '6.00');
 INSERT INTO `en_p1t_factura_venta_det` (`FacVenCabCod`, `FacVenDetCod`, `ClaProCod`, `SubClaProCod`, `ProCod`, `FacVenDetCan`, `FacVenDetValUni`) VALUES ('001-000009', '2', '05', '03', '7755523050320', '3', '6.00');
 INSERT INTO `en_p1t_factura_venta_det` (`FacVenCabCod`, `FacVenDetCod`, `ClaProCod`, `SubClaProCod`, `ProCod`, `FacVenDetCan`, `FacVenDetValUni`) VALUES ('001-000009', '3', '05', '03', '7755523050339', '3', '6.00');
-
 INSERT INTO `en_p1t_factura_venta_det` (`FacVenCabCod`, `FacVenDetCod`, `ClaProCod`, `SubClaProCod`, `ProCod`, `FacVenDetCan`, `FacVenDetValUni`) VALUES ('001-000010', '1', '04', '01', '7755523040110', '8', '6.00');
 INSERT INTO `en_p1t_factura_venta_det` (`FacVenCabCod`, `FacVenDetCod`, `ClaProCod`, `SubClaProCod`, `ProCod`, `FacVenDetCan`, `FacVenDetValUni`) VALUES ('001-000010', '2', '04', '01', '7755523040129', '3', '6.00');
 INSERT INTO `en_p1t_factura_venta_det` (`FacVenCabCod`, `FacVenDetCod`, `ClaProCod`, `SubClaProCod`, `ProCod`, `FacVenDetCan`, `FacVenDetValUni`) VALUES ('001-000010', '3', '04', '01', '7755523040138', '3', '6.00');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `episerp`.`en_p1m_movimiento_punto_ven`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `episerp`;
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('1', '00101', '000005', '1', '001-000001', '2', '2016-10-09', '1500.00', 'A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('2', '00105', '000007', '1', '001-000002', '2', '2016-10-09', '23424.20', 'A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('3', '00105', '000007', '1', '001-000003', '2', '2016-10-09', '23424.20', 'A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('4', '00106', '000013', '1', '001-000004', '2', '2016-10-09', '724','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('5', '00105', '000011', '1', '001-000005', '2', '2016-10-09', '961','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('6', '00108', '000015', '1', '001-000006', '2', '2016-10-09', '153','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('7', '00107', '000029', '1', '001-000007', '2', '2016-10-09', '771','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('8', '00108', '000032', '1', '001-000008', '2', '2016-10-09', '811','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('9', '00105', '000023', '1', '001-000009', '2', '2016-10-09', '547','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('10', '00108', '000003', '1', '001-000010', '2', '2016-10-09', '778','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('11', '00103', '000037', '1', '001-000011', '2', '2016-10-09', '264','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('12', '00101', '000005', '1', '001-000012', '2', '2016-10-09', '101','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('13', '00104', '000046', '1', '001-000013', '2', '2016-10-09', '966','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('14', '00105', '000023', '1', '001-000014', '2', '2016-10-09', '538','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('15', '00102', '000016', '1', '001-000015', '2', '2016-10-09', '724','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('16', '00105', '000011', '1', '001-000016', '2', '2016-10-09', '961','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('17', '00108', '000015', '1', '001-000017', '2', '2016-10-09', '153','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('18', '00107', '000029', '1', '001-000018', '2', '2016-10-09', '771','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('19', '00102', '000016', '1', '001-000019', '2', '2016-10-09', '724','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('20', '00105', '000011', '1', '001-000020', '2', '2016-10-09', '961','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('21', '00108', '000015', '1', '001-000021', '2', '2016-10-09', '153','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('22', '00107', '000029', '1', '001-000022', '2', '2016-10-09', '771','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('23', '00108', '000032', '1', '001-000023', '2', '2016-10-09', '811','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('24', '00105', '000023', '1', '001-000024', '2', '2016-10-09', '547','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('25', '00108', '000003', '1', '001-000025', '2', '2016-10-09', '778','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('26', '00103', '000037', '1', '001-000026', '2', '2016-10-09', '264','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('27', '00101', '000005', '1', '001-000027', '2', '2016-10-09', '101','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('28', '00104', '000046', '1', '001-000028', '2', '2016-10-09', '966','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('29', '00105', '000023', '1', '001-000029', '2', '2016-10-09', '538','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('30', '00102', '000034', '1', '001-000030', '2', '2016-10-09', '704','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('31', '00104', '000045', '1', '001-000031', '2', '2016-10-09', '72','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('32', '00102', '000016', '1', '001-000032', '2', '2016-10-09', '724','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('33', '00105', '000011', '1', '001-000033', '2', '2016-10-09', '961','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('34', '00108', '000015', '1', '001-000034', '2', '2016-10-09', '153','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('35', '00107', '000029', '1', '001-000035', '2', '2016-10-09', '771','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('36', '00108', '000032', '1', '001-000036', '2', '2016-10-09', '811','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('37', '00105', '000023', '1', '001-000037', '2', '2016-10-09', '547','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('38', '00108', '000003', '1', '001-000038', '2', '2016-10-09', '778','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('39', '00103', '000037', '1', '001-000039', '2', '2016-10-09', '264','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('40', '00101', '000005', '1', '001-000040', '2', '2016-10-09', '101','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('41', '00104', '000046', '1', '001-000041', '2', '2016-10-09', '966','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('42', '00105', '000023', '1', '001-000042', '2', '2016-10-09', '538','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('43', '00102', '000034', '1', '001-000043', '2', '2016-10-09', '704','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('44', '00104', '000045', '1', '001-000044', '2', '2016-10-09', '72','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('45', '00102', '000016', '1', '001-000045', '2', '2016-10-09', '724','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('46', '00105', '000011', '1', '001-000046', '2', '2016-10-09', '961','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('47', '00108', '000015', '1', '001-000047', '2', '2016-10-09', '153','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('48', '00107', '000029', '1', '001-000048', '2', '2016-10-09', '771','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('49', '00108', '000032', '1', '001-000049', '2', '2016-10-09', '811','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('50', '00105', '000023', '1', '001-000050', '2', '2016-10-09', '547','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('51', '00108', '000003', '1', '001-000051', '2', '2016-10-09', '778','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('52', '00103', '000037', '1', '001-000052', '2', '2016-10-09', '264','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('53', '00101', '000005', '1', '001-000053', '2', '2016-10-09', '101','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('54', '00104', '000046', '1', '001-000054', '2', '2016-10-09', '966','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('55', '00105', '000023', '1', '001-000055', '2', '2016-10-09', '538','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('56', '00102', '000034', '1', '001-000056', '2', '2016-10-09', '704','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('57', '00104', '000045', '1', '001-000057', '2', '2016-10-09', '72','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('58', '00102', '000016', '1', '001-000058', '2', '2016-10-09', '724','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('59', '00105', '000011', '1', '001-000059', '2', '2016-10-09', '961','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('60', '00108', '000015', '1', '001-000060', '2', '2016-10-09', '153','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('61', '00107', '000029', '1', '001-000061', '2', '2016-10-09', '771','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('62', '00108', '000032', '1', '001-000062', '2', '2016-10-09', '811','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('63', '00105', '000023', '1', '001-000063', '2', '2016-10-09', '547','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('64', '00108', '000003', '1', '001-000064', '2', '2016-10-09', '778','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('65', '00103', '000037', '1', '001-000065', '2', '2016-10-09', '264','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('66', '00101', '000005', '1', '001-000066', '2', '2016-10-09', '101','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('67', '00104', '000046', '1', '001-000067', '2', '2016-10-09', '966','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('68', '00105', '000023', '1', '001-000068', '2', '2016-10-09', '538','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('69', '00102', '000034', '1', '001-000069', '2', '2016-10-09', '704','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('70', '00104', '000045', '1', '001-000070', '2', '2016-10-09', '72','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('71', '00104', '000045', '1', '001-000071', '2', '2016-10-09', '161','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('72', '00106', '000013', '1', '001-000072', '2', '2016-10-09', '150','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('73', '00101', '000005', '1', '001-000073', '2', '2016-10-09', '457','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('74', '00106', '000013', '1', '001-000074', '2', '2016-10-09', '589','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('75', '00101', '000005', '1', '001-000075', '2', '2016-10-09', '762','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('76', '00105', '000007', '1', '001-000076', '2', '2016-10-09', '41','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('77', '00107', '000029', '1', '001-000077', '2', '2016-10-09', '348','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('78', '00102', '000043', '1', '001-000078', '2', '2016-10-09', '938','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('79', '00108', '000020', '1', '001-000079', '2', '2016-10-09', '807','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('80', '00104', '000050', '1', '001-000080', '2', '2016-10-09', '451','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('81', '00107', '000033', '1', '001-000081', '2', '2016-10-09', '844','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('82', '00106', '000031', '1', '001-000082', '2', '2016-10-09', '587','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('83', '00101', '000001', '1', '001-000083', '2', '2016-10-09', '798','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('84', '00110', '000036', '1', '001-000084', '2', '2016-10-09', '292','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('85', '00108', '000038', '1', '001-000085', '2', '2016-10-09', '156','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('86', '00103', '000010', '1', '001-000086', '2', '2016-10-09', '886','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('87', '00103', '000019', '1', '001-000087', '2', '2016-10-09', '322','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('88', '00108', '000032', '1', '001-000088', '2', '2016-10-09', '712','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('89', '00110', '000036', '1', '001-000089', '2', '2016-10-09', '255','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('90', '00103', '000027', '1', '001-000090', '2', '2016-10-09', '757','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('91', '00105', '000007', '1', '001-000091', '2', '2016-10-09', '368','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('92', '00105', '000047', '1', '001-000092', '2', '2016-10-09', '60','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('93', '00104', '000050', '1', '001-000093', '2', '2016-10-09', '549','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('94', '00104', '000025', '1', '001-000094', '2', '2016-10-09', '105','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('95', '00105', '000007', '1', '001-000095', '2', '2016-10-09', '786','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('96', '00106', '000013', '1', '001-000096', '2', '2016-10-09', '945','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('97', '00109', '000009', '1', '001-000097', '2', '2016-10-09', '196','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('98', '00106', '000031', '1', '001-000098', '2', '2016-10-09', '659','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('99', '00105', '000011', '1', '001-000099', '2', '2016-10-09', '186','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('100', '00109', '000030', '1', '001-000100', '2', '2016-10-09', '391','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('101', '00105', '000011', '1', '001-000101', '2', '2016-10-09', '372','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('102', '00108', '000020', '1', '001-000102', '2', '2016-10-09', '270','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('103', '00106', '000012', '1', '001-000103', '2', '2016-10-09', '802','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('104', '00104', '000025', '1', '001-000104', '2', '2016-10-09', '181','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('105', '00104', '000025', '1', '001-000105', '2', '2016-10-09', '222','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('106', '00108', '000015', '1', '001-000106', '2', '2016-10-09', '170','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('107', '00101', '000001', '1', '001-000107', '2', '2016-10-09', '140','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('108', '00110', '000036', '1', '001-000108', '2', '2016-10-09', '302','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('109', '00104', '000045', '1', '001-000109', '2', '2016-10-09', '119','A');
+INSERT INTO `en_p1m_movimiento_punto_ven` (`MovPunVenCod`, `SucCod`, `PunVenCod`, `TipComCod`, `MovPunVenComCod`, `UsuCod`, `MovPunVenFec`, `MovPunVenMon`, `EstRegCod`) VALUES ('110', '00101', '000005', '1', '001-000110', '2', '2016-10-09', '315','A');
 
 COMMIT;
 
@@ -246,9 +562,9 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `episerp`;
-INSERT INTO `en_p1m_preventa_cab` (`PreVenCabCod`, `CliCod`, `UsuCod`, `PreVenCabFec`, `PreVenCabPla`, `PreVenCabTot`, `PreVenCabDes`, `PreVenCabSubTot`, `PreVenCabIGV`, `PreVenCabObs`, `MonCod`, `EstRegCod`) VALUES ('001-000001', '72748574', '72743604', '2016-10-09', '1', '1500', '285', '1215', '19', 'Ninguna', '01', 'A');
-INSERT INTO `en_p1m_preventa_cab` (`PreVenCabCod`, `CliCod`, `UsuCod`, `PreVenCabFec`, `PreVenCabPla`, `PreVenCabTot`, `PreVenCabDes`, `PreVenCabSubTot`, `PreVenCabIGV`, `PreVenCabObs`, `MonCod`, `EstRegCod`) VALUES ('001-000002', '39337484', '72743604', '2016-10-09', '1', '1800', '342', '1458', '19', 'Ninguna', '01', 'A');
-INSERT INTO `en_p1m_preventa_cab` (`PreVenCabCod`, `CliCod`, `UsuCod`, `PreVenCabFec`, `PreVenCabPla`, `PreVenCabTot`, `PreVenCabDes`, `PreVenCabSubTot`, `PreVenCabIGV`, `PreVenCabObs`, `MonCod`, `EstRegCod`) VALUES ('001-000003', '29854147', '72743604', '2016-10-09', '1', '2000', '380', '1620', '19', 'Ninguna', '01', 'A');
+INSERT INTO `en_p1m_preventa_cab` (`PreVenCabCod`, `CliCod`, `UsuCod`, `PreVenCabFec`, `PreVenCabPla`, `PreVenCabTot`, `PreVenCabDes`, `PreVenCabSubTot`, `PreVenCabIGV`, `PreVenCabObs`, `MonCod`, `EstRegCod`) VALUES ('001-000001', '1', '2', '2016-10-09', '1', '1500', '285', '1215', '19', 'Ninguna', '01', 'A');
+INSERT INTO `en_p1m_preventa_cab` (`PreVenCabCod`, `CliCod`, `UsuCod`, `PreVenCabFec`, `PreVenCabPla`, `PreVenCabTot`, `PreVenCabDes`, `PreVenCabSubTot`, `PreVenCabIGV`, `PreVenCabObs`, `MonCod`, `EstRegCod`) VALUES ('001-000002', '2', '2', '2016-10-09', '1', '1800', '342', '1458', '19', 'Ninguna', '01', 'A');
+INSERT INTO `en_p1m_preventa_cab` (`PreVenCabCod`, `CliCod`, `UsuCod`, `PreVenCabFec`, `PreVenCabPla`, `PreVenCabTot`, `PreVenCabDes`, `PreVenCabSubTot`, `PreVenCabIGV`, `PreVenCabObs`, `MonCod`, `EstRegCod`) VALUES ('001-000003', '3', '2', '2016-10-09', '1', '2000', '380', '1620', '19', 'Ninguna', '01', 'A');
 
 COMMIT;
 
@@ -293,5 +609,98 @@ USE `episerp`;
 INSERT INTO `en_p1m_pagos_cuotas_cab` (`FacVenCabCod`, `PagCuoNumDoc`, `PagCuoNum`, `PagCuoNumPag`, `PagCuoDeuTot`, `PagCuoTotPag`, `PagCuoFecIni`, `PagCuoFecFin`, `PagCuoFecPag`, `EstRegCod`) VALUES ('001-000008', '4360156910904354', '1', '0', '555.00', '0.00', '2016-11-11', '2017-01-11', '2016-11-11', 'A');
 INSERT INTO `en_p1m_pagos_cuotas_cab` (`FacVenCabCod`, `PagCuoNumDoc`, `PagCuoNum`, `PagCuoNumPag`, `PagCuoDeuTot`, `PagCuoTotPag`, `PagCuoFecIni`, `PagCuoFecFin`, `PagCuoFecPag`, `EstRegCod`) VALUES ('001-000009', '4651250499464787', '3', '0', '850.00', '0.00', '2016-11-11', '2017-01-11', '2016-11-11', 'A');
 INSERT INTO `en_p1m_pagos_cuotas_cab` (`FacVenCabCod`, `PagCuoNumDoc`, `PagCuoNum`, `PagCuoNumPag`, `PagCuoDeuTot`, `PagCuoTotPag`, `PagCuoFecIni`, `PagCuoFecFin`, `PagCuoFecPag`, `EstRegCod`) VALUES ('001-000010', '4395725873044991', '3', '0', '740.00', '0.00', '2016-11-11', '2017-01-11', '2016-11-11', 'A');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `episerp`.`en_p3m_cuenta`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `episerp`;
+INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (541, 434, 5, '10410', 'CENTRAL DE RESERVA DEL PERU', 'A');
+INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (542, 434, 5, '10411', 'NACION', 'A');
+INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (543, 434, 5, '10412', 'SCOTIABANK PERU', 'A');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `episerp`.`en_p3m_cuenta_banco`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `episerp`;
+INSERT INTO `en_p3m_cuenta_banco` VALUES (1, 01, '3001033189', 541, 'A');
+INSERT INTO `en_p3m_cuenta_banco` VALUES (2, 18, '4120239490', 542, 'A');
+INSERT INTO `en_p3m_cuenta_banco` VALUES (3, 09, '2003993301', 543, 'A');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `episerp`.`en_p4m_proveedor`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `episerp`;
+INSERT INTO `episerp`.`en_p4m_proveedor` (`ProCod`,`ProDet`,`ProCon`,`ProDir`,`ProTelFij`,`ProTelCel`,`ProEmail`,`ProPagWeb`,`ProObs`,`EstRegCod`) VALUES ('123456789121', 'ARCON', 'Milagros Aguilar Zuñiga', 'Mz. C Lt.9 Las Mercedes Cerro Colorado','054454908', '945995506', 'arcon@proveedores.com', 'www.arcon.com', '', 'A');
+INSERT INTO `episerp`.`en_p4m_proveedor` (`ProCod`,`ProDet`,`ProCon`,`ProDir`,`ProTelFij`,`ProTelCel`,`ProEmail`,`ProPagWeb`,`ProObs`,`EstRegCod`) VALUES ('789456123121', 'Central Hisumer', 'Melina Alvarez Obregon', 'Calle 28 de Julio Vallecito Cercado', '054124578', '94563524178', 'hisumer@proveedores.com', 'www.centralhisumer.com', '', 'A');
+INSERT INTO `episerp`.`en_p4m_proveedor` (`ProCod`,`ProDet`,`ProCon`,`ProDir`,`ProTelFij`,`ProTelCel`,`ProEmail`,`ProPagWeb`,`ProObs`,`EstRegCod`) VALUES ('147258369121', 'IberCorte', 'Erick Cruz Salinas', 'Urb. Santa Cecilia A-2 Yanahuara', '054784512', '945120346', 'ibercorte@proveedores.com', 'www.ibercorte.com', '', 'A');
+INSERT INTO `episerp`.`en_p4m_proveedor` (`ProCod`,`ProDet`,`ProCon`,`ProDir`,`ProTelFij`,`ProTelCel`,`ProEmail`,`ProPagWeb`,`ProObs`,`EstRegCod`) VALUES ('369258147121', 'Grupo Guerra Distribuidores', 'Walter Toledo Turpo', 'Calle Paz Soldan 407 Yanahuara', '054968574', '940784512', 'guerra@distribuidores.com', 'www.guerradistribuidores.com', '', 'A');
+INSERT INTO `episerp`.`en_p4m_proveedor` (`ProCod`,`ProDet`,`ProCon`,`ProDir`,`ProTelFij`,`ProTelCel`,`ProEmail`,`ProPagWeb`,`ProObs`,`EstRegCod`) VALUES ('258147369121', 'EHOSA', 'Grisseldy Arenas Orejuela', 'Av. San Martin 205 Miraflores', '054326598', '945023678', 'ehosa@proveedores.com', 'www.ehosadistribuidores.com', '', 'A');
+INSERT INTO `episerp`.`en_p4m_proveedor` (`ProCod`,`ProDet`,`ProCon`,`ProDir`,`ProTelFij`,`ProTelCel`,`ProEmail`,`ProPagWeb`,`ProObs`,`EstRegCod`) VALUES ('321654987121', 'Disconfa', 'Sharon Bedregal Machaca', 'Av. La Paz 509', '054368971', '948152634', 'disconfa@proveedores.com', 'www.proveedoresdisconfa.com', '', 'A');
+INSERT INTO `episerp`.`en_p4m_proveedor` (`ProCod`,`ProDet`,`ProCon`,`ProDir`,`ProTelFij`,`ProTelCel`,`ProEmail`,`ProPagWeb`,`ProObs`,`EstRegCod`) VALUES ('987654321121', 'Import Export', 'José Paiva Franco', 'Centro Comercial Cayma 3er Piso', '054867219', '945007184', 'importexport@proveedores.com', 'www.importexport.com', '', 'A');
+INSERT INTO `episerp`.`en_p4m_proveedor` (`ProCod`,`ProDet`,`ProCon`,`ProDir`,`ProTelFij`,`ProTelCel`,`ProEmail`,`ProPagWeb`,`ProObs`,`EstRegCod`) VALUES ('654321987121', 'NavaRioja', 'Abelardo Alvarez Martinez', 'Via Evitamiento Km3 Cerro Colorado', '054237816', '945301020', 'navarioja@proveedores.com', 'www.navarioja.com', '', 'A');
+INSERT INTO `episerp`.`en_p4m_proveedor` (`ProCod`,`ProDet`,`ProCon`,`ProDir`,`ProTelFij`,`ProTelCel`,`ProEmail`,`ProPagWeb`,`ProObs`,`EstRegCod`) VALUES ('456123789121', 'Dadyma', 'Carlos Gershy Pinto', 'Av. San Martin 603 Miraflores', '054789123', '945781266', 'dadyma@proveedores.com', 'www.dadyma.com', '', 'A');
+INSERT INTO `episerp`.`en_p4m_proveedor` (`ProCod`,`ProDet`,`ProCon`,`ProDir`,`ProTelFij`,`ProTelCel`,`ProEmail`,`ProPagWeb`,`ProObs`,`EstRegCod`) VALUES ('456741852121', 'Alcamar', 'Gretel Cama Pizarro', 'Coorp. 19 D-10 Paucarpata', '054962317', '945662322', 'alcamar@proveedores.com', 'www.alcamar.com', '', 'A');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `episerp`.`en_p4m_factura_compra_cab`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `episerp`;
+INSERT INTO `en_p4m_factura_compra_cab` (`FacComCabCod`,`ProCod`,`UsuCod`,`FacComCabFec`,`FacComCabTot`,`FacComCabDes`,`FacComCabSubTot`,`FacComCabIGV`,`FacComCabObs`,`EstFacCod`,`MetPagCod`,`TipPagCod`,`MonCod`,`EstRegCod`) VALUES ('001-000001','123456789121', '3', '2015-01-01', 500, 0.25, 125, 19, 'Factura Cancelada',1, 1, 1, 1,'A');
+INSERT INTO `en_p4m_factura_compra_cab` (`FacComCabCod`,`ProCod`,`UsuCod`,`FacComCabFec`,`FacComCabTot`,`FacComCabDes`,`FacComCabSubTot`,`FacComCabIGV`,`FacComCabObs`,`EstFacCod`,`MetPagCod`,`TipPagCod`,`MonCod`,`EstRegCod`) VALUES ('001-000002','147258369121', '3', '2015-02-01', 500, 0.10, 450, 19, 'Factura Cancelada',1, 1, 1, 1,'A');
+INSERT INTO `en_p4m_factura_compra_cab` (`FacComCabCod`,`ProCod`,`UsuCod`,`FacComCabFec`,`FacComCabTot`,`FacComCabDes`,`FacComCabSubTot`,`FacComCabIGV`,`FacComCabObs`,`EstFacCod`,`MetPagCod`,`TipPagCod`,`MonCod`,`EstRegCod`) VALUES ('001-000003','456741852121', '3', '2015-03-01', 500, 0.05, 475, 19, 'Factura Cancelada',1, 1, 1, 1,'A');
+INSERT INTO `en_p4m_factura_compra_cab` (`FacComCabCod`,`ProCod`,`UsuCod`,`FacComCabFec`,`FacComCabTot`,`FacComCabDes`,`FacComCabSubTot`,`FacComCabIGV`,`FacComCabObs`,`EstFacCod`,`MetPagCod`,`TipPagCod`,`MonCod`,`EstRegCod`) VALUES ('001-000004','456741852121', '3', '2015-03-15', 500, 0.05, 475, 19, 'Factura Cancelada',1, 1, 1, 1,'A');
+INSERT INTO `en_p4m_factura_compra_cab` (`FacComCabCod`,`ProCod`,`UsuCod`,`FacComCabFec`,`FacComCabTot`,`FacComCabDes`,`FacComCabSubTot`,`FacComCabIGV`,`FacComCabObs`,`EstFacCod`,`MetPagCod`,`TipPagCod`,`MonCod`,`EstRegCod`) VALUES ('001-000005','987654321121', '3', '2015-03-30', 500, 0.05, 475, 19, 'Factura Cancelada',1, 1, 1, 1,'A');
+INSERT INTO `en_p4m_factura_compra_cab` (`FacComCabCod`,`ProCod`,`UsuCod`,`FacComCabFec`,`FacComCabTot`,`FacComCabDes`,`FacComCabSubTot`,`FacComCabIGV`,`FacComCabObs`,`EstFacCod`,`MetPagCod`,`TipPagCod`,`MonCod`,`EstRegCod`) VALUES ('001-000006','789456123121', '3', '2015-04-01', 500, 0.05, 470, 19, 'Factura Cancelada',1, 1, 1, 1,'A');
+INSERT INTO `en_p4m_factura_compra_cab` (`FacComCabCod`,`ProCod`,`UsuCod`,`FacComCabFec`,`FacComCabTot`,`FacComCabDes`,`FacComCabSubTot`,`FacComCabIGV`,`FacComCabObs`,`EstFacCod`,`MetPagCod`,`TipPagCod`,`MonCod`,`EstRegCod`) VALUES ('001-000007','987654321121', '3', '2015-04-15', 500, 0.05, 475, 19, 'Factura Cancelada',1, 1, 1, 1,'A');
+INSERT INTO `en_p4m_factura_compra_cab` (`FacComCabCod`,`ProCod`,`UsuCod`,`FacComCabFec`,`FacComCabTot`,`FacComCabDes`,`FacComCabSubTot`,`FacComCabIGV`,`FacComCabObs`,`EstFacCod`,`MetPagCod`,`TipPagCod`,`MonCod`,`EstRegCod`) VALUES ('001-000008','369258147121', '3', '2015-04-30', 700, 0.15, 605, 19, 'Factura Cancelada',1, 1, 1, 1,'A');
+INSERT INTO `en_p4m_factura_compra_cab` (`FacComCabCod`,`ProCod`,`UsuCod`,`FacComCabFec`,`FacComCabTot`,`FacComCabDes`,`FacComCabSubTot`,`FacComCabIGV`,`FacComCabObs`,`EstFacCod`,`MetPagCod`,`TipPagCod`,`MonCod`,`EstRegCod`) VALUES ('001-000009','654321987121', '3', '2015-05-01', 1500, 0.20, 1200, 19, 'Factura Cancelada',1, 1, 1, 1,'A');
+INSERT INTO `en_p4m_factura_compra_cab` (`FacComCabCod`,`ProCod`,`UsuCod`,`FacComCabFec`,`FacComCabTot`,`FacComCabDes`,`FacComCabSubTot`,`FacComCabIGV`,`FacComCabObs`,`EstFacCod`,`MetPagCod`,`TipPagCod`,`MonCod`,`EstRegCod`) VALUES ('001-000010','147258369121', '3', '2015-05-30', 800, 0.05, 760, 19, 'Factura Cancelada',1, 1, 1, 1,'A');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `episerp`.`en_p4t_factura_compra_det`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `episerp`;
+INSERT INTO `en_p4t_factura_compra_det` (`FacComCabCod`,`FacComDetCod`,`ClaProCod`,`SubClaProCod`,`ProCod`,`FacComDetCan`,`FacComDetValUni`) VALUES ('001-000001','1','01','02','7755523010216',20,5.00);
+INSERT INTO `en_p4t_factura_compra_det` (`FacComCabCod`,`FacComDetCod`,`ClaProCod`,`SubClaProCod`,`ProCod`,`FacComDetCan`,`FacComDetValUni`) VALUES ('001-000001','2','02','03','7755523020338',30,5.00);
+INSERT INTO `en_p4t_factura_compra_det` (`FacComCabCod`,`FacComDetCod`,`ClaProCod`,`SubClaProCod`,`ProCod`,`FacComDetCan`,`FacComDetValUni`) VALUES ('001-000001','3','03','01','7755523030113',50,0.80);
+INSERT INTO `en_p4t_factura_compra_det` (`FacComCabCod`,`FacComDetCod`,`ClaProCod`,`SubClaProCod`,`ProCod`,`FacComDetCan`,`FacComDetValUni`) VALUES ('001-000002','1','02','02','7755523020231',20,5.00);
+INSERT INTO `en_p4t_factura_compra_det` (`FacComCabCod`,`FacComDetCod`,`ClaProCod`,`SubClaProCod`,`ProCod`,`FacComDetCan`,`FacComDetValUni`) VALUES ('001-000002','2','02','03','7755523020329',20,5.00);
+INSERT INTO `en_p4t_factura_compra_det` (`FacComCabCod`,`FacComDetCod`,`ClaProCod`,`SubClaProCod`,`ProCod`,`FacComDetCan`,`FacComDetValUni`) VALUES ('001-000002','3','03','01','7755523030113',20,1.00);
+INSERT INTO `en_p4t_factura_compra_det` (`FacComCabCod`,`FacComDetCod`,`ClaProCod`,`SubClaProCod`,`ProCod`,`FacComDetCan`,`FacComDetValUni`) VALUES ('001-000003','1','02','02','7755523020231',20,5.20);
+INSERT INTO `en_p4t_factura_compra_det` (`FacComCabCod`,`FacComDetCod`,`ClaProCod`,`SubClaProCod`,`ProCod`,`FacComDetCan`,`FacComDetValUni`) VALUES ('001-000003','2','02','01','7755523020134',20,5.50);
+INSERT INTO `en_p4t_factura_compra_det` (`FacComCabCod`,`FacComDetCod`,`ClaProCod`,`SubClaProCod`,`ProCod`,`FacComDetCan`,`FacComDetValUni`) VALUES ('001-000004','1','02','03','7755523020310',20,5.20);
+INSERT INTO `en_p4t_factura_compra_det` (`FacComCabCod`,`FacComDetCod`,`ClaProCod`,`SubClaProCod`,`ProCod`,`FacComDetCan`,`FacComDetValUni`) VALUES ('001-000004','2','01','02','7755523010216',20,0.70);
+INSERT INTO `en_p4t_factura_compra_det` (`FacComCabCod`,`FacComDetCod`,`ClaProCod`,`SubClaProCod`,`ProCod`,`FacComDetCan`,`FacComDetValUni`) VALUES ('001-000005','1','03','01','7755523030113',20,0.50);
+INSERT INTO `en_p4t_factura_compra_det` (`FacComCabCod`,`FacComDetCod`,`ClaProCod`,`SubClaProCod`,`ProCod`,`FacComDetCan`,`FacComDetValUni`) VALUES ('001-000005','2','02','02','7755523020231',20,5.30);
+INSERT INTO `en_p4t_factura_compra_det` (`FacComCabCod`,`FacComDetCod`,`ClaProCod`,`SubClaProCod`,`ProCod`,`FacComDetCan`,`FacComDetValUni`) VALUES ('001-000006','1','02','02','7755523020231',20,5.00);
+INSERT INTO `en_p4t_factura_compra_det` (`FacComCabCod`,`FacComDetCod`,`ClaProCod`,`SubClaProCod`,`ProCod`,`FacComDetCan`,`FacComDetValUni`) VALUES ('001-000006','2','03','01','7755523030113',20,0.70);
+INSERT INTO `en_p4t_factura_compra_det` (`FacComCabCod`,`FacComDetCod`,`ClaProCod`,`SubClaProCod`,`ProCod`,`FacComDetCan`,`FacComDetValUni`) VALUES ('001-000007','1','02','03','7755523020329',20,5.00);
+INSERT INTO `en_p4t_factura_compra_det` (`FacComCabCod`,`FacComDetCod`,`ClaProCod`,`SubClaProCod`,`ProCod`,`FacComDetCan`,`FacComDetValUni`) VALUES ('001-000007','2','03','01','7755523030113',20,0.70);
+INSERT INTO `en_p4t_factura_compra_det` (`FacComCabCod`,`FacComDetCod`,`ClaProCod`,`SubClaProCod`,`ProCod`,`FacComDetCan`,`FacComDetValUni`) VALUES ('001-000008','1','01','01','7755523010128',20,0.10);
+INSERT INTO `en_p4t_factura_compra_det` (`FacComCabCod`,`FacComDetCod`,`ClaProCod`,`SubClaProCod`,`ProCod`,`FacComDetCan`,`FacComDetValUni`) VALUES ('001-000008','2','02','02','7755523020222',20,0.50);
+INSERT INTO `en_p4t_factura_compra_det` (`FacComCabCod`,`FacComDetCod`,`ClaProCod`,`SubClaProCod`,`ProCod`,`FacComDetCan`,`FacComDetValUni`) VALUES ('001-000009','1','02','03','7755523020310',20,5.00);
+INSERT INTO `en_p4t_factura_compra_det` (`FacComCabCod`,`FacComDetCod`,`ClaProCod`,`SubClaProCod`,`ProCod`,`FacComDetCan`,`FacComDetValUni`) VALUES ('001-000009','2','03','01','7755523030113',20,1.00);
+INSERT INTO `en_p4t_factura_compra_det` (`FacComCabCod`,`FacComDetCod`,`ClaProCod`,`SubClaProCod`,`ProCod`,`FacComDetCan`,`FacComDetValUni`) VALUES ('001-000010','1','05','01','7755523050126',20,5.00);
+INSERT INTO `en_p4t_factura_compra_det` (`FacComCabCod`,`FacComDetCod`,`ClaProCod`,`SubClaProCod`,`ProCod`,`FacComDetCan`,`FacComDetValUni`) VALUES ('001-000010','2','04','01','7755523040129',20,5.00);
 
 COMMIT;

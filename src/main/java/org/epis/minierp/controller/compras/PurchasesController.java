@@ -124,7 +124,7 @@ public class PurchasesController extends HttpServlet {
                 
                 detalles.save(det);                                
             }                 
-            response.sendRedirect(request.getContextPath() + "/secured/compras");
+            response.sendRedirect(request.getContextPath() + "/secured/general/panel");
         } catch (ParseException ex) {
             Logger.getLogger(PurchasesController.class.getName()).log(Level.SEVERE, null, ex);
         }

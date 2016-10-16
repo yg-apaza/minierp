@@ -11,7 +11,7 @@
         <div class="container">
             <h1 class="page-header">Usuarios</h1>
             <br>
-            <a class="btn btn-success" href="${pageContext.request.contextPath}/secured/general/usuarios/add" role="button">
+            <a class="btn btn-success" href="${pageContext.request.contextPath}/secured/configuracion/usuario/usuarios/add" role="button">
                 <i class="fa fa-plus"></i>
                 Agregar usuario
             </a>

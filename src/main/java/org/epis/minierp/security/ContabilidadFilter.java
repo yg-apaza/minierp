@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.epis.minierp.model.EnP1mUsuario;
 
-@WebFilter("/secured/ventas/*")
+@WebFilter("/secured/contabilidad/*")
 public class ContabilidadFilter implements Filter
 {
     @Override
@@ -33,9 +33,13 @@ public class ContabilidadFilter implements Filter
         }
         else
         {
+            System.out.println("aqui si");
             EnP1mUsuario u = (EnP1mUsuario) session.getAttribute("usuario");
             if(u.getTaGzzTipoUsuario().getTipUsuCod() == 1 || u.getTaGzzTipoUsuario().getTipUsuCod() == 4)
+            {
+                System.out.println("por aqui debo ir");
                 chain.doFilter(req, res);
+            }
             else
                 response.sendRedirect(request.getContextPath() + "/");
         }

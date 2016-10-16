@@ -4,7 +4,7 @@
 <%@ taglib tagdir="/WEB-INF/tags" prefix="minierptemplate" %>
 <minierptemplate:template>
     <jsp:attribute name="titulo">
-        <title>MiniERP - Contabilidad</title>
+        <title>Contabilidad - Plan Contable</title>
     </jsp:attribute>
     <jsp:attribute name="contenido">
         <div class="panel-body">
@@ -13,25 +13,19 @@
             <br>
             <div class="col-md-4">
                 <p>Basado en el Plan Contable General Empresarial</p>
-                
-                <a href="${pageContext.request.contextPath}/secured/reporte?type=pdf&&report=plancontable" class="btn btn-outline btn-danger btn-lg btn-block">
+                <a href="${pageContext.request.contextPath}/secured/general/reporte?type=pdf&&report=plancontable&&jdbc=false&&key=null&&value=null" class="btn btn-outline btn-danger btn-lg btn-block">
                     <i class="fa fa-file-pdf-o"></i>
                     Descargar Plan Contable [PDF]
                 </a>
                 <br>
-                <a href="${pageContext.request.contextPath}/secured/reporte?type=xls&&report=plancontable" class="btn btn-outline btn-success btn-lg btn-block">
+                <a href="${pageContext.request.contextPath}/secured/general/reporte?type=xls&&report=plancontable&&jdbc=false&&key=null&&value=null" class="btn btn-outline btn-success btn-lg btn-block">
                     <i class="fa fa-file-excel-o"></i>
                     Descargar Plan Contable [XLS]
                 </a>
                 <br>
-                <a href="${pageContext.request.contextPath}/secured/reporte?type=doc&&report=plancontable" class="btn btn-outline btn-primary btn-lg btn-block">
+                <a href="${pageContext.request.contextPath}/secured/general/reporte?type=doc&&report=plancontable&&jdbc=false&&key=null&&value=null" class="btn btn-outline btn-primary btn-lg btn-block">
                     <i class="fa fa-file-word-o"></i>
                     Descargar Plan Contable [DOC]
-                </a>
-                <br>
-                <a href="${pageContext.request.contextPath}/secured/contabilidad" class="btn btn-outline btn-default btn-lg btn-block">
-                    <i class="fa fa-arrow-left"></i>
-                    Regresar al Menú Principal
                 </a>
                 <br>
             </div>

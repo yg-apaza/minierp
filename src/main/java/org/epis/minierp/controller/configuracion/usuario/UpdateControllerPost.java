@@ -1,4 +1,4 @@
-package org.epis.minierp.controller.general;
+package org.epis.minierp.controller.configuracion.usuario;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -52,7 +52,7 @@ public class UpdateControllerPost extends HttpServlet {
             op.updateUsuario(u);
         }catch (Exception e) {
         }
-        response.sendRedirect(request.getContextPath() + "/secured/general/usuarios");
+        response.sendRedirect(request.getContextPath() + "/secured/configuracion/usuario/usuarios");
     }
     
     @Override

@@ -5,7 +5,7 @@
 <%@ taglib tagdir="/WEB-INF/tags" prefix="minierptemplate" %>
 <minierptemplate:template>
     <jsp:attribute name="titulo">
-        <title>Bancos</title>
+        <title>Contabilidad - Bancos</title>
     </jsp:attribute>
     <jsp:attribute name="contenido">
         <div class="panel-body" >
