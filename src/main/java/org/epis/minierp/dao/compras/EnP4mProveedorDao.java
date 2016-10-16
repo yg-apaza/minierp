@@ -25,6 +25,9 @@ public class EnP4mProveedorDao {
         List <EnP4mProveedor> proveedors =  query.list();
         return proveedors;
     }
+    public void save(EnP4mProveedor proveedor) {
+        session.save(proveedor);     
+    }
     
     public EnP4mProveedor getById(String id) {
         EnP4mProveedor proveedor = null;
