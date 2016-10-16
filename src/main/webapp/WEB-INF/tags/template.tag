@@ -72,16 +72,16 @@
                             </li>
                             <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()==1 || sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()==2}">
                             <li>
-                                <a href="#"><i class="fa fa-cart-arrow-down fa-fw"></i> Venta y Preventa<span class="fa arrow"></span></a>
+                                <a href="#"><i class="fa fa-cart-arrow-down fa-fw"></i> Ventas<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">     
                                     <li>
-                                        <a href="${pageContext.request.contextPath}/secured/ventas/factura">Facturas</a>
+                                        <a href="${pageContext.request.contextPath}/secured/ventas/factura">Factura</a>
                                     </li>
                                     <li>
-                                        <a href="${pageContext.request.contextPath}/secured/ventas/preventa">Crear Preventa</a>
+                                        <a href="${pageContext.request.contextPath}/secured/ventas/preventa">Preventa</a>
                                     </li>
                                     <li>
-                                        <a href="${pageContext.request.contextPath}/secured/clientes">Clientes</a>
+                                        <a href="${pageContext.request.contextPath}/secured/ventas/clientes">Clientes</a>
                                     </li>
                                     <li>
                                         <a href="${pageContext.request.contextPath}/secured/ventas/pagos">Pagos y Cuotas</a>
@@ -109,7 +109,7 @@
                                                 <a href="${pageContext.request.contextPath}/secured/compras/inventario">Inventario</a>
                                             </li>
                                             <li>
-                                                <a href="${pageContext.request.contextPath}/secured/compras/limiteMaximo">Stock</a>
+                                                <a href="${pageContext.request.contextPath}/secured/compras/stock">Stock</a>
                                             </li>
                                             <li>
                                                 <a href = "${pageContext.request.contextPath}/secured/compras/form_proveedor">Añadir Proveedor</a>
@@ -123,7 +123,7 @@
                                         <a href="#">Compras <span class="fa arrow"></span></a>
                                         <ul class="nav nav-third-level">
                                             <li>
-                                                <a href="${pageContext.request.contextPath}/secured/compras/registerPurchase">Registrar Factura</a>
+                                                <a href="${pageContext.request.contextPath}/secured/compras/factura">Registrar Factura</a>
                                             </li>
                                         </ul>
                                     </li>

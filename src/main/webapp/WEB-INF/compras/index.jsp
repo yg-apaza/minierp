@@ -49,7 +49,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="${pageContext.request.contextPath}/secured/compras/registerPurchase">
+                        <a href="${pageContext.request.contextPath}/secured/compras/factura">
                             <div class="panel-footer">
                                 <span class="pull-left">Ingresar</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>

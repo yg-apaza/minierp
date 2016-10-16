@@ -5,7 +5,7 @@
 
 <minierptemplate:template>
     <jsp:attribute name="titulo">
-        <title>Inventario</title>
+        <title>Logística - Inventario</title>
     </jsp:attribute>
     <jsp:attribute name="contenido">
         <script src="${pageContext.request.contextPath}/js/metisMenu.min.js"></script>
