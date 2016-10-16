@@ -27,7 +27,7 @@ public class EnP1mPuntoVentaBusiness {
         pvDao.update(pvUpdate);
     }
 
-    public void setEstRegCod(int sucCod, int punVenCod, char estRegCod){
+    private void setEstRegCod(int sucCod, int punVenCod, char estRegCod){
         EnP1mPuntoVentaId key = new EnP1mPuntoVentaId(punVenCod, sucCod);
         EnP1mPuntoVenta pv = pvDao.getById(key);
         pv.setEstRegCod(estRegCod);
@@ -35,23 +35,14 @@ public class EnP1mPuntoVentaBusiness {
     }
     
     public void activate(int sucCod, int punVenCod){
-        EnP1mPuntoVentaId key4Activate = new EnP1mPuntoVentaId(punVenCod, sucCod);
-        EnP1mPuntoVenta pvActivate = pvDao.getById(key4Activate);
-        pvActivate.setEstRegCod('A');
-        pvDao.update(pvActivate);  
+        setEstRegCod(sucCod, punVenCod, 'A');
     }
     
     public void disable(int sucCod, int punVenCod) {
-        EnP1mPuntoVentaId key4Disable = new EnP1mPuntoVentaId(punVenCod, sucCod);
-        EnP1mPuntoVenta pvDisable = pvDao.getById(key4Disable);
-        pvDisable.setEstRegCod('I');
-        pvDao.update(pvDisable);
+        setEstRegCod(sucCod, punVenCod, 'I');
     }
 
     public void delete(int sucCod, int punVenCod){
-        EnP1mPuntoVentaId key4Delete = new EnP1mPuntoVentaId(punVenCod, sucCod);
-        EnP1mPuntoVenta pvDelete = pvDao.getById(key4Delete);
-        pvDelete.setEstRegCod('*');
-        pvDao.update(pvDelete);
+        setEstRegCod(sucCod, punVenCod, '*');
     } 
 }

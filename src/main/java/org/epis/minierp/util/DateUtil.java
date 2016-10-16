@@ -2,11 +2,14 @@ package org.epis.minierp.util;
 
 import java.sql.Timestamp;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.TimeZone;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Pattern;
 
 public class DateUtil {
@@ -216,5 +219,29 @@ public class DateUtil {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
         sdf.setTimeZone(TimeZone.getTimeZone("GMT-5"));
         return sdf.format(date);
+    }
+    
+    /**
+     * Devuelve la Fecha en formato String yyyy/MM/dd
+     * @param myDate atributo fecha
+     * @return String de la fecha
+     */
+    public static String getString2Date(Date myDate) {
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        return df.format(myDate);
+    }
+
+    /**
+     * Devuelve la Fecha en formato Date yyyy/MM/dd
+     * @param myDate atributo fecha como String
+     * @return Date de la fecha
+     */
+    public static Date getDate2String(String myDate) {
+        DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            return format.parse(myDate);
+        } catch (ParseException ex) {
+            return null;
+        }
     }
 }
