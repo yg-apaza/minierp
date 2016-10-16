@@ -1,4 +1,4 @@
-package org.epis.minierp.controller.general;
+package org.epis.minierp.controller.configuracion.usuario;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -32,7 +32,7 @@ public class AddUsuarioController extends HttpServlet
         List<TaGzzEstadoCivil> estados = daoEstCiv.getAllActive();
         request.setAttribute("tipos", tipos);
         request.setAttribute("estados", estados);
-        request.getRequestDispatcher("/WEB-INF/general/addUsuario.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/configuracion/usuario/addUsuario.jsp").forward(request, response);
     }
     
     @Override
@@ -56,7 +56,7 @@ public class AddUsuarioController extends HttpServlet
             u.setUsuSex(request.getParameter("usuSex").charAt(0));
             u.setEstRegCod('A');
             daoUsu.save(u);
-            response.sendRedirect(request.getContextPath() + "/secured/general/usuarios");
+            response.sendRedirect(request.getContextPath() + "/secured/configuracion/usuario/usuarios");
         } catch (ParseException ex) {
             Logger.getLogger(AddUsuarioController.class.getName()).log(Level.SEVERE, null, ex);
         }

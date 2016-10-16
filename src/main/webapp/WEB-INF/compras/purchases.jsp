@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <minierptemplate:template>
     <jsp:attribute name="titulo">
-        <title>MiniERP - Compras y Logística</title>
+        <title>Compras - Factura</title>
     </jsp:attribute>
     <jsp:attribute name="contenido">
         <script language="javascript">
@@ -127,7 +127,7 @@
                     <br><h1 class="page-header"> Registrar Factura de Compra</h1>
                 </div>
             </div>
-            <form id="registerBill" method="post" action="${pageContext.request.contextPath}/secured/compras/registerPurchase">
+            <form id="registerBill" method="post" action="${pageContext.request.contextPath}/secured/compras/factura">
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="panel panel-primary">
@@ -336,6 +336,5 @@
                 </div>
             </div>
         </div>
-    </div>        
-</jsp:attribute>
+    </jsp:attribute>
 </minierptemplate:template>

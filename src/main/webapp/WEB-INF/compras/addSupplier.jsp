@@ -2,7 +2,7 @@
 <%@ taglib tagdir="/WEB-INF/tags" prefix="minierptemplate" %>
 <minierptemplate:template>
     <jsp:attribute name="titulo">
-        <title>Clasificación ABC</title>
+        <title>Logística - Proveedor</title>
     </jsp:attribute>
     <jsp:attribute name="contenido">
         <script src="${pageContext.request.contextPath}/js/metisMenu.min.js"></script>

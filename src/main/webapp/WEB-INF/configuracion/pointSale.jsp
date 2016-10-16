@@ -8,7 +8,7 @@
     <jsp:attribute name="contenido">
         <div class="panel-body">
             <h1 class="page-header">Puntos de Venta
-            <a href="#" class="btn btn-success btn-circle" data-toggle="modal" data-target="#agregarModal"><i class="fa fa-plus"></i></a></h1>
+                <a href="#" class="btn btn-success btn-circle" data-toggle="modal" data-target="#agregarModal"><i class="fa fa-plus"></i></a></h1>
             <br>
             <br>
             <div class="col-md-3">
@@ -70,7 +70,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div id="agregarModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-sm">
                 <div class="modal-content">
@@ -82,11 +82,11 @@
                         <div class="modal-body">
                             <input type="hidden" name="accion" value="create">
                             <div class="form-group">
-                            <label>Sucursal:</label>
+                                <label>Sucursal:</label>
                                 <select class="form-control" name="sucCod">
-                                <c:forEach var="s" items="${sucursal}">
-                                    <option value="${s.sucCod}">${s.sucCod} - ${s.sucDes}</option>
-                                </c:forEach>
+                                    <c:forEach var="s" items="${sucursal}">
+                                        <option value="${s.sucCod}">${s.sucCod} - ${s.sucDes}</option>
+                                    </c:forEach>
                                 </select>
                             </div>
                             <div class="form-group">
@@ -102,7 +102,7 @@
                 </div>                                        
             </div>
         </div>
-                        
+
         <div id="modificarModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-sm">
                 <div class="modal-content">
@@ -113,11 +113,11 @@
                     <form id="updateForm" method="post" action="${pageContext.request.contextPath}/secured/configuracion/puntodeventa">
                         <div class="modal-body">
                             <div class="form-group">
-                            <input type="hidden" name="accion" value="update">
-                            <input type="hidden" name="sucCod" id="updateSucCod">
-                            <input type="hidden" name="punVenCod" id="updatePunVenCod">
-                            <label>Sucursal:</label>
-                            <input class="form-control" id="updateNamSucCod" readonly>
+                                <input type="hidden" name="accion" value="update">
+                                <input type="hidden" name="sucCod" id="updateSucCod">
+                                <input type="hidden" name="punVenCod" id="updatePunVenCod">
+                                <label>Sucursal:</label>
+                                <input class="form-control" id="updateNamSucCod" readonly>
                             </div>
                             <div class="form-group">
                                 <label>Descripcion del Punto de Venta:</label>
@@ -132,7 +132,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div id="eliminarModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-sm">
                 <div class="modal-content">
@@ -158,31 +158,31 @@
         <script>
             var updateModal = $("#modificarModal");
             var deleteModal = $("#eliminarModal");
-            
+
             var updateNamSucCod = $("#updateNamSucCod");
             var updateSucCod = $("#updateSucCod");
             var updateSucDes = $("#updateSucDes");
             var updatePunVenCod = $("#updatePunVenCod");
             var updatePunVenDes = $("#updatePunVenDes");
-            
+
             var deleteSucCod = $("#deleteSucCod");
             var deletePunVenCod = $("#deletePunVenCod");
             var deletePunVenDes = $("#deletePunVenDes");
-            
-            updateModal.on('show.bs.modal', function(e){
+
+            updateModal.on('show.bs.modal', function (e) {
                 updateNamSucCod.val($(e.relatedTarget).data('succod') + " - " + $(e.relatedTarget).data('sucdes'));
                 updateSucCod.val($(e.relatedTarget).data('succod'));
                 updateSucDes.val($(e.relatedTarget).data('sucdes'));
                 updatePunVenCod.val($(e.relatedTarget).data('punvencod'));
                 updatePunVenDes.val($(e.relatedTarget).data('punvendes'));
             });
-       
-            deleteModal.on('show.bs.modal', function(e){
+
+            deleteModal.on('show.bs.modal', function (e) {
                 deleteSucCod.val($(e.relatedTarget).data('succod'));
                 deletePunVenCod.val($(e.relatedTarget).data('punvencod'));
                 deletePunVenDes.text($(e.relatedTarget).data('punvendes'));
             });
-            
+
             $("#createForm").validate({
                 rules: {
                     sucCod: {
@@ -194,23 +194,23 @@
                         required: "Seleccione una Sucursal"
                     }
                 },
-                submitHandler: function(form) {
+                submitHandler: function (form) {
                     form.submit();
                 }
             });
-            
+
             $("#updateForm").validate({
                 rules: {
                     sucCod: {
-                        required: true,
+                        required: true
                     }
                 },
                 messages: {
                     sucCod: {
-                        required: "Seleccione una Sucursal",
+                        required: "Seleccione una Sucursal"
                     }
                 },
-                submitHandler: function(form) {
+                submitHandler: function (form) {
                     form.submit();
                 }
             });

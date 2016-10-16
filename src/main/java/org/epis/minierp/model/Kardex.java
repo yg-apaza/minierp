@@ -6,10 +6,11 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedNativeQueries;
 import javax.persistence.NamedNativeQuery;
 import javax.persistence.Temporal;
 @Entity
-    @NamedNativeQuery(name = "Kardex.findByProducto", query = "select * from kardex_prom_ponderado(?) as (fecha date,numero_factura varchar,producto varchar,cantidad_entrada double,precio_unitario_entrada double,precio_total_entrada double,cantidad_salida double,precio_unitario_salida double,precio_total_salida double,cantidad_saldo double,precio_total_saldo double,precio_unitario_saldo,tipo_operacion varchar);", resultClass =  Kardex.class)
+@NamedNativeQueries({@NamedNativeQuery(name = "callKardexPromPonderado", query = "CALL kardex_prom_ponderado(:prodCode)", resultClass =  Kardex.class)})
 public class Kardex implements Serializable {
     @Id
     @GeneratedValue

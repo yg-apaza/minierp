@@ -59,10 +59,8 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `episerp`;
-INSERT INTO `episerp`.`ta_gzz_moneda` (`MonCod`, `MonDet`, `EstRegCod`) VALUES (1, 'Nuevos Soles', 'A');
-INSERT INTO `episerp`.`ta_gzz_moneda` (`MonCod`, `MonDet`, `EstRegCod`) VALUES (2, 'Dólares Americanos', 'A');
-INSERT INTO `episerp`.`ta_gzz_moneda` (`MonCod`, `MonDet`, `EstRegCod`) VALUES (3, 'Euros', 'A');
-INSERT INTO `episerp`.`ta_gzz_moneda` (`MonCod`, `MonDet`, `EstRegCod`) VALUES (4, 'Pesos', 'A');
+INSERT INTO `episerp`.`ta_gzz_moneda` (`MonCod`, `MonDet`, `EstRegCod`) VALUES (1, 'NUEVOS SOLES', 'A');
+INSERT INTO `episerp`.`ta_gzz_moneda` (`MonCod`, `MonDet`, `EstRegCod`) VALUES (2, 'DOLARES AMERICANOS', 'A');
 INSERT INTO `episerp`.`ta_gzz_moneda` (`MonCod`, `MonDet`, `EstRegCod`) VALUES (9, 'OTRA MONEDA', 'A');
 
 COMMIT;
@@ -798,100 +796,4 @@ INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `
 INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (537, 367, 4, '7013', 'Mercaderías agropecuarias y piscícolas', 'A');
 INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (538, 367, 4, '7014', 'Mercaderías inmuebles', 'A');
 INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (539, 367, 4, '7015', 'Mercaderías - Otras', 'A');
-INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (540, 434, 5, '10410', 'CENTRAL DE RESERVA DEL PERU', 'A');
-INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (541, 434, 5, '10411', 'NACION', 'A');
-INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (542, 434, 5, '10412', 'SCOTIABANK PERU', 'A');
-INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (543, 9, 2, '94', 'Gastos Administrativos', 'A');
-
-COMMIT;
-
-
--- -----------------------------------------------------
--- Data for table `episerp`.`en_p2m_clase_producto`
--- -----------------------------------------------------
-START TRANSACTION;
-USE `episerp`;
-INSERT INTO `episerp`.`en_p2m_clase_producto` (`ClaProCod`,`ClaProDet`,`EstRegCod`) VALUES (1,'Bebidas','A');
-INSERT INTO `episerp`.`en_p2m_clase_producto` (`ClaProCod`,`ClaProDet`,`EstRegCod`) VALUES (2, 'Aceite','A');
-INSERT INTO `episerp`.`en_p2m_clase_producto` (`ClaProCod`,`ClaProDet`,`EstRegCod`) VALUES (3, 'Conservas','A');
-INSERT INTO `episerp`.`en_p2m_clase_producto` (`ClaProCod`,`ClaProDet`,`EstRegCod`) VALUES (4, 'Embutidos','A');
-INSERT INTO `episerp`.`en_p2m_clase_producto` (`ClaProCod`,`ClaProDet`,`EstRegCod`) VALUES (5, 'Helado','A');
-INSERT INTO `episerp`.`en_p2m_clase_producto` (`ClaProCod`,`ClaProDet`,`EstRegCod`) VALUES (6, 'Leche','A');
-INSERT INTO `episerp`.`en_p2m_clase_producto` (`ClaProCod`,`ClaProDet`,`EstRegCod`) VALUES (7, 'Golosinas','A');
-INSERT INTO `episerp`.`en_p2m_clase_producto` (`ClaProCod`,`ClaProDet`,`EstRegCod`) VALUES (8, 'Refrescos','A');
-
-COMMIT;
-
-
--- -----------------------------------------------------
--- Data for table `episerp`.`en_p2m_subclase_producto`
--- -----------------------------------------------------
-START TRANSACTION;
-USE `episerp`;
-INSERT INTO `episerp`.`en_p2m_subclase_producto` (`ClaProCod`, `SubClaProCod`, `SubClaProDet`, `EstRegCod`) VALUES (3,1,'Confitura','A');
-INSERT INTO `episerp`.`en_p2m_subclase_producto` (`ClaProCod`, `SubClaProCod`, `SubClaProDet`, `EstRegCod`) VALUES (3,2,'Mermelada','A');
-INSERT INTO `episerp`.`en_p2m_subclase_producto` (`ClaProCod`, `SubClaProCod`, `SubClaProDet`, `EstRegCod`) VALUES (3,3,'Frutas en almibar','A');
-INSERT INTO `episerp`.`en_p2m_subclase_producto` (`ClaProCod`, `SubClaProCod`, `SubClaProDet`, `EstRegCod`) VALUES (4,4,'Salchichas','A');
-INSERT INTO `episerp`.`en_p2m_subclase_producto` (`ClaProCod`, `SubClaProCod`, `SubClaProDet`, `EstRegCod`) VALUES (4,5,'Mortadela','A');
-INSERT INTO `episerp`.`en_p2m_subclase_producto` (`ClaProCod`, `SubClaProCod`, `SubClaProDet`, `EstRegCod`) VALUES (7,6,'Caramelo','A');
-INSERT INTO `episerp`.`en_p2m_subclase_producto` (`ClaProCod`, `SubClaProCod`, `SubClaProDet`, `EstRegCod`) VALUES (7,7,'Chicles','A');
-INSERT INTO `episerp`.`en_p2m_subclase_producto` (`ClaProCod`, `SubClaProCod`, `SubClaProDet`, `EstRegCod`) VALUES (7,8,'Gomitas','A');
-INSERT INTO `episerp`.`en_p2m_subclase_producto` (`ClaProCod`, `SubClaProCod`, `SubClaProDet`, `EstRegCod`) VALUES (7,9,'Chocolate','A');
-INSERT INTO `episerp`.`en_p2m_subclase_producto` (`ClaProCod`, `SubClaProCod`, `SubClaProDet`, `EstRegCod`) VALUES (7,10,'Toffie','A');
-
-COMMIT;
-
-
--- -----------------------------------------------------
--- Data for table `episerp`.`en_p2m_almacen`
--- -----------------------------------------------------
-START TRANSACTION;
-USE `episerp`;
-INSERT INTO `episerp`.`en_p2m_almacen` (`AlmCod`,`AlmDet`,`SucCod`,`AlmVolTot`,`AlmObs`,`EstRegCod`) VALUES (1,'Almacen 01', 1, 50000, 'Almacen en buenas Condiciones', 'A');
-INSERT INTO `episerp`.`en_p2m_almacen` (`AlmCod`,`AlmDet`,`SucCod`,`AlmVolTot`,`AlmObs`,`EstRegCod`) VALUES (2,'Almacen 02', 1, 50000, 'Almacen en buenas Condiciones', 'A');
-INSERT INTO `episerp`.`en_p2m_almacen` (`AlmCod`,`AlmDet`,`SucCod`,`AlmVolTot`,`AlmObs`,`EstRegCod`) VALUES (3,'Almacen 03', 1, 50000, 'Almacen en buenas Condiciones', 'A');
-INSERT INTO `episerp`.`en_p2m_almacen` (`AlmCod`,`AlmDet`,`SucCod`,`AlmVolTot`,`AlmObs`,`EstRegCod`) VALUES (4,'Almacen 04', 1, 50000, 'Almacen en buenas Condiciones', 'A');
-INSERT INTO `episerp`.`en_p2m_almacen` (`AlmCod`,`AlmDet`,`SucCod`,`AlmVolTot`,`AlmObs`,`EstRegCod`) VALUES (5,'Almacen 05', 1, 50000, 'Almacen en buenas Condiciones', 'A');
-INSERT INTO `episerp`.`en_p2m_almacen` (`AlmCod`,`AlmDet`,`SucCod`,`AlmVolTot`,`AlmObs`,`EstRegCod`) VALUES (6,'Almacen 06', 1, 50000, 'En mantenimiento', 'I');
-INSERT INTO `episerp`.`en_p2m_almacen` (`AlmCod`,`AlmDet`,`SucCod`,`AlmVolTot`,`AlmObs`,`EstRegCod`) VALUES (7,'Almacen 07', 1, 50000, 'En mantenimiento', 'I');
-INSERT INTO `episerp`.`en_p2m_almacen` (`AlmCod`,`AlmDet`,`SucCod`,`AlmVolTot`,`AlmObs`,`EstRegCod`) VALUES (8,'Almacen 08', 1, 50000, 'Almacen en buenas Condiciones', 'A');
-
-COMMIT;
-
-
--- -----------------------------------------------------
--- Data for table `episerp`.`en_p2m_producto`
--- -----------------------------------------------------
-START TRANSACTION;
-USE `episerp`;
-INSERT INTO `episerp`.`en_p2m_producto` (`ClaProCod`,`SubClaProCod`,`ProCod`,`ProDet`,`UniMedCod`,`ProPreUni`,`MonCod`,`ProStk`, `ProStkPreVen`, `AlmCod`,`VolUniAlm`,`ProStkMin`,`ProStkMax`,`ProObs`,`EstRegCod`) VALUES (3,2,1,'Mermelada Gloria 500', 3, 5.50, 1, 50, 10, 1, 100, 10, 20, 'Altamente comercializado','A');
-INSERT INTO `episerp`.`en_p2m_producto` (`ClaProCod`,`SubClaProCod`,`ProCod`,`ProDet`,`UniMedCod`,`ProPreUni`,`MonCod`,`ProStk`, `ProStkPreVen`, `AlmCod`,`VolUniAlm`,`ProStkMin`,`ProStkMax`,`ProObs`,`EstRegCod`) VALUES (3,2,2,'Mermelada Fanny 500', 3, 6.00, 1, 50, 10, 1, 100, 10, 20, 'Altamente comercializado','A');
-INSERT INTO `episerp`.`en_p2m_producto` (`ClaProCod`,`SubClaProCod`,`ProCod`,`ProDet`,`UniMedCod`,`ProPreUni`,`MonCod`,`ProStk`, `ProStkPreVen`, `AlmCod`,`VolUniAlm`,`ProStkMin`,`ProStkMax`,`ProObs`,`EstRegCod`) VALUES (3,3,3,'Aconcagua Durazno 250', 3, 5.50, 1, 150, 100, 1, 100, 10, 20, 'Altamente comercializado','A');
-INSERT INTO `episerp`.`en_p2m_producto` (`ClaProCod`,`SubClaProCod`,`ProCod`,`ProDet`,`UniMedCod`,`ProPreUni`,`MonCod`,`ProStk`, `ProStkPreVen`, `AlmCod`,`VolUniAlm`,`ProStkMin`,`ProStkMax`,`ProObs`,`EstRegCod`) VALUES (3,3,4,'Aconcagua Piña 250', 3, 5.50, 1, 90, 10, 1, 100, 10, 20, 'Altamente comercializado','A');
-INSERT INTO `episerp`.`en_p2m_producto` (`ClaProCod`,`SubClaProCod`,`ProCod`,`ProDet`,`UniMedCod`,`ProPreUni`,`MonCod`,`ProStk`, `ProStkPreVen`, `AlmCod`,`VolUniAlm`,`ProStkMin`,`ProStkMax`,`ProObs`,`EstRegCod`) VALUES (4,5,5,'San Fernando 100', 3, 1.50, 1, 150, 10, 1, 100, 10, 20, 'Altamente comercializado','A');
-INSERT INTO `episerp`.`en_p2m_producto` (`ClaProCod`,`SubClaProCod`,`ProCod`,`ProDet`,`UniMedCod`,`ProPreUni`,`MonCod`,`ProStk`, `ProStkPreVen`, `AlmCod`,`VolUniAlm`,`ProStkMin`,`ProStkMax`,`ProObs`,`EstRegCod`) VALUES (4,5,6,'La Calera 100', 3, 1.50, 1, 100, 10, 1, 100, 10, 20, 'Altamente comercializado','A');
-INSERT INTO `episerp`.`en_p2m_producto` (`ClaProCod`,`SubClaProCod`,`ProCod`,`ProDet`,`UniMedCod`,`ProPreUni`,`MonCod`,`ProStk`, `ProStkPreVen`, `AlmCod`,`VolUniAlm`,`ProStkMin`,`ProStkMax`,`ProObs`,`EstRegCod`) VALUES (7,6,7,'Trident Menta', 3, 0.20,1, 500, 10, 1, 100, 10, 20, 'Altamente comercializado','A');
-INSERT INTO `episerp`.`en_p2m_producto` (`ClaProCod`,`SubClaProCod`,`ProCod`,`ProDet`,`UniMedCod`,`ProPreUni`,`MonCod`,`ProStk`, `ProStkPreVen`, `AlmCod`,`VolUniAlm`,`ProStkMin`,`ProStkMax`,`ProObs`,`EstRegCod`) VALUES (7,6,8,'Chiclets Menta', 3, 0.20, 1, 500, 10, 1, 100, 10, 20, 'Altamente comercializado','A');
-INSERT INTO `episerp`.`en_p2m_producto` (`ClaProCod`,`SubClaProCod`,`ProCod`,`ProDet`,`UniMedCod`,`ProPreUni`,`MonCod`,`ProStk`, `ProStkPreVen`, `AlmCod`,`VolUniAlm`,`ProStkMin`,`ProStkMax`,`ProObs`,`EstRegCod`) VALUES (7,9,9,'Nikolo', 3, 0.70, 1, 100, 10, 1, 100, 10, 20, 'Altamente comercializado','A');
-INSERT INTO `episerp`.`en_p2m_producto` (`ClaProCod`,`SubClaProCod`,`ProCod`,`ProDet`,`UniMedCod`,`ProPreUni`,`MonCod`,`ProStk`, `ProStkPreVen`, `AlmCod`,`VolUniAlm`,`ProStkMin`,`ProStkMax`,`ProObs`,`EstRegCod`) VALUES (7,9,10,'Mecano', 3, 1.00, 1, 100, 10, 1, 100, 10, 20, 'Altamente comercializado','A');
-
-COMMIT;
-
-
--- -----------------------------------------------------
--- Data for table `episerp`.`en_p4m_proveedor`
--- -----------------------------------------------------
-START TRANSACTION;
-USE `episerp`;
-INSERT INTO `episerp`.`en_p4m_proveedor` (`ProCod`,`ProDet`,`ProCon`,`ProDir`,`ProTelFij`,`ProTelCel`,`ProEmail`,`ProPagWeb`,`ProObs`,`EstRegCod`) VALUES ('123456789121', 'ARCON', 'Milagros Aguilar Zuñiga', 'Mz. C Lt.9 Las Mercedes Cerro Colorado','054454908', '945995506', 'arcon@proveedores.com', 'www.arcon.com', '', 'A');
-INSERT INTO `episerp`.`en_p4m_proveedor` (`ProCod`,`ProDet`,`ProCon`,`ProDir`,`ProTelFij`,`ProTelCel`,`ProEmail`,`ProPagWeb`,`ProObs`,`EstRegCod`) VALUES ('789456123121', 'Central Hisumer', 'Melina Alvarez Obregon', 'Calle 28 de Julio Vallecito Cercado', '054124578', '94563524178', 'hisumer@proveedores.com', 'www.centralhisumer.com', '', 'A');
-INSERT INTO `episerp`.`en_p4m_proveedor` (`ProCod`,`ProDet`,`ProCon`,`ProDir`,`ProTelFij`,`ProTelCel`,`ProEmail`,`ProPagWeb`,`ProObs`,`EstRegCod`) VALUES ('147258369121', 'IberCorte', 'Erick Cruz Salinas', 'Urb. Santa Cecilia A-2 Yanahuara', '054784512', '945120346', 'ibercorte@proveedores.com', 'www.ibercorte.com', '', 'A');
-INSERT INTO `episerp`.`en_p4m_proveedor` (`ProCod`,`ProDet`,`ProCon`,`ProDir`,`ProTelFij`,`ProTelCel`,`ProEmail`,`ProPagWeb`,`ProObs`,`EstRegCod`) VALUES ('369258147121', 'Grupo Guerra Distribuidores', 'Walter Toledo Turpo', 'Calle Paz Soldan 407 Yanahuara', '054968574', '940784512', 'guerra@distribuidores.com', 'www.guerradistribuidores.com', '', 'A');
-INSERT INTO `episerp`.`en_p4m_proveedor` (`ProCod`,`ProDet`,`ProCon`,`ProDir`,`ProTelFij`,`ProTelCel`,`ProEmail`,`ProPagWeb`,`ProObs`,`EstRegCod`) VALUES ('258147369121', 'EHOSA', 'Grisseldy Arenas Orejuela', 'Av. San Martin 205 Miraflores', '054326598', '945023678', 'ehosa@proveedores.com', 'www.ehosadistribuidores.com', '', 'A');
-INSERT INTO `episerp`.`en_p4m_proveedor` (`ProCod`,`ProDet`,`ProCon`,`ProDir`,`ProTelFij`,`ProTelCel`,`ProEmail`,`ProPagWeb`,`ProObs`,`EstRegCod`) VALUES ('321654987121', 'Disconfa', 'Sharon Bedregal Machaca', 'Av. La Paz 509', '054368971', '948152634', 'disconfa@proveedores.com', 'www.proveedoresdisconfa.com', '', 'A');
-INSERT INTO `episerp`.`en_p4m_proveedor` (`ProCod`,`ProDet`,`ProCon`,`ProDir`,`ProTelFij`,`ProTelCel`,`ProEmail`,`ProPagWeb`,`ProObs`,`EstRegCod`) VALUES ('987654321121', 'Import Export', 'José Paiva Franco', 'Centro Comercial Cayma 3er Piso', '054867219', '945007184', 'importexport@proveedores.com', 'www.importexport.com', '', 'A');
-INSERT INTO `episerp`.`en_p4m_proveedor` (`ProCod`,`ProDet`,`ProCon`,`ProDir`,`ProTelFij`,`ProTelCel`,`ProEmail`,`ProPagWeb`,`ProObs`,`EstRegCod`) VALUES ('654321987121', 'NavaRioja', 'Abelardo Alvarez Martinez', 'Via Evitamiento Km3 Cerro Colorado', '054237816', '945301020', 'navarioja@proveedores.com', 'www.navarioja.com', '', 'A');
-INSERT INTO `episerp`.`en_p4m_proveedor` (`ProCod`,`ProDet`,`ProCon`,`ProDir`,`ProTelFij`,`ProTelCel`,`ProEmail`,`ProPagWeb`,`ProObs`,`EstRegCod`) VALUES ('456123789121', 'Dadyma', 'Carlos Gershy Pinto', 'Av. San Martin 603 Miraflores', '054789123', '945781266', 'dadyma@proveedores.com', 'www.dadyma.com', '', 'A');
-INSERT INTO `episerp`.`en_p4m_proveedor` (`ProCod`,`ProDet`,`ProCon`,`ProDir`,`ProTelFij`,`ProTelCel`,`ProEmail`,`ProPagWeb`,`ProObs`,`EstRegCod`) VALUES ('456741852121', 'Alcamar', 'Gretel Cama Pizarro', 'Coorp. 19 D-10 Paucarpata', '054962317', '945662322', 'alcamar@proveedores.com', 'www.alcamar.com', '', 'A');
-
-COMMIT;
+INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (540, 9, 2, '94', 'Gastos Administrativos', 'A');

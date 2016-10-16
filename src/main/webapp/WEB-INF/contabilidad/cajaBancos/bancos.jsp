@@ -1,11 +1,11 @@
-<%@page import="java.text.SimpleDateFormat" %> 
+<%@ page import="java.text.SimpleDateFormat" %> 
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="minierptemplate" %>
 <minierptemplate:template>
     <jsp:attribute name="titulo">
-        <title>Bancos</title>
+        <title>Contabilidad - Bancos</title>
     </jsp:attribute>
     <jsp:attribute name="contenido">
         <div class="panel-body" >

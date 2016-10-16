@@ -1,4 +1,4 @@
-package org.epis.minierp.controller.contabilidad;
+package org.epis.minierp.controller.general;
 
 import java.io.IOException;
 
@@ -7,12 +7,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class ContabilidadController extends HttpServlet
-{
+public class PanelController extends HttpServlet
+{	
     private static final long serialVersionUID = 1L;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/WEB-INF/contabilidad/index.jsp").forward(request, response);
+        request.setAttribute("tipo",1);
+        request.getRequestDispatcher("/WEB-INF/general/panel.jsp").forward(request, response);
     }
 }

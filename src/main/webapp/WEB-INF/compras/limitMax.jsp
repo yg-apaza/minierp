@@ -8,7 +8,7 @@
 <%@ taglib tagdir="/WEB-INF/tags" prefix="minierptemplate" %>
 <minierptemplate:template>
     <jsp:attribute name="titulo">
-        <title>Clasificación ABC</title>
+        <title>Logística - Stock</title>
     </jsp:attribute>
     <jsp:attribute name="contenido">
         
@@ -44,7 +44,13 @@
         </script>
         
        <div id="pagel-body">
-	<!--Barra de opciones-->
+	
+            <div class="row">
+                <div class="col-lg-12">
+                    <br><h1 class="page-header"> Stock</h1>
+                </div>
+            </div> 
+        
             <div class="row">
                 <br/>
                     <div class="panel panel-primary" style="margin-bottom: -20px;">
@@ -55,7 +61,7 @@
                                     <option value="2"> Stock Minimo </option>
                                    <!--
                                    <select class = "form-control" style = "width: 170px; display: inline-block;" onChange="window.location.href=this.value">
-                                   <option value="${pageContext.request.contextPath}/secured/compras/limiteMaximo"> Stock Minimo </option> -->
+                                   <option value="${pageContext.request.contextPath}/secured/compras/stock"> Stock Minimo </option> -->
                                 </select>
                                <button onClick = "imprSelec('limitMax')" target="_parent" class="btn btn-success" style="float: right; display: block;"> Imprimir reporte </button> 
                              
@@ -66,7 +72,9 @@
            <!--Contenido de Stock Maximo-->
            <div id="limitMax">
 		<div class="row">
-			<h2 class="page-header"> Los siguientes productos han sobrepasado el límite maximo: </h2>
+                        <br><br>
+			<label> Los siguientes productos han sobrepasado el límite maximo: </label>
+                        <br>
 			<table class="table table-bordered table-striped table-hover" id="productTableM">
 				<tr>    
                                        <th> Codigo </th>

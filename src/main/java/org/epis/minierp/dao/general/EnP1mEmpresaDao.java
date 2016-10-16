@@ -16,13 +16,13 @@ public class EnP1mEmpresaDao {
     }
 
     public List<EnP1mEmpresa> getAll() {
-        Query query = session.createQuery("from EnP2mClaseProducto");
+        Query query = session.createQuery("from EnP1mEmpresa");
         List<EnP1mEmpresa> estados = query.list();
         return estados;
     }
 
     public List<EnP1mEmpresa> getAllActive() {
-        Query query = session.createQuery("from EnP2mClaseProducto E where E.estRegCod = 'A'");
+        Query query = session.createQuery("from EnP1mEmpresa E where E.estRegCod = 'A'");
         List<EnP1mEmpresa> estados = query.list();
         System.out.println(estados);
         return estados;

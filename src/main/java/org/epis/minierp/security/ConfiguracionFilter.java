@@ -14,8 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.epis.minierp.model.EnP1mUsuario;
 
-@WebFilter("/secured/ventas/*")
-public class GeneralFilter implements Filter
+@WebFilter("/secured/configuracion/*")
+public class ConfiguracionFilter implements Filter
 {
     @Override
     public void init(FilterConfig config) throws ServletException {

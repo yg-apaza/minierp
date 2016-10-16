@@ -1,4 +1,4 @@
-package org.epis.minierp.controller.general;
+package org.epis.minierp.controller.configuracion.usuario;
 
 import org.epis.minierp.dao.general.EnP1mUsuarioDao;
 import java.io.IOException;
@@ -17,7 +17,7 @@ public class Eliminar extends HttpServlet {
         System.out.println("antes del error");
         op.deleteUsuario(request.getParameter("id"));
         System.out.println("despues del error");
-        response.sendRedirect(request.getContextPath() + "/secured/general/usuarios");
+        response.sendRedirect(request.getContextPath() + "/secured/configuracion/usuario/usuarios");
     }
 
     @Override

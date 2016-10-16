@@ -5,7 +5,7 @@
 
 <minierptemplate:template>
     <jsp:attribute name="titulo">
-        <title>MiniERP - Preventa</title>
+        <title>Ventas - Preventa</title>
     </jsp:attribute>
     <jsp:attribute name="contenido">
         
@@ -39,7 +39,7 @@
                             </div>
                         </div>
                         <div class="panel-body">
-                            <form role=form" method="post" action="${pageContext.request.contextPath}/secured/ventas/preventa/preventa">
+                            <form role=form" method="post" action="${pageContext.request.contextPath}/secured/ventas/preventa">
                                 <div class="form-group">
                                     <div class="col-sm-6">
                                         <select class="form-control" id="cliCod" name="cliCod">

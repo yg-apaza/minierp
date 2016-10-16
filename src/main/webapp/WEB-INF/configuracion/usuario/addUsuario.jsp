@@ -15,7 +15,7 @@
                             Usuario
                         </div>
                         <div class="panel-body">
-                            <form role="form" method="post" action="${pageContext.request.contextPath}/secured/general/usuarios/add">
+                            <form role="form" method="post" action="${pageContext.request.contextPath}/secured/configuracion/usuario/usuarios/add">
                                 <div class="form-group">
                                     <label>Código de usuario</label>
                                     <div class="form-group input-group">
