@@ -3,7 +3,7 @@
 <%@ taglib tagdir="/WEB-INF/tags" prefix="minierptemplate" %>
 <minierptemplate:template>
     <jsp:attribute name="titulo">
-        <title>MiniERP - Cuentas Bancarias</title>
+        <title>Contabilidad - Cuentas Bancarias</title>
     </jsp:attribute>
     <jsp:attribute name="contenido">
         <div class="panel-body">
@@ -25,11 +25,6 @@
                 <a href="${pageContext.request.contextPath}/secured/contabilidad/reporte?type=doc&&report=cuentabancaria" class="btn btn-outline btn-primary btn-lg btn-block">
                     <i class="fa fa-file-word-o"></i>
                     Reporte [DOC]
-                </a>
-                <br>
-                <a href="${pageContext.request.contextPath}/secured/contabilidad" class="btn btn-outline btn-default btn-lg btn-block">
-                    <i class="fa fa-arrow-left"></i>
-                    Regresar
                 </a>
                 <br>
             </div>
