@@ -46,7 +46,7 @@
                     <li class="dropdown"><a href="${pageContext.request.contextPath}/">
                         <i class="fa fa-home" aria-hidden="true"></i> Inicio
                     </a></li>
-                    <li class="dropdown"><a href="${pageContext.request.contextPath}/perfil">
+                    <li class="dropdown"><a href="${pageContext.request.contextPath}/secured/general/perfil">
                         <i class="fa fa-user" aria-hidden="true"></i> Perfil
                     </a></li>
                     <li class="dropdown"><a href="${pageContext.request.contextPath}/logout">
@@ -100,7 +100,7 @@
                                                 <a href="${pageContext.request.contextPath}/secured/compras/proveedores">Proveedores</a>
                                             </li>
                                             <li>
-                                                <a href="${pageContext.request.contextPath}/secured/compras/kardexInicio">Kardex</a>
+                                                <a href="${pageContext.request.contextPath}/secured/compras/kardex">Kardex</a>
                                             </li>
                                             <li>
                                                 <a href="${pageContext.request.contextPath}/secured/compras/clasificacionABC">Clasificación ABC</a>
@@ -166,7 +166,7 @@
                                         <a href="${pageContext.request.contextPath}/secured/configuracion/puntodeventa">Punto de Venta</a>
                                     </li>
                                     <li>
-                                        <a href="#">Usuarios</a>
+                                        <a href="${pageContext.request.contextPath}/secured/configuracion/usuario/usuarios">Usuarios</a>
                                     </li>
                                 </ul>
                             </li>

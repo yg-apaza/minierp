@@ -1,4 +1,4 @@
-package org.epis.minierp.controller.general;
+package org.epis.minierp.controller.configuracion.usuario;
 
 import java.io.IOException;
 import java.util.List;
@@ -19,6 +19,6 @@ public class UsuariosController extends HttpServlet
         EnP1mUsuarioDao daoUsu = new EnP1mUsuarioDao();
         List<EnP1mUsuario> usuarios = daoUsu.getAll();
         request.setAttribute("usuarios", usuarios);
-        request.getRequestDispatcher("/WEB-INF/general/usuarios.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/configuracion/usuario/usuarios.jsp").forward(request, response);
     }
 }

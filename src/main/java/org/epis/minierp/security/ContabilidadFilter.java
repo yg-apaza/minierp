@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.epis.minierp.model.EnP1mUsuario;
 
-@WebFilter("/secured/ventas/*")
+@WebFilter("/secured/contabilidad/*")
 public class ContabilidadFilter implements Filter
 {
     @Override

@@ -10,7 +10,7 @@
         <div class="panel-body">
             <h1 class="page-header">kardex</h1>
             <br>
-           <form role="form"  method="post" action="${pageContext.request.contextPath}/secured/compras/kardexInicio">
+           <form role="form"  method="post" action="${pageContext.request.contextPath}/secured/compras/kardex">
                 <label class="col-sm-2 control-label">Seleccione Producto: </label>
                 <div class="col-xs-2">
 

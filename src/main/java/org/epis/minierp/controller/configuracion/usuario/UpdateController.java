@@ -1,4 +1,4 @@
-package org.epis.minierp.controller.general;
+package org.epis.minierp.controller.configuracion.usuario;
 
 import java.io.IOException;
 import java.util.List;
@@ -31,7 +31,7 @@ public class UpdateController extends HttpServlet {
         request.setAttribute("tipos", tipos);
         request.setAttribute("estados", estados);
         request.setAttribute("usuario", u);
-        request.getRequestDispatcher("/WEB-INF/general/actualizar.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/configuracion/usuario/actualizar.jsp").forward(request, response);
     }
     
     @Override

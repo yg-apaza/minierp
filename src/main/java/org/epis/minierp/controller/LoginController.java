@@ -21,29 +21,7 @@ public class LoginController extends HttpServlet
         if (session == null || session.getAttribute("usuario") == null)
             request.getRequestDispatcher("/login.jsp").forward(request, response);
         else
-        {
-            EnP1mUsuario u = (EnP1mUsuario) session.getAttribute("usuario");
-            switch(u.getTaGzzTipoUsuario().getTipUsuCod())
-            {
-                case 1:
-                    response.sendRedirect(request.getContextPath() + "/secured/general");
-                    break;
-                case 2:
-                    System.out.println("VENTAS 1");
-                    response.sendRedirect(request.getContextPath() + "/secured/ventas");
-                    break;
-                case 3:
-                    response.sendRedirect(request.getContextPath() + "/secured/compras");
-                    break;
-                case 4:
-                    System.out.println("CONTABILIDAD 1");
-                    response.sendRedirect(request.getContextPath() + "/secured/contabilidad");
-                    break;
-                default:
-                    response.sendRedirect(request.getContextPath() + "/secured/");
-                    break;
-            }
-        }
+            response.sendRedirect(request.getContextPath() + "/secured/general/panel");
     }
 
     @Override
@@ -58,30 +36,9 @@ public class LoginController extends HttpServlet
         if(u != null && u.getUsuPas().equals(DigestUtils.sha256Hex(password)))
         {
             session.setAttribute("usuario", u);
-            switch(u.getTaGzzTipoUsuario().getTipUsuCod())
-            {
-                case 1:
-                    response.sendRedirect(request.getContextPath() + "/secured/general");
-                    break;
-                case 2:
-                    System.out.println("VENTAS POST");
-                    response.sendRedirect(request.getContextPath() + "/secured/ventas");
-                    break;
-                case 3:
-                    response.sendRedirect(request.getContextPath() + "/secured/compras");
-                    break;
-                case 4:
-                    System.out.println("CONTABILIDAD POST");
-                    response.sendRedirect(request.getContextPath() + "/secured/contabilidad");
-                    break;
-                default:
-                    response.sendRedirect(request.getContextPath() + "/secured/");
-                    break;
-            }
+            response.sendRedirect(request.getContextPath() + "/secured/general/panel");
         }
         else
-        {
             response.sendRedirect(request.getContextPath() + "/");
-        }
     }
 }

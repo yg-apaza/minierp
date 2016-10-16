@@ -22,12 +22,12 @@
         <url-pattern>/secured/*</url-pattern>
     </filter-mapping>
     <filter>
-        <filter-name>generalFilter</filter-name>
-        <filter-class>org.epis.minierp.security.GeneralFilter</filter-class>
+        <filter-name>configuracionFilter</filter-name>
+        <filter-class>org.epis.minierp.security.ConfiguracionFilter</filter-class>
     </filter>
     <filter-mapping>
-        <filter-name>generalFilter</filter-name>
-        <url-pattern>/secured/general/*</url-pattern>
+        <filter-name>configuracionFilter</filter-name>
+        <url-pattern>/secured/configuracion/*</url-pattern>
     </filter-mapping>
     <filter>
         <filter-name>ventasFilter</filter-name>
@@ -62,14 +62,6 @@
         <servlet-class>org.epis.minierp.controller.LoginController</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>UpdateController</servlet-name>
-        <url-pattern>/updatecontroller</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>UpdateControllerPost</servlet-name>
-        <url-pattern>/updatecontrollerpost</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>LoginController</servlet-name>
         <url-pattern/>
     </servlet-mapping>
@@ -83,36 +75,17 @@
         <servlet-name>LogoutController</servlet-name>
         <url-pattern>/logout</url-pattern>
     </servlet-mapping>
-    <!-- General - Administrador -->
+    
+    <!-- General -->
     <servlet>
         <description/>
-        <display-name>GeneralController</display-name>
-        <servlet-name>GeneralController</servlet-name>
-        <servlet-class>org.epis.minierp.controller.general.GeneralController</servlet-class>
+        <display-name>PanelController</display-name>
+        <servlet-name>PanelController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.general.PanelController</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>GeneralController</servlet-name>
-        <url-pattern>/secured/general</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <description/>
-        <display-name>UsuariosController</display-name>
-        <servlet-name>UsuariosController</servlet-name>
-        <servlet-class>org.epis.minierp.controller.general.UsuariosController</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>UsuariosController</servlet-name>
-        <url-pattern>/secured/general/usuarios</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <description/>
-        <display-name>AddUsuarioController</display-name>
-        <servlet-name>AddUsuarioController</servlet-name>
-        <servlet-class>org.epis.minierp.controller.general.AddUsuarioController</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>AddUsuarioController</servlet-name>
-        <url-pattern>/secured/general/usuarios/add</url-pattern>
+        <servlet-name>PanelController</servlet-name>
+        <url-pattern>/secured/general/panel</url-pattern>
     </servlet-mapping>
     <servlet>
         <description/>
@@ -121,8 +94,12 @@
         <servlet-class>org.epis.minierp.controller.general.PerfilController</servlet-class>
     </servlet>
     <servlet-mapping>
+        <servlet-name>PerfilController</servlet-name>
+        <url-pattern>/secured/general/perfil</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>ReporteController</servlet-name>
-        <url-pattern>/secured/reporte</url-pattern>
+        <url-pattern>/secured/general/reporte</url-pattern>
     </servlet-mapping>
     <servlet>
         <description/>
@@ -130,10 +107,6 @@
         <servlet-name>ReporteController</servlet-name>
         <servlet-class>org.epis.minierp.controller.general.ReporteController</servlet-class>
     </servlet>
-    <servlet-mapping>
-        <servlet-name>PerfilController</servlet-name>
-        <url-pattern>/perfil</url-pattern>
-    </servlet-mapping>
     <!-- Modulo de Compras -->
     <servlet>
         <description/>
@@ -153,7 +126,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>KardexController</servlet-name>
-        <url-pattern>/secured/compras/kardexInicio</url-pattern>
+        <url-pattern>/secured/compras/kardex</url-pattern>
     </servlet-mapping>
     <!-- Modulo de Compras Inventario -->
     <servlet>
@@ -221,6 +194,26 @@
         <url-pattern>/secured/compras/productos</url-pattern>
     </servlet-mapping>
     <!--Modulo de Configuraciones-->
+    <servlet>
+        <description/>
+        <display-name>UsuariosController</display-name>
+        <servlet-name>UsuariosController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.configuracion.usuario.UsuariosController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UsuariosController</servlet-name>
+        <url-pattern>/secured/configuracion/usuario/usuarios</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <description/>
+        <display-name>AddUsuarioController</display-name>
+        <servlet-name>AddUsuarioController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.configuracion.usuario.AddUsuarioController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddUsuarioController</servlet-name>
+        <url-pattern>/secured/configuracion/usuario/usuarios/add</url-pattern>
+    </servlet-mapping>
     <!--Sub Modulo Compañia Datos-->
     <servlet>
         <description/>
@@ -457,7 +450,7 @@
         <servlet-name>addPagoController</servlet-name>
         <url-pattern>/secured/ventas/pagos/addPago</url-pattern>
     </servlet-mapping>
-    <!--         ERRORS         -->
+    <!--         ERROR         -->
     <error-page>
         <location>/error.jsp</location>
     </error-page>

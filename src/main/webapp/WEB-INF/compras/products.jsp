@@ -5,7 +5,7 @@
         <title>Logística - Productos</title>
     </jsp:attribute>
     <jsp:attribute name="contenido">
-        <div id="wrapper">
+        <div id="panel-body">
             <div class="row">
                 <div class="col-lg-12">
                     <br><h1 class="page-header"> Productos</h1>

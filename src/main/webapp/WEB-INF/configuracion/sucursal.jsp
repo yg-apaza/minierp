@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <minierptemplate:template>
     <jsp:attribute name="titulo">
-        <title>MiniERP - Configuraciones </title>
+        <title>Configuraciones - Sucursal</title>
     </jsp:attribute>
     <jsp:attribute name="contenido">
         <script src="${pageContext.request.contextPath}/js/metisMenu.min.js"></script>
@@ -26,18 +26,19 @@
         <div id="pagel-body">
 	<!--Barra de opciones-->
             <div class="row">
-                <br/>
-                    <div class="panel panel-primary" style="margin-bottom: -20px;">
-                            <div class="panel-heading" style="height: 55px;">
-                                 <button class="btn btn-success" id="addbtn" style="float: leaft; display: block;"> Agregar Sucursal</button> 
-                            </div>
-                    </div>
-                   
+                <div class="col-lg-12">
+                    <br><h1 class="page-header"> Sucursal</h1>
                 </div>
+            </div> 
+            <div class="row">
+                <button class="btn btn-success" id="addbtn" style="float: leaft; display: block;"> Agregar Sucursal</button>   
+            </div>
            <!--Contenido de Sucursal-->
+           
+           <br>
            <div id="sucursal">
 		<div class="row">
-			<h2 class="page-header"> Sucursales: </h2>
+			<label> Sucursales: </label>
 			<table class="table table-bordered table-striped table-hover" id="productTableM">
 				<tr>    
                                         <th> Codigo </th>
