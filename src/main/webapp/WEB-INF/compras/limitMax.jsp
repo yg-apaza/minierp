@@ -8,7 +8,7 @@
 <%@ taglib tagdir="/WEB-INF/tags" prefix="minierptemplate" %>
 <minierptemplate:template>
     <jsp:attribute name="titulo">
-        <title>Clasificación ABC</title>
+        <title>Logística - Stock</title>
     </jsp:attribute>
     <jsp:attribute name="contenido">
         
@@ -55,7 +55,7 @@
                                     <option value="2"> Stock Minimo </option>
                                    <!--
                                    <select class = "form-control" style = "width: 170px; display: inline-block;" onChange="window.location.href=this.value">
-                                   <option value="${pageContext.request.contextPath}/secured/compras/limiteMaximo"> Stock Minimo </option> -->
+                                   <option value="${pageContext.request.contextPath}/secured/compras/stock"> Stock Minimo </option> -->
                                 </select>
                                <button onClick = "imprSelec('limitMax')" target="_parent" class="btn btn-success" style="float: right; display: block;"> Imprimir reporte </button> 
                              
