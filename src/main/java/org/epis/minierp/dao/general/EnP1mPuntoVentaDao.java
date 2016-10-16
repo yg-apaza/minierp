@@ -28,6 +28,13 @@ public class EnP1mPuntoVentaDao {
         System.out.println(estados);
         return estados;
     }
+    
+    public List<EnP1mPuntoVenta> getAllInactives() {
+        Query query = session.createQuery("from EnP1mPuntoVenta E where E.estRegCod = 'I'");
+        List<EnP1mPuntoVenta> estados = query.list();
+        System.out.println(estados);
+        return estados;
+    }
 
     public EnP1mPuntoVenta getById(EnP1mPuntoVentaId id) {
         EnP1mPuntoVenta estado = null;

@@ -6,7 +6,6 @@
 package org.epis.minierp.controller.configuracion;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -15,7 +14,6 @@ import org.epis.minierp.dao.general.EnP1mPuntoVentaDao;
 import org.epis.minierp.dao.general.EnP1mSucursalDao;
 import org.epis.minierp.model.EnP1mPuntoVenta;
 import org.epis.minierp.model.EnP1mPuntoVentaId;
-import org.epis.minierp.model.EnP1mSucursal;
 
 /**
  *
@@ -33,6 +31,7 @@ public class PointSaleController extends HttpServlet {
         sucursalDao = new EnP1mSucursalDao();
         request.setAttribute("puntoventa", puntoVentaDao.getAllActive());
         request.setAttribute("sucursal", sucursalDao.getAllActive());
+        request.setAttribute("inactivos", puntoVentaDao.getAllInactives());
         request.getRequestDispatcher("/WEB-INF/configuracion/pointSale.jsp").forward(request, response);
     }
     
@@ -63,6 +62,24 @@ public class PointSaleController extends HttpServlet {
                 puntoVentaDao.update(pvLoad);
                 break;
                 
+            case "disable":
+                int sucCodDisable = Integer.parseInt(request.getParameter("sucCod"));
+                int punVenCodDisable = Integer.parseInt(request.getParameter("punVenCod"));
+                EnP1mPuntoVentaId key4Disable = new EnP1mPuntoVentaId(punVenCodDisable, sucCodDisable);
+                EnP1mPuntoVenta pvDisable = puntoVentaDao.getById(key4Disable);
+                pvDisable.setEstRegCod('I');
+                puntoVentaDao.update(pvDisable);
+                break;
+                
+            case "activate":
+                int sucCodActivate = Integer.parseInt(request.getParameter("sucCod"));
+                int punVenCodActivate = Integer.parseInt(request.getParameter("punVenCod"));
+                EnP1mPuntoVentaId key4Activate = new EnP1mPuntoVentaId(punVenCodActivate, sucCodActivate);
+                EnP1mPuntoVenta pvActivate = puntoVentaDao.getById(key4Activate);
+                pvActivate.setEstRegCod('A');
+                puntoVentaDao.update(pvActivate);
+                break;
+                
             case "delete":
                 int sucCodDelete = Integer.parseInt(request.getParameter("sucCod"));
                 int punVenCodDelete = Integer.parseInt(request.getParameter("punVenCod"));
@@ -71,6 +88,7 @@ public class PointSaleController extends HttpServlet {
                 pvDelete.setEstRegCod('*');
                 puntoVentaDao.update(pvDelete);
                 break;
+                
         }
         response.sendRedirect(request.getContextPath() + "/secured/configuracion/puntodeventa");
     }
