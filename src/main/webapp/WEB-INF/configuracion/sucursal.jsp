@@ -5,9 +5,7 @@
         <title>MiniERP - Configuraciones </title>
     </jsp:attribute>
     <jsp:attribute name="contenido">
-        <script src="${pageContext.request.contextPath}/js/metisMenu.min.js"></script>
-        <script src="${pageContext.request.contextPath}/js/sb-admin-2.min.js"></script>
-     
+            
         <div class="pagel-body">
            <!--Contenido de Sucursal-->
            <div id="sucursal">
@@ -156,12 +154,12 @@
             $("#createForm").validate({
                 rules: {
                     sucDes: {
-                        required: true,
+                        required: true
                         }
                 },
                 messages: {
                     sucDes: {
-                        required: "Es necesario un nombre de sucursal",
+                        required: "Es necesario un nombre de sucursal"
                        }
                 },
                 submitHandler: function(form) {
@@ -172,12 +170,12 @@
             $("#updateForm").validate({
                 rules: {
                     sucDir: {
-                        required: true,
+                        required: true
                     }
                 },
                 messages: {
                     sucDir: {
-                        required: "Es necesario ingresar una Direccion",
+                        required: "Es necesario ingresar una Direccion"
                     }    
                 },
                 submitHandler: function(form) {
