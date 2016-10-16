@@ -44,7 +44,13 @@
         </script>
         
        <div id="pagel-body">
-	<!--Barra de opciones-->
+	
+            <div class="row">
+                <div class="col-lg-12">
+                    <br><h1 class="page-header"> Stock</h1>
+                </div>
+            </div> 
+        
             <div class="row">
                 <br/>
                     <div class="panel panel-primary" style="margin-bottom: -20px;">
@@ -66,7 +72,9 @@
            <!--Contenido de Stock Maximo-->
            <div id="limitMax">
 		<div class="row">
-			<h2 class="page-header"> Los siguientes productos han sobrepasado el límite maximo: </h2>
+                        <br><br>
+			<label> Los siguientes productos han sobrepasado el límite maximo: </label>
+                        <br>
 			<table class="table table-bordered table-striped table-hover" id="productTableM">
 				<tr>    
                                        <th> Codigo </th>

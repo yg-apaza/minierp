@@ -10,7 +10,7 @@
 <%@ taglib tagdir="/WEB-INF/tags" prefix="minierptemplate" %>
 <minierptemplate:template>
     <jsp:attribute name="titulo">
-        <title>Libro Diario</title>
+        <title>Contabilidad - Libro Diario</title>
     </jsp:attribute>
     <jsp:attribute name="contenido">
         

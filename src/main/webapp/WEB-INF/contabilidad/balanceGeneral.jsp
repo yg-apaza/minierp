@@ -2,7 +2,7 @@
 <%@ taglib tagdir="/WEB-INF/tags" prefix="minierptemplate" %>
 <minierptemplate:template>
     <jsp:attribute name="titulo">
-        <title>MiniERP - Contabilidad</title>
+        <title>Contabilidad - Balance General</title>
     </jsp:attribute>
     <jsp:attribute name="contenido">
     <script type="text/javascript">
@@ -10,14 +10,13 @@ function imprSelec(muestra)
 {var ficha=document.getElementById(muestra);var ventimp=window.open(' ','popimpr');ventimp.document.write(ficha.innerHTML);ventimp.document.close();ventimp.print();ventimp.close();}
 </script>
         <div id="muestra" class="panel-body">
-        	<div class="row-fluid">
-        		<div class="span12">
-        			<div class="well">
-        				<h1 class="text-center">BALANCE GENERAL</h1>
-        				<a href="javascript:imprSelec('muestra')">Imprimir Tabla</a>
-        			</div>
-        		</div>
+        	<div class="row">
+                        <div class="col-lg-12">
+                            <h1 class="page-header">Balance General</h1>
+                        </div> 
         	</div>
+                <a href="javascript:imprSelec('muestra')">Imprimir Tabla</a>
+                <br><br>
         	<div class="row-fluid">
         		<div class="span12">
         			<ul class="nav nav-tabs nav-">
