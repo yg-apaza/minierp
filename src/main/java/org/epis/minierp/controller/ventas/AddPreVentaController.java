@@ -16,7 +16,7 @@ import org.epis.minierp.model.EnP1mPreventaCab;
 import org.epis.minierp.model.EnP1mUsuario;
 import org.epis.minierp.model.TaGzzMoneda;
 
-public class VentasPreVentaController extends HttpServlet{
+public class AddPreVentaController extends HttpServlet{
        private static final long serialVersionUID = 1L;
 
     @Override
@@ -27,7 +27,7 @@ public class VentasPreVentaController extends HttpServlet{
         List<EnP1mCliente> clientes = clientDao.getAll();
         request.setAttribute("monedas", monedas);
         request.setAttribute("clientes", clientes);
-        request.getRequestDispatcher("/WEB-INF/ventas/preventa/preventa.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/ventas/preventa/addPreventa.jsp").forward(request, response);
     }
     
     @Override

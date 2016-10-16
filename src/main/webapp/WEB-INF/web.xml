@@ -75,7 +75,6 @@
         <servlet-name>LogoutController</servlet-name>
         <url-pattern>/logout</url-pattern>
     </servlet-mapping>
-    
     <!-- General -->
     <servlet>
         <description/>
@@ -257,7 +256,6 @@
         <servlet-name>PointSaleController</servlet-name>
         <url-pattern>/secured/configuracion/puntodeventa</url-pattern>
     </servlet-mapping>
-    
     <!-- Modulo de Contabilidad -->
     <servlet>
         <description/>
@@ -383,13 +381,23 @@
     </servlet-mapping>
     <servlet>
         <description/>
-        <display-name>VentasPreVentaController</display-name>
-        <servlet-name>VentasPreVentaController</servlet-name>
-        <servlet-class>org.epis.minierp.controller.ventas.VentasPreVentaController</servlet-class>
+        <display-name>PreVentaController</display-name>
+        <servlet-name>PreVentaController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.ventas.PreVentaController</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>VentasPreVentaController</servlet-name>
+        <servlet-name>PreVentaController</servlet-name>
         <url-pattern>/secured/ventas/preventa</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <description/>
+        <display-name>AddPreVentaController</display-name>
+        <servlet-name>AddPreVentaController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.ventas.AddPreVentaController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddPreVentaController</servlet-name>
+        <url-pattern>/secured/ventas/preventa/addPreventa</url-pattern>
     </servlet-mapping>
     <servlet>
         <description/>
@@ -441,7 +449,6 @@
         <servlet-name>addPagoController</servlet-name>
         <url-pattern>/secured/ventas/pagos/addPago</url-pattern>
     </servlet-mapping>
-    
     <!--         ERRORS         -->
     <error-page>
         <location>/error.jsp</location>
