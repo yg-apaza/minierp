@@ -895,3 +895,22 @@ INSERT INTO `episerp`.`en_p4m_proveedor` (`ProCod`,`ProDet`,`ProCon`,`ProDir`,`P
 INSERT INTO `episerp`.`en_p4m_proveedor` (`ProCod`,`ProDet`,`ProCon`,`ProDir`,`ProTelFij`,`ProTelCel`,`ProEmail`,`ProPagWeb`,`ProObs`,`EstRegCod`) VALUES ('456741852121', 'Alcamar', 'Gretel Cama Pizarro', 'Coorp. 19 D-10 Paucarpata', '054962317', '945662322', 'alcamar@proveedores.com', 'www.alcamar.com', '', 'A');
 
 COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `episerp`.`en_p1m_cliente`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `episerp`;
+INSERT INTO `episerp`.`en_p1m_cliente` (`CliCod`, `CliNom`, `CliApePat`, `CliApeMat`, `CliSex`, `CliDir`, `CliTelFij`, `CliTelCel`, `CliEmail`, `EstCivCod`, `EstRegCod`) VALUES ('1', 'Yuliana', 'Apaza', 'Yllachura', 'F', 'Calle Castilla 202 - Cerro Salaverrry - Arequipa', '054895612', '985412367', 'yuApa09@gmail.com', '1', 'A');
+INSERT INTO `episerp`.`en_p1m_cliente` (`CliCod`, `CliNom`, `CliApePat`, `CliApeMat`, `CliSex`, `CliDir`, `CliTelFij`, `CliTelCel`, `CliEmail`, `EstCivCod`, `EstRegCod`) VALUES ('2', 'Paula', 'Asto', 'Machaca', 'F', 'Avenida Los Naranjos 29 - Cercado', '236478516', '967425874', 'paast10@gmail.com', '1', 'A');
+INSERT INTO `episerp`.`en_p1m_cliente` (`CliCod`, `CliNom`, `CliApePat`, `CliApeMat`, `CliSex`, `CliDir`, `CliTelFij`, `CliTelCel`, `CliEmail`, `EstCivCod`, `EstRegCod`) VALUES ('3', 'Geraldine', 'Valdez', 'Yana', 'F', 'Avenida Coronel Sucre s/n - Tacna', '984532745', '935874168', 'geval11@gmail.com', '1', 'A');
+INSERT INTO `episerp`.`en_p1m_cliente` (`CliCod`, `CliNom`, `CliApePat`, `CliApeMat`, `CliSex`, `CliDir`, `CliTelFij`, `CliTelCel`, `CliEmail`, `EstCivCod`, `EstRegCod`) VALUES ('4', 'Gladys', 'Calle', 'Condori', 'F', 'Los Pinos 987 - Cercado - Puno', '324875691', '965874126', 'glcal12@gmail.com', '1', 'A');
+INSERT INTO `episerp`.`en_p1m_cliente` (`CliCod`, `CliNom`, `CliApePat`, `CliApeMat`, `CliSex`, `CliDir`, `CliTelFij`, `CliTelCel`, `CliEmail`, `EstCivCod`, `EstRegCod`) VALUES ('5', 'Christian', 'Incalla', 'Nina', 'M', 'Calle Bolognesi 654 - 3 de Octubre - Arequipa', '120457896', '963148752', 'chinc13@gmail.com', '1', 'A');
+INSERT INTO `episerp`.`en_p1m_cliente` (`CliCod`, `CliNom`, `CliApePat`, `CliApeMat`, `CliSex`, `CliDir`, `CliTelFij`, `CliTelCel`, `CliEmail`, `EstCivCod`, `EstRegCod`) VALUES ('6', 'Pierre', 'Choque', 'Llerena', 'M', 'Dean Valdivia 743 - Cerro Colorado - Arequipa', '234870564', '957412547', 'picho14@gmail.com', '1', 'A');
+INSERT INTO `episerp`.`en_p1m_cliente` (`CliCod`, `CliNom`, `CliApePat`, `CliApeMat`, `CliSex`, `CliDir`, `CliTelFij`, `CliTelCel`, `CliEmail`, `EstCivCod`, `EstRegCod`) VALUES ('7', 'Kevin', 'Fernández', 'Nieto', 'M', 'Calle Castilla 202 - Cerro Salaverrry - Arequipa', '054895612', '998745633', 'kefer15@gmail.com', '1', 'A');
+INSERT INTO `episerp`.`en_p1m_cliente` (`CliCod`, `CliNom`, `CliApePat`, `CliApeMat`, `CliSex`, `CliDir`, `CliTelFij`, `CliTelCel`, `CliEmail`, `EstCivCod`, `EstRegCod`) VALUES ('8', 'Alexander', 'Choquenaira', 'Flores', 'M', 'Calle San Martín s/n - Cerro Chico - Lima', '128765485', '987456258', 'alcho16@gmail.com', '1', 'A');
+INSERT INTO `episerp`.`en_p1m_cliente` (`CliCod`, `CliNom`, `CliApePat`, `CliApeMat`, `CliSex`, `CliDir`, `CliTelFij`, `CliTelCel`, `CliEmail`, `EstCivCod`, `EstRegCod`) VALUES ('9', 'Diego', 'Javier', 'Quispe', 'M', 'Los Cirios 987 - Urb. La Punta - Pasco', '564102546', '965587777', 'dijav18@gmail.com', '1', 'A');
+INSERT INTO `episerp`.`en_p1m_cliente` (`CliCod`, `CliNom`, `CliApePat`, `CliApeMat`, `CliSex`, `CliDir`, `CliTelFij`, `CliTelCel`, `CliEmail`, `EstCivCod`, `EstRegCod`) VALUES ('10', 'Yemi', 'Quispe', 'Guillén', 'F', 'Calle Italia s/n - Cercado - Ayacucho', '35741698', '985255545', 'yequi19@gmail.com', '1', 'A');
+
+COMMIT;

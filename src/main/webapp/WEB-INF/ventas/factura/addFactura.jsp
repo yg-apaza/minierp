@@ -7,235 +7,349 @@
     <jsp:attribute name="titulo">
         <title>MiniERP - Factura</title>
     </jsp:attribute>
-    <jsp:attribute name="contenido">
-
-        <div class="panel-body">
-            <h1 class="page-header">Agregar Factura</h1>
-            <br>			
-            <div class="form-horizontal">
-                <div class="panel panel-default">
-                    <form role=form" method="post" action="${pageContext.request.contextPath}/secured/ventas/factura/addFactura">
-                        <div class="panel-heading">
-
-                            <div class=form-group>
-                                <label class="col-sm-2"><h4>Añadir Factura</h4></label>
-                            </div>
-                            <div class="form-group"> 
-                                <div class="col-sm-6">                               
-                                    <input type="text" class="form-control" placeholder="Codidgo Factura" name="CodCabFac">                                                                                                         
+    <jsp:attribute name="contenido">       
+        <div id="pagel-body">
+            <div class="row">
+                <div class="col-lg-12">
+                    <br><h1 class="page-header"> Factura de Venta</h1>
+                </div>
+            </div>
+            <form id="registerBill" method="post" action="${pageContext.request.contextPath}/secured/ventas/factura/addFactura">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h4>Información General</h4>
+                                <div class="col-md-4">
+                                    <div class="form-group input-group" >
+                                        <span class="input-group-addon"><i class="fa fa-shopping-cart"></i></span>
+                                        <input type="text" class="form-control" name="facVenCabCod" placeholder="Número de Factura" pattern="[0-9]{3}-[0-9]{6}">
+                                    </div>
                                 </div>
-                                <div class="col-sm-6">
-                                    <select class="form-control" name="cliCod" id="cliCod">
-                                        <c:forEach items="${clientes}" var="t">    
-                                            <option value="${t.cliCod}">${t.cliNom} ${t.cliApePat} ${t.cliApeMat}</option>
-                                        </c:forEach>
-                                    </select>
-                                </div>                                  
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-sm-6">
-                                    <select class="form-control" name="usuCod" id="usuCod">
-                                        <c:forEach items="${users}" var="t">    
-                                            <option value="${t.usuCod}">${t.usuNom} ${t.usuApePat} ${t.usuApeMat}</option>
-                                        </c:forEach>
-                                    </select>
-                                </div> 
-                                <div class="col-sm-3">
-                                    <input placeholder="Fecha de venta" type='text' class="form-control" name="usuFecVen" id="usuFecVen"/>
+                                <div class="col-md-4">
+                                    <div class="form-group input-group" >
+                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                        <input type="date" class="form-control" name="facVenCabFec">
+                                    </div>
                                 </div>
-
-                                <div class="col-sm-3">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" placeholder="Total" name="total" id="total">
-                                        <span class="input-group-addon"><i class="fa fa-money"></i>
-                                        </span>                                        
-                                    </div>                                              
+                                <div class="col-md-4">
+                                    <div class="form-group input-group" >
+                                        <span class="input-group-addon">Estado</span>
+                                        <select class="form-control" name="estFacCod">
+                                            <c:forEach items="${estados}" var="estado">
+                                                <option value="${estado.estFacCod}">${estado.estFacDet}</option>
+                                            </c:forEach>
+                                        </select>
+                                        <span class="input-group-addon"><i class="fa fa-money"></i></span>
+                                    </div>
+                                </div>                               
+                                <div class="col-md-6">
+                                    <div class="form-group input-group" >
+                                        <span class="input-group-addon"><i class="fa fa-child"></i></span>
+                                        <input type="text" class="form-control" name="usuCod" value="${usuario.usuCod}" readonly>
+                                    </div>
                                 </div>
-
-                            </div>
-
-                        </div>
-
-                        <div class="panel-body"> 
-
-                            <div class="form-group">
-
-                                <div class="col-sm-6">
-                                    <label class="control-label">Método de Pago</label> 
-                                    <select class="form-control" name="selecMetodoPago" id="metPagCod">
-                                        <c:forEach items="${metodosPago}" var="t">    
-                                            <option value="${t.metPagCod}">${t.metPagDet}</option>
-                                        </c:forEach>
-                                    </select>
-                                    <label class="control-label">Tipo de Pago</label>                                
-                                    <select class="form-control" id="tipPag" name="selectTipPag">
-                                        <c:forEach items="${tipoPagos}" var="t">
-                                            <option value="${t.tipPagCod}">${t.tipPagDet}</option>
-                                        </c:forEach>
-                                    </select>
-                                    <label class="control-label">Tipo de Moneda</label>                                
-                                    <select class="form-control" name="selectTipMon" id="tipMon">
-                                        <c:forEach items="${monedas}" var="t">
-                                            <option value="${t.monCod}">${t.monDet}</option>
-                                        </c:forEach>
-                                    </select>
-                                    <label class="control-label">IGV</label>  
-                                    <div class="input-group">                                        
-                                        <input type="text" class="form-control" placeholder="19%" name="igv" id="igv">
-                                        <span class="input-group-addon"><i class="fa fa-money"></i>
+                                <div class="col-md-6">
+                                    <div class="form-group input-group" >
+                                        <span class="input-group-addon"><i class="fa fa-globe"></i></span>
+                                        <input type="hidden" class="form-control" name="clientCode" id="clientCod">
+                                        <input type="text" class="form-control" id="cliCod" readonly>
+                                        <span class="input-group-addon">
+                                            <a href="#" data-toggle="modal" data-target="#searchClient">
+                                                <i class="fa fa-pencil-square-o" style="color: black;"></i>
+                                            </a>
                                         </span>
                                     </div>
                                 </div>
-                                <div class="col-sm-6">
-                                    <label class="control-label">Observaciones</label>
-                                    <textarea class="form-control" rows="7" name="obsrs" id="obsrs">
-
-                                    </textarea>
-                                </div>
-
-                            </div>                                                                                                    
-                            <div class="form-group">
-                                <div>
-
-                                    <label class="col-sm-2"><h4>Detalle Factura</h4></label>
-                                    <table id="tabla_productos" class="table table-hover table-bordered" style="width:100%">
-                                        <thead>
-                                            <tr>
-                                                <th style="width: 15%">Clase</th>
-                                                <th style="width: 20%">SubClase</th>
-                                                <th style="width: 20%">Producto</th>
-                                                <th style="width: 15%">Cantidad</th>
-                                                <th style="width: 15%">Valor Unitario</th>
-                                                <th style="width: 15%">Acciones</th>
-                                        </thead>
-                                        <tbody id="body_tabl_prods">
-                                        <td>
-                                            <select class="form-control" name="clases" id="clases">
-                                                <option value=1>Domestico</option>
-                                                <option value=2>Casero</option>
-                                                <option value=3>De Hogar</option>
-                                                <option value=4>Grifos</option>
-                                                <option value=5>Varios</option>
-                                            </select>
-                                        </td>
-                                        <td>
-                                            <select class="form-control" name="subclases" id="subclases">
-                                                <option value=1>Barato</option>
-                                                <option value=2>No tan barato</option>
-                                                <option value=3>Caro y para Hogar</option>
-                                                <option value=4>Grifos</option>
-                                                <option value=5>Varios</option>
-                                            </select>
-                                        </td>
-                                        <td>
-                                            <select class="form-control" name="productos" id="productos">
-                                                <option value=1>Pollo</option>
-                                                <option value=2>Carne</option>
-                                                <option value=3>De Zapatos</option>
-                                                <option value=4>Escritorio</option>
-                                                <option value=5>Mesa</option>
-                                            </select>
-                                        </td>
-                                        <td><input type="text" class="form-control" placeholder="Cantidad" name="cnt" ></td>
-                                        <td><input type="text" class="form-control" placeholder="Pre. Uni" pre="pre" >${precio}</td>
-                                        <td><button ><i class="fa fa-plus fa-2x"></i></button>
-                                            <button ><i class="fa fa-trash-o fa-2x"></i></button></td>
-                                        </tbody>
-                                    </table>
+                                <div align="right">
+                                    <button type="button" class="btn btn-success" onclick="addRow('productTable')"><i class="fa fa-plus-square-o fa-2x"></i></button>
+                                    <button type="button" class="btn btn-danger" onclick="deleteRow('productTable')"><i class="fa fa-trash-o fa-2x"></i></button>
                                 </div>
                             </div>
-                            <!--
-                               <table class="table table-hover">
-                                   <tbody>                      
-                                       <tr name="fila">
-                                           <td><input type="text" class="form-control" placeholder="Clase" id="form_col0" ></td>  
-                                           <td><input type="text" class="form-control" placeholder="SubClase" id="form_col1" ></td>
-                                           <td><input type="text" class="form-control" placeholder="Producto" id="form_col2"></td>                                            
-                                           <td><input type="text" class="form-control" placeholder="Cnt" id="form_col3" ></td>
-                                           <td><input type="text" class="form-control" placeholder="Pre. Uni" id="form_col4" ></td>
-                                           <td name="lel">
-                                               <button onclick="capturar(5)" action="" method=""><i class="fa fa-plus fa-2x"></i></button>
-                                               <button onclick="limpiarFila(5)" action="" method=""><i class="fa fa-trash-o fa-2x"></i></button>
-                                               <script>
-                                                   var cliFldFctr=localStorage.getItem('cliFld');
-                                                   var usrFldFctr=localStorage.getItem('usrFld');
-                                                   var dateFldFctr=localStorage.getItem('dateFld');
-                                                   var crncyFldFctr=localStorage.getItem('crncyFld');
-                                                   var igvFldFctr=localStorage.getItem('igvFld');
-                                                   var ttlFldFctr=localStorage.getItem('ttlFld');
-                                                   var obsFldFctr=localStorage.getItem('obsFld');
-                                                   document.getElementById("cliCod").getElementsByTagName("option")[cliFldFctr].selected='selected';
-                                                   document.getElementById("usuCod").getElementsByTagName("option")[usrFldFctr].selected='selected';
-                                                   document.getElementById("usuFecVen").value=dateFldFctr;
-                                                   document.getElementById("tipMon").getElementsByTagName("option")[crncyFldFctr-1].selected='selected';
-                                                   document.getElementById("igv").value=igvFldFctr;
-                                                   document.getElementById("total").value=ttlFldFctr;
-                                                   document.getElementById("obsrs").value=obsFldFctr;
-                                                   
-                                                   
-                                                   
-                                                   localStorage.removeItem('cliFld');
-                                                   localStorage.removeItem('usrFld');
-                                                   localStorage.removeItem('dateFld');
-                                                   localStorage.removeItem('crncyFld');
-                                                   localStorage.removeItem('igvFld');
-                                                   localStorage.removeItem('ttlFld');
-                                                   localStorage.removeItem('obsFld');
-                                                   
-                                                   /*ACCEDIENDO A LOS ITEMS DE LA TABLA GUARDADOS EN LS*/
-                                                   var html="",length=localStorage.length;
-                                                   for(var j=0;j<length;j++){
-                                                       html+='<tr>'+localStorage.getItem('prod_fila'+(j+1))+'</tr>';
-                                                       document.getElementById("body_tabl_prods").innerHTML=html;
-                                                   }
-                                                   for(var k=0;k<length;k++){
-                                                       localStorage.removeItem('prod_fila'+(k+1));
-                                                   }
-                                                   function ca
-                            
-                            pturar(numCol){
-                                                       var table=document.getElementById("tabla_productos");
-                                                       var rowCount = table.rows.length;
-                                                       var tr=table.insertRow(rowCount);
-                                                       var cell=tr.insertCell(0);
-                                                       cell.innerHTML='<button onclick="eliminarFila(this.parentNode.parentNode.rowIndex)"><i class="fa fa-trash-o fa-2x"></i></button></td>';
-                                                       for(var i=0;i<numCol;i++){
-                                                           var cell=tr.insertCell(i);
-                                                           var valor=document.getElementById("form_col"+(i)).value;
-                                                           cell.innerHTML='<td>'+valor+'</td>';
-                                                       }
-                                                   };
-                                                   function eliminarFila(i){
-                                                       console.log("Temp");
-                                                           console.log(i);
-                                                           document.getElementById("tabla_productos").deleteRow(i);
-                                                   };
-                                                   function limpiarFila(numCol){
-                                                       for(var i=0;i<numCol;i++){
-                                                           document.getElementById("form_col"+(i)).value="";
-                                                       }
-                                                   }
-                                               </script>
-                                           </td>
-                                       </tr>
-                                   </tbody>
-                               </table>  
-                            -->
-                            <button type="submit" class="btn btn-lg btn-success btn-block" name="agregarFactura">
-                                <i class="fa fa-plus"></i>Agregar Factura
-                            </button>
-
-                        </div> 
-                    </form>
-                </div>                                                                
+                            <div class="panel-body">
+                                <table width="100%" class="table table-striped table-bordered table-hover" id="productTable">
+                                    <h4>Detalle de Venta</h4>
+                                    <thead>
+                                        <tr>
+                                            <th colspan="2" >Cantidad</th>
+                                            <th>Descripción del Producto</th>
+                                            <th>Precio Unitario</th>
+                                            <th>Importe</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td style="width: 30px;" align="center">
+                                                <input type="checkbox">
+                                            </td>
+                                            <td style="width: 130px;">
+                                                <div class="form-group input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-gear"></i></span>
+                                                    <input type="number" class="form-control" min="0" step="any" value="0">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <select class="form-control">
+                                                    <c:forEach items="${productos}" var="producto">
+                                                        <option value="${producto.id.proCod}/${producto.id.subClaProCod}/${producto.id.claProCod}">${producto.proDet}</option>
+                                                    </c:forEach>
+                                                </select>                                                    
+                                            </td>
+                                            <td style="width: 166px;">
+                                                <div class="form-group input-group" >
+                                                    <span class="input-group-addon"><i class="fa fa-money"></i></span>
+                                                    <input type="number" class="form-control" min="0.0" step="any" readOnly>
+                                                </div>
+                                            </td>
+                                            <td style="width: 166px;">
+                                                <div class="form-group input-group" >
+                                                    <span class="input-group-addon"><i class="fa fa-usd"></i></span>
+                                                    <input class="form-control" disabled>
+                                                </div>
+                                            </td>                                        
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <input type="hidden" class="form-control" name="productsAmounts" id="proAmo">
+                                <input type="hidden" class="form-control" name="productsDescriptions" id="proDes">
+                                <div>
+                                    <div class="col-xs-12 col-sm-6 col-md-8">
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                Observaciones<br><br><textarea class="form-control" rows="2" name="facComCabObs" placeholder="No hay comentarios"></textarea>
+                                            </div>
+                                            <div class="panel-body">
+                                                <div class="col-md-12">
+                                                    <div class="form-group input-group" >
+                                                        <span class="input-group-addon">Método de Pago</span>
+                                                        <select class="form-control" name="metPagCod">
+                                                            <c:forEach items="${metodosPagoFactura}" var="metodoPagoFactura">
+                                                                <option value="${metodoPagoFactura.metPagCod}">${metodoPagoFactura.metPagDet}</option>
+                                                            </c:forEach>
+                                                        </select> 
+                                                        <span class="input-group-addon"><i class="fa fa-fax"></i></span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group input-group" >
+                                                        <span class="input-group-addon">Tipo de Pago</span>
+                                                        <select class="form-control" name="tipPagCod">
+                                                            <c:forEach items="${tiposPagoFactura}" var="tipoPagofactura">
+                                                                <option value="${tipoPagofactura.tipPagCod}">${tipoPagofactura.tipPagDet}</option>
+                                                            </c:forEach>
+                                                        </select> 
+                                                        <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group input-group" >
+                                                        <span class="input-group-addon">Moneda</span>
+                                                        <select class="form-control" name="monCod">
+                                                            <c:forEach items="${monedas}" var="moneda">
+                                                                <option value="${moneda.monCod}">${moneda.monDet}</option>
+                                                            </c:forEach>
+                                                        </select> 
+                                                        <span class="input-group-addon"><i class="fa fa-money"></i></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-md-4">
+                                        <div class="form-group input-group" >
+                                            <span class="input-group-addon">SubTotal</span>
+                                            <input type="number" class="form-control" name="facComCabSubTot" id="facSub" value="0" readonly>
+                                            <span class="input-group-addon"><i class="fa fa-usd"></i></span>
+                                        </div>
+                                        <div class="form-group input-group" >
+                                            <span class="input-group-addon">IGV</span>
+                                            <input type="number" class="form-control" name="facComCabIgv" min="0" step="any" max="100" value="18" id="facIgv">
+                                            <span class="input-group-addon"><i class="fa fa-percent"></i></span>
+                                        </div>
+                                        <div class="form-group input-group" >
+                                            <span class="input-group-addon">Descuento</span>
+                                            <input type="number" class="form-control" name="facComCabDes" min="0" step="any" value="0" id="facDes">
+                                            <span class="input-group-addon"><i class="fa fa-sort-amount-asc"></i></span>
+                                        </div>
+                                        <div class="form-group input-group" >
+                                            <span class="input-group-addon">Total</i></span>
+                                            <input type="number" class="form-control" name="facComCabTot" id="facTot" value="0" readonly>
+                                            <span class="input-group-addon"><i class="fa fa-usd"></i></span>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Registrar Factura</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="modal fade" id="searchClient">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">Buscar Cliente</h4>
+                    </div>
+                    <div class="modal-body">
+                        <table width="100%" class="table table-striped table-bordered table-hover" id="tableClients">
+                            <thead>
+                                <tr>
+                                    <th colspan="2">Datos</th>
+                                    <th>Teléfono</th>
+                                    <th>Email</th>                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <c:forEach items="${clientes}" var="c">
+                                    <tr id="${c.cliCod}">
+                                        <td align="center">
+                                            <input type="checkbox">
+                                        </td>
+                                        <td>${c.cliNom} ${c.cliNom} ${c.cliApeMat}</td>
+                                        <td>${c.cliTelCel}</td>
+                                        <td>${c.cliEmail}</td>
+                                    </tr>
+                                </c:forEach>
+                            </tbody>
+                        </table>                            
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-success" data-dismiss="modal" onclick="getClient('tableClients')">Aceptar</button>
+                    </div>
+                </div>
             </div>
         </div>
+        <script language="javascript">
+            var precios = new Array();
+            var cantidades = new Array();
+            var libres = new Array();
+            var codigos = new Array();
+            var descripciones = new Array();
+            var seleccionados = new Array();
+            <c:forEach items="${productos}" var="producto">
+                precios.push(${producto.proPreUni});
+                cantidades.push(${producto.proStkPreVen});
+                libres.push(${producto.proStkPreVen});
+                codigos.push("${producto.id.proCod}/${producto.id.subClaProCod}/${producto.id.claProCod}");
+                descripciones.push("${producto.proDet}");
+                seleccionados.push(false);
+            </c:forEach>
+            
+            function addRow(tableID) {
+                var table = document.getElementById(tableID);
+                var rowCount = table.rows.length;
+                var row = table.insertRow(rowCount);
+                var colCount = table.rows[1].cells.length;
 
-        <script type="text/javascript">
+                for (var i = 0; i < colCount; i++) {
+                    var newcell = row.insertCell(i);
+
+                    newcell.innerHTML = table.rows[1].cells[i].innerHTML;
+                    switch (newcell.childNodes[1].type) {
+                        case "text":
+                            newcell.childNodes[1].value = "";
+                            break;
+
+                        case "checkbox":
+                            newcell.childNodes[1].checked = false;
+                            break;
+
+                        case "select-one":
+                            newcell.childNodes[1].selectedIndex = 0;
+                            break;
+                    }
+                }
+            }
+
+            function deleteRow(tableID) {
+                try {
+                    var table = document.getElementById(tableID);
+                    var rowCount = table.rows.length;
+
+                    for (var i = 1; i < rowCount; i++) {
+                        var row = table.rows[i];
+                        var chkbox = row.cells[0].childNodes[1];
+                        if (true == chkbox.checked) {
+                            if (rowCount - 1 <= 1) {
+                                alert("No se puede eliminar todas las filas");
+                                break;
+                            }
+                            table.deleteRow(i);
+                            rowCount--;
+                            i--;
+                        }
+                    }
+
+                    updateDescription();
+                } catch (e) {
+                    alert(e);
+                }
+            }
+
+            function getClient(tableID) {
+                try {
+                    var table = document.getElementById(tableID);
+                    var rowCount = table.rows.length;
+
+                    for (var i = 1; i < rowCount; i++) {
+                        var row = table.rows[i];
+                        var chkbox = row.cells[0].childNodes[1];
+                        if (true == chkbox.checked) {
+                            $('#cliCod').val(row.cells[1].childNodes[0].data);
+                            $('#clientCod').val(row.id);
+                            break;
+                        }
+                    }
+                } catch (e) {
+                    alert(e);
+                }
+            }
+
+            function updateDescription() {
+                try {
+                    var amounts = new Array();
+                    var descriptions = new Array();
+                    var table = document.getElementById('productTable');
+                    var rowCount = table.rows.length;
+                    var subtotal = 0;
+
+                    for (var i = 1; i < rowCount; i++) {
+                        var row = table.rows[i];
+                        var index = row.cells[2].childNodes[1].selectedIndex;
+                        row.cells[1].childNodes[1].childNodes[3].max = libres[index];
+                        row.cells[3].childNodes[1].childNodes[3].value = precios[index];
+                        descriptions.push(row.cells[2].childNodes[1].value);
+                        var quant = row.cells[1].childNodes[1].childNodes[3].value;   
+                        libres[index] = cantidad[index]-quant;
+                        amounts.push(quant);
+                        row.cells[4].childNodes[1].childNodes[3].value = quant * precios[index];
+                        subtotal += quant * precios[index];
+                    }
+                    $('#facSub').val(subtotal);
+                    $('#facTot').val((subtotal * (1 + $('#facIgv').val()) / 100) - ($('#facDes').val()));
+                    $('#proAmo').val(amounts);
+                    $('#proDes').val(descriptions);                    
+                } catch (e) {
+                    alert(e);
+                }
+            }
+
             $(document).ready(function () {
-                $('#datetimepicker1').datetimepicker({
-                    format: 'DD/MM/YYYY'
+                $("#productTable").change(updateDescription);
+            });
+
+            $(document).ready(function () {
+                $("#facIgv").change(function () {
+                    $('#facTot').val(($('#facSub').val() * (1 + $('#facIgv').val()) / 100) - ($('#facDes').val()));
+                });
+            });
+
+            $(document).ready(function () {
+                $("#facDes").change(function () {
+                    $('#facTot').val(($('#facSub').val() * (1 + $('#facIgv').val()) / 100) - ($('#facDes').val()));
                 });
             });
         </script>

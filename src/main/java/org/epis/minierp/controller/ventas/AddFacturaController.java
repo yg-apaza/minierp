@@ -16,9 +16,11 @@ import org.epis.minierp.dao.general.TaGzzTipoPagoFacturaDao;
 import org.epis.minierp.dao.ventas.EnP1mClienteDao;
 import org.epis.minierp.dao.ventas.EnP1mFacturaVentaCabDao;
 import org.epis.minierp.dao.general.EnP1mUsuarioDao;
+import org.epis.minierp.dao.logistica.EnP2mProductoDao;
 import org.epis.minierp.model.EnP1mCliente;
 import org.epis.minierp.model.EnP1mFacturaVentaCab;
 import org.epis.minierp.model.EnP1mUsuario;
+import org.epis.minierp.model.EnP2mProducto;
 import org.epis.minierp.model.TaGzzEstadoFactura;
 import org.epis.minierp.model.TaGzzMetodoPagoFactura;
 import org.epis.minierp.model.TaGzzMoneda;
@@ -31,40 +33,32 @@ public class AddFacturaController extends HttpServlet
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        TaGzzTipoPagoFacturaDao tiposDao=new TaGzzTipoPagoFacturaDao();        
-        List<TaGzzTipoPagoFactura> tipoPagos=tiposDao.getAllActive();
-        TaGzzMetodoPagoFacturaDao metodoDao=new TaGzzMetodoPagoFacturaDao();
-        List<TaGzzMetodoPagoFactura> metodosPago=metodoDao.getAll();        
-        TaGzzMonedaDao monedaDao=new TaGzzMonedaDao();
-        List<TaGzzMoneda> monedas=monedaDao.getAllActive();
-//        EnP2mClaseProductoDao clasesDao=new EnP2mClaseProductoDao();
-//        List<EnP2mClaseProducto> clases=clasesDao.getAll();
-//        EnP2mSubclaseProductoDao subDao=new EnP2mSubclaseProductoDao();
-//        List<EnP2mSubclaseProducto> subclases=subDao.getAllActive();
-//        EnP2mProductoDao prodDao=new EnP2mProductoDao();
-//        List<EnP2mProducto> productos=prodDao.getAllActive();
-//        
+        List <TaGzzMetodoPagoFactura> metodosPagoFactura = (new TaGzzMetodoPagoFacturaDao()).getAllActive();
+        List <TaGzzMoneda> monedas = (new TaGzzMonedaDao()).getAllActive();
+        List <TaGzzTipoPagoFactura> tiposPagoFactura = (new TaGzzTipoPagoFacturaDao()).getAllActive(); 
+        List <EnP2mProducto> productos = (new EnP2mProductoDao()).getAllActive(); 
+        List <TaGzzEstadoFactura> estados = (new TaGzzEstadoFacturaDao()).getAllActive();
+        List <EnP1mCliente> clientes = (new EnP1mClienteDao()).getAllActive();
         
-        request.setAttribute("tipoPagos",tipoPagos);
-        request.setAttribute("metodosPago",metodosPago);
-        request.setAttribute("monedas",monedas);
-//        request.setAttribute("clases",clases);
-//        request.setAttribute("subclases",subclases);
-//        request.setAttribute("productos",productos);
-        
-        EnP1mClienteDao clienteDao=new EnP1mClienteDao();
-        List<EnP1mCliente> clientes=clienteDao.getAll();
-        EnP1mUsuarioDao userDao=new EnP1mUsuarioDao();
-        List<EnP1mUsuario> users=userDao.getAllActive();
-        request.setAttribute("clientes",clientes);
-        request.setAttribute("users",users);
+        request.setAttribute("metodosPagoFactura", metodosPagoFactura);
+        request.setAttribute("monedas", monedas);
+        request.setAttribute("tiposPagoFactura", tiposPagoFactura);
+        request.setAttribute("productos", productos);
+        request.setAttribute("estados", estados);
+        request.setAttribute("clientes", clientes);
         
         request.getRequestDispatcher("/WEB-INF/ventas/factura/addFactura.jsp").forward(request, response);
     }
+    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-  
-        EnP1mFacturaVentaCabDao facCabDao=new EnP1mFacturaVentaCabDao();
+        String action = request.getParameter("action");
+        switch (action) {
+            case "initialize":
+                //response.sendRedirect(request.getContextPath() + "/secured/ventas/factura/addFactura");
+                break;
+        }
+        /*EnP1mFacturaVentaCabDao facCabDao=new EnP1mFacturaVentaCabDao();
         
         if(request.getParameter("agregarFactura")!=null){
            
@@ -121,7 +115,7 @@ public class AddFacturaController extends HttpServlet
 //            det.setId();
 
             response.sendRedirect(request.getContextPath() + "/secured/ventas/factura");
-        }
+        }*/
         
     }
 }

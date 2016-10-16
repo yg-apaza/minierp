@@ -336,6 +336,5 @@
                 </div>
             </div>
         </div>
-    </div>        
-</jsp:attribute>
+    </jsp:attribute>
 </minierptemplate:template>
