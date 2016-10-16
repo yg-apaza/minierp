@@ -12,17 +12,17 @@
             <br>
             <br>
             <div class="col-md-3">
-                <a href="${pageContext.request.contextPath}/secured/contabilidad/reporte?type=pdf&&report=cuentabancaria" class="btn btn-outline btn-danger btn-lg btn-block">
+                <a href="${pageContext.request.contextPath}/secured/reporte?type=pdf&&report=cuentabancaria&&jdbc=false&&key=null&&value=null" class="btn btn-outline btn-danger btn-lg btn-block">
                     <i class="fa fa-file-pdf-o"></i>
                     Reporte [PDF]
                 </a>
                 <br>
-                <a href="${pageContext.request.contextPath}/secured/contabilidad/reporte?type=xls&&report=cuentabancaria" class="btn btn-outline btn-success btn-lg btn-block">
+                <a href="${pageContext.request.contextPath}/secured/reporte?type=xls&&report=cuentabancaria&&jdbc=false&&key=null&&value=null" class="btn btn-outline btn-success btn-lg btn-block">
                     <i class="fa fa-file-excel-o"></i>
                     Reporte [XLS]
                 </a>
                 <br>
-                <a href="${pageContext.request.contextPath}/secured/contabilidad/reporte?type=doc&&report=cuentabancaria" class="btn btn-outline btn-primary btn-lg btn-block">
+                <a href="${pageContext.request.contextPath}/secured/reporte?type=doc&&report=cuentabancaria&&jdbc=false&&key=null&&value=null" class="btn btn-outline btn-primary btn-lg btn-block">
                     <i class="fa fa-file-word-o"></i>
                     Reporte [DOC]
                 </a>
