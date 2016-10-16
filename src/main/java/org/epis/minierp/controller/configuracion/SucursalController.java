@@ -43,16 +43,39 @@ public class SucursalController extends HttpServlet
     
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String sucCod = request.getParameter("sucCod");
-        String sucDes = request.getParameter("sucDes");
-        String sucDir = request.getParameter("sucDir");
+        //String sucCod = request.getParameter("sucCod");
+        
+        String action = request.getParameter("accion");
         EnP1mSucursalDao sucursal = new EnP1mSucursalDao();
         EnP1mSucursal s = new EnP1mSucursal();
-        s.setSucCod(Integer.parseInt(sucCod));
-        s.setSucDes(sucDes);
-        s.setSucDir(sucDir);
-        s.setEstRegCod('A');
-        sucursal.save(s);
-        response.sendRedirect(request.getContextPath() + "/secured/configuracion");
+        
+        switch(action) {
+            case "create":                
+                String sucDes = request.getParameter("sucDes");
+                String sucDir = request.getParameter("sucDir");     
+              //  s.setSucCod(Integer.parseInt(sucCod));
+                s.setSucDes(sucDes);
+                s.setSucDir(sucDir);
+                s.setEstRegCod('A');
+                sucursal.save(s);
+                break;
+            case "update":
+                int updateSucCod = Integer.parseInt(request.getParameter("sucCod"));
+                String updateSucDes = request.getParameter("sucDes");
+                String updateSucDir = request.getParameter("sucDir");
+                s.setSucCod(updateSucCod);
+                s.setSucDes(updateSucDes);
+                s.setSucDir(updateSucDir);
+                s.setEstRegCod('A');
+                sucursal.update(s);
+                break;
+            case "delete":
+                int deleteSucCod = Integer.parseInt(request.getParameter("SucCod"));
+                s.setSucCod(deleteSucCod);
+                s.setEstRegCod('*');
+                sucursal.delete(s);
+        }
+        
+        response.sendRedirect(request.getContextPath() + "/secured/configuracion/sucursal");
     }
 }
