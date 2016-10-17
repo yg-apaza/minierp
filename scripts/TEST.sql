@@ -86,6 +86,47 @@ INSERT INTO `episerp`.`en_p1m_usuario` (`UsuCod`, `UsuNom`, `UsuApePat`, `UsuApe
 INSERT INTO `episerp`.`en_p1m_usuario` (`UsuCod`, `UsuNom`, `UsuApePat`, `UsuApeMat`, `UsuLog`, `UsuPas`, `TipUsuCod`, `SucCod`, `UsuFecNac`, `EstCivCod`, `UsuSex`, `EstRegCod`) VALUES ('3', 'Kevin', 'Fernández', 'Nieto', 'comprador', '17f77242a319cd8bf5fac8fd615115a09af269b8d7ec43e84e1ba7005b5c5383', 3, 1,  '1992-05-24', 1, 'M', 'A');
 INSERT INTO `episerp`.`en_p1m_usuario` (`UsuCod`, `UsuNom`, `UsuApePat`, `UsuApeMat`, `UsuLog`, `UsuPas`, `TipUsuCod`, `SucCod`, `UsuFecNac`, `EstCivCod`, `UsuSex`, `EstRegCod`) VALUES ('4', 'Gladys', 'Calle', 'Condori', 'contador', '145e0447253dba54dce5e527e28bcc0f7c160332bfcb7cf5cf4f5b4692aebead', 4, 1, '1995-01-11', 1, 'F', 'A');
 
+INSERT INTO `episerp`.`en_p1m_usuario` (`UsuCod`, `UsuNom`, `UsuApePat`, `UsuApeMat`, `UsuLog`, `UsuPas`, `TipUsuCod`, `SucCod`, `UsuFecNac`, `EstCivCod`, `UsuSex`, `EstRegCod`) VALUES ('5', 'Mohamed', 'Carbajal', 'Mota', 'Mohamed', '71fd1eba032bb0ba51d4dcd6be1e9799ef98da9e06eb75e98d0dd78331233a25', 2, 101, '1995-01-20', 1, 'M', 'A');
+INSERT INTO `episerp`.`en_p1m_usuario` (`UsuCod`, `UsuNom`, `UsuApePat`, `UsuApeMat`, `UsuLog`, `UsuPas`, `TipUsuCod`, `SucCod`, `UsuFecNac`, `EstCivCod`, `UsuSex`, `EstRegCod`) VALUES ('6', 'Urtzi', 'Horruitiner', 'Perez', 'Urtzi', 'df8dda963d44a0da33fd4401d1b26e8fa9d5d72ad7145818d437c08a911516c2', 3, 101,  '1995-06-24', 1, 'M', 'A');
+INSERT INTO `episerp`.`en_p1m_usuario` (`UsuCod`, `UsuNom`, `UsuApePat`, `UsuApeMat`, `UsuLog`, `UsuPas`, `TipUsuCod`, `SucCod`, `UsuFecNac`, `EstCivCod`, `UsuSex`, `EstRegCod`) VALUES ('7', 'Yeray', 'Martinez', 'Posada', 'Yeray', '1c0bd4810282f9de2aa9855a814ee6f76ad3cc4db09079e93f77c2e9bbe2581c', 4, 101, '1995-01-11', 1, 'F', 'A');
+
+INSERT INTO `episerp`.`en_p1m_usuario` (`UsuCod`, `UsuNom`, `UsuApePat`, `UsuApeMat`, `UsuLog`, `UsuPas`, `TipUsuCod`, `SucCod`, `UsuFecNac`, `EstCivCod`, `UsuSex`, `EstRegCod`) VALUES ('8', 'Roger', 'Benavidez', 'Flores', 'Roger', '893b1f8fc0fcc0587bb2f02fa8df1ca3039b9c8deae23935b6b3243e97e857a0', 2, 102, '1995-01-20', 1, 'M', 'A');
+INSERT INTO `episerp`.`en_p1m_usuario` (`UsuCod`, `UsuNom`, `UsuApePat`, `UsuApeMat`, `UsuLog`, `UsuPas`, `TipUsuCod`, `SucCod`, `UsuFecNac`, `EstCivCod`, `UsuSex`, `EstRegCod`) VALUES ('9', 'Lourent', 'Sol', 'Quispe', 'Lourent', '7bebb31ed4dfad622b99f853c935419d8433208d9a901f179820bee409f28818', 3, 102,  '1995-06-24', 1, 'M', 'A');
+INSERT INTO `episerp`.`en_p1m_usuario` (`UsuCod`, `UsuNom`, `UsuApePat`, `UsuApeMat`, `UsuLog`, `UsuPas`, `TipUsuCod`, `SucCod`, `UsuFecNac`, `EstCivCod`, `UsuSex`, `EstRegCod`) VALUES ('10', 'Gabriel', 'Gonzalez', 'Quiroa', 'Gabriel', '0c030df5a4e7477d218012c0121ebce6d61bb8dc46e0a6c4f8e1cc8091b946a5', 4, 102, '1995-01-11', 1, 'M', 'A');
+
+INSERT INTO `episerp`.`en_p1m_usuario` (`UsuCod`, `UsuNom`, `UsuApePat`, `UsuApeMat`, `UsuLog`, `UsuPas`, `TipUsuCod`, `SucCod`, `UsuFecNac`, `EstCivCod`, `UsuSex`, `EstRegCod`) VALUES ('11', 'Maria', 'Acevedo', 'Burgos', 'Maria', '9ff18ebe7449349f358e3af0b57cf7a032c1c6b2272cb2656ff85eb112232f16', 2, 103, '1995-01-20', 1, 'M', 'A');
+INSERT INTO `episerp`.`en_p1m_usuario` (`UsuCod`, `UsuNom`, `UsuApePat`, `UsuApeMat`, `UsuLog`, `UsuPas`, `TipUsuCod`, `SucCod`, `UsuFecNac`, `EstCivCod`, `UsuSex`, `EstRegCod`) VALUES ('12', 'Margot', 'Villegas', 'Agurto', 'Margot', '69f67bd5929e6ddc06b38136029d22d27badafc7f631d892e935e9c6eb19d475', 3, 103,  '1995-06-24', 1, 'F', 'A');
+INSERT INTO `episerp`.`en_p1m_usuario` (`UsuCod`, `UsuNom`, `UsuApePat`, `UsuApeMat`, `UsuLog`, `UsuPas`, `TipUsuCod`, `SucCod`, `UsuFecNac`, `EstCivCod`, `UsuSex`, `EstRegCod`) VALUES ('13', 'Aron', 'Rondoy', 'Ramirez', 'Aron', '10ca40162fba796a53892e5a762f08f083fbec419882582e303b793dc9d06201', 4, 103, '1995-01-11', 1, 'M', 'A');
+
+INSERT INTO `episerp`.`en_p1m_usuario` (`UsuCod`, `UsuNom`, `UsuApePat`, `UsuApeMat`, `UsuLog`, `UsuPas`, `TipUsuCod`, `SucCod`, `UsuFecNac`, `EstCivCod`, `UsuSex`, `EstRegCod`) VALUES ('14', 'Ander', 'Espinoza', 'Peláez', 'Ander', '954913091983db96094fcad32f2264ce420964016d0527bec799adf8da7eb522', 2, 104, '1995-01-20', 1, 'M', 'A');
+INSERT INTO `episerp`.`en_p1m_usuario` (`UsuCod`, `UsuNom`, `UsuApePat`, `UsuApeMat`, `UsuLog`, `UsuPas`, `TipUsuCod`, `SucCod`, `UsuFecNac`, `EstCivCod`, `UsuSex`, `EstRegCod`) VALUES ('15', 'Mario', 'Arana', 'Quispe', 'Mario', '61c8e16ad90d4e6da317180fa445e262e9313bbf21fd4d30b3b9b4425886b2f5', 3, 104,  '1995-06-24', 1, 'M', 'A');
+INSERT INTO `episerp`.`en_p1m_usuario` (`UsuCod`, `UsuNom`, `UsuApePat`, `UsuApeMat`, `UsuLog`, `UsuPas`, `TipUsuCod`, `SucCod`, `UsuFecNac`, `EstCivCod`, `UsuSex`, `EstRegCod`) VALUES ('16', 'Oinatz', 'Fernandez', 'Quiroa', 'Oinatz', '8abeca4b5e4c95dca0d14da6c2839605ad80df725192b5aaf1d884a9413489bc', 4, 104, '1995-01-11', 1, 'M', 'A');
+
+INSERT INTO `episerp`.`en_p1m_usuario` (`UsuCod`, `UsuNom`, `UsuApePat`, `UsuApeMat`, `UsuLog`, `UsuPas`, `TipUsuCod`, `SucCod`, `UsuFecNac`, `EstCivCod`, `UsuSex`, `EstRegCod`) VALUES ('17', 'Ugaitz', 'Ferro', 'Rico', 'Ugaitz', '6e189ff7297fd3ff4daf4e30c5c0931b923ea74ad05b8f0e5912f227bbabb4b0', 2, 105, '1995-01-20', 1, 'M', 'A');
+INSERT INTO `episerp`.`en_p1m_usuario` (`UsuCod`, `UsuNom`, `UsuApePat`, `UsuApeMat`, `UsuLog`, `UsuPas`, `TipUsuCod`, `SucCod`, `UsuFecNac`, `EstCivCod`, `UsuSex`, `EstRegCod`) VALUES ('18', 'Marco', 'Salas', 'Mendez', 'Marco', '669017e1461557903e78eff1b6264313025627cf9fd2aa02236ddd221701523d', 3, 105,  '1995-06-24', 1, 'M', 'A');
+INSERT INTO `episerp`.`en_p1m_usuario` (`UsuCod`, `UsuNom`, `UsuApePat`, `UsuApeMat`, `UsuLog`, `UsuPas`, `TipUsuCod`, `SucCod`, `UsuFecNac`, `EstCivCod`, `UsuSex`, `EstRegCod`) VALUES ('19', 'Adei', 'Flores', 'Jimenez', 'Adei', '2de4e1298e7b60b6e754dfce8b9b5a0b0c437671919b73bde09f0e2dfe8aac8d', 4, 105, '1995-01-11', 1, 'F', 'A');
+
+INSERT INTO `episerp`.`en_p1m_usuario` (`UsuCod`, `UsuNom`, `UsuApePat`, `UsuApeMat`, `UsuLog`, `UsuPas`, `TipUsuCod`, `SucCod`, `UsuFecNac`, `EstCivCod`, `UsuSex`, `EstRegCod`) VALUES ('20', 'Endika', 'Astete', 'Gomez', 'Endika', '3414bff943ad3ae11270453dc807af4db06ab3795c86cec2bf5c5ebaf3517164', 2, 106, '1995-01-20', 1, 'F', 'A');
+INSERT INTO `episerp`.`en_p1m_usuario` (`UsuCod`, `UsuNom`, `UsuApePat`, `UsuApeMat`, `UsuLog`, `UsuPas`, `TipUsuCod`, `SucCod`, `UsuFecNac`, `EstCivCod`, `UsuSex`, `EstRegCod`) VALUES ('21', 'Imanol', 'Gamio', 'Gracía', 'Imanol', '7b370061228e572a43efd59228203e70a2195e92110b00efdcc592ad3e347353', 3, 106,  '1995-06-24', 1, 'M', 'A');
+INSERT INTO `episerp`.`en_p1m_usuario` (`UsuCod`, `UsuNom`, `UsuApePat`, `UsuApeMat`, `UsuLog`, `UsuPas`, `TipUsuCod`, `SucCod`, `UsuFecNac`, `EstCivCod`, `UsuSex`, `EstRegCod`) VALUES ('22', 'Adam', 'Lozano', 'Castro', 'Adam', '3f0c9b03e8e39b03773c7ea7621035cb6fc947cd41ca7c44056d7e7bbaebb3d4', 4, 106, '1995-01-11', 1, 'M', 'A');
+
+INSERT INTO `episerp`.`en_p1m_usuario` (`UsuCod`, `UsuNom`, `UsuApePat`, `UsuApeMat`, `UsuLog`, `UsuPas`, `TipUsuCod`, `SucCod`, `UsuFecNac`, `EstCivCod`, `UsuSex`, `EstRegCod`) VALUES ('23', 'Ian', 'García', 'Uribe', 'Ian', '5dfaaebff3e8ec0b796b47c7c674652150d92a16837946220d7efea32b8a854d', 2, 107, '1995-01-20', 1, 'M', 'A');
+INSERT INTO `episerp`.`en_p1m_usuario` (`UsuCod`, `UsuNom`, `UsuApePat`, `UsuApeMat`, `UsuLog`, `UsuPas`, `TipUsuCod`, `SucCod`, `UsuFecNac`, `EstCivCod`, `UsuSex`, `EstRegCod`) VALUES ('24', 'Inhar', 'Peralta', 'Florez', 'Inhar', '11383d5e3dbcef5aa997cc1e1b92d2ab5693abcfc264abe382e0a4c34d676eaf', 3, 107,  '1995-06-24', 1, 'M', 'A');
+INSERT INTO `episerp`.`en_p1m_usuario` (`UsuCod`, `UsuNom`, `UsuApePat`, `UsuApeMat`, `UsuLog`, `UsuPas`, `TipUsuCod`, `SucCod`, `UsuFecNac`, `EstCivCod`, `UsuSex`, `EstRegCod`) VALUES ('25', 'Igor', 'Gutierrez', 'Gonzales', 'Igor', '773079ad807a9694223d69ea5c9a05b0e98a74044a0e5d72ad0fcfcd0b72f20b', 4, 107, '1995-01-11', 1, 'M', 'A');
+
+INSERT INTO `episerp`.`en_p1m_usuario` (`UsuCod`, `UsuNom`, `UsuApePat`, `UsuApeMat`, `UsuLog`, `UsuPas`, `TipUsuCod`, `SucCod`, `UsuFecNac`, `EstCivCod`, `UsuSex`, `EstRegCod`) VALUES ('26', 'Guillermo', 'Gonzales', 'Marquez', 'Guillermo', '418e0211da76c3e1c2c10a01a39786cd56641a009129d76f9bb76aadbe1e6c43', 2, 108, '1995-01-20', 1, 'M', 'A');
+INSERT INTO `episerp`.`en_p1m_usuario` (`UsuCod`, `UsuNom`, `UsuApePat`, `UsuApeMat`, `UsuLog`, `UsuPas`, `TipUsuCod`, `SucCod`, `UsuFecNac`, `EstCivCod`, `UsuSex`, `EstRegCod`) VALUES ('27', 'Aiert', 'Marlene', 'Molina', 'Aiert', 'd59331efc6229620d0fb55f93ef66e036428aa7b6352145b5504cf5a343c3047', 3, 108,  '1995-06-24', 1, 'F', 'A');
+INSERT INTO `episerp`.`en_p1m_usuario` (`UsuCod`, `UsuNom`, `UsuApePat`, `UsuApeMat`, `UsuLog`, `UsuPas`, `TipUsuCod`, `SucCod`, `UsuFecNac`, `EstCivCod`, `UsuSex`, `EstRegCod`) VALUES ('28', 'Hegoi', 'Rodriguez', 'Victoria', 'Hegoi', '8106b02b1043b9056c9ef7f19cae213e27c51352f899ce517322c8bb095163d1', 4, 108, '1995-01-11', 1, 'M', 'A');
+
+INSERT INTO `episerp`.`en_p1m_usuario` (`UsuCod`, `UsuNom`, `UsuApePat`, `UsuApeMat`, `UsuLog`, `UsuPas`, `TipUsuCod`, `SucCod`, `UsuFecNac`, `EstCivCod`, `UsuSex`, `EstRegCod`) VALUES ('29', 'Javier', 'Medina', 'Rojas', 'Javier', '0e1e847b6d1dfa0382c082a9850febd05bebad869f61e8c39e12992f9b87c0ff', 2, 109, '1995-01-20', 1, 'M', 'A');
+INSERT INTO `episerp`.`en_p1m_usuario` (`UsuCod`, `UsuNom`, `UsuApePat`, `UsuApeMat`, `UsuLog`, `UsuPas`, `TipUsuCod`, `SucCod`, `UsuFecNac`, `EstCivCod`, `UsuSex`, `EstRegCod`) VALUES ('30', 'Joel', 'Gutierrez', 'Serna', 'Joel', '0ec3a5c3a2226141d76557641569a5f01cefeb56a0be9dd2b5bd5ecc8b7194b7', 3, 109,  '1995-06-24', 1, 'M', 'A');
+INSERT INTO `episerp`.`en_p1m_usuario` (`UsuCod`, `UsuNom`, `UsuApePat`, `UsuApeMat`, `UsuLog`, `UsuPas`, `TipUsuCod`, `SucCod`, `UsuFecNac`, `EstCivCod`, `UsuSex`, `EstRegCod`) VALUES ('31', 'Rayan', 'Velez', 'Zapata', 'Rayan', 'e2f5ab0d9cf0057b7a18086c9062892e4088ec6235b6a22a701f52e7dbd99df1', 4, 109, '1995-01-11', 1, 'M', 'A');
+
+INSERT INTO `episerp`.`en_p1m_usuario` (`UsuCod`, `UsuNom`, `UsuApePat`, `UsuApeMat`, `UsuLog`, `UsuPas`, `TipUsuCod`, `SucCod`, `UsuFecNac`, `EstCivCod`, `UsuSex`, `EstRegCod`) VALUES ('32', 'Ekai', 'Guzman', 'Toro', 'Ekai', 'c7b63e9b27c4a1c2b2b773309c87c0b2139c9bb28a59833b580f5c0afb36f672', 2, 110, '1995-01-20', 1, 'M', 'A');
+INSERT INTO `episerp`.`en_p1m_usuario` (`UsuCod`, `UsuNom`, `UsuApePat`, `UsuApeMat`, `UsuLog`, `UsuPas`, `TipUsuCod`, `SucCod`, `UsuFecNac`, `EstCivCod`, `UsuSex`, `EstRegCod`) VALUES ('33', 'Eki', 'Chinag', 'Henao', 'Eki', '8a46a31fd50df52e6167ec9573f2e2eb7817d276fcc9b8cd982e41eaa63afa67', 3, 110,  '1995-06-24', 1, 'F', 'A');
+INSERT INTO `episerp`.`en_p1m_usuario` (`UsuCod`, `UsuNom`, `UsuApePat`, `UsuApeMat`, `UsuLog`, `UsuPas`, `TipUsuCod`, `SucCod`, `UsuFecNac`, `EstCivCod`, `UsuSex`, `EstRegCod`) VALUES ('34', 'Ignacio', 'Guzman', 'Vasquez', 'Ignacio', '64e975e8d7118a89d98852264b5f42ee4402b4b44e984a701720ad15ff1de8f4', 4, 110, '1995-01-11', 1, 'M', 'A');
+
+
 COMMIT;
 
 
@@ -97,6 +138,46 @@ USE `episerp`;
 INSERT INTO `en_p1m_documento_usuario` (`UsuCod`, `TipDocUsuCod`, `DocUsuNum`, `EstRegCod`) VALUES ('2', 1, '72743604', 'A');
 INSERT INTO `en_p1m_documento_usuario` (`UsuCod`, `TipDocUsuCod`, `DocUsuNum`, `EstRegCod`) VALUES ('3', 1, '76308492', 'A');
 INSERT INTO `en_p1m_documento_usuario` (`UsuCod`, `TipDocUsuCod`, `DocUsuNum`, `EstRegCod`) VALUES ('4', 1, '70299350', 'A');
+
+INSERT INTO `en_p1m_documento_usuario` (`UsuCod`, `TipDocUsuCod`, `DocUsuNum`, `EstRegCod`) VALUES ('5', 1, '09133603', 'A');
+INSERT INTO `en_p1m_documento_usuario` (`UsuCod`, `TipDocUsuCod`, `DocUsuNum`, `EstRegCod`) VALUES ('6', 1, '09133603', 'A');
+INSERT INTO `en_p1m_documento_usuario` (`UsuCod`, `TipDocUsuCod`, `DocUsuNum`, `EstRegCod`) VALUES ('7', 1, '09440802', 'A');
+
+INSERT INTO `en_p1m_documento_usuario` (`UsuCod`, `TipDocUsuCod`, `DocUsuNum`, `EstRegCod`) VALUES ('8', 1, '07645842', 'A');
+INSERT INTO `en_p1m_documento_usuario` (`UsuCod`, `TipDocUsuCod`, `DocUsuNum`, `EstRegCod`) VALUES ('9', 1, '08041434', 'A');
+INSERT INTO `en_p1m_documento_usuario` (`UsuCod`, `TipDocUsuCod`, `DocUsuNum`, `EstRegCod`) VALUES ('10', 1, '08041434', 'A');
+
+INSERT INTO `en_p1m_documento_usuario` (`UsuCod`, `TipDocUsuCod`, `DocUsuNum`, `EstRegCod`) VALUES ('11', 1, '16563254', 'A');
+INSERT INTO `en_p1m_documento_usuario` (`UsuCod`, `TipDocUsuCod`, `DocUsuNum`, `EstRegCod`) VALUES ('12', 1, '16563254', 'A');
+INSERT INTO `en_p1m_documento_usuario` (`UsuCod`, `TipDocUsuCod`, `DocUsuNum`, `EstRegCod`) VALUES ('13', 1, '08750640', 'A');
+
+INSERT INTO `en_p1m_documento_usuario` (`UsuCod`, `TipDocUsuCod`, `DocUsuNum`, `EstRegCod`) VALUES ('14', 1, '06228803', 'A');
+INSERT INTO `en_p1m_documento_usuario` (`UsuCod`, `TipDocUsuCod`, `DocUsuNum`, `EstRegCod`) VALUES ('15', 1, '06228803', 'A');
+INSERT INTO `en_p1m_documento_usuario` (`UsuCod`, `TipDocUsuCod`, `DocUsuNum`, `EstRegCod`) VALUES ('16', 1, '07220467', 'A');
+
+INSERT INTO `en_p1m_documento_usuario` (`UsuCod`, `TipDocUsuCod`, `DocUsuNum`, `EstRegCod`) VALUES ('17', 1, '08416243', 'A');
+INSERT INTO `en_p1m_documento_usuario` (`UsuCod`, `TipDocUsuCod`, `DocUsuNum`, `EstRegCod`) VALUES ('18', 1, '08416243', 'A');
+INSERT INTO `en_p1m_documento_usuario` (`UsuCod`, `TipDocUsuCod`, `DocUsuNum`, `EstRegCod`) VALUES ('19', 1, '07898939', 'A');
+
+INSERT INTO `en_p1m_documento_usuario` (`UsuCod`, `TipDocUsuCod`, `DocUsuNum`, `EstRegCod`) VALUES ('20', 1, '07898939', 'A');
+INSERT INTO `en_p1m_documento_usuario` (`UsuCod`, `TipDocUsuCod`, `DocUsuNum`, `EstRegCod`) VALUES ('21', 1, '07530677', 'A');
+INSERT INTO `en_p1m_documento_usuario` (`UsuCod`, `TipDocUsuCod`, `DocUsuNum`, `EstRegCod`) VALUES ('22', 1, '06077366', 'A');
+
+INSERT INTO `en_p1m_documento_usuario` (`UsuCod`, `TipDocUsuCod`, `DocUsuNum`, `EstRegCod`) VALUES ('23', 1, '06077366', 'A');
+INSERT INTO `en_p1m_documento_usuario` (`UsuCod`, `TipDocUsuCod`, `DocUsuNum`, `EstRegCod`) VALUES ('24', 1, '18821017', 'A');
+INSERT INTO `en_p1m_documento_usuario` (`UsuCod`, `TipDocUsuCod`, `DocUsuNum`, `EstRegCod`) VALUES ('25', 1, '06978793', 'A');
+
+INSERT INTO `en_p1m_documento_usuario` (`UsuCod`, `TipDocUsuCod`, `DocUsuNum`, `EstRegCod`) VALUES ('26', 1, '18165640', 'A');
+INSERT INTO `en_p1m_documento_usuario` (`UsuCod`, `TipDocUsuCod`, `DocUsuNum`, `EstRegCod`) VALUES ('27', 1, '09306044', 'A');
+INSERT INTO `en_p1m_documento_usuario` (`UsuCod`, `TipDocUsuCod`, `DocUsuNum`, `EstRegCod`) VALUES ('28', 1, '27836254', 'A');
+
+INSERT INTO `en_p1m_documento_usuario` (`UsuCod`, `TipDocUsuCod`, `DocUsuNum`, `EstRegCod`) VALUES ('29', 1, '00412636', 'A');
+INSERT INTO `en_p1m_documento_usuario` (`UsuCod`, `TipDocUsuCod`, `DocUsuNum`, `EstRegCod`) VALUES ('30', 1, '09238948', 'A');
+INSERT INTO `en_p1m_documento_usuario` (`UsuCod`, `TipDocUsuCod`, `DocUsuNum`, `EstRegCod`) VALUES ('31', 1, '09238948', 'A');
+
+INSERT INTO `en_p1m_documento_usuario` (`UsuCod`, `TipDocUsuCod`, `DocUsuNum`, `EstRegCod`) VALUES ('32', 1, '09532012', 'A');
+INSERT INTO `en_p1m_documento_usuario` (`UsuCod`, `TipDocUsuCod`, `DocUsuNum`, `EstRegCod`) VALUES ('33', 1, '09702038', 'A');
+INSERT INTO `en_p1m_documento_usuario` (`UsuCod`, `TipDocUsuCod`, `DocUsuNum`, `EstRegCod`) VALUES ('34', 1, '25486147', 'A');
 
 COMMIT;
 

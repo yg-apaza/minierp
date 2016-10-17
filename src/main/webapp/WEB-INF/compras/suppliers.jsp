@@ -68,17 +68,77 @@
 
             </div>
         </div>
-        <script>
-            $(document).ready(
-                    function () {
-
-                        $("#addbtn").click(
-                                function () {
-                                    window.location.href = "${pageContext.request.contextPath}/secured/compras/form_proveedor";
-                                }
-                        );
-                    }
-            );
-        </script>
+        <div id="addSupplier" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <div class = "modal-content">
+                    <div class = "modal-header">
+                        <button type = "button" class = "close" data-dismiss = "modal">&times;</button>
+                        <h4 class = "modal-title">Agregar Proveedor</h4>
+                    </div>
+                    <form role = "form" method = "post" action="${pageContext.request.contextPath}/secured/compras/form_proveedor">
+                        <div class="modal-body">
+                            <div class = "form-horizontal">
+                                <div class = "panel panel-default">
+                                    <div class = "panel-heading">
+                                        <div class="form-group">
+                                            <div class="col-sm-6">                               
+                                                <input type="text" class="form-control" placeholder="Código Proveedor" name="codPro">
+                                            </div>
+                                            <div class="col-sm-6">                               
+                                                <input type="text" class="form-control" placeholder="Nombre Proveedor" name="detPro">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="form-group">
+                                            <div class="col-sm-12">
+                                                <label class="control-label">Nombre Contacto</label>
+                                                <input type="text" class="form-control" placeholder="Nombre del Contacto" name="conPro">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-sm-12">
+                                                <label class="control-label">Dirección</label>
+                                                <input type="text" class="form-control" placeholder="Dirección" name="dirPro">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-sm-6">
+                                                <label class="control-label">Teléfono Fijo</label>
+                                                <input type="text" class="form-control" placeholder="Teléfono Fijo" name="telFijPro">
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <label class="control-label">Teléfono Celular</label>
+                                                <input type="text" class="form-control" placeholder="Teléfono Celular" name="telCelPro">
+                                            </div>                                
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-sm-6">
+                                                <label class="control-label">Email</label>
+                                                <input type="text" class="form-control" placeholder="Email" name="emailPro">
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <label class="control-label">Página Web</label>
+                                                <input type="text" class="form-control" placeholder="Página web" name="pagWebPro">
+                                            </div> 
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-sm-12">
+                                                <label class="control-label">Observaciones</label>
+                                                <textarea class="form-control" placeholder="Observaciones" name="obsPro" style="resize: vertical;"></textarea>    
+                                            </div>                               
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                                        <button type="submit" class="btn btn-default" >Agregar</button>
+                                    </div>
+                                </div>
+                            </div> 
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </jsp:attribute>  
 </minierptemplate:template>

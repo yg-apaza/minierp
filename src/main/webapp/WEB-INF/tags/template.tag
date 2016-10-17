@@ -81,6 +81,9 @@
                                         <a href="${pageContext.request.contextPath}/secured/ventas/preventa">Preventa</a>
                                     </li>
                                     <li>
+                                        <a href="${pageContext.request.contextPath}/secured/ventas/preventa/addPreventa">Agregar Preventa</a>
+                                    </li>
+                                    <li>
                                         <a href="${pageContext.request.contextPath}/secured/ventas/clientes">Clientes</a>
                                     </li>
                                     <li>
@@ -167,6 +170,9 @@
                                     </li>
                                     <li>
                                         <a href="${pageContext.request.contextPath}/secured/configuracion/usuario/usuarios">Usuarios</a>
+                                    </li>
+                                    <li>
+                                        <a href="${pageContext.request.contextPath}/secured/configuracion/documentoCliente">Documentos de clientes</a>
                                     </li>
                                 </ul>
                             </li>
