@@ -31,7 +31,7 @@
             <br>
             <div class="col-md-12">
                 <div class="table-responsive">
-                    <table class="table table-hover">
+                    <table class="table table-bordered table-striped table-hover">
                         <thead>
                             <tr>
                                 <th>Cod Sucursal</th>
@@ -160,7 +160,7 @@
                     </div>
                     <div class="modal-body">
                         <div class="table-responsive">
-                            <table class="table table-hover">
+                            <table class="table table-bordered table-striped table-hover">
                                 <thead>
                                     <tr>
                                         <th>Cod Sucursal</th>

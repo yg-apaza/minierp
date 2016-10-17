@@ -40,7 +40,7 @@
              
             <div id="printarea">
                 <div class="table-responsive">
-                    <table class = "table table-bordered table-condensed"  id = "id_table">
+                    <table class = "table table-bordered table-striped table-hover"  id = "id_table">
                         <thead>
                             <tr>
                                 <th style="text-align: center">Código</th>

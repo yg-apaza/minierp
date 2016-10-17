@@ -80,7 +80,7 @@
             <div class="row">
                 <br><br>
                 <div class="table-responsive">
-                    <table class="table table-bordered   table-striped">
+                    <table class="table table-bordered table-striped table-hover">
                         <thead class="thead-inverse" >
                             <tr class="success">
                                 <th style="text-align: center;">Fecha</th>

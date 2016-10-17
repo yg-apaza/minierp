@@ -25,7 +25,7 @@ function imprSelec(muestra)
         			</ul>
         			<div class="tab-content">
         				<div id="detalle" class="tab-pane active">
-        				<table class="table" width="100%">
+        				<table class="table table-bordered table-striped table-hover" width="100%">
         				<tr>
         				<td width="50%">
                                             <div class="table-responsive">
