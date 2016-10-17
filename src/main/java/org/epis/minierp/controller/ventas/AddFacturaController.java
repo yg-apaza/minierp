@@ -1,14 +1,24 @@
 package org.epis.minierp.controller.ventas;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import java.util.StringTokenizer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.epis.minierp.controller.compras.PurchasesController;
+import org.epis.minierp.dao.compras.EnP4mFacturaCompraCabDao;
+import org.epis.minierp.dao.compras.EnP4mProveedorDao;
+import org.epis.minierp.dao.compras.EnP4tFacturaCompraDetDao;
 import org.epis.minierp.dao.general.EnP1mEmpresaDao;
 import org.epis.minierp.dao.general.TaGzzEstadoFacturaDao;
 import org.epis.minierp.dao.general.TaGzzMetodoPagoFacturaDao;
@@ -20,13 +30,20 @@ import org.epis.minierp.dao.general.EnP1mUsuarioDao;
 import org.epis.minierp.dao.logistica.EnP2mClaseProductoDao;
 import org.epis.minierp.dao.logistica.EnP2mProductoDao;
 import org.epis.minierp.dao.logistica.EnP2mSubclaseProductoDao;
+import org.epis.minierp.dao.ventas.EnP1tFacturaVentaDetDao;
 import org.epis.minierp.model.EnP1mCliente;
 import org.epis.minierp.model.EnP1mEmpresa;
 import org.epis.minierp.model.EnP1mFacturaVentaCab;
 import org.epis.minierp.model.EnP1mUsuario;
+import org.epis.minierp.model.EnP1tFacturaVentaDet;
+import org.epis.minierp.model.EnP1tFacturaVentaDetId;
 import org.epis.minierp.model.EnP2mClaseProducto;
 import org.epis.minierp.model.EnP2mProducto;
+import org.epis.minierp.model.EnP2mProductoId;
 import org.epis.minierp.model.EnP2mSubclaseProducto;
+import org.epis.minierp.model.EnP4mFacturaCompraCab;
+import org.epis.minierp.model.EnP4tFacturaCompraDet;
+import org.epis.minierp.model.EnP4tFacturaCompraDetId;
 import org.epis.minierp.model.TaGzzEstadoFactura;
 import org.epis.minierp.model.TaGzzMetodoPagoFactura;
 import org.epis.minierp.model.TaGzzMoneda;
@@ -48,7 +65,6 @@ public class AddFacturaController extends HttpServlet
         List <EnP2mClaseProducto> clases = (new EnP2mClaseProductoDao()).getAllActive();
         List <EnP2mSubclaseProducto> subclases = (new EnP2mSubclaseProductoDao()).getAllActive();
         EnP1mEmpresa empresa = (new EnP1mEmpresaDao()).getAll().get(0);
-        System.out.println(empresa.getEmpIgv());
         
         request.setAttribute("metodosPagoFactura", metodosPagoFactura);
         request.setAttribute("monedas", monedas);
@@ -65,70 +81,82 @@ public class AddFacturaController extends HttpServlet
     
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String action = request.getParameter("action");
-        switch (action) {
-            case "initialize":
-                //response.sendRedirect(request.getContextPath() + "/secured/ventas/factura/addFactura");
-                break;
-        }
-        /*EnP1mFacturaVentaCabDao facCabDao=new EnP1mFacturaVentaCabDao();
-        
-        if(request.getParameter("agregarFactura")!=null){
-           
+        try {
+            String usuCod = request.getParameter("usuCod");
+            List <String> productsAmounts = Arrays.asList((request.getParameter("productsAmounts")).split("\\s*,\\s*"));
+            List <String> productsCodes = Arrays.asList((request.getParameter("productsCodes")).split("\\s*,\\s*"));
+            List <String> productsPrices = Arrays.asList((request.getParameter("productsPrices")).split("\\s*,\\s*"));
+            String facVenCabCod = request.getParameter("facVenCabCod");
+            String cliCod = request.getParameter("cliCod");
+            int facVenCabIgv = (int)Double.parseDouble(request.getParameter("facVenCabIgv"));
+            DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+            Date facVenCabFec = format.parse(request.getParameter("facVenCabFec"));
+            int monCod = Integer.parseInt(request.getParameter("monCod"));
+            int metPagCod = Integer.parseInt(request.getParameter("metPagCod"));
+            int tipPagCod = Integer.parseInt(request.getParameter("tipPagCod"));
+            String facVenCabObs = request.getParameter("facVenCabObs");
+            double facVenCabTot = Double.parseDouble(request.getParameter("facVenCabTot"));
+            double facVenCabDes = Double.parseDouble(request.getParameter("facVenCabDes"));
+            double facVenCabSubTot = Double.parseDouble(request.getParameter("facVenCabSubTot"));
             
-            EnP1mFacturaVentaCab cabecera= new EnP1mFacturaVentaCab();
-            cabecera.setFacVenCabCod(request.getParameter("CodCabFac"));
-            EnP1mCliente cliente=new EnP1mCliente();
-            System.out.println("HABER: "+request.getParameter("cliCod")+ " "+request.getParameter("CodCabFac"));
-            cliente=new EnP1mClienteDao().getById((request.getParameter("cliCod")));       
-            cabecera.setEnP1mCliente(cliente);
+            int estFacCod = 1;
+            switch(tipPagCod) {
+                case 2: estFacCod = 2;
+                    break;
+            }
+            
+            EnP1mFacturaVentaCabDao factura = new EnP1mFacturaVentaCabDao();
+            EnP1mFacturaVentaCab header = new EnP1mFacturaVentaCab();
+            
+            header.setFacVenCabCod(facVenCabCod);
+            header.setEnP1mCliente((new EnP1mClienteDao()).getById(cliCod));
+            header.setEnP1mUsuario((new EnP1mUsuarioDao()).getById(usuCod));
+            header.setFacVenCabFec(facVenCabFec);
+            header.setFacVenCabTot(facVenCabTot);
+            header.setFacVenCabDes(facVenCabDes);
+            header.setFacVenCabSubTot(facVenCabSubTot);
+            header.setFacVenCabIgv(facVenCabIgv);
+            header.setFacVenCabObs(facVenCabObs);
+            header.setTaGzzEstadoFactura((new TaGzzEstadoFacturaDao()).getById(estFacCod));
+            header.setTaGzzMetodoPagoFactura((new TaGzzMetodoPagoFacturaDao()).getById(metPagCod));
+            header.setTaGzzTipoPagoFactura((new TaGzzTipoPagoFacturaDao()).getById(tipPagCod));
+            header.setTaGzzMoneda((new TaGzzMonedaDao()).getById(monCod));
+            header.setEstRegCod('A');
+            
+            factura.save(header);
+            
+            EnP1tFacturaVentaDetDao detalles = new EnP1tFacturaVentaDetDao();
+            
+            for(int i = 0;i < productsCodes.size();i++) {
+                StringTokenizer st = new StringTokenizer(productsCodes.get(i),"-");
+            
+                EnP2mProductoId productId = new EnP2mProductoId();
+                productId.setClaProCod(st.nextToken());
+                productId.setSubClaProCod(st.nextToken());                
+                productId.setProCod(st.nextToken());
+                
+            
+                EnP2mProductoDao productDao = new EnP2mProductoDao();
+                EnP2mProducto product = productDao.getById(productId);
+                product.setProStk(product.getProStk() - Double.parseDouble(productsAmounts.get(i))); /* Updating stock */
+                productDao.update(product);
+            
+                EnP1tFacturaVentaDet det = new EnP1tFacturaVentaDet();
+                EnP1tFacturaVentaDetId detId = new EnP1tFacturaVentaDetId();
+                detId.setFacVenCabCod(facVenCabCod);
+                detId.setFacVenDetCod((int) (System.currentTimeMillis() % Integer.MAX_VALUE));
+                det.setId(detId);
+                det.setEnP1mFacturaVentaCab(header);
+                det.setEnP2mProducto(product);
+                det.setFacVenDetCan(Double.parseDouble(productsAmounts.get(i)));
+                det.setFacVenDetValUni(Double.parseDouble(productsPrices.get(i)));
+            
+                detalles.save(det);
+            }
+            response.sendRedirect(request.getContextPath() + "/secured/ventas/factura/addFactura");
+        } catch (ParseException ex) {
+            Logger.getLogger(AddFacturaController.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
-            EnP1mUsuario user = new EnP1mUsuarioDao().getById(request.getParameter("usuCod"));
-            cabecera.setEnP1mUsuario(user);
-            Date fecha=new Date();
-            cabecera.setFacVenCabFec(fecha);
-
-            cabecera.setFacVenCabDes(0);
-            cabecera.setFacVenCabSubTot(Double.parseDouble(request.getParameter("total")));
-            cabecera.setFacVenCabTot(Double.parseDouble(request.getParameter("total")));
-            cabecera.setFacVenCabIgv(18);
-            cabecera.setFacVenCabObs(request.getParameter("obsrs"));
-            TaGzzEstadoFactura estFac = new TaGzzEstadoFacturaDao().getById(2);
-            cabecera.setTaGzzEstadoFactura(estFac);
-
-            TaGzzMetodoPagoFactura metPag = new TaGzzMetodoPagoFacturaDao().getById(Integer.parseInt(request.getParameter("selecMetodoPago")));
-            cabecera.setTaGzzMetodoPagoFactura(metPag);
-
-            TaGzzTipoPagoFactura tipPag = new TaGzzTipoPagoFacturaDao().getById(Integer.parseInt(request.getParameter("selectTipPag")));
-            cabecera.setTaGzzTipoPagoFactura(tipPag);
-            TaGzzMoneda mon = new TaGzzMonedaDao().getById(Integer.parseInt(request.getParameter("selectTipMon")));
-            cabecera.setTaGzzMoneda(mon);
-            cabecera.setEstRegCod('A');
-
-            //CABECERA
-            cabecera.setEnP1tFacturaVentaDets(null);
-            System.out.println(cabecera.toString());
-            facCabDao.save(cabecera);
-
-
-            //DETALLE
-//            System.out.println("TEMP" + request.getParameterValues("detalle"));
-//            
-//            EnP1tFacturaVentaDet det=new EnP1tFacturaVentaDet();
-//            det.setEnP1mFacturaVentaCab(cabecera);
-//            EnP2mProductoId id=new EnP2mProductoId();
-//            id.setProCod(request.getParameter("productos"));
-//            id.setClaProCod(new EnP2mClaseProducto("1",));
-//            
-//            EnP2mProducto prod= new EnP2mProductoDao().getById();
-//            
-//            det.setEnP2mProducto();
-//            det.setFacVenDetCan(serialVersionUID);
-//            det.setFacVenDetValUni(serialVersionUID);
-//            det.setId();
-
-            response.sendRedirect(request.getContextPath() + "/secured/ventas/factura");
-        }*/
-        
     }
 }
