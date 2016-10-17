@@ -235,6 +235,17 @@
         <servlet-name>AddSucursalController</servlet-name>
         <url-pattern>/secured/configuracion/addsucursal</url-pattern>
     </servlet-mapping>
+    <!--Sub Modulo Documento cliente-->
+    <servlet>
+        <description/>
+        <display-name>DocumentoClienteController</display-name>
+        <servlet-name>DocumentoClienteController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.configuracion.DocumentoClienteController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DocumentoClienteController</servlet-name>
+        <url-pattern>/secured/configuracion/documentoCliente</url-pattern>
+    </servlet-mapping>
     <!--Sub Modulo Punto de venta-->
     <servlet>
         <description/>

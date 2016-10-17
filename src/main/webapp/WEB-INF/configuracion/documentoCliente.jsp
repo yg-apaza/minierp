@@ -6,13 +6,14 @@
     </jsp:attribute>
     <jsp:attribute name="contenido">
             
-        <div class="panel-body">
+        <div class="pagel-body">
+           
+           <br>
            <div id="sucursal">
 		<div class="row">
-			<h1 class="page-header"> Documentos de clientes 
-                            <a href="#" class="btn btn-success btn-circle" data-toggle="modal" data-target="#agregarModal"><i class="fa fa-plus"></i></a>
-                        </h1>
-                        
+			<h2 class="page-header"> Documentos de clientes 
+                        <a href="#" class="btn btn-success btn-circle" data-toggle="modal" onclick="validarNumDoc()" data-target="#agregarModal"><i class="fa fa-plus"></i></a></h2>
+            
 			<table class="table table-bordered table-striped table-hover" id="clientTable">
 				<tr>    
 					<th>Cliente</th>
@@ -28,13 +29,12 @@
                                       <td value="${docClientes}"> ${docClientes.taGzzTipoDocCliente.tipDocCliDet} </td>
                                       <td value="${docClientes}"> ${docClientes.docCliNum} </td>
                                       <td class="text-left">
-                                          <a href="#" data-toggle="modal" data-target="#modificarModal" data-clicod="${docClientes.enP1mCliente.cliCod}" data-cli="${docClientes.enP1mCliente.cliApePat} ${docClientes.enP1mCliente.cliApeMat}, ${docClientes.enP1mCliente.cliNom}" data-tipocod="${docClientes.taGzzTipoDocCliente.tipDocCliCod}" data-tipo="${docClientes.taGzzTipoDocCliente.tipDocCliDet}" data-num="${docClientes.docCliNum}" >
+                                          <a href="#" data-toggle="modal" onclick="validarNumDocUpdt()" data-target="#modificarModal" data-clicod="${docClientes.enP1mCliente.cliCod}" data-cli="${docClientes.enP1mCliente.cliApePat} ${docClientes.enP1mCliente.cliApeMat}, ${docClientes.enP1mCliente.cliNom}" data-tipocod="${docClientes.taGzzTipoDocCliente.tipDocCliCod}" data-tipo="${docClientes.taGzzTipoDocCliente.tipDocCliDet}" data-num="${docClientes.docCliNum}" >
                                             <i class="fa fa-pencil-square-o fa-2x"></i> </a> 
                                           <a href="#" data-toggle="modal" data-target="#eliminarModal" data-clicod="${docClientes.enP1mCliente.cliCod}" data-cli="${docClientes.enP1mCliente.cliApePat} ${docClientes.enP1mCliente.cliApeMat}, ${docClientes.enP1mCliente.cliNom}" data-tipocod="${docClientes.taGzzTipoDocCliente.tipDocCliCod}" data-tipo="${docClientes.taGzzTipoDocCliente.tipDocCliDet}" data-num="${docClientes.docCliNum}" >
                                             <i class="fa fa-trash-o fa-2x"></i> </a>                                   
                                        </td>
                                     </tr> 
-                                    
                                 </c:forEach>		
 			</table>
 		</div>
@@ -55,7 +55,7 @@
                             <input type="hidden" name="accion" value="create">
                             <div class="form-group">
                                 <label> Cliente: </label><br/>
-                                <select name="cliCod" >
+                                <select name="cliCod" class="form-control">
                                     <c:forEach items="${cliente}" var="cliente">
                                         <option value="${cliente.cliCod}">${cliente.cliApePat} ${cliente.cliApeMat}, ${cliente.cliNom}</option>
                                     </c:forEach>
@@ -63,7 +63,7 @@
                             </div>
                             <div class="form-group">
                                 <label> Tipo de Documento: </label><br/>
-                                <select name="tipDocCliCod">
+                                <select name="tipDocCliCod" id="tipDocCliCod" class="form-control" onchange="validarNumDoc()">
                                     <c:forEach items="${tipDocCli}" var="tipDocCli">
                                         <option value="${tipDocCli.tipDocCliCod}">${tipDocCli.tipDocCliDet}</option>
                                     </c:forEach>
@@ -72,7 +72,7 @@
                            
                             <div class="form-group">
                                 <label>Número de Documento:</label>
-                                <input class="form-control" name="docCliNum">
+                                <input type="number" class="form-control" name="docCliNum" id="docCliNum">
                             </div>
                         </div>   
                         <div class="modal-footer">
@@ -99,6 +99,7 @@
                             <input type="hidden" name="cliCod" id="updateDocCliCod">
                             <label>Cliente:</label>
                             <input class="form-control" name="docCli" id="updateDocCli" readonly>
+                            </div>
                             
                             <div class="form-group">
                                 <input type="hidden" name="tipDocCliCod" id="updateDocTipoCod">
@@ -108,7 +109,7 @@
                             
                             <div class="form-group">
                                 <label>Número de Documento:</label>
-                                <input class="form-control" name="docCliNum" id="updateDocNum">
+                                <input type="number" class="form-control" name="docCliNum" id="updateDocNum">
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -182,16 +183,15 @@
                 deleteDocTipo.text($(e.relatedTarget).data('tipo'));
                 deleteDocNum.text($(e.relatedTarget).data('num'));
             });
-            
             $("#createForm").validate({
                 rules: {
-                    docNum: {
+                    sucDes: {
                         required: true
-                    }
+                        }
                 },
                 messages: {
-                    docNum: {
-                        required: "Es necesario ingresar un número de documento."
+                    sucDes: {
+                        required: "Es necesario un nombre de sucursal"
                        }
                 },
                 submitHandler: function(form) {
@@ -199,16 +199,67 @@
                 }
             });
             
-            $("#updateForm").validate({
+            function validarNumDoc(){
+                if($("#tipDocCliCod").val()=="1"){
+                    console.log('dni');
+                    $('#docCliNum')[0].maxLength=80;
+                    $('#docCliNum')[0].minLength=0;
+                    $('#docCliNum')[0].maxLength=8;
+                    $('#docCliNum')[0].minLength=8;
+                }
+                else{
+                    console.log('ruc');
+                    $('#docCliNum')[0].maxLength=80;
+                    $('#docCliNum')[0].minLength=0;
+                    $('#docCliNum')[0].maxLength=11;
+                    $('#docCliNum')[0].minLength=11;
+                }
+            }
+            function validarNumDocUpdt(){
+                if($("#updateDocTipoCod").val()=="1"){
+                    console.log('dni');
+                    $('#updateDocNum')[0].maxLength=80;
+                    $('#updateDocNum')[0].minLength=0;
+                    $('#updateDocNum')[0].maxLength=8;
+                    $('#updateDocNum')[0].minLength=8;
+                }
+                else{
+                    console.log('ruc');
+                    $('#updateDocNum')[0].maxLength=80;
+                    $('#updateDocNum')[0].minLength=0;
+                    $('#updateDocNum')[0].maxLength=11;
+                    $('#updateDocNum')[0].minLength=11;
+                }
+            }
+            $("#createForm").validate({
                 rules: {
-                    docNum: {
-                        required: true
+                    docCliNum: {
+                        required: true,
+                        number: true
                     }
                 },
                 messages: {
-                    docNum: {
-                        required: "Es necesario un número de documento."
-                    }    
+                    docCliNum: {
+                        required: "Por favor sólo ingrese dígitos.",
+                        number: "Por favor sólo ingrese dígitos."
+                    }
+                },
+                submitHandler: function(form) {
+                    form.submit();
+                }
+            });
+            $("#updateForm").validate({
+                rules: {
+                    docCliNum: {
+                        required: true,
+                        number: true
+                    }
+                },
+                messages: {
+                    docCliNum: {
+                        required: "Por favor sólo ingrese dígitos.",
+                        number: "Por favor sólo ingrese dígitos."
+                    }
                 },
                 submitHandler: function(form) {
                     form.submit();
