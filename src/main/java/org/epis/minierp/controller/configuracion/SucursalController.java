@@ -14,6 +14,7 @@ package org.epis.minierp.controller.configuracion;
  *
  * @author User
  */
+
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.List;
@@ -24,6 +25,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.epis.minierp.business.configuracion.EnP1mSucursalBusiness;
 import org.epis.minierp.dao.general.EnP1mSucursalDao;
 import org.epis.minierp.model.EnP1mSucursal;
 
@@ -35,7 +37,9 @@ public class SucursalController extends HttpServlet
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {       
         EnP1mSucursalDao sucursal = new EnP1mSucursalDao();
         List <EnP1mSucursal> sucursales = sucursal.getAllActive();
+        List <EnP1mSucursal> inactivos = sucursal.getAllInactives();
         request.setAttribute("sucursales",sucursales);
+        request.setAttribute("inactivos",inactivos);
         
         request.getRequestDispatcher("/WEB-INF/configuracion/sucursal.jsp").forward(request, response);
     }
@@ -48,32 +52,35 @@ public class SucursalController extends HttpServlet
         String action = request.getParameter("accion");
         EnP1mSucursalDao sucursal = new EnP1mSucursalDao();
         EnP1mSucursal s = new EnP1mSucursal();
+        EnP1mSucursalBusiness actions = new EnP1mSucursalBusiness();
         
         switch(action) {
             case "create":                
                 String sucDes = request.getParameter("sucDes");
                 String sucDir = request.getParameter("sucDir");     
               //  s.setSucCod(Integer.parseInt(sucCod));
-                s.setSucDes(sucDes);
-                s.setSucDir(sucDir);
-                s.setEstRegCod('A');
-                sucursal.save(s);
+                actions.create(sucDes, sucDir);
                 break;
             case "update":
                 int updateSucCod = Integer.parseInt(request.getParameter("sucCod"));
                 String updateSucDes = request.getParameter("sucDes");
                 String updateSucDir = request.getParameter("sucDir");
-                s.setSucCod(updateSucCod);
-                s.setSucDes(updateSucDes);
-                s.setSucDir(updateSucDir);
-                s.setEstRegCod('A');
-                sucursal.update(s);
+                actions.update(updateSucCod, updateSucDes, updateSucDir);
                 break;
             case "delete":
-                int deleteSucCod = Integer.parseInt(request.getParameter("SucCod"));
-                s.setSucCod(deleteSucCod);
-                s.setEstRegCod('*');
-                sucursal.delete(s);
+                int deleteSucCod = Integer.parseInt(request.getParameter("sucCod"));
+                actions.delete(deleteSucCod);
+                break;
+            case "disable":
+                int disableSucCod = Integer.parseInt(request.getParameter("sucCod"));
+                actions.disable(disableSucCod);
+                break;
+                
+            case "activate":
+                int activeSucCod = Integer.parseInt(request.getParameter("sucCod"));
+                actions.activate(activeSucCod);
+                break;
+               
         }
         
         response.sendRedirect(request.getContextPath() + "/secured/configuracion/sucursal");
