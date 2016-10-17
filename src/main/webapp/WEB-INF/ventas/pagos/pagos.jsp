@@ -14,7 +14,7 @@
                     <div class="form-group">
                         <label class="control-label col-sm-2">Código Factura</label>
                         <div class="col-lg-6">
-                            <input type="text" class="form-control" placeholder="Codidgo Factura" name="CodCabFac">
+                            <input type="text" class="form-control" placeholder="Código Factura" name="CodCabFac">
                         </div>
                         <div class="col-lg-6">
                             <button type="submit" class="btn btn-primary" name="buscarFactura">Buscar <i class="fa fa-search-plus fa-1x"></i></button>

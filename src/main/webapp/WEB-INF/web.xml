@@ -213,6 +213,17 @@
         <servlet-name>AddUsuarioController</servlet-name>
         <url-pattern>/secured/configuracion/usuario/usuarios/add</url-pattern>
     </servlet-mapping>
+    <!--Sub Modulo Documento de cliente-->
+    <servlet>
+        <description/>
+        <display-name>DocumentoClienteController</display-name>
+        <servlet-name>DocumentoClienteController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.configuracion.DocumentoClienteController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DocumentoClienteController</servlet-name>
+        <url-pattern>/secured/configuracion/documentoCliente</url-pattern>
+    </servlet-mapping>
     <!--Sub Modulo Compañia Datos-->
     <servlet>
         <description/>

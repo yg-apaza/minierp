@@ -171,6 +171,9 @@
                                     <li>
                                         <a href="${pageContext.request.contextPath}/secured/configuracion/usuario/usuarios">Usuarios</a>
                                     </li>
+                                    <li>
+                                        <a href="${pageContext.request.contextPath}/secured/configuracion/documentoCliente">Documentos de clientes</a>
+                                    </li>
                                 </ul>
                             </li>
                             </cc:if>
