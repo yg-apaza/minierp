@@ -27,6 +27,12 @@ public class EnP1mUsuarioDao {
         System.out.println(estados);
         return estados;
     }
+    public List<EnP1mUsuario> getAllInactive() {
+        Query query = session.createQuery("from EnP1mUsuario E where E.estRegCod = 'I'");
+        List<EnP1mUsuario> estados = query.list();
+        System.out.println(estados);
+        return estados;
+    }
 
     public EnP1mUsuario getById(String id) {
         EnP1mUsuario estado = null;

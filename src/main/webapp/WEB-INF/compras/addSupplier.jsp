@@ -8,10 +8,10 @@
         
         <script src="${pageContext.request.contextPath}/js/jquery.PrintArea.js"></script>
 
-        <div id ="panel-body">
+        <div class ="panel-body">
             <div class="row">
                 <div class="col-lg-12">
-                    <br><h1 class="page-header"> Agregar nuevo proveedor </h1>
+                    <h1 class="page-header"> Agregar nuevo proveedor </h1>
                 </div>
             </div>
             <form class="form-group-sm">

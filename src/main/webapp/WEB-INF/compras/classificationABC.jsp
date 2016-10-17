@@ -7,10 +7,10 @@
     <jsp:attribute name="contenido">
         <script src="${pageContext.request.contextPath}/js/jquery.PrintArea.js"></script>
         
-        <div id ="panel-body">
+        <div class ="panel-body">
             <div class="row">
                 <div class="col-lg-12">
-                    <br><h1 class="page-header"> Clasificación ABC </h1>
+                    <h1 class="page-header"> Clasificación ABC </h1>
                 </div>
             </div>
             <div class="row">

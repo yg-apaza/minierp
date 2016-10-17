@@ -8,10 +8,10 @@
         <script src="${pageContext.request.contextPath}/js/metisMenu.min.js"></script>
         <script src="${pageContext.request.contextPath}/js/sb-admin-2.min.js"></script>
                      
-        <div id="pagel-body">
+        <div class="panel-body">
              <div class="row">
                     <div class="col-lg-12">
-                        <br><h1 class="page-header"> Agregar Sucursal </h1>
+                        <h1 class="page-header"> Agregar Sucursal </h1>
                     </div>
                 </div>
                 <form class="form-group-sm" id="registerBill" method="post" action="${pageContext.request.contextPath}/secured/configuracion/addsucursal"> 

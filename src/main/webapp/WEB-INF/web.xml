@@ -202,17 +202,7 @@
     <servlet-mapping>
         <servlet-name>UsuariosController</servlet-name>
         <url-pattern>/secured/configuracion/usuario/usuarios</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <description/>
-        <display-name>AddUsuarioController</display-name>
-        <servlet-name>AddUsuarioController</servlet-name>
-        <servlet-class>org.epis.minierp.controller.configuracion.usuario.AddUsuarioController</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>AddUsuarioController</servlet-name>
-        <url-pattern>/secured/configuracion/usuario/usuarios/add</url-pattern>
-    </servlet-mapping>
+    </servlet-mapping>    
     <!--Sub Modulo Compañia Datos-->
     <servlet>
         <description/>
@@ -244,6 +234,17 @@
     <servlet-mapping>
         <servlet-name>AddSucursalController</servlet-name>
         <url-pattern>/secured/configuracion/addsucursal</url-pattern>
+    </servlet-mapping>
+    <!--Sub Modulo Documento cliente-->
+    <servlet>
+        <description/>
+        <display-name>DocumentoClienteController</display-name>
+        <servlet-name>DocumentoClienteController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.configuracion.DocumentoClienteController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DocumentoClienteController</servlet-name>
+        <url-pattern>/secured/configuracion/documentoCliente</url-pattern>
     </servlet-mapping>
     <!--Sub Modulo Punto de venta-->
     <servlet>
@@ -408,16 +409,6 @@
     <servlet-mapping>
         <servlet-name>ClienteController</servlet-name>
         <url-pattern>/secured/ventas/clientes</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <description/>
-        <display-name>addClienteController</display-name>
-        <servlet-name>addClienteController</servlet-name>
-        <servlet-class>org.epis.minierp.controller.ventas.AddClienteController</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>addClienteController</servlet-name>
-        <url-pattern>/secured/ventas/clientes/addCliente</url-pattern>
     </servlet-mapping>
     <servlet>
         <description/>

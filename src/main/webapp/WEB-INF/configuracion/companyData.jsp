@@ -8,7 +8,7 @@
         <script src="${pageContext.request.contextPath}/js/metisMenu.min.js"></script>
         <script src="${pageContext.request.contextPath}/js/sb-admin-2.min.js"></script>
         
-        <div id="pagel-body"> 
+        <div class="pagel-body"> 
         </div>        
     </jsp:attribute>
 </minierptemplate:template>
