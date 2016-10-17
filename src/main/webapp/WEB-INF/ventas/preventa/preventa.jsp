@@ -47,36 +47,36 @@
             </div>
             <br>
             <div id="printarea">
-                <table class = "table table-bordered table-condensed"  id = "id_table">
-                <thead>
-                    <tr>
-                        <th style="text-align: center">Código Preventa</th>
-                        <th style="text-align: center">Cód Cliente</th>
-                        <th style="text-align: center">Cliente</th>
-                        <th style="text-align: center">Cód Usuario</th>
-                        <th style="text-align: center">Usuario</th>
-                        <th style="text-align: center">Fecha</th>
-                        <th style="text-align: center">Moneda</th>
-                        <th style="text-align: center">Cantidad total</th>
-                        <th style="text-align: center">Check</th>
-                    </tr>               
-                </thead>
-                <tbody>
-                     <c:forEach items = "${preventas}" var = "preventa">    
+                <table class = "display dataTable" role ="grid" id = "id_table">
+                    <thead>
                         <tr>
-                            <td><c:out value="${preventa.preVenCabCod}"/> </td>
-                            <td><c:out value="${preventa.enP1mCliente.cliCod}"/></td>
-                            <td><c:out value="${preventa.enP1mCliente.cliNom}"/></td>
-                            <td><c:out value="${preventa.enP1mUsuario.usuCod}"/></td>
-                            <td><c:out value="${preventa.enP1mUsuario.usuNom}"/></td>
-                            <td><c:out value="${preventa.preVenCabFec}"/></td>
-                            <td><c:out value="${preventa.taGzzMoneda.monDet}"/></td>
-                            <td><c:out value="${preventa.preVenCabTot}"/></td>
-                            <td><input type="checkbox" value=""></td>
-                        </tr>
-                    </c:forEach>  
-                </tbody>
-            </table>            
+                            <th style="text-align: center">Código Preventa</th>
+                            <th style="text-align: center">Cód Cliente</th>
+                            <th style="text-align: center">Cliente</th>
+                            <th style="text-align: center">Cód Usuario</th>
+                            <th style="text-align: center">Usuario</th>
+                            <th style="text-align: center">Fecha</th>
+                            <th style="text-align: center">Moneda</th>
+                            <th style="text-align: center">Cantidad total</th>
+                            <th style="text-align: center">Check</th>
+                        </tr>               
+                    </thead>
+                    <tbody>
+                         <c:forEach items = "${preventas}" var = "preventa">    
+                            <tr>
+                                <td><c:out value="${preventa.preVenCabCod}"/> </td>
+                                <td><c:out value="${preventa.enP1mCliente.cliCod}"/></td>
+                                <td><c:out value="${preventa.enP1mCliente.cliNom}"/></td>
+                                <td><c:out value="${preventa.enP1mUsuario.usuCod}"/></td>
+                                <td><c:out value="${preventa.enP1mUsuario.usuNom}"/></td>
+                                <td><c:out value="${preventa.preVenCabFec}"/></td>
+                                <td><c:out value="${preventa.taGzzMoneda.monDet}"/></td>
+                                <td><c:out value="${preventa.preVenCabTot}"/></td>
+                                <td><input type="checkbox" value=""></td>
+                            </tr>
+                        </c:forEach>  
+                    </tbody>
+                </table>  
             </div>
             <div class="modal fade" id="configurarModal" role="dialog">
                 <div class="modal-dialog modal-sm">
@@ -140,16 +140,17 @@
         </div>
     </jsp:attribute>  
 </minierptemplate:template>   
-<script>
+        
+<script> 
     function addFiltro() {
         var filterName = $("#filterName").val();
         var filterSelect = $("#filterSelect").val();
-        $("#filters").append($("<button type=\"button\" class=\"btn btn-outline\">"+filterSelect+": "+ filterName+"</button>"));
-    }
+        $("#filters").append($("<button onclick=\"$(this).remove()\" type=\"button\" class=\"btn btn-outline\">"+filterSelect+": "+ filterName+"</button>"));
+    }    
     
   $(document).ready(function(){
     $('#addFiltro').click(function(){
        addFiltro();
     });
-  });
+  });  
 </script>
