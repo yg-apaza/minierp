@@ -43,7 +43,7 @@
                                 <th>Det Sucursal</th>
                                 <th>Cod Punto de Venta</th>
                                 <th>Descripcion</th>
-                                <th>Estado de Registro</th>
+                                <th>Registro</th>
                                 <th class="text-right">Acciones</th>
                             </tr>
                         </thead>
@@ -172,7 +172,7 @@
                                         <th>Det Sucursal</th>
                                         <th>Cod Punto de Venta</th>
                                         <th>Descripcion</th>
-                                        <th>Estado de Registro</th>
+                                        <th>Registro</th>
                                         <th class="text-right">Acciones</th>
                                     </tr>
                                 </thead>
