@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="subreporte_proovedor" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="93ebfb2f-da29-4a42-a4fa-8d6c504d62f3">
+	<property name="ireport.zoom" value="1.1000000000000008"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT * FROM en_p4m_proveedor p WHERE p.EstRegCod='A']]>
+	</queryString>
+	<field name="ProCod" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ProDet" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ProCon" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ProDir" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ProTelFij" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ProPagWeb" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="33" splitType="Stretch">
+			<line>
+				<reportElement x="10" y="10" width="525" height="1" uuid="6fba48b2-1fb0-45be-94c7-2b42918e8ab7"/>
+			</line>
+			<staticText>
+				<reportElement x="10" y="12" width="51" height="20" uuid="0f3e48d5-60a4-42fb-8302-9f5a73b0230e"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Codigo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="61" y="12" width="87" height="19" uuid="2b7d79ba-aed8-4bab-bf4e-15ca9ce78846"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[ Razon Social]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="149" y="12" width="85" height="20" uuid="8a1020da-cfd2-40ea-9ccb-6541031253dc"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Contacto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="235" y="12" width="131" height="20" uuid="7684fd56-26c0-4cf0-b37b-d1a04497659a"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Direccion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="366" y="12" width="55" height="20" uuid="651b71fa-9f7a-4dcd-9e3d-893a3b55eaa3"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Telefono]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="421" y="11" width="114" height="20" uuid="62372e72-1e4a-4e40-835e-9788267d2c2a"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Pagina Web]]></text>
+			</staticText>
+			<line>
+				<reportElement x="10" y="32" width="525" height="1" uuid="357c1b2c-70f9-4368-9994-ceb61cfe7a4a"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="10" y="0" width="50" height="20" uuid="4e282dd0-1634-4c72-b184-109eaf1a2337"/>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ProCod}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="61" y="0" width="87" height="20" uuid="0018de36-189a-424f-890c-63b4ec26442a"/>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ProDet}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="149" y="0" width="85" height="20" uuid="a66932ed-939f-4f34-98a6-97d1614035a1"/>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ProCon}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="244" y="0" width="120" height="20" uuid="56c8c1ff-a438-4e4d-9296-a60791d2effc"/>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ProDir}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="366" y="0" width="55" height="20" uuid="366be20a-d757-485e-a243-1e436532d9bd"/>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ProTelFij}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="421" y="0" width="114" height="20" uuid="763f262b-bba1-4be8-92dc-e1150fdbba05"/>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ProPagWeb}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="4">
+			<line>
+				<reportElement x="10" y="0" width="525" height="1" uuid="f739c406-44c6-47b0-8c0e-d9a540c6d753"/>
+			</line>
+		</band>
+	</summary>
+</jasperReport>
