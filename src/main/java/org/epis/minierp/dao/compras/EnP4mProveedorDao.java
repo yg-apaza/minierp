@@ -29,6 +29,14 @@ public class EnP4mProveedorDao {
         session.save(proveedor);     
     }
     
+    public void update(EnP4mProveedor proveedor){
+        session.update(proveedor);
+    }
+    
+    public void delete(EnP4mProveedor proveedor){
+        session.delete(proveedor);
+    }
+    
     public EnP4mProveedor getById(String id) {
         EnP4mProveedor proveedor = null;
         try {
