@@ -113,10 +113,7 @@
                                             </li>
                                             <li>
                                                 <a href="${pageContext.request.contextPath}/secured/compras/stock">Stock</a>
-                                            </li>
-                                            <li>
-                                                <a href = "${pageContext.request.contextPath}/secured/compras/form_proveedor">Añadir Proveedor</a>
-                                            </li>                                            
+                                            </li>                                           
                                             <li>
                                                 <a href="${pageContext.request.contextPath}/secured/compras/productos">Productos</a>
                                             </li>
@@ -170,6 +167,9 @@
                                     </li>
                                     <li>
                                         <a href="${pageContext.request.contextPath}/secured/configuracion/usuario/usuarios">Usuarios</a>
+                                    </li>
+                                    <li>
+                                        <a href="${pageContext.request.contextPath}/secured/configuracion/documentoCliente">Documentos de clientes</a>
                                     </li>
                                 </ul>
                             </li>

@@ -8,10 +8,10 @@
         <title>Ventas - Factura</title>
     </jsp:attribute>
     <jsp:attribute name="contenido">       
-        <div id="pagel-body">
+        <div id="panel-body">
             <form id="registerBill" method="post" action="${pageContext.request.contextPath}/secured/ventas/factura/addFactura">
                 <div class="row">
-                    <div class="col-md-4"><br>
+                    <div class="col-md-4">
                         <h1 class="page-header"> Factura de Venta</h1>
                     </div>
                     <div class="col-md-4 col-md-offset-4"><br>

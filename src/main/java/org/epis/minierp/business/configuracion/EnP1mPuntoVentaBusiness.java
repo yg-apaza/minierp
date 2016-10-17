@@ -13,7 +13,7 @@ public class EnP1mPuntoVentaBusiness {
     }
 
     public void create(int sucCod, String punVenDes, char estRegCod) {
-        int punVenCod = pvDao.getLastPunVenCod();
+        int punVenCod = pvDao.getLastPunVenCod(sucCod);
         EnP1mPuntoVenta pv = new EnP1mPuntoVenta();
         pv.setId(new EnP1mPuntoVentaId(punVenCod, sucCod));
         pv.setPunVenDes(punVenDes);

@@ -29,8 +29,24 @@ public class EnP1mPuntoVentaDao {
         return estados;
     }
     
+    public List<EnP1mPuntoVenta> getAllActiveOrdered() {
+        Query query = session.createQuery("from EnP1mPuntoVenta E where E.estRegCod = 'A' "
+                + "order by E.id.sucCod asc, E.id.punVenCod asc");
+        List<EnP1mPuntoVenta> estados = query.list();
+        System.out.println(estados);
+        return estados;
+    }
+    
     public List<EnP1mPuntoVenta> getAllInactives() {
         Query query = session.createQuery("from EnP1mPuntoVenta E where E.estRegCod = 'I'");
+        List<EnP1mPuntoVenta> estados = query.list();
+        System.out.println(estados);
+        return estados;
+    }
+    
+    public List<EnP1mPuntoVenta> getAllInactivesOrdered() {
+        Query query = session.createQuery("from EnP1mPuntoVenta E where E.estRegCod = 'I' "
+                + "order by E.id.sucCod asc, E.id.punVenCod asc");
         List<EnP1mPuntoVenta> estados = query.list();
         System.out.println(estados);
         return estados;
@@ -46,8 +62,9 @@ public class EnP1mPuntoVentaDao {
         return estado;
     }
     
-    public int getLastPunVenCod(){
-        Query query = session.createQuery("select max(E.id.punVenCod) from EnP1mPuntoVenta E ");
+    public int getLastPunVenCod(int sucCod){
+        Query query = session.createQuery("select max(E.id.punVenCod) from EnP1mPuntoVenta E "
+                + "where E.id.sucCod = " + sucCod);        
         List<EnP1mPuntoVenta> maximo = query.list();
         int value = 0;
         try {   //evitar errores cuando la tabla esta vacia

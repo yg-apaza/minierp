@@ -67,53 +67,54 @@
                         -->
             <br>
             <div class="col-md-12">
-                <div class="table-responsive">
-                    <table class="table table-hover">
-                        <thead>
+                            
+            
+                <table class="table table-striped table-hover ">
+                    <thead>
+                        <tr>
+                            <th>Codigo</th>
+                            <th>Nombre y Apellidos</th>
+                            <th>Fecha Nacimiento</th>
+                            <th>Estado Civil</th>
+                            <th>Género</th>
+                            <th>Login</th>
+                            <th>Tipo Usuario</th>
+                            <th>Sucursal</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <c:forEach var="u" items="${usuarios}">
                             <tr>
-                                <th>Codigo Usuario</th>
-                                <th>Nombre y Apellidos</th>
-                                <th>Fecha Nacimiento</th>
-                                <th>Estado Civil</th>
-                                <th>Sexo</th>
-                                <th>Login</th>
-                                <th>Tipo Usuario</th>
-                                <th>Sucursal</th>                                                                                
-                                <th class="text-right">Acciones </th>
+                                <td>${u.usuCod}</td>
+                                <td>${u.usuNom} ${u.usuApePat} ${u.usuApeMat}</td>
+                                <td><fmt:formatDate value="${u.usuFecNac}" pattern="dd/MM/yyyy"/></td>
+                                <td>${u.taGzzEstadoCivil.estCivDet}</td>
+                                <td>${u.usuSex}</td>
+                                <td>${u.usuLog}</td>
+                                <td>${u.taGzzTipoUsuario.tipUsuDet}</td>
+                                <td>${u.enP1mSucursal.sucDes}</td>
+
+                                <td class="text-right">
+                                    <a href="#" data-toggle="modal" data-target="#modificarModal" data-codusu="${u.usuCod}" data-nomusu="${u.usuNom}" 
+                                            data-apepatusu="${u.usuApePat}" data-apematusu="${u.usuApeMat}" data-logusu="${u.usuLog}" 
+                                           data-tipusu="${u.taGzzTipoUsuario.tipUsuCod}" data-sucusu="${u.enP1mSucursal.sucCod}" data-fecnacusu="${u.usuFecNac}"
+                                            data-estcivusu="${u.taGzzEstadoCivil.estCivCod}" data-sexusu="${u.usuSex}">
+                                        <i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i>
+                                    </a>
+                                    <a href="#" data-toggle="modal" data-target="#disableModal" data-codusu="${u.usuCod}" data-nomusu="${u.usuNom}" 
+                                            data-apepatusu="${u.usuApePat}" data-apematusu="${u.usuApeMat}">
+                                        <i class="fa fa-trash-o fa-2x" style="color: black;"></i>
+                                    </a>
+                                </td>
                             </tr>
-                        </thead>
-                        <tbody>
-                            <c:forEach var="u" items="${usuarios}">
-                                <tr>
-                                    <td>${u.usuCod}</td>
-                                    <td>${u.usuNom} ${u.usuApePat} ${u.usuApeMat}</td>
-                                    <td><fmt:formatDate value="${u.usuFecNac}" pattern="dd/MM/yyyy"/></td>
-                                    <td>${u.taGzzEstadoCivil.estCivDet}</td>
-                                    <td>${u.usuSex}</td>
-                                    <td>${u.usuLog}</td>
-                                    <td>${u.taGzzTipoUsuario.tipUsuDet}</td>
-                                    <td>${u.enP1mSucursal.sucDes}</td>
-                                    
-                                    <td class="text-right">
-                                        <a href="#" data-toggle="modal" data-target="#modificarModal" data-codusu="${u.usuCod}" data-nomusu="${u.usuNom}" 
-                                                data-apepatusu="${u.usuApePat}" data-apematusu="${u.usuApeMat}" data-logusu="${u.usuLog}" 
-                                               data-tipusu="${u.taGzzTipoUsuario.tipUsuCod}" data-sucusu="${u.enP1mSucursal.sucCod}" data-fecnacusu="${u.usuFecNac}"
-                                                data-estcivusu="${u.taGzzEstadoCivil.estCivCod}" data-sexusu="${u.usuSex}">
-                                            <i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i>
-                                        </a>
-                                        <a href="#" data-toggle="modal" data-target="#disableModal" data-codusu="${u.usuCod}" data-nomusu="${u.usuNom}" 
-                                                data-apepatusu="${u.usuApePat}" data-apematusu="${u.usuApeMat}">
-                                            <i class="fa fa-trash-o fa-2x" style="color: black;"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                            </c:forEach>
-                        </tbody>
+                        </c:forEach>
+                    </tbody>
                     </table>
                 </div>
             </div>
         </div>
-
+                        
         <div id="agregarModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">

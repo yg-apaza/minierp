@@ -10,204 +10,320 @@
     <jsp:attribute name="contenido">
         
         <div class="panel-body">
-            <h1 class="page-header">Agregar Preventa</h1>
-            <br>			
-            <div class="form-horizontal">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <div class=form-group>
-                                    <label class="col-sm-2"><h4>Nueva preventa</h4></label>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-4 pull-left">
-                                    <div class="pull-left input-group">
-                                        <input placeholder="Número de preventa" type="date" class="form-control" id="CodCabPre" name="CodCabPre"/>
-                                        <span class="input-group-addon"><i class="fa fa-file"></i></span>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4">
-                                    <select class="form-control" id="usuCod" name="usuCod">
-                                            <option value="1" selected>Roberto Perez Linares</option>
-                                    </select>
-                                </div> 
-                                <div class="col-sm-4 pull-right">
-                                    <div class="pull-right input-group" id="datetimepicker1">
-                                        <input placeholder="Fecha de preventa" type="date" class="form-control" name="usuFecPreVen" id="usuFecPreVen" readonly/>
-                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel-body">
-                            <form role=form" method="post" action="${pageContext.request.contextPath}/secured/ventas/preventa/addPreventa">
-                                <div class="form-group">
-                                    <div class="col-sm-6">
-                                        <select class="form-control" id="cliCod" name="cliCod">
-                                            <c:forEach items="${clientes}" var="t" varStatus="status">
-                                                <option value="${status.count}">${t.cliNom} ${t.cliApePat} ${t.cliApeMat}</option>
-                                            </c:forEach>
-                                        </select>
-                                        <label class="control-label">Días de plazo</label>    
-                                        <input type="number" class="form-control" placeholder=1 id="plazo" name="plazo">
-                                        <label class="control-label">Tipo de Moneda</label>
-                                        <select class="form-control" id="tipMon" name="tipMon">
-                                            <c:forEach items="${monedas}" var="m" varStatus="status">
-                                                <option value="${status.count}">${m.monDet}</option>
-                                            </c:forEach>
-                                        </select>
-                                    </div>
-                                    
-                                    <div class="col-sm-6">
-                                            <label class="control-label">Observaciones</label>
-                                            <textarea class="form-control" rows="3" id="obsrs">
-                                            </textarea>
-                                    </div>
-                                    
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-3"> 
-                                        <label class="control-label">Descuento</label>    
-                                        <input type="number" class="form-control" placeholder=1 id="discnt">
-                                    </div>
-                                    
-                                    <div class="col-sm-3">
-                                        <label class="control-label">IGV</label>  
-                                        <div class="input-group">                                        
-                                                <input type="text" class="form-control" value=0.19 id="igv" name="igv" readonly>
-                                                <span class="input-group-addon"><i class="fa fa-money"></i>
-                                                </span>
-                                        </div>
-                                    </div>
-                                    
-                                </div>
-                                <button type="submit" class="btn btn-primary">
-                                    <i class="fa fa-plus"></i>Agregar Preventa
-                                </button>
-                            </form>
-                            <div class="form-group">
-                                <label class="col-sm-2"><h4>Detalle Preventa</h4></label>
-                                <table id="tabla_productos" class="table table-hover table-bordered" style="width:100%">
-                                    <thead>
-                                        <tr>
-                                            <th style="width: 20%">Producto</th>
-                                            <th style="width: 20%">Clase</th>
-                                            <th style="width: 20%">Cantidad</th>
-                                            <th style="width: 20%">Valor Unitario</th>
-                                            <th style="width: 20%">Acciones</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
+            
+            <div class="row">
+                <div class="col-md-4">
+                    <h1 class="page-header">Agregar Preventa</h1>
+                </div>
+                <div class="col-md-4 col-md-offset-4"><br>  
+                    <div class="form-group input-group" >
+                        <span class="input-group-addon"><i class="fa fa-child"></i></span>
+                        <input type="text" class="form-control" name="usuCod" value="${usuario.usuCod} - ${usuario.usuNom} ${usuario.usuApePat} " readonly>
+                    </div>
+                    
+                </div>            		
+            </div>            
 
-                                    </tbody>
-                                </table>
-                                <div align="center">
-                                    <div class="col-sm-6">Total
-                                        <div class="col-sm-6 input-group">                                        
-                                            <input type="text" step="0.001" class="form-control"  name="total" id="total" readonly>
-                                            <span class="input-group-addon"><i class="fa fa-money"></i>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">Subtotal
-                                        <div class="col-sm-6 input-group">                                        
-                                            <input type="text" class="form-control" name="subtotal" id="subtotal" readonly>
-                                            <span class="input-group-addon"><i class="fa fa-money"></i>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <br>
-                                </div>
-                                <br>
-                                <br>
-                                <table class="table table-hover">
-                                    <br><tbody>                      
-                                        <tr name="fila_form">
-                                            <td><input type="text" class="form-control" placeholder="Producto" name="form_col1" id="form_col1"></td>
-                                            <td><input type="text" class="form-control" placeholder="Clase" id="form_col2" ></td>
-                                            <td><input type="text" class="form-control" placeholder="Cnt" id="form_col3" ></td>
-                                            <td><input type="number" step="0.001" class="form-control" placeholder="Pre. Uni" id="form_col4" ></td>
-                                            <td name="lel">
-                                                <button onclick="capturar(4)"><i class="fa fa-plus fa-2x"></i></button>
-                                                <button onclick="limpiarFila(4)"><i class="fa fa-trash-o fa-2x"></i></button>
-                                                <script>
-                                                    var totlFld=0;
-                                                    function capturar(numCol){
-                                                        var table=document.getElementById("tabla_productos");
-                                                        var rowCount = table.rows.length;
-                                                        var tr=table.insertRow(rowCount);
-                                                        tr.id="tabl_prods_fila"+rowCount;
-                                                        var cell=tr.insertCell(0);
-                                                        cell.innerHTML='<button onclick="eliminarFila(this.parentNode.parentNode.rowIndex)"><i class="fa fa-trash-o fa-2x"></i></button></td>';
-                                                        for(var i=0;i<numCol;i++){
-                                                            var cell=tr.insertCell(i);
-                                                            var valor=document.getElementById("form_col"+(i+1)).value;
-                                                            cell.innerHTML='<td>'+valor+'</td>';
-                                                        }
-                                                        totlFld+=parseFloat(valor);
-                                                        document.getElementById("subtotal").value=totlFld.toFixed(3);
-                                                        document.getElementById("total").value=parseFloat(totlFld+totlFld*document.getElementById("igv").value).toFixed(3);
-                                                        /***
-                                                        * GUARDANDO LOS DATOS DE LA TABLA
-                                                        *   */
-                                                       for(var i=0;i<rowCount;i++){
-                                                           localStorage.setItem('prod_fila'+(i+1),document.getElementById('tabl_prods_fila'+(i+1)).innerHTML);
-                                                       }
-                                                    };
-                                                    function eliminarFila(i){
-                                                            document.getElementById("tabla_productos").deleteRow(i);
-                                                    };
-                                                    function limpiarFila(numCol){
-                                                        for(var i=0;i<numCol;i++){
-                                                            document.getElementById("form_col"+(i+1)).value="";
-                                                        }
-                                                    }
-                                                </script>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>   
-                                <div align="center">
-                                    
-                                    <a onclick="enviarVenta()" class="btn btn-lg btn-success" href="${pageContext.request.contextPath}/secured/ventas/factura/addFactura" role="button">
-                                        <i class="fa fa-arrow-right" aria-hidden="true"></i>Generar Venta
-                                    </a>
-                                    <script>
-                                        function enviarVenta(){
-                                            var cliFld=document.getElementById("cliCod").value-1;
-                                                //var usrFld=document.getElementById("usuCod").value;
-                                                var dateFld=document.getElementById("usuFecPreVen").value;
-                                                var crncyFld=document.getElementById("tipMon").value;
-                                                var igvFld=document.getElementById("igv").value;
-                                                var ttlFld=document.getElementById("total").value;
-                                                var obsFld=document.getElementById("obsrs").value;
-                                            localStorage.removeItem('cliFld');
-                                            localStorage.removeItem('usrFld');
-                                            localStorage.removeItem('dateFld');
-                                            localStorage.removeItem('crncyFld');
-                                            localStorage.removeItem('igvFld');
-                                            localStorage.removeItem('ttlFld');
-                                            localStorage.removeItem('obsFld');
-                                            localStorage.setItem('cliFld',cliFld);
-                                            localStorage.setItem('dateFld',dateFld);
-                                            localStorage.setItem('crncyFld',crncyFld);
-                                            localStorage.setItem('igvFld',igvFld);
-                                            localStorage.setItem('ttlFld',ttlFld);
-                                            localStorage.setItem('obsFld',obsFld);
-                                            console.log('asdasd');
+            <div class="row">
+                    <div class="col-lg-12">  
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <form role=form" method="post" action="${pageContext.request.contextPath}/secured/ventas/preventa/addPreventa">                   
+                                    <div class="row">
+                                        <div class="col-xs-12 col-md-8">
+                                            <div class="row">
+                                                <div class="col-md-5">
+                                                    <div class="form-group input-group">
+                                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                        <input type="text" class="form-control" name="facVenCabCod" placeholder="Número de Factura" pattern="[0-9]{3}-[0-9]{6}">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-7">
+                                                    <div class="form-group input-group" >
+                                                        <span class="input-group-addon">Cliente</span>
+                                                        <select class="form-control" id="cliCod" name="cliCod">
+                                                            <c:forEach items="${clientes}" var="t" varStatus="status">
+                                                                <option value="${status.count}">${t.cliNom} ${t.cliApePat} ${t.cliApeMat}</option>
+                                                            </c:forEach>
+                                                        </select>
+                                                        <span class="input-group-addon">
+                                                            <a href="#" data-toggle="modal" data-target="#searchClient">
+                                                                <i class="fa fa-pencil-square-o" style="color: black;"></i>
+                                                            </a>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <div class="form-group input-group" >
+                                                        <span class="input-group-addon">IGV</span>
+                                                        <input type="number" class="form-control" name="facVenCabIgv" value="${empresa.empIgv}" id="facIgv" readOnly>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group input-group" >
+                                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                        <input type="date" class="form-control" name="facVenCabFec">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-5">
+                                                    <div class="form-group input-group" >
+                                                        <span class="input-group-addon"><i class="fa fa-money"></i></span>
+                                                        <select class="form-control" id="tipMon" name="tipMon">
+                                                            <c:forEach items="${monedas}" var="m" varStatus="status">
+                                                                <option value="${status.count}">${m.monDet}</option>
+                                                            </c:forEach>
+                                                        </select>                                                 
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group input-group" >
+                                                        <span class="input-group-addon">Duración</span>
+                                                        <input type="number" class="form-control" min="1" placeholder=1 id="plazo" name="plazo">
+                                                    </div>
+                                                </div>
 
-                                        }
-                                    </script>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6 col-md-4">
+                                            <textarea class="form-control" rows="6" name="facVenCabObs" placeholder="Observaciones"></textarea>
+                                        </div>
+                                    </div>
+                                </form>  
+                            </div>
+                        
+                            <div class="panel-body">
+                            
+                            <div class="form-group">
+                                <label><h4>Detalle Preventa</h4></label>
+                                <form id="detailsForm">
+                                    <div class="row">
+                                        <div class="col-xs-12 col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group input-group" >
+                                                        <span class="input-group-addon">Clase</i></span>
+                                                        <select class="form-control validate[required]" name="claProCod" id="classSelected" onchange="changingClasses()"> 
+                                                            <c:forEach items="${clases}" var="clase">
+                                                                <option value="${clase.claProCod}">${clase.claProDet}</option>
+                                                            </c:forEach>
+                                                        </select> 
+                                                        <span class="input-group-addon"><i class="fa fa-sitemap"></i></span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group input-group">
+                                                        <span class="input-group-addon">SubClase</span>
+                                                        <select class="form-control validate[required]" name="subClaProCod" id="subClassSelected" onchange="changingSubClasses()">
+                                                            <c:forEach items="${subclases}" var="subclase">
+                                                                <option value="${subclase.id.subClaProCod}">${subclase.subClaProDet}</option>
+                                                            </c:forEach>
+                                                        </select> 
+                                                        <span class="input-group-addon"><i class="fa fa-tasks"></i></span>
+                                                    </div>
+                                                </div> 
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group input-group" >
+                                                        <span class="input-group-addon">Producto</i></span>
+                                                        <select class="form-control validate[required]" name="proCod" id="productSelected">
+                                                            <c:forEach items="${productos}" var="producto">
+                                                                <option value="${producto.id.proCod}">${producto.proDet}</option>
+                                                            </c:forEach>
+                                                        </select> 
+                                                        <span class="input-group-addon"><i class="fa fa-tag"></i></span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-group input-group" >
+                                                        <span class="input-group-addon"><i class="fa fa-money"></i></span>
+                                                        <input type="number" class="form-control" id="priceSelected" readOnly>                                                    
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group input-group">
+                                                        <span class="input-group-addon">Cantidad</span>
+                                                        <input type="number" class="form-control" id="amountSelected" min="0" step="any" value="0" name="canPro">
+                                                        <span class="input-group-addon"><i class="fa fa-gear"></i></span>
+                                                    </div>
+                                                </div> 
+                                                <div class="col-md-1">
+                                                    <button type="button" class="btn btn-success" id="addDetail" onclick="addNewDetail()"><i class="fa fa-plus-square-o fa-1x"></i></button>
+                                                </div>
+                                            </div>
+                                        </div>                                    
+                                    </div>
+                                </form>
+                                
+                                <div class="table-responsive">
+                                    <table width="100%" class="table table-striped table-bordered table-hover" id="productTable">
+                                        <thead align="center">
+                                            <tr >
+                                                <th>Código</th>
+                                                <th>Cantidad</th>
+                                                <th>Descripción del Producto</th>
+                                                <th colspan="2">Precio Unitario</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>                                        
+                                        </tbody>
+                                    </table>
                                 </div>
+                                <div align="center">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="form-group input-group" >
+                                                <span class="input-group-addon">SubTotal</span>
+                                                <input type="number" class="form-control" name="facVenCabSubTot" id="facSub" value="0" readonly>
+                                                <span class="input-group-addon"><i class="fa fa-usd"></i></span>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-lg-6">
+                                            <div class="form-group input-group" >
+                                                <span class="input-group-addon">Total</i></span>
+                                                <input type="number" class="form-control" name="facVenCabTot" id="facTot" value="0" readonly>
+                                                <span class="input-group-addon"><i class="fa fa-usd"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                <div align="right">
+                                        <button type="submit" class="btn btn-primary">Registrar Preventa</button>
+                                </div>
+                                
+                                
                             </div>    
+                        </div>
+                    
                         </div>
                     </div>
             </div>
         </div>
-        <script type="text/javascript">
-            var d=new Date();
-            document.getElementById("usuFecPreVen").value=d.getFullYear()+'-'+
-                    ((d.getMonth()+1)<10 ? '0'+(d.getMonth()+1) : (d.getMonth()+1))+
-                    '-'+(d.getDate()<10 ? '0'+d.getDate() : d.getDate());
+        <script language="javascript">
+            $(document).ready(function () {
+                changingClasses();
+            });
+
+            $(document).ready(function () {
+                changingSubClasses();
+            });
+
+            $(document).ready(function () {
+                putPrice();
+            });
+
+            function putPrice() {
+                if ($('#productSelected')[0].value != "") {
+                    var codeCla = Number($("#classSelected").val());
+                    var codeSub = Number($("#subClassSelected").val());
+                    var codePro = Number($("#productSelected").val());
+                    var tag = true;
+                    <c:forEach items="${productos}" var="product">
+                        if ((${product.id.claProCod} == codeCla) && (${product.id.subClaProCod} == codeSub) && (${product.id.proCod} == codePro)) {
+                            tag = false;
+                            $('#priceSelected').val(${product.proPreUni});
+                            $('#amountSelected')[0].max = ${product.proStk};
+                        }
+                    </c:forEach>
+                    if (tag) {
+                        $('#priceSelected').val("");
+                    }
+                }
+            }
+
+            function changingClasses() {
+                $('#subClassSelected').empty();
+                var code = Number($("#classSelected").val());
+                var tag = true;
+            <c:forEach items="${subclases}" var="subclass">
+                if (${subclass.id.claProCod} == code) {
+                    tag = false;
+                    $('#subClassSelected').append($('<option>', {
+                        value: "${subclass.id.subClaProCod}",
+                        text: "${subclass.subClaProDet}"
+                    }));
+                }
+            </c:forEach>
+                if (tag) {
+                    $('#subClassSelected').append($('<option>', {
+                        value: "",
+                        text: "No existen subclases"
+                    }));
+                }
+                changingSubClasses();
+            }
+
+            function changingSubClasses() {
+                $('#productSelected').empty();
+                var codeCla = Number($("#classSelected").val());
+                var codeSub = Number($("#subClassSelected").val());
+                var tag = true;
+                <c:forEach items="${productos}" var="product">
+                    if ((${product.id.claProCod} == codeCla) && (${product.id.subClaProCod} == codeSub)) {
+                        tag = false;
+                        $('#productSelected').append($('<option>', {
+                            value: "${product.id.proCod}",
+                            text: "${product.proDet}"
+                        }));
+                    }
+                </c:forEach>
+                if (tag) {
+                    $('#productSelected').append($('<option>', {
+                        value: "",
+                        text: "No existen productos"
+                    }));
+                } else {
+                    putPrice();
+                }
+            }
+
+            $.validator.messages.max = "Stock superado";
+            
+            $(document).ready(function () {
+                $('#addDetail').on('click', function () {
+                    $('input[name="canPro"]').valid();
+                });
+            });
+            
+            $(document).ready(function () {
+                $('#productSelected').change(putPrice);
+            });
+            
+            /*$(document).ready(function () {
+                if($('#productSelected').val()==''){
+                    alert('Please, choose an option');
+                    return false;
+                }
+            });*/
+            
+            function getClient(tableID) {
+                try {
+                    var table = document.getElementById(tableID);
+                    var rowCount = table.rows.length;
+
+                    for (var i = 1; i < rowCount; i++) {
+                        var row = table.rows[i];
+                        var chkbox = row.cells[0].childNodes[1];
+                        if (true == chkbox.checked) {
+                            $('#clienteCodigo').val(row.cells[1].childNodes[0].data);
+                            $('#clientCode').val(row.id);
+                            break;
+                        }
+                    }
+                } catch (e) {
+                    alert(e);
+                }
+            }
+
+            function addNewDetail() {
+                $('#productTable tbody').append('<tr align="center"><td width="20%">First Value</td><td width="10%">Second Value</td><td width="55%">Third Value</td><td width="10%">Fourth Value</td><td width="5%"><button type="button" class="btn btn-danger" onclick="deleteRow()"><i class="fa fa-trash-o fa-1x"></i></button></td></tr>');         
+            }
         </script>
     </jsp:attribute>
 </minierptemplate:template>

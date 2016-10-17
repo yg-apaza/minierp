@@ -401,16 +401,6 @@
     </servlet-mapping>
     <servlet>
         <description/>
-        <display-name>addClienteController</display-name>
-        <servlet-name>addClienteController</servlet-name>
-        <servlet-class>org.epis.minierp.controller.ventas.AddClienteController</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>addClienteController</servlet-name>
-        <url-pattern>/secured/ventas/clientes/addCliente</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <description/>
         <display-name>addFacturaController</display-name>
         <servlet-name>addFacturaController</servlet-name>
         <servlet-class>org.epis.minierp.controller.ventas.AddFacturaController</servlet-class>

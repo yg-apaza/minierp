@@ -43,11 +43,11 @@
         
         </script>
         
-       <div id="pagel-body">
+       <div class="panel-body">
 	
             <div class="row">
                 <div class="col-lg-12">
-                    <br><h1 class="page-header"> Stock</h1>
+                    <h1 class="page-header"> Stock</h1>
                 </div>
             </div> 
         
