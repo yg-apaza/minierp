@@ -43,7 +43,7 @@
                                 <th>Det Sucursal</th>
                                 <th>Cod Punto de Venta</th>
                                 <th>Descripcion</th>
-                                <th>Estado de Registro</th>
+                                <th>Registro</th>
                                 <th class="text-right">Acciones</th>
                             </tr>
                         </thead>
@@ -72,7 +72,7 @@
         </div>
 
         <div id="agregarModal" class="modal fade" role="dialog">
-            <div class="modal-dialog modal-sm">
+            <div class="modal-dialog modal-md">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -104,7 +104,7 @@
         </div>
 
         <div id="modificarModal" class="modal fade" role="dialog">
-            <div class="modal-dialog modal-sm">
+            <div class="modal-dialog modal-md">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -134,7 +134,7 @@
         </div>
 
         <div id="disableModal" class="modal fade" role="dialog">
-            <div class="modal-dialog modal-sm">
+            <div class="modal-dialog modal-md">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -157,8 +157,8 @@
         </div>
 
         <div id="estadosModal" class="modal fade" role="dialog">
-            <div class="modal-dialog modal-sm">
-                <div class="modal-content" style="width: 800px;">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Reactivar o Eliminar Punto de Venta</h4>
@@ -172,7 +172,7 @@
                                         <th>Det Sucursal</th>
                                         <th>Cod Punto de Venta</th>
                                         <th>Descripcion</th>
-                                        <th>Estado de Registro</th>
+                                        <th>Registro</th>
                                         <th class="text-right">Acciones</th>
                                     </tr>
                                 </thead>
@@ -206,7 +206,7 @@
         </div>
 
         <div id="activateModal" class="modal fade" role="dialog">
-            <div class="modal-dialog modal-sm">
+            <div class="modal-dialog modal-md">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -229,7 +229,7 @@
         </div>
 
         <div id="deleteModal" class="modal fade" role="dialog">
-            <div class="modal-dialog modal-sm">
+            <div class="modal-dialog modal-md">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>

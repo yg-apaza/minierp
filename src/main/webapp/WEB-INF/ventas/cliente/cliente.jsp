@@ -49,7 +49,7 @@
                                 <th>Tel. Celular</th>
                                 <th>Email</th>
                                 <th>Estado Civil</th>
-                                <th>Estado de Registro</th>
+                                <th>Registro</th>
                                 <th class="text-right">Acciones</th>
                             </tr>
                         </thead>
@@ -91,8 +91,8 @@
         </div>
 
         <div id="agregarModal" class="modal fade" role="dialog">
-            <div class="modal-dialog modal-sm">
-                <div class="modal-content" style="width: 800px;">
+            <div class="modal-dialog modal-md">
+                <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Agregar Cliente</h4>
@@ -171,8 +171,8 @@
         </div>
 
         <div id="modificarModal" class="modal fade" role="dialog">
-            <div class="modal-dialog modal-sm">
-                <div class="modal-content" style="width: 800px;">
+            <div class="modal-dialog modal-md">
+                <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Modificar Cliente</h4>
@@ -251,7 +251,7 @@
         </div>
 
         <div id="disableModal" class="modal fade" role="dialog">
-            <div class="modal-dialog modal-sm">
+            <div class="modal-dialog modal-md">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -273,8 +273,8 @@
         </div>
 
         <div id="estadosModal" class="modal fade" role="dialog">
-            <div class="modal-dialog modal-sm">
-                <div class="modal-content" style="width: 800px;">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Reactivar o Eliminar Clientes</h4>
@@ -289,12 +289,8 @@
                                         <th>Ape. Paterno</th>
                                         <th>Ape. Materno</th>
                                         <th>Sexo</th>
-                                        <th>Direccion</th>
-                                        <th>Tel. Fijo</th>
-                                        <th>Tel. Celular</th>
                                         <th>Email</th>
-                                        <th>Estado Civil</th>
-                                        <th>Estado de Registro</th>
+                                        <th>Registro</th>
                                         <th class="text-right">Acciones</th>
                                     </tr>
                                 </thead>
@@ -306,11 +302,7 @@
                                             <td>${cli.cliApePat}</td>
                                             <td>${cli.cliApeMat}</td>
                                             <td>${cli.cliSex}</td>
-                                            <td>${cli.cliDir}</td>
-                                            <td>${cli.cliTelFij}</td>
-                                            <td>${cli.cliTelCel}</td>
                                             <td>${cli.cliEmail}</td>
-                                            <td>${cli.taGzzEstadoCivil.estCivCod} - ${cli.taGzzEstadoCivil.estCivDet}</td>
                                             <td>${cli.estRegCod}</td>
 
                                             <td class="text-right">
@@ -339,7 +331,7 @@
         </div>
 
         <div id="activateModal" class="modal fade" role="dialog">
-            <div class="modal-dialog modal-sm">
+            <div class="modal-dialog modal-md">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -361,7 +353,7 @@
         </div>
 
         <div id="deleteModal" class="modal fade" role="dialog">
-            <div class="modal-dialog modal-sm">
+            <div class="modal-dialog modal-md">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
