@@ -41,7 +41,7 @@ public class ClienteController extends HttpServlet {
                 String cliDirCreate = request.getParameter("cliDir");
                 String cliTelFijCreate = request.getParameter("cliTelFij");
                 String cliTelCelCreate = request.getParameter("cliTelCel");
-                String CliEmailCreate = request.getParameter("CliEmail");
+                String CliEmailCreate = request.getParameter("cliEmail");
                 int estCivCodCreate = Integer.parseInt(request.getParameter("estCivCod"));
                 
                 clienteBusiness.create(cliCodCreate, cliNomCreate, cliApePatCreate, cliApeMatCreate, 
@@ -59,7 +59,7 @@ public class ClienteController extends HttpServlet {
                 String cliDirUpdate = request.getParameter("cliDir");
                 String cliTelFijUpdate = request.getParameter("cliTelFij");
                 String cliTelCelUpdate = request.getParameter("cliTelCel");
-                String CliEmailUpdate = request.getParameter("CliEmail");
+                String CliEmailUpdate = request.getParameter("cliEmail");
                 int estCivCodUpdate = Integer.parseInt(request.getParameter("estCivCod"));
                 
                 clienteBusiness.update(cliCodUpdate, cliNomUpdate, cliApePatUpdate, cliApeMatUpdate, 
@@ -74,12 +74,12 @@ public class ClienteController extends HttpServlet {
                 
             case "activate":
                 String cliCodActivate = request.getParameter("cliCod");
-                clienteBusiness.disable(cliCodActivate);
+                clienteBusiness.activate(cliCodActivate);
                 break;
                 
             case "delete":
                 String cliCodDelete = request.getParameter("cliCod");
-                clienteBusiness.disable(cliCodDelete);
+                clienteBusiness.delete(cliCodDelete);
                 break;
                 
         }

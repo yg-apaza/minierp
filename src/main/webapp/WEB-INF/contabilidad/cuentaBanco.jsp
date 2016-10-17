@@ -8,7 +8,7 @@
     <jsp:attribute name="contenido">
         <div class="panel-body">
             <h1 class="page-header">Cuentas Bancarias
-            <a href="#" class="btn btn-success btn-circle" data-toggle="modal" data-target="#agregarModal"><i class="fa fa-plus"></i></a></h1>
+                <a href="#" class="btn btn-success btn-circle" data-toggle="modal" data-target="#agregarModal"><i class="fa fa-plus"></i></a></h1>
             <br>
             <br>
             <div class="col-md-3">
@@ -52,7 +52,7 @@
                                         <a href="#" data-toggle="modal" data-target="#modificarModal" data-codigo="${cb.cueBanCod}" data-nrocuenta="${cb.cueBanNum}" data-codbanco="${cb.taGzzBanco.banCod}" data-cuenum="${cb.enP3mCuenta.cueNum}">
                                             <i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i>
                                         </a>
-                                        <a href="#" data-toggle="modal" data-target="#eliminarModal" data-codigo="${cb.cueBanCod}"data-nrocuenta="${cb.cueBanNum}" data-detbanco="${cb.taGzzBanco.banDet}">
+                                        <a href="#" data-toggle="modal" data-target="#eliminarModal" data-codigo="${cb.cueBanCod}" data-nrocuenta="${cb.cueBanNum}" data-detbanco="${cb.taGzzBanco.banDet}">
                                             <i class="fa fa-trash-o fa-2x" style="color: black;"></i>
                                         </a>
                                     </td>
@@ -63,7 +63,7 @@
                 </div>
             </div>
         </div>
-                    
+
         <div id="agregarModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-sm">
                 <div class="modal-content">
@@ -75,11 +75,11 @@
                         <div class="modal-body">
                             <input type="hidden" name="accion" value="create">
                             <div class="form-group">
-                            <label>Banco:</label>
+                                <label>Banco:</label>
                                 <select class="form-control" name="banCod">
-                                <c:forEach var="b" items="${bancos}">
-                                    <option value="${b.banCod}">${b.banDet}</option>
-                                </c:forEach>
+                                    <c:forEach var="b" items="${bancos}">
+                                        <option value="${b.banCod}">${b.banDet}</option>
+                                    </c:forEach>
                                 </select>
                             </div>
                             <div class="form-group">
@@ -114,7 +114,7 @@
                 </div>                                        
             </div>
         </div>
-                        
+
         <div id="modificarModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-sm">
                 <div class="modal-content">
@@ -125,13 +125,13 @@
                     <form id="updateForm" method="post" action="${pageContext.request.contextPath}/secured/contabilidad/cuentabancaria">
                         <div class="modal-body">
                             <div class="form-group">
-                            <input type="hidden" name="accion" value="update">
-                            <input type="hidden" name="cueBanCod" id="updateCueBanCod">
-                            <label>Banco:</label>
+                                <input type="hidden" name="accion" value="update">
+                                <input type="hidden" name="cueBanCod" id="updateCueBanCod">
+                                <label>Banco:</label>
                                 <select class="form-control" name="banCod" id="updateBanCod">
-                                <c:forEach var="b" items="${bancos}">
-                                    <option value="${b.banCod}">${b.banDet}</option>
-                                </c:forEach>
+                                    <c:forEach var="b" items="${bancos}">
+                                        <option value="${b.banCod}">${b.banDet}</option>
+                                    </c:forEach>
                                 </select>
                             </div>
                             <div class="form-group">
@@ -151,7 +151,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div id="eliminarModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-sm">
                 <div class="modal-content">
@@ -176,30 +176,30 @@
         <script>
             var updateModal = $("#modificarModal");
             var deleteModal = $("#eliminarModal");
-            
+
             var updateCueBanCod = $("#updateCueBanCod");
             var updateCueBanNum = $("#updateCueBanNum");
             var updateBanCod = $("#updateBanCod");
             var updateCueNum = $("#updateCueNum");
-            
+
             var deleteCueBanCod = $("#deleteCueBanCod");
             var deleteCueBanNum = $("#deleteCueBanNum");
             var deleteBanDet = $("#deleteBanDet");
-            
-            
-            updateModal.on('show.bs.modal', function(e){
+
+
+            updateModal.on('show.bs.modal', function (e) {
                 updateCueBanCod.val($(e.relatedTarget).data('codigo'));
                 updateCueBanNum.val($(e.relatedTarget).data('nrocuenta'));
                 updateBanCod.val($(e.relatedTarget).data('codbanco'));
                 updateCueNum.val($(e.relatedTarget).data('cuenum'));
             });
-            
-            deleteModal.on('show.bs.modal', function(e){
+
+            deleteModal.on('show.bs.modal', function (e) {
                 deleteCueBanCod.val($(e.relatedTarget).data('codigo'));
                 deleteCueBanNum.text($(e.relatedTarget).data('nrocuenta'));
                 deleteBanDet.text($(e.relatedTarget).data('detbanco'));
             });
-            
+
             $("#createForm").validate({
                 rules: {
                     cueBanNum: {
@@ -213,11 +213,11 @@
                         number: "Solo puede contener números"
                     }
                 },
-                submitHandler: function(form) {
+                submitHandler: function (form) {
                     form.submit();
                 }
             });
-            
+
             $("#updateForm").validate({
                 rules: {
                     cueBanNum: {
@@ -231,7 +231,7 @@
                         number: "Solo puede contener números"
                     }
                 },
-                submitHandler: function(form) {
+                submitHandler: function (form) {
                     form.submit();
                 }
             });
