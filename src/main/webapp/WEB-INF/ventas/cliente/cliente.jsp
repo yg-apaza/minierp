@@ -13,17 +13,17 @@
             </h1>     
             <div class="row">
                 <div class="col-md-4">
-                    <a href="${pageContext.request.contextPath}/secured/general/reporte?type=pdf&&report=clientes&&jdbc=false&&key=null&&value=null" class="btn btn-outline btn-danger btn-lg btn-block">
+                    <a href="${pageContext.request.contextPath}/secured/general/reporte?type=pdf&&report=clientes&&jdbc=true&&key=null&&value=null" class="btn btn-outline btn-danger btn-lg btn-block">
                         <i class="fa fa-file-pdf-o"></i>
                         Reporte [PDF]
                     </a></div>
                 <div class="col-md-4">
-                    <a href="${pageContext.request.contextPath}/secured/general/reporte?type=xls&&report=clientes&&jdbc=false&&key=null&&value=null" class="btn btn-outline btn-success btn-lg btn-block">
+                    <a href="${pageContext.request.contextPath}/secured/general/reporte?type=xls&&report=clientes&&jdbc=true&&key=null&&value=null" class="btn btn-outline btn-success btn-lg btn-block">
                         <i class="fa fa-file-excel-o"></i>
                         Reporte [XLS]
                     </a></div>
                 <div class="col-md-4">
-                    <a href="${pageContext.request.contextPath}/secured/general/reporte?type=doc&&report=clientes&&jdbc=false&&key=null&&value=null" class="btn btn-outline btn-primary btn-lg btn-block">
+                    <a href="${pageContext.request.contextPath}/secured/general/reporte?type=doc&&report=clientes&&jdbc=true&&key=null&&value=null" class="btn btn-outline btn-primary btn-lg btn-block">
                         <i class="fa fa-file-word-o"></i>
                         Reporte [DOC]
                     </a></div>
