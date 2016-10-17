@@ -10,82 +10,102 @@
     <jsp:attribute name="contenido">
         
         <div class="panel-body">
-            <h1 class="page-header">Agregar Preventa</h1>
-            <br>			
-            <div class="form-horizontal">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <div class=form-group>
-                                    <label class="col-sm-2"><h4>Nueva preventa</h4></label>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-4 pull-left">
-                                    <div class="pull-left input-group">
-                                        <input placeholder="Número de preventa" type="date" class="form-control" id="CodCabPre" name="CodCabPre"/>
-                                        <span class="input-group-addon"><i class="fa fa-file"></i></span>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4">
-                                    <select class="form-control" id="usuCod" name="usuCod">
-                                            <option value="1" selected>Roberto Perez Linares</option>
-                                    </select>
-                                </div> 
-                                <div class="col-sm-4 pull-right">
-                                    <div class="pull-right input-group" id="datetimepicker1">
-                                        <input placeholder="Fecha de preventa" type="date" class="form-control" name="usuFecPreVen" id="usuFecPreVen" readonly/>
-                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel-body">
-                            <form role=form" method="post" action="${pageContext.request.contextPath}/secured/ventas/preventa/addPreventa">
-                                <div class="form-group">
-                                    <div class="col-sm-6">
-                                        <select class="form-control" id="cliCod" name="cliCod">
-                                            <c:forEach items="${clientes}" var="t" varStatus="status">
-                                                <option value="${status.count}">${t.cliNom} ${t.cliApePat} ${t.cliApeMat}</option>
-                                            </c:forEach>
-                                        </select>
-                                        <label class="control-label">Días de plazo</label>    
-                                        <input type="number" class="form-control" placeholder=1 id="plazo" name="plazo">
-                                        <label class="control-label">Tipo de Moneda</label>
-                                        <select class="form-control" id="tipMon" name="tipMon">
-                                            <c:forEach items="${monedas}" var="m" varStatus="status">
-                                                <option value="${status.count}">${m.monDet}</option>
-                                            </c:forEach>
-                                        </select>
-                                    </div>
-                                    
-                                    <div class="col-sm-6">
-                                            <label class="control-label">Observaciones</label>
-                                            <textarea class="form-control" rows="3" id="obsrs">
-                                            </textarea>
-                                    </div>
-                                    
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-3"> 
-                                        <label class="control-label">Descuento</label>    
-                                        <input type="number" class="form-control" placeholder=1 id="discnt">
-                                    </div>
-                                    
-                                    <div class="col-sm-3">
-                                        <label class="control-label">IGV</label>  
-                                        <div class="input-group">                                        
-                                                <input type="text" class="form-control" value=0.19 id="igv" name="igv" readonly>
-                                                <span class="input-group-addon"><i class="fa fa-money"></i>
-                                                </span>
+            
+            <div class="row">
+                <div class="col-md-4"><br>
+                    <h1 class="page-header">Agregar Preventa</h1>
+                </div>
+                
+            
+                <div class="col-md-4 col-md-offset-4"><br>  
+                    <div class="form-group input-group" >
+                        <span class="input-group-addon"><i class="fa fa-child"></i></span>
+                        <input type="text" class="form-control" name="usuCod" value="${usuario.usuCod} - ${usuario.usuNom} ${usuario.usuApePat} " readonly>
+                    </div>
+                    
+                </div>            		
+            </div>            
+            	
+            
+            <div class="row">
+                    <div class="col-lg-12">  
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <form role=form" method="post" action="${pageContext.request.contextPath}/secured/ventas/preventa/addPreventa">                   
+                                    <div class="row">
+                                        <div class="col-xs-12 col-md-8">
+                                            <div class="row">
+                                                <div class="col-md-5">
+                                                    <div class="form-group input-group">
+                                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                        <input type="text" class="form-control" name="facVenCabCod" placeholder="Número de Factura" pattern="[0-9]{3}-[0-9]{6}">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-7">
+                                                    <div class="form-group input-group" >
+                                                        <span class="input-group-addon">Cliente</span>
+                                                        <select class="form-control" id="cliCod" name="cliCod">
+                                                            <c:forEach items="${clientes}" var="t" varStatus="status">
+                                                                <option value="${status.count}">${t.cliNom} ${t.cliApePat} ${t.cliApeMat}</option>
+                                                            </c:forEach>
+                                                        </select>
+                                                        <span class="input-group-addon">
+                                                            <a href="#" data-toggle="modal" data-target="#searchClient">
+                                                                <i class="fa fa-pencil-square-o" style="color: black;"></i>
+                                                            </a>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <div class="form-group input-group" >
+                                                        <span class="input-group-addon">IGV</span>
+                                                        <input type="number" class="form-control" name="facVenCabIgv" value="${empresa.empIgv}" id="facIgv" readOnly>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group input-group" >
+                                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                        <input type="date" class="form-control" name="facVenCabFec">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-5">
+                                                    <div class="form-group input-group" >
+                                                        <span class="input-group-addon"><i class="fa fa-money"></i></span>
+                                                        <select class="form-control" id="tipMon" name="tipMon">
+                                                            <c:forEach items="${monedas}" var="m" varStatus="status">
+                                                                <option value="${status.count}">${m.monDet}</option>
+                                                            </c:forEach>
+                                                        </select>                                                 
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group input-group" >
+                                                        <span class="input-group-addon">Duración</span>
+                                                        <input type="number" class="form-control" min="1" placeholder=1 id="plazo" name="plazo">
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6 col-md-4">
+                                            <textarea class="form-control" rows="6" name="facVenCabObs" placeholder="Observaciones"></textarea>
                                         </div>
                                     </div>
                                     
-                                </div>
-                                <button type="submit" class="btn btn-primary">
-                                    <i class="fa fa-plus"></i>Agregar Preventa
-                                </button>
-                            </form>
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="fa fa-plus"></i>Agregar Preventa
+                                    </button>
+                                </form>  
+                            </div>
+                        
+                            <div class="panel-body">
+                            
                             <div class="form-group">
-                                <label class="col-sm-2"><h4>Detalle Preventa</h4></label>
+                                <label><h4>Detalle Preventa</h4></label>
                                 <table id="tabla_productos" class="table table-hover table-bordered" style="width:100%">
                                     <thead>
                                         <tr>
@@ -97,34 +117,10 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-
-                                    </tbody>
-                                </table>
-                                <div align="center">
-                                    <div class="col-sm-6">Total
-                                        <div class="col-sm-6 input-group">                                        
-                                            <input type="text" step="0.001" class="form-control"  name="total" id="total" readonly>
-                                            <span class="input-group-addon"><i class="fa fa-money"></i>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">Subtotal
-                                        <div class="col-sm-6 input-group">                                        
-                                            <input type="text" class="form-control" name="subtotal" id="subtotal" readonly>
-                                            <span class="input-group-addon"><i class="fa fa-money"></i>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <br>
-                                </div>
-                                <br>
-                                <br>
-                                <table class="table table-hover">
-                                    <br><tbody>                      
                                         <tr name="fila_form">
                                             <td><input type="text" class="form-control" placeholder="Producto" name="form_col1" id="form_col1"></td>
                                             <td><input type="text" class="form-control" placeholder="Clase" id="form_col2" ></td>
-                                            <td><input type="text" class="form-control" placeholder="Cnt" id="form_col3" ></td>
+                                            <td><input type="number" min="1" class="form-control" placeholder="Cnt" id="form_col3" ></td>
                                             <td><input type="number" step="0.001" class="form-control" placeholder="Pre. Uni" id="form_col4" ></td>
                                             <td name="lel">
                                                 <button onclick="capturar(4)"><i class="fa fa-plus fa-2x"></i></button>
@@ -165,7 +161,27 @@
                                             </td>
                                         </tr>
                                     </tbody>
-                                </table>   
+                                </table>
+                                <div align="center">
+                                    <div class="col-sm-6">Total
+                                        <div class="col-sm-6 input-group">                                        
+                                            <input type="text" step="0.001" class="form-control"  name="total" id="total" readonly>
+                                            <span class="input-group-addon"><i class="fa fa-money"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">Subtotal
+                                        <div class="col-sm-6 input-group">                                        
+                                            <input type="text" class="form-control" name="subtotal" id="subtotal" readonly>
+                                            <span class="input-group-addon"><i class="fa fa-money"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <br>
+                                </div>
+                                <br>
+                                <br>
+                                  
                                 <div align="center">
                                     
                                     <a onclick="enviarVenta()" class="btn btn-lg btn-success" href="${pageContext.request.contextPath}/secured/ventas/factura/addFactura" role="button">
@@ -199,6 +215,8 @@
                                     </script>
                                 </div>
                             </div>    
+                        </div>
+                    
                         </div>
                     </div>
             </div>
