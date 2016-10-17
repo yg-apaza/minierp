@@ -11,7 +11,7 @@
             
             <div class="row">
                 <div class="col-lg-12">
-                    <br><h1 class="page-header"> Kardex</h1>
+                    <h1 class="page-header"> Kardex</h1>
                 </div>
             </div>
             
@@ -80,7 +80,7 @@
             <div class="row">
                 <br><br>
                 <div class="table-responsive">
-                    <table class="table table-bordered   table-striped">
+                    <table class="table table-bordered table-striped table-hover">
                         <thead class="thead-inverse" >
                             <tr class="success">
                                 <th style="text-align: center;">Fecha</th>

@@ -8,10 +8,10 @@
         <title>MiniERP - Preventa</title>
     </jsp:attribute>
     <jsp:attribute name="contenido">
-        <div id ="panel-body">
+        <div class ="panel-body">
             <div class="row">
                 <div class="col-lg-12">
-                    <br><h1 class="page-header"> Actualizar Preventas por Lotes </h1>
+                    <h1 class="page-header"> Actualizar Preventas por Lotes </h1>
                 </div>
             </div>
             <div class="row">
@@ -46,7 +46,7 @@
             </div>
             <br>
             <div id="printarea">
-                <table class = "table table-bordered table-condensed"  id = "id_table">
+                <table class = "table table-bordered table-striped table-hover"  id = "id_table">
                 <thead>
                     <tr>
                         <th style="text-align: center">Código Preventa</th>

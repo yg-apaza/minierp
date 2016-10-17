@@ -12,11 +12,9 @@
         <div class="panel-body">
             
             <div class="row">
-                <div class="col-md-4"><br>
+                <div class="col-md-4">
                     <h1 class="page-header">Agregar Preventa</h1>
                 </div>
-                
-            
                 <div class="col-md-4 col-md-offset-4"><br>  
                     <div class="form-group input-group" >
                         <span class="input-group-addon"><i class="fa fa-child"></i></span>
@@ -25,8 +23,7 @@
                     
                 </div>            		
             </div>            
-            	
-            
+
             <div class="row">
                     <div class="col-lg-12">  
                         <div class="panel panel-default">
