@@ -9,14 +9,11 @@
     </jsp:attribute>
     <jsp:attribute name="contenido">
         <div class="panel-body">
-            <h1 class="page-header">Usuarios</h1>
-            <br>
-            <a class="btn btn-success" href="${pageContext.request.contextPath}/secured/configuracion/usuario/usuarios/add" role="button">
-                <i class="fa fa-plus"></i>
-                Agregar usuario
-            </a>
-            <br>
-            <br>
+            <h1 class="page-header">Usuarios
+                <a href="${pageContext.request.contextPath}/secured/configuracion/usuario/usuarios/add" class="btn btn-success btn-circle">
+                    <i class="fa fa-plus"></i>
+                </a>
+            </h1>
             <div class="table-responsive">
                 <table class="table table-bordered table-striped table-hover">
                     <thead>
