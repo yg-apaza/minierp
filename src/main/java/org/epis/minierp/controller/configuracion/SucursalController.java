@@ -26,12 +26,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.epis.minierp.business.configuracion.EnP1mSucursalBusiness;
+import org.epis.minierp.dao.general.EnP1mPuntoVentaDao;
 import org.epis.minierp.dao.general.EnP1mSucursalDao;
+import org.epis.minierp.model.EnP1mPuntoVenta;
 import org.epis.minierp.model.EnP1mSucursal;
 
 public class SucursalController extends HttpServlet
 {	
     private static final long serialVersionUID = 1L;
+    EnP1mPuntoVentaDao PuntoVentaDao;
+  // 
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {       
@@ -54,6 +58,8 @@ public class SucursalController extends HttpServlet
         EnP1mSucursal s = new EnP1mSucursal();
         EnP1mSucursalBusiness actions = new EnP1mSucursalBusiness();
         
+        //List<EnP1mPuntoVenta> puntoventa = PuntoVentaDao.getAllActiveOrdered();
+        
         switch(action) {
             case "create":                
                 String sucDes = request.getParameter("sucDes");
@@ -73,7 +79,7 @@ public class SucursalController extends HttpServlet
                 break;
             case "disable":
                 int disableSucCod = Integer.parseInt(request.getParameter("sucCod"));
-                actions.disable(disableSucCod);
+                actions.disable(disableSucCod);              
                 break;
                 
             case "activate":
