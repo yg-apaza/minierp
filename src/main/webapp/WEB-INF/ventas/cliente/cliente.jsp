@@ -16,16 +16,35 @@
                 <div class="form-horizontal">
                     <div class="form-group">
                         <label class="control-label col-sm-2">DNI</label>
-                        <div class="col-lg-6">
+                        <div class="col-lg-4">
                             <input type="text" class="form-control" placeholder="Codigo" name="dniCli">
                         </div>
                         <div class="col-lg-6">
                             <button type="submit" class="btn btn-primary" name="buscarCliente">Buscar <i class="fa fa-search-plus fa-1x"></i></button>
                             <button type="submit" class="btn btn-primary" name="todos">Todos <i class="fa fa-child"></i></button>
                             <button type="button" data-toggle="modal" data-target="#addCliente" class="btn btn-success">Agregar cliente <i class="fa fa-plus"></i></button>
-                        </div>        
+                        </div>
                     </div>
-                </div>  
+                </div> 
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="col-lg-offset-1">
+                            <label class="control-label col-lg-1">Reporte</label>
+                        </div>
+                        <div class="col-lg-3">
+                            <a href="${pageContext.request.contextPath}/secured/general/reporte?type=pdf&&report=clientes&&jdbc=true&&key=null&&value=null" class="btn btn-danger">
+                                <i class="fa fa-file-pdf-o"></i>
+                            </a>
+                            <a href="${pageContext.request.contextPath}/secured/general/reporte?type=xls&&report=clientes&&jdbc=true&&key=null&&value=null" class="btn btn-success">
+                                <i class="fa fa-file-excel-o"></i> 
+                            </a>
+                            <a href="${pageContext.request.contextPath}/secured/general/reporte?type=doc&&report=clientes&&jdbc=true&&key=null&&value=null" class="btn  btn-primary">
+                                <i class="fa fa-file-word-o"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <br>
                 <div class="table-responsive">
                     <table class="table table-hover">
                         <thead>
@@ -63,95 +82,95 @@
                 </div>
             </form>
         </div>
-                            
-        <div id="addCliente" class="modal fade" role="dialog"><div class="modal-dialog"><div class="modal-content">
-             
-            <!-- TITULO-->
-            <div class="modal-header"> <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Agregar Cliente</h4>
-            </div>
-            <!-- FIN_TITULO -->
 
-            <form role="form" method="post" action="${pageContext.request.contextPath}/secured/ventas/clientes/addCliente">
-            <!-- CONTENIDO -->
-            <div class="modal-body">   
-                <div class="form-horizontal">
-                    <div class="panel panel-default">    
-                        <div class="panel-heading">                       
-                            <div class="form-group">
-                                <div class="col-sm-6">                               
-                                    <input type="text" class="form-control" placeholder="Codigo Cliente" name="codCli">
-                                </div>
-                                <div class="col-sm-6">                               
-                                        <input type="text" class="form-control" placeholder="Nombre Cliente" name="nomCli">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-6">                               
-                                        <input type="text" class="form-control" placeholder="Apellido Paterno Cliente" name="apePatCli">
-                                </div>
-                                <div class="col-sm-6">                               
-                                        <input type="text" class="form-control" placeholder="Apellido Materno Cliente" name="apeMatCli">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel-body">
-                            <div class="form-group">
-                                <div class="col-sm-12">
-                                    <label class="control-label">Direccion</label>
-                                    <input type="text" class="form-control" placeholder="Dirección" name="dirCli">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-6">
-                                    <label class="control-label">Estado Civil</label>
-                                    <select class="form-control" name="estCivCod">
-                                        <option value="1">Soltero</option>
-                                        <option value="2">Casado</option>
-                                        <option value="3">Divorciado</option>
-                                        <option value="4">Viudo</option>
-                                    </select>
-                                </div>
-                                <div class="col-sm-6">
-                                    <label class="control-label">Género</label>
-                                    <select class="form-control" name="cliSex">
-                                        <option value="M">Masculino</option>
-                                        <option value="F">Femenino</option>
-                                        <option value="N" selected="selected">No especifica</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-6">
-                                    <label class="control-label">Teléfono Fijo</label>
-                                    <input type="text" class="form-control" placeholder="Teléfono Fijo" name="telFijCli">
-                                </div>
-                                <div class="col-sm-6">
-                                    <label class="control-label">Teléfono Celular</label>
-                                    <input type="text" class="form-control" placeholder="Teléfono Celular" name="telCelCli">
-                                </div>                                
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-12">
-                                    <label class="control-label">Email</label>
-                                     <input type="text" class="form-control" placeholder="Email" name="emailCli">      
-                                </div>                               
-                            </div> 
-                        </div>
+        <div id="addCliente" class="modal fade" role="dialog"><div class="modal-dialog"><div class="modal-content">
+
+                    <!-- TITULO-->
+                    <div class="modal-header"> <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Agregar Cliente</h4>
                     </div>
-                </div>               
-            </div>
-            <!-- FIN CONTENIDO-->
-              
-            <!-- PIE -->
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                <button type="submit" class="btn btn-default" >Agregar</button>
-            </div>
-            <!-- FIN PIE -->
-            </form>
-        </div></div></div>
+                    <!-- FIN_TITULO -->
+
+                    <form role="form" method="post" action="${pageContext.request.contextPath}/secured/ventas/clientes/addCliente">
+                        <!-- CONTENIDO -->
+                        <div class="modal-body">   
+                            <div class="form-horizontal">
+                                <div class="panel panel-default">    
+                                    <div class="panel-heading">                       
+                                        <div class="form-group">
+                                            <div class="col-sm-6">                               
+                                                <input type="text" class="form-control" placeholder="Codigo Cliente" name="codCli">
+                                            </div>
+                                            <div class="col-sm-6">                               
+                                                <input type="text" class="form-control" placeholder="Nombre Cliente" name="nomCli">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-sm-6">                               
+                                                <input type="text" class="form-control" placeholder="Apellido Paterno Cliente" name="apePatCli">
+                                            </div>
+                                            <div class="col-sm-6">                               
+                                                <input type="text" class="form-control" placeholder="Apellido Materno Cliente" name="apeMatCli">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="form-group">
+                                            <div class="col-sm-12">
+                                                <label class="control-label">Direccion</label>
+                                                <input type="text" class="form-control" placeholder="Dirección" name="dirCli">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-sm-6">
+                                                <label class="control-label">Estado Civil</label>
+                                                <select class="form-control" name="estCivCod">
+                                                    <option value="1">Soltero</option>
+                                                    <option value="2">Casado</option>
+                                                    <option value="3">Divorciado</option>
+                                                    <option value="4">Viudo</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <label class="control-label">Género</label>
+                                                <select class="form-control" name="cliSex">
+                                                    <option value="M">Masculino</option>
+                                                    <option value="F">Femenino</option>
+                                                    <option value="N" selected="selected">No especifica</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-sm-6">
+                                                <label class="control-label">Teléfono Fijo</label>
+                                                <input type="text" class="form-control" placeholder="Teléfono Fijo" name="telFijCli">
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <label class="control-label">Teléfono Celular</label>
+                                                <input type="text" class="form-control" placeholder="Teléfono Celular" name="telCelCli">
+                                            </div>                                
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-sm-12">
+                                                <label class="control-label">Email</label>
+                                                <input type="text" class="form-control" placeholder="Email" name="emailCli">      
+                                            </div>                               
+                                        </div> 
+                                    </div>
+                                </div>
+                            </div>               
+                        </div>
+                        <!-- FIN CONTENIDO-->
+
+                        <!-- PIE -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-default" >Agregar</button>
+                        </div>
+                        <!-- FIN PIE -->
+                    </form>
+                </div></div></div>
         <!-- FIN MODAL1 -->                    
-                            
+
     </jsp:attribute>
 </minierptemplate:template>

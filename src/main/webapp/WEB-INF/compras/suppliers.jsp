@@ -7,18 +7,37 @@
     <jsp:attribute name="contenido">
         <script src="${pageContext.request.contextPath}/js/jquery.PrintArea.js"></script>
 
-        <div id ="pagel-body">
-            <div class="row">
+        <div id ="wrapper">
+            <div class="row">   
                 <div class="col-lg-12">
                     <br><h1 class="page-header"> Proveedores </h1>
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-12">
-                    <button type="button" data-toggle="modal" class="btn btn-success" id="addbtn" data-target="#addSupplier"> Agregar nuevo </button> 
+                <div class="col-lg-7">
+                    <button class="btn btn-success" id="addbtn"> Agregar nuevo </button> 
                 </div>
+                <div class=" col-lg-5">
+                    <div class="col-lg-offset-4 col-lg-2">
+                        <label>Reporte</label>
+                    </div>
+                    <div class="col-lg-6">
+                        <a href="${pageContext.request.contextPath}/secured/general/reporte?type=pdf&&report=proovedores&&jdbc=true&&key=null&&value=null" class="btn btn-danger">
+                            <i class="fa fa-file-pdf-o"></i>
+                        </a>
+                        <a href="${pageContext.request.contextPath}/secured/general/reporte?type=xls&&report=proovedores&&jdbc=true&&key=null&&value=null" class="btn btn-success">
+                            <i class="fa fa-file-excel-o"></i>
+                        </a>
+                        <a href="${pageContext.request.contextPath}/secured/general/reporte?type=doc&&report=proovedores&&jdbc=true&&key=null&&value=null" class="btn  btn-primary">
+                            <i class="fa fa-file-word-o"></i>
+                        </a>
+                    </div>
+
+                </div>
+                
             </div>
             <br>
+             
             <div id="printarea">
                 <div class="table-responsive">
                     <table class = "table table-bordered table-condensed"  id = "id_table">
@@ -45,7 +64,8 @@
                             </c:forEach>  
                         </tbody>
                     </table>       
-                </div>  
+                </div>
+
             </div>
         </div>
         <div id="addSupplier" class="modal fade" role="dialog">
