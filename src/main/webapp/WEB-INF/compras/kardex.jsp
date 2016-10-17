@@ -7,11 +7,33 @@
         <title>Logística - Kardex</title>
     </jsp:attribute>
     <jsp:attribute name="contenido">
+         <script type="text/javascript" language="javasript">
+            var idProducto="";
+            var nombreProducto="";
+            function Show(valor)
+            {
+                 if(valor !== "")
+                
+               
+                {   
+                    var valarray=valor.split(',');
+                    idProducto=valarray[0];
+                    nombreProducto=valarray[1];
+                    localStorage.setItem("nomProd",nombreProducto );
+                    localStorage.setItem("idProd",idProducto );
+                }       
+            }
+            
+        </script>
+        
+
+        
+        
         <div class="panel-body">
             
             <div class="row">
                 <div class="col-lg-12">
-                    <br><h1 class="page-header"> Kardex</h1>
+                    <h1 class="page-header"> Kardex</h1>
                 </div>
             </div>
             
@@ -25,15 +47,15 @@
                             <label>Seleccione Producto: </label>
                         </div>
                         <div class="col-xs-9"> 
-                            <select class="form-control input-small" name="item">
-                            <option value="">Seleccione:</option>
+                            <select class="form-control input-small" name="item" onChange="Show(value);">
+                            <option id="sel" value="">Seleccione:</option>
                             <c:forEach items="${productos}" var="p">  
-                                <option type="submit" value="${p.id.proCod}" >${p.proDet}</option>
+                                <option type="submit" value="${p.id.proCod},${p.proDet}" >${p.proDet}</option> 
                             </c:forEach>
                             </select>
                         </div>
                         <div class="col-xs-3">
-                            <button type="submit" class="btn btn-primary" name="button" value="btn_ver">Ver</button>
+                            <button type="submit" class="btn btn-primary" name="button" value="btn_ver" >Ver</button>
                         </div>
                         
 
@@ -44,13 +66,13 @@
                             <label>Kardex Fisico</label>
                         </div>
                         <div class="col-xs-12">
-                            <a href="${pageContext.request.contextPath}/secured/reporte?type=pdf&&report=kardexfisico&&jdbc=true&&key=PRODUCTO_ID&&value=7755523010128" class="btn btn-danger">
+                            <a  href="${pageContext.request.contextPath}/secured/general/reporte?type=pdf&&report=kardexfisico&&jdbc=true&&key=PRODUCTO_ID&&value=" class="btn btn-danger" onclick="location.href=this.href+idProducto;return false;">
                                 <i class="fa fa-file-pdf-o"></i>
                             </a>
-                            <a href="${pageContext.request.contextPath}/secured/reporte?type=xls&&report=kardexfisico&&jdbc=true&&key=PRODUCTO_ID&&value=77555230101288" class="btn btn-success">
+                            <a  href="${pageContext.request.contextPath}/secured/general/reporte?type=xls&&report=kardexfisico&&jdbc=true&&key=PRODUCTO_ID&&value=" class="btn btn-success" onclick="location.href=this.href+idProducto;return false;">
                                 <i class="fa fa-file-excel-o"></i>
                             </a>
-                            <a href="${pageContext.request.contextPath}/secured/reporte?type=doc&&report=kardexfisico&&jdbc=true&&key=PRODUCTO_ID&&value=7755523010128" class="btn  btn-primary">
+                            <a  href="${pageContext.request.contextPath}/secured/general/reporte?type=doc&&report=kardexfisico&&jdbc=true&&key=PRODUCTO_ID&&value=" class="btn  btn-primary" onclick="location.href=this.href+idProducto;return false;">
                                 <i class="fa fa-file-word-o"></i>
                             </a>
                         </div>
@@ -62,13 +84,13 @@
                         </div>
                         
                         <div class="col-xs-12">
-                            <a href="${pageContext.request.contextPath}/secured/reporte?type=pdf&&report=kardexvalorizado&&jdbc=true&&key=PRODUCTO_ID&&value=7755523010128" class="btn  btn-danger">
+                            <a href="${pageContext.request.contextPath}/secured/general/reporte?type=pdf&&report=kardexvalorizado&&jdbc=true&&key=PRODUCTO_ID&&value=" class="btn  btn-danger" onclick="location.href=this.href+idProducto;return false;">
                                 <i class="fa fa-file-pdf-o"></i>
                             </a>
-                            <a href="${pageContext.request.contextPath}/secured/reporte?type=pdf&&report=kardexvalorizado&&jdbc=true&&key=PRODUCTO_ID&&value=7755523010128" class="btn  btn-success">
+                            <a href="${pageContext.request.contextPath}/secured/general/reporte?type=xls&&report=kardexvalorizado&&jdbc=true&&key=PRODUCTO_ID&&value=" class="btn  btn-success" onclick="location.href=this.href+idProducto;return false;">
                                 <i class="fa fa-file-excel-o"></i>
                             </a>
-                            <a href="${pageContext.request.contextPath}/secured/reporte?type=pdf&&report=kardexvalorizado&&jdbc=true&&key=PRODUCTO_ID&&value=7755523010128" class="btn  btn-primary">
+                            <a href="${pageContext.request.contextPath}/secured/general/reporte?type=doc&&report=kardexvalorizado&&jdbc=true&&key=PRODUCTO_ID&&value=" class="btn  btn-primary" onclick="location.href=this.href+idProducto;return false;">
                                 <i class="fa fa-file-word-o"></i>
                             </a>
                         </div>
@@ -80,7 +102,7 @@
             <div class="row">
                 <br><br>
                 <div class="table-responsive">
-                    <table class="table table-bordered   table-striped">
+                    <table class="table table-bordered table-striped table-hover">
                         <thead class="thead-inverse" >
                             <tr class="success">
                                 <th style="text-align: center;">Fecha</th>
@@ -123,5 +145,13 @@
 
             </div>
         </div>
+        <script>
+            if (typeof(Storage) !== "undefined") {
+                document.getElementById("sel").innerHTML = localStorage.getItem("nomProd");
+                var element=document.getElementById("sel");
+                element.value=localStorage.getItem("idProd")+","+localStorage.getItem("nomProd");
+                idProducto=localStorage.getItem("idProd");
+            }
+        </script>
     </jsp:attribute>
 </minierptemplate:template>

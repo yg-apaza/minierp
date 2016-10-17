@@ -26,6 +26,7 @@ public class ReporteController extends HttpServlet {
         String key = request.getParameter("key");
         Reporte generador = null;
         if (jdbc.equals("true")) {
+            System.out.println("asdasd");
             generador = new Reporte(true, key, value);
         } else {
             generador = new Reporte();
@@ -62,7 +63,7 @@ public class ReporteController extends HttpServlet {
                 fileGenerated = generador.report(path, "RegistroDeVentas_", fileType);
                 break;
             case "clientes":
-                path = path + "reportes/ventas/clientes.jasper";
+                path = path + "reportes/ventas/reporte_clientes.jasper";
                 fileGenerated = generador.report(path, "Clientes_", fileType);
                 break;
             case "puntodeventas":
@@ -77,7 +78,11 @@ public class ReporteController extends HttpServlet {
                 path = path + "reportes/logistica/reporte_kardex_valorizado.jasper";
                 fileGenerated = generador.report(path, "KardexValorizado", fileType);
                 break;
-
+            case "proovedores":
+                path = path + "reportes/logistica/reporte_proovedor.jasper";
+                fileGenerated = generador.report(path, "Proovedores", fileType);
+                break;
+                
             //Reportes de Compras
         }
 

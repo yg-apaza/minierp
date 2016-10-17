@@ -68,7 +68,7 @@ public class EnP1mUsuarioBusiness {
         usuUpdate.setUsuApePat(usuApePat);
         usuUpdate.setUsuApeMat(usuApeMat);
         usuUpdate.setUsuLog(usuLog);
-        usuUpdate.setUsuPas(DigestUtils.sha256Hex(usuPas));
+        //usuUpdate.setUsuPas(DigestUtils.sha256Hex(usuPas));
         usuUpdate.setTaGzzTipoUsuario(tuUpdate);
         usuUpdate.setEnP1mSucursal(sucUpdate);
         usuUpdate.setUsuFecNac(usuFecNac);

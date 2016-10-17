@@ -92,7 +92,7 @@
                 </div>
             </div>
             <div class="table-responsive">
-                <table class="table table-hover">
+                <table class="table table-bordered table-striped table-hover">
                 <thread>                
                     <tr>
                         <th>Numero Correlativo del Registro o código único de óperación</th>

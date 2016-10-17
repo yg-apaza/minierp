@@ -20,9 +20,9 @@ public class PointSaleController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         puntoVentaDao = new EnP1mPuntoVentaDao();
         sucursalDao = new EnP1mSucursalDao();
-        request.setAttribute("puntoventa", puntoVentaDao.getAllActive());
+        request.setAttribute("puntoventa", puntoVentaDao.getAllActiveOrdered());
         request.setAttribute("sucursal", sucursalDao.getAllActive());
-        request.setAttribute("inactivos", puntoVentaDao.getAllInactives());
+        request.setAttribute("inactivos", puntoVentaDao.getAllInactivesOrdered());
         request.getRequestDispatcher("/WEB-INF/configuracion/pointSale.jsp").forward(request, response);
     }
     

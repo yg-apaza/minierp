@@ -4,127 +4,11 @@
     <jsp:attribute name="titulo">
         <title>Compras - Factura</title>
     </jsp:attribute>
-    <jsp:attribute name="contenido">
-        <script language="javascript">
-            function addRow(tableID) {
-                var table = document.getElementById(tableID);
-                var rowCount = table.rows.length;
-                var row = table.insertRow(rowCount);
-                var colCount = table.rows[1].cells.length;
-
-                for (var i = 0; i < colCount; i++) {
-                    var newcell = row.insertCell(i);
-
-                    newcell.innerHTML = table.rows[1].cells[i].innerHTML;
-                    switch (newcell.childNodes[1].type) {
-                        case "text":
-                            newcell.childNodes[1].value = "";
-                            break;
-
-                        case "checkbox":
-                            newcell.childNodes[1].checked = false;
-                            break;
-
-                        case "select-one":
-                            newcell.childNodes[1].selectedIndex = 0;
-                            break;
-                    }
-                }
-            }
-
-            function deleteRow(tableID) {
-                try {
-                    var table = document.getElementById(tableID);
-                    var rowCount = table.rows.length;
-
-                    for (var i = 1; i < rowCount; i++) {
-                        var row = table.rows[i];
-                        var chkbox = row.cells[0].childNodes[1];
-                        if (true == chkbox.checked) {
-                            if (rowCount - 1 <= 1) {
-                                alert("No se puede eliminar todas las filas");
-                                break;
-                            }
-                            table.deleteRow(i);
-                            rowCount--;
-                            i--;
-                        }
-                    }
-
-                    updateDescription();
-                } catch (e) {
-                    alert(e);
-                }
-            }
-
-            function getSupplier(tableID) {
-                try {
-                    var table = document.getElementById(tableID);
-                    var rowCount = table.rows.length;
-
-                    for (var i = 1; i < rowCount; i++) {
-                        var row = table.rows[i];
-                        var chkbox = row.cells[0].childNodes[1];
-                        if (true == chkbox.checked) {
-                            $('#supCod').val(row.cells[1].childNodes[0].data);
-                            $('#proCod').val(row.id);
-                            break;
-                        }
-                    }
-                } catch (e) {
-                    alert(e);
-                }
-            }
-
-            function updateDescription() {
-                try {
-                    var amounts = new Array();
-                    var descriptions = new Array();
-                    var prices = new Array();
-                    var table = document.getElementById('productTable');
-                    var rowCount = table.rows.length;
-                    var subtotal = 0;
-
-                    for (var i = 1; i < rowCount; i++) {
-                        var row = table.rows[i];
-                        var quant = row.cells[1].childNodes[1].childNodes[3].value;
-                        amounts.push(quant);
-                        descriptions.push(row.cells[2].childNodes[1].value);
-                        var price = row.cells[3].childNodes[1].childNodes[3].value;
-                        prices.push(price);
-                        row.cells[4].childNodes[1].childNodes[3].value = quant * price;
-                        subtotal += quant * price;
-                    }
-                    $('#facSub').val(subtotal);
-                    $('#facTot').val((subtotal * (1 + $('#facIgv').val()) / 100) - ($('#facDes').val()));
-                    $('#proAmo').val(amounts);
-                    $('#proDes').val(descriptions);
-                    $('#proPri').val(prices);
-                } catch (e) {
-                    alert(e);
-                }
-            }
-
-            $(document).ready(function () {
-                $("#productTable").change(updateDescription);
-            });
-
-            $(document).ready(function () {
-                $("#facIgv").change(function () {
-                    $('#facTot').val(($('#facSub').val() * (1 + $('#facIgv').val()) / 100) - ($('#facDes').val()));
-                });
-            });
-
-            $(document).ready(function () {
-                $("#facDes").change(function () {
-                    $('#facTot').val(($('#facSub').val() * (1 + $('#facIgv').val()) / 100) - ($('#facDes').val()));
-                });
-            });
-        </script>
-        <div id="pagel-body">
+    <jsp:attribute name="contenido">        
+        <div class="panel-body">
             <div class="row">
                 <div class="col-lg-12">
-                    <br><h1 class="page-header"> Registrar Factura de Compra</h1>
+                    <h1 class="page-header"> Registrar Factura de Compra</h1>
                 </div>
             </div>
             <form id="registerBill" method="post" action="${pageContext.request.contextPath}/secured/compras/factura">
@@ -133,53 +17,60 @@
                         <div class="panel panel-primary">
                             <div class="panel-heading">
                                 <h4>Información General</h4>
-                                <div class="col-md-4">
-                                    <div class="form-group input-group" >
-                                        <span class="input-group-addon"><i class="fa fa-shopping-cart"></i></span>
-                                        <input type="text" class="form-control" name="facComCabCod" placeholder="Número de Factura">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group input-group" >
+                                            <span class="input-group-addon"><i class="fa fa-shopping-cart"></i></span>
+                                            <input type="text" class="form-control" name="facComCabCod" placeholder="Número de Factura">
+                                        </div>
                                     </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group input-group" >
+                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                            <input type="date" class="form-control" name="facComCabFec">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group input-group" >
+                                            <span class="input-group-addon">Estado</span>
+                                            <select class="form-control" name="estFacCod">
+                                                <c:forEach items="${estados}" var="estado">
+                                                    <option value="${estado.estFacCod}">${estado.estFacDet}</option>
+                                                </c:forEach>
+                                            </select>
+                                            <span class="input-group-addon"><i class="fa fa-money"></i></span>
+                                        </div>
+                                    </div> 
                                 </div>
-                                <div class="col-md-4">
-                                    <div class="form-group input-group" >
-                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                        <input type="date" class="form-control" name="facComCabFec">
+                                <div class="row">  
+                                    <div class="col-md-6">
+                                        <div class="form-group input-group" >
+                                            <span class="input-group-addon">Usuario</span>                                        
+                                            <input type="text" class="form-control" name="usuCod" value="${usuario.usuCod}" readonly>
+                                            <span class="input-group-addon"><i class="fa fa-child"></i></span>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group input-group" >
-                                        <span class="input-group-addon">Estado</span>
-                                        <select class="form-control" name="estFacCod">
-                                            <c:forEach items="${estados}" var="estado">
-                                                <option value="${estado.estFacCod}">${estado.estFacDet}</option>
-                                            </c:forEach>
-                                        </select>
-                                        <span class="input-group-addon"><i class="fa fa-money"></i></span>
+                                    <div class="col-md-6">
+                                        <div class="form-group input-group" >
+                                            <span class="input-group-addon">Proveedor</span>
+                                            <input type="hidden" class="form-control" name="supplierCode" id="proCod">
+                                            <input type="text" class="form-control" name="supName" id="supCod" readonly>
+                                            <span class="input-group-addon">
+                                                <a href="#" data-toggle="modal" data-target="#searchSupplier">
+                                                    <i class="fa fa-globe" style="color: black;"></i>
+                                                </a>
+                                            </span>
+                                        </div>
                                     </div>
-                                </div>                               
-                                <div class="col-md-6">
-                                    <div class="form-group input-group" >
-                                        <span class="input-group-addon"><i class="fa fa-child"></i></span>
-                                        <input type="text" class="form-control" name="usuCod" value="${usuario.usuCod}" readonly>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group input-group" >
-                                        <span class="input-group-addon"><i class="fa fa-globe"></i></span>
-                                        <input type="hidden" class="form-control" name="supplierCode" id="proCod">
-                                        <input type="text" class="form-control" id="supCod" readonly>
-                                        <span class="input-group-addon">
-                                            <a href="#" data-toggle="modal" data-target="#searchSupplier">
-                                                <i class="fa fa-pencil-square-o" style="color: black;"></i>
-                                            </a>
-                                        </span>
-                                    </div>
-                                </div>
-                                <div align="right">
-                                    <button type="button" class="btn btn-success" onclick="addRow('productTable')"><i class="fa fa-plus"></i></button>
-                                    <button type="button" class="btn btn-danger" onclick="deleteRow('productTable')"><i class="fa fa-minus"></i></button>
                                 </div>
                             </div>
                             <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-2 col-md-offset-10" align="right">
+                                        <button type="button" class="btn btn-success" onclick="addRow('productTable')"><i class="fa fa-plus"></i></button>
+                                        <button type="button" class="btn btn-danger" onclick="deleteRow('productTable')"><i class="fa fa-minus"></i></button>
+                                    </div>
+                                </div>
                                 <table width="100%" class="table table-striped table-bordered table-hover" id="productTable">
                                     <h4>Detalle de Compra</h4>
                                     <thead>
@@ -198,7 +89,7 @@
                                             <td style="width: 130px;">
                                                 <div class="form-group input-group">
                                                     <span class="input-group-addon"><i class="fa fa-gear"></i></span>
-                                                    <input type="number" class="form-control" min="0" step="any" value="0">
+                                                    <input type="number" class="form-control" min="0" step="any" value="1">
                                                 </div>
                                             </td>
                                             <td>
@@ -211,7 +102,7 @@
                                             <td style="width: 166px;">
                                                 <div class="form-group input-group" >
                                                     <span class="input-group-addon"><i class="fa fa-money"></i></span>
-                                                    <input type="number" class="form-control" min="0.0" step="any" value="0.0">
+                                                    <input type="number" class="form-control" min="0.0" step="any" value="1.0">
                                                 </div>
                                             </td>
                                             <td style="width: 166px;">
@@ -336,5 +227,154 @@
                 </div>
             </div>
         </div>
+        <script language="javascript">
+            function addRow(tableID) {
+                var table = document.getElementById(tableID);
+                var rowCount = table.rows.length;
+                var row = table.insertRow(rowCount);
+                var colCount = table.rows[1].cells.length;
+
+                for (var i = 0; i < colCount; i++) {
+                    var newcell = row.insertCell(i);
+
+                    newcell.innerHTML = table.rows[1].cells[i].innerHTML;
+                    switch (newcell.childNodes[1].type) {
+                        case "text":
+                            newcell.childNodes[1].value = "";
+                            break;
+
+                        case "checkbox":
+                            newcell.childNodes[1].checked = false;
+                            break;
+
+                        case "select-one":
+                            newcell.childNodes[1].selectedIndex = 0;
+                            break;
+                    }
+                }
+            }
+
+            function deleteRow(tableID) {
+                try {
+                    var table = document.getElementById(tableID);
+                    var rowCount = table.rows.length;
+
+                    for (var i = 1; i < rowCount; i++) {
+                        var row = table.rows[i];
+                        var chkbox = row.cells[0].childNodes[1];
+                        if (true == chkbox.checked) {
+                            if (rowCount - 1 <= 1) {
+                                alert("No se puede eliminar todas las filas");
+                                break;
+                            }
+                            table.deleteRow(i);
+                            rowCount--;
+                            i--;
+                        }
+                    }
+
+                    updateDescription();
+                } catch (e) {
+                    alert(e);
+                }
+            }
+
+            function getSupplier(tableID) {
+                try {
+                    var table = document.getElementById(tableID);
+                    var rowCount = table.rows.length;
+
+                    for (var i = 1; i < rowCount; i++) {
+                        var row = table.rows[i];
+                        var chkbox = row.cells[0].childNodes[1];
+                        if (true == chkbox.checked) {
+                            $('#supCod').val(row.cells[1].childNodes[0].data);
+                            $('#proCod').val(row.id);
+                            break;
+                        }
+                    }
+                } catch (e) {
+                    alert(e);
+                }
+            }
+
+            function updateDescription() {
+                try {
+                    var amounts = new Array();
+                    var descriptions = new Array();
+                    var prices = new Array();
+                    var table = document.getElementById('productTable');
+                    var rowCount = table.rows.length;
+                    var subtotal = 0;
+
+                    for (var i = 1; i < rowCount; i++) {
+                        var row = table.rows[i];
+                        var quant = row.cells[1].childNodes[1].childNodes[3].value;
+                        amounts.push(quant);
+                        descriptions.push(row.cells[2].childNodes[1].value);
+                        var price = row.cells[3].childNodes[1].childNodes[3].value;
+                        prices.push(price);
+                        row.cells[4].childNodes[1].childNodes[3].value = quant * price;
+                        subtotal += quant * price;
+                    }
+                    $('#facSub').val(subtotal);
+                    $('#facTot').val((subtotal * (1 + $('#facIgv').val()) / 100) - ($('#facDes').val()));
+                    $('#proAmo').val(amounts);
+                    $('#proDes').val(descriptions);
+                    $('#proPri').val(prices);
+                } catch (e) {
+                    alert(e);
+                }
+            }
+
+            $(document).ready(function () {
+                $("#productTable").change(updateDescription);
+            });
+
+            $(document).ready(function () {
+                $("#facIgv").change(function () {
+                    $('#facTot').val(($('#facSub').val() * (1 + $('#facIgv').val()) / 100) - ($('#facDes').val()));
+                });
+            });
+
+            $(document).ready(function () {
+                $("#facDes").change(function () {
+                    $('#facTot').val(($('#facSub').val() * (1 + $('#facIgv').val()) / 100) - ($('#facDes').val()));
+                });
+            });
+            
+            $.validator.addMethod("codePattern", function (value, element) {
+                return /^[0-9]{3}-[0-9]{6}$/.test(value);
+            }, "Patrón: [0-9]{3}-[0-9]{6}");
+            
+            $("#registerBill").validate({
+                rules: {
+                    facComCabCod: {
+                        required: true,
+                        codePattern: true
+                    },
+                    supName: {
+                        required: true
+                    },
+                    facComCabFec: {
+                        required: true
+                    }
+                },
+                messages: {
+                    facComCabCod: {
+                        required: "Ingrese el código de la factura"
+                    },
+                    supName: {
+                        required: "Seleccione un cliente"
+                    },
+                    facComCabFec: {
+                        required: "Seleccione una fecha"
+                    }
+                },
+                submitHandler: function (form) {
+                    form.submit();
+                }
+            });
+        </script>
     </jsp:attribute>
 </minierptemplate:template>
