@@ -11,32 +11,30 @@
                 <a href="#" class="btn btn-success btn-circle" data-toggle="modal" data-target="#agregarModal"><i class="fa fa-plus"></i></a>
                 <a href="#" class="btn btn-info btn-circle" data-toggle="modal" data-target="#estadosModal"><i class="fa fa-eye"></i></a>
             </h1>     
-            <br>
-            <br>
-            <div class="col-md-3">
-                <a href="${pageContext.request.contextPath}/secured/reporte?type=pdf&&report=puntodeventa" class="btn btn-outline btn-danger btn-lg btn-block">
-                    <i class="fa fa-file-pdf-o"></i>
-                    Reporte [PDF]
-                </a>
-                <br>
-                <a href="${pageContext.request.contextPath}/secured/reporte?type=xls&&report=puntodeventa" class="btn btn-outline btn-success btn-lg btn-block">
-                    <i class="fa fa-file-excel-o"></i>
-                    Reporte [XLS]
-                </a>
-                <br>
-                <a href="${pageContext.request.contextPath}/secured/reporte?type=doc&&report=puntodeventa" class="btn btn-outline btn-primary btn-lg btn-block">
-                    <i class="fa fa-file-word-o"></i>
-                    Reporte [DOC]
-                </a>
-                <br>
-                <a href="${pageContext.request.contextPath}/secured/configuracion" class="btn btn-outline btn-default btn-lg btn-block">
-                    <i class="fa fa-arrow-left"></i>
-                    Regresar
-                </a>
-                <br>
+            <div class="row">
+                <div class="col-md-3">
+                    <a href="${pageContext.request.contextPath}/secured/reporte?type=pdf&&report=puntodeventa" class="btn btn-outline btn-danger btn-lg btn-block">
+                        <i class="fa fa-file-pdf-o"></i>
+                        Reporte [PDF]
+                    </a></div>
+                <div class="col-md-3">
+                    <a href="${pageContext.request.contextPath}/secured/reporte?type=pdf&&report=puntodeventa" class="btn btn-outline btn-success btn-lg btn-block">
+                        <i class="fa fa-file-excel-o"></i>
+                        Reporte [XLS]
+                    </a></div>
+                <div class="col-md-3">
+                    <a href="${pageContext.request.contextPath}/secured/reporte?type=pdf&&report=puntodeventa" class="btn btn-outline btn-primary btn-lg btn-block">
+                        <i class="fa fa-file-word-o"></i>
+                        Reporte [DOC]
+                    </a></div>
+                <div class="col-md-3">
+                    <a href="${pageContext.request.contextPath}/secured/ventas" class="btn btn-outline btn-default btn-lg btn-block">
+                        <i class="fa fa-arrow-left"></i>
+                        Regresar
+                    </a></div>
             </div>
             <br>
-            <div class="col-md-9">
+            <div class="col-md-12">
                 <div class="table-responsive">
                     <table class="table table-hover">
                         <thead>
@@ -45,7 +43,7 @@
                                 <th>Det Sucursal</th>
                                 <th>Cod Punto de Venta</th>
                                 <th>Descripcion</th>
-                                <th>Estado de Registro</th>
+                                <th>Registro</th>
                                 <th class="text-right">Acciones</th>
                             </tr>
                         </thead>
@@ -74,7 +72,7 @@
         </div>
 
         <div id="agregarModal" class="modal fade" role="dialog">
-            <div class="modal-dialog modal-sm">
+            <div class="modal-dialog modal-md">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -106,7 +104,7 @@
         </div>
 
         <div id="modificarModal" class="modal fade" role="dialog">
-            <div class="modal-dialog modal-sm">
+            <div class="modal-dialog modal-md">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -136,7 +134,7 @@
         </div>
 
         <div id="disableModal" class="modal fade" role="dialog">
-            <div class="modal-dialog modal-sm">
+            <div class="modal-dialog modal-md">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -159,8 +157,8 @@
         </div>
 
         <div id="estadosModal" class="modal fade" role="dialog">
-            <div class="modal-dialog modal-sm">
-                <div class="modal-content" style="width: 800px; text-align:center">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Reactivar o Eliminar Punto de Venta</h4>
@@ -174,7 +172,7 @@
                                         <th>Det Sucursal</th>
                                         <th>Cod Punto de Venta</th>
                                         <th>Descripcion</th>
-                                        <th>Estado de Registro</th>
+                                        <th>Registro</th>
                                         <th class="text-right">Acciones</th>
                                     </tr>
                                 </thead>
@@ -208,7 +206,7 @@
         </div>
 
         <div id="activateModal" class="modal fade" role="dialog">
-            <div class="modal-dialog modal-sm">
+            <div class="modal-dialog modal-md">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -231,7 +229,7 @@
         </div>
 
         <div id="deleteModal" class="modal fade" role="dialog">
-            <div class="modal-dialog modal-sm">
+            <div class="modal-dialog modal-md">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
