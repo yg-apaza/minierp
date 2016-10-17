@@ -12,25 +12,20 @@
                 <a href="#" class="btn btn-info btn-circle" data-toggle="modal" data-target="#estadosModal"><i class="fa fa-eye"></i></a>
             </h1>     
             <div class="row">
-                <div class="col-md-3">
-                    <a href="${pageContext.request.contextPath}secured/general/reporte?type=pdf&&report=clientes&&jdbc=false&&key=null&&value=null" class="btn btn-outline btn-danger btn-lg btn-block">
+                <div class="col-md-4">
+                    <a href="${pageContext.request.contextPath}/secured/general/reporte?type=pdf&&report=clientes&&jdbc=false&&key=null&&value=null" class="btn btn-outline btn-danger btn-lg btn-block">
                         <i class="fa fa-file-pdf-o"></i>
                         Reporte [PDF]
                     </a></div>
-                <div class="col-md-3">
-                    <a href="${pageContext.request.contextPath}secured/general/reporte?type=xls&&report=clientes&&jdbc=false&&key=null&&value=null" class="btn btn-outline btn-success btn-lg btn-block">
+                <div class="col-md-4">
+                    <a href="${pageContext.request.contextPath}/secured/general/reporte?type=xls&&report=clientes&&jdbc=false&&key=null&&value=null" class="btn btn-outline btn-success btn-lg btn-block">
                         <i class="fa fa-file-excel-o"></i>
                         Reporte [XLS]
                     </a></div>
-                <div class="col-md-3">
-                    <a href="${pageContext.request.contextPath}secured/general/reporte?type=doc&&report=clientes&&jdbc=false&&key=null&&value=null" class="btn btn-outline btn-primary btn-lg btn-block">
+                <div class="col-md-4">
+                    <a href="${pageContext.request.contextPath}/secured/general/reporte?type=doc&&report=clientes&&jdbc=false&&key=null&&value=null" class="btn btn-outline btn-primary btn-lg btn-block">
                         <i class="fa fa-file-word-o"></i>
                         Reporte [DOC]
-                    </a></div>
-                <div class="col-md-3">
-                    <a href="${pageContext.request.contextPath}/secured/ventas" class="btn btn-outline btn-default btn-lg btn-block">
-                        <i class="fa fa-arrow-left"></i>
-                        Regresar
                     </a></div>
             </div>
             <br>
