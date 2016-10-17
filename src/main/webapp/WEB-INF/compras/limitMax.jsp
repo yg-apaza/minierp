@@ -14,34 +14,9 @@
         
         <script src="${pageContext.request.contextPath}/js/metisMenu.min.js"></script>
         <script src="${pageContext.request.contextPath}/js/sb-admin-2.min.js"></script>
-        <script type="text/javascript" language="javasript">
-            function Show(valor, min, max)
-            {
-                if(valor === "1")
-                {   
-                    var d = document.getElementById(valor); 
-                    min.setAttribute("hidden", "hidden");
-                    max.removeAttribute('hidden');
-                }
-                if(valor === "2")
-                {
-                    max.setAttribute("hidden", "hidden");
-                    min.removeAttribute('hidden');
-                }    
-            }
-            
        
-	function imprSelec(nombre) 
-	{ 
-            var articulo = document.getElementById(nombre); 
-            var ventimp = window.open(' ','limitMax','no','no','50','no','no','no','no','no','no','no','no','50'); 
-            ventimp.document.write(articulo.innerHTML ); 
-            ventimp.document.close(); 
-            ventimp.print( ); 
-            ventimp.close(); 
-	} 
-        
-        </script>
+       <c:set var="alerta" value="0"/>
+       <c:set var="alertamin" value="0"/>
         
        <div class="panel-body">
 	
@@ -69,7 +44,7 @@
            <div id="limitMax">
 		<div class="row">
                     <div class="col-lg-12">
-                        <br><br>
+                        <br/>
                         <label> Los siguientes productos han sobrepasado el límite maximo: </label>
                         <br>
                         <div class="table-responsive">
@@ -83,6 +58,7 @@
                                     </tr>
                                     <c:forEach items="${productos}" var="productos">
                                         <c:if test="${productos.proStk > productos.proStkMax}">
+                                            <c:set var="alerta" value="${alerta+1}"/>
                                         <tr>
                                             <td value="${productos}"> ${productos.id.proCod} </td> 
                                             <td value="${productos}"> ${productos.proDet} </td> 
@@ -101,18 +77,33 @@
 
 		<div class="row">
                         <div class="col-lg-12">
-                            <div class="alert alert-warning alert-dismissable">
-                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                Para una posterior adquisición de productos se debe tomar en cuenta el limite maximo de compra de cada producto que podria ser perjudicial para el futuro financiero de la empresa
-                            </div>
+                            
+                            <c:choose>
+                                <c:when test="${alerta != 0}">
+                                    <div class="alert alert-danger alert-dismissable">
+                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                        Para una posterior adquisición de productos se debe tomar en cuenta el limite maximo de 
+                                        compra de cada producto que podria ser perjudicial para el futuro financiero de la empresa
+                                    </div>    
+                                </c:when>
+                                <c:otherwise>
+                                    <div class="alert alert-success alert-dismissable">
+                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                        Todos los productos se encuentran por debajo del limite maximo.
+                                    </div>
+                                </c:otherwise>
+                            </c:choose>    
+                            
                         </div>
 		</div>
             </div>
             <!--Contenido de Stock minimo-->
+            <br/>
             <div id="limitMin" hidden="hidden">
 		<div class="row">
                         <div class="col-lg-12">
-                            <h2 class="page-header"> Los siguientes productos han bajado del limite minimo: </h2>
+                            <label> Los siguientes productos han bajado del limite minimo: </label>
+                            <br/>
                             <div class="table-responsive">
                                 <table class="table table-bordered table-striped table-hover" id="productTableM">
                                         <tr>    
@@ -124,6 +115,7 @@
                                         </tr>
                                         <c:forEach items="${productos}" var="productos">
                                             <c:if test="${productos.proStk < productos.proStkMin}">
+                                                <c:set var="alertamin" value="${alertamin+1}"/>
                                             <tr>
                                                 <td value="${productos}"> ${productos.id.proCod} </td> 
                                                 <td value="${productos}"> ${productos.proDet} </td> 
@@ -133,8 +125,6 @@
                                             </tr> 
                                             </c:if>
                                         </c:forEach>
-
-
                                 </table>
                             </div>
                         </div>
@@ -142,27 +132,61 @@
 
 		<div class="row">
                         <div class="col-lg-12">
-                            <div class="alert alert-warning alert-dismissable">
-                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                Se ha sobrepasado el limite minimo permitido de dichos productos en stock
-                                es necesario hacer el pedido de dichos productos lo antes posible
-                            </div>
+                            
+                            <c:choose>
+                                <c:when test="${alertamin != 0}">
+                                    <div class="alert alert-danger alert-dismissable">
+                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                            Se ha bajado del limite minimo de dichos productos en stock
+                                            es necesario hacer el pedido de dichos productos lo antes posible
+                                    </div>     
+                                </c:when>
+                                <c:otherwise>
+                                    <div class="alert alert-success alert-dismissable">
+                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                            Todos los productos se encuentran por encima del limite minimo.
+                                    </div>       
+                                 </c:otherwise>
+                            </c:choose> 
                         </div>
 		</div>
             </div>
             <!--Contenido de stock minimo-->
-            <br>
-
-            <!--<div class="row">
-                     <center> <button class="btn btn-primary btn-lg">  Continuar </button> </center></div> 
-            </div>
-            -->
             <div class="row">
                 <div class="col-lg-12">
                     <button onClick = "imprSelec('limitMax')" target="_parent" class="btn btn-success"> Imprimir reporte </button>    
                 </div>
             </div>
 	</div>    
+       
+    <script type="text/javascript" language="javasript">
+            function Show(valor, min, max)
+            {
+                if(valor === "1")
+                {   
+                    var d = document.getElementById(valor); 
+                    min.setAttribute("hidden", "hidden");
+                    max.removeAttribute('hidden');
+                }
+                if(valor === "2")
+                {
+                    max.setAttribute("hidden", "hidden");
+                    min.removeAttribute('hidden');
+                }    
+            }
+            
+       
+	function imprSelec(nombre) 
+	{ 
+            var articulo = document.getElementById(nombre); 
+            var ventimp = window.open(' ','limitMax','no','no','50','no','no','no','no','no','no','no','no','50'); 
+            ventimp.document.write(articulo.innerHTML ); 
+            ventimp.document.close(); 
+            ventimp.print( ); 
+            ventimp.close(); 
+	} 
         
-            </jsp:attribute>  
+        </script>                 
+   
+        </jsp:attribute>  
 </minierptemplate:template>
