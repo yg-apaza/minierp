@@ -202,17 +202,7 @@
     <servlet-mapping>
         <servlet-name>UsuariosController</servlet-name>
         <url-pattern>/secured/configuracion/usuario/usuarios</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <description/>
-        <display-name>AddUsuarioController</display-name>
-        <servlet-name>AddUsuarioController</servlet-name>
-        <servlet-class>org.epis.minierp.controller.configuracion.usuario.AddUsuarioController</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>AddUsuarioController</servlet-name>
-        <url-pattern>/secured/configuracion/usuario/usuarios/add</url-pattern>
-    </servlet-mapping>
+    </servlet-mapping>    
     <!--Sub Modulo Compañia Datos-->
     <servlet>
         <description/>
