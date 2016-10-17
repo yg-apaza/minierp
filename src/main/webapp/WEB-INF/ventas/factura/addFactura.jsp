@@ -15,7 +15,7 @@
                 <input type="hidden" class="form-control" name="productsPrices" id="proPrices">
                 <div class="row">
                     <div class="col-md-4">
-                        <h1 class="page-header"> Factura de Venta</h1>
+                        <br><h1 class="page-header"> Factura de Venta</h1>
                     </div>
                     <div class="col-md-4 col-md-offset-4"><br>
                         <div class="col-md-6">
@@ -257,7 +257,6 @@
                 </div>
             </div>
         </div>                                     
-                                                
         <div id="errorMessageModal" class="modal fade">
             <div class="modal-dialog modal-sm">
                 <div class="modal-content">
