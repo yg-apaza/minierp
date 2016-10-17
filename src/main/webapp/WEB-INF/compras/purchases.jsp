@@ -121,10 +121,10 @@
                 });
             });
         </script>
-        <div id="pagel-body">
+        <div class="pagel-body">
             <div class="row">
                 <div class="col-lg-12">
-                    <br><h1 class="page-header"> Registrar Factura de Compra</h1>
+                    <h1 class="page-header"> Registrar Factura de Compra</h1>
                 </div>
             </div>
             <form id="registerBill" method="post" action="${pageContext.request.contextPath}/secured/compras/factura">

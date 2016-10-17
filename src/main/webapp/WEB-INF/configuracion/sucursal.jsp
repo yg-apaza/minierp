@@ -6,16 +6,14 @@
     </jsp:attribute>
     <jsp:attribute name="contenido">
             
-        <div class="pagel-body">
+        <div class="panel-body">
            <!--Contenido de Sucursal-->
-           
-           <br>
            <div id="sucursal">
 		<div class="row">
                     <div class="col-lg-12">
-			<h2 class="page-header"> Sucursales 
+			<h1 class="page-header"> Sucursales 
                             <a href="#" class="btn btn-success btn-circle" data-toggle="modal" data-target="#agregarModal"><i class="fa fa-plus"></i></a>
-                        </h2>
+                        </h1>
                     </div>        
 		</div>
                <div class="row">

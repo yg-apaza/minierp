@@ -11,7 +11,7 @@
             
             <div class="row">
                 <div class="col-lg-12">
-                    <br><h1 class="page-header"> Kardex</h1>
+                    <h1 class="page-header"> Kardex</h1>
                 </div>
             </div>
             
