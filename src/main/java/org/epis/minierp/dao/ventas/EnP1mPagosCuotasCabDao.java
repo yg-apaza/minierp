@@ -29,7 +29,7 @@ public class EnP1mPagosCuotasCabDao {
     }
     
     public List<EnP1mPagosCuotasCab> getAllInactives() {
-        Query query = session.createQuery("from EnP1mPagosCuotasCab E where E.estRegCod = 'A'");
+        Query query = session.createQuery("from EnP1mPagosCuotasCab E where E.estRegCod = 'I'");
         List<EnP1mPagosCuotasCab> estados = query.list();
         System.out.println(estados);
         return estados;
