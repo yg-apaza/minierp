@@ -16,59 +16,29 @@
             <br>
             <br>
             <div class="row">
-                <div class="col-sm-3">
+                <div class="col-sm-4">
                     <a href="${pageContext.request.contextPath}/secured/reporte?type=pdf&&report=puntodeventa" class="btn btn-outline btn-danger btn-lg btn-block">
-                       <i class="fa fa-file-pdf-o"></i>
-                       Reporte [PDF]
-                   </a>   
+                        <i class="fa fa-file-pdf-o"></i>
+                        Reporte [PDF]
+                    </a>   
                 </div>
-                <div class="col-sm-3">
+                <div class="col-sm-4">
                     <a href="${pageContext.request.contextPath}/secured/reporte?type=xls&&report=puntodeventa" class="btn btn-outline btn-success btn-lg btn-block">
-                       <i class="fa fa-file-excel-o"></i>
-                       Reporte [XLS]
-                   </a>   
+                        <i class="fa fa-file-excel-o"></i>
+                        Reporte [XLS]
+                    </a>   
                 </div>
-                <div class="col-sm-3">
+                <div class="col-sm-4">
                     <a href="${pageContext.request.contextPath}/secured/reporte?type=doc&&report=puntodeventa" class="btn btn-outline btn-primary btn-lg btn-block">
                         <i class="fa fa-file-word-o"></i>
                         Reporte [DOC]
                     </a>
                 </div>                
-                <div class="col-sm-3">
-                    <a href="${pageContext.request.contextPath}/secured/configuracion" class="btn btn-outline btn-default btn-lg btn-block">
-                        <i class="fa fa-arrow-left"></i>
-                        Regresar
-                    </a>
-                </div>  
-            </div>
-                        <!--
-            <div class="col-md-3">
-                <a href="${pageContext.request.contextPath}/secured/reporte?type=pdf&&report=puntodeventa" class="btn btn-outline btn-danger btn-lg btn-block">
-                    <i class="fa fa-file-pdf-o"></i>
-                    Reporte [PDF]
-                </a>
-                <br>
-                <a href="${pageContext.request.contextPath}/secured/reporte?type=xls&&report=puntodeventa" class="btn btn-outline btn-success btn-lg btn-block">
-                    <i class="fa fa-file-excel-o"></i>
-                    Reporte [XLS]
-                </a>
-                <br>
-                <a href="${pageContext.request.contextPath}/secured/reporte?type=doc&&report=puntodeventa" class="btn btn-outline btn-primary btn-lg btn-block">
-                    <i class="fa fa-file-word-o"></i>
-                    Reporte [DOC]
-                </a>
-                <br>
-                <a href="${pageContext.request.contextPath}/secured/configuracion" class="btn btn-outline btn-default btn-lg btn-block">
-                    <i class="fa fa-arrow-left"></i>
-                    Regresar
-                </a>
-                <br>
-            </div>
-                        -->
+            </div>    
             <br>
             <div class="col-md-12">
-                            
-            
+
+
                 <table class="table table-striped table-hover ">
                     <thead>
                         <tr>
@@ -97,24 +67,23 @@
 
                                 <td class="text-right">
                                     <a href="#" data-toggle="modal" data-target="#modificarModal" data-codusu="${u.usuCod}" data-nomusu="${u.usuNom}" 
-                                            data-apepatusu="${u.usuApePat}" data-apematusu="${u.usuApeMat}" data-logusu="${u.usuLog}" 
-                                           data-tipusu="${u.taGzzTipoUsuario.tipUsuCod}" data-sucusu="${u.enP1mSucursal.sucCod}" data-fecnacusu="${u.usuFecNac}"
-                                            data-estcivusu="${u.taGzzEstadoCivil.estCivCod}" data-sexusu="${u.usuSex}">
+                                       data-apepatusu="${u.usuApePat}" data-apematusu="${u.usuApeMat}" data-logusu="${u.usuLog}" 
+                                       data-tipusu="${u.taGzzTipoUsuario.tipUsuCod}" data-sucusu="${u.enP1mSucursal.sucCod}" data-fecnacusu="${u.usuFecNac}"
+                                       data-estcivusu="${u.taGzzEstadoCivil.estCivCod}" data-sexusu="${u.usuSex}">
                                         <i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i>
                                     </a>
                                     <a href="#" data-toggle="modal" data-target="#disableModal" data-codusu="${u.usuCod}" data-nomusu="${u.usuNom}" 
-                                            data-apepatusu="${u.usuApePat}" data-apematusu="${u.usuApeMat}">
+                                       data-apepatusu="${u.usuApePat}" data-apematusu="${u.usuApeMat}">
                                         <i class="fa fa-trash-o fa-2x" style="color: black;"></i>
                                     </a>
                                 </td>
                             </tr>
                         </c:forEach>
                     </tbody>
-                    </table>
-                </div>
+                </table>
             </div>
         </div>
-                        
+
         <div id="agregarModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
@@ -171,7 +140,7 @@
                                         <select class="form-control" name="sucCod">
                                             <c:forEach var="u" items="${sucursales}">
                                                 <option value="${u.sucCod}">${u.sucCod} - ${u.sucDes}</option>
-                                        </c:forEach>
+                                            </c:forEach>
                                         </select>
                                     </div>
                                 </div>
@@ -183,7 +152,7 @@
                                             <span class="input-group-addon"><i class="fa fa-calendar"></i></span>                                            
                                         </div>      
                                     </div>
-                              
+
                                     <div class="col-sm-4">                               
                                         <label class="control-label">Estado Civil</label>
                                         <select class="form-control" name="estCivCod">
@@ -221,9 +190,9 @@
                     </div>
                     <form id="updateForm" method="post" action="${pageContext.request.contextPath}/secured/configuracion/usuario/usuarios">
                         <div class="modal-body">
-                                <div class=form-horizontal>
-                                    <input type="hidden" name="accion" value="update">
-                                    <div class="form-group">
+                            <div class=form-horizontal>
+                                <input type="hidden" name="accion" value="update">
+                                <div class="form-group">
                                     <div class="col-sm-6">
                                         <label class="control-label">Código Usuario</label>
                                         <input class="form-control" name="codUsuUpdate" id="updateCodUsu" readonly>
@@ -269,7 +238,7 @@
                                         <select class="form-control" name="sucCodUpdate" id="updateSucUsu">
                                             <c:forEach var="u" items="${sucursales}">
                                                 <option value="${u.sucCod}">${u.sucCod} - ${u.sucDes}</option>
-                                        </c:forEach>
+                                            </c:forEach>
                                         </select>
                                     </div>
                                 </div>
@@ -389,18 +358,18 @@
 
                                             <td class="text-right">
                                                 <a href="#" data-toggle="modal" data-target="#activateModal" data-codusu="${u.usuCod}" data-nomusu="${u.usuNom}" 
-                                                data-apepatusu="${u.usuApePat}" data-apematusu="${u.usuApeMat}">
+                                                   data-apepatusu="${u.usuApePat}" data-apematusu="${u.usuApeMat}">
                                                     <i class="fa fa-check fa-2x" style="color: green;"></i>
                                                 </a>
                                                 <a href="#" data-toggle="modal" data-target="#deleteModal" data-codusu="${u.usuCod}" data-nomusu="${u.usuNom}" 
-                                                data-apepatusu="${u.usuApePat}" data-apematusu="${u.usuApeMat}">
+                                                   data-apepatusu="${u.usuApePat}" data-apematusu="${u.usuApeMat}">
                                                     <i class="fa fa-trash-o fa-2x" style="color: red;"></i>
                                                 </a>
                                             </td>
                                         </tr>
                                     </c:forEach>
                                 </tbody>
-                                
+
                             </table>
                         </div>  
                     </div>
@@ -494,61 +463,57 @@
             </div>
         </div>
 
-                        
-        
+
+
 
         <script>
             var updateModal = $("#modificarModal");
             var disableModal = $("#disableModal");
             var activateModal = $("#activateModal");
             var deleteModal = $("#deleteModal");
-            
-            
 
             var updateCodUsu = $("#updateCodUsu");
-            var updateNomUsu=$("#updateNomUsu");
-            var updateApePatUsu=$("#updateApePatUsu");
-            var updateApeMatUsu=$("#updateApeMatUsu");
-            var updateLogUsu=$("#updateLogUsu");
-            //var updatePasUsu=$("#updatePasUsu");
-            var updateTipUsu=$("#updateTipUsu");
-            var updateSucUsu=$("#updateSucUsu");
-            var updateFecNacUsu=$("#updateFecNacUsu");
-            var updateEstCivUsu=$("#updateEstCivUsu");
-            var updateSexUsu=$("#updateSexUsu");
-            
-            var disableCodUsu=$("#disableCodUsu");
-            var disableNomUsu=$("#disableNomUsu");
-            var disableApePatUsu=$("#disableApePatUsu");
-            var disableApeMatUsu=$("#disableApeMatUsu");
-            
+            var updateNomUsu = $("#updateNomUsu");
+            var updateApePatUsu = $("#updateApePatUsu");
+            var updateApeMatUsu = $("#updateApeMatUsu");
+            var updateLogUsu = $("#updateLogUsu");
+            var updateTipUsu = $("#updateTipUsu");
+            var updateSucUsu = $("#updateSucUsu");
+            var updateFecNacUsu = $("#updateFecNacUsu");
+            var updateEstCivUsu = $("#updateEstCivUsu");
+            var updateSexUsu = $("#updateSexUsu");
 
-            var activateCodUsu=$("#activateCodUsu");
-            var activateNomUsu=$("#activateNomUsu");
-            var activateApePatUsu=$("#activateApePatUsu");
-            var activateApeMatUsu=$("#activateApeMatUsu");
-            
-            
-            var deleteCodUsu=$("#deleteCodUsu");
-            var deleteNomUsu=$("#deleteNomUsu");
-            var deleteApePatUsu=$("#deleteApePatUsu");
-            var deleteApeMatUsu=$("#deleteApeMatUsu");
-            
-            
-            
-            updateModal.on('show.bs.modal', function (e) {                                   
+            var disableCodUsu = $("#disableCodUsu");
+            var disableNomUsu = $("#disableNomUsu");
+            var disableApePatUsu = $("#disableApePatUsu");
+            var disableApeMatUsu = $("#disableApeMatUsu");
+
+
+            var activateCodUsu = $("#activateCodUsu");
+            var activateNomUsu = $("#activateNomUsu");
+            var activateApePatUsu = $("#activateApePatUsu");
+            var activateApeMatUsu = $("#activateApeMatUsu");
+
+
+            var deleteCodUsu = $("#deleteCodUsu");
+            var deleteNomUsu = $("#deleteNomUsu");
+            var deleteApePatUsu = $("#deleteApePatUsu");
+            var deleteApeMatUsu = $("#deleteApeMatUsu");
+
+
+
+            updateModal.on('show.bs.modal', function (e) {
                 updateCodUsu.val($(e.relatedTarget).data('codusu'));
                 updateNomUsu.val($(e.relatedTarget).data('nomusu'));
                 updateApePatUsu.val($(e.relatedTarget).data('apepatusu'));
                 updateApeMatUsu.val($(e.relatedTarget).data('apematusu'));
                 updateLogUsu.val($(e.relatedTarget).data('logusu'));
-                //updatePasUsu.val($(e.relatedTarget).data('pasusu'));
                 updateTipUsu.val($(e.relatedTarget).data('tipusu'));
                 updateSucUsu.val($(e.relatedTarget).data('sucusu'));
                 updateFecNacUsu.val($(e.relatedTarget).data('fecnacusu'));
                 updateEstCivUsu.val($(e.relatedTarget).data('estcivusu'));
                 updateSexUsu.val($(e.relatedTarget).data('sexusu'));
-                                
+
             });
             disableModal.on('show.bs.modal', function (e) {
                 disableCodUsu.val($(e.relatedTarget).data('codusu'));
@@ -570,7 +535,24 @@
                 deleteApePatUsu.val($(e.relatedTarget).data('apepatusu'));
                 deleteApeMatUsu.val($(e.relatedTarget).data('apematusu'));
             });
-                        
+            
+        $("#createForm").validate({
+                rules: {
+                    codUsu {
+                        required: true,
+                        number: true
+                },
+                messages: {
+                    codUsu {
+                        required: "El Codigo de Usuario es Obligatorio",
+                        number: "El Codigo de Usuario debe ser Numerico"
+                    }
+                },
+                submitHandler: function (form) {
+                    form.submit();
+                }
+            });
+
         </script>
     </jsp:attribute>
 </minierptemplate:template>

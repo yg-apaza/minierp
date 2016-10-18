@@ -35,9 +35,7 @@
                         <thead>
                             <tr>
                                 <th>Cod Cliente</th>
-                                <th>Nombres</th>
-                                <th>Ape. Paterno</th>
-                                <th>Ape. Materno</th>
+                                <th>Nombres y Apellidos</th>
                                 <th>Sexo</th>
                                 <th>Direccion</th>
                                 <th>Tel. Fijo</th>
@@ -52,9 +50,7 @@
                             <c:forEach var="cli" items="${cliente}">
                                 <tr>
                                     <td>${cli.cliCod}</td>
-                                    <td>${cli.cliNom}</td>
-                                    <td>${cli.cliApePat}</td>
-                                    <td>${cli.cliApeMat}</td>
+                                    <td>${cli.cliNom} ${cli.cliApePat} ${cli.cliApeMat}</td>
                                     <td>${cli.cliSex}</td>
                                     <td>${cli.cliDir}</td>
                                     <td>${cli.cliTelFij}</td>
@@ -280,9 +276,7 @@
                                 <thead>
                                     <tr>
                                         <th>Cod Cliente</th>
-                                        <th>Nombres</th>
-                                        <th>Ape. Paterno</th>
-                                        <th>Ape. Materno</th>
+                                        <th>Nombres y Apellidos</th>
                                         <th>Sexo</th>
                                         <th>Email</th>
                                         <th>Registro</th>
@@ -293,9 +287,7 @@
                                     <c:forEach var="cli" items="${inactivos}">
                                         <tr>
                                             <td>${cli.cliCod}</td>
-                                            <td>${cli.cliNom}</td>
-                                            <td>${cli.cliApePat}</td>
-                                            <td>${cli.cliApeMat}</td>
+                                            <td>${cli.cliNom} ${cli.cliApePat} ${cli.cliApeMat}</td>
                                             <td>${cli.cliSex}</td>
                                             <td>${cli.cliEmail}</td>
                                             <td>${cli.estRegCod}</td>
