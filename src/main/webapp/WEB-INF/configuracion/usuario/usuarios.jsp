@@ -69,7 +69,7 @@
                                        data-usuapemat="${u.usuApeMat}" data-usulog="${u.usuLog}" data-tipusucod="${u.taGzzTipoUsuario.tipUsuCod}" 
                                        data-succod="${u.enP1mSucursal.sucCod}" data-usufecnac="${u.usuFecNac}"
                                        data-estcivcod="${u.taGzzEstadoCivil.estCivCod}" data-ususex="${u.usuSex}">
-                                        <i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i>
+                                       <i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i>
                                     </a>
                                     <a href="#" data-toggle="modal" data-target="#disableModal" 
                                        data-usucod="${u.usuCod}" data-usunom="${u.usuNom}" data-usuapepat="${u.usuApePat}" 
