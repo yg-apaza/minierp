@@ -28,6 +28,13 @@ public class EnP1mDocumentoUsuarioDao {
         System.out.println(estados);
         return estados;
     }
+    
+    public List<EnP1mDocumentoUsuario> getAllInactive() {
+        Query query = session.createQuery("from EnP1mDocumentoUsuario E where E.estRegCod = 'I'");
+        List<EnP1mDocumentoUsuario> estados = query.list();
+        System.out.println(estados);
+        return estados;
+    }
 
     public EnP1mDocumentoUsuario getById(EnP1mDocumentoUsuarioId id) {
         EnP1mDocumentoUsuario estado = null;

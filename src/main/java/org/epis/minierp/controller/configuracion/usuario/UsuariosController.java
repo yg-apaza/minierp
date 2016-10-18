@@ -1,16 +1,9 @@
 package org.epis.minierp.controller.configuracion.usuario;
 
 import java.io.IOException;
-import java.text.DateFormat;
-import java.text.ParseException;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -21,93 +14,89 @@ import org.epis.minierp.dao.general.EnP1mSucursalDao;
 import org.epis.minierp.dao.general.EnP1mUsuarioDao;
 import org.epis.minierp.dao.general.TaGzzEstadoCivilDao;
 import org.epis.minierp.dao.general.TaGzzTipoUsuarioDao;
-import org.epis.minierp.model.EnP1mSucursal;
-import org.epis.minierp.model.EnP1mUsuario;
-import org.epis.minierp.model.TaGzzEstadoCivil;
-import org.epis.minierp.model.TaGzzTipoUsuario;
 import org.epis.minierp.util.DateUtil;
 
 public class UsuariosController extends HttpServlet
 {
     private static final long serialVersionUID = 1L;
-    private SimpleDateFormat dt = new SimpleDateFormat("dd/MM/yyyy");
     EnP1mUsuarioDao daoUsu;
+    TaGzzEstadoCivilDao daoEstCiv;
+    TaGzzTipoUsuarioDao tipUsuDao;
+    EnP1mSucursalDao sucDao;
+    EnP1mUsuarioBusiness usuarioBusiness;
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        EnP1mUsuarioDao daoUsu = new EnP1mUsuarioDao();
-        List<EnP1mUsuario> usuarios = daoUsu.getAllActive();
-        List<EnP1mUsuario> inactivos = daoUsu.getAllInactive();
-        
-        TaGzzEstadoCivilDao daoEstCiv = new TaGzzEstadoCivilDao();
-        List<TaGzzEstadoCivil> estados = daoEstCiv.getAllActive();
-        TaGzzTipoUsuarioDao tipUsuDao=new TaGzzTipoUsuarioDao();
-        List<TaGzzTipoUsuario> tipos= tipUsuDao.getAllActive();
-        EnP1mSucursalDao sucDao=new EnP1mSucursalDao();
-        List<EnP1mSucursal> sucursales=sucDao.getAllActive();
-        
-                
-        request.setAttribute("estados", estados);                
-        request.setAttribute("usuarios", usuarios);
-        request.setAttribute("inactivos",inactivos);
-        request.setAttribute("tipos",tipos);
-        request.setAttribute("sucursales",sucursales);
+        daoUsu = new EnP1mUsuarioDao();
+        daoEstCiv = new TaGzzEstadoCivilDao();
+        tipUsuDao = new TaGzzTipoUsuarioDao();
+        sucDao = new EnP1mSucursalDao();
+              
+        request.setAttribute("estados", daoEstCiv.getAllActive());                
+        request.setAttribute("usuarios", daoUsu.getAllActive());
+        request.setAttribute("inactivos",daoUsu.getAllInactive());
+        request.setAttribute("tipos",tipUsuDao.getAllActive());
+        request.setAttribute("sucursales",sucDao.getAllActive());
         
         request.getRequestDispatcher("/WEB-INF/configuracion/usuario/usuarios.jsp").forward(request, response);
     }
     
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        
         String action = request.getParameter("accion");
-        EnP1mUsuarioBusiness useBusi=new EnP1mUsuarioBusiness();
+        usuarioBusiness=new EnP1mUsuarioBusiness();
+        daoUsu = new EnP1mUsuarioDao();
+        
         switch(action){
-            case "create":{
-                DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-                Date fecNacUsu=null;
-            try {
-                fecNacUsu= format.parse(request.getParameter("fecNacUsu"));
-            } catch (ParseException ex) {
-                Logger.getLogger(UsuariosController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-                useBusi.create(request.getParameter("codUsu"),request.getParameter("nomUsu"),request.getParameter("apePatUsu"), request.getParameter("apeMatUsu"),
-                        request.getParameter("login"), request.getParameter("pass"), Integer.parseInt(request.getParameter("tipCod")),
-                        Integer.parseInt(request.getParameter("sucCod")),
-                        fecNacUsu, 
-                        Integer.parseInt(request.getParameter("estCivCod")),
-                        request.getParameter("sex").charAt(0), 'A');
+            case "create":
+                String usuCodCreate= request.getParameter("usuCod");
+                String usuNomCreate = request.getParameter("usuNom");
+                String usuApePatCreate = request.getParameter("usuApePat");
+                String usuApeMatCreate = request.getParameter("usuApeMat");
+                String usuLogCreate = request.getParameter("usuLog");
+                String usuPasCreate = DigestUtils.sha256Hex(request.getParameter("usuPas"));
+                int tipUsuCodCreate = Integer.parseInt(request.getParameter("tipUsuCod"));
+                int sucCodCreate = Integer.parseInt(request.getParameter("sucCod"));
+                Date usuFecNacCreate = DateUtil.getDate2String(request.getParameter("usuFecNac"));
+                int estCivCodCreate = Integer.parseInt(request.getParameter("estCivCod"));;
+                char usuSexCreate = request.getParameter("usuSex").charAt(0);
+                
+                usuarioBusiness.create(usuCodCreate, usuNomCreate, usuApePatCreate, usuApeMatCreate, 
+                        usuLogCreate, usuPasCreate,tipUsuCodCreate, sucCodCreate, usuFecNacCreate, 
+                        estCivCodCreate, usuSexCreate, 'A');
+
+            case "update":
+                String usuCodUpdate = request.getParameter("usuCod");
+                String usuNomUpdate = request.getParameter("usuNom");
+                String usuApePatUpdate = request.getParameter("usuApePat");
+                String usuApeMatUpdate = request.getParameter("usuApeMat");
+                String usuLogUpdate = request.getParameter("usuLog");
+                int tipUsuCodUpdate = Integer.parseInt(request.getParameter("tipUsuCod"));
+                int sucCodUpdate = Integer.parseInt(request.getParameter("sucCod"));
+                Date usuFecNacUpdate = DateUtil.getDate2String(request.getParameter("usuFecNac"));
+                int estCivCodUpdate = Integer.parseInt(request.getParameter("estCivCod"));;
+                char usuSexUpdate = request.getParameter("usuSex").charAt(0);
+                
+                usuarioBusiness.update(usuCodUpdate, usuNomUpdate, usuApePatUpdate, usuApeMatUpdate, 
+                        usuLogUpdate, tipUsuCodUpdate, sucCodUpdate, usuFecNacUpdate,estCivCodUpdate, 
+                        usuSexUpdate);
                 break;
-            }
-            case "update":{
-                    DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-                    Date fecNacUsuUpdate=null;
-                try {
-                    fecNacUsuUpdate= format.parse(request.getParameter("fecNacUsuUpdate"));
-                } catch (ParseException ex) {
-                    Logger.getLogger(UsuariosController.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                useBusi.update(request.getParameter("codUsuUpdate"),
-                        request.getParameter("nomUsuUpdate"),
-                        request.getParameter("apePatUsuUpdate"), 
-                        request.getParameter("apeMatUsuUpdate"),
-                        request.getParameter("loginUpdate"), 
-                        //request.getParameter("passUpdate"),
-                        "pass",
-                        Integer.parseInt(request.getParameter("tipCodUpdate")),
-                        Integer.parseInt(request.getParameter("sucCodUpdate")),
-                        fecNacUsuUpdate, 
-                        Integer.parseInt(request.getParameter("estCivCodUpdate")),
-                        request.getParameter("sexUpdate").charAt(0));
-                break;
-            }
+                
             case "disable":{
-                useBusi.disable(request.getParameter("codUsuDisable"));
+                String usuCodDisable = request.getParameter("usuCod");
+                usuarioBusiness.disable(usuCodDisable);
                 break;
+                
             }
             case "activate":{
-                useBusi.activate(request.getParameter("codUsuActivate"));
+                String usuCodActivate = request.getParameter("usuCod");
+                usuarioBusiness.activate(usuCodActivate);
                 break;
+                
             }
             case "delete":{
-                useBusi.delete(request.getParameter("codUsuDelete"));
+                String usuCodDelete = request.getParameter("usuCod");
+                usuarioBusiness.delete(usuCodDelete);
                 break;
             }            
         }

@@ -35,9 +35,7 @@
                         <thead>
                             <tr>
                                 <th>Cod Cliente</th>
-                                <th>Nombres</th>
-                                <th>Ape. Paterno</th>
-                                <th>Ape. Materno</th>
+                                <th>Nombres y Apellidos</th>
                                 <th>Sexo</th>
                                 <th>Direccion</th>
                                 <th>Tel. Fijo</th>
@@ -52,9 +50,7 @@
                             <c:forEach var="cli" items="${cliente}">
                                 <tr>
                                     <td>${cli.cliCod}</td>
-                                    <td>${cli.cliNom}</td>
-                                    <td>${cli.cliApePat}</td>
-                                    <td>${cli.cliApeMat}</td>
+                                    <td>${cli.cliNom} ${cli.cliApePat} ${cli.cliApeMat}</td>
                                     <td>${cli.cliSex}</td>
                                     <td>${cli.cliDir}</td>
                                     <td>${cli.cliTelFij}</td>
@@ -120,9 +116,9 @@
                                     <div class="col-sm-3">
                                         <label>Sexo:</label>
                                         <select class="form-control" name="cliSex">
+                                            <option value="N">No Espesifica</option>
                                             <option value="M">Masculino</option>
                                             <option value="F">Feminino</option>
-                                            <option value="N">No Espesifica</option>
                                         </select>
                                     </div>
                                     <div class="col-sm-9">
@@ -200,9 +196,9 @@
                                     <div class="col-sm-3">
                                         <label>Sexo:</label>
                                         <select class="form-control" name="cliSex" id="updateCliSex">
+                                            <option value="N">No Espesifica</option>
                                             <option value="M">Masculino</option>
                                             <option value="F">Feminino</option>
-                                            <option value="N">No Espesifica</option>
                                         </select>
                                     </div>
                                     <div class="col-sm-9">
@@ -280,9 +276,7 @@
                                 <thead>
                                     <tr>
                                         <th>Cod Cliente</th>
-                                        <th>Nombres</th>
-                                        <th>Ape. Paterno</th>
-                                        <th>Ape. Materno</th>
+                                        <th>Nombres y Apellidos</th>
                                         <th>Sexo</th>
                                         <th>Email</th>
                                         <th>Registro</th>
@@ -293,9 +287,7 @@
                                     <c:forEach var="cli" items="${inactivos}">
                                         <tr>
                                             <td>${cli.cliCod}</td>
-                                            <td>${cli.cliNom}</td>
-                                            <td>${cli.cliApePat}</td>
-                                            <td>${cli.cliApeMat}</td>
+                                            <td>${cli.cliNom} ${cli.cliApePat} ${cli.cliApeMat}</td>
                                             <td>${cli.cliSex}</td>
                                             <td>${cli.cliEmail}</td>
                                             <td>${cli.estRegCod}</td>
@@ -386,7 +378,6 @@
             var updateCliTelCel = $("#updateCliTelCel");
             var updateCliEmail = $("#updateCliEmail");
             var updateEstCivCod = $("#updateEstCivCod");
-            var updateNamEstCivCod = $("#updateNamEstCivCod");
 
             var disableCliCod = $("#disableCliCod");
             var disableCliNomCom = $("#disableCliNomCom");
@@ -399,7 +390,6 @@
 
 
             updateModal.on('show.bs.modal', function (e) {
-                updateNamEstCivCod.val($(e.relatedTarget).data('estcivcod') + " - " + $(e.relatedTarget).data('estcivdet'));
                 updateCliCod.val($(e.relatedTarget).data('clicod'));
                 updateCliNom.val($(e.relatedTarget).data('clinom'));
                 updateCliApePat.val($(e.relatedTarget).data('cliapepat'));
@@ -414,17 +404,17 @@
 
             disableModal.on('show.bs.modal', function (e) {
                 disableCliCod.val($(e.relatedTarget).data('clicod'));
-                disableCliNomCom.text($(e.relatedTarget).data('cliapepat') + " " + $(e.relatedTarget).data('cliApeMat') + ", " + $(e.relatedTarget).data('clinom'));
+                disableCliNomCom.text($(e.relatedTarget).data('cliapepat') + " " + $(e.relatedTarget).data('cliapemat') + ", " + $(e.relatedTarget).data('clinom'));
             });
 
             activateModal.on('show.bs.modal', function (e) {
                 activateCliCod.val($(e.relatedTarget).data('clicod'));
-                activateCliNomCom.text($(e.relatedTarget).data('cliapepat') + " " + $(e.relatedTarget).data('cliApeMat') + ", " + $(e.relatedTarget).data('clinom'));
+                activateCliNomCom.text($(e.relatedTarget).data('cliapepat') + " " + $(e.relatedTarget).data('cliapemat') + ", " + $(e.relatedTarget).data('clinom'));
             });
 
             deleteModal.on('show.bs.modal', function (e) {
                 deleteCliCod.val($(e.relatedTarget).data('clicod'));
-                deleteCliNomCom.text($(e.relatedTarget).data('cliapepat') + " " + $(e.relatedTarget).data('cliApeMat') + ", " + $(e.relatedTarget).data('clinom'));
+                deleteCliNomCom.text($(e.relatedTarget).data('cliapepat') + " " + $(e.relatedTarget).data('cliapemat') + ", " + $(e.relatedTarget).data('clinom'));
             });
 
             $("#createForm").validate({

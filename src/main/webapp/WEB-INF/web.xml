@@ -246,6 +246,17 @@
         <servlet-name>DocumentoClienteController</servlet-name>
         <url-pattern>/secured/configuracion/documentoCliente</url-pattern>
     </servlet-mapping>
+    <!--Sub Modulo Documento usuario-->
+    <servlet>
+        <description/>
+        <display-name>DocumentoUsuarioController</display-name>
+        <servlet-name>DocumentoUsuarioController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.configuracion.DocumentoUsuarioController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DocumentoUsuarioController</servlet-name>
+        <url-pattern>/secured/configuracion/documentoUsuario</url-pattern>
+    </servlet-mapping>
     <!--Sub Modulo Punto de venta-->
     <servlet>
         <description/>
