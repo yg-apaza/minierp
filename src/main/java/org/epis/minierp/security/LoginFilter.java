@@ -26,10 +26,8 @@ public class LoginFilter implements Filter
         HttpServletRequest request = (HttpServletRequest) req;
         HttpServletResponse response = (HttpServletResponse) res;
         HttpSession session = request.getSession(false);
-        if (session == null || session.getAttribute("usuario") == null){
-            System.out.println("Usuario no logueado .. redireccionando");
+        if (session == null || session.getAttribute("usuario") == null)
             response.sendRedirect(request.getContextPath() + "/");
-        }
         else
             chain.doFilter(req, res);
     }
