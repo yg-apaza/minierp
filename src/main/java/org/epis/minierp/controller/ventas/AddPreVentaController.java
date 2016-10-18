@@ -76,7 +76,8 @@ public class AddPreVentaController extends HttpServlet{
             cabecera.setEnP1mCliente(cliente);
 
             EnP1mUsuario user = new EnP1mUsuario();
-            user= new EnP1mUsuarioDao().getById(request.getParameter("usuCod"));
+            
+            user = new EnP1mUsuarioDao().getById(request.getParameter("usuCodigo"));
             cabecera.setEnP1mUsuario(user);
             DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
             Date fecha = format.parse(request.getParameter("fecCabPre"));
@@ -95,36 +96,36 @@ public class AddPreVentaController extends HttpServlet{
             preCabDao.save(cabecera);
             
             List <String> productsAmounts = Arrays.asList((request.getParameter("productsAmounts")).split("\\s*,\\s*"));
-            List <String> productsDescriptions = Arrays.asList((request.getParameter("productsDescriptions")).split("\\s*,\\s*"));
+            List <String> productsCodes = Arrays.asList((request.getParameter("productsCodes")).split("\\s*,\\s*"));
             List <String> productsPrices = Arrays.asList((request.getParameter("productsPrices")).split("\\s*,\\s*"));
             
             EnP1tPreventaDetDao detalles = new EnP1tPreventaDetDao();
             
-            for(int i = 0;i < productsDescriptions.size();i++) {
-                StringTokenizer st = new StringTokenizer(productsDescriptions.get(i),"/");
-                
-                EnP2mProductoId productId = new EnP2mProductoId();                
-                productId.setProCod(st.nextToken());
-                productId.setSubClaProCod(st.nextToken());
+            for(int i = 0;i < productsCodes.size();i++) {
+                StringTokenizer st = new StringTokenizer(productsCodes.get(i),"-");
+            
+                EnP2mProductoId productId = new EnP2mProductoId();
                 productId.setClaProCod(st.nextToken());
+                productId.setSubClaProCod(st.nextToken());                
+                productId.setProCod(st.nextToken());
                 
+            
                 EnP2mProductoDao productDao = new EnP2mProductoDao();
                 EnP2mProducto product = productDao.getById(productId);
-                product.setProStk(product.getProStk() + Double.parseDouble(productsAmounts.get(i))); /* Updating stock */
+                product.setProStk(product.getProStk() - Double.parseDouble(productsAmounts.get(i))); /* Updating stock */
                 productDao.update(product);
-                                
+            
                 EnP1tPreventaDet det = new EnP1tPreventaDet();
                 EnP1tPreventaDetId detId = new EnP1tPreventaDetId();
                 detId.setPreVenCabCod(preCabCod);
                 detId.setPreVenDetCod((int) (System.currentTimeMillis() % Integer.MAX_VALUE));
                 det.setId(detId);
-                det.setEnP1mPreventaCab(cabecera);
                 det.setEnP2mProducto(product);
                 det.setPreVenDetCan(Double.parseDouble(productsAmounts.get(i)));
                 det.setPreVenDetValUni(Double.parseDouble(productsPrices.get(i)));
-                
-                detalles.save(det);                                
-            }                 
+            
+                detalles.save(det);
+            }
             
             response.sendRedirect(request.getContextPath() + "/secured/general/panel");
 

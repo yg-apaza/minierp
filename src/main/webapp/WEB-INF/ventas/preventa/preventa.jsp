@@ -46,81 +46,81 @@
                 </div>
             </div>
             <br>
-            <div id="printarea">
-                <table class = "table table-bordered table-striped table-hover"  id = "id_table">
-                    <thead>
-                        <tr>
-                            <th style="text-align: center">Código Preventa</th>
-                            <th style="text-align: center">Cód Cliente</th>
-                            <th style="text-align: center">Cliente</th>
-                            <th style="text-align: center">Cód Usuario</th>
-                            <th style="text-align: center">Usuario</th>
-                            <th style="text-align: center">Fecha</th>
-                            <th style="text-align: center">Moneda</th>
-                            <th style="text-align: center">Cantidad total</th>
-                            <th style="text-align: center">Check</th>
-                        </tr>               
-                    </thead>
-                    <tbody>
-                         <c:forEach items = "${preventas}" var = "preventa">    
+            <form role="form" action="${pageContext.request.contextPath}/secured/ventas/preventa" method="post">
+                <div id="printarea">
+                    <table class = "table table-bordered table-striped table-hover"  id = "id_table">
+                        <thead>
                             <tr>
-                                <td><c:out value="${preventa.preVenCabCod}"/> </td>
-                                <td><c:out value="${preventa.enP1mCliente.cliCod}"/></td>
-                                <td><c:out value="${preventa.enP1mCliente.cliNom}"/></td>
-                                <td><c:out value="${preventa.enP1mUsuario.usuCod}"/></td>
-                                <td><c:out value="${preventa.enP1mUsuario.usuNom}"/></td>
-                                <td><c:out value="${preventa.preVenCabFec}"/></td>
-                                <td><c:out value="${preventa.taGzzMoneda.monDet}"/></td>
-                                <td><c:out value="${preventa.preVenCabTot}"/></td>
-                                <td><input type="checkbox" value=""></td>
-                            </tr>
-                        </c:forEach>  
-                    </tbody>
-                </table>  
-            </div>
-            <div class="modal fade" id="configurarModal" role="dialog">
-                <div class="modal-dialog modal-sm">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                          <button type="button" class="close" data-dismiss="modal">&times;</button>
-                          <h4 class="modal-title">Configurar pagos</h4>
-                        </div>
-                        <div class="modal-body">
-                          <form role="form" >
-                              <div class="form-group">
-                                    <label> Estado de las Facturas </label>
-                                    <select class="form-control" name="estFacCod">
-                                        <c:forEach items="${estados}" var="estado">
-                                            <option value="${estado.estFacCod}">${estado.estFacDet}</option>
-                                        </c:forEach>
-                                    </select>
-                              </div>
-                              <div class="form-group">
-                                  <label> Método de Pago de las Facturas </label>
-                                    <select class="form-control" name="metPagCod">
-                                        <c:forEach items="${metodos}" var="metodo">
-                                            <option value="${metodo.metPagCod}">${metodo.metPagDet}</option>
-                                        </c:forEach>
-                                    </select>                          
-                              </div>
-                              <div class="form-group">
-                                  <label> Tipo de Pago de las Facturas </label>
-                                    <select class="form-control" name="tipPagCod">
-                                        <c:forEach items="${tipos}" var="tipo">
-                                            <option value="${tipo.tipPagCod}">${tipo.tipPagDet}</option>
-                                        </c:forEach>
-                                    </select>                         
-                              </div>
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-outline btn-danger" data-dismiss="modal"> Cancelar </button>
-                            <button type="button" class="btn btn-outline btn-success" data-toggle="modal" data-target="#alertaModal"> Facturar </button>
+                                <th style="text-align: center">Código Preventa</th>
+                                <th style="text-align: center">Cód Cliente</th>
+                                <th style="text-align: center">Cliente</th>
+                                <th style="text-align: center">Cód Usuario</th>
+                                <th style="text-align: center">Usuario</th>
+                                <th style="text-align: center">Fecha</th>
+                                <th style="text-align: center">Moneda</th>
+                                <th style="text-align: center">Cantidad total</th>
+                                <th style="text-align: center">Check</th>
+                            </tr>               
+                        </thead>
+                        <tbody>
+                             <c:forEach items = "${preventas}" var = "preventa">    
+                                <tr>
+                                    <td><c:out value="${preventa.preVenCabCod}"/> </td>
+                                    <td><c:out value="${preventa.enP1mCliente.cliCod}"/></td>
+                                    <td><c:out value="${preventa.enP1mCliente.cliNom}"/></td>
+                                    <td><c:out value="${preventa.enP1mUsuario.usuCod}"/></td>
+                                    <td><c:out value="${preventa.enP1mUsuario.usuNom}"/></td>
+                                    <td><c:out value="${preventa.preVenCabFec}"/></td>
+                                    <td><c:out value="${preventa.taGzzMoneda.monDet}"/></td>
+                                    <td><c:out value="${preventa.preVenCabTot}"/></td>
+                                    <td><input type="checkbox" name="preventas" value="${preventa.preVenCabCod}"></td>
+                                </tr>
+                            </c:forEach>  
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal fade" id="configurarModal" role="dialog">
+                    <div class="modal-dialog modal-sm">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                              <h4 class="modal-title">Configurar pagos</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group">
+                                      <label> Estado de las Facturas </label>
+                                      <select class="form-control" name="estFacCod">
+                                          <c:forEach items="${estados}" var="estado">
+                                              <option value="${estado.estFacCod}">${estado.estFacDet}</option>
+                                          </c:forEach>
+                                      </select>
+                                </div>
+                                <div class="form-group">
+                                    <label> Método de Pago de las Facturas </label>
+                                      <select class="form-control" name="metPagCod">
+                                          <c:forEach items="${metodos}" var="metodo">
+                                              <option value="${metodo.metPagCod}">${metodo.metPagDet}</option>
+                                          </c:forEach>
+                                      </select>                          
+                                </div>
+                                <div class="form-group">
+                                    <label> Tipo de Pago de las Facturas </label>
+                                      <select class="form-control" name="tipPagCod">
+                                          <c:forEach items="${tipos}" var="tipo">
+                                              <option value="${tipo.tipPagCod}">${tipo.tipPagDet}</option>
+                                          </c:forEach>
+                                      </select>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline btn-danger" data-dismiss="modal"> Cancelar </button>
+                                <button type="submit" class="btn btn-outline btn-success"> Facturar </button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="modal fade" id="alertaModal" role="dialog">
+            </form>
+            <!--div class="modal fade" id="alertaModal" role="dialog">
                 <div class="modal-dialog modal-sm">
                   <div class="modal-content">
                     <div class="modal-header">
@@ -136,7 +136,7 @@
                     </div>
                   </div>
                 </div>
-            </div>
+            </div-->
         </div>
     </jsp:attribute>  
 </minierptemplate:template>   
