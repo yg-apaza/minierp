@@ -53,7 +53,7 @@ public class UsuariosController extends HttpServlet
                 String usuApePatCreate = request.getParameter("usuApePat");
                 String usuApeMatCreate = request.getParameter("usuApeMat");
                 String usuLogCreate = request.getParameter("usuLog");
-                String usuPasCreate = DigestUtils.sha256Hex(request.getParameter("usuPas"));
+                String usuPasCreate = request.getParameter("usuPas");
                 int tipUsuCodCreate = Integer.parseInt(request.getParameter("tipUsuCod"));
                 int sucCodCreate = Integer.parseInt(request.getParameter("sucCod"));
                 Date usuFecNacCreate = DateUtil.getDate2String(request.getParameter("usuFecNac"));
