@@ -19,27 +19,38 @@ public class PagosController extends HttpServlet {
         EnP1mPagosCuotasCabDao pagosDao=new EnP1mPagosCuotasCabDao();
         List<EnP1mPagosCuotasCab> pagos=pagosDao.getAll();
         request.setAttribute("pagos",pagos);
-         request.getRequestDispatcher("/WEB-INF/ventas/pagos/pagos.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/ventas/pagos/pagos.jsp").forward(request, response);
     }
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {        
         EnP1mPagosCuotasCabDao pagosDao=new EnP1mPagosCuotasCabDao();
-        if(request.getParameter("buscarFactura")!=null) {
-            EnP1mPagosCuotasCab p=pagosDao.getById(request.getParameter("CodCabFac"));
-            List<EnP1mPagosCuotasCab> pagos=new ArrayList<EnP1mPagosCuotasCab>();
-            request.setAttribute("pagos",pagos);
-            request.getRequestDispatcher("/WEB-INF/ventas/pagos/pagos.jsp").forward(request, response);
-        } else if(request.getParameter("todos")!=null) {
-            List<EnP1mPagosCuotasCab> pagos=pagosDao.getAll();
-            request.setAttribute("pagos",pagos);
-            request.getRequestDispatcher("/WEB-INF/ventas/pagos/pagos.jsp").forward(request, response);
-        } else if(request.getParameter("pagar")!=null) {
-            String cod=request.getParameter("pagar");
-            HttpSession misession= request.getSession(true);
-            misession.setAttribute("cod", cod);
-            response.sendRedirect(request.getContextPath() + "/secured/ventas/pagos/addPago");
-        } else if(request.getParameter("eliminar")!=null){
-            
-        }
+        String action = request.getParameter("accion");
+        if(action!=null){
+            switch(action){
+               case "update":{
+                   break;
+               }
+               case "pagar":{
+                   String cod=request.getParameter("monPag");
+                   
+                   System.out.println("Monto pag"+cod);
+                   
+                   
+                   break;
+               }
+            }
+        }else{
+            if(request.getParameter("buscarFactura")!=null){
+                EnP1mPagosCuotasCab p=pagosDao.getById(request.getParameter("CodCabFac"));
+                List<EnP1mPagosCuotasCab> pagos=new ArrayList<EnP1mPagosCuotasCab>();
+                pagos.add(p);
+                request.setAttribute("pagos",pagos);
+                request.getRequestDispatcher("/WEB-INF/ventas/pagos/pagos.jsp").forward(request, response);
+            }else if(request.getParameter("todos")!=null){
+                List<EnP1mPagosCuotasCab> pagos=pagosDao.getAll();
+                request.setAttribute("pagos",pagos);
+                request.getRequestDispatcher("/WEB-INF/ventas/pagos/pagos.jsp").forward(request, response);
+            }
+        }               
     }
 }
