@@ -8,9 +8,11 @@
         <title>Ventas - Preventa</title>
     </jsp:attribute>
     <jsp:attribute name="contenido">
-        
         <div class="panel-body">
-            
+            <form id="registerBill" method="post" action="${pageContext.request.contextPath}/secured/ventas/preventa/addPreventa">
+            <input type="hidden" class="form-control" name="productsAmounts" id="proAmo">
+            <input type="hidden" class="form-control" name="productsDescriptions" id="proDes">
+            <input type="hidden" class="form-control" name="productsPrices" id="proPri">
             <div class="row">
                 <div class="col-md-4">
                     <h1 class="page-header">Agregar Preventa</h1>
@@ -20,10 +22,8 @@
                         <span class="input-group-addon"><i class="fa fa-child"></i></span>
                         <input type="text" class="form-control" name="usuCod" value="${usuario.usuCod} - ${usuario.usuNom} ${usuario.usuApePat} " readonly>
                     </div>
-                    
                 </div>            		
             </div>            
-
             <div class="row">
                     <div class="col-lg-12">  
                         <div class="panel panel-default">
@@ -35,7 +35,7 @@
                                                 <div class="col-md-5">
                                                     <div class="form-group input-group">
                                                         <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                        <input type="text" class="form-control" name="facVenCabCod" placeholder="Número de Factura" pattern="[0-9]{3}-[0-9]{6}">
+                                                        <input type="text" class="form-control" name="CodCabPre" placeholder="Número de Factura" pattern="[0-9]{3}-[0-9]{6}">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-7">
@@ -58,13 +58,13 @@
                                                 <div class="col-md-3">
                                                     <div class="form-group input-group" >
                                                         <span class="input-group-addon">IGV</span>
-                                                        <input type="number" class="form-control" name="facVenCabIgv" value="${empresa.empIgv}" id="facIgv" readOnly>
+                                                        <input type="number" class="form-control" name="igvCabPre" value="18" id="facIgv" readOnly>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <div class="form-group input-group" >
                                                         <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                        <input type="date" class="form-control" name="facVenCabFec">
+                                                        <input type="date" class="form-control" name="fecCabPre">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-5">
@@ -85,11 +85,17 @@
                                                         <input type="number" class="form-control" min="1" placeholder=1 id="plazo" name="plazo">
                                                     </div>
                                                 </div>
-
+                                                <div class="col-md-6">
+                                                    <div class="form-group input-group" >
+                                                        <span class="input-group-addon">Descuento</span>
+                                                        <input type="number" class="form-control" name="desCabPre" min="0" step="any" value="0" id="facDes">
+                                                        <span class="input-group-addon"><i class="fa fa-sort-amount-asc"></i></span>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-xs-6 col-md-4">
-                                            <textarea class="form-control" rows="6" name="facVenCabObs" placeholder="Observaciones"></textarea>
+                                            <textarea class="form-control" rows="6" name="obsCabPre" placeholder="Observaciones"></textarea>
                                         </div>
                                     </div>
                                 </form>  
@@ -179,7 +185,7 @@
                                         <div class="col-lg-6">
                                             <div class="form-group input-group" >
                                                 <span class="input-group-addon">SubTotal</span>
-                                                <input type="number" class="form-control" name="facVenCabSubTot" id="facSub" value="0" readonly>
+                                                <input type="number" class="form-control" name="subTotCabPre" id="facSub" value="0" readonly>
                                                 <span class="input-group-addon"><i class="fa fa-usd"></i></span>
                                             </div>
                                         </div>
@@ -187,21 +193,22 @@
                                         <div class="col-lg-6">
                                             <div class="form-group input-group" >
                                                 <span class="input-group-addon">Total</i></span>
-                                                <input type="number" class="form-control" name="facVenCabTot" id="facTot" value="0" readonly>
+                                                <input type="number" class="form-control" name="totCabPre" id="facTot" value="0" readonly>
                                                 <span class="input-group-addon"><i class="fa fa-usd"></i></span>
                                             </div>
                                         </div>
                                     </div>
                                     
                                 </div>
-                                <div align="right">
-                                        <button type="submit" class="btn btn-primary">Registrar Preventa</button>
-                                </div>
                                 
                                 
-                            </div>    
+                                
+                            </div>
+                            <div align="right">
+                                <button type="submit" class="btn btn-primary">Registrar Preventa</button>
+                            </div>
                         </div>
-                    
+                            
                         </div>
                     </div>
             </div>
@@ -296,13 +303,6 @@
                 $('#productSelected').change(putPrice);
             });
             
-            /*$(document).ready(function () {
-                if($('#productSelected').val()==''){
-                    alert('Please, choose an option');
-                    return false;
-                }
-            });*/
-            
             function getClient(tableID) {
                 try {
                     var table = document.getElementById(tableID);
@@ -394,8 +394,10 @@
                         subtotal += quant * price;
                     }
                     $('#facSub').val(subtotal);
-                    $('#facTot').val((subtotal * (1 + $('#facIgv').val()) / 100));
-                    
+                    $('#facTot').val((subtotal * (1 + $('#facIgv').val()) / 100)- ($('#facDes').val()));
+                    $('#proAmo').val(amounts);
+                    $('#proDes').val(descriptions);
+                    $('#proPri').val(prices);
                 } catch (e) {
                     alert(e);
                 }
