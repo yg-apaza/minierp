@@ -9,9 +9,10 @@
     <jsp:attribute name="contenido">
         <div class="panel-body">
             <h1 class="page-header">Pagos
+                <!--
                 <a href="#" class="btn btn-success btn-circle" data-toggle="modal" data-target="#pagarModal"><i class="fa fa-plus"></i></a>
                 <a href="#" class="btn btn-info btn-circle" data-toggle="modal" data-target="#modificarModal"><i class="fa fa-eye"></i></a>
-                <!--<a href="#" class="btn btn-info btn-circle" data-toggle="modal" data-target="#estadosModal"><i class="fa fa-eye"></i></a>-->
+                <a href="#" class="btn btn-info btn-circle" data-toggle="modal" data-target="#estadosModal"><i class="fa fa-eye"></i></a>-->
             </h1> 
         </div>
         <div class="row">
@@ -69,7 +70,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <c:forEach items="${pagos}" var="c">
+                    <c:forEach items="${cabeceraPagos}" var="c">
                         <tr>                            
                             <td>${c.enP1mFacturaVentaCab.facVenCabCod}</td>
                             <td>${c.pagCuoNum}</td>
@@ -85,6 +86,7 @@
                                 </a>
                                 -->
                                 <a href="#" data-toggle="modal" data-target="#pagarModal" 
+                                   data-faccab="${c.facVenCabCod}" 
                                    data-deutot="${c.pagCuoDeuTot}" data-deupag="${c.pagCuoTotPag}" 
                                    data-cuotot="${c.pagCuoNum}" data-cuopend="${c.pagCuoNumPag}">
                                     <i class="fa fa-dollar fa-2x" style="color: black;"></i>
@@ -136,13 +138,17 @@
                     <form id="updateForm" method="post" action="${pageContext.request.contextPath}/secured/ventas/pagos">
                         <div class="modal-body">
                             <div class=form-horizontal>
-                                <input type="hidden" name="accion" value="pagar">
+                                <input type="hidden" name="accion" value="addPago">
                                 <div class="form-group">
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-4">
+                                        <label class="control-label">Código Factura</label>
+                                        <input type="number" class="form-control" id="pagarFacCab"  name="facCab" readonly>
+                                    </div>
+                                    <div class="col-sm-4">
                                         <label class="control-label">Deuda Total</label>
                                         <input type="number" class="form-control" id="pagarDeuTot"  name="deuTot" readonly>
                                     </div>
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-4">
                                         <label class="control-label">Deuda Pagada</label>
                                         <input type="number" class="form-control" id="pagarDeuPag"  name="deuPag" readonly>
                                     </div>
@@ -177,10 +183,13 @@
             
             var updateNumCuo=$("#updateNumCuo");
             
+            
+            var pagarFacCab=$("#pagarFacCab");
             var pagarDeuTot=$("#pagarDeuTot");
             var pagarDeuPag=$("#pagarDeuPag");
             var pagarCuoTot=$("#pagarCuoTot");
             var pagarCuoPag=$("#pagarCuoPag");
+            
            // var pagarPago=$("#pagarPago");
             
             updateModal.on('show.bs.modal',function(e){
@@ -188,10 +197,14 @@
             });
             
             pagarModal.on('show.bs.modal',function(e){
+                console.log($(e.relatedTarget).data('faccab'));
+                
                 pagarDeuTot.val($(e.relatedTarget).data('deutot'));
                 pagarDeuPag.val($(e.relatedTarget).data('deupag'));
                 pagarCuoTot.val($(e.relatedTarget).data('cuotot'));
                 pagarCuoPag.val($(e.relatedTarget).data('cuopag'));
+                pagarFacCab.val($(e.relatedTarget).data('faccab'));
+                console.log(pagarFacCab);
                 //pagarPago.val($(e.relatedTarget).data('pagar'));
             });
             

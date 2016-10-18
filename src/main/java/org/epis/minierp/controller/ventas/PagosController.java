@@ -1,6 +1,8 @@
 package org.epis.minierp.controller.ventas;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -8,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.epis.minierp.business.ventas.EnP1mPagosCuotasBusiness;
 import org.epis.minierp.dao.ventas.EnP1mPagosCuotasCabDao;
 import org.epis.minierp.dao.ventas.EnP1tPagosCuotasDetDao;
+import org.epis.minierp.model.EnP1mPagosCuotasCab;
 
 public class PagosController extends HttpServlet {
         private static final long serialVersionUID = 1L;
@@ -32,6 +35,7 @@ public class PagosController extends HttpServlet {
         pagosCuotasCabDao = new EnP1mPagosCuotasCabDao();
         pagosCuotasDetDao = new EnP1tPagosCuotasDetDao();
         
+        if(action!=null){
         switch(action) {
             case "addPago":
                 String facVenCabCod = request.getParameter("facVenCabCod"); 
@@ -54,6 +58,21 @@ public class PagosController extends HttpServlet {
                 request.setAttribute("inactivos", pagosCuotasCabDao.getAllInactives());
                 request.getRequestDispatcher("/WEB-INF/ventas/pagos/pagos.jsp").forward(request, response);
                 break;
+            }
+        }else{
+            if(request.getParameter("buscarFactura")!=null){
+                    EnP1mPagosCuotasCab p=pagosCuotasCabDao.getById(request.getParameter("CodCabFac"));
+                    List<EnP1mPagosCuotasCab> pagos=new ArrayList<EnP1mPagosCuotasCab>();
+                    pagos.add(p);
+                    request.setAttribute("pagos",pagos);
+                    request.getRequestDispatcher("/WEB-INF/ventas/pagos/pagos.jsp").forward(request, response);
+                }else if(request.getParameter("todos")!=null){
+                    List<EnP1mPagosCuotasCab> pagos=pagosCuotasCabDao.getAll();
+                    request.setAttribute("pagos",pagos);
+                    request.getRequestDispatcher("/WEB-INF/ventas/pagos/pagos.jsp").forward(request, response);
+                }
         }
+        
+        
     }
 }
