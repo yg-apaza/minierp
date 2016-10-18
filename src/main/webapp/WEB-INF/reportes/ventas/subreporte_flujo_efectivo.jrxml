@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="subreporte_flujo_efectivo" pageWidth="802" pageHeight="555" orientation="Landscape" columnWidth="802" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="f63f12dd-859d-4d49-9729-c539515c8fbd">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="fecha_inicio" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="fecha_fin" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[call flujo_efectivo($P{fecha_inicio},$P{fecha_fin})]]>
+	</queryString>
+	<field name="mes" class="java.lang.String"/>
+	<field name="montoCompra" class="java.lang.Double"/>
+	<field name="montoVenta" class="java.lang.Double"/>
+	<title>
+		<band height="37">
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="717" y="10" width="70" height="20" uuid="3b4f05fb-af2e-4d1a-9a63-ffbe4b996f45"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="96">
+			<staticText>
+				<reportElement x="0" y="17" width="802" height="20" uuid="b73478d8-e9cb-4c69-bf80-e98927df2269"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Reporte de Flujo Efectivo]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<pageFooter>
+		<band height="134"/>
+	</pageFooter>
+	<summary>
+		<band height="237">
+			<barChart>
+				<chart renderType="draw" theme="default">
+					<reportElement stretchType="RelativeToTallestObject" isPrintRepeatedValues="false" x="27" y="17" width="760" height="208" isPrintWhenDetailOverflows="true" uuid="9573af26-1df5-4d74-bccc-a42aa5931c96"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<categoryDataset>
+					<categorySeries>
+						<seriesExpression><![CDATA["Ingresos"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{mes}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{montoVenta}]]></valueExpression>
+					</categorySeries>
+					<categorySeries>
+						<seriesExpression><![CDATA["Gastos"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{mes}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{montoCompra}]]></valueExpression>
+					</categorySeries>
+				</categoryDataset>
+				<barPlot isShowTickMarks="false">
+					<plot/>
+					<itemLabel/>
+					<categoryAxisFormat>
+						<axisFormat/>
+					</categoryAxisFormat>
+					<valueAxisFormat>
+						<axisFormat/>
+					</valueAxisFormat>
+				</barPlot>
+			</barChart>
+		</band>
+	</summary>
+</jasperReport>
