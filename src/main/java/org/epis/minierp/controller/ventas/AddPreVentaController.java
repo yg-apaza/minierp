@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.epis.minierp.dao.general.EnP1mEmpresaDao;
 import org.epis.minierp.dao.general.TaGzzMonedaDao;
 import org.epis.minierp.dao.ventas.EnP1mClienteDao;
 import org.epis.minierp.dao.ventas.EnP1mPreventaCabDao;
@@ -15,6 +16,7 @@ import org.epis.minierp.dao.logistica.EnP2mClaseProductoDao;
 import org.epis.minierp.dao.logistica.EnP2mProductoDao;
 import org.epis.minierp.dao.logistica.EnP2mSubclaseProductoDao;
 import org.epis.minierp.model.EnP1mCliente;
+import org.epis.minierp.model.EnP1mEmpresa;
 import org.epis.minierp.model.EnP1mPreventaCab;
 import org.epis.minierp.model.EnP1mUsuario;
 import org.epis.minierp.model.EnP2mClaseProducto;
@@ -32,18 +34,20 @@ public class AddPreVentaController extends HttpServlet{
         EnP2mClaseProductoDao claseDao = new EnP2mClaseProductoDao();
         EnP2mSubclaseProductoDao subclaseDao = new EnP2mSubclaseProductoDao();
         EnP2mProductoDao productoDao = new EnP2mProductoDao();
+        EnP1mEmpresa empresa = (new EnP1mEmpresaDao()).getAll().get(0);
 
         List<TaGzzMoneda> monedas = monedaDao.getAll();
         List<EnP1mCliente> clientes = clientDao.getAll();
         List<EnP2mClaseProducto> clases = claseDao.getAllActive();
         List<EnP2mSubclaseProducto> subclases = subclaseDao.getAllActive();
         List<EnP2mProducto> productos = productoDao.getAllActive();
-                
+                        
         request.setAttribute("monedas", monedas);
         request.setAttribute("clientes", clientes);
         request.setAttribute("clases", clases);
         request.setAttribute("subclases", subclases);
         request.setAttribute("productos", productos);
+        request.setAttribute("empresa", empresa);
         request.getRequestDispatcher("/WEB-INF/ventas/preventa/addPreventa.jsp").forward(request, response);
     }
     

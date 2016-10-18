@@ -330,6 +330,7 @@
                                                 '<td align = "left" width = "60%">'+ combo.options[combo.selectedIndex].text+'</td>'+
                                                 '<td width = "20%">'+ $('#priceSelected').val()+'</td>'+
                                                 '<td width = "10%">'+ $('#priceSelected').val()*$('#amountSelected').val()+'</td></tr>');         
+                                        updateDescription();
             }
             
             function deleteRow(tableID){
@@ -348,7 +349,7 @@
                         }
                     }
 
-                    //updateDescription();
+                    updateDescription();
                 } catch (e) {
                     alert(e);
                 }
@@ -373,7 +374,7 @@
                 }
             }
             
-            /*function updateDescription() {
+            function updateDescription() {
                 try {
                     var amounts = new Array();
                     var descriptions = new Array();
@@ -384,23 +385,21 @@
 
                     for (var i = 1; i < rowCount; i++) {
                         var row = table.rows[i];
-                        var quant = row.cells[1].childNodes[1].childNodes[3].value;
+                        
+                        var quant = row.cells[1].innerText;
                         amounts.push(quant);
-                        descriptions.push(row.cells[2].childNodes[1].value);
-                        var price = row.cells[3].childNodes[1].childNodes[3].value;
+                        descriptions.push(row.cells[2].innerText);
+                        var price = row.cells[3].innerText;
                         prices.push(price);
-                        row.cells[4].childNodes[1].childNodes[3].value = quant * price;
                         subtotal += quant * price;
                     }
                     $('#facSub').val(subtotal);
-                    $('#facTot').val((subtotal * (1 + $('#facIgv').val()) / 100) - ($('#facDes').val()));
-                    $('#proAmo').val(amounts);
-                    $('#proDes').val(descriptions);
-                    $('#proPri').val(prices);
+                    $('#facTot').val((subtotal * (1 + $('#facIgv').val()) / 100));
+                    
                 } catch (e) {
                     alert(e);
                 }
-            }*/
+            }
         </script>
     </jsp:attribute>
 </minierptemplate:template>
