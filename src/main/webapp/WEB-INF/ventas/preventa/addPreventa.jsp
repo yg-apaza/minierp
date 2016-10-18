@@ -106,7 +106,7 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group input-group" >
                                                         <span class="input-group-addon">Clase</i></span>
-                                                        <select class="form-control validate[required]" name="claProCod" id="classSelected" onchange="changingClasses()"> 
+                                                        <select class="form-control validate[required]" name="claProCod" id="classSelected" onchange="changingClasses()">
                                                             <c:forEach items="${clases}" var="clase">
                                                                 <option value="${clase.claProCod}">${clase.claProDet}</option>
                                                             </c:forEach>
@@ -151,8 +151,9 @@
                                                         <span class="input-group-addon"><i class="fa fa-gear"></i></span>
                                                     </div>
                                                 </div> 
-                                                <div class="col-md-1">
+                                                <div class="col-md-2 col-md-offset-10" align = "right">
                                                     <button type="button" class="btn btn-success" id="addDetail" onclick="addNewDetail()"><i class="fa fa-plus-square-o fa-1x"></i></button>
+                                                    <button type="button" class="btn btn-danger" onclick="deleteRow('productTable')"><i class="fa fa-trash-o fa-1x"></i></button>
                                                 </div>
                                             </div>
                                         </div>                                    
@@ -163,10 +164,10 @@
                                     <table width="100%" class="table table-striped table-bordered table-hover" id="productTable">
                                         <thead align="center">
                                             <tr >
-                                                <th>Código</th>
-                                                <th>Cantidad</th>
+                                                <th colspan="2">Cantidad</th>
                                                 <th>Descripción del Producto</th>
-                                                <th colspan="2">Precio Unitario</th>
+                                                <th>Precio Unitario</th>
+                                                <th>Importe</th>
                                             </tr>
                                         </thead>
                                         <tbody>                                        
@@ -219,7 +220,7 @@
             });
 
             function putPrice() {
-                if ($('#productSelected')[0].value != "") {
+                if ($('#productSelected')[0].val!= "") {
                     var codeCla = Number($("#classSelected").val());
                     var codeSub = Number($("#subClassSelected").val());
                     var codePro = Number($("#productSelected").val());
@@ -269,7 +270,7 @@
                         tag = false;
                         $('#productSelected').append($('<option>', {
                             value: "${product.id.proCod}",
-                            text: "${product.proDet}"
+                            text: "${product.proDet}",
                         }));
                     }
                 </c:forEach>
@@ -322,8 +323,84 @@
             }
 
             function addNewDetail() {
-                $('#productTable tbody').append('<tr align="center"><td width="20%">First Value</td><td width="10%">Second Value</td><td width="55%">Third Value</td><td width="10%">Fourth Value</td><td width="5%"><button type="button" class="btn btn-danger" onclick="deleteRow()"><i class="fa fa-trash-o fa-1x"></i></button></td></tr>');         
+                var combo = document.getElementById("productSelected");
+                $('#productTable tbody').append('<tr align="center">'+
+                                                '<td style="width: 30px;" align = "center"><input type = "checkbox"></td>'+
+                                                '<td width = "10%">'+$('#amountSelected').val()+'</td>'+
+                                                '<td align = "left" width = "60%">'+ combo.options[combo.selectedIndex].text+'</td>'+
+                                                '<td width = "20%">'+ $('#priceSelected').val()+'</td>'+
+                                                '<td width = "10%">'+ $('#priceSelected').val()*$('#amountSelected').val()+'</td></tr>');         
             }
+            
+            function deleteRow(tableID){
+                try {
+                    var table = document.getElementById(tableID);
+                    var rowCount = table.rows.length;
+
+                    for (var i = 0; i < rowCount; i++) {
+                        var row = table.rows[i];
+                        var chkbox = row.cells[0].childNodes[0];
+                        
+                        if (true == chkbox.checked) {
+                            table.deleteRow(i);
+                            rowCount--;
+                            i--;
+                        }
+                    }
+
+                    //updateDescription();
+                } catch (e) {
+                    alert(e);
+                }
+            }
+
+            function getSupplier(tableID) {
+                try {
+                    var table = document.getElementById(tableID);
+                    var rowCount = table.rows.length;
+
+                    for (var i = 1; i < rowCount; i++) {
+                        var row = table.rows[i];
+                        var chkbox = row.cells[0].childNodes[1];
+                        if (true == chkbox.checked) {
+                            $('#supCod').val(row.cells[1].childNodes[0].data);
+                            $('#proCod').val(row.id);
+                            break;
+                        }
+                    }
+                } catch (e) {
+                    alert(e);
+                }
+            }
+            
+            /*function updateDescription() {
+                try {
+                    var amounts = new Array();
+                    var descriptions = new Array();
+                    var prices = new Array();
+                    var table = document.getElementById('productTable');
+                    var rowCount = table.rows.length;
+                    var subtotal = 0;
+
+                    for (var i = 1; i < rowCount; i++) {
+                        var row = table.rows[i];
+                        var quant = row.cells[1].childNodes[1].childNodes[3].value;
+                        amounts.push(quant);
+                        descriptions.push(row.cells[2].childNodes[1].value);
+                        var price = row.cells[3].childNodes[1].childNodes[3].value;
+                        prices.push(price);
+                        row.cells[4].childNodes[1].childNodes[3].value = quant * price;
+                        subtotal += quant * price;
+                    }
+                    $('#facSub').val(subtotal);
+                    $('#facTot').val((subtotal * (1 + $('#facIgv').val()) / 100) - ($('#facDes').val()));
+                    $('#proAmo').val(amounts);
+                    $('#proDes').val(descriptions);
+                    $('#proPri').val(prices);
+                } catch (e) {
+                    alert(e);
+                }
+            }*/
         </script>
     </jsp:attribute>
 </minierptemplate:template>
