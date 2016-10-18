@@ -54,7 +54,7 @@ public class EnP1mUsuarioBusiness {
     }
     
     public void update(String usuCod, String usuNom, String usuApePat, String usuApeMat, 
-            String usuLog, String usuPas, int tipUsuCod, int sucCod, Date usuFecNac, 
+            String usuLog, int tipUsuCod, int sucCod, Date usuFecNac, 
             int estCivCod, char usuSex){
         EnP1mUsuario usuUpdate = usuDao.getById(usuCod);
         TaGzzTipoUsuario tuUpdate = new TaGzzTipoUsuario();
@@ -68,13 +68,18 @@ public class EnP1mUsuarioBusiness {
         usuUpdate.setUsuApePat(usuApePat);
         usuUpdate.setUsuApeMat(usuApeMat);
         usuUpdate.setUsuLog(usuLog);
-        //usuUpdate.setUsuPas(DigestUtils.sha256Hex(usuPas));
         usuUpdate.setTaGzzTipoUsuario(tuUpdate);
         usuUpdate.setEnP1mSucursal(sucUpdate);
         usuUpdate.setUsuFecNac(usuFecNac);
         usuUpdate.setTaGzzEstadoCivil(ecUpdate);
         usuUpdate.setUsuSex(usuSex);
         usuDao.update(usuUpdate);
+    }
+    
+    public void setPasword(String usuCod, String pass){
+        EnP1mUsuario usu = usuDao.getById(usuCod);
+        usu.setUsuPas(DigestUtils.sha256Hex(pass));
+        usuDao.update(usu);
     }
     
     private void setEstRegCod(String usuCod, char estRegCod){
