@@ -451,6 +451,16 @@
         <servlet-name>addPagoController</servlet-name>
         <url-pattern>/secured/ventas/pagos/addPago</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <description/>
+        <display-name>imprimirController</display-name>
+        <servlet-name>imprimirController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.ventas.ImprimirController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>imprimirController</servlet-name>
+        <url-pattern>/secured/ventas/factura/imprimir</url-pattern>
+    </servlet-mapping>
     <!--         ERRORS         -->
     <error-page>
         <location>/error.jsp</location>
