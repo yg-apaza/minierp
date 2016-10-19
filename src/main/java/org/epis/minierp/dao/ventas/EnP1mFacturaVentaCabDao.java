@@ -1,6 +1,9 @@
 package org.epis.minierp.dao.ventas;
 
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import org.epis.minierp.model.EnP1mFacturaVentaCab;
 import org.epis.minierp.util.HibernateUtil;
 import org.hibernate.ObjectNotFoundException;
@@ -36,6 +39,29 @@ public class EnP1mFacturaVentaCabDao {
             return null;
         }
         return estado;
+    }
+    
+    /**
+     * Devuelve el mayor numero de factura emitida por lote, maximo 3 caracteres (999)
+     * @param lote numero del lote 001-123456 lote=001
+     * @return 
+     */
+    public int getMaxValue4Lote(int lote){
+        String loteCadena = String.format("%03d",lote);
+        Query query = session.createQuery("from EnP1mFacturaVentaCab E where E.facVenCabCod like '"+loteCadena+"-%'");
+        List<EnP1mFacturaVentaCab> estados = query.list();
+        try {
+            Set<Integer> lista = new HashSet<>();
+            String temp;
+            for(int i=0; i<estados.size(); i++){
+                temp = estados.get(i).getFacVenCabCod();
+                lista.add(Integer.parseInt(temp.substring(4)));
+            }
+            return Collections.max(lista);
+        } catch (Exception e) {
+            return 1;
+        }
+        
     }
     
     public void save(EnP1mFacturaVentaCab facturaCab) {

@@ -19,7 +19,7 @@ public class EnP1mPagosCuotasBusiness {
     }
     
     public void create(String facVenCabCod, String pagCuoNumDoc, int pagCuoNum, 
-            double pagCuoDeuTot, double pagCuoTotPag, Date pagCuoFecIni){
+            double pagCuoDeuTot, Date pagCuoFecIni){
         
         EnP1mPagosCuotasCab cabcuo = new EnP1mPagosCuotasCab();
         cabcuo.setFacVenCabCod(facVenCabCod);
