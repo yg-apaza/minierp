@@ -59,7 +59,8 @@ IF idProducto != ''
 					0 precio_total_salida
 				FROM en_p4t_factura_compra_det fcd
 				INNER JOIN en_p2m_producto pp ON fcd.ProCod=pp.ProCod AND pp.ProCod=idProducto
-				INNER JOIN en_p4m_factura_compra_cab fcc ON fcc.FacComCabCod = fcd.FacComCabCod#AND fcc.FacComCabFec=fecha
+				INNER JOIN en_p4m_factura_compra_cab fcc ON fcc.FacComCabCod = fcd.FacComCabCod AND fcc.EstRegCod='A'
+                
 			)
 			UNION ALL
 			(
@@ -77,7 +78,7 @@ IF idProducto != ''
 					
 				FROM en_p1t_factura_venta_det fvd
 				INNER JOIN en_p2m_producto pp ON fvd.ProCod=pp.ProCod AND pp.ProCod=idProducto
-				INNER JOIN en_p1m_factura_venta_cab fvc ON fvc.FacVenCabCod = fvd.FacVenCabCod #AND fcc.FacComCabFec=fecha
+				INNER JOIN en_p1m_factura_venta_cab fvc ON fvc.FacVenCabCod = fvd.FacVenCabCod AND fvc.EstRegCod='A'
 				 
 			)
 		) a
@@ -86,3 +87,36 @@ IF idProducto != ''
 END $$
 
 DELIMITER ;
+
+
+DELIMITER //
+CREATE PROCEDURE PROC_IngresosPreventas (IN mCliCod char(15), IN mTipo integer)
+BEGIN 
+	IF mTipo = 1 
+    THEN
+		SELECT 
+		( 
+		  SELECT COALESCE(SUM(FacVenCabTot),0) FROM en_p1m_factura_venta_cab WHERE UsuCod=mCliCod AND DATE(FacVenCabFec)=DATE(NOW()) AND EstRegCod='A'
+		) AS 'HOY',
+		(
+			SELECT COALESCE(SUM(FacVenCabTot),0)  FROM en_p1m_factura_venta_cab WHERE UsuCod=mCliCod AND DATE(FacVenCabFec)=DATE(NOW())-1 AND EstRegCod='A'
+		) AS 'AYER',
+		(
+			SELECT COALESCE(SUM(FacVenCabTot),0)  FROM en_p1m_factura_venta_cab WHERE UsuCod=mCliCod AND DATE(FacVenCabFec)=DATE(NOW())-2 AND EstRegCod='A'
+		) AS 'ANTEAYER';
+	ELSEIF mTipo=2
+	THEN
+        SELECT 
+		( 
+			SELECT COALESCE(SUM(PreVenCabTot),0) FROM en_p1m_preventa_cab WHERE UsuCod=mCliCod AND DATE(PreVenCabFec)=DATE(NOW()) AND EstRegCod='A'
+		) AS 'HOY',
+		(
+			SELECT COALESCE(SUM(PreVenCabTot),0) FROM en_p1m_preventa_cab WHERE UsuCod=mCliCod AND DATE(PreVenCabFec)=DATE(NOW())-1 AND EstRegCod='A'
+		) AS 'AYER',
+		(
+			SELECT COALESCE(SUM(PreVenCabTot),0) FROM en_p1m_preventa_cab WHERE UsuCod=mCliCod AND DATE(PreVenCabFec)=DATE(NOW())-2 AND EstRegCod='A'
+		) AS 'ANTEAYER';
+	END IF;
+END//
+DELIMITER ;
+
