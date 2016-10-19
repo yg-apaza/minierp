@@ -41,7 +41,7 @@ public class PagosController extends HttpServlet {
                 String facVenCabCod = request.getParameter("facVenCabCod"); 
                 double montoPagado = Double.parseDouble(request.getParameter("pagCuoTotPag"));
                 pagosCuotasBusiness.update4pagos(facVenCabCod, montoPagado);
-                response.sendRedirect(request.getContextPath() + "/secured/ventas/pagos/addPago");
+                response.sendRedirect(request.getContextPath() + "/secured/ventas/pagos");
                 break;
             
             case "filter":
@@ -62,13 +62,13 @@ public class PagosController extends HttpServlet {
         }else{
             if(request.getParameter("buscarFactura")!=null){
                     EnP1mPagosCuotasCab p=pagosCuotasCabDao.getById(request.getParameter("CodCabFac"));
-                    List<EnP1mPagosCuotasCab> pagos=new ArrayList<EnP1mPagosCuotasCab>();
-                    pagos.add(p);
-                    request.setAttribute("pagos",pagos);
+                    List<EnP1mPagosCuotasCab> cabeceraPagos=new ArrayList<EnP1mPagosCuotasCab>();
+                    cabeceraPagos.add(p);
+                    request.setAttribute("cabeceraPagos",cabeceraPagos);
                     request.getRequestDispatcher("/WEB-INF/ventas/pagos/pagos.jsp").forward(request, response);
                 }else if(request.getParameter("todos")!=null){
-                    List<EnP1mPagosCuotasCab> pagos=pagosCuotasCabDao.getAll();
-                    request.setAttribute("pagos",pagos);
+                    List<EnP1mPagosCuotasCab> cabeceraPagos=pagosCuotasCabDao.getAll();
+                    request.setAttribute("cabeceraPagos",cabeceraPagos);
                     request.getRequestDispatcher("/WEB-INF/ventas/pagos/pagos.jsp").forward(request, response);
                 }
         }
