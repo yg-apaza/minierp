@@ -34,4 +34,19 @@ public class PreVentaController extends HttpServlet
         
         request.getRequestDispatcher("/WEB-INF/ventas/preventa/preventa.jsp").forward(request, response);
     }
+    
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String[] preventas = request.getParameterValues("preventas");
+        String estado = request.getParameter("estFacCod");
+        String metodo = request.getParameter("metPagCod");
+        String tipo = request.getParameter("tipPagCod");
+        System.out.println("Estado: " + estado);
+        System.out.println("Metodo de Pago: " + metodo);
+        System.out.println("Tipo de Pago: " + tipo);
+        System.out.println("Codigos de preventas seleccionadas");
+        for(String s: preventas){
+            System.out.println(s);
+        }
+    }
 }
