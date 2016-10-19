@@ -27,9 +27,10 @@
             </div>            
             <div class="row">
                     <div class="col-lg-12">  
-                        <div class="panel panel-default">
+                        <div class="panel panel-primary">
                             <div class="panel-heading">
                                 <!--<form role="form" method="post" action="${pageContext.request.contextPath}/secured/ventas/preventa/addPreventa"> -->                  
+                                <label><h4>Información General</h4></label>
                                     <div class="row">
                                         <div class="col-xs-12 col-md-8">
                                             <div class="row">
@@ -44,7 +45,7 @@
                                                         <span class="input-group-addon">Cliente</span>
                                                         <select class="form-control" id="cliCod" name="cliCod">
                                                             <c:forEach items="${clientes}" var="t" varStatus="status">
-                                                                <option value="${status.count}">${t.cliNom} ${t.cliApePat} ${t.cliApeMat}</option>
+                                                                <option value="${t.cliCod}">${t.cliNom} ${t.cliApePat} ${t.cliApeMat}</option>
                                                             </c:forEach>
                                                         </select>
                                                         <span class="input-group-addon">

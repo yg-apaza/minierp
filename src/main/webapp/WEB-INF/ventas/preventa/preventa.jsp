@@ -20,20 +20,30 @@
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <label> Tipo de Filtro </label>
-                                    <select class = "form-control" name = "tipoFiltro" id="filterSelect" style = "width: 180px; display: inline-block;">
-                                        <option> Código de Preventa </option>
-                                        <option> Código de Cliente </option>
-                                        <option> Código de Usuario </option>
-                                        <option> Usuario </option>
-                                        <option> Fecha </option>
-                                        <option> Moneda </option>
-                                    </select>
-                                    <label> Filtro </label>
-                                    <input type="text" class="form-control" id="filterName" style = "width: 180px; display: inline-block;">  
-                                    <button class="btn btn-success" id="addFiltro"> Agregar Filtro </button>
-                                    <button class="btn btn-success" > Filtrar! </button>
-                                    <button type="button" id="transformar" class="btn btn-info pull-right"> Transformar a Ventas </button>
+                                    <div class="col-md-3 col-sm-6">
+                                        <label> Tipo de Filtro </label>
+                                        <select class = "form-control" name = "tipoFiltro" id="filterSelect">
+                                            <option> Código de Preventa </option>
+                                            <option> Código de Cliente </option>
+                                            <option> Código de Usuario </option>
+                                            <option> Usuario </option>
+                                            <option> Fecha </option>
+                                            <option> Moneda </option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3 col-sm-6">
+                                        <label> Filtro </label>
+                                        <input type="text" class="form-control" id="filterName">
+                                    </div>
+                                    <div class="col-md-2 col-sm-6">
+                                        <button class="btn btn-success btn-block" id="addFiltro"> Agregar Filtro </button>
+                                    </div>
+                                    <div class="col-md-2 col-sm-6">
+                                        <button class="btn btn-success btn-block" > Filtrar! </button>
+                                    </div>
+                                    <div class="col-md-2 col-sm-12">
+                                        <button type="button" id="transformar" class="btn btn-info btn-block"> Transformar a Ventas </button>
+                                    </div>
                                 </div>
                             </div>
                             <div class="row">
@@ -47,7 +57,7 @@
             </div>
             <br>
             <form id="preventaLoteForm" role="form" action="${pageContext.request.contextPath}/secured/ventas/preventa" method="post">
-                <div id="printarea">
+                <div id="printarea" class="table-responsive">
                     <table class = "table table-bordered table-striped table-hover"  id = "id_table">
                         <thead>
                             <tr>
@@ -59,6 +69,7 @@
                                 <th style="text-align: center">Fecha</th>
                                 <th style="text-align: center">Moneda</th>
                                 <th style="text-align: center">Cantidad total</th>
+                                <th style="text-align: center">Estado de Registro</th>
                                 <th style="text-align: center">Check</th>
                             </tr>               
                         </thead>
@@ -73,6 +84,7 @@
                                     <td><c:out value="${preventa.preVenCabFec}"/></td>
                                     <td><c:out value="${preventa.taGzzMoneda.monDet}"/></td>
                                     <td><c:out value="${preventa.preVenCabTot}"/></td>
+                                    <td><c:out value="${preventa.estRegCod}"/></td>
                                     <td><input type="checkbox" name="preventas" value="${preventa.preVenCabCod}"></td>
                                 </tr>
                             </c:forEach>  
