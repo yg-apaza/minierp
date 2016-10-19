@@ -41,9 +41,15 @@ public class PreVentaController extends HttpServlet {
         String estado = request.getParameter("estFacCod");
         String metodo = request.getParameter("metPagCod");
         String tipo = request.getParameter("tipPagCod");
+        String numLot = request.getParameter("numLot");
+        String numCuo = request.getParameter("numCuo");
+        
+        System.out.println("Número de Lote: " + numLot);
         System.out.println("Estado: " + estado);
         System.out.println("Metodo de Pago: " + metodo);
         System.out.println("Tipo de Pago: " + tipo);
+        if(numCuo != null)
+            System.out.println("Número de cuotas: " + numCuo);
         System.out.println("Codigos de preventas seleccionadas");
         for (String s : preventas) {
             System.out.println(s);

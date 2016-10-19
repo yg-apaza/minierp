@@ -188,7 +188,6 @@
                 });
                 
                 $('#tipPagCod').change(function () {
-                    console.log(this.value);
                     if(this.value == 2){
                         $('#numCuoBlock').show();
                         $('#numCuo').removeAttr('disabled');
