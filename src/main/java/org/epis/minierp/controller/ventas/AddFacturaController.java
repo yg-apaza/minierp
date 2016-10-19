@@ -1,5 +1,6 @@
 package org.epis.minierp.controller.ventas;
 
+import org.epis.minierp.dao.ventas.TaGzzTipoComprobanteDao;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -31,10 +32,15 @@ import org.epis.minierp.dao.general.EnP1mUsuarioDao;
 import org.epis.minierp.dao.logistica.EnP2mClaseProductoDao;
 import org.epis.minierp.dao.logistica.EnP2mProductoDao;
 import org.epis.minierp.dao.logistica.EnP2mSubclaseProductoDao;
+import org.epis.minierp.dao.ventas.EnP1mMovimientoPuntoVenDao;
 import org.epis.minierp.dao.ventas.EnP1tFacturaVentaDetDao;
 import org.epis.minierp.model.EnP1mCliente;
 import org.epis.minierp.model.EnP1mEmpresa;
 import org.epis.minierp.model.EnP1mFacturaVentaCab;
+import org.epis.minierp.model.EnP1mMovimientoPuntoVen;
+import org.epis.minierp.model.EnP1mMovimientoPuntoVenId;
+import org.epis.minierp.model.EnP1mPuntoVenta;
+import org.epis.minierp.model.EnP1mSucursal;
 import org.epis.minierp.model.EnP1mUsuario;
 import org.epis.minierp.model.EnP1tFacturaVentaDet;
 import org.epis.minierp.model.EnP1tFacturaVentaDetId;
@@ -63,7 +69,6 @@ public class AddFacturaController extends HttpServlet
             Iterator <EnP2mProducto> products = stores.next().getEnP2mProductos().iterator();
             while(products.hasNext()) {
                 EnP2mProducto product = products.next();
-                System.out.println("Producto Almacen " + product.getEnP2mAlmacen().getAlmCod());
                 if(product.getEstRegCod() == 'A')
                     productosSet.add(product);
             }            
@@ -123,7 +128,8 @@ public class AddFacturaController extends HttpServlet
             
             header.setFacVenCabCod(facVenCabCod);
             header.setEnP1mCliente((new EnP1mClienteDao()).getById(cliCod));
-            header.setEnP1mUsuario((new EnP1mUsuarioDao()).getById(usuCod));
+            EnP1mUsuario user = (new EnP1mUsuarioDao()).getById(usuCod);
+            header.setEnP1mUsuario(user);
             header.setFacVenCabFec(facVenCabFec);
             header.setFacVenCabTot(facVenCabTot);
             header.setFacVenCabDes(facVenCabDes);
@@ -166,6 +172,27 @@ public class AddFacturaController extends HttpServlet
             
                 detalles.save(det);
             }
+            
+            EnP1mMovimientoPuntoVenDao movPunVenDao = new EnP1mMovimientoPuntoVenDao(); 
+            EnP1mMovimientoPuntoVen movPunVen = new EnP1mMovimientoPuntoVen();
+            EnP1mSucursal brachOffice = user.getEnP1mSucursal();
+            EnP1mPuntoVenta salePoint = brachOffice.getEnP1mPuntoVentas().iterator().next(); //Getting the first one
+            
+            EnP1mMovimientoPuntoVenId movPunVenId = new EnP1mMovimientoPuntoVenId();
+            movPunVenId.setSucCod(brachOffice.getSucCod());
+            movPunVenId.setPunVenCod(salePoint.getId().getPunVenCod());
+            movPunVenId.setMovPunVenCod((int) (System.currentTimeMillis() % Integer.MAX_VALUE));
+            
+            movPunVen.setId(movPunVenId);
+            movPunVen.setEnP1mUsuario(user);
+            movPunVen.setEstRegCod('A');
+            movPunVen.setTaGzzTipoComprobante((new TaGzzTipoComprobanteDao()).getById(1));
+            movPunVen.setMovPunVenFec(facVenCabFec);
+            movPunVen.setMovPunVenMon(facVenCabTot);
+            movPunVen.setMovPunVenComCod(facVenCabCod);
+            
+            movPunVenDao.save(movPunVen);       
+            
             response.sendRedirect(request.getContextPath() + "/secured/ventas/factura/addFactura");
         } catch (ParseException ex) {
             Logger.getLogger(AddFacturaController.class.getName()).log(Level.SEVERE, null, ex);
