@@ -15,16 +15,10 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-4">
+                    <div class="col-lg-8">
                         <form role=form" method="get" action="${pageContext.request.contextPath}/secured/ventas/factura/addFactura">
                             <button type="submit" class="btn btn-success">Crear Factura <i class="fa fa-plus"></i></button>   
                         </form>
-                    </div>
-                    <div class="col-lg-4">
-                        <form role=form" method="get" action="${pageContext.request.contextPath}/secured/ventas/factura/imprimir">
-                            <input type="hidden" name="facCod" value="001-000001">
-                            <button type="submit" class="btn btn-success">Imprimir <i class="fa fa-plus"></i></button>   
-                        </form><br>
                     </div>
                     <div class="col-lg-4">
                         <div class="col-lg-5">
