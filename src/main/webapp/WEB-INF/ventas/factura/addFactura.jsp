@@ -298,7 +298,7 @@
                         var price = Number(${product.proPreUni});
                         price.toFixed(2)
                         $('#priceSelected').val(price);
-                        $('#amountSelected')[0].max = ${product.proStk};
+                        $('#amountSelected')[0].max = ${product.proStk - product.proStkPreVen};
                     }
             </c:forEach>
                     if (tag) {

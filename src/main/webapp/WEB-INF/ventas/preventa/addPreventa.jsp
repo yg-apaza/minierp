@@ -36,7 +36,7 @@
                                                 <div class="col-md-5">
                                                     <div class="form-group input-group">
                                                         <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                        <input type="text" class="form-control" name="CodCabPre" placeholder="Número de Factura" pattern="[0-9]{3}-[0-9]{6}">
+                                                        <input type="text" class="form-control" name="CodCabPre" placeholder="Número de Preventa" pattern="[0-9]{3}-[0-9]{6}">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-7">
@@ -213,6 +213,24 @@
             </div>
           </form>
         </div>
+                                    
+        <div id="errorMessageModal" class="modal fade">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Detalle de Preventa</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p align="center"><span id="errorMessage"></span></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-success" data-dismiss="modal">Aceptar</button>                                            
+                    </div>
+                </div>              
+            </div>
+        </div>
+                                    
         <script language="javascript">
             $(document).ready(function () {
                 changingClasses();
@@ -236,7 +254,7 @@
                         if ((${product.id.claProCod} == codeCla) && (${product.id.subClaProCod} == codeSub) && (${product.id.proCod} == codePro)) {
                             tag = false;
                             $('#priceSelected').val(${product.proPreUni});
-                            $('#amountSelected')[0].max = ${product.proStk};
+                            $('#amountSelected')[0].max = ${product.proStk - product.proStkPreVen};
                         }
                     </c:forEach>
                     if (tag) {
@@ -324,13 +342,27 @@
 
             function addNewDetail() {
                 var combo = document.getElementById("productSelected");
-                $('#productTable tbody').append('<tr align="center">'+
-                                                '<td align = "left" width = "1%" hidden = "hidden">'+ $('#classSelected').val()+'-'+$('#subClassSelected').val()+'-'+$('#productSelected').val()+'</td>'+
-                                                '<td style="width: 9%;" align = "center"><input type = "checkbox"></td>'+
-                                                '<td width = "10%">'+$('#amountSelected').val()+'</td>'+
-                                                '<td align = "left" width = "70%">'+ combo.options[combo.selectedIndex].text+'</td>'+'<td width = "20%">'+ $('#priceSelected').val()+'</td>'+
-                                                '<td width = "10%">'+ $('#priceSelected').val()*$('#amountSelected').val()+'</td></tr>');         
-                                        updateDescription();
+                
+                var idRow = $("#classSelected").val() + "-" + $("#subClassSelected").val() + "-" + $("#productSelected").val();
+                var finalValidation = true;
+                
+                $("#productTable tr").find('td:eq(0)').each(function () {
+                    if(idRow == $(this).html()) {
+                        $("#errorMessage").text("El producto ya ha sido ingresado en la descripción.");
+                        $('#errorMessageModal').modal('show');
+                        finalValidation = false;
+                        return false;
+                    }
+                });
+                if(finalValidation) {
+                    $('#productTable tbody').append('<tr align="center">'+
+                                                    '<td align = "left" width = "1%" hidden = "hidden">'+ $('#classSelected').val()+'-'+$('#subClassSelected').val()+'-'+$('#productSelected').val()+'</td>'+
+                                                    '<td style="width: 9%;" align = "center"><input type = "checkbox"></td>'+
+                                                    '<td width = "10%">'+$('#amountSelected').val()+'</td>'+
+                                                    '<td align = "left" width = "70%">'+ combo.options[combo.selectedIndex].text+'</td>'+'<td width = "20%">'+ $('#priceSelected').val()+'</td>'+
+                                                    '<td width = "10%">'+ $('#priceSelected').val()*$('#amountSelected').val()+'</td></tr>');         
+                                            updateDescription();
+                }
             }
             
             function deleteRow(tableID){
@@ -421,7 +453,7 @@
                 },
                 messages: {
                     CodCabPre: {
-                        required: "Ingrese el codigo de la factura"
+                        required: "Ingrese el codigo de la preventa"
                     },
                     plazo: {
                         required: "Ingrese un plazo para la finalizar la preventa"
