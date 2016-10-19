@@ -86,3 +86,20 @@ IF idProducto != ''
 END $$
 
 DELIMITER ;
+
+
+DELIMITER //
+CREATE PROCEDURE PROC_Ingresos (IN CliCod char(15))
+BEGIN 
+	SELECT 
+	( 
+	  SELECT SUM(FacVenCabTot) FROM en_p1m_factura_venta_cab WHERE UsuCod=CliCod AND DATE(FacVenCabFec)=DATE(NOW()) AND EstRegCod='A'
+	) AS 'HOY',
+	(
+	SELECT SUM(FacVenCabTot) FROM en_p1m_factura_venta_cab WHERE UsuCod=CliCod AND DATE(FacVenCabFec)=DATE(NOW())-1 AND EstRegCod='A'
+	) AS 'AYER',
+	(
+	SELECT SUM(FacVenCabTot) FROM en_p1m_factura_venta_cab WHERE UsuCod=CliCod AND DATE(FacVenCabFec)=DATE(NOW())-2 AND EstRegCod='A'
+	) AS 'ANTEAYER';
+END//
+DELIMITER ;
