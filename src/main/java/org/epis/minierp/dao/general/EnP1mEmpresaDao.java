@@ -28,7 +28,7 @@ public class EnP1mEmpresaDao {
         return estados;
     }
 
-    public EnP1mEmpresa getById(String id) {
+    public EnP1mEmpresa getById(int id) {
         EnP1mEmpresa estado = null;
         try {
             estado = (EnP1mEmpresa) session.load(EnP1mEmpresa.class, id);

@@ -244,4 +244,27 @@ public class DateUtil {
             return null;
         }
     }
+    
+    /**
+     * Devuelve la fecha actual
+     * @return 
+     */
+    public static Date getthisDate(){
+        Calendar cal = Calendar.getInstance();
+        return cal.getTime();
+    }
+    
+    /**
+     * Añade dias a una fecha
+     * @param fecha Fecha que se desea añadir los dias
+     * @param dias Dias que se desean añadir
+     * @return 
+     */
+    public static Date addDays(Date fecha, int dias){
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(fecha);
+        cal.add(Calendar.DAY_OF_YEAR, dias);
+        return cal.getTime();
+    }
+      
 }

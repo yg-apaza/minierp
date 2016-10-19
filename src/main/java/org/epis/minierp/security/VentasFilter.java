@@ -33,13 +33,9 @@ public class VentasFilter implements Filter
         }
         else
         {
-            System.out.println("aqui si");
             EnP1mUsuario u = (EnP1mUsuario) session.getAttribute("usuario");
             if(u.getTaGzzTipoUsuario().getTipUsuCod() == 1 || u.getTaGzzTipoUsuario().getTipUsuCod() == 2)
-            {
-                System.out.println("por aqui debo ir");
                 chain.doFilter(req, res);
-            }
             else
                 response.sendRedirect(request.getContextPath() + "/");
         }

@@ -8,8 +8,6 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.StringTokenizer;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -48,7 +46,7 @@ public class AddPreVentaController extends HttpServlet{
         EnP1mEmpresa empresa = (new EnP1mEmpresaDao()).getAll().get(0);
 
         List<TaGzzMoneda> monedas = monedaDao.getAll();
-        List<EnP1mCliente> clientes = clientDao.getAll();
+        List<EnP1mCliente> clientes = clientDao.getAllActive();
         List<EnP2mClaseProducto> clases = claseDao.getAllActive();
         List<EnP2mSubclaseProducto> subclases = subclaseDao.getAllActive();
         List<EnP2mProducto> productos = productoDao.getAllActive();
@@ -112,7 +110,7 @@ public class AddPreVentaController extends HttpServlet{
             
                 EnP2mProductoDao productDao = new EnP2mProductoDao();
                 EnP2mProducto product = productDao.getById(productId);
-                product.setProStk(product.getProStk() - Double.parseDouble(productsAmounts.get(i))); /* Updating stock */
+                product.setProStkPreVen(product.getProStkPreVen() + Double.parseDouble(productsAmounts.get(i)));
                 productDao.update(product);
             
                 EnP1tPreventaDet det = new EnP1tPreventaDet();
@@ -127,10 +125,9 @@ public class AddPreVentaController extends HttpServlet{
                 detalles.save(det);
             }
             
-            response.sendRedirect(request.getContextPath() + "/secured/general/panel");
+            response.sendRedirect(request.getContextPath() + "/secured/ventas/preventa");
 
         } catch (ParseException ex) {
-            Logger.getLogger(AddPreVentaController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }
