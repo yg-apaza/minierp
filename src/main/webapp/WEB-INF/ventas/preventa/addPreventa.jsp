@@ -29,7 +29,7 @@
                     <div class="col-lg-12">  
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <form role=form" method="post" action="${pageContext.request.contextPath}/secured/ventas/preventa/addPreventa">                   
+                                <!--<form role="form" method="post" action="${pageContext.request.contextPath}/secured/ventas/preventa/addPreventa"> -->                  
                                     <div class="row">
                                         <div class="col-xs-12 col-md-8">
                                             <div class="row">
@@ -83,7 +83,7 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group input-group" >
                                                         <span class="input-group-addon">Duración</span>
-                                                        <input type="number" class="form-control" min="1" placeholder=1 id="plazo" name="plazo">
+                                                        <input type="number" class="form-control" min="1" placeholder=1 id="plazo" name="plazo" value="1">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -99,14 +99,14 @@
                                             <textarea class="form-control" rows="6" name="obsCabPre" placeholder="Observaciones"></textarea>
                                         </div>
                                     </div>
-                                </form>  
+                                <!--</form>  -->
                             </div>
                         
                             <div class="panel-body">
                             
                             <div class="form-group">
                                 <label><h4>Detalle Preventa</h4></label>
-                                <form id="detailsForm">
+                                <!--<form id="detailsForm">-->
                                     <div class="row">
                                         <div class="col-xs-12 col-md-12">
                                             <div class="row">
@@ -165,7 +165,7 @@
                                             </div>
                                         </div>                                    
                                     </div>
-                                </form>
+                               <!-- </form>-->
                                 <br>
                                 <div class="table-responsive">
                                     <table width="100%" class="table table-striped table-bordered table-hover" id="productTable">
@@ -202,8 +202,6 @@
                                     
                                 </div>
                                 
-                                
-                                
                             </div>
                             <div align="right">
                                 <button type="submit" class="btn btn-primary">Registrar Preventa</button>
@@ -213,6 +211,7 @@
                         </div>
                     </div>
             </div>
+          </form>
         </div>
         <script language="javascript">
             $(document).ready(function () {
@@ -403,6 +402,44 @@
                     alert(e);
                 }
             }
+            
+             $("#registerBill").validate({
+                rules: {
+                    CodCabPre: {
+                        required: true
+                    },
+                    fecCabPre: {
+                        required: true
+                    },
+                    plazo: {
+                        required: true
+                    },
+                    desCabPre:
+                    {
+                        required: true
+                    }
+                },
+                messages: {
+                    CodCabPre: {
+                        required: "Ingrese el codigo de la factura"
+                    },
+                    plazo: {
+                        required: "Ingrese un plazo para la finalizar la preventa"
+                    },
+                    fecCabPre: {
+                        required: "Ingrese la fecha"
+                    },
+                    desCabPre:
+                    {
+                        required: "El descuento puede ser 0 pero la casilla no debe estar vacia"
+                    }
+                },
+                submitHandler: function (form) {
+                    form.submit();
+                }
+            });
+            
+            
         </script>
     </jsp:attribute>
 </minierptemplate:template>
