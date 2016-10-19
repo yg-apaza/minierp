@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reporte_kardex_fisico" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="70d99bdf-88ad-4e5e-bd8f-983f531bb5f6">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="PRODUCTO_ID" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String">
+		<defaultValueExpression><![CDATA["."]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT 2016 periodo,"20701820992" ruc,"Escuela Profesional EPISUNSA" apellidos_nombres,"AREQUIPA" establecimiento, "10A" existencia,"A" tipo,"01" unidadMedida, p.ProDet descripcion FROM en_p2m_producto p WHERE p.ProCod=$P{PRODUCTO_ID}]]>
+	</queryString>
+	<field name="periodo" class="java.lang.Long"/>
+	<field name="ruc" class="java.lang.String"/>
+	<field name="apellidos_nombres" class="java.lang.String"/>
+	<field name="establecimiento" class="java.lang.String"/>
+	<field name="existencia" class="java.lang.String"/>
+	<field name="tipo" class="java.lang.String"/>
+	<field name="unidadMedida" class="java.lang.String"/>
+	<field name="descripcion" class="java.lang.String"/>
+	<group name="cuenta_corriente">
+		<groupExpression><![CDATA[]]></groupExpression>
+		<groupHeader>
+			<band height="244">
+				<staticText>
+					<reportElement x="0" y="4" width="52" height="20" uuid="1a0d3a9f-9077-4771-b487-6c89db12f799"/>
+					<textElement textAlignment="Right" markup="none">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[PERIODO:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="4" y="44" width="304" height="20" uuid="b9767e0d-edbd-49fa-b383-f819f07abc60"/>
+					<textElement textAlignment="Left" markup="none">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[APELLIDOS Y NOMBRES,DENOMINACION O RAZON SOCIAL:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="4" y="64" width="110" height="20" uuid="a5878c37-4a05-4d4c-abb2-a76a7211cda5"/>
+					<textElement textAlignment="Left" markup="none">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[ESTABLECIMIENTO:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="4" y="84" width="148" height="20" uuid="6cab5387-0ee9-4a56-be6c-2a392bd94644"/>
+					<textElement textAlignment="Left" markup="none">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[CODIGO DE LA EXISTENCIA:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="4" y="104" width="34" height="20" uuid="5a4c302c-a1f2-4eba-b783-c5c956bb5e79"/>
+					<textElement textAlignment="Left" markup="none">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[TIPO:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="4" y="124" width="75" height="20" uuid="febf154c-12ee-4dca-971b-ad2de0edd022"/>
+					<textElement textAlignment="Left" markup="none">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[DESCRIPCION:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="316" y="0" width="100" height="20" uuid="a8d74249-4314-4718-b49e-00d26cb6c15b"/>
+					<textFieldExpression><![CDATA[$F{periodo}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="316" y="44" width="278" height="20" uuid="313c600e-964b-44c3-aa48-f59b83e65c7a"/>
+					<textFieldExpression><![CDATA[$F{apellidos_nombres}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="316" y="64" width="282" height="20" uuid="e45575c7-2a6f-43a3-9c6b-ba98ae63472e"/>
+					<textFieldExpression><![CDATA[$F{establecimiento}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="316" y="84" width="100" height="20" uuid="193308f9-6a8a-46bd-bf01-6fd90f146675"/>
+					<textFieldExpression><![CDATA[$F{existencia}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="316" y="124" width="100" height="20" uuid="70a75b2e-bfd7-48f5-ae33-49114bc275c7"/>
+					<textFieldExpression><![CDATA[$F{descripcion}]]></textFieldExpression>
+				</textField>
+				<subreport runToBottom="true">
+					<reportElement x="4" y="184" width="798" height="59" uuid="1195a45e-bc47-4bf8-8d4a-dc6eb3cad83d"/>
+					<subreportParameter name="SUBREPORT_DIR">
+						<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="PRODUCTO_ID">
+						<subreportParameterExpression><![CDATA[$P{PRODUCTO_ID}]]></subreportParameterExpression>
+					</subreportParameter>
+					<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					<subreportExpression><![CDATA["subreporte_kardex_fisico.jasper"]]></subreportExpression>
+				</subreport>
+				<staticText>
+					<reportElement x="4" y="24" width="34" height="20" uuid="9985034a-9de0-49b3-a48c-ca65027e7d96"/>
+					<textElement textAlignment="Left" markup="none">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[RUC:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="316" y="20" width="100" height="20" uuid="b5ea24c0-c640-4453-a592-b1318711f9e9"/>
+					<textFieldExpression><![CDATA[$F{ruc}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="316" y="104" width="100" height="20" uuid="f6f62059-516f-4528-a975-752d70df6e73"/>
+					<textFieldExpression><![CDATA[$F{tipo}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="4" y="144" width="188" height="20" uuid="8963b8de-6019-43e4-9b13-05fa92d11205"/>
+					<textElement textAlignment="Left" markup="none">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[CODIGO DE LA UNIDAD DE MEDIDA:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="4" y="164" width="272" height="20" uuid="54f19525-66f9-4223-b5a6-f72ed938d793"/>
+					<textElement textAlignment="Left" markup="none">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[METODO DE VALUACION:  PROMEDIO PONDERADO]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="316" y="144" width="100" height="20" uuid="a77927e0-9ce0-4793-9ab7-39c0d6eac9b3"/>
+					<textFieldExpression><![CDATA[$F{unidadMedida}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="43" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="4" y="0" width="798" height="30" uuid="50004021-da5d-4ff0-b496-1d9d3b8782dd"/>
+				<textElement textAlignment="Center" markup="none">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[FORMATO 12.1: "REGISTRO DEL INVENTARIO PERMANENTE EN UNIDADES FÍSICAS- DETALLE DEL
+INVENTARIO PERMANENTE EN UNIDADES FÍSICAS"
+]]></text>
+			</staticText>
+		</band>
+	</title>
+</jasperReport>

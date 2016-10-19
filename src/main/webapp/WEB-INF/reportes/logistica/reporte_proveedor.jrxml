@@ -1,32 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="subreporte_proovedor" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="93ebfb2f-da29-4a42-a4fa-8d6c504d62f3">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Reporte Proveedor" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="93ebfb2f-da29-4a42-a4fa-8d6c504d62f3">
 	<property name="ireport.zoom" value="1.1000000000000008"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
-	<queryString language="SQL">
-		<![CDATA[SELECT * FROM en_p4m_proveedor p WHERE p.EstRegCod='A']]>
+	<queryString language="hql">
+		<![CDATA[From EnP4mProveedor where estRegCod = 'A']]>
 	</queryString>
-	<field name="ProCod" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="ProDet" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="ProCon" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="ProDir" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="ProTelFij" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="ProPagWeb" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
+	<field name="enP4mDocumentoProveedors" class="java.util.Set"/>
+	<field name="enP4mFacturaCompraCabs" class="java.util.Set"/>
+	<field name="enP4mGuiaCompraCabs" class="java.util.Set"/>
+	<field name="estRegCod" class="java.lang.Character"/>
+	<field name="proCod" class="java.lang.String"/>
+	<field name="proCon" class="java.lang.String"/>
+	<field name="proDet" class="java.lang.String"/>
+	<field name="proDir" class="java.lang.String"/>
+	<field name="proEmail" class="java.lang.String"/>
+	<field name="proObs" class="java.lang.String"/>
+	<field name="proPagWeb" class="java.lang.String"/>
+	<field name="proTelCel" class="java.lang.String"/>
+	<field name="proTelFij" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
+	<pageHeader>
+		<band height="43">
+			<staticText>
+				<reportElement mode="Opaque" x="10" y="12" width="528" height="20" uuid="383a41f8-13d5-4c70-bf30-3d47463a02c8"/>
+				<textElement textAlignment="Center" markup="none">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA["PADRON DE PROOVEDORES DE SUMINISTROS DE ALMACEN "
+]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
 	<columnHeader>
 		<band height="33" splitType="Stretch">
 			<line>
@@ -74,42 +81,42 @@
 				<textElement textAlignment="Center">
 					<font size="9"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{ProCod}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{proCod}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="61" y="0" width="87" height="20" uuid="0018de36-189a-424f-890c-63b4ec26442a"/>
 				<textElement textAlignment="Center">
 					<font size="9"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{ProDet}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{proDet}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="149" y="0" width="85" height="20" uuid="a66932ed-939f-4f34-98a6-97d1614035a1"/>
 				<textElement textAlignment="Center">
 					<font size="9"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{ProCon}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{proCon}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="244" y="0" width="120" height="20" uuid="56c8c1ff-a438-4e4d-9296-a60791d2effc"/>
 				<textElement textAlignment="Center">
 					<font size="9"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{ProDir}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{proDir}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="366" y="0" width="55" height="20" uuid="366be20a-d757-485e-a243-1e436532d9bd"/>
 				<textElement textAlignment="Center">
 					<font size="9"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{ProTelFij}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{proTelFij}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="421" y="0" width="114" height="20" uuid="763f262b-bba1-4be8-92dc-e1150fdbba05"/>
 				<textElement textAlignment="Center">
 					<font size="9"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{ProPagWeb}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{proPagWeb}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

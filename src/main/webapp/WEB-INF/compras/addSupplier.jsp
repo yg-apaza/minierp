@@ -22,7 +22,7 @@
                 <input class = "form-control" name = "contacto" type = "text" placeholder = "Nombre del contacto">
                 <br>
                 <label class = "form-control" style="background: #A9E2F3;"  for = "direccion"> Dirección: </label>
-                <input class = "form-control" name = "direccion" type = "text" placeholder = "Distrito, Provincia,País">
+                <input class = "form-control" name = "direccion" type = "text" placeholder = "Distrito, Provincia, País">
                 <br>
                 <label class = "form-control" style="background: #A9E2F3;" for = "telefono"> Teléfono: </label>
                 <input class = "form-control" name = "telefono" type = "text" placeholder = "Ej. 054425689">

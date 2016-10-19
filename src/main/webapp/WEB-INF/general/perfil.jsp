@@ -20,7 +20,7 @@
                             <br>
                             <form role="form">
                                 <div class="form-group">
-                                    <label>Codigo de usuario:</label>
+                                    <label>Código de usuario:</label>
                                     <input class="form-control" value="${sessionScope.usuario.usuCod}" disabled>
                                 </div>
                                 <div class="form-group">
