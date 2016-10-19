@@ -84,6 +84,9 @@
                                         <a href="${pageContext.request.contextPath}/secured/ventas/preventa/addPreventa">Agregar Preventa</a>
                                     </li>
                                     <li>
+                                        <a href="${pageContext.request.contextPath}/secured/ventas/preventa/preventasLotes">Preventas por Lotes</a>
+                                    </li>
+                                    <li>
                                         <a href="${pageContext.request.contextPath}/secured/ventas/clientes">Clientes</a>
                                     </li>
                                     <li>

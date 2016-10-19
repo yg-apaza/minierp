@@ -401,6 +401,17 @@
         <servlet-name>PreVentaController</servlet-name>
         <url-pattern>/secured/ventas/preventa</url-pattern>
     </servlet-mapping>
+    
+     <servlet>
+        <description/>
+        <display-name>PreVentaLotesController</display-name>
+        <servlet-name>PreVentaLotesController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.ventas.PreVentaLotesController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PreVentaLotesController</servlet-name>
+        <url-pattern>/secured/ventas/preventaLotes</url-pattern>
+    </servlet-mapping>
     <servlet>
         <description/>
         <display-name>AddPreVentaController</display-name>

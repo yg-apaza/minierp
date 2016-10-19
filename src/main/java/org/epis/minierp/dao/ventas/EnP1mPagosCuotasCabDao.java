@@ -27,7 +27,22 @@ public class EnP1mPagosCuotasCabDao {
         System.out.println(estados);
         return estados;
     }
+    
+    public List<EnP1mPagosCuotasCab> getAllInactives() {
+        Query query = session.createQuery("from EnP1mPagosCuotasCab E where E.estRegCod = 'I'");
+        List<EnP1mPagosCuotasCab> estados = query.list();
+        System.out.println(estados);
+        return estados;
+    }
 
+    public List<EnP1mPagosCuotasCab> getFiltered(String facVenCabCod) {
+        Query query = session.createQuery("from EnP1mPagosCuotasCab E where E.estRegCod = 'A' "
+                + "and E.facVenCabCod like '%" + facVenCabCod + "'");
+        List<EnP1mPagosCuotasCab> estados = query.list();
+        System.out.println(estados);
+        return estados;
+    }
+    
     public EnP1mPagosCuotasCab getById(String id) {
         EnP1mPagosCuotasCab estado = null;
         try {

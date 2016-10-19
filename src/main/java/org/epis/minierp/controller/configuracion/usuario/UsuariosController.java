@@ -2,7 +2,6 @@ package org.epis.minierp.controller.configuracion.usuario;
 
 import java.io.IOException;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -54,7 +53,7 @@ public class UsuariosController extends HttpServlet
                 String usuApePatCreate = request.getParameter("usuApePat");
                 String usuApeMatCreate = request.getParameter("usuApeMat");
                 String usuLogCreate = request.getParameter("usuLog");
-                String usuPasCreate = DigestUtils.sha256Hex(request.getParameter("usuPas"));
+                String usuPasCreate = request.getParameter("usuPas");
                 int tipUsuCodCreate = Integer.parseInt(request.getParameter("tipUsuCod"));
                 int sucCodCreate = Integer.parseInt(request.getParameter("sucCod"));
                 Date usuFecNacCreate = DateUtil.getDate2String(request.getParameter("usuFecNac"));

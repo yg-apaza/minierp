@@ -11,8 +11,9 @@
         <div class="panel-body">
             <form id="registerBill" method="post" action="${pageContext.request.contextPath}/secured/ventas/preventa/addPreventa">
             <input type="hidden" class="form-control" name="productsAmounts" id="proAmo">
-            <input type="hidden" class="form-control" name="productsDescriptions" id="proDes">
-            <input type="hidden" class="form-control" name="productsPrices" id="proPri">
+            <input type="hidden" class="form-control" name="productsCodes" id="proCodes">
+            <input type="hidden" class="form-control" name="productsPrices" id="proPrices">
+            <input type="hidden" class="form-control" name="usuCodigo" value = "${usuario.usuCod}">
             <div class="row">
                 <div class="col-md-4">
                     <h1 class="page-header">Agregar Preventa</h1>
@@ -20,7 +21,7 @@
                 <div class="col-md-4 col-md-offset-4"><br>  
                     <div class="form-group input-group" >
                         <span class="input-group-addon"><i class="fa fa-child"></i></span>
-                        <input type="text" class="form-control" name="usuCod" value="${usuario.usuCod} - ${usuario.usuNom} ${usuario.usuApePat} " readonly>
+                        <input type="text" class="form-control" name="usuCod" value = "${usuario.usuCod} - ${usuario.usuNom} ${usuario.usuApePat} " readonly>
                     </div>
                 </div>            		
             </div>            
@@ -28,7 +29,7 @@
                     <div class="col-lg-12">  
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <form role=form" method="post" action="${pageContext.request.contextPath}/secured/ventas/preventa/addPreventa">                   
+                                <!--<form role="form" method="post" action="${pageContext.request.contextPath}/secured/ventas/preventa/addPreventa"> -->                  
                                     <div class="row">
                                         <div class="col-xs-12 col-md-8">
                                             <div class="row">
@@ -82,7 +83,7 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group input-group" >
                                                         <span class="input-group-addon">Duración</span>
-                                                        <input type="number" class="form-control" min="1" placeholder=1 id="plazo" name="plazo">
+                                                        <input type="number" class="form-control" min="1" placeholder=1 id="plazo" name="plazo" value="1">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -98,14 +99,14 @@
                                             <textarea class="form-control" rows="6" name="obsCabPre" placeholder="Observaciones"></textarea>
                                         </div>
                                     </div>
-                                </form>  
+                                <!--</form>  -->
                             </div>
                         
                             <div class="panel-body">
                             
                             <div class="form-group">
                                 <label><h4>Detalle Preventa</h4></label>
-                                <form id="detailsForm">
+                                <!--<form id="detailsForm">-->
                                     <div class="row">
                                         <div class="col-xs-12 col-md-12">
                                             <div class="row">
@@ -164,8 +165,8 @@
                                             </div>
                                         </div>                                    
                                     </div>
-                                </form>
-                                
+                               <!-- </form>-->
+                                <br>
                                 <div class="table-responsive">
                                     <table width="100%" class="table table-striped table-bordered table-hover" id="productTable">
                                         <thead align="center">
@@ -201,8 +202,6 @@
                                     
                                 </div>
                                 
-                                
-                                
                             </div>
                             <div align="right">
                                 <button type="submit" class="btn btn-primary">Registrar Preventa</button>
@@ -212,6 +211,7 @@
                         </div>
                     </div>
             </div>
+          </form>
         </div>
         <script language="javascript">
             $(document).ready(function () {
@@ -325,10 +325,10 @@
             function addNewDetail() {
                 var combo = document.getElementById("productSelected");
                 $('#productTable tbody').append('<tr align="center">'+
-                                                '<td style="width: 30px;" align = "center"><input type = "checkbox"></td>'+
+                                                '<td align = "left" width = "1%" hidden = "hidden">'+ $('#classSelected').val()+'-'+$('#subClassSelected').val()+'-'+$('#productSelected').val()+'</td>'+
+                                                '<td style="width: 9%;" align = "center"><input type = "checkbox"></td>'+
                                                 '<td width = "10%">'+$('#amountSelected').val()+'</td>'+
-                                                '<td align = "left" width = "60%">'+ combo.options[combo.selectedIndex].text+'</td>'+
-                                                '<td width = "20%">'+ $('#priceSelected').val()+'</td>'+
+                                                '<td align = "left" width = "70%">'+ combo.options[combo.selectedIndex].text+'</td>'+'<td width = "20%">'+ $('#priceSelected').val()+'</td>'+
                                                 '<td width = "10%">'+ $('#priceSelected').val()*$('#amountSelected').val()+'</td></tr>');         
                                         updateDescription();
             }
@@ -340,7 +340,7 @@
 
                     for (var i = 0; i < rowCount; i++) {
                         var row = table.rows[i];
-                        var chkbox = row.cells[0].childNodes[0];
+                        var chkbox = row.cells[1].childNodes[0];
                         
                         if (true == chkbox.checked) {
                             table.deleteRow(i);
@@ -385,23 +385,61 @@
 
                     for (var i = 1; i < rowCount; i++) {
                         var row = table.rows[i];
-                        
-                        var quant = row.cells[1].innerText;
+                        var cod = row.cells[0].innerText;
+                        var quant = row.cells[2].innerText;
                         amounts.push(quant);
-                        descriptions.push(row.cells[2].innerText);
-                        var price = row.cells[3].innerText;
+                        descriptions.push(cod);
+                        var price = row.cells[4].innerText;
                         prices.push(price);
                         subtotal += quant * price;
                     }
                     $('#facSub').val(subtotal);
                     $('#facTot').val((subtotal * (1 + $('#facIgv').val()) / 100)- ($('#facDes').val()));
                     $('#proAmo').val(amounts);
-                    $('#proDes').val(descriptions);
-                    $('#proPri').val(prices);
+                    $('#proCodes').val(descriptions);
+                    $('#proPrices').val(prices);
                 } catch (e) {
                     alert(e);
                 }
             }
+            
+             $("#registerBill").validate({
+                rules: {
+                    CodCabPre: {
+                        required: true
+                    },
+                    fecCabPre: {
+                        required: true
+                    },
+                    plazo: {
+                        required: true
+                    },
+                    desCabPre:
+                    {
+                        required: true
+                    }
+                },
+                messages: {
+                    CodCabPre: {
+                        required: "Ingrese el codigo de la factura"
+                    },
+                    plazo: {
+                        required: "Ingrese un plazo para la finalizar la preventa"
+                    },
+                    fecCabPre: {
+                        required: "Ingrese la fecha"
+                    },
+                    desCabPre:
+                    {
+                        required: "El descuento puede ser 0 pero la casilla no debe estar vacia"
+                    }
+                },
+                submitHandler: function (form) {
+                    form.submit();
+                }
+            });
+            
+            
         </script>
     </jsp:attribute>
 </minierptemplate:template>
