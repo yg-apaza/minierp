@@ -53,17 +53,17 @@ public class ProductController extends HttpServlet {
         
         switch (action) {
             case "add":
-                String claProCod = request.getParameter("claProCod");
-                String subClaProCod = request.getParameter("subClaProCod");
-                String proDet = request.getParameter("proDet");
-                String almCod = request.getParameter("almCod");
-                int monCod = Integer.parseInt(request.getParameter("monCod"));
-                int uniMedCod = Integer.parseInt(request.getParameter("uniMedCod"));
-                double proStkMax = Double.parseDouble(request.getParameter("proStkMax"));
-                double proStkMin = Double.parseDouble(request.getParameter("proStkMin"));
-                double volUniAlm = Double.parseDouble(request.getParameter("volUniAlm"));
-                double proPreUni = Double.parseDouble(request.getParameter("proPreUni"));
-                String proObs = request.getParameter("proObs");
+                String claProCod = request.getParameter("claProCodAdd");
+                String subClaProCod = request.getParameter("subClaProCodAdd");
+                String proDet = request.getParameter("proDetAdd");
+                String almCod = request.getParameter("almCodAdd");
+                int monCod = Integer.parseInt(request.getParameter("monCodAdd"));
+                int uniMedCod = Integer.parseInt(request.getParameter("uniMedCodAdd"));
+                double proStkMax = Double.parseDouble(request.getParameter("proStkMaxAdd"));
+                double proStkMin = Double.parseDouble(request.getParameter("proStkMinAdd"));
+                double volUniAlm = Double.parseDouble(request.getParameter("volUniAlmAdd"));
+                double proPreUni = Double.parseDouble(request.getParameter("proPreUniAdd"));
+                String proObs = request.getParameter("proObsAdd");
 
                 productId = new EnP2mProductoId();  
                 productId.setClaProCod(claProCod);
@@ -87,10 +87,44 @@ public class ProductController extends HttpServlet {
 
                 producto.save(product);
                 break;
+            
+            case "modify":
+                String proCod = request.getParameter("proCodUpd");
+                claProCod = request.getParameter("claProCodUpd");
+                subClaProCod = request.getParameter("subClaProCodUpd");
+                proDet = request.getParameter("proDetUpd");
+                almCod = request.getParameter("almCodUpd");
+                monCod = Integer.parseInt(request.getParameter("monCodUpd"));
+                uniMedCod = Integer.parseInt(request.getParameter("uniMedCodUpd"));
+                proStkMax = Double.parseDouble(request.getParameter("proStkMaxUpd"));
+                proStkMin = Double.parseDouble(request.getParameter("proStkMinUpd"));
+                volUniAlm = Double.parseDouble(request.getParameter("volUniAlmUpd"));
+                proPreUni = Double.parseDouble(request.getParameter("proPreUniUpd"));
+                proObs = request.getParameter("proObsUpd");
 
+                productId = new EnP2mProductoId();  
+                productId.setClaProCod(claProCod);
+                productId.setSubClaProCod(subClaProCod);
+                productId.setProCod(proCod);
+                
+                EnP2mProductoDao productDao = new EnP2mProductoDao();
+                product = productDao.getById(productId);
+                product.setEnP2mAlmacen((new EnP2mAlmacenDao()).getById(almCod));
+                product.setProDet(proDet);
+                product.setProObs(proObs);
+                product.setProPreUni(proPreUni);
+                product.setProStkMax(proStkMax);
+                product.setProStkMin(proStkMin);
+                product.setTaGzzMoneda((new TaGzzMonedaDao()).getById(monCod));
+                product.setTaGzzUnidadMed((new TaGzzUnidadMedDao()).getById(uniMedCod));
+                product.setVolUniAlm(volUniAlm);
+
+                producto.update(product);
+                break;
+                
             case "delete":
-                String code = request.getParameter("proCod");
-                StringTokenizer st = new StringTokenizer(code,"/");
+                proCod = request.getParameter("proCodDel");
+                StringTokenizer st = new StringTokenizer(proCod,"/");
                 
                 productId = new EnP2mProductoId();                
                 productId.setProCod(st.nextToken());
