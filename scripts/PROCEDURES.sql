@@ -90,7 +90,7 @@ DELIMITER ;
 
 
 DELIMITER //
-CREATE PROCEDURE PROC_Ingresos (IN mCliCod char(15), IN mTipo integer)
+CREATE PROCEDURE PROC_IngresosPreventas (IN mCliCod char(15), IN mTipo integer)
 BEGIN 
 	IF mTipo = 1 
     THEN
@@ -119,3 +119,4 @@ BEGIN
 	END IF;
 END//
 DELIMITER ;
+
