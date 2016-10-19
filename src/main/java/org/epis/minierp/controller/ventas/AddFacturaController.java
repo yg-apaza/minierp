@@ -4,9 +4,13 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 import java.util.StringTokenizer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -15,6 +19,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import org.epis.minierp.dao.general.EnP1mEmpresaDao;
 import org.epis.minierp.dao.general.TaGzzEstadoFacturaDao;
 import org.epis.minierp.dao.general.TaGzzMetodoPagoFacturaDao;
@@ -30,8 +35,10 @@ import org.epis.minierp.dao.ventas.EnP1tFacturaVentaDetDao;
 import org.epis.minierp.model.EnP1mCliente;
 import org.epis.minierp.model.EnP1mEmpresa;
 import org.epis.minierp.model.EnP1mFacturaVentaCab;
+import org.epis.minierp.model.EnP1mUsuario;
 import org.epis.minierp.model.EnP1tFacturaVentaDet;
 import org.epis.minierp.model.EnP1tFacturaVentaDetId;
+import org.epis.minierp.model.EnP2mAlmacen;
 import org.epis.minierp.model.EnP2mClaseProducto;
 import org.epis.minierp.model.EnP2mProducto;
 import org.epis.minierp.model.EnP2mProductoId;
@@ -48,10 +55,24 @@ public class AddFacturaController extends HttpServlet
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession(true);
+        EnP1mUsuario user = (EnP1mUsuario) session.getAttribute("usuario");
+        Iterator <EnP2mAlmacen> stores = user.getEnP1mSucursal().getEnP2mAlmacens().iterator();
+        Set <EnP2mProducto> productosSet = new HashSet <> ();
+        while(stores.hasNext()) {
+            Iterator <EnP2mProducto> products = stores.next().getEnP2mProductos().iterator();
+            while(products.hasNext()) {
+                EnP2mProducto product = products.next();
+                System.out.println("Producto Almacen " + product.getEnP2mAlmacen().getAlmCod());
+                if(product.getEstRegCod() == 'A')
+                    productosSet.add(product);
+            }            
+        }
+        
         List <TaGzzMetodoPagoFactura> metodosPagoFactura = (new TaGzzMetodoPagoFacturaDao()).getAllActive();
         List <TaGzzMoneda> monedas = (new TaGzzMonedaDao()).getAllActive();
         List <TaGzzTipoPagoFactura> tiposPagoFactura = (new TaGzzTipoPagoFacturaDao()).getAllActive(); 
-        List <EnP2mProducto> productos = (new EnP2mProductoDao()).getAllActive(); 
+        List <EnP2mProducto> productos = new ArrayList<EnP2mProducto>(productosSet);
         List <TaGzzEstadoFactura> estados = (new TaGzzEstadoFacturaDao()).getAllActive();
         List <EnP1mCliente> clientes = (new EnP1mClienteDao()).getAllActive();
         List <EnP2mClaseProducto> clases = (new EnP2mClaseProductoDao()).getAllActive();

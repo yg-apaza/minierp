@@ -8,9 +8,12 @@
         <title>Ventas - Preventa</title>
     </jsp:attribute>
     <jsp:attribute name="contenido">
-        
         <div class="panel-body">
-            
+            <form id="registerBill" method="post" action="${pageContext.request.contextPath}/secured/ventas/preventa/addPreventa">
+            <input type="hidden" class="form-control" name="productsAmounts" id="proAmo">
+            <input type="hidden" class="form-control" name="productsCodes" id="proCodes">
+            <input type="hidden" class="form-control" name="productsPrices" id="proPrices">
+            <input type="hidden" class="form-control" name="usuCodigo" value = "${usuario.usuCod}">
             <div class="row">
                 <div class="col-md-4">
                     <h1 class="page-header">Agregar Preventa</h1>
@@ -18,24 +21,22 @@
                 <div class="col-md-4 col-md-offset-4"><br>  
                     <div class="form-group input-group" >
                         <span class="input-group-addon"><i class="fa fa-child"></i></span>
-                        <input type="text" class="form-control" name="usuCod" value="${usuario.usuCod} - ${usuario.usuNom} ${usuario.usuApePat} " readonly>
+                        <input type="text" class="form-control" name="usuCod" value = "${usuario.usuCod} - ${usuario.usuNom} ${usuario.usuApePat} " readonly>
                     </div>
-                    
                 </div>            		
             </div>            
-
             <div class="row">
                     <div class="col-lg-12">  
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <form role=form" method="post" action="${pageContext.request.contextPath}/secured/ventas/preventa/addPreventa">                   
+                                <!--<form role="form" method="post" action="${pageContext.request.contextPath}/secured/ventas/preventa/addPreventa"> -->                  
                                     <div class="row">
                                         <div class="col-xs-12 col-md-8">
                                             <div class="row">
                                                 <div class="col-md-5">
                                                     <div class="form-group input-group">
                                                         <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                        <input type="text" class="form-control" name="facVenCabCod" placeholder="Número de Factura" pattern="[0-9]{3}-[0-9]{6}">
+                                                        <input type="text" class="form-control" name="CodCabPre" placeholder="Número de Preventa" pattern="[0-9]{3}-[0-9]{6}">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-7">
@@ -58,13 +59,13 @@
                                                 <div class="col-md-3">
                                                     <div class="form-group input-group" >
                                                         <span class="input-group-addon">IGV</span>
-                                                        <input type="number" class="form-control" name="facVenCabIgv" value="${empresa.empIgv}" id="facIgv" readOnly>
+                                                        <input type="number" class="form-control" name="igvCabPre" value="18" id="facIgv" readOnly>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <div class="form-group input-group" >
                                                         <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                        <input type="date" class="form-control" name="facVenCabFec">
+                                                        <input type="date" class="form-control" name="fecCabPre">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-5">
@@ -82,24 +83,30 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group input-group" >
                                                         <span class="input-group-addon">Duración</span>
-                                                        <input type="number" class="form-control" min="1" placeholder=1 id="plazo" name="plazo">
+                                                        <input type="number" class="form-control" min="1" placeholder=1 id="plazo" name="plazo" value="1">
                                                     </div>
                                                 </div>
-
+                                                <div class="col-md-6">
+                                                    <div class="form-group input-group" >
+                                                        <span class="input-group-addon">Descuento</span>
+                                                        <input type="number" class="form-control" name="desCabPre" min="0" step="any" value="0" id="facDes">
+                                                        <span class="input-group-addon"><i class="fa fa-sort-amount-asc"></i></span>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-xs-6 col-md-4">
-                                            <textarea class="form-control" rows="6" name="facVenCabObs" placeholder="Observaciones"></textarea>
+                                            <textarea class="form-control" rows="6" name="obsCabPre" placeholder="Observaciones"></textarea>
                                         </div>
                                     </div>
-                                </form>  
+                                <!--</form>  -->
                             </div>
                         
                             <div class="panel-body">
                             
                             <div class="form-group">
                                 <label><h4>Detalle Preventa</h4></label>
-                                <form id="detailsForm">
+                                <!--<form id="detailsForm">-->
                                     <div class="row">
                                         <div class="col-xs-12 col-md-12">
                                             <div class="row">
@@ -158,8 +165,8 @@
                                             </div>
                                         </div>                                    
                                     </div>
-                                </form>
-                                
+                               <!-- </form>-->
+                                <br>
                                 <div class="table-responsive">
                                     <table width="100%" class="table table-striped table-bordered table-hover" id="productTable">
                                         <thead align="center">
@@ -179,7 +186,7 @@
                                         <div class="col-lg-6">
                                             <div class="form-group input-group" >
                                                 <span class="input-group-addon">SubTotal</span>
-                                                <input type="number" class="form-control" name="facVenCabSubTot" id="facSub" value="0" readonly>
+                                                <input type="number" class="form-control" name="subTotCabPre" id="facSub" value="0" readonly>
                                                 <span class="input-group-addon"><i class="fa fa-usd"></i></span>
                                             </div>
                                         </div>
@@ -187,25 +194,43 @@
                                         <div class="col-lg-6">
                                             <div class="form-group input-group" >
                                                 <span class="input-group-addon">Total</i></span>
-                                                <input type="number" class="form-control" name="facVenCabTot" id="facTot" value="0" readonly>
+                                                <input type="number" class="form-control" name="totCabPre" id="facTot" value="0" readonly>
                                                 <span class="input-group-addon"><i class="fa fa-usd"></i></span>
                                             </div>
                                         </div>
                                     </div>
                                     
                                 </div>
-                                <div align="right">
-                                        <button type="submit" class="btn btn-primary">Registrar Preventa</button>
-                                </div>
                                 
-                                
-                            </div>    
+                            </div>
+                            <div align="right">
+                                <button type="submit" class="btn btn-primary">Registrar Preventa</button>
+                            </div>
                         </div>
-                    
+                            
                         </div>
                     </div>
             </div>
+          </form>
         </div>
+                                    
+        <div id="errorMessageModal" class="modal fade">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Detalle de Preventa</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p align="center"><span id="errorMessage"></span></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-success" data-dismiss="modal">Aceptar</button>                                            
+                    </div>
+                </div>              
+            </div>
+        </div>
+                                    
         <script language="javascript">
             $(document).ready(function () {
                 changingClasses();
@@ -229,7 +254,7 @@
                         if ((${product.id.claProCod} == codeCla) && (${product.id.subClaProCod} == codeSub) && (${product.id.proCod} == codePro)) {
                             tag = false;
                             $('#priceSelected').val(${product.proPreUni});
-                            $('#amountSelected')[0].max = ${product.proStk};
+                            $('#amountSelected')[0].max = ${product.proStk - product.proStkPreVen};
                         }
                     </c:forEach>
                     if (tag) {
@@ -296,13 +321,6 @@
                 $('#productSelected').change(putPrice);
             });
             
-            /*$(document).ready(function () {
-                if($('#productSelected').val()==''){
-                    alert('Please, choose an option');
-                    return false;
-                }
-            });*/
-            
             function getClient(tableID) {
                 try {
                     var table = document.getElementById(tableID);
@@ -324,13 +342,27 @@
 
             function addNewDetail() {
                 var combo = document.getElementById("productSelected");
-                $('#productTable tbody').append('<tr align="center">'+
-                                                '<td style="width: 30px;" align = "center"><input type = "checkbox"></td>'+
-                                                '<td width = "10%">'+$('#amountSelected').val()+'</td>'+
-                                                '<td align = "left" width = "60%">'+ combo.options[combo.selectedIndex].text+'</td>'+
-                                                '<td width = "20%">'+ $('#priceSelected').val()+'</td>'+
-                                                '<td width = "10%">'+ $('#priceSelected').val()*$('#amountSelected').val()+'</td></tr>');         
-                                        updateDescription();
+                
+                var idRow = $("#classSelected").val() + "-" + $("#subClassSelected").val() + "-" + $("#productSelected").val();
+                var finalValidation = true;
+                
+                $("#productTable tr").find('td:eq(0)').each(function () {
+                    if(idRow == $(this).html()) {
+                        $("#errorMessage").text("El producto ya ha sido ingresado en la descripción.");
+                        $('#errorMessageModal').modal('show');
+                        finalValidation = false;
+                        return false;
+                    }
+                });
+                if(finalValidation) {
+                    $('#productTable tbody').append('<tr align="center">'+
+                                                    '<td align = "left" width = "1%" hidden = "hidden">'+ $('#classSelected').val()+'-'+$('#subClassSelected').val()+'-'+$('#productSelected').val()+'</td>'+
+                                                    '<td style="width: 9%;" align = "center"><input type = "checkbox"></td>'+
+                                                    '<td width = "10%">'+$('#amountSelected').val()+'</td>'+
+                                                    '<td align = "left" width = "70%">'+ combo.options[combo.selectedIndex].text+'</td>'+'<td width = "20%">'+ $('#priceSelected').val()+'</td>'+
+                                                    '<td width = "10%">'+ $('#priceSelected').val()*$('#amountSelected').val()+'</td></tr>');         
+                                            updateDescription();
+                }
             }
             
             function deleteRow(tableID){
@@ -340,7 +372,7 @@
 
                     for (var i = 0; i < rowCount; i++) {
                         var row = table.rows[i];
-                        var chkbox = row.cells[0].childNodes[0];
+                        var chkbox = row.cells[1].childNodes[0];
                         
                         if (true == chkbox.checked) {
                             table.deleteRow(i);
@@ -385,21 +417,61 @@
 
                     for (var i = 1; i < rowCount; i++) {
                         var row = table.rows[i];
-                        
-                        var quant = row.cells[1].innerText;
+                        var cod = row.cells[0].innerText;
+                        var quant = row.cells[2].innerText;
                         amounts.push(quant);
-                        descriptions.push(row.cells[2].innerText);
-                        var price = row.cells[3].innerText;
+                        descriptions.push(cod);
+                        var price = row.cells[4].innerText;
                         prices.push(price);
                         subtotal += quant * price;
                     }
                     $('#facSub').val(subtotal);
-                    $('#facTot').val((subtotal * (1 + $('#facIgv').val()) / 100));
-                    
+                    $('#facTot').val((subtotal * (1 + $('#facIgv').val()) / 100)- ($('#facDes').val()));
+                    $('#proAmo').val(amounts);
+                    $('#proCodes').val(descriptions);
+                    $('#proPrices').val(prices);
                 } catch (e) {
                     alert(e);
                 }
             }
+            
+             $("#registerBill").validate({
+                rules: {
+                    CodCabPre: {
+                        required: true
+                    },
+                    fecCabPre: {
+                        required: true
+                    },
+                    plazo: {
+                        required: true
+                    },
+                    desCabPre:
+                    {
+                        required: true
+                    }
+                },
+                messages: {
+                    CodCabPre: {
+                        required: "Ingrese el codigo de la preventa"
+                    },
+                    plazo: {
+                        required: "Ingrese un plazo para la finalizar la preventa"
+                    },
+                    fecCabPre: {
+                        required: "Ingrese la fecha"
+                    },
+                    desCabPre:
+                    {
+                        required: "El descuento puede ser 0 pero la casilla no debe estar vacia"
+                    }
+                },
+                submitHandler: function (form) {
+                    form.submit();
+                }
+            });
+            
+            
         </script>
     </jsp:attribute>
 </minierptemplate:template>

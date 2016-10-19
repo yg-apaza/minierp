@@ -69,7 +69,7 @@
                                        data-usuapemat="${u.usuApeMat}" data-usulog="${u.usuLog}" data-tipusucod="${u.taGzzTipoUsuario.tipUsuCod}" 
                                        data-succod="${u.enP1mSucursal.sucCod}" data-usufecnac="${u.usuFecNac}"
                                        data-estcivcod="${u.taGzzEstadoCivil.estCivCod}" data-ususex="${u.usuSex}">
-                                        <i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i>
+                                       <i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i>
                                     </a>
                                     <a href="#" data-toggle="modal" data-target="#disableModal" 
                                        data-usucod="${u.usuCod}" data-usunom="${u.usuNom}" data-usuapepat="${u.usuApePat}" 
@@ -122,7 +122,7 @@
                                     </div>
                                     <div class="col-sm-6">                               
                                         <label class="control-label">Password</label>
-                                        <input type="text" class="form-control" placeholder="Password" name="usuPas">
+                                        <input type="password" class="form-control" placeholder="Password" name="usuPas">
                                     </div>
                                 </div>
                                 <div class="form-group">
