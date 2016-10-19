@@ -145,11 +145,8 @@ public class EnP1mPreventaBusiness {
         tipPag.setTipPagCod(tipPagCod);
         
         int maxMore1 = cabVenDao.getMaxValue4Lote(lote);
-        if(maxMore1 != 1){
-            maxMore1++;
-        }
+        
         String facVenCabCod = String.format("%03d",lote)+"-"+String.format("%06d",maxMore1);
-        System.out.println("pruebasss " + maxMore1);
         venCab.setFacVenCabCod(facVenCabCod);
         venCab.setEnP1mCliente(preVenCab.getEnP1mCliente());
         venCab.setEnP1mUsuario(preVenCab.getEnP1mUsuario());
