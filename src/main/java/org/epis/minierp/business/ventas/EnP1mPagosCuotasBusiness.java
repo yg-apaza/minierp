@@ -31,7 +31,7 @@ public class EnP1mPagosCuotasBusiness {
         cabcuo.setPagCuoFecIni(pagCuoFecIni);
         cabcuo.setPagCuoFecFin(DateUtil.addDays(pagCuoFecIni, 30*pagCuoNum));
         cabcuo.setPagCuoFecPag(DateUtil.addDays(pagCuoFecIni, 30));
-        cabcuo.setEstRegCod('A');
+        cabcuo.setEstRegCod('P');
         
         pagCuoCabDao.save(cabcuo);
         
@@ -54,7 +54,7 @@ public class EnP1mPagosCuotasBusiness {
         cabcuo.setPagCuoTotPag(totalPagado+montoPagado);
         cabcuo.setPagCuoNumPag(numPagTot+1);
         cabcuo.setPagCuoFecPag(DateUtil.addDays(diaNextPago, 30));
-        if(numPagActual +1 == numPagTot && totalPagado + montoPagado >= totalDeuda){
+        if(totalPagado + montoPagado >= totalDeuda){
             cabcuo.setEstRegCod('I');
         }
         pagCuoCabDao.save(cabcuo);
