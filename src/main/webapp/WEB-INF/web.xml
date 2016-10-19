@@ -109,12 +109,12 @@
     <!-- Modulo de Compras -->
     <servlet>
         <description/>
-        <display-name>PurchasesController</display-name>
-        <servlet-name>PurchasesController</servlet-name>
-        <servlet-class>org.epis.minierp.controller.compras.PurchasesController</servlet-class>
+        <display-name>AddPurchaseController</display-name>
+        <servlet-name>AddPurchaseController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.compras.AddPurchaseController</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>PurchasesController</servlet-name>
+        <servlet-name>AddPurchaseController</servlet-name>
         <url-pattern>/secured/compras/factura</url-pattern>
     </servlet-mapping>
     <servlet>
@@ -202,7 +202,7 @@
     <servlet-mapping>
         <servlet-name>UsuariosController</servlet-name>
         <url-pattern>/secured/configuracion/usuario/usuarios</url-pattern>
-    </servlet-mapping>    
+    </servlet-mapping>
     <!--Sub Modulo Compañia Datos-->
     <servlet>
         <description/>
@@ -401,8 +401,7 @@
         <servlet-name>PreVentaController</servlet-name>
         <url-pattern>/secured/ventas/preventa</url-pattern>
     </servlet-mapping>
-    
-     <servlet>
+    <servlet>
         <description/>
         <display-name>PreVentaLotesController</display-name>
         <servlet-name>PreVentaLotesController</servlet-name>

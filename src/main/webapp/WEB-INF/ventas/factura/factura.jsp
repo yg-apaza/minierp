@@ -11,7 +11,7 @@
             <div class="form-group">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Factura</h1>
+                        <h1 class="page-header">Factura de Venta</h1>
                     </div>
                 </div>
                 <div class="row">
