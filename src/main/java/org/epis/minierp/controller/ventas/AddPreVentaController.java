@@ -8,8 +8,6 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.StringTokenizer;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -130,7 +128,6 @@ public class AddPreVentaController extends HttpServlet{
             response.sendRedirect(request.getContextPath() + "/secured/ventas/preventa");
 
         } catch (ParseException ex) {
-            Logger.getLogger(AddPreVentaController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

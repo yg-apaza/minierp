@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.epis.minierp.business.ventas.EnP1mPreventaBusiness;
 import org.epis.minierp.dao.general.TaGzzEstadoFacturaDao;
 import org.epis.minierp.dao.general.TaGzzMetodoPagoFacturaDao;
 import org.epis.minierp.dao.general.TaGzzTipoPagoFacturaDao;
@@ -19,13 +20,14 @@ import org.epis.minierp.model.EnP1mPreventaCab;
 public class PreVentaController extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
+    EnP1mPreventaBusiness preventaBusiness;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<TaGzzEstadoFactura> estados = (new TaGzzEstadoFacturaDao().getAll());
         List<TaGzzMetodoPagoFactura> metodos = (new TaGzzMetodoPagoFacturaDao().getAll());
         List<TaGzzTipoPagoFactura> tipos = (new TaGzzTipoPagoFacturaDao().getAll());
-        List<EnP1mPreventaCab> preventas = (new EnP1mPreventaCabDao().getAll());
+        List<EnP1mPreventaCab> preventas = (new EnP1mPreventaCabDao().getAllActive());
 
         request.setAttribute("estados", estados);
         request.setAttribute("metodos", metodos);
@@ -37,22 +39,22 @@ public class PreVentaController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String[] preventas = request.getParameterValues("preventas");
-        String estado = request.getParameter("estFacCod");
-        String metodo = request.getParameter("metPagCod");
-        String tipo = request.getParameter("tipPagCod");
-        String numLot = request.getParameter("numLot");
-        String numCuo = request.getParameter("numCuo");
+        preventaBusiness = new EnP1mPreventaBusiness();
         
-        System.out.println("Número de Lote: " + numLot);
-        System.out.println("Estado: " + estado);
-        System.out.println("Metodo de Pago: " + metodo);
-        System.out.println("Tipo de Pago: " + tipo);
-        if(numCuo != null)
-            System.out.println("Número de cuotas: " + numCuo);
-        System.out.println("Codigos de preventas seleccionadas");
-        for (String s : preventas) {
-            System.out.println(s);
+        String[] preventas = request.getParameterValues("preventas");
+        int estFacCod = Integer.parseInt(request.getParameter("estFacCod"));
+        int metPagCod = Integer.parseInt(request.getParameter("metPagCod"));
+        int tipPagCod = Integer.parseInt(request.getParameter("tipPagCod"));
+        int numLot = Integer.parseInt(request.getParameter("numLot"));
+        String numCuo = request.getParameter("numCuo");
+        int pagCuoNum;
+        if(numCuo == null){
+            pagCuoNum = 0;
+        }else{
+            pagCuoNum = Integer.parseInt(numCuo);
         }
+        
+        preventaBusiness.preVenta2Venta4Lotes(preventas, numLot, estFacCod, metPagCod, tipPagCod, pagCuoNum);
+        response.sendRedirect(request.getContextPath() + "/secured/ventas/factura");
     }
 }

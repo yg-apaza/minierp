@@ -4,6 +4,7 @@ package org.epis.minierp.business.ventas;
 import java.util.Date;
 import org.epis.minierp.dao.ventas.EnP1mPagosCuotasCabDao;
 import org.epis.minierp.dao.ventas.EnP1tPagosCuotasDetDao;
+import org.epis.minierp.model.EnP1mFacturaVentaCab;
 import org.epis.minierp.model.EnP1mPagosCuotasCab;
 import org.epis.minierp.model.EnP1tPagosCuotasDet;
 import org.epis.minierp.model.EnP1tPagosCuotasDetId;
@@ -22,7 +23,11 @@ public class EnP1mPagosCuotasBusiness {
             double pagCuoDeuTot, Date pagCuoFecIni){
         
         EnP1mPagosCuotasCab cabcuo = new EnP1mPagosCuotasCab();
+        EnP1mFacturaVentaCab facCab = new EnP1mFacturaVentaCab();
+        facCab.setFacVenCabCod(facVenCabCod);
+        
         cabcuo.setFacVenCabCod(facVenCabCod);
+        cabcuo.setEnP1mFacturaVentaCab(facCab);
         cabcuo.setPagCuoNumDoc(pagCuoNumDoc);
         cabcuo.setPagCuoNum(pagCuoNum);
         cabcuo.setPagCuoNumPag(0); //0 cuotas pagadas
@@ -31,7 +36,7 @@ public class EnP1mPagosCuotasBusiness {
         cabcuo.setPagCuoFecIni(pagCuoFecIni);
         cabcuo.setPagCuoFecFin(DateUtil.addDays(pagCuoFecIni, 30*pagCuoNum));
         cabcuo.setPagCuoFecPag(DateUtil.addDays(pagCuoFecIni, 30));
-        cabcuo.setEstRegCod('P');
+        cabcuo.setEstRegCod('A');
         
         pagCuoCabDao.save(cabcuo);
         
