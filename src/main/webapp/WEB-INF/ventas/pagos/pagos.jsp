@@ -142,7 +142,7 @@
                                 <div class="form-group">
                                     <div class="col-sm-4">
                                         <label class="control-label">Código Factura</label>
-                                        <input type="number" class="form-control" id="pagarFacCab"  name="facCab" readonly>
+                                        <input type="text" class="form-control" id="pagarFacCab"  name="facVenCabCod" readonly>
                                     </div>
                                     <div class="col-sm-4">
                                         <label class="control-label">Deuda Total</label>
@@ -164,7 +164,7 @@
                                     </div>
                                     <div class="col-sm-4">
                                         <label class="control-label">Monto Pago</label>
-                                        <input type="text" class="form-control" name="monPag">
+                                        <input type="text" class="form-control" name="pagCuoTotPag">
                                     </div>
                                 </div>
                             </div>
