@@ -15,11 +15,16 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-8">
+                    <div class="col-lg-4">
                         <form role=form" method="get" action="${pageContext.request.contextPath}/secured/ventas/factura/addFactura">
                             <button type="submit" class="btn btn-success">Crear Factura <i class="fa fa-plus"></i></button>   
+                        </form>
+                    </div>
+                    <div class="col-lg-4">
+                        <form role=form" method="get" action="${pageContext.request.contextPath}/secured/ventas/factura/imprimir">
+                            <input type="hidden" name="facCod" value="001-000001">
+                            <button type="submit" class="btn btn-success">Imprimir <i class="fa fa-plus"></i></button>   
                         </form><br>
-                         
                     </div>
                     <div class="col-lg-4">
                         <div class="col-lg-5">
@@ -48,6 +53,7 @@
                                         <th>Vendedor</th>
                                         <th>Importe</th>
                                         <th>Tipo</th>
+                                        <th>Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -59,6 +65,11 @@
                                             <td>${c.enP1mUsuario.usuNom}</td>
                                             <td>${c.facVenCabTot}</td>                            
                                             <td>${c.taGzzTipoPagoFactura.tipPagDet}</td>
+                                            <td>
+                                                <a href="${pageContext.request.contextPath}/secured/ventas/factura/imprimir?facCod=${c.facVenCabCod}"
+                                                    <i class="fa fa-print fa-2x" style="color: black;"></i>
+                                                </a>
+                                            </td>
                                         </tr>
                                     </c:forEach>
                                 </tbody>
