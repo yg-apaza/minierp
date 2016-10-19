@@ -134,7 +134,7 @@ public class EnP1mPreventaBusiness {
     
     public void preVenta2Venta(String preVenCabCod,int lote, int estFacCod, int metPagCod, int tipPagCod, int pagCuoNum){
         EnP1mPreventaCab preVenCab = preVenCabDao.getById(preVenCabCod);
-        
+
         EnP1mFacturaVentaCab venCab = new EnP1mFacturaVentaCab();
         Date hoy = DateUtil.getthisDate();
         TaGzzEstadoFactura estFac = new TaGzzEstadoFactura();
@@ -160,6 +160,7 @@ public class EnP1mPreventaBusiness {
         venCab.setTaGzzMoneda(preVenCab.getTaGzzMoneda());
         venCab.setEstRegCod('A');
         
+        //crear Factura Cabecera
         cabVenDao.save(venCab);
         
         List<EnP1tPreventaDet> preVenDets = preVenDetDao.getAllDet4PreVenCab(preVenCabCod);

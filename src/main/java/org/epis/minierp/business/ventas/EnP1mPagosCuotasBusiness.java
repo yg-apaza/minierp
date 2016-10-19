@@ -31,7 +31,7 @@ public class EnP1mPagosCuotasBusiness {
         cabcuo.setPagCuoFecIni(pagCuoFecIni);
         cabcuo.setPagCuoFecFin(DateUtil.addDays(pagCuoFecIni, 30*pagCuoNum));
         cabcuo.setPagCuoFecPag(DateUtil.addDays(pagCuoFecIni, 30));
-        cabcuo.setEstRegCod('P');
+        cabcuo.setEstRegCod('A');
         
         pagCuoCabDao.save(cabcuo);
         
