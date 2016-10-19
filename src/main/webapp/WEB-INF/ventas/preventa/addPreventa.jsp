@@ -36,7 +36,7 @@
                                                 <div class="col-md-5">
                                                     <div class="form-group input-group">
                                                         <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                        <input type="text" class="form-control" name="CodCabPre" placeholder="Número de Factura" pattern="[0-9]{3}-[0-9]{6}">
+                                                        <input type="text" class="form-control" name="CodCabPre" placeholder="Número de Preventa" pattern="[0-9]{3}-[0-9]{6}">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-7">
@@ -219,7 +219,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Detalle de Venta</h4>
+                        <h4 class="modal-title">Detalle de Preventa</h4>
                     </div>
                     <div class="modal-body">
                         <p align="center"><span id="errorMessage"></span></p>
@@ -254,7 +254,7 @@
                         if ((${product.id.claProCod} == codeCla) && (${product.id.subClaProCod} == codeSub) && (${product.id.proCod} == codePro)) {
                             tag = false;
                             $('#priceSelected').val(${product.proPreUni});
-                            $('#amountSelected')[0].max = ${product.proStk};
+                            $('#amountSelected')[0].max = ${product.proStk - product.proStkPreVen};
                         }
                     </c:forEach>
                     if (tag) {
@@ -453,7 +453,7 @@
                 },
                 messages: {
                     CodCabPre: {
-                        required: "Ingrese el codigo de la factura"
+                        required: "Ingrese el codigo de la preventa"
                     },
                     plazo: {
                         required: "Ingrese un plazo para la finalizar la preventa"

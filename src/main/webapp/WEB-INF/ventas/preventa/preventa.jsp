@@ -33,7 +33,7 @@
                                     <input type="text" class="form-control" id="filterName" style = "width: 180px; display: inline-block;">  
                                     <button class="btn btn-success" id="addFiltro"> Agregar Filtro </button>
                                     <button class="btn btn-success" > Filtrar! </button>
-                                    <button type="button" class="btn btn-info pull-right" data-toggle="modal" data-target="#configurarModal"> Transformar a Ventas </button>
+                                    <button type="button" id="transformar" class="btn btn-info pull-right"> Transformar a Ventas </button>
                                 </div>
                             </div>
                             <div class="row">
@@ -46,7 +46,7 @@
                 </div>
             </div>
             <br>
-            <form role="form" action="${pageContext.request.contextPath}/secured/ventas/preventa" method="post">
+            <form id="preventaLoteForm" role="form" action="${pageContext.request.contextPath}/secured/ventas/preventa" method="post">
                 <div id="printarea">
                     <table class = "table table-bordered table-striped table-hover"  id = "id_table">
                         <thead>
@@ -88,6 +88,10 @@
                             </div>
                             <div class="modal-body">
                                 <div class="form-group">
+                                    <label> Número de Lote</label>
+                                    <input id="numLot" class="form-control" name="numLot">
+                                </div>
+                                <div class="form-group">
                                       <label> Estado de las Facturas </label>
                                       <select class="form-control" name="estFacCod">
                                           <c:forEach items="${estados}" var="estado">
@@ -105,11 +109,15 @@
                                 </div>
                                 <div class="form-group">
                                     <label> Tipo de Pago de las Facturas </label>
-                                      <select class="form-control" name="tipPagCod">
+                                      <select class="form-control" name="tipPagCod" id="tipPagCod">
                                           <c:forEach items="${tipos}" var="tipo">
                                               <option value="${tipo.tipPagCod}">${tipo.tipPagDet}</option>
                                           </c:forEach>
                                       </select>
+                                </div>
+                                <div class="form-group" id="numCuoBlock">
+                                    <label> Número de cuotas </label>
+                                    <input id="numCuo" class="form-control" name="numCuo" disabled>
                                 </div>
                             </div>
                             <div class="modal-footer">
@@ -138,19 +146,93 @@
                 </div>
             </div-->
         </div>
+                
+        <div id="errorMessageModal" class="modal fade">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Transformar a Venta</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p align="center"><span id="errorMessage"></span></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-success" data-dismiss="modal">Aceptar</button>                                            
+                    </div>
+                </div>              
+            </div>
+        </div>
+        <script> 
+            function addFiltro() {
+                var filterName = $("#filterName").val();
+                var filterSelect = $("#filterSelect").val();
+                $("#filters").append($("<button onclick=\"$(this).remove()\" type=\"button\" class=\"btn btn-outline\">"+filterSelect+": "+ filterName+"</button>"));
+            }    
+
+            $(document).ready(function(){
+                $('#numCuoBlock').hide();
+                $('#addFiltro').click(function(){
+                   addFiltro();
+                });
+                
+                $('#transformar').on('click', function () {
+                    if($(':checkbox:checked').length > 0)
+                        $('#configurarModal').modal('show');
+                    else
+                    {
+                        $("#errorMessage").text("Debe seleccionar al menos una preventa");
+                        $('#errorMessageModal').modal('show');
+                    }
+                    
+                });
+                
+                $('#tipPagCod').change(function () {
+                    console.log(this.value);
+                    if(this.value == 2){
+                        $('#numCuoBlock').show();
+                        $('#numCuo').removeAttr('disabled');
+                    }
+                    else{
+                        $('#numCuoBlock').hide();
+                        $('#numCuo').attr('disabled','disabled');
+                    }
+                });
+                
+                $("#preventaLoteForm").validate({
+                    rules: {
+                        numLot:{
+                            required: true,
+                            digits: true,
+                            min: 1,
+                            max: 999
+                        },
+                        numCuo: {
+                            required: true,
+                            digits: true,
+                            min: 2
+                        }
+                    },
+                    messages: {
+                        numLot: {
+                            required: "Ingrese número de lote",
+                            digits: 'Ingresar solo dígitos',
+                            min: 'Número de lote debe estar entre 1 y 999',
+                            max: 'Número de lote debe estar entre 1 y 999'
+                        },
+                        numCuo: {
+                            required: "Ingrese número de cuotas",
+                            digits: 'Ingresar solo números',
+                            min: 'Número de cuotas debe ser al menos 2'
+                        }
+                    },
+                    submitHandler: function (form) {
+                        form.submit();
+                    }
+                });
+            });  
+        </script>
     </jsp:attribute>  
 </minierptemplate:template>   
         
-<script> 
-    function addFiltro() {
-        var filterName = $("#filterName").val();
-        var filterSelect = $("#filterSelect").val();
-        $("#filters").append($("<button onclick=\"$(this).remove()\" type=\"button\" class=\"btn btn-outline\">"+filterSelect+": "+ filterName+"</button>"));
-    }    
-    
-  $(document).ready(function(){
-    $('#addFiltro').click(function(){
-       addFiltro();
-    });
-  });  
-</script>
+
