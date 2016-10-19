@@ -53,7 +53,7 @@ public class AddPurchaseController extends HttpServlet {
         request.setAttribute("productos", productos);
         request.setAttribute("estados", estados);
         
-        request.getRequestDispatcher("/WEB-INF/compras/factura/purchase.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/compras/factura/addPurchase.jsp").forward(request, response);
     }
     
     @Override

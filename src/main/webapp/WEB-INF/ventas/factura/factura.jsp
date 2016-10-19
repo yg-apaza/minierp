@@ -51,7 +51,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <c:forEach items="${facturas}" var="c">
+                                    <c:forEach items="${facturasVenta}" var="c">
                                         <tr>
                                             <td>${c.facVenCabFec}</td>
                                             <td>${c.facVenCabCod}</td>
@@ -59,7 +59,7 @@
                                             <td>${c.enP1mUsuario.usuNom}</td>
                                             <td>${c.facVenCabTot}</td>                            
                                             <td>${c.taGzzTipoPagoFactura.tipPagDet}</td>
-                                            <td>
+                                            <td class="text-center" width="50px">
                                                 <a href="${pageContext.request.contextPath}/secured/ventas/factura/imprimir?facCod=${c.facVenCabCod}"
                                                     <i class="fa fa-print fa-2x" style="color: black;"></i>
                                                 </a>

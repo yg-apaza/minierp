@@ -115,6 +115,16 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>AddPurchaseController</servlet-name>
+        <url-pattern>/secured/compras/factura/addFactura</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <description/>
+        <display-name>PurchaseController</display-name>
+        <servlet-name>PurchaseController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.compras.PurchaseController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PurchaseController</servlet-name>
         <url-pattern>/secured/compras/factura</url-pattern>
     </servlet-mapping>
     <servlet>
