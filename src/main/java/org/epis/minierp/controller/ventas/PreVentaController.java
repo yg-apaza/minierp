@@ -27,7 +27,7 @@ public class PreVentaController extends HttpServlet {
         List<TaGzzEstadoFactura> estados = (new TaGzzEstadoFacturaDao().getAll());
         List<TaGzzMetodoPagoFactura> metodos = (new TaGzzMetodoPagoFacturaDao().getAll());
         List<TaGzzTipoPagoFactura> tipos = (new TaGzzTipoPagoFacturaDao().getAll());
-        List<EnP1mPreventaCab> preventas = (new EnP1mPreventaCabDao().getAll());
+        List<EnP1mPreventaCab> preventas = (new EnP1mPreventaCabDao().getAllActive());
 
         request.setAttribute("estados", estados);
         request.setAttribute("metodos", metodos);

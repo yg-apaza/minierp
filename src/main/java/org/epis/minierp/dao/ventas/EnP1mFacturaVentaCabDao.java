@@ -57,7 +57,7 @@ public class EnP1mFacturaVentaCabDao {
                 temp = estados.get(i).getFacVenCabCod();
                 lista.add(Integer.parseInt(temp.substring(4)));
             }
-            return Collections.max(lista);
+            return Collections.max(lista)+1;
         } catch (Exception e) {
             return 1;
         }
