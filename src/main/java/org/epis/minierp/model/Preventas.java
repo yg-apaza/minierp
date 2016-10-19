@@ -14,8 +14,8 @@ import javax.persistence.NamedNativeQuery;
  * @author Roycer
  */
 @Entity
-@NamedNativeQueries({@NamedNativeQuery(name = "callIngresos", query = "CALL PROC_IngresosPreventas(:CliCod,1)", resultClass =  Ingresos.class)})
-public class Ingresos implements Serializable {
+@NamedNativeQueries({@NamedNativeQuery(name = "callPreventas", query = "CALL PROC_IngresosPreventas(:CliCod,2)", resultClass =  Preventas.class)})
+public class Preventas implements Serializable {
     
     @Id
     @GeneratedValue
@@ -25,7 +25,7 @@ public class Ingresos implements Serializable {
     private BigDecimal AYER;
     private BigDecimal ANTEAYER;
 
-    public Ingresos(){}
+    public Preventas(){}
 
     public BigDecimal getHOY() {
         return HOY;

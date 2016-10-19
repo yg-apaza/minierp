@@ -89,17 +89,32 @@ DELIMITER ;
 
 
 DELIMITER //
-CREATE PROCEDURE PROC_Ingresos (IN CliCod char(15))
+CREATE PROCEDURE PROC_Ingresos (IN mCliCod char(15), IN mTipo integer)
 BEGIN 
-	SELECT 
-	( 
-	  SELECT SUM(FacVenCabTot) FROM en_p1m_factura_venta_cab WHERE UsuCod=CliCod AND DATE(FacVenCabFec)=DATE(NOW()) AND EstRegCod='A'
-	) AS 'HOY',
-	(
-	SELECT SUM(FacVenCabTot) FROM en_p1m_factura_venta_cab WHERE UsuCod=CliCod AND DATE(FacVenCabFec)=DATE(NOW())-1 AND EstRegCod='A'
-	) AS 'AYER',
-	(
-	SELECT SUM(FacVenCabTot) FROM en_p1m_factura_venta_cab WHERE UsuCod=CliCod AND DATE(FacVenCabFec)=DATE(NOW())-2 AND EstRegCod='A'
-	) AS 'ANTEAYER';
+	IF mTipo = 1 
+    THEN
+		SELECT 
+		( 
+		  SELECT COALESCE(SUM(FacVenCabTot),0) FROM en_p1m_factura_venta_cab WHERE UsuCod=mCliCod AND DATE(FacVenCabFec)=DATE(NOW()) AND EstRegCod='A'
+		) AS 'HOY',
+		(
+			SELECT COALESCE(SUM(FacVenCabTot),0)  FROM en_p1m_factura_venta_cab WHERE UsuCod=mCliCod AND DATE(FacVenCabFec)=DATE(NOW())-1 AND EstRegCod='A'
+		) AS 'AYER',
+		(
+			SELECT COALESCE(SUM(FacVenCabTot),0)  FROM en_p1m_factura_venta_cab WHERE UsuCod=mCliCod AND DATE(FacVenCabFec)=DATE(NOW())-2 AND EstRegCod='A'
+		) AS 'ANTEAYER';
+	ELSEIF mTipo=2
+	THEN
+        SELECT 
+		( 
+			SELECT COALESCE(SUM(PreVenCabTot),0) FROM en_p1m_preventa_cab WHERE UsuCod=mCliCod AND DATE(PreVenCabFec)=DATE(NOW()) AND EstRegCod='A'
+		) AS 'HOY',
+		(
+			SELECT COALESCE(SUM(PreVenCabTot),0) FROM en_p1m_preventa_cab WHERE UsuCod=mCliCod AND DATE(PreVenCabFec)=DATE(NOW())-1 AND EstRegCod='A'
+		) AS 'AYER',
+		(
+			SELECT COALESCE(SUM(PreVenCabTot),0) FROM en_p1m_preventa_cab WHERE UsuCod=mCliCod AND DATE(PreVenCabFec)=DATE(NOW())-2 AND EstRegCod='A'
+		) AS 'ANTEAYER';
+	END IF;
 END//
 DELIMITER ;

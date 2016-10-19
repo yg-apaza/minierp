@@ -79,7 +79,7 @@
                             pointHoverBorderWidth: 2,
                             pointRadius: 1,
                             pointHitRadius: 10,
-                            data: [65, 59, 80],
+                            data: [${pANTEAYER}, ${pAYER}, ${pHOY}],
                             spanGaps: false,
                         }
                     ]
