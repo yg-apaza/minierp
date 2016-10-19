@@ -39,7 +39,7 @@ public class EnP1tPagosCuotasDetDao {
 
     public int getLastpagCuoDetCod(String facVenCabCod){
         Query query = session.createQuery("select max(E.id.pagCuoDetCod) from EnP1tPagosCuotasDet E "
-                + "where E.id.facVenCabCod = " + facVenCabCod);        
+                + "where E.id.facVenCabCod = '" + facVenCabCod + "'");        
         List<EnP1tPagosCuotasDet> maximo = query.list();
         int value = 0;
         try {   //evitar errores cuando la tabla esta vacia

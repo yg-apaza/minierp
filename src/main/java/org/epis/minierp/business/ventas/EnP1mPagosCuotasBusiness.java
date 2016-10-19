@@ -4,6 +4,7 @@ package org.epis.minierp.business.ventas;
 import java.util.Date;
 import org.epis.minierp.dao.ventas.EnP1mPagosCuotasCabDao;
 import org.epis.minierp.dao.ventas.EnP1tPagosCuotasDetDao;
+import org.epis.minierp.model.EnP1mFacturaVentaCab;
 import org.epis.minierp.model.EnP1mPagosCuotasCab;
 import org.epis.minierp.model.EnP1tPagosCuotasDet;
 import org.epis.minierp.model.EnP1tPagosCuotasDetId;
@@ -19,10 +20,14 @@ public class EnP1mPagosCuotasBusiness {
     }
     
     public void create(String facVenCabCod, String pagCuoNumDoc, int pagCuoNum, 
-            double pagCuoDeuTot, double pagCuoTotPag, Date pagCuoFecIni){
+            double pagCuoDeuTot, Date pagCuoFecIni){
         
         EnP1mPagosCuotasCab cabcuo = new EnP1mPagosCuotasCab();
+        EnP1mFacturaVentaCab facCab = new EnP1mFacturaVentaCab();
+        facCab.setFacVenCabCod(facVenCabCod);
+        
         cabcuo.setFacVenCabCod(facVenCabCod);
+        cabcuo.setEnP1mFacturaVentaCab(facCab);
         cabcuo.setPagCuoNumDoc(pagCuoNumDoc);
         cabcuo.setPagCuoNum(pagCuoNum);
         cabcuo.setPagCuoNumPag(0); //0 cuotas pagadas
@@ -46,14 +51,15 @@ public class EnP1mPagosCuotasBusiness {
         detcuo.setPagCuoDetTotPag(montoPagado);
         pagCuoDetDao.save(detcuo);
         
-        double montoActual = cabcuo.getPagCuoTotPag();
+        double totalPagado = cabcuo.getPagCuoTotPag();
+        double totalDeuda = cabcuo.getPagCuoDeuTot();
         int numPagActual = cabcuo.getPagCuoNum();
-        int numPagTot = cabcuo.getPagCuoNum();
+        int numPagTot = cabcuo.getPagCuoNumPag();
         Date diaNextPago = cabcuo.getPagCuoFecPag();
-        cabcuo.setPagCuoTotPag(montoActual+montoPagado);
-        cabcuo.setPagCuoNumPag(numPagActual+1);
+        cabcuo.setPagCuoTotPag(totalPagado+montoPagado);
+        cabcuo.setPagCuoNumPag(numPagTot+1);
         cabcuo.setPagCuoFecPag(DateUtil.addDays(diaNextPago, 30));
-        if(numPagActual +1 == numPagTot){
+        if(totalPagado + montoPagado >= totalDeuda){
             cabcuo.setEstRegCod('I');
         }
         pagCuoCabDao.save(cabcuo);

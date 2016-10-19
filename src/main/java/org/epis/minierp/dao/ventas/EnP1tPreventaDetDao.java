@@ -32,6 +32,26 @@ public class EnP1tPreventaDetDao {
         return estado;
     }
     
+    public int getLastPreVenDetCod(String preVenCabCod){
+        Query query = session.createQuery("select max(E.id.preVenDetCod) from EnP1tPreventaDet E "
+                + "where E.id.preVenCabCod = '" + preVenCabCod + "'");        
+        List<EnP1tPreventaDet> maximo = query.list();
+        int value = 0;
+        try {   //evitar errores cuando la tabla esta vacia
+            String numString = maximo.toString(); //[num] Hay q quitarle los corchetes
+            value = Integer.parseInt(numString.substring(1,numString.length()-1)) + 1;
+        } catch (Exception e) {
+            return 1;
+        }
+            return value;  
+    }
+    
+    public List<EnP1tPreventaDet> getAllDet4PreVenCab(String preVenCabCod) {
+        Query query = session.createQuery("from EnP1tPreventaDet E where E.id.preVenCabCod = '" + preVenCabCod + "'");
+        List<EnP1tPreventaDet> estados = query.list();
+        return estados;
+    }
+    
     public void save(EnP1tPreventaDet preventaDet) {
         session.save(preventaDet);     
     }
