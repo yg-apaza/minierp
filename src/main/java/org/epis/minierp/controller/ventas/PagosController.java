@@ -23,7 +23,7 @@ public class PagosController extends HttpServlet {
         pagosCuotasCabDao = new EnP1mPagosCuotasCabDao();
         pagosCuotasDetDao = new EnP1tPagosCuotasDetDao();
         
-        request.setAttribute("cabeceraPagos", pagosCuotasCabDao.getAllActive());
+        request.setAttribute("cabeceraPagos", pagosCuotasCabDao.getAll());
         request.setAttribute("detallesPagos", pagosCuotasDetDao.getAllOrdered());
         request.setAttribute("inactivos", pagosCuotasCabDao.getAllInactives());
         request.getRequestDispatcher("/WEB-INF/ventas/pagos/pagos.jsp").forward(request, response);

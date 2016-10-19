@@ -28,7 +28,7 @@
                         Reporte [DOC]
                     </a></div>
             </div>
-            <br>
+                        
             <div class="col-md-12">
                 <div class="table-responsive">
                     <table class="table table-bordered table-striped table-hover">
