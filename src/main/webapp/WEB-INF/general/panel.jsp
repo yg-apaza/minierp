@@ -12,7 +12,6 @@
                 </div>
             </div>
             <div>
-                aaaaa: ${iHOY}
                 <div class="col-lg-6">
                     <canvas id="IngDia"></canvas>
                 </div>
