@@ -34,12 +34,12 @@ import org.epis.minierp.model.EnP4tFacturaCompraDetId;
 import org.epis.minierp.model.TaGzzEstadoFactura;
 import org.epis.minierp.model.TaGzzTipoPagoFactura;
 
-public class PurchasesController extends HttpServlet {
+public class AddPurchaseController extends HttpServlet {
     private static final long serialVersionUID = 1L;
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List <EnP4mProveedor> proveedores = (new EnP4mProveedorDao()).getAll();
+        List <EnP4mProveedor> proveedores = (new EnP4mProveedorDao()).getAllActive();
         List <TaGzzMetodoPagoFactura> metodosPagoFactura = (new TaGzzMetodoPagoFacturaDao()).getAll();
         List <TaGzzMoneda> monedas = (new TaGzzMonedaDao()).getAll();
         List <TaGzzTipoPagoFactura> tiposPagoFactura = (new TaGzzTipoPagoFacturaDao()).getAll(); 
@@ -53,7 +53,7 @@ public class PurchasesController extends HttpServlet {
         request.setAttribute("productos", productos);
         request.setAttribute("estados", estados);
         
-        request.getRequestDispatcher("/WEB-INF/compras/purchases.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/compras/factura/addPurchase.jsp").forward(request, response);
     }
     
     @Override
@@ -126,7 +126,7 @@ public class PurchasesController extends HttpServlet {
             }                 
             response.sendRedirect(request.getContextPath() + "/secured/general/panel");
         } catch (ParseException ex) {
-            Logger.getLogger(PurchasesController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AddPurchaseController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

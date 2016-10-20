@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="minierptemplate" %>
 <minierptemplate:template>
     <jsp:attribute name="titulo">
@@ -11,6 +12,7 @@
                     <h1 class="page-header">Panel de Administración</h1>   
                 </div>
             </div>
+            <c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod() == 2}">
             <div>
                 <div class="col-lg-6">
                     <canvas id="IngDia"></canvas>
@@ -18,7 +20,8 @@
                 <div class="col-lg-6">
                     <canvas id="PreDia"></canvas>
                 </div>
-            </div>           
+            </div>  
+            </c:if>
         </div>
         <script type="text/javascript">
             var chart_Ingresos = {

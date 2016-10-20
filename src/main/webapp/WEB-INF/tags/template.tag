@@ -76,7 +76,7 @@
                                 <a href="#"><i class="fa fa-cart-arrow-down fa-fw"></i> Ventas<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">     
                                     <li>
-                                        <a href="${pageContext.request.contextPath}/secured/ventas/factura">Factura</a>
+                                        <a href="${pageContext.request.contextPath}/secured/ventas/factura">Factura de Venta</a>
                                     </li>
                                     <li>
                                         <a href="${pageContext.request.contextPath}/secured/ventas/preventa">Preventa</a>
@@ -124,7 +124,7 @@
                                         <a href="#">Compras <span class="fa arrow"></span></a>
                                         <ul class="nav nav-third-level">
                                             <li>
-                                                <a href="${pageContext.request.contextPath}/secured/compras/factura">Registrar Factura</a>
+                                                <a href="${pageContext.request.contextPath}/secured/compras/factura">Factura de Compra</a>
                                             </li>
                                         </ul>
                                     </li>
