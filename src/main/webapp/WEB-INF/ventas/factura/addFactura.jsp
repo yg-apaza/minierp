@@ -7,7 +7,10 @@
     <jsp:attribute name="titulo">
         <title>Ventas - Factura</title>
     </jsp:attribute>
-    <jsp:attribute name="contenido">       
+    <jsp:attribute name="contenido">   
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <link rel="stylesheet" href="/resources/demos/style.css">
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <div id="panel-body">
             <form id="registerBill" method="post" action="${pageContext.request.contextPath}/secured/ventas/factura/addFactura">
                 <input type="hidden" class="form-control" name="productsAmounts" id="proAmo">
@@ -40,23 +43,28 @@
                                 <div class="row">
                                     <div class="col-xs-12 col-md-8">
                                         <div class="row">
-                                            <div class="col-md-5">
+                                            <div class="col-md-4">
                                                 <div class="form-group input-group">
                                                     <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                                                     <input type="text" class="form-control" name="facVenCabCod" placeholder="Número de Factura">
                                                 </div>
                                             </div>
-                                            <div class="col-md-7">
-                                                <div class="form-group input-group" >
+                                            <div class="col-md-8">
+                                                <!--div class="form-group input-group" >
+                                                    <div class="input-group">
                                                     <span class="input-group-addon">Cliente</span>
                                                     <input type="hidden" class="form-control" name="cliCod" id="clientCode">
                                                     <input type="text" class="form-control" name="cliName" id="clienteCodigo" readonly>
-                                                    <span class="input-group-addon">
-                                                        <a href="#" data-toggle="modal" data-target="#searchClient">
-                                                            <i class="fa fa-pencil-square-o" style="color: black;"></i>
-                                                        </a>
-                                                    </span>
-                                                </div>
+                                                    
+                                                </div--> 
+                                                <div class="form-group input-group">
+                                                    <span class="input-group-addon">Cliente</span>
+                                                    <input type="hidden" class="form-control" name="cliCod" id="clientCode">
+                                                    <input type="hidden" class="form-control" name="cliDes" id="clientDescription">
+                                                    <input class="form-control" id="cliCodShow" >
+                                                    <span class="input-group-addon"></span>
+                                                    <input class="form-control" id="cliDesShow" >
+                                                </div>    
                                             </div>
                                         </div>
                                         <div class="row">
@@ -219,44 +227,7 @@
                     </div>
                 </div>
             </form>
-        </div>
-        <div class="modal fade" id="searchClient">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="myModalLabel">Buscar Cliente</h4>
-                    </div>
-                    <div class="modal-body">
-                        <table width="100%" class="table table-striped table-bordered table-hover" id="tableClients">
-                            <thead>
-                                <tr>
-                                    <th colspan="2">Datos</th>
-                                    <th>Teléfono</th>
-                                    <th>Email</th>                                    
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <c:forEach items="${clientes}" var="c">
-                                    <tr id="${c.cliCod}">
-                                        <td align="center">
-                                            <input type="checkbox">
-                                        </td>
-                                        <td>${c.cliNom} ${c.cliApePat} ${c.cliApeMat}</td>
-                                        <td>${c.cliTelCel}</td>
-                                        <td>${c.cliEmail}</td>
-                                    </tr>
-                                </c:forEach>
-                            </tbody>
-                        </table>                            
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-                        <button type="button" class="btn btn-success" data-dismiss="modal" onclick="getClient('tableClients')">Aceptar</button>
-                    </div>
-                </div>
-            </div>
-        </div>                                     
+        </div>                                  
         <div id="errorMessageModal" class="modal fade">
             <div class="modal-dialog modal-sm">
                 <div class="modal-content">
@@ -499,6 +470,17 @@
                     $("#register").prop('disabled', true);
                 }
             }
+            
+            $( function() {
+                var clientsCodes = new Array();                
+                <c:forEach items="${clientes}" var="c">
+                    clientsCodes.push(${c.cliCod});
+                </c:forEach>
+                $("#cliCodShow").autocomplete({
+                    source: clientsCodes
+                });
+            } );
+            
         </script>
     </jsp:attribute>
 </minierptemplate:template>
