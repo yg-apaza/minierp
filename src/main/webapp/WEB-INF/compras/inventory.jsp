@@ -65,7 +65,7 @@
                                     <div class="col-xs-12 col-md-6">
                                         <div class="form-group input-group">
                                             <span class="input-group-addon">Cantidad</span>                                                            
-                                            <input type="number" class="form-control" name="proCanUpd" min="1.0" step="any" value="0.0">
+                                            <input type="number" class="form-control" name="proCanUpd" min="1.0" step="any" value="1.0">
                                             <span class="input-group-addon"><i class="fa fa-money"></i></span>
                                         </div>
                                     </div>
