@@ -24,4 +24,24 @@ public class InventoryController extends HttpServlet {
         request.getRequestDispatcher("/WEB-INF/compras/inventory.jsp").forward(request, response);
     }
     
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String action = request.getParameter("action");
+        EnP2mProducto product = new EnP2mProducto();
+        EnP2mProductoDao producto = new EnP2mProductoDao();
+        
+        switch (action) {
+            case "upd":
+                String proCod = request.getParameter("proCodUpd");
+                String proCan = request.getParameter("proCanUpd");
+                
+                product = producto.getById(proCod);
+                product.setProStk(product.getProStk()+Double.parseDouble(proCan));
+
+                producto.update(product);
+                break;
+        }
+        
+        response.sendRedirect(request.getContextPath() + "/secured/compras/inventario");
+    }
 }
