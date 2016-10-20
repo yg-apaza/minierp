@@ -3,7 +3,6 @@ CREATE  PROCEDURE `flujo_efectivo`(IN fec_ini DATE, fec_fin DATE
 )
 BEGIN
 
-BEGIN
 SET @anhoActual:=year(now());
 
 SELECT 

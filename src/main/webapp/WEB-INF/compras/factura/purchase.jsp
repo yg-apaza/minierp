@@ -4,19 +4,19 @@
 <%@ taglib tagdir="/WEB-INF/tags" prefix="minierptemplate" %>
 <minierptemplate:template>
     <jsp:attribute name="titulo">
-        <title>Ventas - Factura</title>
+        <title>Compras - Factura</title>
     </jsp:attribute>
     <jsp:attribute name="contenido">
         <div class="panel-body">
             <div class="form-group">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Factura de Venta</h1>
+                        <h1 class="page-header">Factura de Compra</h1>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-8">
-                        <form role=form" method="get" action="${pageContext.request.contextPath}/secured/ventas/factura/addFactura">
+                        <form role=form" method="get" action="${pageContext.request.contextPath}/secured/compras/factura/addFactura">
                             <button type="submit" class="btn btn-success">Crear Factura <i class="fa fa-plus"></i></button>   
                         </form>
                     </div>
@@ -25,11 +25,11 @@
                             <label>Flujo Efectivo</label>
                         </div> 
                         <div class="col-lg-7">
-                            <a  href="${pageContext.request.contextPath}/secured/general/reporte?type=pdf&&report=flujoefectivo&&jdbc=true&&key=null&&value=null" class="btn btn-danger" >
+                            <a href="" class="btn btn-danger" >
                                 <i class="fa fa-file-pdf-o"></i>
                             </a>
-                            
-                            <a  href="${pageContext.request.contextPath}/secured/general/reporte?type=doc&&report=flujoefectivo&&jdbc=true&&key=null&&value=null" class="btn  btn-primary" >
+
+                            <a  href="" class="btn  btn-primary" >
                                 <i class="fa fa-file-word-o"></i>
                             </a>
                         </div>
@@ -43,27 +43,23 @@
                                     <tr>
                                         <th>Fecha</th>
                                         <th>Factura</th>
-                                        <th>Cliente</th>
-                                        <th>Vendedor</th>
+                                        <th>Proveedor</th>
+                                        <th>Comprador</th>
                                         <th>Importe</th>
                                         <th>Tipo</th>
                                         <th>Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <c:forEach items="${facturasVenta}" var="c">
+                                    <c:forEach items="${facturasCompra}" var="c">
                                         <tr>
-                                            <td>${c.facVenCabFec}</td>
-                                            <td>${c.facVenCabCod}</td>
-                                            <td>${c.enP1mCliente.cliNom}</td>
+                                            <td>${c.facComCabFec}</td>
+                                            <td>${c.facComCabCod}</td>
+                                            <td>${c.enP4mProveedor.proDet}</td>
                                             <td>${c.enP1mUsuario.usuNom}</td>
-                                            <td>${c.facVenCabTot}</td>                            
+                                            <td>${c.facComCabTot}</td>                            
                                             <td>${c.taGzzTipoPagoFactura.tipPagDet}</td>
-                                            <td class="text-center" width="50px">
-                                                <a href="${pageContext.request.contextPath}/secured/ventas/factura/imprimir?facCod=${c.facVenCabCod}"
-                                                    <i class="fa fa-print fa-2x" style="color: black;"></i>
-                                                </a>
-                                            </td>
+                                            <td width="50px">Acciones</td>
                                         </tr>
                                     </c:forEach>
                                 </tbody>
@@ -73,7 +69,7 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-4">
-                        <a href="${pageContext.request.contextPath}/secured/general/reporte?type=pdf&&report=registroventas&&jdbc=false&&key=null&&value=null" class="btn btn-outline btn-danger">
+                        <a href="" class="btn btn-outline btn-danger">
                             <i class="fa fa-file-pdf-o"></i>
                             Descargar Registro [PDF]
                         </a>

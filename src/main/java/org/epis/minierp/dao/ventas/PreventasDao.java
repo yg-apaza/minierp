@@ -6,7 +6,7 @@
 package org.epis.minierp.dao.ventas;
 
 import java.util.List;
-import org.epis.minierp.model.Ingresos;
+import org.epis.minierp.model.Preventas;
 import org.epis.minierp.util.HibernateUtil;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -17,19 +17,19 @@ import org.hibernate.Session;
  * @author Roycer
  */
 
-public class IngresosDao {
+public class PreventasDao {
 
   private Session session;
 
-    public IngresosDao() {
+    public PreventasDao() {
         
         session = HibernateUtil.getSessionFactory().getCurrentSession();  
     }
 
-    public List<Ingresos> getAll(String cliCod) {
-        List<Ingresos> resultados=null;
-        Query query = session.createSQLQuery("CALL PROC_IngresosPreventas(:CliCod,1)")
-	.addEntity(Ingresos.class)
+    public List<Preventas> getAll(String cliCod) {
+        List<Preventas> resultados=null;
+        Query query = session.createSQLQuery("CALL PROC_IngresosPreventas(:CliCod,2)")
+	.addEntity(Preventas.class)
 	.setParameter("CliCod",cliCod);
         resultados=query.list();
         return resultados;

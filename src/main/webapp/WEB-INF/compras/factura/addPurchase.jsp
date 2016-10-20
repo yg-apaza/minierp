@@ -11,7 +11,7 @@
                     <h1 class="page-header"> Registrar Factura de Compra</h1>
                 </div>
             </div>
-            <form id="registerBill" method="post" action="${pageContext.request.contextPath}/secured/compras/factura">
+            <form id="registerBill" method="post" action="${pageContext.request.contextPath}/secured/compras/factura/addFactura">
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="panel panel-primary">
