@@ -8,10 +8,11 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
-        <link href="${pageContext.request.contextPath}/css/main.css" rel="stylesheet" type="text/css" >
-        <link href="${pageContext.request.contextPath}/css/sb-admin-2.css" rel="stylesheet" type="text/css" >
-        <link href="${pageContext.request.contextPath}/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css" >
-        <link href="${pageContext.request.contextPath}/css/font-awesome.min.css" rel="stylesheet" type="text/css" >
+        <link href="${pageContext.request.contextPath}/css/main.css" rel="stylesheet" type="text/css">
+        <link href="${pageContext.request.contextPath}/css/sb-admin-2.css" rel="stylesheet" type="text/css">
+        <link href="${pageContext.request.contextPath}/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css">
+        <link href="${pageContext.request.contextPath}/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href="${pageContext.request.contextPath}/css/jquery-ui.min.css" rel="stylesheet" type="text/css">
         <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
         <script src="${pageContext.request.contextPath}/js/moment.min.js"></script>
         <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
@@ -20,11 +21,11 @@
         <script src="${pageContext.request.contextPath}/js/Chart.js"></script>
         <script src="${pageContext.request.contextPath}/js/Chart.bundle.js"></script>
         <script src="${pageContext.request.contextPath}/js/jquery.validate.min.js"></script>
+        <script src="${pageContext.request.contextPath}/js/jquery-ui.min.js"></script>
         <script src="${pageContext.request.contextPath}/js/jquery-barcode.js"></script>
         <script src="${pageContext.request.contextPath}/js/metisMenu.min.js"></script>
-        <script src="${pageContext.request.contextPath}/js/sb-admin-2.min.js"></script>        
+        <script src="${pageContext.request.contextPath}/js/sb-admin-2.min.js"></script>
         <link rel="shortcut icon" href="${pageContext.request.contextPath}/favicon.ico" />
-        
         <jsp:invoke fragment="titulo"/>
     </head>
     <body>
