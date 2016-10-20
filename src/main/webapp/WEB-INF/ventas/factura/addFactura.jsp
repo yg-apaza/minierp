@@ -108,7 +108,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-xs-6 col-md-4">
+                                    <div class="col-xs-12 col-md-4">
                                         <textarea class="form-control" rows="6" name="facVenCabObs" placeholder="Observaciones"></textarea>
                                     </div>
                                 </div>                             
