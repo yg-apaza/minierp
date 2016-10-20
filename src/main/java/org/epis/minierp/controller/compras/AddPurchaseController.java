@@ -39,7 +39,7 @@ public class AddPurchaseController extends HttpServlet {
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List <EnP4mProveedor> proveedores = (new EnP4mProveedorDao()).getAll();
+        List <EnP4mProveedor> proveedores = (new EnP4mProveedorDao()).getAllActive();
         List <TaGzzMetodoPagoFactura> metodosPagoFactura = (new TaGzzMetodoPagoFacturaDao()).getAll();
         List <TaGzzMoneda> monedas = (new TaGzzMonedaDao()).getAll();
         List <TaGzzTipoPagoFactura> tiposPagoFactura = (new TaGzzTipoPagoFacturaDao()).getAll(); 
