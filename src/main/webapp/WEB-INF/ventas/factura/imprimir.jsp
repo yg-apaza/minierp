@@ -18,7 +18,7 @@
                     <td width ="40mm"><pre> ${d.facVenDetCan} </pre></td>
                     <td width ="300mm"><pre> ${d.enP2mProducto.proDet}</pre></td>
                     <td width ="70mm"><pre> ${d.facVenDetValUni}</pre></td>
-                    <td width ="40mm"><pre> importe</pre></td>
+                    <td width ="40mm"><pre> ${d.facVenDetCan*d.facVenDetValUni}</pre></td>
                 </tr>
             </c:forEach>
                 <tr>

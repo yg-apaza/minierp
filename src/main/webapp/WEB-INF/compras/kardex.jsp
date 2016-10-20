@@ -63,7 +63,7 @@
                    
                     <div class="col-lg-4">
                         <div class="col-xs-12">
-                            <label>Kardex Fisico</label>
+                            <label>Kardex Físico</label>
                         </div>
                         <div class="col-xs-12">
                             <a  href="${pageContext.request.contextPath}/secured/general/reporte?type=pdf&&report=kardexfisico&&jdbc=true&&key=PRODUCTO_ID&&value=" class="btn btn-danger" onclick="location.href=this.href+idProducto;return false;">

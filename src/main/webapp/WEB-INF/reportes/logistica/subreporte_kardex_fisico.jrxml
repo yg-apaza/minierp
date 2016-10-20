@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="subreporte_kardex_fisico" pageWidth="802" pageHeight="555" orientation="Landscape" columnWidth="802" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="720e7502-c91e-4486-8ca5-9974e7003448">
+	<property name="ireport.zoom" value="1.3310000000000008"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Crosstab Data Text" hAlign="Center"/>
+	<parameter name="PRODUCTO_ID" class="java.lang.String">
+		<defaultValueExpression><![CDATA[1]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[{call kardex_prom_ponderado ($P{PRODUCTO_ID})}]]>
+	</queryString>
+	<field name="fecha" class="java.sql.Date"/>
+	<field name="numero_factura" class="java.lang.String"/>
+	<field name="producto" class="java.lang.String"/>
+	<field name="cantidad_entrada" class="java.math.BigDecimal"/>
+	<field name="precio_unitario_entrada" class="java.math.BigDecimal"/>
+	<field name="precio_total_entrada" class="java.math.BigDecimal"/>
+	<field name="cantidad_salida" class="java.math.BigDecimal"/>
+	<field name="precio_unitario_salida" class="java.math.BigDecimal"/>
+	<field name="precio_total_salida" class="java.math.BigDecimal"/>
+	<field name="cantidad_saldo" class="java.math.BigDecimal"/>
+	<field name="precio_total_saldo" class="java.math.BigDecimal"/>
+	<field name="precio_unitario_saldo" class="java.math.BigDecimal"/>
+	<field name="tipo_operacion" class="java.lang.String"/>
+	<variable name="canEnTotal" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{cantidad_entrada}]]></variableExpression>
+		<initialValueExpression><![CDATA[]]></initialValueExpression>
+	</variable>
+	<variable name="cosEnTotal" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{precio_total_entrada}]]></variableExpression>
+		<initialValueExpression><![CDATA[]]></initialValueExpression>
+	</variable>
+	<variable name="canSalida" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{cantidad_salida}]]></variableExpression>
+		<initialValueExpression><![CDATA[]]></initialValueExpression>
+	</variable>
+	<variable name="preTotalSalida" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{precio_total_salida}]]></variableExpression>
+		<initialValueExpression><![CDATA[]]></initialValueExpression>
+	</variable>
+	<variable name="canSaldoTot" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{cantidad_saldo}]]></variableExpression>
+		<initialValueExpression><![CDATA[]]></initialValueExpression>
+	</variable>
+	<variable name="costoSaldoTot" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{precio_total_saldo}]]></variableExpression>
+		<initialValueExpression><![CDATA[]]></initialValueExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="16"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="53">
+			<staticText>
+				<reportElement x="15" y="35" width="52" height="17" uuid="7cc79be7-7fbe-400f-a5b6-5ae2d4b7d283"/>
+				<textElement textAlignment="Center" markup="none"/>
+				<text><![CDATA[Fecha]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="86" y="35" width="50" height="18" uuid="ebfa6dff-0b07-4d63-a00d-62d038ec6783"/>
+				<textElement textAlignment="Center" markup="none"/>
+				<text><![CDATA[Tipo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="176" y="35" width="39" height="18" uuid="1bc5d467-f81d-4eb6-8216-3c152dda15e9"/>
+				<textElement textAlignment="Center" markup="none"/>
+				<text><![CDATA[Numero]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="255" y="35" width="84" height="17" uuid="9db8d99b-afd1-4e04-a9fd-15b667f6a758"/>
+				<textElement textAlignment="Center" markup="none"/>
+				<text><![CDATA[Tipo de Operacion]]></text>
+			</staticText>
+			<line>
+				<reportElement x="15" y="52" width="772" height="1" uuid="d961332a-74c5-4a6b-bc51-c0dfc311b570"/>
+			</line>
+			<line>
+				<reportElement x="15" y="34" width="772" height="1" uuid="c76aee23-3489-436a-ae4b-39bfacc9a5e8"/>
+			</line>
+			<staticText>
+				<reportElement x="351" y="34" width="121" height="17" uuid="3e7d3cc3-bcac-4818-afe4-21fc9665749e"/>
+				<textElement textAlignment="Center" markup="none"/>
+				<text><![CDATA[ENTRADA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="479" y="34" width="146" height="17" uuid="4584f1d9-d06b-4350-acbf-4922733abda1"/>
+				<textElement textAlignment="Center" markup="none"/>
+				<text><![CDATA[SALIDA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="632" y="34" width="155" height="17" uuid="580b383e-3539-4e7c-828c-6c9987b80b95"/>
+				<textElement textAlignment="Center" markup="none"/>
+				<text><![CDATA[SALDO]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="25">
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="15" y="2" width="52" height="20" uuid="82f0145d-293e-446c-94c0-23d40dc786df"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="89" y="0" width="47" height="20" uuid="08f7379d-a40e-4727-83a8-44fa696cbecc"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA["Factura"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="149" y="2" width="95" height="20" uuid="806ec98e-d4c2-4666-ac59-864b2f593efc"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{numero_factura}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="255" y="2" width="84" height="20" uuid="f7162f78-2fea-4510-a256-b725e3c18099"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{tipo_operacion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="394" y="2" width="43" height="20" uuid="4631cbc3-585b-4889-bc88-916706a3e062"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{cantidad_entrada}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="531" y="2" width="43" height="20" uuid="358850a3-f97c-412c-a69d-3666bce22df6"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{cantidad_salida}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="694" y="2" width="43" height="20" uuid="9d7f0935-f5b7-4e0d-99a6-b6ee58f47408"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{cantidad_saldo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="25" splitType="Stretch">
+			<textField>
+				<reportElement x="394" y="4" width="43" height="20" uuid="135135d8-945c-4baf-8431-69ddfd2290c6"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$V{canEnTotal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="531" y="4" width="43" height="20" uuid="55526a30-5026-41f6-a21a-b43785ff30a6"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$V{canSalida}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="694" y="3" width="43" height="20" uuid="49d99d01-20bc-4f3e-b47e-de1128dca65e"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$V{canSaldoTot}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="15" y="2" width="772" height="1" uuid="8f8d14f4-0019-4c65-b12d-9c37ac16e744"/>
+			</line>
+		</band>
+	</summary>
+</jasperReport>

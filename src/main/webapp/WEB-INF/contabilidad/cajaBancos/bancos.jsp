@@ -95,7 +95,7 @@
                 <table class="table table-bordered table-striped table-hover">
                 <thread>                
                     <tr>
-                        <th>Numero Correlativo del Registro o código único de óperación</th>
+                        <th>Numero Correlativo del Registro o código único de operación</th>
                         <th>Fecha de operación</th>
                         <th>Número de transacción Bancaria, de documento sustentatorio o Control interno de la operación</th>
                         <th>Código de la Cuenta</th>

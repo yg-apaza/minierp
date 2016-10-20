@@ -22,9 +22,9 @@
                        <div class="table-responsive">
                             <table class="table table-bordered table-striped table-hover" id="productTableM">
                                     <tr>    
-                                        <th> Codigo </th>
-                                        <th>Descripcion</th>
-                                        <th>Direccion</th>
+                                        <th> Código </th>
+                                        <th>Descripción</th>
+                                        <th>Dirección</th>
                                         <th class="text-right">Acciones </th>
                                     </tr>
                                     <c:forEach items="${sucursales}" var="sucursales">
@@ -131,7 +131,7 @@
                                     <tr>
                                         <th>Cod Sucursal</th>
                                         <th>Det Sucursal</th>
-                                        <th>Direccion</th>
+                                        <th>Dirección</th>
                                         <th>Registro</th>
                                         <th class="text-right">Acciones</th>
                                     </tr>
