@@ -47,20 +47,11 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-8">
-                                                <!--div class="form-group input-group" >
-                                                    <div class="input-group">
-                                                    <span class="input-group-addon">Cliente</span>
-                                                    <input type="hidden" class="form-control" name="cliCod" id="clientCode">
-                                                    <input type="text" class="form-control" name="cliName" id="clienteCodigo" readonly>
-                                                    
-                                                </div--> 
                                                 <div class="form-group input-group">
                                                     <span class="input-group-addon">Cliente</span>
-                                                    <input type="hidden" class="form-control" name="cliCod" id="clientCode">
-                                                    <input type="hidden" class="form-control" name="cliDes" id="clientDescription">
-                                                    <input class="form-control" id="cliCodShow" >
+                                                    <input class="form-control" name="cliCod" id="cliCodShow" >
                                                     <span class="input-group-addon"></span>
-                                                    <input class="form-control" id="cliDesShow" >
+                                                    <input class="form-control" name="cliDes" id="cliDesShow" >
                                                 </div>    
                                             </div>
                                         </div>
@@ -480,8 +471,8 @@
             
             $('#cliCodShow').keyup(function() {
                 <c:forEach items="${clientes}" var="c">
-                    if(${c.cliCod} == $('#cliCodShow').val) {
-                        $('#cliDesShow').val(${c.cliDes});
+                    if("${c.cliCod}" == $('#cliCodShow').val()) {
+                        $('#cliDesShow').val("${c.cliNom} ${c.cliApePat}");
                     }
                 </c:forEach>
             });
