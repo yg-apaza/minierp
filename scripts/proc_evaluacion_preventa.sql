@@ -25,7 +25,7 @@ GROUP BY pp.ProCod;
 
 UPDATE preventasVencidas pv
 INNER JOIN en_p1m_preventa_cab pvc ON pv.PreVenCabCod=pvc.PreVenCabCod
-SET pvc.EstRegCod = 'I';
+SET pvc.EstRegCod = '*';
 
 UPDATE preventasVencidas pv
 INNER JOIN en_p2m_producto pp ON pp.ProCod=pv.ProCod
