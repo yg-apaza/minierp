@@ -23,7 +23,7 @@
 		<band splitType="Stretch"/>
 	</background>
 	<pageHeader>
-		<band height="43">
+		<band height="36">
 			<staticText>
 				<reportElement mode="Opaque" x="10" y="12" width="528" height="20" uuid="383a41f8-13d5-4c70-bf30-3d47463a02c8"/>
 				<textElement textAlignment="Center" markup="none">
@@ -118,13 +118,12 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{proPagWeb}]]></textFieldExpression>
 			</textField>
+			<line>
+				<reportElement x="13" y="19" width="525" height="1" uuid="f739c406-44c6-47b0-8c0e-d9a540c6d753"/>
+			</line>
 		</band>
 	</detail>
 	<summary>
-		<band height="4">
-			<line>
-				<reportElement x="10" y="0" width="525" height="1" uuid="f739c406-44c6-47b0-8c0e-d9a540c6d753"/>
-			</line>
-		</band>
+		<band height="4"/>
 	</summary>
 </jasperReport>

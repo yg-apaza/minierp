@@ -24,7 +24,7 @@
 		<band/>
 	</background>
 	<title>
-		<band height="54">
+		<band height="53">
 			<staticText>
 				<reportElement mode="Opaque" x="23" y="15" width="779" height="20" uuid="de06f141-209a-4eca-911a-b895d32e1859"/>
 				<textElement textAlignment="Center" markup="none">
@@ -35,9 +35,6 @@
 			</staticText>
 		</band>
 	</title>
-	<pageHeader>
-		<band height="37"/>
-	</pageHeader>
 	<columnHeader>
 		<band height="34">
 			<line>
