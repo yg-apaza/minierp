@@ -7,10 +7,7 @@
     <jsp:attribute name="titulo">
         <title>Ventas - Factura</title>
     </jsp:attribute>
-    <jsp:attribute name="contenido">   
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-        <link rel="stylesheet" href="/resources/demos/style.css">
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <jsp:attribute name="contenido"> 
         <div id="panel-body">
             <form id="registerBill" method="post" action="${pageContext.request.contextPath}/secured/ventas/factura/addFactura">
                 <input type="hidden" class="form-control" name="productsAmounts" id="proAmo">
@@ -471,16 +468,23 @@
                 }
             }
             
-            $( function() {
+            $(function() {
                 var clientsCodes = new Array();                
                 <c:forEach items="${clientes}" var="c">
-                    clientsCodes.push(${c.cliCod});
+                    clientsCodes.push("${c.cliCod}");
                 </c:forEach>
                 $("#cliCodShow").autocomplete({
                     source: clientsCodes
                 });
-            } );
+            });
             
+            $('#cliCodShow').keyup(function() {
+                <c:forEach items="${clientes}" var="c">
+                    if(${c.cliCod} == $('#cliCodShow').val) {
+                        $('#cliDesShow').val(${c.cliDes});
+                    }
+                </c:forEach>
+            });
         </script>
     </jsp:attribute>
 </minierptemplate:template>
