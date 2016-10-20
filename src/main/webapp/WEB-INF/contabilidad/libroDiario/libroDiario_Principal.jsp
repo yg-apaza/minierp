@@ -151,15 +151,15 @@
               <!-- CONTENIDO -->
               <div class="modal-body"  >
                   <div class="form-group">
-                    <label>Numero Correlativo de la Operacion:</label>
+                    <label>Número Correlativo de la Operación:</label>
                     <input type="number" class="form-control">
-                    <label>Fecha de la Operacion:</label>                   
+                    <label>Fecha de la Operación:</label>                   
                     <input type="text" class="form-control">
-                    <label>Glosa de la Operacion:</label>
+                    <label>Glosa de la Operación:</label>
                     <input type="text" class="form-control"> 
                     <label>Codigo del Registro:</label>
                     <input type="text" class="form-control">
-                    <label>Numero del Documento:</label>
+                    <label>Número del Documento:</label>
                     <input type="text" class="form-control"> 
                     <label>Codigo:</label>
                     <input type="text" class="form-control">

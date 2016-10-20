@@ -25,8 +25,8 @@
                         <div class="panel-body">
                             <div class="form-group">
                                 <div class="col-sm-6">
-                                    <label class="control-label">Codigo pago cuota</label>
-                                    <input type="text" class="form-control" placeholder="Codigo Pago Cuota" name="codPagCuo">
+                                    <label class="control-label">Código pago cuota</label>
+                                    <input type="text" class="form-control" placeholder="Código Pago Cuota" name="codPagCuo">
                                 </div>
                                 <div class="col-sm-6">
                                     <label class="control-label">Monto pago cuota</label>

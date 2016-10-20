@@ -32,8 +32,8 @@
                 
                     <label for = "clase" style = "margin-right: 20px;"> Stock: </label>
                     <select class = "form-control" style = "width: 170px; display: inline-block;" onChange="Show(value,limitMin,limitMax);">
-                        <option value="1"> Stock Maximo </option>
-                        <option value="2"> Stock Minimo </option>
+                        <option value="1"> Stock Máximo </option>
+                        <option value="2"> Stock Mínimo </option>
                        <!--
                        <select class = "form-control" style = "width: 170px; display: inline-block;" onChange="window.location.href=this.value">
                        <option value="${pageContext.request.contextPath}/secured/compras/stock"> Stock Minimo </option> -->
@@ -45,15 +45,15 @@
 		<div class="row">
                     <div class="col-lg-12">
                         <br/>
-                        <label> Los siguientes productos han sobrepasado el límite maximo: </label>
+                        <label> Los siguientes productos han sobrepasado el límite máximo: </label>
                         <br>
                         <div class="table-responsive">
                             <table class="table table-bordered table-striped table-hover" id="productTableM">
                                     <tr>    
-                                           <th> Codigo </th>
+                                           <th> Código </th>
                                             <th>Producto</th>
                                             <th>Stock Actual</th>
-                                            <th>Stock Maximo</th>
+                                            <th>Stock Máximo</th>
                                             <th>Stock-StockMax</th>
                                     </tr>
                                     <c:forEach items="${productos}" var="productos">
@@ -82,14 +82,14 @@
                                 <c:when test="${alerta != 0}">
                                     <div class="alert alert-danger alert-dismissable">
                                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                        Para una posterior adquisición de productos se debe tomar en cuenta el limite maximo de 
-                                        compra de cada producto que podria ser perjudicial para el futuro financiero de la empresa
+                                        Para una posterior adquisición de productos se debe tomar en cuenta el límite máximo de 
+                                        compra de cada producto que podría ser perjudicial para el futuro financiero de la empresa.
                                     </div>    
                                 </c:when>
                                 <c:otherwise>
                                     <div class="alert alert-success alert-dismissable">
                                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                        Todos los productos se encuentran por debajo del limite maximo.
+                                        Todos los productos se encuentran por debajo del límite máximo.
                                     </div>
                                 </c:otherwise>
                             </c:choose>    
@@ -102,15 +102,15 @@
             <div id="limitMin" hidden="hidden">
 		<div class="row">
                         <div class="col-lg-12">
-                            <label> Los siguientes productos han bajado del limite minimo: </label>
+                            <label> Los siguientes productos han bajado del límite mínimo: </label>
                             <br/>
                             <div class="table-responsive">
                                 <table class="table table-bordered table-striped table-hover" id="productTableM">
                                         <tr>    
-                                               <th> Codigo </th>
+                                               <th> Código </th>
                                                 <th>Producto</th>
                                                 <th>Stock Actual</th>
-                                                <th>Stock Minimo</th>
+                                                <th>Stock Mínimo</th>
                                                 <th>Stock-StockMin</th>
                                         </tr>
                                         <c:forEach items="${productos}" var="productos">
@@ -137,14 +137,14 @@
                                 <c:when test="${alertamin != 0}">
                                     <div class="alert alert-danger alert-dismissable">
                                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                            Se ha bajado del limite minimo de dichos productos en stock
-                                            es necesario hacer el pedido de dichos productos lo antes posible
+                                            Se ha bajado del límite mínimo de dichos productos en stock
+                                            es necesario hacer el pedido de dichos productos lo antes posible.
                                     </div>     
                                 </c:when>
                                 <c:otherwise>
                                     <div class="alert alert-success alert-dismissable">
                                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                            Todos los productos se encuentran por encima del limite minimo.
+                                            Todos los productos se encuentran por encima del límite mínimo.
                                     </div>       
                                  </c:otherwise>
                             </c:choose> 
