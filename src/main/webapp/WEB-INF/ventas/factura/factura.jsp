@@ -16,9 +16,7 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-8">
-                        <form role=form" method="get" action="${pageContext.request.contextPath}/secured/ventas/factura/addFactura">
-                            <button type="submit" class="btn btn-success">Crear Factura <i class="fa fa-plus"></i></button>   
-                        </form>
+                        <a href="${pageContext.request.contextPath}/secured/ventas/factura/addFactura" class="btn btn-success">Crear Factura <i class="fa fa-plus"></i></a>
                     </div>
                     <div class="col-lg-4">
                         <div class="col-lg-5">

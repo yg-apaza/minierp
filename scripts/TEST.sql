@@ -73,6 +73,7 @@ INSERT INTO `en_p1m_punto_venta` (`PunVenCod`, `SucCod`, `PunVenDes`, `EstRegCod
 INSERT INTO `en_p1m_punto_venta` (`PunVenCod`, `SucCod`, `PunVenDes`, `EstRegCod`) VALUES ('49', '00102', 'COCO COMPAÑIA DE CONSTRUCCIONES LTDA', 'A');
 INSERT INTO `en_p1m_punto_venta` (`PunVenCod`, `SucCod`, `PunVenDes`, `EstRegCod`) VALUES ('50', '00104', 'INDUSTRIAL DE MEZCLAS ASFALTICA LTDA', 'A');
 INSERT INTO `en_p1m_punto_venta` (`PunVenCod`, `SucCod`, `PunVenDes`, `EstRegCod`) VALUES ('51', '00109', 'INGENIEROS CONTRATISTAS CONSTRUCTORES', 'A');
+INSERT INTO `en_p1m_punto_venta` (`PunVenCod`, `SucCod`, `PunVenDes`, `EstRegCod`) VALUES ('52', '001', 'Punto de Venta Principal', 'A');
 
 COMMIT;
 
