@@ -14,7 +14,7 @@
                 <a href="#" class="btn btn-info btn-circle" data-toggle="modal" data-target="#modificarModal"><i class="fa fa-eye"></i></a>
                 <a href="#" class="btn btn-info btn-circle" data-toggle="modal" data-target="#estadosModal"><i class="fa fa-eye"></i></a>-->
             </h1> 
-            <div class="row">
+            <!--<div class="row">
                 <div class="col-sm-4">
                     <a href="${pageContext.request.contextPath}/secured/reporte?type=pdf&&report=puntodeventa" class="btn btn-outline btn-danger btn-lg btn-block">
                         <i class="fa fa-file-pdf-o"></i>
@@ -34,13 +34,13 @@
                     </a>
                 </div>                
             </div> 
-            <br>
+            <br>-->
             <div class="row">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
                         <div class="form-horizontal">
                             <div class="form-group">
-                                <form  method="post" action="${pageContext.request.contextPath}/secured/ventas/pagos">
+                                <form id="Ingreso"  method="post" action="${pageContext.request.contextPath}/secured/ventas/pagos">
                                     <div class="col-md-6">
                                         <label class="control-label">Código Factura</label>                    
                                         <input type="text" class="form-control" placeholder="Código Factura" name="CodCabFac">
@@ -212,6 +212,27 @@
                 pagarFacCab.val($(e.relatedTarget).data('faccab'));
                 console.log(pagarFacCab);
                 //pagarPago.val($(e.relatedTarget).data('pagar'));
+            });
+            
+            $.validator.addMethod("codePattern", function (value, element) {
+                return /^[0-9]{3}-[0-9]{6}$/.test(value);
+            }, "Patrón: [0-9]{3}-[0-9]{6}");
+            
+            $("#Ingreso").validate({
+                rules: {
+                    CodCabFac: {
+                        required: true,
+                        codePattern: true
+                    }
+                },
+                messages: {
+                    CodCabFac: {
+                        required: "Ingrese el código de la factura"
+                    }
+                },
+                submitHandler: function (form) {
+                    form.submit();
+                }
             });
             
         </script>

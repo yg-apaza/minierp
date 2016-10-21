@@ -13,7 +13,7 @@
                 <a href="#" class="btn btn-success btn-circle" data-toggle="modal" data-target="#agregarModal"><i class="fa fa-plus"></i></a>
                 <a href="#" class="btn btn-info btn-circle" data-toggle="modal" data-target="#estadosModal"><i class="fa fa-eye"></i></a>
             </h1>     
-            <div class="row">
+            <!--<div class="row">
                 <div class="col-sm-4">
                     <a href="${pageContext.request.contextPath}/secured/reporte?type=pdf&&report=puntodeventa" class="btn btn-outline btn-danger btn-lg btn-block">
                         <i class="fa fa-file-pdf-o"></i>
@@ -33,9 +33,8 @@
                     </a>
                 </div>                
             </div>    
-            <br>
+            <br>-->
             <div class="col-md-12">
-
 
                 <table class="table table-striped table-hover ">
                     <thead>
