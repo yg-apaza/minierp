@@ -7,7 +7,7 @@
     <jsp:attribute name="titulo">
         <title>Ventas - Factura</title>
     </jsp:attribute>
-    <jsp:attribute name="contenido"> 
+    <jsp:attribute name="contenido">
         <div id="panel-body">
             <form id="registerBill" method="post" action="${pageContext.request.contextPath}/secured/ventas/factura/addFactura">
                 <input type="hidden" class="form-control" name="productsAmounts" id="proAmo">
@@ -17,15 +17,16 @@
                     <div class="col-md-4">
                         <br><h1 class="page-header"> Factura de Venta</h1>
                     </div>
-                    <div class="col-md-4 col-md-offset-4"><br>
+                    <div class="col-md-6 col-md-offset-2"><br>
                         <div class="col-md-6">
-                            <div class="form-group input-group" >
+                            <div class="form-group input-group">
                                 <span class="input-group-addon"><i class="fa fa-child"></i></span>
-                                <input type="text" class="form-control" name="usuCod" value="${usuario.usuCod}" readonly>
+                                <input type="hidden" class="form-control" name="usuCod" value="${usuario.usuCod}" readonly>
+                                <input type="text" class="form-control" value="${usuario.usuNom} ${usuario.usuApePat}" readonly>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="form-group input-group" >
+                            <div class="form-group input-group">
                                 <span class="input-group-addon"><i class="fa fa-home"></i></span>
                                 <input type="text" class="form-control" name="sucDes" value="${usuario.enP1mSucursal.sucCod}" readonly>
                             </div>
