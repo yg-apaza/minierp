@@ -453,6 +453,16 @@
     </servlet-mapping>
     <servlet>
         <description/>
+        <display-name>BusquedaClienteController</display-name>
+        <servlet-name>BusquedaClienteController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.ventas.BusquedaClienteController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>BusquedaClienteController</servlet-name>
+        <url-pattern>/secured/ventas/factura/busquedaCliente</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <description/>
         <display-name>PagosController</display-name>
         <servlet-name>PagosController</servlet-name>
         <servlet-class>org.epis.minierp.controller.ventas.PagosController</servlet-class>
