@@ -234,6 +234,17 @@
         <servlet-name>CompanyDataController</servlet-name>
         <url-pattern>/secured/configuracion/empresa</url-pattern>
     </servlet-mapping>
+    <!--Sub Modulo Datos de Empresa-->
+    <servlet>
+        <description/>
+        <display-name>DatosEmpresaController</display-name>
+        <servlet-name>DatosEmpresaController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.configuracion.DatosEmpresaController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DatosEmpresaController</servlet-name>
+        <url-pattern>/secured/configuracion/datosEmpresa</url-pattern>
+    </servlet-mapping>
     <!--Sub Modulo Sucursal-->
     <servlet>
         <description/>
@@ -470,6 +481,16 @@
     <servlet-mapping>
         <servlet-name>BusquedaClienteController</servlet-name>
         <url-pattern>/secured/ventas/factura/busquedaCliente</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <description/>
+        <display-name>SearchProductController</display-name>
+        <servlet-name>SearchProductController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.ventas.SearchProductController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SearchProductController</servlet-name>
+        <url-pattern>/secured/ventas/factura/searchProduct</url-pattern>
     </servlet-mapping>
     <servlet>
         <description/>
