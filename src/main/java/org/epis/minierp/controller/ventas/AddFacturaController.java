@@ -135,7 +135,6 @@ public class AddFacturaController extends HttpServlet
             
             header.setFacVenCabCod(facVenCabCod);
             EnP1mClienteDao clienteDao = new EnP1mClienteDao();
-            // Debe de usarse un selector de clientes activos
             EnP1mCliente client = clienteDao.getById(cliCod);
             if(client != null)
             {
