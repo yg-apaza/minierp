@@ -16,8 +16,20 @@
                 </div>
             </div>
            <div class="row">
-                <div class="col-lg-7">
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addInventory"> Hacer inventario <i class="fa fa-plus"></i></button>                
+                <div class="col-md-6">
+                    <label>Código del producto</label>
+                    <div class="form-group input-group">
+                        <span class="input-group-addon"><i class="fa fa-barcode"></i></span>
+                        <input type="text" class="form-control" id="proCod" name="proCod" placeholder="Código del producto">
+                    </div>
+                </div>
+               <div class="col-md-3">
+                    <button type="button" class="btn btn-success"> Generar reporte</button>
+                </div>
+                <div class="col-md-3">
+                    <form id="preventaLoteForm" role="form" action="${pageContext.request.contextPath}/secured/compras/inventario" method="post">
+                        <button type="submit" onclick="updateInventory()" class="btn btn-success"> Actualizar inventario</button>  
+                    </form> 
                 </div>
             </div>
             <br>
@@ -30,73 +42,45 @@
                                 <th style="text-align: center">Descripción del producto</th>
                                 <th style="text-align: center">Precio</th>
                                 <th style="text-align: center">Cantidad</th>
+                                <th style="text-align: center">Actual</th>
+                                <th style="display:none;"></th>
+                                <th style="display:none;"></th>
                             </tr>               
                         </thead>
                         <tbody>
                             <c:forEach items = "${productos}" var = "producto">    
-                                <tr>
+                                <tr id="${producto.id.proCod}">
                                     <td><c:out value="${producto.id.proCod}"/> </td>
                                     <td><c:out value="${producto.proDet}"/></td>
                                     <td><c:out value="${producto.proPreUni}"/></td>
                                     <td><c:out value="${producto.proStk}"/></td>
+                                    <td>0</td>
+                                    <td style="display:none;"><input type="checkbox" name="proCodigos" value="${producto.id.proCod}" checked>${producto.id.proCod}</td>
+                                    <td style="display:none;"><input type="checkbox" name="proCantidades" value="${producto.proStk}" checked>${producto.proStk}</td>
                                 </tr>
                             </c:forEach>  
                         </tbody>
                     </table>            
                 </div>
-                
-                <div class="modal fade" id="addInventory">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            <h4 class="modal-title" id="myModalLabel">Añadir Producto</h4>
-                        </div>
-                        <form id="updForm" method="post" action="${pageContext.request.contextPath}/secured/compras/inventario">
-                            <div class="modal-body">
-                                <input type="hidden" name="action" value="upd">
-                                <div class="col-md-12 form-group input-group">
-                                    <div class="col-xs-12 col-md-12">
-                                        <div class="form-group input-group">
-                                            <span class="input-group-addon"><i class="fa fa-barcode"></i></span>
-                                            <input type="text" class="form-control" name="proCodUpd" placeholder="Código del producto">
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-12 col-md-6">
-                                        <div class="form-group input-group">
-                                            <span class="input-group-addon">Cantidad</span>                                                            
-                                            <input type="number" class="form-control" name="proCanUpd" min="1.0" step="any" value="1.0">
-                                            <span class="input-group-addon"><i class="fa fa-money"></i></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-                                <button type="submit" class="btn btn-success">Aceptar</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
             </div>
-            </div> 
         </div>
-        <script language="javascript">    
-            $("#updForm").validate({
-                rules: {
-                    proCodUpd: {
-                        required: true
-                    },
-                },
-                messages: {
-                    proCanUpd: {
-                        required: "Ingrese o escanee el código del producto"
-                    },
-                },
-                submitHandler: function (form) {
-                    form.submit();
+        <script language="javascript"> 
+            $('#proCod').bind('input', function(){
+                var length = $("#proCod").val().length;
+                if (length >= 13) {  
+                    var actualValue = $("#id_table").find('tr#'+$("#proCod").val()).find('td:eq(4)').html();
+                    $("#id_table").find('tr#'+$("#proCod").val()).find('td:eq(4)').html(parseInt(actualValue)+1);
+                    $("#proCod").val('');
                 }
             });
+            
+            function updateInventory() {
+                $('#id_table tr').each(function () {
+                    var proCan = $(this).find("td").eq(4).html();
+                    $(this).find("td").eq(6).val(proCan);
+                });
+            };
+            
         </script>
     </jsp:attribute>
 </minierptemplate:template>
