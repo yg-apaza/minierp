@@ -15,6 +15,7 @@
                     <h1 class="page-header"> Inventario </h1>
                 </div>
             </div>
+            <form id="preventaLoteForm" role="form" action="${pageContext.request.contextPath}/secured/compras/inventario" method="post">
            <div class="row">
                 <div class="col-md-6">
                     <label>Código del producto</label>
@@ -23,13 +24,8 @@
                         <input type="text" class="form-control" id="proCod" name="proCod" placeholder="Código del producto">
                     </div>
                 </div>
-               <div class="col-md-3">
-                    <button type="button" class="btn btn-success"> Generar reporte</button>
-                </div>
                 <div class="col-md-3">
-                    <form id="preventaLoteForm" role="form" action="${pageContext.request.contextPath}/secured/compras/inventario" method="post">
-                        <button type="submit" onclick="updateInventory()" class="btn btn-success"> Actualizar inventario</button>  
-                    </form> 
+                    <button type="submit" onclick="return updateInventory()" class="btn btn-success"> Actualizar inventario</button>  
                 </div>
             </div>
             <br>
@@ -55,14 +51,15 @@
                                     <td><c:out value="${producto.proPreUni}"/></td>
                                     <td><c:out value="${producto.proStk}"/></td>
                                     <td>0</td>
-                                    <td style="display:none;"><input type="checkbox" name="proCodigos" value="${producto.id.proCod}" checked>${producto.id.proCod}</td>
-                                    <td style="display:none;"><input type="checkbox" name="proCantidades" value="${producto.proStk}" checked>${producto.proStk}</td>
+                                    <td style="display:none;"><input type="checkbox" name="proCodigos" value="${producto.id.proCod}" checked></td>
+                                    <td style="display:none;"><input type="checkbox" name="proCantidades" value="0" checked></td>
                                 </tr>
                             </c:forEach>  
                         </tbody>
                     </table>            
                 </div>
             </div>
+            </form> 
         </div>
         <script language="javascript"> 
             $('#proCod').bind('input', function(){
@@ -75,9 +72,15 @@
             });
             
             function updateInventory() {
+                var list = [];
                 $('#id_table tr').each(function () {
-                    var proCan = $(this).find("td").eq(4).html();
-                    $(this).find("td").eq(6).val(proCan);
+                    var can = $(this).find("td").eq(4).html()
+                    list.push(can);
+                });
+                var i = 1;
+                $.each($("input[name='proCantidades']:checked"), function(){            
+                   $(this).val(list[i]);
+                   i++;
                 });
             };
             
