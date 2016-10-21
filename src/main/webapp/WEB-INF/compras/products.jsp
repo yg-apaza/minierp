@@ -68,10 +68,10 @@
                                        data-pObs="${p.proObs}"
                                        data-pEst="${p.estRegCod}"
                                        >
-                                        <i class="fa fa-pencil-square-o fa-2x" style="color: lightseagreen;"></i>
+                                        <i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i>
                                     </a>
                                     <a href="#" data-toggle="modal" data-target="#deleteProduct" data-pCode="${p.id.proCod}/${p.id.subClaProCod}/${p.id.claProCod}" data-pDes="${p.proDet}" data-pEst="${p.estRegCod}">
-                                        <i class="fa fa-trash-o fa-2x" style="color: hotpink;"></i>
+                                        <i class="fa fa-trash-o fa-2x" style="color: black;"></i>
                                     </a>
                                 </td>
                             </tr>
