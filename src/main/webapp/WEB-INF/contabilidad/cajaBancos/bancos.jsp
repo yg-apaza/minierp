@@ -6,7 +6,7 @@
 <minierptemplate:template>
     <jsp:attribute name="titulo">
         <title>Contabilidad - Bancos</title>
-    </jsp:attribute>
+    </jsp:attribute>    
     <jsp:attribute name="contenido">
         <div class="panel-body" >
             <h1 class="page-header">Bancos</h1> 
@@ -112,144 +112,12 @@
                                  <td>${u.asiDetCod}</td>
                                  <td><fmt:formatDate value="${u.asiCabFec}" pattern="dd/MM/yyyy" /></td>
                                  <td>${u.cueCod}</td>
-                                 <td>${u.cueCod}</td>
+                                 <td>${u.cueBanNum}</td>
                                  <td>${u.cueDes}</td>
                                  <td>${u.debe}</td>
                                  <td>${u.haber}</td>
                              </tr>
-                     </c:forEach>  
-                    <!---Ejemplos-->
-                    <tr>
-                        <td>1</td>
-                        <td>01-Mar-16</td>
-                        <td>1</td>
-                        <td>121</td>
-                        <td>Saldo Inicial</td>
-                        <td>93939</td>
-                        <td></td>
-                    </tr>
-
-                    <tr>
-                        <td>2</td>
-                        <td>06-Mar-16</td>
-                        <td>2</td>
-                        <td>121</td>
-                        <td>Facturas por cobrar</td>
-                        <td>565870</td>
-                        <td></td>
-                    </tr>
-
-                    <tr>
-                        <td>3</td>
-                        <td>15-Mar-16</td>
-                        <td>3</td>
-                        <td>121</td>
-                        <td>Cuenta Corriente</td>
-                        <td>939</td>
-                        <td></td>
-                    </tr>
-
-                    <tr>
-                        <td>4</td>
-                        <td>01-Mar-16</td>
-                        <td>2</td>
-                        <td>406</td>
-                        <td>Gobiernos Locales</td>
-                        <td></td>
-                        <td>939</td>
-                    </tr>
-
-
-                    <tr>
-                        <td>5</td>
-                        <td>18-Mar-16</td>
-                        <td>3</td>
-                        <td>104</td>
-                        <td>Cuenta Corriente</td>
-                        <td>969</td>
-                        <td></td>
-                    </tr>
-
-                    <tr>
-                        <td>6</td>
-                        <td>18-Mar-16</td>
-                        <td>4</td>
-                        <td>424</td>
-                        <td>Honorarios por Pagar</td>
-                        <td></td>
-                        <td>939</td>
-                    </tr>
-
-                    <tr>
-                        <td>7</td>
-                        <td>19-Mar-16</td>
-                        <td>5</td>
-                        <td>421</td>
-                        <td>Facturas por Pagar</td>
-                        <td></td>
-                        <td>377246</td>
-                    </tr>
-
-                    <tr>
-                        <td>8</td>
-                        <td>19-Mar-16</td>
-                        <td>7</td>
-                        <td>424</td>
-                        <td>Cuenta Corriente</td>
-                        <td>377246</td>
-                        <td></td>
-                    </tr>
-
-                    <tr>
-                        <td>9</td>
-                        <td>19-Mar-16</td>
-                        <td>8</td>
-                        <td>424</td>
-                        <td>Facturas por Pagar</td>
-                        <td></td>
-                        <td>377246</td>
-                    </tr>
-
-                    <tr>
-                        <td>10</td>
-                        <td>19-Mar-16</td>
-                        <td>9</td>
-                        <td>424</td>
-                        <td>Facturas por Cobrar</td>
-                        <td>754493</td>
-                        <td></td>
-                    </tr>
-
-                    <tr>
-                        <td>11</td>
-                        <td>20-Mar-16</td>
-                        <td>11</td>
-                        <td>411</td>
-                        <td>Remunerciones por P</td>
-                        <td></td>
-                        <td>1200</td>
-                    </tr>
-
-                    <tr>
-                        <td>12</td>
-                        <td>31-Mar-16</td>
-                        <td>12</td>
-                        <td>4011</td>
-                        <td>IGV</td>
-                        <td></td>
-                        <td>91464</td>
-                    </tr>
-
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <th>Totales</th>
-                        <th>1793456</th>
-                        <th>859835</th>
-                    </tr>
-                    <!---Fin Ejemplos-->          
+                     </c:forEach>        
                 </tbody>
             </table>
         </div>
