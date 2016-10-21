@@ -69,11 +69,11 @@
                                                                                                       data-email="${proveedor.proEmail}"
                                                                                                       data-pagweb="${proveedor.proPagWeb}"
                                                                                                       data-obs="${proveedor.proObs}">
-                                            <i class="fa fa-pencil-square-o fa-2x"></i>
+                                            <i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i>
                                         </a> 
                                         <a href="#" data-toggle="modal" data-target="#deleteSupplier" data-cod="${proveedor.proCod}"
                                                                                                       data-det="${proveedor.proDet}">
-                                            <i class="fa fa-trash-o fa-2x"></i>
+                                            <i class="fa fa-trash-o fa-2x" style="color: black;"></i>
                                         </a> 
                                     </td>
                                 </tr>
@@ -90,7 +90,7 @@
                         <button type = "button" class = "close" data-dismiss = "modal">&times;</button>
                         <h4 class = "modal-title">Agregar Proveedor</h4>
                     </div>
-                    <form role = "form" method = "post" action="${pageContext.request.contextPath}/secured/compras/proveedores">
+                    <form id="addSupplierform" role = "form" method = "post" action="${pageContext.request.contextPath}/secured/compras/proveedores">
                         <input type="hidden" name="accion" value="insert">
                         <div class="modal-body">
                             <div class = "form-horizontal">
@@ -289,6 +289,46 @@
                 dltProCod.val($(e.relatedTarget).data('cod'));
                 dltProDet.val($(e.relatedTarget).data('det'));
             });
+            
+            $.validator.addMethod("codePattern", function (value, element) {
+                return /^[0-9]{3}-[0-9]{6}$/.test(value);
+            }, "Patrón: [0-9]{3}-[0-9]{6}");
+            
+            $("#addSupplierform").validate({
+                rules: {
+                    codPro: {
+                        required: true,
+                        codePattern: true
+                    },
+                    detPro: {
+                        required: true
+                    },
+                    conPro: {
+                        required: true
+                    },
+                    dirPro: {
+                        required: true
+                    }
+                },
+                messages: {
+                    codPro: {
+                        required: "Ingrese codigo de Proveedor"
+                    },
+                    detPro: {
+                        required: "Ingrese nombre de proveedor"
+                    },
+                    conPro: {
+                        required: "Ingrese contacto de proveedor"
+                    },
+                    dirPro: {
+                        required: "Ingrese direccion"
+                    }    
+                },
+                submitHandler: function (form) {
+                    form.submit();
+                }
+            });
+            
         </script>
     </jsp:attribute>  
 </minierptemplate:template>

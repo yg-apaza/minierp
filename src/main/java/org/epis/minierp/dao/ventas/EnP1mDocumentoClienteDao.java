@@ -39,6 +39,20 @@ public class EnP1mDocumentoClienteDao {
         return estado;
     }
     
+    public EnP1mDocumentoCliente getByDocNum(String docCliNum) {
+        EnP1mDocumentoCliente documento = null;
+        Query query = session.createQuery("from EnP1mDocumentoCliente D where D.docCliNum = :id and D.estRegCod = 'A'");
+        query.setParameter("id", docCliNum);
+        query.setMaxResults(1);
+        try {
+            List<EnP1mDocumentoCliente> usuarios = query.list();
+            documento = usuarios.get(0);
+        } catch (IndexOutOfBoundsException ex) {
+            return null;
+        }
+        return documento;
+    }
+    
     public void save(EnP1mDocumentoCliente docCliente) {
         session.save(docCliente);     
     }

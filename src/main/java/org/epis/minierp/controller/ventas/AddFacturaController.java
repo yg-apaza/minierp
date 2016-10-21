@@ -32,9 +32,12 @@ import org.epis.minierp.dao.general.EnP1mUsuarioDao;
 import org.epis.minierp.dao.logistica.EnP2mClaseProductoDao;
 import org.epis.minierp.dao.logistica.EnP2mProductoDao;
 import org.epis.minierp.dao.logistica.EnP2mSubclaseProductoDao;
+import org.epis.minierp.dao.ventas.EnP1mDocumentoClienteDao;
 import org.epis.minierp.dao.ventas.EnP1mMovimientoPuntoVenDao;
 import org.epis.minierp.dao.ventas.EnP1tFacturaVentaDetDao;
 import org.epis.minierp.model.EnP1mCliente;
+import org.epis.minierp.model.EnP1mDocumentoCliente;
+import org.epis.minierp.model.EnP1mDocumentoClienteId;
 import org.epis.minierp.model.EnP1mEmpresa;
 import org.epis.minierp.model.EnP1mFacturaVentaCab;
 import org.epis.minierp.model.EnP1mMovimientoPuntoVen;
@@ -49,6 +52,7 @@ import org.epis.minierp.model.EnP2mClaseProducto;
 import org.epis.minierp.model.EnP2mProducto;
 import org.epis.minierp.model.EnP2mProductoId;
 import org.epis.minierp.model.EnP2mSubclaseProducto;
+import org.epis.minierp.model.TaGzzEstadoCivil;
 import org.epis.minierp.model.TaGzzEstadoFactura;
 import org.epis.minierp.model.TaGzzMetodoPagoFactura;
 import org.epis.minierp.model.TaGzzMoneda;
@@ -79,7 +83,7 @@ public class AddFacturaController extends HttpServlet
         List <TaGzzTipoPagoFactura> tiposPagoFactura = (new TaGzzTipoPagoFacturaDao()).getAllActive(); 
         List <EnP2mProducto> productos = new ArrayList<EnP2mProducto>(productosSet);
         List <TaGzzEstadoFactura> estados = (new TaGzzEstadoFacturaDao()).getAllActive();
-        List <EnP1mCliente> clientes = (new EnP1mClienteDao()).getAllActive();
+        List<EnP1mDocumentoCliente> documentos = (new EnP1mDocumentoClienteDao()).getAllActive();
         List <EnP2mClaseProducto> clases = (new EnP2mClaseProductoDao()).getAllActive();
         List <EnP2mSubclaseProducto> subclases = (new EnP2mSubclaseProductoDao()).getAllActive();
         EnP1mEmpresa empresa = (new EnP1mEmpresaDao()).getAll().get(0);
@@ -89,7 +93,7 @@ public class AddFacturaController extends HttpServlet
         request.setAttribute("tiposPagoFactura", tiposPagoFactura);
         request.setAttribute("productos", productos);
         request.setAttribute("estados", estados);
-        request.setAttribute("clientes", clientes);
+        request.setAttribute("documentos", documentos);
         request.setAttribute("clases", clases);
         request.setAttribute("subclases", subclases);
         request.setAttribute("empresa", empresa);
@@ -106,6 +110,9 @@ public class AddFacturaController extends HttpServlet
             List <String> productsPrices = Arrays.asList((request.getParameter("productsPrices")).split("\\s*,\\s*"));
             String facVenCabCod = request.getParameter("facVenCabCod");
             String cliCod = request.getParameter("cliCod");
+            String cliNom = request.getParameter("cliNom");
+            String cliApePat = request.getParameter("cliApePat");
+            String cliApeMat = request.getParameter("cliApeMat");
             int facVenCabIgv = (int)Double.parseDouble(request.getParameter("facVenCabIgv"));
             DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
             Date facVenCabFec = format.parse(request.getParameter("facVenCabFec"));
@@ -127,7 +134,43 @@ public class AddFacturaController extends HttpServlet
             EnP1mFacturaVentaCab header = new EnP1mFacturaVentaCab();
             
             header.setFacVenCabCod(facVenCabCod);
-            header.setEnP1mCliente((new EnP1mClienteDao()).getById(cliCod));
+            EnP1mClienteDao clienteDao = new EnP1mClienteDao();
+            // Debe de usarse un selector de clientes activos
+            EnP1mCliente client = clienteDao.getById(cliCod);
+            if(client != null)
+            {
+                client.setCliNom(cliNom);
+                client.setCliApePat(cliApePat);
+                client.setCliApeMat(cliApeMat);
+                clienteDao.update(client);
+                header.setEnP1mCliente(client);
+            }
+            else
+            {
+                EnP1mCliente clientNew = new EnP1mCliente();
+                clientNew.setCliCod(cliCod);
+                clientNew.setCliNom(cliNom);
+                clientNew.setCliApePat(cliApePat);
+                clientNew.setCliApeMat(cliApeMat);
+                clientNew.setCliSex('N');
+                clientNew.setCliDir("");
+                clientNew.setCliEmail("");
+                TaGzzEstadoCivil estCivCod = new TaGzzEstadoCivil();
+                estCivCod.setEstCivCod(1);
+                clientNew.setTaGzzEstadoCivil(estCivCod);
+                clientNew.setEstRegCod('A');
+                clienteDao.save(clientNew);
+                EnP1mDocumentoCliente document = new EnP1mDocumentoCliente();
+                if(cliCod.length() == 8)
+                    document.setId(new EnP1mDocumentoClienteId(cliCod, 1));
+                else
+                    document.setId(new EnP1mDocumentoClienteId(cliCod, 2));
+                document.setDocCliNum(cliCod);
+                document.setEstRegCod('A');
+                new EnP1mDocumentoClienteDao().save(document);
+                header.setEnP1mCliente(clientNew);
+            }
+            
             EnP1mUsuario user = (new EnP1mUsuarioDao()).getById(usuCod);
             header.setEnP1mUsuario(user);
             header.setFacVenCabFec(facVenCabFec);

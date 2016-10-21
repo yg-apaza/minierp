@@ -40,35 +40,41 @@
                                 <div class="row">
                                     <div class="col-xs-12 col-md-8">
                                         <div class="row">
-                                            <div class="col-md-4">
+                                            <div class="col-md-6">
                                                 <div class="form-group input-group">
                                                     <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                                                     <input type="text" class="form-control" name="facVenCabCod" placeholder="Número de Factura">
                                                 </div>
                                             </div>
-                                            <div class="col-md-8">
-                                                <div class="form-group input-group">
-                                                    <span class="input-group-addon">Cliente</span>
-                                                    <input class="form-control" name="cliCod" id="cliCodShow" >
-                                                    <span class="input-group-addon"></span>
-                                                    <input class="form-control" name="cliDes" id="cliDesShow" >
-                                                </div>    
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-3">
-                                                <div class="form-group input-group" >
-                                                    <span class="input-group-addon">IGV</span>
-                                                    <input type="number" class="form-control" name="facVenCabIgv" value="${empresa.empIgv}" id="facIgv" readOnly>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
+                                            <div class="col-md-6">
                                                 <div class="form-group input-group" >
                                                     <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                                                     <input type="date" class="form-control" name="facVenCabFec">
                                                 </div>
                                             </div>
-                                            <div class="col-md-5">
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group input-group">
+                                                    <span class="input-group-addon">Cliente</span>
+                                                    <input class="form-control" type="text" name="cliCod" id="cliCodShow" placeholder="Nro de documento">
+                                                    <span class="input-group-addon"></span>
+                                                    <input class="form-control" type="text" name="cliNom" id="cliNomShow" placeholder="Nombres">
+                                                    <span class="input-group-addon"></span>
+                                                    <input class="form-control" type="text" name="cliApePat" id="cliApePatShow" placeholder="Apellido Paterno">
+                                                    <span class="input-group-addon"></span>
+                                                    <input class="form-control" type="text" name="cliApeMat" id="cliApeMatShow" placeholder="Apellido Materno">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group input-group" >
+                                                    <span class="input-group-addon">IGV</span>
+                                                    <input type="number" class="form-control" name="facVenCabIgv" value="${empresa.empIgv}" id="facIgv" readOnly>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-8">
                                                 <div class="form-group input-group" >
                                                     <span class="input-group-addon"><i class="fa fa-money"></i></span>
                                                     <select class="form-control" name="monCod">
@@ -105,10 +111,10 @@
                                         </div>
                                     </div>
                                     <div class="col-xs-12 col-md-4">
-                                        <textarea class="form-control" rows="6" name="facVenCabObs" placeholder="Observaciones"></textarea>
+                                        <textarea class="form-control" rows="8" name="facVenCabObs" placeholder="Observaciones"></textarea>
                                     </div>
-                                </div>                             
-                            </div>                          
+                                </div>
+                            </div>
                             <div class="panel-body">
                                 <h4>Detalle de Venta</h4><br>
                                 <div class="row">
@@ -428,8 +434,11 @@
                         required: true,
                         codePattern: true
                     },
-                    cliName: {
-                        required: true
+                    cliCod: {
+                        required: true,
+                        digits: true,
+                        minlength: "8",
+                        maxlength: "11"
                     },
                     facVenCabFec: {
                         required: true
@@ -439,8 +448,11 @@
                     facVenCabCod: {
                         required: "Ingrese el código de la factura"
                     },
-                    cliName: {
-                        required: "Seleccione un cliente"
+                    cliCod: {
+                        required: "Seleccione un cliente",
+                        digits: "Ingresar solo dígitos",
+                        minlength: "Mínimo 8 digitos",
+                        maxlength: "Máximo 11 digitos"
                     },
                     facVenCabFec: {
                         required: "Seleccione una fecha"
@@ -459,22 +471,32 @@
                 }
             }
             
-            $(function() {
-                var clientsCodes = new Array();                
-                <c:forEach items="${clientes}" var="c">
-                    clientsCodes.push("${c.cliCod}");
-                </c:forEach>
-                $("#cliCodShow").autocomplete({
-                    source: clientsCodes
-                });
+            var clientDocs = new Array();
+            <c:forEach items="${documentos}" var="d">
+                clientDocs.push("${d.docCliNum}");
+            </c:forEach>
+            $("#cliCodShow").autocomplete({
+                source: clientDocs
             });
             
             $('#cliCodShow').keyup(function() {
-                <c:forEach items="${clientes}" var="c">
-                    if("${c.cliCod}" == $('#cliCodShow').val()) {
-                        $('#cliDesShow').val("${c.cliNom} ${c.cliApePat}");
+                $.post(
+                    "${pageContext.request.contextPath}/secured/ventas/factura/busquedaCliente",
+                    {docCliNum: $("#cliCodShow").val()})
+                .done(function(data) {
+                    if(data.cliCod != null)
+                    {
+                        $("#cliNomShow").val(data.cliNom);
+                        $("#cliApePatShow").val(data.cliApePat);
+                        $("#cliApeMatShow").val(data.cliApeMat);
                     }
-                </c:forEach>
+                    else
+                    {
+                        $("#cliNomShow").val("Desconocido");
+                        $("#cliApePatShow").val("Desconocido");
+                        $("#cliApeMatShow").val("Desconocido");
+                    }
+                });
             });
         </script>
     </jsp:attribute>
