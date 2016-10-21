@@ -36,9 +36,9 @@ public class EnP1mClienteDao {
     }
 
     public EnP1mCliente getById(String id) {
-        EnP1mCliente estado = null;
+        EnP1mCliente estado;
         try {
-            estado = (EnP1mCliente) session.load(EnP1mCliente.class, id);
+            estado = (EnP1mCliente) session.get(EnP1mCliente.class, id);
         } catch (ObjectNotFoundException e) {
             return null;
         }

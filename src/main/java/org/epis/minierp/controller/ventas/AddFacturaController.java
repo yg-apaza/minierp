@@ -52,6 +52,7 @@ import org.epis.minierp.model.EnP2mClaseProducto;
 import org.epis.minierp.model.EnP2mProducto;
 import org.epis.minierp.model.EnP2mProductoId;
 import org.epis.minierp.model.EnP2mSubclaseProducto;
+import org.epis.minierp.model.TaGzzEstadoCivil;
 import org.epis.minierp.model.TaGzzEstadoFactura;
 import org.epis.minierp.model.TaGzzMetodoPagoFactura;
 import org.epis.minierp.model.TaGzzMoneda;
@@ -134,6 +135,7 @@ public class AddFacturaController extends HttpServlet
             
             header.setFacVenCabCod(facVenCabCod);
             EnP1mClienteDao clienteDao = new EnP1mClienteDao();
+            // Debe de usarse un selector de clientes activos
             EnP1mCliente client = clienteDao.getById(cliCod);
             if(client != null)
             {
@@ -141,14 +143,23 @@ public class AddFacturaController extends HttpServlet
                 client.setCliApePat(cliApePat);
                 client.setCliApeMat(cliApeMat);
                 clienteDao.update(client);
+                header.setEnP1mCliente(client);
             }
             else
             {
-                client = new EnP1mCliente();
-                client.setCliCod(cliCod);
-                client.setCliApePat(cliApePat);
-                client.setCliApeMat(cliApeMat);
-                clienteDao.save(client);
+                EnP1mCliente clientNew = new EnP1mCliente();
+                clientNew.setCliCod(cliCod);
+                clientNew.setCliNom(cliNom);
+                clientNew.setCliApePat(cliApePat);
+                clientNew.setCliApeMat(cliApeMat);
+                clientNew.setCliSex('N');
+                clientNew.setCliDir("");
+                clientNew.setCliEmail("");
+                TaGzzEstadoCivil estCivCod = new TaGzzEstadoCivil();
+                estCivCod.setEstCivCod(1);
+                clientNew.setTaGzzEstadoCivil(estCivCod);
+                clientNew.setEstRegCod('A');
+                clienteDao.save(clientNew);
                 EnP1mDocumentoCliente document = new EnP1mDocumentoCliente();
                 if(cliCod.length() == 8)
                     document.setId(new EnP1mDocumentoClienteId(cliCod, 1));
@@ -157,8 +168,9 @@ public class AddFacturaController extends HttpServlet
                 document.setDocCliNum(cliCod);
                 document.setEstRegCod('A');
                 new EnP1mDocumentoClienteDao().save(document);
+                header.setEnP1mCliente(clientNew);
             }
-            header.setEnP1mCliente(client);
+            
             EnP1mUsuario user = (new EnP1mUsuarioDao()).getById(usuCod);
             header.setEnP1mUsuario(user);
             header.setFacVenCabFec(facVenCabFec);
