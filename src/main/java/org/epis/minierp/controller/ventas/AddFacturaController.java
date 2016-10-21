@@ -87,7 +87,8 @@ public class AddFacturaController extends HttpServlet
         List <EnP2mClaseProducto> clases = (new EnP2mClaseProductoDao()).getAllActive();
         List <EnP2mSubclaseProducto> subclases = (new EnP2mSubclaseProductoDao()).getAllActive();
         EnP1mEmpresa empresa = (new EnP1mEmpresaDao()).getAll().get(0);
-        
+        EnP1mPuntoVenta punto = user.getEnP1mSucursal().getEnP1mPuntoVentas().iterator().next(); //Getting the first one
+
         request.setAttribute("metodosPagoFactura", metodosPagoFactura);
         request.setAttribute("monedas", monedas);
         request.setAttribute("tiposPagoFactura", tiposPagoFactura);
@@ -97,6 +98,7 @@ public class AddFacturaController extends HttpServlet
         request.setAttribute("clases", clases);
         request.setAttribute("subclases", subclases);
         request.setAttribute("empresa", empresa);
+        request.setAttribute("punto", punto);
         
         request.getRequestDispatcher("/WEB-INF/ventas/factura/addFactura.jsp").forward(request, response);
     }

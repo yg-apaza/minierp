@@ -57,6 +57,34 @@ public class EnP2mProductoDao {
         return producto;
     }
     
+    public EnP2mProducto getByIdActive(EnP2mProductoId id) {
+        EnP2mProducto producto = null;
+        try {
+            producto = (EnP2mProducto)session.load(EnP2mProducto.class, id);
+            if(producto.getEstRegCod() != 'A')
+                return null;
+        } catch(ObjectNotFoundException e) {
+            return null;
+        }
+        
+        return producto;
+    }
+    
+    public EnP2mProducto getByDescription(String proDet) {
+        EnP2mProducto producto = null;
+        Query query = session.createQuery("from EnP2mProducto P where P.proDet = :det and P.estRegCod = 'A'");
+        query.setParameter("det", proDet);
+        query.setMaxResults(1);
+        try {
+            List <EnP2mProducto> productos = query.list();
+            producto = productos.get(0);
+        } catch (IndexOutOfBoundsException ex) {
+            return null;
+        }
+        
+        return producto;
+    }
+    
     public void save(EnP2mProducto producto) {
         session.save(producto);     
     }

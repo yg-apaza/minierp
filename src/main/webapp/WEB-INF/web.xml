@@ -473,6 +473,16 @@
     </servlet-mapping>
     <servlet>
         <description/>
+        <display-name>SearchProductController</display-name>
+        <servlet-name>SearchProductController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.ventas.SearchProductController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SearchProductController</servlet-name>
+        <url-pattern>/secured/ventas/factura/searchProduct</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <description/>
         <display-name>PagosController</display-name>
         <servlet-name>PagosController</servlet-name>
         <servlet-class>org.epis.minierp.controller.ventas.PagosController</servlet-class>

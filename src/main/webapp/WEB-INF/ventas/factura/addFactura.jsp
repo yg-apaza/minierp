@@ -27,7 +27,7 @@
                         <div class="col-md-6">
                             <div class="form-group input-group" >
                                 <span class="input-group-addon"><i class="fa fa-home"></i></span>
-                                <input type="text" class="form-control" name="sucDes" value="${usuario.enP1mSucursal.sucCod}" readonly>
+                                <input type="text" class="form-control" value="${punto.id.sucCod}-${punto.id.punVenCod}" readonly>
                             </div>
                         </div>
                     </div>
@@ -38,7 +38,7 @@
                             <div class="panel-heading">
                                 <h4>Información General</h4><br>
                                 <div class="row">
-                                    <div class="col-xs-12 col-md-8">
+                                    <div class="col-xs-12 col-md-9">
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group input-group">
@@ -110,7 +110,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-xs-12 col-md-4">
+                                    <div class="col-xs-12 col-md-3">
                                         <textarea class="form-control" rows="8" name="facVenCabObs" placeholder="Observaciones"></textarea>
                                     </div>
                                 </div>
@@ -120,52 +120,24 @@
                                 <div class="row">
                                     <div class="col-xs-12 col-md-12">
                                         <div class="row">
-                                            <div class="col-md-6">
+                                            <div class="col-md-7">
                                                 <div class="form-group input-group" >
-                                                    <span class="input-group-addon">Clase</i></span>
-                                                    <select class="form-control validate[required]" name="claProCod" id="classSelected" onchange="changingClasses()"> 
-                                                        <c:forEach items="${clases}" var="clase">
-                                                            <option value="${clase.claProCod}">${clase.claProDet}</option>
-                                                        </c:forEach>
-                                                    </select> 
-                                                    <span class="input-group-addon"><i class="fa fa-sitemap"></i></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group input-group">
-                                                    <span class="input-group-addon">SubClase</span>
-                                                    <select class="form-control validate[required]" name="subClaProCod" id="subClassSelected" onchange="changingSubClasses()">
-                                                        <c:forEach items="${subclases}" var="subclase">
-                                                            <option value="${subclase.id.subClaProCod}">${subclase.subClaProDet}</option>
-                                                        </c:forEach>
-                                                    </select> 
-                                                    <span class="input-group-addon"><i class="fa fa-tasks"></i></span>
-                                                </div>
-                                            </div> 
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group input-group" >
-                                                    <span class="input-group-addon">Producto</i></span>
-                                                    <select class="form-control validate[required]" name="proCod" id="productSelected">
-                                                        <c:forEach items="${productos}" var="producto">
-                                                            <option value="${producto.id.proCod}">${producto.proDet}</option>
-                                                        </c:forEach>
-                                                    </select> 
-                                                    <span class="input-group-addon"><i class="fa fa-tag"></i></span>
+                                                    <span class="input-group-addon">Producto</span>
+                                                    <input class="form-control" type="text" name="proCod" id="proCodShow" placeholder="Código" size="60" readOnly>
+                                                    <span class="input-group-addon" onclick="changeIcon()"><i class="fa" id="iconCriteria"></i></span>
+                                                    <input class="form-control" type="text" name="proDes" id="proDesShow" placeholder="Descripción" size="100" readOnly>
                                                 </div>
                                             </div>
                                             <div class="col-md-2">
                                                 <div class="form-group input-group" >
                                                     <span class="input-group-addon"><i class="fa fa-money"></i></span>
-                                                    <input type="number" class="form-control" id="priceSelected" readOnly>                                                    
+                                                    <input type="number" class="form-control" id="priceShow" readOnly>                                                    
                                                 </div>
                                             </div>
-                                            <div class="col-md-3">
+                                            <div class="col-md-2">
                                                 <div class="form-group input-group">
-                                                    <span class="input-group-addon">Cantidad</span>
-                                                    <input type="number" class="form-control" id="amountSelected" min="0" step="any" value="0" name="canPro">
-                                                    <span class="input-group-addon"><i class="fa fa-gear"></i></span>
+                                                    <span class="input-group-addon">Cant.</span>
+                                                    <input type="number" class="form-control" id="amountShow" min="0" step="any" value="0" name="canPro">
                                                 </div>
                                             </div> 
                                             <div class="col-md-1">
@@ -239,161 +211,76 @@
             </div>
         </div>
         <script language="javascript">
-            $(document).ready(function () {
-                changingClasses();
-            });
-
-            $(document).ready(function () {
-                changingSubClasses();
-            });
-
-            $(document).ready(function () {
-                putPrice();
-            });
-
-            function putPrice() {
-                if ($('#productSelected')[0].value != "") {
-                    var codeCla = Number($("#classSelected").val());
-                    var codeSub = Number($("#subClassSelected").val());
-                    var codePro = Number($("#productSelected").val());
-                    var tag = true;
-            <c:forEach items="${productos}" var="product">
-                    if ((${product.id.claProCod} == codeCla) && (${product.id.subClaProCod} == codeSub) && (${product.id.proCod} == codePro)) {
-                        tag = false;
-                        var price = Number(${product.proPreUni});
-                        price.toFixed(2)
-                        $('#priceSelected').val(price);
-                        $('#amountSelected')[0].max = ${product.proStk - product.proStkPreVen};
-                    }
-            </c:forEach>
-                    if (tag) {
-                        $('#priceSelected').val("");                        
-                    }
-                    $('#amountSelected').val(0);
-                }
-            }
-
-            function changingClasses() {
-                $('#subClassSelected').empty();
-                var code = Number($("#classSelected").val());
-                var tag = true;
-            <c:forEach items="${subclases}" var="subclass">
-                if (${subclass.id.claProCod} == code) {
-                    tag = false;
-                    $('#subClassSelected').append($('<option>', {
-                        value: "${subclass.id.subClaProCod}",
-                        text: "${subclass.subClaProDet}"
-                    }));
-                }
-            </c:forEach>
-                if (tag) {
-                    $('#subClassSelected').append($('<option>', {
-                        value: "",
-                        text: "No existen subclases"
-                    }));
-                    $('#priceSelected').val("");
-                    $('#amountSelected').val("");
-                }
-                changingSubClasses();
-            }
-
-            function changingSubClasses() {
-                $('#productSelected').empty();
-                var codeCla = Number($("#classSelected").val());
-                var codeSub = Number($("#subClassSelected").val());
-                var tag = true;
-            <c:forEach items="${productos}" var="product">
-                if ((${product.id.claProCod} == codeCla) && (${product.id.subClaProCod} == codeSub)) {
-                    tag = false;
-                    $('#productSelected').append($('<option>', {
-                        value: "${product.id.proCod}",
-                        text: "${product.proDet}"
-                    }));
-                }
-            </c:forEach>
-                if (tag) {
-                    $('#productSelected').append($('<option>', {
-                        value: "",
-                        text: "No existen productos"
-                    }));
-                    $('#priceSelected').val("");
-                    $('#amountSelected').val("");
-                } else {
-                    putPrice();
-                }
-            }
-
-            $.validator.messages.max = "Stock superado";
+            var codeCriteria = true;
+            var clientDocs = new Array();
+            var productCodes = new Array();
+            var productDescriptions = new Array();
             
-            var idRows = new Array();
+            <c:forEach items="${documentos}" var="d">
+                clientDocs.push("${d.docCliNum}");
+            </c:forEach>
+            <c:forEach items="${productos}" var="p" varStatus="loop">
+                productCodes.push("${p.id.claProCod}-${p.id.subClaProCod}-${p.id.proCod}");
+                productDescriptions.push("${p.proDet}");
+            </c:forEach>
+            
+            $(document).ready(function () {
+                $("#facDes").change(function () {
+                    var total = (Number($('#facSub').val()) - Number($('#facDes').val())).toFixed(2)
+                    $('#facTot').val(total);
+                });
+            });
+
+            $(document).ready(function () {
+                $("#productTable").on('click', '.btnDelete', function () {
+                    $(this).closest('tr').remove();
+                    updateAll();
+                });
+            });
+
+            $(document).ready(function () {
+                $("#iconCriteria").addClass("fa-chevron-left");
+                $('#proCodShow').attr('readOnly', false);
+                $('#proDesShow').attr('readOnly', true);                
+            });
             
             $(document).ready(function () {
                 $('#addDetail').on('click', function () {
-                    if ($('#classSelected').val() == '') {
-                        $("#errorMessage").text("No se ha seleccionado una clase de producto. Para añadir un nuevo detalle de venta este campo es necesario");
-                        $('#errorMessageModal').modal('show'); 
-                    } else if ($('#subClassSelected').val() == '') {
-                        $("#errorMessage").text("No se ha seleccionado una subclase de producto, debido a que la clase de producto seleccionada no posee subclases. Seleccione otra clase para añadir un nuevo detalle de venta");                        
-                        $('#errorMessageModal').modal('show');
-                    } else if ($('#productSelected').val() == '') {
-                        $("#errorMessage").text("No se ha seleccionado ningún producto, debido a que la subclase de producto seleccionada no posee productos. Seleccione otra subclase para añadir un nuevo detalle de venta");
+                    if ($('#proCodShow').val() == "Desconocido" || $('#proDesShow').val() == "Desconocido") {
+                        $("#errorMessage").text("Producto Desconocido. Ingrese un producto disponible");
                         $('#errorMessageModal').modal('show');
                     } else if (!$('input[name="canPro"]').valid()) {
                         $("#errorMessage").text("Se ha sobrepasado el stock disponible del producto seleccionado. Seleccione otro o reduzca la cantidad pedida");
                         $('#errorMessageModal').modal('show');
                     } else {
-                        var idRow = $("#classSelected").val() + "-" + $("#subClassSelected").val() + "-" + $("#productSelected").val();
+                        var idRow = $("#proCodShow").val();
                         var finalValidation = true;
                         $("#productTable tr").find('td:eq(0)').each(function () {
-                            if(idRow == $(this).html()) {
+                            if (idRow == $(this).html()) {
                                 finalValidation = false;
                                 $("#errorMessage").text("El producto ya ha sido ingresado en la descripción.");
                                 $('#errorMessageModal').modal('show');
                                 return false;
                             }
                         });
-                        
-                        if(finalValidation) {
+
+                        if (finalValidation) {
                             $('#productTable tbody').append('<tr align="center"><td width="20%"></td><td width="10%"></td><td width="55%"></td><td width="10%"></td><td width="5%"><button type="button" class="btnDelete btn btn-danger")><i class="fa fa-trash-o fa-1x"></i></button></td></tr>');
-                            $('#productTable tr:last td:eq(0)').html($("#classSelected").val() + "-" + $("#subClassSelected").val() + "-" + $("#productSelected").val());
-                            $('#productTable tr:last td:eq(1)').html($("#amountSelected").val());
-                            $('#productTable tr:last td:eq(2)').html($("#productSelected option:selected").text());
-                            $('#productTable tr:last td:eq(3)').html($("#priceSelected").val());               
+                            $('#productTable tr:last td:eq(0)').html($("#proCodShow").val());
+                            $('#productTable tr:last td:eq(1)').html($("#amountShow").val());
+                            $('#productTable tr:last td:eq(2)').html($("#proDesShow").val());
+                            $('#productTable tr:last td:eq(3)').html($("#priceShow").val());
                             updateAll();
-                        }                              
-                    }
-                });
-            });
-
-            $(document).ready(function () {
-                $('#productSelected').change(putPrice);
-            });
-
-            function getClient(tableID) {
-                try {
-                    var table = document.getElementById(tableID);
-                    var rowCount = table.rows.length;
-
-                    for (var i = 1; i < rowCount; i++) {
-                        var row = table.rows[i];
-                        var chkbox = row.cells[0].childNodes[1];
-                        if (true == chkbox.checked) {
-                            $('#clienteCodigo').val(row.cells[1].childNodes[0].data);
-                            $('#clientCode').val(row.id);
-                            break;
                         }
                     }
-                } catch (e) {
-                    alert(e);
-                }
-            }
-           
-            $(document).ready(function(){
-                $("#productTable").on('click','.btnDelete',function(){
-                    $(this).closest('tr').remove();
-                    updateAll();
                 });
             });
+          
+            $.validator.messages.max = "Stock superado";
+            
+            $.validator.addMethod("codePattern", function (value, element) {
+                return /^[0-9]{3}-[0-9]{6}$/.test(value);
+            }, "Patrón: [0-9]{3}-[0-9]{6}");
             
             function updateAll() {
                 var productsCodes = new Array();
@@ -403,30 +290,117 @@
                 $("#productTable tbody tr").each(function () {
                     productsCodes.push($(this)[0].childNodes[0].textContent);
                     amounts.push($(this)[0].childNodes[1].textContent);
-                    prices.push($(this)[0].childNodes[3].textContent);                    
-                    subTotal += Number($(this)[0].childNodes[1].textContent)*Number($(this)[0].childNodes[3].textContent);
+                    prices.push($(this)[0].childNodes[3].textContent);
+                    subTotal += Number($(this)[0].childNodes[1].textContent) * Number($(this)[0].childNodes[3].textContent);
                 });
                 $('#proCodes').val(productsCodes);
                 $('#proAmo').val(amounts);
-                $('#proPrices').val(prices);                
-                subTotal = (subTotal*(1 + Number($('#facIgv').val()/100))).toFixed(2);
+                $('#proPrices').val(prices);
+                subTotal = (subTotal * (1 + Number($('#facIgv').val() / 100))).toFixed(2);
                 $('#facSub').val(subTotal);
-                var total =  (subTotal - Number($('#facDes').val())).toFixed(2);
+                var total = (subTotal - Number($('#facDes').val())).toFixed(2);
                 $('#facTot').val(total);
-                
-                activateRegister();
+
+                if ($("#productTable tr").length > 1) {
+                    $("#register").prop('disabled', false);
+                } else {
+                    $("#register").prop('disabled', true);
+                }
             }
             
-            $(document).ready(function () {
-                $("#facDes").change(function () {
-                    var total = (Number($('#facSub').val()) - Number($('#facDes').val())).toFixed(2)
-                    $('#facTot').val(total);
-                });
+            function changeIcon() {
+                if(codeCriteria) {
+                    $('#iconCriteria').removeClass("fa-chevron-left").addClass("fa-chevron-right");
+                    $('#proDesShow').attr('readOnly', false);
+                    $('#proCodShow').attr('readOnly', true);
+                    $('#proCodShow').val("");
+                    $('#proDesShow').val("");
+                    $('#priceShow').val("");
+                    $('#amountShow').val(0);
+                    codeCriteria = false;
+                } else {
+                    $('#iconCriteria').removeClass("fa-chevron-right").addClass("fa-chevron-left");
+                    $('#proCodShow').attr('readOnly', false);
+                    $('#proDesShow').attr('readOnly', true);
+                    $('#proDesShow').val("");
+                    $('#proCodShow').val("");
+                    $('#priceShow').val("");
+                    $('#amountShow').val(0);
+                    codeCriteria = true;
+                }
+            }
+                            
+            $("#cliCodShow").autocomplete({
+                source: clientDocs
             });
             
-            $.validator.addMethod("codePattern", function (value, element) {
-                return /^[0-9]{3}-[0-9]{6}$/.test(value);
-            }, "Patrón: [0-9]{3}-[0-9]{6}");
+            $("#proCodShow").autocomplete({
+                source: productCodes,
+            });
+
+            $("#proDesShow").autocomplete({
+                source: productDescriptions
+            });
+
+            $('#proCodShow').keyup(function () {
+                if(codeCriteria) {
+                    $.post(
+                        "${pageContext.request.contextPath}/secured/ventas/factura/searchProduct", {
+                            proCod: $("#proCodShow").val(),
+                            proDet: ""
+                        }
+                    ).done(function (data) {
+                            if (data.proCod != null) {
+                                $("#proDesShow").val(data.proDet);
+                                $("#priceShow").val(data.proPreUni);
+                                $('#amountShow')[0].max = data.proStk;
+                            }
+                            else {
+                                $("#proDesShow").val("Desconocido");
+                            }
+                        });
+                }
+            });
+            
+            $('#proDesShow').keyup(function () {
+                if(!codeCriteria) {
+                    $.post(
+                        "${pageContext.request.contextPath}/secured/ventas/factura/searchProduct", {
+                            proCod: "",
+                            proDet: $("#proDesShow").val()
+                        }
+                    ).done(function (data) {
+                            if (data.proCod != null) {
+                                $("#proCodShow").val(data.proCod);
+                                $("#priceShow").val(data.proPreUni);
+                                $('#amountShow')[0].max = data.proStk;
+                            }
+                            else {
+                                $("#proCodShow").val("Desconocido");
+                            }
+                        });
+                }
+            });
+
+            $('#cliCodShow').keyup(function () {
+                $.post(
+                        "${pageContext.request.contextPath}/secured/ventas/factura/busquedaCliente",
+                        {docCliNum: $("#cliCodShow").val()})
+                        .done(function (data) {
+                            if (data.cliCod != null)
+                            {
+                                $("#cliNomShow").val(data.cliNom);
+                                $("#cliApePatShow").val(data.cliApePat);
+                                $("#cliApeMatShow").val(data.cliApeMat);                                
+                            }
+                            else
+                            {
+                                $("#cliNomShow").val("Desconocido");
+                                $("#cliApePatShow").val("Desconocido");
+                                $("#cliApeMatShow").val("Desconocido");
+                            }
+                        });
+            });    
             
             $("#registerBill").validate({
                 rules: {
@@ -440,6 +414,15 @@
                         minlength: "8",
                         maxlength: "11"
                     },
+                    cliNom: {
+                        required: true,
+                    },
+                    cliApePat: {
+                        required: true,
+                    },
+                    cliApeMat: {
+                        required: true,
+                    },
                     facVenCabFec: {
                         required: true
                     }
@@ -449,10 +432,19 @@
                         required: "Ingrese el código de la factura"
                     },
                     cliCod: {
-                        required: "Seleccione un cliente",
+                        required: "Ingrese código de cliente",
                         digits: "Ingresar solo dígitos",
                         minlength: "Mínimo 8 digitos",
                         maxlength: "Máximo 11 digitos"
+                    },
+                    cliNom: {
+                        required: "Ingrese nombre de cliente"
+                    },
+                    cliApePat: {
+                        required: "Ingrese apellido paterno"
+                    },
+                    cliApeMat: {
+                        required: "Ingrese apellido materno"
                     },
                     facVenCabFec: {
                         required: "Seleccione una fecha"
@@ -461,43 +453,7 @@
                 submitHandler: function (form) {
                     form.submit();
                 }
-            });
-            
-            function activateRegister() {
-                if($("#productTable tr").length > 1) {
-                    $("#register").prop('disabled', false);
-                } else {
-                    $("#register").prop('disabled', true);
-                }
-            }
-            
-            var clientDocs = new Array();
-            <c:forEach items="${documentos}" var="d">
-                clientDocs.push("${d.docCliNum}");
-            </c:forEach>
-            $("#cliCodShow").autocomplete({
-                source: clientDocs
-            });
-            
-            $('#cliCodShow').keyup(function() {
-                $.post(
-                    "${pageContext.request.contextPath}/secured/ventas/factura/busquedaCliente",
-                    {docCliNum: $("#cliCodShow").val()})
-                .done(function(data) {
-                    if(data.cliCod != null)
-                    {
-                        $("#cliNomShow").val(data.cliNom);
-                        $("#cliApePatShow").val(data.cliApePat);
-                        $("#cliApeMatShow").val(data.cliApeMat);
-                    }
-                    else
-                    {
-                        $("#cliNomShow").val("Desconocido");
-                        $("#cliApePatShow").val("Desconocido");
-                        $("#cliApeMatShow").val("Desconocido");
-                    }
-                });
-            });
+            });  
         </script>
     </jsp:attribute>
 </minierptemplate:template>
