@@ -16,8 +16,7 @@ public class BusquedaProveedorController extends HttpServlet
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String proCod = request.getParameter("proCod");
-        // Deberia botar solo proveedores activos
-        EnP4mProveedor proveedor = (new EnP4mProveedorDao()).getById(proCod);
+        EnP4mProveedor proveedor = (new EnP4mProveedorDao()).getByIdActive(proCod);
         Map<String, Object> data = new HashMap<String, Object>();
         if(proveedor != null)
         {

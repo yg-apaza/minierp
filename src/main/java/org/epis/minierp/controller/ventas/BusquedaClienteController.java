@@ -17,7 +17,6 @@ public class BusquedaClienteController extends HttpServlet
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String docCliNum = request.getParameter("docCliNum");
-        //Deberia botar solo clientes y documentos activos
         EnP1mDocumentoCliente documento = (new EnP1mDocumentoClienteDao()).getByDocNum(docCliNum);
         EnP1mCliente cliente = null;
         if(documento != null)
