@@ -64,10 +64,12 @@ public class EnP2mProductoDao {
     public void update(EnP2mProducto producto) {
         session.update(producto);     
     }
-    
-    public void increaseStock(int proCod) {
-        EnP2mProducto producto = (EnP2mProducto)session.get(EnP2mProducto.class, proCod); 
-        producto.setProStk(producto.getProStk()+1);
-	session.update(producto); 
+
+    public EnP2mProducto getById(String id) {
+        EnP2mProducto producto = null;
+        Query query = session.createQuery("FROM EnP2mProducto WHERE proCod = '"+id+"' and estRegCod = 'A'");
+        List <EnP2mProducto> productos =  query.list();
+        producto = productos.get(0);
+        return producto;
     }
 }
