@@ -61,9 +61,9 @@
                                                     <span class="input-group-addon"></span>
                                                     <input class="form-control" type="text" name="cliNom" id="cliNomShow" placeholder="Nombres">
                                                     <span class="input-group-addon"></span>
-                                                    <input class="form-control" type="text" name="cliApeMat" id="cliApeMatShow" placeholder="Apellido Paterno">
+                                                    <input class="form-control" type="text" name="cliApePat" id="cliApePatShow" placeholder="Apellido Paterno">
                                                     <span class="input-group-addon"></span>
-                                                    <input class="form-control" type="text" name="cliApePat" id="cliApePatShow" placeholder="Apellido Materno">
+                                                    <input class="form-control" type="text" name="cliApeMat" id="cliApeMatShow" placeholder="Apellido Materno">
                                                 </div>
                                             </div>
                                         </div>
