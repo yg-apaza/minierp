@@ -10,7 +10,8 @@
             <h1 class="page-header">Documentos de los Usuarios
                 <a href="#" class="btn btn-success btn-circle" data-toggle="modal" data-target="#agregarModal"><i class="fa fa-plus"></i></a>
                 <a href="#" class="btn btn-info btn-circle" data-toggle="modal" data-target="#estadosModal"><i class="fa fa-eye"></i></a>
-            </h1>     
+            </h1>  
+            <!--
             <div class="row">
                 <div class="col-md-4">
                     <a href="${pageContext.request.contextPath}/secured/reporte?type=pdf&&report=puntodeventa" class="btn btn-outline btn-danger btn-lg btn-block">
@@ -28,7 +29,7 @@
                         Reporte [DOC]
                     </a></div>
             </div>
-            <br>
+            <br>-->
             <div class="col-md-12">
                 <div class="table-responsive">
                     <table class="table table-bordered table-striped table-hover">

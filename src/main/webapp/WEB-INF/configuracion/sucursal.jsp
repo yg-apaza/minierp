@@ -25,7 +25,7 @@
                                         <th> Código </th>
                                         <th>Descripción</th>
                                         <th>Dirección</th>
-                                        <th class="text-right">Acciones </th>
+                                        <th>Acciones </th>
                                     </tr>
                                     <c:forEach items="${sucursales}" var="sucursales">
 
@@ -35,9 +35,9 @@
                                           <td value="${sucursales}"> ${sucursales.sucDir} </td>
                                           <td class="text-left">
                                               <a href="#" data-toggle="modal" data-target="#modificarModal" data-cod="${sucursales.sucCod}" data-des="${sucursales.sucDes}" data-dir="${sucursales.sucDir}" >
-                                                <i class="fa fa-pencil-square-o fa-2x"></i> </a> 
+                                                <i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i> </a> 
                                               <a href="#" data-toggle="modal" data-target="#disableModal" data-cod="${sucursales.sucCod}" data-des="${sucursales.sucDes}" data-dir="${sucursales.sucDir}" >
-                                                <i class="fa fa-trash-o fa-2x"></i> </a>                                   
+                                                <i class="fa fa-trash-o fa-2x" style="color: black;"></i> </a>                                   
                                            </td>
                                         </tr> 
 

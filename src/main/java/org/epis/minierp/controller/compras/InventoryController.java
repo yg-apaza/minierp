@@ -8,10 +8,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.epis.minierp.dao.logistica.EnP2mProductoDao;
 import org.epis.minierp.model.EnP2mProducto;
+import org.epis.minierp.business.compras.EnP2mProductoBusiness;
 
 public class InventoryController extends HttpServlet {
     private static final long serialVersionUID = 1L;
-
+    EnP2mProductoBusiness productoBusiness;
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {       
         
@@ -26,21 +28,12 @@ public class InventoryController extends HttpServlet {
     
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String action = request.getParameter("action");
-        EnP2mProducto product = new EnP2mProducto();
-        EnP2mProductoDao producto = new EnP2mProductoDao();
+        productoBusiness = new EnP2mProductoBusiness();
         
-        switch (action) {
-            case "upd":
-                String proCod = request.getParameter("proCodUpd");
-                String proCan = request.getParameter("proCanUpd");
-                
-                product = producto.getById(proCod);
-                product.setProStk(product.getProStk()+Double.parseDouble(proCan));
+        String[] codigos = request.getParameterValues("proCodigos");
+        String[] cantidades = request.getParameterValues("proCantidades");
 
-                producto.update(product);
-                break;
-        }
+        productoBusiness.actualizarInventario(codigos, cantidades);
         
         response.sendRedirect(request.getContextPath() + "/secured/compras/inventario");
     }

@@ -69,11 +69,11 @@
                                                                                                       data-email="${proveedor.proEmail}"
                                                                                                       data-pagweb="${proveedor.proPagWeb}"
                                                                                                       data-obs="${proveedor.proObs}">
-                                            <i class="fa fa-pencil-square-o fa-2x"></i>
+                                            <i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i>
                                         </a> 
                                         <a href="#" data-toggle="modal" data-target="#deleteSupplier" data-cod="${proveedor.proCod}"
                                                                                                       data-det="${proveedor.proDet}">
-                                            <i class="fa fa-trash-o fa-2x"></i>
+                                            <i class="fa fa-trash-o fa-2x" style="color: black;"></i>
                                         </a> 
                                     </td>
                                 </tr>
