@@ -60,7 +60,8 @@ public class AddPurchaseController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             String facComCabCod = request.getParameter("facComCabCod");
-            String proCod = request.getParameter("supplierCode");
+            String proCod = request.getParameter("proCod");
+            String proDet = request.getParameter("proDet");
             String usuCod = request.getParameter("usuCod");
             DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
             Date facComCabFec = format.parse(request.getParameter("facComCabFec"));
@@ -81,7 +82,24 @@ public class AddPurchaseController extends HttpServlet {
             EnP4mFacturaCompraCab header = new EnP4mFacturaCompraCab();
             
             header.setFacComCabCod(facComCabCod);
-            header.setEnP4mProveedor((new EnP4mProveedorDao()).getById(proCod));
+            
+            EnP4mProveedorDao proveedorDao = new EnP4mProveedorDao();
+            EnP4mProveedor proveedor = proveedorDao.getById(proCod);
+            if(proveedor != null)
+            {
+                proveedor.setProDet(proDet);
+                header.setEnP4mProveedor(proveedor);
+            }
+            else
+            {
+                EnP4mProveedor proveedorNew = new EnP4mProveedor();
+                proveedorNew.setProCod(proCod);
+                proveedorNew.setProDet(proDet);
+                proveedorNew.setEstRegCod('A');
+                proveedorDao.save(proveedorNew);
+                header.setEnP4mProveedor(proveedorNew);
+            }
+            
             header.setEnP1mUsuario((new EnP1mUsuarioDao()).getById(usuCod));
             header.setFacComCabFec(facComCabFec);
             header.setFacComCabTot(facComCabTot);

@@ -119,6 +119,16 @@
     </servlet-mapping>
     <servlet>
         <description/>
+        <display-name>BusquedaProveedorController</display-name>
+        <servlet-name>BusquedaProveedorController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.compras.BusquedaProveedorController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>BusquedaProveedorController</servlet-name>
+        <url-pattern>/secured/compras/factura/busquedaProveedor</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <description/>
         <display-name>PurchaseController</display-name>
         <servlet-name>PurchaseController</servlet-name>
         <servlet-class>org.epis.minierp.controller.compras.PurchaseController</servlet-class>

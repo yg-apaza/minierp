@@ -40,7 +40,7 @@ public class EnP4mProveedorDao {
     public EnP4mProveedor getById(String id) {
         EnP4mProveedor proveedor = null;
         try {
-            proveedor = (EnP4mProveedor)session.load(EnP4mProveedor.class, id);
+            proveedor = (EnP4mProveedor)session.get(EnP4mProveedor.class, id);
         } catch(ObjectNotFoundException e) {
             return null;
         }

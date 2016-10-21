@@ -1,7 +1,6 @@
 package org.epis.minierp.controller.ventas;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -18,6 +17,7 @@ public class BusquedaClienteController extends HttpServlet
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String docCliNum = request.getParameter("docCliNum");
+        //Deberia botar solo clientes y documentos activos
         EnP1mDocumentoCliente documento = (new EnP1mDocumentoClienteDao()).getByDocNum(docCliNum);
         EnP1mCliente cliente = null;
         if(documento != null)
