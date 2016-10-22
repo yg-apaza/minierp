@@ -5,6 +5,12 @@
     <class>org.epis.minierp.model.Ingresos</class>
     <class>org.epis.minierp.dao.ventas.IngresosDao</class>
     <class>org.epis.minierp.controller.ventas.IngresosController</class>
+    <class>LibroDiarioDao.java</class>
+    <class>org.epis.minierp.dao.contabilidad.LibroDiarioDao</class>
+    <class>org.epis.minierp.dao.contabilidad.AsientoCabDao</class>
+    <class>org.epis.minierp.dao.contabilidad.AsientoDetDao</class>
+    <class>org.epis.minierp.dao.general.TaGzzTipoComprobanteDao</class>
+    <class>org.epis.minierp.controller.contabilidad.LibroDiarioOperacionController</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/episerp"/>
