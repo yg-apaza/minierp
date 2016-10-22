@@ -81,8 +81,8 @@
                              <tr>
                                  <td>${u.asiDetCod}</td>
                                  <td><fmt:formatDate value="${u.asiCabFec}" pattern="dd/MM/yyyy" /></td>
-                                 <td>${u.cueNum}</td>
                                  <td>${u.cueBanNum}</td>
+                                 <td>${u.cueNum}</td>
                                  <td>${u.cueDes}</td>
                                  <td>${u.debe}</td>
                                  <td>${u.haber}</td>                           

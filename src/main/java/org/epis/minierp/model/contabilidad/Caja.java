@@ -24,6 +24,9 @@ public class Caja {
         this.haber = haber;
     }
 
+    public Caja() {
+    }
+
     public String getLibDiaCod() {
         return libDiaCod;
     }

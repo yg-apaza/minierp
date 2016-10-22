@@ -21,8 +21,32 @@ public class CajaDAO {
     }
     
     public List<CajaView> getView(){
-        Query query = session.createQuery("from CajaView");
+        Query query = session.createQuery("from CajaView ");
         return query.list();
+    }
+    public Set<Caja> getCaja(){
+        CajaDAO cajaDAO = new CajaDAO();
+        Iterator <CajaView> diario = cajaDAO.getView().iterator();
+        Set <Caja> caja = new HashSet <> ();
+        Caja ant;
+        Caja nuevo=new Caja();
+        
+         while(diario.hasNext()) {
+            ant = nuevo;
+            CajaView asiento = diario.next();
+            nuevo = new Caja(asiento.getAsiDetCod(),asiento.getAsiCabFec(),asiento.getCueDes(),asiento.getCueNum(),asiento.getDebe(),asiento.getHaber());
+            //swap
+            if("101".equals(asiento.getCueNum())){
+                nuevo.setCueDes(ant.getCueDes());
+                nuevo.setCueNum(ant.getCueNum());
+                
+                if("0".equals(asiento.getEstado()))
+                    nuevo.setHaber(0); 
+                else nuevo.setDebe(0); 
+                caja.add(nuevo);
+            } 
+        }
+        return caja;
     }
     public Set<Caja> getTodo(){
         CajaDAO cajaDAO = new CajaDAO();
@@ -42,7 +66,7 @@ public class CajaDAO {
     public Map<String, Double> getTotal(){
         Query query = session.createQuery("from CajaView");
 
-        Iterator <Caja> diario = getTodo().iterator();
+        Iterator <Caja> diario = getCaja().iterator();
         Map<String, Double> sumas=  new TreeMap<>();
         
         double debe=0;

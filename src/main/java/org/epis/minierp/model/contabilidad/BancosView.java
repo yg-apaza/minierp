@@ -135,5 +135,4 @@ public class BancosView implements Serializable {
     public void setEstado(String estado) {
         this.estado = estado;
     }
-
 }

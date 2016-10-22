@@ -16,7 +16,7 @@ public class CajaController extends HttpServlet{
         CajaDAO cajaDAO = new CajaDAO();
         EnP1mEmpresaDao empDao = new EnP1mEmpresaDao();
         
-        request.setAttribute("operaciones",cajaDAO.getTodo());
+        request.setAttribute("operaciones",cajaDAO.getCaja());
         request.setAttribute("empresa", empDao.getAll().get(0));
         request.setAttribute("totales", cajaDAO.getTotal());
         request.getRequestDispatcher("/WEB-INF/contabilidad/cajaBancos/caja.jsp").forward(request, response);

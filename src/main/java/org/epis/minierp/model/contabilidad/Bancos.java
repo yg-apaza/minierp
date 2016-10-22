@@ -22,6 +22,9 @@ public class Bancos {
         this.haber = haber;
     }
 
+    public Bancos() {
+    }
+
     public int getAsiDetCod() {
         return asiDetCod;
     }

@@ -19,8 +19,8 @@ CREATE OR REPLACE VIEW VIEW_CAJA AS (
 			ON asiDet.AsiCabCod = asiCab.AsiCabCod
 		INNER JOIN en_p3m_libro_diario libDia
 			ON libDia.LibDiaCod = asiCab.LibDiaCod
-	WHERE libDia.EstRegCod = 'A' AND CueNum = '101'
-	ORDER BY asiCab.AsiCabFec
+	WHERE libDia.EstRegCod = 'A' /*AND CueNum = '101'*/
+	ORDER BY asiCab.AsiCabFec DESC
 );
 CREATE OR REPLACE VIEW VIEW_BANCOS AS (
 	SELECT
@@ -47,12 +47,12 @@ CREATE OR REPLACE VIEW VIEW_BANCOS AS (
 			ON libDia.LibDiaCod = asiCab.LibDiaCod
 		INNER JOIN en_p3m_cuenta_banco cueBan
 			ON cue.CueCod = cueBan.CueCod
-	WHERE libDia.EstRegCod = 'A' AND CueNum = '104' 
+	WHERE libDia.EstRegCod = 'A' /*AND CueNum = '104' 
 			OR CueNum = '1041' 
 			OR CueNum = '10411' 
 			OR CueNum = '10412'
-			OR CueNum = '10413'
-	ORDER BY asiCab.AsiCabFec
+			OR CueNum = '10413'*/
+	ORDER BY asiCab.AsiCabFec DESC
 );
 CREATE OR REPLACE VIEW VIEW_LIBRO_DIARIO AS (
 	SELECT
