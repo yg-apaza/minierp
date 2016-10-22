@@ -46,7 +46,7 @@
 				<text><![CDATA[Apell. Paterno]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="240" y="12" width="85" height="20" uuid="d1e130a9-b92f-4c0d-9909-637ce51d85b9"/>
+				<reportElement x="240" y="14" width="85" height="20" uuid="d1e130a9-b92f-4c0d-9909-637ce51d85b9"/>
 				<textElement textAlignment="Center"/>
 				<text><![CDATA[Apell. Materno]]></text>
 			</staticText>
