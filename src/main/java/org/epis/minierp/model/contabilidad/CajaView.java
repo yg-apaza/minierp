@@ -27,20 +27,23 @@ public class CajaView implements Serializable {
     @Column(name="AsiCabFec")
     private Date asiCabFec;
     
-    @Column(name="AsiCabTip")
-    private String asiCabTip;
-    
     @Column(name="CueCod")
     private String cueCod;
     
     @Column(name="CueDes")
     private String cueDes;
     
+    @Column(name="CueNum")
+    private String cueNum;
+    
     @Column(name="Debe")
     private String debe;
     
     @Column(name="Haber")
     private String haber;
+    
+    @Column(name="estado")
+    private String estado;
 
     public String getLibDiaCod() {
         return libDiaCod;
@@ -74,14 +77,6 @@ public class CajaView implements Serializable {
         this.asiCabFec = asiCabFec;
     }
 
-    public String getAsiCabTip() {
-        return asiCabTip;
-    }
-
-    public void setAsiCabTip(String asiCabTip) {
-        this.asiCabTip = asiCabTip;
-    }
-
     public String getCueCod() {
         return cueCod;
     }
@@ -96,6 +91,14 @@ public class CajaView implements Serializable {
 
     public void setCueDes(String cueDes) {
         this.cueDes = cueDes;
+    }
+
+    public String getCueNum() {
+        return cueNum;
+    }
+
+    public void setCueNum(String cueNum) {
+        this.cueNum = cueNum;
     }
 
     public String getDebe() {
@@ -113,10 +116,13 @@ public class CajaView implements Serializable {
     public void setHaber(String haber) {
         this.haber = haber;
     }
-    
-    
-    @Override
-    public String toString() {
-        return "VIEW_CAJA{" + "asiDetCod=" + asiDetCod + ", asiCabCod=" + asiCabCod + ", asiCabFec=" + asiCabFec + ", asiCabTip=" + asiCabTip + ", cueCod=" + cueCod + ", cueDes=" + cueDes + ", debe=" + debe + ", haber=" + haber + '}';
-    }   
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+  
 }

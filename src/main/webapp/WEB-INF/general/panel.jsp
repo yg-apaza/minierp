@@ -95,6 +95,65 @@
                 var PreDia = new Chart(ctx2,chart_Preventas);
             </script>
             </c:if>
+             <!-- Para el comprador -->
+            <c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod() == 3}">
+                <div class="panel-body">
+                    <div class="row-fluid">
+                        <div class="col-lg-12">
+                            <div class="col-md-4">
+                                <div class="form-group input-group">
+                                    <span class="input-group-addon">Almacen</span>
+                                        <select name="AlmPro" id="almSelected" class="form-control validate[requiered]" onchange="changingAlmacen()" >
+                                            <c:forEach items="${almacenes}" var="alm">
+                                                <option value="${alm.almDet}">${alm.almDet}</option>
+                                            </c:forEach>
+                                        </select>
+                                    <span class="input-group-addon"><i class="fa fa-sitemap"></i></span>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="form-group input-group">
+                                   <div class="form-group input-group">
+                                        <span class="input-group-addon">Producto</span>
+                                            <select name="Pro" id="prodSelected" class="form-control validate[requiered]" onchange="changingProductos()" >
+                                                <c:forEach items="${productos}" var="pro">
+                                                    <option value="${pro.proDet}">${pro.proDet}</option>
+                                                </c:forEach>
+                                            </select>
+                                        <span class="input-group-addon"><i class="fa fa-sitemap"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </c:if>
         </div>
+        <script language="javascript">
+            $(document).ready(function () {
+                changingAlmacen();
+            });
+
+            function changingAlmacen() {
+                $('#prodSelected').empty();
+                var code = Number($("#almSelected").val());
+                var tag = true;
+            <c:forEach items="${productos}" var="pro">
+                if (${pro.enP2mAlmacen.almDet} == code) {
+                    tag = false;
+                    $('#prodSelected').append($('<option>', {
+                        value: "${prodSelected.id.proCod}",
+                        text: "${prodSelected.proDet}"
+                    }));
+                }
+            </c:forEach>
+                if (tag) {
+                    $('#prodSelected').append($('<option>', {
+                        value: "",
+                        text: "No existen productos"
+                    }));
+                }
+            }
+        </script>
     </jsp:attribute>
 </minierptemplate:template>
