@@ -9,7 +9,7 @@ import javax.persistence.IdClass;
 import javax.persistence.Table;
 
 @Entity
-@IdClass(CajaPKView.class)
+@IdClass(BancosPKView.class)
 @Table(name="VIEW_BANCOS")
 public class BancosView implements Serializable {
     @Id 
@@ -36,11 +36,17 @@ public class BancosView implements Serializable {
     @Column(name="CueDes")
     private String cueDes;
     
+    @Column(name="CueNum")
+    private String cueNum;
+    
     @Column(name="Debe")
     private String debe;
     
     @Column(name="Haber")
     private String haber;
+    
+    @Column(name="estado")
+    private String estado;
 
     public String getLibDiaCod() {
         return libDiaCod;
@@ -98,6 +104,14 @@ public class BancosView implements Serializable {
         this.cueDes = cueDes;
     }
 
+    public String getCueNum() {
+        return cueNum;
+    }
+
+    public void setCueNum(String cueNum) {
+        this.cueNum = cueNum;
+    }
+
     public String getDebe() {
         return debe;
     }
@@ -113,4 +127,14 @@ public class BancosView implements Serializable {
     public void setHaber(String haber) {
         this.haber = haber;
     }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    
 }

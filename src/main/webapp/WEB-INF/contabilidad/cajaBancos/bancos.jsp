@@ -10,87 +10,59 @@
     <jsp:attribute name="contenido">
         <div class="panel-body" >
             <h1 class="page-header">Bancos</h1> 
-            <div class="row-fluid">
-                <div class="span12">
-                    <div class="well">
-                        <fieldset>
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Periodo: </label>
-                                <div class="col-sm-9">
-                                        <input id = "fecIn" type="month" id="form-field-1" placeholder="Mar-16" class="col-xs-10 col-sm-4">
-                                </div>
-                            </div>
-                            <script>
-                                document.getElementById("fecIn").value = moment().format('YYYY-MM');;
-                            </script>
-                            
-                            <br><br>
-                            
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> RUC: </label>
-                                <div class="col-sm-9">
-                                        <input id="emp0" type="text" id="form-field-1" placeholder="23234345621" class="col-xs-10 col-sm-4">
-                                </div>
-                            </div>
-
-                            <br><br>
-
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Apellidos y Nombres, Denominación o Razón Social:  </label>
-                                <div class="col-sm-9">
-                                        <input id="emp1" type="text" id="form-field-1" placeholder="Motos Import SA" class="col-xs-10 col-sm-10">
-                                </div>
-                            </div>
-                            
-                            <br><br>
-                            
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Entidad Financiera:  </label>
-                                <div class="col-sm-9">
-                                        <input id="emp2" type="text" id="form-field-1" placeholder="Banco de Credito del Peru" class="col-xs-10 col-sm-10">
-                                </div>
-                            </div>
-                            
-                            <br><br>
-                            
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Código de la Cuenta Corriente:  </label>
-                                <div class="col-sm-9">
-                                        <input id="emp3" type="text" id="form-field-1" placeholder="777567" class="col-xs-10 col-sm-10">
-                                </div>
-                            </div>
-                            
-                            <br><br>
-                            
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Seleccione archivo de la entidad:  </label>
-                                <input type="file" name="file" id="file">
-                                <script>
-                                    document.getElementById('file').onchange = function(){
-
-                                    var file = this.files[0];
-
-                                    var reader = new FileReader();
-                                    reader.onload = function(progressEvent){
-                                      // Entire file
-                                      console.log(this.result);
-
-                                      // By lines
-                                      var lines = this.result.split('\n');
-                                      for(var line = 0; line < lines.length; line++){
-                                        console.log(lines[line]);
-                                        document.getElementById("emp"+line).value = lines[line];
-                                      }
-                                    };
-                                    reader.readAsText(file);
-                                  };
-                                </script>
-                            </div>
-                        </fieldset>
-
+            <div class="panel">
+                
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Periodo: </label>
+                    <div class="col-sm-9">
+                        <input id = "fecIn" type="month" id="form-field-1" placeholder="Mar-16" class="form-control">
                     </div>
                 </div>
+                <script>
+                        document.getElementById("fecIn").value = moment().format('YYYY-MM');;
+                </script>
+
+                <br><br>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> RUC: </label>
+                    <div class="col-sm-9">
+                                    <input type="text" id="form-field-1" placeholder="${empresa.empRuc}" class="form-control">
+                    </div>
+                </div>
+
+                <br><br>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Apellidos y Nombres, Denominación o Razón Social:  </label>
+                    <div class="col-sm-9">
+                                    <input type="text" id="form-field-1" placeholder="${empresa.empNom}" class="form-control">
+                    </div>
+                </div>
+                
+                <br><br>
+                
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Entidad Financiera:  </label>
+                    <div class="col-sm-9">
+                        <input id="emp2" type="text" id="form-field-1" placeholder="Banco de Credito del Peru" class="form-control">
+                    </div>
+                </div>
+
+                <br><br>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Código de la Cuenta Corriente:  </label>
+                    <div class="col-sm-9">
+                        <input id="emp3" type="text" id="form-field-1" placeholder="777567" class="form-control">
+                    </div>
+                </div>
+
+                <br><br>
+                
             </div>
+            
+            
             <div class="table-responsive">
                 <table class="table table-bordered table-striped table-hover">
                 <thread>                
@@ -98,8 +70,8 @@
                         <th>Numero Correlativo del Registro o código único de operación</th>
                         <th>Fecha de operación</th>
                         <th>Número de transacción Bancaria, de documento sustentatorio o Control interno de la operación</th>
-                        <th>Código de la Cuenta</th>
-                        <th>Denominación de la Cuenta</th>
+                        <th>Código de la Cuenta Asociada</th>
+                        <th>Denominación de la Cuenta ASociada</th>
                         <th>Deudor</th>
                         <th>Acreedor</th>
                     </tr>
@@ -111,11 +83,11 @@
                              <tr>
                                  <td>${u.asiDetCod}</td>
                                  <td><fmt:formatDate value="${u.asiCabFec}" pattern="dd/MM/yyyy" /></td>
-                                 <td>${u.cueCod}</td>
+                                 <td>${u.cueNum}</td>
                                  <td>${u.cueBanNum}</td>
                                  <td>${u.cueDes}</td>
                                  <td>${u.debe}</td>
-                                 <td>${u.haber}</td>
+                                 <td>${u.haber}</td>                           
                              </tr>
                      </c:forEach>        
                 </tbody>
