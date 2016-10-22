@@ -37,10 +37,10 @@ public class CajaView implements Serializable {
     private String cueNum;
     
     @Column(name="Debe")
-    private String debe;
+    private double debe;
     
     @Column(name="Haber")
-    private String haber;
+    private double haber;
     
     @Column(name="estado")
     private String estado;
@@ -101,19 +101,19 @@ public class CajaView implements Serializable {
         this.cueNum = cueNum;
     }
 
-    public String getDebe() {
+    public double getDebe() {
         return debe;
     }
 
-    public void setDebe(String debe) {
+    public void setDebe(double debe) {
         this.debe = debe;
     }
 
-    public String getHaber() {
+    public double getHaber() {
         return haber;
     }
 
-    public void setHaber(String haber) {
+    public void setHaber(double haber) {
         this.haber = haber;
     }
 
@@ -124,5 +124,7 @@ public class CajaView implements Serializable {
     public void setEstado(String estado) {
         this.estado = estado;
     }
+
+    
   
 }

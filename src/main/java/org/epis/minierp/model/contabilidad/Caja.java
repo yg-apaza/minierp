@@ -11,11 +11,11 @@ public class Caja {
     private String cueCod;
     private String cueDes;
     private String cueNum;
-    private String debe;
-    private String haber;
+    private double debe;
+    private double haber;
     private String estado;
 
-    public Caja(int asiDetCod, Date asiCabFec, String cueDes, String cueNum, String debe, String haber) {
+    public Caja(int asiDetCod, Date asiCabFec, String cueDes, String cueNum, double debe, double haber) {
         this.asiDetCod = asiDetCod;
         this.asiCabFec = asiCabFec;
         this.cueDes = cueDes;
@@ -80,19 +80,19 @@ public class Caja {
         this.cueNum = cueNum;
     }
 
-    public String getDebe() {
+    public double getDebe() {
         return debe;
     }
 
-    public void setDebe(String debe) {
+    public void setDebe(double debe) {
         this.debe = debe;
     }
 
-    public String getHaber() {
+    public double getHaber() {
         return haber;
     }
 
-    public void setHaber(String haber) {
+    public void setHaber(double haber) {
         this.haber = haber;
     }
 
@@ -103,5 +103,7 @@ public class Caja {
     public void setEstado(String estado) {
         this.estado = estado;
     }
+
+    
     
 }

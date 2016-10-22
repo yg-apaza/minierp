@@ -26,21 +26,20 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> RUC: </label>
                     <div class="col-sm-9">
-                                    <input type="text" id="form-field-1" placeholder="${empresa.empRuc}" class="form-control">
+                        <input type="text" id="form-field-1" placeholder="${empresa.empRuc}" class="form-control" readonly>
                     </div>
                 </div>
 
                 <br><br>
 
                 <div class="form-group">
-                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Apellidos y Nombres, Denominación o Razón Social:  </label>
-                        <div class="col-sm-9">
-                                        <input type="text" id="form-field-1" placeholder="${empresa.empNom}" class="form-control">
-                        </div>
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Apellidos y Nombres, Denominación o Razón Social:  </label>
+                    <div class="col-sm-9">
+                        <input type="text" id="form-field-1" placeholder="${empresa.empNom}" class="form-control" readonly>
+                    </div>
                 </div>
-                
+                    
                 <br><br>
-                
             </div>
             <div class="table-responsive">
                 <table class="table table-bordered table-striped table-hover">
@@ -64,7 +63,17 @@
                                     <td>${u.debe}</td>
                                     <td>${u.haber}</td>
                                 </tr>
-                        </c:forEach>     
+                        </c:forEach>                                             
+                    </tbody>                    
+                </table>
+                <table class="table table-bordered table-striped table-hover">
+                    <tbody>
+                    <tr class="info">
+                        <td> <b> DEBE  </b> </td>
+                        <td> ${totales.debe} </td>
+                        <td> <b> HABER </b> </td>
+                        <td> ${totales.haber} </td>
+                    </tr>
                     </tbody>
                 </table>
             </div>
