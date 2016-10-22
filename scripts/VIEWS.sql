@@ -36,8 +36,8 @@ CREATE OR REPLACE VIEW VIEW_BANCOS AS (
         asiDet.AsiDetMon AS debe,
         asiDet.AsiDetMon AS haber,
 		libDia.EstRegCod,
-        '1' as AsiCabTip,
-        cueBan.CueBanNum
+        cueBan.CueBanNum,
+        asiCab.AsiCabNumCom
 	FROM en_p3t_asiento_det asiDet
 		INNER JOIN en_p3m_cuenta cue
 			ON asiDet.CueCod = cue.CueCod

@@ -36,7 +36,7 @@ public class BancosDAO {
          while(diario.hasNext()) {
             ant = nuevo;
             BancosView asiento = diario.next();
-            nuevo = new Bancos(asiento.getAsiDetCod(),asiento.getAsiCabFec(),asiento.getCueBanNum(),asiento.getCueNum(),asiento.getCueDes(),asiento.getDebe(),asiento.getHaber());
+            nuevo = new Bancos(asiento.getAsiDetCod(),asiento.getAsiCabFec(),asiento.getCueBanNum(),asiento.getAsiCabNumCom(),asiento.getCueNum(),asiento.getCueDes(),asiento.getDebe(),asiento.getHaber());
             //swap
             if("104".equals(asiento.getCueNum()) ||
                "1041".equals(asiento.getCueNum()) ||
@@ -61,7 +61,7 @@ public class BancosDAO {
         
          while(diario.hasNext()) {
             BancosView asiento = diario.next();
-            Bancos nuevo = new Bancos(asiento.getAsiDetCod(),asiento.getAsiCabFec(),asiento.getCueBanNum(),asiento.getCueDes(),asiento.getCueNum(),asiento.getDebe(),asiento.getHaber());
+            Bancos nuevo = new Bancos(asiento.getAsiDetCod(),asiento.getAsiCabFec(),asiento.getCueBanNum(),asiento.getAsiCabNumCom(),asiento.getCueNum(),asiento.getCueDes(),asiento.getDebe(),asiento.getHaber());
             
             CajaDAO cajaDAO = new CajaDAO();
             Iterator <CajaView> diario_ = cajaDAO.getView().iterator();
@@ -94,7 +94,8 @@ public class BancosDAO {
         Set <Bancos> bancos = new HashSet <> ();
          while(diario.hasNext()) {
             BancosView asiento = diario.next();
-            Bancos nuevo = new Bancos(asiento.getAsiDetCod(),asiento.getAsiCabFec(),asiento.getCueBanNum(),asiento.getCueDes(),asiento.getCueNum(),asiento.getDebe(),asiento.getHaber());
+            Bancos nuevo = new Bancos(asiento.getAsiDetCod(),asiento.getAsiCabFec(),asiento.getCueBanNum(),asiento.getAsiCabNumCom(),asiento.getCueNum(),asiento.getCueDes(),asiento.getDebe(),asiento.getHaber());
+            
             if("0".equals(asiento.getEstado()))
                 nuevo.setHaber(0); 
             else nuevo.setDebe(0); 

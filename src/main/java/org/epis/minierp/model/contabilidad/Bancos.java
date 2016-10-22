@@ -7,16 +7,17 @@ public class Bancos {
     private int asiDetCod;
     private Date asiCabFec;
     private String cueBanNum;
+    private String asiCabNumCom;
     private String cueNum;
     private String cueDes;
     private double debe;
     private double haber;
 
-    public Bancos(int asiDetCod, Date asiCabFec, String cueBanNum, String cueNum, String cueDes, double debe, double haber) {
+    public Bancos(int asiDetCod, Date asiCabFec, String cueBanNum, String asiCabNumCom, String cueNum, String cueDes, double debe, double haber) {
         this.asiDetCod = asiDetCod;
         this.asiCabFec = asiCabFec;
         this.cueBanNum = cueBanNum;
-        this.cueNum = cueNum;
+        this.asiCabNumCom = asiCabNumCom;
         this.cueDes = cueDes;
         this.debe = debe;
         this.haber = haber;
@@ -47,6 +48,14 @@ public class Bancos {
 
     public void setCueBanNum(String cueBanNum) {
         this.cueBanNum = cueBanNum;
+    }
+
+    public String getAsiCabNumCom() {
+        return asiCabNumCom;
+    }
+
+    public void setAsiCabNumCom(String asiCabNumCom) {
+        this.asiCabNumCom = asiCabNumCom;
     }
 
     public String getCueNum() {
@@ -81,4 +90,5 @@ public class Bancos {
         this.haber = haber;
     }
 
+    
 }

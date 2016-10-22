@@ -47,6 +47,9 @@ public class BancosView implements Serializable {
     
     @Column(name="estado")
     private String estado;
+    
+    @Column(name="AsiCabNumCom")
+    private String asiCabNumCom;
 
     public String getLibDiaCod() {
         return libDiaCod;
@@ -135,4 +138,14 @@ public class BancosView implements Serializable {
     public void setEstado(String estado) {
         this.estado = estado;
     }
+
+    public String getAsiCabNumCom() {
+        return asiCabNumCom;
+    }
+
+    public void setAsiCabNumCom(String asiCabNumCom) {
+        this.asiCabNumCom = asiCabNumCom;
+    }
+
+    
 }
