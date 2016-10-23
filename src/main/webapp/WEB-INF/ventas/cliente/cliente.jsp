@@ -13,17 +13,17 @@
             </h1>     
             <div class="row">
                 <div class="col-md-4">
-                    <a href="${pageContext.request.contextPath}/secured/general/reporte?type=pdf&&report=clientes&&jdbc=true&&key=null&&value=null" class="btn btn-outline btn-danger btn-lg btn-block">
+                    <a href="${pageContext.request.contextPath}/secured/general/reporte?type=pdf&&report=clientes&&jdbc=false&&key=null&&value=null" class="btn btn-outline btn-danger btn-lg btn-block">
                         <i class="fa fa-file-pdf-o"></i>
                         Reporte [PDF]
                     </a></div>
                 <div class="col-md-4">
-                    <a href="${pageContext.request.contextPath}/secured/general/reporte?type=xls&&report=clientes&&jdbc=true&&key=null&&value=null" class="btn btn-outline btn-success btn-lg btn-block">
+                    <a href="${pageContext.request.contextPath}/secured/general/reporte?type=xls&&report=clientes&&jdbc=false&&key=null&&value=null" class="btn btn-outline btn-success btn-lg btn-block">
                         <i class="fa fa-file-excel-o"></i>
                         Reporte [XLS]
                     </a></div>
                 <div class="col-md-4">
-                    <a href="${pageContext.request.contextPath}/secured/general/reporte?type=doc&&report=clientes&&jdbc=true&&key=null&&value=null" class="btn btn-outline btn-primary btn-lg btn-block">
+                    <a href="${pageContext.request.contextPath}/secured/general/reporte?type=doc&&report=clientes&&jdbc=false&&key=null&&value=null" class="btn btn-outline btn-primary btn-lg btn-block">
                         <i class="fa fa-file-word-o"></i>
                         Reporte [DOC]
                     </a></div>
@@ -37,7 +37,7 @@
                                 <th>Cod Cliente</th>
                                 <th>Nombres y Apellidos</th>
                                 <th>Sexo</th>
-                                <th>Direccion</th>
+                                <th>Dirección</th>
                                 <th>Tel. Fijo</th>
                                 <th>Tel. Celular</th>
                                 <th>Email</th>
@@ -94,8 +94,8 @@
                             <div class="form-horizontal">   
                                 <div class="form-group">
                                     <div class="col-sm-6">
-                                        <label>Codigo Cliente:</label>
-                                        <input type="text" class="form-control" placeholder="Codigo Cliente" name="cliCod">
+                                        <label>Código Cliente:</label>
+                                        <input type="text" class="form-control" placeholder="Código Cliente" name="cliCod">
                                     </div>
                                     <div class="col-sm-6">
                                         <label>Nombre Cliente:</label>
@@ -122,18 +122,18 @@
                                         </select>
                                     </div>
                                     <div class="col-sm-9">
-                                        <label>Direccion:</label>
-                                        <input type="text" class="form-control" placeholder="Direccion" name="cliDir">
+                                        <label>Dirección:</label>
+                                        <input type="text" class="form-control" placeholder="Dirección" name="cliDir">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-6">
-                                        <label>Telefono Fijo:</label>
-                                        <input type="text" class="form-control" placeholder="Telefono Fijo" name="cliTelFij">
+                                        <label>Teléfono Fijo:</label>
+                                        <input type="text" class="form-control" placeholder="Teléfono Fijo" name="cliTelFij">
                                     </div>
                                     <div class="col-sm-6">
-                                        <label>Telefono Celular:</label>
-                                        <input type="text" class="form-control" placeholder="Telefono Celular" name="cliTelCel">
+                                        <label>Teléfono Celular:</label>
+                                        <input type="text" class="form-control" placeholder="Teléfono Celular" name="cliTelCel">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -174,8 +174,8 @@
                             <div class="form-horizontal">   
                                 <div class="form-group">
                                     <div class="col-sm-6">
-                                        <label>Codigo Cliente:</label>
-                                        <input type="text" class="form-control" placeholder="Codigo Cliente" name="cliCod" id="updateCliCod" readonly>
+                                        <label>Código Cliente:</label>
+                                        <input type="text" class="form-control" placeholder="Código Cliente" name="cliCod" id="updateCliCod" readonly>
                                     </div>
                                     <div class="col-sm-6">
                                         <label>Nombre Cliente:</label>
@@ -202,18 +202,18 @@
                                         </select>
                                     </div>
                                     <div class="col-sm-9">
-                                        <label>Direccion:</label>
-                                        <input type="text" class="form-control" placeholder="Direccion" name="cliDir" id="updateCliDir">
+                                        <label>Dirección:</label>
+                                        <input type="text" class="form-control" placeholder="Dirección" name="cliDir" id="updateCliDir">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-6">
-                                        <label>Telefono Fijo:</label>
-                                        <input type="text" class="form-control" placeholder="Telefono Fijo" name="cliTelFij" id="updateCliTelFij">
+                                        <label>Teléfono Fijo:</label>
+                                        <input type="text" class="form-control" placeholder="Teléfono Fijo" name="cliTelFij" id="updateCliTelFij">
                                     </div>
                                     <div class="col-sm-6">
-                                        <label>Telefono Celular:</label>
-                                        <input type="text" class="form-control" placeholder="Telefono Celular" name="cliTelCel" id="updateCliTelCel">
+                                        <label>Teléfono Celular:</label>
+                                        <input type="text" class="form-control" placeholder="Teléfono Celular" name="cliTelCel" id="updateCliTelCel">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -226,7 +226,7 @@
                                         </select>
                                     </div>
                                     <div class="col-sm-9">
-                                        <label>Correo Eletronico:</label>
+                                        <label>Correo Electrónico:</label>
                                         <input type="text" class="form-control" placeholder="example@domain.com" name="cliEmail" id="updateCliEmail">
                                     </div>
                                 </div>   
@@ -433,8 +433,8 @@
                 },
                 messages: {
                     cliCod: {
-                        required: "El Codigo de Cliente es Requerido",
-                        number: "El Codigo de Cliente debe ser Numerico"
+                        required: "El Código de Cliente es Requerido",
+                        number: "El Código de Cliente debe ser Numérico"
                     },
                     cliSex: {
                         required: "El Sexo es Requerido"
@@ -465,8 +465,8 @@
                 },
                 messages: {
                     cliCod: {
-                        required: "El Codigo de Cliente es Requerido",
-                        number: "El Codigo de Cliente debe ser Numerico"
+                        required: "El Código de Cliente es Requerido",
+                        number: "El Código de Cliente debe ser Numérico"
                     },
                     cliSex: {
                         required: "El Sexo es Requerido"

@@ -22,10 +22,10 @@
                        <div class="table-responsive">
                             <table class="table table-bordered table-striped table-hover" id="productTableM">
                                     <tr>    
-                                        <th> Codigo </th>
-                                        <th>Descripcion</th>
-                                        <th>Direccion</th>
-                                        <th class="text-right">Acciones </th>
+                                        <th> Código </th>
+                                        <th>Descripción</th>
+                                        <th>Dirección</th>
+                                        <th>Acciones </th>
                                     </tr>
                                     <c:forEach items="${sucursales}" var="sucursales">
 
@@ -35,9 +35,9 @@
                                           <td value="${sucursales}"> ${sucursales.sucDir} </td>
                                           <td class="text-left">
                                               <a href="#" data-toggle="modal" data-target="#modificarModal" data-cod="${sucursales.sucCod}" data-des="${sucursales.sucDes}" data-dir="${sucursales.sucDir}" >
-                                                <i class="fa fa-pencil-square-o fa-2x"></i> </a> 
+                                                <i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i> </a> 
                                               <a href="#" data-toggle="modal" data-target="#disableModal" data-cod="${sucursales.sucCod}" data-des="${sucursales.sucDes}" data-dir="${sucursales.sucDir}" >
-                                                <i class="fa fa-trash-o fa-2x"></i> </a>                                   
+                                                <i class="fa fa-trash-o fa-2x" style="color: black;"></i> </a>                                   
                                            </td>
                                         </tr> 
 
@@ -131,7 +131,7 @@
                                     <tr>
                                         <th>Cod Sucursal</th>
                                         <th>Det Sucursal</th>
-                                        <th>Direccion</th>
+                                        <th>Dirección</th>
                                         <th>Registro</th>
                                         <th class="text-right">Acciones</th>
                                     </tr>

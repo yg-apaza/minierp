@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.epis.minierp.dao.contabilidad.CajaDAO;
+import org.epis.minierp.dao.general.EnP1mEmpresaDao;
 
 public class CajaController extends HttpServlet{
     private static final long serialVersionUID = 1L;
@@ -13,7 +14,11 @@ public class CajaController extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         CajaDAO cajaDAO = new CajaDAO();
-        request.setAttribute("operaciones",cajaDAO.getView());
+        EnP1mEmpresaDao empDao = new EnP1mEmpresaDao();
+        
+        request.setAttribute("operaciones",cajaDAO.getCaja());
+        request.setAttribute("empresa", empDao.getAll().get(0));
+        request.setAttribute("totales", cajaDAO.getTotal());
         request.getRequestDispatcher("/WEB-INF/contabilidad/cajaBancos/caja.jsp").forward(request, response);
     }
 }

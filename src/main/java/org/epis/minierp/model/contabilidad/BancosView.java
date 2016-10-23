@@ -9,7 +9,7 @@ import javax.persistence.IdClass;
 import javax.persistence.Table;
 
 @Entity
-@IdClass(CajaPKView.class)
+@IdClass(BancosPKView.class)
 @Table(name="VIEW_BANCOS")
 public class BancosView implements Serializable {
     @Id 
@@ -36,11 +36,20 @@ public class BancosView implements Serializable {
     @Column(name="CueDes")
     private String cueDes;
     
+    @Column(name="CueNum")
+    private String cueNum;
+    
     @Column(name="Debe")
-    private String debe;
+    private double debe;
     
     @Column(name="Haber")
-    private String haber;
+    private double haber;
+    
+    @Column(name="estado")
+    private String estado;
+    
+    @Column(name="AsiCabNumCom")
+    private String asiCabNumCom;
 
     public String getLibDiaCod() {
         return libDiaCod;
@@ -98,19 +107,45 @@ public class BancosView implements Serializable {
         this.cueDes = cueDes;
     }
 
-    public String getDebe() {
+    public String getCueNum() {
+        return cueNum;
+    }
+
+    public void setCueNum(String cueNum) {
+        this.cueNum = cueNum;
+    }
+
+    public double getDebe() {
         return debe;
     }
 
-    public void setDebe(String debe) {
+    public void setDebe(double debe) {
         this.debe = debe;
     }
 
-    public String getHaber() {
+    public double getHaber() {
         return haber;
     }
 
-    public void setHaber(String haber) {
+    public void setHaber(double haber) {
         this.haber = haber;
     }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public String getAsiCabNumCom() {
+        return asiCabNumCom;
+    }
+
+    public void setAsiCabNumCom(String asiCabNumCom) {
+        this.asiCabNumCom = asiCabNumCom;
+    }
+
+    
 }

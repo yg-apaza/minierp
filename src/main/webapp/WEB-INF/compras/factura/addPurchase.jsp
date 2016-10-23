@@ -11,7 +11,7 @@
                     <h1 class="page-header"> Registrar Factura de Compra</h1>
                 </div>
             </div>
-            <form id="registerBill" method="post" action="${pageContext.request.contextPath}/secured/compras/factura">
+            <form id="registerBill" method="post" action="${pageContext.request.contextPath}/secured/compras/factura/addFactura">
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="panel panel-primary">
@@ -43,23 +43,19 @@
                                     </div> 
                                 </div>
                                 <div class="row">  
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group input-group" >
                                             <span class="input-group-addon">Usuario</span>                                        
                                             <input type="text" class="form-control" name="usuCod" value="${usuario.usuCod}" readonly>
                                             <span class="input-group-addon"><i class="fa fa-child"></i></span>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group input-group" >
+                                    <div class="col-md-8">
+                                        <div class="form-group input-group">
                                             <span class="input-group-addon">Proveedor</span>
-                                            <input type="hidden" class="form-control" name="supplierCode" id="proCod">
-                                            <input type="text" class="form-control" name="supName" id="supCod" readonly>
-                                            <span class="input-group-addon">
-                                                <a href="#" data-toggle="modal" data-target="#searchSupplier">
-                                                    <i class="fa fa-globe" style="color: black;"></i>
-                                                </a>
-                                            </span>
+                                            <input class="form-control" type="text" name="proCod" id="proCodShow" placeholder="Codigo de proveedor">
+                                            <span class="input-group-addon"></span>
+                                            <input class="form-control" type="text" name="proDet" id="proDetShow" placeholder="Detalle de proveedor">
                                         </div>
                                     </div>
                                 </div>
@@ -190,43 +186,7 @@
                 </div>
             </form>
         </div>
-        <div class="modal fade" id="searchSupplier">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="myModalLabel">Buscar Proveedor</h4>
-                    </div>
-                    <div class="modal-body">
-                        <table width="100%" class="table table-striped table-bordered table-hover" id="tableSuppliers">
-                            <thead>
-                                <tr>
-                                    <th colspan="2">Descripción</th>
-                                    <th>Contacto</th>
-                                    <th>Teléfono</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <c:forEach items="${proveedores}" var="p">
-                                    <tr id="${p.proCod}">
-                                        <td align="center">
-                                            <input type="checkbox">
-                                        </td>
-                                        <td>${p.proDet}</td>
-                                        <td>${p.proCon}</td>
-                                        <td>${p.proTelFij}</td>
-                                    </tr>
-                                </c:forEach>
-                            </tbody>
-                        </table>                            
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-                        <button type="button" class="btn btn-success" data-dismiss="modal" onclick="getSupplier('tableSuppliers')">Aceptar</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+        
         <script language="javascript">
             function addRow(tableID) {
                 var table = document.getElementById(tableID);
@@ -279,25 +239,6 @@
                 }
             }
 
-            function getSupplier(tableID) {
-                try {
-                    var table = document.getElementById(tableID);
-                    var rowCount = table.rows.length;
-
-                    for (var i = 1; i < rowCount; i++) {
-                        var row = table.rows[i];
-                        var chkbox = row.cells[0].childNodes[1];
-                        if (true == chkbox.checked) {
-                            $('#supCod').val(row.cells[1].childNodes[0].data);
-                            $('#proCod').val(row.id);
-                            break;
-                        }
-                    }
-                } catch (e) {
-                    alert(e);
-                }
-            }
-
             function updateDescription() {
                 try {
                     var amounts = new Array();
@@ -340,6 +281,30 @@
             $(document).ready(function () {
                 $("#facDes").change(function () {
                     $('#facTot').val(($('#facSub').val() * (1 + $('#facIgv').val()) / 100) - ($('#facDes').val()));
+                });
+            });
+            
+            var proCods = new Array();
+            <c:forEach items="${proveedores}" var="p">
+                proCods.push("${p.proCod}");
+            </c:forEach>
+            $("#proCodShow").autocomplete({
+                source: proCods
+            });
+            
+            $('#proCodShow').keyup(function() {
+                $.post(
+                    "${pageContext.request.contextPath}/secured/compras/factura/busquedaProveedor",
+                    {proCod: $("#proCodShow").val()})
+                .done(function(data) {
+                    if(data.proCod !== null)
+                    {
+                        $("#proDetShow").val(data.proDet);
+                    }
+                    else
+                    {
+                        $("#proDetShow").val("Desconocido");
+                    }
                 });
             });
             

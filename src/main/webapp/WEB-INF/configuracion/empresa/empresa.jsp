@@ -12,7 +12,7 @@
                 <form id="createForm" method="post" action="${pageContext.request.contextPath}/secured/ventas/clientes">
                     <div class="form-group">
                         <div class="col-sm-3">
-                        <label>Descripcion del Punto de Venta:</label>
+                        <label>Descripción del Punto de Venta:</label>
                         <input class="form-control" name="punVenDes">
                         </div>
                     </div>

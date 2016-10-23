@@ -25,6 +25,21 @@ public class EnP4mProveedorDao {
         List <EnP4mProveedor> proveedors =  query.list();
         return proveedors;
     }
+    
+    public EnP4mProveedor getByIdActive(String docProCod) {
+        EnP4mProveedor proveedor = null;
+        Query query = session.createQuery("from EnP4mProveedor P where P.proCod = :id and P.estRegCod = 'A'");
+        query.setParameter("id", docProCod);
+        query.setMaxResults(1);
+        try {
+            List<EnP4mProveedor> proveedores = query.list();
+            proveedor = proveedores.get(0);
+        } catch (IndexOutOfBoundsException ex) {
+            return null;
+        }
+        return proveedor;
+    }
+    
     public void save(EnP4mProveedor proveedor) {
         session.save(proveedor);     
     }
@@ -40,7 +55,7 @@ public class EnP4mProveedorDao {
     public EnP4mProveedor getById(String id) {
         EnP4mProveedor proveedor = null;
         try {
-            proveedor = (EnP4mProveedor)session.load(EnP4mProveedor.class, id);
+            proveedor = (EnP4mProveedor)session.get(EnP4mProveedor.class, id);
         } catch(ObjectNotFoundException e) {
             return null;
         }

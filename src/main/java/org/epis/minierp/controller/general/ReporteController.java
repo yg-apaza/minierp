@@ -26,7 +26,6 @@ public class ReporteController extends HttpServlet {
         String key = request.getParameter("key");
         Reporte generador = null;
         if (jdbc.equals("true")) {
-            System.out.println("asdasd");
             generador = new Reporte(true, key, value);
         } else {
             generador = new Reporte();
@@ -63,13 +62,19 @@ public class ReporteController extends HttpServlet {
                 fileGenerated = generador.report(path, "RegistroDeVentas_", fileType);
                 break;
             case "clientes":
-                path = path + "reportes/ventas/reporte_clientes.jasper";
+                path = path + "reportes/ventas/clientes.jasper";
                 fileGenerated = generador.report(path, "Clientes_", fileType);
                 break;
             case "puntodeventas":
                 path = path + "reportes/ventas/puntoVentas.jasper";
                 fileGenerated = generador.report(path, "PuntoDeVentas_", fileType);
                 break;
+            case "flujoefectivo":
+                path = path + "reportes/ventas/subreporte_flujo_efectivo.jasper";
+                fileGenerated = generador.report(path, "FlujoEfectivoAnual", fileType);
+                break;
+
+            //Reportes de Logística
             case "kardexfisico":
                 path = path + "reportes/logistica/reporte_kardex_fisico.jasper";
                 fileGenerated = generador.report(path, "KardexFisico_", fileType);
@@ -78,16 +83,14 @@ public class ReporteController extends HttpServlet {
                 path = path + "reportes/logistica/reporte_kardex_valorizado.jasper";
                 fileGenerated = generador.report(path, "KardexValorizado", fileType);
                 break;
-            case "proovedores":
-                path = path + "reportes/logistica/reporte_proovedor.jasper";
-                fileGenerated = generador.report(path, "Proovedores", fileType);
+            case "proveedores":
+                path = path + "reportes/logistica/reporte_proveedor.jasper";
+                fileGenerated = generador.report(path, "Proveedores_", fileType);
                 break;
-            case "flujoefectivo":
-                path = path + "reportes/ventas/subreporte_flujo_efectivo.jasper";
-                fileGenerated = generador.report(path, "FlujoEfectivoAnual", fileType);
+            case "inventario":
+                path = path + "reportes/logistica/inventario.jasper";
+                fileGenerated = generador.report(path, "Inventario_", fileType);
                 break;
-
-            //Reportes de Compras
         }
 
         File file = new File(fileGenerated);

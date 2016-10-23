@@ -11,14 +11,12 @@
             <div class="form-group">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Factura</h1>
+                        <h1 class="page-header">Factura de Venta</h1>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-8">
-                        <form role=form" method="get" action="${pageContext.request.contextPath}/secured/ventas/factura/addFactura">
-                            <button type="submit" class="btn btn-success">Crear Factura <i class="fa fa-plus"></i></button>   
-                        </form>
+                        <a href="${pageContext.request.contextPath}/secured/ventas/factura/addFactura" class="btn btn-success">Crear Factura <i class="fa fa-plus"></i></a>
                     </div>
                     <div class="col-lg-4">
                         <div class="col-lg-5">
@@ -34,7 +32,7 @@
                             </a>
                         </div>
                     </div>
-                </div>
+                </div><br>
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="table-responsive">    
@@ -51,7 +49,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <c:forEach items="${facturas}" var="c">
+                                    <c:forEach items="${facturasVenta}" var="c">
                                         <tr>
                                             <td>${c.facVenCabFec}</td>
                                             <td>${c.facVenCabCod}</td>
@@ -59,7 +57,7 @@
                                             <td>${c.enP1mUsuario.usuNom}</td>
                                             <td>${c.facVenCabTot}</td>                            
                                             <td>${c.taGzzTipoPagoFactura.tipPagDet}</td>
-                                            <td>
+                                            <td class="text-center" width="50px">
                                                 <a href="${pageContext.request.contextPath}/secured/ventas/factura/imprimir?facCod=${c.facVenCabCod}"
                                                     <i class="fa fa-print fa-2x" style="color: black;"></i>
                                                 </a>

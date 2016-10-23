@@ -109,12 +109,32 @@
     <!-- Modulo de Compras -->
     <servlet>
         <description/>
-        <display-name>PurchasesController</display-name>
-        <servlet-name>PurchasesController</servlet-name>
-        <servlet-class>org.epis.minierp.controller.compras.PurchasesController</servlet-class>
+        <display-name>AddPurchaseController</display-name>
+        <servlet-name>AddPurchaseController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.compras.AddPurchaseController</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>PurchasesController</servlet-name>
+        <servlet-name>AddPurchaseController</servlet-name>
+        <url-pattern>/secured/compras/factura/addFactura</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <description/>
+        <display-name>BusquedaProveedorController</display-name>
+        <servlet-name>BusquedaProveedorController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.compras.BusquedaProveedorController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>BusquedaProveedorController</servlet-name>
+        <url-pattern>/secured/compras/factura/busquedaProveedor</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <description/>
+        <display-name>PurchaseController</display-name>
+        <servlet-name>PurchaseController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.compras.PurchaseController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PurchaseController</servlet-name>
         <url-pattern>/secured/compras/factura</url-pattern>
     </servlet-mapping>
     <servlet>
@@ -202,7 +222,7 @@
     <servlet-mapping>
         <servlet-name>UsuariosController</servlet-name>
         <url-pattern>/secured/configuracion/usuario/usuarios</url-pattern>
-    </servlet-mapping>    
+    </servlet-mapping>
     <!--Sub Modulo Compañia Datos-->
     <servlet>
         <description/>
@@ -213,6 +233,17 @@
     <servlet-mapping>
         <servlet-name>CompanyDataController</servlet-name>
         <url-pattern>/secured/configuracion/empresa</url-pattern>
+    </servlet-mapping>
+    <!--Sub Modulo Datos de Empresa-->
+    <servlet>
+        <description/>
+        <display-name>DatosEmpresaController</display-name>
+        <servlet-name>DatosEmpresaController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.configuracion.DatosEmpresaController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DatosEmpresaController</servlet-name>
+        <url-pattern>/secured/configuracion/datosEmpresa</url-pattern>
     </servlet-mapping>
     <!--Sub Modulo Sucursal-->
     <servlet>
@@ -401,8 +432,7 @@
         <servlet-name>PreVentaController</servlet-name>
         <url-pattern>/secured/ventas/preventa</url-pattern>
     </servlet-mapping>
-    
-     <servlet>
+    <servlet>
         <description/>
         <display-name>PreVentaLotesController</display-name>
         <servlet-name>PreVentaLotesController</servlet-name>
@@ -441,6 +471,26 @@
     <servlet-mapping>
         <servlet-name>addFacturaController</servlet-name>
         <url-pattern>/secured/ventas/factura/addFactura</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <description/>
+        <display-name>BusquedaClienteController</display-name>
+        <servlet-name>BusquedaClienteController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.ventas.BusquedaClienteController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>BusquedaClienteController</servlet-name>
+        <url-pattern>/secured/ventas/factura/busquedaCliente</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <description/>
+        <display-name>SearchProductController</display-name>
+        <servlet-name>SearchProductController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.ventas.SearchProductController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SearchProductController</servlet-name>
+        <url-pattern>/secured/ventas/factura/searchProduct</url-pattern>
     </servlet-mapping>
     <servlet>
         <description/>
