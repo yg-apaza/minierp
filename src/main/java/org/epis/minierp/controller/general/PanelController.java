@@ -1,6 +1,7 @@
 package org.epis.minierp.controller.general;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import org.epis.minierp.dao.logistica.EnP2mAlmacenDao;
 import org.epis.minierp.dao.ventas.IngresosDao;
 import org.epis.minierp.dao.ventas.PreventasDao;
 import org.epis.minierp.model.EnP1mUsuario;
@@ -24,7 +26,6 @@ public class PanelController extends HttpServlet
 {	
     private static final long serialVersionUID = 1L;
 
-    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
         HttpSession session = request.getSession(false);
@@ -66,21 +67,8 @@ public class PanelController extends HttpServlet
             case 2:
                 break;
             case 3:
-                Iterator <EnP2mAlmacen> stores = u.getEnP1mSucursal().getEnP2mAlmacens().iterator();
-                Set <EnP2mProducto> productosSet = new HashSet <> ();
-                while(stores.hasNext()) {
-                    Iterator <EnP2mProducto> products = stores.next().getEnP2mProductos().iterator();
-                    while(products.hasNext()) {
-                        EnP2mProducto product = products.next();
-                        System.out.println("Producto Almacen " + product.getEnP2mAlmacen().getAlmCod());
-                        if(product.getEstRegCod() == 'A')
-                            productosSet.add(product);
-                    }            
-                }
                 List <EnP2mAlmacen> almacenes = new ArrayList<>(u.getEnP1mSucursal().getEnP2mAlmacens());
-                List <EnP2mProducto> productos = new ArrayList<>(productosSet);
                 request.setAttribute("almacenes", almacenes);
-                request.setAttribute("productos", productos);
                 break;
             case 4:
                 break;
@@ -88,6 +76,31 @@ public class PanelController extends HttpServlet
          
         
         request.getRequestDispatcher("/WEB-INF/general/panel.jsp").forward(request, response);
+    }
+    
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+        //response.getWriter().write(new Gson().toJson(data) );
+    }
+    
+    protected void processRequest(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
+        PrintWriter out = response.getWriter();
+
+        String alm = request.getParameter("alm"); // Codigo de almacen
+        List<String> productosNombres = new ArrayList();
+        EnP2mAlmacenDao almacenSelec = new EnP2mAlmacenDao();
+        Iterator<EnP2mProducto> productos = almacenSelec.getById(alm).getEnP2mProductos().iterator();
+        while(productos.hasNext())
+        {
+            EnP2mProducto product = productos.next();
+                if(product.getEstRegCod() == 'A')
+                    productosNombres.add(product.getProDet());
+        }
+        System.out.println(productosNombres);
+        request.getSession().setAttribute("listPro", productosNombres);
     }
     
     

@@ -13,6 +13,7 @@
         <link href="${pageContext.request.contextPath}/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css">
         <link href="${pageContext.request.contextPath}/css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <link href="${pageContext.request.contextPath}/css/jquery-ui.min.css" rel="stylesheet" type="text/css">
+        <link href="${pageContext.request.contextPath}/css/select2.css" rel="stylesheet" type="text/css">
         <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
         <script src="${pageContext.request.contextPath}/js/moment.min.js"></script>
         <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
@@ -25,6 +26,7 @@
         <script src="${pageContext.request.contextPath}/js/jquery-barcode.js"></script>
         <script src="${pageContext.request.contextPath}/js/metisMenu.min.js"></script>
         <script src="${pageContext.request.contextPath}/js/sb-admin-2.min.js"></script>
+        <script src="${pageContext.request.contextPath}/js/select2.min.js"></script>
         <link rel="shortcut icon" href="${pageContext.request.contextPath}/favicon.ico" />
         <jsp:invoke fragment="titulo"/>
     </head>
