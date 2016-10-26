@@ -3,6 +3,7 @@ package org.epis.minierp.controller.contabilidad;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -63,7 +64,7 @@ public class LibroDiarioController extends HttpServlet {
                     miLibro.setEstRegCod('A');
                     daoLibroDiario.save(miLibro);
                     break;
-                case 2: 
+                case 2:                 
                     EnP3mAsientoCab asiCab = new EnP3mAsientoCab();
                     int asiCabCod = Integer.parseInt(request.getParameter("asiCabCod"));
                     int monCod = Integer.parseInt(request.getParameter("monCod"));
@@ -88,33 +89,37 @@ public class LibroDiarioController extends HttpServlet {
                     asiCab.setId(asientoCabId);
                     asiCab.setEstRegCod('A');
                     daoAsientoCab.save(asiCab);
-
-                    /*
-                    EnP3tAsientoDet asiDet = new EnP3tAsientoDet();
-                    int cueCod = Integer.parseInt(request.getParameter("cueCod"));
-                    double monDebe = Double.parseDouble(request.getParameter("monDebe"));
-                    double monHaber = Double.parseDouble(request.getParameter("monHaber"));
-                    boolean detDebHab = false;
-                    double detMonto = 0;
-                    if(monDebe==0){
-                        detDebHab=false;
-                        detMonto = monHaber;
+                
+                    List <String> listDataTabla = Arrays.asList((request.getParameter("dataTable")).split("\\s*,\\s*"));
+                    int col = 3;
+                    for(int i=0;i<listDataTabla.size()/col;i++){
+                        EnP3tAsientoDet asiDet = new EnP3tAsientoDet();
+                        int pos = i*col;
+                        int cueCod = Integer.parseInt(listDataTabla.get(pos));
+                        double monDebe = Double.parseDouble(listDataTabla.get(pos+1));                   
+                        double monHaber = Double.parseDouble(listDataTabla.get(pos+2));
+                        boolean detDebHab = false;
+                        double detMonto = 0;
+                        if(monDebe==0){
+                            detDebHab=false;
+                            detMonto = monHaber;
+                        }
+                        if(monHaber==0){
+                            detDebHab=true;
+                            detMonto = monDebe;
+                        }                    
+                        EnP3tAsientoDetId asientoDetId = new EnP3tAsientoDetId();
+                        asientoDetId.setAsiCabCod(asiCabCod);
+                        asientoDetId.setLibDiaCod(libDiaCod);
+                        asientoDetId.setAsiDetCod((int) (System.currentTimeMillis() % Integer.MAX_VALUE));
+                        asiDet.setAsiDetDebHab(detDebHab);
+                        asiDet.setAsiDetMon(detMonto);
+                        asiDet.setEnP3mCuenta((new CuentaDao()).getByIdActive(cueCod));
+                        asiDet.setId(asientoDetId);
+                        daoAsientoDet.save(asiDet);
+                        
                     }
-                    if(monHaber==0){
-                        detDebHab=true;
-                        detMonto = monDebe;
-                    }
-                    EnP3tAsientoDetId asientoDetId = new EnP3tAsientoDetId();
-                    asientoDetId.setAsiCabCod(asiCabCod);
-                    asientoDetId.setLibDiaCod(libDiaCod);
-                    asientoDetId.setAsiDetCod((int) (System.currentTimeMillis() % Integer.MAX_VALUE));
-                    asiDet.setAsiDetDebHab(detDebHab);
-                    asiDet.setAsiDetMon(detMonto);
-                    asiDet.setEnP3mAsientoCab(asiCab);
-                    asiDet.setEnP3mCuenta((new CuentaDao()).getByIdActive(cueCod));
-                    asiDet.setId(asientoDetId);
-                    daoAsientoDet.save(asiDet);
-                    */
+                
                     break;
                 case 3:
                     libDiaCod = Integer.parseInt(request.getParameter("libDiaCod"));
