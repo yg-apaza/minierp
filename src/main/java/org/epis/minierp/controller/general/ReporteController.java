@@ -25,8 +25,7 @@ public class ReporteController extends HttpServlet {
         if (jdbc.equals("true")) {
             generador = new Reporte(true, key, value);
         } else {
-            //generador = new Reporte(false, key, value);
-            generador = new Reporte();
+            generador = new Reporte(false, key, value);
         }
         switch (fileType) {
             case "pdf":
@@ -73,7 +72,7 @@ public class ReporteController extends HttpServlet {
                 break;
             case "factura":
                 path = path + "reportes/ventas/factura_cab.jasper";
-                fileGenerated = generador.report(path, "Factura "+value, fileType);
+                fileGenerated = generador.report(path, "Factura_", fileType);
                 break;
             //Reportes de Logística
             case "kardexfisico":

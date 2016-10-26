@@ -96,6 +96,16 @@
         <servlet-name>PerfilController</servlet-name>
         <url-pattern>/secured/general/perfil</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <description/>
+        <display-name>ReporteController</display-name>
+        <servlet-name>ReporteController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.general.ReporteController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ReporteController</servlet-name>
+        <url-pattern>/secured/general/reporte</url-pattern>
+    </servlet-mapping>
     <!-- Modulo de Compras -->
     <servlet>
         <description/>

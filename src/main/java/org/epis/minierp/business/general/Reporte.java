@@ -29,7 +29,7 @@ public class Reporte {
 
     private Session session;
     private Connection sessionc;
-    private Map<String, Object> param = new HashMap<>();
+    private Map param = new HashMap();
     private Date date = new Date();
     private SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
     String key, value;
@@ -43,8 +43,7 @@ public class Reporte {
             sessionc = DbUtil.getConnection();
         } else {
             session = HibernateUtil.getSessionFactory().getCurrentSession();
-            //param.put(key, value);
-            //param.put("FAC_COD", "001-000001");
+            param.put(key, value);
         }
     }
 
