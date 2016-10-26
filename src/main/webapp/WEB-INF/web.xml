@@ -514,13 +514,13 @@
     </servlet-mapping>
     <servlet>
         <description/>
-        <display-name>imprimirController</display-name>
-        <servlet-name>imprimirController</servlet-name>
-        <servlet-class>org.epis.minierp.controller.ventas.ImprimirController</servlet-class>
+        <display-name>facturaLotesController</display-name>
+        <servlet-name>facturaLotesController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.ventas.FacturaLotesController</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>imprimirController</servlet-name>
-        <url-pattern>/secured/ventas/factura/imprimir</url-pattern>
+        <servlet-name>facturaLotesController</servlet-name>
+        <url-pattern>/secured/ventas/factura/facturaLotes</url-pattern>
     </servlet-mapping>
     <!--         ERRORS         -->
     <error-page>

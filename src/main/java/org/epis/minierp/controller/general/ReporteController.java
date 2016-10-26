@@ -25,7 +25,7 @@ public class ReporteController extends HttpServlet {
         if (jdbc.equals("true")) {
             generador = new Reporte(true, key, value);
         } else {
-            generador = new Reporte(false, key, value);
+            generador = new Reporte();
         }
         switch (fileType) {
             case "pdf":

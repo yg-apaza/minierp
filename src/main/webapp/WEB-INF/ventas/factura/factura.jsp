@@ -14,64 +14,62 @@
                         <h1 class="page-header">Factura de Venta</h1>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-lg-6">
-                        <a href="${pageContext.request.contextPath}/secured/ventas/factura/addFactura" class="btn btn-success">Crear Factura <i class="fa fa-plus"></i></a>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="col-lg-3">
-                            <a  href="${pageContext.request.contextPath}/secured/general/reporte?type=pdf&&report=factura&&jdbc=false&&key=FAC_COD&&value=001-000001" class="btn btn-danger" >
-                                Imprimir <i class="fa fa-file-pdf-o"></i> 
-                            </a>
-                        </div> 
-                        <div class="col-lg-3">
-                            <label>Flujo Efectivo</label>
-                        </div> 
+                <form id="facturaLoteForm" role="form" action="${pageContext.request.contextPath}/secured/ventas/factura/facturaLotes" method="post">
+                    <div class="row">
                         <div class="col-lg-6">
-                            <a  href="${pageContext.request.contextPath}/secured/general/reporte?type=pdf&&report=flujoefectivo&&jdbc=true&&key=null&&value=null" class="btn btn-danger" >
-                                <i class="fa fa-file-pdf-o"></i>
-                            </a>
-                            
-                            <a  href="${pageContext.request.contextPath}/secured/general/reporte?type=doc&&report=flujoefectivo&&jdbc=true&&key=null&&value=null" class="btn  btn-primary" >
-                                <i class="fa fa-file-word-o"></i>
-                            </a>
+                            <a href="${pageContext.request.contextPath}/secured/ventas/factura/addFactura" class="btn btn-success">Crear Factura <i class="fa fa-plus"></i></a>
                         </div>
-                    </div>
-                </div><br>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="table-responsive">    
-                            <table class="table table-striped table-bordered table-hover">
-                                <thead>
-                                    <tr>
-                                        <th>Fecha</th>
-                                        <th>Factura</th>
-                                        <th>Cliente</th>
-                                        <th>Vendedor</th>
-                                        <th>Importe</th>
-                                        <th>Tipo</th>
-                                        <th>Acciones</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <c:forEach items="${facturasVenta}" var="c">
+                        <div class="col-lg-6">
+                            <div class="col-lg-3">
+                                <button style="display:none" type="submit" class="btn btn-success"> Imprimir</button>  
+                            </div> 
+                            <div class="col-lg-3">
+                                <label>Flujo Efectivo</label>
+                            </div> 
+                            <div class="col-lg-6">
+                                <a  href="${pageContext.request.contextPath}/secured/general/reporte?type=pdf&&report=flujoefectivo&&jdbc=true&&key=null&&value=null" class="btn btn-danger" >
+                                    <i class="fa fa-file-pdf-o"></i>
+                                </a>
+
+                                <a  href="${pageContext.request.contextPath}/secured/general/reporte?type=doc&&report=flujoefectivo&&jdbc=true&&key=null&&value=null" class="btn  btn-primary" >
+                                    <i class="fa fa-file-word-o"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div><br>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="table-responsive">    
+                                <table class="table table-striped table-bordered table-hover">
+                                    <thead>
                                         <tr>
-                                            <td>${c.facVenCabFec}</td>
-                                            <td>${c.facVenCabCod}</td>
-                                            <td>${c.enP1mCliente.cliNom}</td>
-                                            <td>${c.enP1mUsuario.usuNom}</td>
-                                            <td>${c.facVenCabTot}</td>                            
-                                            <td>${c.taGzzTipoPagoFactura.tipPagDet}</td>
-                                            <td>
-                                                marcar
-                                            </td>
+                                            <th>Fecha</th>
+                                            <th>Factura</th>
+                                            <th>Cliente</th>
+                                            <th>Vendedor</th>
+                                            <th>Importe</th>
+                                            <th>Tipo</th>
+                                            <th>Acciones</th>
                                         </tr>
-                                    </c:forEach>
-                                </tbody>
-                            </table>  
+                                    </thead>
+                                    <tbody>
+                                        <c:forEach items="${facturasVenta}" var="c">
+                                            <tr>
+                                                <td>${c.facVenCabFec}</td>
+                                                <td>${c.facVenCabCod}</td>
+                                                <td>${c.enP1mCliente.cliNom}</td>
+                                                <td>${c.enP1mUsuario.usuNom}</td>
+                                                <td>${c.facVenCabTot}</td>                            
+                                                <td>${c.taGzzTipoPagoFactura.tipPagDet}</td>
+                                                <td><input type="checkbox" name="facCodigos" value="${c.facVenCabCod}"></td>
+                                            </tr>
+                                        </c:forEach>
+                                    </tbody>
+                                </table>  
+                            </div>
                         </div>
                     </div>
-                </div>
+                </form>
                 <div class="row">
                     <div class="col-lg-4">
                         <a href="${pageContext.request.contextPath}/secured/general/reporte?type=pdf&&report=registroventas&&jdbc=false&&key=null&&value=null" class="btn btn-outline btn-danger">

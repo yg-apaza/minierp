@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Factura" language="groovy" pageWidth="615" pageHeight="500" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="575" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isIgnorePagination="true" uuid="c76f3276-96e7-40de-ae0f-89113b35cf36">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="factura_cab" language="groovy" pageWidth="615" pageHeight="500" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="575" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isIgnorePagination="true" uuid="c76f3276-96e7-40de-ae0f-89113b35cf36">
 	<property name="ireport.zoom" value="0.9090909090909091"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="189"/>
 	<parameter name="FAC_COD" class="java.lang.String">
-		<defaultValueExpression><![CDATA["001-000010"]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["D:\\UNSA\\2016\\TI\\Proyecto\\minierp\\src\\main\\webapp\\WEB-INF\\reportes\\ventas\\"]]></defaultValueExpression>
 	</parameter>
 	<queryString language="hql">
 		<![CDATA[FROM EnP1mFacturaVentaCab  WHERE $P{FAC_COD} = facVenCabCod]]>
@@ -54,18 +57,47 @@
 		</band>
 	</pageHeader>
 	<columnHeader>
-		<band height="36" splitType="Stretch"/>
+		<band height="45" splitType="Stretch"/>
 	</columnHeader>
 	<detail>
-		<band height="125" splitType="Stretch"/>
+		<band height="125" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="0" width="575" height="125" uuid="14b06381-b95e-4e65-956d-217aac47c2fc"/>
+				<subreportParameter name="HIBERNATE_SESSION">
+					<subreportParameterExpression><![CDATA[$P{HIBERNATE_SESSION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="FAC_COD">
+					<subreportParameterExpression><![CDATA[$P{FAC_COD}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "factura_det.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
 	</detail>
 	<columnFooter>
 		<band height="45" splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
-		<band height="54" splitType="Stretch"/>
+		<band height="36" splitType="Stretch"/>
 	</pageFooter>
 	<summary>
-		<band height="42" splitType="Stretch"/>
+		<band height="81" splitType="Stretch">
+			<textField>
+				<reportElement x="475" y="0" width="100" height="20" uuid="82888b8e-96ac-4dce-a91d-73477571a854"/>
+				<textFieldExpression><![CDATA[$F{facVenCabSubTot}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="475" y="20" width="100" height="20" uuid="5689021c-ef58-464a-b26f-e43644a364e1"/>
+				<textFieldExpression><![CDATA[$F{facVenCabIgv}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="475" y="40" width="100" height="20" uuid="7de5b95c-dc06-45a4-a0ab-21c55eacc364"/>
+				<textFieldExpression><![CDATA[$F{facVenCabTot}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="201" y="40" width="100" height="20" uuid="9aa2c8be-bcc2-455d-8e70-70c34226cb5b"/>
+				<textFieldExpression><![CDATA[$F{facVenCabFec}]]></textFieldExpression>
+			</textField>
+		</band>
 	</summary>
 </jasperReport>
