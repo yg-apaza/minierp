@@ -5,6 +5,7 @@ import java.io.File;
 import java.sql.Connection;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -54,7 +55,9 @@ public class Reporte {
     
     public Reporte(String key, String []values) {
         session = HibernateUtil.getSessionFactory().getCurrentSession();
-        this.values = values;
+        this.key = key;
+        this.values = new String[values.length];
+        System.arraycopy(values, 0, this.values, 0, values.length);
     }
 
     public String report(String path, String fileName) {
@@ -66,7 +69,6 @@ public class Reporte {
         JasperPrint jasperPrint = null;
         String file = fileName + sf.format(date.getTime());
         String fullPath = file;
-
         try {
             for (int i = 0; i < values.length; i++){
                 param = new HashMap();

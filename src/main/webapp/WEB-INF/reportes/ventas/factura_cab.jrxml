@@ -2,12 +2,12 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="factura_cab" language="groovy" pageWidth="615" pageHeight="500" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="575" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isIgnorePagination="true" uuid="c76f3276-96e7-40de-ae0f-89113b35cf36">
 	<property name="ireport.zoom" value="0.9090909090909091"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="189"/>
+	<property name="ireport.y" value="0"/>
 	<parameter name="FAC_COD" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
-		<defaultValueExpression><![CDATA["D:\\UNSA\\2016\\TI\\Proyecto\\minierp\\src\\main\\webapp\\WEB-INF\\reportes\\ventas\\"]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA["D:\\UNSA\\TI\\Proyectos\\minierp\\src\\main\\webapp\\WEB-INF\\reportes\\ventas\\"]]></defaultValueExpression>
 	</parameter>
 	<queryString language="hql">
 		<![CDATA[FROM EnP1mFacturaVentaCab  WHERE $P{FAC_COD} = facVenCabCod]]>

@@ -21,7 +21,7 @@
                         </div>
                         <div class="col-lg-6">
                             <div class="col-lg-3">
-                                <button style="display:none" type="submit" class="btn btn-success"> Imprimir</button>  
+                                <button type="submit" class="btn btn-success"> Imprimir</button>  
                             </div> 
                             <div class="col-lg-3">
                                 <label>Flujo Efectivo</label>

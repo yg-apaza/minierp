@@ -3,6 +3,7 @@
 	<property name="ireport.zoom" value="1.100000000000002"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
+	<parameter name="IMAGE" class="java.lang.String"/>
 	<queryString language="hql">
 		<![CDATA[From EnP1mCliente where estRegCod = 'A']]>
 	</queryString>
@@ -33,6 +34,10 @@
 				<text><![CDATA["LISTADO DE CLIENTES DE LA EMPRESA "
 ]]></text>
 			</staticText>
+			<image scaleImage="FillFrame" onErrorType="Icon">
+				<reportElement stretchType="RelativeToBandHeight" x="39" y="3" width="78" height="50" uuid="0f901b7f-25bc-45a4-953f-7cc257579320"/>
+				<imageExpression><![CDATA[]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<columnHeader>

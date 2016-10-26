@@ -32,7 +32,6 @@ public class FacturaLotesController extends HttpServlet {
         String fileGenerated = "";
 
         switch (report) {
-            //Reportes de Contabilidad
             case "factura":
                 path = path + "reportes/ventas/factura_cab.jasper";
                 fileGenerated = generador.report(path, "Facturas_");
@@ -47,6 +46,6 @@ public class FacturaLotesController extends HttpServlet {
         while ((bytes = fileInputStream.read()) != -1) {
             responseOutputStream.write(bytes);
         }
-        response.sendRedirect(request.getContextPath() + "/secured/ventas/factura");
+        //response.sendRedirect(request.getContextPath() + "/secured/ventas/factura");
     }
 }
