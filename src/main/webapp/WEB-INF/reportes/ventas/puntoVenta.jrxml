@@ -4,7 +4,7 @@
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
-		<defaultValueExpression><![CDATA["D:\\UNSA\\2016\\TI\\Proyecto\\minierp\\src\\main\\resources\\org\\epis\\minierp\\reporte\\ventas\\"]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA["D:\\UNSA\\TI\\Proyectos\\minierp\\src\\main\\webapp\\WEB-INF\\reportes\\ventas\\"]]></defaultValueExpression>
 	</parameter>
 	<queryString language="hql">
 		<![CDATA[From EnP1mSucursal where estRegCod = 'A']]>
@@ -28,7 +28,7 @@
 					<textElement>
 						<font size="34" isBold="true"/>
 					</textElement>
-					<text><![CDATA[PUNTOS DE VENTA]]></text>
+					<text><![CDATA[Sucursales]]></text>
 				</staticText>
 				<staticText>
 					<reportElement x="395" y="43" width="180" height="20" forecolor="#FFFFFF" uuid="d6c8f916-6ab1-418d-a57e-261305df80f9"/>
@@ -40,31 +40,30 @@
 			</frame>
 		</band>
 	</title>
-	<pageHeader>
-		<band height="56">
-			<staticText>
-				<reportElement x="21" y="15" width="100" height="20" uuid="cd13560a-69b8-43a1-a262-34823a264641"/>
-				<textElement>
-					<font size="12" isBold="false"/>
-				</textElement>
-				<text><![CDATA[SUCURSALES]]></text>
-			</staticText>
-		</band>
-	</pageHeader>
 	<detail>
-		<band height="93">
-			<subreport>
-				<reportElement x="121" y="20" width="420" height="64" uuid="b65b6905-0de5-4646-b454-7d53ef3360b0"/>
-				<subreportParameter name="sucCod">
-					<subreportParameterExpression><![CDATA[$F{sucCod}]]></subreportParameterExpression>
-				</subreportParameter>
-				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "puntosVenta_sucursal.jasper"]]></subreportExpression>
-			</subreport>
+		<band height="83">
 			<textField pattern="" isBlankWhenNull="false">
 				<reportElement x="21" y="0" width="100" height="20" uuid="3f4bdd15-f9ca-4767-a3e5-75f89b8184aa"/>
 				<textFieldExpression><![CDATA[$F{sucDes}]]></textFieldExpression>
 			</textField>
+			<line>
+				<reportElement x="0" y="82" width="555" height="1" uuid="7da776c0-b4cb-4fff-a496-2afd813927cf"/>
+			</line>
+			<textField>
+				<reportElement x="21" y="20" width="100" height="20" uuid="8ee5d002-fe82-406f-905b-aaa104e8beca"/>
+				<textFieldExpression><![CDATA[$F{sucDir}]]></textFieldExpression>
+			</textField>
+			<subreport>
+				<reportElement x="166" y="0" width="389" height="82" uuid="09c5c04a-d8b2-4ac6-97db-3aaa6a4fa242"/>
+				<subreportParameter name="HIBERNATE_SESSION">
+					<subreportParameterExpression><![CDATA[$P{HIBERNATE_SESSION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="codigo">
+					<subreportParameterExpression><![CDATA[$F{sucCod}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "subreporte_puntoVenta.jasper"]]></subreportExpression>
+			</subreport>
 		</band>
 	</detail>
 	<columnFooter>

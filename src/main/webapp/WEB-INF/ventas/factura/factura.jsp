@@ -15,14 +15,19 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-8">
+                    <div class="col-lg-6">
                         <a href="${pageContext.request.contextPath}/secured/ventas/factura/addFactura" class="btn btn-success">Crear Factura <i class="fa fa-plus"></i></a>
                     </div>
-                    <div class="col-lg-4">
-                        <div class="col-lg-5">
+                    <div class="col-lg-6">
+                        <div class="col-lg-3">
+                            <a  href="${pageContext.request.contextPath}/secured/general/reporte?type=pdf&&report=factura&&jdbc=false&&key=FAC_COD&&value=001-000001" class="btn btn-danger" >
+                                Imprimir <i class="fa fa-file-pdf-o"></i> 
+                            </a>
+                        </div> 
+                        <div class="col-lg-3">
                             <label>Flujo Efectivo</label>
                         </div> 
-                        <div class="col-lg-7">
+                        <div class="col-lg-6">
                             <a  href="${pageContext.request.contextPath}/secured/general/reporte?type=pdf&&report=flujoefectivo&&jdbc=true&&key=null&&value=null" class="btn btn-danger" >
                                 <i class="fa fa-file-pdf-o"></i>
                             </a>
@@ -57,10 +62,8 @@
                                             <td>${c.enP1mUsuario.usuNom}</td>
                                             <td>${c.facVenCabTot}</td>                            
                                             <td>${c.taGzzTipoPagoFactura.tipPagDet}</td>
-                                            <td class="text-center" width="50px">
-                                                <a href="${pageContext.request.contextPath}/secured/ventas/factura/imprimir?facCod=${c.facVenCabCod}"
-                                                    <i class="fa fa-print fa-2x" style="color: black;"></i>
-                                                </a>
+                                            <td>
+                                                marcar
                                             </td>
                                         </tr>
                                     </c:forEach>

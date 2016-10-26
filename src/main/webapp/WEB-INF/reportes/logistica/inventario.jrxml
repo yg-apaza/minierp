@@ -1,29 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD JasperReport//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
-
-<jasperReport name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
-    <background>
-        <band/>
-    </background>
-    <title>
-        <band height="79"/>
-    </title>
-    <pageHeader>
-        <band height="35"/>
-    </pageHeader>
-    <columnHeader>
-        <band height="61"/>
-    </columnHeader>
-    <detail>
-        <band height="125"/>
-    </detail>
-    <columnFooter>
-        <band height="45"/>
-    </columnFooter>
-    <pageFooter>
-        <band height="54"/>
-    </pageFooter>
-    <summary>
-        <band height="42"/>
-    </summary>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4e1be15c-f926-46b9-99c9-7b47f6347850">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<title>
+		<band height="53" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="12" y="19" width="767" height="20" uuid="185fe808-0b67-45d9-8fc7-5a63ad1f481e"/>
+				<textElement textAlignment="Center" markup="none">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Inventario al ]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="34" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="14" width="255" height="20" uuid="65523688-81d8-4752-bf05-97f76afa35a8"/>
+				<text><![CDATA[Descripción del Producto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="255" y="14" width="100" height="20" uuid="e51e34b4-50b0-4fd6-9e36-77eb5712efc4"/>
+				<text><![CDATA[Stock anterior]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="355" y="14" width="100" height="20" uuid="46912505-bbaf-4259-bb80-58feb3a66e01"/>
+				<text><![CDATA[Stock real]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="455" y="14" width="100" height="20" uuid="f86e40ea-beae-45e3-b040-f2892e118481"/>
+				<text><![CDATA[Diferencia]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="33" width="802" height="1" uuid="cc2b091e-9a26-4b92-bc11-21fe52d036ac"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="255" height="20" uuid="658304ef-f00f-4002-8824-74abfa057d61"/>
+				<textFieldExpression><![CDATA[$F{field}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="255" y="0" width="100" height="20" uuid="5de60843-a1df-4f0e-bf10-e2252e2c0cb9"/>
+				<textFieldExpression><![CDATA[$F{field}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="355" y="0" width="100" height="20" uuid="1199a504-f78c-4685-ae1a-560f8d719012"/>
+				<textFieldExpression><![CDATA[$F{field}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="455" y="0" width="100" height="20" uuid="8fa68d33-4888-4797-95f5-31c6569bc678"/>
+				<textFieldExpression><![CDATA[$F{field}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="20" width="802" height="1" uuid="8c9292e2-ffb7-4ed0-969d-1744b079fb95"/>
+			</line>
+		</band>
+	</detail>
 </jasperReport>

@@ -13,10 +13,7 @@ import org.epis.minierp.business.general.Reporte;
 public class ReporteController extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
-    private static final String VENTAS = "Ventas";
-    private static final String COMPRAS = "Compras";
-    private static final String CONTABILIDAD = "Contabilidad";
-
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String fileType = request.getParameter("type");
@@ -28,6 +25,7 @@ public class ReporteController extends HttpServlet {
         if (jdbc.equals("true")) {
             generador = new Reporte(true, key, value);
         } else {
+            //generador = new Reporte(false, key, value);
             generador = new Reporte();
         }
         switch (fileType) {
@@ -65,15 +63,18 @@ public class ReporteController extends HttpServlet {
                 path = path + "reportes/ventas/clientes.jasper";
                 fileGenerated = generador.report(path, "Clientes_", fileType);
                 break;
-            case "puntodeventas":
-                path = path + "reportes/ventas/puntoVentas.jasper";
-                fileGenerated = generador.report(path, "PuntoDeVentas_", fileType);
+            case "puntodeventa":
+                path = path + "reportes/ventas/puntoVenta.jasper";
+                fileGenerated = generador.report(path, "PuntoDeVenta_", fileType);
                 break;
             case "flujoefectivo":
                 path = path + "reportes/ventas/subreporte_flujo_efectivo.jasper";
                 fileGenerated = generador.report(path, "FlujoEfectivoAnual", fileType);
                 break;
-
+            case "factura":
+                path = path + "reportes/ventas/factura_cab.jasper";
+                fileGenerated = generador.report(path, "Factura "+value, fileType);
+                break;
             //Reportes de Logística
             case "kardexfisico":
                 path = path + "reportes/logistica/reporte_kardex_fisico.jasper";
