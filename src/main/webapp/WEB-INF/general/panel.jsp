@@ -1,5 +1,3 @@
-/* global request */
-
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="minierptemplate" %>
 <minierptemplate:template>
@@ -53,6 +51,12 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-sm-12">
+                            <div class="canvas-holder">
+                                <canvas id="chart-line-prod" width="600" height="300"></canvas>
+                            </div>
+                        </div>
+                        <!--Canvas grafica-->
                     </div>
                 </div>
             </c:if>
@@ -155,32 +159,54 @@
                 changingAlmacen();
             });
 
+            $(document).ready(function () {
+                changingProductos();
+            });
+
             function changingAlmacen() {
                 $('#prodSelected').empty();
                 var tag = true;
-                var codAlm = Number($("#almSelected").val());
-                var listProd = load("PanelController",{alm:codAlm});
-                ArrayList cd = new ArrayList();
-                cd.add(request.getSession().getAttribute("listPro"));
-                if(cd.isEmpty()==false)
-                {
-                   for(int i=0;i<cd.size();i++)
-                   {
-                       var newOpt = prodSelected.appendChild(document.createElement('option'));
-                       newOpt.text = cd.get(i);
+                $.post(
+                    "${pageContext.request.contextPath}/secured/general/panel/productosByAlmacen",
+                    {almCod: $("#almSelected").val()})
+                    .done(function (data) {
+                        if (data != null)
+                        {
+                            $.each(data, function(k,v){
+                                $("#prodSelected").append($('<option>', {
+                                value: v.proCod,
+                                text: v.proDet
+                                })); 
+                            });                                
+                        }
+                        else
+                        {
+                            $("#prodSelected").append($('<option>', {
+                                value: "",
+                                text: "No existen productos"
+                            }));
+                        }
+                    });
+            }
+            function changingProductos(){
+                var ctxlineProd = document.getElementById("chart-line-prod").getContext("2d");
+                $.post(
+                    "${pageContext.request.contextPath}/secured/general/panel/datosGraficaComprador",
+                    {proCod: $("#prodSelected").val()})
+                    .done(function (data) {
+                        if (data != null)
+                        {
+                            ctxlineProd.fillText("Holi",50,50);                                
+                        }
+                        else
+                        {
+                            ctxlineProd.fillText("Texto en el Canvas",50,50);
+                        }
+                    });
+                // ....lineChartData
 
-                   }
-                }
-                else
-                {
-                   alert("No hay productos")
-                }
-                if (tag) {
-                    $('#prodSelected').append($('<option>', {
-                        value: "",
-                        text: "No existen productos"
-                    }));
-                }
+                
+                //window.myPie = new Chart(ctxlineProd).Line(lineChartData, {responsive:true});
             }
         </script>
     </jsp:attribute>

@@ -22,6 +22,7 @@ import org.epis.minierp.model.EnP3mCuenta;
 import org.epis.minierp.model.EnP3mLibroDiario;
 import org.epis.minierp.model.EnP3tAsientoDet;
 import org.epis.minierp.model.EnP3tAsientoDetId;
+import org.epis.minierp.model.LibroDiario;
 import org.epis.minierp.model.TaGzzMoneda;
 import org.epis.minierp.model.TaGzzTipoComprobante;
 
@@ -35,12 +36,35 @@ public class LibroDiarioController extends HttpServlet {
         List <TaGzzMoneda> monedas = (new TaGzzMonedaDao()).getAll();
         List <TaGzzTipoComprobante> comprobantes = (new TaGzzTipoComprobanteDao()).getAll();
         List <EnP3mLibroDiario> libros = (new LibroDiarioDao()).getAll();
+        List <LibroDiario> operaciones = (new LibroDiarioDao()).getAllOperaciones(libDiaCod);
         List <EnP3mCuenta> cuentas = (new CuentaDao()).getAllActive();
         request.setAttribute("libDiaCod",libDiaCod);
         request.setAttribute("libros",libros);
         request.setAttribute("monedas", monedas);
         request.setAttribute("comprobantes", comprobantes);
         request.setAttribute("cuentas",cuentas);
+        
+        String temp="";
+        for(int i=0;i<operaciones.size();i++){       
+            temp+="<tr>";
+            temp+="<td>"+operaciones.get(i).getAsiCabCod()+"</td>";
+            temp+="<td>"+operaciones.get(i).getAsiCabFec()+"</td>";
+            temp+="<td>"+operaciones.get(i).getAsiCabGlo()+"</td>";
+            temp+="<td>"+operaciones.get(i).getAsiCabTip()+"</td>";
+            temp+="<td>"+operaciones.get(i).getAsiCabNumCom()+"</td>";
+            temp+="<td>"+operaciones.get(i).getCueCod()+"</td>";
+            temp+="<td>"+operaciones.get(i).getCueDes()+"</td>";
+            if(operaciones.get(i).getAsiDetDebHab()){
+                temp+="<td>"+operaciones.get(i).getAsiDetMon()+"</td>";
+                temp+="<td>"+0+"</td>";
+            }
+            else{
+                temp+="<td>"+0+"</td>";
+                temp+="<td>"+operaciones.get(i).getAsiDetMon()+"</td>";
+            }
+            temp+="</tr>";
+        }
+        request.setAttribute("opera",temp);
         request.getRequestDispatcher("/WEB-INF/contabilidad/libroDiario/libroDiario_Principal.jsp").forward(request, response);
     }
 
@@ -119,7 +143,7 @@ public class LibroDiarioController extends HttpServlet {
                         daoAsientoDet.save(asiDet);
                         
                     }
-                
+
                     break;
                 case 3:
                     libDiaCod = Integer.parseInt(request.getParameter("libDiaCod"));

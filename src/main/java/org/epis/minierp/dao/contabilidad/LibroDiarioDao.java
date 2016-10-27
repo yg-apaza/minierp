@@ -2,6 +2,8 @@ package org.epis.minierp.dao.contabilidad;
 
 import java.util.List;
 import org.epis.minierp.model.EnP3mLibroDiario;
+import org.epis.minierp.model.Ingresos;
+import org.epis.minierp.model.LibroDiario;
 import org.epis.minierp.model.TaGzzMoneda;
 import org.epis.minierp.util.HibernateUtil;
 import org.hibernate.Query;
@@ -27,5 +29,13 @@ public class LibroDiarioDao {
         session.save(libDiario);     
     }
     
+    public List<LibroDiario> getAllOperaciones(int oLibDiaCod) {
+        List<LibroDiario> resultados=null;
+        Query query = session.createSQLQuery("CALL PROC_LibroDiario(:oLibDiaCod)")
+	.addEntity(LibroDiario.class)
+	.setParameter("oLibDiaCod",oLibDiaCod);
+        resultados=query.list();
+        return resultados;
+    }   
     
 }

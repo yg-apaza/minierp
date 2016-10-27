@@ -88,6 +88,26 @@
     </servlet-mapping>
     <servlet>
         <description/>
+        <display-name>ProductsByAlmacenController</display-name>
+        <servlet-name>ProductsByAlmacenController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.general.ProductsByAlmacenController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ProductsByAlmacenController</servlet-name>
+        <url-pattern>/secured/general/panel/productosByAlmacen</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <description/>
+        <display-name>GraficaCompradorControlador</display-name>
+        <servlet-name>GraficaCompradorControlador</servlet-name>
+        <servlet-class>org.epis.minierp.controller.general.GraficaCompradorControlador</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GraficaCompradorControlador</servlet-name>
+        <url-pattern>/secured/general/panel/datosGraficaComprador</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <description/>
         <display-name>PerfilController</display-name>
         <servlet-name>PerfilController</servlet-name>
         <servlet-class>org.epis.minierp.controller.general.PerfilController</servlet-class>
