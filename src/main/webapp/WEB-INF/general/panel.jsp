@@ -51,6 +51,11 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-sm-12">
+                            <div class="canvas-holder">
+                                <canvas id="chart-line-prod" width="600" height="300"></canvas>
+                            </div>
+                        </div>
                         <!--Canvas grafica-->
                     </div>
                 </div>
@@ -184,10 +189,24 @@
                     });
             }
             function changingProductos(){
-                // Grafica
+                var ctxlineProd = document.getElementById("chart-line-prod").getContext("2d");
                 $.post(
                     "${pageContext.request.contextPath}/secured/general/panel/datosGraficaComprador",
                     {proCod: $("#prodSelected").val()})
+                    .done(function (data) {
+                        if (data != null)
+                        {
+                            ctxlineProd.fillText("Holi",50,50);                                
+                        }
+                        else
+                        {
+                            ctxlineProd.fillText("Texto en el Canvas",50,50);
+                        }
+                    });
+                // ....lineChartData
+
+                
+                //window.myPie = new Chart(ctxlineProd).Line(lineChartData, {responsive:true});
             }
         </script>
     </jsp:attribute>
