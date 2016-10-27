@@ -43,6 +43,15 @@ public class ReporteController extends HttpServlet {
         String fileGenerated = "";
 
         switch (report) {
+            //Reportes de Configuración
+            case "usuarios":
+                path = path + "reportes/general/usuarios.jasper";
+                fileGenerated = generador.report(path, "Usuarios_", fileType);
+                break;
+            case "documentosusuarios":
+                path = path + "reportes/general/documentosUsuarios.jasper";
+                fileGenerated = generador.report(path, "Usuarios_", fileType);
+                break;
             //Reportes de Contabilidad
             case "plancontable":
                 path = path + "reportes/contabilidad/planContable.jasper";
@@ -74,6 +83,10 @@ public class ReporteController extends HttpServlet {
                 path = path + "reportes/ventas/factura_cab.jasper";
                 fileGenerated = generador.report(path, "Factura_", fileType);
                 break;
+            case "pagos":
+                path = path + "reportes/ventas/pagos.jasper";
+                fileGenerated = generador.report(path, "Pagos_", fileType);
+                break;
             //Reportes de Logística
             case "kardexfisico":
                 path = path + "reportes/logistica/reporte_kardex_fisico.jasper";
@@ -90,6 +103,10 @@ public class ReporteController extends HttpServlet {
             case "inventario":
                 path = path + "reportes/logistica/inventario.jasper";
                 fileGenerated = generador.report(path, "Inventario_", fileType);
+                break;
+            case "productos":
+                path = path + "reportes/logistica/productos.jasper";
+                fileGenerated = generador.report(path, "Productos_", fileType);
                 break;
         }
 

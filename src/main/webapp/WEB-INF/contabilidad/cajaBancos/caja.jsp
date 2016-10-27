@@ -45,7 +45,7 @@
                 <table class="table table-bordered table-striped table-hover">
                     <thead>
                         <tr>
-                            <th>Numero Correlativo del Registro o código único de óperación</th>
+                            <th>Número Correlativo del Registro o código único de operación</th>
                             <th>Fecha de operación</th>
                             <th>Código de la Cuenta Asociada</th>
                             <th>Denominación de la Cuenta Asociada</th>
