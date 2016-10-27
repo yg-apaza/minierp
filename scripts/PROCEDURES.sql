@@ -399,3 +399,30 @@ SELECT
 
 END $$
 DELIMITER ;
+
+/* PROCEDURE PROC_LibroDiario */
+
+DELIMITER $$
+CREATE PROCEDURE PROC_LibroDiario (IN mLibDiaCod integer)
+BEGIN
+SELECT
+		libDia.LibDiaCod,
+		asiCab.AsiCabCod,
+		asiCab.AsiCabFec,
+		asiCab.AsiCabGlo, 
+		asiCab.AsiCabTip,
+		asiCab.AsiCabNumCom,
+		cue.CueCod, 
+		cue.CueDes,
+		asiDet.AsiDetDebHab, 
+		asiDet.AsiDetMon		
+	FROM en_p3t_asiento_det asiDet
+		INNER JOIN en_p3m_cuenta cue
+			ON asiDet.CueCod = cue.CueCod
+		INNER JOIN en_p3m_asiento_cab asiCab
+			ON asiDet.AsiCabCod = asiCab.AsiCabCod
+		INNER JOIN en_p3m_libro_diario libDia
+			ON libDia.LibDiaCod = asiCab.LibDiaCod
+	WHERE libDia.EstRegCod = 'A' AND libDia.LibDiaCod=mLibDiaCod;
+END $$
+DELIMITER ;

@@ -18,6 +18,7 @@
     <mapping class="org.epis.minierp.model.Kardex"/>
     <mapping class="org.epis.minierp.model.Ingresos"/>
     <mapping class="org.epis.minierp.model.Preventas"/>
+    <mapping class="org.epis.minierp.model.LibroDiario"/>
     <!--   Mapeo de clases -->
     <mapping class="org.epis.minierp.model.TaGzzTipoDocCliente"/>
     <mapping class="org.epis.minierp.model.TaGzzTipoDocUsuario"/>
