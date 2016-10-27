@@ -78,30 +78,4 @@ public class PanelController extends HttpServlet
         request.getRequestDispatcher("/WEB-INF/general/panel.jsp").forward(request, response);
     }
     
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        
-        response.setContentType("application/json");
-        response.setCharacterEncoding("UTF-8");
-        //response.getWriter().write(new Gson().toJson(data) );
-    }
-    
-    protected void processRequest(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
-        PrintWriter out = response.getWriter();
-
-        String alm = request.getParameter("alm"); // Codigo de almacen
-        List<String> productosNombres = new ArrayList();
-        EnP2mAlmacenDao almacenSelec = new EnP2mAlmacenDao();
-        Iterator<EnP2mProducto> productos = almacenSelec.getById(alm).getEnP2mProductos().iterator();
-        while(productos.hasNext())
-        {
-            EnP2mProducto product = productos.next();
-                if(product.getEstRegCod() == 'A')
-                    productosNombres.add(product.getProDet());
-        }
-        System.out.println(productosNombres);
-        request.getSession().setAttribute("listPro", productosNombres);
-    }
-    
-    
 }

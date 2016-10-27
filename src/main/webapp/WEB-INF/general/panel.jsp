@@ -1,5 +1,3 @@
-/* global request */
-
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="minierptemplate" %>
 <minierptemplate:template>
@@ -53,6 +51,7 @@
                                 </div>
                             </div>
                         </div>
+                        <!--Canvas grafica-->
                     </div>
                 </div>
             </c:if>
@@ -155,32 +154,40 @@
                 changingAlmacen();
             });
 
+            $(document).ready(function () {
+                changingProductos();
+            });
+
             function changingAlmacen() {
                 $('#prodSelected').empty();
                 var tag = true;
-                var codAlm = Number($("#almSelected").val());
-                var listProd = load("PanelController",{alm:codAlm});
-                ArrayList cd = new ArrayList();
-                cd.add(request.getSession().getAttribute("listPro"));
-                if(cd.isEmpty()==false)
-                {
-                   for(int i=0;i<cd.size();i++)
-                   {
-                       var newOpt = prodSelected.appendChild(document.createElement('option'));
-                       newOpt.text = cd.get(i);
-
-                   }
-                }
-                else
-                {
-                   alert("No hay productos")
-                }
-                if (tag) {
-                    $('#prodSelected').append($('<option>', {
-                        value: "",
-                        text: "No existen productos"
-                    }));
-                }
+                $.post(
+                    "${pageContext.request.contextPath}/secured/general/panel/productosByAlmacen",
+                    {almCod: $("#almSelected").val()})
+                    .done(function (data) {
+                        if (data != null)
+                        {
+                            $.each(data, function(k,v){
+                                $("#prodSelected").append($('<option>', {
+                                value: v.proCod,
+                                text: v.proDet
+                                })); 
+                            });                                
+                        }
+                        else
+                        {
+                            $("#prodSelected").append($('<option>', {
+                                value: "",
+                                text: "No existen productos"
+                            }));
+                        }
+                    });
+            }
+            function changingProductos(){
+                // Grafica
+                $.post(
+                    "${pageContext.request.contextPath}/secured/general/panel/datosGraficaComprador",
+                    {proCod: $("#prodSelected").val()})
             }
         </script>
     </jsp:attribute>
