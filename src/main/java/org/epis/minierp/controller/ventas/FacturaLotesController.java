@@ -38,7 +38,9 @@ public class FacturaLotesController extends HttpServlet {
                 break;
         }
         File file = new File(fileGenerated);
-        response.addHeader("Content-Disposition", "attachment; filename=" + file.getName());
+        //response.addHeader("Content-Disposition", "attachment; filename=" + file.getName());
+        response.setContentType("application/pdf");
+        response.setHeader("Content-Type", "application/pdf");
         response.setContentLength((int) file.length());
         FileInputStream fileInputStream = new FileInputStream(file);
         OutputStream responseOutputStream = response.getOutputStream();

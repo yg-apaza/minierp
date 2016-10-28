@@ -111,7 +111,7 @@
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-success" data-dismiss="modal">Aceptar</button>                                            
                     </div>
-                </div>              
+                </div>         
             </div>
         </div>
         
