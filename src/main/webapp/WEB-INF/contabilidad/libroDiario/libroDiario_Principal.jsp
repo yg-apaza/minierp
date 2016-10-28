@@ -99,18 +99,8 @@
                                   </tr>
                                 </thead>
                                 <tbody>
-                                      <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-
-                                      </tr>
+                                    ${opera}
+                                      
                                 </tbody>
                             </table>
                         </div>
@@ -128,6 +118,7 @@
                             <label>TOTAL GENERAL</label>
                             <table  width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                                 <thead>
+                                    
                                     <tr>
                                         <th>DEBE</th>
                                         <th>HABER</th>

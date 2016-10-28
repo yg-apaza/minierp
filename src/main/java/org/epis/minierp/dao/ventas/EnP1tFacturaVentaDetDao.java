@@ -32,6 +32,12 @@ public class EnP1tFacturaVentaDetDao {
         return estado;
     }
     
+    public List <EnP1tFacturaVentaDet> getByProduc(String codPro){
+        Query query = session.createQuery("from EnP1tFacturaVentaDet U where U.enP2mProducto.id.proCod = :codPro");
+        query.setParameter("codPro", codPro);
+        return query.list();
+    }
+    
     public void save(EnP1tFacturaVentaDet facturaDet) {
         session.save(facturaDet);     
     }
