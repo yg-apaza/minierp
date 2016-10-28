@@ -19,8 +19,8 @@ import org.epis.minierp.dao.ventas.PreventasDao;
 import org.epis.minierp.model.EnP1mUsuario;
 import org.epis.minierp.model.EnP2mAlmacen;
 import org.epis.minierp.model.EnP2mProducto;
-import org.epis.minierp.model.Ingresos;
-import org.epis.minierp.model.Preventas;
+import org.epis.minierp.model.ventas.Ingresos;
+import org.epis.minierp.model.ventas.Preventas;
 
 public class PanelController extends HttpServlet
 {	

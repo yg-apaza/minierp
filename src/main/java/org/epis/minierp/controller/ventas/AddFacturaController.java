@@ -87,7 +87,7 @@ public class AddFacturaController extends HttpServlet
         List <EnP2mClaseProducto> clases = (new EnP2mClaseProductoDao()).getAllActive();
         List <EnP2mSubclaseProducto> subclases = (new EnP2mSubclaseProductoDao()).getAllActive();
         EnP1mEmpresa empresa = (new EnP1mEmpresaDao()).getAll().get(0);
-        EnP1mPuntoVenta punto = user.getEnP1mSucursal().getEnP1mPuntoVentas().iterator().next(); //Getting the first one
+        EnP1mPuntoVenta punto = (EnP1mPuntoVenta) user.getEnP1mSucursal().getEnP1mPuntoVentas().iterator().next(); //Getting the first one
 
         request.setAttribute("metodosPagoFactura", metodosPagoFactura);
         request.setAttribute("monedas", monedas);
@@ -220,7 +220,7 @@ public class AddFacturaController extends HttpServlet
             EnP1mMovimientoPuntoVenDao movPunVenDao = new EnP1mMovimientoPuntoVenDao(); 
             EnP1mMovimientoPuntoVen movPunVen = new EnP1mMovimientoPuntoVen();
             EnP1mSucursal brachOffice = user.getEnP1mSucursal();
-            EnP1mPuntoVenta salePoint = brachOffice.getEnP1mPuntoVentas().iterator().next(); //Getting the first one
+            EnP1mPuntoVenta salePoint = (EnP1mPuntoVenta) brachOffice.getEnP1mPuntoVentas().iterator().next(); //Getting the first one
             
             EnP1mMovimientoPuntoVenId movPunVenId = new EnP1mMovimientoPuntoVenId();
             movPunVenId.setSucCod(brachOffice.getSucCod());

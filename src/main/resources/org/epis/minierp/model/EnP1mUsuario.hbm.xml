@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 28/10/2016 01:30:39 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="org.epis.minierp.model.EnP1mUsuario" table="en_p1m_usuario" catalog="episerp" optimistic-lock="version">
+        <id name="usuCod" type="string">
+            <column name="UsuCod" length="15" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="enP1mSucursal" class="org.epis.minierp.model.EnP1mSucursal" fetch="select">
+            <column name="SucCod" not-null="true" />
+        </many-to-one>
+        <many-to-one name="taGzzEstadoCivil" class="org.epis.minierp.model.TaGzzEstadoCivil" fetch="select">
+            <column name="EstCivCod" not-null="true" />
+        </many-to-one>
+        <many-to-one name="taGzzTipoUsuario" class="org.epis.minierp.model.TaGzzTipoUsuario" fetch="select">
+            <column name="TipUsuCod" not-null="true" />
+        </many-to-one>
+        <property name="usuNom" type="string">
+            <column name="UsuNom" length="90" />
+        </property>
+        <property name="usuApePat" type="string">
+            <column name="UsuApePat" length="20" />
+        </property>
+        <property name="usuApeMat" type="string">
+            <column name="UsuApeMat" length="20" />
+        </property>
+        <property name="usuLog" type="string">
+            <column name="UsuLog" length="30" not-null="true" />
+        </property>
+        <property name="usuPas" type="string">
+            <column name="UsuPas" length="80" not-null="true" />
+        </property>
+        <property name="usuFecNac" type="date">
+            <column name="UsuFecNac" length="10" />
+        </property>
+        <property name="usuSex" type="char">
+            <column name="UsuSex" length="1" not-null="true" />
+        </property>
+        <property name="estRegCod" type="char">
+            <column name="EstRegCod" length="1" not-null="true" />
+        </property>
+        <set name="enP1mMovimientoPuntoVens" table="en_p1m_movimiento_punto_ven" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="UsuCod" length="15" not-null="true" />
+            </key>
+            <one-to-many class="org.epis.minierp.model.EnP1mMovimientoPuntoVen" />
+        </set>
+        <set name="enP1mPreventaCabs" table="en_p1m_preventa_cab" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="UsuCod" length="15" not-null="true" />
+            </key>
+            <one-to-many class="org.epis.minierp.model.EnP1mPreventaCab" />
+        </set>
+        <set name="enP4mFacturaCompraCabs" table="en_p4m_factura_compra_cab" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="UsuCod" length="15" not-null="true" />
+            </key>
+            <one-to-many class="org.epis.minierp.model.EnP4mFacturaCompraCab" />
+        </set>
+        <set name="enP1mDocumentoUsuarios" table="en_p1m_documento_usuario" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="UsuCod" length="15" not-null="true" />
+            </key>
+            <one-to-many class="org.epis.minierp.model.EnP1mDocumentoUsuario" />
+        </set>
+        <set name="enP1mFacturaVentaCabs" table="en_p1m_factura_venta_cab" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="UsuCod" length="15" not-null="true" />
+            </key>
+            <one-to-many class="org.epis.minierp.model.EnP1mFacturaVentaCab" />
+        </set>
+    </class>
+</hibernate-mapping>

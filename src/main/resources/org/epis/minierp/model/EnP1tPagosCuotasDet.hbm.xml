@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 28/10/2016 01:30:39 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="org.epis.minierp.model.EnP1tPagosCuotasDet" table="en_p1t_pagos_cuotas_det" catalog="episerp" optimistic-lock="version">
+        <composite-id name="id" class="org.epis.minierp.model.EnP1tPagosCuotasDetId">
+            <key-property name="pagCuoDetCod" type="int">
+                <column name="PagCuoDetCod" />
+            </key-property>
+            <key-property name="facVenCabCod" type="string">
+                <column name="FacVenCabCod" length="10" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="enP1mPagosCuotasCab" class="org.epis.minierp.model.EnP1mPagosCuotasCab" update="false" insert="false" fetch="select">
+            <column name="FacVenCabCod" length="10" not-null="true" />
+        </many-to-one>
+        <property name="pagCuoDetTotPag" type="double">
+            <column name="PagCuoDetTotPag" precision="10" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

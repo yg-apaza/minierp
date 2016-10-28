@@ -2,8 +2,8 @@ package org.epis.minierp.dao.contabilidad;
 
 import java.util.List;
 import org.epis.minierp.model.EnP3mLibroDiario;
-import org.epis.minierp.model.Ingresos;
-import org.epis.minierp.model.LibroDiario;
+import org.epis.minierp.model.ventas.Ingresos;
+import org.epis.minierp.model.contabilidad.LibroDiario;
 import org.epis.minierp.model.TaGzzMoneda;
 import org.epis.minierp.util.HibernateUtil;
 import org.hibernate.Query;

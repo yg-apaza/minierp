@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 28/10/2016 01:30:39 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="org.epis.minierp.model.EnP1mEmpresa" table="en_p1m_empresa" catalog="episerp" optimistic-lock="version">
+        <id name="empCod" type="java.lang.Integer">
+            <column name="EmpCod" />
+            <generator class="identity" />
+        </id>
+        <property name="empNom" type="string">
+            <column name="EmpNom" length="80" not-null="true" />
+        </property>
+        <property name="empDes" type="string">
+            <column name="EmpDes" length="200" />
+        </property>
+        <property name="empDir" type="string">
+            <column name="EmpDir" length="100" not-null="true" />
+        </property>
+        <property name="empTel" type="string">
+            <column name="EmpTel" length="20" />
+        </property>
+        <property name="empCor" type="string">
+            <column name="EmpCor" length="50" />
+        </property>
+        <property name="empIgv" type="double">
+            <column name="EmpIGV" precision="5" not-null="true" />
+        </property>
+        <property name="empRuc" type="string">
+            <column name="EmpRUC" length="11" not-null="true" />
+        </property>
+        <property name="empImg" type="binary">
+            <column name="EmpImg" />
+        </property>
+    </class>
+</hibernate-mapping>

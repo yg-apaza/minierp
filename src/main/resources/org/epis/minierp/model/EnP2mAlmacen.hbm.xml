@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 28/10/2016 01:30:39 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="org.epis.minierp.model.EnP2mAlmacen" table="en_p2m_almacen" catalog="episerp" optimistic-lock="version">
+        <id name="almCod" type="string">
+            <column name="AlmCod" length="15" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="enP1mSucursal" class="org.epis.minierp.model.EnP1mSucursal" fetch="select">
+            <column name="SucCod" not-null="true" />
+        </many-to-one>
+        <property name="almDet" type="string">
+            <column name="AlmDet" length="90" />
+        </property>
+        <property name="almVolTot" type="java.lang.Double">
+            <column name="AlmVolTot" precision="10" />
+        </property>
+        <property name="almObs" type="string">
+            <column name="AlmObs" length="90" not-null="true" />
+        </property>
+        <property name="estRegCod" type="char">
+            <column name="EstRegCod" length="1" not-null="true" />
+        </property>
+        <set name="enP2mProductos" table="en_p2m_producto" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="AlmCod" length="15" not-null="true" />
+            </key>
+            <one-to-many class="org.epis.minierp.model.EnP2mProducto" />
+        </set>
+    </class>
+</hibernate-mapping>

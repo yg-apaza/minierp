@@ -22,7 +22,7 @@ import org.epis.minierp.model.EnP3mCuenta;
 import org.epis.minierp.model.EnP3mLibroDiario;
 import org.epis.minierp.model.EnP3tAsientoDet;
 import org.epis.minierp.model.EnP3tAsientoDetId;
-import org.epis.minierp.model.LibroDiario;
+import org.epis.minierp.model.contabilidad.LibroDiario;
 import org.epis.minierp.model.TaGzzMoneda;
 import org.epis.minierp.model.TaGzzTipoComprobante;
 

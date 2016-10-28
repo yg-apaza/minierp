@@ -2,7 +2,7 @@ package org.epis.minierp.dao.compras;
 
 import java.util.List;
 
-import org.epis.minierp.model.Kardex;
+import org.epis.minierp.model.compras.Kardex;
 import org.epis.minierp.util.HibernateUtil;
 import org.hibernate.Query;
 import org.hibernate.Session;

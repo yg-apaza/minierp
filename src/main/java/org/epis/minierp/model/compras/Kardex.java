@@ -1,4 +1,4 @@
-package org.epis.minierp.model;
+package org.epis.minierp.model.compras;
 
 import java.io.Serializable;
 import java.math.BigDecimal;

@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 28/10/2016 01:30:39 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="org.epis.minierp.model.EnP3mCuenta" table="en_p3m_cuenta" catalog="episerp" optimistic-lock="version">
+        <id name="cueCod" type="java.lang.Integer">
+            <column name="CueCod" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="enP3mCuenta" class="org.epis.minierp.model.EnP3mCuenta" fetch="select">
+            <column name="CuePad" />
+        </many-to-one>
+        <property name="cueNiv" type="int">
+            <column name="CueNiv" not-null="true" />
+        </property>
+        <property name="cueNum" type="string">
+            <column name="CueNum" length="10" not-null="true" />
+        </property>
+        <property name="cueDes" type="string">
+            <column name="CueDes" length="150" not-null="true" />
+        </property>
+        <property name="estRegCod" type="char">
+            <column name="EstRegCod" length="1" not-null="true" />
+        </property>
+        <set name="enP3tAsientoDets" table="en_p3t_asiento_det" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="CueCod" not-null="true" />
+            </key>
+            <one-to-many class="org.epis.minierp.model.EnP3tAsientoDet" />
+        </set>
+        <set name="enP3mCuentaBancos" table="en_p3m_cuenta_banco" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="CueCod" not-null="true" />
+            </key>
+            <one-to-many class="org.epis.minierp.model.EnP3mCuentaBanco" />
+        </set>
+        <set name="enP3mCuentas" table="en_p3m_cuenta" inverse="true" lazy="true" fetch="select" sort="natural">
+            <key>
+                <column name="CuePad" />
+            </key>
+            <one-to-many class="org.epis.minierp.model.EnP3mCuenta" />
+        </set>
+        <set name="enP3tPlantillaDets" table="en_p3t_plantilla_det" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="CueCod" not-null="true" />
+            </key>
+            <one-to-many class="org.epis.minierp.model.EnP3tPlantillaDet" />
+        </set>
+    </class>
+</hibernate-mapping>

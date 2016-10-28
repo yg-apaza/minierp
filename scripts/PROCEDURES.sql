@@ -1,5 +1,6 @@
 /* PROCEDURE kardex_prom_ponderado */
 
+DROP PROCEDURE IF EXISTS `kardex_prom_ponderado`;
 DELIMITER $$
 CREATE  PROCEDURE `kardex_prom_ponderado`(IN idProducto CHAR(15))
 BEGIN
@@ -91,8 +92,9 @@ DELIMITER ;
 
 /* PROCEDURE PROC_IngresosPreventas */
 
+DROP PROCEDURE IF EXISTS `PROC_IngresosPreventas`;
 DELIMITER $$
-CREATE PROCEDURE PROC_IngresosPreventas (IN mCliCod char(15), IN mTipo integer)
+CREATE PROCEDURE `PROC_IngresosPreventas` (IN mCliCod char(15), IN mTipo integer)
 BEGIN
 
 	IF mTipo = 1 
@@ -114,6 +116,7 @@ DELIMITER ;
 
 /* PROCEDURE evaluacion_preventa */
 
+DROP PROCEDURE IF EXISTS `evaluacion_preventa`;
 SET GLOBAL event_scheduler=ON;
 CREATE EVENT evaluacionAutomaticaPreventas
     ON SCHEDULE EVERY 1 DAY STARTS '2016-10-019 23:59:00'
@@ -158,6 +161,7 @@ DELIMITER ;
 
 /* PROCEDURE flujo_efectivo */
 
+DROP PROCEDURE IF EXISTS `flujo_efectivo`;
 DELIMITER $$
 CREATE  PROCEDURE `flujo_efectivo`(IN fec_ini DATE, fec_fin DATE)
 BEGIN
@@ -401,9 +405,9 @@ END $$
 DELIMITER ;
 
 /* PROCEDURE PROC_LibroDiario */
-
+DROP PROCEDURE IF EXISTS `PROC_LibroDiario`;
 DELIMITER $$
-CREATE PROCEDURE PROC_LibroDiario (IN mLibDiaCod integer)
+CREATE PROCEDURE `PROC_LibroDiario` (IN mLibDiaCod integer)
 BEGIN
 SELECT
 		libDia.LibDiaCod,
