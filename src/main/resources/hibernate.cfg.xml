@@ -20,7 +20,6 @@
     <mapping class="org.epis.minierp.model.compras.Kardex"/>
     <mapping class="org.epis.minierp.model.ventas.Ingresos"/>
     <mapping class="org.epis.minierp.model.ventas.Preventas"/>
-    <mapping class="org.epis.minierp.model.contabilidad.LibroDiario"/>
     
     <mapping resource="org/epis/minierp/model/TaGzzTipoDocCliente.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/TaGzzTipoDocUsuario.hbm.xml"/>

@@ -794,9 +794,6 @@ LIMIT 0, 1000
 -- Date: 2016-10-27 17:33
 */
 INSERT INTO `en_p3m_libro_diario` (`LibDiaCod`,`LibDiaPer`,`EstRegCod`) VALUES (000001,'2016-Oct','A');
-INSERT INTO `en_p3m_libro_diario` (`LibDiaCod`,`LibDiaPer`,`EstRegCod`) VALUES (000002,'','A');
-
-
 
 /*
 -- Query: SELECT * FROM episerp.en_p3m_asiento_cab

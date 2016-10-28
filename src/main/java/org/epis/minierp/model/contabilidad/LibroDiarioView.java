@@ -13,6 +13,21 @@ public class LibroDiarioView implements Serializable
     @EmbeddedId
     private LibroDiarioPKView idPK;
     
+    @Column(name="AsiCabFec")
+    private String asiCabFec;
+    
+    @Column(name="AsiCabGlo")
+    private String asiCabGlo;
+    
+    @Column(name="AsiCabTip")
+    private char asiCabTip;
+    
+    @Column(name="AsiCabNumCom")
+    private String asiCabNumCom;
+    
+    @Column(name="CueCod")
+    private int cueCod;
+    
     @Column(name="CueNum")
     private String cueNum;
     
@@ -25,9 +40,6 @@ public class LibroDiarioView implements Serializable
     @Column(name="AsiDetMon")
     private double asiDetMon;
     
-    @Column(name="AsiCabFec")
-    private String asiCabFec;
-    
     @Column(name="EstRegCod")
     private String estRegCod;
 
@@ -37,6 +49,46 @@ public class LibroDiarioView implements Serializable
 
     public void setIdPK(LibroDiarioPKView idPK) {
         this.idPK = idPK;
+    }
+
+    public String getAsiCabFec() {
+        return asiCabFec;
+    }
+
+    public void setAsiCabFec(String asiCabFec) {
+        this.asiCabFec = asiCabFec;
+    }
+
+    public String getAsiCabGlo() {
+        return asiCabGlo;
+    }
+
+    public void setAsiCabGlo(String asiCabGlo) {
+        this.asiCabGlo = asiCabGlo;
+    }
+
+    public char getAsiCabTip() {
+        return asiCabTip;
+    }
+
+    public void setAsiCabTip(char asiCabTip) {
+        this.asiCabTip = asiCabTip;
+    }
+
+    public String getAsiCabNumCom() {
+        return asiCabNumCom;
+    }
+
+    public void setAsiCabNumCom(String asiCabNumCom) {
+        this.asiCabNumCom = asiCabNumCom;
+    }
+
+    public int getCueCod() {
+        return cueCod;
+    }
+
+    public void setCueCod(int cueCod) {
+        this.cueCod = cueCod;
     }
 
     public String getCueNum() {
@@ -71,14 +123,6 @@ public class LibroDiarioView implements Serializable
         this.asiDetMon = asiDetMon;
     }
 
-    public String getAsiCabFec() {
-        return asiCabFec;
-    }
-
-    public void setAsiCabFec(String asiCabFec) {
-        this.asiCabFec = asiCabFec;
-    }
-
     public String getEstRegCod() {
         return estRegCod;
     }
@@ -86,9 +130,9 @@ public class LibroDiarioView implements Serializable
     public void setEstRegCod(String estRegCod) {
         this.estRegCod = estRegCod;
     }
-
+    
     @Override
     public String toString() {
-        return "LibroDiario{" + "idPK=" + idPK + ", cueNum=" + cueNum + ", cueDes=" + cueDes + ", asiDetDebHab=" + asiDetDebHab + ", asiDetMon=" + asiDetMon + ", asiCabFec=" + asiCabFec + ", estRegCod=" + estRegCod + '}';
+        return "LibroDiarioView{" + "idPK=" + idPK + ", asiCabFec=" + asiCabFec + ", asiCabGlo=" + asiCabGlo + ", asiCabTip=" + asiCabTip + ", asiCabNumCom=" + asiCabNumCom + ", cueCod=" + cueCod + ", cueNum=" + cueNum + ", cueDes=" + cueDes + ", asiDetDebHab=" + asiDetDebHab + ", asiDetMon=" + asiDetMon + ", estRegCod=" + estRegCod + '}';
     }
 }
