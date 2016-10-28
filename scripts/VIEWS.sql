@@ -60,11 +60,15 @@ CREATE OR REPLACE VIEW VIEW_LIBRO_DIARIO AS (
 		libDia.LibDiaCod,
 		asiCab.AsiCabCod,
 		asiDet.AsiDetCod,
+		asiCab.AsiCabFec,
+		asiCab.AsiCabGlo, 
+		asiCab.AsiCabTip,
+		asiCab.AsiCabNumCom,
+		cue.CueCod,
 		cue.CueNum, 
 		cue.CueDes,
 		asiDet.AsiDetDebHab, 
 		asiDet.AsiDetMon,
-		asiCab.AsiCabFec,
 		libDia.EstRegCod
 	FROM en_p3t_asiento_det asiDet
 		INNER JOIN en_p3m_cuenta cue
@@ -75,26 +79,4 @@ CREATE OR REPLACE VIEW VIEW_LIBRO_DIARIO AS (
 			ON libDia.LibDiaCod = asiCab.LibDiaCod
 	WHERE libDia.EstRegCod = 'A'
 	ORDER BY asiCab.AsiCabFec
-);
-
-CREATE OR REPLACE VIEW LIBRO_DIARIO AS (
-	SELECT
-		libDia.LibDiaCod,
-		asiCab.AsiCabCod,
-		asiCab.AsiCabFec,
-		asiCab.AsiCabGlo, 
-		asiCab.AsiCabTip,
-		asiCab.AsiCabNumCom,
-		cue.CueCod, 
-		cue.CueDes,
-		asiDet.AsiDetDebHab, 
-		asiDet.AsiDetMon		
-	FROM en_p3t_asiento_det asiDet
-		INNER JOIN en_p3m_cuenta cue
-			ON asiDet.CueCod = cue.CueCod
-		INNER JOIN en_p3m_asiento_cab asiCab
-			ON asiDet.AsiCabCod = asiCab.AsiCabCod
-		INNER JOIN en_p3m_libro_diario libDia
-			ON libDia.LibDiaCod = asiCab.LibDiaCod
-	WHERE libDia.EstRegCod = 'A'
 );
