@@ -382,6 +382,16 @@
     </servlet-mapping>
     <servlet>
         <description/>
+        <display-name>LibroMayorController</display-name>
+        <servlet-name>LibroMayorController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.contabilidad.LibroMayorController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LibroMayorController</servlet-name>
+        <url-pattern>/secured/contabilidad/libroMayor</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <description/>
         <display-name>CuentaBancoController</display-name>
         <servlet-name>CuentaBancoController</servlet-name>
         <servlet-class>org.epis.minierp.controller.contabilidad.CuentaBancoController</servlet-class>

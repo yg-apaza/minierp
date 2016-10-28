@@ -148,6 +148,9 @@
                                         <a href="${pageContext.request.contextPath}/secured/contabilidad/librodiario">Libro Diario</a>
                                     </li>
                                     <li>
+                                        <a href="${pageContext.request.contextPath}/secured/contabilidad/libroMayor">Libro Mayor</a>
+                                    </li>
+                                    <li>
                                         <a href="${pageContext.request.contextPath}/secured/contabilidad/caja">Caja</a>
                                     </li>
                                     <li>
