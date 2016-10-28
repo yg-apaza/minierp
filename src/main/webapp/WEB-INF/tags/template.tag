@@ -121,6 +121,9 @@
                                             <li>
                                                 <a href="${pageContext.request.contextPath}/secured/compras/productos">Productos</a>
                                             </li>
+                                            <li>
+                                                <a href="${pageContext.request.contextPath}/secured/compras/claseSubclase">Clase/Subclase</a>
+                                            </li>
                                         </ul>
                                     </li>
                                     <li>

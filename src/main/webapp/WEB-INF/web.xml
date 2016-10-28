@@ -232,6 +232,16 @@
         <servlet-name>ProductController</servlet-name>
         <url-pattern>/secured/compras/productos</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <description/>
+        <display-name>ClassSubClassController</display-name>
+        <servlet-name>ClassSubClassController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.compras.ClassSubClassController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ClassSubClassController</servlet-name>
+        <url-pattern>/secured/compras/claseSubclase</url-pattern>
+    </servlet-mapping>
     <!--Modulo de Configuraciones-->
     <servlet>
         <description/>

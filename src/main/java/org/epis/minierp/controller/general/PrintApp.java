@@ -18,10 +18,11 @@ import static java.util.Collections.list;
 import java.util.Date;
 import java.util.Map;
 import net.sf.jasperreports.engine.export.JRPdfExporter;
+import net.sf.jasperreports.engine.query.JRHibernateQueryExecuterFactory;
 import org.epis.minierp.util.HibernateUtil;
 import org.hibernate.Session;
 
-public class PrintApp extends Applet{
+public class PrintApp {
 
     private Session session;
     private Connection sessionc;
@@ -37,12 +38,12 @@ public class PrintApp extends Applet{
     public void print() {
         try {
             session = HibernateUtil.getSessionFactory().getCurrentSession();
-            param.put(key, value);
-            String path= "WEB-INF/reportes/ventas/clientes.jasper";
+            param.put(JRHibernateQueryExecuterFactory.PARAMETER_HIBERNATE_SESSION, session);
+            String path= "D:/UNSA/2016/TI/Proyecto/minierp/src/main/webapp/WEB-INF/reportes/ventas/report1.jasper";
 
-            JasperPrint jasperPrint = JasperFillManager.fillReport(path, param, sessionc);
+            JasperPrint jasperPrint = JasperFillManager.fillReport(path, param);
             
-            String selectedPrinter = "Foxit Reader PDF Printer";
+            String selectedPrinter = "foxit";
             PrinterJob printerJob = PrinterJob.getPrinterJob();
             PrintService[] services = PrintServiceLookup.lookupPrintServices(null, null);
             PrintService selectedService = null;
@@ -57,7 +58,7 @@ public class PrintApp extends Applet{
                 if(selectedService != null){
                     try {
                         printerJob.setPrintService(selectedService);
-                        boolean printSucceed = JasperPrintManager.printReport(jasperPrint, true);
+                        boolean printSucceed = JasperPrintManager.printReport(jasperPrint, false);
                     } catch (PrinterException ex) {
                         Logger.getLogger(PrintApp.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -66,6 +67,11 @@ public class PrintApp extends Applet{
         } catch (JRException ex) {
             Logger.getLogger(PrintApp.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    public static void main(String args[]){
+        PrintApp p = new PrintApp();
+        p.print();
     }
     
     public void batch(){

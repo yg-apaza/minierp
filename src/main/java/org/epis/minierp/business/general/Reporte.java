@@ -20,6 +20,7 @@ import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.export.JRPdfExporter;
+import net.sf.jasperreports.engine.export.JRTextExporter;
 import net.sf.jasperreports.engine.export.JRXlsExporter;
 import net.sf.jasperreports.engine.export.ooxml.JRDocxExporter;
 import net.sf.jasperreports.engine.query.JRHibernateQueryExecuterFactory;
@@ -27,6 +28,7 @@ import net.sf.jasperreports.export.Exporter;
 import net.sf.jasperreports.export.SimpleExporterInput;
 import net.sf.jasperreports.export.SimpleOutputStreamExporterOutput;
 import net.sf.jasperreports.export.SimplePdfExporterConfiguration;
+import net.sf.jasperreports.export.WriterExporterOutput;
 import org.epis.minierp.util.DbUtil;
 import org.epis.minierp.util.HibernateUtil;
 import org.hibernate.Session;
@@ -70,16 +72,21 @@ public class Reporte {
         String file = fileName + sf.format(date.getTime());
         String fullPath = file;
         try {
-            for (int i = 0; i < values.length; i++){
+            for (String value1 : values) {
                 param = new HashMap();
                 param.put(JRHibernateQueryExecuterFactory.PARAMETER_HIBERNATE_SESSION, session);
-                param.put(key, values[i]);
+                param.put(key, value1);
                 jasperPrint = JasperFillManager.fillReport(path, param, sessionc);
                 jasperPrintList.add(jasperPrint);
             }
 
+            /*JRTextExporter exporter = new JRTextExporter();
+            File txtFile = new File(fullPath + ".txt");
+            exporter.setParameter(JRExporterParameter.JASPER_PRINT_LIST, jasperPrintList);
+            exporter.setParameter(JRExporterParameter.OUTPUT_FILE_NAME,  fullPath + ".txt");
+            exporter.exportReport();*/
+            
             JRPdfExporter exporter = new JRPdfExporter();
-
             exporter.setExporterInput(SimpleExporterInput.getInstance(jasperPrintList));
             File pdfFile = new File(fullPath + ".pdf");
             exporter.setExporterOutput(new SimpleOutputStreamExporterOutput(pdfFile));
