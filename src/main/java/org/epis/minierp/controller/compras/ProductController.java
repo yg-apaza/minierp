@@ -72,11 +72,11 @@ public class ProductController extends HttpServlet {
                 
                 product = new EnP2mProducto(); 
                 product.setId(productId);
-                product.setEnP2mAlmacen((new EnP2mAlmacenDao()).getById(almCod));
+                //product.setEnP2mAlmacen((new EnP2mAlmacenDao()).getById(almCod));
                 product.setEstRegCod('A');
                 product.setProDet(proDet);
                 product.setProObs(proObs);
-                product.setProPreUni(proPreUni);
+                product.setProPreUniVen(proPreUni);
                 product.setProStk(0);
                 product.setProStkMax(proStkMax);
                 product.setProStkMin(proStkMin);
@@ -109,10 +109,10 @@ public class ProductController extends HttpServlet {
                 
                 EnP2mProductoDao productDao = new EnP2mProductoDao();
                 product = productDao.getById(productId);
-                product.setEnP2mAlmacen((new EnP2mAlmacenDao()).getById(almCod));
+                //product.setEnP2mAlmacen((new EnP2mAlmacenDao()).getById(almCod));
                 product.setProDet(proDet);
                 product.setProObs(proObs);
-                product.setProPreUni(proPreUni);
+                product.setProPreUniVen(proPreUni);
                 product.setProStkMax(proStkMax);
                 product.setProStkMin(proStkMin);
                 product.setTaGzzMoneda((new TaGzzMonedaDao()).getById(monCod));

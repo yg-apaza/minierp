@@ -28,7 +28,7 @@ public class EnP1mPagosCuotasBusiness {
         
         cabcuo.setFacVenCabCod(facVenCabCod);
         cabcuo.setEnP1mFacturaVentaCab(facCab);
-        cabcuo.setPagCuoNumDoc(pagCuoNumDoc);
+        //cabcuo.setPagCuoNumDoc(pagCuoNumDoc);
         cabcuo.setPagCuoNum(pagCuoNum);
         cabcuo.setPagCuoNumPag(0); //0 cuotas pagadas
         cabcuo.setPagCuoDeuTot(pagCuoDeuTot);

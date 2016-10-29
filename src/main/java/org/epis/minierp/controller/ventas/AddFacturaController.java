@@ -67,7 +67,7 @@ public class AddFacturaController extends HttpServlet
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession(true);
         EnP1mUsuario user = (EnP1mUsuario) session.getAttribute("usuario");
-        Iterator <EnP2mAlmacen> stores = user.getEnP1mSucursal().getEnP2mAlmacens().iterator();
+        /*Iterator <EnP2mAlmacen> stores = user.getEnP1mSucursal().getEnP2mAlmacens().iterator();
         Set <EnP2mProducto> productosSet = new HashSet <> ();
         while(stores.hasNext()) {
             Iterator <EnP2mProducto> products = stores.next().getEnP2mProductos().iterator();
@@ -76,14 +76,15 @@ public class AddFacturaController extends HttpServlet
                 if(product.getEstRegCod() == 'A')
                     productosSet.add(product);
             }            
-        }
+        }*/
         
         List <TaGzzMetodoPagoFactura> metodosPagoFactura = (new TaGzzMetodoPagoFacturaDao()).getAllActive();
         List <TaGzzMoneda> monedas = (new TaGzzMonedaDao()).getAllActive();
         List <TaGzzTipoPagoFactura> tiposPagoFactura = (new TaGzzTipoPagoFacturaDao()).getAllActive(); 
-        List <EnP2mProducto> productos = new ArrayList<EnP2mProducto>(productosSet);
+        //List <EnP2mProducto> productos = new ArrayList<EnP2mProducto>(productosSet);
+        List <EnP2mProducto> productos = (new EnP2mProductoDao()).getAllActive();
         List <TaGzzEstadoFactura> estados = (new TaGzzEstadoFacturaDao()).getAllActive();
-        List<EnP1mDocumentoCliente> documentos = (new EnP1mDocumentoClienteDao()).getAllActive();
+        List <EnP1mDocumentoCliente> documentos = (new EnP1mDocumentoClienteDao()).getAllActive();
         List <EnP2mClaseProducto> clases = (new EnP2mClaseProductoDao()).getAllActive();
         List <EnP2mSubclaseProducto> subclases = (new EnP2mSubclaseProductoDao()).getAllActive();
         EnP1mEmpresa empresa = (new EnP1mEmpresaDao()).getAll().get(0);

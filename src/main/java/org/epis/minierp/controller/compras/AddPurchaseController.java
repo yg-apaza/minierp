@@ -87,14 +87,14 @@ public class AddPurchaseController extends HttpServlet {
             EnP4mProveedor proveedor = proveedorDao.getById(proCod);
             if(proveedor != null)
             {
-                proveedor.setProDet(proDet);
+                proveedor.setPrvDet(proDet);
                 header.setEnP4mProveedor(proveedor);
             }
             else
             {
                 EnP4mProveedor proveedorNew = new EnP4mProveedor();
-                proveedorNew.setProCod(proCod);
-                proveedorNew.setProDet(proDet);
+                proveedorNew.setPrvCod(proCod);
+                proveedorNew.setPrvDet(proDet);
                 proveedorNew.setEstRegCod('A');
                 proveedorDao.save(proveedorNew);
                 header.setEnP4mProveedor(proveedorNew);

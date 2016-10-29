@@ -54,25 +54,25 @@
                         <tbody>
                             <c:forEach items = "${proveedores}" var = "proveedor">    
                                 <tr>
-                                    <td><c:out value="${proveedor.proCod}"/> </td>
-                                    <td><c:out value="${proveedor.proDet}"/></td>
-                                    <td><c:out value="${proveedor.proDir}"/></td>
-                                    <td style="text-align: center"><c:out value="${proveedor.proTelCel}"/></td>
-                                    <td style="text-align: center"><c:out value="${proveedor.proEmail}"/></td>
+                                    <td><c:out value="${proveedor.prvCod}"/> </td>
+                                    <td><c:out value="${proveedor.prvDet}"/></td>
+                                    <td><c:out value="${proveedor.prvDir}"/></td>
+                                    <td style="text-align: center"><c:out value="${proveedor.prvTelCel}"/></td>
+                                    <td style="text-align: center"><c:out value="${proveedor.prvEmail}"/></td>
                                     <td>
-                                        <a href="#" data-toggle="modal" data-target="#editSupplier" data-cod="${proveedor.proCod}"
-                                                                                                      data-det="${proveedor.proDet}"
-                                                                                                      data-con="${proveedor.proCon}"
-                                                                                                      data-dir="${proveedor.proDir}"
-                                                                                                      data-telfij="${proveedor.proTelFij}"
-                                                                                                      data-telcel="${proveedor.proTelCel}"
-                                                                                                      data-email="${proveedor.proEmail}"
-                                                                                                      data-pagweb="${proveedor.proPagWeb}"
-                                                                                                      data-obs="${proveedor.proObs}">
+                                        <a href="#" data-toggle="modal" data-target="#editSupplier" data-cod="${proveedor.prvCod}"
+                                                                                                      data-det="${proveedor.prvDet}"
+                                                                                                      data-con="${proveedor.prvCon}"
+                                                                                                      data-dir="${proveedor.prvDir}"
+                                                                                                      data-telfij="${proveedor.prvTelFij}"
+                                                                                                      data-telcel="${proveedor.prvTelCel}"
+                                                                                                      data-email="${proveedor.prvEmail}"
+                                                                                                      data-pagweb="${proveedor.prvPagWeb}"
+                                                                                                      data-obs="${proveedor.prvObs}">
                                             <i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i>
                                         </a> 
-                                        <a href="#" data-toggle="modal" data-target="#deleteSupplier" data-cod="${proveedor.proCod}"
-                                                                                                      data-det="${proveedor.proDet}">
+                                        <a href="#" data-toggle="modal" data-target="#deleteSupplier" data-cod="${proveedor.prvCod}"
+                                                                                                      data-det="${proveedor.prvDet}">
                                             <i class="fa fa-trash-o fa-2x" style="color: black;"></i>
                                         </a> 
                                     </td>

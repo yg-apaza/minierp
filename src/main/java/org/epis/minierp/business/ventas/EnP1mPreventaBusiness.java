@@ -91,7 +91,7 @@ public class EnP1mPreventaBusiness {
         proDao.update(pro);
         
         //Crea el detalle
-        double proValUni = pro.getProPreUni();
+        double proValUni = pro.getProPreUniVen();
         EnP1tPreventaDet preVenDet = new EnP1tPreventaDet();
         int preVenDetCod = preVenDetDao.getLastPreVenDetCod(preVenCabCod);
         preVenDet.setId(new EnP1tPreventaDetId(preVenDetCod, preVenCabCod));

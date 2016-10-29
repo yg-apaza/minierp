@@ -28,34 +28,34 @@ public class SuppliersController extends HttpServlet {
         
         switch(action) {
             case "insert":
-                proveedor.setProCod(request.getParameter("codPro"));
-                proveedor.setProDet(request.getParameter("detPro"));
-                proveedor.setProCon(request.getParameter("conPro"));
-                proveedor.setProDir(request.getParameter("dirPro"));
-                proveedor.setProTelFij(request.getParameter("telFijPro"));
-                proveedor.setProTelCel(request.getParameter("telCelPro"));
-                proveedor.setProEmail(request.getParameter("emailPro"));
-                proveedor.setProPagWeb(request.getParameter("pagWebPro"));
-                proveedor.setProObs(request.getParameter("obsPro"));
+                proveedor.setPrvCod(request.getParameter("codPro"));
+                proveedor.setPrvDet(request.getParameter("detPro"));
+                proveedor.setPrvCon(request.getParameter("conPro"));
+                proveedor.setPrvDir(request.getParameter("dirPro"));
+                proveedor.setPrvTelFij(request.getParameter("telFijPro"));
+                proveedor.setPrvTelCel(request.getParameter("telCelPro"));
+                proveedor.setPrvEmail(request.getParameter("emailPro"));
+                proveedor.setPrvPagWeb(request.getParameter("pagWebPro"));
+                proveedor.setPrvObs(request.getParameter("obsPro"));
                 proveedor.setEstRegCod('A');
                 proveedorDao.save(proveedor);
                 break;
             case "update":
-                proveedor.setProCod(request.getParameter("proCod"));
-                proveedor.setProDet(request.getParameter("proDes"));
-                proveedor.setProCon(request.getParameter("conPro"));
-                proveedor.setProDir(request.getParameter("dirPro"));
-                proveedor.setProTelFij(request.getParameter("telFijPro"));
-                proveedor.setProTelCel(request.getParameter("telCelPro"));
-                proveedor.setProEmail(request.getParameter("emailPro"));
-                proveedor.setProPagWeb(request.getParameter("pagWebPro"));
-                proveedor.setProObs(request.getParameter("obsPro"));
+                proveedor.setPrvCod(request.getParameter("proCod"));
+                proveedor.setPrvDet(request.getParameter("proDes"));
+                proveedor.setPrvCon(request.getParameter("conPro"));
+                proveedor.setPrvDir(request.getParameter("dirPro"));
+                proveedor.setPrvTelFij(request.getParameter("telFijPro"));
+                proveedor.setPrvTelCel(request.getParameter("telCelPro"));
+                proveedor.setPrvEmail(request.getParameter("emailPro"));
+                proveedor.setPrvPagWeb(request.getParameter("pagWebPro"));
+                proveedor.setPrvObs(request.getParameter("obsPro"));
                 proveedor.setEstRegCod('A');
                 proveedorDao.update(proveedor);
                 break;
             case "delete":
-                proveedor.setProCod(request.getParameter("proCod"));
-                proveedor.setProDet(request.getParameter("proDet"));
+                proveedor.setPrvCod(request.getParameter("proCod"));
+                proveedor.setPrvDet(request.getParameter("proDet"));
                 proveedor.setEstRegCod('*');
                 proveedorDao.update(proveedor);
         }

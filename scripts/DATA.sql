@@ -49,7 +49,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `episerp`;
-INSERT INTO `episerp`.`en_p1m_empresa` (`EmpCod`, `EmpNom`, `EmpDes`, `EmpDir`, `EmpTel`, `EmpCor`, `EmpIGV`, `EmpRUC`, `EmpImg`) VALUES (1, 'MOT S.A.', 'Empresa de Desarrollo de Software', 'Av. Venezuela s/n', '054202212', 'mot@episunsa.edu.pe', 18, '10230499411', NULL);
+INSERT INTO `episerp`.`en_p1m_empresa` (`EmpCod`, `EmpRazSoc`, `EmpNomCom`, `EmpDir`, `EmpIGV`, `EmpRUC`) VALUES (1, 'Empresa de Desarrollo de Software', 'MOT S.A.', 'Av. Venezuela s/n', 18, '10230499411');
 
 COMMIT;
 

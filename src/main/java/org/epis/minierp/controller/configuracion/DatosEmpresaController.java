@@ -32,10 +32,10 @@ public class DatosEmpresaController extends HttpServlet {
         EnP1mEmpresa emp = empDAO.getById(01);
         request.setAttribute("emp",emp);
         File af;
-        if(emp.getEmpImg()!=null ){
+        if(emp.getEmpImgUrl()!=null ){
             // Decode data on other side, by processing encoded data
-            byte[] valueDecoded= emp.getEmpImg();
-            String empImg = new String(valueDecoded);
+            //byte[] valueDecoded = emp.getEmpImgUrl();
+            String empImg = emp.getEmpImgUrl();//new String(valueDecoded);
             af = new File(request.getSession().getServletContext().getRealPath("/")+"/img/"+empImg);
             
             if(af.exists()){
@@ -74,17 +74,17 @@ public class DatosEmpresaController extends HttpServlet {
                     File fichero;
                     if(uploaded.getName().contains(".jpg")){
                         fichero = new File(path, "logo.jpg");
-                        e.setEmpImg("logo.jpg".getBytes());
+                        e.setEmpImgUrl("logo.jpg");//.getBytes());
                         uploaded.write(fichero);
                     }
                     else if(uploaded.getName().contains(".jpeg")){
                         fichero = new File(path, "logo.jpeg");
-                        e.setEmpImg("logo.jpg".getBytes());
+                        e.setEmpImgUrl("logo.jpg");//.getBytes());
                         uploaded.write(fichero);
                     }
                     else{
                         fichero=null;
-                        e.setEmpImg("nada".getBytes());
+                        e.setEmpImgUrl("nada");//.getBytes());
                     }
                 }
                 else{
@@ -94,12 +94,12 @@ public class DatosEmpresaController extends HttpServlet {
                 }
             }
             e.setEmpCod(01);
-            e.setEmpNom(nombreMap.get("empNom"));
+            e.setEmpRazSoc(nombreMap.get("empNom"));
             e.setEmpDes(nombreMap.get("empDes"));
             e.setEmpDir(nombreMap.get("empDir"));
             e.setEmpTel(nombreMap.get("empTel"));
             e.setEmpIgv(Double.parseDouble(nombreMap.get("empIgv")));
-            e.setEmpCor(nombreMap.get("empCor"));
+            e.setEmpEmail(nombreMap.get("empCor"));
             e.setEmpRuc(nombreMap.get("empRuc"));
             
             empDAO.update(e);

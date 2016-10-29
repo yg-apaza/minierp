@@ -20,8 +20,8 @@ public class BusquedaProveedorController extends HttpServlet
         Map<String, Object> data = new HashMap<String, Object>();
         if(proveedor != null)
         {
-            data.put("proCod", proveedor.getProCod());
-            data.put("proDet", proveedor.getProDet());
+            data.put("proCod", proveedor.getPrvCod());
+            data.put("proDet", proveedor.getPrvDet());
         }
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");

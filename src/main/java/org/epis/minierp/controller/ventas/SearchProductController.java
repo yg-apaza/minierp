@@ -43,7 +43,7 @@ public class SearchProductController extends HttpServlet {
             data.put("proCod", product.getId().getClaProCod() + "-" + product.getId().getSubClaProCod() + "-" + product.getId().getProCod());
             data.put("proDet", product.getProDet());
             data.put("proStk", product.getProStk());
-            data.put("proPreUni", product.getProPreUni());
+            data.put("proPreUni", product.getProPreUniVen());
         }
         
         response.setContentType("application/json");

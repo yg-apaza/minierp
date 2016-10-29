@@ -15,15 +15,15 @@ public class AddSupplierController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         EnP4mProveedorDao proveedorDao = new EnP4mProveedorDao();
         EnP4mProveedor proveedor = new EnP4mProveedor();
-        proveedor.setProCod(request.getParameter("codPro"));
-        proveedor.setProDet(request.getParameter("detPro"));
-        proveedor.setProCon(request.getParameter("conPro"));
-        proveedor.setProDir(request.getParameter("dirPro"));
-        proveedor.setProTelFij(request.getParameter("telFijPro"));
-        proveedor.setProTelCel(request.getParameter("telCelPro"));
-        proveedor.setProEmail(request.getParameter("emailPro"));
-        proveedor.setProPagWeb(request.getParameter("pagWebPro"));
-        proveedor.setProObs(request.getParameter("obsPro"));
+        proveedor.setPrvCod(request.getParameter("codPro"));
+        proveedor.setPrvDet(request.getParameter("detPro"));
+        proveedor.setPrvCon(request.getParameter("conPro"));
+        proveedor.setPrvDir(request.getParameter("dirPro"));
+        proveedor.setPrvTelFij(request.getParameter("telFijPro"));
+        proveedor.setPrvTelCel(request.getParameter("telCelPro"));
+        proveedor.setPrvEmail(request.getParameter("emailPro"));
+        proveedor.setPrvPagWeb(request.getParameter("pagWebPro"));
+        proveedor.setPrvObs(request.getParameter("obsPro"));
         proveedor.setEstRegCod('A');
         proveedorDao.save(proveedor);
         response.sendRedirect(request.getContextPath() + "/secured/compras/proveedores");
