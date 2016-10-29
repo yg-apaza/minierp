@@ -1,19 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.epis.minierp.business.configuracion;
 
 import org.epis.minierp.dao.general.EnP1mSucursalDao;
 import org.epis.minierp.model.EnP1mSucursal;
 
-
-
-/**
- *
- * @author User
- */
 public class EnP1mSucursalBusiness {
     
     EnP1mSucursalDao sucursal;

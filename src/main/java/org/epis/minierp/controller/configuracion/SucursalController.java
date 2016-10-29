@@ -1,25 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.epis.minierp.controller.configuracion;
 
-/**
- *
- * @author User
- */
-
 import java.io.IOException;
-import java.text.ParseException;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -28,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.epis.minierp.business.configuracion.EnP1mSucursalBusiness;
 import org.epis.minierp.dao.general.EnP1mPuntoVentaDao;
 import org.epis.minierp.dao.general.EnP1mSucursalDao;
-import org.epis.minierp.model.EnP1mPuntoVenta;
 import org.epis.minierp.model.EnP1mSucursal;
 
 public class SucursalController extends HttpServlet

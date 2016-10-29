@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.epis.minierp.dao.ventas;
 
 import java.util.List;
@@ -10,12 +5,6 @@ import org.epis.minierp.model.ventas.Preventas;
 import org.epis.minierp.util.HibernateUtil;
 import org.hibernate.Query;
 import org.hibernate.Session;
-
-
-/**
- *
- * @author Roycer
- */
 
 public class PreventasDao {
 

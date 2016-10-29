@@ -7,7 +7,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.apache.commons.codec.digest.DigestUtils;
 import org.epis.minierp.business.general.EnP1mUsuarioBusiness;
 import org.epis.minierp.dao.general.EnP1mSucursalDao;
 import org.epis.minierp.dao.general.EnP1mUsuarioDao;

@@ -1,7 +1,6 @@
 package org.epis.minierp.controller.general;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
@@ -17,7 +16,6 @@ import org.epis.minierp.dao.compras.EnP4tFacturaCompraDetDao;
 import org.epis.minierp.dao.logistica.EnP2mProductoDao;
 import org.epis.minierp.dao.ventas.EnP1tFacturaVentaDetDao;
 import org.epis.minierp.model.EnP1tFacturaVentaDet;
-import org.epis.minierp.model.EnP2mProducto;
 import org.epis.minierp.model.EnP4tFacturaCompraDet;
 
 public class GraficaCompradorControlador extends HttpServlet {

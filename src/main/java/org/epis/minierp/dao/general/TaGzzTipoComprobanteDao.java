@@ -1,17 +1,12 @@
 package org.epis.minierp.dao.general;
 
 import java.util.List;
-import org.epis.minierp.model.TaGzzMoneda;
 import org.epis.minierp.model.TaGzzTipoComprobante;
 import org.epis.minierp.util.HibernateUtil;
 import org.hibernate.ObjectNotFoundException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-/**
- *
- * @author Roycer
- */
 public class TaGzzTipoComprobanteDao {
 
 

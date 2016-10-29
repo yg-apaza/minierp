@@ -6,10 +6,6 @@ import org.epis.minierp.util.HibernateUtil;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-/**
- *
- * @author Roycer
- */
 public class LibroDiarioDao {
 
     private Session session;

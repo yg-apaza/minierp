@@ -6,18 +6,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.epis.minierp.dao.general.EnP1mUsuarioDao;
-import org.epis.minierp.dao.general.TaGzzMetodoPagoFacturaDao;
-import org.epis.minierp.dao.general.TaGzzMonedaDao;
-import org.epis.minierp.dao.general.TaGzzTipoPagoFacturaDao;
-import org.epis.minierp.dao.ventas.EnP1mClienteDao;
 import org.epis.minierp.dao.ventas.EnP1mFacturaVentaCabDao;
-import org.epis.minierp.model.EnP1mCliente;
 import org.epis.minierp.model.EnP1mFacturaVentaCab;
-import org.epis.minierp.model.EnP1mUsuario;
-import org.epis.minierp.model.TaGzzMetodoPagoFactura;
-import org.epis.minierp.model.TaGzzMoneda;
-import org.epis.minierp.model.TaGzzTipoPagoFactura;
 
 public class VentasFacturaController extends HttpServlet {
 

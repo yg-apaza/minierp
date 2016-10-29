@@ -1,24 +1,18 @@
 package org.epis.minierp.controller.general;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import org.epis.minierp.dao.logistica.EnP2mAlmacenDao;
 import org.epis.minierp.dao.ventas.IngresosDao;
 import org.epis.minierp.dao.ventas.PreventasDao;
 import org.epis.minierp.model.EnP1mUsuario;
 import org.epis.minierp.model.EnP2mAlmacen;
-import org.epis.minierp.model.EnP2mProducto;
 import org.epis.minierp.model.ventas.Ingresos;
 import org.epis.minierp.model.ventas.Preventas;
 

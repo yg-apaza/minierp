@@ -4,11 +4,7 @@ import org.epis.minierp.model.EnP3mAsientoCab;
 import org.epis.minierp.util.HibernateUtil;
 import org.hibernate.Session;
 
-/**
- *
- * @author Roycer
- */
-public class AsientoCabDao{
+public class AsientoCabDao {
     
     private Session session;
     

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 28/10/2016 10:46:22 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 29/10/2016 12:36:13 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="org.epis.minierp.model.EnP4mFacturaCompraCab" table="en_p4m_factura_compra_cab" catalog="episerp" optimistic-lock="version">
         <id name="facComCabCod" type="string">
