@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 28/10/2016 10:46:22 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="org.epis.minierp.model.TaGzzTipoDocTransportista" table="ta_gzz_tipo_doc_transportista" catalog="episerp" optimistic-lock="version">
+        <id name="tipDocTraCod" type="java.lang.Integer">
+            <column name="TipDocTraCod" />
+            <generator class="identity" />
+        </id>
+        <property name="tipDocTraDet" type="string">
+            <column name="TipDocTraDet" length="90" not-null="true" />
+        </property>
+        <property name="estRegCod" type="java.lang.Character">
+            <column name="EstRegCod" length="1" />
+        </property>
+        <set name="enP2mDocumentoTransportistas" table="en_p2m_documento_transportista" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="TipDocTraCod" not-null="true" />
+            </key>
+            <one-to-many class="org.epis.minierp.model.EnP2mDocumentoTransportista" />
+        </set>
+    </class>
+</hibernate-mapping>

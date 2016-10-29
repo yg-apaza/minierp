@@ -9,1114 +9,1385 @@ DROP SCHEMA IF EXISTS `episerp` ;
 CREATE SCHEMA IF NOT EXISTS `episerp` DEFAULT CHARACTER SET utf8 ;
 USE `episerp` ;
 
--- -----------------------------------------------------
--- Table `episerp`.`ta_gzz_estado_civil`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `episerp`.`ta_gzz_estado_civil` ;
-
-CREATE TABLE IF NOT EXISTS `episerp`.`ta_gzz_estado_civil` (
-  `EstCivCod` INT(2) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT,
-  `EstCivDet` CHAR(20) NOT NULL,
-  `EstRegCod` CHAR(1) NOT NULL,
-  PRIMARY KEY (`EstCivCod`))
-ENGINE = InnoDB
-AUTO_INCREMENT = 5
-DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
--- Table `episerp`.`en_p1m_cliente`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `episerp`.`en_p1m_cliente` ;
-
-CREATE TABLE IF NOT EXISTS `episerp`.`en_p1m_cliente` (
-  `CliCod` CHAR(15) NOT NULL,
-  `CliNom` CHAR(90) NULL DEFAULT NULL,
-  `CliApePat` CHAR(90) NULL DEFAULT NULL,
-  `CliApeMat` CHAR(90) NULL DEFAULT NULL,
-  `CliSex` CHAR(1) NOT NULL,
-  `CliDir` CHAR(90) NOT NULL DEFAULT 'Desconocida',
-  `CliTelFij` CHAR(15) NULL DEFAULT NULL,
-  `CliTelCel` CHAR(15) NULL DEFAULT NULL,
-  `CliEmail` CHAR(50) NOT NULL DEFAULT 'Desconocido',
-  `EstCivCod` INT(2) UNSIGNED ZEROFILL NOT NULL,
-  `EstRegCod` CHAR(1) NOT NULL,
-  PRIMARY KEY (`CliCod`),
-  INDEX `IX_Relationship28` (`EstCivCod` ASC),
-  CONSTRAINT `Relationship28`
-    FOREIGN KEY (`EstCivCod`)
-    REFERENCES `episerp`.`ta_gzz_estado_civil` (`EstCivCod`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
--- Table `episerp`.`ta_gzz_tipo_usuario`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `episerp`.`ta_gzz_tipo_usuario` ;
-
-CREATE TABLE IF NOT EXISTS `episerp`.`ta_gzz_tipo_usuario` (
-  `TipUsuCod` INT(2) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT,
-  `TipUsuDet` CHAR(20) NOT NULL,
-  `EstRegCod` CHAR(1) NOT NULL,
-  PRIMARY KEY (`TipUsuCod`))
-ENGINE = InnoDB
-AUTO_INCREMENT = 5
-DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
--- Table `episerp`.`en_p1m_sucursal`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `episerp`.`en_p1m_sucursal` ;
-
-CREATE TABLE IF NOT EXISTS `episerp`.`en_p1m_sucursal` (
-  `SucCod` INT(5) ZEROFILL NOT NULL AUTO_INCREMENT,
-  `SucDes` CHAR(60) NULL,
-  `SucDir` CHAR(100) NULL,
-  `EstRegCod` CHAR(1) NOT NULL,
-  PRIMARY KEY (`SucCod`))
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `episerp`.`en_p1m_usuario`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `episerp`.`en_p1m_usuario` ;
-
-CREATE TABLE IF NOT EXISTS `episerp`.`en_p1m_usuario` (
-  `UsuCod` CHAR(15) NOT NULL,
-  `UsuNom` CHAR(90) NULL DEFAULT NULL,
-  `UsuApePat` CHAR(20) NULL DEFAULT NULL,
-  `UsuApeMat` CHAR(20) NULL DEFAULT NULL,
-  `UsuLog` CHAR(30) NOT NULL,
-  `UsuPas` CHAR(80) NOT NULL,
-  `TipUsuCod` INT(2) UNSIGNED ZEROFILL NOT NULL,
-  `SucCod` INT(5) ZEROFILL NOT NULL,
-  `UsuFecNac` DATE NULL DEFAULT NULL,
-  `EstCivCod` INT(2) UNSIGNED ZEROFILL NOT NULL,
-  `UsuSex` CHAR(1) NOT NULL,
-  `EstRegCod` CHAR(1) NOT NULL,
-  PRIMARY KEY (`UsuCod`),
-  INDEX `IX_Relationship26` (`TipUsuCod` ASC),
-  INDEX `IX_Relationship27` (`EstCivCod` ASC),
-  INDEX `fk_en_p1m_usuario_en_p1m_sucursal1_idx` (`SucCod` ASC),
-  CONSTRAINT `Relationship26`
-    FOREIGN KEY (`TipUsuCod`)
-    REFERENCES `episerp`.`ta_gzz_tipo_usuario` (`TipUsuCod`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `Relationship27`
-    FOREIGN KEY (`EstCivCod`)
-    REFERENCES `episerp`.`ta_gzz_estado_civil` (`EstCivCod`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_en_p1m_usuario_en_p1m_sucursal1`
-    FOREIGN KEY (`SucCod`)
-    REFERENCES `episerp`.`en_p1m_sucursal` (`SucCod`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
--- Table `episerp`.`ta_gzz_moneda`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `episerp`.`ta_gzz_moneda` ;
-
-CREATE TABLE IF NOT EXISTS `episerp`.`ta_gzz_moneda` (
-  `MonCod` INT(2) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT,
-  `MonDet` CHAR(90) NOT NULL,
-  `EstRegCod` CHAR(1) NOT NULL,
-  PRIMARY KEY (`MonCod`))
-ENGINE = InnoDB
-AUTO_INCREMENT = 10
-DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
--- Table `episerp`.`en_p1m_preventa_cab`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `episerp`.`en_p1m_preventa_cab` ;
-
-CREATE TABLE IF NOT EXISTS `episerp`.`en_p1m_preventa_cab` (
-  `PreVenCabCod` CHAR(10) NOT NULL,
-  `CliCod` CHAR(15) NOT NULL,
-  `UsuCod` CHAR(15) NOT NULL,
-  `PreVenCabFec` DATE NOT NULL,
-  `PreVenCabPla` INT(3) NOT NULL,
-  `PreVenCabTot` DOUBLE(10,2) NOT NULL,
-  `PreVenCabDes` DOUBLE(10,2) NOT NULL,
-  `PreVenCabSubTot` DOUBLE(10,2) NOT NULL,
-  `PreVenCabIGV` INT(3) NOT NULL DEFAULT '19',
-  `PreVenCabObs` CHAR(90) NOT NULL DEFAULT 'Ninguna',
-  `MonCod` INT(2) UNSIGNED ZEROFILL NOT NULL,
-  `EstRegCod` CHAR(1) NOT NULL,
-  PRIMARY KEY (`PreVenCabCod`),
-  INDEX `IX_Relationship3` (`CliCod` ASC),
-  INDEX `IX_Relationship4` (`UsuCod` ASC),
-  INDEX `IX_Relationship5` (`MonCod` ASC),
-  CONSTRAINT `Relationship3`
-    FOREIGN KEY (`CliCod`)
-    REFERENCES `episerp`.`en_p1m_cliente` (`CliCod`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `Relationship4`
-    FOREIGN KEY (`UsuCod`)
-    REFERENCES `episerp`.`en_p1m_usuario` (`UsuCod`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `Relationship5`
-    FOREIGN KEY (`MonCod`)
-    REFERENCES `episerp`.`ta_gzz_moneda` (`MonCod`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
--- Table `episerp`.`ta_gzz_estado_factura`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `episerp`.`ta_gzz_estado_factura` ;
-
-CREATE TABLE IF NOT EXISTS `episerp`.`ta_gzz_estado_factura` (
-  `EstFacCod` INT(2) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT,
-  `EstFacDet` CHAR(10) NOT NULL,
-  `EstRegCod` CHAR(1) NOT NULL,
-  PRIMARY KEY (`EstFacCod`))
-ENGINE = InnoDB
-AUTO_INCREMENT = 4
-DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
--- Table `episerp`.`ta_gzz_metodo_pago_factura`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `episerp`.`ta_gzz_metodo_pago_factura` ;
-
-CREATE TABLE IF NOT EXISTS `episerp`.`ta_gzz_metodo_pago_factura` (
-  `MetPagCod` INT(2) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT,
-  `MetPagDet` CHAR(10) NOT NULL,
-  `EstRegCod` CHAR(1) NOT NULL,
-  PRIMARY KEY (`MetPagCod`))
-ENGINE = InnoDB
-AUTO_INCREMENT = 4
-DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
--- Table `episerp`.`ta_gzz_tipo_pago_factura`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `episerp`.`ta_gzz_tipo_pago_factura` ;
-
-CREATE TABLE IF NOT EXISTS `episerp`.`ta_gzz_tipo_pago_factura` (
-  `TipPagCod` INT(2) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT,
-  `TipPagDet` CHAR(10) NOT NULL,
-  `EstRegCod` CHAR(1) NOT NULL,
-  PRIMARY KEY (`TipPagCod`))
-ENGINE = InnoDB
-AUTO_INCREMENT = 3
-DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
--- Table `episerp`.`en_p1m_factura_venta_cab`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `episerp`.`en_p1m_factura_venta_cab` ;
-
-CREATE TABLE IF NOT EXISTS `episerp`.`en_p1m_factura_venta_cab` (
-  `FacVenCabCod` CHAR(10) NOT NULL,
-  `CliCod` CHAR(15) NOT NULL,
-  `UsuCod` CHAR(15) NOT NULL,
-  `FacVenCabFec` DATE NOT NULL,
-  `FacVenCabTot` DOUBLE(10,2) NOT NULL,
-  `FacVenCabDes` DOUBLE(10,2) NOT NULL,
-  `FacVenCabSubTot` DOUBLE(10,2) NOT NULL,
-  `FacVenCabIGV` INT(3) NOT NULL DEFAULT '19',
-  `FacVenCabObs` CHAR(90) NOT NULL DEFAULT 'Ninguna',
-  `EstFacCod` INT(2) UNSIGNED ZEROFILL NOT NULL,
-  `MetPagCod` INT(2) UNSIGNED ZEROFILL NOT NULL,
-  `TipPagCod` INT(2) UNSIGNED ZEROFILL NOT NULL,
-  `MonCod` INT(2) UNSIGNED ZEROFILL NOT NULL,
-  `EstRegCod` CHAR(1) NOT NULL,
-  PRIMARY KEY (`FacVenCabCod`),
-  INDEX `IX_Relationship12` (`UsuCod` ASC),
-  INDEX `IX_Relationship13` (`CliCod` ASC),
-  INDEX `IX_Relationship14` (`EstFacCod` ASC),
-  INDEX `IX_Relationship15` (`MetPagCod` ASC),
-  INDEX `IX_Relationship16` (`TipPagCod` ASC),
-  INDEX `IX_Relationship17` (`MonCod` ASC),
-  CONSTRAINT `Relationship12`
-    FOREIGN KEY (`UsuCod`)
-    REFERENCES `episerp`.`en_p1m_usuario` (`UsuCod`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `Relationship13`
-    FOREIGN KEY (`CliCod`)
-    REFERENCES `episerp`.`en_p1m_cliente` (`CliCod`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `Relationship14`
-    FOREIGN KEY (`EstFacCod`)
-    REFERENCES `episerp`.`ta_gzz_estado_factura` (`EstFacCod`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `Relationship15`
-    FOREIGN KEY (`MetPagCod`)
-    REFERENCES `episerp`.`ta_gzz_metodo_pago_factura` (`MetPagCod`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `Relationship16`
-    FOREIGN KEY (`TipPagCod`)
-    REFERENCES `episerp`.`ta_gzz_tipo_pago_factura` (`TipPagCod`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `Relationship17`
-    FOREIGN KEY (`MonCod`)
-    REFERENCES `episerp`.`ta_gzz_moneda` (`MonCod`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
--- Table `episerp`.`en_p1c_preventa_realizadas`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `episerp`.`en_p1c_preventa_realizadas` ;
-
-CREATE TABLE IF NOT EXISTS `episerp`.`en_p1c_preventa_realizadas` (
-  `PreVenCabCod` CHAR(10) NOT NULL,
-  `FacVenCabCod` CHAR(10) NOT NULL,
-  `PreVenReaFec` DATE NOT NULL,
-  PRIMARY KEY (`PreVenCabCod`, `FacVenCabCod`),
-  INDEX `Relationship11` (`FacVenCabCod` ASC),
-  CONSTRAINT `Relationship10`
-    FOREIGN KEY (`PreVenCabCod`)
-    REFERENCES `episerp`.`en_p1m_preventa_cab` (`PreVenCabCod`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `Relationship11`
-    FOREIGN KEY (`FacVenCabCod`)
-    REFERENCES `episerp`.`en_p1m_factura_venta_cab` (`FacVenCabCod`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
--- Table `episerp`.`ta_gzz_tipo_doc_cliente`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `episerp`.`ta_gzz_tipo_doc_cliente` ;
-
-CREATE TABLE IF NOT EXISTS `episerp`.`ta_gzz_tipo_doc_cliente` (
-  `TipDocCliCod` INT(2) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT,
-  `TipDocCliDet` CHAR(90) NOT NULL,
-  `EstRegCod` CHAR(1) NOT NULL,
-  PRIMARY KEY (`TipDocCliCod`))
-ENGINE = InnoDB
-AUTO_INCREMENT = 3
-DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
--- Table `episerp`.`en_p1m_documento_cliente`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `episerp`.`en_p1m_documento_cliente` ;
-
-CREATE TABLE IF NOT EXISTS `episerp`.`en_p1m_documento_cliente` (
-  `CliCod` CHAR(15) NOT NULL,
-  `TipDocCliCod` INT(2) UNSIGNED ZEROFILL NOT NULL,
-  `DocCliNum` CHAR(30) NOT NULL,
-  `EstRegCod` CHAR(1) NOT NULL,
-  PRIMARY KEY (`CliCod`, `TipDocCliCod`),
-  INDEX `Relationship25` (`TipDocCliCod` ASC),
-  CONSTRAINT `Relationship24`
-    FOREIGN KEY (`CliCod`)
-    REFERENCES `episerp`.`en_p1m_cliente` (`CliCod`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `Relationship25`
-    FOREIGN KEY (`TipDocCliCod`)
-    REFERENCES `episerp`.`ta_gzz_tipo_doc_cliente` (`TipDocCliCod`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
--- Table `episerp`.`ta_gzz_tipo_doc_usuario`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `episerp`.`ta_gzz_tipo_doc_usuario` ;
-
-CREATE TABLE IF NOT EXISTS `episerp`.`ta_gzz_tipo_doc_usuario` (
-  `TipDocUsuCod` INT(2) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT,
-  `TipDocUsuDet` CHAR(90) NOT NULL,
-  `EstRegCod` CHAR(1) NOT NULL,
-  PRIMARY KEY (`TipDocUsuCod`))
-ENGINE = InnoDB
-AUTO_INCREMENT = 3
-DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
--- Table `episerp`.`en_p1m_documento_usuario`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `episerp`.`en_p1m_documento_usuario` ;
-
-CREATE TABLE IF NOT EXISTS `episerp`.`en_p1m_documento_usuario` (
-  `UsuCod` CHAR(15) NOT NULL,
-  `TipDocUsuCod` INT(2) UNSIGNED ZEROFILL NOT NULL,
-  `DocUsuNum` CHAR(30) NOT NULL,
-  `EstRegCod` CHAR(1) NOT NULL,
-  PRIMARY KEY (`UsuCod`, `TipDocUsuCod`),
-  INDEX `Relationship30` (`TipDocUsuCod` ASC),
-  CONSTRAINT `Relationship29`
-    FOREIGN KEY (`UsuCod`)
-    REFERENCES `episerp`.`en_p1m_usuario` (`UsuCod`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `Relationship30`
-    FOREIGN KEY (`TipDocUsuCod`)
-    REFERENCES `episerp`.`ta_gzz_tipo_doc_usuario` (`TipDocUsuCod`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
--- Table `episerp`.`en_p1m_pagos_cuotas_cab`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `episerp`.`en_p1m_pagos_cuotas_cab` ;
-
-CREATE TABLE IF NOT EXISTS `episerp`.`en_p1m_pagos_cuotas_cab` (
-  `FacVenCabCod` CHAR(10) NOT NULL,
-  `PagCuoNumDoc` CHAR(50) NOT NULL,
-  `PagCuoNum` INT(2) NOT NULL,
-  `PagCuoNumPag` INT(2) NOT NULL DEFAULT '0',
-  `PagCuoDeuTot` DOUBLE(10,2) NOT NULL,
-  `PagCuoTotPag` DOUBLE(10,2) NOT NULL,
-  `PagCuoFecIni` DATE NOT NULL,
-  `PagCuoFecFin` DATE NOT NULL,
-  `PagCuoFecPag` DATE NOT NULL,
-  `EstRegCod` CHAR(1) NOT NULL,
-  PRIMARY KEY (`FacVenCabCod`),
-  CONSTRAINT `Relationship20`
-    FOREIGN KEY (`FacVenCabCod`)
-    REFERENCES `episerp`.`en_p1m_factura_venta_cab` (`FacVenCabCod`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
--- Table `episerp`.`en_p2m_almacen`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `episerp`.`en_p2m_almacen` ;
-
-CREATE TABLE IF NOT EXISTS `episerp`.`en_p2m_almacen` (
-  `AlmCod` CHAR(15) NOT NULL,
-  `AlmDet` CHAR(90) NULL DEFAULT NULL,
-  `SucCod` INT(5) ZEROFILL NOT NULL,
-  `AlmVolTot` DOUBLE(10,2) NULL DEFAULT NULL,
-  `AlmObs` CHAR(90) NOT NULL DEFAULT 'Ninguna',
-  `EstRegCod` CHAR(1) NOT NULL,
-  PRIMARY KEY (`AlmCod`),
-  INDEX `fk_en_p2m_almacen_en_p1m_sucursal1_idx` (`SucCod` ASC),
-  CONSTRAINT `fk_en_p2m_almacen_en_p1m_sucursal1`
-    FOREIGN KEY (`SucCod`)
-    REFERENCES `episerp`.`en_p1m_sucursal` (`SucCod`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
--- Table `episerp`.`ta_gzz_unidad_med`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `episerp`.`ta_gzz_unidad_med` ;
-
-CREATE TABLE IF NOT EXISTS `episerp`.`ta_gzz_unidad_med` (
-  `UniMedCod` INT(2) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT,
-  `UniMedDet` CHAR(90) NOT NULL,
-  `EstRegCod` CHAR(1) NOT NULL,
-  PRIMARY KEY (`UniMedCod`))
-ENGINE = InnoDB
-AUTO_INCREMENT = 7
-DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
--- Table `episerp`.`en_p2m_clase_producto`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `episerp`.`en_p2m_clase_producto` ;
-
-CREATE TABLE IF NOT EXISTS `episerp`.`en_p2m_clase_producto` (
-  `ClaProCod` CHAR(2) NOT NULL,
-  `ClaProDet` CHAR(90) NOT NULL,
-  `EstRegCod` CHAR(1) NOT NULL,
-  PRIMARY KEY (`ClaProCod`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
--- Table `episerp`.`en_p2m_subclase_producto`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `episerp`.`en_p2m_subclase_producto` ;
-
-CREATE TABLE IF NOT EXISTS `episerp`.`en_p2m_subclase_producto` (
-  `ClaProCod` CHAR(2) NOT NULL,
-  `SubClaProCod` CHAR(2) NOT NULL,
-  `SubClaProDet` CHAR(90) NOT NULL,
-  `EstRegCod` CHAR(1) NOT NULL,
-  PRIMARY KEY (`SubClaProCod`, `ClaProCod`),
-  INDEX `Relationship7` (`ClaProCod` ASC),
-  CONSTRAINT `Relationship7`
-    FOREIGN KEY (`ClaProCod`)
-    REFERENCES `episerp`.`en_p2m_clase_producto` (`ClaProCod`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
--- Table `episerp`.`en_p2m_producto`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `episerp`.`en_p2m_producto` ;
-
-CREATE TABLE IF NOT EXISTS `episerp`.`en_p2m_producto` (
-  `ClaProCod` CHAR(2) NOT NULL,
-  `SubClaProCod` CHAR(2) NOT NULL,
-  `ProCod` CHAR(15) NOT NULL,
-  `ProDet` CHAR(90) NOT NULL,
-  `UniMedCod` INT(2) UNSIGNED ZEROFILL NOT NULL,
-  `ProPreUni` DOUBLE(10,2) NOT NULL,
-  `MonCod` INT(2) UNSIGNED ZEROFILL NOT NULL,
-  `ProStk` DOUBLE(10,2) NOT NULL,
-  `ProStkPreVen` DOUBLE(10,2) NOT NULL DEFAULT '0.00',
-  `AlmCod` CHAR(15) NOT NULL,
-  `VolUniAlm` DOUBLE(10,2) NULL DEFAULT NULL,
-  `ProStkMin` DOUBLE(10,2) NULL DEFAULT NULL,
-  `ProStkMax` DOUBLE(10,2) NULL DEFAULT NULL,
-  `ProObs` CHAR(90) NOT NULL DEFAULT 'Ninguna',
-  `EstRegCod` CHAR(1) NOT NULL,
-  PRIMARY KEY (`ProCod`, `SubClaProCod`, `ClaProCod`),
-  INDEX `IX_Relationship32` (`AlmCod` ASC),
-  INDEX `IX_Relationship33` (`UniMedCod` ASC),
-  INDEX `Relationship8` (`SubClaProCod` ASC, `ClaProCod` ASC),
-  INDEX `Relationship31` (`MonCod` ASC),
-  CONSTRAINT `Relationship31`
-    FOREIGN KEY (`MonCod`)
-    REFERENCES `episerp`.`ta_gzz_moneda` (`MonCod`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `Relationship32`
-    FOREIGN KEY (`AlmCod`)
-    REFERENCES `episerp`.`en_p2m_almacen` (`AlmCod`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `Relationship33`
-    FOREIGN KEY (`UniMedCod`)
-    REFERENCES `episerp`.`ta_gzz_unidad_med` (`UniMedCod`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `Relationship8`
-    FOREIGN KEY (`SubClaProCod` , `ClaProCod`)
-    REFERENCES `episerp`.`en_p2m_subclase_producto` (`SubClaProCod` , `ClaProCod`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
--- Table `episerp`.`en_p1t_factura_venta_det`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `episerp`.`en_p1t_factura_venta_det` ;
-
-CREATE TABLE IF NOT EXISTS `episerp`.`en_p1t_factura_venta_det` (
-  `FacVenCabCod` CHAR(10) NOT NULL,
-  `FacVenDetCod` INT(3) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT,
-  `ClaProCod` CHAR(2) NOT NULL,
-  `SubClaProCod` CHAR(2) NOT NULL,
-  `ProCod` CHAR(15) NOT NULL,
-  `FacVenDetCan` DOUBLE(10,2) NOT NULL,
-  `FacVenDetValUni` DOUBLE(10,2) NOT NULL,
-  PRIMARY KEY (`FacVenDetCod`, `FacVenCabCod`),
-  INDEX `IX_Relationship19` (`ProCod` ASC, `SubClaProCod` ASC, `ClaProCod` ASC),
-  INDEX `Relationship18` (`FacVenCabCod` ASC),
-  CONSTRAINT `Relationship18`
-    FOREIGN KEY (`FacVenCabCod`)
-    REFERENCES `episerp`.`en_p1m_factura_venta_cab` (`FacVenCabCod`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `Relationship19`
-    FOREIGN KEY (`ProCod` , `SubClaProCod` , `ClaProCod`)
-    REFERENCES `episerp`.`en_p2m_producto` (`ProCod` , `SubClaProCod` , `ClaProCod`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
--- Table `episerp`.`en_p1t_pagos_cuotas_det`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `episerp`.`en_p1t_pagos_cuotas_det` ;
-
-CREATE TABLE IF NOT EXISTS `episerp`.`en_p1t_pagos_cuotas_det` (
-  `FacVenCabCod` CHAR(10) NOT NULL,
-  `PagCuoDetCod` INT(3) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT,
-  `PagCuoDetTotPag` DOUBLE(10,2) NOT NULL,
-  PRIMARY KEY (`PagCuoDetCod`, `FacVenCabCod`),
-  INDEX `Relationship21` (`FacVenCabCod` ASC),
-  CONSTRAINT `Relationship21`
-    FOREIGN KEY (`FacVenCabCod`)
-    REFERENCES `episerp`.`en_p1m_pagos_cuotas_cab` (`FacVenCabCod`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
--- Table `episerp`.`en_p1t_preventa_det`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `episerp`.`en_p1t_preventa_det` ;
-
-CREATE TABLE IF NOT EXISTS `episerp`.`en_p1t_preventa_det` (
-  `PreVenCabCod` CHAR(10) NOT NULL,
-  `PreVenDetCod` INT(3) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT,
-  `ClaProCod` CHAR(2) NOT NULL,
-  `SubClaProCod` CHAR(2) NOT NULL,
-  `ProCod` CHAR(15) NOT NULL,
-  `PreVenDetCan` DOUBLE(10,2) NOT NULL,
-  `PreVenDetValUni` DOUBLE(10,2) NOT NULL,
-  PRIMARY KEY (`PreVenDetCod`, `PreVenCabCod`),
-  INDEX `IX_Relationship9` (`ProCod` ASC, `SubClaProCod` ASC, `ClaProCod` ASC),
-  INDEX `Relationship6` (`PreVenCabCod` ASC),
-  CONSTRAINT `Relationship6`
-    FOREIGN KEY (`PreVenCabCod`)
-    REFERENCES `episerp`.`en_p1m_preventa_cab` (`PreVenCabCod`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `Relationship9`
-    FOREIGN KEY (`ProCod` , `SubClaProCod` , `ClaProCod`)
-    REFERENCES `episerp`.`en_p2m_producto` (`ProCod` , `SubClaProCod` , `ClaProCod`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
--- Table `episerp`.`en_p3m_libro_diario`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `episerp`.`en_p3m_libro_diario` ;
-
-CREATE TABLE IF NOT EXISTS `episerp`.`en_p3m_libro_diario` (
-  `LibDiaCod` INT(6) ZEROFILL NOT NULL AUTO_INCREMENT,
-  `LibDiaPer` CHAR(20) NOT NULL,
-  `EstRegCod` CHAR(1) NOT NULL,
-  PRIMARY KEY (`LibDiaCod`))
-ENGINE = InnoDB
-AUTO_INCREMENT = 2
-DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
--- Table `episerp`.`ta_gzz_tipo_comprobante`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `episerp`.`ta_gzz_tipo_comprobante` ;
-
-CREATE TABLE IF NOT EXISTS `episerp`.`ta_gzz_tipo_comprobante` (
-  `TipComCod` INT(2) ZEROFILL NOT NULL AUTO_INCREMENT,
-  `TipComDet` CHAR(100) NOT NULL,
-  `EstRegCod` CHAR(1) NOT NULL,
-  PRIMARY KEY (`TipComCod`))
-ENGINE = InnoDB
-AUTO_INCREMENT = 100
-DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
--- Table `episerp`.`en_p3m_asiento_cab`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `episerp`.`en_p3m_asiento_cab` ;
-
-CREATE TABLE IF NOT EXISTS `episerp`.`en_p3m_asiento_cab` (
-  `LibDiaCod` INT(6) UNSIGNED ZEROFILL NOT NULL,
-  `AsiCabCod` INT(10) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT,
-  `AsiCabTip` CHAR(1) NOT NULL,
-  `AsiCabGlo` CHAR(150) NULL DEFAULT NULL,
-  `AsiCabFec` DATE NOT NULL,
-  `TipComCod` INT(2) UNSIGNED ZEROFILL NOT NULL,
-  `AsiCabNumCom` CHAR(15) NULL DEFAULT NULL,
-  `MonCod` INT(2) UNSIGNED ZEROFILL NOT NULL,
-  `EstRegCod` CHAR(1) NOT NULL,
-  PRIMARY KEY (`AsiCabCod`, `LibDiaCod`),
-  INDEX `IX_Relationship41` (`MonCod` ASC),
-  INDEX `IX_Relationship59` (`TipComCod` ASC),
-  INDEX `Relationship40` (`LibDiaCod` ASC),
-  CONSTRAINT `Relationship40`
-    FOREIGN KEY (`LibDiaCod`)
-    REFERENCES `episerp`.`en_p3m_libro_diario` (`LibDiaCod`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `Relationship41`
-    FOREIGN KEY (`MonCod`)
-    REFERENCES `episerp`.`ta_gzz_moneda` (`MonCod`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `Relationship59`
-    FOREIGN KEY (`TipComCod`)
-    REFERENCES `episerp`.`ta_gzz_tipo_comprobante` (`TipComCod`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-AUTO_INCREMENT = 3
-DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
--- Table `episerp`.`en_p3m_cuenta`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `episerp`.`en_p3m_cuenta` ;
-
-CREATE TABLE IF NOT EXISTS `episerp`.`en_p3m_cuenta` (
-  `CueCod` INT(10) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT,
-  `CuePad` INT(10) UNSIGNED ZEROFILL NULL DEFAULT NULL,
-  `CueNiv` INT(2) NOT NULL,
-  `CueNum` CHAR(10) NOT NULL,
-  `CueDes` CHAR(150) NOT NULL,
-  `EstRegCod` CHAR(1) NOT NULL,
-  PRIMARY KEY (`CueCod`),
-  INDEX `IX_Relationship37` (`CuePad` ASC),
-  CONSTRAINT `Relationship37`
-    FOREIGN KEY (`CuePad`)
-    REFERENCES `episerp`.`en_p3m_cuenta` (`CueCod`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-AUTO_INCREMENT = 540
-DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
--- Table `episerp`.`ta_gzz_banco`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `episerp`.`ta_gzz_banco` ;
-
-CREATE TABLE IF NOT EXISTS `episerp`.`ta_gzz_banco` (
-  `BanCod` INT(2) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT,
-  `BanDet` CHAR(90) NOT NULL,
-  `EstRegCod` CHAR(1) NOT NULL,
-  PRIMARY KEY (`BanCod`))
-ENGINE = InnoDB
-AUTO_INCREMENT = 100
-DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
--- Table `episerp`.`en_p3m_cuenta_banco`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `episerp`.`en_p3m_cuenta_banco` ;
-
-CREATE TABLE IF NOT EXISTS `episerp`.`en_p3m_cuenta_banco` (
-  `CueBanCod` INT(10) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT,
-  `BanCod` INT(2) UNSIGNED ZEROFILL NOT NULL,
-  `CueBanNum` CHAR(20) NOT NULL,
-  `CueCod` INT(10) UNSIGNED ZEROFILL NOT NULL,
-  `EstRegCod` CHAR(1) NOT NULL,
-  PRIMARY KEY (`CueBanCod`),
-  INDEX `IX_Relationship38` (`BanCod` ASC),
-  INDEX `IX_Relationship39` (`CueCod` ASC),
-  CONSTRAINT `Relationship38`
-    FOREIGN KEY (`BanCod`)
-    REFERENCES `episerp`.`ta_gzz_banco` (`BanCod`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `Relationship39`
-    FOREIGN KEY (`CueCod`)
-    REFERENCES `episerp`.`en_p3m_cuenta` (`CueCod`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
--- Table `episerp`.`en_p3m_plantilla_cab`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `episerp`.`en_p3m_plantilla_cab` ;
-
-CREATE TABLE IF NOT EXISTS `episerp`.`en_p3m_plantilla_cab` (
-  `PlaCod` INT(10) ZEROFILL NOT NULL AUTO_INCREMENT,
-  `PlaDet` CHAR(90) NULL DEFAULT NULL,
-  `PlaGlo` CHAR(60) NULL DEFAULT NULL,
-  `PlaHab` TINYINT(1) NOT NULL,
-  `EstRegCod` CHAR(1) NOT NULL,
-  PRIMARY KEY (`PlaCod`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
--- Table `episerp`.`en_p3t_asiento_det`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `episerp`.`en_p3t_asiento_det` ;
-
-CREATE TABLE IF NOT EXISTS `episerp`.`en_p3t_asiento_det` (
-  `LibDiaCod` INT(6) UNSIGNED ZEROFILL NOT NULL,
-  `AsiCabCod` INT(10) UNSIGNED ZEROFILL NOT NULL,
-  `AsiDetCod` INT(10) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT,
-  `CueCod` INT(10) UNSIGNED ZEROFILL NOT NULL,
-  `AsiDetDebHab` TINYINT(1) NOT NULL,
-  `AsiDetMon` DOUBLE(10,2) NOT NULL,
-  PRIMARY KEY (`AsiDetCod`, `AsiCabCod`, `LibDiaCod`),
-  INDEX `IX_Relationship43` (`CueCod` ASC),
-  INDEX `Relationship42` (`AsiCabCod` ASC, `LibDiaCod` ASC),
-  CONSTRAINT `Relationship42`
-    FOREIGN KEY (`AsiCabCod` , `LibDiaCod`)
-    REFERENCES `episerp`.`en_p3m_asiento_cab` (`AsiCabCod` , `LibDiaCod`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `Relationship43`
-    FOREIGN KEY (`CueCod`)
-    REFERENCES `episerp`.`en_p3m_cuenta` (`CueCod`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
--- Table `episerp`.`en_p3t_plantilla_det`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `episerp`.`en_p3t_plantilla_det` ;
-
-CREATE TABLE IF NOT EXISTS `episerp`.`en_p3t_plantilla_det` (
-  `PlaCod` INT(10) UNSIGNED ZEROFILL NOT NULL,
-  `PlaDetCod` INT(10) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT,
-  `PlaDetDebHab` TINYINT(1) NOT NULL,
-  `PlaDetPor` DOUBLE(5,2) NOT NULL,
-  `CueCod` INT(10) UNSIGNED ZEROFILL NOT NULL,
-  PRIMARY KEY (`PlaDetCod`, `PlaCod`),
-  INDEX `IX_Relationship36` (`CueCod` ASC),
-  INDEX `Relationship34` (`PlaCod` ASC),
-  CONSTRAINT `Relationship34`
-    FOREIGN KEY (`PlaCod`)
-    REFERENCES `episerp`.`en_p3m_plantilla_cab` (`PlaCod`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `Relationship36`
-    FOREIGN KEY (`CueCod`)
-    REFERENCES `episerp`.`en_p3m_cuenta` (`CueCod`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
--- Table `episerp`.`en_p4m_proveedor`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `episerp`.`en_p4m_proveedor` ;
-
-CREATE TABLE IF NOT EXISTS `episerp`.`en_p4m_proveedor` (
-  `ProCod` CHAR(15) NOT NULL,
-  `ProDet` CHAR(90) NOT NULL,
-  `ProCon` CHAR(90) NULL DEFAULT NULL,
-  `ProDir` CHAR(90) NULL DEFAULT 'Desconocida',
-  `ProTelFij` CHAR(15) NULL DEFAULT NULL,
-  `ProTelCel` CHAR(15) NULL DEFAULT NULL,
-  `ProEmail` CHAR(50) NULL DEFAULT 'Desconocido',
-  `ProPagWeb` CHAR(50) NULL DEFAULT 'Desconocida',
-  `ProObs` CHAR(90) NULL DEFAULT 'Ninguna',
-  `EstRegCod` CHAR(1) NOT NULL,
-  PRIMARY KEY (`ProCod`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
--- Table `episerp`.`ta_gzz_tipo_doc_proveedor`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `episerp`.`ta_gzz_tipo_doc_proveedor` ;
-
-CREATE TABLE IF NOT EXISTS `episerp`.`ta_gzz_tipo_doc_proveedor` (
-  `TipDocProCod` INT(2) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT,
-  `TipDocProDet` CHAR(90) NOT NULL,
-  `EstRegCod` CHAR(1) NOT NULL,
-  PRIMARY KEY (`TipDocProCod`))
-ENGINE = InnoDB
-AUTO_INCREMENT = 3
-DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
--- Table `episerp`.`en_p4m_documento_proveedor`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `episerp`.`en_p4m_documento_proveedor` ;
-
-CREATE TABLE IF NOT EXISTS `episerp`.`en_p4m_documento_proveedor` (
-  `ProCod` CHAR(15) NOT NULL,
-  `TipDocProCod` INT(2) UNSIGNED ZEROFILL NOT NULL,
-  `DocProNum` CHAR(30) NOT NULL,
-  `EstRegCod` CHAR(1) NOT NULL,
-  PRIMARY KEY (`ProCod`, `TipDocProCod`),
-  INDEX `Relationship58` (`TipDocProCod` ASC),
-  CONSTRAINT `Relationship57`
-    FOREIGN KEY (`ProCod`)
-    REFERENCES `episerp`.`en_p4m_proveedor` (`ProCod`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `Relationship58`
-    FOREIGN KEY (`TipDocProCod`)
-    REFERENCES `episerp`.`ta_gzz_tipo_doc_proveedor` (`TipDocProCod`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
--- Table `episerp`.`en_p4m_factura_compra_cab`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `episerp`.`en_p4m_factura_compra_cab` ;
-
-CREATE TABLE IF NOT EXISTS `episerp`.`en_p4m_factura_compra_cab` (
-  `FacComCabCod` CHAR(10) NOT NULL,
-  `ProCod` CHAR(15) NOT NULL,
-  `UsuCod` CHAR(15) NOT NULL,
-  `FacComCabFec` DATE NOT NULL,
-  `FacComCabTot` DOUBLE(10,2) NOT NULL,
-  `FacComCabDes` DOUBLE(10,2) NOT NULL,
-  `FacComCabSubTot` DOUBLE(10,2) NOT NULL,
-  `FacComCabIGV` INT(3) NOT NULL DEFAULT '19',
-  `FacComCabObs` CHAR(90) NOT NULL DEFAULT 'Ninguna',
-  `EstFacCod` INT(2) UNSIGNED ZEROFILL NOT NULL,
-  `MetPagCod` INT(2) UNSIGNED ZEROFILL NOT NULL,
-  `TipPagCod` INT(2) UNSIGNED ZEROFILL NOT NULL,
-  `MonCod` INT(2) UNSIGNED ZEROFILL NOT NULL,
-  `EstRegCod` CHAR(1) NOT NULL,
-  PRIMARY KEY (`FacComCabCod`),
-  INDEX `IX_Relationship49` (`ProCod` ASC),
-  INDEX `IX_Relationship50` (`UsuCod` ASC),
-  INDEX `IX_Relationship51` (`EstFacCod` ASC),
-  INDEX `IX_Relationship52` (`MetPagCod` ASC),
-  INDEX `IX_Relationship53` (`TipPagCod` ASC),
-  INDEX `IX_Relationship54` (`MonCod` ASC),
-  CONSTRAINT `Relationship49`
-    FOREIGN KEY (`ProCod`)
-    REFERENCES `episerp`.`en_p4m_proveedor` (`ProCod`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `Relationship50`
-    FOREIGN KEY (`UsuCod`)
-    REFERENCES `episerp`.`en_p1m_usuario` (`UsuCod`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `Relationship51`
-    FOREIGN KEY (`EstFacCod`)
-    REFERENCES `episerp`.`ta_gzz_estado_factura` (`EstFacCod`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `Relationship52`
-    FOREIGN KEY (`MetPagCod`)
-    REFERENCES `episerp`.`ta_gzz_metodo_pago_factura` (`MetPagCod`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `Relationship53`
-    FOREIGN KEY (`TipPagCod`)
-    REFERENCES `episerp`.`ta_gzz_tipo_pago_factura` (`TipPagCod`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `Relationship54`
-    FOREIGN KEY (`MonCod`)
-    REFERENCES `episerp`.`ta_gzz_moneda` (`MonCod`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
--- Table `episerp`.`en_p4m_guia_compra_cab`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `episerp`.`en_p4m_guia_compra_cab` ;
-
-CREATE TABLE IF NOT EXISTS `episerp`.`en_p4m_guia_compra_cab` (
-  `GuiComCabCod` CHAR(10) NOT NULL,
-  `FacComCabCod` CHAR(10) NOT NULL,
-  `ProCod` CHAR(15) NOT NULL,
-  `GuiComCabPunPar` CHAR(30) NULL DEFAULT NULL,
-  `GuiComCabPunLle` CHAR(30) NULL DEFAULT NULL,
-  `GuiComCabFec` DATE NOT NULL,
-  `EstRegCod` CHAR(1) NOT NULL,
-  PRIMARY KEY (`GuiComCabCod`),
-  INDEX `IX_Relationship44` (`FacComCabCod` ASC),
-  INDEX `IX_Relationship45` (`ProCod` ASC),
-  CONSTRAINT `Relationship44`
-    FOREIGN KEY (`FacComCabCod`)
-    REFERENCES `episerp`.`en_p4m_factura_compra_cab` (`FacComCabCod`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `Relationship45`
-    FOREIGN KEY (`ProCod`)
-    REFERENCES `episerp`.`en_p4m_proveedor` (`ProCod`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
--- Table `episerp`.`en_p4t_factura_compra_det`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `episerp`.`en_p4t_factura_compra_det` ;
-
-CREATE TABLE IF NOT EXISTS `episerp`.`en_p4t_factura_compra_det` (
-  `FacComCabCod` CHAR(10) NOT NULL,
-  `FacComDetCod` INT(3) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT,
-  `ClaProCod` CHAR(2) NOT NULL,
-  `SubClaProCod` CHAR(2) NOT NULL,
-  `ProCod` CHAR(15) NOT NULL,
-  `FacComDetCan` DOUBLE(10,2) NOT NULL,
-  `FacComDetValUni` DOUBLE(10,2) NOT NULL,
-  PRIMARY KEY (`FacComDetCod`, `FacComCabCod`),
-  INDEX `IX_Relationship56` (`ProCod` ASC, `SubClaProCod` ASC, `ClaProCod` ASC),
-  INDEX `Relationship55` (`FacComCabCod` ASC),
-  CONSTRAINT `Relationship55`
-    FOREIGN KEY (`FacComCabCod`)
-    REFERENCES `episerp`.`en_p4m_factura_compra_cab` (`FacComCabCod`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `Relationship56`
-    FOREIGN KEY (`ProCod` , `SubClaProCod` , `ClaProCod`)
-    REFERENCES `episerp`.`en_p2m_producto` (`ProCod` , `SubClaProCod` , `ClaProCod`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
--- Table `episerp`.`en_p4t_guia_compra_det`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `episerp`.`en_p4t_guia_compra_det` ;
-
-CREATE TABLE IF NOT EXISTS `episerp`.`en_p4t_guia_compra_det` (
-  `GuiComCabCod` CHAR(10) NOT NULL,
-  `GuiComDetCod` INT(3) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT,
-  `ClaProCod` CHAR(2) NOT NULL,
-  `SubClaProCod` CHAR(2) NOT NULL,
-  `ProCod` CHAR(15) NOT NULL,
-  `GuiComDetCan` DOUBLE(10,2) NOT NULL,
-  PRIMARY KEY (`GuiComDetCod`, `GuiComCabCod`),
-  INDEX `IX_Relationship47` (`ProCod` ASC, `SubClaProCod` ASC, `ClaProCod` ASC),
-  INDEX `Relationship46` (`GuiComCabCod` ASC),
-  CONSTRAINT `Relationship46`
-    FOREIGN KEY (`GuiComCabCod`)
-    REFERENCES `episerp`.`en_p4m_guia_compra_cab` (`GuiComCabCod`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `Relationship47`
-    FOREIGN KEY (`ProCod` , `SubClaProCod` , `ClaProCod`)
-    REFERENCES `episerp`.`en_p2m_producto` (`ProCod` , `SubClaProCod` , `ClaProCod`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
--- Table `episerp`.`en_p1m_empresa`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `episerp`.`en_p1m_empresa` ;
-
-CREATE TABLE IF NOT EXISTS `episerp`.`en_p1m_empresa` (
-  `EmpCod` INT(2) ZEROFILL NOT NULL AUTO_INCREMENT,
-  `EmpNom` CHAR(80) NOT NULL,
-  `EmpDes` VARCHAR(200) NULL,
-  `EmpDir` CHAR(100) NOT NULL,
-  `EmpTel` CHAR(20) NULL,
-  `EmpCor` CHAR(50) NULL,
-  `EmpIGV` DOUBLE(5,2) NOT NULL,
-  `EmpRUC` CHAR(11) NOT NULL,
-  `EmpImg` BLOB NULL,
-  PRIMARY KEY (`EmpCod`))
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `episerp`.`en_p1m_punto_venta`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `episerp`.`en_p1m_punto_venta` ;
-
-CREATE TABLE IF NOT EXISTS `episerp`.`en_p1m_punto_venta` (
-  `PunVenCod` INT(6) ZEROFILL NOT NULL AUTO_INCREMENT,
-  `SucCod` INT(5) ZEROFILL NOT NULL,
-  `PunVenDes` CHAR(60) NOT NULL,
-  `EstRegCod` CHAR(1) NOT NULL,
-  PRIMARY KEY (`PunVenCod`, `SucCod`),
-  INDEX `fk_en_p1m_punto_venta_en_p1m_sucursal1_idx` (`SucCod` ASC),
-  CONSTRAINT `fk_en_p1m_punto_venta_en_p1m_sucursal1`
-    FOREIGN KEY (`SucCod`)
-    REFERENCES `episerp`.`en_p1m_sucursal` (`SucCod`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `episerp`.`en_p1m_movimiento_punto_ven`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `episerp`.`en_p1m_movimiento_punto_ven` ;
-
-CREATE TABLE IF NOT EXISTS `episerp`.`en_p1m_movimiento_punto_ven` (
-  `MovPunVenCod` INT(10) ZEROFILL NOT NULL AUTO_INCREMENT,
-  `SucCod` INT(5) ZEROFILL NOT NULL,
-  `PunVenCod` INT(6) ZEROFILL NOT NULL,
-  `TipComCod` INT(2) ZEROFILL NOT NULL,
-  `MovPunVenComCod` CHAR(10) NOT NULL,
-  `UsuCod` CHAR(15) NOT NULL,
-  `MovPunVenFec` DATE NOT NULL,
-  `MovPunVenMon` DOUBLE(10,2) NOT NULL,
-  `EstRegCod` CHAR(1) NOT NULL,
-  PRIMARY KEY (`MovPunVenCod`, `SucCod`, `PunVenCod`),
-  INDEX `fk_en_p1m_movimiento_punto_ven_en_p1m_punto_venta1_idx` (`SucCod` ASC, `PunVenCod` ASC),
-  INDEX `fk_en_p1m_movimiento_punto_ven_en_p1m_usuario1_idx` (`UsuCod` ASC),
-  INDEX `fk_en_p1m_movimiento_punto_ven_ta_gzz_tipo_comprobante1_idx` (`TipComCod` ASC),
-  CONSTRAINT `fk_en_p1m_movimiento_punto_ven_en_p1m_punto_venta1`
-    FOREIGN KEY (`SucCod` , `PunVenCod`)
-    REFERENCES `episerp`.`en_p1m_punto_venta` (`SucCod` , `PunVenCod`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_en_p1m_movimiento_punto_ven_en_p1m_usuario1`
-    FOREIGN KEY (`UsuCod`)
-    REFERENCES `episerp`.`en_p1m_usuario` (`UsuCod`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_en_p1m_movimiento_punto_ven_ta_gzz_tipo_comprobante1`
-    FOREIGN KEY (`TipComCod`)
-    REFERENCES `episerp`.`ta_gzz_tipo_comprobante` (`TipComCod`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
-SET SQL_MODE=@OLD_SQL_MODE;
-SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
-SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+-- Create tables section -------------------------------------------------
+
+-- Table episerp.en_p1m_preventa_cab
+
+CREATE TABLE en_p1m_preventa_cab
+(
+  PreVenCabCod Char(10) NOT NULL,
+  CliCod Char(15) NOT NULL,
+  UsuCod Char(15) NOT NULL,
+  PreVenCabFec Date NOT NULL,
+  PreVenCabPla Int(3) NOT NULL,
+  PreVenCabTot Double(10,2) NOT NULL,
+  TipDesCod Int(2) ZEROFILL,
+  PreVenCabDes Double(10,2) NOT NULL,
+  PreVenCabSubTot Double(10,2) NOT NULL,
+  PreVenCabIGV Int(3) NOT NULL DEFAULT 19,
+  PreVenCabObs Char(90) NOT NULL DEFAULT 'Ninguna',
+  MonCod Int(2) ZEROFILL NOT NULL,
+  EstRegCod Char(1) NOT NULL
+)
+;
+
+ALTER TABLE en_p1m_preventa_cab ADD PRIMARY KEY (PreVenCabCod)
+;
+
+CREATE INDEX IX_Relationship3 ON en_p1m_preventa_cab (CliCod)
+;
+
+CREATE INDEX IX_Relationship4 ON en_p1m_preventa_cab (UsuCod)
+;
+
+CREATE INDEX IX_Relationship5 ON en_p1m_preventa_cab (MonCod)
+;
+
+CREATE INDEX IX_Relationship104 ON en_p1m_preventa_cab (TipDesCod)
+;
+
+-- Table episerp.en_p1t_preventa_det
+
+CREATE TABLE en_p1t_preventa_det
+(
+  PreVenCabCod Char(10) NOT NULL,
+  PreVenDetCod Int(3) ZEROFILL NOT NULL AUTO_INCREMENT,
+  ClaProCod Char(2) NOT NULL,
+  SubClaProCod Char(2) NOT NULL,
+  ProCod Char(15) NOT NULL,
+  PreVenDetCan Double(10,2) NOT NULL,
+  PreVenDetValUni Double(10,2) NOT NULL,
+ PRIMARY KEY (PreVenDetCod,PreVenCabCod)
+)
+;
+
+CREATE INDEX IX_Relationship9 ON en_p1t_preventa_det (ProCod,SubClaProCod,ClaProCod)
+;
+
+-- Table episerp.en_p1c_preventa_realizadas
+
+CREATE TABLE en_p1c_preventa_realizadas
+(
+  PreVenCabCod Char(10) NOT NULL,
+  FacVenCabCod Char(10) NOT NULL,
+  PreVenReaFec Date NOT NULL
+)
+;
+
+ALTER TABLE en_p1c_preventa_realizadas ADD PRIMARY KEY (PreVenCabCod,FacVenCabCod)
+;
+
+-- Table episerp.en_p1m_factura_venta_cab
+
+CREATE TABLE en_p1m_factura_venta_cab
+(
+  FacVenCabCod Char(10) NOT NULL,
+  GuiRemRemNum Char(15),
+  GuiRemTraNum Char(15),
+  CliCod Char(15) NOT NULL,
+  UsuCod Char(15) NOT NULL,
+  FacVenCabFec Date NOT NULL,
+  TipFacOBolCod Int(2) ZEROFILL,
+  FacVenCabTot Double(10,2) NOT NULL,
+  TipDesCod Int(2) ZEROFILL,
+  FacVenCabDes Double(10,2) NOT NULL,
+  FacVenCabSubTot Double(10,2) NOT NULL,
+  FacVenCabIGV Int(3) NOT NULL DEFAULT 19,
+  FacVenCabObs Char(90) NOT NULL DEFAULT 'Ninguna',
+  EstFacCod Int(2) ZEROFILL NOT NULL,
+  MetPagCod Int(2) ZEROFILL NOT NULL,
+  TipPagCod Int(2) ZEROFILL NOT NULL,
+  MonCod Int(2) ZEROFILL NOT NULL,
+  TipComCod Int(2) ZEROFILL,
+  FacVenCabComVal Double(10,2),
+  EstRegCod Char(1) NOT NULL
+)
+;
+
+ALTER TABLE en_p1m_factura_venta_cab ADD PRIMARY KEY (FacVenCabCod)
+;
+
+CREATE INDEX IX_Relationship12 ON en_p1m_factura_venta_cab (UsuCod)
+;
+
+CREATE INDEX IX_Relationship13 ON en_p1m_factura_venta_cab (CliCod)
+;
+
+CREATE INDEX IX_Relationship14 ON en_p1m_factura_venta_cab (EstFacCod)
+;
+
+CREATE INDEX IX_Relationship15 ON en_p1m_factura_venta_cab (MetPagCod)
+;
+
+CREATE INDEX IX_Relationship16 ON en_p1m_factura_venta_cab (TipPagCod)
+;
+
+CREATE INDEX IX_Relationship17 ON en_p1m_factura_venta_cab (MonCod)
+;
+
+CREATE INDEX IX_Relationship91 ON en_p1m_factura_venta_cab (TipDesCod)
+;
+
+CREATE INDEX IX_Relationship93 ON en_p1m_factura_venta_cab (TipFacOBolCod)
+;
+
+CREATE INDEX IX_Relationship99 ON en_p1m_factura_venta_cab (GuiRemTraNum)
+;
+
+CREATE INDEX IX_Relationship100 ON en_p1m_factura_venta_cab (GuiRemRemNum)
+;
+
+CREATE INDEX IX_Relationship108 ON en_p1m_factura_venta_cab (TipComCod)
+;
+
+-- Table episerp.en_p1t_factura_venta_det
+
+CREATE TABLE en_p1t_factura_venta_det
+(
+  FacVenCabCod Char(10) NOT NULL,
+  FacVenDetCod Int(3) ZEROFILL NOT NULL AUTO_INCREMENT,
+  ClaProCod Char(2) NOT NULL,
+  SubClaProCod Char(2) NOT NULL,
+  ProCod Char(15) NOT NULL,
+  FacVenDetCan Double(10,2) NOT NULL,
+  FacVenDetValUni Double(10,2) NOT NULL,
+ PRIMARY KEY (FacVenDetCod,FacVenCabCod)
+)
+;
+
+CREATE INDEX IX_Relationship19 ON en_p1t_factura_venta_det (ProCod,SubClaProCod,ClaProCod)
+;
+
+-- Table episerp.en_p1m_pagos_cuotas_cab
+
+CREATE TABLE en_p1m_pagos_cuotas_cab
+(
+  FacVenCabCod Char(10) NOT NULL,
+  PagCuoNum Int(2) NOT NULL,
+  PagCuoNumPag Int(2) NOT NULL DEFAULT 0,
+  PagCuoDeuTot Double(10,2) NOT NULL,
+  PagCuoTotPag Double(10,2) NOT NULL,
+  PagCuoMonXCuo Double(10,2) NOT NULL,
+  PagCuoFecIni Date NOT NULL,
+  PagCuoFecFin Date NOT NULL,
+  PagCuoFecPag Date NOT NULL,
+  EstRegCod Char(1) NOT NULL
+)
+;
+
+ALTER TABLE en_p1m_pagos_cuotas_cab ADD PRIMARY KEY (FacVenCabCod)
+;
+
+-- Table episerp.en_p1t_pagos_cuotas_det
+
+CREATE TABLE en_p1t_pagos_cuotas_det
+(
+  FacVenCabCod Char(10) NOT NULL,
+  PagCuoDetCod Int(3) ZEROFILL NOT NULL AUTO_INCREMENT,
+  PagCuoDetTotPag Double(10,2) NOT NULL,
+ PRIMARY KEY (PagCuoDetCod,FacVenCabCod)
+)
+;
+
+-- Table episerp.en_p1m_cliente
+
+CREATE TABLE en_p1m_cliente
+(
+  CliCod Char(15) NOT NULL,
+  TipCliCod Int(2) ZEROFILL,
+  CliRazSoc Char(90) NOT NULL,
+  CliNomCom Char(90),
+  CliDomFis Char(90),
+  CliNom Char(90),
+  CliApePat Char(90),
+  CliApeMat Char(90),
+  CliSex Char(1) NOT NULL,
+  CliDir Char(90) NOT NULL DEFAULT 'Desconocida',
+  EstCivCod Int(2) ZEROFILL NOT NULL,
+  CliTelFij Char(15),
+  CliTelCel Char(15),
+  CliEmail Char(50) NOT NULL DEFAULT 'Desconocido',
+  EstRegCod Char(1) NOT NULL
+)
+;
+
+ALTER TABLE en_p1m_cliente ADD PRIMARY KEY (CliCod)
+;
+
+CREATE INDEX IX_Relationship28 ON en_p1m_cliente (EstCivCod)
+;
+
+CREATE INDEX IX_Relationship95 ON en_p1m_cliente (TipCliCod)
+;
+
+-- Table episerp.en_p1m_documento_cliente
+
+CREATE TABLE en_p1m_documento_cliente
+(
+  CliCod Char(15) NOT NULL,
+  TipDocCliCod Int(2) ZEROFILL NOT NULL,
+  DocCliNum Char(30) NOT NULL,
+  EstRegCod Char(1) NOT NULL
+)
+;
+
+ALTER TABLE en_p1m_documento_cliente ADD PRIMARY KEY (CliCod,TipDocCliCod)
+;
+
+-- Table episerp.en_p1m_usuario
+
+CREATE TABLE en_p1m_usuario
+(
+  UsuCod Char(15) NOT NULL,
+  UsuNom Char(90),
+  UsuApePat Char(20),
+  UsuApeMat Char(20),
+  UsuLog Char(30) NOT NULL,
+  UsuPas Char(80) NOT NULL,
+  TipUsuCod Int(2) ZEROFILL NOT NULL,
+  SucCod Int(5) ZEROFILL,
+  UsuFecNac Date,
+  EstCivCod Int(2) ZEROFILL NOT NULL,
+  UsuSex Char(1) NOT NULL,
+  EstRegCod Char(1) NOT NULL
+)
+;
+
+ALTER TABLE en_p1m_usuario ADD PRIMARY KEY (UsuCod)
+;
+
+CREATE INDEX IX_Relationship26 ON en_p1m_usuario (TipUsuCod)
+;
+
+CREATE INDEX IX_Relationship27 ON en_p1m_usuario (EstCivCod)
+;
+
+CREATE INDEX IX_Relationship60 ON en_p1m_usuario (SucCod)
+;
+
+-- Table episerp.en_p1m_documento_usuario
+
+CREATE TABLE en_p1m_documento_usuario
+(
+  UsuCod Char(15) NOT NULL,
+  TipDocUsuCod Int(2) ZEROFILL NOT NULL,
+  DocUsuNum Char(30) NOT NULL,
+  EstRegCod Char(1) NOT NULL
+)
+;
+
+ALTER TABLE en_p1m_documento_usuario ADD PRIMARY KEY (UsuCod,TipDocUsuCod)
+;
+
+-- Table episerp.en_p2m_clase_producto
+
+CREATE TABLE en_p2m_clase_producto
+(
+  ClaProCod Char(2) NOT NULL,
+  ClaProDet Char(90) NOT NULL,
+  EstRegCod Char(1) NOT NULL
+)
+;
+
+ALTER TABLE en_p2m_clase_producto ADD PRIMARY KEY (ClaProCod)
+;
+
+-- Table episerp.en_p2m_subclase_producto
+
+CREATE TABLE en_p2m_subclase_producto
+(
+  ClaProCod Char(2) NOT NULL,
+  SubClaProCod Char(2) NOT NULL,
+  SubClaProDet Char(90) NOT NULL,
+  EstRegCod Char(1) NOT NULL
+)
+;
+
+ALTER TABLE en_p2m_subclase_producto ADD PRIMARY KEY (SubClaProCod,ClaProCod)
+;
+
+-- Table episerp.en_p2m_producto
+
+CREATE TABLE en_p2m_producto
+(
+  ClaProCod Char(2) NOT NULL,
+  SubClaProCod Char(2) NOT NULL,
+  ProCod Char(15) NOT NULL,
+  ProDet Char(90) NOT NULL,
+  UniMedCod Int(2) ZEROFILL NOT NULL,
+  ProPreUniVen Double(10,2) NOT NULL,
+  ProPreUniCom Double(10,2),
+  MonCod Int(2) ZEROFILL NOT NULL,
+  ProStk Double(10,2) NOT NULL,
+  ProStkRea Double(10,2),
+  ProStkPreVen Double(10,2) NOT NULL DEFAULT 0,
+  VolUniAlm Double(10,2),
+  ProStkMin Double(10,2),
+  ProStkMax Double(10,2),
+  ProObs Char(90) NOT NULL DEFAULT 'Ninguna',
+  EstRegCod Char(1) NOT NULL
+)
+;
+
+ALTER TABLE en_p2m_producto ADD PRIMARY KEY (ProCod,SubClaProCod,ClaProCod)
+;
+
+CREATE INDEX IX_Relationship33 ON en_p2m_producto (UniMedCod)
+;
+
+-- Table episerp.en_p2m_almacen
+
+CREATE TABLE en_p2m_almacen
+(
+  AlmCod Char(15) NOT NULL,
+  AlmDet Char(90),
+  SucCod Int(5) ZEROFILL NOT NULL,
+  AlmVolTot Double(10,2),
+  AlmObs Char(90) NOT NULL DEFAULT 'Ninguna',
+  EstRegCod Char(1) NOT NULL
+)
+;
+
+ALTER TABLE en_p2m_almacen ADD PRIMARY KEY (AlmCod)
+;
+
+CREATE INDEX IX_Relationship61 ON en_p2m_almacen (SucCod)
+;
+
+-- Table episerp.en_p3m_plantilla_cab
+
+CREATE TABLE en_p3m_plantilla_cab
+(
+  PlaCod Int(10) ZEROFILL NOT NULL AUTO_INCREMENT,
+  PlaDet Char(90),
+  PlaGlo Char(60),
+  PlaHab Bool NOT NULL,
+  EstRegCod Char(1) NOT NULL,
+ PRIMARY KEY (PlaCod)
+)
+;
+
+-- Table episerp.en_p3t_plantilla_det
+
+CREATE TABLE en_p3t_plantilla_det
+(
+  PlaCod Int(10) ZEROFILL NOT NULL,
+  PlaDetCod Int(10) ZEROFILL NOT NULL AUTO_INCREMENT,
+  PlaDetDebHab Bool NOT NULL,
+  PlaDetPor Double(5,2) NOT NULL,
+  CueCod Int(10) ZEROFILL NOT NULL,
+ PRIMARY KEY (PlaDetCod,PlaCod)
+)
+;
+
+CREATE INDEX IX_Relationship36 ON en_p3t_plantilla_det (CueCod)
+;
+
+-- Table episerp.en_p3m_cuenta
+
+CREATE TABLE en_p3m_cuenta
+(
+  CueCod Int(10) ZEROFILL NOT NULL AUTO_INCREMENT,
+  CuePad Int(10) ZEROFILL,
+  CueNiv Int(2) NOT NULL,
+  CueNum Char(10) NOT NULL,
+  CueDes Char(150) NOT NULL,
+  EstRegCod Char(1) NOT NULL,
+ PRIMARY KEY (CueCod)
+)
+;
+
+CREATE INDEX IX_Relationship37 ON en_p3m_cuenta (CuePad)
+;
+
+-- Table episerp.en_p3m_cuenta_banco
+
+CREATE TABLE en_p3m_cuenta_banco
+(
+  CueBanCod Int(10) ZEROFILL NOT NULL AUTO_INCREMENT,
+  BanCod Int(2) ZEROFILL NOT NULL,
+  CueBanNum Char(20) NOT NULL,
+  CueCod Int(10) ZEROFILL NOT NULL,
+  EstRegCod Char(1) NOT NULL,
+ PRIMARY KEY (CueBanCod)
+)
+;
+
+CREATE INDEX IX_Relationship38 ON en_p3m_cuenta_banco (BanCod)
+;
+
+CREATE INDEX IX_Relationship39 ON en_p3m_cuenta_banco (CueCod)
+;
+
+-- Table episerp.en_p3m_libro_diario
+
+CREATE TABLE en_p3m_libro_diario
+(
+  LibDiaCod Int(6) ZEROFILL NOT NULL AUTO_INCREMENT,
+  LibDiaPer Char(20) NOT NULL,
+  EstRegCod Char(1) NOT NULL,
+ PRIMARY KEY (LibDiaCod)
+)
+;
+
+-- Table episerp.en_p3m_asiento_cab
+
+CREATE TABLE en_p3m_asiento_cab
+(
+  LibDiaCod Int(6) ZEROFILL NOT NULL,
+  AsiCabCod Int(10) ZEROFILL NOT NULL AUTO_INCREMENT,
+  AsiCabTip Char(1) NOT NULL,
+  AsiCabGlo Char(150),
+  AsiCabFec Date NOT NULL,
+  TipComCod Int(2) ZEROFILL NOT NULL,
+  AsiCabNumCom Char(15),
+  MonCod Int(2) ZEROFILL NOT NULL,
+  EstRegCod Char(1) NOT NULL,
+ PRIMARY KEY (AsiCabCod,LibDiaCod)
+)
+;
+
+CREATE INDEX IX_Relationship41 ON en_p3m_asiento_cab (MonCod)
+;
+
+CREATE INDEX IX_Relationship59 ON en_p3m_asiento_cab (TipComCod)
+;
+
+-- Table episerp.en_p3t_asiento_det
+
+CREATE TABLE en_p3t_asiento_det
+(
+  LibDiaCod Int(6) ZEROFILL NOT NULL,
+  AsiCabCod Int(10) ZEROFILL NOT NULL,
+  AsiDetCod Int(10) ZEROFILL NOT NULL AUTO_INCREMENT,
+  CueCod Int(10) ZEROFILL NOT NULL,
+  AsiDetDebHab Bool NOT NULL,
+  AsiDetMon Double(10,2) NOT NULL,
+ PRIMARY KEY (AsiDetCod,AsiCabCod,LibDiaCod)
+)
+;
+
+CREATE INDEX IX_Relationship43 ON en_p3t_asiento_det (CueCod)
+;
+
+-- Table episerp.en_p4m_factura_compra_cab
+
+CREATE TABLE en_p4m_factura_compra_cab
+(
+  FacComCabCod Char(10) NOT NULL,
+  GuiRemRemNum Char(15),
+  GuiRemTraNum Char(15),
+  PrvCod Char(15) NOT NULL,
+  UsuCod Char(15) NOT NULL,
+  FacComCabFec Date NOT NULL,
+  TipFacOBolCod Int(2) ZEROFILL,
+  FacComCabTot Double(10,2) NOT NULL,
+  TipDesCod Int(2) ZEROFILL,
+  FacComCabDes Double(10,2) NOT NULL,
+  FacComCabSubTot Double(10,2) NOT NULL,
+  FacComCabIGV Int(3) NOT NULL DEFAULT 19,
+  FacComCabObs Char(90) NOT NULL DEFAULT 'Ninguna',
+  EstFacCod Int(2) ZEROFILL NOT NULL,
+  MetPagCod Int(2) ZEROFILL NOT NULL,
+  TipPagCod Int(2) ZEROFILL NOT NULL,
+  MonCod Int(2) ZEROFILL NOT NULL,
+  EstRegCod Char(1) NOT NULL
+)
+;
+
+ALTER TABLE en_p4m_factura_compra_cab ADD PRIMARY KEY (FacComCabCod)
+;
+
+CREATE INDEX IX_Relationship49 ON en_p4m_factura_compra_cab (PrvCod)
+;
+
+CREATE INDEX IX_Relationship50 ON en_p4m_factura_compra_cab (UsuCod)
+;
+
+CREATE INDEX IX_Relationship51 ON en_p4m_factura_compra_cab (EstFacCod)
+;
+
+CREATE INDEX IX_Relationship52 ON en_p4m_factura_compra_cab (MetPagCod)
+;
+
+CREATE INDEX IX_Relationship53 ON en_p4m_factura_compra_cab (TipPagCod)
+;
+
+CREATE INDEX IX_Relationship54 ON en_p4m_factura_compra_cab (MonCod)
+;
+
+CREATE INDEX IX_Relationship92 ON en_p4m_factura_compra_cab (TipDesCod)
+;
+
+CREATE INDEX IX_Relationship94 ON en_p4m_factura_compra_cab (TipFacOBolCod)
+;
+
+CREATE INDEX IX_Relationship101 ON en_p4m_factura_compra_cab (GuiRemTraNum)
+;
+
+CREATE INDEX IX_Relationship102 ON en_p4m_factura_compra_cab (GuiRemRemNum)
+;
+
+-- Table episerp.en_p4t_factura_compra_det
+
+CREATE TABLE en_p4t_factura_compra_det
+(
+  FacComCabCod Char(10) NOT NULL,
+  FacComDetCod Int(3) ZEROFILL NOT NULL AUTO_INCREMENT,
+  ClaProCod Char(2) NOT NULL,
+  SubClaProCod Char(2) NOT NULL,
+  ProCod Char(15) NOT NULL,
+  FacComDetCan Double(10,2) NOT NULL,
+  FacComDetValUni Double(10,2) NOT NULL,
+ PRIMARY KEY (FacComDetCod,FacComCabCod)
+)
+;
+
+CREATE INDEX IX_Relationship56 ON en_p4t_factura_compra_det (ProCod,SubClaProCod,ClaProCod)
+;
+
+-- Table episerp.en_p4m_proveedor
+
+CREATE TABLE en_p4m_proveedor
+(
+  PrvCod Char(15) NOT NULL,
+  PrvDet Char(90) NOT NULL,
+  PrvRazSoc Char(90),
+  PrvNomCom Char(90),
+  PrvDomFis Char(90),
+  PrvCon Char(90),
+  PrvDir Char(90) DEFAULT 'Desconocida',
+  PrvTelFij Char(15),
+  PrvTelCel Char(15),
+  PrvEmail Char(50) DEFAULT 'Desconocido',
+  PrvPagWeb Char(50) DEFAULT 'Desconocida',
+  PrvObs Char(90) DEFAULT 'Ninguna',
+  EstRegCod Char(1) NOT NULL
+)
+;
+
+ALTER TABLE en_p4m_proveedor ADD PRIMARY KEY (PrvCod)
+;
+
+-- Table episerp.en_p4m_documento_proveedor
+
+CREATE TABLE en_p4m_documento_proveedor
+(
+  PrvCod Char(15) NOT NULL,
+  TipDocProCod Int(2) ZEROFILL NOT NULL,
+  DocProNum Char(30) NOT NULL,
+  EstRegCod Char(1) NOT NULL
+)
+;
+
+ALTER TABLE en_p4m_documento_proveedor ADD PRIMARY KEY (PrvCod,TipDocProCod)
+;
+
+-- Table episerp.ta_gzz_unidad_med
+
+CREATE TABLE ta_gzz_unidad_med
+(
+  UniMedCod Int(2) ZEROFILL NOT NULL AUTO_INCREMENT,
+  UniMedDet Char(90) NOT NULL,
+  EstRegCod Char(1) NOT NULL,
+ PRIMARY KEY (UniMedCod)
+)
+;
+
+-- Table episerp.ta_gzz_moneda
+
+CREATE TABLE ta_gzz_moneda
+(
+  MonCod Int(2) ZEROFILL NOT NULL AUTO_INCREMENT,
+  MonDet Char(90) NOT NULL,
+  EstRegCod Char(1) NOT NULL,
+ PRIMARY KEY (MonCod)
+)
+;
+
+-- Table episerp.ta_gzz_estado_factura
+
+CREATE TABLE ta_gzz_estado_factura
+(
+  EstFacCod Int(2) ZEROFILL NOT NULL AUTO_INCREMENT,
+  EstFacDet Char(10) NOT NULL,
+  EstRegCod Char(1) NOT NULL,
+ PRIMARY KEY (EstFacCod)
+)
+;
+
+-- Table episerp.ta_gzz_metodo_pago_factura
+
+CREATE TABLE ta_gzz_metodo_pago_factura
+(
+  MetPagCod Int(2) ZEROFILL NOT NULL AUTO_INCREMENT,
+  MetPagDet Char(10) NOT NULL,
+  EstRegCod Char(1) NOT NULL,
+ PRIMARY KEY (MetPagCod)
+)
+;
+
+-- Table episerp.ta_gzz_tipo_pago_factura
+
+CREATE TABLE ta_gzz_tipo_pago_factura
+(
+  TipPagCod Int(2) ZEROFILL NOT NULL AUTO_INCREMENT,
+  TipPagDet Char(10) NOT NULL,
+  EstRegCod Char(1) NOT NULL,
+ PRIMARY KEY (TipPagCod)
+)
+;
+
+-- Table episerp.ta_gzz_tipo_usuario
+
+CREATE TABLE ta_gzz_tipo_usuario
+(
+  TipUsuCod Int(2) ZEROFILL NOT NULL AUTO_INCREMENT,
+  TipUsuDet Char(20) NOT NULL,
+  EstRegCod Char(1) NOT NULL,
+ PRIMARY KEY (TipUsuCod)
+)
+;
+
+-- Table episerp.ta_gzz_estado_civil
+
+CREATE TABLE ta_gzz_estado_civil
+(
+  EstCivCod Int(2) ZEROFILL NOT NULL AUTO_INCREMENT,
+  EstCivDet Char(20) NOT NULL,
+  EstRegCod Char(1) NOT NULL,
+ PRIMARY KEY (EstCivCod)
+)
+;
+
+-- Table episerp.ta_gzz_banco
+
+CREATE TABLE ta_gzz_banco
+(
+  BanCod Int(2) ZEROFILL NOT NULL AUTO_INCREMENT,
+  BanDet Char(90) NOT NULL,
+  EstRegCod Char(1) NOT NULL,
+ PRIMARY KEY (BanCod)
+)
+;
+
+-- Table episerp.ta_gzz_tipo_doc_usuario
+
+CREATE TABLE ta_gzz_tipo_doc_usuario
+(
+  TipDocUsuCod Int(2) ZEROFILL NOT NULL AUTO_INCREMENT,
+  TipDocUsuDet Char(90) NOT NULL,
+  EstRegCod Char(1) NOT NULL,
+ PRIMARY KEY (TipDocUsuCod)
+)
+;
+
+-- Table episerp.ta_gzz_tipo_doc_proveedor
+
+CREATE TABLE ta_gzz_tipo_doc_proveedor
+(
+  TipDocProCod Int(2) ZEROFILL NOT NULL AUTO_INCREMENT,
+  TipDocProDet Char(90) NOT NULL,
+  EstRegCod Char(1) NOT NULL,
+ PRIMARY KEY (TipDocProCod)
+)
+;
+
+-- Table episerp.ta_gzz_tipo_doc_cliente
+
+CREATE TABLE ta_gzz_tipo_doc_cliente
+(
+  TipDocCliCod Int(2) ZEROFILL NOT NULL AUTO_INCREMENT,
+  TipDocCliDet Char(90) NOT NULL,
+  EstRegCod Char(1) NOT NULL,
+ PRIMARY KEY (TipDocCliCod)
+)
+;
+
+-- Table episerp.ta_gzz_tipo_comprobante
+
+CREATE TABLE ta_gzz_tipo_comprobante
+(
+  TipComCod Int(2) ZEROFILL NOT NULL AUTO_INCREMENT,
+  TipComDet Char(100) NOT NULL,
+  EstRegCod Char(1) NOT NULL,
+ PRIMARY KEY (TipComCod)
+)
+;
+
+-- Table episerp.en_p1m_sucursal
+
+CREATE TABLE en_p1m_sucursal
+(
+  SucCod Int(5) ZEROFILL NOT NULL AUTO_INCREMENT,
+  SucDes Char(60),
+  SucDir Char(100),
+  EstRegCod Char(1) NOT NULL,
+ PRIMARY KEY (SucCod)
+)
+;
+
+-- Table episerp.en_p1m_movimiento_punto_ven
+
+CREATE TABLE en_p1m_movimiento_punto_ven
+(
+  SucCod Int(5) ZEROFILL NOT NULL,
+  PunVenCod Int(6) ZEROFILL NOT NULL,
+  MovPunVenCod Int(10) ZEROFILL NOT NULL AUTO_INCREMENT,
+  TipComCod Int(2) ZEROFILL,
+  MovPunVenComCod Char(10) NOT NULL,
+  UsuCod Char(15) NOT NULL,
+  MovPunVenFec Date,
+  MovPunVenMon Double(10,2),
+  EstRegCod Char(1),
+ PRIMARY KEY (MovPunVenCod,PunVenCod,SucCod)
+)
+;
+
+CREATE INDEX IX_Relationship64 ON en_p1m_movimiento_punto_ven (TipComCod)
+;
+
+CREATE INDEX IX_Relationship65 ON en_p1m_movimiento_punto_ven (UsuCod)
+;
+
+-- Table episerp.en_p1m_punto_venta
+
+CREATE TABLE en_p1m_punto_venta
+(
+  SucCod Int(5) ZEROFILL NOT NULL,
+  PunVenCod Int(6) ZEROFILL NOT NULL AUTO_INCREMENT,
+  PunVenDes Char(60),
+  EstRegCod Char(1) NOT NULL,
+ PRIMARY KEY (PunVenCod,SucCod)
+)
+;
+
+-- Table episerp.en_p1m_empresa
+
+CREATE TABLE en_p1m_empresa
+(
+  EmpCod Int(2) ZEROFILL NOT NULL AUTO_INCREMENT,
+  EmpRazSoc Char(90) NOT NULL,
+  EmpNomCom Char(90) NOT NULL,
+  EmpDomFis Char(90),
+  EmpDes Char(200),
+  EmpDir Char(100) NOT NULL,
+  EmpTel Char(20),
+  EmpEmail Char(50),
+  EmpIGV Double(5,2) NOT NULL,
+  EmpTipCamCom Double(10,2),
+  EmpTipCamVen Double(10,2),
+  EmpRUC Char(11) NOT NULL,
+  EmpLot Int(3),
+  EmpImgURL Char(100),
+ PRIMARY KEY (EmpCod)
+)
+;
+
+-- Table episerp.ta_gzz_motivo_traslado
+
+CREATE TABLE ta_gzz_motivo_traslado
+(
+  MotTraCod Int(2) ZEROFILL NOT NULL AUTO_INCREMENT,
+  MotTraDet Char(90) NOT NULL,
+  EstRegCod Char(1),
+ PRIMARY KEY (MotTraCod)
+)
+;
+
+-- Table episerp.ta_gzz_tipo_destinatario
+
+CREATE TABLE ta_gzz_tipo_destinatario
+(
+  TipDesCod Int(2) ZEROFILL NOT NULL AUTO_INCREMENT,
+  TipDesDet Char(90) NOT NULL,
+  EstRegCod Char(1),
+ PRIMARY KEY (TipDesCod)
+)
+;
+
+-- Table episerp.ta_gzz_tipo_uni_transporte
+
+CREATE TABLE ta_gzz_tipo_uni_transporte
+(
+  TipUniTraCod Int(2) ZEROFILL NOT NULL AUTO_INCREMENT,
+  TipUniTraDet Char(90) NOT NULL,
+  EstRegCod Char(1),
+ PRIMARY KEY (TipUniTraCod)
+)
+;
+
+-- Table episerp.ta_gzz_estado_uni_transporte
+
+CREATE TABLE ta_gzz_estado_uni_transporte
+(
+  EstUniTraCod Int(2) ZEROFILL NOT NULL AUTO_INCREMENT,
+  EstUniTraDet Char(90) NOT NULL,
+  EstRegCod Char(1),
+ PRIMARY KEY (EstUniTraCod)
+)
+;
+
+-- Table episerp.ta_gzz_tipo_doc_transportista
+
+CREATE TABLE ta_gzz_tipo_doc_transportista
+(
+  TipDocTraCod Int(2) ZEROFILL NOT NULL AUTO_INCREMENT,
+  TipDocTraDet Char(90) NOT NULL,
+  EstRegCod Char(1),
+ PRIMARY KEY (TipDocTraCod)
+)
+;
+
+-- Table episerp.ta_gzz_tipo_factura_boleta
+
+CREATE TABLE ta_gzz_tipo_factura_boleta
+(
+  TipFacOBolCod Int(2) ZEROFILL NOT NULL AUTO_INCREMENT,
+  TipFacOBolDet Char(90) NOT NULL,
+  EstRegCod Char(1),
+ PRIMARY KEY (TipFacOBolCod)
+)
+;
+
+-- Table episerp.ta_gzz_tipo_devolucion
+
+CREATE TABLE ta_gzz_tipo_devolucion
+(
+  TipDevCod Int(2) ZEROFILL NOT NULL AUTO_INCREMENT,
+  TipDevDet Char(90) NOT NULL,
+  EstRegCod Char(1),
+ PRIMARY KEY (TipDevCod)
+)
+;
+
+-- Table episerp.ta_gzz_tipo_cliente
+
+CREATE TABLE ta_gzz_tipo_cliente
+(
+  TipCliCod Int(2) ZEROFILL NOT NULL AUTO_INCREMENT,
+  TipCliDet Char(90) NOT NULL,
+  EstRegCod Char(1),
+ PRIMARY KEY (TipCliCod)
+)
+;
+
+-- Table episerp.ta_gzz_tipo_descuento
+
+CREATE TABLE ta_gzz_tipo_descuento
+(
+  TipDesCod Int(2) ZEROFILL NOT NULL AUTO_INCREMENT,
+  TipDesDet Char(90) NOT NULL,
+  EstRegCod Char(1),
+ PRIMARY KEY (TipDesCod)
+)
+;
+
+-- Table episerp.en_p2m_guia_rem_remitente
+
+CREATE TABLE en_p2m_guia_rem_remitente
+(
+  GuiRemRemNum Char(15) NOT NULL,
+  GuiRemRemDen Char(50) NOT NULL DEFAULT 'GUÍA DE REMISIÓN-REMINTENTE',
+  MotTraCod Int(2) ZEROFILL NOT NULL,
+  EmpCod Int(2) ZEROFILL NOT NULL,
+  TipDesCod Int(2) ZEROFILL NOT NULL,
+  GuiRemRemDes Char(15) NOT NULL,
+  EstRegCod Char(1) NOT NULL
+)
+;
+
+ALTER TABLE en_p2m_guia_rem_remitente ADD PRIMARY KEY (GuiRemRemNum)
+;
+
+CREATE INDEX IX_Relationship71 ON en_p2m_guia_rem_remitente (MotTraCod)
+;
+
+CREATE INDEX IX_Relationship72 ON en_p2m_guia_rem_remitente (TipDesCod)
+;
+
+CREATE INDEX IX_Relationship73 ON en_p2m_guia_rem_remitente (EmpCod)
+;
+
+-- Table episerp.en_p2m_guia_rem_transportista
+
+CREATE TABLE en_p2m_guia_rem_transportista
+(
+  GuiRemTraNum Char(15) NOT NULL,
+  GuiRemTraDen Char(50) NOT NULL DEFAULT 'GUÍA DE REMISIÓN -TRANSPORTISTA',
+  TraCod Char(15) NOT NULL,
+  UniTraCod Char(15) NOT NULL,
+  EmpCod Int(2) ZEROFILL NOT NULL,
+  GuiRemTraNumReg Char(20),
+  TipDesCod Int(2) ZEROFILL NOT NULL,
+  GuiRemTraDes Char(15) NOT NULL,
+  EstRegCod Char(1) NOT NULL
+)
+;
+
+ALTER TABLE en_p2m_guia_rem_transportista ADD PRIMARY KEY (GuiRemTraNum)
+;
+
+CREATE INDEX IX_Relationship74 ON en_p2m_guia_rem_transportista (TraCod)
+;
+
+CREATE INDEX IX_Relationship75 ON en_p2m_guia_rem_transportista (UniTraCod)
+;
+
+CREATE INDEX IX_Relationship76 ON en_p2m_guia_rem_transportista (EmpCod)
+;
+
+CREATE INDEX IX_Relationship77 ON en_p2m_guia_rem_transportista (TipDesCod)
+;
+
+-- Table episerp.en_p2m_unidad_transporte
+
+CREATE TABLE en_p2m_unidad_transporte
+(
+  UniTraCod Char(15) NOT NULL,
+  TipUniTraCod Int(2) ZEROFILL,
+  UniTraMod Char(50),
+  UniTraMar Char(50),
+  UniTraPes Double(10,2),
+  UniTraNumPla Char(20) NOT NULL,
+  EstUniTraCod Int(2) ZEROFILL,
+  EstRegCod Char(1) NOT NULL
+)
+;
+
+ALTER TABLE en_p2m_unidad_transporte ADD PRIMARY KEY (UniTraCod)
+;
+
+CREATE INDEX IX_Relationship69 ON en_p2m_unidad_transporte (TipUniTraCod)
+;
+
+CREATE INDEX IX_Relationship70 ON en_p2m_unidad_transporte (EstUniTraCod)
+;
+
+-- Table episerp.en_p2m_transportista
+
+CREATE TABLE en_p2m_transportista
+(
+  TraCod Char(15) NOT NULL,
+  TraNom Char(90) NOT NULL,
+  TraApePat Char(90) NOT NULL,
+  TraApeMat Char(90) NOT NULL,
+  TraRazSoc Char(90),
+  TraNomCom Char(90),
+  TraDomFis Char(90),
+  TraTel Char(20),
+  TraEmail Char(50),
+  TraDir Char(90),
+  EstRegCod Char(1) NOT NULL
+)
+;
+
+ALTER TABLE en_p2m_transportista ADD PRIMARY KEY (TraCod)
+;
+
+-- Table episerp.en_p2m_documento_transportista
+
+CREATE TABLE en_p2m_documento_transportista
+(
+  TraCod Char(15) NOT NULL,
+  TipDocTraCod Int(2) ZEROFILL NOT NULL,
+  DocTraNum Char(30) NOT NULL,
+  EstRegCod Char(1) NOT NULL
+)
+;
+
+ALTER TABLE en_p2m_documento_transportista ADD PRIMARY KEY (TipDocTraCod,TraCod)
+;
+
+-- Table episerp.en_p2m_inventario_cab
+
+CREATE TABLE en_p2m_inventario_cab
+(
+  InvCabCod Char(15) NOT NULL,
+  UsuCod Char(15),
+  InvCabFec Date NOT NULL,
+  InvCabEst Bool NOT NULL,
+  EstRegCod Char(1) NOT NULL
+)
+;
+
+ALTER TABLE en_p2m_inventario_cab ADD PRIMARY KEY (InvCabCod)
+;
+
+CREATE INDEX IX_Relationship78 ON en_p2m_inventario_cab (UsuCod)
+;
+
+-- Table episerp.en_p2t_inventario_det
+
+CREATE TABLE en_p2t_inventario_det
+(
+  InvCabCod Char(15) NOT NULL,
+  InvDetCod Int(3) ZEROFILL NOT NULL AUTO_INCREMENT,
+  ClaProCod Char(2),
+  SubClaProCod Char(2),
+  ProCod Char(15),
+  InvDetDifStk Double(10,2) NOT NULL DEFAULT 0,
+ PRIMARY KEY (InvDetCod,InvCabCod)
+)
+;
+
+CREATE INDEX IX_Relationship80 ON en_p2t_inventario_det (ProCod,SubClaProCod,ClaProCod)
+;
+
+-- Table episerp.en_p1c_devolucion_ventas
+
+CREATE TABLE en_p1c_devolucion_ventas
+(
+  FacVenCabCod Char(10) NOT NULL,
+  GuiRemRemNum Char(15),
+  GuiRemTraNum Char(15),
+  DevVenDet Char(100),
+  DevVenFec Date NOT NULL,
+  TipDevCod Int(2) ZEROFILL,
+  DevVenMon Double(10,2) NOT NULL
+)
+;
+
+ALTER TABLE en_p1c_devolucion_ventas ADD PRIMARY KEY (FacVenCabCod)
+;
+
+CREATE INDEX IX_Relationship81 ON en_p1c_devolucion_ventas (TipDevCod)
+;
+
+CREATE INDEX IX_Relationship85 ON en_p1c_devolucion_ventas (GuiRemTraNum)
+;
+
+CREATE INDEX IX_Relationship87 ON en_p1c_devolucion_ventas (GuiRemRemNum)
+;
+
+-- Table episerp.en_p2c_devolucion_compras
+
+CREATE TABLE en_p2c_devolucion_compras
+(
+  FacComCabCod Char(10) NOT NULL,
+  GuiRemRemNum Char(15),
+  GuiRemTraNum Char(15),
+  DevComDet Char(100),
+  DevComFec Date NOT NULL,
+  TipDevCod Int(2) ZEROFILL,
+  DevComMon Double(10,2) NOT NULL
+)
+;
+
+ALTER TABLE en_p2c_devolucion_compras ADD PRIMARY KEY (FacComCabCod)
+;
+
+CREATE INDEX IX_Relationship82 ON en_p2c_devolucion_compras (TipDevCod)
+;
+
+CREATE INDEX IX_Relationship86 ON en_p2c_devolucion_compras (GuiRemTraNum)
+;
+
+CREATE INDEX IX_Relationship88 ON en_p2c_devolucion_compras (GuiRemRemNum)
+;
+
+-- Table episerp.en_p1m_catalogo_ruta
+
+CREATE TABLE en_p1m_catalogo_ruta
+(
+  CatRutCod Int(2) ZEROFILL NOT NULL AUTO_INCREMENT,
+  CatRutDet Char(90) NOT NULL,
+  EstRegCod Char(1) NOT NULL,
+ PRIMARY KEY (CatRutCod)
+)
+;
+
+-- Table episerp.en_p1m_clientes_rutas
+
+CREATE TABLE en_p1m_clientes_rutas
+(
+  CatRutCod Int(2) ZEROFILL NOT NULL,
+  CliCod Char(15) NOT NULL,
+  CliRutDes Char(100) NOT NULL,
+  EstRegCod Char(1) NOT NULL
+)
+;
+
+ALTER TABLE en_p1m_clientes_rutas ADD PRIMARY KEY (CatRutCod,CliCod)
+;
+
+-- Table episerp.en_p1m_tipo_comision
+
+CREATE TABLE en_p1m_tipo_comision
+(
+  TipComCod Int(2) ZEROFILL NOT NULL AUTO_INCREMENT,
+  TipComDet Char(90),
+  TipComVal Int(3),
+  EstRegCod Char(1),
+ PRIMARY KEY (TipComCod)
+)
+;
+
+-- Create relationships section ------------------------------------------------- 
+
+ALTER TABLE en_p1m_preventa_cab ADD CONSTRAINT Relationship3 FOREIGN KEY (CliCod) REFERENCES en_p1m_cliente (CliCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p1m_preventa_cab ADD CONSTRAINT Relationship4 FOREIGN KEY (UsuCod) REFERENCES en_p1m_usuario (UsuCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p1m_preventa_cab ADD CONSTRAINT Relationship5 FOREIGN KEY (MonCod) REFERENCES ta_gzz_moneda (MonCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p1t_preventa_det ADD CONSTRAINT Relationship6 FOREIGN KEY (PreVenCabCod) REFERENCES en_p1m_preventa_cab (PreVenCabCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p2m_subclase_producto ADD CONSTRAINT Relationship7 FOREIGN KEY (ClaProCod) REFERENCES en_p2m_clase_producto (ClaProCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p2m_producto ADD CONSTRAINT Relationship8 FOREIGN KEY (SubClaProCod, ClaProCod) REFERENCES en_p2m_subclase_producto (SubClaProCod, ClaProCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p1t_preventa_det ADD CONSTRAINT Relationship9 FOREIGN KEY (ProCod, SubClaProCod, ClaProCod) REFERENCES en_p2m_producto (ProCod, SubClaProCod, ClaProCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p1c_preventa_realizadas ADD CONSTRAINT Relationship10 FOREIGN KEY (PreVenCabCod) REFERENCES en_p1m_preventa_cab (PreVenCabCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p1c_preventa_realizadas ADD CONSTRAINT Relationship11 FOREIGN KEY (FacVenCabCod) REFERENCES en_p1m_factura_venta_cab (FacVenCabCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p1m_factura_venta_cab ADD CONSTRAINT Relationship12 FOREIGN KEY (UsuCod) REFERENCES en_p1m_usuario (UsuCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p1m_factura_venta_cab ADD CONSTRAINT Relationship13 FOREIGN KEY (CliCod) REFERENCES en_p1m_cliente (CliCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p1m_factura_venta_cab ADD CONSTRAINT Relationship14 FOREIGN KEY (EstFacCod) REFERENCES ta_gzz_estado_factura (EstFacCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p1m_factura_venta_cab ADD CONSTRAINT Relationship15 FOREIGN KEY (MetPagCod) REFERENCES ta_gzz_metodo_pago_factura (MetPagCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p1m_factura_venta_cab ADD CONSTRAINT Relationship16 FOREIGN KEY (TipPagCod) REFERENCES ta_gzz_tipo_pago_factura (TipPagCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p1m_factura_venta_cab ADD CONSTRAINT Relationship17 FOREIGN KEY (MonCod) REFERENCES ta_gzz_moneda (MonCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p1t_factura_venta_det ADD CONSTRAINT Relationship18 FOREIGN KEY (FacVenCabCod) REFERENCES en_p1m_factura_venta_cab (FacVenCabCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p1t_factura_venta_det ADD CONSTRAINT Relationship19 FOREIGN KEY (ProCod, SubClaProCod, ClaProCod) REFERENCES en_p2m_producto (ProCod, SubClaProCod, ClaProCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p1m_pagos_cuotas_cab ADD CONSTRAINT Relationship20 FOREIGN KEY (FacVenCabCod) REFERENCES en_p1m_factura_venta_cab (FacVenCabCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p1t_pagos_cuotas_det ADD CONSTRAINT Relationship21 FOREIGN KEY (FacVenCabCod) REFERENCES en_p1m_pagos_cuotas_cab (FacVenCabCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p1m_documento_cliente ADD CONSTRAINT Relationship24 FOREIGN KEY (CliCod) REFERENCES en_p1m_cliente (CliCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p1m_documento_cliente ADD CONSTRAINT Relationship25 FOREIGN KEY (TipDocCliCod) REFERENCES ta_gzz_tipo_doc_cliente (TipDocCliCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p1m_usuario ADD CONSTRAINT Relationship26 FOREIGN KEY (TipUsuCod) REFERENCES ta_gzz_tipo_usuario (TipUsuCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p1m_usuario ADD CONSTRAINT Relationship27 FOREIGN KEY (EstCivCod) REFERENCES ta_gzz_estado_civil (EstCivCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p1m_cliente ADD CONSTRAINT Relationship28 FOREIGN KEY (EstCivCod) REFERENCES ta_gzz_estado_civil (EstCivCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p1m_documento_usuario ADD CONSTRAINT Relationship29 FOREIGN KEY (UsuCod) REFERENCES en_p1m_usuario (UsuCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p1m_documento_usuario ADD CONSTRAINT Relationship30 FOREIGN KEY (TipDocUsuCod) REFERENCES ta_gzz_tipo_doc_usuario (TipDocUsuCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p2m_producto ADD CONSTRAINT Relationship31 FOREIGN KEY (MonCod) REFERENCES ta_gzz_moneda (MonCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p2m_producto ADD CONSTRAINT Relationship33 FOREIGN KEY (UniMedCod) REFERENCES ta_gzz_unidad_med (UniMedCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p3t_plantilla_det ADD CONSTRAINT Relationship34 FOREIGN KEY (PlaCod) REFERENCES en_p3m_plantilla_cab (PlaCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p3t_plantilla_det ADD CONSTRAINT Relationship36 FOREIGN KEY (CueCod) REFERENCES en_p3m_cuenta (CueCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p3m_cuenta ADD CONSTRAINT Relationship37 FOREIGN KEY (CuePad) REFERENCES en_p3m_cuenta (CueCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p3m_cuenta_banco ADD CONSTRAINT Relationship38 FOREIGN KEY (BanCod) REFERENCES ta_gzz_banco (BanCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p3m_cuenta_banco ADD CONSTRAINT Relationship39 FOREIGN KEY (CueCod) REFERENCES en_p3m_cuenta (CueCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p3m_asiento_cab ADD CONSTRAINT Relationship40 FOREIGN KEY (LibDiaCod) REFERENCES en_p3m_libro_diario (LibDiaCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p3m_asiento_cab ADD CONSTRAINT Relationship41 FOREIGN KEY (MonCod) REFERENCES ta_gzz_moneda (MonCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p3t_asiento_det ADD CONSTRAINT Relationship42 FOREIGN KEY (AsiCabCod, LibDiaCod) REFERENCES en_p3m_asiento_cab (AsiCabCod, LibDiaCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p3t_asiento_det ADD CONSTRAINT Relationship43 FOREIGN KEY (CueCod) REFERENCES en_p3m_cuenta (CueCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p4m_factura_compra_cab ADD CONSTRAINT Relationship49 FOREIGN KEY (PrvCod) REFERENCES en_p4m_proveedor (PrvCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p4m_factura_compra_cab ADD CONSTRAINT Relationship50 FOREIGN KEY (UsuCod) REFERENCES en_p1m_usuario (UsuCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p4m_factura_compra_cab ADD CONSTRAINT Relationship51 FOREIGN KEY (EstFacCod) REFERENCES ta_gzz_estado_factura (EstFacCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p4m_factura_compra_cab ADD CONSTRAINT Relationship52 FOREIGN KEY (MetPagCod) REFERENCES ta_gzz_metodo_pago_factura (MetPagCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p4m_factura_compra_cab ADD CONSTRAINT Relationship53 FOREIGN KEY (TipPagCod) REFERENCES ta_gzz_tipo_pago_factura (TipPagCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p4m_factura_compra_cab ADD CONSTRAINT Relationship54 FOREIGN KEY (MonCod) REFERENCES ta_gzz_moneda (MonCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p4t_factura_compra_det ADD CONSTRAINT Relationship55 FOREIGN KEY (FacComCabCod) REFERENCES en_p4m_factura_compra_cab (FacComCabCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p4t_factura_compra_det ADD CONSTRAINT Relationship56 FOREIGN KEY (ProCod, SubClaProCod, ClaProCod) REFERENCES en_p2m_producto (ProCod, SubClaProCod, ClaProCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p4m_documento_proveedor ADD CONSTRAINT Relationship57 FOREIGN KEY (PrvCod) REFERENCES en_p4m_proveedor (PrvCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p4m_documento_proveedor ADD CONSTRAINT Relationship58 FOREIGN KEY (TipDocProCod) REFERENCES ta_gzz_tipo_doc_proveedor (TipDocProCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p3m_asiento_cab ADD CONSTRAINT Relationship59 FOREIGN KEY (TipComCod) REFERENCES ta_gzz_tipo_comprobante (TipComCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p1m_usuario ADD CONSTRAINT Relationship60 FOREIGN KEY (SucCod) REFERENCES en_p1m_sucursal (SucCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p2m_almacen ADD CONSTRAINT Relationship61 FOREIGN KEY (SucCod) REFERENCES en_p1m_sucursal (SucCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p1m_punto_venta ADD CONSTRAINT Relationship62 FOREIGN KEY (SucCod) REFERENCES en_p1m_sucursal (SucCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p1m_movimiento_punto_ven ADD CONSTRAINT Relationship63 FOREIGN KEY (PunVenCod, SucCod) REFERENCES en_p1m_punto_venta (PunVenCod, SucCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p1m_movimiento_punto_ven ADD CONSTRAINT Relationship64 FOREIGN KEY (TipComCod) REFERENCES ta_gzz_tipo_comprobante (TipComCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p1m_movimiento_punto_ven ADD CONSTRAINT Relationship65 FOREIGN KEY (UsuCod) REFERENCES en_p1m_usuario (UsuCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p2m_documento_transportista ADD CONSTRAINT Relationship67 FOREIGN KEY (TipDocTraCod) REFERENCES ta_gzz_tipo_doc_transportista (TipDocTraCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p2m_documento_transportista ADD CONSTRAINT Relationship68 FOREIGN KEY (TraCod) REFERENCES en_p2m_transportista (TraCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p2m_unidad_transporte ADD CONSTRAINT Relationship69 FOREIGN KEY (TipUniTraCod) REFERENCES ta_gzz_tipo_uni_transporte (TipUniTraCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p2m_unidad_transporte ADD CONSTRAINT Relationship70 FOREIGN KEY (EstUniTraCod) REFERENCES ta_gzz_estado_uni_transporte (EstUniTraCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p2m_guia_rem_remitente ADD CONSTRAINT Relationship71 FOREIGN KEY (MotTraCod) REFERENCES ta_gzz_motivo_traslado (MotTraCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p2m_guia_rem_remitente ADD CONSTRAINT Relationship72 FOREIGN KEY (TipDesCod) REFERENCES ta_gzz_tipo_destinatario (TipDesCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p2m_guia_rem_remitente ADD CONSTRAINT Relationship73 FOREIGN KEY (EmpCod) REFERENCES en_p1m_empresa (EmpCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p2m_guia_rem_transportista ADD CONSTRAINT Relationship74 FOREIGN KEY (TraCod) REFERENCES en_p2m_transportista (TraCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p2m_guia_rem_transportista ADD CONSTRAINT Relationship75 FOREIGN KEY (UniTraCod) REFERENCES en_p2m_unidad_transporte (UniTraCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p2m_guia_rem_transportista ADD CONSTRAINT Relationship76 FOREIGN KEY (EmpCod) REFERENCES en_p1m_empresa (EmpCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p2m_guia_rem_transportista ADD CONSTRAINT Relationship77 FOREIGN KEY (TipDesCod) REFERENCES ta_gzz_tipo_destinatario (TipDesCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p2m_inventario_cab ADD CONSTRAINT Relationship78 FOREIGN KEY (UsuCod) REFERENCES en_p1m_usuario (UsuCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p2t_inventario_det ADD CONSTRAINT Relationship79 FOREIGN KEY (InvCabCod) REFERENCES en_p2m_inventario_cab (InvCabCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p2t_inventario_det ADD CONSTRAINT Relationship80 FOREIGN KEY (ProCod, SubClaProCod, ClaProCod) REFERENCES en_p2m_producto (ProCod, SubClaProCod, ClaProCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p1c_devolucion_ventas ADD CONSTRAINT Relationship81 FOREIGN KEY (TipDevCod) REFERENCES ta_gzz_tipo_devolucion (TipDevCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p2c_devolucion_compras ADD CONSTRAINT Relationship82 FOREIGN KEY (TipDevCod) REFERENCES ta_gzz_tipo_devolucion (TipDevCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p1c_devolucion_ventas ADD CONSTRAINT Relationship85 FOREIGN KEY (GuiRemTraNum) REFERENCES en_p2m_guia_rem_transportista (GuiRemTraNum) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p2c_devolucion_compras ADD CONSTRAINT Relationship86 FOREIGN KEY (GuiRemTraNum) REFERENCES en_p2m_guia_rem_transportista (GuiRemTraNum) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p1c_devolucion_ventas ADD CONSTRAINT Relationship87 FOREIGN KEY (GuiRemRemNum) REFERENCES en_p2m_guia_rem_remitente (GuiRemRemNum) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p2c_devolucion_compras ADD CONSTRAINT Relationship88 FOREIGN KEY (GuiRemRemNum) REFERENCES en_p2m_guia_rem_remitente (GuiRemRemNum) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p1m_factura_venta_cab ADD CONSTRAINT Relationship91 FOREIGN KEY (TipDesCod) REFERENCES ta_gzz_tipo_descuento (TipDesCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p4m_factura_compra_cab ADD CONSTRAINT Relationship92 FOREIGN KEY (TipDesCod) REFERENCES ta_gzz_tipo_descuento (TipDesCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p1m_factura_venta_cab ADD CONSTRAINT Relationship93 FOREIGN KEY (TipFacOBolCod) REFERENCES ta_gzz_tipo_factura_boleta (TipFacOBolCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p4m_factura_compra_cab ADD CONSTRAINT Relationship94 FOREIGN KEY (TipFacOBolCod) REFERENCES ta_gzz_tipo_factura_boleta (TipFacOBolCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p1m_cliente ADD CONSTRAINT Relationship95 FOREIGN KEY (TipCliCod) REFERENCES ta_gzz_tipo_cliente (TipCliCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p2c_devolucion_compras ADD CONSTRAINT Relationship97 FOREIGN KEY (FacComCabCod) REFERENCES en_p4m_factura_compra_cab (FacComCabCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p1c_devolucion_ventas ADD CONSTRAINT Relationship98 FOREIGN KEY (FacVenCabCod) REFERENCES en_p1m_factura_venta_cab (FacVenCabCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p1m_factura_venta_cab ADD CONSTRAINT Relationship99 FOREIGN KEY (GuiRemTraNum) REFERENCES en_p2m_guia_rem_transportista (GuiRemTraNum) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p1m_factura_venta_cab ADD CONSTRAINT Relationship100 FOREIGN KEY (GuiRemRemNum) REFERENCES en_p2m_guia_rem_remitente (GuiRemRemNum) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p4m_factura_compra_cab ADD CONSTRAINT Relationship101 FOREIGN KEY (GuiRemTraNum) REFERENCES en_p2m_guia_rem_transportista (GuiRemTraNum) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p4m_factura_compra_cab ADD CONSTRAINT Relationship102 FOREIGN KEY (GuiRemRemNum) REFERENCES en_p2m_guia_rem_remitente (GuiRemRemNum) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p1m_preventa_cab ADD CONSTRAINT Relationship104 FOREIGN KEY (TipDesCod) REFERENCES ta_gzz_tipo_descuento (TipDesCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p1m_clientes_rutas ADD CONSTRAINT Relationship106 FOREIGN KEY (CatRutCod) REFERENCES en_p1m_catalogo_ruta (CatRutCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p1m_clientes_rutas ADD CONSTRAINT Relationship107 FOREIGN KEY (CliCod) REFERENCES en_p1m_cliente (CliCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p1m_factura_venta_cab ADD CONSTRAINT Relationship108 FOREIGN KEY (TipComCod) REFERENCES en_p1m_tipo_comision (TipComCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;

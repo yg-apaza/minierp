@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 28/10/2016 01:30:39 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 28/10/2016 10:46:22 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="org.epis.minierp.model.EnP3mCuentaBanco" table="en_p3m_cuenta_banco" catalog="episerp" optimistic-lock="version">
         <id name="cueBanCod" type="java.lang.Integer">

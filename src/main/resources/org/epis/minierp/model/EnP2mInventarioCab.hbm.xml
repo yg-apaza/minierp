@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 28/10/2016 10:46:22 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="org.epis.minierp.model.EnP2mInventarioCab" table="en_p2m_inventario_cab" catalog="episerp" optimistic-lock="version">
+        <id name="invCabCod" type="string">
+            <column name="InvCabCod" length="15" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="enP1mUsuario" class="org.epis.minierp.model.EnP1mUsuario" fetch="select">
+            <column name="UsuCod" length="15" />
+        </many-to-one>
+        <property name="invCabFec" type="date">
+            <column name="InvCabFec" length="10" not-null="true" />
+        </property>
+        <property name="invCabEst" type="boolean">
+            <column name="InvCabEst" not-null="true" />
+        </property>
+        <property name="estRegCod" type="char">
+            <column name="EstRegCod" length="1" not-null="true" />
+        </property>
+        <set name="enP2tInventarioDets" table="en_p2t_inventario_det" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="InvCabCod" length="15" not-null="true" />
+            </key>
+            <one-to-many class="org.epis.minierp.model.EnP2tInventarioDet" />
+        </set>
+    </class>
+</hibernate-mapping>

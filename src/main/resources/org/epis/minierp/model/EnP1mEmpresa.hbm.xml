@@ -1,15 +1,21 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 28/10/2016 01:30:39 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 28/10/2016 10:46:22 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="org.epis.minierp.model.EnP1mEmpresa" table="en_p1m_empresa" catalog="episerp" optimistic-lock="version">
         <id name="empCod" type="java.lang.Integer">
             <column name="EmpCod" />
             <generator class="identity" />
         </id>
-        <property name="empNom" type="string">
-            <column name="EmpNom" length="80" not-null="true" />
+        <property name="empRazSoc" type="string">
+            <column name="EmpRazSoc" length="90" not-null="true" />
+        </property>
+        <property name="empNomCom" type="string">
+            <column name="EmpNomCom" length="90" not-null="true" />
+        </property>
+        <property name="empDomFis" type="string">
+            <column name="EmpDomFis" length="90" />
         </property>
         <property name="empDes" type="string">
             <column name="EmpDes" length="200" />
@@ -20,17 +26,38 @@
         <property name="empTel" type="string">
             <column name="EmpTel" length="20" />
         </property>
-        <property name="empCor" type="string">
-            <column name="EmpCor" length="50" />
+        <property name="empEmail" type="string">
+            <column name="EmpEmail" length="50" />
         </property>
         <property name="empIgv" type="double">
             <column name="EmpIGV" precision="5" not-null="true" />
         </property>
+        <property name="empTipCamCom" type="java.lang.Double">
+            <column name="EmpTipCamCom" precision="10" />
+        </property>
+        <property name="empTipCamVen" type="java.lang.Double">
+            <column name="EmpTipCamVen" precision="10" />
+        </property>
         <property name="empRuc" type="string">
             <column name="EmpRUC" length="11" not-null="true" />
         </property>
-        <property name="empImg" type="binary">
-            <column name="EmpImg" />
+        <property name="empLot" type="java.lang.Integer">
+            <column name="EmpLot" />
         </property>
+        <property name="empImgUrl" type="string">
+            <column name="EmpImgURL" length="100" />
+        </property>
+        <set name="enP2mGuiaRemTransportistas" table="en_p2m_guia_rem_transportista" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="EmpCod" not-null="true" />
+            </key>
+            <one-to-many class="org.epis.minierp.model.EnP2mGuiaRemTransportista" />
+        </set>
+        <set name="enP2mGuiaRemRemitentes" table="en_p2m_guia_rem_remitente" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="EmpCod" not-null="true" />
+            </key>
+            <one-to-many class="org.epis.minierp.model.EnP2mGuiaRemRemitente" />
+        </set>
     </class>
 </hibernate-mapping>

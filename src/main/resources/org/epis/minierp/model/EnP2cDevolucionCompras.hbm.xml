@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 28/10/2016 10:46:22 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="org.epis.minierp.model.EnP2cDevolucionCompras" table="en_p2c_devolucion_compras" catalog="episerp" optimistic-lock="version">
+        <id name="facComCabCod" type="string">
+            <column name="FacComCabCod" length="10" />
+            <generator class="foreign">
+                <param name="property">enP4mFacturaCompraCab</param>
+            </generator>
+        </id>
+        <many-to-one name="enP2mGuiaRemRemitente" class="org.epis.minierp.model.EnP2mGuiaRemRemitente" fetch="select">
+            <column name="GuiRemRemNum" length="15" />
+        </many-to-one>
+        <many-to-one name="enP2mGuiaRemTransportista" class="org.epis.minierp.model.EnP2mGuiaRemTransportista" fetch="select">
+            <column name="GuiRemTraNum" length="15" />
+        </many-to-one>
+        <one-to-one name="enP4mFacturaCompraCab" class="org.epis.minierp.model.EnP4mFacturaCompraCab" constrained="true"></one-to-one>
+        <many-to-one name="taGzzTipoDevolucion" class="org.epis.minierp.model.TaGzzTipoDevolucion" fetch="select">
+            <column name="TipDevCod" />
+        </many-to-one>
+        <property name="devComDet" type="string">
+            <column name="DevComDet" length="100" />
+        </property>
+        <property name="devComFec" type="date">
+            <column name="DevComFec" length="10" not-null="true" />
+        </property>
+        <property name="devComMon" type="double">
+            <column name="DevComMon" precision="10" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

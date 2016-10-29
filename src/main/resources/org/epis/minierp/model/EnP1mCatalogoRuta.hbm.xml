@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 28/10/2016 10:46:22 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="org.epis.minierp.model.EnP1mCatalogoRuta" table="en_p1m_catalogo_ruta" catalog="episerp" optimistic-lock="version">
+        <id name="catRutCod" type="java.lang.Integer">
+            <column name="CatRutCod" />
+            <generator class="identity" />
+        </id>
+        <property name="catRutDet" type="string">
+            <column name="CatRutDet" length="90" not-null="true" />
+        </property>
+        <property name="estRegCod" type="char">
+            <column name="EstRegCod" length="1" not-null="true" />
+        </property>
+        <set name="enP1mClientesRutases" table="en_p1m_clientes_rutas" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="CatRutCod" not-null="true" />
+            </key>
+            <one-to-many class="org.epis.minierp.model.EnP1mClientesRutas" />
+        </set>
+    </class>
+</hibernate-mapping>

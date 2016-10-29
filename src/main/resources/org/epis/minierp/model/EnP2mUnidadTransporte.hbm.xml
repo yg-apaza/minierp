@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 28/10/2016 10:46:22 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="org.epis.minierp.model.EnP2mUnidadTransporte" table="en_p2m_unidad_transporte" catalog="episerp" optimistic-lock="version">
+        <id name="uniTraCod" type="string">
+            <column name="UniTraCod" length="15" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="taGzzEstadoUniTransporte" class="org.epis.minierp.model.TaGzzEstadoUniTransporte" fetch="select">
+            <column name="EstUniTraCod" />
+        </many-to-one>
+        <many-to-one name="taGzzTipoUniTransporte" class="org.epis.minierp.model.TaGzzTipoUniTransporte" fetch="select">
+            <column name="TipUniTraCod" />
+        </many-to-one>
+        <property name="uniTraMod" type="string">
+            <column name="UniTraMod" length="50" />
+        </property>
+        <property name="uniTraMar" type="string">
+            <column name="UniTraMar" length="50" />
+        </property>
+        <property name="uniTraPes" type="java.lang.Double">
+            <column name="UniTraPes" precision="10" />
+        </property>
+        <property name="uniTraNumPla" type="string">
+            <column name="UniTraNumPla" length="20" not-null="true" />
+        </property>
+        <property name="estRegCod" type="char">
+            <column name="EstRegCod" length="1" not-null="true" />
+        </property>
+        <set name="enP2mGuiaRemTransportistas" table="en_p2m_guia_rem_transportista" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="UniTraCod" length="15" not-null="true" />
+            </key>
+            <one-to-many class="org.epis.minierp.model.EnP2mGuiaRemTransportista" />
+        </set>
+    </class>
+</hibernate-mapping>

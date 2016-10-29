@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 28/10/2016 01:30:39 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 28/10/2016 10:46:22 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="org.epis.minierp.model.EnP1mFacturaVentaCab" table="en_p1m_factura_venta_cab" catalog="episerp" optimistic-lock="version">
         <id name="facVenCabCod" type="string">
@@ -11,8 +11,17 @@
         <many-to-one name="enP1mCliente" class="org.epis.minierp.model.EnP1mCliente" fetch="select">
             <column name="CliCod" length="15" not-null="true" />
         </many-to-one>
+        <many-to-one name="enP1mTipoComision" class="org.epis.minierp.model.EnP1mTipoComision" fetch="select">
+            <column name="TipComCod" />
+        </many-to-one>
         <many-to-one name="enP1mUsuario" class="org.epis.minierp.model.EnP1mUsuario" fetch="select">
             <column name="UsuCod" length="15" not-null="true" />
+        </many-to-one>
+        <many-to-one name="enP2mGuiaRemRemitente" class="org.epis.minierp.model.EnP2mGuiaRemRemitente" fetch="select">
+            <column name="GuiRemRemNum" length="15" />
+        </many-to-one>
+        <many-to-one name="enP2mGuiaRemTransportista" class="org.epis.minierp.model.EnP2mGuiaRemTransportista" fetch="select">
+            <column name="GuiRemTraNum" length="15" />
         </many-to-one>
         <many-to-one name="taGzzEstadoFactura" class="org.epis.minierp.model.TaGzzEstadoFactura" fetch="select">
             <column name="EstFacCod" not-null="true" />
@@ -22,6 +31,12 @@
         </many-to-one>
         <many-to-one name="taGzzMoneda" class="org.epis.minierp.model.TaGzzMoneda" fetch="select">
             <column name="MonCod" not-null="true" />
+        </many-to-one>
+        <many-to-one name="taGzzTipoDescuento" class="org.epis.minierp.model.TaGzzTipoDescuento" fetch="select">
+            <column name="TipDesCod" />
+        </many-to-one>
+        <many-to-one name="taGzzTipoFacturaBoleta" class="org.epis.minierp.model.TaGzzTipoFacturaBoleta" fetch="select">
+            <column name="TipFacOBolCod" />
         </many-to-one>
         <many-to-one name="taGzzTipoPagoFactura" class="org.epis.minierp.model.TaGzzTipoPagoFactura" fetch="select">
             <column name="TipPagCod" not-null="true" />
@@ -44,10 +59,14 @@
         <property name="facVenCabObs" type="string">
             <column name="FacVenCabObs" length="90" not-null="true" />
         </property>
+        <property name="facVenCabComVal" type="java.lang.Double">
+            <column name="FacVenCabComVal" precision="10" />
+        </property>
         <property name="estRegCod" type="char">
             <column name="EstRegCod" length="1" not-null="true" />
         </property>
         <one-to-one name="enP1mPagosCuotasCab" class="org.epis.minierp.model.EnP1mPagosCuotasCab"></one-to-one>
+        <one-to-one name="enP1cDevolucionVentas" class="org.epis.minierp.model.EnP1cDevolucionVentas"></one-to-one>
         <set name="enP1tFacturaVentaDets" table="en_p1t_factura_venta_det" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="FacVenCabCod" length="10" not-null="true" />

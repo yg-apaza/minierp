@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 28/10/2016 10:46:22 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="org.epis.minierp.model.EnP2mDocumentoTransportista" table="en_p2m_documento_transportista" catalog="episerp" optimistic-lock="version">
+        <composite-id name="id" class="org.epis.minierp.model.EnP2mDocumentoTransportistaId">
+            <key-property name="tipDocTraCod" type="int">
+                <column name="TipDocTraCod" />
+            </key-property>
+            <key-property name="traCod" type="string">
+                <column name="TraCod" length="15" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="enP2mTransportista" class="org.epis.minierp.model.EnP2mTransportista" update="false" insert="false" fetch="select">
+            <column name="TraCod" length="15" not-null="true" />
+        </many-to-one>
+        <many-to-one name="taGzzTipoDocTransportista" class="org.epis.minierp.model.TaGzzTipoDocTransportista" update="false" insert="false" fetch="select">
+            <column name="TipDocTraCod" not-null="true" />
+        </many-to-one>
+        <property name="docTraNum" type="string">
+            <column name="DocTraNum" length="30" not-null="true" />
+        </property>
+        <property name="estRegCod" type="char">
+            <column name="EstRegCod" length="1" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 28/10/2016 10:46:22 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="org.epis.minierp.model.TaGzzTipoCliente" table="ta_gzz_tipo_cliente" catalog="episerp" optimistic-lock="version">
+        <id name="tipCliCod" type="java.lang.Integer">
+            <column name="TipCliCod" />
+            <generator class="identity" />
+        </id>
+        <property name="tipCliDet" type="string">
+            <column name="TipCliDet" length="90" not-null="true" />
+        </property>
+        <property name="estRegCod" type="java.lang.Character">
+            <column name="EstRegCod" length="1" />
+        </property>
+        <set name="enP1mClientes" table="en_p1m_cliente" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="TipCliCod" />
+            </key>
+            <one-to-many class="org.epis.minierp.model.EnP1mCliente" />
+        </set>
+    </class>
+</hibernate-mapping>

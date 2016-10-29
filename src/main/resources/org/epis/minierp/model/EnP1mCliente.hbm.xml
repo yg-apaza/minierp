@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 28/10/2016 01:30:39 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 28/10/2016 10:46:22 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="org.epis.minierp.model.EnP1mCliente" table="en_p1m_cliente" catalog="episerp" optimistic-lock="version">
         <id name="cliCod" type="string">
@@ -11,6 +11,18 @@
         <many-to-one name="taGzzEstadoCivil" class="org.epis.minierp.model.TaGzzEstadoCivil" fetch="select">
             <column name="EstCivCod" not-null="true" />
         </many-to-one>
+        <many-to-one name="taGzzTipoCliente" class="org.epis.minierp.model.TaGzzTipoCliente" fetch="select">
+            <column name="TipCliCod" />
+        </many-to-one>
+        <property name="cliRazSoc" type="string">
+            <column name="CliRazSoc" length="90" not-null="true" />
+        </property>
+        <property name="cliNomCom" type="string">
+            <column name="CliNomCom" length="90" />
+        </property>
+        <property name="cliDomFis" type="string">
+            <column name="CliDomFis" length="90" />
+        </property>
         <property name="cliNom" type="string">
             <column name="CliNom" length="90" />
         </property>
@@ -43,6 +55,12 @@
                 <column name="CliCod" length="15" not-null="true" />
             </key>
             <one-to-many class="org.epis.minierp.model.EnP1mPreventaCab" />
+        </set>
+        <set name="enP1mClientesRutases" table="en_p1m_clientes_rutas" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="CliCod" length="15" not-null="true" />
+            </key>
+            <one-to-many class="org.epis.minierp.model.EnP1mClientesRutas" />
         </set>
         <set name="enP1mDocumentoClientes" table="en_p1m_documento_cliente" inverse="true" lazy="true" fetch="select">
             <key>

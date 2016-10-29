@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 28/10/2016 01:30:39 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 28/10/2016 10:46:22 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="org.epis.minierp.model.EnP1mSucursal" table="en_p1m_sucursal" catalog="episerp" optimistic-lock="version">
         <id name="sucCod" type="java.lang.Integer">
@@ -25,7 +25,7 @@
         </set>
         <set name="enP1mUsuarios" table="en_p1m_usuario" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="SucCod" not-null="true" />
+                <column name="SucCod" />
             </key>
             <one-to-many class="org.epis.minierp.model.EnP1mUsuario" />
         </set>

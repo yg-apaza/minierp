@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 28/10/2016 10:46:22 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="org.epis.minierp.model.TaGzzMotivoTraslado" table="ta_gzz_motivo_traslado" catalog="episerp" optimistic-lock="version">
+        <id name="motTraCod" type="java.lang.Integer">
+            <column name="MotTraCod" />
+            <generator class="identity" />
+        </id>
+        <property name="motTraDet" type="string">
+            <column name="MotTraDet" length="90" not-null="true" />
+        </property>
+        <property name="estRegCod" type="java.lang.Character">
+            <column name="EstRegCod" length="1" />
+        </property>
+        <set name="enP2mGuiaRemRemitentes" table="en_p2m_guia_rem_remitente" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="MotTraCod" not-null="true" />
+            </key>
+            <one-to-many class="org.epis.minierp.model.EnP2mGuiaRemRemitente" />
+        </set>
+    </class>
+</hibernate-mapping>
