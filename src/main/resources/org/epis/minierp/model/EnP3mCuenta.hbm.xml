@@ -35,7 +35,7 @@
             </key>
             <one-to-many class="org.epis.minierp.model.EnP3mCuentaBanco" />
         </set>
-        <set name="enP3mCuentas" table="en_p3m_cuenta" inverse="true" lazy="true" fetch="select">
+        <set name="enP3mCuentas" table="en_p3m_cuenta" inverse="true" lazy="true" fetch="select" sort="natural">
             <key>
                 <column name="CuePad" />
             </key>
