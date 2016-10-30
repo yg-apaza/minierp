@@ -154,9 +154,9 @@
                                     <div class="col-sm-4">
                                         <label>Sexo:</label>
                                         <select class="form-control" name="cliSex">
-                                            <option value="N">No Espesifica</option>
+                                            <option value="N">No especifica</option>
                                             <option value="M">Masculino</option>
-                                            <option value="F">Feminino</option>
+                                            <option value="F">Femenino</option>
                                         </select>
                                     </div>
                                     <div class="col-sm-8">
