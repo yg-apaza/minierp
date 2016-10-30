@@ -68,15 +68,15 @@ public class Balance {
             List nuevo = new ArrayList();
             String key = it.next();
             if(comprobarActPas(key) == 1){   // Activo
-                if(key.length() > 1) nuevo.add(new CuentaDao().getByNumActive(key, 2).getCueDes());
-                else nuevo.add(new CuentaDao().getByNumActive(key, 1).getCueDes());
+                if(key.length() > 1) nuevo.add(new CuentaDao().getByNumNivActive(key, 2).getCueDes());
+                else nuevo.add(new CuentaDao().getByNumNivActive(key, 1).getCueDes());
                 nuevo.add(sumas.get(key));
                 sumaBalanceAct += sumas.get(key);
                 Act.add(nuevo);
             }
             else if(comprobarActPas(key) == 0){ // Pasivo
-                if(key.length() > 1) nuevo.add(new CuentaDao().getByNumActive(key, 2).getCueDes());
-                else nuevo.add(new CuentaDao().getByNumActive(key, 1).getCueDes());
+                if(key.length() > 1) nuevo.add(new CuentaDao().getByNumNivActive(key, 2).getCueDes());
+                else nuevo.add(new CuentaDao().getByNumNivActive(key, 1).getCueDes());
                 nuevo.add(sumas.get(key));
                 sumaBalancePas += sumas.get(key);
                 Pas.add(nuevo);
