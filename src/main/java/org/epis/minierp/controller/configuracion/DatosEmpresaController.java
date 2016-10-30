@@ -89,13 +89,18 @@ public class DatosEmpresaController extends HttpServlet {
                 }
             }
             e.setEmpCod(01);
-            e.setEmpRazSoc(nombreMap.get("empNom"));
+            e.setEmpNomCom(nombreMap.get("empNomCom"));
+            e.setEmpRazSoc(nombreMap.get("empRazSoc"));
+            e.setEmpDomFis(nombreMap.get("empDomFis"));
             e.setEmpDes(nombreMap.get("empDes"));
             e.setEmpDir(nombreMap.get("empDir"));
             e.setEmpTel(nombreMap.get("empTel"));
             e.setEmpIgv(Double.parseDouble(nombreMap.get("empIgv")));
-            e.setEmpEmail(nombreMap.get("empCor"));
+            e.setEmpEmail(nombreMap.get("empEmail"));
+            e.setEmpTipCamCom(Double.parseDouble(nombreMap.get("empTipCamCom")));
+            e.setEmpTipCamVen(Double.parseDouble(nombreMap.get("empTipCamVen")));
             e.setEmpRuc(nombreMap.get("empRuc"));
+            e.setEmpLot(Integer.parseInt(nombreMap.get("empLot")));
             
             empDAO.update(e);
         } catch (FileUploadException ex) {

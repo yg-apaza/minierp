@@ -19,16 +19,24 @@
                     </div>
                     <div class="container col-md-8">
                         <div class="form-group">
-                            <label for="empNom">Nombre:</label>
-                            <input type="text" class="form-control" id="empNom" name="empNom" value="${emp.getEmpNom()}">
+                            <label for="empNomCom">Nombre:</label>
+                            <input type="text" class="form-control" id="empNomCom" name="empNomCom" value="${emp.getEmpNomCom()}">
                         </div>
                         <div class="form-group">
                             <label >Descripción:</label><br/>
                             <input type="text" class="form-control" id="empDes" name="empDes" value="${emp.getEmpDes()}">
                         </div>
                         <div class="form-group">
+                            <label >Razón social:</label><br/>
+                            <input type="text" class="form-control" id="empRazSoc" name="empRazSoc" value="${emp.getEmpRazSoc()}">
+                        </div>
+                        <div class="form-group">
                             <label>Dirección:</label><br/>
                             <input type="text" class="form-control" id="empDir" name="empDir" value="${emp.getEmpDir()}">
+                        </div>
+                        <div class="form-group">
+                            <label>Dominio fiscal:</label><br/>
+                            <input type="text" class="form-control" id="empDomFis" name="empDomFis" value="${emp.getEmpDomFis()}">
                         </div>
                         <div class="form-group">
                             <label>Teléfono:</label><br/>
@@ -40,11 +48,23 @@
                         </div>
                         <div class="form-group">
                             <label>Correo electrónico</label><br/>
-                            <input type="email" class="form-control" id="empCor" name="empCor" value="${emp.getEmpCor()}">
+                            <input type="email" class="form-control" id="empEmail" name="empEmail" value="${emp.getEmpEmail()}">
                         </div>
                         <div class="form-group">
                             <label>R.U.C:</label><br/>
                             <input type="text" class="form-control" id="empRuc" name="empRuc" value="${emp.getEmpRuc()}">
+                        </div>
+                        <div class="form-group">
+                            <label>Tipo de cambio (compra):</label><br/>
+                            <input type="text" class="form-control" id="empTipCamCom" name="empTipCamCom" value="${emp.getEmpTipCamCom()}">
+                        </div>
+                        <div class="form-group">
+                            <label>Tipo de cambio (venta):</label><br/>
+                            <input type="text" class="form-control" id="empTipCamVen" name="empTipCamVen" value="${emp.getEmpTipCamVen()}">
+                        </div>
+                        <div class="form-group">
+                            <label>Lote:</label><br/>
+                            <input type="text" class="form-control" id="empLot" name="empLot" value="${emp.getEmpLot()}">
                         </div>
                         <div class="form-group" align="center">
                             <button type="submit" align="center" class="btn btn-default">Guardar</button>
@@ -76,26 +96,45 @@
                         number: true,
                         digits: true
                     },
-                    empCor: {
+                    empEmail: {
                         email: true
                     },
                     empRuc: {
                         number: true,
                         minlength: 11,
                         maxlength: 11
+                    },
+                    empLote: {
+                        number: true,
+                        digits: true
+                    },
+                    empTipCamCom: {
+                        number: true
+                    },
+                    empTipCamVen: {
+                        number: true
                     }
                 },
                 messages: {
                     empTel: {
                         number: "Ingrese sólo números."
                     },
-                    empCor: {
+                    empEmail: {
                         email: true
                     },
                     empRuc: {
                         number: "Ingrese sólo números.",
                         minlength: "El R.U.C. debe contener 11 dígitos",
                         maxlength: "El R.U.C. debe contener 11 dígitos"
+                    },
+                    empLote: {
+                        number: "Ingrese sólo números."
+                    },
+                    empTipCamCom: {
+                        number: "Ingrese sólo números."
+                    },
+                    empTipCamVen: {
+                        number: "Ingrese sólo números."
                     }
                 },
                 submitHandler: function(form) {

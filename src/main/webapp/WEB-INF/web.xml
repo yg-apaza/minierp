@@ -520,7 +520,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>BusquedaClienteController</servlet-name>
-        <url-pattern>/secured/ventas/factura/busquedaCliente</url-pattern>
+        <url-pattern>/secured/ventas/searchSupplier</url-pattern>
     </servlet-mapping>
     <servlet>
         <description/>
@@ -530,7 +530,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>SearchProductController</servlet-name>
-        <url-pattern>/secured/ventas/factura/searchProduct</url-pattern>
+        <url-pattern>/secured/ventas/searchProduct</url-pattern>
     </servlet-mapping>
     <servlet>
         <description/>

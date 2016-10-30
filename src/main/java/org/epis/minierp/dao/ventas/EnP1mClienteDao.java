@@ -24,14 +24,12 @@ public class EnP1mClienteDao {
     public List<EnP1mCliente> getAllActive() {
         Query query = session.createQuery("from EnP1mCliente E where E.estRegCod = 'A'");
         List<EnP1mCliente> estados = query.list();
-        System.out.println(estados);
         return estados;
     }
     
     public List<EnP1mCliente> getAllInactives() {
         Query query = session.createQuery("from EnP1mCliente E where E.estRegCod = 'I'");
         List<EnP1mCliente> estados = query.list();
-        System.out.println(estados);
         return estados;
     }
 
@@ -43,6 +41,31 @@ public class EnP1mClienteDao {
             return null;
         }
         return estado;
+    }
+    
+    public List<EnP1mCliente> getByTipoCLiente(int id) {
+        Query query = session.createQuery("from EnP1mCliente C where C.taGzzTipoCliente.tipCliCod = :id and C.estRegCod = 'A'");
+        query.setParameter("id", id);
+        List <EnP1mCliente> clientes = query.list();
+        return clientes;
+    }
+    
+    public EnP1mCliente getByRazonSocial(String razSoc) {
+        Query query = session.createQuery("from EnP1mCliente C where C.cliRazSoc = :id and C.estRegCod = 'A'");
+        query.setParameter("id", razSoc);
+        List <EnP1mCliente> clientes = query.list();
+        if(clientes.size() == 0)
+            return null;
+        return clientes.get(0);
+    }
+    
+    public EnP1mCliente getByNombreComercial(String nomCom) {
+        Query query = session.createQuery("from EnP1mCliente C where C.cliNomCom = :id and C.estRegCod = 'A'");
+        query.setParameter("id", nomCom);
+        List <EnP1mCliente> clientes = query.list();
+        if(clientes.size() == 0)
+            return null;
+        return clientes.get(0);
     }
     
     public void save(EnP1mCliente cliente) {

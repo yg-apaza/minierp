@@ -31,6 +31,7 @@ import org.epis.minierp.dao.logistica.EnP2mSubclaseProductoDao;
 import org.epis.minierp.dao.ventas.EnP1mDocumentoClienteDao;
 import org.epis.minierp.dao.ventas.EnP1mMovimientoPuntoVenDao;
 import org.epis.minierp.dao.ventas.EnP1tFacturaVentaDetDao;
+import org.epis.minierp.dao.ventas.TaGzzTipoClienteDao;
 import org.epis.minierp.model.EnP1mCliente;
 import org.epis.minierp.model.EnP1mDocumentoCliente;
 import org.epis.minierp.model.EnP1mDocumentoClienteId;
@@ -51,6 +52,7 @@ import org.epis.minierp.model.TaGzzEstadoCivil;
 import org.epis.minierp.model.TaGzzEstadoFactura;
 import org.epis.minierp.model.TaGzzMetodoPagoFactura;
 import org.epis.minierp.model.TaGzzMoneda;
+import org.epis.minierp.model.TaGzzTipoCliente;
 import org.epis.minierp.model.TaGzzTipoPagoFactura;
 
 public class AddFacturaController extends HttpServlet
@@ -62,26 +64,16 @@ public class AddFacturaController extends HttpServlet
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession(true);
         EnP1mUsuario user = (EnP1mUsuario) session.getAttribute("usuario");
-        /*Iterator <EnP2mAlmacen> stores = user.getEnP1mSucursal().getEnP2mAlmacens().iterator();
-        Set <EnP2mProducto> productosSet = new HashSet <> ();
-        while(stores.hasNext()) {
-            Iterator <EnP2mProducto> products = stores.next().getEnP2mProductos().iterator();
-            while(products.hasNext()) {
-                EnP2mProducto product = products.next();
-                if(product.getEstRegCod() == 'A')
-                    productosSet.add(product);
-            }            
-        }*/
         
         List <TaGzzMetodoPagoFactura> metodosPagoFactura = (new TaGzzMetodoPagoFacturaDao()).getAllActive();
         List <TaGzzMoneda> monedas = (new TaGzzMonedaDao()).getAllActive();
         List <TaGzzTipoPagoFactura> tiposPagoFactura = (new TaGzzTipoPagoFacturaDao()).getAllActive(); 
-        //List <EnP2mProducto> productos = new ArrayList<EnP2mProducto>(productosSet);
         List <EnP2mProducto> productos = (new EnP2mProductoDao()).getAllActive();
         List <TaGzzEstadoFactura> estados = (new TaGzzEstadoFacturaDao()).getAllActive();
         List <EnP1mDocumentoCliente> documentos = (new EnP1mDocumentoClienteDao()).getAllActive();
         List <EnP2mClaseProducto> clases = (new EnP2mClaseProductoDao()).getAllActive();
         List <EnP2mSubclaseProducto> subclases = (new EnP2mSubclaseProductoDao()).getAllActive();
+        List <TaGzzTipoCliente> tiposCliente = (new TaGzzTipoClienteDao()).getAllActive();
         EnP1mEmpresa empresa = (new EnP1mEmpresaDao()).getAll().get(0);
         EnP1mPuntoVenta punto = (EnP1mPuntoVenta) user.getEnP1mSucursal().getEnP1mPuntoVentas().iterator().next(); //Getting the first one
 
@@ -93,6 +85,7 @@ public class AddFacturaController extends HttpServlet
         request.setAttribute("documentos", documentos);
         request.setAttribute("clases", clases);
         request.setAttribute("subclases", subclases);
+        request.setAttribute("tiposCliente", tiposCliente);
         request.setAttribute("empresa", empresa);
         request.setAttribute("punto", punto);
         
