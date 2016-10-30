@@ -87,7 +87,6 @@ CREATE TABLE en_p1m_factura_venta_cab
   CliCod Char(15) NOT NULL,
   UsuCod Char(15) NOT NULL,
   FacVenCabFec Date NOT NULL,
-  TipFacOBolCod Int(2) ZEROFILL,
   FacVenCabTot Double(10,2) NOT NULL,
   TipDesCod Int(2) ZEROFILL,
   FacVenCabDes Double(10,2) NOT NULL,
@@ -98,8 +97,8 @@ CREATE TABLE en_p1m_factura_venta_cab
   MetPagCod Int(2) ZEROFILL NOT NULL,
   TipPagCod Int(2) ZEROFILL NOT NULL,
   MonCod Int(2) ZEROFILL NOT NULL,
-  TipComCod Int(2) ZEROFILL,
   FacVenCabComVal Double(10,2),
+  CatRutCod Int(2) ZEROFILL,
   EstRegCod Char(1) NOT NULL
 )
 ;
@@ -128,16 +127,13 @@ CREATE INDEX IX_Relationship17 ON en_p1m_factura_venta_cab (MonCod)
 CREATE INDEX IX_Relationship91 ON en_p1m_factura_venta_cab (TipDesCod)
 ;
 
-CREATE INDEX IX_Relationship93 ON en_p1m_factura_venta_cab (TipFacOBolCod)
-;
-
 CREATE INDEX IX_Relationship99 ON en_p1m_factura_venta_cab (GuiRemTraNum)
 ;
 
 CREATE INDEX IX_Relationship100 ON en_p1m_factura_venta_cab (GuiRemRemNum)
 ;
 
-CREATE INDEX IX_Relationship108 ON en_p1m_factura_venta_cab (TipComCod)
+CREATE INDEX IX_Relationship108 ON en_p1m_factura_venta_cab (CatRutCod,CliCod)
 ;
 
 -- Table episerp.en_p1t_factura_venta_det
@@ -480,7 +476,6 @@ CREATE TABLE en_p4m_factura_compra_cab
   PrvCod Char(15) NOT NULL,
   UsuCod Char(15) NOT NULL,
   FacComCabFec Date NOT NULL,
-  TipFacOBolCod Int(2) ZEROFILL,
   FacComCabTot Double(10,2) NOT NULL,
   TipDesCod Int(2) ZEROFILL,
   FacComCabDes Double(10,2) NOT NULL,
@@ -517,9 +512,6 @@ CREATE INDEX IX_Relationship54 ON en_p4m_factura_compra_cab (MonCod)
 ;
 
 CREATE INDEX IX_Relationship92 ON en_p4m_factura_compra_cab (TipDesCod)
-;
-
-CREATE INDEX IX_Relationship94 ON en_p4m_factura_compra_cab (TipFacOBolCod)
 ;
 
 CREATE INDEX IX_Relationship101 ON en_p4m_factura_compra_cab (GuiRemTraNum)
@@ -839,17 +831,6 @@ CREATE TABLE ta_gzz_tipo_doc_transportista
 )
 ;
 
--- Table episerp.ta_gzz_tipo_factura_boleta
-
-CREATE TABLE ta_gzz_tipo_factura_boleta
-(
-  TipFacOBolCod Int(2) ZEROFILL NOT NULL AUTO_INCREMENT,
-  TipFacOBolDet Char(90) NOT NULL,
-  EstRegCod Char(1),
- PRIMARY KEY (TipFacOBolCod)
-)
-;
-
 -- Table episerp.ta_gzz_tipo_devolucion
 
 CREATE TABLE ta_gzz_tipo_devolucion
@@ -1111,18 +1092,6 @@ CREATE TABLE en_p1m_clientes_rutas
 ALTER TABLE en_p1m_clientes_rutas ADD PRIMARY KEY (CatRutCod,CliCod)
 ;
 
--- Table episerp.en_p1m_tipo_comision
-
-CREATE TABLE en_p1m_tipo_comision
-(
-  TipComCod Int(2) ZEROFILL NOT NULL AUTO_INCREMENT,
-  TipComDet Char(90),
-  TipComVal Int(3),
-  EstRegCod Char(1),
- PRIMARY KEY (TipComCod)
-)
-;
-
 -- Create relationships section ------------------------------------------------- 
 
 ALTER TABLE en_p1m_preventa_cab ADD CONSTRAINT Relationship3 FOREIGN KEY (CliCod) REFERENCES en_p1m_cliente (CliCod) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -1353,12 +1322,6 @@ ALTER TABLE en_p1m_factura_venta_cab ADD CONSTRAINT Relationship91 FOREIGN KEY (
 ALTER TABLE en_p4m_factura_compra_cab ADD CONSTRAINT Relationship92 FOREIGN KEY (TipDesCod) REFERENCES ta_gzz_tipo_descuento (TipDesCod) ON DELETE NO ACTION ON UPDATE NO ACTION
 ;
 
-ALTER TABLE en_p1m_factura_venta_cab ADD CONSTRAINT Relationship93 FOREIGN KEY (TipFacOBolCod) REFERENCES ta_gzz_tipo_factura_boleta (TipFacOBolCod) ON DELETE NO ACTION ON UPDATE NO ACTION
-;
-
-ALTER TABLE en_p4m_factura_compra_cab ADD CONSTRAINT Relationship94 FOREIGN KEY (TipFacOBolCod) REFERENCES ta_gzz_tipo_factura_boleta (TipFacOBolCod) ON DELETE NO ACTION ON UPDATE NO ACTION
-;
-
 ALTER TABLE en_p1m_cliente ADD CONSTRAINT Relationship95 FOREIGN KEY (TipCliCod) REFERENCES ta_gzz_tipo_cliente (TipCliCod) ON DELETE NO ACTION ON UPDATE NO ACTION
 ;
 
@@ -1389,5 +1352,7 @@ ALTER TABLE en_p1m_clientes_rutas ADD CONSTRAINT Relationship106 FOREIGN KEY (Ca
 ALTER TABLE en_p1m_clientes_rutas ADD CONSTRAINT Relationship107 FOREIGN KEY (CliCod) REFERENCES en_p1m_cliente (CliCod) ON DELETE NO ACTION ON UPDATE NO ACTION
 ;
 
-ALTER TABLE en_p1m_factura_venta_cab ADD CONSTRAINT Relationship108 FOREIGN KEY (TipComCod) REFERENCES en_p1m_tipo_comision (TipComCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+ALTER TABLE en_p1m_factura_venta_cab ADD CONSTRAINT Relationship108 FOREIGN KEY (CatRutCod, CliCod) REFERENCES en_p1m_clientes_rutas (CatRutCod, CliCod) ON DELETE NO ACTION ON UPDATE NO ACTION
 ;
+
+
