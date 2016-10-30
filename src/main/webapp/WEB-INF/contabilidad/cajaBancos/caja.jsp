@@ -35,7 +35,7 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Apellidos y Nombres, Denominación o Razón Social:  </label>
                     <div class="col-sm-9">
-                        <input type="text" id="form-field-1" placeholder="${empresa.empNom}" class="form-control" readonly>
+                        <input type="text" id="form-field-1" placeholder="${empresa.empNomCom}" class="form-control" readonly>
                     </div>
                 </div>
                     
