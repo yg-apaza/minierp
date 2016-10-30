@@ -1,18 +1,18 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 29/10/2016 12:36:13 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 30/10/2016 12:40:42 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="org.epis.minierp.model.EnP1mFacturaVentaCab" table="en_p1m_factura_venta_cab" catalog="episerp" optimistic-lock="version">
         <id name="facVenCabCod" type="string">
             <column name="FacVenCabCod" length="10" />
             <generator class="assigned" />
         </id>
+        <many-to-one name="enP1mCatalogoRuta" class="org.epis.minierp.model.EnP1mCatalogoRuta" fetch="select">
+            <column name="CatRutCod" />
+        </many-to-one>
         <many-to-one name="enP1mCliente" class="org.epis.minierp.model.EnP1mCliente" fetch="select">
             <column name="CliCod" length="15" not-null="true" />
-        </many-to-one>
-        <many-to-one name="enP1mTipoComision" class="org.epis.minierp.model.EnP1mTipoComision" fetch="select">
-            <column name="TipComCod" />
         </many-to-one>
         <many-to-one name="enP1mUsuario" class="org.epis.minierp.model.EnP1mUsuario" fetch="select">
             <column name="UsuCod" length="15" not-null="true" />
@@ -34,9 +34,6 @@
         </many-to-one>
         <many-to-one name="taGzzTipoDescuento" class="org.epis.minierp.model.TaGzzTipoDescuento" fetch="select">
             <column name="TipDesCod" />
-        </many-to-one>
-        <many-to-one name="taGzzTipoFacturaBoleta" class="org.epis.minierp.model.TaGzzTipoFacturaBoleta" fetch="select">
-            <column name="TipFacOBolCod" />
         </many-to-one>
         <many-to-one name="taGzzTipoPagoFactura" class="org.epis.minierp.model.TaGzzTipoPagoFactura" fetch="select">
             <column name="TipPagCod" not-null="true" />

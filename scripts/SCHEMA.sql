@@ -85,6 +85,7 @@ CREATE TABLE en_p1m_factura_venta_cab
   GuiRemRemNum Char(15),
   GuiRemTraNum Char(15),
   CliCod Char(15) NOT NULL,
+  CatRutCod Int(2) ZEROFILL,
   UsuCod Char(15) NOT NULL,
   FacVenCabFec Date NOT NULL,
   FacVenCabTot Double(10,2) NOT NULL,
@@ -98,7 +99,6 @@ CREATE TABLE en_p1m_factura_venta_cab
   TipPagCod Int(2) ZEROFILL NOT NULL,
   MonCod Int(2) ZEROFILL NOT NULL,
   FacVenCabComVal Double(10,2),
-  CatRutCod Int(2) ZEROFILL,
   EstRegCod Char(1) NOT NULL
 )
 ;
@@ -133,7 +133,7 @@ CREATE INDEX IX_Relationship99 ON en_p1m_factura_venta_cab (GuiRemTraNum)
 CREATE INDEX IX_Relationship100 ON en_p1m_factura_venta_cab (GuiRemRemNum)
 ;
 
-CREATE INDEX IX_Relationship108 ON en_p1m_factura_venta_cab (CatRutCod,CliCod)
+CREATE INDEX IX_Relationship109 ON en_p1m_factura_venta_cab (CatRutCod)
 ;
 
 -- Table episerp.en_p1t_factura_venta_det
@@ -1352,7 +1352,7 @@ ALTER TABLE en_p1m_clientes_rutas ADD CONSTRAINT Relationship106 FOREIGN KEY (Ca
 ALTER TABLE en_p1m_clientes_rutas ADD CONSTRAINT Relationship107 FOREIGN KEY (CliCod) REFERENCES en_p1m_cliente (CliCod) ON DELETE NO ACTION ON UPDATE NO ACTION
 ;
 
-ALTER TABLE en_p1m_factura_venta_cab ADD CONSTRAINT Relationship108 FOREIGN KEY (CatRutCod, CliCod) REFERENCES en_p1m_clientes_rutas (CatRutCod, CliCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+ALTER TABLE en_p1m_factura_venta_cab ADD CONSTRAINT Relationship109 FOREIGN KEY (CatRutCod) REFERENCES en_p1m_catalogo_ruta (CatRutCod) ON DELETE NO ACTION ON UPDATE NO ACTION
 ;
 
 

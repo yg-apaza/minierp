@@ -21,7 +21,7 @@
     <mapping class="org.epis.minierp.model.ventas.Ingresos"/>
     <mapping class="org.epis.minierp.model.ventas.Preventas"/>
     
-    <!-- Clases -->
+    <!-- Tablas -->
     <mapping resource="org/epis/minierp/model/TaGzzTipoDocUsuario.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/TaGzzTipoDocTransportista.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP1tPreventaDet.hbm.xml"/>
@@ -33,13 +33,11 @@
     <mapping resource="org/epis/minierp/model/EnP1mPuntoVenta.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/TaGzzEstadoCivil.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP1cDevolucionVentas.hbm.xml"/>
-    <mapping resource="org/epis/minierp/model/EnP1mTipoComision.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/TaGzzTipoUniTransporte.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP1tFacturaVentaDet.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP2tInventarioDet.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP1mFacturaVentaCab.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP1mClientesRutas.hbm.xml"/>
-    <mapping resource="org/epis/minierp/model/TaGzzTipoFacturaBoleta.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP2mSubclaseProducto.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/TaGzzTipoDocProveedor.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP1mSucursal.hbm.xml"/>

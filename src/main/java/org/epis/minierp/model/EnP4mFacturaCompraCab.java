@@ -1,5 +1,5 @@
 package org.epis.minierp.model;
-// Generated 29/10/2016 12:36:12 PM by Hibernate Tools 4.3.1
+// Generated 30/10/2016 12:40:40 AM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -21,7 +21,6 @@ public class EnP4mFacturaCompraCab  implements java.io.Serializable {
      private TaGzzMetodoPagoFactura taGzzMetodoPagoFactura;
      private TaGzzMoneda taGzzMoneda;
      private TaGzzTipoDescuento taGzzTipoDescuento;
-     private TaGzzTipoFacturaBoleta taGzzTipoFacturaBoleta;
      private TaGzzTipoPagoFactura taGzzTipoPagoFactura;
      private Date facComCabFec;
      private double facComCabTot;
@@ -53,7 +52,7 @@ public class EnP4mFacturaCompraCab  implements java.io.Serializable {
         this.facComCabObs = facComCabObs;
         this.estRegCod = estRegCod;
     }
-    public EnP4mFacturaCompraCab(String facComCabCod, EnP1mUsuario enP1mUsuario, EnP2mGuiaRemRemitente enP2mGuiaRemRemitente, EnP2mGuiaRemTransportista enP2mGuiaRemTransportista, EnP4mProveedor enP4mProveedor, TaGzzEstadoFactura taGzzEstadoFactura, TaGzzMetodoPagoFactura taGzzMetodoPagoFactura, TaGzzMoneda taGzzMoneda, TaGzzTipoDescuento taGzzTipoDescuento, TaGzzTipoFacturaBoleta taGzzTipoFacturaBoleta, TaGzzTipoPagoFactura taGzzTipoPagoFactura, Date facComCabFec, double facComCabTot, double facComCabDes, double facComCabSubTot, int facComCabIgv, String facComCabObs, char estRegCod, EnP2cDevolucionCompras enP2cDevolucionCompras, Set enP4tFacturaCompraDets) {
+    public EnP4mFacturaCompraCab(String facComCabCod, EnP1mUsuario enP1mUsuario, EnP2mGuiaRemRemitente enP2mGuiaRemRemitente, EnP2mGuiaRemTransportista enP2mGuiaRemTransportista, EnP4mProveedor enP4mProveedor, TaGzzEstadoFactura taGzzEstadoFactura, TaGzzMetodoPagoFactura taGzzMetodoPagoFactura, TaGzzMoneda taGzzMoneda, TaGzzTipoDescuento taGzzTipoDescuento, TaGzzTipoPagoFactura taGzzTipoPagoFactura, Date facComCabFec, double facComCabTot, double facComCabDes, double facComCabSubTot, int facComCabIgv, String facComCabObs, char estRegCod, EnP2cDevolucionCompras enP2cDevolucionCompras, Set enP4tFacturaCompraDets) {
        this.facComCabCod = facComCabCod;
        this.enP1mUsuario = enP1mUsuario;
        this.enP2mGuiaRemRemitente = enP2mGuiaRemRemitente;
@@ -63,7 +62,6 @@ public class EnP4mFacturaCompraCab  implements java.io.Serializable {
        this.taGzzMetodoPagoFactura = taGzzMetodoPagoFactura;
        this.taGzzMoneda = taGzzMoneda;
        this.taGzzTipoDescuento = taGzzTipoDescuento;
-       this.taGzzTipoFacturaBoleta = taGzzTipoFacturaBoleta;
        this.taGzzTipoPagoFactura = taGzzTipoPagoFactura;
        this.facComCabFec = facComCabFec;
        this.facComCabTot = facComCabTot;
@@ -138,13 +136,6 @@ public class EnP4mFacturaCompraCab  implements java.io.Serializable {
     
     public void setTaGzzTipoDescuento(TaGzzTipoDescuento taGzzTipoDescuento) {
         this.taGzzTipoDescuento = taGzzTipoDescuento;
-    }
-    public TaGzzTipoFacturaBoleta getTaGzzTipoFacturaBoleta() {
-        return this.taGzzTipoFacturaBoleta;
-    }
-    
-    public void setTaGzzTipoFacturaBoleta(TaGzzTipoFacturaBoleta taGzzTipoFacturaBoleta) {
-        this.taGzzTipoFacturaBoleta = taGzzTipoFacturaBoleta;
     }
     public TaGzzTipoPagoFactura getTaGzzTipoPagoFactura() {
         return this.taGzzTipoPagoFactura;

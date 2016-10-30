@@ -205,7 +205,7 @@
     </body>
 </html>
 <script>
-    if("nada"!="${empImg}"){
+    if("empty"!="${empImg}"){
         console.log("${pageContext.request.contextPath}/img/${empImg}");
         $('#logoEmp')[0].src="${pageContext.request.contextPath}/img/${empImg}";
     }
