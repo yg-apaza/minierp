@@ -34,43 +34,61 @@
                     <table class="table table-bordered table-striped table-hover">
                         <thead>
                             <tr>
-                                <th>Cod Cliente</th>
-                                <th>Nombres y Apellidos</th>
-                                <th>Sexo</th>
-                                <th>Dirección</th>
-                                <th>Tel. Fijo</th>
-                                <th>Tel. Celular</th>
-                                <th>Email</th>
-                                <th>Estado Civil</th>
-                                <th>Registro</th>
-                                <th class="text-right">Acciones</th>
+                                <th>Codigo</th>
+                                <th>Documentos</th>
+                                <th>Razon Social</th>
+                                <th>Nombre Comercial</th>
+                                <th>Rutas Asociadas</th>
+                                <th>Tipo</th>
+                                <th>Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
                             <c:forEach var="cli" items="${cliente}">
                                 <tr>
                                     <td>${cli.cliCod}</td>
-                                    <td>${cli.cliNom} ${cli.cliApePat} ${cli.cliApeMat}</td>
-                                    <td>${cli.cliSex}</td>
-                                    <td>${cli.cliDir}</td>
-                                    <td>${cli.cliTelFij}</td>
-                                    <td>${cli.cliTelCel}</td>
-                                    <td>${cli.cliEmail}</td>
-                                    <td>${cli.taGzzEstadoCivil.estCivCod} - ${cli.taGzzEstadoCivil.estCivDet}</td>
-                                    <td>${cli.estRegCod}</td>
+                                    <td>
+                                        <c:forEach var="docs" items="${cli.enP1mDocumentoClientes}">
+                                           ${docs.taGzzTipoDocCliente.tipDocCliDet} - ${docs.docCliNum} <br>
+                                        </c:forEach>
+                                    </td>
+                                    <td>${cli.cliRazSoc}</td>
+                                    <td>${cli.cliNomCom}</td>
+                                    <td>
+                                        <c:forEach var="ruts" items="${cli.enP1mClientesRutases}">
+                                           ${ruts.id.catRutCod} - ${ruts.enP1mCatalogoRuta.catRutDet} <br>
+                                        </c:forEach>
+                                    </td>
+                                    <td>${cli.taGzzTipoCliente.tipCliCod} - ${cli.taGzzTipoCliente.tipCliDet}</td>
 
-                                    <td class="text-right">
+                                    <td>
                                         <a href="#" data-toggle="modal" data-target="#modificarModal"
-                                           data-clicod="${cli.cliCod}" data-clinom="${cli.cliNom}" data-cliapepat="${cli.cliApePat}" 
+                                           data-clicod="${cli.cliCod}" data-tipclicod="${cli.taGzzTipoCliente.tipCliCod}" data-clirazsoc="${cli.cliRazSoc}" 
+                                           data-clinomcom="${cli.cliNomCom}" data-clidomfis="${cli.cliDomFis}" data-clinom="${cli.cliNom}" data-cliapepat="${cli.cliApePat}" 
                                            data-cliapemat="${cli.cliApeMat}" data-clisex="${cli.cliSex}" data-clidir="${cli.cliDir}" 
                                            data-clitelfij="${cli.cliTelFij}" data-clitelcel="${cli.cliTelCel}" data-cliemail="${cli.cliEmail}" 
                                            data-estcivcod="${cli.taGzzEstadoCivil.estCivCod}" data-estcivdet="${cli.taGzzEstadoCivil.estCivDet}" >
                                             <i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i>
                                         </a>
                                         <a href="#" data-toggle="modal" data-target="#disableModal" 
-                                           data-clicod="${cli.cliCod}" data-clinom="${cli.cliNom}" data-cliapepat="${cli.cliApePat}" 
-                                           data-cliapemat="${cli.cliApeMat}" >
+                                           data-clicod="${cli.cliCod}" data-clirazsoc="${cli.cliRazSoc}" >
                                             <i class="fa fa-trash-o fa-2x" style="color: black;"></i>
+                                        </a>
+                                        <a href="#" data-toggle="modal" data-target="#rutaModal" 
+                                           data-clicod="${cli.cliCod}" data-clirazsoc="${cli.cliRazSoc}">
+                                            <i class="fa fa-automobile fa-2x" style="color: black;"></i>
+                                        </a>
+                                        <a href="#" data-toggle="modal" data-target="#documentoModal" 
+                                           data-clicod="${cli.cliCod}" data-clirazsoc="${cli.cliRazSoc}">
+                                            <i class="fa fa-file-text fa-2x" style="color: black;"></i>
+                                        </a>
+                                        <a href="#" data-toggle="modal" data-target="#deleteRutaModal" 
+                                           data-clicod="${cli.cliCod}" data-clirazsoc="${cli.cliRazSoc}">
+                                            <i class="fa fa-automobile fa-2x" style="color: red;"></i>
+                                        </a>
+                                        <a href="#" data-toggle="modal" data-target="#DeleteDocumentoModal" 
+                                           data-clicod="${cli.cliCod}" data-clirazsoc="${cli.cliRazSoc}">
+                                            <i class="fa fa-file-text fa-2x" style="color: red;"></i>
                                         </a>
                                     </td>
                                 </tr>
@@ -98,8 +116,32 @@
                                         <input type="text" class="form-control" placeholder="Código Cliente" name="cliCod">
                                     </div>
                                     <div class="col-sm-6">
-                                        <label>Nombre Cliente:</label>
-                                        <input type="text" class="form-control" placeholder="Nombre Cliente" name="cliNom">
+                                        <label>Tipo de Cliente:</label>
+                                        <select class="form-control" name="tipCliCod">
+                                            <c:forEach var="tc" items="${tipCliente}">
+                                                <option value="${tc.tipCliCod}">${tc.tipCliCod} - ${tc.tipCliDet}</option>
+                                            </c:forEach>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-6">
+                                        <label>Razon Social:</label>
+                                        <input type="text" class="form-control" placeholder="Razon Social" name="cliRazSoc">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label>Nombre Comercial:</label>
+                                        <input type="text" class="form-control" placeholder="Nombre Comercial" name="cliNomCom">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-6">
+                                        <label>Dominio Fiscal:</label>
+                                        <input type="text" class="form-control" placeholder="Razon Social" name="cliDomFis">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label>Nombres:</label>
+                                        <input type="text" class="form-control" placeholder="Nombre Comercial" name="cliNom">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -113,7 +155,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-sm-3">
+                                    <div class="col-sm-4">
                                         <label>Sexo:</label>
                                         <select class="form-control" name="cliSex">
                                             <option value="N">No Espesifica</option>
@@ -121,7 +163,7 @@
                                             <option value="F">Feminino</option>
                                         </select>
                                     </div>
-                                    <div class="col-sm-9">
+                                    <div class="col-sm-8">
                                         <label>Dirección:</label>
                                         <input type="text" class="form-control" placeholder="Dirección" name="cliDir">
                                     </div>
@@ -178,8 +220,32 @@
                                         <input type="text" class="form-control" placeholder="Código Cliente" name="cliCod" id="updateCliCod" readonly>
                                     </div>
                                     <div class="col-sm-6">
-                                        <label>Nombre Cliente:</label>
-                                        <input type="text" class="form-control" placeholder="Nombre Cliente" name="cliNom" id="updateCliNom">
+                                        <label>Tipo de Cliente:</label>
+                                        <select class="form-control" name="tipCliCod" id="updateTipCliCod">
+                                            <c:forEach var="tc" items="${tipCliente}">
+                                                <option value="${tc.tipCliCod}">${tc.tipCliCod} - ${tc.tipCliDet}</option>
+                                            </c:forEach>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-6">
+                                        <label>Razon Social:</label>
+                                        <input type="text" class="form-control" placeholder="Razon Social" name="cliRazSoc" id="updateCliRazSoc">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label>Nombre Comercial:</label>
+                                        <input type="text" class="form-control" placeholder="Nombre Comercial" name="cliNomCom" id="updateCliNomCom">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-6">
+                                        <label>Dominio Fiscal:</label>
+                                        <input type="text" class="form-control" placeholder="Razon Social" name="cliDomFis" id="updateCliDomFis">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label>Nombres:</label>
+                                        <input type="text" class="form-control" placeholder="Nombre Comercial" name="cliNom" id="updateCliNom">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -193,7 +259,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-sm-3">
+                                    <div class="col-sm-4">
                                         <label>Sexo:</label>
                                         <select class="form-control" name="cliSex" id="updateCliSex">
                                             <option value="N">No Espesifica</option>
@@ -201,7 +267,7 @@
                                             <option value="F">Feminino</option>
                                         </select>
                                     </div>
-                                    <div class="col-sm-9">
+                                    <div class="col-sm-8">
                                         <label>Dirección:</label>
                                         <input type="text" class="form-control" placeholder="Dirección" name="cliDir" id="updateCliDir">
                                     </div>
@@ -252,7 +318,7 @@
                         <div class="modal-body">
                             <input type="hidden" name="accion" value="disable">
                             <input type="hidden" name="cliCod" id="disableCliCod">
-                            <p> ¿Desea inhabilitar el Cliente: <span id="disableCliNomCom"></span> ?</p>
+                            <p> ¿Desea inhabilitar el Cliente: <span id="disableCliRazSoc"></span> ?</p>
                         </div>
                         <div class="modal-footer">
                             <button type="submit" class="btn btn-outline btn-success">Si</button>
@@ -276,10 +342,11 @@
                                 <thead>
                                     <tr>
                                         <th>Cod Cliente</th>
-                                        <th>Nombres y Apellidos</th>
-                                        <th>Sexo</th>
-                                        <th>Email</th>
-                                        <th>Registro</th>
+                                        <th>Documentos</th>
+                                        <th>Razon Social</th>
+                                        <th>Nombre Comercial</th>
+                                        <th>Rutas Asociadas</th>
+                                        <th>Tipo de Cliente</th>
                                         <th class="text-right">Acciones</th>
                                     </tr>
                                 </thead>
@@ -287,20 +354,27 @@
                                     <c:forEach var="cli" items="${inactivos}">
                                         <tr>
                                             <td>${cli.cliCod}</td>
-                                            <td>${cli.cliNom} ${cli.cliApePat} ${cli.cliApeMat}</td>
-                                            <td>${cli.cliSex}</td>
-                                            <td>${cli.cliEmail}</td>
-                                            <td>${cli.estRegCod}</td>
+                                            <td>
+                                                <c:forEach var="docs" items="${cli.enP1mDocumentoClientes}">
+                                                   ${docs.taGzzTipoDocCliente.tipDocCliDet} - ${docs.docCliNum} <br>
+                                                </c:forEach>
+                                            </td>
+                                            <td>${cli.cliRazSoc}</td>
+                                            <td>${cli.cliNomCom}</td>
+                                            <td>
+                                                <c:forEach var="ruts" items="${cli.enP1mClientesRutases}">
+                                                   ${ruts.id.catRutCod} - ${ruts.enP1mCatalogoRuta.catRutDet} <br>
+                                                </c:forEach>
+                                            </td>
+                                            <td>${cli.taGzzTipoCliente.tipCliCod} - ${cli.taGzzTipoCliente.tipCliDet}</td>
 
                                             <td class="text-right">
                                                 <a href="#" data-toggle="modal" data-target="#activateModal" 
-                                                   data-clicod="${cli.cliCod}" data-clinom="${cli.cliNom}" data-cliapepat="${cli.cliApePat}" 
-                                                   data-cliapemat="${cli.cliApeMat}">
+                                                   data-clicod="${cli.cliCod}" data-clirazsoc="${cli.cliRazSoc}" >
                                                     <i class="fa fa-check fa-2x" style="color: green;"></i>
                                                 </a>
                                                 <a href="#" data-toggle="modal" data-target="#deleteModal" 
-                                                   data-clicod="${cli.cliCod}" data-clinom="${cli.cliNom}" data-cliapepat="${cli.cliApePat}" 
-                                                   data-cliapemat="${cli.cliApeMat}">
+                                                   data-clicod="${cli.cliCod}" data-clirazsoc="${cli.cliRazSoc}" >
                                                     <i class="fa fa-trash-o fa-2x" style="color: red;"></i>
                                                 </a>
                                             </td>
@@ -328,7 +402,7 @@
                         <div class="modal-body">
                             <input type="hidden" name="accion" value="activate">
                             <input type="hidden" name="cliCod" id="activateCliCod">
-                            <p> ¿Desea habilitar el Cliente: <span id="activateCliNomCom"></span> ?</p>
+                            <p> ¿Desea habilitar el Cliente: <span id="activateCliRazSoc"></span> ?</p>
                         </div>
                         <div class="modal-footer">
                             <button type="submit" class="btn btn-outline btn-success">Si</button>
@@ -350,7 +424,7 @@
                         <div class="modal-body">
                             <input type="hidden" name="accion" value="delete">
                             <input type="hidden" name="cliCod" id="deleteCliCod">
-                            <p> ¿Desea Eliminar el Cliente: <span id="deleteCliNomCom"></span> ?</p>
+                            <p> ¿Desea Eliminar el Cliente: <span id="deleteCliRazSoc"></span> ?</p>
                         </div>
                         <div class="modal-footer">
                             <button type="submit" class="btn btn-outline btn-success">Si</button>
@@ -360,6 +434,90 @@
                 </div>
             </div>
         </div>
+                        
+        <div id="rutaModal" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-md">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Agregar Ruta</h4>
+                    </div>
+                    <form id="rutaForm" method="post" action="${pageContext.request.contextPath}/secured/ventas/clientes">
+                        <div class="modal-body">
+                            <input type="hidden" name="accion" value="ruta">
+                            <div class="form-horizontal">   
+                                <div class="form-group">
+                                    <div class="col-sm-6">
+                                        <label>Código Cliente:</label>
+                                        <input type="hidden" name="cliCod" id="rutaCliCod">
+                                        <input type="text" class="form-control" id="rutaCliShow" readonly>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label>Catalogo de Rutas:</label>
+                                        <select class="form-control" name="catRutCod">
+                                            <c:forEach var="rut" items="${rutas}">
+                                                <option value="${rut.catRutCod}">${rut.catRutCod} - ${rut.catRutDet}</option>
+                                            </c:forEach>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <label>Descripcion:</label>
+                                        <input type="text" class="form-control" placeholder="Descripcion" name="cliRutDes">
+                                    </div>
+                                </div> 
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-outline btn-success">Agregar Ruta</button>
+                            <button type="button" class="btn btn-outline btn-danger" data-dismiss="modal">Cancelar</button>
+                        </div>
+                    </form>
+                </div>                                        
+            </div>
+        </div>
+        <div id="documentoModal" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-md">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Agregar Documento</h4>
+                    </div>
+                    <form id="documentoForm" method="post" action="${pageContext.request.contextPath}/secured/ventas/clientes">
+                        <div class="modal-body">
+                            <input type="hidden" name="accion" value="documento">
+                            <div class="form-horizontal">   
+                                <div class="form-group">
+                                    <div class="col-sm-6">
+                                        <label>Código Cliente:</label>
+                                        <input type="hidden" name="cliCod" id="documentoCliCod">
+                                        <input type="text" class="form-control" id="documentoCliShow" readonly>                                    </div>
+                                    <div class="col-sm-6">
+                                        <label>Documentos Disponibles:</label>
+                                        <select class="form-control" name="tipDocCliCod">
+                                            <c:forEach var="docs" items="${documentos}">
+                                                <option value="${docs.tipDocCliCod}">${docs.tipDocCliCod} - ${docs.tipDocCliDet}</option>
+                                            </c:forEach>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <label>Numero de Documento:</label>
+                                        <input type="text" class="form-control" placeholder="Numero del documento" name="docCliNum">
+                                    </div>
+                                </div> 
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-outline btn-success">Agregar Documento</button>
+                            <button type="button" class="btn btn-outline btn-danger" data-dismiss="modal">Cancelar</button>
+                        </div>
+                    </form>
+                </div>                                        
+            </div>
+        </div>
 
 
         <script>
@@ -367,8 +525,14 @@
             var disableModal = $("#disableModal");
             var activateModal = $("#activateModal");
             var deleteModal = $("#deleteModal");
+            var rutaModal = $("#rutaModal");
+            var documentoModal = $("#documentoModal");
 
             var updateCliCod = $("#updateCliCod");
+            var updateTipCliCod = $("#updateTipCliCod");
+            var updateCliRazSoc = $("#updateCliRazSoc");
+            var updateCliNomCom = $("#updateCliNomCom");
+            var updateCliDomFis = $("#updateCliDomFis");
             var updateCliNom = $("#updateCliNom");
             var updateCliApePat = $("#updateCliApePat");
             var updateCliApeMat = $("#updateCliApeMat");
@@ -380,17 +544,26 @@
             var updateEstCivCod = $("#updateEstCivCod");
 
             var disableCliCod = $("#disableCliCod");
-            var disableCliNomCom = $("#disableCliNomCom");
+            var disableCliRazSoc = $("#disableCliRazSoc");
 
             var activateCliCod = $("#activateCliCod");
-            var activateCliNomCom = $("#activateCliNomCom");
+            var activateCliRazSoc = $("#activateCliRazSoc");
 
             var deleteCliCod = $("#deleteCliCod");
-            var deleteCliNomCom = $("#deleteCliNomCom");
-
-
+            var deleteCliRazSoc = $("#deleteCliRazSoc");
+            
+            var rutaCliCod = $("#rutaCliCod");
+            var rutaCliShow = $("#rutaCliShow");
+            
+            var documentoCliCod = $("#documentoCliCod");
+            var documentoCliShow = $("#documentoCliShow");
+            
             updateModal.on('show.bs.modal', function (e) {
                 updateCliCod.val($(e.relatedTarget).data('clicod'));
+                updateTipCliCod.val($(e.relatedTarget).data('tipclicod'));
+                updateCliRazSoc.val($(e.relatedTarget).data('clirazsoc'));
+                updateCliNomCom.val($(e.relatedTarget).data('clinomcom'));
+                updateCliDomFis.val($(e.relatedTarget).data('clidomfis'));
                 updateCliNom.val($(e.relatedTarget).data('clinom'));
                 updateCliApePat.val($(e.relatedTarget).data('cliapepat'));
                 updateCliApeMat.val($(e.relatedTarget).data('cliapemat'));
@@ -404,17 +577,27 @@
 
             disableModal.on('show.bs.modal', function (e) {
                 disableCliCod.val($(e.relatedTarget).data('clicod'));
-                disableCliNomCom.text($(e.relatedTarget).data('cliapepat') + " " + $(e.relatedTarget).data('cliapemat') + ", " + $(e.relatedTarget).data('clinom'));
+                disableCliRazSoc.text($(e.relatedTarget).data('clirazsoc'));
             });
 
             activateModal.on('show.bs.modal', function (e) {
                 activateCliCod.val($(e.relatedTarget).data('clicod'));
-                activateCliNomCom.text($(e.relatedTarget).data('cliapepat') + " " + $(e.relatedTarget).data('cliapemat') + ", " + $(e.relatedTarget).data('clinom'));
+                activateCliRazSoc.text($(e.relatedTarget).data('clirazsoc'));
             });
 
             deleteModal.on('show.bs.modal', function (e) {
                 deleteCliCod.val($(e.relatedTarget).data('clicod'));
-                deleteCliNomCom.text($(e.relatedTarget).data('cliapepat') + " " + $(e.relatedTarget).data('cliapemat') + ", " + $(e.relatedTarget).data('clinom'));
+                deleteCliRazSoc.text($(e.relatedTarget).data('clirazsoc'));
+            });
+            
+            rutaModal.on('show.bs.modal', function (e) {
+                rutaCliCod.val($(e.relatedTarget).data('clicod'));
+                rutaCliShow.val($(e.relatedTarget).data('clicod') +" - " + $(e.relatedTarget).data('clirazsoc'));
+            });
+            
+            documentoModal.on('show.bs.modal', function (e) {
+                documentoCliCod.val($(e.relatedTarget).data('clicod'));
+                documentoCliShow.val($(e.relatedTarget).data('clicod') +" - " + $(e.relatedTarget).data('clirazsoc'));
             });
 
             $("#createForm").validate({
@@ -422,6 +605,9 @@
                     cliCod: {
                         required: true,
                         number: true
+                    },
+                    cliRazSoc: {
+                        required: true
                     },
                     cliSex: {
                         required: true
@@ -435,6 +621,9 @@
                     cliCod: {
                         required: "El Código de Cliente es Requerido",
                         number: "El Código de Cliente debe ser Numérico"
+                    },
+                    cliRazSoc: {
+                        required: "La razon social es Requerida"
                     },
                     cliSex: {
                         required: "El Sexo es Requerido"
@@ -455,6 +644,9 @@
                         required: true,
                         number: true
                     },
+                    cliRazSoc: {
+                        required: true
+                    },
                     cliSex: {
                         required: true
                     },
@@ -467,6 +659,9 @@
                     cliCod: {
                         required: "El Código de Cliente es Requerido",
                         number: "El Código de Cliente debe ser Numérico"
+                    },
+                    cliRazSoc: {
+                        required: "La razon social es Requerida"
                     },
                     cliSex: {
                         required: "El Sexo es Requerido"

@@ -7,7 +7,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.epis.minierp.business.ventas.EnP1mClienteBusiness;
 import org.epis.minierp.dao.general.TaGzzEstadoCivilDao;
+import org.epis.minierp.dao.general.TaGzzTipoDocClienteDao;
+import org.epis.minierp.dao.ventas.EnP1mCatalogoRutaDao;
 import org.epis.minierp.dao.ventas.EnP1mClienteDao;
+import org.epis.minierp.dao.ventas.EnP1mClientesRutasDao;
+import org.epis.minierp.dao.ventas.TaGzzTipoClienteDao;
 
 public class ClienteController extends HttpServlet {
     
@@ -15,13 +19,24 @@ public class ClienteController extends HttpServlet {
     EnP1mClienteDao clienteDao;
     TaGzzEstadoCivilDao estadoCivilDao;
     EnP1mClienteBusiness clienteBusiness;
+    TaGzzTipoClienteDao tipClienteDao;
+    EnP1mClientesRutasDao cliRutDao;
+    EnP1mCatalogoRutaDao rutaDao;
+    TaGzzTipoDocClienteDao docDao;
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         clienteDao = new EnP1mClienteDao();
         estadoCivilDao = new TaGzzEstadoCivilDao();
+        tipClienteDao = new TaGzzTipoClienteDao();
+        rutaDao = new EnP1mCatalogoRutaDao();
+        docDao = new TaGzzTipoDocClienteDao();
+        
         request.setAttribute("cliente", clienteDao.getAllActive());
         request.setAttribute("estCivil", estadoCivilDao.getAllActive());
+        request.setAttribute("tipCliente", tipClienteDao.getAllActive());
+        request.setAttribute("rutas", rutaDao.getAllActive());
+        request.setAttribute("documentos", docDao.getAllActive());
         request.setAttribute("inactivos", clienteDao.getAllInactives());
         request.getRequestDispatcher("/WEB-INF/ventas/cliente/cliente.jsp").forward(request, response);
     }
@@ -31,55 +46,82 @@ public class ClienteController extends HttpServlet {
         String action = request.getParameter("accion");
         clienteBusiness = new EnP1mClienteBusiness();
         
+        String cliCod, cliRazSoc, cliNomCom, cliDomFis, cliNom, cliApePat, cliApeMat, cliDir, cliTelFij, cliTelCel, cliEmail, cliRutDes, docCliNum;
+        int tipCliCod, estCivCod, catRutCod, tipDocCliCod;
+        char cliSex;
+        
         switch(action) {
             case "create":
-                String cliCodCreate = request.getParameter("cliCod");
-                String cliNomCreate = request.getParameter("cliNom");
-                String cliApePatCreate = request.getParameter("cliApePat");
-                String cliApeMatCreate= request.getParameter("cliApeMat");
-                char cliSexCreate = request.getParameter("cliSex").charAt(0);
-                String cliDirCreate = request.getParameter("cliDir");
-                String cliTelFijCreate = request.getParameter("cliTelFij");
-                String cliTelCelCreate = request.getParameter("cliTelCel");
-                String CliEmailCreate = request.getParameter("cliEmail");
-                int estCivCodCreate = Integer.parseInt(request.getParameter("estCivCod"));
+                cliCod = request.getParameter("cliCod");
+                tipCliCod = Integer.parseInt(request.getParameter("tipCliCod"));
+                cliRazSoc = request.getParameter("cliRazSoc");
+                cliNomCom = request.getParameter("cliNomCom");
+                cliDomFis = request.getParameter("cliDomFis");
+                cliNom = request.getParameter("cliNom");
+                cliApePat = request.getParameter("cliApePat");
+                cliApeMat= request.getParameter("cliApeMat");
+                cliSex = request.getParameter("cliSex").charAt(0);
+                cliDir = request.getParameter("cliDir");
+                estCivCod = Integer.parseInt(request.getParameter("estCivCod"));
+                cliTelFij = request.getParameter("cliTelFij");
+                cliTelCel = request.getParameter("cliTelCel");
+                cliEmail = request.getParameter("cliEmail");
                 
-                clienteBusiness.create(cliCodCreate, cliNomCreate, cliApePatCreate, cliApeMatCreate, 
-                        cliSexCreate, cliDirCreate, cliTelFijCreate, cliTelCelCreate, CliEmailCreate, 
-                        estCivCodCreate, 'A');
+                clienteBusiness.create(cliCod, tipCliCod, cliRazSoc, cliNomCom, 
+                        cliDomFis, cliNom, cliApePat, cliApeMat, cliSex, cliDir, 
+                        estCivCod, cliTelFij, cliTelCel, cliEmail, 'A');
                 
                 break;
                 
             case "update":
-                String cliCodUpdate = request.getParameter("cliCod");
-                String cliNomUpdate = request.getParameter("cliNom");
-                String cliApePatUpdate = request.getParameter("cliApePat");
-                String cliApeMatUpdate = request.getParameter("cliApeMat");
-                char cliSexUpdate = request.getParameter("cliSex").charAt(0);
-                String cliDirUpdate = request.getParameter("cliDir");
-                String cliTelFijUpdate = request.getParameter("cliTelFij");
-                String cliTelCelUpdate = request.getParameter("cliTelCel");
-                String CliEmailUpdate = request.getParameter("cliEmail");
-                int estCivCodUpdate = Integer.parseInt(request.getParameter("estCivCod"));
+                cliCod = request.getParameter("cliCod");
+                tipCliCod = Integer.parseInt(request.getParameter("tipCliCod"));
+                cliRazSoc = request.getParameter("cliRazSoc");
+                cliNomCom = request.getParameter("cliNomCom");
+                cliDomFis = request.getParameter("cliDomFis");
+                cliNom = request.getParameter("cliNom");
+                cliApePat = request.getParameter("cliApePat");
+                cliApeMat= request.getParameter("cliApeMat");
+                cliSex = request.getParameter("cliSex").charAt(0);
+                cliDir = request.getParameter("cliDir");
+                estCivCod = Integer.parseInt(request.getParameter("estCivCod"));
+                cliTelFij = request.getParameter("cliTelFij");
+                cliTelCel = request.getParameter("cliTelCel");
+                cliEmail = request.getParameter("cliEmail");
                 
-                clienteBusiness.update(cliCodUpdate, cliNomUpdate, cliApePatUpdate, cliApeMatUpdate, 
-                        cliSexUpdate, cliDirUpdate, cliTelFijUpdate, cliTelCelUpdate, CliEmailUpdate, 
-                        estCivCodUpdate);
+                clienteBusiness.update(cliCod, tipCliCod, cliRazSoc, cliNomCom, 
+                        cliDomFis, cliNom, cliApePat, cliApeMat, cliSex, cliDir, 
+                        estCivCod, cliTelFij, cliTelCel, cliEmail);
+                
                 break;
                 
             case "disable":
-                String cliCodDisable = request.getParameter("cliCod");
-                clienteBusiness.disable(cliCodDisable);
+                cliCod = request.getParameter("cliCod");
+                clienteBusiness.disable(cliCod);
                 break;
                 
             case "activate":
-                String cliCodActivate = request.getParameter("cliCod");
-                clienteBusiness.activate(cliCodActivate);
+                cliCod = request.getParameter("cliCod");
+                clienteBusiness.activate(cliCod);
                 break;
                 
             case "delete":
-                String cliCodDelete = request.getParameter("cliCod");
-                clienteBusiness.delete(cliCodDelete);
+                cliCod = request.getParameter("cliCod");
+                clienteBusiness.delete(cliCod);
+                break;
+                
+            case "ruta":
+                catRutCod = Integer.parseInt(request.getParameter("catRutCod"));
+                cliCod = request.getParameter("cliCod");
+                cliRutDes = request.getParameter("cliRutDes");
+                clienteBusiness.addRuta(catRutCod, cliCod, cliRutDes, 'A');
+                break;
+                
+            case "documento":
+                cliCod = request.getParameter("cliCod");
+                tipDocCliCod = Integer.parseInt(request.getParameter("tipDocCliCod"));
+                docCliNum = request.getParameter("docCliNum");
+                clienteBusiness.addDocumento(cliCod, tipDocCliCod, docCliNum, 'A');
                 break;
                 
         }
