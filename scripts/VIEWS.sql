@@ -78,5 +78,4 @@ CREATE OR REPLACE VIEW VIEW_LIBRO_DIARIO AS (
 		INNER JOIN en_p3m_libro_diario libDia
 			ON libDia.LibDiaCod = asiCab.LibDiaCod
 	WHERE libDia.EstRegCod = 'A'
-	ORDER BY asiCab.AsiCabFec
 );
