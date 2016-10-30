@@ -98,20 +98,42 @@ public class EnP1mClienteBusiness {
         return allRutas4Cliente;
     }
     
-    public void addRuta(int catRutCod, String cliCod, String cliRutDes, char estRegCod){
+    public void createRuta(int catRutCod, String cliCod, String cliRutDes, char estRegCod){
         EnP1mClientesRutas rutaCli = new EnP1mClientesRutas();
         rutaCli.setId(new EnP1mClientesRutasId(catRutCod, cliCod));
         rutaCli.setCliRutDes(cliRutDes);
-        rutaCli.setEstRegCod('A');
+        rutaCli.setEstRegCod(estRegCod);
         cliRutDao.save(rutaCli);
     }
     
-    public void addDocumento(String cliCod, int tipDocCliCod, String docCliNum, char estRegCod){
+    public void deleteRuta(int catRutCod, String cliCod){
+        EnP1mClientesRutas rutaCli = cliRutDao.getById(new EnP1mClientesRutasId(catRutCod, cliCod));
+        cliRutDao.delete(rutaCli);
+    }
+    
+    public void updateRuta(int catRutCod, String cliCod, String cliRutDes){
+        EnP1mClientesRutas rutaCli = cliRutDao.getById(new EnP1mClientesRutasId(catRutCod, cliCod));
+        rutaCli.setCliRutDes(cliRutDes);
+        cliRutDao.update(rutaCli);
+    }
+    
+    public void createDocumento(String cliCod, int tipDocCliCod, String docCliNum, char estRegCod){
         EnP1mDocumentoCliente docCli = new EnP1mDocumentoCliente();
         docCli.setId(new EnP1mDocumentoClienteId(cliCod, tipDocCliCod));
         docCli.setDocCliNum(docCliNum);
         docCli.setEstRegCod(estRegCod);
         docCliDao.save(docCli);
+    }
+    
+    public void deleteDocumento(String cliCod, int tipDocCliCod){
+        EnP1mDocumentoCliente docCli = docCliDao.getById(new EnP1mDocumentoClienteId(cliCod, tipDocCliCod));
+        docCliDao.delete(docCli);
+    }
+    
+    public void updateDocumento(String cliCod, int tipDocCliCod, String docCliNum){
+        EnP1mDocumentoCliente docCli = docCliDao.getById(new EnP1mDocumentoClienteId(cliCod, tipDocCliCod));
+        docCli.setDocCliNum(docCliNum);
+        docCliDao.update(docCli);
     }
     
     private void setEstRegCod(String cliCod, char estRegCod){

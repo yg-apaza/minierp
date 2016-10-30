@@ -11,6 +11,7 @@ import org.epis.minierp.dao.general.TaGzzTipoDocClienteDao;
 import org.epis.minierp.dao.ventas.EnP1mCatalogoRutaDao;
 import org.epis.minierp.dao.ventas.EnP1mClienteDao;
 import org.epis.minierp.dao.ventas.EnP1mClientesRutasDao;
+import org.epis.minierp.dao.ventas.EnP1mDocumentoClienteDao;
 import org.epis.minierp.dao.ventas.TaGzzTipoClienteDao;
 
 public class ClienteController extends HttpServlet {
@@ -22,7 +23,8 @@ public class ClienteController extends HttpServlet {
     TaGzzTipoClienteDao tipClienteDao;
     EnP1mClientesRutasDao cliRutDao;
     EnP1mCatalogoRutaDao rutaDao;
-    TaGzzTipoDocClienteDao docDao;
+    TaGzzTipoDocClienteDao tipDocDao;
+    EnP1mDocumentoClienteDao docCliDao;
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -30,13 +32,17 @@ public class ClienteController extends HttpServlet {
         estadoCivilDao = new TaGzzEstadoCivilDao();
         tipClienteDao = new TaGzzTipoClienteDao();
         rutaDao = new EnP1mCatalogoRutaDao();
-        docDao = new TaGzzTipoDocClienteDao();
+        tipDocDao = new TaGzzTipoDocClienteDao();
+        docCliDao = new EnP1mDocumentoClienteDao();
+        cliRutDao = new EnP1mClientesRutasDao();
         
         request.setAttribute("cliente", clienteDao.getAllActive());
         request.setAttribute("estCivil", estadoCivilDao.getAllActive());
         request.setAttribute("tipCliente", tipClienteDao.getAllActive());
         request.setAttribute("rutas", rutaDao.getAllActive());
-        request.setAttribute("documentos", docDao.getAllActive());
+        request.setAttribute("documentos", tipDocDao.getAllActive());
+        request.setAttribute("allDocClientes", docCliDao.getAllActiveOrdered());
+        request.setAttribute("allRutClientes", cliRutDao.getAllActiveOrdered());
         request.setAttribute("inactivos", clienteDao.getAllInactives());
         request.getRequestDispatcher("/WEB-INF/ventas/cliente/cliente.jsp").forward(request, response);
     }
@@ -114,14 +120,40 @@ public class ClienteController extends HttpServlet {
                 catRutCod = Integer.parseInt(request.getParameter("catRutCod"));
                 cliCod = request.getParameter("cliCod");
                 cliRutDes = request.getParameter("cliRutDes");
-                clienteBusiness.addRuta(catRutCod, cliCod, cliRutDes, 'A');
+                clienteBusiness.createRuta(catRutCod, cliCod, cliRutDes, 'A');
                 break;
                 
             case "documento":
                 cliCod = request.getParameter("cliCod");
                 tipDocCliCod = Integer.parseInt(request.getParameter("tipDocCliCod"));
                 docCliNum = request.getParameter("docCliNum");
-                clienteBusiness.addDocumento(cliCod, tipDocCliCod, docCliNum, 'A');
+                clienteBusiness.createDocumento(cliCod, tipDocCliCod, docCliNum, 'A');
+                break;
+            
+            case "modRuta":
+                cliCod = request.getParameter("cliCod");
+                catRutCod = Integer.parseInt(request.getParameter("catRutCod"));
+                cliRutDes = request.getParameter("cliRutDes");
+                clienteBusiness.updateRuta(catRutCod, cliCod, cliRutDes);
+                break;
+                
+            case "delRuta":
+                cliCod = request.getParameter("cliCod");
+                catRutCod = Integer.parseInt(request.getParameter("catRutCod"));
+                clienteBusiness.deleteRuta(catRutCod, cliCod);
+                break;
+                
+            case "modDoc":
+                cliCod = request.getParameter("cliCod");
+                tipDocCliCod = Integer.parseInt(request.getParameter("tipDocCliCod"));
+                docCliNum = request.getParameter("docCliNum");
+                clienteBusiness.updateDocumento(cliCod, tipDocCliCod, docCliNum);
+                break;
+                
+            case "delDoc":
+                cliCod = request.getParameter("cliCod");
+                tipDocCliCod = Integer.parseInt(request.getParameter("tipDocCliCod"));
+                clienteBusiness.deleteDocumento(cliCod, tipDocCliCod);
                 break;
                 
         }
