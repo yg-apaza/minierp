@@ -25,6 +25,16 @@ public class CuentaDao
         return query.list();
     }
     
+    public EnP3mCuenta getByNumActive(String num, int niv){
+        EnP3mCuenta cuenta = null;
+        Query query = session.createQuery("from EnP3mCuenta C where C.cueNum = :num and C.cueNiv = :niv and C.estRegCod = 'A'");
+        query.setParameter("num", num);
+        query.setParameter("niv", niv);
+        List<EnP3mCuenta> cuentas = query.list();
+        cuenta = cuentas.get(0);
+        return cuenta;
+    }
+    
     public EnP3mCuenta getByIdActive(int id)
     {
         EnP3mCuenta cuenta = null;
