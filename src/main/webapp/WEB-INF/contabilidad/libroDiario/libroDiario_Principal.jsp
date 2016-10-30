@@ -100,7 +100,6 @@
                                 </thead>
                                 <tbody>
                                     ${opera}
-                                      
                                 </tbody>
                             </table>
                         </div>

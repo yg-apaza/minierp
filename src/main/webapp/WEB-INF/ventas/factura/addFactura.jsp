@@ -18,14 +18,16 @@
                         <br><h1 class="page-header"> Factura de Venta</h1>
                     </div>
                     <div class="col-md-6 col-md-offset-2"><br>
-                        <div class="col-md-6">
+                        <div class="col-md-8">
                             <div class="form-group input-group">
+                                <span class="input-group-addon">Vendedor</span>
                                 <span class="input-group-addon"><i class="fa fa-child"></i></span>
                                 <input type="hidden" class="form-control" name="usuCod" value="${usuario.usuCod}" readonly>
-                                <input type="text" class="form-control" value="${usuario.usuNom} ${usuario.usuApePat}" readonly>
+                                <input type="text" class="form-control" value="${usuario.usuCod} - ${usuario.usuNom}" readonly>
+                                
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="form-group input-group">
                                 <span class="input-group-addon"><i class="fa fa-home"></i></span>
                                 <input type="text" class="form-control" value="${punto.id.sucCod}-${punto.id.punVenCod}" readonly>
@@ -56,33 +58,51 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <div class="form-group input-group">
+                                                <div class="form-group input-group" >
+                                                    <input class="hidden" type="text" name="cliCod" id="facCli">
                                                     <span class="input-group-addon">Cliente</span>
-                                                    <input class="form-control" type="text" name="cliCod" id="cliCodShow" placeholder="Nro de documento">
-                                                    <span class="input-group-addon"></span>
-                                                    <input class="form-control" type="text" name="cliNom" id="cliNomShow" placeholder="Nombres">
-                                                    <span class="input-group-addon"></span>
-                                                    <input class="form-control" type="text" name="cliApePat" id="cliApePatShow" placeholder="Apellido Paterno">
-                                                    <span class="input-group-addon"></span>
-                                                    <input class="form-control" type="text" name="cliApeMat" id="cliApeMatShow" placeholder="Apellido Materno">
-                                                </div>
+                                                    <select class="form-control" id="tipoClienteCode" disabled>
+                                                        <c:forEach items="${tiposCliente}" var="tipoCliente">
+                                                            <option value="${tipoCliente.tipCliCod}">${tipoCliente.tipCliDet}</option>
+                                                        </c:forEach>
+                                                    </select> 
+                                                    <input class="form-control" type="text" id="cliCodShow" placeholder="Código" readOnly>
+                                                    <span class="input-group-addon" onclick="changeClientIcon()"><i class="fa" id="iconClientCriteria"></i></span>
+                                                    <select class="form-control" id="desClienteCode" disabled>
+                                                        <option value="1">Razón Social</option>
+                                                        <option value="2">Nombre Comercial</option>
+                                                    </select> 
+                                                    <input class="form-control" type="text" id="cliDesShow" placeholder="Descripción" readOnly>
+                                                </div>                                                
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-md-4">
+                                            <div class="col-md-3">
                                                 <div class="form-group input-group" >
                                                     <span class="input-group-addon">IGV</span>
                                                     <input type="number" class="form-control" name="facVenCabIgv" value="${empresa.empIgv}" id="facIgv" readOnly>
                                                 </div>
                                             </div>
-                                            <div class="col-md-8">
+                                            <div class="col-md-5">
                                                 <div class="form-group input-group" >
-                                                    <span class="input-group-addon"><i class="fa fa-money"></i></span>
+                                                    <span class="input-group-addon">Moneda</i></span>
                                                     <select class="form-control" name="monCod">
                                                         <c:forEach items="${monedas}" var="moneda">
                                                             <option value="${moneda.monCod}">${moneda.monDet}</option>
                                                         </c:forEach>
-                                                    </select>                                                   
+                                                    </select>
+                                                    <span class="input-group-addon"><i class="fa fa-money"></i></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group input-group" >
+                                                    <span class="input-group-addon">Ruta</i></span>
+                                                    <select class="form-control" name="monCod">
+                                                        <c:forEach items="${monedas}" var="moneda">
+                                                            <option value="${moneda.monCod}">${moneda.monDet}</option>
+                                                        </c:forEach>
+                                                    </select>
+                                                    <span class="input-group-addon"><i class="fa fa-money"></i></span>
                                                 </div>
                                             </div>
                                         </div>
@@ -112,7 +132,7 @@
                                         </div>
                                     </div>
                                     <div class="col-xs-12 col-md-3">
-                                        <textarea class="form-control" rows="8" name="facVenCabObs" placeholder="Observaciones"></textarea>
+                                        <textarea class="form-control" rows="10" name="facVenCabObs" placeholder="Observaciones"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -213,17 +233,18 @@
         </div>
         <script language="javascript">
             var codeCriteria = true;
-            var clientDocs = new Array();
+            var codeClientCriteria = true;
             var productCodes = new Array();
             var productDescriptions = new Array();
             
-            <c:forEach items="${documentos}" var="d">
-                clientDocs.push("${d.docCliNum}");
-            </c:forEach>
             <c:forEach items="${productos}" var="p" varStatus="loop">
                 productCodes.push("${p.id.claProCod}-${p.id.subClaProCod}-${p.id.proCod}");
                 productDescriptions.push("${p.proDet}");
             </c:forEach>
+            
+            $(document).ready(function () {
+                changeClientCode();
+            });
             
             $(document).ready(function () {
                 $("#facDes").change(function () {
@@ -242,7 +263,12 @@
             $(document).ready(function () {
                 $("#iconCriteria").addClass("fa-chevron-left");
                 $('#proCodShow').attr('readOnly', false);
-                $('#proDesShow').attr('readOnly', true);                
+                $('#proDesShow').attr('readOnly', true);     
+                $("#iconClientCriteria").addClass("fa-chevron-left");
+                $('#cliCodShow').attr('readOnly', false);
+                $("#tipoClienteCode").prop('disabled', false);
+                $('#cliDesShow').attr('readOnly', true); 
+                $("#desClienteCode").prop('disabled', true);
             });
             
             $(document).ready(function () {
@@ -330,13 +356,96 @@
                     codeCriteria = true;
                 }
             }
+            
+            function changeClientIcon() {
+                if(codeClientCriteria) {
+                    $('#iconClientCriteria').removeClass("fa-chevron-left").addClass("fa-chevron-right");
+                    $('#cliCodShow').attr('readOnly', true);
+                    $("#tipoClienteCode").prop('disabled', true);
+                    $('#cliDesShow').attr('readOnly', false); 
+                    $("#desClienteCode").prop('disabled', false);
+                    $('#cliCodShow').val("");
+                    $('#cliDesShow').val("");
+                    codeClientCriteria = false;
+                    changeClientDescription();
+                } else {
+                    $('#iconClientCriteria').removeClass("fa-chevron-right").addClass("fa-chevron-left");
+                    $('#cliCodShow').attr('readOnly', false);
+                    $("#tipoClienteCode").prop('disabled', false);
+                    $('#cliDesShow').attr('readOnly', true); 
+                    $("#desClienteCode").prop('disabled', true);
+                    $("#desClienteCode").val("1");
+                    $('#cliCodShow').val("");
+                    $('#cliDesShow').val("");
+                    codeClientCriteria = true;
+                    changeClientCode();
+                }
+            }
+            
+            function changeClientCode() {
+                $.post(
+                        "${pageContext.request.contextPath}/secured/ventas/searchSupplier", {
+                            action: "tipo",
+                            tipCliCod: $("#tipoClienteCode").val()
+                        }
+                    ).done(function (data) {
+                        if (data.clients != null) {
+                            var clientsCodes = new Array();
+                            data.clients.forEach(function(client) {
+                                clientsCodes.push(client.cliCod);
+                            });
                             
-            $("#cliCodShow").autocomplete({
-                source: clientDocs
+                            $("#cliCodShow").autocomplete({
+                                source: clientsCodes
+                            });
+                        }                        
+                    });
+            } 
+            
+            function changeClientDescription() {
+                $.post(
+                        "${pageContext.request.contextPath}/secured/ventas/searchSupplier", {
+                            action: "descripcion"
+                        }
+                    ).done(function (data) {
+                        if (data.clients != null) {
+                            if($("#desClienteCode").val() == "1") { //Razón Social
+                                var clientsRS = new Array();
+                                data.clients.forEach(function(client) {
+                                    clientsRS.push(client.cliRazSoc);
+                                });
+                                
+                                $("#cliDesShow").autocomplete({
+                                    source: clientsRS
+                                });
+                            } else if($("#desClienteCode").val() == "2") { //Nombre Comercial
+                                var clientsNC = new Array();
+                                data.clients.forEach(function(client) {
+                                    clientsNC.push(client.cliNomCom);
+                                });
+                                
+                                $("#cliDesShow").autocomplete({
+                                    source: clientsNC
+                                });
+                            }                            
+                        }                        
+                    });
+            } 
+            
+            $('#tipoClienteCode').on('change', function() {
+                changeClientCode();
+                $("#cliCodShow").val("");
+                $("#cliDesShow").val("");
             });
             
+            $('#desClienteCode').on('change', function() {
+                changeClientDescription();
+                $("#cliCodShow").val("");
+                $("#cliDesShow").val("");
+            });
+                        
             $("#proCodShow").autocomplete({
-                source: productCodes,
+                source: productCodes
             });
 
             $("#proDesShow").autocomplete({
@@ -346,7 +455,7 @@
             $('#proCodShow').keyup(function () {
                 if(codeCriteria) {
                     $.post(
-                        "${pageContext.request.contextPath}/secured/ventas/factura/searchProduct", {
+                        "${pageContext.request.contextPath}/secured/ventas/searchProduct", {
                             proCod: $("#proCodShow").val(),
                             proDet: ""
                         }
@@ -366,7 +475,7 @@
             $('#proDesShow').keyup(function () {
                 if(!codeCriteria) {
                     $.post(
-                        "${pageContext.request.contextPath}/secured/ventas/factura/searchProduct", {
+                        "${pageContext.request.contextPath}/secured/ventas/searchProduct", {
                             proCod: "",
                             proDet: $("#proDesShow").val()
                         }
@@ -385,23 +494,38 @@
 
             $('#cliCodShow').keyup(function () {
                 $.post(
-                        "${pageContext.request.contextPath}/secured/ventas/factura/busquedaCliente",
-                        {docCliNum: $("#cliCodShow").val()})
-                        .done(function (data) {
-                            if (data.cliCod != null)
-                            {
-                                $("#cliNomShow").val(data.cliNom);
-                                $("#cliApePatShow").val(data.cliApePat);
-                                $("#cliApeMatShow").val(data.cliApeMat);                                
-                            }
-                            else
-                            {
-                                $("#cliNomShow").val("Desconocido");
-                                $("#cliApePatShow").val("Desconocido");
-                                $("#cliApeMatShow").val("Desconocido");
+                        "${pageContext.request.contextPath}/secured/ventas/searchSupplier", {
+                            action: "tipoSearch",
+                            tipCliCod: $("#tipoClienteCode").val(),
+                            cliCod: $("#cliCodShow").val()
+                        }
+                    ).done(function (client) {
+                            if(client.cliCod != null) {
+                                $("#facCli").val(client.cliCod);
+                                $("#cliDesShow").val(client.cliRazSoc);                               
+                            } else {
+                                $("#cliDesShow").val("Desconocido");
                             }
                         });
             });    
+            
+            $('#cliDesShow').keyup(function () {
+                $.post(
+                        "${pageContext.request.contextPath}/secured/ventas/searchSupplier", {
+                            action: "desSearch",
+                            tipCliDes: $("#desClienteCode").val(),
+                            cliDes: $("#cliDesShow").val()
+                        }
+                    ).done(function (clientMap) {
+                            if(clientMap.cliCod != null) {
+                                $("#facCli").val(clientMap.cliCod);
+                                $("#cliCodShow").val(clientMap.cliCod);    
+                                $("#tipoClienteCode").val(clientMap.tipCliCod);
+                            } else {
+                                $("#cliCodShow").val("Desconocido");
+                            }
+                        });
+            });  
             
             $("#registerBill").validate({
                 rules: {

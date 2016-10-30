@@ -42,7 +42,7 @@
                         <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand" href="${pageContext.request.contextPath}/">
-                        <img src="${pageContext.request.contextPath}/img/logo.png">
+                        <img id="logoEmp" src="${pageContext.request.contextPath}/img/logo.png">
                     </a>
                 </div>
                 
@@ -148,19 +148,33 @@
                                         <a href="${pageContext.request.contextPath}/secured/contabilidad/cuentabancaria">Cuentas bancarias</a>
                                     </li>
                                     <li>
-                                        <a href="${pageContext.request.contextPath}/secured/contabilidad/librodiario">Libro Diario</a>
+                                        <a href="${pageContext.request.contextPath}/secured/contabilidad/plantilla">Plantilla de Asientos</a>
                                     </li>
                                     <li>
-                                        <a href="${pageContext.request.contextPath}/secured/contabilidad/libroMayor">Libro Mayor</a>
+                                        <a href="#">Libros Contables<span class="fa arrow"></span></a>
+                                        <ul class="nav nav-third-level">
+                                            
+                                            <li>
+                                                <a href="${pageContext.request.contextPath}/secured/contabilidad/librodiario">Libro Diario</a>
+                                            </li>
+                                            <li>
+                                                <a href="${pageContext.request.contextPath}/secured/contabilidad/libroMayor">Libro Mayor</a>
+                                            </li>
+                                            <li>
+                                                <a href="${pageContext.request.contextPath}/secured/contabilidad/caja">Libro de Caja</a>
+                                            </li>
+                                            <li>
+                                                <a href="${pageContext.request.contextPath}/secured/contabilidad/bancos">Libro de Bancos</a>
+                                            </li>
+                                        </ul>
                                     </li>
                                     <li>
-                                        <a href="${pageContext.request.contextPath}/secured/contabilidad/caja">Caja</a>
-                                    </li>
-                                    <li>
-                                        <a href="${pageContext.request.contextPath}/secured/contabilidad/bancos">Bancos</a>
-                                    </li>
-                                    <li>
-                                        <a href="${pageContext.request.contextPath}/secured/contabilidad/balance">Balance General</a>
+                                        <a href="#">Estados Financieros<span class="fa arrow"></span></a>
+                                        <ul class="nav nav-third-level">
+                                            <li>
+                                                <a href="${pageContext.request.contextPath}/secured/contabilidad/balance">Balance General</a>
+                                            </li>
+                                        </ul>
                                     </li>
                                 </ul>
                             </li>
@@ -204,3 +218,9 @@
         </div>
     </body>
 </html>
+<script>
+    if("nada"!="${empImg}"){
+        console.log("${pageContext.request.contextPath}/img/${empImg}");
+        $('#logoEmp')[0].src="${pageContext.request.contextPath}/img/${empImg}";
+    }
+</script>

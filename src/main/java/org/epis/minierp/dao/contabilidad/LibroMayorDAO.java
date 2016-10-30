@@ -1,10 +1,9 @@
 package org.epis.minierp.dao.contabilidad;
 
-import java.util.HashSet;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.TreeMap;
 import org.epis.minierp.model.contabilidad.LibroMayor;
 import org.epis.minierp.model.contabilidad.LibroMayorView;
@@ -19,54 +18,28 @@ public class LibroMayorDAO {
     {  
         session = HibernateUtil.getSessionFactory().getCurrentSession();  
     }
-    
     public List<LibroMayorView> getView(){
         Query query = session.createQuery("from LibroMayorView ");
         return query.list();
     }
-    public Set<LibroMayor> getLibroMayor(){
-        LibroMayorDAO cajaDAO = new LibroMayorDAO();
-        Iterator <LibroMayorView> diario = cajaDAO.getView().iterator();
-        Set <LibroMayor> caja = new HashSet <> ();
-        LibroMayor ant;
-        LibroMayor nuevo=new LibroMayor();
-        
+    public List<LibroMayor> getLibroMayor(String cuenta){
+        LibroMayorDAO libroMayorDAO = new LibroMayorDAO();
+        Iterator <LibroMayorView> diario = libroMayorDAO.getView().iterator();
+        List<LibroMayor>libroMayor = new ArrayList<LibroMayor>();
          while(diario.hasNext()) {
-            ant = nuevo;
             LibroMayorView asiento = diario.next();
-            nuevo = new LibroMayor(asiento.getAsiDetCod(),asiento.getAsiCabFec(),asiento.getAsiCabGlo(),asiento.getCueDes(),asiento.getCueNum(),asiento.getDebe(),asiento.getHaber());
-            //swap
-            if("101".equals(asiento.getCueNum())){
-                nuevo.setCueDes(ant.getCueDes());
-                nuevo.setCueNum(ant.getCueNum());
-                
+            if(cuenta.equals(asiento.getCueNum())){ 
+                LibroMayor nuevo = new LibroMayor(asiento.getAsiDetCod(),asiento.getAsiCabFec(),asiento.getAsiCabGlo(),asiento.getCueDes(),asiento.getCueNum(),asiento.getDebe(),asiento.getHaber());
                 if("0".equals(asiento.getEstado()))
                     nuevo.setHaber(0); 
-                else nuevo.setDebe(0); 
-                caja.add(nuevo);
+                else nuevo.setDebe(0);                 
+                libroMayor.add(nuevo);
             } 
         }
-        return caja;
+        return libroMayor;
     }
-    public Set<LibroMayor> getTodo(){
-        LibroMayorDAO cajaDAO = new LibroMayorDAO();
-        Iterator <LibroMayorView> diario = cajaDAO.getView().iterator();
-        
-        Set <LibroMayor> caja = new HashSet <> ();
-         while(diario.hasNext()) {
-            LibroMayorView asiento = diario.next();
-            LibroMayor nuevo = new LibroMayor(asiento.getAsiDetCod(),asiento.getAsiCabFec(),asiento.getAsiCabGlo(),asiento.getCueDes(),asiento.getCueNum(),asiento.getDebe(),asiento.getHaber());
-            if("0".equals(asiento.getEstado()))
-                nuevo.setHaber(0); 
-            else nuevo.setDebe(0); 
-            caja.add(nuevo);
-        }
-        return caja;
-    }
-    public Map<String, Double> getTotal(){
-        Query query = session.createQuery("from LibroMayorView");
-
-        Iterator <LibroMayor> diario = getLibroMayor().iterator();
+    public Map<String, Double> getTotal(String cuenta){
+        Iterator <LibroMayor> diario = getLibroMayor(cuenta).iterator();
         Map<String, Double> sumas=  new TreeMap<>();
         
         double debe=0;
@@ -80,5 +53,12 @@ public class LibroMayorDAO {
         sumas.put("debe",debe);
         sumas.put("haber",haber);
         return sumas;
+    }
+    public Map<String, String> getCuenta(String cuenta){
+        LibroMayor diario = getLibroMayor(cuenta).get(0);
+        Map<String, String> cuentaDes=  new TreeMap<>();
+        cuentaDes.put("cueCod", cuenta);
+        cuentaDes.put("cueDes", diario.getCueDes());
+        return cuentaDes;
     }
 }

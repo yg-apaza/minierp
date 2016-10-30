@@ -20,6 +20,7 @@ public class PanelController extends HttpServlet
 {	
     private static final long serialVersionUID = 1L;
 
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
         HttpSession session = request.getSession(false);
@@ -34,6 +35,8 @@ public class PanelController extends HttpServlet
         
         switch(type){
             case 1:
+                break;
+            case 2:
                 if(ingresos.size()>0){       
                     Ingresos i = ingresos.get(0);
                     request.setAttribute("iHOY", i.getHOY());
@@ -58,8 +61,6 @@ public class PanelController extends HttpServlet
                     request.setAttribute("pANTEAYER", 0);
                 }
                 break;
-            case 2:
-                break;
             case 3:
                 List <EnP2mAlmacen> almacenes = new ArrayList<>(u.getEnP1mSucursal().getEnP2mAlmacens());
                 request.setAttribute("almacenes", almacenes);
@@ -67,9 +68,6 @@ public class PanelController extends HttpServlet
             case 4:
                 break;
         }
-         
-        
         request.getRequestDispatcher("/WEB-INF/general/panel.jsp").forward(request, response);
     }
-    
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 29/10/2016 12:36:13 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 30/10/2016 12:40:42 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="org.epis.minierp.model.EnP1mCatalogoRuta" table="en_p1m_catalogo_ruta" catalog="episerp" optimistic-lock="version">
         <id name="catRutCod" type="java.lang.Integer">
@@ -19,6 +19,12 @@
                 <column name="CatRutCod" not-null="true" />
             </key>
             <one-to-many class="org.epis.minierp.model.EnP1mClientesRutas" />
+        </set>
+        <set name="enP1mFacturaVentaCabs" table="en_p1m_factura_venta_cab" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="CatRutCod" />
+            </key>
+            <one-to-many class="org.epis.minierp.model.EnP1mFacturaVentaCab" />
         </set>
     </class>
 </hibernate-mapping>
