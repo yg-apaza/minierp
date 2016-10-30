@@ -12,9 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.epis.minierp.dao.ventas.EnP1mClienteDao;
-import org.epis.minierp.dao.ventas.EnP1mDocumentoClienteDao;
 import org.epis.minierp.model.EnP1mCliente;
-import org.epis.minierp.model.EnP1mDocumentoCliente;
 
 public class BusquedaClienteController extends HttpServlet
 {

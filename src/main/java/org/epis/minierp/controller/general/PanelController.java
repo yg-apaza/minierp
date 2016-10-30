@@ -1,6 +1,5 @@
 package org.epis.minierp.controller.general;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +35,8 @@ public class PanelController extends HttpServlet
         
         switch(type){
             case 1:
+                break;
+            case 2:
                 if(ingresos.size()>0){       
                     Ingresos i = ingresos.get(0);
                     request.setAttribute("iHOY", i.getHOY());
@@ -59,8 +60,6 @@ public class PanelController extends HttpServlet
                     request.setAttribute("pAYER", 0);
                     request.setAttribute("pANTEAYER", 0);
                 }
-                break;
-            case 2:
                 break;
             case 3:
                 List <EnP2mAlmacen> almacenes = new ArrayList<>(u.getEnP1mSucursal().getEnP2mAlmacens());

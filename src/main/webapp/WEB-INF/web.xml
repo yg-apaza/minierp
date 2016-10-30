@@ -410,6 +410,16 @@
         <servlet-name>CuentaBancoController</servlet-name>
         <url-pattern>/secured/contabilidad/cuentabancaria</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <description/>
+        <display-name>PlantillaController</display-name>
+        <servlet-name>PlantillaController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.contabilidad.PlantillaController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PlantillaController</servlet-name>
+        <url-pattern>/secured/contabilidad/plantilla</url-pattern>
+    </servlet-mapping>
     <!-- Modulo de Perifericos -->
     <servlet>
         <description/>
