@@ -124,6 +124,16 @@ COMMIT;
 
 
 -- -----------------------------------------------------
+-- Data for table `episerp`.`ta_gzz_tipo_doc_transportista`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `episerp`;
+INSERT INTO `episerp`.`ta_gzz_tipo_doc_transportista` (`TipDocTraCod`, `TipDocTraDet`, `EstRegCod`) VALUES (1, 'DNI', 'A');
+INSERT INTO `episerp`.`ta_gzz_tipo_doc_transportista` (`TipDocTraCod`, `TipDocTraDet`, `EstRegCod`) VALUES (2, 'RUC', 'A');
+
+COMMIT;
+
+-- -----------------------------------------------------
 -- Data for table `episerp`.`ta_gzz_unidad_med`
 -- -----------------------------------------------------
 START TRANSACTION;
@@ -797,5 +807,53 @@ INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `
 INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (538, 367, 4, '7014', 'Mercaderías inmuebles', 'A');
 INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (539, 367, 4, '7015', 'Mercaderías - Otras', 'A');
 INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (540, 9, 2, '94', 'Gastos Administrativos', 'A');
+
+COMMIT;
+
+-- -----------------------------------------------------
+-- Data for table `episerp`.`ta_gzz_tipo_descuento`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `episerp`;
+INSERT INTO `episerp`.`ta_gzz_tipo_descuento` (`TipDesCod`, `TipDesDet`, `EstRegCod`) VALUES ('01', '75%', 'A');
+INSERT INTO `episerp`.`ta_gzz_tipo_descuento` (`TipDesCod`, `TipDesDet`, `EstRegCod`) VALUES ('02', '50%', 'A');
+INSERT INTO `episerp`.`ta_gzz_tipo_descuento` (`TipDesCod`, `TipDesDet`, `EstRegCod`) VALUES ('03', '25%', 'A');
+INSERT INTO `episerp`.`ta_gzz_tipo_descuento` (`TipDesCod`, `TipDesDet`, `EstRegCod`) VALUES ('04', '10%', 'A');
+
+COMMIT;
+
+-- -----------------------------------------------------
+-- Data for table `episerp`.`ta_gzz_tipo_devolucion`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `episerp`;
+INSERT INTO `episerp`.`ta_gzz_tipo_devolucion` (`TipDevCod`, `TipDevDet`, `EstRegCod`) VALUES ('01', 'Falla en el producto', 'A');
+INSERT INTO `episerp`.`ta_gzz_tipo_devolucion` (`TipDevCod`, `TipDevDet`, `EstRegCod`) VALUES ('02', 'Error de solicitud del cliente', 'A');
+INSERT INTO `episerp`.`ta_gzz_tipo_devolucion` (`TipDevCod`, `TipDevDet`, `EstRegCod`) VALUES ('03', 'Falta de pago', 'A');
+INSERT INTO `episerp`.`ta_gzz_tipo_devolucion` (`TipDevCod`, `TipDevDet`, `EstRegCod`) VALUES ('04', 'Entregas extemporaneas', 'A');
+INSERT INTO `episerp`.`ta_gzz_tipo_devolucion` (`TipDevCod`, `TipDevDet`, `EstRegCod`) VALUES ('05', 'Errores de registro', 'A');
+INSERT INTO `episerp`.`ta_gzz_tipo_devolucion` (`TipDevCod`, `TipDevDet`, `EstRegCod`) VALUES ('06', 'Errores de envio', 'A');
+INSERT INTO `episerp`.`ta_gzz_tipo_devolucion` (`TipDevCod`, `TipDevDet`, `EstRegCod`) VALUES ('07', 'Faltante', 'A');
+
+COMMIT;
+
+-- -----------------------------------------------------
+-- Data for table `episerp`.`ta_gzz_tipo_destinatario`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `episerp`;
+INSERT INTO `episerp`.`ta_gzz_tipo_destinatario` (`TipDesCod`, `TipDesDet`, `EstRegCod`) VALUES ('01', 'Persona Natural', 'A');
+INSERT INTO `episerp`.`ta_gzz_tipo_destinatario` (`TipDesCod`, `TipDesDet`, `EstRegCod`) VALUES ('02', 'Persona Jurídica', 'A');
+
+COMMIT;
+
+-- -----------------------------------------------------
+-- Data for table `episerp`.`ta_gzz_motivo_traslado`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `episerp`;
+INSERT INTO `episerp`.`ta_gzz_motivo_traslado` (`MotTraCod`, `MotTraDet`, `EstRegCod`) VALUES ('01', 'Venta', 'A');
+INSERT INTO `episerp`.`ta_gzz_motivo_traslado` (`MotTraCod`, `MotTraDet`, `EstRegCod`) VALUES ('02', 'Compra', 'A');
+INSERT INTO `episerp`.`ta_gzz_motivo_traslado` (`MotTraCod`, `MotTraDet`, `EstRegCod`) VALUES ('03', 'Devolución', 'A');
 
 COMMIT;
