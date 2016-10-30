@@ -6,9 +6,16 @@
     </jsp:attribute>
     <jsp:attribute name="contenido">
     <script type="text/javascript">
-function imprSelec(muestra)
-{var ficha=document.getElementById(muestra);var ventimp=window.open(' ','popimpr');ventimp.document.write(ficha.innerHTML);ventimp.document.close();ventimp.print();ventimp.close();}
-</script>
+	function imprSelec(muestra)
+	{
+		var ficha=document.getElementById(muestra);
+		var ventimp=window.open(' ','popimpr');
+		ventimp.document.write(ficha.innerHTML);
+		ventimp.document.close();
+		ventimp.print();
+		ventimp.close();
+	}
+	</script>
         <div id="muestra" class="panel-body">
         	<div class="row">
                         <div class="col-lg-12">
