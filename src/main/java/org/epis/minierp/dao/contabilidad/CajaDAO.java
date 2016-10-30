@@ -1,5 +1,6 @@
 package org.epis.minierp.dao.contabilidad;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 import org.epis.minierp.model.contabilidad.CajaView;
@@ -24,15 +25,14 @@ public class CajaDAO {
         Query query = session.createQuery("from CajaView ");
         return query.list();
     }
-    public Set<Caja> getCaja(){
+    public List<Caja> getCaja(){
         CajaDAO cajaDAO = new CajaDAO();
         Iterator <CajaView> diario = cajaDAO.getView().iterator();
-        Set <Caja> caja = new HashSet <> ();
-        Caja ant;
-        Caja nuevo=new Caja();
+        List<Caja>caja = new ArrayList<Caja>();
+        Caja ant = new Caja();
+        Caja nuevo;
         
          while(diario.hasNext()) {
-            ant = nuevo;
             CajaView asiento = diario.next();
             nuevo = new Caja(asiento.getAsiDetCod(),asiento.getAsiCabFec(),asiento.getCueDes(),asiento.getCueNum(),asiento.getDebe(),asiento.getHaber());
             //swap
@@ -45,9 +45,11 @@ public class CajaDAO {
                 else nuevo.setDebe(0); 
                 caja.add(nuevo);
             } 
+            ant = nuevo;
         }
         return caja;
     }
+
     public Set<Caja> getTodo(){
         CajaDAO cajaDAO = new CajaDAO();
         Iterator <CajaView> diario = cajaDAO.getView().iterator();
@@ -64,8 +66,6 @@ public class CajaDAO {
         return caja;
     }
     public Map<String, Double> getTotal(){
-        Query query = session.createQuery("from CajaView");
-
         Iterator <Caja> diario = getCaja().iterator();
         Map<String, Double> sumas=  new TreeMap<>();
         

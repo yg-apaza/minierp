@@ -11,44 +11,63 @@
         <div class="panel-body" >
             <h1 class="page-header">Libro Mayor</h1> 
             <div class="panel">
-               <div class="form-group">
-                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Periodo: </label>
-                    <div class="col-sm-9">
-                        <input id = "fecIn" type="month" id="form-field-1" placeholder="Mar-16" class="form-control">
-                    </div>
-                </div>
-                <script>
-                        document.getElementById("fecIn").value = moment().format('YYYY-MM');;
-                </script>
-
-                <br><br>
-
-                <div class="form-group">
-                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> RUC: </label>
-                    <div class="col-sm-9">
-                        <input type="text" id="form-field-1" placeholder="${empresa.empRuc}" class="form-control" readonly>
-                    </div>
-                </div>
-
-                <br><br>
-
-                <div class="form-group">
-                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Apellidos y Nombres, Denominación o Razón Social:  </label>
-                    <div class="col-sm-9">
-                        <input type="text" id="form-field-1" placeholder="${empresa.empNom}" class="form-control" readonly>
-                    </div>
-                </div>
-                
-                <br><br> 
-                <div class="form-group">
-                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Codigo de Cuenta:  </label>
-                    <div class="col-sm-9">
-                        <input type="text" id="form-field-1" placeholder="" class="form-control" >
-                    </div>
-                </div>
-                
-            </div>
+                <form id="registerBill" method="post" action="${pageContext.request.contextPath}/secured/contabilidad/libroMayor">
             
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Periodo: </label>
+                        <div class="col-sm-9">
+                            <input id = "fecIn" type="month" id="form-field-1" placeholder="Mar-16" class="form-control">
+                        </div>
+                    </div>
+                    <script>
+                            document.getElementById("fecIn").value = moment().format('YYYY-MM');;
+                    </script>
+
+                    <br><br>
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> RUC: </label>
+                        <div class="col-sm-9">
+                            <input type="text" id="form-field-1" placeholder="${empresa.empRuc}" class="form-control" readonly>
+                        </div>
+                    </div>
+
+                    <br><br>
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Apellidos y Nombres, Denominación o Razón Social:  </label>
+                        <div class="col-sm-9">
+                            <input type="text" id="form-field-1" placeholder="${empresa.empNomCom}" class="form-control" readonly>
+                        </div>
+                    </div>
+
+                    <br><br> 
+                    
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Codigo de Cuenta:  </label>
+                        <div class="col-sm-9">
+                            <input type="text" id="form-field-1" name = "codCue" placeholder="${cuenta.cueCod}" class="form-control" >
+                        </div>
+                    </div>
+                    
+                    <br><br> 
+                    
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Decripción de Cuenta:  </label>
+                        <div class="col-sm-9">
+                            <input type="text" id="form-field-1" name = "codCue" placeholder="${cuenta.cueDes}" class="form-control" >
+                        </div>
+                    </div>
+                    
+                    <br><br> 
+                    
+                    <div class="col-md-3">
+                        <button type="submit" onclick="return updateInventory()" class="btn btn-success"> Actualizar libro</button>  
+                    </div>
+                    
+                    <br><br> 
+                </form>
+            </div>     
             
             <div class="table-responsive">
                 <table class="table table-bordered table-striped table-hover">
