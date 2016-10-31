@@ -38,6 +38,14 @@ public class EnP1mClientesRutasDao {
         return estados;
     }
     
+    public List<EnP1mClientesRutas> getAllActiveOrdered() {
+        Query query = session.createQuery("from EnP1mClientesRutas E where E.estRegCod = 'A' "
+                + "order by E.id.cliCod, E.id.catRutCod asc");
+        List<EnP1mClientesRutas> estados = query.list();
+        System.out.println(estados);
+        return estados;
+    }
+    
     public List<EnP1mClientesRutas> getAllInactives() {
         Query query = session.createQuery("from EnP1mClientesRutas E where E.estRegCod = 'I'");
         List<EnP1mClientesRutas> estados = query.list();

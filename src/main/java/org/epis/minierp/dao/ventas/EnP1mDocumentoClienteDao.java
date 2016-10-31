@@ -39,6 +39,14 @@ public class EnP1mDocumentoClienteDao {
         return estado;
     }
     
+    public List<EnP1mDocumentoCliente> getAllActiveOrdered() {
+        Query query = session.createQuery("from EnP1mDocumentoCliente E where E.estRegCod = 'A' "
+                + "order by E.id.cliCod, E.id.tipDocCliCod asc");
+        List<EnP1mDocumentoCliente> estados = query.list();
+        System.out.println(estados);
+        return estados;
+    }
+    
     public EnP1mDocumentoCliente getByDocNum(String docCliNum) {
         EnP1mDocumentoCliente documento = null;
         Query query = session.createQuery("from EnP1mDocumentoCliente D where D.docCliNum = :id and D.estRegCod = 'A'");

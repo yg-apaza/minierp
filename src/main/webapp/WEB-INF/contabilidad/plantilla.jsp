@@ -70,28 +70,36 @@
                                     </div>
                                 </div>
                                 <div class="col-md-12 col-sm-12">
-                                    <div class="form-group">
-                                        <label>Detalle de Plantilla</label>
-                                    </div>
+                                    <label>Detalle de Plantilla</label>
                                 </div>
-                                <div class="col-md-4 col-sm-4">
+                                <div class="col-md-7 col-sm-12">
                                     <div class="form-group input-group">
                                         <span class="input-group-addon">Cuenta</span>
-                                        <input class="form-control" name="cueCod">
+                                        <input class="form-control" name="cueNum" id="cueNum" placeholder="Nro de Cuenta">
+                                        <span class="input-group-addon">-</span>
+                                        <input class="form-control" name="cueDes" id="cueDes" placeholder="Descripción" disabled>
                                     </div>
                                 </div>
-                                <div class="col-md-3 col-sm-3">
-                                    <select class="form-control" name="plaDetDebHab">
-                                        <option value="1">DEBE</option>
-                                        <option value="0">HABER</option>
-                                    </select>
+                                <div class="col-md-2 col-sm-5">
+                                    <div class="form-group">
+                                        <select class="form-control" name="plaDetDebHab">
+                                            <option value="1">DEBE</option>
+                                            <option value="0">HABER</option>
+                                        </select>
+                                    </div>
                                 </div>
-                                <div class="col-md-3 col-sm-3">
-                                    <input name="plaDetPor" type="number" class="form-control">
+                                <div class="col-md-2 col-sm-5">
+                                    <div class="form-group">
+                                        <input name="plaDetPor" type="number" placeholder="Porcentaje" class="form-control">
+                                    </div>
                                 </div>
-                                <div class="col-md-2 col-sm-2">
-                                    <button type="button" class="btn btn-success"><i class="fa fa-plus fa-1x"></i></button>
+                                <div class="col-md-1 col-sm-2">
+                                    <div class="form-group">
+                                        <button type="button" class="btn btn-success"><i class="fa fa-plus fa-1x"></i></button>
+                                    </div>
                                 </div>
+                            </div>
+                            <div class="row">
                                 <div class="col-md-12 col-sm-12">
                                     <div class="table-responsive">
                                         <table class="table table-striped table-bordered table-hover">
@@ -117,5 +125,22 @@
                 </div>                                        
             </div>
         </div>
+        <script>
+            $('#cueNum').keyup(function() {
+                $.post(
+                    "${pageContext.request.contextPath}/secured/contabilidad/busquedaCuenta",
+                    {cueNum: $("#cueNum").val()})
+                .done(function(data) {
+                    if(data.cueCod != null)
+                    {
+                        $("#cueDes").val(data.cueDes);
+                    }
+                    else
+                    {
+                        $("#cueDes").val("Cuenta inválida");
+                    }
+                });
+            });
+        </script>
     </jsp:attribute>
 </minierptemplate:template>

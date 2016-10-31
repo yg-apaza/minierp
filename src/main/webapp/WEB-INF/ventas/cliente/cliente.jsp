@@ -10,6 +10,8 @@
             <h1 class="page-header">Clientes
                 <a href="#" class="btn btn-success btn-circle" data-toggle="modal" data-target="#agregarModal"><i class="fa fa-plus"></i></a>
                 <a href="#" class="btn btn-info btn-circle" data-toggle="modal" data-target="#estadosModal"><i class="fa fa-eye"></i></a>
+                <a href="#" class="btn btn-danger btn-circle" data-toggle="modal" data-target="#delDocumentoModal"><i class="fa fa-file-text"></i></a>
+                <a href="#" class="btn btn-danger btn-circle" data-toggle="modal" data-target="#delRutaModal"><i class="fa fa-automobile"></i></a>
             </h1>     
             <div class="row">
                 <div class="col-md-4">
@@ -67,7 +69,9 @@
                                            data-clinomcom="${cli.cliNomCom}" data-clidomfis="${cli.cliDomFis}" data-clinom="${cli.cliNom}" data-cliapepat="${cli.cliApePat}" 
                                            data-cliapemat="${cli.cliApeMat}" data-clisex="${cli.cliSex}" data-clidir="${cli.cliDir}" 
                                            data-clitelfij="${cli.cliTelFij}" data-clitelcel="${cli.cliTelCel}" data-cliemail="${cli.cliEmail}" 
-                                           data-estcivcod="${cli.taGzzEstadoCivil.estCivCod}" data-estcivdet="${cli.taGzzEstadoCivil.estCivDet}" >
+                                           data-estcivcod="${cli.taGzzEstadoCivil.estCivCod}" data-estcivdet="${cli.taGzzEstadoCivil.estCivDet}" 
+                                           data-enp1mclientesrutases="${cli.enP1mClientesRutases}" 
+                                           data-enp1mdocumentoclientes="${cli.enP1mClientesRutases}" >
                                             <i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i>
                                         </a>
                                         <a href="#" data-toggle="modal" data-target="#disableModal" 
@@ -81,14 +85,6 @@
                                         <a href="#" data-toggle="modal" data-target="#documentoModal" 
                                            data-clicod="${cli.cliCod}" data-clirazsoc="${cli.cliRazSoc}">
                                             <i class="fa fa-file-text fa-2x" style="color: black;"></i>
-                                        </a>
-                                        <a href="#" data-toggle="modal" data-target="#deleteRutaModal" 
-                                           data-clicod="${cli.cliCod}" data-clirazsoc="${cli.cliRazSoc}">
-                                            <i class="fa fa-automobile fa-2x" style="color: red;"></i>
-                                        </a>
-                                        <a href="#" data-toggle="modal" data-target="#DeleteDocumentoModal" 
-                                           data-clicod="${cli.cliCod}" data-clirazsoc="${cli.cliRazSoc}">
-                                            <i class="fa fa-file-text fa-2x" style="color: red;"></i>
                                         </a>
                                     </td>
                                 </tr>
@@ -158,9 +154,9 @@
                                     <div class="col-sm-4">
                                         <label>Sexo:</label>
                                         <select class="form-control" name="cliSex">
-                                            <option value="N">No Espesifica</option>
+                                            <option value="N">No especifica</option>
                                             <option value="M">Masculino</option>
-                                            <option value="F">Feminino</option>
+                                            <option value="F">Femenino</option>
                                         </select>
                                     </div>
                                     <div class="col-sm-8">
@@ -341,12 +337,11 @@
                             <table class="table table-bordered table-striped table-hover">
                                 <thead>
                                     <tr>
-                                        <th>Cod Cliente</th>
+                                        <th>Codigo</th>
                                         <th>Documentos</th>
                                         <th>Razon Social</th>
                                         <th>Nombre Comercial</th>
-                                        <th>Rutas Asociadas</th>
-                                        <th>Tipo de Cliente</th>
+                                        <th>Tipo</th>
                                         <th class="text-right">Acciones</th>
                                     </tr>
                                 </thead>
@@ -361,11 +356,6 @@
                                             </td>
                                             <td>${cli.cliRazSoc}</td>
                                             <td>${cli.cliNomCom}</td>
-                                            <td>
-                                                <c:forEach var="ruts" items="${cli.enP1mClientesRutases}">
-                                                   ${ruts.id.catRutCod} - ${ruts.enP1mCatalogoRuta.catRutDet} <br>
-                                                </c:forEach>
-                                            </td>
                                             <td>${cli.taGzzTipoCliente.tipCliCod} - ${cli.taGzzTipoCliente.tipCliDet}</td>
 
                                             <td class="text-right">
@@ -477,6 +467,7 @@
                 </div>                                        
             </div>
         </div>
+                        
         <div id="documentoModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-md">
                 <div class="modal-content">
@@ -518,7 +509,246 @@
                 </div>                                        
             </div>
         </div>
-
+        
+        <div id="delRutaModal" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Eliminar Ruta</h4>
+                    </div>
+                    <form id="delRutaForm" method="post" action="${pageContext.request.contextPath}/secured/ventas/clientes">
+                        <div class="modal-body">
+                            <input type="hidden" name="accion" value="delRuta">
+                            <div class="form-horizontal">   
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered table-striped table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Cliente</th>
+                                                        <th>Rutas</th>
+                                                        <th>Descripcion de la Ruta</th>
+                                                        <th>Acciones</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <c:forEach var="cliRut" items="${allRutClientes}">
+                                                        <tr>
+                                                            <td>${cliRut.enP1mCliente.cliCod} - ${cliRut.enP1mCliente.cliRazSoc}</td>
+                                                            <td>${cliRut.enP1mCatalogoRuta.catRutCod} - ${cliRut.enP1mCatalogoRuta.catRutDet}</td>
+                                                            <td>${cliRut.cliRutDes}</td>
+                                                            
+                                                            <td>
+                                                                <a href="#" data-toggle="modal" data-target="#modRutClienteModal"
+                                                                   data-clicod="${cliRut.enP1mCliente.cliCod}" data-clirazsoc="${cliRut.enP1mCliente.cliRazSoc}"
+                                                                   data-catrutcod="${cliRut.enP1mCatalogoRuta.catRutCod}" data-catrutdet="${cliRut.enP1mCatalogoRuta.catRutDet}" 
+                                                                   data-clirutdes="${cliRut.cliRutDes}" >
+                                                                    <i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i>
+                                                                </a>
+                                                                <a href="#" data-toggle="modal" data-target="#delRutClienteModal" 
+                                                                   data-clicod="${cliRut.enP1mCliente.cliCod}" data-clirazsoc="${cliRut.enP1mCliente.cliRazSoc}"
+                                                                   data-catrutcod="${cliRut.enP1mCatalogoRuta.catRutCod}" data-catrutdet="${cliRut.enP1mCatalogoRuta.catRutDet}">
+                                                                    <i class="fa fa-trash-o fa-2x" style="color: red;"></i>
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                    </c:forEach>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div> 
+                            </div>
+                        </div>
+                    </form>
+                </div>                                        
+            </div>
+        </div>                
+                        
+        <div id="delDocumentoModal" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Eliminar Documento</h4>
+                    </div>
+                    <form id="delDocumentoForm" method="post" action="${pageContext.request.contextPath}/secured/ventas/clientes">
+                        <div class="modal-body">
+                            <input type="hidden" name="accion" value="delDocumento">
+                            <div class="form-horizontal">   
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered table-striped table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Cliente</th>
+                                                        <th>Tipo de Documento</th>
+                                                        <th>Numero del Documento</th>
+                                                        <th>Acciones</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <c:forEach var="cliDoc" items="${allDocClientes}">
+                                                        <tr>
+                                                            <td>${cliDoc.enP1mCliente.cliCod} - ${cliDoc.enP1mCliente.cliRazSoc}</td>
+                                                            <td>${cliDoc.taGzzTipoDocCliente.tipDocCliCod} - ${cliDoc.taGzzTipoDocCliente.tipDocCliDet}</td>
+                                                            <td>${cliDoc.docCliNum}</td>
+                                                            
+                                                            <td>
+                                                                <a href="#" data-toggle="modal" data-target="#modDocClienteModal" 
+                                                                   data-clicod="${cliDoc.enP1mCliente.cliCod}" data-clirazsoc="${cliDoc.enP1mCliente.cliRazSoc}"
+                                                                   data-tipdocclicod="${cliDoc.taGzzTipoDocCliente.tipDocCliCod}" data-tipdocclidet="${cliDoc.taGzzTipoDocCliente.tipDocCliDet}"
+                                                                   data-docclinum="${cliDoc.docCliNum}">
+                                                                    <i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i>
+                                                                </a>
+                                                                <a href="#" data-toggle="modal" data-target="#delDocClienteModal" 
+                                                                   data-clicod="${cliDoc.enP1mCliente.cliCod}" data-clirazsoc="${cliDoc.enP1mCliente.cliRazSoc}"
+                                                                   data-tipdocclicod="${cliDoc.taGzzTipoDocCliente.tipDocCliCod}" data-tipdocclidet="${cliDoc.taGzzTipoDocCliente.tipDocCliDet}">
+                                                                    <i class="fa fa-trash-o fa-2x" style="color: red;"></i>
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                    </c:forEach>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>                                        
+            </div>
+        </div>
+                        
+        <div id="modRutClienteModal" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-md">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Modificar Ruta</h4>
+                    </div>
+                    <form id="modRutClienteForm" method="post" action="${pageContext.request.contextPath}/secured/ventas/clientes">
+                        <div class="modal-body">
+                            <input type="hidden" name="accion" value="modRuta">
+                            <div class="form-horizontal">   
+                                <div class="form-group">
+                                    <input type="hidden" name="cliCod" id="modRutCliCod">
+                                    <input type="hidden" name="catRutCod" id="modRutCatRutCod">
+                                    <div class="col-sm-6">
+                                        <label>Cliente:</label>
+                                        <input type="text" class="form-control" id="modRutCliAll" readonly>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label>Ruta:</label>
+                                        <input type="text" class="form-control" id="modRutCatRutAll" readonly>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <label>Descripcion:</label>
+                                        <input type="text" class="form-control" id="modRutCliRutDes" name="cliRutDes">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-outline btn-success">Modificar Ruta</button>
+                            <button type="button" class="btn btn-outline btn-danger" data-dismiss="modal">Cancelar</button>
+                        </div>
+                    </form>
+                </div>                                        
+            </div>
+        </div>
+                        
+        <div id="modDocClienteModal" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-md">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Modificar Cliente</h4>
+                    </div>
+                    <form id="modDocClienteForm" method="post" action="${pageContext.request.contextPath}/secured/ventas/clientes">
+                        <div class="modal-body">
+                            <input type="hidden" name="accion" value="modDoc">
+                            <div class="form-horizontal">   
+                                <div class="form-group">
+                                    <input type="hidden" name="cliCod" id="modDocCliCod">
+                                    <input type="hidden" name="tipDocCliCod" id="modDocTipDocCliCod">
+                                    <div class="col-sm-6">
+                                        <label>Cliente:</label>
+                                        <input type="text" class="form-control" id="modDocCliAll" readonly>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label>Documento:</label>
+                                        <input type="text" class="form-control" id="modDocTipDocCliAll" readonly>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <label>Numero del Documento:</label>
+                                        <input type="text" class="form-control" id="modDocDocCliNum" name="docCliNum">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-outline btn-success">Modificar Documento</button>
+                            <button type="button" class="btn btn-outline btn-danger" data-dismiss="modal">Cancelar</button>
+                        </div>
+                    </form>
+                </div>                                        
+            </div>
+        </div>
+                        
+        <div id="delRutClienteModal" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-md">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Eliminar Ruta</h4>
+                    </div>
+                    <form id="delRutClienteForm" method="post" action="${pageContext.request.contextPath}/secured/ventas/clientes">
+                        <div class="modal-body">
+                            <input type="hidden" name="accion" value="delRuta">
+                            <input type="hidden" name="cliCod" id="delRutCliCod">
+                            <input type="hidden" name="catRutCod" id="delRutCatRutCod">
+                            <p> ¿Desea Eliminar la ruta: <span id="delRutCatRutAll"></span>, del Cliente: <span id="delRutCliAll"></span> ?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-outline btn-success">Si</button>
+                            <button type="button" class="btn btn-outline btn-danger" data-dismiss="modal">Cancelar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+                        
+        <div id="delDocClienteModal" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-md">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Eliminar Documento</h4>
+                    </div>
+                    <form id="delDocClienteForm" method="post" action="${pageContext.request.contextPath}/secured/ventas/clientes">
+                        <div class="modal-body">
+                            <input type="hidden" name="accion" value="delDoc">
+                            <input type="hidden" name="cliCod" id="delDocCliCod">
+                            <input type="hidden" name="tipDocCliCod" id="delDocTipDocCliCod">
+                            <p> ¿Desea Eliminar el documento: <span id="delDocTipDocCliAll"></span>, del Cliente: <span id="delDocCliAll"></span> ?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-outline btn-success">Si</button>
+                            <button type="button" class="btn btn-outline btn-danger" data-dismiss="modal">Cancelar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
 
         <script>
             var updateModal = $("#modificarModal");
@@ -527,6 +757,12 @@
             var deleteModal = $("#deleteModal");
             var rutaModal = $("#rutaModal");
             var documentoModal = $("#documentoModal");
+            
+            var modRutClienteModal = $("#modRutClienteModal");
+            var delRutClienteModal = $("#delRutClienteModal");
+            
+            var modDocClienteModal = $("#modDocClienteModal");
+            var delDocClienteModal = $("#delDocClienteModal");
 
             var updateCliCod = $("#updateCliCod");
             var updateTipCliCod = $("#updateTipCliCod");
@@ -558,6 +794,32 @@
             var documentoCliCod = $("#documentoCliCod");
             var documentoCliShow = $("#documentoCliShow");
             
+            var rutas = $("#rutas");
+            var documentos = $("#documentos");
+            
+            var modRutCliCod = $("#modRutCliCod");
+            var modRutCliAll = $("#modRutCliAll");
+            var modRutCatRutCod = $("#modRutCatRutCod");
+            var modRutCatRutAll = $("#modRutCatRutAll");
+            var modRutCliRutDes = $("#modRutCliRutDes");
+            
+            var modDocCliCod = $("#modDocCliCod");
+            var modDocCliAll = $("#modDocCliAll");
+            var modDocTipDocCliCod = $("#modDocTipDocCliCod");
+            var modDocTipDocCliAll = $("#modDocTipDocCliAll");
+            var modDocDocCliNum = $("#modDocDocCliNum");
+            
+            var delRutCliCod = $("#delRutCliCod");
+            var delRutCliAll = $("#delRutCliAll");
+            var delRutCatRutCod = $("#delRutCatRutCod");
+            var delRutCatRutAll = $("#delRutCatRutAll");
+            
+            var delDocCliCod = $("#delDocCliCod");
+            var delDocCliAll = $("#delDocCliAll");
+            var delDocTipDocCliCod = $("#delDocTipDocCliCod");
+            var delDocTipDocCliAll = $("#delDocTipDocCliAll");
+            
+            
             updateModal.on('show.bs.modal', function (e) {
                 updateCliCod.val($(e.relatedTarget).data('clicod'));
                 updateTipCliCod.val($(e.relatedTarget).data('tipclicod'));
@@ -573,6 +835,9 @@
                 updateCliTelCel.val($(e.relatedTarget).data('clitelcel'));
                 updateCliEmail.val($(e.relatedTarget).data('cliemail'));
                 updateEstCivCod.val($(e.relatedTarget).data('estcivcod'));
+                
+                rutas.val($(e.relatedTarget).data('enp1mclientesrutases'));
+                documentos.val($(e.relatedTarget).data('enp1mdocumentoclientes'));
             });
 
             disableModal.on('show.bs.modal', function (e) {
@@ -598,6 +863,36 @@
             documentoModal.on('show.bs.modal', function (e) {
                 documentoCliCod.val($(e.relatedTarget).data('clicod'));
                 documentoCliShow.val($(e.relatedTarget).data('clicod') +" - " + $(e.relatedTarget).data('clirazsoc'));
+            });
+            
+            modRutClienteModal.on('show.bs.modal', function (e) {
+                modRutCliCod.val($(e.relatedTarget).data('clicod'));
+                modRutCliAll.val($(e.relatedTarget).data('clicod') + " - " + $(e.relatedTarget).data('clirazsoc'));
+                modRutCatRutCod.val($(e.relatedTarget).data('catrutcod'));
+                modRutCatRutAll.val($(e.relatedTarget).data('catrutcod') + " - " + $(e.relatedTarget).data('catrutdet'));
+                modRutCliRutDes.val($(e.relatedTarget).data('clirutdes'));
+            });
+            
+            delRutClienteModal.on('show.bs.modal', function (e) {
+                delRutCliCod.val($(e.relatedTarget).data('clicod'));
+                delRutCliAll.text($(e.relatedTarget).data('clicod') + " - " + $(e.relatedTarget).data('clirazsoc'));
+                delRutCatRutCod.val($(e.relatedTarget).data('catrutcod'));
+                delRutCatRutAll.text($(e.relatedTarget).data('catrutcod') + " - " + $(e.relatedTarget).data('catrutdet'));
+            });
+            
+            modDocClienteModal.on('show.bs.modal', function (e) {
+                modDocCliCod.val($(e.relatedTarget).data('clicod'));
+                modDocCliAll.val($(e.relatedTarget).data('clicod') + " - " + $(e.relatedTarget).data('clirazsoc'));
+                modDocTipDocCliCod.val($(e.relatedTarget).data('tipdocclicod'));
+                modDocTipDocCliAll.val($(e.relatedTarget).data('tipdocclicod') + " - " + $(e.relatedTarget).data('tipdocclidet'));
+                modDocDocCliNum.val($(e.relatedTarget).data('docclinum'));
+            });
+            
+            delDocClienteModal.on('show.bs.modal', function (e) {
+                delDocCliCod.val($(e.relatedTarget).data('clicod'));
+                delDocCliAll.text($(e.relatedTarget).data('clicod') + " - " + $(e.relatedTarget).data('clirazsoc'));
+                delDocTipDocCliCod.val($(e.relatedTarget).data('tipdocclicod'));
+                delDocTipDocCliAll.text($(e.relatedTarget).data('tipdocclicod') + " - " + $(e.relatedTarget).data('tipdocclidet'));
             });
 
             $("#createForm").validate({
