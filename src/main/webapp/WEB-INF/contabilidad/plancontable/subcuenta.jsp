@@ -28,7 +28,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <c:forEach var="child" items="${cuenta.enP3mCuentas}">
+                                        <c:forEach var="child" items="${cuenta.enP3mCuentasForCuePad}">
                                             <minierptemplate:nodeTree node="${child}"/>
                                         </c:forEach>
                                     </tbody>

@@ -82,7 +82,7 @@ public class AddPreVentaController extends HttpServlet{
             cabecera.setPreVenCabFec(fecha);
             cabecera.setPreVenCabPla(Integer.parseInt(request.getParameter("plazo")));
             cabecera.setPreVenCabTot(Double.parseDouble(request.getParameter("totCabPre")));
-            cabecera.setPreVenCabDes(Double.parseDouble(request.getParameter("desCabPre")));
+            //cabecera.setPreVenCabDes(Double.parseDouble(request.getParameter("desCabPre")));
             cabecera.setPreVenCabSubTot(Double.parseDouble(request.getParameter("subTotCabPre")));
             cabecera.setPreVenCabSubTot(Integer.parseInt(request.getParameter("igvCabPre")));
             cabecera.setPreVenCabObs(request.getParameter("obsCabPre"));

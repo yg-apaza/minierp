@@ -1,9 +1,3 @@
-<%-- 
-    Document   : libroDiario_Principal.jsp
-    Created on : 09-oct-2016, 19:41:16
-    Author     : Roycer
---%>
-
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix='cc' uri='http://java.sun.com/jsp/jstl/core' %>

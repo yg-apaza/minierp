@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 30/10/2016 12:40:42 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 31/10/2016 01:37:17 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="org.epis.minierp.model.TaGzzTipoDescuento" table="ta_gzz_tipo_descuento" catalog="episerp" optimistic-lock="version">
         <id name="tipDesCod" type="java.lang.Integer">
@@ -10,6 +10,9 @@
         </id>
         <property name="tipDesDet" type="string">
             <column name="TipDesDet" length="90" not-null="true" />
+        </property>
+        <property name="tipDesPor" type="java.lang.Double">
+            <column name="TipDesPor" precision="5" />
         </property>
         <property name="estRegCod" type="java.lang.Character">
             <column name="EstRegCod" length="1" />

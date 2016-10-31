@@ -40,7 +40,7 @@ public class SubcuentaController extends HttpServlet
                 String cueDes = request.getParameter("cueDes");
                 String cueNum = request.getParameter("cueNum1") + request.getParameter("cueNum2");
                 EnP3mCuenta c = new EnP3mCuenta();
-                c.setEnP3mCuenta(dao.getByIdActive(cuePad));
+                c.setEnP3mCuentaByCuePad(dao.getByIdActive(cuePad));
                 c.setCueNiv(cueNiv);
                 c.setCueDes(cueDes);
                 c.setCueNum(cueNum);
