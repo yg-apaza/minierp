@@ -5,6 +5,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.epis.minierp.dao.contabilidad.CuentaDao;
+import org.epis.minierp.dao.contabilidad.PlantillaCabDao;
+import org.epis.minierp.dao.contabilidad.PlantillaDetDao;
+import org.epis.minierp.model.EnP3mCuenta;
+import org.epis.minierp.model.EnP3mPlantillaCab;
+import org.epis.minierp.model.EnP3tPlantillaDet;
+import org.epis.minierp.model.EnP3tPlantillaDetId;
 
 public class PlantillaController extends HttpServlet
 {
@@ -13,6 +20,8 @@ public class PlantillaController extends HttpServlet
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
+        PlantillaCabDao dao = new PlantillaCabDao();
+        request.setAttribute("plantillas", dao.getAllActive());
         request.getRequestDispatcher("/WEB-INF/contabilidad/plantilla.jsp").forward(request, response);
     }
     
@@ -20,6 +29,7 @@ public class PlantillaController extends HttpServlet
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         String action = request.getParameter("accion");
+        PlantillaCabDao dao = new PlantillaCabDao();
         switch(action) {
             case "create":
                 String plaDet = request.getParameter("plaDet");
@@ -28,27 +38,27 @@ public class PlantillaController extends HttpServlet
                 String[] plaDetDebHab = request.getParameterValues("plaDetDebHab");
                 String[] plaDetPor = request.getParameterValues("plaDetPor");
                 
-                /*
-                System.out.println("-------------------------------------------------");
-                System.out.println("CABECERA DE PLANTILLA");
-                System.out.println("-------------------------------------------------");
-                System.out.println("plaDet: " + plaDet);
-                System.out.println("plaGlo: " + plaGlo);
-                
-                System.out.println("-------------------------------------------------");
-                System.out.println("DETALLE DE PLANTILLA");
-                
+                EnP3mPlantillaCab nuevo = new EnP3mPlantillaCab();
+                nuevo.setPlaDet(plaDet);
+                nuevo.setPlaGlo(plaGlo);
+                nuevo.setPlaHab(true);
+                nuevo.setEstRegCod('A');
+                dao.save(nuevo);
+                PlantillaDetDao detalleDao = new PlantillaDetDao();
                 for(int i = 0; i < cueNum.length; i++)
                 {
-                    System.out.println("-------------------------------------------------");
-                    System.out.println("cueNum: " + cueNum[i] + "\t");
-                    System.out.println("plaDetDebHab: " + plaDetDebHab[i] + "\t");
-                    System.out.println("plaDetPor: " + plaDetPor[i] + "\t");
+                    EnP3tPlantillaDet det = new EnP3tPlantillaDet();
+                    det.setId(new EnP3tPlantillaDetId(i + 1, nuevo.getPlaCod()));
+                    EnP3mCuenta cuenta = new CuentaDao().getByNumActive(cueNum[i]);
+                    det.setEnP3mCuenta(cuenta);
+                    det.setPlaDetDebHab(plaDetDebHab[i].equals("DEBE"));
+                    det.setPlaDetPor(Double.parseDouble(plaDetPor[i]));
+                    detalleDao.save(det);
                 }
-                System.out.println("-------------------------------------------------");
-                */
                 break;
             case "delete":
+                int deletePlaCod = Integer.parseInt(request.getParameter("plaCod"));
+                dao.delete(deletePlaCod);
                 break;
         }
         response.sendRedirect(request.getContextPath() + "/secured/contabilidad/plantilla");

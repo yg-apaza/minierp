@@ -20,9 +20,9 @@
         </td>
     </tr>
 </c:if>
-<c:if test="${fn:length(node.enP3mCuentas) > 0}">
+<c:if test="${fn:length(node.enP3mCuentasForCuePad) > 0}">
     <c:if test="${node.estRegCod eq 'A'.charAt(0)}">
-        <c:forEach var="child" items="${node.enP3mCuentas}">
+        <c:forEach var="child" items="${node.enP3mCuentasForCuePad}">
             <minierptemplate:nodeTree node="${child}"/>
         </c:forEach>
     </c:if>

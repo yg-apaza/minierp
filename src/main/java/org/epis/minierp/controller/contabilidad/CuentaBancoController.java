@@ -48,7 +48,7 @@ public class CuentaBancoController extends HttpServlet
                 cuenta.setCueDes(banco.getBanDet());
                 cuenta.setCueNiv(5);
                 cuenta.setCueNum("1041" + createCueNum);
-                cuenta.setEnP3mCuenta(cuentaDao.getByIdActive(434));
+                cuenta.setEnP3mCuentaByCuePad(cuentaDao.getByIdActive(434));
                 cuenta.setEstRegCod('A');
                 cuentaDao.save(cuenta);
                 cb.setEnP3mCuenta(cuenta);

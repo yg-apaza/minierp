@@ -1,5 +1,5 @@
 package org.epis.minierp.model;
-// Generated 30/10/2016 12:40:40 AM by Hibernate Tools 4.3.1
+// Generated 31/10/2016 01:37:15 AM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -13,6 +13,7 @@ public class TaGzzTipoDescuento  implements java.io.Serializable {
 
      private Integer tipDesCod;
      private String tipDesDet;
+     private Double tipDesPor;
      private Character estRegCod;
      private Set enP1mPreventaCabs = new HashSet(0);
      private Set enP1mFacturaVentaCabs = new HashSet(0);
@@ -25,8 +26,9 @@ public class TaGzzTipoDescuento  implements java.io.Serializable {
     public TaGzzTipoDescuento(String tipDesDet) {
         this.tipDesDet = tipDesDet;
     }
-    public TaGzzTipoDescuento(String tipDesDet, Character estRegCod, Set enP1mPreventaCabs, Set enP1mFacturaVentaCabs, Set enP4mFacturaCompraCabs) {
+    public TaGzzTipoDescuento(String tipDesDet, Double tipDesPor, Character estRegCod, Set enP1mPreventaCabs, Set enP1mFacturaVentaCabs, Set enP4mFacturaCompraCabs) {
        this.tipDesDet = tipDesDet;
+       this.tipDesPor = tipDesPor;
        this.estRegCod = estRegCod;
        this.enP1mPreventaCabs = enP1mPreventaCabs;
        this.enP1mFacturaVentaCabs = enP1mFacturaVentaCabs;
@@ -46,6 +48,13 @@ public class TaGzzTipoDescuento  implements java.io.Serializable {
     
     public void setTipDesDet(String tipDesDet) {
         this.tipDesDet = tipDesDet;
+    }
+    public Double getTipDesPor() {
+        return this.tipDesPor;
+    }
+    
+    public void setTipDesPor(Double tipDesPor) {
+        this.tipDesPor = tipDesPor;
     }
     public Character getEstRegCod() {
         return this.estRegCod;

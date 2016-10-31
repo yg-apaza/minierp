@@ -1,5 +1,5 @@
 package org.epis.minierp.model;
-// Generated 30/10/2016 12:40:40 AM by Hibernate Tools 4.3.1
+// Generated 31/10/2016 01:37:15 AM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -13,6 +13,7 @@ public class EnP1mPreventaCab  implements java.io.Serializable {
 
 
      private String preVenCabCod;
+     private EnP1mCatalogoRuta enP1mCatalogoRuta;
      private EnP1mCliente enP1mCliente;
      private EnP1mUsuario enP1mUsuario;
      private TaGzzMoneda taGzzMoneda;
@@ -20,7 +21,6 @@ public class EnP1mPreventaCab  implements java.io.Serializable {
      private Date preVenCabFec;
      private int preVenCabPla;
      private double preVenCabTot;
-     private double preVenCabDes;
      private double preVenCabSubTot;
      private int preVenCabIgv;
      private String preVenCabObs;
@@ -32,7 +32,7 @@ public class EnP1mPreventaCab  implements java.io.Serializable {
     }
 
 	
-    public EnP1mPreventaCab(String preVenCabCod, EnP1mCliente enP1mCliente, EnP1mUsuario enP1mUsuario, TaGzzMoneda taGzzMoneda, Date preVenCabFec, int preVenCabPla, double preVenCabTot, double preVenCabDes, double preVenCabSubTot, int preVenCabIgv, String preVenCabObs, char estRegCod) {
+    public EnP1mPreventaCab(String preVenCabCod, EnP1mCliente enP1mCliente, EnP1mUsuario enP1mUsuario, TaGzzMoneda taGzzMoneda, Date preVenCabFec, int preVenCabPla, double preVenCabTot, double preVenCabSubTot, int preVenCabIgv, String preVenCabObs, char estRegCod) {
         this.preVenCabCod = preVenCabCod;
         this.enP1mCliente = enP1mCliente;
         this.enP1mUsuario = enP1mUsuario;
@@ -40,14 +40,14 @@ public class EnP1mPreventaCab  implements java.io.Serializable {
         this.preVenCabFec = preVenCabFec;
         this.preVenCabPla = preVenCabPla;
         this.preVenCabTot = preVenCabTot;
-        this.preVenCabDes = preVenCabDes;
         this.preVenCabSubTot = preVenCabSubTot;
         this.preVenCabIgv = preVenCabIgv;
         this.preVenCabObs = preVenCabObs;
         this.estRegCod = estRegCod;
     }
-    public EnP1mPreventaCab(String preVenCabCod, EnP1mCliente enP1mCliente, EnP1mUsuario enP1mUsuario, TaGzzMoneda taGzzMoneda, TaGzzTipoDescuento taGzzTipoDescuento, Date preVenCabFec, int preVenCabPla, double preVenCabTot, double preVenCabDes, double preVenCabSubTot, int preVenCabIgv, String preVenCabObs, char estRegCod, Set enP1cPreventaRealizadases, Set enP1tPreventaDets) {
+    public EnP1mPreventaCab(String preVenCabCod, EnP1mCatalogoRuta enP1mCatalogoRuta, EnP1mCliente enP1mCliente, EnP1mUsuario enP1mUsuario, TaGzzMoneda taGzzMoneda, TaGzzTipoDescuento taGzzTipoDescuento, Date preVenCabFec, int preVenCabPla, double preVenCabTot, double preVenCabSubTot, int preVenCabIgv, String preVenCabObs, char estRegCod, Set enP1cPreventaRealizadases, Set enP1tPreventaDets) {
        this.preVenCabCod = preVenCabCod;
+       this.enP1mCatalogoRuta = enP1mCatalogoRuta;
        this.enP1mCliente = enP1mCliente;
        this.enP1mUsuario = enP1mUsuario;
        this.taGzzMoneda = taGzzMoneda;
@@ -55,7 +55,6 @@ public class EnP1mPreventaCab  implements java.io.Serializable {
        this.preVenCabFec = preVenCabFec;
        this.preVenCabPla = preVenCabPla;
        this.preVenCabTot = preVenCabTot;
-       this.preVenCabDes = preVenCabDes;
        this.preVenCabSubTot = preVenCabSubTot;
        this.preVenCabIgv = preVenCabIgv;
        this.preVenCabObs = preVenCabObs;
@@ -70,6 +69,13 @@ public class EnP1mPreventaCab  implements java.io.Serializable {
     
     public void setPreVenCabCod(String preVenCabCod) {
         this.preVenCabCod = preVenCabCod;
+    }
+    public EnP1mCatalogoRuta getEnP1mCatalogoRuta() {
+        return this.enP1mCatalogoRuta;
+    }
+    
+    public void setEnP1mCatalogoRuta(EnP1mCatalogoRuta enP1mCatalogoRuta) {
+        this.enP1mCatalogoRuta = enP1mCatalogoRuta;
     }
     public EnP1mCliente getEnP1mCliente() {
         return this.enP1mCliente;
@@ -119,13 +125,6 @@ public class EnP1mPreventaCab  implements java.io.Serializable {
     
     public void setPreVenCabTot(double preVenCabTot) {
         this.preVenCabTot = preVenCabTot;
-    }
-    public double getPreVenCabDes() {
-        return this.preVenCabDes;
-    }
-    
-    public void setPreVenCabDes(double preVenCabDes) {
-        this.preVenCabDes = preVenCabDes;
     }
     public double getPreVenCabSubTot() {
         return this.preVenCabSubTot;

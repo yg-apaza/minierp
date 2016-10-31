@@ -79,7 +79,7 @@ public class CuentaDao
         EnP3mCuenta cuenta = (EnP3mCuenta)session.get(EnP3mCuenta.class, cueCod); 
         cuenta.setEstRegCod('*');
 	session.update(cuenta);
-        Iterator<EnP3mCuenta> iterator = cuenta.getEnP3mCuentas().iterator();
+        Iterator<EnP3mCuenta> iterator = cuenta.getEnP3mCuentasForCuePad().iterator();
         while(iterator.hasNext()) {
             EnP3mCuenta c = iterator.next();
             delete(c.getCueCod());
