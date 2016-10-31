@@ -54,7 +54,7 @@ public class LibroDiarioController extends HttpServlet {
             temp+="<td>"+operaciones.get(i).getAsiCabGlo()+"</td>";
             temp+="<td>"+operaciones.get(i).getAsiCabTip()+"</td>";
             temp+="<td>"+operaciones.get(i).getAsiCabNumCom()+"</td>";
-            temp+="<td>"+operaciones.get(i).getCueCod()+"</td>";
+            temp+="<td>"+operaciones.get(i).getCueNum()+"</td>";
             temp+="<td>"+operaciones.get(i).getCueDes()+"</td>";
             if(operaciones.get(i).isAsiDetDebHab()){
                 temp+="<td>"+operaciones.get(i).getAsiDetMon()+"</td>";

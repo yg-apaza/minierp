@@ -1,6 +1,5 @@
 package org.epis.minierp.controller.general;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,10 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import org.epis.minierp.dao.general.EnP1mEmpresaDao;
 import org.epis.minierp.dao.ventas.IngresosDao;
 import org.epis.minierp.dao.ventas.PreventasDao;
-import org.epis.minierp.model.EnP1mEmpresa;
 import org.epis.minierp.model.EnP1mUsuario;
 import org.epis.minierp.model.EnP2mAlmacen;
 import org.epis.minierp.model.ventas.Ingresos;
@@ -23,6 +20,7 @@ public class PanelController extends HttpServlet
 {	
     private static final long serialVersionUID = 1L;
 
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
         HttpSession session = request.getSession(false);
@@ -37,6 +35,8 @@ public class PanelController extends HttpServlet
         
         switch(type){
             case 1:
+                break;
+            case 2:
                 if(ingresos.size()>0){       
                     Ingresos i = ingresos.get(0);
                     request.setAttribute("iHOY", i.getHOY());
@@ -61,8 +61,6 @@ public class PanelController extends HttpServlet
                     request.setAttribute("pANTEAYER", 0);
                 }
                 break;
-            case 2:
-                break;
             case 3:
                 List <EnP2mAlmacen> almacenes = new ArrayList<>(u.getEnP1mSucursal().getEnP2mAlmacens());
                 request.setAttribute("almacenes", almacenes);
@@ -70,25 +68,6 @@ public class PanelController extends HttpServlet
             case 4:
                 break;
         }
-        
-        EnP1mEmpresaDao empDAO = new EnP1mEmpresaDao();
-        EnP1mEmpresa emp = empDAO.getById(01);
-        File af;
-        if(emp.getEmpImgUrl()!=null ){
-            String empImg = emp.getEmpImgUrl();//new String(valueDecoded);
-            af = new File(request.getSession().getServletContext().getRealPath("/")+"/img/"+empImg);
-            
-            if(af.exists()){
-                request.setAttribute("empImg", empImg);
-                System.out.println("si existe la imagen: "+af.getPath());
-            }
-            else request.setAttribute("empImg", "nada");
-        }
-        else{
-            request.setAttribute("empImg", "nada");
-        }
-        
         request.getRequestDispatcher("/WEB-INF/general/panel.jsp").forward(request, response);
     }
-    
 }

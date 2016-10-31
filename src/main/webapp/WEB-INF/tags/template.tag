@@ -148,19 +148,33 @@
                                         <a href="${pageContext.request.contextPath}/secured/contabilidad/cuentabancaria">Cuentas bancarias</a>
                                     </li>
                                     <li>
-                                        <a href="${pageContext.request.contextPath}/secured/contabilidad/librodiario">Libro Diario</a>
+                                        <a href="${pageContext.request.contextPath}/secured/contabilidad/plantilla">Plantilla de Asientos</a>
                                     </li>
                                     <li>
-                                        <a href="${pageContext.request.contextPath}/secured/contabilidad/libroMayor">Libro Mayor</a>
+                                        <a href="#">Libros Contables<span class="fa arrow"></span></a>
+                                        <ul class="nav nav-third-level">
+                                            
+                                            <li>
+                                                <a href="${pageContext.request.contextPath}/secured/contabilidad/librodiario">Libro Diario</a>
+                                            </li>
+                                            <li>
+                                                <a href="${pageContext.request.contextPath}/secured/contabilidad/libroMayor">Libro Mayor</a>
+                                            </li>
+                                            <li>
+                                                <a href="${pageContext.request.contextPath}/secured/contabilidad/caja">Libro de Caja</a>
+                                            </li>
+                                            <li>
+                                                <a href="${pageContext.request.contextPath}/secured/contabilidad/bancos">Libro de Bancos</a>
+                                            </li>
+                                        </ul>
                                     </li>
                                     <li>
-                                        <a href="${pageContext.request.contextPath}/secured/contabilidad/caja">Caja</a>
-                                    </li>
-                                    <li>
-                                        <a href="${pageContext.request.contextPath}/secured/contabilidad/bancos">Bancos</a>
-                                    </li>
-                                    <li>
-                                        <a href="${pageContext.request.contextPath}/secured/contabilidad/balance">Balance General</a>
+                                        <a href="#">Estados Financieros<span class="fa arrow"></span></a>
+                                        <ul class="nav nav-third-level">
+                                            <li>
+                                                <a href="${pageContext.request.contextPath}/secured/contabilidad/balance">Balance General</a>
+                                            </li>
+                                        </ul>
                                     </li>
                                 </ul>
                             </li>
