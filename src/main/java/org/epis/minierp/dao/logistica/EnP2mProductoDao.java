@@ -28,20 +28,20 @@ public class EnP2mProductoDao {
     }
     
     public List <EnP2mProducto> getA() {
-        Query query = session.createQuery("FROM EnP2mProducto WHERE proPreUni > (SELECT Avg(proPreUni) FROM EnP2mProducto WHERE estRegCod = 'A') and proStk < (SELECT Avg(proStk) FROM EnP2mProducto WHERE estRegCod = 'A') and estRegCod = 'A'");
+        Query query = session.createQuery("FROM EnP2mProducto WHERE proPreUniVen > (SELECT Avg(proPreUniVen) FROM EnP2mProducto WHERE estRegCod = 'A') and proStk < (SELECT Avg(proStk) FROM EnP2mProducto WHERE estRegCod = 'A') and estRegCod = 'A'");
         List <EnP2mProducto> productos =  query.list();
         return productos;
     }
     
     public List <EnP2mProducto> getB() {
-        Query query = session.createQuery("FROM EnP2mProducto WHERE proPreUni <= (SELECT Avg(proPreUni) FROM EnP2mProducto WHERE estRegCod = 'A') and proStk <= (SELECT Avg(proStk) FROM EnP2mProducto WHERE estRegCod = 'A') and estRegCod = 'A' or "
-                                            + "proPreUni >= (SELECT Avg(proPreUni) FROM EnP2mProducto WHERE estRegCod = 'A') and proStk >= (SELECT Avg(proStk) FROM EnP2mProducto WHERE estRegCod = 'A') and estRegCod = 'A'");
+        Query query = session.createQuery("FROM EnP2mProducto WHERE proPreUniVen <= (SELECT Avg(proPreUniVen) FROM EnP2mProducto WHERE estRegCod = 'A') and proStk <= (SELECT Avg(proStk) FROM EnP2mProducto WHERE estRegCod = 'A') and estRegCod = 'A' or "
+                                            + "proPreUniVen >= (SELECT Avg(proPreUniVen) FROM EnP2mProducto WHERE estRegCod = 'A') and proStk >= (SELECT Avg(proStk) FROM EnP2mProducto WHERE estRegCod = 'A') and estRegCod = 'A'");
         List <EnP2mProducto> productos =  query.list();
         return productos;
     }
     
     public List <EnP2mProducto> getC() {
-        Query query = session.createQuery("FROM EnP2mProducto WHERE proPreUni < (SELECT Avg(proPreUni) FROM EnP2mProducto WHERE estRegCod = 'A') and proStk > (SELECT Avg(proStk) FROM EnP2mProducto WHERE estRegCod = 'A') and estRegCod = 'A'");
+        Query query = session.createQuery("FROM EnP2mProducto WHERE proPreUniVen < (SELECT Avg(proPreUniVen) FROM EnP2mProducto WHERE estRegCod = 'A') and proStk > (SELECT Avg(proStk) FROM EnP2mProducto WHERE estRegCod = 'A') and estRegCod = 'A'");
         List <EnP2mProducto> productos =  query.list();
         return productos;
     }

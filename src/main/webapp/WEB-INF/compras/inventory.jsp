@@ -54,7 +54,7 @@
                                 <tr id="${producto.id.proCod}">
                                     <td><c:out value="${producto.id.proCod}"/> </td>
                                     <td><c:out value="${producto.proDet}"/></td>
-                                    <td><c:out value="${producto.proPreUni}"/></td>
+                                    <td><c:out value="${producto.proPreUniVen}"/></td>
                                     <td><c:out value="${producto.proStk}"/></td>
                                     <td>0</td>
                                     <td style="display:none;"><input type="checkbox" name="proCodigos" value="${producto.id.proCod}" checked></td>

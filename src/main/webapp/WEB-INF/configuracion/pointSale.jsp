@@ -302,10 +302,19 @@
                     sucCod: {
                         required: true
                     }
+                    ,
+                    punVenDes:
+                    {
+                        required: true
+                    }
                 },
                 messages: {
                     sucCod: {
                         required: "Seleccione una Sucursal"
+                    },
+                    punVenDes:
+                    {
+                        required: "Ingrese una descripcion"
                     }
                 },
                 submitHandler: function (form) {
@@ -313,15 +322,23 @@
                 }
             });
 
-            $("#updateForm").validate({
+            $("#udpdateForm").validate({
                 rules: {
                     sucCod: {
+                        required: true
+                    },
+                    punVenDes:
+                    {
                         required: true
                     }
                 },
                 messages: {
                     sucCod: {
                         required: "Seleccione una Sucursal"
+                    },
+                punVenDes:
+                    {
+                        required: "Ingrese una descripcion"
                     }
                 },
                 submitHandler: function (form) {

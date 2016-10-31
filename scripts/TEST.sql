@@ -1562,20 +1562,108 @@ INSERT INTO `episerp`.`en_p4m_factura_compra_cab` (`FacComCabCod`, `GuiRemRemNum
 INSERT INTO `episerp`.`en_p4m_factura_compra_cab` (`FacComCabCod`, `GuiRemRemNum`, `GuiRemTraNum`, `PrvCod`, `UsuCod`, `FacComCabFec`, `FacComCabTot`, `TipDesCod`, `FacComCabSubTot`, `FacComCabIGV`, `FacComCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000010', '001-000004', '111', '321654987121', '1', '2016-10-25', '2000.00', '7', '2000.00', '0.18', 'N', '1', '1', '1', '1', 'A');
 COMMIT;
 
+-- -----------------------------------------------------
+-- Data for table `episerp`.`en_p1m_catalogo_ruta`
+-- -----------------------------------------------------
 START TRANSACTION;
 USE `episerp`;
-INSERT INTO `episerp`.`en_p1m_catalogo_ruta` (`CatRutCod`, `CatRutDet`, `EstRegCod`) VALUES ('1', 'Ruta Hunter - Cercado', 'A');
-INSERT INTO `episerp`.`en_p1m_catalogo_ruta` (`CatRutCod`, `CatRutDet`, `EstRegCod`) VALUES ('2', 'Ruta Cercado - Socabaya', 'A');
-INSERT INTO `episerp`.`en_p1m_catalogo_ruta` (`CatRutCod`, `CatRutDet`, `EstRegCod`) VALUES ('3', 'Ruta Socabaya - Hunter', 'A');
-INSERT INTO `episerp`.`en_p1m_catalogo_ruta` (`CatRutCod`, `CatRutDet`, `EstRegCod`) VALUES ('4', 'Ruta Zamácola - Cercado', 'A');
-INSERT INTO `episerp`.`en_p1m_catalogo_ruta` (`CatRutCod`, `CatRutDet`, `EstRegCod`) VALUES ('5', 'Ruta Cercado - Zamácola', 'A');
+INSERT INTO `episerp`.`en_p1m_catalogo_ruta` (`CatRutCod`, `CatRutDet`, `EstRegCod`) VALUES ('1', 'Corredor Panamericanas: Panamericana Sur, Vía de Evitamiento y Panamericana Norte', 'A');
+INSERT INTO `episerp`.`en_p1m_catalogo_ruta` (`CatRutCod`, `CatRutDet`, `EstRegCod`) VALUES ('2', 'Corredor Javier Prado - La Marina: Javier Prado, Sánchez Carrión, La Marina', 'A');
+INSERT INTO `episerp`.`en_p1m_catalogo_ruta` (`CatRutCod`, `CatRutDet`, `EstRegCod`) VALUES ('3', 'Corredor La Marina - Universitaria: La Marina, Elmer Faucett y Universitaria', 'A');
+INSERT INTO `episerp`.`en_p1m_catalogo_ruta` (`CatRutCod`, `CatRutDet`, `EstRegCod`) VALUES ('4', 'Corredor Tacna - Alcázar: Flor de Amancaes, Prol. Amancaes, Suárez, Amancaes, Alcázar', 'A');
+INSERT INTO `episerp`.`en_p1m_catalogo_ruta` (`CatRutCod`, `CatRutDet`, `EstRegCod`) VALUES ('5', 'Corredor Alcázar - Garcilazo: Alcázar, Prolongación Tacna, Tacna, Garcilazo de la Vega', 'A');
+INSERT INTO `episerp`.`en_p1m_catalogo_ruta` (`CatRutCod`, `CatRutDet`, `EstRegCod`) VALUES ('6', 'Corredor Garcilazo - Julio: Garcilazo, Arequipa, Óv. Miraflores, Diagonal, 28 de julio', 'A');
+INSERT INTO `episerp`.`en_p1m_catalogo_ruta` (`CatRutCod`, `CatRutDet`, `EstRegCod`) VALUES ('7', 'Corredor Julio - Reducto: 28 de julio, José Larco, Armendáriz, Reducto', 'A');
+INSERT INTO `episerp`.`en_p1m_catalogo_ruta` (`CatRutCod`, `CatRutDet`, `EstRegCod`) VALUES ('8', 'Corredor Reducto - Piérola: Reducto, Miguel Grau, Nicolás de Piérola', 'A');
+INSERT INTO `episerp`.`en_p1m_catalogo_ruta` (`CatRutCod`, `CatRutDet`, `EstRegCod`) VALUES ('9', 'Corredor Piérola - Arequipa: Nicolás Piérola, Balta, Lima, J.Catalino Miranda, El Sol', 'A');
+INSERT INTO `episerp`.`en_p1m_catalogo_ruta` (`CatRutCod`, `CatRutDet`, `EstRegCod`) VALUES ('10', 'Corredor S.J. Lurigancho - Canto Grande: Fernando Wiese, J.Carlos Mariátegui, Canto Grande', 'A');
+INSERT INTO `episerp`.`en_p1m_catalogo_ruta` (`CatRutCod`, `CatRutDet`, `EstRegCod`) VALUES ('11', 'Corredor Canto Grande - Primavera: Canto Grande, Las Flores de Primavera, Prol. Lima', 'A');
+INSERT INTO `episerp`.`en_p1m_catalogo_ruta` (`CatRutCod`, `CatRutDet`, `EstRegCod`) VALUES ('12', 'Corredor Primavera - Abancay: F.Primavera, Lima, P. Independencia, 9octubre, Acho, Abancay', 'A');
+INSERT INTO `episerp`.`en_p1m_catalogo_ruta` (`CatRutCod`, `CatRutDet`, `EstRegCod`) VALUES ('13', 'Corredor Abancay - Brasil: Abancay, Miguel Grau, 9 de diciembre, Brasil', 'A');
+INSERT INTO `episerp`.`en_p1m_catalogo_ruta` (`CatRutCod`, `CatRutDet`, `EstRegCod`) VALUES ('14', 'Corredor Carretera Central - Grau: Carretera Central, N. Ayllón, A. Alianza, Miguel Grau', 'A');
+INSERT INTO `episerp`.`en_p1m_catalogo_ruta` (`CatRutCod`, `CatRutDet`, `EstRegCod`) VALUES ('15', 'Corredor Grau - Venezuela: Miguel Grau, 9 de diciembre, Arica, Aguarico, Venezuela', 'A');
+INSERT INTO `episerp`.`en_p1m_catalogo_ruta` (`CatRutCod`, `CatRutDet`, `EstRegCod`) VALUES ('16', 'V. El Salvador, V. María del Triunfo, S.J. Miraflores y S.J. Lurigancho', 'A');
+INSERT INTO `episerp`.`en_p1m_catalogo_ruta` (`CatRutCod`, `CatRutDet`, `EstRegCod`) VALUES ('17', 'Carabayllo y Magdalena del Mar', 'A');
+INSERT INTO `episerp`.`en_p1m_catalogo_ruta` (`CatRutCod`, `CatRutDet`, `EstRegCod`) VALUES ('18', 'Santa Anita y Carabayllo', 'A');
+INSERT INTO `episerp`.`en_p1m_catalogo_ruta` (`CatRutCod`, `CatRutDet`, `EstRegCod`) VALUES ('19', 'San Juan de Lurigancho y Villa El Salvador', 'A');
+INSERT INTO `episerp`.`en_p1m_catalogo_ruta` (`CatRutCod`, `CatRutDet`, `EstRegCod`) VALUES ('20', 'Ate-Vitarte y Cercado de Lima', 'A');
+
 COMMIT;
 
+-- -----------------------------------------------------
+-- Data for table `episerp`.`en_p1m_clientes_rutas`
+-- -----------------------------------------------------
 START TRANSACTION;
 USE `episerp`;
-INSERT INTO `episerp`.`en_p1m_clientes_rutas` (`CatRutCod`, `CliCod`, `CliRutDes`, `EstRegCod`) VALUES ('1', '1', 'Ruta Principal', 'A');
-INSERT INTO `episerp`.`en_p1m_clientes_rutas` (`CatRutCod`, `CliCod`, `CliRutDes`, `EstRegCod`) VALUES ('2', '1', 'Ruta Secundaria', 'A');
-INSERT INTO `episerp`.`en_p1m_clientes_rutas` (`CatRutCod`, `CliCod`, `CliRutDes`, `EstRegCod`) VALUES ('2', '2', 'Ruta Principal', 'A');
-INSERT INTO `episerp`.`en_p1m_clientes_rutas` (`CatRutCod`, `CliCod`, `CliRutDes`, `EstRegCod`) VALUES ('3', '3', 'Ruta Principal', 'A');
-INSERT INTO `episerp`.`en_p1m_clientes_rutas` (`CatRutCod`, `CliCod`, `CliRutDes`, `EstRegCod`) VALUES ('2', '3', 'Ruta Secundaria', 'A');
+INSERT INTO `episerp`.`en_p1m_clientes_rutas` (`CatRutCod`, `CliCod`, `CliRutDes`, `EstRegCod`) VALUES ('1', '17', 'Vía de Evitamiento', 'A');
+INSERT INTO `episerp`.`en_p1m_clientes_rutas` (`CatRutCod`, `CliCod`, `CliRutDes`, `EstRegCod`) VALUES ('2', '19', 'Faustino Sánchez Carrión', 'A');
+INSERT INTO `episerp`.`en_p1m_clientes_rutas` (`CatRutCod`, `CliCod`, `CliRutDes`, `EstRegCod`) VALUES ('3', '20', 'Av. Prolongación Amancaes', 'A');
+INSERT INTO `episerp`.`en_p1m_clientes_rutas` (`CatRutCod`, `CliCod`, `CliRutDes`, `EstRegCod`) VALUES ('4', '18', 'Av. Tacna', 'A');
+INSERT INTO `episerp`.`en_p1m_clientes_rutas` (`CatRutCod`, `CliCod`, `CliRutDes`, `EstRegCod`) VALUES ('5', '16', 'Óvalo de Miraflores', 'A');
+INSERT INTO `episerp`.`en_p1m_clientes_rutas` (`CatRutCod`, `CliCod`, `CliRutDes`, `EstRegCod`) VALUES ('6', '7', 'Av. José Larco', 'A');
+INSERT INTO `episerp`.`en_p1m_clientes_rutas` (`CatRutCod`, `CliCod`, `CliRutDes`, `EstRegCod`) VALUES ('7', '14', 'Av. Lima', 'A');
+INSERT INTO `episerp`.`en_p1m_clientes_rutas` (`CatRutCod`, `CliCod`, `CliRutDes`, `EstRegCod`) VALUES ('8', '1', 'Av. Canto Grande', 'A');
+INSERT INTO `episerp`.`en_p1m_clientes_rutas` (`CatRutCod`, `CliCod`, `CliRutDes`, `EstRegCod`) VALUES ('9', '6', 'Av. Próceres de la Independencia', 'A');
+INSERT INTO `episerp`.`en_p1m_clientes_rutas` (`CatRutCod`, `CliCod`, `CliRutDes`, `EstRegCod`) VALUES ('10', '3', 'Av. 9 de diciembre', 'A');
+INSERT INTO `episerp`.`en_p1m_clientes_rutas` (`CatRutCod`, `CliCod`, `CliRutDes`, `EstRegCod`) VALUES ('11', '8', 'Av. Alto de la Alianza', 'A');
+INSERT INTO `episerp`.`en_p1m_clientes_rutas` (`CatRutCod`, `CliCod`, `CliRutDes`, `EstRegCod`) VALUES ('12', '2', 'Av. Arica', 'A');
+INSERT INTO `episerp`.`en_p1m_clientes_rutas` (`CatRutCod`, `CliCod`, `CliRutDes`, `EstRegCod`) VALUES ('13', '5', 'Av. Quiñonez', 'A');
+INSERT INTO `episerp`.`en_p1m_clientes_rutas` (`CatRutCod`, `CliCod`, `CliRutDes`, `EstRegCod`) VALUES ('14', '13', 'Av. Jose Luis', 'A');
+INSERT INTO `episerp`.`en_p1m_clientes_rutas` (`CatRutCod`, `CliCod`, `CliRutDes`, `EstRegCod`) VALUES ('15', '9', 'Av. La gran Muralla', 'A');
+INSERT INTO `episerp`.`en_p1m_clientes_rutas` (`CatRutCod`, `CliCod`, `CliRutDes`, `EstRegCod`) VALUES ('16', '10', 'Av. Benavente', 'A');
+INSERT INTO `episerp`.`en_p1m_clientes_rutas` (`CatRutCod`, `CliCod`, `CliRutDes`, `EstRegCod`) VALUES ('17', '4', 'Av. Flores', 'A');
+INSERT INTO `episerp`.`en_p1m_clientes_rutas` (`CatRutCod`, `CliCod`, `CliRutDes`, `EstRegCod`) VALUES ('18', '11', 'Av. Polanco', 'A');
+INSERT INTO `episerp`.`en_p1m_clientes_rutas` (`CatRutCod`, `CliCod`, `CliRutDes`, `EstRegCod`) VALUES ('19', '15', 'Av. Mostajo', 'A');
+INSERT INTO `episerp`.`en_p1m_clientes_rutas` (`CatRutCod`, `CliCod`, `CliRutDes`, `EstRegCod`) VALUES ('20', '12', 'Av. Juarez', 'A');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `episerp`.`en_p4t_factura_compra_det`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `episerp`;
+INSERT INTO `episerp`.`en_p4t_factura_compra_det` (`FacComCabCod`, `FacComDetCod`, `ClaProCod`, `SubClaProCod`, `ProCod`, `FacComDetCan`, `FacComDetValUni`) VALUES ('001-000001', '1', '1', '1', '7755523010128', '500.00', '500.00');
+INSERT INTO `episerp`.`en_p4t_factura_compra_det` (`FacComCabCod`, `FacComDetCod`, `ClaProCod`, `SubClaProCod`, `ProCod`, `FacComDetCan`, `FacComDetValUni`) VALUES ('001-000002', '1', '3', '2', '7755523030210', '100.00', '100.00');
+INSERT INTO `episerp`.`en_p4t_factura_compra_det` (`FacComCabCod`, `FacComDetCod`, `ClaProCod`, `SubClaProCod`, `ProCod`, `FacComDetCan`, `FacComDetValUni`) VALUES ('001-000002', '2', '3', '2', '7755523030229', '100.00', '100.00');
+INSERT INTO `episerp`.`en_p4t_factura_compra_det` (`FacComCabCod`, `FacComDetCod`, `ClaProCod`, `SubClaProCod`, `ProCod`, `FacComDetCan`, `FacComDetValUni`) VALUES ('001-000002', '3', '3', '2', '7755523030238', '100.00', '100.00');
+INSERT INTO `episerp`.`en_p4t_factura_compra_det` (`FacComCabCod`, `FacComDetCod`, `ClaProCod`, `SubClaProCod`, `ProCod`, `FacComDetCan`, `FacComDetValUni`) VALUES ('001-000002', '4', '4', '1', '7755523040110', '100.00', '100.00');
+INSERT INTO `episerp`.`en_p4t_factura_compra_det` (`FacComCabCod`, `FacComDetCod`, `ClaProCod`, `SubClaProCod`, `ProCod`, `FacComDetCan`, `FacComDetValUni`) VALUES ('001-000002', '5', '4', '2', '7755523040129', '100.00', '100.00');
+INSERT INTO `episerp`.`en_p4t_factura_compra_det` (`FacComCabCod`, `FacComDetCod`, `ClaProCod`, `SubClaProCod`, `ProCod`, `FacComDetCan`, `FacComDetValUni`) VALUES ('001-000003', '1', '8', '2', '7755523050340', '750.00', '750.00');
+INSERT INTO `episerp`.`en_p4t_factura_compra_det` (`FacComCabCod`, `FacComDetCod`, `ClaProCod`, `SubClaProCod`, `ProCod`, `FacComDetCan`, `FacComDetValUni`) VALUES ('001-000003', '2', '8', '2', '7755523050341', '900.00', '900.00');
+INSERT INTO `episerp`.`en_p4t_factura_compra_det` (`FacComCabCod`, `FacComDetCod`, `ClaProCod`, `SubClaProCod`, `ProCod`, `FacComDetCan`, `FacComDetValUni`) VALUES ('001-000003', '3', '8', '3', '7755523050342', '350.00', '350.00');
+INSERT INTO `episerp`.`en_p4t_factura_compra_det` (`FacComCabCod`, `FacComDetCod`, `ClaProCod`, `SubClaProCod`, `ProCod`, `FacComDetCan`, `FacComDetValUni`) VALUES ('001-000003', '4', '8', '3', '7755523050343', '1000.00', '1000.00');
+INSERT INTO `episerp`.`en_p4t_factura_compra_det` (`FacComCabCod`, `FacComDetCod`, `ClaProCod`, `SubClaProCod`, `ProCod`, `FacComDetCan`, `FacComDetValUni`) VALUES ('001-000004', '1', '3', '1', '7755523030113', '800.00', '800.00');
+INSERT INTO `episerp`.`en_p4t_factura_compra_det` (`FacComCabCod`, `FacComDetCod`, `ClaProCod`, `SubClaProCod`, `ProCod`, `FacComDetCan`, `FacComDetValUni`) VALUES ('001-000004', '2', '3', '1', '7755523030122', '800.00', '800.00');
+INSERT INTO `episerp`.`en_p4t_factura_compra_det` (`FacComCabCod`, `FacComDetCod`, `ClaProCod`, `SubClaProCod`, `ProCod`, `FacComDetCan`, `FacComDetValUni`) VALUES ('001-000004', '3', '3', '1', '7755523030131', '900.00', '900.00');
+INSERT INTO `episerp`.`en_p4t_factura_compra_det` (`FacComCabCod`, `FacComDetCod`, `ClaProCod`, `SubClaProCod`, `ProCod`, `FacComDetCan`, `FacComDetValUni`) VALUES ('001-000005', '1', '1', '1', '7755523010137', '500.00', '500.00');
+INSERT INTO `episerp`.`en_p4t_factura_compra_det` (`FacComCabCod`, `FacComDetCod`, `ClaProCod`, `SubClaProCod`, `ProCod`, `FacComDetCan`, `FacComDetValUni`) VALUES ('001-000005', '2', '1', '1', '7755523010146', '200.00', '200.00');
+INSERT INTO `episerp`.`en_p4t_factura_compra_det` (`FacComCabCod`, `FacComDetCod`, `ClaProCod`, `SubClaProCod`, `ProCod`, `FacComDetCan`, `FacComDetValUni`) VALUES ('001-000005', '3', '1', '1', '7755523010216', '1100.00', '1100.00');
+INSERT INTO `episerp`.`en_p4t_factura_compra_det` (`FacComCabCod`, `FacComDetCod`, `ClaProCod`, `SubClaProCod`, `ProCod`, `FacComDetCan`, `FacComDetValUni`) VALUES ('001-000005', '4', '1', '2', '7755523010225', '250.00', '250.00');
+INSERT INTO `episerp`.`en_p4t_factura_compra_det` (`FacComCabCod`, `FacComDetCod`, `ClaProCod`, `SubClaProCod`, `ProCod`, `FacComDetCan`, `FacComDetValUni`) VALUES ('001-000005', '5', '1', '2', '7755523010234', '300.00', '300.00');
+INSERT INTO `episerp`.`en_p4t_factura_compra_det` (`FacComCabCod`, `FacComDetCod`, `ClaProCod`, `SubClaProCod`, `ProCod`, `FacComDetCan`, `FacComDetValUni`) VALUES ('001-000005', '6', '1', '2', '7755523010313', '900.00', '900.00');
+INSERT INTO `episerp`.`en_p4t_factura_compra_det` (`FacComCabCod`, `FacComDetCod`, `ClaProCod`, `SubClaProCod`, `ProCod`, `FacComDetCan`, `FacComDetValUni`) VALUES ('001-000005', '7', '1', '3', '7755523010322', '450.00', '450.00');
+INSERT INTO `episerp`.`en_p4t_factura_compra_det` (`FacComCabCod`, `FacComDetCod`, `ClaProCod`, `SubClaProCod`, `ProCod`, `FacComDetCan`, `FacComDetValUni`) VALUES ('001-000005', '8', '1', '3', '7755523010331', '300.00', '300.00');
+INSERT INTO `episerp`.`en_p4t_factura_compra_det` (`FacComCabCod`, `FacComDetCod`, `ClaProCod`, `SubClaProCod`, `ProCod`, `FacComDetCan`, `FacComDetValUni`) VALUES ('001-000006', '1', '2', '1', '7755523020116', '300.00', '300.00');
+INSERT INTO `episerp`.`en_p4t_factura_compra_det` (`FacComCabCod`, `FacComDetCod`, `ClaProCod`, `SubClaProCod`, `ProCod`, `FacComDetCan`, `FacComDetValUni`) VALUES ('001-000006', '2', '2', '1', '7755523020125', '300.00', '300.00');
+INSERT INTO `episerp`.`en_p4t_factura_compra_det` (`FacComCabCod`, `FacComDetCod`, `ClaProCod`, `SubClaProCod`, `ProCod`, `FacComDetCan`, `FacComDetValUni`) VALUES ('001-000006', '3', '2', '1', '7755523020134', '500.00', '500.00');
+INSERT INTO `episerp`.`en_p4t_factura_compra_det` (`FacComCabCod`, `FacComDetCod`, `ClaProCod`, `SubClaProCod`, `ProCod`, `FacComDetCan`, `FacComDetValUni`) VALUES ('001-000006', '4', '2', '2', '7755523020213', '600.00', '600.00');
+INSERT INTO `episerp`.`en_p4t_factura_compra_det` (`FacComCabCod`, `FacComDetCod`, `ClaProCod`, `SubClaProCod`, `ProCod`, `FacComDetCan`, `FacComDetValUni`) VALUES ('001-000006', '5', '2', '2', '7755523020222', '700.00', '700.00');
+INSERT INTO `episerp`.`en_p4t_factura_compra_det` (`FacComCabCod`, `FacComDetCod`, `ClaProCod`, `SubClaProCod`, `ProCod`, `FacComDetCan`, `FacComDetValUni`) VALUES ('001-000006', '6', '2', '2', '7755523020231', '600.00', '600.00');
+INSERT INTO `episerp`.`en_p4t_factura_compra_det` (`FacComCabCod`, `FacComDetCod`, `ClaProCod`, `SubClaProCod`, `ProCod`, `FacComDetCan`, `FacComDetValUni`) VALUES ('001-000007', '1', '12', '1', '7755523050346', '500.00', '500.00');
+INSERT INTO `episerp`.`en_p4t_factura_compra_det` (`FacComCabCod`, `FacComDetCod`, `ClaProCod`, `SubClaProCod`, `ProCod`, `FacComDetCan`, `FacComDetValUni`) VALUES ('001-000007', '2', '12', '1', '7755523050347', '400.00', '400.00');
+INSERT INTO `episerp`.`en_p4t_factura_compra_det` (`FacComCabCod`, `FacComDetCod`, `ClaProCod`, `SubClaProCod`, `ProCod`, `FacComDetCan`, `FacComDetValUni`) VALUES ('001-000007', '3', '12', '4', '7755523050348', '600.00', '600.00');
+INSERT INTO `episerp`.`en_p4t_factura_compra_det` (`FacComCabCod`, `FacComDetCod`, `ClaProCod`, `SubClaProCod`, `ProCod`, `FacComDetCan`, `FacComDetValUni`) VALUES ('001-000007', '4', '12', '4', '7755523050349', '500.00', '500.00');
+INSERT INTO `episerp`.`en_p4t_factura_compra_det` (`FacComCabCod`, `FacComDetCod`, `ClaProCod`, `SubClaProCod`, `ProCod`, `FacComDetCan`, `FacComDetValUni`) VALUES ('001-000008', '1', '5', '3', '7755523050311', '550.00', '550.00');
+INSERT INTO `episerp`.`en_p4t_factura_compra_det` (`FacComCabCod`, `FacComDetCod`, `ClaProCod`, `SubClaProCod`, `ProCod`, `FacComDetCan`, `FacComDetValUni`) VALUES ('001-000008', '2', '5', '3', '7755523050320', '500.00', '500.00');
+INSERT INTO `episerp`.`en_p4t_factura_compra_det` (`FacComCabCod`, `FacComDetCod`, `ClaProCod`, `SubClaProCod`, `ProCod`, `FacComDetCan`, `FacComDetValUni`) VALUES ('001-000008', '3', '5', '3', '7755523050339', '500.00', '500.00');
+INSERT INTO `episerp`.`en_p4t_factura_compra_det` (`FacComCabCod`, `FacComDetCod`, `ClaProCod`, `SubClaProCod`, `ProCod`, `FacComDetCan`, `FacComDetValUni`) VALUES ('001-000009', '1', '8', '2', '7755523050340', '1000.00', '1000.00');
+INSERT INTO `episerp`.`en_p4t_factura_compra_det` (`FacComCabCod`, `FacComDetCod`, `ClaProCod`, `SubClaProCod`, `ProCod`, `FacComDetCan`, `FacComDetValUni`) VALUES ('001-000009', '2', '8', '2', '7755523050341', '1000.00', '1000.00');
+INSERT INTO `episerp`.`en_p4t_factura_compra_det` (`FacComCabCod`, `FacComDetCod`, `ClaProCod`, `SubClaProCod`, `ProCod`, `FacComDetCan`, `FacComDetValUni`) VALUES ('001-000009', '3', '8', '3', '7755523050342', '1500.00', '1500.00');
+INSERT INTO `episerp`.`en_p4t_factura_compra_det` (`FacComCabCod`, `FacComDetCod`, `ClaProCod`, `SubClaProCod`, `ProCod`, `FacComDetCan`, `FacComDetValUni`) VALUES ('001-000009', '4', '8', '3', '7755523050343', '1000.00', '1000.00');
+INSERT INTO `episerp`.`en_p4t_factura_compra_det` (`FacComCabCod`, `FacComDetCod`, `ClaProCod`, `SubClaProCod`, `ProCod`, `FacComDetCan`, `FacComDetValUni`) VALUES ('001-000010', '1', '5', '1', '7755523050117', '600.00', '600.00');
+INSERT INTO `episerp`.`en_p4t_factura_compra_det` (`FacComCabCod`, `FacComDetCod`, `ClaProCod`, `SubClaProCod`, `ProCod`, `FacComDetCan`, `FacComDetValUni`) VALUES ('001-000010', '2', '5', '1', '7755523050126', '800.00', '800.00');
+INSERT INTO `episerp`.`en_p4t_factura_compra_det` (`FacComCabCod`, `FacComDetCod`, `ClaProCod`, `SubClaProCod`, `ProCod`, `FacComDetCan`, `FacComDetValUni`) VALUES ('001-000010', '3', '5', '1', '7755523050135', '600.00', '600.00');
+
 COMMIT;
