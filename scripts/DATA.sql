@@ -49,7 +49,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `episerp`;
-INSERT INTO `episerp`.`en_p1m_empresa` (`EmpCod`, `EmpRazSoc`, `EmpNomCom`, `EmpDir`, `EmpIGV`, `EmpRUC`) VALUES (1, 'Empresa de Desarrollo de Software', 'MOT S.A.', 'Av. Venezuela s/n', 18, '10230499411');
+INSERT INTO `en_p1m_empresa` (`EmpCod`,`EmpRazSoc`,`EmpNomCom`,`EmpDomFis`,`EmpDes`,`EmpDir`,`EmpTel`,`EmpEmail`,`EmpIGV`,`EmpTipCamCom`,`EmpTipCamVen`,`EmpRUC`,`EmpLot`,`EmpImgURL`) VALUES (01,'Empresa de Desarrollo de Software','MOT S.A.','Av. Venezuela s/n','Empresa de Desarrollo de Software','Av. Venezuela s/n','945708074','mot@gmail.com',18.00,3.371,3.375,'10230499411',NULL,NULL);
 
 COMMIT;
 
@@ -119,17 +119,6 @@ START TRANSACTION;
 USE `episerp`;
 INSERT INTO `episerp`.`ta_gzz_tipo_doc_usuario` (`TipDocUsuCod`, `TipDocUsuDet`, `EstRegCod`) VALUES (1, 'DNI', 'A');
 INSERT INTO `episerp`.`ta_gzz_tipo_doc_usuario` (`TipDocUsuCod`, `TipDocUsuDet`, `EstRegCod`) VALUES (2, 'RUC', 'A');
-
-COMMIT;
-
-
--- -----------------------------------------------------
--- Data for table `episerp`.`ta_gzz_tipo_doc_transportista`
--- -----------------------------------------------------
-START TRANSACTION;
-USE `episerp`;
-INSERT INTO `episerp`.`ta_gzz_tipo_doc_transportista` (`TipDocTraCod`, `TipDocTraDet`, `EstRegCod`) VALUES (1, 'DNI', 'A');
-INSERT INTO `episerp`.`ta_gzz_tipo_doc_transportista` (`TipDocTraCod`, `TipDocTraDet`, `EstRegCod`) VALUES (2, 'RUC', 'A');
 
 COMMIT;
 
@@ -853,6 +842,17 @@ INSERT INTO `episerp`.`ta_gzz_tipo_destinatario` (`TipDesCod`, `TipDesDet`, `Est
 COMMIT;
 
 -- -----------------------------------------------------
+-- Data for table `episerp`.`ta_gzz_tipo_doc_transportista`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `episerp`;
+INSERT INTO `ta_gzz_tipo_doc_transportista` (`TipDocTraCod`,`TipDocTraDet`,`EstRegCod`) VALUES (01,"DNI","A");
+INSERT INTO `ta_gzz_tipo_doc_transportista` (`TipDocTraCod`,`TipDocTraDet`,`EstRegCod`) VALUES (02,"RUC","A");
+INSERT INTO `ta_gzz_tipo_doc_transportista` (`TipDocTraCod`,`TipDocTraDet`,`EstRegCod`) VALUES (03,"Licencia","A");
+
+COMMIT;
+
+-- -----------------------------------------------------
 -- Data for table `episerp`.`ta_gzz_motivo_traslado`
 -- -----------------------------------------------------
 START TRANSACTION;
@@ -871,5 +871,33 @@ INSERT INTO `episerp`.`ta_gzz_motivo_traslado` (`MotTraCod`, `MotTraDet`, `EstRe
 INSERT INTO `episerp`.`ta_gzz_motivo_traslado` (`MotTraCod`, `MotTraDet`, `EstRegCod`) VALUES ('12', 'Traslado zona primaria', 'A');
 INSERT INTO `episerp`.`ta_gzz_motivo_traslado` (`MotTraCod`, `MotTraDet`, `EstRegCod`) VALUES ('13', 'Venta con entrega a terceros', 'A');
 INSERT INTO `episerp`.`ta_gzz_motivo_traslado` (`MotTraCod`, `MotTraDet`, `EstRegCod`) VALUES ('14', 'Otras no incluida en los puntos anteriores', 'A');
+
+COMMIT;
+
+-- -----------------------------------------------------
+-- Data for table `episerp`.`ta_gzz_estado_uni_transporte`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `episerp`;
+
+INSERT INTO `ta_gzz_estado_uni_transporte` (`EstUniTraCod`,`EstUniTraDet`,`EstRegCod`) VALUES (01,"Activo","A");
+INSERT INTO `ta_gzz_estado_uni_transporte` (`EstUniTraCod`,`EstUniTraDet`,`EstRegCod`) VALUES (02,"Inactivo","A");
+INSERT INTO `ta_gzz_estado_uni_transporte` (`EstUniTraCod`,`EstUniTraDet`,`EstRegCod`) VALUES (03,"En Reparacion","A");
+INSERT INTO `ta_gzz_estado_uni_transporte` (`EstUniTraCod`,`EstUniTraDet`,`EstRegCod`) VALUES (04,"En Mantenimiento","A");
+
+COMMIT;
+
+-- -----------------------------------------------------
+-- Data for table `episerp`.`ta_gzz_tipo_uni_transporte`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `episerp`;
+INSERT INTO `ta_gzz_tipo_uni_transporte` (`TipUniTraCod`,`TipUniTraDet`,`EstRegCod`) VALUES (01,"Vehiculo Caja-Granel","A");
+INSERT INTO `ta_gzz_tipo_uni_transporte` (`TipUniTraCod`,`TipUniTraDet`,`EstRegCod`) VALUES (02,"Vehiculo Caja-Embalajes","A");
+INSERT INTO `ta_gzz_tipo_uni_transporte` (`TipUniTraCod`,`TipUniTraDet`,`EstRegCod`) VALUES (03,"Vehiculo Caja-Contenedores","A");
+INSERT INTO `ta_gzz_tipo_uni_transporte` (`TipUniTraCod`,`TipUniTraDet`,`EstRegCod`) VALUES (04,"Vehiculo Caja-Jaula","A");
+INSERT INTO `ta_gzz_tipo_uni_transporte` (`TipUniTraCod`,`TipUniTraDet`,`EstRegCod`) VALUES (05,"Vehiculo Caja-Otros","A");
+INSERT INTO `ta_gzz_tipo_uni_transporte` (`TipUniTraCod`,`TipUniTraDet`,`EstRegCod`) VALUES (06,"Cisterna","A");
+INSERT INTO `ta_gzz_tipo_uni_transporte` (`TipUniTraCod`,`TipUniTraDet`,`EstRegCod`) VALUES (07,"Otros","A");
 
 COMMIT;
