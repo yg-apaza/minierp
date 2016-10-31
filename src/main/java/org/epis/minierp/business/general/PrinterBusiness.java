@@ -274,8 +274,6 @@ public class PrinterBusiness {
     }
     
     public void writeTotal(Double subTotal, Double igv, Double total) throws IOException{
-        //advanceVertical(1.0f);
-        setAbsoluteVerticalPosition(8.0f);
         setAbsoluteHorizontalPosition(16.0f);
         writer.write(Double.toString(subTotal));newLine();
         setAbsoluteHorizontalPosition(16.0f);

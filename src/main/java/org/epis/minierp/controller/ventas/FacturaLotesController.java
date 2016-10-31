@@ -33,10 +33,11 @@ public class FacturaLotesController extends HttpServlet {
         String cliNom;
         String cliDir;
         String cliDoc;
+        int nProducts = 6;
         DateFormat day = new SimpleDateFormat("dd");
         DateFormat month = new SimpleDateFormat("MM");
         DateFormat year = new SimpleDateFormat("yyyy");
-        
+                
         String []meses = {"", "enero", "febrero", "marzo", "abril", "mayo" , "junio",
         "julio", "agosto", "setiembre", "octubre", "noviembre", "diciembre"};
         
@@ -53,6 +54,7 @@ public class FacturaLotesController extends HttpServlet {
             p.writeCabecera(facCabFec, cliNom, cliDir, cliDoc);
             for(EnP1tFacturaVentaDet d : (Set<EnP1tFacturaVentaDet>)f.getEnP1tFacturaVentaDets()){
                 p.writeDetalle(d.getFacVenDetCan(), d.getEnP2mProducto().getTaGzzUnidadMed().getUniMedDet(), d.getEnP2mProducto().getProDet(), d.getFacVenDetValUni(), d.getFacVenDetCan()*d.getFacVenDetValUni());
+                nProducts--;
             }
             p.writeTotal(f.getFacVenCabSubTot(), f.getFacVenCabSubTot()*f.getFacVenCabIgv(), f.getFacVenCabTot());
             p.newPage();
