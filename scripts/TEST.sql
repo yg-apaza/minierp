@@ -1561,3 +1561,31 @@ INSERT INTO `episerp`.`en_p4m_factura_compra_cab` (`FacComCabCod`, `GuiRemRemNum
 INSERT INTO `episerp`.`en_p4m_factura_compra_cab` (`FacComCabCod`, `GuiRemRemNum`, `GuiRemTraNum`, `PrvCod`, `UsuCod`, `FacComCabFec`, `FacComCabTot`, `TipDesCod`, `FacComCabSubTot`, `FacComCabIGV`, `FacComCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000009', '001-000002', '103', '147258369121', '8', '2016-10-25', '4500.00', '7', '4500.00', '0.18', 'N', '1', '1', '1', '1', 'A');
 INSERT INTO `episerp`.`en_p4m_factura_compra_cab` (`FacComCabCod`, `GuiRemRemNum`, `GuiRemTraNum`, `PrvCod`, `UsuCod`, `FacComCabFec`, `FacComCabTot`, `TipDesCod`, `FacComCabSubTot`, `FacComCabIGV`, `FacComCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000010', '001-000004', '111', '321654987121', '1', '2016-10-25', '2000.00', '7', '2000.00', '0.18', 'N', '1', '1', '1', '1', 'A');
 COMMIT;
+
+-- -----------------------------------------------------
+-- Data for table `episerp`.`en_p1m_catalogo_ruta`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `episerp`;
+INSERT INTO `episerp`.`en_p1m_catalogo_ruta` (`CatRutCod`, `CatRutDet`, `EstRegCod`) VALUES ('1', 'Corredor Panamericanas: Panamericana Sur, Vía de Evitamiento y Panamericana Norte', 'A');
+INSERT INTO `episerp`.`en_p1m_catalogo_ruta` (`CatRutCod`, `CatRutDet`, `EstRegCod`) VALUES ('2', 'Corredor Javier Prado - La Marina: Javier Prado, Sánchez Carrión, La Marina', 'A');
+INSERT INTO `episerp`.`en_p1m_catalogo_ruta` (`CatRutCod`, `CatRutDet`, `EstRegCod`) VALUES ('3', 'Corredor La Marina - Universitaria: La Marina, Elmer Faucett y Universitaria', 'A');
+INSERT INTO `episerp`.`en_p1m_catalogo_ruta` (`CatRutCod`, `CatRutDet`, `EstRegCod`) VALUES ('4', 'Corredor Tacna - Alcázar: Flor de Amancaes, Prol. Amancaes, Suárez, Amancaes, Alcázar', 'A');
+INSERT INTO `episerp`.`en_p1m_catalogo_ruta` (`CatRutCod`, `CatRutDet`, `EstRegCod`) VALUES ('5', 'Corredor Alcázar - Garcilazo: Alcázar, Prolongación Tacna, Tacna, Garcilazo de la Vega', 'A');
+INSERT INTO `episerp`.`en_p1m_catalogo_ruta` (`CatRutCod`, `CatRutDet`, `EstRegCod`) VALUES ('6', 'Corredor Garcilazo - Julio: Garcilazo, Arequipa, Óv. Miraflores, Diagonal, 28 de julio', 'A');
+INSERT INTO `episerp`.`en_p1m_catalogo_ruta` (`CatRutCod`, `CatRutDet`, `EstRegCod`) VALUES ('7', 'Corredor Julio - Reducto: 28 de julio, José Larco, Armendáriz, Reducto', 'A');
+INSERT INTO `episerp`.`en_p1m_catalogo_ruta` (`CatRutCod`, `CatRutDet`, `EstRegCod`) VALUES ('8', 'Corredor Reducto - Piérola: Reducto, Miguel Grau, Nicolás de Piérola', 'A');
+INSERT INTO `episerp`.`en_p1m_catalogo_ruta` (`CatRutCod`, `CatRutDet`, `EstRegCod`) VALUES ('9', 'Corredor Piérola - Arequipa: Nicolás Piérola, Balta, Lima, J.Catalino Miranda, El Sol', 'A');
+INSERT INTO `episerp`.`en_p1m_catalogo_ruta` (`CatRutCod`, `CatRutDet`, `EstRegCod`) VALUES ('10', 'Corredor S.J. Lurigancho - Canto Grande: Fernando Wiese, J.Carlos Mariátegui, Canto Grande', 'A');
+INSERT INTO `episerp`.`en_p1m_catalogo_ruta` (`CatRutCod`, `CatRutDet`, `EstRegCod`) VALUES ('11', 'Corredor Canto Grande - Primavera: Canto Grande, Las Flores de Primavera, Prol. Lima', 'A');
+INSERT INTO `episerp`.`en_p1m_catalogo_ruta` (`CatRutCod`, `CatRutDet`, `EstRegCod`) VALUES ('12', 'Corredor Primavera - Abancay: F.Primavera, Lima, P. Independencia, 9octubre, Acho, Abancay', 'A');
+INSERT INTO `episerp`.`en_p1m_catalogo_ruta` (`CatRutCod`, `CatRutDet`, `EstRegCod`) VALUES ('13', 'Corredor Abancay - Brasil: Abancay, Miguel Grau, 9 de diciembre, Brasil', 'A');
+INSERT INTO `episerp`.`en_p1m_catalogo_ruta` (`CatRutCod`, `CatRutDet`, `EstRegCod`) VALUES ('14', 'Corredor Carretera Central - Grau: Carretera Central, N. Ayllón, A. Alianza, Miguel Grau', 'A');
+INSERT INTO `episerp`.`en_p1m_catalogo_ruta` (`CatRutCod`, `CatRutDet`, `EstRegCod`) VALUES ('15', 'Corredor Grau - Venezuela: Miguel Grau, 9 de diciembre, Arica, Aguarico, Venezuela', 'A');
+INSERT INTO `episerp`.`en_p1m_catalogo_ruta` (`CatRutCod`, `CatRutDet`, `EstRegCod`) VALUES ('16', 'V. El Salvador, V. María del Triunfo, S.J. Miraflores y S.J. Lurigancho', 'A');
+INSERT INTO `episerp`.`en_p1m_catalogo_ruta` (`CatRutCod`, `CatRutDet`, `EstRegCod`) VALUES ('17', 'Carabayllo y Magdalena del Mar', 'A');
+INSERT INTO `episerp`.`en_p1m_catalogo_ruta` (`CatRutCod`, `CatRutDet`, `EstRegCod`) VALUES ('18', 'Santa Anita y Carabayllo', 'A');
+INSERT INTO `episerp`.`en_p1m_catalogo_ruta` (`CatRutCod`, `CatRutDet`, `EstRegCod`) VALUES ('19', 'San Juan de Lurigancho y Villa El Salvador', 'A');
+INSERT INTO `episerp`.`en_p1m_catalogo_ruta` (`CatRutCod`, `CatRutDet`, `EstRegCod`) VALUES ('20', 'Ate-Vitarte y Cercado de Lima', 'A');
+
+COMMIT;
