@@ -37,7 +37,7 @@ public class LibroDiarioController extends HttpServlet {
         List <TaGzzMoneda> monedas = (new TaGzzMonedaDao()).getAll();
         List <TaGzzTipoComprobante> comprobantes = (new TaGzzTipoComprobanteDao()).getAll();
         List <EnP3mLibroDiario> libros = (new LibroDiarioDao()).getAll();
-        List <LibroDiarioView> operaciones = (new LibroDiarioViewDao()).getAll();
+        List <LibroDiarioView> operaciones = (new LibroDiarioViewDao()).getAll(libDiaCod);
         List <EnP3mCuenta> cuentas = (new CuentaDao()).getAllActive();
         request.setAttribute("libDiaCod",libDiaCod);
         request.setAttribute("libros",libros);
@@ -46,7 +46,8 @@ public class LibroDiarioController extends HttpServlet {
         request.setAttribute("cuentas",cuentas);
         
         String temp="";
-        
+        double m_debe=0;
+        double m_haber=0;
         for(int i=0;i<operaciones.size();i++){       
             temp+="<tr>";
             temp+="<td>"+operaciones.get(i).getIdPK().getAsiCabCod()+"</td>";
@@ -59,14 +60,17 @@ public class LibroDiarioController extends HttpServlet {
             if(operaciones.get(i).isAsiDetDebHab()){
                 temp+="<td>"+operaciones.get(i).getAsiDetMon()+"</td>";
                 temp+="<td>"+0+"</td>";
+                m_debe += operaciones.get(i).getAsiDetMon();
             }
             else{
                 temp+="<td>"+0+"</td>";
                 temp+="<td>"+operaciones.get(i).getAsiDetMon()+"</td>";
+                m_haber += operaciones.get(i).getAsiDetMon();
             }
             temp+="</tr>";
         }
-        
+        request.setAttribute("mDebe",m_debe);
+        request.setAttribute("mHaber",m_haber);
         request.setAttribute("opera",temp);
         request.getRequestDispatcher("/WEB-INF/contabilidad/libroDiario/libroDiario_Principal.jsp").forward(request, response);
     }

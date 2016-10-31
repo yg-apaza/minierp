@@ -119,8 +119,8 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td></td>
-                                        <td></td>
+                                        <td>${mDebe}</td>
+                                        <td>${mHaber}</td>
                                     </tr>
                                 </tbody>
                             </table>
