@@ -74,6 +74,47 @@
                             <li>
                                 <a href="${pageContext.request.contextPath}/"><i class="fa fa-home fa-fw"></i> Inicio</a>
                             </li>
+                            <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()==1 || sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()==3}">
+                            <li>
+                                <a href="#"><i class="fa fa-truck fa-fw"></i> Logística<span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <li>
+                                        <a href="#">Compras <span class="fa arrow"></span></a>
+                                        <ul class="nav nav-third-level">
+                                            <li>
+                                                <a href="${pageContext.request.contextPath}/secured/compras/factura">Factura de Compra</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="#">Logística <span class="fa arrow"></span></a>
+                                        <ul class="nav nav-third-level">
+                                            <li>
+                                                <a href="${pageContext.request.contextPath}/secured/compras/kardex">Kardex</a>
+                                            </li>
+                                            <li>
+                                                <a href="${pageContext.request.contextPath}/secured/compras/inventario">Inventario</a>
+                                            </li>
+                                            <li>
+                                                <a href="${pageContext.request.contextPath}/secured/compras/clasificacionABC">Clasificación ABC</a>
+                                            </li>
+                                            <li>
+                                                <a href="${pageContext.request.contextPath}/secured/compras/stock">Stock</a>
+                                            </li> 
+                                            <li>
+                                                <a href="${pageContext.request.contextPath}/secured/compras/proveedores">Proveedores</a>
+                                            </li>                                    
+                                            <li>
+                                                <a href="${pageContext.request.contextPath}/secured/compras/productos">Productos</a>
+                                            </li>
+                                            <li>
+                                                <a href="${pageContext.request.contextPath}/secured/compras/claseSubclase">Clase/Subclase</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            </cc:if>
                             <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()==1 || sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()==2}">
                             <li>
                                 <a href="#"><i class="fa fa-cart-arrow-down fa-fw"></i> Ventas<span class="fa arrow"></span></a>
@@ -96,59 +137,20 @@
                                 </ul>
                             </li>
                             </cc:if>
-                            <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()==1 || sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()==3}">
-                            <li>
-                                <a href="#"><i class="fa fa-truck fa-fw"></i> Logística y Compras<span class="fa arrow"></span></a>
-                                <ul class="nav nav-second-level">
-                                    <li>
-                                        <a href="#">Logística <span class="fa arrow"></span></a>
-                                        <ul class="nav nav-third-level">
-                                            <li>
-                                                <a href="${pageContext.request.contextPath}/secured/compras/proveedores">Proveedores</a>
-                                            </li>
-                                            <li>
-                                                <a href="${pageContext.request.contextPath}/secured/compras/kardex">Kardex</a>
-                                            </li>
-                                            <li>
-                                                <a href="${pageContext.request.contextPath}/secured/compras/clasificacionABC">Clasificación ABC</a>
-                                            </li>
-                                            <li>
-                                                <a href="${pageContext.request.contextPath}/secured/compras/inventario">Inventario</a>
-                                            </li>
-                                            <li>
-                                                <a href="${pageContext.request.contextPath}/secured/compras/stock">Stock</a>
-                                            </li>                                           
-                                            <li>
-                                                <a href="${pageContext.request.contextPath}/secured/compras/productos">Productos</a>
-                                            </li>
-                                            <li>
-                                                <a href="${pageContext.request.contextPath}/secured/compras/claseSubclase">Clase/Subclase</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="#">Compras <span class="fa arrow"></span></a>
-                                        <ul class="nav nav-third-level">
-                                            <li>
-                                                <a href="${pageContext.request.contextPath}/secured/compras/factura">Factura de Compra</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                            </cc:if>
                             <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()==1 || sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()==4}">
                             <li>
                                 <a href="#"><i class="fa fa-book fa-fw"></i> Contabilidad<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="${pageContext.request.contextPath}/secured/contabilidad/plan">Plan Contable</a>
+                                        <a href="${pageContext.request.contextPath}/secured/contabilidad/plantilla">Plantillas de Asientos</a>
                                     </li>
                                     <li>
-                                        <a href="${pageContext.request.contextPath}/secured/contabilidad/cuentabancaria">Cuentas bancarias</a>
-                                    </li>
-                                    <li>
-                                        <a href="${pageContext.request.contextPath}/secured/contabilidad/plantilla">Plantilla de Asientos</a>
+                                        <a href="#">Estados Financieros<span class="fa arrow"></span></a>
+                                        <ul class="nav nav-third-level">
+                                            <li>
+                                                <a href="${pageContext.request.contextPath}/secured/contabilidad/balance">Balance General</a>
+                                            </li>
+                                        </ul>
                                     </li>
                                     <li>
                                         <a href="#">Libros Contables<span class="fa arrow"></span></a>
@@ -169,12 +171,10 @@
                                         </ul>
                                     </li>
                                     <li>
-                                        <a href="#">Estados Financieros<span class="fa arrow"></span></a>
-                                        <ul class="nav nav-third-level">
-                                            <li>
-                                                <a href="${pageContext.request.contextPath}/secured/contabilidad/balance">Balance General</a>
-                                            </li>
-                                        </ul>
+                                        <a href="${pageContext.request.contextPath}/secured/contabilidad/cuentabancaria">Cuentas bancarias</a>
+                                    </li>
+                                    <li>
+                                        <a href="${pageContext.request.contextPath}/secured/contabilidad/plan">Plan Contable</a>
                                     </li>
                                 </ul>
                             </li>
