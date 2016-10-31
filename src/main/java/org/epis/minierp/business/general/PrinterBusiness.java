@@ -206,6 +206,20 @@ public class PrinterBusiness {
         writer.write((char) units_high);
     }
     
+    public void setAbsoluteVerticalPosition(float centimeters) throws IOException {
+        //pre: centimenters >= 0 (cm)
+        //post: sets absolute vertical print position to x centimeters
+        float inches = centimeters / CM_PER_INCH;
+        int units_low = (int) (inches * 60) % 256;
+        int units_high = (int) (inches * 60) / 256;
+        
+        writer.write(ESC);
+        writer.write(40);
+        writer.write(86);
+        writer.write((char) units_low);
+        writer.write((char) units_high);
+    }
+    
     public void horizontalTab(int tabs) throws IOException {
         //pre: tabs >= 0
         //post: performs horizontal tabs tabs number of times
@@ -260,7 +274,8 @@ public class PrinterBusiness {
     }
     
     public void writeTotal(Double subTotal, Double igv, Double total) throws IOException{
-        advanceVertical(1.0f);
+        //advanceVertical(1.0f);
+        setAbsoluteVerticalPosition(8.0f);
         setAbsoluteHorizontalPosition(16.0f);
         writer.write(Double.toString(subTotal));newLine();
         setAbsoluteHorizontalPosition(16.0f);
