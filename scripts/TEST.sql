@@ -356,68 +356,60 @@ COMMIT;
 -- -----------------------------------------------------
 -- Data for table `episerp`.`en_p2m_producto`
 -- -----------------------------------------------------
--- -----------------------------------------------------
--- Data for table `episerp`.`en_p2m_producto`
--- -----------------------------------------------------
 START TRANSACTION;
 USE `episerp`;
-INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUniVen`, `MonCod`, `ProStk`, `ProStkPreVen`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('01', '01', '7755523010128', 'cerdo de 1kg', '06', '15.50', '09', '120', '50', '100', '10', '100', 'Ninguna', 'A');
-INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUniVen`, `MonCod`, `ProStk`, `ProStkPreVen`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('01', '01', '7755523010137', 'cerdo en rollos', '06', '11.50', '09', '100', '50', '100', '10', '100', 'Ninguna', 'A');
-INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUniVen`, `MonCod`, `ProStk`, `ProStkPreVen`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('01', '01', '7755523010146', 'chuleta de cerdo', '06', '15.50', '09', '120', '50', '100', '10', '100', 'Ninguna', 'A');
-INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUniVen`, `MonCod`, `ProStk`, `ProStkPreVen`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('01', '02', '7755523010216', 'carne de pavo 1kg', '06', '15.50', '09', '120', '50', '100', '10', '100', 'Ninguna', 'A');
-INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUniVen`, `MonCod`, `ProStk`, `ProStkPreVen`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('01', '02', '7755523010225', 'carne de pavo 1/2kg', '06', '7.50', '09', '120', '50', '100', '10', '100', 'Ninguna', 'A');
-INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUniVen`, `MonCod`, `ProStk`, `ProStkPreVen`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('01', '02', '7755523010234', 'pavo para cena navideña', '06', '15.50', '09', '120', '50', '100', '10', '100', 'Ninguna', 'A');
-INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUniVen`, `MonCod`, `ProStk`, `ProStkPreVen`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('01', '03', '7755523010313', 'alas de pollo', '06', '6.50', '09', '120', '50', '100', '10', '100', 'Ninguna', 'A');
-INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUniVen`, `MonCod`, `ProStk`, `ProStkPreVen`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('01', '03', '7755523010322', 'piernas de pollo', '06', '7.50', '02', '120', '50', '100', '10', '100', 'Ninguna', 'A');
-INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUniVen`, `MonCod`, `ProStk`, `ProStkPreVen`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('01', '03', '7755523010331', 'pechuga de pollo', '06', '7.50', '02', '120', '50', '100', '10', '100', 'Ninguna', 'A');
-
-INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUniVen`, `MonCod`, `ProStk`, `ProStkPreVen`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('02', '01', '7755523020116', 'bonito', '06', '10.00', '02', '120', '50', '100', '10', '100', 'Ninguna', 'A');
-INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUniVen`, `MonCod`, `ProStk`, `ProStkPreVen`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('02', '01', '7755523020125', 'corvina', '06', '8.00', '02', '120', '50', '100', '10', '100', 'Ninguna', 'A');
-INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUniVen`, `MonCod`, `ProStk`, `ProStkPreVen`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('02', '01', '7755523020134', 'furel', '06', '10.00', '02', '120', '50', '100', '10', '100', 'Ninguna', 'A');
-INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUniVen`, `MonCod`, `ProStk`, `ProStkPreVen`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('02', '02', '7755523020213', 'gula del norte', '06', '10.00', '02', '120', '50', '100', '10', '100', 'Ninguna', 'A');
-INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUniVen`, `MonCod`, `ProStk`, `ProStkPreVen`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('02', '02', '7755523020222', 'krisia surini fresco rayado', '04', '10.00', '02', '120', '50', '100', '10', '100', 'Ninguna', 'A');
-INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUniVen`, `MonCod`, `ProStk`, `ProStkPreVen`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('02', '02', '7755523020231', 'palitos de surini 300 gr', '04', '10.00', '02', '120', '50', '100', '10', '100', 'Ninguna', 'A');
-INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUniVen`, `MonCod`, `ProStk`, `ProStkPreVen`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('02', '03', '7755523020310', 'salmon ahumado 200 gr', '04', '10.00', '02', '120', '50', '100', '10', '100', 'Ninguna', 'A');
-INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUniVen`, `MonCod`, `ProStk`, `ProStkPreVen`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('02', '03', '7755523020329', 'trucha ahumada 200 gr', '04', '10.00', '02', '120', '50', '100', '10', '100', 'Ninguna', 'A');
-INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUniVen`, `MonCod`, `ProStk`, `ProStkPreVen`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('02', '03', '7755523020338', 'pimenton ahumado 100 gr', '04', '8.00', '02', '120', '50', '100', '10', '100', 'Ninguna', 'A');
-
-INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUniVen`, `MonCod`, `ProStk`, `ProStkPreVen`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('03', '01', '7755523030113', 'naranja zumo de malla', '04', '5.00', '02', '120', '50', '100', '10', '100', 'Ninguna', 'A');
-INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUniVen`, `MonCod`, `ProStk`, `ProStkPreVen`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('03', '01', '7755523030122', 'mandarinas 1kg', '04', '5.00', '02', '120', '50', '100', '10', '100', 'Ninguna', 'A');
-INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUniVen`, `MonCod`, `ProStk`, `ProStkPreVen`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('03', '01', '7755523030131', 'limones 1kg', '04', '5.00', '02', '120', '50', '100', '10', '100', 'Ninguna', 'A');
-INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUniVen`, `MonCod`, `ProStk`, `ProStkPreVen`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('03', '02', '7755523030210', 'pera blanca 1kg', '04', '6.00', '02', '120', '50', '100', '10', '100', 'Ninguna', 'A');
-INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUniVen`, `MonCod`, `ProStk`, `ProStkPreVen`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('03', '02', '7755523030229', 'manzana golden 240gr', '04', '6.00', '02', '120', '50', '100', '10', '100', 'Ninguna', 'A');
-INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUniVen`, `MonCod`, `ProStk`, `ProStkPreVen`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('03', '02', '7755523030238', 'manzana roja 290gr', '04', '6.00', '02', '120', '50', '100', '10', '100', 'Ninguna', 'A');
-
-INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUniVen`, `MonCod`, `ProStk`, `ProStkPreVen`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('04', '01', '7755523040110', 'ajo morado 1kg', '04', '6.00', '02', '120', '50', '100', '10', '100', 'Ninguna', 'A');
-INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUniVen`, `MonCod`, `ProStk`, `ProStkPreVen`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('04', '01', '7755523040129', 'ajo molido frasco 55gr', '04', '6.00', '02', '120', '50', '100', '10', '100', 'Ninguna', 'A');
-INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUniVen`, `MonCod`, `ProStk`, `ProStkPreVen`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('04', '01', '7755523040138', 'sazonador de ajo 43gr', '04', '6.00', '02', '120', '50', '100', '10', '100', 'Ninguna', 'A');
-INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUniVen`, `MonCod`, `ProStk`, `ProStkPreVen`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('04', '02', '7755523040217', 'brocoli pieza de 500gr', '04', '6.00', '02', '120', '50', '100', '10', '100', 'Ninguna', 'A');
-INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUniVen`, `MonCod`, `ProStk`, `ProStkPreVen`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('04', '02', '7755523040226', 'coliflor en bolsa de 1kg', '04', '6.00', '02', '120', '50', '100', '10', '100', 'Ninguna', 'A');
-INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUniVen`, `MonCod`, `ProStk`, `ProStkPreVen`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('04', '02', '7755523040235', 'repollo 1kg', '04', '6.00', '02', '120', '50', '100', '10', '100', 'Ninguna', 'A');
-INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUniVen`, `MonCod`, `ProStk`, `ProStkPreVen`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('04', '03', '7755523040314', 'tomate fitofrasco de 500gr', '04', '6.00', '02', '120', '50', '100', '10', '100', 'Ninguna','A');
-INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUniVen`, `MonCod`, `ProStk`, `ProStkPreVen`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('04', '03', '7755523040323', 'tomate frito casero 500gr', '04', '6.00', '02', '120', '50', '100', '10', '100', 'Ninguna','A');
-INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUniVen`, `MonCod`, `ProStk`, `ProStkPreVen`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('04', '03', '7755523040332', 'ensalada de tomate malla 1kg', '04', '6.00', '02', '120', '50', '100', '10', '100', 'Ninguna','A');
-
-INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUniVen`, `MonCod`, `ProStk`, `ProStkPreVen`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('05', '01', '7755523050117', 'barritas de cereales de chocolate', '04', '6.00', '02', '120', '50', '100', '10', '100', 'Ninguna','A');
-INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUniVen`, `MonCod`, `ProStk`, `ProStkPreVen`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('05', '01', '7755523050126', 'barritas de cereales nesquick', '04', '6.00', '02', '120', '50', '100', '10', '100', 'Ninguna','A');
-INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUniVen`, `MonCod`, `ProStk`, `ProStkPreVen`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('05', '01', '7755523050135', 'barritas de cereales integrales', '04', '6.00', '02', '120', '50', '100', '10', '100', 'Ninguna','A');
-INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUniVen`, `MonCod`, `ProStk`, `ProStkPreVen`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('05', '02', '7755523050214', 'cereales corn flakes', '04', '6.00', '02', '120', '50', '100', '10', '100', 'Ninguna','A');
-INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUniVen`, `MonCod`, `ProStk`, `ProStkPreVen`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('05', '02', '7755523050223', 'cereales kellogs', '04', '6.00', '02', '120', '50', '100', '10', '100', 'Ninguna','A');
-INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUniVen`, `MonCod`, `ProStk`, `ProStkPreVen`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('05', '02', '7755523050232', 'cereales nestle', '04', '6.00', '02', '120', '50', '100', '10', '100', 'Ninguna','A');
-INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUniVen`, `MonCod`, `ProStk`, `ProStkPreVen`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('05', '03', '7755523050311', 'mini cereales nestle lion', '04', '6.00', '02', '120', '50', '100', '10', '100', 'Ninguna','A');
-INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUniVen`, `MonCod`, `ProStk`, `ProStkPreVen`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('05', '03', '7755523050320', 'mini cereales kellogs', '04', '6.00', '02', '120', '50', '100', '10', '100', 'Ninguna','A');
-INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUniVen`, `MonCod`, `ProStk`, `ProStkPreVen`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('05', '03', '7755523050339', 'mini cereales corn flakes', '04', '6.00', '02', '120', '50', '100', '10', '100', 'Ninguna','A');
-
-INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUniVen`, `MonCod`, `ProStk`, `ProStkPreVen`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('08', '02', '7755523050340', 'Mermelada Gloria 500', 3, 5.50, 1, 50, 10, 100, 10, 20, 'Altamente comercializado','A');
-INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUniVen`, `MonCod`, `ProStk`, `ProStkPreVen`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('08', '02', '7755523050341', 'Mermelada Fanny 500', 3, 6.00, 1, 50, 10, 100, 10, 20, 'Altamente comercializado','A');
-INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUniVen`, `MonCod`, `ProStk`, `ProStkPreVen`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('08', '03', '7755523050342', 'Aconcagua Durazno 250', 3, 5.50, 1, 150, 100, 100, 10, 20, 'Altamente comercializado','A');
-INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUniVen`, `MonCod`, `ProStk`, `ProStkPreVen`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('08', '03', '7755523050343', 'Aconcagua Piña 250', 3, 5.50, 1, 90, 10, 100, 10, 20, 'Altamente comercializado','A');
-INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUniVen`, `MonCod`, `ProStk`, `ProStkPreVen`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('09', '02', '7755523050344', 'San Fernando 100', 3, 1.50, 1, 150, 10, 100, 10, 20, 'Altamente comercializado','A');
-INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUniVen`, `MonCod`, `ProStk`, `ProStkPreVen`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('09', '02', '7755523050345', 'La Calera 100', 3, 1.50, 1, 100, 10, 100, 10, 20, 'Altamente comercializado','A');
-INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUniVen`, `MonCod`, `ProStk`, `ProStkPreVen`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('12', '01', '7755523050346', 'Trident Menta', 3, 0.20,1, 500, 10, 100, 10, 20, 'Altamente comercializado','A');
-INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUniVen`, `MonCod`, `ProStk`, `ProStkPreVen`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('12', '01', '7755523050347', 'Chiclets Menta', 3, 0.20, 1, 500, 10, 100, 10, 20, 'Altamente comercializado','A');
-INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUniVen`, `MonCod`, `ProStk`, `ProStkPreVen`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('12', '04', '7755523050348', 'Nikolo', 3, 0.70, 1, 100, 10, 100, 10, 20, 'Altamente comercializado','A');
-INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUniVen`, `MonCod`, `ProStk`, `ProStkPreVen`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('12', '04', '7755523050349', 'Mecano', 3, 1.00, 1, 100, 10, 100, 10, 20, 'Altamente comercializado','A');
+INSERT INTO `en_p2m_producto` (`ClaProCod`,`SubClaProCod`,`ProCod`,`ProDet`,`UniMedCod`,`ProPreUniVen`,`ProPreUniCom`,`MonCod`,`ProStk`,`ProStkRea`,`ProStkPreVen`,`VolUniAlm`,`ProStkMin`,`ProStkMax`,`ProObs`,`EstRegCod`) VALUES ('01','01','7755523010128','cerdo de 1kg',06,15.50,15.50,09,120.00,120.00,50.00,100.00,10.00,100.00,'Ninguna','A');
+INSERT INTO `en_p2m_producto` (`ClaProCod`,`SubClaProCod`,`ProCod`,`ProDet`,`UniMedCod`,`ProPreUniVen`,`ProPreUniCom`,`MonCod`,`ProStk`,`ProStkRea`,`ProStkPreVen`,`VolUniAlm`,`ProStkMin`,`ProStkMax`,`ProObs`,`EstRegCod`) VALUES ('01','01','7755523010137','cerdo en rollos',06,11.50,11.50,09,100.00,100.00,50.00,100.00,10.00,100.00,'Ninguna','A');
+INSERT INTO `en_p2m_producto` (`ClaProCod`,`SubClaProCod`,`ProCod`,`ProDet`,`UniMedCod`,`ProPreUniVen`,`ProPreUniCom`,`MonCod`,`ProStk`,`ProStkRea`,`ProStkPreVen`,`VolUniAlm`,`ProStkMin`,`ProStkMax`,`ProObs`,`EstRegCod`) VALUES ('01','01','7755523010146','chuleta de cerdo',06,15.50,15.50,09,120.00,120.00,50.00,100.00,10.00,100.00,'Ninguna','A');
+INSERT INTO `en_p2m_producto` (`ClaProCod`,`SubClaProCod`,`ProCod`,`ProDet`,`UniMedCod`,`ProPreUniVen`,`ProPreUniCom`,`MonCod`,`ProStk`,`ProStkRea`,`ProStkPreVen`,`VolUniAlm`,`ProStkMin`,`ProStkMax`,`ProObs`,`EstRegCod`) VALUES ('01','02','7755523010216','carne de pavo 1kg',06,15.50,15.50,09,120.00,120.00,50.00,100.00,10.00,100.00,'Ninguna','A');
+INSERT INTO `en_p2m_producto` (`ClaProCod`,`SubClaProCod`,`ProCod`,`ProDet`,`UniMedCod`,`ProPreUniVen`,`ProPreUniCom`,`MonCod`,`ProStk`,`ProStkRea`,`ProStkPreVen`,`VolUniAlm`,`ProStkMin`,`ProStkMax`,`ProObs`,`EstRegCod`) VALUES ('01','02','7755523010225','carne de pavo 1/2kg',06,7.50,7.50,09,120.00,120.00,50.00,100.00,10.00,100.00,'Ninguna','A');
+INSERT INTO `en_p2m_producto` (`ClaProCod`,`SubClaProCod`,`ProCod`,`ProDet`,`UniMedCod`,`ProPreUniVen`,`ProPreUniCom`,`MonCod`,`ProStk`,`ProStkRea`,`ProStkPreVen`,`VolUniAlm`,`ProStkMin`,`ProStkMax`,`ProObs`,`EstRegCod`) VALUES ('01','02','7755523010234','pavo para cena navideña',06,15.50,15.50,09,120.00,120.00,50.00,100.00,10.00,100.00,'Ninguna','A');
+INSERT INTO `en_p2m_producto` (`ClaProCod`,`SubClaProCod`,`ProCod`,`ProDet`,`UniMedCod`,`ProPreUniVen`,`ProPreUniCom`,`MonCod`,`ProStk`,`ProStkRea`,`ProStkPreVen`,`VolUniAlm`,`ProStkMin`,`ProStkMax`,`ProObs`,`EstRegCod`) VALUES ('01','03','7755523010313','alas de pollo',06,6.50,6.50,09,120.00,120.00,50.00,100.00,10.00,100.00,'Ninguna','A');
+INSERT INTO `en_p2m_producto` (`ClaProCod`,`SubClaProCod`,`ProCod`,`ProDet`,`UniMedCod`,`ProPreUniVen`,`ProPreUniCom`,`MonCod`,`ProStk`,`ProStkRea`,`ProStkPreVen`,`VolUniAlm`,`ProStkMin`,`ProStkMax`,`ProObs`,`EstRegCod`) VALUES ('01','03','7755523010322','piernas de pollo',06,7.50,7.50,02,120.00,120.00,50.00,100.00,10.00,100.00,'Ninguna','A');
+INSERT INTO `en_p2m_producto` (`ClaProCod`,`SubClaProCod`,`ProCod`,`ProDet`,`UniMedCod`,`ProPreUniVen`,`ProPreUniCom`,`MonCod`,`ProStk`,`ProStkRea`,`ProStkPreVen`,`VolUniAlm`,`ProStkMin`,`ProStkMax`,`ProObs`,`EstRegCod`) VALUES ('01','03','7755523010331','pechuga de pollo',06,7.50,7.50,02,120.00,120.00,50.00,100.00,10.00,100.00,'Ninguna','A');
+INSERT INTO `en_p2m_producto` (`ClaProCod`,`SubClaProCod`,`ProCod`,`ProDet`,`UniMedCod`,`ProPreUniVen`,`ProPreUniCom`,`MonCod`,`ProStk`,`ProStkRea`,`ProStkPreVen`,`VolUniAlm`,`ProStkMin`,`ProStkMax`,`ProObs`,`EstRegCod`) VALUES ('02','01','7755523020116','bonito',06,10.00,10.00,02,120.00,120.00,50.00,100.00,10.00,100.00,'Ninguna','A');
+INSERT INTO `en_p2m_producto` (`ClaProCod`,`SubClaProCod`,`ProCod`,`ProDet`,`UniMedCod`,`ProPreUniVen`,`ProPreUniCom`,`MonCod`,`ProStk`,`ProStkRea`,`ProStkPreVen`,`VolUniAlm`,`ProStkMin`,`ProStkMax`,`ProObs`,`EstRegCod`) VALUES ('02','01','7755523020125','corvina',06,8.00,8.00,02,120.00,120.00,50.00,100.00,10.00,100.00,'Ninguna','A');
+INSERT INTO `en_p2m_producto` (`ClaProCod`,`SubClaProCod`,`ProCod`,`ProDet`,`UniMedCod`,`ProPreUniVen`,`ProPreUniCom`,`MonCod`,`ProStk`,`ProStkRea`,`ProStkPreVen`,`VolUniAlm`,`ProStkMin`,`ProStkMax`,`ProObs`,`EstRegCod`) VALUES ('02','01','7755523020134','furel',06,10.00,10.00,02,120.00,120.00,50.00,100.00,10.00,100.00,'Ninguna','A');
+INSERT INTO `en_p2m_producto` (`ClaProCod`,`SubClaProCod`,`ProCod`,`ProDet`,`UniMedCod`,`ProPreUniVen`,`ProPreUniCom`,`MonCod`,`ProStk`,`ProStkRea`,`ProStkPreVen`,`VolUniAlm`,`ProStkMin`,`ProStkMax`,`ProObs`,`EstRegCod`) VALUES ('02','02','7755523020213','gula del norte',06,10.00,10.00,02,120.00,120.00,50.00,100.00,10.00,100.00,'Ninguna','A');
+INSERT INTO `en_p2m_producto` (`ClaProCod`,`SubClaProCod`,`ProCod`,`ProDet`,`UniMedCod`,`ProPreUniVen`,`ProPreUniCom`,`MonCod`,`ProStk`,`ProStkRea`,`ProStkPreVen`,`VolUniAlm`,`ProStkMin`,`ProStkMax`,`ProObs`,`EstRegCod`) VALUES ('02','02','7755523020222','krisia surini fresco rayado',04,10.00,10.00,02,120.00,120.00,50.00,100.00,10.00,100.00,'Ninguna','A');
+INSERT INTO `en_p2m_producto` (`ClaProCod`,`SubClaProCod`,`ProCod`,`ProDet`,`UniMedCod`,`ProPreUniVen`,`ProPreUniCom`,`MonCod`,`ProStk`,`ProStkRea`,`ProStkPreVen`,`VolUniAlm`,`ProStkMin`,`ProStkMax`,`ProObs`,`EstRegCod`) VALUES ('02','02','7755523020231','palitos de surini 300 gr',04,10.00,10.00,02,120.00,120.00,50.00,100.00,10.00,100.00,'Ninguna','A');
+INSERT INTO `en_p2m_producto` (`ClaProCod`,`SubClaProCod`,`ProCod`,`ProDet`,`UniMedCod`,`ProPreUniVen`,`ProPreUniCom`,`MonCod`,`ProStk`,`ProStkRea`,`ProStkPreVen`,`VolUniAlm`,`ProStkMin`,`ProStkMax`,`ProObs`,`EstRegCod`) VALUES ('02','03','7755523020310','salmon ahumado 200 gr',04,10.00,10.00,02,120.00,120.00,50.00,100.00,10.00,100.00,'Ninguna','A');
+INSERT INTO `en_p2m_producto` (`ClaProCod`,`SubClaProCod`,`ProCod`,`ProDet`,`UniMedCod`,`ProPreUniVen`,`ProPreUniCom`,`MonCod`,`ProStk`,`ProStkRea`,`ProStkPreVen`,`VolUniAlm`,`ProStkMin`,`ProStkMax`,`ProObs`,`EstRegCod`) VALUES ('02','03','7755523020329','trucha ahumada 200 gr',04,10.00,10.00,02,120.00,120.00,50.00,100.00,10.00,100.00,'Ninguna','A');
+INSERT INTO `en_p2m_producto` (`ClaProCod`,`SubClaProCod`,`ProCod`,`ProDet`,`UniMedCod`,`ProPreUniVen`,`ProPreUniCom`,`MonCod`,`ProStk`,`ProStkRea`,`ProStkPreVen`,`VolUniAlm`,`ProStkMin`,`ProStkMax`,`ProObs`,`EstRegCod`) VALUES ('02','03','7755523020338','pimenton ahumado 100 gr',04,8.00,8.00,02,120.00,120.00,50.00,100.00,10.00,100.00,'Ninguna','A');
+INSERT INTO `en_p2m_producto` (`ClaProCod`,`SubClaProCod`,`ProCod`,`ProDet`,`UniMedCod`,`ProPreUniVen`,`ProPreUniCom`,`MonCod`,`ProStk`,`ProStkRea`,`ProStkPreVen`,`VolUniAlm`,`ProStkMin`,`ProStkMax`,`ProObs`,`EstRegCod`) VALUES ('03','01','7755523030113','naranja zumo de malla',04,5.00,5.00,02,120.00,120.00,50.00,100.00,10.00,100.00,'Ninguna','A');
+INSERT INTO `en_p2m_producto` (`ClaProCod`,`SubClaProCod`,`ProCod`,`ProDet`,`UniMedCod`,`ProPreUniVen`,`ProPreUniCom`,`MonCod`,`ProStk`,`ProStkRea`,`ProStkPreVen`,`VolUniAlm`,`ProStkMin`,`ProStkMax`,`ProObs`,`EstRegCod`) VALUES ('03','01','7755523030122','mandarinas 1kg',04,5.00,5.00,02,120.00,120.00,50.00,100.00,10.00,100.00,'Ninguna','A');
+INSERT INTO `en_p2m_producto` (`ClaProCod`,`SubClaProCod`,`ProCod`,`ProDet`,`UniMedCod`,`ProPreUniVen`,`ProPreUniCom`,`MonCod`,`ProStk`,`ProStkRea`,`ProStkPreVen`,`VolUniAlm`,`ProStkMin`,`ProStkMax`,`ProObs`,`EstRegCod`) VALUES ('03','01','7755523030131','limones 1kg',04,5.00,5.00,02,120.00,120.00,50.00,100.00,10.00,100.00,'Ninguna','A');
+INSERT INTO `en_p2m_producto` (`ClaProCod`,`SubClaProCod`,`ProCod`,`ProDet`,`UniMedCod`,`ProPreUniVen`,`ProPreUniCom`,`MonCod`,`ProStk`,`ProStkRea`,`ProStkPreVen`,`VolUniAlm`,`ProStkMin`,`ProStkMax`,`ProObs`,`EstRegCod`) VALUES ('03','02','7755523030210','pera blanca 1kg',04,6.00,6.00,02,120.00,120.00,50.00,100.00,10.00,100.00,'Ninguna','A');
+INSERT INTO `en_p2m_producto` (`ClaProCod`,`SubClaProCod`,`ProCod`,`ProDet`,`UniMedCod`,`ProPreUniVen`,`ProPreUniCom`,`MonCod`,`ProStk`,`ProStkRea`,`ProStkPreVen`,`VolUniAlm`,`ProStkMin`,`ProStkMax`,`ProObs`,`EstRegCod`) VALUES ('03','02','7755523030229','manzana golden 240gr',04,6.00,6.00,02,120.00,120.00,50.00,100.00,10.00,100.00,'Ninguna','A');
+INSERT INTO `en_p2m_producto` (`ClaProCod`,`SubClaProCod`,`ProCod`,`ProDet`,`UniMedCod`,`ProPreUniVen`,`ProPreUniCom`,`MonCod`,`ProStk`,`ProStkRea`,`ProStkPreVen`,`VolUniAlm`,`ProStkMin`,`ProStkMax`,`ProObs`,`EstRegCod`) VALUES ('03','02','7755523030238','manzana roja 290gr',04,6.00,6.00,02,120.00,120.00,50.00,100.00,10.00,100.00,'Ninguna','A');
+INSERT INTO `en_p2m_producto` (`ClaProCod`,`SubClaProCod`,`ProCod`,`ProDet`,`UniMedCod`,`ProPreUniVen`,`ProPreUniCom`,`MonCod`,`ProStk`,`ProStkRea`,`ProStkPreVen`,`VolUniAlm`,`ProStkMin`,`ProStkMax`,`ProObs`,`EstRegCod`) VALUES ('04','01','7755523040110','ajo morado 1kg',04,6.00,6.00,02,120.00,120.00,50.00,100.00,10.00,100.00,'Ninguna','A');
+INSERT INTO `en_p2m_producto` (`ClaProCod`,`SubClaProCod`,`ProCod`,`ProDet`,`UniMedCod`,`ProPreUniVen`,`ProPreUniCom`,`MonCod`,`ProStk`,`ProStkRea`,`ProStkPreVen`,`VolUniAlm`,`ProStkMin`,`ProStkMax`,`ProObs`,`EstRegCod`) VALUES ('04','01','7755523040129','ajo molido frasco 55gr',04,6.00,6.00,02,120.00,120.00,50.00,100.00,10.00,100.00,'Ninguna','A');
+INSERT INTO `en_p2m_producto` (`ClaProCod`,`SubClaProCod`,`ProCod`,`ProDet`,`UniMedCod`,`ProPreUniVen`,`ProPreUniCom`,`MonCod`,`ProStk`,`ProStkRea`,`ProStkPreVen`,`VolUniAlm`,`ProStkMin`,`ProStkMax`,`ProObs`,`EstRegCod`) VALUES ('04','01','7755523040138','sazonador de ajo 43gr',04,6.00,6.00,02,120.00,120.00,50.00,100.00,10.00,100.00,'Ninguna','A');
+INSERT INTO `en_p2m_producto` (`ClaProCod`,`SubClaProCod`,`ProCod`,`ProDet`,`UniMedCod`,`ProPreUniVen`,`ProPreUniCom`,`MonCod`,`ProStk`,`ProStkRea`,`ProStkPreVen`,`VolUniAlm`,`ProStkMin`,`ProStkMax`,`ProObs`,`EstRegCod`) VALUES ('04','02','7755523040217','brocoli pieza de 500gr',04,6.00,6.00,02,120.00,120.00,50.00,100.00,10.00,100.00,'Ninguna','A');
+INSERT INTO `en_p2m_producto` (`ClaProCod`,`SubClaProCod`,`ProCod`,`ProDet`,`UniMedCod`,`ProPreUniVen`,`ProPreUniCom`,`MonCod`,`ProStk`,`ProStkRea`,`ProStkPreVen`,`VolUniAlm`,`ProStkMin`,`ProStkMax`,`ProObs`,`EstRegCod`) VALUES ('04','02','7755523040226','coliflor en bolsa de 1kg',04,6.00,6.00,02,120.00,120.00,50.00,100.00,10.00,100.00,'Ninguna','A');
+INSERT INTO `en_p2m_producto` (`ClaProCod`,`SubClaProCod`,`ProCod`,`ProDet`,`UniMedCod`,`ProPreUniVen`,`ProPreUniCom`,`MonCod`,`ProStk`,`ProStkRea`,`ProStkPreVen`,`VolUniAlm`,`ProStkMin`,`ProStkMax`,`ProObs`,`EstRegCod`) VALUES ('04','02','7755523040235','repollo 1kg',04,6.00,6.00,02,120.00,120.00,50.00,100.00,10.00,100.00,'Ninguna','A');
+INSERT INTO `en_p2m_producto` (`ClaProCod`,`SubClaProCod`,`ProCod`,`ProDet`,`UniMedCod`,`ProPreUniVen`,`ProPreUniCom`,`MonCod`,`ProStk`,`ProStkRea`,`ProStkPreVen`,`VolUniAlm`,`ProStkMin`,`ProStkMax`,`ProObs`,`EstRegCod`) VALUES ('04','03','7755523040314','tomate fitofrasco de 500gr',04,6.00,6.00,02,120.00,120.00,50.00,100.00,10.00,100.00,'Ninguna','A');
+INSERT INTO `en_p2m_producto` (`ClaProCod`,`SubClaProCod`,`ProCod`,`ProDet`,`UniMedCod`,`ProPreUniVen`,`ProPreUniCom`,`MonCod`,`ProStk`,`ProStkRea`,`ProStkPreVen`,`VolUniAlm`,`ProStkMin`,`ProStkMax`,`ProObs`,`EstRegCod`) VALUES ('04','03','7755523040323','tomate frito casero 500gr',04,6.00,6.00,02,120.00,120.00,50.00,100.00,10.00,100.00,'Ninguna','A');
+INSERT INTO `en_p2m_producto` (`ClaProCod`,`SubClaProCod`,`ProCod`,`ProDet`,`UniMedCod`,`ProPreUniVen`,`ProPreUniCom`,`MonCod`,`ProStk`,`ProStkRea`,`ProStkPreVen`,`VolUniAlm`,`ProStkMin`,`ProStkMax`,`ProObs`,`EstRegCod`) VALUES ('04','03','7755523040332','ensalada de tomate malla 1kg',04,6.00,6.00,02,120.00,120.00,50.00,100.00,10.00,100.00,'Ninguna','A');
+INSERT INTO `en_p2m_producto` (`ClaProCod`,`SubClaProCod`,`ProCod`,`ProDet`,`UniMedCod`,`ProPreUniVen`,`ProPreUniCom`,`MonCod`,`ProStk`,`ProStkRea`,`ProStkPreVen`,`VolUniAlm`,`ProStkMin`,`ProStkMax`,`ProObs`,`EstRegCod`) VALUES ('05','01','7755523050117','barritas de cereales de chocolate',04,6.00,6.00,02,120.00,120.00,50.00,100.00,10.00,100.00,'Ninguna','A');
+INSERT INTO `en_p2m_producto` (`ClaProCod`,`SubClaProCod`,`ProCod`,`ProDet`,`UniMedCod`,`ProPreUniVen`,`ProPreUniCom`,`MonCod`,`ProStk`,`ProStkRea`,`ProStkPreVen`,`VolUniAlm`,`ProStkMin`,`ProStkMax`,`ProObs`,`EstRegCod`) VALUES ('05','01','7755523050126','barritas de cereales nesquick',04,6.00,6.00,02,120.00,120.00,50.00,100.00,10.00,100.00,'Ninguna','A');
+INSERT INTO `en_p2m_producto` (`ClaProCod`,`SubClaProCod`,`ProCod`,`ProDet`,`UniMedCod`,`ProPreUniVen`,`ProPreUniCom`,`MonCod`,`ProStk`,`ProStkRea`,`ProStkPreVen`,`VolUniAlm`,`ProStkMin`,`ProStkMax`,`ProObs`,`EstRegCod`) VALUES ('05','01','7755523050135','barritas de cereales integrales',04,6.00,6.00,02,120.00,120.00,50.00,100.00,10.00,100.00,'Ninguna','A');
+INSERT INTO `en_p2m_producto` (`ClaProCod`,`SubClaProCod`,`ProCod`,`ProDet`,`UniMedCod`,`ProPreUniVen`,`ProPreUniCom`,`MonCod`,`ProStk`,`ProStkRea`,`ProStkPreVen`,`VolUniAlm`,`ProStkMin`,`ProStkMax`,`ProObs`,`EstRegCod`) VALUES ('05','02','7755523050214','cereales corn flakes',04,6.00,6.00,02,120.00,120.00,50.00,100.00,10.00,100.00,'Ninguna','A');
+INSERT INTO `en_p2m_producto` (`ClaProCod`,`SubClaProCod`,`ProCod`,`ProDet`,`UniMedCod`,`ProPreUniVen`,`ProPreUniCom`,`MonCod`,`ProStk`,`ProStkRea`,`ProStkPreVen`,`VolUniAlm`,`ProStkMin`,`ProStkMax`,`ProObs`,`EstRegCod`) VALUES ('05','02','7755523050223','cereales kellogs',04,6.00,6.00,02,120.00,120.00,50.00,100.00,10.00,100.00,'Ninguna','A');
+INSERT INTO `en_p2m_producto` (`ClaProCod`,`SubClaProCod`,`ProCod`,`ProDet`,`UniMedCod`,`ProPreUniVen`,`ProPreUniCom`,`MonCod`,`ProStk`,`ProStkRea`,`ProStkPreVen`,`VolUniAlm`,`ProStkMin`,`ProStkMax`,`ProObs`,`EstRegCod`) VALUES ('05','02','7755523050232','cereales nestle',04,6.00,6.00,02,120.00,120.00,50.00,100.00,10.00,100.00,'Ninguna','A');
+INSERT INTO `en_p2m_producto` (`ClaProCod`,`SubClaProCod`,`ProCod`,`ProDet`,`UniMedCod`,`ProPreUniVen`,`ProPreUniCom`,`MonCod`,`ProStk`,`ProStkRea`,`ProStkPreVen`,`VolUniAlm`,`ProStkMin`,`ProStkMax`,`ProObs`,`EstRegCod`) VALUES ('05','03','7755523050311','mini cereales nestle lion',04,6.00,6.00,02,120.00,120.00,50.00,100.00,10.00,100.00,'Ninguna','A');
+INSERT INTO `en_p2m_producto` (`ClaProCod`,`SubClaProCod`,`ProCod`,`ProDet`,`UniMedCod`,`ProPreUniVen`,`ProPreUniCom`,`MonCod`,`ProStk`,`ProStkRea`,`ProStkPreVen`,`VolUniAlm`,`ProStkMin`,`ProStkMax`,`ProObs`,`EstRegCod`) VALUES ('05','03','7755523050320','mini cereales kellogs',04,6.00,6.00,02,120.00,120.00,50.00,100.00,10.00,100.00,'Ninguna','A');
+INSERT INTO `en_p2m_producto` (`ClaProCod`,`SubClaProCod`,`ProCod`,`ProDet`,`UniMedCod`,`ProPreUniVen`,`ProPreUniCom`,`MonCod`,`ProStk`,`ProStkRea`,`ProStkPreVen`,`VolUniAlm`,`ProStkMin`,`ProStkMax`,`ProObs`,`EstRegCod`) VALUES ('05','03','7755523050339','mini cereales corn flakes',04,6.00,6.00,02,120.00,120.00,50.00,100.00,10.00,100.00,'Ninguna','A');
+INSERT INTO `en_p2m_producto` (`ClaProCod`,`SubClaProCod`,`ProCod`,`ProDet`,`UniMedCod`,`ProPreUniVen`,`ProPreUniCom`,`MonCod`,`ProStk`,`ProStkRea`,`ProStkPreVen`,`VolUniAlm`,`ProStkMin`,`ProStkMax`,`ProObs`,`EstRegCod`) VALUES ('08','02','7755523050340','Mermelada Gloria 500',03,5.50,5.50,01,50.00,50.00,10.00,100.00,10.00,20.00,'Altamente comercializado','A');
+INSERT INTO `en_p2m_producto` (`ClaProCod`,`SubClaProCod`,`ProCod`,`ProDet`,`UniMedCod`,`ProPreUniVen`,`ProPreUniCom`,`MonCod`,`ProStk`,`ProStkRea`,`ProStkPreVen`,`VolUniAlm`,`ProStkMin`,`ProStkMax`,`ProObs`,`EstRegCod`) VALUES ('08','02','7755523050341','Mermelada Fanny 500',03,6.00,6.00,01,50.00,50.00,10.00,100.00,10.00,20.00,'Altamente comercializado','A');
+INSERT INTO `en_p2m_producto` (`ClaProCod`,`SubClaProCod`,`ProCod`,`ProDet`,`UniMedCod`,`ProPreUniVen`,`ProPreUniCom`,`MonCod`,`ProStk`,`ProStkRea`,`ProStkPreVen`,`VolUniAlm`,`ProStkMin`,`ProStkMax`,`ProObs`,`EstRegCod`) VALUES ('08','03','7755523050342','Aconcagua Durazno 250',03,5.50,5.50,01,150.00,150.00,100.00,100.00,10.00,20.00,'Altamente comercializado','A');
+INSERT INTO `en_p2m_producto` (`ClaProCod`,`SubClaProCod`,`ProCod`,`ProDet`,`UniMedCod`,`ProPreUniVen`,`ProPreUniCom`,`MonCod`,`ProStk`,`ProStkRea`,`ProStkPreVen`,`VolUniAlm`,`ProStkMin`,`ProStkMax`,`ProObs`,`EstRegCod`) VALUES ('08','03','7755523050343','Aconcagua Piña 250',03,5.50,5.50,01,90.00,90.00,10.00,100.00,10.00,20.00,'Altamente comercializado','A');
+INSERT INTO `en_p2m_producto` (`ClaProCod`,`SubClaProCod`,`ProCod`,`ProDet`,`UniMedCod`,`ProPreUniVen`,`ProPreUniCom`,`MonCod`,`ProStk`,`ProStkRea`,`ProStkPreVen`,`VolUniAlm`,`ProStkMin`,`ProStkMax`,`ProObs`,`EstRegCod`) VALUES ('09','02','7755523050344','San Fernando 100',03,1.50,1.50,01,150.00,150.00,10.00,100.00,10.00,20.00,'Altamente comercializado','A');
+INSERT INTO `en_p2m_producto` (`ClaProCod`,`SubClaProCod`,`ProCod`,`ProDet`,`UniMedCod`,`ProPreUniVen`,`ProPreUniCom`,`MonCod`,`ProStk`,`ProStkRea`,`ProStkPreVen`,`VolUniAlm`,`ProStkMin`,`ProStkMax`,`ProObs`,`EstRegCod`) VALUES ('09','02','7755523050345','La Calera 100',03,1.50,1.50,01,100.00,100.00,10.00,100.00,10.00,20.00,'Altamente comercializado','A');
+INSERT INTO `en_p2m_producto` (`ClaProCod`,`SubClaProCod`,`ProCod`,`ProDet`,`UniMedCod`,`ProPreUniVen`,`ProPreUniCom`,`MonCod`,`ProStk`,`ProStkRea`,`ProStkPreVen`,`VolUniAlm`,`ProStkMin`,`ProStkMax`,`ProObs`,`EstRegCod`) VALUES ('12','01','7755523050346','Trident Menta',03,0.20,0.20,01,500.00,500.00,10.00,100.00,10.00,20.00,'Altamente comercializado','A');
+INSERT INTO `en_p2m_producto` (`ClaProCod`,`SubClaProCod`,`ProCod`,`ProDet`,`UniMedCod`,`ProPreUniVen`,`ProPreUniCom`,`MonCod`,`ProStk`,`ProStkRea`,`ProStkPreVen`,`VolUniAlm`,`ProStkMin`,`ProStkMax`,`ProObs`,`EstRegCod`) VALUES ('12','01','7755523050347','Chiclets Menta',03,0.20,0.20,01,500.00,500.00,10.00,100.00,10.00,20.00,'Altamente comercializado','A');
+INSERT INTO `en_p2m_producto` (`ClaProCod`,`SubClaProCod`,`ProCod`,`ProDet`,`UniMedCod`,`ProPreUniVen`,`ProPreUniCom`,`MonCod`,`ProStk`,`ProStkRea`,`ProStkPreVen`,`VolUniAlm`,`ProStkMin`,`ProStkMax`,`ProObs`,`EstRegCod`) VALUES ('12','04','7755523050348','Nikolo',03,0.70,0.70,01,100.00,100.00,10.00,100.00,10.00,20.00,'Altamente comercializado','A');
+INSERT INTO `en_p2m_producto` (`ClaProCod`,`SubClaProCod`,`ProCod`,`ProDet`,`UniMedCod`,`ProPreUniVen`,`ProPreUniCom`,`MonCod`,`ProStk`,`ProStkRea`,`ProStkPreVen`,`VolUniAlm`,`ProStkMin`,`ProStkMax`,`ProObs`,`EstRegCod`) VALUES ('12','04','7755523050349','Mecano',03,1.00,1.00,01,100.00,100.00,10.00,100.00,10.00,20.00,'Altamente comercializado','A');
 
 COMMIT;
 
@@ -771,18 +763,16 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `episerp`;
-START TRANSACTION;
-USE `episerp`;
-INSERT INTO `episerp`.`en_p4m_proveedor` (`PrvCod`,`PrvDet`,`PrvCon`,`PrvDir`,`PrvTelFij`,`PrvTelCel`,`PrvEmail`,`PrvPagWeb`,`PrvObs`,`EstRegCod`) VALUES ('123456789121', 'ARCON', 'Milagros Aguilar Zuñiga', 'Mz. C Lt.9 Las Mercedes Cerro Colorado','054454908', '945995506', 'arcon@proveedores.com', 'www.arcon.com', '', 'A');
-INSERT INTO `episerp`.`en_p4m_proveedor` (`PrvCod`,`PrvDet`,`PrvCon`,`PrvDir`,`PrvTelFij`,`PrvTelCel`,`PrvEmail`,`PrvPagWeb`,`PrvObs`,`EstRegCod`) VALUES ('789456123121', 'Central Hisumer', 'Melina Alvarez Obregon', 'Calle 28 de Julio Vallecito Cercado', '054124578', '94563524178', 'hisumer@proveedores.com', 'www.centralhisumer.com', '', 'A');
-INSERT INTO `episerp`.`en_p4m_proveedor` (`PrvCod`,`PrvDet`,`PrvCon`,`PrvDir`,`PrvTelFij`,`PrvTelCel`,`PrvEmail`,`PrvPagWeb`,`PrvObs`,`EstRegCod`) VALUES ('147258369121', 'IberCorte', 'Erick Cruz Salinas', 'Urb. Santa Cecilia A-2 Yanahuara', '054784512', '945120346', 'ibercorte@proveedores.com', 'www.ibercorte.com', '', 'A');
-INSERT INTO `episerp`.`en_p4m_proveedor` (`PrvCod`,`PrvDet`,`PrvCon`,`PrvDir`,`PrvTelFij`,`PrvTelCel`,`PrvEmail`,`PrvPagWeb`,`PrvObs`,`EstRegCod`) VALUES ('369258147121', 'Grupo Guerra Distribuidores', 'Walter Toledo Turpo', 'Calle Paz Soldan 407 Yanahuara', '054968574', '940784512', 'guerra@distribuidores.com', 'www.guerradistribuidores.com', '', 'A');
-INSERT INTO `episerp`.`en_p4m_proveedor` (`PrvCod`,`PrvDet`,`PrvCon`,`PrvDir`,`PrvTelFij`,`PrvTelCel`,`PrvEmail`,`PrvPagWeb`,`PrvObs`,`EstRegCod`) VALUES ('258147369121', 'EHOSA', 'Grisseldy Arenas Orejuela', 'Av. San Martin 205 Miraflores', '054326598', '945023678', 'ehosa@proveedores.com', 'www.ehosadistribuidores.com', '', 'A');
-INSERT INTO `episerp`.`en_p4m_proveedor` (`PrvCod`,`PrvDet`,`PrvCon`,`PrvDir`,`PrvTelFij`,`PrvTelCel`,`PrvEmail`,`PrvPagWeb`,`PrvObs`,`EstRegCod`) VALUES ('321654987121', 'Disconfa', 'Sharon Bedregal Machaca', 'Av. La Paz 509', '054368971', '948152634', 'disconfa@proveedores.com', 'www.proveedoresdisconfa.com', '', 'A');
-INSERT INTO `episerp`.`en_p4m_proveedor` (`PrvCod`,`PrvDet`,`PrvCon`,`PrvDir`,`PrvTelFij`,`PrvTelCel`,`PrvEmail`,`PrvPagWeb`,`PrvObs`,`EstRegCod`) VALUES ('987654321121', 'Import Export', 'José Paiva Franco', 'Centro Comercial Cayma 3er Piso', '054867219', '945007184', 'importexport@proveedores.com', 'www.importexport.com', '', 'A');
-INSERT INTO `episerp`.`en_p4m_proveedor` (`PrvCod`,`PrvDet`,`PrvCon`,`PrvDir`,`PrvTelFij`,`PrvTelCel`,`PrvEmail`,`PrvPagWeb`,`PrvObs`,`EstRegCod`) VALUES ('654321987121', 'NavaRioja', 'Abelardo Alvarez Martinez', 'Via Evitamiento Km3 Cerro Colorado', '054237816', '945301020', 'navarioja@proveedores.com', 'www.navarioja.com', '', 'A');
-INSERT INTO `episerp`.`en_p4m_proveedor` (`PrvCod`,`PrvDet`,`PrvCon`,`PrvDir`,`PrvTelFij`,`PrvTelCel`,`PrvEmail`,`PrvPagWeb`,`PrvObs`,`EstRegCod`) VALUES ('456123789121', 'Dadyma', 'Carlos Gershy Pinto', 'Av. San Martin 603 Miraflores', '054789123', '945781266', 'dadyma@proveedores.com', 'www.dadyma.com', '', 'A');
-INSERT INTO `episerp`.`en_p4m_proveedor` (`PrvCod`,`PrvDet`,`PrvCon`,`PrvDir`,`PrvTelFij`,`PrvTelCel`,`PrvEmail`,`PrvPagWeb`,`PrvObs`,`EstRegCod`) VALUES ('456741852121', 'Alcamar', 'Gretel Cama Pizarro', 'Coorp. 19 D-10 Paucarpata', '054962317', '945662322', 'alcamar@proveedores.com', 'www.alcamar.com', '', 'A');
+INSERT INTO `en_p4m_proveedor` (`PrvCod`,`PrvDet`,`PrvRazSoc`,`PrvNomCom`,`PrvDomFis`,`PrvCon`,`PrvDir`,`PrvTelFij`,`PrvTelCel`,`PrvEmail`,`PrvPagWeb`,`PrvObs`,`EstRegCod`) VALUES ('123456789121','ARCON','ARCON S.R.L','ARCON','Mz. C Lt.9 Las Mercedes Cerro Colorado','Milagros Aguilar Zuñiga','Mz. C Lt.9 Las Mercedes Cerro Colorado','054454908','945995506','arcon@proveedores.com','www.arcon.com','','A');
+INSERT INTO `en_p4m_proveedor` (`PrvCod`,`PrvDet`,`PrvRazSoc`,`PrvNomCom`,`PrvDomFis`,`PrvCon`,`PrvDir`,`PrvTelFij`,`PrvTelCel`,`PrvEmail`,`PrvPagWeb`,`PrvObs`,`EstRegCod`) VALUES ('147258369121','IberCorte','IberCorte S.A.C.','IberCorte','Urb. Santa Cecilia A-2 Yanahuara','Erick Cruz Salinas','Urb. Santa Cecilia A-2 Yanahuara','054784512','945120346','ibercorte@proveedores.com','www.ibercorte.com','','A');
+INSERT INTO `en_p4m_proveedor` (`PrvCod`,`PrvDet`,`PrvRazSoc`,`PrvNomCom`,`PrvDomFis`,`PrvCon`,`PrvDir`,`PrvTelFij`,`PrvTelCel`,`PrvEmail`,`PrvPagWeb`,`PrvObs`,`EstRegCod`) VALUES ('258147369121','EHOSA','EHOSA E.I.R.L','EHOSA','Av. San Martin 205 Miraflores','Grisseldy Arenas Orejuela','Av. San Martin 205 Miraflores','054326598','945023678','ehosa@proveedores.com','www.ehosadistribuidores.com','','A');
+INSERT INTO `en_p4m_proveedor` (`PrvCod`,`PrvDet`,`PrvRazSoc`,`PrvNomCom`,`PrvDomFis`,`PrvCon`,`PrvDir`,`PrvTelFij`,`PrvTelCel`,`PrvEmail`,`PrvPagWeb`,`PrvObs`,`EstRegCod`) VALUES ('321654987121','Disconfa','Disconfa S.A.C','Disconfa','Av. La Paz 509','Sharon Bedregal Machaca','Av. La Paz 509','054368971','948152634','disconfa@proveedores.com','www.proveedoresdisconfa.com','','A');
+INSERT INTO `en_p4m_proveedor` (`PrvCod`,`PrvDet`,`PrvRazSoc`,`PrvNomCom`,`PrvDomFis`,`PrvCon`,`PrvDir`,`PrvTelFij`,`PrvTelCel`,`PrvEmail`,`PrvPagWeb`,`PrvObs`,`EstRegCod`) VALUES ('369258147121','Grupo Guerra Distribuidores','Grupo Guerra Distribuidores S.A.C','Grupo Guerra Distribuidores','Calle Paz Soldan 407 Yanahuara','Walter Toledo Turpo','Calle Paz Soldan 407 Yanahuara','054968574','940784512','guerra@distribuidores.com','www.guerradistribuidores.com','','A');
+INSERT INTO `en_p4m_proveedor` (`PrvCod`,`PrvDet`,`PrvRazSoc`,`PrvNomCom`,`PrvDomFis`,`PrvCon`,`PrvDir`,`PrvTelFij`,`PrvTelCel`,`PrvEmail`,`PrvPagWeb`,`PrvObs`,`EstRegCod`) VALUES ('456123789121','Dadyma','Dadyma S.A.C','Dadyma','Av. San Martin 603 Miraflores','Carlos Gershy Pinto','Av. San Martin 603 Miraflores','054789123','945781266','dadyma@proveedores.com','www.dadyma.com','','A');
+INSERT INTO `en_p4m_proveedor` (`PrvCod`,`PrvDet`,`PrvRazSoc`,`PrvNomCom`,`PrvDomFis`,`PrvCon`,`PrvDir`,`PrvTelFij`,`PrvTelCel`,`PrvEmail`,`PrvPagWeb`,`PrvObs`,`EstRegCod`) VALUES ('456741852121','Alcamar','Alcamar S.A.C','Alcamar','Coorp. 19 D-10 Paucarpata','Gretel Cama Pizarro','Coorp. 19 D-10 Paucarpata','054962317','945662322','alcamar@proveedores.com','www.alcamar.com','','A');
+INSERT INTO `en_p4m_proveedor` (`PrvCod`,`PrvDet`,`PrvRazSoc`,`PrvNomCom`,`PrvDomFis`,`PrvCon`,`PrvDir`,`PrvTelFij`,`PrvTelCel`,`PrvEmail`,`PrvPagWeb`,`PrvObs`,`EstRegCod`) VALUES ('654321987121','NavaRioja','NavaRioja S.A.C.','NavaRioja','Via Evitamiento Km3 Cerro Colorado','Abelardo Alvarez Martinez','Via Evitamiento Km3 Cerro Colorado','054237816','945301020','navarioja@proveedores.com','www.navarioja.com','','A');
+INSERT INTO `en_p4m_proveedor` (`PrvCod`,`PrvDet`,`PrvRazSoc`,`PrvNomCom`,`PrvDomFis`,`PrvCon`,`PrvDir`,`PrvTelFij`,`PrvTelCel`,`PrvEmail`,`PrvPagWeb`,`PrvObs`,`EstRegCod`) VALUES ('789456123121','Central Hisumer','Central Hisumer S.A.C.','Central Hisumer','Calle 28 de Julio Vallecito Cercado','Melina Alvarez Obregon','Calle 28 de Julio Vallecito Cercado','054124578','94563524178','hisumer@proveedores.com','www.centralhisumer.com','','A');
+INSERT INTO `en_p4m_proveedor` (`PrvCod`,`PrvDet`,`PrvRazSoc`,`PrvNomCom`,`PrvDomFis`,`PrvCon`,`PrvDir`,`PrvTelFij`,`PrvTelCel`,`PrvEmail`,`PrvPagWeb`,`PrvObs`,`EstRegCod`) VALUES ('987654321121','Import Export','Import Export S.A.C','Import Export','Centro Comercial Cayma 3er Piso','José Paiva Franco','Centro Comercial Cayma 3er Piso','054867219','945007184','importexport@proveedores.com','www.importexport.com','','A');
 
 COMMIT;
 
@@ -805,20 +795,20 @@ INSERT INTO `en_p4m_documento_proveedor` (`PrvCod`, `TipDocProCod`, `DocProNum`,
 
 COMMIT;
 
-/*
--- Query: SELECT * FROM episerp.en_p3m_libro_diario
-LIMIT 0, 1000
-
--- Date: 2016-10-27 17:33
-*/
+-- -----------------------------------------------------
+-- Data for table `episerp`.`en_p3m_libro_diario`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `episerp`;
 INSERT INTO `en_p3m_libro_diario` (`LibDiaCod`,`LibDiaPer`,`EstRegCod`) VALUES (000001,'2016-Oct','A');
 
-/*
--- Query: SELECT * FROM episerp.en_p3m_asiento_cab
-LIMIT 0, 1000
+COMMIT;
 
--- Date: 2016-10-27 17:26
-*/
+-- -----------------------------------------------------
+-- Data for table `episerp`.`en_p3m_asiento_cab`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `episerp`;
 INSERT INTO `en_p3m_asiento_cab` (`LibDiaCod`,`AsiCabCod`,`AsiCabTip`,`AsiCabGlo`,`AsiCabFec`,`TipComCod`,`AsiCabNumCom`,`MonCod`,`EstRegCod`) VALUES (000001,0000000001,'M','factura 001-4678','2016-08-26',01,'001-4678',01,'A');
 INSERT INTO `en_p3m_asiento_cab` (`LibDiaCod`,`AsiCabCod`,`AsiCabTip`,`AsiCabGlo`,`AsiCabFec`,`TipComCod`,`AsiCabNumCom`,`MonCod`,`EstRegCod`) VALUES (000001,0000000002,'M','ón en la factura 001-4678','2016-08-26',01,'001-4678',01,'A');
 INSERT INTO `en_p3m_asiento_cab` (`LibDiaCod`,`AsiCabCod`,`AsiCabTip`,`AsiCabGlo`,`AsiCabFec`,`TipComCod`,`AsiCabNumCom`,`MonCod`,`EstRegCod`) VALUES (000001,0000000003,'M','la adquirida con factura 001-4678','2016-08-26',01,'001-4678',01,'A');
@@ -848,15 +838,13 @@ INSERT INTO `en_p3m_asiento_cab` (`LibDiaCod`,`AsiCabCod`,`AsiCabTip`,`AsiCabGlo
 INSERT INTO `en_p3m_asiento_cab` (`LibDiaCod`,`AsiCabCod`,`AsiCabTip`,`AsiCabGlo`,`AsiCabFec`,`TipComCod`,`AsiCabNumCom`,`MonCod`,`EstRegCod`) VALUES (000001,0000000027,'M','vehiculo factura 054-012569','2016-09-22',01,'054-012569',01,'A');
 INSERT INTO `en_p3m_asiento_cab` (`LibDiaCod`,`AsiCabCod`,`AsiCabTip`,`AsiCabGlo`,`AsiCabFec`,`TipComCod`,`AsiCabNumCom`,`MonCod`,`EstRegCod`) VALUES (000001,0000000028,'M','ón factura 054-012569','2016-09-22',01,'054-012569',01,'A');
 
+COMMIT;
 
-
-
-/*
--- Query: SELECT * FROM episerp.en_p3t_asiento_det
-LIMIT 0, 1000
-
--- Date: 2016-10-27 17:27
-*/
+-- -----------------------------------------------------
+-- Data for table `episerp`.`en_p3t_asiento_det`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `episerp`;
 INSERT INTO `en_p3t_asiento_det` (`LibDiaCod`,`AsiCabCod`,`AsiDetCod`,`CueCod`,`AsiDetDebHab`,`AsiDetMon`) VALUES (000001,0000000001,0000000001,0000000306,1,500.00);
 INSERT INTO `en_p3t_asiento_det` (`LibDiaCod`,`AsiCabCod`,`AsiDetCod`,`CueCod`,`AsiDetDebHab`,`AsiDetMon`) VALUES (000001,0000000001,0000000002,0000000229,1,90.00);
 INSERT INTO `en_p3t_asiento_det` (`LibDiaCod`,`AsiCabCod`,`AsiDetCod`,`CueCod`,`AsiDetDebHab`,`AsiDetMon`) VALUES (000001,0000000001,0000000003,0000000241,0,590.00);
@@ -930,42 +918,15 @@ INSERT INTO `en_p3t_asiento_det` (`LibDiaCod`,`AsiCabCod`,`AsiDetCod`,`CueCod`,`
 INSERT INTO `en_p3t_asiento_det` (`LibDiaCod`,`AsiCabCod`,`AsiDetCod`,`CueCod`,`AsiDetDebHab`,`AsiDetMon`) VALUES (000001,0000000028,0000000071,0000000241,1,18172.00);
 INSERT INTO `en_p3t_asiento_det` (`LibDiaCod`,`AsiCabCod`,`AsiDetCod`,`CueCod`,`AsiDetDebHab`,`AsiDetMon`) VALUES (000001,0000000028,0000000072,0000000542,0,18172.00);
 
+COMMIT;
+
 /*Transporte*/
+
+-- -----------------------------------------------------
+-- Data for table `episerp`.`en_p2m_unidad_transporte`
+-- -----------------------------------------------------
 START TRANSACTION;
 USE `episerp`;
-
-INSERT INTO `ta_gzz_estado_uni_transporte` (`EstUniTraCod`,`EstUniTraDet`,`EstRegCod`) VALUES (01,"Activo","A");
-INSERT INTO `ta_gzz_estado_uni_transporte` (`EstUniTraCod`,`EstUniTraDet`,`EstRegCod`) VALUES (02,"Inactivo","A");
-INSERT INTO `ta_gzz_estado_uni_transporte` (`EstUniTraCod`,`EstUniTraDet`,`EstRegCod`) VALUES (03,"En Reparacion","A");
-INSERT INTO `ta_gzz_estado_uni_transporte` (`EstUniTraCod`,`EstUniTraDet`,`EstRegCod`) VALUES (04,"En Mantenimiento","A");
-
-COMMIT;
-
-START TRANSACTION;
-USE `episerp`;
-
-INSERT INTO `ta_gzz_tipo_uni_transporte` (`TipUniTraCod`,`TipUniTraDet`,`EstRegCod`) VALUES (01,"Vehiculo Caja-Granel","A");
-INSERT INTO `ta_gzz_tipo_uni_transporte` (`TipUniTraCod`,`TipUniTraDet`,`EstRegCod`) VALUES (02,"Vehiculo Caja-Embalajes","A");
-INSERT INTO `ta_gzz_tipo_uni_transporte` (`TipUniTraCod`,`TipUniTraDet`,`EstRegCod`) VALUES (03,"Vehiculo Caja-Contenedores","A");
-INSERT INTO `ta_gzz_tipo_uni_transporte` (`TipUniTraCod`,`TipUniTraDet`,`EstRegCod`) VALUES (04,"Vehiculo Caja-Jaula","A");
-INSERT INTO `ta_gzz_tipo_uni_transporte` (`TipUniTraCod`,`TipUniTraDet`,`EstRegCod`) VALUES (05,"Vehiculo Caja-Otros","A");
-INSERT INTO `ta_gzz_tipo_uni_transporte` (`TipUniTraCod`,`TipUniTraDet`,`EstRegCod`) VALUES (06,"Cisterna","A");
-INSERT INTO `ta_gzz_tipo_uni_transporte` (`TipUniTraCod`,`TipUniTraDet`,`EstRegCod`) VALUES (07,"Otros","A");
-
-COMMIT;
-
-START TRANSACTION;
-USE `episerp`;
-
-INSERT INTO `ta_gzz_tipo_doc_transportista` (`TipDocTraCod`,`TipDocTraDet`,`EstRegCod`) VALUES (01,"DNI","A");
-INSERT INTO `ta_gzz_tipo_doc_transportista` (`TipDocTraCod`,`TipDocTraDet`,`EstRegCod`) VALUES (02,"RUC","A");
-INSERT INTO `ta_gzz_tipo_doc_transportista` (`TipDocTraCod`,`TipDocTraDet`,`EstRegCod`) VALUES (03,"Licencia","A");
-
-COMMIT;
-
-START TRANSACTION;
-USE `episerp`;
-
 INSERT INTO `en_p2m_unidad_transporte` (`UniTraCod`,`TipUniTraCod`,`UniTraMod`,`UniTraMar`,`UniTraPes`,`UniTraNumPla`,`EstUniTraCod`,`EstRegCod`) VALUES ("1",1,"Bravo","Fiat",89179,"F3X-826",3,"A");
 INSERT INTO `en_p2m_unidad_transporte` (`UniTraCod`,`TipUniTraCod`,`UniTraMod`,`UniTraMar`,`UniTraPes`,`UniTraNumPla`,`EstUniTraCod`,`EstRegCod`) VALUES ("2",4,"Ka","Ford",97858,"F2K-393",1,"A");
 INSERT INTO `en_p2m_unidad_transporte` (`UniTraCod`,`TipUniTraCod`,`UniTraMod`,`UniTraMar`,`UniTraPes`,`UniTraNumPla`,`EstUniTraCod`,`EstRegCod`) VALUES ("3",5,"Civic","Honda",5892,"C6H-393",4,"A");
@@ -1068,9 +1029,11 @@ INSERT INTO `en_p2m_unidad_transporte` (`UniTraCod`,`TipUniTraCod`,`UniTraMod`,`
 
 COMMIT;
 
+-- -----------------------------------------------------
+-- Data for table `episerp`.`en_p2m_transportista`
+-- -----------------------------------------------------
 START TRANSACTION;
 USE `episerp`;
-
 INSERT INTO `en_p2m_transportista` (`TraCod`,`TraNom`,`TraApePat`,`TraApeMat`,`TraRazSoc`,`TraNomCom`,`TraDomFis`,`TraTel`,`TraEmail`,`TraDir`,`EstRegCod`) VALUES ("1","Keelie","Garner","Cox","Vitae Corp.","Cursus Diam At PC","9819 Risus. Road","243-832-559","ac@orciquislectus.net","P.O. Box 235, 7673 Praesent St.","A");
 INSERT INTO `en_p2m_transportista` (`TraCod`,`TraNom`,`TraApePat`,`TraApeMat`,`TraRazSoc`,`TraNomCom`,`TraDomFis`,`TraTel`,`TraEmail`,`TraDir`,`EstRegCod`) VALUES ("2","Odysseus","Knapp","Whitehead","Magna Institute","Suspendisse Incorporated","109-4165 Augue St.","277-069-354","turpis.nec@imperdieteratnonummy.org","3767 Feugiat Road","A");
 INSERT INTO `en_p2m_transportista` (`TraCod`,`TraNom`,`TraApePat`,`TraApeMat`,`TraRazSoc`,`TraNomCom`,`TraDomFis`,`TraTel`,`TraEmail`,`TraDir`,`EstRegCod`) VALUES ("3","Robin","Diaz","Hatfield","Dis Parturient Montes Corporation","Est Mauris Rhoncus Associates","P.O. Box 563, 5988 Volutpat. Rd.","050-529-718","sodales.purus.in@vestibulumnequesed.ca","Ap #612-8571 Nisi. St.","A");
@@ -1274,9 +1237,11 @@ INSERT INTO `en_p2m_transportista` (`TraCod`,`TraNom`,`TraApePat`,`TraApeMat`,`T
 
 COMMIT;
 
+-- -----------------------------------------------------
+-- Data for table `episerp`.`en_p2m_documento_transportista`
+-- -----------------------------------------------------
 START TRANSACTION;
 USE `episerp`;
-
 INSERT INTO `en_p2m_documento_transportista` (`TraCod`,`TipDocTraCod`,`DocTraNum`,`EstRegCod`) VALUES ("1",2,"00-1","A");
 INSERT INTO `en_p2m_documento_transportista` (`TraCod`,`TipDocTraCod`,`DocTraNum`,`EstRegCod`) VALUES ("2",3,"00-2","A");
 INSERT INTO `en_p2m_documento_transportista` (`TraCod`,`TipDocTraCod`,`DocTraNum`,`EstRegCod`) VALUES ("3",3,"00-3","A");
@@ -1481,9 +1446,11 @@ INSERT INTO `en_p2m_documento_transportista` (`TraCod`,`TipDocTraCod`,`DocTraNum
 
 COMMIT;
 
+-- -----------------------------------------------------
+-- Data for table `episerp`.`en_p1m_empresa`
+-- -----------------------------------------------------
 START TRANSACTION;
 USE `episerp`;
-
 INSERT INTO `en_p1m_empresa` (`EmpCod`,`EmpRazSoc`,`EmpNomCom`,`EmpDomFis`,`EmpDes`,`EmpDir`,`EmpTel`,`EmpEmail`,`EmpIGV`,`EmpTipCamCom`,`EmpTipCamVen`,`EmpRUC`,`EmpLot`,`EmpImgURL`) VALUES (2,"Amet Company","Rutrum Institute","P.O. Box 739, 8802 Auctor. Av.","Ninguna","P.O. Box 726, 2750 Elit Av.","(389) 01-2280","gravida.Praesent@disparturient.ca",19,12,13,"57733020499",2,"Crestor"),(3,"Vivamus Nisi LLC","Arcu Aliquam Ltd","Ap #306-9657 Nec, Ave","Ninguna","Ap #254-6721 Aliquet Rd.","(518) 53-4236","sed@CrasinterdumNunc.com",19,13,11,"65245964599",3,"Prednisone"),(4,"At Velit Cras Corporation","Porttitor Vulputate Foundation","9780 Sed Rd.","Ninguna","731-2531 Maecenas St.","(112) 08-0254","Pellentesque.habitant.morbi@at.com",19,15,14,"88207288999",4,"Klor-Con M20"),(5,"Semper Tellus Consulting","Sem Magna Institute","Ap #714-3248 Donec St.","Ninguna","406-4486 Sed Ave","(664) 49-0426","Nulla.dignissim.Maecenas@Donecfelis.ca",19,15,18,"94608674199",5,"Furosemide");
 INSERT INTO `en_p1m_empresa` (`EmpCod`,`EmpRazSoc`,`EmpNomCom`,`EmpDomFis`,`EmpDes`,`EmpDir`,`EmpTel`,`EmpEmail`,`EmpIGV`,`EmpTipCamCom`,`EmpTipCamVen`,`EmpRUC`,`EmpLot`,`EmpImgURL`) VALUES (6,"Ridiculus Mus Proin Institute","Amet Lorem Inc.","1989 Donec Ave","Ninguna","9499 Sed Road","(635) 78-0285","ornare@magnaCras.com",19,18,17,"50409225199",6,"Hydrocodone/APAP"),(7,"Iaculis Nec Eleifend Ltd","Vulputate Mauris Inc.","P.O. Box 365, 3737 Lobortis Rd.","Ninguna","P.O. Box 938, 7950 Urna Av.","(356) 14-9854","vitae.erat@Integereu.co.uk",19,20,18,"27442478099",7,"Zyprexa"),(8,"Justo Ltd","Convallis Erat Corporation","P.O. Box 869, 8078 Phasellus Rd.","Ninguna","263-1458 Mus. Avenue","(278) 58-9754","pharetra@ipsumcursus.ca",19,15,18,"92401770299",8,"Fluoxetine HCl"),(9,"Accumsan Neque Industries","Quisque Ltd","3156 Turpis Avenue","Ninguna","Ap #333-9474 Consectetuer, Avenue","(777) 92-9394","non@auctorvelit.com",19,17,12,"72438122099",9,"Lisinopril"),(10,"Eros PC","Mauris Foundation","493-9042 Litora Rd.","Ninguna","6115 Cursus, Avenue","(291) 23-1218","a.sollicitudin.orci@mauris.com",19,13,12,"18206194599",10,"Klor-Con M20");
 INSERT INTO `en_p1m_empresa` (`EmpCod`,`EmpRazSoc`,`EmpNomCom`,`EmpDomFis`,`EmpDes`,`EmpDir`,`EmpTel`,`EmpEmail`,`EmpIGV`,`EmpTipCamCom`,`EmpTipCamVen`,`EmpRUC`,`EmpLot`,`EmpImgURL`) VALUES (11,"Orci Luctus Foundation","Eu Inc.","911-8718 Et Street","Ninguna","1069 Nunc Avenue","(485) 93-7070","orci.tincidunt.adipiscing@pedeetrisus.com",19,16,16,"22718300499",11,"Nasonex"),(12,"Lorem Institute","Eget Ipsum Inc.","7319 Fringilla. Street","Ninguna","6893 Sit Av.","(801) 10-4089","imperdiet.ornare.In@risusodioauctor.com",19,20,20,"19538049499",12,"Namenda"),(13,"Id Inc.","Est LLP","Ap #926-7123 Dapibus Rd.","Ninguna","P.O. Box 443, 8642 Odio Road","(522) 62-3088","vitae@semmolestie.net",19,15,12,"92517865499",13,"Hydrocodone/APAP"),(14,"Sit Amet LLP","Auctor Vitae Aliquet Limited","443-7985 Enim. Rd.","Ninguna","8117 Neque. Rd.","(389) 67-0350","nec@orciluctus.com",19,15,12,"16755054599",14,"Amoxicillin Trihydrate/Potassium Clavulanate"),(15,"Aliquam Fringilla Cursus Industries","Mollis Institute","238-8494 Arcu. Road","Ninguna","P.O. Box 887, 2386 Quam Rd.","(642) 68-5811","sem.semper.erat@egettincidunt.ca",19,19,17,"64460606999",15,"Diazepam");
@@ -1505,4 +1472,91 @@ INSERT INTO `en_p1m_empresa` (`EmpCod`,`EmpRazSoc`,`EmpNomCom`,`EmpDomFis`,`EmpD
 INSERT INTO `en_p1m_empresa` (`EmpCod`,`EmpRazSoc`,`EmpNomCom`,`EmpDomFis`,`EmpDes`,`EmpDir`,`EmpTel`,`EmpEmail`,`EmpIGV`,`EmpTipCamCom`,`EmpTipCamVen`,`EmpRUC`,`EmpLot`,`EmpImgURL`) VALUES (91,"Non Leo Limited","Aliquam Auctor Velit Inc.","4603 Faucibus St.","Ninguna","P.O. Box 397, 5501 Lacus. Rd.","(888) 31-5665","Sed.et@ipsum.ca",19,12,12,"92990464199",91,"Omeprazole (Rx)"),(92,"Tristique Pharetra Company","In Nec Orci Incorporated","6090 Ligula Rd.","Ninguna","P.O. Box 247, 3093 Vel Rd.","(137) 49-7447","Cras@vestibulum.edu",19,13,12,"29324641599",92,"Alprazolam"),(93,"Nunc Sed Pede Incorporated","Sed LLP","Ap #539-226 Non Av.","Ninguna","981-7628 Libero Ave","(449) 57-9765","nonummy.ac@egetvenenatis.co.uk",19,16,12,"80370154999",93,"Trazodone HCl"),(94,"Id Ante LLP","Diam Duis Mi Incorporated","220-5500 Neque. Road","Ninguna","360-1212 Duis St.","(837) 58-8430","velit.Aliquam@gravidamaurisut.com",19,16,15,"12308784099",94,"Alprazolam"),(95,"Dapibus Corp.","Ut Dolor Dapibus PC","Ap #121-4016 Eget Road","Ninguna","Ap #924-3546 Nibh. St.","(454) 66-0113","sollicitudin.commodo@et.org",19,17,16,"48954731599",95,"Zolpidem Tartrate");
 INSERT INTO `en_p1m_empresa` (`EmpCod`,`EmpRazSoc`,`EmpNomCom`,`EmpDomFis`,`EmpDes`,`EmpDir`,`EmpTel`,`EmpEmail`,`EmpIGV`,`EmpTipCamCom`,`EmpTipCamVen`,`EmpRUC`,`EmpLot`,`EmpImgURL`) VALUES (96,"Interdum Nunc Sollicitudin Corporation","Mauris Rhoncus Id Associates","666-5100 Eros Rd.","Ninguna","1803 Donec St.","(500) 04-1771","mauris.sagittis@tellus.co.uk",19,17,19,"24336453099",96,"Amoxicillin"),(97,"Sed LLP","Vehicula Associates","Ap #480-5045 Fringilla Road","Ninguna","486-8173 Mauris Road","(778) 97-1545","lacus.varius@ipsumdolor.net",19,18,11,"21219202899",97,"Lisinopril"),(98,"Augue Malesuada Malesuada PC","Mauris Morbi Institute","Ap #459-302 Et Street","Ninguna","7609 Accumsan St.","(471) 77-4436","fringilla@etliberoProin.edu",19,20,18,"45264573799",98,"Lorazepam"),(99,"Neque Incorporated","Mollis Duis Sit LLC","2601 Suspendisse Rd.","Ninguna","P.O. Box 271, 1904 Sagittis Road","(644) 04-6381","ultrices.Duis.volutpat@Phasellusvitaemauris.net",19,19,12,"69669551599",99,"Advair Diskus"),(100,"Vitae Mauris Sit Inc.","Maecenas Iaculis Corporation","Ap #864-8676 Ultrices. Rd.","Ninguna","P.O. Box 339, 6647 Vestibulum Street","(138) 75-5643","leo.elementum@Donec.net",19,11,20,"85325949199",100,"Diovan");
 
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `episerp`.`en_p2m_guia_rem_transportista`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `episerp`;
+INSERT INTO `en_p2m_guia_rem_transportista` (`GuiRemTraNum`,`GuiRemTraDen`,`TraCod`,`UniTraCod`,`EmpCod`,`GuiRemTraNumReg`,`TipDesCod`,`GuiRemTraDes`,`EstRegCod`) VALUES ("101","GUÍA DE REMISIÓN-TRANSPORTISTA","78","2",79,"402940-6826",1,"Velit Cras","A");
+INSERT INTO `en_p2m_guia_rem_transportista` (`GuiRemTraNum`,`GuiRemTraDen`,`TraCod`,`UniTraCod`,`EmpCod`,`GuiRemTraNumReg`,`TipDesCod`,`GuiRemTraDes`,`EstRegCod`) VALUES ("102","GUÍA DE REMISIÓN-TRANSPORTISTA","33","75",57,"683850-1440",3,"Lobortis","A");
+INSERT INTO `en_p2m_guia_rem_transportista` (`GuiRemTraNum`,`GuiRemTraDen`,`TraCod`,`UniTraCod`,`EmpCod`,`GuiRemTraNumReg`,`TipDesCod`,`GuiRemTraDes`,`EstRegCod`) VALUES ("103","GUÍA DE REMISIÓN-TRANSPORTISTA","136","62",99,"133179-3107",2,"Montes Nascetur","A");
+INSERT INTO `en_p2m_guia_rem_transportista` (`GuiRemTraNum`,`GuiRemTraDen`,`TraCod`,`UniTraCod`,`EmpCod`,`GuiRemTraNumReg`,`TipDesCod`,`GuiRemTraDes`,`EstRegCod`) VALUES ("104","GUÍA DE REMISIÓN-TRANSPORTISTA","84","7",65,"209447-0115",2,"Diam","A");
+INSERT INTO `en_p2m_guia_rem_transportista` (`GuiRemTraNum`,`GuiRemTraDen`,`TraCod`,`UniTraCod`,`EmpCod`,`GuiRemTraNumReg`,`TipDesCod`,`GuiRemTraDes`,`EstRegCod`) VALUES ("105","GUÍA DE REMISIÓN-TRANSPORTISTA","1","84",24,"917190-1979",3,"Etiam","A");
+INSERT INTO `en_p2m_guia_rem_transportista` (`GuiRemTraNum`,`GuiRemTraDen`,`TraCod`,`UniTraCod`,`EmpCod`,`GuiRemTraNumReg`,`TipDesCod`,`GuiRemTraDes`,`EstRegCod`) VALUES ("106","GUÍA DE REMISIÓN-TRANSPORTISTA","126","53",64,"006373-9478",1,"Fusce Aliquet","A");
+INSERT INTO `en_p2m_guia_rem_transportista` (`GuiRemTraNum`,`GuiRemTraDen`,`TraCod`,`UniTraCod`,`EmpCod`,`GuiRemTraNumReg`,`TipDesCod`,`GuiRemTraDes`,`EstRegCod`) VALUES ("107","GUÍA DE REMISIÓN-TRANSPORTISTA","187","75",8,"665476-5269",3,"Scelerisque","A");
+INSERT INTO `en_p2m_guia_rem_transportista` (`GuiRemTraNum`,`GuiRemTraDen`,`TraCod`,`UniTraCod`,`EmpCod`,`GuiRemTraNumReg`,`TipDesCod`,`GuiRemTraDes`,`EstRegCod`) VALUES ("108","GUÍA DE REMISIÓN-TRANSPORTISTA","183","34",58,"102883-5583",2,"Ultricies","A");
+INSERT INTO `en_p2m_guia_rem_transportista` (`GuiRemTraNum`,`GuiRemTraDen`,`TraCod`,`UniTraCod`,`EmpCod`,`GuiRemTraNumReg`,`TipDesCod`,`GuiRemTraDes`,`EstRegCod`) VALUES ("109","GUÍA DE REMISIÓN-TRANSPORTISTA","35","51",92,"903027-3933",1,"Pulvinar Arcu","A");
+INSERT INTO `en_p2m_guia_rem_transportista` (`GuiRemTraNum`,`GuiRemTraDen`,`TraCod`,`UniTraCod`,`EmpCod`,`GuiRemTraNumReg`,`TipDesCod`,`GuiRemTraDes`,`EstRegCod`) VALUES ("110","GUÍA DE REMISIÓN-TRANSPORTISTA","141","68",43,"257365-8461",1,"Rutrum Lorem","A");
+INSERT INTO `en_p2m_guia_rem_transportista` (`GuiRemTraNum`,`GuiRemTraDen`,`TraCod`,`UniTraCod`,`EmpCod`,`GuiRemTraNumReg`,`TipDesCod`,`GuiRemTraDes`,`EstRegCod`) VALUES ("111","GUÍA DE REMISIÓN-TRANSPORTISTA","133","15",8,"647984-2244",1,"Sit","A");
+INSERT INTO `en_p2m_guia_rem_transportista` (`GuiRemTraNum`,`GuiRemTraDen`,`TraCod`,`UniTraCod`,`EmpCod`,`GuiRemTraNumReg`,`TipDesCod`,`GuiRemTraDes`,`EstRegCod`) VALUES ("112","GUÍA DE REMISIÓN-TRANSPORTISTA","178","10",44,"956566-9562",3,"Rutrum Lorem","A");
+INSERT INTO `en_p2m_guia_rem_transportista` (`GuiRemTraNum`,`GuiRemTraDen`,`TraCod`,`UniTraCod`,`EmpCod`,`GuiRemTraNumReg`,`TipDesCod`,`GuiRemTraDes`,`EstRegCod`) VALUES ("113","GUÍA DE REMISIÓN-TRANSPORTISTA","141","50",23,"888536-9101",3,"Ultrices","A");
+INSERT INTO `en_p2m_guia_rem_transportista` (`GuiRemTraNum`,`GuiRemTraDen`,`TraCod`,`UniTraCod`,`EmpCod`,`GuiRemTraNumReg`,`TipDesCod`,`GuiRemTraDes`,`EstRegCod`) VALUES ("114","GUÍA DE REMISIÓN-TRANSPORTISTA","17","31",80,"086324-2103",1,"Consequat","A");
+INSERT INTO `en_p2m_guia_rem_transportista` (`GuiRemTraNum`,`GuiRemTraDen`,`TraCod`,`UniTraCod`,`EmpCod`,`GuiRemTraNumReg`,`TipDesCod`,`GuiRemTraDes`,`EstRegCod`) VALUES ("115","GUÍA DE REMISIÓN-TRANSPORTISTA","21","74",68,"279391-3035",2,"Dolor Ltd","A");
+INSERT INTO `en_p2m_guia_rem_transportista` (`GuiRemTraNum`,`GuiRemTraDen`,`TraCod`,`UniTraCod`,`EmpCod`,`GuiRemTraNumReg`,`TipDesCod`,`GuiRemTraDes`,`EstRegCod`) VALUES ("116","GUÍA DE REMISIÓN-TRANSPORTISTA","49","25",23,"332181-8902",1,"Et","A");
+INSERT INTO `en_p2m_guia_rem_transportista` (`GuiRemTraNum`,`GuiRemTraDen`,`TraCod`,`UniTraCod`,`EmpCod`,`GuiRemTraNumReg`,`TipDesCod`,`GuiRemTraDes`,`EstRegCod`) VALUES ("117","GUÍA DE REMISIÓN-TRANSPORTISTA","38","19",60,"389018-2839",1,"Nibh","A");
+INSERT INTO `en_p2m_guia_rem_transportista` (`GuiRemTraNum`,`GuiRemTraDen`,`TraCod`,`UniTraCod`,`EmpCod`,`GuiRemTraNumReg`,`TipDesCod`,`GuiRemTraDes`,`EstRegCod`) VALUES ("118","GUÍA DE REMISIÓN-TRANSPORTISTA","46","92",49,"438762-7849",3,"Dolor Nulla","A");
+INSERT INTO `en_p2m_guia_rem_transportista` (`GuiRemTraNum`,`GuiRemTraDen`,`TraCod`,`UniTraCod`,`EmpCod`,`GuiRemTraNumReg`,`TipDesCod`,`GuiRemTraDes`,`EstRegCod`) VALUES ("119","GUÍA DE REMISIÓN-TRANSPORTISTA","196","28",80,"674457-2626",3,"Eget Dictum","A");
+INSERT INTO `en_p2m_guia_rem_transportista` (`GuiRemTraNum`,`GuiRemTraDen`,`TraCod`,`UniTraCod`,`EmpCod`,`GuiRemTraNumReg`,`TipDesCod`,`GuiRemTraDes`,`EstRegCod`) VALUES ("120","GUÍA DE REMISIÓN-TRANSPORTISTA","106","75",83,"456770-1893",1,"Neque","A");
+INSERT INTO `en_p2m_guia_rem_transportista` (`GuiRemTraNum`,`GuiRemTraDen`,`TraCod`,`UniTraCod`,`EmpCod`,`GuiRemTraNumReg`,`TipDesCod`,`GuiRemTraDes`,`EstRegCod`) VALUES ("121","GUÍA DE REMISIÓN-TRANSPORTISTA","56","63",65,"537634-6820",3,"Odio Sagittis","A");
+INSERT INTO `en_p2m_guia_rem_transportista` (`GuiRemTraNum`,`GuiRemTraDen`,`TraCod`,`UniTraCod`,`EmpCod`,`GuiRemTraNumReg`,`TipDesCod`,`GuiRemTraDes`,`EstRegCod`) VALUES ("122","GUÍA DE REMISIÓN-TRANSPORTISTA","194","67",27,"719931-0298",2,"Ut PC","A");
+INSERT INTO `en_p2m_guia_rem_transportista` (`GuiRemTraNum`,`GuiRemTraDen`,`TraCod`,`UniTraCod`,`EmpCod`,`GuiRemTraNumReg`,`TipDesCod`,`GuiRemTraDes`,`EstRegCod`) VALUES ("123","GUÍA DE REMISIÓN-TRANSPORTISTA","45","75",43,"125537-1393",1,"Lorem","A");
+INSERT INTO `en_p2m_guia_rem_transportista` (`GuiRemTraNum`,`GuiRemTraDen`,`TraCod`,`UniTraCod`,`EmpCod`,`GuiRemTraNumReg`,`TipDesCod`,`GuiRemTraDes`,`EstRegCod`) VALUES ("124","GUÍA DE REMISIÓN-TRANSPORTISTA","49","91",10,"874190-2426",1,"Ac PC","A");
+INSERT INTO `en_p2m_guia_rem_transportista` (`GuiRemTraNum`,`GuiRemTraDen`,`TraCod`,`UniTraCod`,`EmpCod`,`GuiRemTraNumReg`,`TipDesCod`,`GuiRemTraDes`,`EstRegCod`) VALUES ("125","GUÍA DE REMISIÓN-TRANSPORTISTA","162","68",65,"812967-5677",3,"Elit","A");
+INSERT INTO `en_p2m_guia_rem_transportista` (`GuiRemTraNum`,`GuiRemTraDen`,`TraCod`,`UniTraCod`,`EmpCod`,`GuiRemTraNumReg`,`TipDesCod`,`GuiRemTraDes`,`EstRegCod`) VALUES ("126","GUÍA DE REMISIÓN-TRANSPORTISTA","173","51",12,"616859-2498",1,"Cursus","A");
+INSERT INTO `en_p2m_guia_rem_transportista` (`GuiRemTraNum`,`GuiRemTraDen`,`TraCod`,`UniTraCod`,`EmpCod`,`GuiRemTraNumReg`,`TipDesCod`,`GuiRemTraDes`,`EstRegCod`) VALUES ("127","GUÍA DE REMISIÓN-TRANSPORTISTA","73","58",7,"144338-0728",3,"Sit Amet","A");
+INSERT INTO `en_p2m_guia_rem_transportista` (`GuiRemTraNum`,`GuiRemTraDen`,`TraCod`,`UniTraCod`,`EmpCod`,`GuiRemTraNumReg`,`TipDesCod`,`GuiRemTraDes`,`EstRegCod`) VALUES ("128","GUÍA DE REMISIÓN-TRANSPORTISTA","2","89",43,"266507-2027",3,"Faucibus","A");
+INSERT INTO `en_p2m_guia_rem_transportista` (`GuiRemTraNum`,`GuiRemTraDen`,`TraCod`,`UniTraCod`,`EmpCod`,`GuiRemTraNumReg`,`TipDesCod`,`GuiRemTraDes`,`EstRegCod`) VALUES ("129","GUÍA DE REMISIÓN-TRANSPORTISTA","70","7",41,"607914-6848",2,"Erat Eget","A");
+INSERT INTO `en_p2m_guia_rem_transportista` (`GuiRemTraNum`,`GuiRemTraDen`,`TraCod`,`UniTraCod`,`EmpCod`,`GuiRemTraNumReg`,`TipDesCod`,`GuiRemTraDes`,`EstRegCod`) VALUES ("130","GUÍA DE REMISIÓN-TRANSPORTISTA","168","23",88,"529940-3948",3,"Lacinia","A");
+INSERT INTO `en_p2m_guia_rem_transportista` (`GuiRemTraNum`,`GuiRemTraDen`,`TraCod`,`UniTraCod`,`EmpCod`,`GuiRemTraNumReg`,`TipDesCod`,`GuiRemTraDes`,`EstRegCod`) VALUES ("131","GUÍA DE REMISIÓN-TRANSPORTISTA","95","62",20,"918125-0367",3,"Curabitur","A");
+INSERT INTO `en_p2m_guia_rem_transportista` (`GuiRemTraNum`,`GuiRemTraDen`,`TraCod`,`UniTraCod`,`EmpCod`,`GuiRemTraNumReg`,`TipDesCod`,`GuiRemTraDes`,`EstRegCod`) VALUES ("132","GUÍA DE REMISIÓN-TRANSPORTISTA","159","24",20,"397972-3941",1,"Neque Sed Sem","A");
+INSERT INTO `en_p2m_guia_rem_transportista` (`GuiRemTraNum`,`GuiRemTraDen`,`TraCod`,`UniTraCod`,`EmpCod`,`GuiRemTraNumReg`,`TipDesCod`,`GuiRemTraDes`,`EstRegCod`) VALUES ("133","GUÍA DE REMISIÓN-TRANSPORTISTA","82","28",35,"553263-4267",1,"Magna Praesent","A");
+INSERT INTO `en_p2m_guia_rem_transportista` (`GuiRemTraNum`,`GuiRemTraDen`,`TraCod`,`UniTraCod`,`EmpCod`,`GuiRemTraNumReg`,`TipDesCod`,`GuiRemTraDes`,`EstRegCod`) VALUES ("134","GUÍA DE REMISIÓN-TRANSPORTISTA","27","52",88,"649644-6466",1,"Quam","A");
+INSERT INTO `en_p2m_guia_rem_transportista` (`GuiRemTraNum`,`GuiRemTraDen`,`TraCod`,`UniTraCod`,`EmpCod`,`GuiRemTraNumReg`,`TipDesCod`,`GuiRemTraDes`,`EstRegCod`) VALUES ("135","GUÍA DE REMISIÓN-TRANSPORTISTA","177","58",66,"167335-9160",2,"Morbi Metus","A");
+INSERT INTO `en_p2m_guia_rem_transportista` (`GuiRemTraNum`,`GuiRemTraDen`,`TraCod`,`UniTraCod`,`EmpCod`,`GuiRemTraNumReg`,`TipDesCod`,`GuiRemTraDes`,`EstRegCod`) VALUES ("136","GUÍA DE REMISIÓN-TRANSPORTISTA","42","58",54,"156252-3165",2,"Odio A","A");
+INSERT INTO `en_p2m_guia_rem_transportista` (`GuiRemTraNum`,`GuiRemTraDen`,`TraCod`,`UniTraCod`,`EmpCod`,`GuiRemTraNumReg`,`TipDesCod`,`GuiRemTraDes`,`EstRegCod`) VALUES ("137","GUÍA DE REMISIÓN-TRANSPORTISTA","52","50",93,"257755-7883",2,"Maecenas Mi","A");
+INSERT INTO `en_p2m_guia_rem_transportista` (`GuiRemTraNum`,`GuiRemTraDen`,`TraCod`,`UniTraCod`,`EmpCod`,`GuiRemTraNumReg`,`TipDesCod`,`GuiRemTraDes`,`EstRegCod`) VALUES ("138","GUÍA DE REMISIÓN-TRANSPORTISTA","183","68",70,"928065-2448",3,"Diam LLP","A");
+INSERT INTO `en_p2m_guia_rem_transportista` (`GuiRemTraNum`,`GuiRemTraDen`,`TraCod`,`UniTraCod`,`EmpCod`,`GuiRemTraNumReg`,`TipDesCod`,`GuiRemTraDes`,`EstRegCod`) VALUES ("139","GUÍA DE REMISIÓN-TRANSPORTISTA","188","99",6,"858558-1278",2,"Nunc","A");
+INSERT INTO `en_p2m_guia_rem_transportista` (`GuiRemTraNum`,`GuiRemTraDen`,`TraCod`,`UniTraCod`,`EmpCod`,`GuiRemTraNumReg`,`TipDesCod`,`GuiRemTraDes`,`EstRegCod`) VALUES ("140","GUÍA DE REMISIÓN-TRANSPORTISTA","46","64",9,"443604-5399",1,"Semper Erat In","A");
+INSERT INTO `en_p2m_guia_rem_transportista` (`GuiRemTraNum`,`GuiRemTraDen`,`TraCod`,`UniTraCod`,`EmpCod`,`GuiRemTraNumReg`,`TipDesCod`,`GuiRemTraDes`,`EstRegCod`) VALUES ("141","GUÍA DE REMISIÓN-TRANSPORTISTA","85","26",83,"769729-8144",3,"Cursus Luctus","A");
+INSERT INTO `en_p2m_guia_rem_transportista` (`GuiRemTraNum`,`GuiRemTraDen`,`TraCod`,`UniTraCod`,`EmpCod`,`GuiRemTraNumReg`,`TipDesCod`,`GuiRemTraDes`,`EstRegCod`) VALUES ("142","GUÍA DE REMISIÓN-TRANSPORTISTA","180","63",47,"974716-8210",1,"Eu Nibh","A");
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `episerp`.`en_p2m_guia_rem_remitente`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `episerp`;
+INSERT INTO `episerp`.`en_p2m_guia_rem_remitente` (`GuiRemRemNum`, `GuiRemRemDen`, `MotTraCod`, `EmpCod`, `TipDesCod`, `GuiRemRemDes`, `EstRegCod`) VALUES ('001-000001', 'Amet Company', '2', '02', '2', 'MOT S.A.', 'A');
+INSERT INTO `episerp`.`en_p2m_guia_rem_remitente` (`GuiRemRemNum`, `GuiRemRemDen`, `MotTraCod`, `EmpCod`, `TipDesCod`, `GuiRemRemDes`, `EstRegCod`) VALUES ('001-000002', 'At Velit Cras Corporation', '2', '04', '2', 'MOT S.A.', 'A');
+INSERT INTO `episerp`.`en_p2m_guia_rem_remitente` (`GuiRemRemNum`, `GuiRemRemDen`, `MotTraCod`, `EmpCod`, `TipDesCod`, `GuiRemRemDes`, `EstRegCod`) VALUES ('001-000003', 'Semper Tellus Consulting', '2', '05', '2', 'MOT S.A.', 'A');
+INSERT INTO `episerp`.`en_p2m_guia_rem_remitente` (`GuiRemRemNum`, `GuiRemRemDen`, `MotTraCod`, `EmpCod`, `TipDesCod`, `GuiRemRemDes`, `EstRegCod`) VALUES ('001-000004', 'Ridiculus Mus Proin Institute', '2', '06', '2', 'MOT S.A.', 'A');
+INSERT INTO `episerp`.`en_p2m_guia_rem_remitente` (`GuiRemRemNum`, `GuiRemRemDen`, `MotTraCod`, `EmpCod`, `TipDesCod`, `GuiRemRemDes`, `EstRegCod`) VALUES ('001-000005', 'Accumsan Neque Industries', '2', '09', '2', 'MOT S.A.', 'A');
+INSERT INTO `episerp`.`en_p2m_guia_rem_remitente` (`GuiRemRemNum`, `GuiRemRemDen`, `MotTraCod`, `EmpCod`, `TipDesCod`, `GuiRemRemDes`, `EstRegCod`) VALUES ('001-000006', 'MOT S.A.', '1', '11', '1', 'Orci Luctus F.', 'A');
+INSERT INTO `episerp`.`en_p2m_guia_rem_remitente` (`GuiRemRemNum`, `GuiRemRemDen`, `MotTraCod`, `EmpCod`, `TipDesCod`, `GuiRemRemDes`, `EstRegCod`) VALUES ('001-000007', 'MOT S.A.', '1', '12', '1', 'Lorem Institute', 'A');
+INSERT INTO `episerp`.`en_p2m_guia_rem_remitente` (`GuiRemRemNum`, `GuiRemRemDen`, `MotTraCod`, `EmpCod`, `TipDesCod`, `GuiRemRemDes`, `EstRegCod`) VALUES ('001-000008', 'MOT S.A.', '1', '14', '1', 'Sit Amet LLP', 'A');
+INSERT INTO `episerp`.`en_p2m_guia_rem_remitente` (`GuiRemRemNum`, `GuiRemRemDen`, `MotTraCod`, `EmpCod`, `TipDesCod`, `GuiRemRemDes`, `EstRegCod`) VALUES ('001-000009', 'MOT S.A.', '1', '12', '1', 'Lorem Institute', 'A');
+INSERT INTO `episerp`.`en_p2m_guia_rem_remitente` (`GuiRemRemNum`, `GuiRemRemDen`, `MotTraCod`, `EmpCod`, `TipDesCod`, `GuiRemRemDes`, `EstRegCod`) VALUES ('001-000010', 'MOT S.A.', '1', '10', '1', 'Eros PC', 'A');
+
+COMMIT;
+
+-- -----------------------------------------------------
+-- Data for table `episerp`.`en_p4m_factura_compra_cab`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `episerp`;
+INSERT INTO `episerp`.`en_p4m_factura_compra_cab` (`FacComCabCod`, `GuiRemRemNum`, `GuiRemTraNum`, `PrvCod`, `UsuCod`, `FacComCabFec`, `FacComCabTot`, `TipDesCod`, `FacComCabDes`, `FacComCabSubTot`, `FacComCabIGV`, `FacComCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000001', '001-000001', '101', '123456789121', '1', '2016-10-25', '500.00', '7', '0', '500.00', '0.18', 'N', '1', '1', '1', '1', 'A');
+INSERT INTO `episerp`.`en_p4m_factura_compra_cab` (`FacComCabCod`, `GuiRemRemNum`, `GuiRemTraNum`, `PrvCod`, `UsuCod`, `FacComCabFec`, `FacComCabTot`, `TipDesCod`, `FacComCabDes`, `FacComCabSubTot`, `FacComCabIGV`, `FacComCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000002', '001-000002', '105', '987654321121', '4', '2016-10-25', '1000.00', '7', '0', '1000.00', '0.18', 'N', '1', '2', '1', '1', 'A');
+INSERT INTO `episerp`.`en_p4m_factura_compra_cab` (`FacComCabCod`, `GuiRemRemNum`, `GuiRemTraNum`, `PrvCod`, `UsuCod`, `FacComCabFec`, `FacComCabTot`, `TipDesCod`, `FacComCabDes`, `FacComCabSubTot`, `FacComCabIGV`, `FacComCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000003', '001-000005', '102', '369258147121', '3', '2016-10-25', '3000.00', '7', '0', '3000.00', '0.18', 'N', '1', '1', '1', '1', 'A');
+INSERT INTO `episerp`.`en_p4m_factura_compra_cab` (`FacComCabCod`, `GuiRemRemNum`, `GuiRemTraNum`, `PrvCod`, `UsuCod`, `FacComCabFec`, `FacComCabTot`, `TipDesCod`, `FacComCabDes`, `FacComCabSubTot`, `FacComCabIGV`, `FacComCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000004', '001-000004', '106', '789456123121', '2', '2016-10-25', '2500.00', '7', '0', '2500.00', '0.18', 'N', '1', '2', '1', '1', 'A');
+INSERT INTO `episerp`.`en_p4m_factura_compra_cab` (`FacComCabCod`, `GuiRemRemNum`, `GuiRemTraNum`, `PrvCod`, `UsuCod`, `FacComCabFec`, `FacComCabTot`, `TipDesCod`, `FacComCabDes`, `FacComCabSubTot`, `FacComCabIGV`, `FacComCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000005', '001-000001', '103', '456123789121', '3', '2016-10-25', '4000.00', '7', '0', '4000.00', '0.18', 'N', '1', '2', '1', '1', 'A');
+INSERT INTO `episerp`.`en_p4m_factura_compra_cab` (`FacComCabCod`, `GuiRemRemNum`, `GuiRemTraNum`, `PrvCod`, `UsuCod`, `FacComCabFec`, `FacComCabTot`, `TipDesCod`, `FacComCabDes`, `FacComCabSubTot`, `FacComCabIGV`, `FacComCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000006', '001-000003', '109', '456741852121', '6', '2016-10-25', '3000.00', '7', '0', '3000.00', '0.18', 'N', '1', '2', '1', '1', 'A');
+INSERT INTO `episerp`.`en_p4m_factura_compra_cab` (`FacComCabCod`, `GuiRemRemNum`, `GuiRemTraNum`, `PrvCod`, `UsuCod`, `FacComCabFec`, `FacComCabTot`, `TipDesCod`, `FacComCabDes`, `FacComCabSubTot`, `FacComCabIGV`, `FacComCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000007', '001-000002', '121', '369258147121', '9', '2016-10-25', '2000.00', '7', '0', '2000.00', '0.18', 'N', '1', '2', '1', '1', 'A');
+INSERT INTO `episerp`.`en_p4m_factura_compra_cab` (`FacComCabCod`, `GuiRemRemNum`, `GuiRemTraNum`, `PrvCod`, `UsuCod`, `FacComCabFec`, `FacComCabTot`, `TipDesCod`, `FacComCabDes`, `FacComCabSubTot`, `FacComCabIGV`, `FacComCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000008', '001-000003', '104', '123456789121', '4', '2016-10-25', '1550.00', '7', '0', '1550.00', '0.18', 'N', '1', '1', '1', '1', 'A');
+INSERT INTO `episerp`.`en_p4m_factura_compra_cab` (`FacComCabCod`, `GuiRemRemNum`, `GuiRemTraNum`, `PrvCod`, `UsuCod`, `FacComCabFec`, `FacComCabTot`, `TipDesCod`, `FacComCabDes`, `FacComCabSubTot`, `FacComCabIGV`, `FacComCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000009', '001-000002', '103', '147258369121', '8', '2016-10-25', '4500.00', '7', '0', '4500.00', '0.18', 'N', '1', '1', '1', '1', 'A');
+INSERT INTO `episerp`.`en_p4m_factura_compra_cab` (`FacComCabCod`, `GuiRemRemNum`, `GuiRemTraNum`, `PrvCod`, `UsuCod`, `FacComCabFec`, `FacComCabTot`, `TipDesCod`, `FacComCabDes`, `FacComCabSubTot`, `FacComCabIGV`, `FacComCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000010', '001-000004', '111', '321654987121', '1', '2016-10-25', '2000.00', '7', '0', '2000.00', '0.18', 'N', '1', '1', '1', '1', 'A');
 COMMIT;

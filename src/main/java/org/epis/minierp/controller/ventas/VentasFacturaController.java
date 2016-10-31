@@ -21,4 +21,3 @@ public class VentasFacturaController extends HttpServlet {
         request.getRequestDispatcher("/WEB-INF/ventas/factura/factura.jsp").forward(request, response);
     }
 }
-
