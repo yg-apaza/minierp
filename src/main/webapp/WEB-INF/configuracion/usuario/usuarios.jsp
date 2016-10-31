@@ -40,23 +40,26 @@
                     <thead>
                         <tr>
                             <th>Codigo</th>
-                            <th>Nombre y Apellidos</th>
-                            <th>Fecha Nacimiento</th>
-                            <th>Estado Civil</th>
+                            <th>Documentos</th>
+                            <th>Nombres y Apellidos</th>
                             <th>Género</th>
                             <th>Login</th>
                             <th>Tipo Usuario</th>
                             <th>Sucursal</th>
                             <th>Acciones</th>
+                            
                         </tr>
                     </thead>
                     <tbody>
                         <c:forEach var="u" items="${usuarios}">
                             <tr>
                                 <td>${u.usuCod}</td>
+                                <td>
+                                    <c:forEach var="docs" items="${u.enP1mDocumentoUsuarios}">
+                                        ${docs.taGzzTipoDocUsuario.tipDocUsuDet} - ${docs.docUsuNum} <br>
+                                    </c:forEach>
+                                </td>
                                 <td>${u.usuNom} ${u.usuApePat} ${u.usuApeMat}</td>
-                                <td><fmt:formatDate value="${u.usuFecNac}" pattern="dd/MM/yyyy"/></td>
-                                <td>${u.taGzzEstadoCivil.estCivDet}</td>
                                 <td>${u.usuSex}</td>
                                 <td>${u.usuLog}</td>
                                 <td>${u.taGzzTipoUsuario.tipUsuDet}</td>
