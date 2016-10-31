@@ -30,6 +30,7 @@ public class Kardex implements Serializable {
     private BigDecimal precio_total_saldo;
     private BigDecimal precio_unitario_saldo;
     private String tipo_operacion;
+    private String glosa;
 
     public Kardex() {
     }
@@ -136,6 +137,14 @@ public class Kardex implements Serializable {
 
     public void setTipo_operacion(String tipo_operacion) {
         this.tipo_operacion = tipo_operacion;
+    }
+
+    public String getGlosa() {
+        return glosa;
+    }
+
+    public void setGlosa(String glosa) {
+        this.glosa = glosa;
     }
     
     

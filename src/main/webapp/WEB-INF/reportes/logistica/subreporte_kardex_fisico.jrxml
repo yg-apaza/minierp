@@ -13,16 +13,17 @@
 	<field name="fecha" class="java.sql.Date"/>
 	<field name="numero_factura" class="java.lang.String"/>
 	<field name="producto" class="java.lang.String"/>
-	<field name="cantidad_entrada" class="java.math.BigDecimal"/>
-	<field name="precio_unitario_entrada" class="java.math.BigDecimal"/>
-	<field name="precio_total_entrada" class="java.math.BigDecimal"/>
-	<field name="cantidad_salida" class="java.math.BigDecimal"/>
-	<field name="precio_unitario_salida" class="java.math.BigDecimal"/>
-	<field name="precio_total_salida" class="java.math.BigDecimal"/>
-	<field name="cantidad_saldo" class="java.math.BigDecimal"/>
-	<field name="precio_total_saldo" class="java.math.BigDecimal"/>
+	<field name="cantidad_entrada" class="java.lang.Double"/>
+	<field name="precio_unitario_entrada" class="java.lang.Double"/>
+	<field name="precio_total_entrada" class="java.lang.Double"/>
+	<field name="cantidad_salida" class="java.lang.Double"/>
+	<field name="precio_unitario_salida" class="java.lang.Double"/>
+	<field name="precio_total_salida" class="java.lang.Double"/>
+	<field name="cantidad_saldo" class="java.lang.Double"/>
+	<field name="precio_total_saldo" class="java.lang.Double"/>
 	<field name="precio_unitario_saldo" class="java.math.BigDecimal"/>
 	<field name="tipo_operacion" class="java.lang.String"/>
+	<field name="glosa" class="java.lang.String"/>
 	<variable name="canEnTotal" class="java.math.BigDecimal" calculation="Sum">
 		<variableExpression><![CDATA[$F{cantidad_entrada}]]></variableExpression>
 		<initialValueExpression><![CDATA[]]></initialValueExpression>
@@ -50,12 +51,6 @@
 	<background>
 		<band splitType="Stretch"/>
 	</background>
-	<title>
-		<band height="16"/>
-	</title>
-	<pageHeader>
-		<band splitType="Stretch"/>
-	</pageHeader>
 	<columnHeader>
 		<band height="53">
 			<staticText>
@@ -66,7 +61,7 @@
 			<staticText>
 				<reportElement x="86" y="35" width="50" height="18" uuid="ebfa6dff-0b07-4d63-a00d-62d038ec6783"/>
 				<textElement textAlignment="Center" markup="none"/>
-				<text><![CDATA[Tipo]]></text>
+				<text><![CDATA[Glosa]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="176" y="35" width="39" height="18" uuid="1bc5d467-f81d-4eb6-8216-3c152dda15e9"/>
@@ -111,7 +106,7 @@
 			<textField>
 				<reportElement x="89" y="0" width="47" height="20" uuid="08f7379d-a40e-4727-83a8-44fa696cbecc"/>
 				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA["Factura"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{glosa}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="149" y="2" width="95" height="20" uuid="806ec98e-d4c2-4666-ac59-864b2f593efc"/>

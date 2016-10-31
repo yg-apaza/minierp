@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="subreporte_kardex_valorizado" pageWidth="802" pageHeight="555" orientation="Landscape" columnWidth="802" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="720e7502-c91e-4486-8ca5-9974e7003448">
 	<property name="ireport.zoom" value="1.3310000000000008"/>
-	<property name="ireport.x" value="50"/>
+	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<style name="Crosstab Data Text" hAlign="Center"/>
 	<parameter name="PRODUCTO_ID" class="java.lang.String">
@@ -23,6 +23,7 @@
 	<field name="precio_total_saldo" class="java.math.BigDecimal"/>
 	<field name="precio_unitario_saldo" class="java.math.BigDecimal"/>
 	<field name="tipo_operacion" class="java.lang.String"/>
+	<field name="glosa" class="java.lang.String"/>
 	<variable name="canEnTotal" class="java.math.BigDecimal" calculation="Sum">
 		<variableExpression><![CDATA[$F{cantidad_entrada}]]></variableExpression>
 		<initialValueExpression><![CDATA[]]></initialValueExpression>
@@ -66,7 +67,7 @@
 			<staticText>
 				<reportElement x="67" y="35" width="50" height="18" uuid="ebfa6dff-0b07-4d63-a00d-62d038ec6783"/>
 				<textElement textAlignment="Center" markup="none"/>
-				<text><![CDATA[Tipo]]></text>
+				<text><![CDATA[Glosa]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="117" y="35" width="79" height="18" uuid="1bc5d467-f81d-4eb6-8216-3c152dda15e9"/>
@@ -159,7 +160,7 @@
 			<textField>
 				<reportElement x="67" y="2" width="47" height="20" uuid="08f7379d-a40e-4727-83a8-44fa696cbecc"/>
 				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA["Factura"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{glosa}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="117" y="2" width="79" height="20" uuid="806ec98e-d4c2-4666-ac59-864b2f593efc"/>

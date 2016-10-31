@@ -44,6 +44,8 @@ public class Reporte {
     public Reporte(boolean isjdbc, String key, String value) {
         if (isjdbc) {
             sessionc = DbUtil.getConnection();
+            this.key = key;
+            this.value=value;
         } else {
             session = HibernateUtil.getSessionFactory().getCurrentSession();
         }
