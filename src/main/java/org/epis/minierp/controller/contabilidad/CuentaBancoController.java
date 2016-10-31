@@ -64,6 +64,7 @@ public class CuentaBancoController extends HttpServlet
             case "delete":
                 int deleteCueBanCod = Integer.parseInt(request.getParameter("cueBanCod"));
                 dao.delete(deleteCueBanCod);
+                break;
         }
         response.sendRedirect(request.getContextPath() + "/secured/contabilidad/cuentabancaria");
     }
