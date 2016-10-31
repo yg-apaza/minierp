@@ -64,7 +64,7 @@
                                        data-pProStkMax="${p.proStkMax}"
                                        data-pProStkMin="${p.proStkMin}"
                                        data-pVolUniAlm="${p.volUniAlm}"
-                                       data-pPreUni="${p.proPreUni}"
+                                       data-pPreUni="${p.proPreUniVen}"
                                        data-pObs="${p.proObs}"
                                        data-pEst="${p.estRegCod}"
                                        >

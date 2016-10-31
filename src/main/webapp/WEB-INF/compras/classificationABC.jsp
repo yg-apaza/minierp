@@ -43,7 +43,7 @@
                                 <tr>
                                     <td><c:out value="${producto.id.proCod}"/> </td>
                                     <td><c:out value="${producto.proDet}"/></td>
-                                    <td><c:out value="${producto.proPreUni}"/></td>
+                                    <td><c:out value="${producto.proPreUniVen}"/></td>
                                     <td><c:out value="${producto.proStk}"/></td>
                                 </tr>
                             </c:forEach>  
@@ -78,7 +78,7 @@
                                             $("#id_table").append($("<tr>").append(
                                                                     "<td>"+"<c:out value="${producto.id.proCod}"/>"+"</td>"+
                                                                     "<td>"+"<c:out value="${producto.proDet}"/>"+"</td>"+
-                                                                    "<td>"+"<c:out value="${producto.proPreUni}"/>"+"</td>"+
+                                                                    "<td>"+"<c:out value="${producto.proPreUniVen}"/>"+"</td>"+
                                                                     "<td>"+"<c:out value="${producto.proStk}"/>"+"</td>"));
                                             </c:forEach>
                                     break;
@@ -86,7 +86,7 @@
                                             $("#id_table").append($("<tr>").append(
                                                                     "<td>"+"<c:out value="${producto.id.proCod}"/>"+"</td>"+
                                                                     "<td>"+"<c:out value="${producto.proDet}"/>"+"</td>"+
-                                                                    "<td>"+"<c:out value="${producto.proPreUni}"/>"+"</td>"+
+                                                                    "<td>"+"<c:out value="${producto.proPreUniVen}"/>"+"</td>"+
                                                                     "<td>"+"<c:out value="${producto.proStk}"/>"+"</td>"));
                                             </c:forEach>
                                     break;
@@ -94,7 +94,7 @@
                                             $("#id_table").append($("<tr>").append(
                                                                     "<td>"+"<c:out value="${producto.id.proCod}"/>"+"</td>"+
                                                                     "<td>"+"<c:out value="${producto.proDet}"/>"+"</td>"+
-                                                                    "<td>"+"<c:out value="${producto.proPreUni}"/>"+"</td>"+
+                                                                    "<td>"+"<c:out value="${producto.proPreUniVen}"/>"+"</td>"+
                                                                     "<td>"+"<c:out value="${producto.proStk}"/>"+"</td>"));
                                             </c:forEach>
                                     break;
