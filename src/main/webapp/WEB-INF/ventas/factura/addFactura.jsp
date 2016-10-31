@@ -184,21 +184,35 @@
                                 <input type="hidden" class="form-control" name="productsAmounts" id="proAmo">
                                 <input type="hidden" class="form-control" name="productsDescriptions" id="proDes">
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <div class="form-group input-group" >
                                             <span class="input-group-addon">SubTotal + IGV</span>
                                             <input type="number" class="form-control" name="facVenCabSubTot" id="facSub" value="0" readonly>
                                             <span class="input-group-addon"><i class="fa fa-usd"></i></span>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <div class="form-group input-group" >
                                             <span class="input-group-addon">Descuento</span>
                                             <input type="number" class="form-control" name="facVenCabDes" min="0" step="any" value="0" id="facDes">
                                             <span class="input-group-addon"><i class="fa fa-sort-amount-asc"></i></span>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
+                                        <div class="form-group input-group" >
+                                            <span class="input-group-addon">Tipo Descuento</i></span>
+                                            <select class="form-control" name="metPagCod">
+                                                <c:forEach items="${metodosPagoFactura}" var="metodoPagoFactura">
+                                                    <option value="${metodoPagoFactura.metPagCod}">${metodoPagoFactura.metPagDet}</option>
+                                                </c:forEach>
+                                            </select> 
+                                            <span class="input-group-addon">Valor</i></span>
+                                            <input type="number" class="form-control" name="facVenCabTot" id="facTot" readonly>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3 col-md-offset-9">
                                         <div class="form-group input-group" >
                                             <span class="input-group-addon">Total</i></span>
                                             <input type="number" class="form-control" name="facVenCabTot" id="facTot" value="0" readonly>
