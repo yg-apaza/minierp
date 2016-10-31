@@ -42,8 +42,9 @@ public class SearchProductController extends HttpServlet {
         if(product != null) {
             data.put("proCod", product.getId().getClaProCod() + "-" + product.getId().getSubClaProCod() + "-" + product.getId().getProCod());
             data.put("proDet", product.getProDet());
-            data.put("proStk", product.getProStk());
+            data.put("proStk", product.getProStk()-product.getProStkPreVen());
             data.put("proPreUni", product.getProPreUniVen());
+            data.put("proUnit", product.getTaGzzUnidadMed().getUniMedDet());
         }
         
         response.setContentType("application/json");

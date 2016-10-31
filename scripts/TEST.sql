@@ -1561,3 +1561,21 @@ INSERT INTO `episerp`.`en_p4m_factura_compra_cab` (`FacComCabCod`, `GuiRemRemNum
 INSERT INTO `episerp`.`en_p4m_factura_compra_cab` (`FacComCabCod`, `GuiRemRemNum`, `GuiRemTraNum`, `PrvCod`, `UsuCod`, `FacComCabFec`, `FacComCabTot`, `TipDesCod`, `FacComCabSubTot`, `FacComCabIGV`, `FacComCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000009', '001-000002', '103', '147258369121', '8', '2016-10-25', '4500.00', '7', '4500.00', '0.18', 'N', '1', '1', '1', '1', 'A');
 INSERT INTO `episerp`.`en_p4m_factura_compra_cab` (`FacComCabCod`, `GuiRemRemNum`, `GuiRemTraNum`, `PrvCod`, `UsuCod`, `FacComCabFec`, `FacComCabTot`, `TipDesCod`, `FacComCabSubTot`, `FacComCabIGV`, `FacComCabObs`, `EstFacCod`, `MetPagCod`, `TipPagCod`, `MonCod`, `EstRegCod`) VALUES ('001-000010', '001-000004', '111', '321654987121', '1', '2016-10-25', '2000.00', '7', '2000.00', '0.18', 'N', '1', '1', '1', '1', 'A');
 COMMIT;
+
+START TRANSACTION;
+USE `episerp`;
+INSERT INTO `episerp`.`en_p1m_catalogo_ruta` (`CatRutCod`, `CatRutDet`, `EstRegCod`) VALUES ('1', 'Ruta Hunter - Cercado', 'A');
+INSERT INTO `episerp`.`en_p1m_catalogo_ruta` (`CatRutCod`, `CatRutDet`, `EstRegCod`) VALUES ('2', 'Ruta Cercado - Socabaya', 'A');
+INSERT INTO `episerp`.`en_p1m_catalogo_ruta` (`CatRutCod`, `CatRutDet`, `EstRegCod`) VALUES ('3', 'Ruta Socabaya - Hunter', 'A');
+INSERT INTO `episerp`.`en_p1m_catalogo_ruta` (`CatRutCod`, `CatRutDet`, `EstRegCod`) VALUES ('4', 'Ruta Zamácola - Cercado', 'A');
+INSERT INTO `episerp`.`en_p1m_catalogo_ruta` (`CatRutCod`, `CatRutDet`, `EstRegCod`) VALUES ('5', 'Ruta Cercado - Zamácola', 'A');
+COMMIT;
+
+START TRANSACTION;
+USE `episerp`;
+INSERT INTO `episerp`.`en_p1m_clientes_rutas` (`CatRutCod`, `CliCod`, `CliRutDes`, `EstRegCod`) VALUES ('1', '1', 'Ruta Principal', 'A');
+INSERT INTO `episerp`.`en_p1m_clientes_rutas` (`CatRutCod`, `CliCod`, `CliRutDes`, `EstRegCod`) VALUES ('2', '1', 'Ruta Secundaria', 'A');
+INSERT INTO `episerp`.`en_p1m_clientes_rutas` (`CatRutCod`, `CliCod`, `CliRutDes`, `EstRegCod`) VALUES ('2', '2', 'Ruta Principal', 'A');
+INSERT INTO `episerp`.`en_p1m_clientes_rutas` (`CatRutCod`, `CliCod`, `CliRutDes`, `EstRegCod`) VALUES ('3', '3', 'Ruta Principal', 'A');
+INSERT INTO `episerp`.`en_p1m_clientes_rutas` (`CatRutCod`, `CliCod`, `CliRutDes`, `EstRegCod`) VALUES ('2', '3', 'Ruta Secundaria', 'A');
+COMMIT;
