@@ -259,14 +259,13 @@ INSERT INTO `en_p2m_clase_producto` (`ClaProCod`, `ClaProDet`, `EstRegCod`) VALU
 INSERT INTO `en_p2m_clase_producto` (`ClaProCod`, `ClaProDet`, `EstRegCod`) VALUES ('03', 'Fruta', 'A');
 INSERT INTO `en_p2m_clase_producto` (`ClaProCod`, `ClaProDet`, `EstRegCod`) VALUES ('04', 'Verduras y Hortalizas', 'A');
 INSERT INTO `en_p2m_clase_producto` (`ClaProCod`, `ClaProDet`, `EstRegCod`) VALUES ('05', 'Cereales', 'A');
-INSERT INTO `en_p2m_clase_producto` (`ClaProCod`, `ClaProDet`, `EstRegCod`) VALUES ('06','Bebidas','A');
+INSERT INTO `en_p2m_clase_producto` (`ClaProCod`, `ClaProDet`, `EstRegCod`) VALUES ('06', 'Bebidas','A');
 INSERT INTO `en_p2m_clase_producto` (`ClaProCod`, `ClaProDet`, `EstRegCod`) VALUES ('07', 'Aceite','A');
 INSERT INTO `en_p2m_clase_producto` (`ClaProCod`, `ClaProDet`, `EstRegCod`) VALUES ('08', 'Conservas','A');
 INSERT INTO `en_p2m_clase_producto` (`ClaProCod`, `ClaProDet`, `EstRegCod`) VALUES ('09', 'Embutidos','A');
-INSERT INTO `en_p2m_clase_producto` (`ClaProCod`, `ClaProDet`, `EstRegCod`) VALUES ('10', 'Helado','A');
-INSERT INTO `en_p2m_clase_producto` (`ClaProCod`, `ClaProDet`, `EstRegCod`) VALUES ('11', 'Leche','A');
+INSERT INTO `en_p2m_clase_producto` (`ClaProCod`, `ClaProDet`, `EstRegCod`) VALUES ('10', 'Helados','A');
+INSERT INTO `en_p2m_clase_producto` (`ClaProCod`, `ClaProDet`, `EstRegCod`) VALUES ('11', 'Lacteos','A');
 INSERT INTO `en_p2m_clase_producto` (`ClaProCod`, `ClaProDet`, `EstRegCod`) VALUES ('12', 'Golosinas','A');
-INSERT INTO `en_p2m_clase_producto` (`ClaProCod`, `ClaProDet`, `EstRegCod`) VALUES ('13', 'Refrescos','A');
 
 COMMIT;
 
@@ -279,14 +278,15 @@ USE `episerp`;
 INSERT INTO `en_p2m_subclase_producto` (`ClaProCod`, `SubClaProCod`, `SubClaProDet`, `EstRegCod`) VALUES ('01', '01', 'Cerdo', 'A');
 INSERT INTO `en_p2m_subclase_producto` (`ClaProCod`, `SubClaProCod`, `SubClaProDet`, `EstRegCod`) VALUES ('01', '02', 'Pavo', 'A');
 INSERT INTO `en_p2m_subclase_producto` (`ClaProCod`, `SubClaProCod`, `SubClaProDet`, `EstRegCod`) VALUES ('01', '03', 'Pollo', 'A');
+INSERT INTO `en_p2m_subclase_producto` (`ClaProCod`, `SubClaProCod`, `SubClaProDet`, `EstRegCod`) VALUES ('01', '04', 'Res', 'A');
 
 INSERT INTO `en_p2m_subclase_producto` (`ClaProCod`, `SubClaProCod`, `SubClaProDet`, `EstRegCod`) VALUES ('02', '01', 'Pescado Fresco', 'A');
 INSERT INTO `en_p2m_subclase_producto` (`ClaProCod`, `SubClaProCod`, `SubClaProDet`, `EstRegCod`) VALUES ('02', '02', 'Surimi, gulas y derivados', 'A');
 INSERT INTO `en_p2m_subclase_producto` (`ClaProCod`, `SubClaProCod`, `SubClaProDet`, `EstRegCod`) VALUES ('02', '03', 'Ahumados', 'A');
 
 INSERT INTO `en_p2m_subclase_producto` (`ClaProCod`, `SubClaProCod`, `SubClaProDet`, `EstRegCod`) VALUES ('03', '01', 'Citricos', 'A');
-INSERT INTO `en_p2m_subclase_producto` (`ClaProCod`, `SubClaProCod`, `SubClaProDet`, `EstRegCod`) VALUES ('03', '02', 'Manzana y Pera', 'A');
-INSERT INTO `en_p2m_subclase_producto` (`ClaProCod`, `SubClaProCod`, `SubClaProDet`, `EstRegCod`) VALUES ('03', '03', 'Pollo', 'A');
+INSERT INTO `en_p2m_subclase_producto` (`ClaProCod`, `SubClaProCod`, `SubClaProDet`, `EstRegCod`) VALUES ('03', '02', 'Frutas de grano', 'A');
+INSERT INTO `en_p2m_subclase_producto` (`ClaProCod`, `SubClaProCod`, `SubClaProDet`, `EstRegCod`) VALUES ('03', '03', 'Exoticas', 'A');
 
 INSERT INTO `en_p2m_subclase_producto` (`ClaProCod`, `SubClaProCod`, `SubClaProDet`, `EstRegCod`) VALUES ('04', '01', 'Ajo y Cebolla', 'A');
 INSERT INTO `en_p2m_subclase_producto` (`ClaProCod`, `SubClaProCod`, `SubClaProDet`, `EstRegCod`) VALUES ('04', '02', 'Brocoli y Coliflor', 'A');
@@ -295,11 +295,33 @@ INSERT INTO `en_p2m_subclase_producto` (`ClaProCod`, `SubClaProCod`, `SubClaProD
 INSERT INTO `en_p2m_subclase_producto` (`ClaProCod`, `SubClaProCod`, `SubClaProDet`, `EstRegCod`) VALUES ('05', '01', 'Barritas Cereales', 'A');
 INSERT INTO `en_p2m_subclase_producto` (`ClaProCod`, `SubClaProCod`, `SubClaProDet`, `EstRegCod`) VALUES ('05', '02', 'Cereales Familiares', 'A');
 INSERT INTO `en_p2m_subclase_producto` (`ClaProCod`, `SubClaProCod`, `SubClaProDet`, `EstRegCod`) VALUES ('05', '03', 'Cereales infantiles', 'A');
+
+INSERT INTO `en_p2m_subclase_producto` (`ClaProCod`, `SubClaProCod`, `SubClaProDet`, `EstRegCod`) VALUES ('06', '01', 'Gaseosas', 'A');
+INSERT INTO `en_p2m_subclase_producto` (`ClaProCod`, `SubClaProCod`, `SubClaProDet`, `EstRegCod`) VALUES ('06', '02', 'Jugos', 'A');
+INSERT INTO `en_p2m_subclase_producto` (`ClaProCod`, `SubClaProCod`, `SubClaProDet`, `EstRegCod`) VALUES ('06', '03', 'Bebidas Energizantes', 'A');
+INSERT INTO `en_p2m_subclase_producto` (`ClaProCod`, `SubClaProCod`, `SubClaProDet`, `EstRegCod`) VALUES ('06', '04', 'Refrescos', 'A');
+
+INSERT INTO `en_p2m_subclase_producto` (`ClaProCod`, `SubClaProCod`, `SubClaProDet`, `EstRegCod`) VALUES ('07', '01', 'Aceites Vegetales', 'A');
+INSERT INTO `en_p2m_subclase_producto` (`ClaProCod`, `SubClaProCod`, `SubClaProDet`, `EstRegCod`) VALUES ('07', '02', 'Aceites Animales', 'A');
+INSERT INTO `en_p2m_subclase_producto` (`ClaProCod`, `SubClaProCod`, `SubClaProDet`, `EstRegCod`) VALUES ('07', '03', 'Aceites Minerales', 'A');
+
 INSERT INTO `en_p2m_subclase_producto` (`ClaProCod`, `SubClaProCod`, `SubClaProDet`, `EstRegCod`) VALUES ('08', '01', 'Confitura','A');
 INSERT INTO `en_p2m_subclase_producto` (`ClaProCod`, `SubClaProCod`, `SubClaProDet`, `EstRegCod`) VALUES ('08', '02', 'Mermelada','A');
 INSERT INTO `en_p2m_subclase_producto` (`ClaProCod`, `SubClaProCod`, `SubClaProDet`, `EstRegCod`) VALUES ('08', '03', 'Frutas en almibar', 'A');
-INSERT INTO `en_p2m_subclase_producto` (`ClaProCod`, `SubClaProCod`, `SubClaProDet`, `EstRegCod`) VALUES ('09' ,'01', 'Salchichas', 'A');
-INSERT INTO `en_p2m_subclase_producto` (`ClaProCod`, `SubClaProCod`, `SubClaProDet`, `EstRegCod`) VALUES ('09', '02', 'Mortadela', 'A');
+
+INSERT INTO `en_p2m_subclase_producto` (`ClaProCod`, `SubClaProCod`, `SubClaProDet`, `EstRegCod`) VALUES ('09' ,'01', 'Embutidos Frescos', 'A');
+INSERT INTO `en_p2m_subclase_producto` (`ClaProCod`, `SubClaProCod`, `SubClaProDet`, `EstRegCod`) VALUES ('09', '02', 'Embutidos cocidos', 'A');
+INSERT INTO `en_p2m_subclase_producto` (`ClaProCod`, `SubClaProCod`, `SubClaProDet`, `EstRegCod`) VALUES ('09', '03', 'Embutidos secos o semisecos', 'A');
+
+INSERT INTO `en_p2m_subclase_producto` (`ClaProCod`, `SubClaProCod`, `SubClaProDet`, `EstRegCod`) VALUES ('10' ,'01', 'Helados de crema', 'A');
+INSERT INTO `en_p2m_subclase_producto` (`ClaProCod`, `SubClaProCod`, `SubClaProDet`, `EstRegCod`) VALUES ('10', '02', 'Helados de leche', 'A');
+INSERT INTO `en_p2m_subclase_producto` (`ClaProCod`, `SubClaProCod`, `SubClaProDet`, `EstRegCod`) VALUES ('10', '03', 'Helados de leche desnatada', 'A');
+
+INSERT INTO `en_p2m_subclase_producto` (`ClaProCod`, `SubClaProCod`, `SubClaProDet`, `EstRegCod`) VALUES ('11' ,'01', 'Leche entera', 'A');
+INSERT INTO `en_p2m_subclase_producto` (`ClaProCod`, `SubClaProCod`, `SubClaProDet`, `EstRegCod`) VALUES ('11', '02', 'Leche semidescremada', 'A');
+INSERT INTO `en_p2m_subclase_producto` (`ClaProCod`, `SubClaProCod`, `SubClaProDet`, `EstRegCod`) VALUES ('11', '03', 'Leche descremada', 'A');
+INSERT INTO `en_p2m_subclase_producto` (`ClaProCod`, `SubClaProCod`, `SubClaProDet`, `EstRegCod`) VALUES ('11', '04', 'Leche sin lactosa', 'A');
+
 INSERT INTO `en_p2m_subclase_producto` (`ClaProCod`, `SubClaProCod`, `SubClaProDet`, `EstRegCod`) VALUES ('12', '01', 'Caramelo', 'A');
 INSERT INTO `en_p2m_subclase_producto` (`ClaProCod`, `SubClaProCod`, `SubClaProDet`, `EstRegCod`) VALUES ('12', '02', 'Chicles', 'A');
 INSERT INTO `en_p2m_subclase_producto` (`ClaProCod`, `SubClaProCod`, `SubClaProDet`, `EstRegCod`) VALUES ('12', '03', 'Gomitas', 'A');
@@ -326,6 +348,7 @@ INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, 
 INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUniVen`, `MonCod`, `ProStk`, `ProStkPreVen`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('01', '03', '7755523010313', 'alas de pollo', '06', '6.50', '09', '120', '50', '100', '10', '100', 'Ninguna', 'A');
 INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUniVen`, `MonCod`, `ProStk`, `ProStkPreVen`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('01', '03', '7755523010322', 'piernas de pollo', '06', '7.50', '02', '120', '50', '100', '10', '100', 'Ninguna', 'A');
 INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUniVen`, `MonCod`, `ProStk`, `ProStkPreVen`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('01', '03', '7755523010331', 'pechuga de pollo', '06', '7.50', '02', '120', '50', '100', '10', '100', 'Ninguna', 'A');
+
 INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUniVen`, `MonCod`, `ProStk`, `ProStkPreVen`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('02', '01', '7755523020116', 'bonito', '06', '10.00', '02', '120', '50', '100', '10', '100', 'Ninguna', 'A');
 INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUniVen`, `MonCod`, `ProStk`, `ProStkPreVen`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('02', '01', '7755523020125', 'corvina', '06', '8.00', '02', '120', '50', '100', '10', '100', 'Ninguna', 'A');
 INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUniVen`, `MonCod`, `ProStk`, `ProStkPreVen`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('02', '01', '7755523020134', 'furel', '06', '10.00', '02', '120', '50', '100', '10', '100', 'Ninguna', 'A');
@@ -335,12 +358,14 @@ INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, 
 INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUniVen`, `MonCod`, `ProStk`, `ProStkPreVen`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('02', '03', '7755523020310', 'salmon ahumado 200 gr', '04', '10.00', '02', '120', '50', '100', '10', '100', 'Ninguna', 'A');
 INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUniVen`, `MonCod`, `ProStk`, `ProStkPreVen`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('02', '03', '7755523020329', 'trucha ahumada 200 gr', '04', '10.00', '02', '120', '50', '100', '10', '100', 'Ninguna', 'A');
 INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUniVen`, `MonCod`, `ProStk`, `ProStkPreVen`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('02', '03', '7755523020338', 'pimenton ahumado 100 gr', '04', '8.00', '02', '120', '50', '100', '10', '100', 'Ninguna', 'A');
+
 INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUniVen`, `MonCod`, `ProStk`, `ProStkPreVen`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('03', '01', '7755523030113', 'naranja zumo de malla', '04', '5.00', '02', '120', '50', '100', '10', '100', 'Ninguna', 'A');
 INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUniVen`, `MonCod`, `ProStk`, `ProStkPreVen`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('03', '01', '7755523030122', 'mandarinas 1kg', '04', '5.00', '02', '120', '50', '100', '10', '100', 'Ninguna', 'A');
 INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUniVen`, `MonCod`, `ProStk`, `ProStkPreVen`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('03', '01', '7755523030131', 'limones 1kg', '04', '5.00', '02', '120', '50', '100', '10', '100', 'Ninguna', 'A');
 INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUniVen`, `MonCod`, `ProStk`, `ProStkPreVen`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('03', '02', '7755523030210', 'pera blanca 1kg', '04', '6.00', '02', '120', '50', '100', '10', '100', 'Ninguna', 'A');
 INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUniVen`, `MonCod`, `ProStk`, `ProStkPreVen`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('03', '02', '7755523030229', 'manzana golden 240gr', '04', '6.00', '02', '120', '50', '100', '10', '100', 'Ninguna', 'A');
 INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUniVen`, `MonCod`, `ProStk`, `ProStkPreVen`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('03', '02', '7755523030238', 'manzana roja 290gr', '04', '6.00', '02', '120', '50', '100', '10', '100', 'Ninguna', 'A');
+
 INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUniVen`, `MonCod`, `ProStk`, `ProStkPreVen`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('04', '01', '7755523040110', 'ajo morado 1kg', '04', '6.00', '02', '120', '50', '100', '10', '100', 'Ninguna', 'A');
 INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUniVen`, `MonCod`, `ProStk`, `ProStkPreVen`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('04', '01', '7755523040129', 'ajo molido frasco 55gr', '04', '6.00', '02', '120', '50', '100', '10', '100', 'Ninguna', 'A');
 INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUniVen`, `MonCod`, `ProStk`, `ProStkPreVen`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('04', '01', '7755523040138', 'sazonador de ajo 43gr', '04', '6.00', '02', '120', '50', '100', '10', '100', 'Ninguna', 'A');
@@ -350,6 +375,7 @@ INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, 
 INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUniVen`, `MonCod`, `ProStk`, `ProStkPreVen`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('04', '03', '7755523040314', 'tomate fitofrasco de 500gr', '04', '6.00', '02', '120', '50', '100', '10', '100', 'Ninguna','A');
 INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUniVen`, `MonCod`, `ProStk`, `ProStkPreVen`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('04', '03', '7755523040323', 'tomate frito casero 500gr', '04', '6.00', '02', '120', '50', '100', '10', '100', 'Ninguna','A');
 INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUniVen`, `MonCod`, `ProStk`, `ProStkPreVen`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('04', '03', '7755523040332', 'ensalada de tomate malla 1kg', '04', '6.00', '02', '120', '50', '100', '10', '100', 'Ninguna','A');
+
 INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUniVen`, `MonCod`, `ProStk`, `ProStkPreVen`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('05', '01', '7755523050117', 'barritas de cereales de chocolate', '04', '6.00', '02', '120', '50', '100', '10', '100', 'Ninguna','A');
 INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUniVen`, `MonCod`, `ProStk`, `ProStkPreVen`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('05', '01', '7755523050126', 'barritas de cereales nesquick', '04', '6.00', '02', '120', '50', '100', '10', '100', 'Ninguna','A');
 INSERT INTO `en_p2m_producto` (`ClaProCod`, `SubClaProCod`, `ProCod`, `ProDet`, `UniMedCod`, `ProPreUniVen`, `MonCod`, `ProStk`, `ProStkPreVen`, `VolUniAlm`, `ProStkMin`, `ProStkMax`, `ProObs`, `EstRegCod`) VALUES ('05', '01', '7755523050135', 'barritas de cereales integrales', '04', '6.00', '02', '120', '50', '100', '10', '100', 'Ninguna','A');
@@ -738,6 +764,25 @@ INSERT INTO `episerp`.`en_p4m_proveedor` (`PrvCod`,`PrvDet`,`PrvCon`,`PrvDir`,`P
 
 COMMIT;
 
+
+-- -----------------------------------------------------
+-- Data for table `episerp`.`en_p4m_documento_proveedor`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `episerp`;
+INSERT INTO `en_p4m_documento_proveedor` (`PrvCod`, `TipDocProCod`, `DocProNum`, `EstRegCod`) VALUES ('123456789121', 2, '123456789121', 'A');
+INSERT INTO `en_p4m_documento_proveedor` (`PrvCod`, `TipDocProCod`, `DocProNum`, `EstRegCod`) VALUES ('789456123121', 2, '789456123121', 'A');
+INSERT INTO `en_p4m_documento_proveedor` (`PrvCod`, `TipDocProCod`, `DocProNum`, `EstRegCod`) VALUES ('147258369121', 2, '147258369121', 'A');
+INSERT INTO `en_p4m_documento_proveedor` (`PrvCod`, `TipDocProCod`, `DocProNum`, `EstRegCod`) VALUES ('369258147121', 2, '369258147121', 'A');
+INSERT INTO `en_p4m_documento_proveedor` (`PrvCod`, `TipDocProCod`, `DocProNum`, `EstRegCod`) VALUES ('258147369121', 2, '258147369121', 'A');
+INSERT INTO `en_p4m_documento_proveedor` (`PrvCod`, `TipDocProCod`, `DocProNum`, `EstRegCod`) VALUES ('321654987121', 2, '321654987121', 'A');
+INSERT INTO `en_p4m_documento_proveedor` (`PrvCod`, `TipDocProCod`, `DocProNum`, `EstRegCod`) VALUES ('987654321121', 2, '987654321121', 'A');
+INSERT INTO `en_p4m_documento_proveedor` (`PrvCod`, `TipDocProCod`, `DocProNum`, `EstRegCod`) VALUES ('654321987121', 2, '654321987121', 'A');
+INSERT INTO `en_p4m_documento_proveedor` (`PrvCod`, `TipDocProCod`, `DocProNum`, `EstRegCod`) VALUES ('456123789121', 2, '456123789121', 'A');
+INSERT INTO `en_p4m_documento_proveedor` (`PrvCod`, `TipDocProCod`, `DocProNum`, `EstRegCod`) VALUES ('456741852121', 2, '456741852121', 'A');
+
+COMMIT;
+
 /*
 -- Query: SELECT * FROM episerp.en_p3m_libro_diario
 LIMIT 0, 1000
@@ -862,5 +907,3 @@ INSERT INTO `en_p3t_asiento_det` (`LibDiaCod`,`AsiCabCod`,`AsiDetCod`,`CueCod`,`
 INSERT INTO `en_p3t_asiento_det` (`LibDiaCod`,`AsiCabCod`,`AsiDetCod`,`CueCod`,`AsiDetDebHab`,`AsiDetMon`) VALUES (000001,0000000027,0000000070,0000000241,0,18172.00);
 INSERT INTO `en_p3t_asiento_det` (`LibDiaCod`,`AsiCabCod`,`AsiDetCod`,`CueCod`,`AsiDetDebHab`,`AsiDetMon`) VALUES (000001,0000000028,0000000071,0000000241,1,18172.00);
 INSERT INTO `en_p3t_asiento_det` (`LibDiaCod`,`AsiCabCod`,`AsiDetCod`,`CueCod`,`AsiDetDebHab`,`AsiDetMon`) VALUES (000001,0000000028,0000000072,0000000542,0,18172.00);
-
-
