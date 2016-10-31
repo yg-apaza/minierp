@@ -137,7 +137,7 @@
                     }
                     else
                     {
-                        $("#cueDes").val("Cuenta inválida");
+                        $("#cueDes").val("Incorrecto");
                     }
                 });
             });
