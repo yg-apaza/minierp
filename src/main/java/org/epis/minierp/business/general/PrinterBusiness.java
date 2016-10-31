@@ -232,40 +232,65 @@ public class PrinterBusiness {
         newLine();
     }
     
-    public void writeCabecera(String facCabFec, String cliNom, String cliDir, String cliDoc) throws IOException{
-        advanceVertical(4.0f);
-        advanceHorizontal(2.0f);
-        writeLine(facCabFec);
+    public void writeFacSobCab(String cliNom, String cliDir, String fecEmi) throws IOException{
+        advanceVertical(3.0f);
         advanceHorizontal(2.0f);
         writeLine(cliNom);
         advanceHorizontal(2.0f);
-        writer.write(cliDir);
-        setAbsoluteHorizontalPosition(14.3f);
-        writeLine(cliDoc);
-        advanceVertical(1.1f);
+        writeLine(cliDir);
+        advanceHorizontal(16.0f);
+        writeLine(fecEmi);
+    }
+       
+    public void writeFacCabecera(String cliCod, String conPag, String fecVto,
+            String venNom, String nSec, String dis, String rut, String traNom) throws IOException{
+        advanceVertical(1.0f);
+        writer.write(cliCod);
+        setAbsoluteHorizontalPosition(2.0f);
+        writer.write(conPag);
+        setAbsoluteHorizontalPosition(4.5f);
+        writer.write(fecVto);
+        setAbsoluteHorizontalPosition(7.0f);
+        writer.write(venNom);
+        setAbsoluteHorizontalPosition(9.6f);
+        writer.write(nSec);
+        setAbsoluteHorizontalPosition(11.1f);
+        writer.write(dis);
+        setAbsoluteHorizontalPosition(14.5f);
+        writer.write(rut);
+        setAbsoluteHorizontalPosition(15.4f);
+        writer.write(traNom);
+        advanceVertical(1.0f);
     }
     
-    public void writeDetalle(Double can, String uni, String des, Double preUni, Double preTotal) throws IOException{
-        advanceHorizontal(0.1f);
+    public void writeFacDetalle(String cod, Double can, String uni, String des, 
+            Double preUni, String proDes1, String proDes2, Double preTotal) throws IOException{
+        setAbsoluteHorizontalPosition(0.1f);
+        writer.write(cod);
+        setAbsoluteHorizontalPosition(2.0f);
         writer.write(Double.toString(can));
-        setAbsoluteHorizontalPosition(1.6f);
+        setAbsoluteHorizontalPosition(3.6f);
         writer.write(uni);       
-        setAbsoluteHorizontalPosition(3.4f);
+        setAbsoluteHorizontalPosition(4.9f);
         writer.write(des);
-        setAbsoluteHorizontalPosition(14f);
+        setAbsoluteHorizontalPosition(14.0f);
         writer.write(Double.toString(preUni));
-        setAbsoluteHorizontalPosition(16f);
+        setAbsoluteHorizontalPosition(16.0f);
+        writer.write(proDes1);
+        setAbsoluteHorizontalPosition(17.2f);
+        writer.write(proDes2);
+        setAbsoluteHorizontalPosition(19.0f);
         writer.write(Double.toString(preTotal));
         newLine();
     }
     
-    public void writeTotal(Double subTotal, Double igv, Double total) throws IOException{
-        advanceVertical(1.0f);
-        setAbsoluteHorizontalPosition(16.0f);
+    public void writeFacTotal(Double subTotal, Double igv, Double total) throws IOException{
+        advanceVertical(7.0f);
+        setAbsoluteHorizontalPosition(19.0f);
         writer.write(Double.toString(subTotal));newLine();
-        setAbsoluteHorizontalPosition(16.0f);
+        setAbsoluteHorizontalPosition(19.0f);
         writer.write(Double.toString(igv));newLine();
-        setAbsoluteHorizontalPosition(16.0f);
+        setAbsoluteHorizontalPosition(19.0f);
         writer.write(Double.toString(total));newLine();
     }
     
@@ -274,7 +299,7 @@ public class PrinterBusiness {
         clearStyle();
         select10CPI();
         setFont("Serif");
-        setMargins(4, 4);
+        setMargins(8, 6);
     }
     
     public void close() throws IOException{
