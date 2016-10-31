@@ -242,7 +242,7 @@
                                         <div class="input-group">                                            
                                             <input type="date" class="form-control" name="usuFecNac" id="updateUsuFecNac" <fmt:formatDate value="${updateFecNacUsu}" pattern="dd/MM/yyyy"/>>
                                             <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                            <td><fmt:formatDate value="${u.usuFecNac}" pattern="dd/MM/yyyy"/></td>
+                                            <fmt:formatDate value="${u.usuFecNac}" pattern="dd/MM/yyyy"/>
                                         </div>  
                                     </div>
                                 </div>
