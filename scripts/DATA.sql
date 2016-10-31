@@ -873,6 +873,8 @@ INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `
 INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (615, 190, 4, '2984', 'Envases y embalajes', 'A');
 
 COMMIT;
+ 
+
 
 -- -----------------------------------------------------
 -- Data for table `episerp`.`ta_gzz_tipo_descuento`
