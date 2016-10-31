@@ -106,7 +106,9 @@
                         <thead class="thead-inverse" >
                             <tr class="success">
                                 <th style="text-align: center;">Fecha</th>
-                                <th style="text-align: center;">Nro. Factura </th>
+                                <th style="text-align: center;">Glosa </th>
+                                <th style="text-align: center;">Operacion </th>
+                                <th style="text-align: center;">Nro. </th>
                                 <th style="text-align: center;">Producto</th>
                                 <th style="text-align: center;">Cantidad Entrada</th>
                                 <th style="text-align: center;">Precio Unitario</th>
@@ -125,6 +127,8 @@
                             <c:forEach items="${registros}" var="u">
                                 <tr>
                                     <td style="text-align: center;"><fmt:formatDate value="${u.fecha}" pattern="dd/MM/yyyy"/></td>
+                                    <td style="text-align: center;">${u.glosa}</td>
+                                    <td style="text-align: center;">${u.tipo_operacion}</td>
                                     <td style="text-align: center;">${u.numero_factura}</td>
                                     <td style="text-align: center;">${u.producto}</td>
                                     <td style="text-align: center;">${u.cantidad_entrada}</td>

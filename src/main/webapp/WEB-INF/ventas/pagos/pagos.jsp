@@ -66,6 +66,7 @@
                                 <th>Total Cuotas</th>
                                 <th>Cuotas Pagadas</th>
                                 <th>Deuda Total</th>
+                                <th>Monto de Cuota</th>
                                 <th>Fecha Inicio</th>
                                 <th>Fecha Fin</th>
                                 <th>Fecha Pago</th>
@@ -79,6 +80,7 @@
                                     <td>${c.pagCuoNum}</td>
                                     <td>${c.pagCuoNumPag}</td>
                                     <td>${c.pagCuoDeuTot}</td>
+                                    <td>${c.pagCuoMonXCuo}</td>
                                     <td><fmt:formatDate value="${c.pagCuoFecIni}" pattern="dd/MM/yyyy"/></td>
                                     <td><fmt:formatDate value="${c.pagCuoFecFin}" pattern="dd/MM/yyyy"/></td>
                                     <td><fmt:formatDate value="${c.pagCuoFecPag}" pattern="dd/MM/yyyy"/></td>
