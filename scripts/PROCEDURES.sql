@@ -38,13 +38,8 @@ IF idProducto != ''
 				
             ) precio_total_saldo,
             COALESCE(@saldoPrecioTot/@saldoCantidad,0) precio_unitario_saldo,
-            ( 
-				CASE a.cantidad_entrada
-					WHEN 0 THEN (SELECT 'venta')
-					ELSE ( SELECT 'compra')
-                END 
-				
-            ) tipo_operacion
+           a.tipo_operacion,
+           a.glosa
             
         FROM
         (
@@ -58,7 +53,10 @@ IF idProducto != ''
 					(SELECT cantidad_entrada*precio_unitario_entrada) precio_total_entrada,
 					0 cantidad_salida,
 					0 precio_unitario_salida,
-					0 precio_total_salida
+					0 precio_total_salida,
+                    'Compra' tipo_operacion,
+                    'Factura' glosa
+                    
 				FROM en_p4t_factura_compra_det fcd
 				INNER JOIN en_p2m_producto pp ON fcd.ProCod=pp.ProCod AND pp.ProCod=idProducto
 				INNER JOIN en_p4m_factura_compra_cab fcc ON fcc.FacComCabCod = fcd.FacComCabCod AND fcc.EstRegCod='A'
@@ -76,13 +74,59 @@ IF idProducto != ''
 					0 precio_total_entrada,
 					fvd.FacVenDetCan cantidad_salida,
 					fvd.FacVenDetValUni precio_unitario_salida,
-					(SELECT cantidad_salida*precio_unitario_salida) precio_total_salida
+					(SELECT cantidad_salida*precio_unitario_salida) precio_total_salida,
+                    'Venta' tipo_operacion,
+                    'Factura' glosa
 					
 				FROM en_p1t_factura_venta_det fvd
 				INNER JOIN en_p2m_producto pp ON fvd.ProCod=pp.ProCod AND pp.ProCod=idProducto
 				INNER JOIN en_p1m_factura_venta_cab fvc ON fvc.FacVenCabCod = fvd.FacVenCabCod AND fvc.EstRegCod='A'
-				 
 			)
+            UNION ALL
+            (
+				SELECT 
+					dc.DevComFec fecha,
+					dc.GuiRemRemNum numero_factura,
+					pp.ProDet producto,
+					0 cantidad_entrada,
+					0 precio_unitario_entrada,
+					0 precio_total_entrada,
+					fcd.FacComDetCan cantidad_salida,
+					fcd.FacComDetValUni precio_unitario_salida,
+					(SELECT cantidad_salida*precio_unitario_salida) precio_total_salida,
+                    td.TipDevDet tipo_operacion,
+                    'Guia Remision' glosa
+					
+				FROM en_p2c_devolucion_compras dc
+                INNER JOIN ta_gzz_tipo_devolucion td ON dc.TipDevCod=td.TipDevCod AND td.EstRegCod='A'
+                INNER JOIN en_p4m_factura_compra_cab fcc ON fcc.FacComCabCod = dc.FacComCabCod-- AND dv.EstRegCod='A'
+                INNER JOIN en_p4t_factura_compra_det fcd ON fcd.FacComCabCod=fcc.FacComCabCod
+                INNER JOIN en_p2m_producto pp ON fcd.ProCod=pp.ProCod AND pp.ProCod=idProducto
+				
+            )
+            
+            UNION ALL
+            (
+				SELECT 
+					dv.DevVenFec fecha,
+					dv.GuiRemRemNum numero_factura,
+					pp.ProDet producto,
+					fvd.FacVenDetCan cantidad_entrada,
+					fvd.FacVenDetValUni precio_unitario_entrada,
+					(SELECT cantidad_entrada*precio_unitario_entrada) precio_total_entrada,
+					0 cantidad_salida,
+					0 precio_unitario_salida,
+					0 precio_total_salida,
+                    td.TipDevDet tipo_operacion,
+                    'Guia Remision' glosa
+					
+				FROM en_p1c_devolucion_ventas dv
+                INNER JOIN ta_gzz_tipo_devolucion td ON dv.TipDevCod=td.TipDevCod AND td.EstRegCod='A'
+                INNER JOIN en_p1m_factura_venta_cab fvc ON fvc.FacVenCabCod = dv.FacVenCabCod-- AND dv.EstRegCod='A'
+                INNER JOIN en_p1t_factura_venta_det fvd ON fvd.FacVenCabCod=fvc.FacVenCabCod
+                INNER JOIN en_p2m_producto pp ON fvd.ProCod=pp.ProCod AND pp.ProCod=idProducto
+				
+            )
 		) a
         ORDER BY a.fecha,a.numero_factura;
 	END IF;

@@ -31,13 +31,13 @@
                                     <td>${p.plaGlo}</td>
                                     <c:if test="${p.plaHab}">
                                         <td class="text-right">
-                                            <a href="#" data-toggle="modal" data-target="#modificarModal" data-codigo="${cb.cueBanCod}" data-nrocuenta="${cb.cueBanNum}" data-codbanco="${cb.taGzzBanco.banCod}" data-cuenum="${cb.enP3mCuenta.cueNum}">
-                                                <i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i>
-                                            </a>
-                                            <a href="#" data-toggle="modal" data-target="#eliminarModal" data-codigo="${cb.cueBanCod}" data-nrocuenta="${cb.cueBanNum}" data-detbanco="${cb.taGzzBanco.banDet}">
+                                            <a href="#" data-toggle="modal" data-target="#deleteModal" data-codigo="${p.plaCod}" data-descripcion="${p.plaDet}">
                                                 <i class="fa fa-trash-o fa-2x" style="color: black;"></i>
                                             </a>
                                         </td>
+                                    </c:if>
+                                    <c:if test="${!p.plaHab}">
+                                        <td class="text-right">No editable</td>
                                     </c:if>
                                 </tr>
                             </c:forEach>
@@ -127,7 +127,29 @@
                 </div>                                        
             </div>
         </div>
-                        
+        
+        <div id="deleteModal" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Eliminar plantilla</h4>
+                    </div>
+                    <form id="deleteForm" method="post" action="${pageContext.request.contextPath}/secured/contabilidad/plantilla">
+                        <div class="modal-body">
+                            <input type="hidden" name="accion" value="delete">
+                            <input type="hidden" name="plaCod" id="deletePlaCod">
+                            <p> ¿Desea eliminar la plantilla Nº <span id="deletePlaCodShow"></span> - <span id="deletePlaDet"></span>?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-outline btn-success">Si</button>
+                            <button type="button" class="btn btn-outline btn-danger" data-dismiss="modal">Cancelar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
         <div id="errorMessageModal" class="modal fade">
             <div class="modal-dialog modal-sm">
                 <div class="modal-content">
@@ -159,6 +181,17 @@
                         $("#cueDes").val("Incorrecto");
                     }
                 });
+            });
+            
+            var deleteModal = $('#deleteModal');
+            var deletePlaCod = $('#deletePlaCod');
+            var deletePlaCodShow = $('#deletePlaCodShow');
+            var deletePlaDet = $('#deletePlaDet');
+            
+            deleteModal.on('show.bs.modal', function (e) {
+                deletePlaCod.val($(e.relatedTarget).data('codigo'));
+                deletePlaCodShow.text($(e.relatedTarget).data('codigo'));
+                deletePlaDet.text($(e.relatedTarget).data('descripcion'));
             });
             
             $('#addDetail').on('click', function () {
