@@ -49,7 +49,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `episerp`;
-INSERT INTO `episerp`.`en_p1m_empresa` (`EmpCod`, `EmpRazSoc`, `EmpNomCom`, `EmpDir`, `EmpIGV`, `EmpRUC`) VALUES (1, 'Empresa de Desarrollo de Software', 'MOT S.A.', 'Av. Venezuela s/n', 18, '10230499411');
+INSERT INTO `en_p1m_empresa` (`EmpCod`,`EmpRazSoc`,`EmpNomCom`,`EmpDomFis`,`EmpDes`,`EmpDir`,`EmpTel`,`EmpEmail`,`EmpIGV`,`EmpTipCamCom`,`EmpTipCamVen`,`EmpRUC`,`EmpLot`,`EmpImgURL`) VALUES (01,'Empresa de Desarrollo de Software','MOT S.A.','Av. Venezuela s/n','Empresa de Desarrollo de Software','Av. Venezuela s/n','945708074','mot@gmail.com',18.00,3.371,3.375,'10230499411',NULL,NULL);
 
 COMMIT;
 
@@ -121,7 +121,6 @@ INSERT INTO `episerp`.`ta_gzz_tipo_doc_usuario` (`TipDocUsuCod`, `TipDocUsuDet`,
 INSERT INTO `episerp`.`ta_gzz_tipo_doc_usuario` (`TipDocUsuCod`, `TipDocUsuDet`, `EstRegCod`) VALUES (2, 'RUC', 'A');
 
 COMMIT;
-
 
 -- -----------------------------------------------------
 -- Data for table `episerp`.`ta_gzz_unidad_med`
@@ -797,5 +796,108 @@ INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `
 INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (538, 367, 4, '7014', 'Mercaderías inmuebles', 'A');
 INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (539, 367, 4, '7015', 'Mercaderías - Otras', 'A');
 INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (540, 9, 2, '94', 'Gastos Administrativos', 'A');
+
+COMMIT;
+
+-- -----------------------------------------------------
+-- Data for table `episerp`.`ta_gzz_tipo_descuento`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `episerp`;
+INSERT INTO `episerp`.`ta_gzz_tipo_descuento` (`TipDesCod`, `TipDesDet`, `EstRegCod`) VALUES ('01', 'Bonos', 'A');
+INSERT INTO `episerp`.`ta_gzz_tipo_descuento` (`TipDesCod`, `TipDesDet`, `EstRegCod`) VALUES ('02', 'Promociones', 'A');
+INSERT INTO `episerp`.`ta_gzz_tipo_descuento` (`TipDesCod`, `TipDesDet`, `EstRegCod`) VALUES ('03', 'Devolucion', 'A');
+INSERT INTO `episerp`.`ta_gzz_tipo_descuento` (`TipDesCod`, `TipDesDet`, `EstRegCod`) VALUES ('04', 'Fallas del producto', 'A');
+INSERT INTO `episerp`.`ta_gzz_tipo_descuento` (`TipDesCod`, `TipDesDet`, `EstRegCod`) VALUES ('05', 'Entregas extenporaneas', 'A');
+INSERT INTO `episerp`.`ta_gzz_tipo_descuento` (`TipDesCod`, `TipDesDet`, `EstRegCod`) VALUES ('06', 'Errores de envio', 'A');
+INSERT INTO `episerp`.`ta_gzz_tipo_descuento` (`TipDesCod`, `TipDesDet`, `EstRegCod`) VALUES ('07', 'Otros', 'A');
+
+COMMIT;
+
+-- -----------------------------------------------------
+-- Data for table `episerp`.`ta_gzz_tipo_devolucion`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `episerp`;
+INSERT INTO `episerp`.`ta_gzz_tipo_devolucion` (`TipDevCod`, `TipDevDet`, `EstRegCod`) VALUES ('01', 'Falla en el producto', 'A');
+INSERT INTO `episerp`.`ta_gzz_tipo_devolucion` (`TipDevCod`, `TipDevDet`, `EstRegCod`) VALUES ('02', 'Error de solicitud del cliente', 'A');
+INSERT INTO `episerp`.`ta_gzz_tipo_devolucion` (`TipDevCod`, `TipDevDet`, `EstRegCod`) VALUES ('03', 'Falta de pago', 'A');
+INSERT INTO `episerp`.`ta_gzz_tipo_devolucion` (`TipDevCod`, `TipDevDet`, `EstRegCod`) VALUES ('04', 'Entregas extemporaneas', 'A');
+INSERT INTO `episerp`.`ta_gzz_tipo_devolucion` (`TipDevCod`, `TipDevDet`, `EstRegCod`) VALUES ('05', 'Errores de registro', 'A');
+INSERT INTO `episerp`.`ta_gzz_tipo_devolucion` (`TipDevCod`, `TipDevDet`, `EstRegCod`) VALUES ('06', 'Errores de envio', 'A');
+INSERT INTO `episerp`.`ta_gzz_tipo_devolucion` (`TipDevCod`, `TipDevDet`, `EstRegCod`) VALUES ('07', 'Productos Faltantes', 'A');
+INSERT INTO `episerp`.`ta_gzz_tipo_devolucion` (`TipDevCod`, `TipDevDet`, `EstRegCod`) VALUES ('08', 'Otros', 'A');
+
+COMMIT;
+
+-- -----------------------------------------------------
+-- Data for table `episerp`.`ta_gzz_tipo_destinatario`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `episerp`;
+INSERT INTO `episerp`.`ta_gzz_tipo_destinatario` (`TipDesCod`, `TipDesDet`, `EstRegCod`) VALUES ('01', 'Cliente', 'A');
+INSERT INTO `episerp`.`ta_gzz_tipo_destinatario` (`TipDesCod`, `TipDesDet`, `EstRegCod`) VALUES ('02', 'Proveedor', 'A');
+INSERT INTO `episerp`.`ta_gzz_tipo_destinatario` (`TipDesCod`, `TipDesDet`, `EstRegCod`) VALUES ('03', 'El Remitente', 'A');
+
+COMMIT;
+
+-- -----------------------------------------------------
+-- Data for table `episerp`.`ta_gzz_tipo_doc_transportista`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `episerp`;
+INSERT INTO `ta_gzz_tipo_doc_transportista` (`TipDocTraCod`,`TipDocTraDet`,`EstRegCod`) VALUES (01,"DNI","A");
+INSERT INTO `ta_gzz_tipo_doc_transportista` (`TipDocTraCod`,`TipDocTraDet`,`EstRegCod`) VALUES (02,"RUC","A");
+INSERT INTO `ta_gzz_tipo_doc_transportista` (`TipDocTraCod`,`TipDocTraDet`,`EstRegCod`) VALUES (03,"Licencia","A");
+
+COMMIT;
+
+-- -----------------------------------------------------
+-- Data for table `episerp`.`ta_gzz_motivo_traslado`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `episerp`;
+INSERT INTO `episerp`.`ta_gzz_motivo_traslado` (`MotTraCod`, `MotTraDet`, `EstRegCod`) VALUES ('01', 'Ventas', 'A');
+INSERT INTO `episerp`.`ta_gzz_motivo_traslado` (`MotTraCod`, `MotTraDet`, `EstRegCod`) VALUES ('02', 'Compras', 'A');
+INSERT INTO `episerp`.`ta_gzz_motivo_traslado` (`MotTraCod`, `MotTraDet`, `EstRegCod`) VALUES ('03', 'Devolucion', 'A');
+INSERT INTO `episerp`.`ta_gzz_motivo_traslado` (`MotTraCod`, `MotTraDet`, `EstRegCod`) VALUES ('04', 'Consignacion', 'A');
+INSERT INTO `episerp`.`ta_gzz_motivo_traslado` (`MotTraCod`, `MotTraDet`, `EstRegCod`) VALUES ('05', 'Importacion', 'A');
+INSERT INTO `episerp`.`ta_gzz_motivo_traslado` (`MotTraCod`, `MotTraDet`, `EstRegCod`) VALUES ('06', 'Exportacion', 'A');
+INSERT INTO `episerp`.`ta_gzz_motivo_traslado` (`MotTraCod`, `MotTraDet`, `EstRegCod`) VALUES ('07', 'Venta sujeta a confirmación', 'A');
+INSERT INTO `episerp`.`ta_gzz_motivo_traslado` (`MotTraCod`, `MotTraDet`, `EstRegCod`) VALUES ('08', 'Traslado entre establecimientos de la misma empresa', 'A');
+INSERT INTO `episerp`.`ta_gzz_motivo_traslado` (`MotTraCod`, `MotTraDet`, `EstRegCod`) VALUES ('09', 'Traslado de bienes para transformación', 'A');
+INSERT INTO `episerp`.`ta_gzz_motivo_traslado` (`MotTraCod`, `MotTraDet`, `EstRegCod`) VALUES ('10', 'Recojo de bienes', 'A');
+INSERT INTO `episerp`.`ta_gzz_motivo_traslado` (`MotTraCod`, `MotTraDet`, `EstRegCod`) VALUES ('11', 'Traslado por emisor itinerante', 'A');
+INSERT INTO `episerp`.`ta_gzz_motivo_traslado` (`MotTraCod`, `MotTraDet`, `EstRegCod`) VALUES ('12', 'Traslado zona primaria', 'A');
+INSERT INTO `episerp`.`ta_gzz_motivo_traslado` (`MotTraCod`, `MotTraDet`, `EstRegCod`) VALUES ('13', 'Venta con entrega a terceros', 'A');
+INSERT INTO `episerp`.`ta_gzz_motivo_traslado` (`MotTraCod`, `MotTraDet`, `EstRegCod`) VALUES ('14', 'Otras no incluida en los puntos anteriores', 'A');
+
+COMMIT;
+
+-- -----------------------------------------------------
+-- Data for table `episerp`.`ta_gzz_estado_uni_transporte`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `episerp`;
+
+INSERT INTO `ta_gzz_estado_uni_transporte` (`EstUniTraCod`,`EstUniTraDet`,`EstRegCod`) VALUES (01,"Activo","A");
+INSERT INTO `ta_gzz_estado_uni_transporte` (`EstUniTraCod`,`EstUniTraDet`,`EstRegCod`) VALUES (02,"Inactivo","A");
+INSERT INTO `ta_gzz_estado_uni_transporte` (`EstUniTraCod`,`EstUniTraDet`,`EstRegCod`) VALUES (03,"En Reparacion","A");
+INSERT INTO `ta_gzz_estado_uni_transporte` (`EstUniTraCod`,`EstUniTraDet`,`EstRegCod`) VALUES (04,"En Mantenimiento","A");
+
+COMMIT;
+
+-- -----------------------------------------------------
+-- Data for table `episerp`.`ta_gzz_tipo_uni_transporte`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `episerp`;
+INSERT INTO `ta_gzz_tipo_uni_transporte` (`TipUniTraCod`,`TipUniTraDet`,`EstRegCod`) VALUES (01,"Vehiculo Caja-Granel","A");
+INSERT INTO `ta_gzz_tipo_uni_transporte` (`TipUniTraCod`,`TipUniTraDet`,`EstRegCod`) VALUES (02,"Vehiculo Caja-Embalajes","A");
+INSERT INTO `ta_gzz_tipo_uni_transporte` (`TipUniTraCod`,`TipUniTraDet`,`EstRegCod`) VALUES (03,"Vehiculo Caja-Contenedores","A");
+INSERT INTO `ta_gzz_tipo_uni_transporte` (`TipUniTraCod`,`TipUniTraDet`,`EstRegCod`) VALUES (04,"Vehiculo Caja-Jaula","A");
+INSERT INTO `ta_gzz_tipo_uni_transporte` (`TipUniTraCod`,`TipUniTraDet`,`EstRegCod`) VALUES (05,"Vehiculo Caja-Otros","A");
+INSERT INTO `ta_gzz_tipo_uni_transporte` (`TipUniTraCod`,`TipUniTraDet`,`EstRegCod`) VALUES (06,"Cisterna","A");
+INSERT INTO `ta_gzz_tipo_uni_transporte` (`TipUniTraCod`,`TipUniTraDet`,`EstRegCod`) VALUES (07,"Otros","A");
 
 COMMIT;
