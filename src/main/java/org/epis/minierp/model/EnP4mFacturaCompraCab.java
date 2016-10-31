@@ -1,5 +1,5 @@
 package org.epis.minierp.model;
-// Generated 30/10/2016 12:40:40 AM by Hibernate Tools 4.3.1
+// Generated 31/10/2016 01:37:15 AM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -24,7 +24,6 @@ public class EnP4mFacturaCompraCab  implements java.io.Serializable {
      private TaGzzTipoPagoFactura taGzzTipoPagoFactura;
      private Date facComCabFec;
      private double facComCabTot;
-     private double facComCabDes;
      private double facComCabSubTot;
      private int facComCabIgv;
      private String facComCabObs;
@@ -36,7 +35,7 @@ public class EnP4mFacturaCompraCab  implements java.io.Serializable {
     }
 
 	
-    public EnP4mFacturaCompraCab(String facComCabCod, EnP1mUsuario enP1mUsuario, EnP4mProveedor enP4mProveedor, TaGzzEstadoFactura taGzzEstadoFactura, TaGzzMetodoPagoFactura taGzzMetodoPagoFactura, TaGzzMoneda taGzzMoneda, TaGzzTipoPagoFactura taGzzTipoPagoFactura, Date facComCabFec, double facComCabTot, double facComCabDes, double facComCabSubTot, int facComCabIgv, String facComCabObs, char estRegCod) {
+    public EnP4mFacturaCompraCab(String facComCabCod, EnP1mUsuario enP1mUsuario, EnP4mProveedor enP4mProveedor, TaGzzEstadoFactura taGzzEstadoFactura, TaGzzMetodoPagoFactura taGzzMetodoPagoFactura, TaGzzMoneda taGzzMoneda, TaGzzTipoPagoFactura taGzzTipoPagoFactura, Date facComCabFec, double facComCabTot, double facComCabSubTot, int facComCabIgv, String facComCabObs, char estRegCod) {
         this.facComCabCod = facComCabCod;
         this.enP1mUsuario = enP1mUsuario;
         this.enP4mProveedor = enP4mProveedor;
@@ -46,13 +45,12 @@ public class EnP4mFacturaCompraCab  implements java.io.Serializable {
         this.taGzzTipoPagoFactura = taGzzTipoPagoFactura;
         this.facComCabFec = facComCabFec;
         this.facComCabTot = facComCabTot;
-        this.facComCabDes = facComCabDes;
         this.facComCabSubTot = facComCabSubTot;
         this.facComCabIgv = facComCabIgv;
         this.facComCabObs = facComCabObs;
         this.estRegCod = estRegCod;
     }
-    public EnP4mFacturaCompraCab(String facComCabCod, EnP1mUsuario enP1mUsuario, EnP2mGuiaRemRemitente enP2mGuiaRemRemitente, EnP2mGuiaRemTransportista enP2mGuiaRemTransportista, EnP4mProveedor enP4mProveedor, TaGzzEstadoFactura taGzzEstadoFactura, TaGzzMetodoPagoFactura taGzzMetodoPagoFactura, TaGzzMoneda taGzzMoneda, TaGzzTipoDescuento taGzzTipoDescuento, TaGzzTipoPagoFactura taGzzTipoPagoFactura, Date facComCabFec, double facComCabTot, double facComCabDes, double facComCabSubTot, int facComCabIgv, String facComCabObs, char estRegCod, EnP2cDevolucionCompras enP2cDevolucionCompras, Set enP4tFacturaCompraDets) {
+    public EnP4mFacturaCompraCab(String facComCabCod, EnP1mUsuario enP1mUsuario, EnP2mGuiaRemRemitente enP2mGuiaRemRemitente, EnP2mGuiaRemTransportista enP2mGuiaRemTransportista, EnP4mProveedor enP4mProveedor, TaGzzEstadoFactura taGzzEstadoFactura, TaGzzMetodoPagoFactura taGzzMetodoPagoFactura, TaGzzMoneda taGzzMoneda, TaGzzTipoDescuento taGzzTipoDescuento, TaGzzTipoPagoFactura taGzzTipoPagoFactura, Date facComCabFec, double facComCabTot, double facComCabSubTot, int facComCabIgv, String facComCabObs, char estRegCod, EnP2cDevolucionCompras enP2cDevolucionCompras, Set enP4tFacturaCompraDets) {
        this.facComCabCod = facComCabCod;
        this.enP1mUsuario = enP1mUsuario;
        this.enP2mGuiaRemRemitente = enP2mGuiaRemRemitente;
@@ -65,7 +63,6 @@ public class EnP4mFacturaCompraCab  implements java.io.Serializable {
        this.taGzzTipoPagoFactura = taGzzTipoPagoFactura;
        this.facComCabFec = facComCabFec;
        this.facComCabTot = facComCabTot;
-       this.facComCabDes = facComCabDes;
        this.facComCabSubTot = facComCabSubTot;
        this.facComCabIgv = facComCabIgv;
        this.facComCabObs = facComCabObs;
@@ -157,13 +154,6 @@ public class EnP4mFacturaCompraCab  implements java.io.Serializable {
     
     public void setFacComCabTot(double facComCabTot) {
         this.facComCabTot = facComCabTot;
-    }
-    public double getFacComCabDes() {
-        return this.facComCabDes;
-    }
-    
-    public void setFacComCabDes(double facComCabDes) {
-        this.facComCabDes = facComCabDes;
     }
     public double getFacComCabSubTot() {
         return this.facComCabSubTot;

@@ -17,12 +17,12 @@ CREATE TABLE en_p1m_preventa_cab
 (
   PreVenCabCod Char(10) NOT NULL,
   CliCod Char(15) NOT NULL,
+  CatRutCod Int(2) ZEROFILL,
   UsuCod Char(15) NOT NULL,
   PreVenCabFec Date NOT NULL,
   PreVenCabPla Int(3) NOT NULL,
   PreVenCabTot Double(10,2) NOT NULL,
   TipDesCod Int(2) ZEROFILL,
-  PreVenCabDes Double(10,2) NOT NULL,
   PreVenCabSubTot Double(10,2) NOT NULL,
   PreVenCabIGV Int(3) NOT NULL DEFAULT 19,
   PreVenCabObs Char(90) NOT NULL DEFAULT 'Ninguna',
@@ -44,6 +44,9 @@ CREATE INDEX IX_Relationship5 ON en_p1m_preventa_cab (MonCod)
 ;
 
 CREATE INDEX IX_Relationship104 ON en_p1m_preventa_cab (TipDesCod)
+;
+
+CREATE INDEX IX_Relationship110 ON en_p1m_preventa_cab (CatRutCod)
 ;
 
 -- Table episerp.en_p1t_preventa_det
@@ -90,7 +93,6 @@ CREATE TABLE en_p1m_factura_venta_cab
   FacVenCabFec Date NOT NULL,
   FacVenCabTot Double(10,2) NOT NULL,
   TipDesCod Int(2) ZEROFILL,
-  FacVenCabDes Double(10,2) NOT NULL,
   FacVenCabSubTot Double(10,2) NOT NULL,
   FacVenCabIGV Int(3) NOT NULL DEFAULT 19,
   FacVenCabObs Char(90) NOT NULL DEFAULT 'Ninguna',
@@ -385,6 +387,8 @@ CREATE TABLE en_p3m_cuenta
 (
   CueCod Int(10) ZEROFILL NOT NULL AUTO_INCREMENT,
   CuePad Int(10) ZEROFILL,
+  CueAmaDeb Int(10) ZEROFILL,
+  CueAmaHab Int(10) ZEROFILL,
   CueNiv Int(2) NOT NULL,
   CueNum Char(10) NOT NULL,
   CueDes Char(150) NOT NULL,
@@ -394,6 +398,12 @@ CREATE TABLE en_p3m_cuenta
 ;
 
 CREATE INDEX IX_Relationship37 ON en_p3m_cuenta (CuePad)
+;
+
+CREATE INDEX IX_Relationship111 ON en_p3m_cuenta (CueAmaDeb)
+;
+
+CREATE INDEX IX_Relationship113 ON en_p3m_cuenta (CueAmaHab)
 ;
 
 -- Table episerp.en_p3m_cuenta_banco
@@ -478,7 +488,6 @@ CREATE TABLE en_p4m_factura_compra_cab
   FacComCabFec Date NOT NULL,
   FacComCabTot Double(10,2) NOT NULL,
   TipDesCod Int(2) ZEROFILL,
-  FacComCabDes Double(10,2) NOT NULL,
   FacComCabSubTot Double(10,2) NOT NULL,
   FacComCabIGV Int(3) NOT NULL DEFAULT 19,
   FacComCabObs Char(90) NOT NULL DEFAULT 'Ninguna',
@@ -859,6 +868,7 @@ CREATE TABLE ta_gzz_tipo_descuento
 (
   TipDesCod Int(2) ZEROFILL NOT NULL AUTO_INCREMENT,
   TipDesDet Char(90) NOT NULL,
+  TipDesPor Double(5,2),
   EstRegCod Char(1),
  PRIMARY KEY (TipDesCod)
 )
@@ -1353,6 +1363,15 @@ ALTER TABLE en_p1m_clientes_rutas ADD CONSTRAINT Relationship107 FOREIGN KEY (Cl
 ;
 
 ALTER TABLE en_p1m_factura_venta_cab ADD CONSTRAINT Relationship109 FOREIGN KEY (CatRutCod) REFERENCES en_p1m_catalogo_ruta (CatRutCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p1m_preventa_cab ADD CONSTRAINT Relationship110 FOREIGN KEY (CatRutCod) REFERENCES en_p1m_catalogo_ruta (CatRutCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p3m_cuenta ADD CONSTRAINT Relationship111 FOREIGN KEY (CueAmaDeb) REFERENCES en_p3m_cuenta (CueCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p3m_cuenta ADD CONSTRAINT Relationship113 FOREIGN KEY (CueAmaHab) REFERENCES en_p3m_cuenta (CueCod) ON DELETE NO ACTION ON UPDATE NO ACTION
 ;
 
 

@@ -1,5 +1,5 @@
 package org.epis.minierp.model;
-// Generated 30/10/2016 12:40:40 AM by Hibernate Tools 4.3.1
+// Generated 31/10/2016 01:37:15 AM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -15,6 +15,7 @@ public class EnP1mCatalogoRuta  implements java.io.Serializable {
      private String catRutDet;
      private char estRegCod;
      private Set enP1mClientesRutases = new HashSet(0);
+     private Set enP1mPreventaCabs = new HashSet(0);
      private Set enP1mFacturaVentaCabs = new HashSet(0);
 
     public EnP1mCatalogoRuta() {
@@ -25,10 +26,11 @@ public class EnP1mCatalogoRuta  implements java.io.Serializable {
         this.catRutDet = catRutDet;
         this.estRegCod = estRegCod;
     }
-    public EnP1mCatalogoRuta(String catRutDet, char estRegCod, Set enP1mClientesRutases, Set enP1mFacturaVentaCabs) {
+    public EnP1mCatalogoRuta(String catRutDet, char estRegCod, Set enP1mClientesRutases, Set enP1mPreventaCabs, Set enP1mFacturaVentaCabs) {
        this.catRutDet = catRutDet;
        this.estRegCod = estRegCod;
        this.enP1mClientesRutases = enP1mClientesRutases;
+       this.enP1mPreventaCabs = enP1mPreventaCabs;
        this.enP1mFacturaVentaCabs = enP1mFacturaVentaCabs;
     }
    
@@ -59,6 +61,13 @@ public class EnP1mCatalogoRuta  implements java.io.Serializable {
     
     public void setEnP1mClientesRutases(Set enP1mClientesRutases) {
         this.enP1mClientesRutases = enP1mClientesRutases;
+    }
+    public Set getEnP1mPreventaCabs() {
+        return this.enP1mPreventaCabs;
+    }
+    
+    public void setEnP1mPreventaCabs(Set enP1mPreventaCabs) {
+        this.enP1mPreventaCabs = enP1mPreventaCabs;
     }
     public Set getEnP1mFacturaVentaCabs() {
         return this.enP1mFacturaVentaCabs;

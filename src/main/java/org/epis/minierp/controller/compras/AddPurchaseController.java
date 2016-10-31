@@ -103,7 +103,7 @@ public class AddPurchaseController extends HttpServlet {
             header.setEnP1mUsuario((new EnP1mUsuarioDao()).getById(usuCod));
             header.setFacComCabFec(facComCabFec);
             header.setFacComCabTot(facComCabTot);
-            header.setFacComCabDes(facComCabDes);
+            //header.setFacComCabDes(facComCabDes);
             header.setFacComCabSubTot(facComCabSubTot);
             header.setFacComCabIgv(facComCabIgv);
             header.setFacComCabObs(facComCabObs);
