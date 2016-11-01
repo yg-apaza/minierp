@@ -306,7 +306,7 @@
                     </div>
                     <div class="modal-body">
                         <div class="table-responsive">
-                            <table class="table table-hover">                                                                
+                            <table class="table table-hover" id="tablaUsuarios">                                                                
                                 <thead>
                                     <tr>
                                         <th>Codigo Usuario</th>
@@ -403,6 +403,9 @@
         </div>
 
         <script>
+            $('#tablaUsuarios').DataTable({
+                responsive: true
+            });
             var updateModal = $("#modificarModal");
             var disableModal = $("#disableModal");
             var activateModal = $("#activateModal");

@@ -59,7 +59,7 @@
             </div>
             <div class="col-md-12">
                 <div class="table-responsive">
-                    <table class="table table-striped table-hover ">
+                    <table class="table table-striped table-hover " id="tablaCuotas">
                         <thead>
                             <tr>
                                 <th>Cod. Factura</th>
@@ -186,6 +186,9 @@
         </div>
         
         <script>
+            $('#tablaCuotas').DataTable({
+                responsive: true
+            });
             var updateModal = $("#modificarModal");
             var pagarModal = $("#pagarModal");
             

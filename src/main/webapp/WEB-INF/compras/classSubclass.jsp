@@ -19,7 +19,7 @@
                         </div>
                     </div><br>
                     <div class="table-responsive">
-                        <table width="100%" class="table table-striped table-bordered table-hover" id="tableSuppliers">
+                        <table width="100%" class="table table-striped table-bordered table-hover" id="tableClasses">
                             <thead>
                                 <tr>
                                     <th>Descripción</th>
@@ -135,7 +135,7 @@
                         </div>
                     </div><br>
                     <div class="table-responsive">
-                        <table width="100%" class="table table-striped table-bordered table-hover" id="tableSuppliers">
+                        <table width="100%" class="table table-striped table-bordered table-hover" id="tableSubClasses">
                             <thead>
                                 <tr>
                                     <th>Descripción</th>
@@ -268,6 +268,12 @@
             </div>
         </div>       
         <script language="javascript">
+            $('#tableClasses').DataTable({
+                responsive: true
+            });
+            $('#tableSubClasses').DataTable({
+                responsive: true
+            });
             $("#addClassForm").validate({
                 rules: {
                     claDetAdd: {

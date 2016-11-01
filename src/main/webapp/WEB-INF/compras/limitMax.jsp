@@ -160,7 +160,10 @@
 	</div>    
        
     <script type="text/javascript" language="javasript">
-            function Show(valor, min, max)
+        $('#productTableM').DataTable({
+            responsive: true
+        });
+        function Show(valor, min, max)
             {
                 if(valor === "1")
                 {   
@@ -184,7 +187,7 @@
             ventimp.document.close(); 
             ventimp.print( ); 
             ventimp.close(); 
-	} 
+	}
         
         </script>                 
    

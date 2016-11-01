@@ -322,6 +322,9 @@
         <script language="javascript">
             $(document).ready(function () {
                 changingValues();
+                $('#tableSuppliers').DataTable({
+                    responsive: true
+                    });
             });
 
             function changingValues() {

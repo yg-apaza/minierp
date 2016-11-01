@@ -256,6 +256,10 @@
             </div>
         </div>
         <script>
+            $('#id_table').DataTable({
+                responsive: true
+            });
+            
             var updateModal = $("#editSupplier");
             var deleteModal = $("#deleteSupplier");
             

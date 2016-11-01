@@ -46,8 +46,8 @@
                                      <c:forEach items = "${preventas}" var = "preventa">    
                                         <tr>
                                             <td><c:out value="${preventa.preVenCabCod}"/> </td>
-                                            <td><c:out value="${preventa.enP1mCliente.cliNom}"/></td>
-                                            <td><c:out value="${preventa.enP1mUsuario.usuNom}"/></td>
+                                            <td><c:out value="${preventa.enP1mCliente.cliNom} ${preventa.enP1mCliente.cliApePat}"/></td>
+                                            <td><c:out value="${preventa.enP1mUsuario.usuNom} ${preventa.enP1mUsuario.usuApePat}"/></td>
                                             <td><c:out value="${preventa.preVenCabFec}"/></td>
                                             <td><c:out value="${preventa.taGzzMoneda.monDet}"/></td>
                                             <td><c:out value="${preventa.preVenCabTot}"/></td>

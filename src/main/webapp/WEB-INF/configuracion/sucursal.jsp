@@ -20,7 +20,7 @@
                <div class="row">
                    <div class="col-lg-12">
                        <div class="table-responsive">
-                            <table class="table table-bordered table-striped table-hover" id="productTableM">
+                            <table class="table table-bordered table-striped table-hover" id="tablaSucursales">
                                     <tr>    
                                         <th> Código </th>
                                         <th>Descripción</th>
@@ -235,6 +235,9 @@
                 
                         
     <script>
+        $('#tablaSucursales').DataTable({
+            responsive: true
+        });
             var updateModal = $("#modificarModal");
             var deleteModal = $("#eliminarModal");
             var activeModal = $("#activeModal");

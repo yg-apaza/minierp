@@ -77,6 +77,10 @@
                 }
             });
             
+            $('#id_table').DataTable({
+                responsive: true
+            });
+            
             function updateInventory() {
                 var list = [];
                 $('#id_table tr').each(function () {
