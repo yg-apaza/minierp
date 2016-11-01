@@ -15,6 +15,11 @@
                 </div>
             </div>
             <div class="row">
+                <div class="col-lg-8">
+                        <form role=form" method="get" action="${pageContext.request.contextPath}/secured/ventas/preventa/addPreventa">
+                            <button type="submit" class="btn btn-success">Crear Preventa <i class="fa fa-plus"></i></button>   
+                        </form>
+                </div>
                 <div class="col-lg-12">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
