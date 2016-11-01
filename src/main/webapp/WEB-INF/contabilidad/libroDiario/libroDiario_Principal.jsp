@@ -73,7 +73,7 @@
 
                     <div class="col-md-12">
                         <div class="table-responsive">
-                            <table width="100%" class="table table-striped table-bordered table-hover">
+                            <table width="100%" class="table table-striped table-bordered table-hover" id="miTabla">
                                 <thead>
                                   <tr >
                                     <th rowspan="2">NÚMERO CORRELATIVO <br>DE LA OPERACION</th>
@@ -119,8 +119,8 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td></td>
-                                        <td></td>
+                                        <td>${mDebe}</td>
+                                        <td>${mHaber}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -250,9 +250,16 @@
         <!-- FIN MODAL2 -->
         
         <script language="javascript">
+            $(document).ready(function() {
+                $('#miTabla').DataTable({
+                    responsive: true
+                });
+            });
             $(document).ready(function () {
                 $("#tablaDetalles").change(actualizarDatos('tablaDetalles'));
             });
+            
+            
             function agregarFila(idTabla) {
                 var tabla = document.getElementById(idTabla);
                 var nuevaFila = tabla.insertRow(tabla.rows.length);

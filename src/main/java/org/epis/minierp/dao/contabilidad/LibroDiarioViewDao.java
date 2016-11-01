@@ -19,4 +19,11 @@ public class LibroDiarioViewDao
         List<LibroDiarioView> operaciones = query.list();
         return operaciones;
     }
+    
+    public List<LibroDiarioView> getAll(int codigo) {
+        Query query = session.createQuery("from LibroDiarioView where LibDiaCod = :cod");
+        query.setParameter("cod", codigo);
+        List<LibroDiarioView> operaciones = query.list();
+        return operaciones;
+    }
 }

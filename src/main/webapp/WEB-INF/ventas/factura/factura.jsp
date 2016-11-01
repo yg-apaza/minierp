@@ -40,7 +40,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="table-responsive">    
-                                <table class="table table-striped table-bordered table-hover">
+                                <table class="table table-striped table-bordered table-hover" id="tablePurchases">
                                     <thead>
                                         <tr>
                                             <th>Fecha</th>
@@ -114,11 +114,13 @@
                 </div>         
             </div>
         </div>
-        
-    </jsp:attribute>
-</minierptemplate:template>
-
         <script language="javascript">
+            $(document).ready(function() {
+                $('#tablePurchases').DataTable({
+                    responsive: true
+                });
+            });
+
             $(document).ready(function(){
                 $('#imprimir').on('click', function () {
                     if($(':checkbox:checked').length > 0)
@@ -134,3 +136,7 @@
                 });
             });
         </script>
+    </jsp:attribute>
+</minierptemplate:template>
+
+        

@@ -38,7 +38,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="table-responsive">    
-                            <table class="table table-striped table-bordered table-hover">
+                            <table class="table table-striped table-bordered table-hover" id="tablePurchases">
                                 <thead>
                                     <tr>
                                         <th>Fecha</th>
@@ -55,7 +55,7 @@
                                         <tr>
                                             <td>${c.facComCabFec}</td>
                                             <td>${c.facComCabCod}</td>
-                                            <td>${c.enP4mProveedor.proDet}</td>
+                                            <td>${c.enP4mProveedor.prvDet}</td>
                                             <td>${c.enP1mUsuario.usuNom}</td>
                                             <td>${c.facComCabTot}</td>                            
                                             <td>${c.taGzzTipoPagoFactura.tipPagDet}</td>
@@ -78,5 +78,12 @@
                 </div>
             </div>
         </div>
+        <script>
+            $(document).ready(function() {
+                $('#tablePurchases').DataTable({
+                    responsive: true
+                });
+            });
+        </script>
     </jsp:attribute>
 </minierptemplate:template>

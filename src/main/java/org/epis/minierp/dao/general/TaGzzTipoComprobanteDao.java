@@ -8,27 +8,54 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 
 public class TaGzzTipoComprobanteDao {
-
-
+    
     private Session session;
     
-    public TaGzzTipoComprobanteDao(){
-         session = HibernateUtil.getSessionFactory().getCurrentSession();
+    public TaGzzTipoComprobanteDao() {
+        session = HibernateUtil.getSessionFactory().getCurrentSession();
     }
-    
+
     public List<TaGzzTipoComprobante> getAll() {
         Query query = session.createQuery("from TaGzzTipoComprobante");
-        List<TaGzzTipoComprobante> estados = query.list();
-        return estados;
+        List<TaGzzTipoComprobante> tipos = query.list();
+        return tipos;
+    }
+
+    public List<TaGzzTipoComprobante> getAllActive() {
+        Query query = session.createQuery("from TaGzzTipoComprobante E where E.estRegCod = 'A'");
+        List<TaGzzTipoComprobante> tipos = query.list();
+        return tipos;
     }
     
+    public List<TaGzzTipoComprobante> getAllInactives() {
+        Query query = session.createQuery("from TaGzzTipoComprobante E where E.estRegCod = 'I'");
+        List<TaGzzTipoComprobante> tipos = query.list();
+        return tipos;
+    }
+
     public TaGzzTipoComprobante getById(int id) {
-        TaGzzTipoComprobante estado = null;
+        TaGzzTipoComprobante tipo = null;
         try {
-            estado = (TaGzzTipoComprobante) session.load(TaGzzTipoComprobante.class, id);
+            tipo = (TaGzzTipoComprobante) session.load(TaGzzTipoComprobante.class, id);
         } catch (ObjectNotFoundException e) {
             return null;
         }
-        return estado;
+        return tipo;
+    }
+    
+    public void save(TaGzzTipoComprobante tipo) {
+        session.save(tipo);     
+    }
+    
+    public void update(TaGzzTipoComprobante tipo){
+        session.update(tipo);
+    }
+    
+    public void saveOrUpdate(TaGzzTipoComprobante tipo){
+        session.saveOrUpdate(tipo);
+    }
+    
+    public void delete(TaGzzTipoComprobante tipo){
+        session.delete(tipo);
     }
 }

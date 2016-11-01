@@ -1,4 +1,4 @@
-package org.epis.minierp.dao.ventas;
+package org.epis.minierp.dao.general;
 
 import java.util.List;
 import org.epis.minierp.model.TaGzzTipoCliente;
