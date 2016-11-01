@@ -485,7 +485,7 @@
                     ).done(function (data) {
                             if (data.proCod != null) {
                                 $("#proDesShow").val(data.proDet);
-                                $("#priceShow").val(data.proPreUniVen);
+                                $("#priceShow").val(data.proPreUni);
                                 $('#amountShow')[0].max = data.proStk;
                                 $('#unitShow').val(data.proUnit);
                             }
