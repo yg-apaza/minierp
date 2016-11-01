@@ -55,10 +55,6 @@ public class LibroDiarioPKView  implements java.io.Serializable {
     public void setLibDiaCod(Integer libDiaCod) {
         this.libDiaCod = libDiaCod;
     }
-
-
-
-
 }
 
 

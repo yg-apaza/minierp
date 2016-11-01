@@ -14,11 +14,14 @@ public class LibroDiarioDao {
         session = HibernateUtil.getSessionFactory().getCurrentSession();
     }
     public List<EnP3mLibroDiario> getAll() {
-        Query query = session.createQuery("from EnP3mLibroDiario");
+        Query query = session.createQuery("from EnP3mLibroDiario where estRegCod='A'");
         List<EnP3mLibroDiario> estados = query.list();
         return estados;
     }
     public void save(EnP3mLibroDiario libDiario) {
         session.save(libDiario);     
+    }
+    public void update(EnP3mLibroDiario libDiario) {
+        session.update(libDiario);     
     }
 }

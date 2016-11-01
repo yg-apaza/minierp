@@ -1,6 +1,7 @@
 package org.epis.minierp.model.contabilidad;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
@@ -14,7 +15,7 @@ public class LibroDiarioView implements Serializable
     private LibroDiarioPKView idPK;
     
     @Column(name="AsiCabFec")
-    private String asiCabFec;
+    private Date asiCabFec;
     
     @Column(name="AsiCabGlo")
     private String asiCabGlo;
@@ -51,11 +52,11 @@ public class LibroDiarioView implements Serializable
         this.idPK = idPK;
     }
 
-    public String getAsiCabFec() {
+    public Date getAsiCabFec() {
         return asiCabFec;
     }
 
-    public void setAsiCabFec(String asiCabFec) {
+    public void setAsiCabFec(Date asiCabFec) {
         this.asiCabFec = asiCabFec;
     }
 
