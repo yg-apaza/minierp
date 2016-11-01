@@ -27,21 +27,49 @@
             </div> 
         
             <div class="row">
-                <br>
-                <div class="col-lg-12">
+                <div class="col-lg-10">
                 
                     <label for = "clase" style = "margin-right: 20px;"> Stock: </label>
                     <select class = "form-control" style = "width: 170px; display: inline-block;" onChange="Show(value,limitMin,limitMax);">
                         <option value="1"> Stock Máximo </option>
                         <option value="2"> Stock Mínimo </option>
-                       <!--
-                       <select class = "form-control" style = "width: 170px; display: inline-block;" onChange="window.location.href=this.value">
-                       <option value="${pageContext.request.contextPath}/secured/compras/stock"> Stock Minimo </option> -->
                     </select>
-                </div>
+                </div>    
+                    <div class="col-lg-2">
+                    <button onClick = "imprSelec('limitMax')" target="_parent" class="btn btn-success"> Imprimir reporte </button>    
+                    </div>
             </div>
            <!--Contenido de Stock Maximo-->
            <div id="limitMax">
+               <br>
+               <div class="row">
+                   
+                        <c:forEach items="${productos}" var="productos">
+                            <c:if test="${productos.proStk > productos.proStkMax}">
+                                <c:set var="alerta" value="${alerta+1}"/>
+                            </c:if>
+                        </c:forEach>
+                        <div class="col-lg-12">
+                            
+                            <c:choose>
+                                <c:when test="${alerta != 0}">
+                                    <div class="alert alert-danger alert-dismissable">
+                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                        Se ha sobrepasado el limite maximo, para una posterior adquisición de productos se debe tomar en cuenta el límite máximo de 
+                                        compra de cada producto que podría ser perjudicial para el futuro financiero de la empresa.
+                                    </div>    
+                                </c:when>
+                                <c:otherwise>
+                                    <div class="alert alert-success alert-dismissable">
+                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                        Todos los productos se encuentran por debajo del límite máximo.
+                                    </div>
+                                </c:otherwise>
+                            </c:choose>    
+                            
+                        </div>
+		</div>
+               
 		<div class="row">
                     <div class="col-lg-12">
                         <br/>
@@ -57,15 +85,14 @@
                                             <th>Stock-StockMax</th>
                                     </tr>
                                     <c:forEach items="${productos}" var="productos">
-                                        <c:if test="${productos.proStk > productos.proStkMax}">
-                                            <c:set var="alerta" value="${alerta+1}"/>
-                                        <tr>
-                                            <td value="${productos}"> ${productos.id.proCod} </td> 
-                                            <td value="${productos}"> ${productos.proDet} </td> 
-                                            <td value="${productos}"> ${productos.proStk} </td> 
-                                            <td value="${productos}"> ${productos.proStkMax} </td>
-                                            <td value="${productos}"> ${productos.proStk-productos.proStkMax} </td>
-                                        </tr> 
+                                         <c:if test="${productos.proStk > productos.proStkMax}">                           
+                                            <tr>
+                                                <td value="${productos}"> ${productos.id.proCod} </td> 
+                                                <td value="${productos}"> ${productos.proDet} </td> 
+                                                <td value="${productos}"> ${productos.proStk} </td> 
+                                                <td value="${productos}"> ${productos.proStkMax} </td>
+                                                <td value="${productos}"> ${productos.proStk-productos.proStkMax} </td>
+                                            </tr> 
                                         </c:if>
                                     </c:forEach>
 
@@ -75,31 +102,38 @@
                     </div>
 		</div>
 
-		<div class="row">
-                        <div class="col-lg-12">
-                            
-                            <c:choose>
-                                <c:when test="${alerta != 0}">
-                                    <div class="alert alert-danger alert-dismissable">
-                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                        Para una posterior adquisición de productos se debe tomar en cuenta el límite máximo de 
-                                        compra de cada producto que podría ser perjudicial para el futuro financiero de la empresa.
-                                    </div>    
-                                </c:when>
-                                <c:otherwise>
-                                    <div class="alert alert-success alert-dismissable">
-                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                        Todos los productos se encuentran por debajo del límite máximo.
-                                    </div>
-                                </c:otherwise>
-                            </c:choose>    
-                            
-                        </div>
-		</div>
+		
             </div>
             <!--Contenido de Stock minimo-->
             <br/>
             <div id="limitMin" hidden="hidden">
+                
+                <div class="row">
+                     <c:forEach items="${productos}" var="productos">
+                         <c:if test="${productos.proStk < productos.proStkMin}">
+                             <c:set var="alertamin" value="${alertamin+1}"/>
+                         </c:if>
+                     </c:forEach>
+                        <div class="col-lg-12">
+                            
+                            <c:choose>
+                                <c:when test="${alertamin != 0}">
+                                    <div class="alert alert-danger alert-dismissable">
+                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                            Se ha bajado del límite mínimo del stock de los siguientes productos
+                                            es necesario hacer el pedido de dichos productos lo antes posible.
+                                    </div>     
+                                </c:when>
+                                <c:otherwise>
+                                    <div class="alert alert-success alert-dismissable">
+                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                            Todos los productos se encuentran por encima del límite mínimo.
+                                    </div>       
+                                 </c:otherwise>
+                            </c:choose> 
+                        </div>
+		</div>
+                
 		<div class="row">
                         <div class="col-lg-12">
                             <label> Los siguientes productos han bajado del límite mínimo: </label>
@@ -114,8 +148,7 @@
                                                 <th>Stock-StockMin</th>
                                         </tr>
                                         <c:forEach items="${productos}" var="productos">
-                                            <c:if test="${productos.proStk < productos.proStkMin}">
-                                                <c:set var="alertamin" value="${alertamin+1}"/>
+                                           <c:if test="${productos.proStk < productos.proStkMin}">
                                             <tr>
                                                 <td value="${productos}"> ${productos.id.proCod} </td> 
                                                 <td value="${productos}"> ${productos.proDet} </td> 
@@ -129,34 +162,9 @@
                             </div>
                         </div>
 		</div>
-
-		<div class="row">
-                        <div class="col-lg-12">
-                            
-                            <c:choose>
-                                <c:when test="${alertamin != 0}">
-                                    <div class="alert alert-danger alert-dismissable">
-                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                            Se ha bajado del límite mínimo de dichos productos en stock
-                                            es necesario hacer el pedido de dichos productos lo antes posible.
-                                    </div>     
-                                </c:when>
-                                <c:otherwise>
-                                    <div class="alert alert-success alert-dismissable">
-                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                            Todos los productos se encuentran por encima del límite mínimo.
-                                    </div>       
-                                 </c:otherwise>
-                            </c:choose> 
-                        </div>
-		</div>
+		
             </div>
             <!--Contenido de stock minimo-->
-            <div class="row">
-                <div class="col-lg-12">
-                    <button onClick = "imprSelec('limitMax')" target="_parent" class="btn btn-success"> Imprimir reporte </button>    
-                </div>
-            </div>
 	</div>    
        
     <script type="text/javascript" language="javasript">
