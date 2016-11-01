@@ -295,8 +295,8 @@
             });
             
             $.validator.addMethod("codePattern", function (value, element) {
-                return /^[0-9]{3}-[0-9]{6}$/.test(value);
-            }, "Patrón: [0-9]{3}-[0-9]{6}");
+                return /^[0-9]{11}$/.test(value);
+            }, "RUC: Debe tener 11 digitos");
             
             $("#addSupplierform").validate({
                 rules: {
@@ -316,7 +316,7 @@
                 },
                 messages: {
                     codPro: {
-                        required: "Ingrese codigo de Proveedor"
+                        required: "Ingrese RUC de Proveedor"
                     },
                     detPro: {
                         required: "Ingrese nombre de proveedor"
