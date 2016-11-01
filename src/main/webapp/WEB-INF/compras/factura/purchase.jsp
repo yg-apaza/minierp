@@ -55,7 +55,7 @@
                                         <tr>
                                             <td>${c.facComCabFec}</td>
                                             <td>${c.facComCabCod}</td>
-                                            <td>${c.enP4mProveedor.proDet}</td>
+                                            <td>${c.enP4mProveedor.prvDet}</td>
                                             <td>${c.enP1mUsuario.usuNom}</td>
                                             <td>${c.facComCabTot}</td>                            
                                             <td>${c.taGzzTipoPagoFactura.tipPagDet}</td>
