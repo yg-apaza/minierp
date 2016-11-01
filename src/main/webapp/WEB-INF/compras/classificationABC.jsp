@@ -39,7 +39,7 @@
                             </tr>               
                         </thead>
                         <tbody>
-                             <c:forEach items = "${productos}" var = "producto">    
+                             <c:forEach items = "${productosA}" var = "producto">    
                                 <tr>
                                     <td><c:out value="${producto.id.proCod}"/> </td>
                                     <td><c:out value="${producto.proDet}"/></td>
