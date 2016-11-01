@@ -476,7 +476,7 @@
                     ).done(function (data) {
                             if (data.proCod != null) {
                                 $("#proDesShow").val(data.proDet);
-                                $("#priceShow").val(data.proPreUni);
+                                $("#priceShow").val(data.proPreUniVen);
                                 $('#amountShow')[0].max = data.proStk;
                             }
                             else {
@@ -496,7 +496,7 @@
                     ).done(function (data) {
                             if (data.proCod != null) {
                                 $("#proCodShow").val(data.proCod);
-                                $("#priceShow").val(data.proPreUni);
+                                $("#priceShow").val(data.proPreUniVen);
                                 $('#amountShow')[0].max = data.proStk;
                             }
                             else {

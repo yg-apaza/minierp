@@ -254,7 +254,7 @@
                     <c:forEach items="${productos}" var="product">
                         if ((${product.id.claProCod} == codeCla) && (${product.id.subClaProCod} == codeSub) && (${product.id.proCod} == codePro)) {
                             tag = false;
-                            $('#priceSelected').val(${product.proPreUni});
+                            $('#priceSelected').val(${product.proPreUniVen});
                             $('#amountSelected')[0].max = ${product.proStk - product.proStkPreVen};
                         }
                     </c:forEach>
