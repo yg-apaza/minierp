@@ -540,7 +540,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>BusquedaClienteController</servlet-name>
-        <url-pattern>/secured/ventas/searchSupplier</url-pattern>
+        <url-pattern>/secured/ventas/searchClient</url-pattern>
     </servlet-mapping>
     <servlet>
         <description/>

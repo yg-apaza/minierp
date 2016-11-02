@@ -178,7 +178,7 @@
                                     <div class="col-md-2">                                        
                                         <div class="form-group input-group" >
                                             <span class="input-group-addon">IGV</span>
-                                            <input type="number" class="form-control" name="facComCabIgv" id="facIgv" min="1" step="any">
+                                            <input type="number" class="form-control" name="facComCabIgv" id="facIgv" min="1" step="any" value="18">
                                         </div>
                                     </div>
                                     <div class="col-md-4">      
@@ -225,7 +225,6 @@
         </div>
         <script language="javascript">
             var codeProductCriteria = false;
-            var codeClientCriteria = false;
             var productCodes = new Array();
             var productDescriptions = new Array();
             var discounts = new Array();
@@ -254,12 +253,7 @@
             $(document).ready(function () {
                 $("#iconCriteria").addClass("fa-chevron-left");
                 $('#proCodShow').attr('readOnly', true);
-                $('#proDesShow').attr('readOnly', false);     
-                $("#iconClientCriteria").addClass("fa-chevron-left");
-                $('#cliCodShow').attr('readOnly', true);
-                $("#tipoClienteCode").prop('disabled', true);
-                $('#cliDesShow').attr('readOnly', false); 
-                $("#desClienteCode").prop('disabled', false);
+                $('#proDesShow').attr('readOnly', false);                 
             });
             
             $(document).ready(function () {
@@ -286,6 +280,10 @@
                             $('#productTable tr:last td:eq(2)').html($("#proDesShow").val());
                             $('#productTable tr:last td:eq(3)').html($("#unitShow").val());
                             $('#productTable tr:last td:eq(4)').html($("#priceShow").val());
+                            $('#proCodShow').val("");
+                            $('#proDesShow').val("");
+                            $('#priceShow').val(1);
+                            $('#amountShow').val(1);
                             updateAll();
                         }
                     }
@@ -332,72 +330,21 @@
                     $('#iconCriteria').removeClass("fa-chevron-left").addClass("fa-chevron-right");
                     $('#proDesShow').attr('readOnly', false);
                     $('#proCodShow').attr('readOnly', true);
-                    $('#proCodShow').val("");
-                    $('#proDesShow').val("");
-                    $('#priceShow').val(1.0);
-                    $('#amountShow').val(1);
                     codeProductCriteria = false;
                 } else {
                     $('#iconCriteria').removeClass("fa-chevron-right").addClass("fa-chevron-left");
                     $('#proCodShow').attr('readOnly', false);
                     $('#proDesShow').attr('readOnly', true);
-                    $('#proDesShow').val("");
-                    $('#proCodShow').val("");
-                    $('#priceShow').val(1);
-                    $('#amountShow').val(1);
                     codeProductCriteria = true;
                 }
-            }
-            
-            function changeClientIcon() {                
-                if(codeClientCriteria) {
-                    $('#iconClientCriteria').removeClass("fa-chevron-left").addClass("fa-chevron-right");
-                    $('#cliCodShow').attr('readOnly', true);
-                    $("#tipoClienteCode").prop('disabled', true);
-                    $('#cliDesShow').attr('readOnly', false); 
-                    $("#desClienteCode").prop('disabled', false);
-                    codeClientCriteria = false;
-                    changeClientDescription();
-                } else {
-                    $('#iconClientCriteria').removeClass("fa-chevron-right").addClass("fa-chevron-left");
-                    $('#cliCodShow').attr('readOnly', false);
-                    $("#tipoClienteCode").prop('disabled', false);
-                    $('#cliDesShow').attr('readOnly', true); 
-                    $("#desClienteCode").prop('disabled', true);
-                    $("#desClienteCode").val("1");                    
-                    codeClientCriteria = true;
-                    changeClientCode();
-                }
                 
-                $('#cliCodShow').val("");
-                $('#cliDesShow').val("");
-                $("#routeSelect").empty().append($('<option>', {
-                        value: "",
-                        text : "Desconocida" 
-                }));
-            }
+                $('#proCodShow').val("");
+                $('#proDesShow').val("");
+                $('#priceShow').val(1);
+                $('#amountShow').val(1);
+            }                    
             
-            function changeClientCode() {
-                $.post(
-                        "${pageContext.request.contextPath}/secured/ventas/searchSupplier", {
-                            action: "tipo",
-                            tipCliCod: $("#tipoClienteCode").val()
-                        }
-                    ).done(function (data) {
-                        if (data.clients != null) {
-                            var clientsCodes = new Array();
-                            data.clients.forEach(function(client) {
-                                clientsCodes.push(client.cliCod);
-                            });
-                            
-                            $("#cliCodShow").autocomplete({
-                                source: clientsCodes
-                            });
-                        }                        
-                    });
-            } 
-            
-            function changeClientDescription() {
+            function changeSupplierDescription() {
                 $.post(
                         "${pageContext.request.contextPath}/secured/ventas/searchSupplier", {
                             action: "descripcion"
@@ -435,8 +382,12 @@
             }
             
             function changeIGV() {
-                var subTotal = ($('#facSub').val() * (1 + Number($('#facIgv').val() / 100))).toFixed(2);
-                $('#facTot').val(subTotal);
+                var subTotal = 0;
+                $("#productTable tbody tr").each(function () {                    
+                    subTotal += Number($(this)[0].childNodes[1].textContent) * Number($(this)[0].childNodes[4].textContent);
+                });
+                subTotal = (subTotal * (1 + Number($('#facIgv').val() / 100))).toFixed(2);
+                $('#facSub').val(subTotal);
                 changeDiscount();
             }
             
@@ -444,7 +395,11 @@
                 changeDiscount();
             });
             
-            $('#facIgv').on('change', function() {
+            $('#facIgv').change(function() {
+                changeIGV();
+            });
+            
+            $('#facIgv').keyup(function () {
                 changeIGV();
             });
             

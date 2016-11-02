@@ -370,7 +370,7 @@
             
             function changeClientCode() {
                 $.post(
-                        "${pageContext.request.contextPath}/secured/ventas/searchSupplier", {
+                        "${pageContext.request.contextPath}/secured/ventas/searchClient", {
                             action: "tipo",
                             tipCliCod: $("#tipoClienteCode").val()
                         }
@@ -390,7 +390,7 @@
             
             function changeClientDescription() {
                 $.post(
-                        "${pageContext.request.contextPath}/secured/ventas/searchSupplier", {
+                        "${pageContext.request.contextPath}/secured/ventas/searchClient", {
                             action: "descripcion"
                         }
                     ).done(function (data) {
@@ -494,7 +494,7 @@
             $('#cliCodShow').keyup(function () {
                 if(codeClientCriteria) {
                     $.post(
-                            "${pageContext.request.contextPath}/secured/ventas/searchSupplier", {
+                            "${pageContext.request.contextPath}/secured/ventas/searchClient", {
                                 action: "tipoSearch",
                                 tipCliCod: $("#tipoClienteCode").val(),
                                 cliCod: $("#cliCodShow").val()
@@ -532,7 +532,7 @@
             $('#cliDesShow').keyup(function () {
                 if(!codeClientCriteria) {
                     $.post(
-                            "${pageContext.request.contextPath}/secured/ventas/searchSupplier", {
+                            "${pageContext.request.contextPath}/secured/ventas/searchClient", {
                                 action: "desSearch",
                                 tipCliDes: $("#desClienteCode").val(),
                                 cliDes: $("#cliDesShow").val()
