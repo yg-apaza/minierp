@@ -29,17 +29,24 @@ import org.epis.minierp.model.TaGzzTipoComprobante;
 
 public class LibroDiarioController extends HttpServlet {
     private static final long serialVersionUID = 1L;
+    List <TaGzzMoneda> monedas = null;
+    List <TaGzzTipoComprobante> comprobantes = null;
+    List <EnP3mLibroDiario> libros = null;
+    List <LibroDiarioView> operaciones = null;
+    List <EnP3mCuenta> cuentas = null;
     int libDiaCod=0;
+    int mes=0;
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {   
         
-        List <TaGzzMoneda> monedas = (new TaGzzMonedaDao()).getAll();
-        List <TaGzzTipoComprobante> comprobantes = (new TaGzzTipoComprobanteDao()).getAll();
-        List <EnP3mLibroDiario> libros = (new LibroDiarioDao()).getAll();
-        List <LibroDiarioView> operaciones = (new LibroDiarioViewDao()).getAll(libDiaCod);
-        List <EnP3mCuenta> cuentas = (new CuentaDao()).getAllActive();
+        monedas = (new TaGzzMonedaDao()).getAll();
+        comprobantes = (new TaGzzTipoComprobanteDao()).getAll();
+        libros = (new LibroDiarioDao()).getAll();
+        operaciones = (new LibroDiarioViewDao()).getAll(libDiaCod);
+        cuentas = (new CuentaDao()).getAllActive();
         request.setAttribute("libDiaCod",libDiaCod);
+        request.setAttribute("libDiaMes",mes);
         request.setAttribute("libros",libros);
         request.setAttribute("monedas", monedas);
         request.setAttribute("comprobantes", comprobantes);
@@ -48,10 +55,16 @@ public class LibroDiarioController extends HttpServlet {
         String temp="";
         double m_debe=0;
         double m_haber=0;
-        for(int i=0;i<operaciones.size();i++){       
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat sdfM = new SimpleDateFormat("MM");
+        for(int i=0;i<operaciones.size();i++){
+            
+            if(mes != 0 && Integer.parseInt(sdfM.format(operaciones.get(i).getAsiCabFec()))!=mes)
+                continue;
+
             temp+="<tr>";
             temp+="<td>"+operaciones.get(i).getIdPK().getAsiCabCod()+"</td>";
-            temp+="<td>"+operaciones.get(i).getAsiCabFec()+"</td>";
+            temp+="<td>"+sdf.format(operaciones.get(i).getAsiCabFec())+"</td>";
             temp+="<td>"+operaciones.get(i).getAsiCabGlo()+"</td>";
             temp+="<td>"+operaciones.get(i).getAsiCabTip()+"</td>";
             temp+="<td>"+operaciones.get(i).getAsiCabNumCom()+"</td>";
@@ -81,12 +94,12 @@ public class LibroDiarioController extends HttpServlet {
         DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         AsientoCabDao daoAsientoCab = new AsientoCabDao();
         AsientoDetDao daoAsientoDet = new AsientoDetDao();
+        LibroDiarioDao daoLibroDiario = new LibroDiarioDao();
         
         int operacion = Integer.parseInt(request.getParameter("operacion"));
         try {
             switch(operacion){
-                case 1: 
-                    LibroDiarioDao daoLibroDiario = new LibroDiarioDao();
+                case 1:
                     EnP3mLibroDiario miLibro = new EnP3mLibroDiario();
                     int libDiaCodo = Integer.parseInt(request.getParameter("libDiaCod"));
                     miLibro.setLibDiaCod(libDiaCodo);
@@ -147,13 +160,26 @@ public class LibroDiarioController extends HttpServlet {
                         asiDet.setAsiDetMon(detMonto);
                         asiDet.setEnP3mCuenta((new CuentaDao()).getByIdActive(cueCod));
                         asiDet.setId(asientoDetId);
-                        daoAsientoDet.save(asiDet);
-                        
+                        daoAsientoDet.save(asiDet); 
                     }
-
                     break;
                 case 3:
-                    libDiaCod = Integer.parseInt(request.getParameter("libDiaCod"));
+                    libDiaCod = Integer.parseInt(request.getParameter("libDiaCod"));                   
+                    break;
+                case 4:
+                    mes = Integer.parseInt(request.getParameter("mes"));
+                    break;
+                case 5:
+                    if(libros != null)
+                        for(int i=0;i<libros.size();i++){
+                            if(libros.get(i).getLibDiaCod()==libDiaCod){
+                                libros.get(i).setEstRegCod('B');
+                                daoLibroDiario.update(libros.get(i));
+                                libDiaCod = 0;
+                                break;
+                            }
+                        }
+                    
                     break;
             }
             response.sendRedirect(request.getContextPath() + "/secured/contabilidad/librodiario");

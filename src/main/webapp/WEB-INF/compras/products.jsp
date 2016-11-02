@@ -45,7 +45,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <c:forEach items="${productos}" var="p">
+                       <c:forEach items="${productos}" var="p">
                             <tr>
                                 <td width="150px">${p.enP2mSubclaseProducto.enP2mClaseProducto.claProDet}</td>
                                 <td width="200px">${p.enP2mSubclaseProducto.subClaProDet}</td>                                        
@@ -58,7 +58,7 @@
                                        data-pSub="${p.id.subClaProCod}"
                                        data-pCod="${p.id.proCod}"
                                        data-pDes="${p.proDet}"
-                                       data-pAlmCod="${p.enP2mAlmacen.almCod}"
+                                       
                                        data-pMonCod="${p.taGzzMoneda.monCod}"
                                        data-pUniMedCod="${p.taGzzUnidadMed.uniMedCod}"
                                        data-pProStkMax="${p.proStkMax}"
@@ -322,6 +322,9 @@
         <script language="javascript">
             $(document).ready(function () {
                 changingValues();
+                $('#tableSuppliers').DataTable({
+                    responsive: true
+                    });
             });
 
             function changingValues() {

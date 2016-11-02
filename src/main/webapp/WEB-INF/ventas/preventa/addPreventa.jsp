@@ -52,18 +52,18 @@
                                                 <div class="form-group input-group" >
                                                     <input class="hidden" type="text" name="cliCod" id="preCli">
                                                     <span class="input-group-addon">Cliente</span>
+                                                    <select class="form-control" id="desClienteCode" disabled>
+                                                        <option value="1">Razón Social</option>
+                                                        <option value="2">Nombre Comercial</option>
+                                                    </select> 
+                                                    <input class="form-control" type="text" id="cliDesShow" placeholder="Descripción" readOnly>
+                                                    <span class="input-group-addon" onclick="changeClientIcon()"><i class="fa" id="iconClientCriteria"></i></span>
                                                     <select class="form-control" id="tipoClienteCode" disabled>
                                                         <c:forEach items="${tiposCliente}" var="tipoCliente">
                                                             <option value="${tipoCliente.tipCliCod}">${tipoCliente.tipCliDet}</option>
                                                         </c:forEach>
                                                     </select> 
                                                     <input class="form-control" type="text" id="cliCodShow" placeholder="Código" readOnly>
-                                                    <span class="input-group-addon" onclick="changeClientIcon()"><i class="fa" id="iconClientCriteria"></i></span>
-                                                    <select class="form-control" id="desClienteCode" disabled>
-                                                        <option value="1">Razón Social</option>
-                                                        <option value="2">Nombre Comercial</option>
-                                                    </select> 
-                                                    <input class="form-control" type="text" id="cliDesShow" placeholder="Descripción" readOnly>
                                                 </div>                                                
                                             </div>
                                         </div>
@@ -108,9 +108,9 @@
                                             <div class="col-md-7">
                                                 <div class="form-group input-group" >
                                                     <span class="input-group-addon">Producto</span>
-                                                    <input class="form-control" type="text" name="proCod" id="proCodShow" placeholder="Código" size="60" readOnly>
-                                                    <span class="input-group-addon" onclick="changeIcon()"><i class="fa" id="iconCriteria"></i></span>
                                                     <input class="form-control" type="text" name="proDes" id="proDesShow" placeholder="Descripción" size="100" readOnly>
+                                                    <span class="input-group-addon" onclick="changeIcon()"><i class="fa" id="iconCriteria"></i></span>
+                                                    <input class="form-control" type="text" name="proCod" id="proCodShow" placeholder="Código" size="60" readOnly>
                                                 </div>
                                             </div>
                                             <div class="col-md-2">
@@ -209,8 +209,8 @@
             </div>
         </div>
         <script language="javascript">
-            var codeCriteria = true;
-            var codeClientCriteria = true;
+            var codeCriteria = false;
+            var codeClientCriteria = false;
             var productCodes = new Array();
             var productDescriptions = new Array();
             var discounts = new Array();
@@ -225,7 +225,7 @@
             </c:forEach>
             
             $(document).ready(function () {
-                changeClientCode();
+                changeClientDescription();
                 changeDiscount();
             });
             
@@ -238,13 +238,13 @@
 
             $(document).ready(function () {
                 $("#iconCriteria").addClass("fa-chevron-left");
-                $('#proCodShow').attr('readOnly', false);
-                $('#proDesShow').attr('readOnly', true);     
+                $('#proCodShow').attr('readOnly', true);
+                $('#proDesShow').attr('readOnly', false);     
                 $("#iconClientCriteria").addClass("fa-chevron-left");
-                $('#cliCodShow').attr('readOnly', false);
-                $("#tipoClienteCode").prop('disabled', false);
-                $('#cliDesShow').attr('readOnly', true); 
-                $("#desClienteCode").prop('disabled', true);
+                $('#cliCodShow').attr('readOnly', true);
+                $("#tipoClienteCode").prop('disabled', true);
+                $('#cliDesShow').attr('readOnly', false); 
+                $("#desClienteCode").prop('disabled', false);
             });
             
             $(document).ready(function () {
@@ -491,76 +491,80 @@
             });
 
             $('#cliCodShow').keyup(function () {
-                $.post(
-                        "${pageContext.request.contextPath}/secured/ventas/searchSupplier", {
-                            action: "tipoSearch",
-                            tipCliCod: $("#tipoClienteCode").val(),
-                            cliCod: $("#cliCodShow").val()
-                        }
-                    ).done(function (data) {
-                            if(data.cliCod != null) {
-                                $("#preCli").val(data.cliCod);
-                                $("#cliDesShow").val(data.cliRazSoc);  
-                                $("#routeSelect").empty();
-                                if(data.cliRut.length > 0) {
-                                    data.cliRut.forEach(function(route) {
-                                        $("#routeSelect").append($('<option>', {
-                                            value: route.cliRutCod,
-                                            text : route.cliRutDet 
+                if(codeClientCriteria) {
+                    $.post(
+                            "${pageContext.request.contextPath}/secured/ventas/searchSupplier", {
+                                action: "tipoSearch",
+                                tipCliCod: $("#tipoClienteCode").val(),
+                                cliCod: $("#cliCodShow").val()
+                            }
+                        ).done(function (data) {
+                                if(data.cliCod != null) {
+                                    $("#preCli").val(data.cliCod);
+                                    $("#cliDesShow").val(data.cliRazSoc);  
+                                    $("#routeSelect").empty();
+                                    if(data.cliRut.length > 0) {
+                                        data.cliRut.forEach(function(route) {
+                                            $("#routeSelect").append($('<option>', {
+                                                value: route.cliRutCod,
+                                                text : route.cliRutDet 
+                                            }));
+                                        });
+                                    } else {
+                                        $("#routeSelect").empty().append($('<option>', {
+                                            value: "",
+                                            text : "No posee rutas" 
                                         }));
-                                    });
+                                    }
                                 } else {
+                                    $("#preCli").val("");
+                                    $("#cliDesShow").val("Desconocido");
                                     $("#routeSelect").empty().append($('<option>', {
-                                        value: "",
-                                        text : "No posee rutas" 
+                                            value: "",
+                                            text : "Desconocida" 
                                     }));
                                 }
-                            } else {
-                                $("#preCli").val("");
-                                $("#cliDesShow").val("Desconocido");
-                                $("#routeSelect").empty().append($('<option>', {
-                                        value: "",
-                                        text : "Desconocida" 
-                                }));
-                            }
-                        });
+                            });
+                }
             });    
             
             $('#cliDesShow').keyup(function () {
-                $.post(
-                        "${pageContext.request.contextPath}/secured/ventas/searchSupplier", {
-                            action: "desSearch",
-                            tipCliDes: $("#desClienteCode").val(),
-                            cliDes: $("#cliDesShow").val()
-                        }
-                    ).done(function (data) {
-                            if(data.cliCod != null) {
-                                $("#preCli").val(data.cliCod);
-                                $("#cliCodShow").val(data.cliCod);    
-                                $("#tipoClienteCode").val(data.tipCliCod);
-                                $("#routeSelect").empty();
-                                if(data.cliRut.length > 0) {
-                                    data.cliRut.forEach(function(route) {
-                                        $("#routeSelect").append($('<option>', {
-                                            value: route.cliRutCod,
-                                            text : route.cliRutDet 
+                if(!codeClientCriteria) {
+                    $.post(
+                            "${pageContext.request.contextPath}/secured/ventas/searchSupplier", {
+                                action: "desSearch",
+                                tipCliDes: $("#desClienteCode").val(),
+                                cliDes: $("#cliDesShow").val()
+                            }
+                        ).done(function (data) {
+                                if(data.cliCod != null) {
+                                    $("#preCli").val(data.cliCod);
+                                    $("#cliCodShow").val(data.cliCod);    
+                                    $("#tipoClienteCode").val(data.tipCliCod);
+                                    $("#routeSelect").empty();
+                                    if(data.cliRut.length > 0) {
+                                        data.cliRut.forEach(function(route) {
+                                            $("#routeSelect").append($('<option>', {
+                                                value: route.cliRutCod,
+                                                text : route.cliRutDet 
+                                            }));
+                                        });
+                                    } else {
+                                        $("#routeSelect").empty().append($('<option>', {
+                                            value: "",
+                                            text : "No posee rutas" 
                                         }));
-                                    });
+                                    }
                                 } else {
+                                    $("#preCli").val("");
+                                    $("#cliCodShow").val("Desconocido");
                                     $("#routeSelect").empty().append($('<option>', {
-                                        value: "",
-                                        text : "No posee rutas" 
+                                            value: "",
+                                            text : "Desconocida" 
                                     }));
                                 }
-                            } else {
-                                $("#preCli").val("");
-                                $("#cliCodShow").val("Desconocido");
-                                $("#routeSelect").empty().append($('<option>', {
-                                        value: "",
-                                        text : "Desconocida" 
-                                }));
-                            }
-                        });
+                            });
+                }
             });  
             
             $("#registerBill").validate({
