@@ -3,27 +3,27 @@
     <size>0</size>
     <leftMargin>2</leftMargin>
     <rightMargin>1</rightMargin>
-    <topMargin>4.25f</topMargin>
-    <cliNom>1.8f</cliNom>
-    <cliDir>1.8f</cliDir>
-    <fecEmi>16.5f</fecEmi>
-    <topFacCab>0.85f</topFacCab>
-    <cliCod>1.8f</cliCod>
-    <conPag>2.5f</conPag>
-    <fecVen>2.45f</fecVen>
-    <venZon>2.8f</venZon>
-    <numSec>1.8f</numSec>
-    <dis>4.3f</dis>
-    <rut>1.0f</rut>
-    <tra>4.9f</tra>
-    <topFacDet>0.8f</topFacDet>
-    <proCod>1.95f</proCod>
-    <proCan>1.6f</proCan>
-    <proUni>1.2f</proUni>
-    <proDes>9.0f</proDes>
-    <proValUni>2.0f</proValUni>
-    <proDes1>1.3f</proDes1>
-    <proDes2>1.8f</proDes2>
-    <proValNet>2.5f</proValNet>
-    <totalMargin>19.0f</totalMargin>
+    <topMargin>4.25</topMargin>
+    <cliNom>1.8</cliNom>
+    <cliDir>1.8</cliDir>
+    <fecEmi>16.5</fecEmi>
+    <topFacCab>0.85</topFacCab>
+    <cliCod>1.8</cliCod>
+    <conPag>2.5</conPag>
+    <fecVen>2.45</fecVen>
+    <venZon>2.8</venZon>
+    <numSec>1.8</numSec>
+    <dis>4.3</dis>
+    <rut>1.0</rut>
+    <tra>4.9</tra>
+    <topFacDet>0.8</topFacDet>
+    <proCod>1.95</proCod>
+    <proCan>1.6</proCan>
+    <proUni>1.2</proUni>
+    <proDes>9.0</proDes>
+    <proValUni>2.0</proValUni>
+    <proDes1>1.3</proDes1>
+    <proDes2>1.8</proDes2>
+    <proValNet>2.5</proValNet>
+    <totalMargin>19.0</totalMargin>
 </facturaPrinter>

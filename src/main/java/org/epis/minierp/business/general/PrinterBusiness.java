@@ -59,9 +59,17 @@ public class PrinterBusiness {
             xmlFactura = new XMLReader(FacturaPrinter.class, new File(dir));
             xmlBoleta = new XMLReader(BoletaPrinter.class, new File(dir));
             xmlGuiaRemision = new XMLReader(GuiaRemisionPrinter.class, new File(dir));
-            fP = xmlFactura.openXML(type);
-            bP = xmlBoleta.openXML(type);
-            gP = xmlGuiaRemision.openXML(type);
+            switch(type){
+                case "factura":
+                    fP = xmlFactura.openXML(type);
+                    break;
+                case "boleta":
+                    bP = xmlBoleta.openXML(type);
+                    break;
+                case "guiaRemision":
+                    gP = xmlGuiaRemision.openXML(type);
+                    break;
+            }
             start();
         } catch (IOException ex) {
             Logger.getLogger(PrinterBusiness.class.getName()).log(Level.SEVERE, null, ex);
@@ -85,19 +93,22 @@ public class PrinterBusiness {
                 else
                     select15CPI(); 
                 setMargins(fP.getLeftMargin(), fP.getRightMargin());
+                break;
             case "boleta":
                 if(bP.getSize() == 0)
                     select10CPI();
                 else
                     select15CPI(); 
+                System.out.println("margen izq: "+bP.getLeftMargin());
                 setMargins(bP.getLeftMargin(), bP.getRightMargin());
+                break;
             case "guiaRemision":
                 if(gP.getSize() == 0)
                     select10CPI();
                 else
-                    select15CPI(); 
+                    select15CPI();
                 setMargins(gP.getLeftMargin(), gP.getRightMargin());
-            break;
+                break;
         }       
     }
 
@@ -259,7 +270,7 @@ public class PrinterBusiness {
         advanceHorizontal(bP.getCliNom());
         writeLine(cliNom);
         advanceHorizontal(bP.getCliDir());
-        writeLine(cliDir);
+        writer.write(cliDir);
         advanceHorizontal(bP.getFecEmi());
         writeLine(fecEmi);
     }
@@ -282,25 +293,33 @@ public class PrinterBusiness {
         writer.write(cliCod);
         float val = fP.getCliCod();
         setAbsoluteHorizontalPosition(val);
+        System.out.println(val);
         writer.write(conPag);
         val += fP.getConPag();
+        System.out.println(val);
         setAbsoluteHorizontalPosition(val);
         writer.write(fecVen);
         val += fP.getFecVen();
+        System.out.println(val);
         setAbsoluteHorizontalPosition(val);
         writer.write(venZon);
         val += fP.getVenZon();
+        System.out.println(val);
         setAbsoluteHorizontalPosition(val);
         writer.write(numSec);
         val += fP.getNumSec();
+        System.out.println(val);
         setAbsoluteHorizontalPosition(val);
         writer.write(dis);
         val += fP.getDis();
+        System.out.println(val);
         setAbsoluteHorizontalPosition(val);
         writer.write(rut);
         val += fP.getRut();
+        System.out.println(val);
         setAbsoluteHorizontalPosition(val);
         writer.write(traNom);
+        newLine();
     }
     
     public void writeBolCabecera(String cliCod, String conPag, String fecVen,
@@ -322,27 +341,7 @@ public class PrinterBusiness {
         val += bP.getObs();
         setAbsoluteHorizontalPosition(val);
         writer.write(obs);
-    }
-    
-    public void writeGuiRemCabecera(String cliCod, String conPag, String fecVen,
-            String venRut, String pdv, String obs) throws IOException{
-        advanceVertical(bP.getTopFacCab());
-        writer.write(cliCod);
-        float val = bP.getCliCod();
-        setAbsoluteHorizontalPosition(val);
-        writer.write(conPag);
-        val += bP.getConPag();
-        setAbsoluteHorizontalPosition(val);
-        writer.write(fecVen);
-        val += bP.getFecVen();
-        setAbsoluteHorizontalPosition(val);
-        writer.write(venRut);
-        val += bP.getVenRut();
-        setAbsoluteHorizontalPosition(val);
-        writer.write(pdv);
-        val += bP.getObs();
-        setAbsoluteHorizontalPosition(val);
-        writer.write(obs);
+        newLine();
     }
     
     public void writeGuiRemCabecera(String fecVen, String ven, String zon,
@@ -373,6 +372,7 @@ public class PrinterBusiness {
         val += gP.getHora();
         setAbsoluteHorizontalPosition(val);
         writer.write(numInt);
+        newLine();
     }
     
     public void writeFacDetalle(String proCod, double proCan, String proUni, String proDes, 
@@ -462,6 +462,13 @@ public class PrinterBusiness {
         writer.write(Double.toString(igv));
         newLine();
         setAbsoluteHorizontalPosition(fP.getTotalMargin());
+        writer.write(Double.toString(total));
+        newLine();
+    }
+    
+    public void writeBolTotal( double total) throws IOException{
+        advanceVertical(7.0f);
+        setAbsoluteHorizontalPosition(bP.getTotalMargin());
         writer.write(Double.toString(total));
         newLine();
     }

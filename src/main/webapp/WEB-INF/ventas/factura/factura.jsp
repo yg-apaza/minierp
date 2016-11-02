@@ -8,7 +8,6 @@
     </jsp:attribute>
     <jsp:attribute name="contenido">
     <form id="facturaLoteForm" role="form" action="${pageContext.request.contextPath}/secured/ventas/factura/facturaLotes" method="post">
-        <input type="hidden" class="form-control" name="report" id="report" value="factura">
         <div class="panel-body">
             <div class="form-group">
                 <div class="row">
@@ -17,10 +16,17 @@
                     </div>
                 </div>
                     <div class="row">
-                        <div class="col-lg-6">
+                        <div class="col-lg-3">
                             <a href="${pageContext.request.contextPath}/secured/ventas/factura/addFactura" class="btn btn-success">Crear Factura <i class="fa fa-plus"></i></a>
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-lg-9">
+                            <div class="col-lg-3">
+                                <select  class="form-control input-small" name="report" id="report"> 
+                                    <option type="submit" value="factura">Factura</option>
+                                    <option type="submit" value="boleta">Boleta</option>
+                                    <option type="submit" value="guiaRemision">Guía de Remisión</option>
+                                </select>  
+                            </div>
                             <div class="col-lg-3">
                                 <div id="imprimir" class="btn btn-success"> Imprimir</div>  
                             </div> 

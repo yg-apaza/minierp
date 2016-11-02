@@ -3,28 +3,28 @@
     <size>0</size>
     <leftMargin>2</leftMargin>
     <rightMargin>1</rightMargin>
-    <topMargin>4.25f</topMargin>
-    <cliNom>1.8f</cliNom>
-    <punPar>1.8f</punPar>
-    <punLle>16.5f</punLle>
-    <traNom>16.5f</traNom>
-    <topFacCab>0.85f</topFacCab>
-    <fecVen>2.45f</fecVen>
-    <ven>2.8f</ven>
-    <zon>1.0f</zon>
-    <cliCod>1.8f</cliCod>
-    <oc>2.5f</oc>
-    <numSec>1.8f</numSec>
-    <facNum>4.3f</facNum>
-    <hora>1.0f</hora>
-    <numInt>4.9f</numInt>
-    <topFacDet>0.8f</topFacDet>
-    <proCod>1.95f</proCod>
-    <proCan>1.6f</proCan>
-    <proUni>1.2f</proUni>
-    <proDes>9.0f</proDes>
-    <proValUni>2.0f</proValUni>
-    <proDes1>1.3f</proDes1>
-    <proValNet>2.5f</proValNet>
-    <totalMargin>19.0f</totalMargin>
+    <topMargin>4.5</topMargin>
+    <cliNom>1.4</cliNom>
+    <punPar>2.4</punPar>
+    <punLle>2.4</punLle>
+    <traNom>11</traNom>
+    <topFacCab>0.5</topFacCab>
+    <fecVen>2.05</fecVen>
+    <ven>1.2</ven>
+    <zon>1.2</zon>
+    <con>2.8</con>
+    <cliCod>1.6</cliCod>
+    <oc>1.9</oc>
+    <facNum>2.0</facNum>
+    <hora>1.3</hora>
+    <numInt>2.4</numInt>
+    <topFacDet>0.8</topFacDet>
+    <proCod>1.3</proCod>
+    <proCan>1.8</proCan>
+    <proUni>0.8</proUni>
+    <proDes>7.2</proDes>
+    <proValUni>1.85</proValUni>
+    <proDes1>1.6</proDes1>
+    <proValNet>2.8</proValNet>
+    <totalMargin>19.0</totalMargin>
 </guiaRemisionPrinter>

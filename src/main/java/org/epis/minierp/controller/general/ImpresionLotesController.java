@@ -53,7 +53,6 @@ public class ImpresionLotesController extends HttpServlet {
         String numInt;
         String punPar;
         String punLle;
-
         DateFormat day = new SimpleDateFormat("dd");
         DateFormat month = new SimpleDateFormat("MM");
         DateFormat year = new SimpleDateFormat("yyyy");
@@ -76,12 +75,12 @@ public class ImpresionLotesController extends HttpServlet {
                     pF.writeFacSobCab(cliNom, cliDir, fecEmi);
 
                     conPag = f.getTaGzzMetodoPagoFactura().getMetPagDet();
-                    fecVen = " ";
-                    venNom = f.getEnP1mUsuario().getUsuNom();
-                    numSec = " ";
-                    dis = " ";
-                    rut = " ";//+f.getEnP1mCatalogoRuta().getCatRutCod();
-                    traNom = " ";//f.getEnP2mGuiaRemTransportista().getEnP2mTransportista().getTraNomCom();
+                    fecVen = "10/12/16";
+                    venNom = ""; //f.getEnP1mUsuario().getUsuNom();
+                    numSec = "1";
+                    dis = "Cercado";
+                    rut = "2";//+f.getEnP1mCatalogoRuta().getCatRutCod();
+                    traNom = "";//f.getEnP2mGuiaRemTransportista().getEnP2mTransportista().getTraNomCom();
                     pF.writeFacCabecera(cliCod, conPag, fecVen, venNom, numSec, dis, rut, traNom);
 
                     for(EnP1tFacturaVentaDet d : (Set<EnP1tFacturaVentaDet>)f.getEnP1tFacturaVentaDets()){
@@ -113,6 +112,8 @@ public class ImpresionLotesController extends HttpServlet {
                     for(EnP1tFacturaVentaDet d : (Set<EnP1tFacturaVentaDet>)f.getEnP1tFacturaVentaDets()){
                         pB.writeBolDetalle("10",d.getFacVenDetCan(), d.getEnP2mProducto().getTaGzzUnidadMed().getUniMedDet(), d.getEnP2mProducto().getProDet(), d.getFacVenDetValUni(), "", d.getFacVenDetCan()*d.getFacVenDetValUni());
                     }
+                    pB.writeBolTotal(f.getFacVenCabTot());
+
                     pB.newPage();
                 }
                 pB.close();

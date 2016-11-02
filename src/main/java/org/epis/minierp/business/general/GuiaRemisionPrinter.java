@@ -20,7 +20,6 @@ import javax.xml.bind.annotation.XmlType;
     "con",
     "cliCod",
     "oc",
-    "numSec",
     "facNum",
     "hora",
     "numInt",
@@ -51,7 +50,6 @@ public class GuiaRemisionPrinter {
     float con;
     float cliCod;
     float oc;
-    float numSec;
     float facNum;
     float hora;
     float numInt;
@@ -186,14 +184,6 @@ public class GuiaRemisionPrinter {
 
     public void setOc(float oc) {
         this.oc = oc;
-    }
-
-    public float getNumSec() {
-        return numSec;
-    }
-
-    public void setNumSec(float numSec) {
-        this.numSec = numSec;
     }
 
     public float getFacNum() {
