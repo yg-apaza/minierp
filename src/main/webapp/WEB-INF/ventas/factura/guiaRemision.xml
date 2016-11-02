@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<factura>
-    <size>0f</size>
-    <leftMargin>2.0f</leftMargin>
-    <rigthMargin>1.0f</rigthMargin>
+<guiaRemisionPrinter>
+    <size>0</size>
+    <leftMargin>2</leftMargin>
+    <rightMargin>1</rightMargin>
     <topMargin>4.25f</topMargin>
     <cliNom>1.8f</cliNom>
-    <cliDir>1.8f</cliDir>
-    <fecEmi>16.5f</fecEmi>
+    <punPar>1.8f</punPar>
+    <punLle>16.5f</punLle>
+    <traNom>16.5f</traNom>
     <topFacCab>0.85f</topFacCab>
-    <cliCod>1.8f</cliCod>
-    <conPag>2.5f</conPag>
     <fecVen>2.45f</fecVen>
-    <venZon>2.8f</venZon>
+    <ven>2.8f</ven>
+    <zon>1.0f</zon>
+    <cliCod>1.8f</cliCod>
+    <oc>2.5f</oc>
     <numSec>1.8f</numSec>
-    <dis>4.3f</dis>
-    <rut>1.0f</rut>
-    <tra>4.9f</tra>
+    <facNum>4.3f</facNum>
+    <hora>1.0f</hora>
+    <numInt>4.9f</numInt>
     <topFacDet>0.8f</topFacDet>
     <proCod>1.95f</proCod>
     <proCan>1.6f</proCan>
@@ -23,7 +25,6 @@
     <proDes>9.0f</proDes>
     <proValUni>2.0f</proValUni>
     <proDes1>1.3f</proDes1>
-    <proDes2>1.8f</proDes2>
     <proValNet>2.5f</proValNet>
     <totalMargin>19.0f</totalMargin>
-</factura>
+</guiaRemisionPrinter>

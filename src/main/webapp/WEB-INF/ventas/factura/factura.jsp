@@ -8,6 +8,7 @@
     </jsp:attribute>
     <jsp:attribute name="contenido">
     <form id="facturaLoteForm" role="form" action="${pageContext.request.contextPath}/secured/ventas/factura/facturaLotes" method="post">
+        <input type="hidden" class="form-control" name="report" id="report" value="factura">
         <div class="panel-body">
             <div class="form-group">
                 <div class="row">
@@ -61,7 +62,7 @@
                                                 <td>${c.enP1mUsuario.usuNom}</td>
                                                 <td>${c.facVenCabTot}</td>                            
                                                 <td>${c.taGzzTipoPagoFactura.tipPagDet}</td>
-                                                <td><input type="checkbox" name="facCodigos" value="${c.facVenCabCod}"></td>
+                                                <td><input type="checkbox" name="codigos" value="${c.facVenCabCod}"></td>
                                             </tr>
                                         </c:forEach>
                                     </tbody>

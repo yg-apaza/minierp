@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<facturaPrinter>
+    <size>0</size>
+    <leftMargin>2</leftMargin>
+    <rightMargin>1</rightMargin>
+    <topMargin>4.25f</topMargin>
+    <cliNom>1.8f</cliNom>
+    <cliDir>1.8f</cliDir>
+    <fecEmi>16.5f</fecEmi>
+    <topFacCab>0.85f</topFacCab>
+    <cliCod>1.8f</cliCod>
+    <conPag>2.5f</conPag>
+    <fecVen>2.45f</fecVen>
+    <venZon>2.8f</venZon>
+    <numSec>1.8f</numSec>
+    <dis>4.3f</dis>
+    <rut>1.0f</rut>
+    <tra>4.9f</tra>
+    <topFacDet>0.8f</topFacDet>
+    <proCod>1.95f</proCod>
+    <proCan>1.6f</proCan>
+    <proUni>1.2f</proUni>
+    <proDes>9.0f</proDes>
+    <proValUni>2.0f</proValUni>
+    <proDes1>1.3f</proDes1>
+    <proDes2>1.8f</proDes2>
+    <proValNet>2.5f</proValNet>
+    <totalMargin>19.0f</totalMargin>
+</facturaPrinter>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<boletaPrinter>
+    <size>0</size>
+    <leftMargin>2</leftMargin>
+    <rightMargin>1</rightMargin>
+    <topMargin>4.25f</topMargin>
+    <cliNom>1.8f</cliNom>
+    <cliDir>1.8f</cliDir>
+    <fecEmi>16.5f</fecEmi>
+    <topFacCab>0.85f</topFacCab>
+    <cliCod>1.8f</cliCod>
+    <conPag>2.5f</conPag>
+    <fecVen>2.45f</fecVen>
+    <venRut>2.8f</venRut>
+    <pdv>4.3f</pdv>
+    <obs>1.0f</obs>
+    <topFacDet>0.8f</topFacDet>
+    <proCod>1.95f</proCod>
+    <proCan>1.6f</proCan>
+    <proUni>1.2f</proUni>
+    <proDes>9.0f</proDes>
+    <proValVen>2.0f</proValVen>
+    <proDes1>1.3f</proDes1>
+    <proPreNet>2.5f</proPreNet>
+    <totalMargin>19.0f</totalMargin>
+</boletaPrinter>

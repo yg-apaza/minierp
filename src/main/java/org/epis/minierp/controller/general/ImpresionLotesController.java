@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.epis.minierp.business.general.PrinterBusiness;
 import org.epis.minierp.dao.ventas.EnP1mFacturaVentaCabDao;
 import org.epis.minierp.model.EnP1mFacturaVentaCab;
-import org.epis.minierp.model.EnP1mDocumentoCliente;
 import org.epis.minierp.model.EnP1tFacturaVentaDet;
 
 public class ImpresionLotesController extends HttpServlet {
@@ -34,10 +33,8 @@ public class ImpresionLotesController extends HttpServlet {
         String cliCod;
         String cliNom;
         String cliDir;
-        
         String fecEmi;
         String fecVto;
-        
         String conPag;
         String venNom;
         String numSec;
@@ -52,9 +49,12 @@ public class ImpresionLotesController extends HttpServlet {
         String []meses = {"", "enero", "febrero", "marzo", "abril", "mayo" , "junio",
         "julio", "agosto", "setiembre", "octubre", "noviembre", "diciembre"};
 
+        String path = getServletContext().getRealPath("/WEB-INF/");
+        path = path + "ventas/factura";
+        
         switch(report){
             case "factura":
-                PrinterBusiness pF = new PrinterBusiness(fileGenerated, "factura.xml");
+                PrinterBusiness pF = new PrinterBusiness(fileGenerated, path, "factura");
                 for (String cod : cods) {
                     EnP1mFacturaVentaCab f = (new EnP1mFacturaVentaCabDao()).getById(cod);
                     cliCod = f.getEnP1mCliente().getCliCod();
@@ -82,10 +82,10 @@ public class ImpresionLotesController extends HttpServlet {
                 pF.close();
                 break;
             case "boleta":
-                PrinterBusiness pB = new PrinterBusiness(fileGenerated, "boleta.xml");
+                PrinterBusiness pB = new PrinterBusiness(fileGenerated, path, "boleta");
                 break;
             case "guiaRemision":
-                PrinterBusiness pG = new PrinterBusiness(fileGenerated, "remision.xml");
+                PrinterBusiness pG = new PrinterBusiness(fileGenerated, path, "guiaRemision");
                 break;
         }
 
