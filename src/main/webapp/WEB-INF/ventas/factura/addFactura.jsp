@@ -301,6 +301,10 @@
                             $('#productTable tr:last td:eq(2)').html($("#proDesShow").val());
                             $('#productTable tr:last td:eq(3)').html($("#unitShow").val());
                             $('#productTable tr:last td:eq(4)').html($("#priceShow").val());
+                            $('#proDesShow').val("");
+                            $('#proCodShow').val("");
+                            $('#priceShow').val("");
+                            $('#amountShow').val(0);
                             updateAll();
                         }
                     }
@@ -348,22 +352,19 @@
                 if(codeCriteria) {
                     $('#iconCriteria').removeClass("fa-chevron-left").addClass("fa-chevron-right");
                     $('#proDesShow').attr('readOnly', false);
-                    $('#proCodShow').attr('readOnly', true);
-                    $('#proCodShow').val("");
-                    $('#proDesShow').val("");
-                    $('#priceShow').val("");
-                    $('#amountShow').val(0);
+                    $('#proCodShow').attr('readOnly', true);                    
                     codeCriteria = false;
                 } else {
                     $('#iconCriteria').removeClass("fa-chevron-right").addClass("fa-chevron-left");
                     $('#proCodShow').attr('readOnly', false);
                     $('#proDesShow').attr('readOnly', true);
-                    $('#proDesShow').val("");
-                    $('#proCodShow').val("");
-                    $('#priceShow').val("");
-                    $('#amountShow').val(0);
                     codeCriteria = true;
                 }
+                
+                $('#proDesShow').val("");
+                $('#proCodShow').val("");
+                $('#priceShow').val("");
+                $('#amountShow').val(0);
             }
             
             function changeClientIcon() {                

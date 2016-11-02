@@ -224,7 +224,7 @@
             </div>
         </div>
         <script language="javascript">
-            var codeCriteria = false;
+            var codeProductCriteria = false;
             var codeClientCriteria = false;
             var productCodes = new Array();
             var productDescriptions = new Array();
@@ -264,11 +264,8 @@
             
             $(document).ready(function () {
                 $('#addDetail').on('click', function () {
-                    if ($('#proCodShow').val() == "Desconocido" || $('#proDesShow').val() == "Desconocido") {
+                    if ($('#proCodShow').val() == "Desconocido" || $('#proCodShow').val() == "" || $('#proDesShow').val() == "Desconocido" || $('#proDesShow').val() == "")  {
                         $("#errorMessage").text("Producto Desconocido. Ingrese un producto disponible");
-                        $('#errorMessageModal').modal('show');
-                    } else if (!$('input[name="canPro"]').valid()) {
-                        $("#errorMessage").text("Se ha sobrepasado el stock disponible del producto seleccionado. Seleccione otro o reduzca la cantidad pedida");
                         $('#errorMessageModal').modal('show');
                     } else {
                         var idRow = $("#proCodShow").val();
@@ -294,9 +291,7 @@
                     }
                 });
             });
-          
-            $.validator.messages.max = "Stock superado";
-            
+                      
             $.validator.addMethod("codePattern", function (value, element) {
                 return /^[0-9]{3}-[0-9]{6}$/.test(value);
             }, "Patrón: [0-9]{3}-[0-9]{6}");
@@ -333,24 +328,24 @@
             }
             
             function changeIcon() {
-                if(codeCriteria) {
+                if(codeProductCriteria) {
                     $('#iconCriteria').removeClass("fa-chevron-left").addClass("fa-chevron-right");
                     $('#proDesShow').attr('readOnly', false);
                     $('#proCodShow').attr('readOnly', true);
                     $('#proCodShow').val("");
                     $('#proDesShow').val("");
-                    $('#priceShow').val("");
-                    $('#amountShow').val(0);
-                    codeCriteria = false;
+                    $('#priceShow').val(1.0);
+                    $('#amountShow').val(1);
+                    codeProductCriteria = false;
                 } else {
                     $('#iconCriteria').removeClass("fa-chevron-right").addClass("fa-chevron-left");
                     $('#proCodShow').attr('readOnly', false);
                     $('#proDesShow').attr('readOnly', true);
                     $('#proDesShow').val("");
                     $('#proCodShow').val("");
-                    $('#priceShow').val("");
-                    $('#amountShow').val(0);
-                    codeCriteria = true;
+                    $('#priceShow').val(1);
+                    $('#amountShow').val(1);
+                    codeProductCriteria = true;
                 }
             }
             
@@ -439,8 +434,18 @@
                 $('#facTot').val(total);
             }
             
+            function changeIGV() {
+                var subTotal = ($('#facSub').val() * (1 + Number($('#facIgv').val() / 100))).toFixed(2);
+                $('#facTot').val(subTotal);
+                changeDiscount();
+            }
+            
             $('#selectDiscount').on('change', function() {
                 changeDiscount();
+            });
+            
+            $('#facIgv').on('change', function() {
+                changeIGV();
             });
             
             $('#tipoClienteCode').on('change', function() {
@@ -464,7 +469,7 @@
             });
 
             $('#proCodShow').keyup(function () {
-                if(codeCriteria) {
+                if(codeProductCriteria) {
                     $.post(
                         "${pageContext.request.contextPath}/secured/ventas/searchProduct", {
                             proCod: $("#proCodShow").val(),
@@ -472,9 +477,7 @@
                         }
                     ).done(function (data) {
                             if (data.proCod != null) {
-                                $("#proDesShow").val(data.proDet);
-                                $("#priceShow").val(data.proPreUni);
-                                $('#amountShow')[0].max = data.proStk;
+                                $("#proDesShow").val(data.proDet);                                
                                 $('#unitShow').val(data.proUnit);
                             }
                             else {
@@ -485,7 +488,7 @@
             });
             
             $('#proDesShow').keyup(function () {
-                if(!codeCriteria) {
+                if(!codeProductCriteria) {
                     $.post(
                         "${pageContext.request.contextPath}/secured/ventas/searchProduct", {
                             proCod: "",
@@ -493,9 +496,7 @@
                         }
                     ).done(function (data) {
                             if (data.proCod != null) {
-                                $("#proCodShow").val(data.proCod);
-                                $("#priceShow").val(data.proPreUni);
-                                $('#amountShow')[0].max = data.proStk;
+                                $("#proCodShow").val(data.proCod);                                
                                 $('#unitShow').val(data.proUnit);
                             }
                             else {
