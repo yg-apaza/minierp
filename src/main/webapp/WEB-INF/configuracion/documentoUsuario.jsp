@@ -3,7 +3,7 @@
 <%@ taglib tagdir="/WEB-INF/tags" prefix="minierptemplate" %>
 <minierptemplate:template>
     <jsp:attribute name="titulo">
-        <title>MiniERP - Puntos de Venta</title>
+        <title>Puntos de Venta</title>
     </jsp:attribute>
     <jsp:attribute name="contenido">
         <div class="panel-body">
@@ -32,7 +32,7 @@
             <br>-->
             <div class="col-md-12">
                 <div class="table-responsive">
-                    <table class="table table-bordered table-striped table-hover">
+                    <table class="table table-bordered table-striped table-hover" id="tablaDocUsuarios">
                         <thead>
                             <tr>
                                 <th>Cod Usuario</th>
@@ -273,6 +273,9 @@
 
 
         <script>
+            $('#tablaDocUsuarios').DataTable({
+                responsive: true
+            });
             var updateModal = $("#modificarModal");
             var disableModal = $("#disableModal");
             var activateModal = $("#activateModal");
