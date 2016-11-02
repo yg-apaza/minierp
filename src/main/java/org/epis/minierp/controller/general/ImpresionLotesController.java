@@ -34,14 +34,26 @@ public class ImpresionLotesController extends HttpServlet {
         String cliNom;
         String cliDir;
         String fecEmi;
-        String fecVto;
+        String fecVen;
         String conPag;
         String venNom;
         String numSec;
         String dis;
         String rut;
         String traNom;
-        
+        String venRut;
+        String pdv;
+        String obs;
+        String ven;
+        String zon;
+        String con;
+        String oc;
+        String facNum;
+        String hora;
+        String numInt;
+        String punPar;
+        String punLle;
+
         DateFormat day = new SimpleDateFormat("dd");
         DateFormat month = new SimpleDateFormat("MM");
         DateFormat year = new SimpleDateFormat("yyyy");
@@ -64,13 +76,13 @@ public class ImpresionLotesController extends HttpServlet {
                     pF.writeFacSobCab(cliNom, cliDir, fecEmi);
 
                     conPag = f.getTaGzzMetodoPagoFactura().getMetPagDet();
-                    fecVto = " ";
+                    fecVen = " ";
                     venNom = f.getEnP1mUsuario().getUsuNom();
                     numSec = " ";
                     dis = " ";
                     rut = " ";//+f.getEnP1mCatalogoRuta().getCatRutCod();
                     traNom = " ";//f.getEnP2mGuiaRemTransportista().getEnP2mTransportista().getTraNomCom();
-                    pF.writeFacCabecera(cliCod, conPag, fecVto, venNom, numSec, dis, rut, traNom);
+                    pF.writeFacCabecera(cliCod, conPag, fecVen, venNom, numSec, dis, rut, traNom);
 
                     for(EnP1tFacturaVentaDet d : (Set<EnP1tFacturaVentaDet>)f.getEnP1tFacturaVentaDets()){
                         pF.writeFacDetalle("10",d.getFacVenDetCan(), d.getEnP2mProducto().getTaGzzUnidadMed().getUniMedDet(), d.getEnP2mProducto().getProDet(), d.getFacVenDetValUni(), "", "",d.getFacVenDetCan()*d.getFacVenDetValUni());
@@ -83,9 +95,55 @@ public class ImpresionLotesController extends HttpServlet {
                 break;
             case "boleta":
                 PrinterBusiness pB = new PrinterBusiness(fileGenerated, path, "boleta");
+                for (String cod : cods) {
+                    EnP1mFacturaVentaCab f = (new EnP1mFacturaVentaCabDao()).getById(cod);
+                    cliCod = f.getEnP1mCliente().getCliCod();
+                    cliNom = f.getEnP1mCliente().getCliRazSoc();
+                    cliDir = f.getEnP1mCliente().getCliDir();
+                    fecEmi = fecha.format(f.getFacVenCabFec());
+                    pB.writeBolSobCab(cliNom, cliDir, fecEmi);
+
+                    conPag = f.getTaGzzMetodoPagoFactura().getMetPagDet();
+                    fecVen = " ";
+                    venRut = " ";
+                    pdv = " ";
+                    obs = " ";
+                    pB.writeBolCabecera(cliCod, conPag, fecVen, venRut, pdv, obs);
+
+                    for(EnP1tFacturaVentaDet d : (Set<EnP1tFacturaVentaDet>)f.getEnP1tFacturaVentaDets()){
+                        pB.writeBolDetalle("10",d.getFacVenDetCan(), d.getEnP2mProducto().getTaGzzUnidadMed().getUniMedDet(), d.getEnP2mProducto().getProDet(), d.getFacVenDetValUni(), "", d.getFacVenDetCan()*d.getFacVenDetValUni());
+                    }
+                    pB.newPage();
+                }
+                pB.close();
                 break;
             case "guiaRemision":
                 PrinterBusiness pG = new PrinterBusiness(fileGenerated, path, "guiaRemision");
+                for (String cod : cods) {
+                    EnP1mFacturaVentaCab f = (new EnP1mFacturaVentaCabDao()).getById(cod);
+                    cliCod = f.getEnP1mCliente().getCliCod();
+                    cliNom = f.getEnP1mCliente().getCliRazSoc();
+                    punPar = " ";
+                    punLle = f.getEnP1mCliente().getCliDir();
+                    traNom = " ";
+                    pG.writeGuiRemSobCab(cliNom, punPar, punLle, traNom);
+
+                    fecVen = " ";
+                    ven = " ";
+                    zon = " ";
+                    con = " ";
+                    oc = " ";
+                    facNum = f.getFacVenCabCod();
+                    hora = " ";
+                    numInt = " ";
+                    pG.writeGuiRemCabecera(fecVen, ven, zon, con, cliCod, oc, facNum, hora, numInt);
+
+                    for(EnP1tFacturaVentaDet d : (Set<EnP1tFacturaVentaDet>)f.getEnP1tFacturaVentaDets()){
+                        pG.writeGuiRemDetalle("10",d.getFacVenDetCan(), d.getEnP2mProducto().getTaGzzUnidadMed().getUniMedDet(), d.getEnP2mProducto().getProDet(), d.getFacVenDetValUni(), "", d.getFacVenDetCan()*d.getFacVenDetValUni());
+                    }
+                    pG.newPage();
+                }
+                pG.close();
                 break;
         }
 

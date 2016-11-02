@@ -17,6 +17,7 @@ import javax.xml.bind.annotation.XmlType;
     "fecVen",
     "ven",
     "zon",
+    "con",
     "cliCod",
     "oc",
     "numSec",
@@ -47,6 +48,7 @@ public class GuiaRemisionPrinter {
     float fecVen;
     float ven;
     float zon;
+    float con;
     float cliCod;
     float oc;
     float numSec;
@@ -160,6 +162,14 @@ public class GuiaRemisionPrinter {
 
     public void setZon(float zon) {
         this.zon = zon;
+    }
+
+    public float getCon() {
+        return con;
+    }
+
+    public void setCon(float con) {
+        this.con = con;
     }
 
     public float getCliCod() {
