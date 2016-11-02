@@ -3,6 +3,7 @@ package org.epis.minierp.business.general;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.print.PrintService;
@@ -50,13 +51,23 @@ public class PrinterBusiness {
     private String printerDevice;
     private FileWriter writer;
     private PrintWriter pWriter;
-    
-    public PrinterBusiness(String file) {
+    private HashMap <String, Float>params;
+            
+    public PrinterBusiness(String file, String format) {
         try {
             writer = new FileWriter(file);
+            params = new HashMap();
+            readParameters(file);
+            start();
         } catch (IOException ex) {
             Logger.getLogger(PrinterBusiness.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    public void readParameters(String file){
+       XMLReader xr = new XMLReader(file);
+       xr.readXML();
+       params = xr.getMap();
     }
 
     public void initialize() throws IOException{
@@ -65,42 +76,15 @@ public class PrinterBusiness {
         writer.write(23);
     }
 
-    public String getPrinter() {
-        boolean printerDeviceSet = false;
-
-        if (printerDevice != null) {
-            if (printerDevice.length() > 0)
-                printerDeviceSet = true;
-        }
-
-        if (!printerDeviceSet)
-            return "\\\\" + ipAddress + "\\" + printerName;
+    public void start() throws IOException{
+        initialize();
+        clearStyle();
+        if(Math.round(params.get("size")) == 0)
+            select10CPI();
         else
-            return printerDevice;
-    }
-
-    public String getPrinterName() {
-        return printerName;
-    }
-
-    public void setPrinterName(String printerName) {
-        this.printerName = printerName;
-    }
-
-    public String getIpAddress() {
-        return ipAddress;
-    }
-
-    public void setIpAddress(String ipAddress) {
-        this.ipAddress = ipAddress;
-    }
-
-    public String getPrinterDevice() {
-        return printerDevice;
-    }
-
-    public void setPrinterDevice(String printerDevice) {
-        this.printerDevice = printerDevice;
+            select15CPI();
+        setFont("Serif");
+        setMargins(Math.round(params.get("leftMargin")), Math.round(params.get("rightMargin")));
     }
 
     public void clearStyle() throws IOException {
@@ -247,73 +231,81 @@ public class PrinterBusiness {
     }
     
     public void writeFacSobCab(String cliNom, String cliDir, String fecEmi) throws IOException{
-        advanceVertical(3.0f);
-        advanceHorizontal(2.0f);
+        advanceVertical(params.get("topMargin"));
+        advanceHorizontal(params.get("cliNom"));
         writeLine(cliNom);
-        advanceHorizontal(2.0f);
+        advanceHorizontal(params.get("cliDir"));
         writeLine(cliDir);
-        advanceHorizontal(16.0f);
+        advanceHorizontal(params.get("fecEmi"));
         writeLine(fecEmi);
     }
        
-    public void writeFacCabecera(String cliCod, String conPag, String fecVto,
-            String venNom, String nSec, String dis, String rut, String traNom) throws IOException{
-        advanceVertical(1.0f);
+    public void writeFacCabecera(String cliCod, String conPag, String fecVen,
+            String venZon, String numSec, String dis, String rut, String traNom) throws IOException{
+        advanceVertical(params.get("topFacCab"));
         writer.write(cliCod);
-        setAbsoluteHorizontalPosition(2.0f);
+        float val = params.get("cliCod");
+        setAbsoluteHorizontalPosition(val);
         writer.write(conPag);
-        setAbsoluteHorizontalPosition(4.5f);
-        writer.write(fecVto);
-        setAbsoluteHorizontalPosition(7.0f);
-        writer.write(venNom);
-        setAbsoluteHorizontalPosition(9.6f);
-        writer.write(nSec);
-        setAbsoluteHorizontalPosition(11.1f);
+        val += params.get("conPag");
+        setAbsoluteHorizontalPosition(val);
+        writer.write(fecVen);
+        val += params.get("fecVen");
+        setAbsoluteHorizontalPosition(val);
+        writer.write(venZon);
+        val += params.get("venZon");
+        setAbsoluteHorizontalPosition(val);
+        writer.write(numSec);
+        val += params.get("numSec");
+        setAbsoluteHorizontalPosition(val);
         writer.write(dis);
-        setAbsoluteHorizontalPosition(14.5f);
+        val += params.get("dis");
+        setAbsoluteHorizontalPosition(val);
         writer.write(rut);
-        setAbsoluteHorizontalPosition(15.4f);
+        val += params.get("rut");
+        setAbsoluteHorizontalPosition(val);
         writer.write(traNom);
-        advanceVertical(1.0f);
     }
     
-    public void writeFacDetalle(String cod, Double can, String uni, String des, 
-            Double preUni, String proDes1, String proDes2, Double preTotal) throws IOException{
-        setAbsoluteHorizontalPosition(0.1f);
-        writer.write(cod);
-        setAbsoluteHorizontalPosition(2.0f);
-        writer.write(Double.toString(can));
-        setAbsoluteHorizontalPosition(3.6f);
-        writer.write(uni);       
-        setAbsoluteHorizontalPosition(4.9f);
-        writer.write(des);
-        setAbsoluteHorizontalPosition(14.0f);
-        writer.write(Double.toString(preUni));
-        setAbsoluteHorizontalPosition(16.0f);
+    public void writeFacDetalle(String proCod, Double proCan, String proUni, String proDes, 
+            Double proValUni, String proDes1, String proDes2, Double proValNet) throws IOException{
+        advanceVertical(params.get("topFacDet"));
+        writer.write(proCod);
+        float val = params.get("proCod");
+        setAbsoluteHorizontalPosition(val);
+        writer.write(Double.toString(proCan));
+        val += params.get("proCan");
+        setAbsoluteHorizontalPosition(val);
+        writer.write(proUni);   
+        val += params.get("proUni");    
+        setAbsoluteHorizontalPosition(val);
+        writer.write(proDes);
+        val += params.get("proDes");
+        setAbsoluteHorizontalPosition(val);
+        writer.write(Double.toString(proValUni));
+        val += params.get("proValUni");
+        setAbsoluteHorizontalPosition(val);
         writer.write(proDes1);
-        setAbsoluteHorizontalPosition(17.2f);
+        val += params.get("proDes1");
+        setAbsoluteHorizontalPosition(val);
         writer.write(proDes2);
-        setAbsoluteHorizontalPosition(19.0f);
-        writer.write(Double.toString(preTotal));
+        val += params.get("proDes2");
+        setAbsoluteHorizontalPosition(val);
+        writer.write(Double.toString(proValNet));
         newLine();
     }
     
     public void writeFacTotal(Double subTotal, Double igv, Double total) throws IOException{
         advanceVertical(7.0f);
-        setAbsoluteHorizontalPosition(19.0f);
-        writer.write(Double.toString(subTotal));newLine();
-        setAbsoluteHorizontalPosition(19.0f);
-        writer.write(Double.toString(igv));newLine();
-        setAbsoluteHorizontalPosition(19.0f);
-        writer.write(Double.toString(total));newLine();
-    }
-    
-    public void start() throws IOException{
-        initialize();
-        clearStyle();
-        select10CPI();
-        setFont("Serif");
-        setMargins(8, 6);
+        setAbsoluteHorizontalPosition(params.get("totalMargin"));
+        writer.write(Double.toString(subTotal));
+        newLine();
+        setAbsoluteHorizontalPosition(params.get("totalMargin"));
+        writer.write(Double.toString(igv));
+        newLine();
+        setAbsoluteHorizontalPosition(params.get("totalMargin"));
+        writer.write(Double.toString(total));
+        newLine();
     }
     
     public void close() throws IOException{
