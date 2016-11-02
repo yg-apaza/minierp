@@ -17,8 +17,7 @@ import org.epis.minierp.dao.ventas.EnP1mClientesRutasDao;
 import org.epis.minierp.model.EnP1mCliente;
 import org.epis.minierp.model.EnP1mClientesRutas;
 
-public class BusquedaClienteController extends HttpServlet
-{
+public class BusquedaClienteController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
