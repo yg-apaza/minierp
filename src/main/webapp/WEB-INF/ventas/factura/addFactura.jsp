@@ -276,7 +276,7 @@
             
             $(document).ready(function () {
                 $('#addDetail').on('click', function () {
-                    if ($('#proCodShow').val() == "Desconocido" || $('#proDesShow').val() == "Desconocido") {
+                    if ($('#proCodShow').val() == "Desconocido" || $('#proCodShow').val() == "" || $('#proDesShow').val() == "Desconocido" || $('#proDesShow').val() == "")  {
                         $("#errorMessage").text("Producto Desconocido. Ingrese un producto disponible");
                         $('#errorMessageModal').modal('show');
                     } else if (!$('input[name="canPro"]').valid()) {
