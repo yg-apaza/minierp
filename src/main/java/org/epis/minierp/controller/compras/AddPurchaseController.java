@@ -23,6 +23,7 @@ import org.epis.minierp.dao.logistica.EnP2mProductoDao;
 import org.epis.minierp.dao.compras.EnP4mProveedorDao;
 import org.epis.minierp.dao.general.TaGzzTipoPagoFacturaDao;
 import org.epis.minierp.dao.general.EnP1mUsuarioDao;
+import org.epis.minierp.dao.general.TaGzzTipoDescuentoDao;
 import org.epis.minierp.model.EnP2mProducto;
 import org.epis.minierp.model.EnP2mProductoId;
 import org.epis.minierp.model.EnP4mFacturaCompraCab;
@@ -32,6 +33,7 @@ import org.epis.minierp.model.EnP4mProveedor;
 import org.epis.minierp.model.EnP4tFacturaCompraDet;
 import org.epis.minierp.model.EnP4tFacturaCompraDetId;
 import org.epis.minierp.model.TaGzzEstadoFactura;
+import org.epis.minierp.model.TaGzzTipoDescuento;
 import org.epis.minierp.model.TaGzzTipoPagoFactura;
 
 public class AddPurchaseController extends HttpServlet {
@@ -44,14 +46,16 @@ public class AddPurchaseController extends HttpServlet {
         List <TaGzzMoneda> monedas = (new TaGzzMonedaDao()).getAll();
         List <TaGzzTipoPagoFactura> tiposPagoFactura = (new TaGzzTipoPagoFacturaDao()).getAll(); 
         List <EnP2mProducto> productos = (new EnP2mProductoDao()).getAll(); 
-        List <TaGzzEstadoFactura> estados = (new TaGzzEstadoFacturaDao().getAll());
-        
+        List <TaGzzEstadoFactura> estadosFactura = (new TaGzzEstadoFacturaDao().getAll());
+        List <TaGzzTipoDescuento> tiposDescuentos = (new TaGzzTipoDescuentoDao()).getAllActive();
+
         request.setAttribute("proveedores", proveedores);
         request.setAttribute("metodosPagoFactura", metodosPagoFactura);
         request.setAttribute("monedas", monedas);
         request.setAttribute("tiposPagoFactura", tiposPagoFactura);
         request.setAttribute("productos", productos);
-        request.setAttribute("estados", estados);
+        request.setAttribute("estadosFactura", estadosFactura);
+        request.setAttribute("tiposDescuentos", tiposDescuentos);
         
         request.getRequestDispatcher("/WEB-INF/compras/factura/addPurchase.jsp").forward(request, response);
     }
