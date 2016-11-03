@@ -554,6 +554,16 @@
     </servlet-mapping>
     <servlet>
         <description/>
+        <display-name>SearchBillController</display-name>
+        <servlet-name>SearchBillController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.ventas.SearchBillController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SearchBillController</servlet-name>
+        <url-pattern>/secured/ventas/searchBill</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <description/>
         <display-name>PagosController</display-name>
         <servlet-name>PagosController</servlet-name>
         <servlet-class>org.epis.minierp.controller.ventas.PagosController</servlet-class>

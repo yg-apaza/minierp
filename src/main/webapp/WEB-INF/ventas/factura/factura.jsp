@@ -7,14 +7,14 @@
         <title>Ventas - Factura</title>
     </jsp:attribute>
     <jsp:attribute name="contenido">
-    <form id="facturaLoteForm" role="form" action="${pageContext.request.contextPath}/secured/ventas/factura/facturaLotes" method="post">
-        <div class="panel-body">
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h1 class="page-header">Factura de Venta</h1>
+        <form id="facturaLoteForm" role="form" action="${pageContext.request.contextPath}/secured/ventas/factura/facturaLotes" method="post">
+            <div class="panel-body">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h1 class="page-header">Factura de Venta</h1>
+                        </div>
                     </div>
-                </div>
                     <div class="row">
                         <div class="col-lg-3">
                             <a href="${pageContext.request.contextPath}/secured/ventas/factura/addFactura" class="btn btn-success">Crear Factura <i class="fa fa-plus"></i></a>
@@ -69,7 +69,7 @@
                                                 <td width="15%">${c.enP1mUsuario.usuNom}</td>
                                                 <td width="10%" align="center">${c.facVenCabTot}</td>                                                                            
                                                 <td width="12%" align="center">
-                                                    <a href="#" data-toggle="modal" data-target="#">
+                                                    <a href="#" data-toggle="modal" data-target="#viewSaleBill" data-code="${c.facVenCabCod}">
                                                         <i class="fa fa-list-alt fa-2x" style="color: black;"></i>
                                                     </a> 
                                                     <a href="#" data-toggle="modal" data-target="#">
@@ -80,9 +80,6 @@
                                                     </a>
                                                 </td>
                                                 <td width="20%" align="center">
-                                                    <a href="#" data-toggle="modal" data-target="#">
-                                                        <i class="fa fa-list-alt fa-2x" style="color: black;"></i>
-                                                    </a>
                                                     <a href="#" data-toggle="modal" data-target="#">
                                                         <i class="fa fa-book fa-2x" style="color: black;"></i>
                                                     </a>
@@ -103,35 +100,35 @@
                             </div>
                         </div>
                     </div>
-                <div class="row">
-                    <div class="col-lg-4">
-                        <a href="${pageContext.request.contextPath}/secured/general/reporte?type=pdf&&report=registroventas&&jdbc=false&&key=null&&value=null" class="btn btn-outline btn-danger">
-                            <i class="fa fa-file-pdf-o"></i>
-                            Descargar Registro [PDF]
-                        </a>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <a href="${pageContext.request.contextPath}/secured/general/reporte?type=pdf&&report=registroventas&&jdbc=false&&key=null&&value=null" class="btn btn-outline btn-danger">
+                                <i class="fa fa-file-pdf-o"></i>
+                                Descargar Registro [PDF]
+                            </a>
+                        </div>
+                        <div class="col-lg-4"></div>        
                     </div>
-                    <div class="col-lg-4"></div>        
                 </div>
             </div>
-        </div>
-        <div id="confimarMessageModal" class="modal fade">
-            <div class="modal-dialog modal-sm">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Impresión por lote</h4>
-                    </div>
-                    <div class="modal-body">
-                         <p align="center"><span id="confirmarMessage"></span></p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-outline btn-danger" data-dismiss="modal"> Cancelar </button>
-                        <button type="submit" class="btn btn-outline btn-success"> Imprimir </button>
-                    </div>
-                </div>              
+            <div id="confimarMessageModal" class="modal fade">
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Impresión por lote</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p align="center"><span id="confirmarMessage"></span></p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline btn-danger" data-dismiss="modal"> Cancelar </button>
+                            <button type="submit" class="btn btn-outline btn-success"> Imprimir </button>
+                        </div>
+                    </div>              
+                </div>
             </div>
-        </div>
-    </form>
+        </form>
         <div id="errorMessageModal" class="modal fade">
             <div class="modal-dialog modal-sm">
                 <div class="modal-content">
@@ -148,29 +145,99 @@
                 </div>         
             </div>
         </div>
+        <div class="modal fade" id="viewSaleBill">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h3 class="modal-title">Factura de Venta</h3>
+                    </div>
+                    <div class="modal-body">                        
+                        <div class="col-md-12 form-group input-group">
+                            <div class="col-xs-12 col-md-12">
+                                <div class="form-group input-group">
+                                    <h4>Información General</h4>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-md-6">
+                                <div class="form-group input-group">
+                                    <span class="input-group-addon">Factura</span>
+                                    <input type="text" class="form-control" id="facVenCabCod" readOnly>
+                                    <span class="input-group-addon"><i class="fa fa-clipboard"></i></span>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-md-6">
+                                <div class="form-group input-group">
+                                    <span class="input-group-addon">Vendedor</span>
+                                    <input type="text" class="form-control" id="facVenCabUsuNom" readOnly>
+                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-md-12">
+                                <div class="form-group input-group" >
+                                    <span class="input-group-addon">Cliente</span>
+                                    <input type="text" class="form-control" id="facVenCabCliNomCom" readOnly>
+                                    <span class="input-group-addon"><i class="fa fa-shopping-cart"></i></span>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-md-12">
+                                <div class="form-group input-group">
+                                    <h4>Detalle de Venta</h4>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-md-12">
+                                <div class="form-group input-group">
+                                    <table width="100%" class="table table-striped table-bordered table-hover" id="facVenDetPro">
+                                        <thead align="center">
+                                            <tr >
+                                                <th colspan="2">Descripción del Producto</th>
+                                                <th>Precio</th>
+                                                <th>Importe</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" data-dismiss="modal">Aceptar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <script language="javascript">
-            $(document).ready(function() {
+            $(document).ready(function () {
                 $('#tablePurchases').DataTable({
                     responsive: true
                 });
             });
 
-            $(document).ready(function(){
+            $(document).ready(function () {
                 $('#imprimir').on('click', function () {
-                    if($(':checkbox:checked').length > 0)
-                        {
+                    if ($(':checkbox:checked').length > 0)
+                    {
                         $("#confirmarMessage").text("¿Está seguro de realizar la impresión? ");
                         $('#confimarMessageModal').modal('show');
-                    }
-                    else
+                    } else
                     {
                         $("#errorMessage").text("Debe seleccionar al menos una factura ");
                         $('#errorMessageModal').modal('show');
                     }
                 });
             });
+            
+            $("#viewSaleBill").on('show.bs.modal', function (e) {
+                $.post(
+                        "${pageContext.request.contextPath}/secured/ventas/searchBill", {                            
+                            facVenCabCod: $(e.relatedTarget).data('code')
+                        }
+                    ).done(function (data) {
+                        $("#facVenCabCod").val(data.cod);
+                        $("#facVenCabUsuNom").val(data.usuNom);
+                        $("#facVenCabCliNomCom").val(data.cliNomCom);
+                    });
+            });
         </script>
     </jsp:attribute>
 </minierptemplate:template>
-
-        
