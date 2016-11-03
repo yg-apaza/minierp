@@ -582,6 +582,18 @@
         <servlet-name>facturaLotesController</servlet-name>
         <url-pattern>/secured/ventas/factura/facturaLotes</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <description/>
+        <display-name>catalogoRutasController</display-name>
+        <servlet-name>catalogoRutasController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.configuracion.CatalogoRutasController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>catalogoRutasController</servlet-name>
+        <url-pattern>/secured/configuracion/catalogoRutas</url-pattern>
+    </servlet-mapping>
+    
     <!--         ERRORS         -->
     <error-page>
         <location>/error.jsp</location>
