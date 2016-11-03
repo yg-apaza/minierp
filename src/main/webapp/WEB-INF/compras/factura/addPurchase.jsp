@@ -53,12 +53,13 @@
                                             <div class="col-md-12">
                                                 <div class="form-group input-group" >                                                    
                                                     <span class="input-group-addon">Proveedor</span>
-                                                    <select class="form-control" id="desProveedorCode" name="prvType" disabled>
+                                                    <select class="form-control" id="desProveedor" name="prvType">
                                                         <option value="1">Razón Social</option>
                                                         <option value="2">Nombre Comercial</option>
                                                     </select> 
                                                     <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                                                     <input class="form-control" type="text" name="prvDes" id="prvDesShow" size="50" placeholder="Descripción">      
+                                                    <span class="input-group-addon"><i class="fa fa-unlock" id="iconSupplierCriteria"></i></span>
                                                 </div>                                                
                                             </div>
                                         </div>
@@ -112,7 +113,7 @@
                                         </div>
                                     </div>
                                     <div class="col-xs-12 col-md-3">
-                                        <textarea class="form-control" rows="8" name="facVenCabObs" placeholder="Observaciones"></textarea>
+                                        <textarea class="form-control" rows="8" name="facComCabObs" placeholder="Observaciones"></textarea>
                                     </div>                                    
                                 </div>
                             </div>
@@ -124,9 +125,9 @@
                                             <div class="col-md-7">
                                                 <div class="form-group input-group" >
                                                     <span class="input-group-addon">Producto</span>
-                                                    <input class="form-control" type="text" name="proDes" id="proDesShow" placeholder="Descripción" size="100" readOnly>                                                    
+                                                    <input class="form-control" type="text" id="proDesShow" placeholder="Descripción" size="100" readOnly>                                                    
                                                     <span class="input-group-addon" onclick="changeIcon()"><i class="fa" id="iconCriteria"></i></span>
-                                                    <input class="form-control" type="text" name="proCod" id="proCodShow" placeholder="Código" size="60" readOnly>
+                                                    <input class="form-control" type="text" id="proCodShow" placeholder="Código" size="60" readOnly>
                                                 </div>
                                             </div>
                                             <div class="col-md-2">
@@ -184,7 +185,7 @@
                                     <div class="col-md-4">      
                                         <div class="form-group input-group" >
                                             <span class="input-group-addon">SubTotal + IGV</span>
-                                            <input type="number" class="form-control" name="facVenCabSubTot" id="facSub" value="0" readonly>
+                                            <input type="number" class="form-control" name="facComCabSubTot" id="facSub" value="0" readonly>
                                             <span class="input-group-addon"><i class="fa fa-usd"></i></span>
                                         </div>
                                     </div>
@@ -193,7 +194,7 @@
                                     <div class="col-md-3 col-md-offset-9">
                                         <div class="form-group input-group" >
                                             <span class="input-group-addon">Total</i></span>
-                                            <input type="number" class="form-control" name="facVenCabTot" id="facTot" value="0" readonly>
+                                            <input type="number" class="form-control" name="facComCabTot" id="facTot" value="0" readonly>
                                             <span class="input-group-addon"><i class="fa fa-usd"></i></span>
                                         </div>
                                     </div>
@@ -239,7 +240,7 @@
             </c:forEach>
             
             $(document).ready(function () {
-                changeClientDescription();
+                changeSupplierDescription();
                 changeDiscount();
             });
             
@@ -289,7 +290,7 @@
                     }
                 });
             });
-                      
+            
             $.validator.addMethod("codePattern", function (value, element) {
                 return /^[0-9]{3}-[0-9]{6}$/.test(value);
             }, "Patrón: [0-9]{3}-[0-9]{6}");
@@ -346,28 +347,28 @@
             
             function changeSupplierDescription() {
                 $.post(
-                        "${pageContext.request.contextPath}/secured/ventas/searchSupplier", {
-                            action: "descripcion"
+                        "${pageContext.request.contextPath}/secured/compras/factura/searchSupplier", {
+                            action: "all"
                         }
                     ).done(function (data) {
-                        if (data.clients != null) {
-                            if($("#desClienteCode").val() == "1") { //Razón Social
-                                var clientsRS = new Array();
-                                data.clients.forEach(function(client) {
-                                    clientsRS.push(client.cliRazSoc);
+                        if (data.suppliers.length > 0) {
+                            if($("#desProveedor").val() == "1") { //Razón Social
+                                var suppliersRS = new Array();
+                                data.suppliers.forEach(function(supplier) {
+                                    suppliersRS.push(supplier.prvRazSoc);
                                 });
                                 
-                                $("#cliDesShow").autocomplete({
-                                    source: clientsRS
+                                $("#prvDesShow").autocomplete({
+                                    source: suppliersRS
                                 });
-                            } else if($("#desClienteCode").val() == "2") { //Nombre Comercial
-                                var clientsNC = new Array();
-                                data.clients.forEach(function(client) {
-                                    clientsNC.push(client.cliNomCom);
+                            } else if($("#desProveedor").val() == "2") { //Nombre Comercial
+                                var suppliersNC = new Array();
+                                data.suppliers.forEach(function(supplier) {
+                                    suppliersNC.push(supplier.prvNomCom);
                                 });
                                 
-                                $("#cliDesShow").autocomplete({
-                                    source: clientsNC
+                                $("#prvDesShow").autocomplete({
+                                    source: suppliersNC
                                 });
                             }                            
                         }                        
@@ -403,16 +404,9 @@
                 changeIGV();
             });
             
-            $('#tipoClienteCode').on('change', function() {
-                changeClientCode();
-                $("#cliCodShow").val("");
-                $("#cliDesShow").val("");
-            });
-            
-            $('#desClienteCode').on('change', function() {
-                changeClientDescription();
-                $("#cliCodShow").val("");
-                $("#cliDesShow").val("");
+            $('#desProveedor').on('change', function() {
+                changeSupplierDescription();
+                $("#prvDesShow").val("");
             });
                         
             $("#proCodShow").autocomplete({
@@ -461,106 +455,45 @@
                 }
             });
 
-            $('#cliCodShow').keyup(function () {
-                if(codeClientCriteria) {
-                    $.post(
-                            "${pageContext.request.contextPath}/secured/ventas/searchSupplier", {
-                                action: "tipoSearch",
-                                tipCliCod: $("#tipoClienteCode").val(),
-                                cliCod: $("#cliCodShow").val()
+            $('#prvDesShow').keyup(function () {
+                $.post(
+                        "${pageContext.request.contextPath}/secured/compras/factura/searchSupplier", {
+                            action: "search",
+                            prvDes: $("#prvDesShow").val(),
+                            prvTyp: $("#desProveedor").val()
+                        }
+                    ).done(function (data) {
+                            if(data.prvCod != null) {
+                                $("#facPrv").val(data.prvCod);
+                                $('#iconSupplierCriteria').removeClass("fa-unlock").addClass("fa-lock");
+                            } else {
+                                $("#facPrv").val("");
+                                $('#iconSupplierCriteria').removeClass("fa-lock").addClass("fa-unlock");
                             }
-                        ).done(function (data) {
-                                if(data.cliCod != null) {
-                                    $("#facCli").val(data.cliCod);
-                                    $("#cliDesShow").val(data.cliRazSoc);  
-                                    $("#routeSelect").empty();
-                                    if(data.cliRut.length > 0) {
-                                        data.cliRut.forEach(function(route) {
-                                            $("#routeSelect").append($('<option>', {
-                                                value: route.cliRutCod,
-                                                text : route.cliRutDet 
-                                            }));
-                                        });
-                                    } else {
-                                        $("#routeSelect").empty().append($('<option>', {
-                                            value: "",
-                                            text : "No posee rutas" 
-                                        }));
-                                    }
-                                } else {
-                                    $("#facCli").val("");
-                                    $("#cliDesShow").val("Desconocido");
-                                    $("#routeSelect").empty().append($('<option>', {
-                                            value: "",
-                                            text : "Desconocida" 
-                                    }));
-                                }
-                            });
-                }
-            });    
-            
-            $('#cliDesShow').keyup(function () {
-                if(!codeClientCriteria) {
-                    $.post(
-                            "${pageContext.request.contextPath}/secured/ventas/searchSupplier", {
-                                action: "desSearch",
-                                tipCliDes: $("#desClienteCode").val(),
-                                cliDes: $("#cliDesShow").val()
-                            }
-                        ).done(function (data) {
-                                if(data.cliCod != null) {
-                                    $("#facCli").val(data.cliCod);
-                                    $("#cliCodShow").val(data.cliCod);    
-                                    $("#tipoClienteCode").val(data.tipCliCod);
-                                    $("#routeSelect").empty();
-                                    if(data.cliRut.length > 0) {
-                                        data.cliRut.forEach(function(route) {
-                                            $("#routeSelect").append($('<option>', {
-                                                value: route.cliRutCod,
-                                                text : route.cliRutDet 
-                                            }));
-                                        });
-                                    } else {
-                                        $("#routeSelect").empty().append($('<option>', {
-                                            value: "",
-                                            text : "No posee rutas" 
-                                        }));
-                                    }
-                                } else {
-                                    $("#facCli").val("");
-                                    $("#cliCodShow").val("Desconocido");
-                                    $("#routeSelect").empty().append($('<option>', {
-                                            value: "",
-                                            text : "Desconocida" 
-                                    }));
-                                }
-                            });
-                }
+                        });
             });  
             
             $("#registerBill").validate({
-                ignore: "",
                 rules: {
-                    facVenCabCod: {
+                    facComCabCod: {
                         required: true,
                         codePattern: true
                     },
-                    cliCod: {
-                        verifiedValue: true,
+                    prvDes: {
                         required: true
                     }, 
-                    facVenCabFec: {
+                    facComCabFec: {
                         required: true
                     }
                 },
                 messages: {
-                    facVenCabCod: {
+                    facComCabCod: {
                         required: "Ingrese el código de la factura"
                     },
-                    cliCod: {
+                    prvDes: {
                         required: "Ingrese cliente válido",
                     },
-                    facVenCabFec: {
+                    facComCabFec: {
                         required: "Seleccione una fecha"
                     }
                 },

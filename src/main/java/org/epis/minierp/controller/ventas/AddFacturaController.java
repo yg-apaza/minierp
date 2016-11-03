@@ -152,7 +152,7 @@ public class AddFacturaController extends HttpServlet {
                 EnP1tFacturaVentaDet det = new EnP1tFacturaVentaDet();
                 EnP1tFacturaVentaDetId detId = new EnP1tFacturaVentaDetId();
                 detId.setFacVenCabCod(facVenCabCod);
-                detId.setFacVenDetCod((int) (System.currentTimeMillis() % Integer.MAX_VALUE));
+                detId.setFacVenDetCod(i);
                 det.setId(detId);
                 det.setEnP1mFacturaVentaCab(header);
                 det.setEnP2mProducto(product);
