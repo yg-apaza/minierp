@@ -41,7 +41,6 @@ public class AddPurchaseController extends HttpServlet {
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List <EnP4mProveedor> proveedores = (new EnP4mProveedorDao()).getAllActive();
         List <TaGzzMetodoPagoFactura> metodosPagoFactura = (new TaGzzMetodoPagoFacturaDao()).getAll();
         List <TaGzzMoneda> monedas = (new TaGzzMonedaDao()).getAll();
         List <TaGzzTipoPagoFactura> tiposPagoFactura = (new TaGzzTipoPagoFacturaDao()).getAll(); 
@@ -49,7 +48,6 @@ public class AddPurchaseController extends HttpServlet {
         List <TaGzzEstadoFactura> estadosFactura = (new TaGzzEstadoFacturaDao().getAll());
         List <TaGzzTipoDescuento> tiposDescuentos = (new TaGzzTipoDescuentoDao()).getAllActive();
 
-        request.setAttribute("proveedores", proveedores);
         request.setAttribute("metodosPagoFactura", metodosPagoFactura);
         request.setAttribute("monedas", monedas);
         request.setAttribute("tiposPagoFactura", tiposPagoFactura);

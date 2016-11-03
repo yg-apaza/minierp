@@ -47,7 +47,6 @@
                                         <th>Comprador</th>
                                         <th>Importe</th>
                                         <th>Tipo</th>
-                                        <th>Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -59,7 +58,6 @@
                                             <td>${c.enP1mUsuario.usuNom}</td>
                                             <td>${c.facComCabTot}</td>                            
                                             <td>${c.taGzzTipoPagoFactura.tipPagDet}</td>
-                                            <td width="50px">Acciones</td>
                                         </tr>
                                     </c:forEach>
                                 </tbody>
