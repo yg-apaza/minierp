@@ -50,7 +50,8 @@
                                 <table class="table table-striped table-bordered table-hover" id="tablePurchases">
                                     <thead>
                                         <tr>
-                                            <th colspan="2">Fecha</th>
+                                            <th></th>
+                                            <th>Fecha</th>
                                             <th>Factura</th>
                                             <th>Cliente</th>
                                             <th>Vendedor</th>
@@ -152,50 +153,53 @@
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         <h3 class="modal-title">Factura de Venta</h3>
                     </div>
-                    <div class="modal-body">                        
-                        <div class="col-md-12 form-group input-group">
-                            <div class="col-xs-12 col-md-12">
-                                <div class="form-group input-group">
-                                    <h4>Información General</h4>
+                    <div class="modal-body">   
+                        <div class="panel-body">
+                            <ul class="nav nav-pills">
+                                <li class="active"><a href="#general" data-toggle="tab">Información General</a></li>
+                                <li><a href="#detail" data-toggle="tab">Detalle de Venta</a></li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane fade in active" id="general"><br>
+                                    <div class="col-xs-12 col-md-12">
+                                        <div class="col-xs-12 col-md-6">
+                                            <div class="form-group input-group">
+                                                <span class="input-group-addon">Factura</span>
+                                                <input type="text" class="form-control" id="facVenCabCod" readOnly>
+                                                <span class="input-group-addon"><i class="fa fa-clipboard"></i></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-md-6">
+                                            <div class="form-group input-group">
+                                                <span class="input-group-addon">Vendedor</span>
+                                                <input type="text" class="form-control" id="facVenCabUsuNom" readOnly>
+                                                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-md-12">
+                                            <div class="form-group input-group" >
+                                                <span class="input-group-addon">Cliente</span>
+                                                <input type="text" class="form-control" id="facVenCabCliNomCom" readOnly>
+                                                <span class="input-group-addon"><i class="fa fa-shopping-cart"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-xs-12 col-md-6">
-                                <div class="form-group input-group">
-                                    <span class="input-group-addon">Factura</span>
-                                    <input type="text" class="form-control" id="facVenCabCod" readOnly>
-                                    <span class="input-group-addon"><i class="fa fa-clipboard"></i></span>
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-md-6">
-                                <div class="form-group input-group">
-                                    <span class="input-group-addon">Vendedor</span>
-                                    <input type="text" class="form-control" id="facVenCabUsuNom" readOnly>
-                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-md-12">
-                                <div class="form-group input-group" >
-                                    <span class="input-group-addon">Cliente</span>
-                                    <input type="text" class="form-control" id="facVenCabCliNomCom" readOnly>
-                                    <span class="input-group-addon"><i class="fa fa-shopping-cart"></i></span>
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-md-12">
-                                <div class="form-group input-group">
-                                    <h4>Detalle de Venta</h4>
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-md-12">
-                                <div class="form-group input-group">
-                                    <table width="100%" class="table table-striped table-bordered table-hover" id="facVenDetPro">
-                                        <thead align="center">
-                                            <tr >
-                                                <th colspan="2">Descripción del Producto</th>
-                                                <th>Precio</th>
-                                                <th>Importe</th>
-                                            </tr>
-                                        </thead>
-                                    </table>
+                                <div class="tab-pane fade" id="detail"><br>
+                                    <div class="col-xs-12 col-md-12">
+                                        <div class="table-responsive">
+                                            <table width="100%" class="table table-striped table-bordered table-hover" id="facVenDetPro">
+                                                <thead align="center">
+                                                    <tr >
+                                                        <th>Cant.</th>
+                                                        <th>Descripción</th>
+                                                        <th>Precio</th>
+                                                        <th>Importe</th>
+                                                    </tr>
+                                                </thead>
+                                            </table>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -212,7 +216,13 @@
                     responsive: true
                 });
             });
-
+            
+            $(document).ready(function () {
+                $('#facVenDetPro').DataTable({
+                    responsive: true
+                });
+            });
+            
             $(document).ready(function () {
                 $('#imprimir').on('click', function () {
                     if ($(':checkbox:checked').length > 0)
@@ -226,7 +236,7 @@
                     }
                 });
             });
-            
+                        
             $("#viewSaleBill").on('show.bs.modal', function (e) {
                 $.post(
                         "${pageContext.request.contextPath}/secured/ventas/searchBill", {                            
@@ -236,6 +246,17 @@
                         $("#facVenCabCod").val(data.cod);
                         $("#facVenCabUsuNom").val(data.usuNom);
                         $("#facVenCabCliNomCom").val(data.cliNomCom);
+                        $('#facVenDetPro').DataTable().destroy();
+                        data.detailList.forEach(function(detail) {                            
+                            $('#facVenDetPro tbody').append('<tr><td width="16%" align="center"></td><td width="44%"></td><td width="20%" align="center"></td><td width="20%" align="center"></td></tr>');
+                            $('#facVenDetPro tr:last td:eq(0)').html(detail.detCan);
+                            $('#facVenDetPro tr:last td:eq(1)').html(detail.proDet);
+                            $('#facVenDetPro tr:last td:eq(2)').html(detail.preUniVen);
+                            $('#facVenDetPro tr:last td:eq(3)').html((Number(detail.detImp)).toFixed(2));
+                        });
+                        $('#facVenDetPro').DataTable({
+                            responsive: true
+                        });
                     });
             });
         </script>
