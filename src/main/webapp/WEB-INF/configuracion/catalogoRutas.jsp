@@ -80,7 +80,7 @@
                             <input type="hidden" name="accion" value="create">
                             <div class="form-group">
                                 <label>Codigo de Ruta:</label>
-                                <input type="number" class="form-control" name="catRutCod">
+                                <input class="form-control" name="catRutCod">
                             </div>
                             <div class="form-group">
                                 <label>Descripcion de la Ruta:</label>
