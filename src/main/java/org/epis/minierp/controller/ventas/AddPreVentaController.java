@@ -112,7 +112,7 @@ public class AddPreVentaController extends HttpServlet{
                 EnP1tPreventaDet det = new EnP1tPreventaDet();
                 EnP1tPreventaDetId detId = new EnP1tPreventaDetId();
                 detId.setPreVenCabCod(preVenCabCod);
-                detId.setPreVenDetCod((int) (System.currentTimeMillis() % Integer.MAX_VALUE));
+                detId.setPreVenDetCod(i);
                 det.setId(detId);
                 det.setEnP1mPreventaCab(header);
                 det.setEnP2mProducto(product);
