@@ -1,5 +1,5 @@
 package org.epis.minierp.model;
-// Generated 31/10/2016 01:37:15 AM by Hibernate Tools 4.3.1
+// Generated 02/11/2016 08:41:29 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -12,6 +12,7 @@ public class TaGzzUnidadMed  implements java.io.Serializable {
 
 
      private Integer uniMedCod;
+     private String uniMedSim;
      private String uniMedDet;
      private char estRegCod;
      private Set enP2mProductos = new HashSet(0);
@@ -24,7 +25,8 @@ public class TaGzzUnidadMed  implements java.io.Serializable {
         this.uniMedDet = uniMedDet;
         this.estRegCod = estRegCod;
     }
-    public TaGzzUnidadMed(String uniMedDet, char estRegCod, Set enP2mProductos) {
+    public TaGzzUnidadMed(String uniMedSim, String uniMedDet, char estRegCod, Set enP2mProductos) {
+       this.uniMedSim = uniMedSim;
        this.uniMedDet = uniMedDet;
        this.estRegCod = estRegCod;
        this.enP2mProductos = enP2mProductos;
@@ -36,6 +38,13 @@ public class TaGzzUnidadMed  implements java.io.Serializable {
     
     public void setUniMedCod(Integer uniMedCod) {
         this.uniMedCod = uniMedCod;
+    }
+    public String getUniMedSim() {
+        return this.uniMedSim;
+    }
+    
+    public void setUniMedSim(String uniMedSim) {
+        this.uniMedSim = uniMedSim;
     }
     public String getUniMedDet() {
         return this.uniMedDet;

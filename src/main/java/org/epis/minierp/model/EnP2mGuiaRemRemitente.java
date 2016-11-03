@@ -1,5 +1,5 @@
 package org.epis.minierp.model;
-// Generated 31/10/2016 01:37:15 AM by Hibernate Tools 4.3.1
+// Generated 02/11/2016 08:41:29 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -18,10 +18,8 @@ public class EnP2mGuiaRemRemitente  implements java.io.Serializable {
      private String guiRemRemDen;
      private String guiRemRemDes;
      private char estRegCod;
-     private Set enP1cDevolucionVentases = new HashSet(0);
      private Set enP1mFacturaVentaCabs = new HashSet(0);
      private Set enP4mFacturaCompraCabs = new HashSet(0);
-     private Set enP2cDevolucionComprases = new HashSet(0);
 
     public EnP2mGuiaRemRemitente() {
     }
@@ -36,7 +34,7 @@ public class EnP2mGuiaRemRemitente  implements java.io.Serializable {
         this.guiRemRemDes = guiRemRemDes;
         this.estRegCod = estRegCod;
     }
-    public EnP2mGuiaRemRemitente(String guiRemRemNum, EnP1mEmpresa enP1mEmpresa, TaGzzMotivoTraslado taGzzMotivoTraslado, TaGzzTipoDestinatario taGzzTipoDestinatario, String guiRemRemDen, String guiRemRemDes, char estRegCod, Set enP1cDevolucionVentases, Set enP1mFacturaVentaCabs, Set enP4mFacturaCompraCabs, Set enP2cDevolucionComprases) {
+    public EnP2mGuiaRemRemitente(String guiRemRemNum, EnP1mEmpresa enP1mEmpresa, TaGzzMotivoTraslado taGzzMotivoTraslado, TaGzzTipoDestinatario taGzzTipoDestinatario, String guiRemRemDen, String guiRemRemDes, char estRegCod, Set enP1mFacturaVentaCabs, Set enP4mFacturaCompraCabs) {
        this.guiRemRemNum = guiRemRemNum;
        this.enP1mEmpresa = enP1mEmpresa;
        this.taGzzMotivoTraslado = taGzzMotivoTraslado;
@@ -44,10 +42,8 @@ public class EnP2mGuiaRemRemitente  implements java.io.Serializable {
        this.guiRemRemDen = guiRemRemDen;
        this.guiRemRemDes = guiRemRemDes;
        this.estRegCod = estRegCod;
-       this.enP1cDevolucionVentases = enP1cDevolucionVentases;
        this.enP1mFacturaVentaCabs = enP1mFacturaVentaCabs;
        this.enP4mFacturaCompraCabs = enP4mFacturaCompraCabs;
-       this.enP2cDevolucionComprases = enP2cDevolucionComprases;
     }
    
     public String getGuiRemRemNum() {
@@ -99,13 +95,6 @@ public class EnP2mGuiaRemRemitente  implements java.io.Serializable {
     public void setEstRegCod(char estRegCod) {
         this.estRegCod = estRegCod;
     }
-    public Set getEnP1cDevolucionVentases() {
-        return this.enP1cDevolucionVentases;
-    }
-    
-    public void setEnP1cDevolucionVentases(Set enP1cDevolucionVentases) {
-        this.enP1cDevolucionVentases = enP1cDevolucionVentases;
-    }
     public Set getEnP1mFacturaVentaCabs() {
         return this.enP1mFacturaVentaCabs;
     }
@@ -119,13 +108,6 @@ public class EnP2mGuiaRemRemitente  implements java.io.Serializable {
     
     public void setEnP4mFacturaCompraCabs(Set enP4mFacturaCompraCabs) {
         this.enP4mFacturaCompraCabs = enP4mFacturaCompraCabs;
-    }
-    public Set getEnP2cDevolucionComprases() {
-        return this.enP2cDevolucionComprases;
-    }
-    
-    public void setEnP2cDevolucionComprases(Set enP2cDevolucionComprases) {
-        this.enP2cDevolucionComprases = enP2cDevolucionComprases;
     }
 
 

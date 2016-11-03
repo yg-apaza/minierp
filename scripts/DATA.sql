@@ -915,9 +915,9 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `episerp`;
-INSERT INTO `episerp`.`ta_gzz_tipo_destinatario` (`TipDesCod`, `TipDesDet`, `EstRegCod`) VALUES ('01', 'Cliente', 'A');
-INSERT INTO `episerp`.`ta_gzz_tipo_destinatario` (`TipDesCod`, `TipDesDet`, `EstRegCod`) VALUES ('02', 'Proveedor', 'A');
-INSERT INTO `episerp`.`ta_gzz_tipo_destinatario` (`TipDesCod`, `TipDesDet`, `EstRegCod`) VALUES ('03', 'El Remitente', 'A');
+INSERT INTO `episerp`.`ta_gzz_tipo_destinatario` (`TipDstCod`, `TipDstDet`, `EstRegCod`) VALUES ('01', 'Cliente', 'A');
+INSERT INTO `episerp`.`ta_gzz_tipo_destinatario` (`TipDstCod`, `TipDstDet`, `EstRegCod`) VALUES ('02', 'Proveedor', 'A');
+INSERT INTO `episerp`.`ta_gzz_tipo_destinatario` (`TipDstCod`, `TipDstDet`, `EstRegCod`) VALUES ('03', 'El Remitente', 'A');
 
 COMMIT;
 

@@ -81,7 +81,7 @@ public class AddPreVentaController extends HttpServlet{
             header.setPreVenCabCod(preVenCabCod);
             header.setEnP1mCliente((new EnP1mClienteDao()).getById(cliCod));
             header.setEnP1mUsuario(user);
-            header.setPreVenCabFec(preVenCabFec);
+            //header.setPreVenCabFec(preVenCabFec);
             header.setPreVenCabTot(preVenCabTot);
             header.setPreVenCabSubTot(preVenCabSubTot);
             header.setPreVenCabIgv(preVenCabIgv);
@@ -112,7 +112,7 @@ public class AddPreVentaController extends HttpServlet{
                 EnP1tPreventaDet det = new EnP1tPreventaDet();
                 EnP1tPreventaDetId detId = new EnP1tPreventaDetId();
                 detId.setPreVenCabCod(preVenCabCod);
-                detId.setPreVenDetCod((int) (System.currentTimeMillis() % Integer.MAX_VALUE));
+                detId.setPreVenDetCod(i);
                 det.setId(detId);
                 det.setEnP1mPreventaCab(header);
                 det.setEnP2mProducto(product);

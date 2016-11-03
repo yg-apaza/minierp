@@ -40,6 +40,24 @@ public class EnP4mProveedorDao {
         return proveedor;
     }
     
+    public EnP4mProveedor getByRazonSocial(String razSoc) {
+        Query query = session.createQuery("from EnP4mProveedor P where P.prvRazSoc = :id and P.estRegCod = 'A'");
+        query.setParameter("id", razSoc);
+        List <EnP4mProveedor> proveedores = query.list();
+        if(proveedores.size() == 0)
+            return null;
+        return proveedores.get(0);
+    }
+    
+    public EnP4mProveedor getByNombreComercial(String nomCom) {
+        Query query = session.createQuery("from EnP4mProveedor P where P.prvNomCom = :id and P.estRegCod = 'A'");
+        query.setParameter("id", nomCom);
+        List <EnP4mProveedor> proveedores = query.list();
+        if(proveedores.size() == 0)
+            return null;
+        return proveedores.get(0);
+    }
+    
     public void save(EnP4mProveedor proveedor) {
         session.save(proveedor);     
     }

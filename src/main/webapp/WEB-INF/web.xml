@@ -145,7 +145,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>BusquedaProveedorController</servlet-name>
-        <url-pattern>/secured/compras/factura/busquedaProveedor</url-pattern>
+        <url-pattern>/secured/compras/factura/searchSupplier</url-pattern>
     </servlet-mapping>
     <servlet>
         <description/>

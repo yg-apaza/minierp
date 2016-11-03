@@ -66,7 +66,7 @@ IF idProducto != ''
 			(
 			
 				SELECT 
-					fvc.FacVenCabFec fecha,
+					fvc.FacVenCabFecEmi fecha,
 					fvc.FacVenCabCod numero_factura,
 					pp.ProDet producto,
 					0 cantidad_entrada,
@@ -144,15 +144,15 @@ BEGIN
 	IF mTipo = 1 
 	THEN
 		SELECT 
-		(SELECT COALESCE(SUM(FacVenCabTot),0) FROM en_p1m_factura_venta_cab WHERE UsuCod=mCliCod AND DATE(FacVenCabFec)=DATE(NOW()) AND EstRegCod='A') AS 'HOY',
-		(SELECT COALESCE(SUM(FacVenCabTot),0)  FROM en_p1m_factura_venta_cab WHERE UsuCod=mCliCod AND DATE(FacVenCabFec)=DATE(NOW())-1 AND EstRegCod='A') AS 'AYER',
-		(SELECT COALESCE(SUM(FacVenCabTot),0)  FROM en_p1m_factura_venta_cab WHERE UsuCod=mCliCod AND DATE(FacVenCabFec)=DATE(NOW())-2 AND EstRegCod='A') AS 'ANTEAYER';
+		(SELECT COALESCE(SUM(FacVenCabTot),0) FROM en_p1m_factura_venta_cab WHERE UsuCod=mCliCod AND DATE(FacVenCabFecEmi)=DATE(NOW()) AND EstRegCod='A') AS 'HOY',
+		(SELECT COALESCE(SUM(FacVenCabTot),0)  FROM en_p1m_factura_venta_cab WHERE UsuCod=mCliCod AND DATE(FacVenCabFecEmi)=DATE(NOW())-1 AND EstRegCod='A') AS 'AYER',
+		(SELECT COALESCE(SUM(FacVenCabTot),0)  FROM en_p1m_factura_venta_cab WHERE UsuCod=mCliCod AND DATE(FacVenCabFecEmi)=DATE(NOW())-2 AND EstRegCod='A') AS 'ANTEAYER';
 	ELSEIF mTipo=2
 	THEN
         SELECT 
-		(SELECT COALESCE(SUM(PreVenCabTot),0) FROM en_p1m_preventa_cab WHERE UsuCod=mCliCod AND DATE(PreVenCabFec)=DATE(NOW()) AND EstRegCod='A') AS 'HOY',
-		(SELECT COALESCE(SUM(PreVenCabTot),0) FROM en_p1m_preventa_cab WHERE UsuCod=mCliCod AND DATE(PreVenCabFec)=DATE(NOW())-1 AND EstRegCod='A') AS 'AYER',
-		(SELECT COALESCE(SUM(PreVenCabTot),0) FROM en_p1m_preventa_cab WHERE UsuCod=mCliCod AND DATE(PreVenCabFec)=DATE(NOW())-2 AND EstRegCod='A') AS 'ANTEAYER';
+		(SELECT COALESCE(SUM(PreVenCabTot),0) FROM en_p1m_preventa_cab WHERE UsuCod=mCliCod AND DATE(PreVenCabFecEmi)=DATE(NOW()) AND EstRegCod='A') AS 'HOY',
+		(SELECT COALESCE(SUM(PreVenCabTot),0) FROM en_p1m_preventa_cab WHERE UsuCod=mCliCod AND DATE(PreVenCabFecEmi)=DATE(NOW())-1 AND EstRegCod='A') AS 'AYER',
+		(SELECT COALESCE(SUM(PreVenCabTot),0) FROM en_p1m_preventa_cab WHERE UsuCod=mCliCod AND DATE(PreVenCabFecEmi)=DATE(NOW())-2 AND EstRegCod='A') AS 'ANTEAYER';
 	END IF;
 
 END $$
@@ -161,6 +161,7 @@ DELIMITER ;
 /* PROCEDURE evaluacion_preventa */
 
 DROP PROCEDURE IF EXISTS `evaluacion_preventa`;
+DROP EVENT IF EXISTS `evaluacionAutomaticaPreventas`;
 SET GLOBAL event_scheduler=ON;
 CREATE EVENT evaluacionAutomaticaPreventas
     ON SCHEDULE EVERY 1 DAY STARTS '2016-10-019 23:59:00'
@@ -175,8 +176,8 @@ CREATE TABLE preventasIngresadas
 SELECT 
 	pvc.PreVenCabCod,
 	pvc.PreVenCabPla,
-	pvc.PreVenCabFec,
-    (SELECT DATE_ADD(pvc.PreVenCabFec,INTERVAL pvc.PreVenCabPla DAY)) tiempoFin
+	pvc.PreVenCabFecEmi,
+    (SELECT DATE_ADD(pvc.PreVenCabFecEmi,INTERVAL pvc.PreVenCabPla DAY)) tiempoFin
 FROM en_p1m_preventa_cab pvc 
 WHERE pvc.EstRegCod='A';
 
@@ -341,7 +342,7 @@ SELECT
 				sum(fvd.FacVenDetValUni*fvd.FacVenDetCan) montoVenta
 			FROM  en_p1t_factura_venta_det fvd 
 			INNER JOIN en_p1m_factura_venta_cab fvc ON fvc.FacVenCabCod=fvd.FacVenCabCod AND fvc.EstRegCod='A'
-			WHERE month(fvc.FacVenCabFec)=1 AND year(fvc.FacVenCabFec)=@anhoActual
+			WHERE month(fvc.FacVenCabFecEmi)=1 AND year(fvc.FacVenCabFecEmi)=@anhoActual
 		)
 		UNION ALL
 		(
@@ -350,7 +351,7 @@ SELECT
 				sum(fvd.FacVenDetValUni*fvd.FacVenDetCan) montoVenta
 			FROM  en_p1t_factura_venta_det fvd 
 			INNER JOIN en_p1m_factura_venta_cab fvc ON fvc.FacVenCabCod=fvd.FacVenCabCod AND fvc.EstRegCod='A'
-			WHERE month(fvc.FacVenCabFec)=2 AND year(fvc.FacVenCabFec)=@anhoActual
+			WHERE month(fvc.FacVenCabFecEmi)=2 AND year(fvc.FacVenCabFecEmi)=@anhoActual
 		)
 		UNION ALL
 		(
@@ -359,7 +360,7 @@ SELECT
 				sum(fvd.FacVenDetValUni*fvd.FacVenDetCan) montoVenta
 			FROM  en_p1t_factura_venta_det fvd 
 			INNER JOIN en_p1m_factura_venta_cab fvc ON fvc.FacVenCabCod=fvd.FacVenCabCod AND fvc.EstRegCod='A'
-			WHERE month(fvc.FacVenCabFec)=3 AND year(fvc.FacVenCabFec)=@anhoActual
+			WHERE month(fvc.FacVenCabFecEmi)=3 AND year(fvc.FacVenCabFecEmi)=@anhoActual
 		)
 		UNION ALL
 		(
@@ -368,7 +369,7 @@ SELECT
 				sum(fvd.FacVenDetValUni*fvd.FacVenDetCan) montoVenta
 			FROM  en_p1t_factura_venta_det fvd 
 			INNER JOIN en_p1m_factura_venta_cab fvc ON fvc.FacVenCabCod=fvd.FacVenCabCod AND fvc.EstRegCod='A'
-			WHERE month(fvc.FacVenCabFec)=4 AND year(fvc.FacVenCabFec)=@anhoActual
+			WHERE month(fvc.FacVenCabFecEmi)=4 AND year(fvc.FacVenCabFecEmi)=@anhoActual
 		)
 		UNION ALL
 		(
@@ -377,7 +378,7 @@ SELECT
 				sum(fvd.FacVenDetValUni*fvd.FacVenDetCan) montoVenta
 			FROM  en_p1t_factura_venta_det fvd 
 			INNER JOIN en_p1m_factura_venta_cab fvc ON fvc.FacVenCabCod=fvd.FacVenCabCod AND fvc.EstRegCod='A'
-			WHERE month(fvc.FacVenCabFec)=5 AND year(fvc.FacVenCabFec)=@anhoActual
+			WHERE month(fvc.FacVenCabFecEmi)=5 AND year(fvc.FacVenCabFecEmi)=@anhoActual
 		)
 		UNION ALL
 		(
@@ -386,7 +387,7 @@ SELECT
 				sum(fvd.FacVenDetValUni*fvd.FacVenDetCan) montoVenta
 			FROM  en_p1t_factura_venta_det fvd 
 			INNER JOIN en_p1m_factura_venta_cab fvc ON fvc.FacVenCabCod=fvd.FacVenCabCod AND fvc.EstRegCod='A'
-			WHERE month(fvc.FacVenCabFec)=6 AND year(fvc.FacVenCabFec)=@anhoActual
+			WHERE month(fvc.FacVenCabFecEmi)=6 AND year(fvc.FacVenCabFecEmi)=@anhoActual
 		)
 		UNION ALL
 		(
@@ -395,7 +396,7 @@ SELECT
 				sum(fvd.FacVenDetValUni*fvd.FacVenDetCan) montoVenta
 			FROM  en_p1t_factura_venta_det fvd 
 			INNER JOIN en_p1m_factura_venta_cab fvc ON fvc.FacVenCabCod=fvd.FacVenCabCod AND fvc.EstRegCod='A'
-			WHERE month(fvc.FacVenCabFec)=7 AND year(fvc.FacVenCabFec)=@anhoActual
+			WHERE month(fvc.FacVenCabFecEmi)=7 AND year(fvc.FacVenCabFecEmi)=@anhoActual
 		)
 		UNION ALL
 		(
@@ -404,7 +405,7 @@ SELECT
 				sum(fvd.FacVenDetValUni*fvd.FacVenDetCan) montoVenta
 			FROM  en_p1t_factura_venta_det fvd 
 			INNER JOIN en_p1m_factura_venta_cab fvc ON fvc.FacVenCabCod=fvd.FacVenCabCod AND fvc.EstRegCod='A'
-			WHERE month(fvc.FacVenCabFec)=8 AND year(fvc.FacVenCabFec)=@anhoActual
+			WHERE month(fvc.FacVenCabFecEmi)=8 AND year(fvc.FacVenCabFecEmi)=@anhoActual
 		)
 		UNION ALL
 		(
@@ -413,7 +414,7 @@ SELECT
 				sum(fvd.FacVenDetValUni*fvd.FacVenDetCan) montoVenta
 			FROM  en_p1t_factura_venta_det fvd 
 			INNER JOIN en_p1m_factura_venta_cab fvc ON fvc.FacVenCabCod=fvd.FacVenCabCod AND fvc.EstRegCod='A'
-			WHERE month(fvc.FacVenCabFec)=9 AND year(fvc.FacVenCabFec)=@anhoActual
+			WHERE month(fvc.FacVenCabFecEmi)=9 AND year(fvc.FacVenCabFecEmi)=@anhoActual
 		)
 		UNION ALL
 		(
@@ -422,7 +423,7 @@ SELECT
 				sum(fvd.FacVenDetValUni*fvd.FacVenDetCan) montoVenta
 			FROM  en_p1t_factura_venta_det fvd 
 			INNER JOIN en_p1m_factura_venta_cab fvc ON fvc.FacVenCabCod=fvd.FacVenCabCod AND fvc.EstRegCod='A'
-			WHERE month(fvc.FacVenCabFec)=10 AND year(fvc.FacVenCabFec)=@anhoActual
+			WHERE month(fvc.FacVenCabFecEmi)=10 AND year(fvc.FacVenCabFecEmi)=@anhoActual
 		)
 		UNION ALL
 		(
@@ -431,7 +432,7 @@ SELECT
 				sum(fvd.FacVenDetValUni*fvd.FacVenDetCan) montoVenta
 			FROM  en_p1t_factura_venta_det fvd 
 			INNER JOIN en_p1m_factura_venta_cab fvc ON fvc.FacVenCabCod=fvd.FacVenCabCod AND fvc.EstRegCod='A'
-			WHERE month(fvc.FacVenCabFec)=11 AND year(fvc.FacVenCabFec)=@anhoActual
+			WHERE month(fvc.FacVenCabFecEmi)=11 AND year(fvc.FacVenCabFecEmi)=@anhoActual
 		)
 		UNION ALL
 		(
@@ -440,7 +441,7 @@ SELECT
 				sum(fvd.FacVenDetValUni*fvd.FacVenDetCan) montoVenta
 			FROM  en_p1t_factura_venta_det fvd 
 			INNER JOIN en_p1m_factura_venta_cab fvc ON fvc.FacVenCabCod=fvd.FacVenCabCod AND fvc.EstRegCod='A'
-			WHERE month(fvc.FacVenCabFec)=12 AND year(fvc.FacVenCabFec)=@anhoActual
+			WHERE month(fvc.FacVenCabFecEmi)=12 AND year(fvc.FacVenCabFecEmi)=@anhoActual
 		)
     ) p
     WHERE p.mes=t.mes;

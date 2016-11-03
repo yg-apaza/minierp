@@ -1,5 +1,5 @@
 package org.epis.minierp.model;
-// Generated 31/10/2016 01:37:15 AM by Hibernate Tools 4.3.1
+// Generated 02/11/2016 08:41:29 PM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -11,9 +11,8 @@ public class EnP2cDevolucionCompras  implements java.io.Serializable {
 
 
      private String facComCabCod;
-     private EnP2mGuiaRemRemitente enP2mGuiaRemRemitente;
-     private EnP2mGuiaRemTransportista enP2mGuiaRemTransportista;
-     private EnP4mFacturaCompraCab enP4mFacturaCompraCab;
+     private EnP4mFacturaCompraCab enP4mFacturaCompraCabByFacComCabCod;
+     private EnP4mFacturaCompraCab enP4mFacturaCompraCabByDevComNewFac;
      private TaGzzTipoDevolucion taGzzTipoDevolucion;
      private String devComDet;
      private Date devComFec;
@@ -23,15 +22,14 @@ public class EnP2cDevolucionCompras  implements java.io.Serializable {
     }
 
 	
-    public EnP2cDevolucionCompras(EnP4mFacturaCompraCab enP4mFacturaCompraCab, Date devComFec, double devComMon) {
-        this.enP4mFacturaCompraCab = enP4mFacturaCompraCab;
+    public EnP2cDevolucionCompras(EnP4mFacturaCompraCab enP4mFacturaCompraCabByFacComCabCod, Date devComFec, double devComMon) {
+        this.enP4mFacturaCompraCabByFacComCabCod = enP4mFacturaCompraCabByFacComCabCod;
         this.devComFec = devComFec;
         this.devComMon = devComMon;
     }
-    public EnP2cDevolucionCompras(EnP2mGuiaRemRemitente enP2mGuiaRemRemitente, EnP2mGuiaRemTransportista enP2mGuiaRemTransportista, EnP4mFacturaCompraCab enP4mFacturaCompraCab, TaGzzTipoDevolucion taGzzTipoDevolucion, String devComDet, Date devComFec, double devComMon) {
-       this.enP2mGuiaRemRemitente = enP2mGuiaRemRemitente;
-       this.enP2mGuiaRemTransportista = enP2mGuiaRemTransportista;
-       this.enP4mFacturaCompraCab = enP4mFacturaCompraCab;
+    public EnP2cDevolucionCompras(EnP4mFacturaCompraCab enP4mFacturaCompraCabByFacComCabCod, EnP4mFacturaCompraCab enP4mFacturaCompraCabByDevComNewFac, TaGzzTipoDevolucion taGzzTipoDevolucion, String devComDet, Date devComFec, double devComMon) {
+       this.enP4mFacturaCompraCabByFacComCabCod = enP4mFacturaCompraCabByFacComCabCod;
+       this.enP4mFacturaCompraCabByDevComNewFac = enP4mFacturaCompraCabByDevComNewFac;
        this.taGzzTipoDevolucion = taGzzTipoDevolucion;
        this.devComDet = devComDet;
        this.devComFec = devComFec;
@@ -45,26 +43,19 @@ public class EnP2cDevolucionCompras  implements java.io.Serializable {
     public void setFacComCabCod(String facComCabCod) {
         this.facComCabCod = facComCabCod;
     }
-    public EnP2mGuiaRemRemitente getEnP2mGuiaRemRemitente() {
-        return this.enP2mGuiaRemRemitente;
+    public EnP4mFacturaCompraCab getEnP4mFacturaCompraCabByFacComCabCod() {
+        return this.enP4mFacturaCompraCabByFacComCabCod;
     }
     
-    public void setEnP2mGuiaRemRemitente(EnP2mGuiaRemRemitente enP2mGuiaRemRemitente) {
-        this.enP2mGuiaRemRemitente = enP2mGuiaRemRemitente;
+    public void setEnP4mFacturaCompraCabByFacComCabCod(EnP4mFacturaCompraCab enP4mFacturaCompraCabByFacComCabCod) {
+        this.enP4mFacturaCompraCabByFacComCabCod = enP4mFacturaCompraCabByFacComCabCod;
     }
-    public EnP2mGuiaRemTransportista getEnP2mGuiaRemTransportista() {
-        return this.enP2mGuiaRemTransportista;
-    }
-    
-    public void setEnP2mGuiaRemTransportista(EnP2mGuiaRemTransportista enP2mGuiaRemTransportista) {
-        this.enP2mGuiaRemTransportista = enP2mGuiaRemTransportista;
-    }
-    public EnP4mFacturaCompraCab getEnP4mFacturaCompraCab() {
-        return this.enP4mFacturaCompraCab;
+    public EnP4mFacturaCompraCab getEnP4mFacturaCompraCabByDevComNewFac() {
+        return this.enP4mFacturaCompraCabByDevComNewFac;
     }
     
-    public void setEnP4mFacturaCompraCab(EnP4mFacturaCompraCab enP4mFacturaCompraCab) {
-        this.enP4mFacturaCompraCab = enP4mFacturaCompraCab;
+    public void setEnP4mFacturaCompraCabByDevComNewFac(EnP4mFacturaCompraCab enP4mFacturaCompraCabByDevComNewFac) {
+        this.enP4mFacturaCompraCabByDevComNewFac = enP4mFacturaCompraCabByDevComNewFac;
     }
     public TaGzzTipoDevolucion getTaGzzTipoDevolucion() {
         return this.taGzzTipoDevolucion;
