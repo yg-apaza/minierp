@@ -301,5 +301,5 @@ public class FacturaPrinter {
         this.totalMargin = totalMargin;
     }
 
-        
+    
 }

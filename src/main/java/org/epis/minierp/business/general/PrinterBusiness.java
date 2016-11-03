@@ -44,9 +44,9 @@ public class PrinterBusiness {
     private static final float CM_PER_INCH = 2.54f;
     
     private FileWriter writer;
-    private  XMLReader<FacturaPrinter> xmlFactura;
-    private  XMLReader<BoletaPrinter> xmlBoleta;
-    private  XMLReader<GuiaRemisionPrinter> xmlGuiaRemision;
+    private XMLReader<FacturaPrinter> xmlFactura;
+    private XMLReader<BoletaPrinter> xmlBoleta;
+    private XMLReader<GuiaRemisionPrinter> xmlGuiaRemision;
     private FacturaPrinter fP;
     private BoletaPrinter bP;
     private GuiaRemisionPrinter gP;
@@ -99,7 +99,6 @@ public class PrinterBusiness {
                     select10CPI();
                 else
                     select15CPI(); 
-                System.out.println("margen izq: "+bP.getLeftMargin());
                 setMargins(bP.getLeftMargin(), bP.getRightMargin());
                 break;
             case "guiaRemision":
@@ -293,32 +292,27 @@ public class PrinterBusiness {
         writer.write(cliCod);
         float val = fP.getCliCod();
         setAbsoluteHorizontalPosition(val);
-        System.out.println(val);
         writer.write(conPag);
         val += fP.getConPag();
-        System.out.println(val);
         setAbsoluteHorizontalPosition(val);
         writer.write(fecVen);
         val += fP.getFecVen();
-        System.out.println(val);
         setAbsoluteHorizontalPosition(val);
         writer.write(venZon);
         val += fP.getVenZon();
-        System.out.println(val);
         setAbsoluteHorizontalPosition(val);
         writer.write(numSec);
         val += fP.getNumSec();
-        System.out.println(val);
         setAbsoluteHorizontalPosition(val);
         writer.write(dis);
         val += fP.getDis();
-        System.out.println(val);
         setAbsoluteHorizontalPosition(val);
         writer.write(rut);
         val += fP.getRut();
-        System.out.println(val);
-        setAbsoluteHorizontalPosition(val);
+        advanceHorizontal(fP.getRut());
+        //setAbsoluteHorizontalPosition(17.6f);
         writer.write(traNom);
+        advanceVertical(fP.getTopFacDet());
         newLine();
     }
     
@@ -377,7 +371,6 @@ public class PrinterBusiness {
     
     public void writeFacDetalle(String proCod, double proCan, String proUni, String proDes, 
             double proValUni, String proDes1, String proDes2, double proValNet) throws IOException{
-        advanceVertical(fP.getTopFacDet());
         writer.write(proCod);
         float val = fP.getProCod();
         setAbsoluteHorizontalPosition(val);
@@ -395,7 +388,8 @@ public class PrinterBusiness {
         setAbsoluteHorizontalPosition(val);
         writer.write(proDes1);
         val += fP.getProDes1();
-        setAbsoluteHorizontalPosition(val);
+        //setAbsoluteHorizontalPosition(17.48f);
+        advanceHorizontal(fP.getProDes1());
         writer.write(proDes2);
         val += fP.getProDes2();
         setAbsoluteHorizontalPosition(val);
