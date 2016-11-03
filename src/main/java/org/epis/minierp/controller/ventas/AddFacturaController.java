@@ -50,7 +50,6 @@ import org.epis.minierp.model.TaGzzTipoPagoFactura;
 
 public class AddFacturaController extends HttpServlet {	
     private static final long serialVersionUID = 1L;
-    private SimpleDateFormat dt= new SimpleDateFormat("dd/MM/yyyy");
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -89,14 +88,14 @@ public class AddFacturaController extends HttpServlet {
             String cliCod = request.getParameter("cliCod");
             int facVenCabIgv = (int)Double.parseDouble(request.getParameter("facVenCabIgv"));
             DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-            Date facVenCabFec = format.parse(request.getParameter("facVenCabFec"));
+            Date facVenCabFecEmi = format.parse(request.getParameter("facVenCabFecEmi"));
+            Date facVenCabFecVen = format.parse(request.getParameter("facVenCabFecVen"));
             int monCod = Integer.parseInt(request.getParameter("monCod"));
             int metPagCod = Integer.parseInt(request.getParameter("metPagCod"));
             int tipPagCod = Integer.parseInt(request.getParameter("tipPagCod"));
             String facVenCabObs = request.getParameter("facVenCabObs");
             double facVenCabTot = Double.parseDouble(request.getParameter("facVenCabTot"));
             double facVenCabSubTot = Double.parseDouble(request.getParameter("facVenCabSubTot"));
-            int rutCod = Integer.parseInt(request.getParameter("rutCod"));
             int tipDesCod = Integer.parseInt(request.getParameter("tipDesCod"));
             
             int estFacCod = 1;
@@ -112,7 +111,8 @@ public class AddFacturaController extends HttpServlet {
             header.setFacVenCabCod(facVenCabCod);            
             header.setEnP1mCliente((new EnP1mClienteDao()).getById(cliCod));
             header.setEnP1mUsuario(user);
-            //header.setFacVenCabFec(facVenCabFec);
+            header.setFacVenCabFecEmi(facVenCabFecEmi);
+            header.setFacVenCabFecVen(facVenCabFecVen);
             header.setFacVenCabTot(facVenCabTot);
             header.setFacVenCabSubTot(facVenCabSubTot);
             header.setFacVenCabIgv(facVenCabIgv);
@@ -121,7 +121,6 @@ public class AddFacturaController extends HttpServlet {
             header.setTaGzzMetodoPagoFactura((new TaGzzMetodoPagoFacturaDao()).getById(metPagCod));
             header.setTaGzzTipoPagoFactura((new TaGzzTipoPagoFacturaDao()).getById(tipPagCod));
             header.setTaGzzMoneda((new TaGzzMonedaDao()).getById(monCod));
-            header.setEnP1mCatalogoRuta((new EnP1mCatalogoRutaDao()).getById(rutCod));
             header.setTaGzzTipoDescuento((new TaGzzTipoDescuentoDao()).getById(tipDesCod));
             header.setEstRegCod('A');
             
@@ -169,7 +168,7 @@ public class AddFacturaController extends HttpServlet {
             movPunVen.setEnP1mUsuario(user);
             movPunVen.setEstRegCod('A');
             movPunVen.setTaGzzTipoComprobante((new TaGzzTipoComprobanteDao()).getById(1));
-            movPunVen.setMovPunVenFec(facVenCabFec);
+            movPunVen.setMovPunVenFec(facVenCabFecEmi);
             movPunVen.setMovPunVenMon(facVenCabTot);
             movPunVen.setMovPunVenComCod(facVenCabCod);
             
