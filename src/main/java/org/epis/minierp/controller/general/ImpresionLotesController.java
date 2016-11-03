@@ -71,8 +71,8 @@ public class ImpresionLotesController extends HttpServlet {
                     cliCod = f.getEnP1mCliente().getCliCod();
                     cliNom = f.getEnP1mCliente().getCliRazSoc();
                     cliDir = f.getEnP1mCliente().getCliDir();
-                    fecEmi = fecha.format(f.getFacVenCabFec());
-                    pF.writeFacSobCab(cliNom, cliDir, fecEmi);
+                    //fecEmi = fecha.format(f.getFacVenCabFec());
+                    //pF.writeFacSobCab(cliNom, cliDir, fecEmi);
 
                     conPag = f.getTaGzzMetodoPagoFactura().getMetPagDet();
                     fecVen = "10/12/16";
@@ -99,8 +99,8 @@ public class ImpresionLotesController extends HttpServlet {
                     cliCod = f.getEnP1mCliente().getCliCod();
                     cliNom = f.getEnP1mCliente().getCliRazSoc();
                     cliDir = f.getEnP1mCliente().getCliDir();
-                    fecEmi = fecha.format(f.getFacVenCabFec());
-                    pB.writeBolSobCab(cliNom, cliDir, fecEmi);
+                    //fecEmi = fecha.format(f.getFacVenCabFec());
+                    //pB.writeBolSobCab(cliNom, cliDir, fecEmi);
 
                     conPag = f.getTaGzzMetodoPagoFactura().getMetPagDet();
                     fecVen = " ";

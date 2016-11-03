@@ -43,7 +43,7 @@ public class GraficaCompradorControlador extends HttpServlet {
 
             @Override
             public int compare(EnP4tFacturaCompraDet o1, EnP4tFacturaCompraDet o2) {
-                return o1.getEnP4mFacturaCompraCab().getFacComCabFec().compareTo(o2.getEnP4mFacturaCompraCab().getFacComCabFec());
+                return o1.getEnP4mFacturaCompraCab().getFacComCabFecEmi().compareTo(o2.getEnP4mFacturaCompraCab().getFacComCabFecEmi());
             }
             
         });
@@ -56,7 +56,7 @@ public class GraficaCompradorControlador extends HttpServlet {
 
             @Override
             public int compare(EnP1tFacturaVentaDet o1, EnP1tFacturaVentaDet o2) {
-                return o1.getEnP1mFacturaVentaCab().getFacVenCabFec().compareTo(o2.getEnP1mFacturaVentaCab().getFacVenCabFec());
+                return o1.getEnP1mFacturaVentaCab().getFacVenCabFecEmi().compareTo(o2.getEnP1mFacturaVentaCab().getFacVenCabFecEmi());
             }
             
         });

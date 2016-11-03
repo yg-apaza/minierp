@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 31/10/2016 01:37:17 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 02/11/2016 08:41:31 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="org.epis.minierp.model.EnP1mPreventaCab" table="en_p1m_preventa_cab" catalog="episerp" optimistic-lock="version">
         <id name="preVenCabCod" type="string">
@@ -23,8 +23,11 @@
         <many-to-one name="taGzzTipoDescuento" class="org.epis.minierp.model.TaGzzTipoDescuento" fetch="select">
             <column name="TipDesCod" />
         </many-to-one>
-        <property name="preVenCabFec" type="date">
-            <column name="PreVenCabFec" length="10" not-null="true" />
+        <property name="preVenCabFecEmi" type="date">
+            <column name="PreVenCabFecEmi" length="10" not-null="true" />
+        </property>
+        <property name="preVenCabFecVen" type="date">
+            <column name="PreVenCabFecVen" length="10" />
         </property>
         <property name="preVenCabPla" type="int">
             <column name="PreVenCabPla" not-null="true" />

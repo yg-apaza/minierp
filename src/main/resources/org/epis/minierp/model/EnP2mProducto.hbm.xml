@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 31/10/2016 01:37:17 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 02/11/2016 08:41:31 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="org.epis.minierp.model.EnP2mProducto" table="en_p2m_producto" catalog="episerp" optimistic-lock="version">
         <composite-id name="id" class="org.epis.minierp.model.EnP2mProductoId">
@@ -15,6 +15,9 @@
                 <column name="ClaProCod" length="2" />
             </key-property>
         </composite-id>
+        <many-to-one name="enP2mAlmacen" class="org.epis.minierp.model.EnP2mAlmacen" fetch="select">
+            <column name="AlmCod" length="15" />
+        </many-to-one>
         <many-to-one name="enP2mSubclaseProducto" class="org.epis.minierp.model.EnP2mSubclaseProducto" update="false" insert="false" fetch="select">
             <column name="SubClaProCod" length="2" not-null="true" />
             <column name="ClaProCod" length="2" not-null="true" />
@@ -25,6 +28,9 @@
         <many-to-one name="taGzzUnidadMed" class="org.epis.minierp.model.TaGzzUnidadMed" fetch="select">
             <column name="UniMedCod" not-null="true" />
         </many-to-one>
+        <property name="proCodBar" type="string">
+            <column name="ProCodBar" length="30" />
+        </property>
         <property name="proDet" type="string">
             <column name="ProDet" length="90" not-null="true" />
         </property>

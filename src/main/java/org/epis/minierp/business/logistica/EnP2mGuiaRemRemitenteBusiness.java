@@ -34,7 +34,7 @@ public class EnP2mGuiaRemRemitenteBusiness {
         em.setEmpCod(empCod);
         
         TaGzzTipoDestinatario td = new TaGzzTipoDestinatario();
-        td.setTipDesCod(tipDesCod);
+        td.setTipDstCod(tipDesCod);
         
         EnP2mGuiaRemRemitente guiaRemRem = new EnP2mGuiaRemRemitente();
         guiaRemRem.setGuiRemRemNum(guiRemRemNum);
@@ -57,7 +57,7 @@ public class EnP2mGuiaRemRemitenteBusiness {
         em.setEmpCod(empCod);
         
         TaGzzTipoDestinatario td = new TaGzzTipoDestinatario();
-        td.setTipDesCod(tipDesCod);
+        td.setTipDstCod(tipDesCod);
         
         EnP2mGuiaRemRemitente guiaRemRem = guiRemRemDao.getById(guiRemRemNum);
         guiaRemRem.setTaGzzMotivoTraslado(mt);

@@ -1,22 +1,19 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 31/10/2016 01:37:17 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 02/11/2016 08:41:31 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="org.epis.minierp.model.EnP2cDevolucionCompras" table="en_p2c_devolucion_compras" catalog="episerp" optimistic-lock="version">
         <id name="facComCabCod" type="string">
             <column name="FacComCabCod" length="10" />
             <generator class="foreign">
-                <param name="property">enP4mFacturaCompraCab</param>
+                <param name="property">enP4mFacturaCompraCabByFacComCabCod</param>
             </generator>
         </id>
-        <many-to-one name="enP2mGuiaRemRemitente" class="org.epis.minierp.model.EnP2mGuiaRemRemitente" fetch="select">
-            <column name="GuiRemRemNum" length="15" />
+        <one-to-one name="enP4mFacturaCompraCabByFacComCabCod" class="org.epis.minierp.model.EnP4mFacturaCompraCab" constrained="true"></one-to-one>
+        <many-to-one name="enP4mFacturaCompraCabByDevComNewFac" class="org.epis.minierp.model.EnP4mFacturaCompraCab" fetch="select">
+            <column name="DevComNewFac" length="10" />
         </many-to-one>
-        <many-to-one name="enP2mGuiaRemTransportista" class="org.epis.minierp.model.EnP2mGuiaRemTransportista" fetch="select">
-            <column name="GuiRemTraNum" length="15" />
-        </many-to-one>
-        <one-to-one name="enP4mFacturaCompraCab" class="org.epis.minierp.model.EnP4mFacturaCompraCab" constrained="true"></one-to-one>
         <many-to-one name="taGzzTipoDevolucion" class="org.epis.minierp.model.TaGzzTipoDevolucion" fetch="select">
             <column name="TipDevCod" />
         </many-to-one>

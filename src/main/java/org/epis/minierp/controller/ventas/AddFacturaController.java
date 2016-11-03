@@ -112,7 +112,7 @@ public class AddFacturaController extends HttpServlet {
             header.setFacVenCabCod(facVenCabCod);            
             header.setEnP1mCliente((new EnP1mClienteDao()).getById(cliCod));
             header.setEnP1mUsuario(user);
-            header.setFacVenCabFec(facVenCabFec);
+            //header.setFacVenCabFec(facVenCabFec);
             header.setFacVenCabTot(facVenCabTot);
             header.setFacVenCabSubTot(facVenCabSubTot);
             header.setFacVenCabIgv(facVenCabIgv);
