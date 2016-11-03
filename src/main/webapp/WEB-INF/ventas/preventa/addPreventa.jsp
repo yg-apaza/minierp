@@ -249,7 +249,7 @@
             
             $(document).ready(function () {
                 $('#addDetail').on('click', function () {
-                    if ($('#proCodShow').val() == "Desconocido" || $('#proDesShow').val() == "Desconocido") {
+                    if ($('#proCodShow').val() == "Desconocido" || $('#proCodShow').val() == "" || $('#proDesShow').val() == "Desconocido" || $('#proDesShow').val() == "")  {
                         $("#errorMessage").text("Producto Desconocido. Ingrese un producto disponible");
                         $('#errorMessageModal').modal('show');
                     } else if (!$('input[name="canPro"]').valid()) {
@@ -274,6 +274,10 @@
                             $('#productTable tr:last td:eq(2)').html($("#proDesShow").val());
                             $('#productTable tr:last td:eq(3)').html($("#unitShow").val());
                             $('#productTable tr:last td:eq(4)').html($("#priceShow").val());
+                            $('#proDesShow').val("");
+                            $('#proCodShow').val("");
+                            $('#priceShow').val("");
+                            $('#amountShow').val(0);
                             updateAll();
                         }
                     }
@@ -322,21 +326,18 @@
                     $('#iconCriteria').removeClass("fa-chevron-left").addClass("fa-chevron-right");
                     $('#proDesShow').attr('readOnly', false);
                     $('#proCodShow').attr('readOnly', true);
-                    $('#proCodShow').val("");
-                    $('#proDesShow').val("");
-                    $('#priceShow').val("");
-                    $('#amountShow').val(0);
                     codeCriteria = false;
                 } else {
                     $('#iconCriteria').removeClass("fa-chevron-right").addClass("fa-chevron-left");
                     $('#proCodShow').attr('readOnly', false);
                     $('#proDesShow').attr('readOnly', true);
-                    $('#proDesShow').val("");
-                    $('#proCodShow').val("");
-                    $('#priceShow').val("");
-                    $('#amountShow').val(0);
                     codeCriteria = true;
                 }
+                
+                $('#proCodShow').val("");
+                $('#proDesShow').val("");
+                $('#priceShow').val("");
+                $('#amountShow').val(0);
             }
             
             function changeClientIcon() {
@@ -369,7 +370,7 @@
             
             function changeClientCode() {
                 $.post(
-                        "${pageContext.request.contextPath}/secured/ventas/searchSupplier", {
+                        "${pageContext.request.contextPath}/secured/ventas/searchClient", {
                             action: "tipo",
                             tipCliCod: $("#tipoClienteCode").val()
                         }
@@ -389,7 +390,7 @@
             
             function changeClientDescription() {
                 $.post(
-                        "${pageContext.request.contextPath}/secured/ventas/searchSupplier", {
+                        "${pageContext.request.contextPath}/secured/ventas/searchClient", {
                             action: "descripcion"
                         }
                     ).done(function (data) {
@@ -493,7 +494,7 @@
             $('#cliCodShow').keyup(function () {
                 if(codeClientCriteria) {
                     $.post(
-                            "${pageContext.request.contextPath}/secured/ventas/searchSupplier", {
+                            "${pageContext.request.contextPath}/secured/ventas/searchClient", {
                                 action: "tipoSearch",
                                 tipCliCod: $("#tipoClienteCode").val(),
                                 cliCod: $("#cliCodShow").val()
@@ -531,7 +532,7 @@
             $('#cliDesShow').keyup(function () {
                 if(!codeClientCriteria) {
                     $.post(
-                            "${pageContext.request.contextPath}/secured/ventas/searchSupplier", {
+                            "${pageContext.request.contextPath}/secured/ventas/searchClient", {
                                 action: "desSearch",
                                 tipCliDes: $("#desClienteCode").val(),
                                 cliDes: $("#cliDesShow").val()

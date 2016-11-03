@@ -540,7 +540,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>BusquedaClienteController</servlet-name>
-        <url-pattern>/secured/ventas/searchSupplier</url-pattern>
+        <url-pattern>/secured/ventas/searchClient</url-pattern>
     </servlet-mapping>
     <servlet>
         <description/>
@@ -576,7 +576,7 @@
         <description/>
         <display-name>facturaLotesController</display-name>
         <servlet-name>facturaLotesController</servlet-name>
-        <servlet-class>org.epis.minierp.controller.ventas.FacturaLotesController</servlet-class>
+        <servlet-class>org.epis.minierp.controller.general.ImpresionLotesController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>facturaLotesController</servlet-name>

@@ -31,7 +31,7 @@
                         
             <div class="col-md-12">
                 <div class="table-responsive">
-                    <table class="table table-bordered table-striped table-hover">
+                    <table class="table table-bordered table-striped table-hover"  id="tablaPuntoV">
                         <thead>
                             <tr>
                                 <th>Cod Sucursal</th>
@@ -248,6 +248,9 @@
 
 
         <script>
+            $('#tablaPuntoV').DataTable({
+                responsive: true
+            });
             var updateModal = $("#modificarModal");
             var disableModal = $("#disableModal");
             var activateModal = $("#activateModal");

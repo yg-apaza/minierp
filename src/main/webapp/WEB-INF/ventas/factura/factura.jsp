@@ -16,10 +16,17 @@
                     </div>
                 </div>
                     <div class="row">
-                        <div class="col-lg-6">
+                        <div class="col-lg-3">
                             <a href="${pageContext.request.contextPath}/secured/ventas/factura/addFactura" class="btn btn-success">Crear Factura <i class="fa fa-plus"></i></a>
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-lg-9">
+                            <div class="col-lg-3">
+                                <select  class="form-control input-small" name="report" id="report"> 
+                                    <option type="submit" value="factura">Factura</option>
+                                    <option type="submit" value="boleta">Boleta</option>
+                                    <option type="submit" value="guiaRemision">Guía de Remisión</option>
+                                </select>  
+                            </div>
                             <div class="col-lg-3">
                                 <div id="imprimir" class="btn btn-success"> Imprimir</div>  
                             </div> 
@@ -61,7 +68,7 @@
                                                 <td>${c.enP1mUsuario.usuNom}</td>
                                                 <td>${c.facVenCabTot}</td>                            
                                                 <td>${c.taGzzTipoPagoFactura.tipPagDet}</td>
-                                                <td><input type="checkbox" name="facCodigos" value="${c.facVenCabCod}"></td>
+                                                <td><input type="checkbox" name="codigos" value="${c.facVenCabCod}"></td>
                                             </tr>
                                         </c:forEach>
                                     </tbody>

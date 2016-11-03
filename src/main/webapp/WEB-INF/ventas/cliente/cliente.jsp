@@ -33,7 +33,7 @@
             <br>
             <div class="col-md-12">
                 <div class="table-responsive">
-                    <table class="table table-bordered table-striped table-hover">
+                    <table class="table table-bordered table-striped table-hover" id="tablaClientes">
                         <thead>
                             <tr>
                                 <th>Codigo</th>
@@ -751,6 +751,9 @@
         </div>
 
         <script>
+            $('#tablaClientes').DataTable({
+                responsive: true
+            });
             var updateModal = $("#modificarModal");
             var disableModal = $("#disableModal");
             var activateModal = $("#activateModal");
