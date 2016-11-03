@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 31/10/2016 01:37:17 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 02/11/2016 08:41:31 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="org.epis.minierp.model.EnP2mAlmacen" table="en_p2m_almacen" catalog="episerp" optimistic-lock="version">
         <id name="almCod" type="string">
@@ -23,5 +23,11 @@
         <property name="estRegCod" type="char">
             <column name="EstRegCod" length="1" not-null="true" />
         </property>
+        <set name="enP2mProductos" table="en_p2m_producto" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="AlmCod" length="15" />
+            </key>
+            <one-to-many class="org.epis.minierp.model.EnP2mProducto" />
+        </set>
     </class>
 </hibernate-mapping>

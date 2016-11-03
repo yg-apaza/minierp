@@ -65,7 +65,7 @@ public class EnP1mPreventaBusiness {
         preVenCab.setPreVenCabCod(preVenCabCod);
         preVenCab.setEnP1mCliente(cli);
         preVenCab.setEnP1mUsuario(usu);
-        preVenCab.setPreVenCabFec(preVenCabFec);
+        //preVenCab.setPreVenCabFec(preVenCabFec);
         preVenCab.setPreVenCabPla(preVenCabPla);
         preVenCab.setPreVenCabTot(preVenCabTot);
         //preVenCab.setPreVenCabDes(preVenCabDes);
@@ -150,7 +150,7 @@ public class EnP1mPreventaBusiness {
         venCab.setFacVenCabCod(facVenCabCod);
         venCab.setEnP1mCliente(preVenCab.getEnP1mCliente());
         venCab.setEnP1mUsuario(preVenCab.getEnP1mUsuario());
-        venCab.setFacVenCabFec(hoy);
+        //venCab.setFacVenCabFec(hoy);
         venCab.setFacVenCabTot(preVenCab.getPreVenCabTot());
         //venCab.setFacVenCabDes(preVenCab.getPreVenCabDes());
         venCab.setFacVenCabSubTot(preVenCab.getPreVenCabSubTot());

@@ -81,7 +81,7 @@ public class AddPreVentaController extends HttpServlet{
             header.setPreVenCabCod(preVenCabCod);
             header.setEnP1mCliente((new EnP1mClienteDao()).getById(cliCod));
             header.setEnP1mUsuario(user);
-            header.setPreVenCabFec(preVenCabFec);
+            //header.setPreVenCabFec(preVenCabFec);
             header.setPreVenCabTot(preVenCabTot);
             header.setPreVenCabSubTot(preVenCabSubTot);
             header.setPreVenCabIgv(preVenCabIgv);

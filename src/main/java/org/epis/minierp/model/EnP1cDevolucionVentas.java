@@ -1,5 +1,5 @@
 package org.epis.minierp.model;
-// Generated 31/10/2016 01:37:15 AM by Hibernate Tools 4.3.1
+// Generated 02/11/2016 08:41:29 PM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -11,9 +11,8 @@ public class EnP1cDevolucionVentas  implements java.io.Serializable {
 
 
      private String facVenCabCod;
-     private EnP1mFacturaVentaCab enP1mFacturaVentaCab;
-     private EnP2mGuiaRemRemitente enP2mGuiaRemRemitente;
-     private EnP2mGuiaRemTransportista enP2mGuiaRemTransportista;
+     private EnP1mFacturaVentaCab enP1mFacturaVentaCabByDevVenNewFac;
+     private EnP1mFacturaVentaCab enP1mFacturaVentaCabByFacVenCabCod;
      private TaGzzTipoDevolucion taGzzTipoDevolucion;
      private String devVenDet;
      private Date devVenFec;
@@ -23,15 +22,14 @@ public class EnP1cDevolucionVentas  implements java.io.Serializable {
     }
 
 	
-    public EnP1cDevolucionVentas(EnP1mFacturaVentaCab enP1mFacturaVentaCab, Date devVenFec, double devVenMon) {
-        this.enP1mFacturaVentaCab = enP1mFacturaVentaCab;
+    public EnP1cDevolucionVentas(EnP1mFacturaVentaCab enP1mFacturaVentaCabByFacVenCabCod, Date devVenFec, double devVenMon) {
+        this.enP1mFacturaVentaCabByFacVenCabCod = enP1mFacturaVentaCabByFacVenCabCod;
         this.devVenFec = devVenFec;
         this.devVenMon = devVenMon;
     }
-    public EnP1cDevolucionVentas(EnP1mFacturaVentaCab enP1mFacturaVentaCab, EnP2mGuiaRemRemitente enP2mGuiaRemRemitente, EnP2mGuiaRemTransportista enP2mGuiaRemTransportista, TaGzzTipoDevolucion taGzzTipoDevolucion, String devVenDet, Date devVenFec, double devVenMon) {
-       this.enP1mFacturaVentaCab = enP1mFacturaVentaCab;
-       this.enP2mGuiaRemRemitente = enP2mGuiaRemRemitente;
-       this.enP2mGuiaRemTransportista = enP2mGuiaRemTransportista;
+    public EnP1cDevolucionVentas(EnP1mFacturaVentaCab enP1mFacturaVentaCabByDevVenNewFac, EnP1mFacturaVentaCab enP1mFacturaVentaCabByFacVenCabCod, TaGzzTipoDevolucion taGzzTipoDevolucion, String devVenDet, Date devVenFec, double devVenMon) {
+       this.enP1mFacturaVentaCabByDevVenNewFac = enP1mFacturaVentaCabByDevVenNewFac;
+       this.enP1mFacturaVentaCabByFacVenCabCod = enP1mFacturaVentaCabByFacVenCabCod;
        this.taGzzTipoDevolucion = taGzzTipoDevolucion;
        this.devVenDet = devVenDet;
        this.devVenFec = devVenFec;
@@ -45,26 +43,19 @@ public class EnP1cDevolucionVentas  implements java.io.Serializable {
     public void setFacVenCabCod(String facVenCabCod) {
         this.facVenCabCod = facVenCabCod;
     }
-    public EnP1mFacturaVentaCab getEnP1mFacturaVentaCab() {
-        return this.enP1mFacturaVentaCab;
+    public EnP1mFacturaVentaCab getEnP1mFacturaVentaCabByDevVenNewFac() {
+        return this.enP1mFacturaVentaCabByDevVenNewFac;
     }
     
-    public void setEnP1mFacturaVentaCab(EnP1mFacturaVentaCab enP1mFacturaVentaCab) {
-        this.enP1mFacturaVentaCab = enP1mFacturaVentaCab;
+    public void setEnP1mFacturaVentaCabByDevVenNewFac(EnP1mFacturaVentaCab enP1mFacturaVentaCabByDevVenNewFac) {
+        this.enP1mFacturaVentaCabByDevVenNewFac = enP1mFacturaVentaCabByDevVenNewFac;
     }
-    public EnP2mGuiaRemRemitente getEnP2mGuiaRemRemitente() {
-        return this.enP2mGuiaRemRemitente;
-    }
-    
-    public void setEnP2mGuiaRemRemitente(EnP2mGuiaRemRemitente enP2mGuiaRemRemitente) {
-        this.enP2mGuiaRemRemitente = enP2mGuiaRemRemitente;
-    }
-    public EnP2mGuiaRemTransportista getEnP2mGuiaRemTransportista() {
-        return this.enP2mGuiaRemTransportista;
+    public EnP1mFacturaVentaCab getEnP1mFacturaVentaCabByFacVenCabCod() {
+        return this.enP1mFacturaVentaCabByFacVenCabCod;
     }
     
-    public void setEnP2mGuiaRemTransportista(EnP2mGuiaRemTransportista enP2mGuiaRemTransportista) {
-        this.enP2mGuiaRemTransportista = enP2mGuiaRemTransportista;
+    public void setEnP1mFacturaVentaCabByFacVenCabCod(EnP1mFacturaVentaCab enP1mFacturaVentaCabByFacVenCabCod) {
+        this.enP1mFacturaVentaCabByFacVenCabCod = enP1mFacturaVentaCabByFacVenCabCod;
     }
     public TaGzzTipoDevolucion getTaGzzTipoDevolucion() {
         return this.taGzzTipoDevolucion;
