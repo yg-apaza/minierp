@@ -62,7 +62,7 @@
                                     <tbody>
                                         <c:forEach items="${facturasVenta}" var="c">
                                             <tr>
-                                                <td>${c.facVenCabFec}</td>
+                                                <td>${c.facVenCabFecEmi}</td>
                                                 <td>${c.facVenCabCod}</td>
                                                 <td>${c.enP1mCliente.cliNom}</td>
                                                 <td>${c.enP1mUsuario.usuNom}</td>

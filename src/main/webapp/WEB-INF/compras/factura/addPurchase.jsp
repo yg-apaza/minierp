@@ -34,21 +34,27 @@
                             <div class="panel-heading">
                                 <h4>Información General</h4><br>
                                 <div class="row">
-                                    <div class="col-xs-12 col-md-9">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group input-group">
-                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                    <input type="text" class="form-control" name="facComCabCod" placeholder="Número de Factura">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group input-group" >
-                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                    <input type="date" class="form-control" name="facComCabFec">
-                                                </div>
-                                            </div>                                            
+                                    <div class="col-md-4">
+                                        <div class="form-group input-group">
+                                            <span class="input-group-addon"><i class="fa fa-clipboard"></i></span>
+                                            <input type="text" class="form-control" name="facComCabCod" placeholder="Número de Factura">
                                         </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group input-group" >
+                                            <span class="input-group-addon">Emisión</span>
+                                            <input type="date" class="form-control" name="facComCabFecEmi">
+                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                        </div>
+                                    </div>       
+                                    <div class="col-md-4">
+                                        <div class="form-group input-group" >
+                                            <span class="input-group-addon">Vencimiento</span>
+                                            <input type="date" class="form-control" name="facComCabFecVen">
+                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                        </div>
+                                    </div> 
+                                    <div class="col-xs-12 col-md-9">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="form-group input-group" >                                                    
@@ -113,7 +119,7 @@
                                         </div>
                                     </div>
                                     <div class="col-xs-12 col-md-3">
-                                        <textarea class="form-control" rows="8" name="facComCabObs" placeholder="Observaciones"></textarea>
+                                        <textarea class="form-control" rows="5" name="facComCabObs" placeholder="Observaciones"></textarea>
                                     </div>                                    
                                 </div>
                             </div>
@@ -482,7 +488,10 @@
                     prvDes: {
                         required: true
                     }, 
-                    facComCabFec: {
+                    facComCabFecEmi: {
+                        required: true
+                    }, 
+                    facComCabFecVen: {
                         required: true
                     }
                 },
@@ -493,7 +502,10 @@
                     prvDes: {
                         required: "Ingrese cliente válido",
                     },
-                    facComCabFec: {
+                    facComCabFecEmi: {
+                        required: "Seleccione una fecha"
+                    },
+                    facComCabFecVen: {
                         required: "Seleccione una fecha"
                     }
                 },

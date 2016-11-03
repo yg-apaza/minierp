@@ -36,7 +36,7 @@ import org.epis.minierp.model.TaGzzTipoCliente;
 import org.epis.minierp.model.TaGzzTipoDescuento;
 
 public class AddPreVentaController extends HttpServlet{
-       private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -65,7 +65,8 @@ public class AddPreVentaController extends HttpServlet{
             String cliCod = request.getParameter("cliCod");
             int preVenCabIgv = (int)Double.parseDouble(request.getParameter("preVenCabIgv"));
             DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-            Date preVenCabFec = format.parse(request.getParameter("preVenCabFec"));
+            Date preVenCabFecEmi = format.parse(request.getParameter("preVenCabFecEmi"));
+            Date preVenCabFecVen = format.parse(request.getParameter("preVenCabFecVen"));
             int monCod = Integer.parseInt(request.getParameter("monCod")); 
             int preVenCabPla = Integer.parseInt(request.getParameter("preVenCabPla")); 
             String preVenCabObs = request.getParameter("preVenCabObs");
@@ -81,7 +82,8 @@ public class AddPreVentaController extends HttpServlet{
             header.setPreVenCabCod(preVenCabCod);
             header.setEnP1mCliente((new EnP1mClienteDao()).getById(cliCod));
             header.setEnP1mUsuario(user);
-            //header.setPreVenCabFec(preVenCabFec);
+            header.setPreVenCabFecEmi(preVenCabFecEmi);
+            header.setPreVenCabFecVen(preVenCabFecVen);
             header.setPreVenCabTot(preVenCabTot);
             header.setPreVenCabSubTot(preVenCabSubTot);
             header.setPreVenCabIgv(preVenCabIgv);

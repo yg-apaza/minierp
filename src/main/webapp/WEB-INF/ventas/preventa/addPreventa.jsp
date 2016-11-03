@@ -13,6 +13,7 @@
                 <input type="hidden" class="form-control" name="productsAmounts" id="proAmo">
                 <input type="hidden" class="form-control" name="productsCodes" id="proCodes">
                 <input type="hidden" class="form-control" name="productsPrices" id="proPrices">
+                <input class="hidden" type="text" name="cliCod" id="preCli">
                 <div class="row">
                     <div class="col-md-8">
                         <br><h1 class="page-header">Preventa</h1>
@@ -32,25 +33,30 @@
                             <div class="panel-heading">
                                 <h4>Información General</h4><br>
                                 <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group input-group">
+                                            <span class="input-group-addon"><i class="fa fa-clipboard"></i></span>
+                                            <input type="text" class="form-control" name="preVenCabCod" placeholder="Número de Preventa">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group input-group" >
+                                            <span class="input-group-addon">Emisión</span>
+                                            <input type="date" class="form-control" name="preVenCabFecEmi">
+                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group input-group" >
+                                            <span class="input-group-addon">Vencimiento</span>
+                                            <input type="date" class="form-control" name="preVenCabFecVen">
+                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                        </div>
+                                    </div>
                                     <div class="col-xs-12 col-md-9">
                                         <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group input-group">
-                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                    <input type="text" class="form-control" name="preVenCabCod" placeholder="Número de Preventa">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group input-group" >
-                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                    <input type="date" class="form-control" name="preVenCabFec">
-                                                </div>
-                                            </div>                                            
-                                        </div>
-                                        <div class="row">
                                             <div class="col-md-12">
-                                                <div class="form-group input-group" >
-                                                    <input class="hidden" type="text" name="cliCod" id="preCli">
+                                                <div class="form-group input-group" >                                                    
                                                     <span class="input-group-addon">Cliente</span>
                                                     <select class="form-control" id="desClienteCode" disabled>
                                                         <option value="1">Razón Social</option>
@@ -96,7 +102,7 @@
                                             <input type="number" class="form-control" name="preVenCabPla" value="1" min="1">
                                             <span class="input-group-addon"><i class="fa fa-thumb-tack"></i></span>
                                         </div>
-                                        <textarea class="form-control" rows="5" name="preVenCabObs" placeholder="Observaciones"></textarea>
+                                        <textarea class="form-control" rows="2" name="preVenCabObs" placeholder="Observaciones"></textarea>
                                     </div>                                    
                                 </div>
                             </div>
@@ -579,7 +585,10 @@
                         verifiedValue: true,
                         required: true
                     }, 
-                    preVenCabFec: {
+                    preVenCabFecEmi: {
+                        required: true
+                    }, 
+                    preVenCabFecVen: {
                         required: true
                     }
                 },
@@ -590,7 +599,10 @@
                     cliCod: {
                         required: "Ingrese cliente válido",
                     },
-                    preVenCabFec: {
+                    preVenCabFecEmi: {
+                        required: "Seleccione una fecha"
+                    },
+                    preVenCabFecVen: {
                         required: "Seleccione una fecha"
                     }
                 },

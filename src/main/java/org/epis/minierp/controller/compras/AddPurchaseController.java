@@ -65,7 +65,8 @@ public class AddPurchaseController extends HttpServlet {
             String prvCod = request.getParameter("prvCod");
             String usuCod = request.getParameter("usuCod");
             DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-            Date facComCabFec = format.parse(request.getParameter("facComCabFec"));
+            Date facComCabFecEmi = format.parse(request.getParameter("facComCabFecEmi"));
+            Date facComCabFecVen = format.parse(request.getParameter("facComCabFecVen"));
             String prvType = request.getParameter("prvType");
             String prvDes = request.getParameter("prvDes");
             int monCod = Integer.parseInt(request.getParameter("monCod"));
@@ -102,7 +103,8 @@ public class AddPurchaseController extends HttpServlet {
                 header.setEnP4mProveedor(proveedorDao.getById(prvCod));
             }
             header.setEnP1mUsuario((new EnP1mUsuarioDao()).getById(usuCod));
-            //header.setFacComCabFec(facComCabFec);
+            header.setFacComCabFecEmi(facComCabFecEmi);
+            header.setFacComCabFecVen(facComCabFecVen);
             header.setTaGzzMoneda((new TaGzzMonedaDao()).getById(monCod));
             header.setTaGzzMetodoPagoFactura((new TaGzzMetodoPagoFacturaDao()).getById(metPagCod));
             header.setTaGzzEstadoFactura((new TaGzzEstadoFacturaDao()).getById(estFacCod));            
@@ -142,7 +144,7 @@ public class AddPurchaseController extends HttpServlet {
                 
                 detalles.save(det);                                
             }                 
-            response.sendRedirect(request.getContextPath() + "/secured/general/panel");
+            response.sendRedirect(request.getContextPath() + "/secured/compras/factura/addFactura");
         } catch (ParseException ex) {
             Logger.getLogger(AddPurchaseController.class.getName()).log(Level.SEVERE, null, ex);
         }
