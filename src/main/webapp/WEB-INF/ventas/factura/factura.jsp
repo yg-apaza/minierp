@@ -50,25 +50,52 @@
                                 <table class="table table-striped table-bordered table-hover" id="tablePurchases">
                                     <thead>
                                         <tr>
-                                            <th>Fecha</th>
+                                            <th colspan="2">Fecha</th>
                                             <th>Factura</th>
                                             <th>Cliente</th>
                                             <th>Vendedor</th>
                                             <th>Importe</th>
-                                            <th>Tipo</th>
+                                            <th>Vistas</th>
                                             <th>Acciones</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <c:forEach items="${facturasVenta}" var="c">
                                             <tr>
-                                                <td>${c.facVenCabFecEmi}</td>
-                                                <td>${c.facVenCabCod}</td>
-                                                <td>${c.enP1mCliente.cliNom}</td>
-                                                <td>${c.enP1mUsuario.usuNom}</td>
-                                                <td>${c.facVenCabTot}</td>                            
-                                                <td>${c.taGzzTipoPagoFactura.tipPagDet}</td>
-                                                <td><input type="checkbox" name="codigos" value="${c.facVenCabCod}"></td>
+                                                <td width="3%" align="center"><input type="checkbox" name="codigos" value="${c.facVenCabCod}"></td>
+                                                <td width="10%" align="center">${c.facVenCabFecEmi}</td>
+                                                <td width="15%" align="center">${c.facVenCabCod}</td>
+                                                <td width="15%">${c.enP1mCliente.cliNom}</td>
+                                                <td width="15%">${c.enP1mUsuario.usuNom}</td>
+                                                <td width="10%" align="center">${c.facVenCabTot}</td>                                                                            
+                                                <td width="12%" align="center">
+                                                    <a href="#" data-toggle="modal" data-target="#">
+                                                        <i class="fa fa-list-alt fa-2x" style="color: black;"></i>
+                                                    </a> 
+                                                    <a href="#" data-toggle="modal" data-target="#">
+                                                        <i class="fa fa-book fa-2x" style="color: black;"></i>
+                                                    </a>
+                                                    <a href="#" data-toggle="modal" data-target="#">
+                                                        <i class="fa fa-truck fa-2x" style="color: black;"></i>
+                                                    </a>
+                                                </td>
+                                                <td width="20%" align="center">
+                                                    <a href="#" data-toggle="modal" data-target="#">
+                                                        <i class="fa fa-list-alt fa-2x" style="color: black;"></i>
+                                                    </a>
+                                                    <a href="#" data-toggle="modal" data-target="#">
+                                                        <i class="fa fa-book fa-2x" style="color: black;"></i>
+                                                    </a>
+                                                    <a href="#" data-toggle="modal" data-target="#">
+                                                        <i class="fa fa-truck fa-2x" style="color: black;"></i>
+                                                    </a>
+                                                    <a href="#" data-toggle="modal" data-target="#">
+                                                        <i class="fa fa-wrench fa-2x" style="color: black;"></i>
+                                                    </a>
+                                                    <a href="#" data-toggle="modal" data-target="#">
+                                                        <i class="fa fa-paste fa-2x" style="color: black;"></i>
+                                                    </a>
+                                                </td>
                                             </tr>
                                         </c:forEach>
                                     </tbody>
