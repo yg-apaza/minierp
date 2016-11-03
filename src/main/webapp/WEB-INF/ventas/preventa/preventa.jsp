@@ -48,7 +48,7 @@
                                             <td><c:out value="${preventa.preVenCabCod}"/> </td>
                                             <td><c:out value="${preventa.enP1mCliente.cliNom} ${preventa.enP1mCliente.cliApePat}"/></td>
                                             <td><c:out value="${preventa.enP1mUsuario.usuNom} ${preventa.enP1mUsuario.usuApePat}"/></td>
-                                            <td><c:out value="${preventa.preVenCabFec}"/></td>
+                                            <td><c:out value="${preventa.preVenCabFecEmi}"/></td>
                                             <td><c:out value="${preventa.taGzzMoneda.monDet}"/></td>
                                             <td><c:out value="${preventa.preVenCabTot}"/></td>
                                             <td><input type="checkbox" name="preventas" value="${preventa.preVenCabCod}"></td>

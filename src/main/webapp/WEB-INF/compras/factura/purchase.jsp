@@ -47,19 +47,17 @@
                                         <th>Comprador</th>
                                         <th>Importe</th>
                                         <th>Tipo</th>
-                                        <th>Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <c:forEach items="${facturasCompra}" var="c">
                                         <tr>
-                                            <td>${c.facComCabFec}</td>
+                                            <td>${c.facComCabFecEmi}</td>
                                             <td>${c.facComCabCod}</td>
                                             <td>${c.enP4mProveedor.prvDet}</td>
                                             <td>${c.enP1mUsuario.usuNom}</td>
                                             <td>${c.facComCabTot}</td>                            
                                             <td>${c.taGzzTipoPagoFactura.tipPagDet}</td>
-                                            <td width="50px">Acciones</td>
                                         </tr>
                                     </c:forEach>
                                 </tbody>

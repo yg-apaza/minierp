@@ -57,7 +57,7 @@ public class ImpresionLotesController extends HttpServlet {
                     
                     cliNom = f.getEnP1mCliente().getCliRazSoc();
                     cliDir = f.getEnP1mCliente().getCliDir();
-                    fecEmi = fecha.format(f.getFacVenCabFec());
+                    fecEmi = fecha.format(f.getFacVenCabFecEmi());
                     fac.writeFacSobCab(cliNom, cliDir, fecEmi);
                     
                     cliCod = f.getEnP1mCliente().getCliCod();
@@ -99,7 +99,7 @@ public class ImpresionLotesController extends HttpServlet {
                     EnP1mFacturaVentaCab f = (new EnP1mFacturaVentaCabDao()).getById(cod);
                     cliNom = f.getEnP1mCliente().getCliRazSoc();
                     cliDir = f.getEnP1mCliente().getCliDir();
-                    fecEmi = fecha.format(f.getFacVenCabFec());
+                    fecEmi = fecha.format(f.getFacVenCabFecEmi());
                     bol.writeBolSobCab(cliNom, cliDir, fecEmi);
                     
                     cliCod = f.getEnP1mCliente().getCliCod();

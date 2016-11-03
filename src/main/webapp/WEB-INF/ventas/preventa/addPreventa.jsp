@@ -13,6 +13,7 @@
                 <input type="hidden" class="form-control" name="productsAmounts" id="proAmo">
                 <input type="hidden" class="form-control" name="productsCodes" id="proCodes">
                 <input type="hidden" class="form-control" name="productsPrices" id="proPrices">
+                <input class="hidden" type="text" name="cliCod" id="preCli">
                 <div class="row">
                     <div class="col-md-8">
                         <br><h1 class="page-header">Preventa</h1>
@@ -32,25 +33,30 @@
                             <div class="panel-heading">
                                 <h4>Información General</h4><br>
                                 <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group input-group">
+                                            <span class="input-group-addon"><i class="fa fa-clipboard"></i></span>
+                                            <input type="text" class="form-control" name="preVenCabCod" placeholder="Número de Preventa">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group input-group" >
+                                            <span class="input-group-addon">Emisión</span>
+                                            <input type="date" class="form-control" name="preVenCabFecEmi">
+                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group input-group" >
+                                            <span class="input-group-addon">Vencimiento</span>
+                                            <input type="date" class="form-control" name="preVenCabFecVen">
+                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                        </div>
+                                    </div>
                                     <div class="col-xs-12 col-md-9">
                                         <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group input-group">
-                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                    <input type="text" class="form-control" name="preVenCabCod" placeholder="Número de Preventa">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group input-group" >
-                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                    <input type="date" class="form-control" name="preVenCabFec">
-                                                </div>
-                                            </div>                                            
-                                        </div>
-                                        <div class="row">
                                             <div class="col-md-12">
-                                                <div class="form-group input-group" >
-                                                    <input class="hidden" type="text" name="cliCod" id="preCli">
+                                                <div class="form-group input-group" >                                                    
                                                     <span class="input-group-addon">Cliente</span>
                                                     <select class="form-control" id="desClienteCode" disabled>
                                                         <option value="1">Razón Social</option>
@@ -96,7 +102,7 @@
                                             <input type="number" class="form-control" name="preVenCabPla" value="1" min="1">
                                             <span class="input-group-addon"><i class="fa fa-thumb-tack"></i></span>
                                         </div>
-                                        <textarea class="form-control" rows="5" name="preVenCabObs" placeholder="Observaciones"></textarea>
+                                        <textarea class="form-control" rows="2" name="preVenCabObs" placeholder="Observaciones"></textarea>
                                     </div>                                    
                                 </div>
                             </div>
@@ -249,7 +255,7 @@
             
             $(document).ready(function () {
                 $('#addDetail').on('click', function () {
-                    if ($('#proCodShow').val() == "Desconocido" || $('#proDesShow').val() == "Desconocido") {
+                    if ($('#proCodShow').val() == "Desconocido" || $('#proCodShow').val() == "" || $('#proDesShow').val() == "Desconocido" || $('#proDesShow').val() == "")  {
                         $("#errorMessage").text("Producto Desconocido. Ingrese un producto disponible");
                         $('#errorMessageModal').modal('show');
                     } else if (!$('input[name="canPro"]').valid()) {
@@ -274,6 +280,10 @@
                             $('#productTable tr:last td:eq(2)').html($("#proDesShow").val());
                             $('#productTable tr:last td:eq(3)').html($("#unitShow").val());
                             $('#productTable tr:last td:eq(4)').html($("#priceShow").val());
+                            $('#proDesShow').val("");
+                            $('#proCodShow').val("");
+                            $('#priceShow').val("");
+                            $('#amountShow').val(0);
                             updateAll();
                         }
                     }
@@ -322,21 +332,18 @@
                     $('#iconCriteria').removeClass("fa-chevron-left").addClass("fa-chevron-right");
                     $('#proDesShow').attr('readOnly', false);
                     $('#proCodShow').attr('readOnly', true);
-                    $('#proCodShow').val("");
-                    $('#proDesShow').val("");
-                    $('#priceShow').val("");
-                    $('#amountShow').val(0);
                     codeCriteria = false;
                 } else {
                     $('#iconCriteria').removeClass("fa-chevron-right").addClass("fa-chevron-left");
                     $('#proCodShow').attr('readOnly', false);
                     $('#proDesShow').attr('readOnly', true);
-                    $('#proDesShow').val("");
-                    $('#proCodShow').val("");
-                    $('#priceShow').val("");
-                    $('#amountShow').val(0);
                     codeCriteria = true;
                 }
+                
+                $('#proCodShow').val("");
+                $('#proDesShow').val("");
+                $('#priceShow').val("");
+                $('#amountShow').val(0);
             }
             
             function changeClientIcon() {
@@ -369,7 +376,7 @@
             
             function changeClientCode() {
                 $.post(
-                        "${pageContext.request.contextPath}/secured/ventas/searchSupplier", {
+                        "${pageContext.request.contextPath}/secured/ventas/searchClient", {
                             action: "tipo",
                             tipCliCod: $("#tipoClienteCode").val()
                         }
@@ -389,7 +396,7 @@
             
             function changeClientDescription() {
                 $.post(
-                        "${pageContext.request.contextPath}/secured/ventas/searchSupplier", {
+                        "${pageContext.request.contextPath}/secured/ventas/searchClient", {
                             action: "descripcion"
                         }
                     ).done(function (data) {
@@ -493,7 +500,7 @@
             $('#cliCodShow').keyup(function () {
                 if(codeClientCriteria) {
                     $.post(
-                            "${pageContext.request.contextPath}/secured/ventas/searchSupplier", {
+                            "${pageContext.request.contextPath}/secured/ventas/searchClient", {
                                 action: "tipoSearch",
                                 tipCliCod: $("#tipoClienteCode").val(),
                                 cliCod: $("#cliCodShow").val()
@@ -531,7 +538,7 @@
             $('#cliDesShow').keyup(function () {
                 if(!codeClientCriteria) {
                     $.post(
-                            "${pageContext.request.contextPath}/secured/ventas/searchSupplier", {
+                            "${pageContext.request.contextPath}/secured/ventas/searchClient", {
                                 action: "desSearch",
                                 tipCliDes: $("#desClienteCode").val(),
                                 cliDes: $("#cliDesShow").val()
@@ -578,7 +585,10 @@
                         verifiedValue: true,
                         required: true
                     }, 
-                    preVenCabFec: {
+                    preVenCabFecEmi: {
+                        required: true
+                    }, 
+                    preVenCabFecVen: {
                         required: true
                     }
                 },
@@ -589,7 +599,10 @@
                     cliCod: {
                         required: "Ingrese cliente válido",
                     },
-                    preVenCabFec: {
+                    preVenCabFecEmi: {
+                        required: "Seleccione una fecha"
+                    },
+                    preVenCabFecVen: {
                         required: "Seleccione una fecha"
                     }
                 },

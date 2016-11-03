@@ -48,4 +48,17 @@ public class EnP4mFacturaCompraCabDao {
     public void save(EnP4mFacturaCompraCab facturaCompraCabecera) {
         session.save(facturaCompraCabecera);     
     }
+    
+    public void update(EnP4mFacturaCompraCab facturaCompraCabecera) {
+        session.update(facturaCompraCabecera);     
+    }
+    
+    public void saveOrUpdate(EnP4mFacturaCompraCab facturaCompraCabecera) {
+        session.saveOrUpdate(facturaCompraCabecera);     
+    }
+    
+    public void delete(EnP4mFacturaCompraCab facturaCompraCabecera) {
+        session.delete(facturaCompraCabecera);     
+    }
+    
 }

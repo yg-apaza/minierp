@@ -145,7 +145,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>BusquedaProveedorController</servlet-name>
-        <url-pattern>/secured/compras/factura/busquedaProveedor</url-pattern>
+        <url-pattern>/secured/compras/factura/searchSupplier</url-pattern>
     </servlet-mapping>
     <servlet>
         <description/>
@@ -540,7 +540,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>BusquedaClienteController</servlet-name>
-        <url-pattern>/secured/ventas/searchSupplier</url-pattern>
+        <url-pattern>/secured/ventas/searchClient</url-pattern>
     </servlet-mapping>
     <servlet>
         <description/>
@@ -551,6 +551,16 @@
     <servlet-mapping>
         <servlet-name>SearchProductController</servlet-name>
         <url-pattern>/secured/ventas/searchProduct</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <description/>
+        <display-name>SearchBillController</display-name>
+        <servlet-name>SearchBillController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.ventas.SearchBillController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SearchBillController</servlet-name>
+        <url-pattern>/secured/ventas/searchBill</url-pattern>
     </servlet-mapping>
     <servlet>
         <description/>
@@ -582,6 +592,18 @@
         <servlet-name>facturaLotesController</servlet-name>
         <url-pattern>/secured/ventas/factura/facturaLotes</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <description/>
+        <display-name>catalogoRutasController</display-name>
+        <servlet-name>catalogoRutasController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.configuracion.CatalogoRutasController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>catalogoRutasController</servlet-name>
+        <url-pattern>/secured/configuracion/catalogoRutas</url-pattern>
+    </servlet-mapping>
+    
     <!--         ERRORS         -->
     <error-page>
         <location>/error.jsp</location>
