@@ -33,6 +33,7 @@ public class SearchBillController extends HttpServlet {
             detailObject.addProperty("detCan", detail.getFacVenDetCan());
             detailObject.addProperty("proDet", detail.getEnP2mProducto().getProDet());
             detailObject.addProperty("preUniVen", detail.getEnP2mProducto().getProPreUniVen());
+            detailObject.addProperty("detImp", detail.getFacVenDetCan()*detail.getEnP2mProducto().getProPreUniVen());
             detailList.add(detailObject);
         }
         
