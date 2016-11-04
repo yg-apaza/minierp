@@ -87,22 +87,15 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group input-group" >
-                                                    <span class="input-group-addon">Ruta</i></span>
-                                                    <select class="form-control" id="routeSelect" name="rutCod">
-                                                        <option value="">Desconocida</option>
-                                                    </select>
-                                                    <span class="input-group-addon"><i class="fa fa-money"></i></span>
+                                                    <span class="input-group-addon">Plazo (días)</span>
+                                                    <input type="number" class="form-control" name="preVenCabPla" value="1" min="1">
+                                                    <span class="input-group-addon"><i class="fa fa-thumb-tack"></i></span>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-xs-12 col-md-3">
-                                        <div class="form-group input-group" >
-                                            <span class="input-group-addon">Plazo (días)</span>
-                                            <input type="number" class="form-control" name="preVenCabPla" value="1" min="1">
-                                            <span class="input-group-addon"><i class="fa fa-thumb-tack"></i></span>
-                                        </div>
-                                        <textarea class="form-control" rows="2" name="preVenCabObs" placeholder="Observaciones"></textarea>
+                                    <div class="col-xs-12 col-md-3">                                        
+                                        <textarea class="form-control" rows="5" name="preVenCabObs" placeholder="Observaciones"></textarea>
                                     </div>                                    
                                 </div>
                             </div>
@@ -129,7 +122,7 @@
                                             <div class="col-md-2">
                                                 <div class="form-group input-group">
                                                     <span class="input-group-addon">Cant.</span>
-                                                    <input type="number" class="form-control" id="amountShow" min="0" step="any" value="0" name="canPro">
+                                                    <input type="number" class="form-control" id="amountShow" min="1" step="any" value="1" name="canPro">
                                                 </div>
                                             </div> 
                                             <div class="col-md-1">
@@ -283,7 +276,7 @@
                             $('#proDesShow').val("");
                             $('#proCodShow').val("");
                             $('#priceShow').val("");
-                            $('#amountShow').val(0);
+                            $('#amountShow').val(1);
                             updateAll();
                         }
                     }
@@ -343,7 +336,7 @@
                 $('#proCodShow').val("");
                 $('#proDesShow').val("");
                 $('#priceShow').val("");
-                $('#amountShow').val(0);
+                $('#amountShow').val(1);
             }
             
             function changeClientIcon() {
@@ -368,10 +361,6 @@
                 
                 $('#cliCodShow').val("");
                 $('#cliDesShow').val("");
-                $("#routeSelect").empty().append($('<option>', {
-                        value: "",
-                        text : "Desconocida" 
-                }));
             }
             
             function changeClientCode() {
@@ -508,28 +497,10 @@
                         ).done(function (data) {
                                 if(data.cliCod != null) {
                                     $("#preCli").val(data.cliCod);
-                                    $("#cliDesShow").val(data.cliRazSoc);  
-                                    $("#routeSelect").empty();
-                                    if(data.cliRut.length > 0) {
-                                        data.cliRut.forEach(function(route) {
-                                            $("#routeSelect").append($('<option>', {
-                                                value: route.cliRutCod,
-                                                text : route.cliRutDet 
-                                            }));
-                                        });
-                                    } else {
-                                        $("#routeSelect").empty().append($('<option>', {
-                                            value: "",
-                                            text : "No posee rutas" 
-                                        }));
-                                    }
+                                    $("#cliDesShow").val(data.cliRazSoc);                                      
                                 } else {
                                     $("#preCli").val("");
                                     $("#cliDesShow").val("Desconocido");
-                                    $("#routeSelect").empty().append($('<option>', {
-                                            value: "",
-                                            text : "Desconocida" 
-                                    }));
                                 }
                             });
                 }
@@ -547,28 +518,10 @@
                                 if(data.cliCod != null) {
                                     $("#preCli").val(data.cliCod);
                                     $("#cliCodShow").val(data.cliCod);    
-                                    $("#tipoClienteCode").val(data.tipCliCod);
-                                    $("#routeSelect").empty();
-                                    if(data.cliRut.length > 0) {
-                                        data.cliRut.forEach(function(route) {
-                                            $("#routeSelect").append($('<option>', {
-                                                value: route.cliRutCod,
-                                                text : route.cliRutDet 
-                                            }));
-                                        });
-                                    } else {
-                                        $("#routeSelect").empty().append($('<option>', {
-                                            value: "",
-                                            text : "No posee rutas" 
-                                        }));
-                                    }
+                                    $("#tipoClienteCode").val(data.tipCliCod);                                    
                                 } else {
                                     $("#preCli").val("");
                                     $("#cliCodShow").val("Desconocido");
-                                    $("#routeSelect").empty().append($('<option>', {
-                                            value: "",
-                                            text : "Desconocida" 
-                                    }));
                                 }
                             });
                 }

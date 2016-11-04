@@ -149,7 +149,7 @@
                                             <div class="col-md-2">
                                                 <div class="form-group input-group">
                                                     <span class="input-group-addon">Cant.</span>
-                                                    <input type="number" class="form-control" id="amountShow" min="0" step="any" value="0" name="canPro">
+                                                    <input type="number" class="form-control" id="amountShow" min="1" step="any" value="1" name="canPro">
                                                 </div>
                                             </div> 
                                             <div class="col-md-1">
@@ -303,7 +303,7 @@
                             $('#proDesShow').val("");
                             $('#proCodShow').val("");
                             $('#priceShow').val("");
-                            $('#amountShow').val(0);
+                            $('#amountShow').val(1);
                             updateAll();
                         }
                     }
@@ -363,7 +363,7 @@
                 $('#proDesShow').val("");
                 $('#proCodShow').val("");
                 $('#priceShow').val("");
-                $('#amountShow').val(0);
+                $('#amountShow').val(1);
             }
             
             function changeClientIcon() {                
