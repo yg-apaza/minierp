@@ -12,7 +12,7 @@
             <a href="#" data-toggle="modal" data-target="#agregarModal" data-codigo="${node.cueCod}" data-nivel="${node.cueNiv}" data-numero="${node.cueNum}">
                 <i class="fa fa-plus-square-o fa-2x" style="color: black;"></i>
             </a>
-            <a href="#" data-toggle="modal" data-target="#modificarModal" data-codigo="${node.cueCod}" data-numero="${node.cueNum}" data-nombre="${node.cueDes}">
+            <a href="#" data-toggle="modal" data-target="#modificarModal" data-codigo="${node.cueCod}" data-numero="${node.cueNum}" data-nombre="${node.cueDes}" data-amadeb="${node.enP3mCuentaByCueAmaDeb.cueNum}" data-amahab="${node.enP3mCuentaByCueAmaHab.cueNum}">
                 <i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i>
             </a>
             <a href="#" data-toggle="modal" data-target="#eliminarModal" data-codigo="${node.cueCod}" data-numero="${node.cueNum}">

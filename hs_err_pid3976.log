@@ -1,0 +1,161 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (malloc) failed to allocate 1048576 bytes for AllocateHeap
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   In 32 bit mode, the process size limit was hit
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Use 64 bit Java on a 64 bit OS
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (memory/allocation.inline.hpp:61), pid=3976, tid=4156
+#
+# JRE version:  (8.0_60-b27) (build )
+# Java VM: Java HotSpot(TM) 64-Bit Server VM (25.60-b23 mixed mode windows-amd64 compressed oops)
+# Failed to write core dump. Minidumps are not enabled by default on client versions of Windows
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x000000000128e000):  JavaThread "Unknown thread" [_thread_in_vm, id=4156, stack(0x0000000002b40000,0x0000000002c40000)]
+
+Stack: [0x0000000002b40000,0x0000000002c40000]
+[error occurred during error reporting (printing stack bounds), id 0xc0000005]
+
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+
+Other Threads:
+
+=>0x000000000128e000 (exited) JavaThread "Unknown thread" [_thread_in_vm, id=4156, stack(0x0000000002b40000,0x0000000002c40000)]
+
+VM state:not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+Heap:
+ PSYoungGen      total 28672K, used 491K [0x00000000e0980000, 0x00000000e2980000, 0x0000000100000000)
+  eden space 24576K, 2% used [0x00000000e0980000,0x00000000e09fae20,0x00000000e2180000)
+  from space 4096K, 0% used [0x00000000e2580000,0x00000000e2580000,0x00000000e2980000)
+  to   space 4096K, 0% used [0x00000000e2180000,0x00000000e2180000,0x00000000e2580000)
+ ParOldGen       total 65536K, used 0K [0x00000000a1c00000, 0x00000000a5c00000, 0x00000000e0980000)
+  object space 65536K, 0% used [0x00000000a1c00000,0x00000000a1c00000,0x00000000a5c00000)
+ Metaspace       used 767K, capacity 4480K, committed 4480K, reserved 1056768K
+  class space    used 75K, capacity 384K, committed 384K, reserved 1048576K
+
+Card table byte_map: [0x0000000012100000,0x0000000012400000] byte_map_base: 0x0000000011bf2000
+
+Marking Bits: (ParMarkBitMap*) 0x00000000730ca5b0
+ Begin Bits: [0x0000000012a00000, 0x0000000014190000)
+ End Bits:   [0x0000000014190000, 0x0000000015920000)
+
+Polling page: 0x0000000001080000
+
+CodeCache: size=245760Kb used=328Kb max_used=328Kb free=245431Kb
+ bounds [0x0000000002d40000, 0x0000000002fb0000, 0x0000000011d40000]
+ total_blobs=57 nmethods=0 adapters=37
+ compilation: enabled
+
+Compilation events (0 events):
+No events
+
+GC Heap History (0 events):
+No events
+
+Deoptimization events (0 events):
+No events
+
+Internal exceptions (0 events):
+No events
+
+Events (10 events):
+Event: 0.061 loading class java/lang/Short
+Event: 0.061 loading class java/lang/Short done
+Event: 0.061 loading class java/lang/Integer
+Event: 0.061 loading class java/lang/Integer done
+Event: 0.061 loading class java/lang/Long
+Event: 0.061 loading class java/lang/Long done
+Event: 0.062 loading class java/lang/NullPointerException
+Event: 0.062 loading class java/lang/NullPointerException done
+Event: 0.062 loading class java/lang/ArithmeticException
+Event: 0.062 loading class java/lang/ArithmeticException done
+
+
+Dynamic libraries:
+0x00007ff7191b0000 - 0x00007ff7191e7000 	C:\Program Files\Java\jdk1.8.0_60\jre\bin\java.exe
+0x00007ffbaf740000 - 0x00007ffbaf8ec000 	C:\Windows\SYSTEM32\ntdll.dll
+0x00007ffbacf40000 - 0x00007ffbad07e000 	C:\Windows\system32\KERNEL32.DLL
+0x00007ffbacba0000 - 0x00007ffbaccb5000 	C:\Windows\system32\KERNELBASE.dll
+0x00007ffbab430000 - 0x00007ffbab4be000 	C:\Windows\system32\apphelp.dll
+0x00007ffba1f00000 - 0x00007ffba1f53000 	C:\Windows\AppPatch\AppPatch64\AcGenral.DLL
+0x00007ffbacdc0000 - 0x00007ffbace6a000 	C:\Windows\system32\msvcrt.dll
+0x00007ffbac660000 - 0x00007ffbac68e000 	C:\Windows\SYSTEM32\SspiCli.dll
+0x00007ffbace80000 - 0x00007ffbaced4000 	C:\Windows\system32\SHLWAPI.dll
+0x00007ffbad7f0000 - 0x00007ffbad967000 	C:\Windows\system32\USER32.dll
+0x00007ffbad570000 - 0x00007ffbad704000 	C:\Windows\system32\ole32.dll
+0x00007ffbae1f0000 - 0x00007ffbaf71b000 	C:\Windows\system32\SHELL32.dll
+0x00007ffbabe30000 - 0x00007ffbabe51000 	C:\Windows\SYSTEM32\USERENV.dll
+0x00007ffbadff0000 - 0x00007ffbae09a000 	C:\Windows\system32\ADVAPI32.dll
+0x00007ffba43d0000 - 0x00007ffba43ee000 	C:\Windows\SYSTEM32\MPR.dll
+0x00007ffbade90000 - 0x00007ffbadfd1000 	C:\Windows\system32\RPCRT4.dll
+0x00007ffbacee0000 - 0x00007ffbacf39000 	C:\Windows\SYSTEM32\sechost.dll
+0x00007ffbadc70000 - 0x00007ffbade81000 	C:\Windows\SYSTEM32\combase.dll
+0x00007ffbae0a0000 - 0x00007ffbae1ef000 	C:\Windows\system32\GDI32.dll
+0x00007ffbac890000 - 0x00007ffbac8a5000 	C:\Windows\SYSTEM32\profapi.dll
+0x00007ffbaae40000 - 0x00007ffbaaef2000 	C:\Windows\SYSTEM32\SHCORE.dll
+0x00007ffbad0f0000 - 0x00007ffbad126000 	C:\Windows\system32\IMM32.DLL
+0x00007ffbad400000 - 0x00007ffbad552000 	C:\Windows\system32\MSCTF.dll
+0x00007ffbaa960000 - 0x00007ffbaabdb000 	C:\Windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.9600.18006_none_623f33d3ecbe86e8\COMCTL32.dll
+0x0000000074510000 - 0x00000000745e2000 	C:\Program Files\Java\jdk1.8.0_60\jre\bin\msvcr100.dll
+0x00000000728c0000 - 0x0000000073149000 	C:\Program Files\Java\jdk1.8.0_60\jre\bin\server\jvm.dll
+0x00007ffb947b0000 - 0x00007ffb947b9000 	C:\Windows\SYSTEM32\WSOCK32.dll
+0x00007ffba9520000 - 0x00007ffba9542000 	C:\Windows\SYSTEM32\WINMM.dll
+0x00007ffba9550000 - 0x00007ffba955a000 	C:\Windows\SYSTEM32\VERSION.dll
+0x00007ffbace70000 - 0x00007ffbace77000 	C:\Windows\system32\PSAPI.DLL
+0x00007ffbad1f0000 - 0x00007ffbad24a000 	C:\Windows\system32\WS2_32.dll
+0x00007ffba90f0000 - 0x00007ffba911a000 	C:\Windows\SYSTEM32\WINMMBASE.dll
+0x00007ffbad560000 - 0x00007ffbad569000 	C:\Windows\system32\NSI.dll
+0x00007ffbacd70000 - 0x00007ffbacdbf000 	C:\Windows\SYSTEM32\cfgmgr32.dll
+0x00007ffbab680000 - 0x00007ffbab6a8000 	C:\Windows\SYSTEM32\DEVOBJ.dll
+0x00000000744c0000 - 0x00000000744cf000 	C:\Program Files\Java\jdk1.8.0_60\jre\bin\verify.dll
+0x0000000074490000 - 0x00000000744b9000 	C:\Program Files\Java\jdk1.8.0_60\jre\bin\java.dll
+0x0000000074470000 - 0x0000000074486000 	C:\Program Files\Java\jdk1.8.0_60\jre\bin\zip.dll
+
+VM Arguments:
+java_command: D:\Documentos\NetBeansProjects\minierp\target\surefire\surefirebooter234518649081955800.jar D:\Documentos\NetBeansProjects\minierp\target\surefire\surefire6752558894249122815tmp D:\Documentos\NetBeansProjects\minierp\target\surefire\surefire5561983122851918208tmp
+java_class_path (initial): D:\Documentos\NetBeansProjects\minierp\target\surefire\surefirebooter234518649081955800.jar
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+JAVA_HOME=C:\Program Files\Java\jdk1.8.0_60
+PATH=C:\PROGRAMDATA\ORACLE\JAVA\JAVAPATH;C:\PROGRAM FILES (X86)\INTEL\ICLS CLIENT\;C:\PROGRAM FILES\INTEL\ICLS CLIENT\;C:\PROGRAM FILES\BROADCOM\BROADCOM 802.11 NETWORK ADAPTER;C:\WINDOWS\SYSTEM32;C:\WINDOWS;C:\WINDOWS\SYSTEM32\WBEM;C:\WINDOWS\SYSTEM32\WINDOWSPOWERSHELL\V1.0\;C:\PROGRAM FILES\INTEL\INTEL(R) MANAGEMENT ENGINE COMPONENTS\DAL;C:\PROGRAM FILES\INTEL\INTEL(R) MANAGEMENT ENGINE COMPONENTS\IPT;C:\PROGRAM FILES (X86)\INTEL\INTEL(R) MANAGEMENT ENGINE COMPONENTS\DAL;C:\PROGRAM FILES (X86)\INTEL\INTEL(R) MANAGEMENT ENGINE COMPONENTS\IPT;C:\USERS\CHRISTIAN\.DNX\BIN;C:\PROGRAM FILES\MICROSOFT DNX\DNVM\;C:\PROGRAM FILES\MATLAB\R2013B\RUNTIME\WIN64;C:\PROGRAM FILES\MATLAB\R2013B\BIN;C:\PROGRAM FILES\MATLAB\R2013B\POLYSPACE\BIN;C:\MINGW64\MINGW64\BIN;C:\OPENCV-INSTALL\BIN;C:\PROGRAM FILES\JAVA\JDK1.8.0_60\BIN;C:\Program Files\WIDCOMM\Bluetooth Software\;C:\Program Files\WIDCOMM\Bluetooth Software\syswow64;C:/Program Files/PostgreSQL/9.4\bin;C:\ZEUS\lib\zeus.jar;C:\ZEUS\lib\gnu-regexp.jar;C:\ZEUS\lib\icu4j.jar;C:\ZEUS\lib\sl.jar;C:\ZEUS\lib\jaxb-rt-1.0-ea.jar;C:\ZEUS\lib\jaxb-xjc-1.0-ea.jar;C:\ZEUS\lin\xerces.jar;C:\ZEUS\lib\ant.jar;C:\Program Files (x86)\Zeus\lib\zeus.jar;C:\Program Files (x86)\Zeus\lib\gnu-regexp.jar;C:\Program Files (x86)\Zeus\lib\jade.jar;C:\Program Files (x86)\Zeus\lib\ant.jar
+USERNAME=Christian
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 69 Stepping 1, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows 8.1 , 64 bit Build 9600 (6.3.9600.17415)
+
+CPU:total 4 (2 cores per cpu, 2 threads per core) family 6 model 69 stepping 1, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, avx2, aes, clmul, erms, lzcnt, ht, tsc, tscinvbit, bmi1, bmi2
+
+Memory: 4k page, physical 6172056k(878180k free), swap 6172056k(5964k free)
+
+vm_info: Java HotSpot(TM) 64-Bit Server VM (25.60-b23) for windows-amd64 JRE (1.8.0_60-b27), built on Aug  4 2015 11:06:27 by "java_re" with MS VC++ 10.0 (VS2010)
+
+time: Fri Nov 04 13:15:11 2016
+elapsed time: 0 seconds (0d 0h 0m 0s)
+

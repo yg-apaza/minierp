@@ -121,6 +121,11 @@ public class ImpresoraMatricial {
         writer.write(LF);
     }
     
+    public void addLines(int n) throws IOException{
+        for(int i = 0; i < n; i++)
+            newLine();
+    }
+    
     public void newPage() throws IOException{
         writer.write(CR);
         writer.write(FF);
@@ -372,7 +377,7 @@ public class ImpresoraMatricial {
     }
     
     public void writeFacDetalle(String proCod, double proCan, String proUni, String proDes, 
-            double proValUni, String proDes1, String proDes2, double proValNet) throws IOException{
+            double proValUni, String proDes1, String proDes2, String proValNet) throws IOException{
         writer.write(proCod);
         float val = fP.getProCod();
         setAbsoluteHorizontalPosition(val);
@@ -395,12 +400,12 @@ public class ImpresoraMatricial {
         writer.write(proDes2);
         val += fP.getProDes2();
         setAbsoluteHorizontalPosition(val);
-        writer.write(Double.toString(proValNet));
+        writer.write(proValNet);
         newLine();
     }
     
     public void writeBolDetalle(String proCod, double proCan, String proUni, String proDes, 
-            double proValVen, String proDes1, double proValNet) throws IOException{
+            double proValVen, String proDes1, String proValNet) throws IOException{
         writer.write(proCod);
         float val = bP.getProCod();
         setAbsoluteHorizontalPosition(val);
@@ -425,12 +430,12 @@ public class ImpresoraMatricial {
         val += bP.getProDes1();
         setAbsoluteHorizontalPosition(val);
         System.out.println("asd"+val);
-        writer.write(Double.toString(proValNet));
+        writer.write(proValNet);
         newLine();
     }
     
     public void writeGuiRemDetalle(String proCod, double proCan, String proUni, String proDes, 
-            double proValUni, String proDes1, double proValNet) throws IOException{
+            double proValUni, String proDes1, String proValNet) throws IOException{
         writer.write(proCod);
         float val = gP.getProCod();
         setAbsoluteHorizontalPosition(val);
@@ -449,12 +454,12 @@ public class ImpresoraMatricial {
         writer.write(proDes1);
         val += gP.getProDes1();
         setAbsoluteHorizontalPosition(val);
-        writer.write(Double.toString(proValNet));
+        writer.write(proValNet);
         newLine();
     }
 
     public void writeFacTotal(double subTotal, double igv, double total) throws IOException{
-        advanceVertical(7.0f);
+        advanceVertical(1.0f);
         setAbsoluteHorizontalPosition(fP.getTotalMargin());
         writer.write(Double.toString(subTotal));
         newLine();
@@ -467,7 +472,7 @@ public class ImpresoraMatricial {
     }
     
     public void writeBolTotal( double total) throws IOException{
-        advanceVertical(7.0f);
+        advanceVertical(1.0f);
         setAbsoluteHorizontalPosition(bP.getTotalMargin());
         writer.write(Double.toString(total));
         newLine();

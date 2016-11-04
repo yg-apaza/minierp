@@ -41,7 +41,7 @@ public class ReporteController extends HttpServlet {
 
         String path = getServletContext().getRealPath("/WEB-INF/");
         String fileGenerated = "";
-        String img = getServletContext().getRealPath("/img/")+"logo.png";
+        String img = getServletContext().getRealPath("/img/")+"logo.jpg";
         generador.addParam(img);
         
         switch (report) {
