@@ -57,8 +57,12 @@ public class Reporte {
         this.values = new String[values.length];
         System.arraycopy(values, 0, this.values, 0, values.length);
     }
+    
+    public void addParam(String val){
+        param.put("IMAGE", val);
+    }
 
-    public String report(String path, String fileName) {
+    public String batchReport(String path, String fileName) {
         if (session != null) {
             param.put(JRHibernateQueryExecuterFactory.PARAMETER_HIBERNATE_SESSION, session);
         } 
@@ -76,12 +80,6 @@ public class Reporte {
                 jasperPrintList.add(jasperPrint);
             }
 
-            /*JRTextExporter exporter = new JRTextExporter();
-            File txtFile = new File(fullPath + ".txt");
-            exporter.setParameter(JRExporterParameter.JASPER_PRINT_LIST, jasperPrintList);
-            exporter.setParameter(JRExporterParameter.OUTPUT_FILE_NAME,  fullPath + ".txt");
-            exporter.exportReport();*/
-            
             JRPdfExporter exporter = new JRPdfExporter();
             exporter.setExporterInput(SimpleExporterInput.getInstance(jasperPrintList));
             File pdfFile = new File(fullPath + ".pdf");

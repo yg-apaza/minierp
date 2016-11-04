@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="minierptemplate" %>
+<%@ taglib prefix='cc' uri='http://java.sun.com/jsp/jstl/core' %>
 <minierptemplate:template>
     <jsp:attribute name="titulo">
         <title>MiniERP - Clientes</title>
@@ -8,10 +9,12 @@
     <jsp:attribute name="contenido">
         <div class="panel-body">
             <h1 class="page-header">Clientes
+                <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                 <a href="#" class="btn btn-success btn-circle" data-toggle="modal" data-target="#agregarModal"><i class="fa fa-plus"></i></a>
                 <a href="#" class="btn btn-info btn-circle" data-toggle="modal" data-target="#estadosModal"><i class="fa fa-eye"></i></a>
                 <a href="#" class="btn btn-danger btn-circle" data-toggle="modal" data-target="#delDocumentoModal"><i class="fa fa-file-text"></i></a>
                 <a href="#" class="btn btn-danger btn-circle" data-toggle="modal" data-target="#delRutaModal"><i class="fa fa-automobile"></i></a>
+                </cc:if>
             </h1>     
             <div class="row">
                 <div class="col-md-4">
@@ -42,7 +45,9 @@
                                 <th>Nombre Comercial</th>
                                 <th>Rutas Asociadas</th>
                                 <th>Tipo</th>
+                                <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                                 <th>Acciones</th>
+                                </cc:if>
                             </tr>
                         </thead>
                         <tbody>
@@ -62,7 +67,7 @@
                                         </c:forEach>
                                     </td>
                                     <td>${cli.taGzzTipoCliente.tipCliCod} - ${cli.taGzzTipoCliente.tipCliDet}</td>
-
+                                    <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                                     <td>
                                         <a href="#" data-toggle="modal" data-target="#modificarModal"
                                            data-clicod="${cli.cliCod}" data-tipclicod="${cli.taGzzTipoCliente.tipCliCod}" data-clirazsoc="${cli.cliRazSoc}" 
@@ -72,21 +77,22 @@
                                            data-estcivcod="${cli.taGzzEstadoCivil.estCivCod}" data-estcivdet="${cli.taGzzEstadoCivil.estCivDet}" 
                                            data-enp1mclientesrutases="${cli.enP1mClientesRutases}" 
                                            data-enp1mdocumentoclientes="${cli.enP1mClientesRutases}" >
-                                            <i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i>
+                                            <i class="fa fa-pencil-square-o fa-lg" style="color: black;"></i>
                                         </a>
                                         <a href="#" data-toggle="modal" data-target="#disableModal" 
                                            data-clicod="${cli.cliCod}" data-clirazsoc="${cli.cliRazSoc}" >
-                                            <i class="fa fa-trash-o fa-2x" style="color: black;"></i>
+                                            <i class="fa fa-trash-o fa-lg" style="color: black;"></i>
                                         </a>
                                         <a href="#" data-toggle="modal" data-target="#rutaModal" 
                                            data-clicod="${cli.cliCod}" data-clirazsoc="${cli.cliRazSoc}">
-                                            <i class="fa fa-automobile fa-2x" style="color: black;"></i>
+                                            <i class="fa fa-automobile fa-lg" style="color: black;"></i>
                                         </a>
                                         <a href="#" data-toggle="modal" data-target="#documentoModal" 
                                            data-clicod="${cli.cliCod}" data-clirazsoc="${cli.cliRazSoc}">
-                                            <i class="fa fa-file-text fa-2x" style="color: black;"></i>
+                                            <i class="fa fa-file-text fa-lg" style="color: black;"></i>
                                         </a>
                                     </td>
+                                    </cc:if>
                                 </tr>
                             </c:forEach>
                         </tbody>

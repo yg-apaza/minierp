@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix='cc' uri='http://java.sun.com/jsp/jstl/core' %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="minierptemplate" %>
 <minierptemplate:template>
@@ -15,7 +14,9 @@
                     <div class="col-md-4">
                         <br>
                         <h1 class="page-header">Libro Diario
+                            <c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                             <a href="#" class="btn btn-warning btn-circle" data-toggle="modal" data-target="#libDiarAgregar"><i class="fa fa-plus"></i></a>
+                            </c:if>
                         </h1>
                     </div>
                     <div class="col-md-4 col-md-offset-4"><br>
@@ -87,12 +88,13 @@
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 Operaciones
-                                <cc:if test = "${libDiaCod!=0}">
+                                
+                                <c:if test = "${libDiaCod!=0 && sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5 }">
                                     <div class="pull-right">
                                         <button type="button" data-toggle="modal" data-target="#opeAgregar" class="btn btn-outline btn-warning btn-xs">Agregar Nuevo</button>
                                     </div>
                                     
-                                </cc:if>
+                                </c:if>
                             </div>
                             <div class="panel-body">
                                 <div class="table-responsive">

@@ -126,7 +126,7 @@
                                     <li>
                                         <a href="${pageContext.request.contextPath}/secured/ventas/factura">Factura de Venta</a>
                                     </li>
-                                    <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()==1 || sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()==2 || sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()==5}">
+                                    <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=6}">
                                     <li>
                                         <a href="${pageContext.request.contextPath}/secured/ventas/preventa">Preventa</a>
                                     </li>
