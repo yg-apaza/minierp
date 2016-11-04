@@ -275,6 +275,17 @@
         <servlet-name>DatosEmpresaController</servlet-name>
         <url-pattern>/secured/configuracion/datosEmpresa</url-pattern>
     </servlet-mapping>
+    <!--Sub Modulo Datos de Transportista-->
+    <servlet>
+        <description/>
+        <display-name>TransportistaController</display-name>
+        <servlet-name>TransportistaController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.configuracion.TransportistaController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TransportistaController</servlet-name>
+        <url-pattern>/secured/configuracion/datosTransportista</url-pattern>
+    </servlet-mapping>
     <!--Sub Modulo Sucursal-->
     <servlet>
         <description/>
@@ -561,6 +572,26 @@
     <servlet-mapping>
         <servlet-name>SearchBillController</servlet-name>
         <url-pattern>/secured/ventas/searchBill</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <description/>
+        <display-name>ReferralGuideController</display-name>
+        <servlet-name>ReferralGuideController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.ventas.ReferralGuideController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ReferralGuideController</servlet-name>
+        <url-pattern>/secured/ventas/searchReferralGuide</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <description/>
+        <display-name>CarrierGuideController</display-name>
+        <servlet-name>CarrierGuideController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.ventas.CarrierGuideController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CarrierGuideController</servlet-name>
+        <url-pattern>/secured/ventas/searchCarrierGuide</url-pattern>
     </servlet-mapping>
     <servlet>
         <description/>
