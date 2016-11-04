@@ -69,10 +69,14 @@ public class CuentaDao
         session.save(cuenta);     
     }
     
-    public void update(int cueCod, String cueDes) {
-        EnP3mCuenta cuenta = (EnP3mCuenta)session.get(EnP3mCuenta.class, cueCod); 
+    public void update(int cueCod, String cueDes, String cueAmaDeb, String cueAmaHab) {
+        EnP3mCuenta cuenta = (EnP3mCuenta)session.get(EnP3mCuenta.class, cueCod);
         cuenta.setCueDes(cueDes);
-	session.update(cuenta); 
+        EnP3mCuenta amadeb = getByNumActive(cueAmaDeb);
+        EnP3mCuenta amahab = getByNumActive(cueAmaHab);
+        cuenta.setEnP3mCuentaByCueAmaDeb(amadeb);
+        cuenta.setEnP3mCuentaByCueAmaHab(amahab);
+	session.update(cuenta);
     }
     
     public void delete(int cueCod) {
