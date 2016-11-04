@@ -34,6 +34,10 @@
 				<text><![CDATA["LISTADO DE CLIENTES DE LA EMPRESA "
 ]]></text>
 			</staticText>
+			<image scaleImage="RetainShape" onErrorType="Icon">
+				<reportElement x="19" y="11" width="218" height="32" uuid="dc95073f-181d-4f73-94b9-e55fce80c7e4"/>
+				<imageExpression><![CDATA[$P{IMAGE}]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<columnHeader>

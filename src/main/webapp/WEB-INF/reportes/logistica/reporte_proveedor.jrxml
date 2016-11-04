@@ -3,6 +3,7 @@
 	<property name="ireport.zoom" value="1.1000000000000008"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
+	<parameter name="IMAGE" class="java.lang.String"/>
 	<queryString language="hql">
 		<![CDATA[From EnP4mProveedor where estRegCod = 'A']]>
 	</queryString>
@@ -23,15 +24,19 @@
 		<band splitType="Stretch"/>
 	</background>
 	<pageHeader>
-		<band height="36">
+		<band height="54">
 			<staticText>
-				<reportElement mode="Opaque" x="10" y="12" width="528" height="20" uuid="383a41f8-13d5-4c70-bf30-3d47463a02c8"/>
+				<reportElement mode="Opaque" x="233" y="18" width="311" height="20" uuid="383a41f8-13d5-4c70-bf30-3d47463a02c8"/>
 				<textElement textAlignment="Center" markup="none">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA["PADRON DE PROOVEDORES DE SUMINISTROS DE ALMACEN "
 ]]></text>
 			</staticText>
+			<image scaleImage="RetainShape" onErrorType="Icon">
+				<reportElement x="9" y="12" width="218" height="32" uuid="696d7ff7-d487-4e11-a862-789899a2dae2"/>
+				<imageExpression><![CDATA[$P{IMAGE}]]></imageExpression>
+			</image>
 		</band>
 	</pageHeader>
 	<columnHeader>
