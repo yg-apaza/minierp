@@ -19,7 +19,7 @@ public class EnP1mPagosCuotasBusiness {
         pagCuoDetDao = new EnP1tPagosCuotasDetDao();
     }
     
-    public void create(String facVenCabCod, String pagCuoNumDoc, int pagCuoNum, 
+    public void create(String facVenCabCod, int pagCuoNum, 
             double pagCuoDeuTot, Date pagCuoFecIni){
         
         EnP1mPagosCuotasCab cabcuo = new EnP1mPagosCuotasCab();
@@ -28,11 +28,11 @@ public class EnP1mPagosCuotasBusiness {
         
         cabcuo.setFacVenCabCod(facVenCabCod);
         cabcuo.setEnP1mFacturaVentaCab(facCab);
-        //cabcuo.setPagCuoNumDoc(pagCuoNumDoc);
         cabcuo.setPagCuoNum(pagCuoNum);
         cabcuo.setPagCuoNumPag(0); //0 cuotas pagadas
         cabcuo.setPagCuoDeuTot(pagCuoDeuTot);
         cabcuo.setPagCuoTotPag(0); //0 pagado
+        cabcuo.setPagCuoMonXcuo(pagCuoDeuTot/pagCuoNum);
         cabcuo.setPagCuoFecIni(pagCuoFecIni);
         cabcuo.setPagCuoFecFin(DateUtil.addDays(pagCuoFecIni, 30*pagCuoNum));
         cabcuo.setPagCuoFecPag(DateUtil.addDays(pagCuoFecIni, 30));
