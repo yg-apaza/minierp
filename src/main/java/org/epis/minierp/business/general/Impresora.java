@@ -2,6 +2,7 @@ package org.epis.minierp.business.general;
 
 import java.io.IOException;
 import java.text.DateFormat;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -13,10 +14,15 @@ import org.epis.minierp.model.EnP1mFacturaVentaCab;
 import org.epis.minierp.model.EnP1tFacturaVentaDet;
 
 public class Impresora {
+    private static final int MAX_FAC_DET = 20;
+    private static final int MAX_BOL_DET = 15;
+    private static final int MAX_REM_DET = 20;
+    
     String path;
     SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
     DateFormat fecha = new SimpleDateFormat("dd/MM/yyyy");
     Date date = new Date();
+    DecimalFormat df = new DecimalFormat("#.00"); 
     
     String cliNom, cliDir, fecEmi;
     //Factura
@@ -67,8 +73,9 @@ public class Impresora {
                 proDes1 = "3";
                 proDes2 = "5";
                 proValNet = proCan * proValUni;
-                fac.writeFacDetalle(Integer.toString(proCod), proCan, proUni, proDes, proValUni, proDes1, proDes2, proValNet);
+                fac.writeFacDetalle(Integer.toString(proCod), proCan, proUni, proDes, proValUni, proDes1, proDes2, df.format(proValNet));
             }
+            fac.addLines(MAX_FAC_DET - proCod); 
             subTotal = f.getFacVenCabSubTot();
             igv = subTotal * f.getFacVenCabIgv();
             total = f.getFacVenCabTot();
@@ -113,9 +120,9 @@ public class Impresora {
                 proDes1 = "3";
                 proDes2 = "5";
                 proValNet = proCan * proValUni;
-                fac.writeFacDetalle(Integer.toString(proCod), proCan, proUni, proDes, proValUni, proDes1, proDes2, proValNet);
+                fac.writeFacDetalle(Integer.toString(proCod), proCan, proUni, proDes, proValUni, proDes1, proDes2, df.format(proValNet));
             }
-
+            fac.addLines(MAX_FAC_DET - proCod); 
             subTotal = f.getFacVenCabSubTot();
             igv = subTotal * f.getFacVenCabIgv();
             total = f.getFacVenCabTot();
@@ -159,8 +166,9 @@ public class Impresora {
                     proValUni = d.getFacVenDetValUni();
                     proDes1 = "3";
                     proValNet = proCan * proValUni;
-                    bol.writeBolDetalle(Integer.toString(proCod), proCan, proUni, proDes, proValUni, proDes1, proValNet);
+                    bol.writeBolDetalle(Integer.toString(proCod), proCan, proUni, proDes, proValUni, proDes1, df.format(proValNet));
                 }
+                bol.addLines(MAX_BOL_DET - proCod); 
                 total = f.getFacVenCabTot();
                 bol.writeBolTotal(total);
 
@@ -206,8 +214,10 @@ public class Impresora {
                     proValUni = d.getFacVenDetValUni();
                     proDes1 = "3";
                     proValNet = proCan * proValUni;
-                    rem.writeGuiRemDetalle(Integer.toString(proCod), proCan, proUni, proDes, proValUni, proDes1, proValNet);
+                    
+                    rem.writeGuiRemDetalle(Integer.toString(proCod), proCan, proUni, proDes, proValUni, proDes1, df.format(proValNet));
                 }
+                rem.addLines(MAX_REM_DET - proCod); 
                 rem.newPage();
             }
         rem.close();
