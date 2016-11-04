@@ -76,9 +76,9 @@ public class EnP1mFacturaVentaCabDao {
         
     }
     
-    public List<EnP1tFacturaVentaDet> getFacVenDets(String facVenDetCod){
+    public List<EnP1tFacturaVentaDet> getFacVenDets(String facVenCabCod){
         Query query = session.createQuery("from EnP1tFacturaVentaDet E "
-                + "where E.id.facVenCabCod = '"+facVenDetCod+"' "
+                + "where E.id.facVenCabCod = '"+facVenCabCod+"' "
                 + "order by E.id.facVenDetCod asc");
         List<EnP1tFacturaVentaDet> estados = query.list();
         return estados;

@@ -43,7 +43,7 @@
                             <th>SubClase</th>
                             <th>Código</th>
                             <th>Descripción</th>
-                            <th>Estado</th>
+                            <th>Precio de venta</th>
                             <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                             <th>Acciones</th>
                             </cc:if>
@@ -56,7 +56,7 @@
                                 <td width="200px">${p.enP2mSubclaseProducto.subClaProDet}</td>                                        
                                 <td width="100px">${p.id.proCod}</td>
                                 <td width="300px">${p.proDet}</td>
-                                <td class="text-center" width="50px">${p.estRegCod}</td>
+                                <td class="text-center" width="50px">${p.proPreUniVen}</td>
                                 <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                                 <td class="text-center" width="50px">
                                     <a href="#" data-toggle="modal" data-target="#modifyProduct" 
@@ -248,7 +248,7 @@
                                             <span class="input-group-addon"><i class="fa fa-dollar"></i></span>
                                             <select class="form-control" id="updMonCod" name="monCodUpd">
                                                 <c:forEach items="${monedas}" var="moneda">
-                                                    <option value="${moneda.monCod}">${moneda.monDet}</option>
+                                                    <option value="${monedaDes.monCod}">${moneda.monDet}</option>
                                                 </c:forEach>
                                             </select> 
                                         </div>
