@@ -286,6 +286,17 @@
         <servlet-name>TransportistaController</servlet-name>
         <url-pattern>/secured/configuracion/datosTransportista</url-pattern>
     </servlet-mapping>
+    <!--Sub Modulo Unidades de Tranporte-->
+    <servlet>
+        <description/>
+        <display-name>UnidadTransporteController</display-name>
+        <servlet-name>UnidadTransporteController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.general.UnidadTransporteController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UnidadTransporteController</servlet-name>
+        <url-pattern>/secured/configuracion/unidadTransporte</url-pattern>
+    </servlet-mapping>
     <!--Sub Modulo Sucursal-->
     <servlet>
         <description/>
@@ -592,6 +603,46 @@
     <servlet-mapping>
         <servlet-name>CarrierGuideController</servlet-name>
         <url-pattern>/secured/ventas/searchCarrierGuide</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <description/>
+        <display-name>AddCarrierGuide</display-name>
+        <servlet-name>AddCarrierGuide</servlet-name>
+        <servlet-class>org.epis.minierp.controller.ventas.AddCarrierGuide</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddCarrierGuide</servlet-name>
+        <url-pattern>/secured/ventas/addCarrierGuide</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <description/>
+        <display-name>AddReferralGuide</display-name>
+        <servlet-name>AddReferralGuide</servlet-name>
+        <servlet-class>org.epis.minierp.controller.ventas.AddReferralGuide</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddReferralGuide</servlet-name>
+        <url-pattern>/secured/ventas/addReferralGuide</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <description/>
+        <display-name>RemoveCarrierGuide</display-name>
+        <servlet-name>RemoveCarrierGuide</servlet-name>
+        <servlet-class>org.epis.minierp.controller.ventas.RemoveCarrierGuide</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RemoveCarrierGuide</servlet-name>
+        <url-pattern>/secured/ventas/removeCarrierGuide</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <description/>
+        <display-name>RemoveReferralGuide</display-name>
+        <servlet-name>RemoveReferralGuide</servlet-name>
+        <servlet-class>org.epis.minierp.controller.ventas.RemoveReferralGuide</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RemoveReferralGuide</servlet-name>
+        <url-pattern>/secured/ventas/removeReferralGuide</url-pattern>
     </servlet-mapping>
     <servlet>
         <description/>

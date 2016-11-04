@@ -208,6 +208,9 @@
                                         <a href="${pageContext.request.contextPath}/secured/configuracion/datosTransportista">Datos de los Transportistas</a>
                                     </li>
                                     <li>
+                                        <a href="${pageContext.request.contextPath}/secured/configuracion/unidadTransporte">Unidades de transporte</a>
+                                    </li>
+                                    <li>
                                         <a href="${pageContext.request.contextPath}/secured/configuracion/catalogoRutas">Catalogo de Rutas</a>
                                     </li>
                                 </ul>
