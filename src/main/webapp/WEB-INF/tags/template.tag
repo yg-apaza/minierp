@@ -205,6 +205,9 @@
                                         <a href="${pageContext.request.contextPath}/secured/configuracion/datosEmpresa">Datos de la empresa</a>
                                     </li>
                                     <li>
+                                        <a href="${pageContext.request.contextPath}/secured/configuracion/datosTransportista">Datos de los Transportistas</a>
+                                    </li>
+                                    <li>
                                         <a href="${pageContext.request.contextPath}/secured/configuracion/catalogoRutas">Catalogo de Rutas</a>
                                     </li>
                                 </ul>
