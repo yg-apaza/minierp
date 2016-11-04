@@ -37,9 +37,6 @@ public class XMLReader<T> {
 
             jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
             jaxbMarshaller.marshal(objeto, xmlFile);
-            
-            //Imprime en pantalla el archivo xml
-            //jaxbMarshaller.marshal(objeto, System.out);
         } catch (JAXBException e) {
             e.printStackTrace();
         }
