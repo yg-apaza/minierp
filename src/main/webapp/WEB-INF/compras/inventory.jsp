@@ -28,7 +28,7 @@
                     <button type="submit" onclick="return updateInventory()" class="btn btn-success"> Actualizar inventario</button>  
                 </div>
                 <div class="col-md-3">
-                    <a href="${pageContext.request.contextPath}/secured/general/reporte?type=pdf&&report=inventario&&jdbc=false&&key=null&&value=null" class="btn btn-outline btn-danger">
+                    <a href="${pageContext.request.contextPath}/secured/general/reporte?type=pdf&&report=inventario&&jdbc=true&&key=null&&value=null" class="btn btn-outline btn-danger">
                         <i class="fa fa-file-pdf-o"></i>
                         Descargar Reporte [PDF]
                     </a>
