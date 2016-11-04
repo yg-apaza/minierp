@@ -10,8 +10,10 @@
     <jsp:attribute name="contenido">
         <div class="panel-body">
             <h1 class="page-header">Usuarios
+                <c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                 <a href="#" class="btn btn-success btn-circle" data-toggle="modal" data-target="#agregarModal"><i class="fa fa-plus"></i></a>
                 <a href="#" class="btn btn-info btn-circle" data-toggle="modal" data-target="#estadosModal"><i class="fa fa-eye"></i></a>
+                </c:if>
             </h1>     
             <!--<div class="row">
                 <div class="col-sm-4">
@@ -46,7 +48,9 @@
                                 <th>Login</th>
                                 <th>Tipo Usuario</th>
                                 <th>Sucursal</th>
+                                <c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                                 <th>Acciones</th>
+                                </c:if>
 
                             </tr>
                         </thead>
@@ -64,7 +68,7 @@
                                     <td>${u.usuLog}</td>
                                     <td>${u.taGzzTipoUsuario.tipUsuDet}</td>
                                     <td>${u.enP1mSucursal.sucDes}</td>
-
+                                    <c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                                     <td class="text-right">
                                         <a href="#" data-toggle="modal" data-target="#modificarModal" 
                                            data-usucod="${u.usuCod}" data-usunom="${u.usuNom}" data-usuapepat="${u.usuApePat}" 
@@ -79,6 +83,7 @@
                                             <i class="fa fa-trash-o fa-2x" style="color: black;"></i>
                                         </a>
                                     </td>
+                                    </c:if>
                                 </tr>
                             </c:forEach>
                         </tbody>
