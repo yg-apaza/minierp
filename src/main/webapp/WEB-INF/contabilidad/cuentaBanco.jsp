@@ -8,7 +8,10 @@
     <jsp:attribute name="contenido">
         <div class="panel-body">
             <h1 class="page-header">Cuentas Bancarias
-                <a href="#" class="btn btn-success btn-circle" data-toggle="modal" data-target="#agregarModal"><i class="fa fa-plus"></i></a></h1>
+                <c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
+                <a href="#" class="btn btn-success btn-circle" data-toggle="modal" data-target="#agregarModal"><i class="fa fa-plus"></i></a>
+                </c:if>
+            </h1>
             <br>
             <br>
             <div class="col-md-3">
@@ -38,7 +41,9 @@
                                 <th>Banco</th>
                                 <th>Nro. de Cuenta Corriente</th>
                                 <th>Cuenta Contable asociada</th>
+                                <c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                                 <th class="text-right">Acciones</th>
+                                </c:if>
                             </tr>
                         </thead>
                         <tbody>
@@ -48,6 +53,7 @@
                                     <td>${cb.taGzzBanco.banDet}</td>
                                     <td>${cb.cueBanNum}</td>
                                     <td>${cb.enP3mCuenta.cueNum}</td>
+                                    <c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                                     <td class="text-right">
                                         <a href="#" data-toggle="modal" data-target="#modificarModal" data-codigo="${cb.cueBanCod}" data-nrocuenta="${cb.cueBanNum}" data-codbanco="${cb.taGzzBanco.banCod}" data-cuenum="${cb.enP3mCuenta.cueNum}">
                                             <i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i>
@@ -56,6 +62,7 @@
                                             <i class="fa fa-trash-o fa-2x" style="color: black;"></i>
                                         </a>
                                     </td>
+                                    </c:if>
                                 </tr>
                             </c:forEach>
                         </tbody>

@@ -2,6 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="minierptemplate" %>
+<%@ taglib prefix='cc' uri='http://java.sun.com/jsp/jstl/core' %>
 <minierptemplate:template>
     <jsp:attribute name="titulo">
         <title>Ventas - Factura</title>
@@ -17,7 +18,9 @@
                     </div>
                     <div class="row">
                         <div class="col-lg-3">
+                            <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                             <a href="${pageContext.request.contextPath}/secured/ventas/factura/addFactura" class="btn btn-success">Crear Factura <i class="fa fa-plus"></i></a>
+                            </cc:if>
                         </div>
                         <div class="col-lg-9">
                             <div class="col-lg-3">
@@ -57,7 +60,9 @@
                                             <th>Vendedor</th>
                                             <th>Importe</th>
                                             <th>Vistas</th>
+                                            <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                                             <th>Acciones</th>
+                                            </cc:if>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -80,6 +85,7 @@
                                                         <i class="fa fa-truck fa-2x" style="color: black;"></i>
                                                     </a>
                                                 </td>
+                                                <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                                                 <td width="20%" align="center">
                                                     <a href="#" data-toggle="modal" data-target="#">
                                                         <i class="fa fa-book fa-2x" style="color: black;"></i>
@@ -94,6 +100,7 @@
                                                         <i class="fa fa-paste fa-2x" style="color: black;"></i>
                                                     </a>
                                                 </td>
+                                                </cc:if>
                                             </tr>
                                         </c:forEach>
                                     </tbody>
