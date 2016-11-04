@@ -90,7 +90,7 @@
                                                         <a onclick='makeDoReferralGuide("${c.facVenCabCod}")'>
                                                             <i class="fa fa-book fa-2x" style="color: black;"></i>
                                                         </a>
-                                                        <a href="#" data-toggle="modal" data-target="#">
+                                                        <a onclick='makeDoCarrierGuide("${c.facVenCabCod}")'>
                                                             <i class="fa fa-truck fa-2x" style="color: black;"></i>
                                                         </a>
                                                         <a href="#" data-toggle="modal" data-target="#">
@@ -441,6 +441,100 @@
                 </div>
             </div>
         </div>
+        <div class="modal fade" id="addCarrierGuide">
+            <div class="modal-dialog">
+                <form id="addCarrierGuideForm" role="form" action="${pageContext.request.contextPath}/secured/ventas/addCarrierGuide" method="post">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title">Guía de Transportista</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="col-md-12 form-group input-group">
+                                <div class="col-xs-12 col-md-12">
+                                    <div class="form-group input-group">
+                                        <span class="input-group-addon">Empresa</span>
+                                        <input type="text" class="form-control" id="guiTraAddEmpDes" name="guiTraEmpDes" readOnly>
+                                        <span class="input-group-addon"><i class="fa fa-building-o"></i></span>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-md-6">
+                                    <div class="form-group input-group">
+                                        <span class="input-group-addon">Factura Ven.</span>
+                                        <input type="text" class="form-control" id="guiTraAddFacCod" name="guiTraFacCod" readOnly>
+                                        <span class="input-group-addon"><i class="fa fa-clipboard"></i></span>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-md-6">
+                                    <div class="form-group input-group">
+                                        <span class="input-group-addon">Guía de Tra.</span>
+                                        <input type="text" class="form-control" id="guiTraAddTraNum" name="guiTraTraNum">
+                                        <span class="input-group-addon"><i class="fa fa-file-text-o"></i></span>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-md-12">
+                                    <div class="form-group input-group">
+                                        <span class="input-group-addon">Denominación</span>
+                                        <input type="text" class="form-control" id="guiTraAddTraDen" name="guiTraTraDen">
+                                        <span class="input-group-addon"><i class="fa fa-paperclip"></i></span>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-md-12">
+                                    <div class="form-group input-group">
+                                        <span class="input-group-addon">Transportista</span>
+                                        <select class="form-control" id="guiTraAddTraDat" name="guiTraTraDat">
+                                        </select> 
+                                        <span class="input-group-addon"><i class="fa fa-truck"></i></span>
+                                    </div>
+                                </div>      
+                                <div class="col-xs-12 col-md-12">
+                                    <div class="form-group input-group">
+                                        <span class="input-group-addon">Unidad</span>
+                                        <select class="form-control" id="guiTraAddNumPla" name="guiTraNumPla">
+                                        </select> 
+                                        <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-md-12">
+                                    <div class="form-group input-group">
+                                        <span class="input-group-addon">Número Registro</span>
+                                        <input type="text" class="form-control" id="guiTraAddNumReg" name="guiTraNumReg">
+                                        <span class="input-group-addon"><i class="fa fa-list-alt"></i></span>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-md-12">
+                                    <div class="form-group input-group">
+                                        <span class="input-group-addon">Ruta</span>
+                                        <select class="form-control" id="guiTraAddRutDes" name="guiTraRutDes">
+                                        </select> 
+                                        <span class="input-group-addon"><i class="fa fa-road"></i></span>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-md-12">
+                                    <div class="form-group input-group">
+                                        <span class="input-group-addon">Tipo de Destinatario</span>
+                                        <select class="form-control" id="guiTraAddTipDes" name="guiTraTipDes">
+                                        </select> 
+                                        <span class="input-group-addon"><i class="fa fa-exchange"></i></span>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-md-12">
+                                    <div class="form-group input-group">
+                                        <span class="input-group-addon">Descripción</span>
+                                        <input type="text" class="form-control" id="guiTraAddTraDes" name="guiTraTraDes">
+                                        <span class="input-group-addon"><i class="fa fa-reorder"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-success">Guardar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
         <div id="messageReferralGuide" class="modal fade">
             <div class="modal-dialog modal-sm">
                 <div class="modal-content">
@@ -454,6 +548,23 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>                                            
                         <button type="button" class="btn btn-success" onclick="deleteReferralGuide()">Aceptar</button>                                            
+                    </div>
+                </div>         
+            </div>
+        </div>
+        <div id="messageCarrierGuide" class="modal fade">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Guía de Transportista</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p align="center"><span>La factura de venta <span id="deleteCarrierGuide"></span> que ha seleccionado ya posee una guía de transportista, ¿desea eliminarla y crear una nueva?</span></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>                                            
+                        <button type="button" class="btn btn-success" onclick="deleteCarrierGuide()">Aceptar</button>                                            
                     </div>
                 </div>         
             </div>
@@ -528,6 +639,7 @@
             $("#viewCarrierGuide").on('show.bs.modal', function (e) {
                 $.post(
                         "${pageContext.request.contextPath}/secured/ventas/searchCarrierGuide", {
+                            action: "search",
                             facVenCabCod: $(e.relatedTarget).data('code')
                         }
                 ).done(function (data) {
@@ -544,32 +656,77 @@
                 });
             });
 
-
-            function loadNewReferralGuide(data){
+            function loadNewReferralGuide(data) {
                 $("#guiRemAddEmpDes").val(data.empDes);
                 $("#guiRemAddFacCod").val(data.facCod);
                 $("#guiRemAddRemNum").val("");
                 $("#guiRemRemDen").val("");
                 $("#guiRemRemDes").val("");
-                
+
                 $("#guiRemAddMotTra").empty();
-                
+
                 data.motTra.forEach(function (mot) {
-                    $("#guiRemAddMotTra").append($('<option>',{
+                    $("#guiRemAddMotTra").append($('<option>', {
                         value: mot.motTraCod,
                         text: mot.motTraDet
                     }));
                 });
-                
+
                 $("#guiRemAddTipDes").empty();
-                
+
                 data.tipDes.forEach(function (tip) {
-                    $("#guiRemAddTipDes").append($('<option>',{
+                    $("#guiRemAddTipDes").append($('<option>', {
                         value: tip.tipDstCod,
                         text: tip.tipDstDet
                     }));
-                });                
+                });
             }
+
+            function loadNewCarrierGuide(data) {
+                $("#guiTraAddEmpDes").val(data.empDes);
+                $("#guiTraAddFacCod").val(data.facCod);
+                $("#guiTraAddTraNum").val("");
+                $("#guiTraAddTraDen").val("");
+                $("#guiTraAddNumReg").val("");
+                $("#guiTraAddTraDes").val("");
+
+                $("#guiTraAddTraDat").empty();
+
+                data.traDat.forEach(function (tra) {
+                    $("#guiTraAddTraDat").append($('<option>', {
+                        value: tra.traCod,
+                        text: tra.nomCom
+                    }));
+                });
+
+                $("#guiTraAddNumPla").empty();
+
+                data.numPla.forEach(function (num) {
+                    $("#guiTraAddNumPla").append($('<option>', {
+                        value: num.uniTraCod,
+                        text: num.uniTraNumPla
+                    }));
+                });
+
+                $("#guiTraAddRutDes").empty();
+
+                data.rutDes.forEach(function (rut) {
+                    $("#guiTraAddRutDes").append($('<option>', {
+                        value: rut.rutCod,
+                        text: rut.rutDet
+                    }));
+                });
+
+                $("#guiTraAddTipDes").empty();
+
+                data.tipDes.forEach(function (tip) {
+                    $("#guiTraAddTipDes").append($('<option>', {
+                        value: tip.tipDstCod,
+                        text: tip.tipDstDet
+                    }));
+                });
+            }
+
 
             function makeDoReferralGuide(facVenCod) {
                 $.post(
@@ -579,30 +736,58 @@
                         }
                 ).done(function (data) {
                     loadNewReferralGuide(data);
-                    if (data.state) {                        
+                    if (data.state) {
                         $("#addReferralGuide").modal('show');
-                    } else { 
+                    } else {
                         $("#deleteReferralGuide").text(facVenCod);
-                        $("#messageReferralGuide").modal('show');                       
+                        $("#messageReferralGuide").modal('show');
                     }
                 });
             }
-            
+
+            function makeDoCarrierGuide(facVenCod) {
+                $.post(
+                        "${pageContext.request.contextPath}/secured/ventas/searchCarrierGuide", {
+                            action: "verify",
+                            facVenCabCod: facVenCod
+                        }
+                ).done(function (data) {
+                    loadNewCarrierGuide(data);
+                    if (data.state) {
+                        $("#addCarrierGuide").modal('show');
+                    } else {
+                        $("#deleteCarrierGuide").text(facVenCod);
+                        $("#messageCarrierGuide").modal('show');
+                    }
+                });
+            }
+
             function deleteReferralGuide() {
                 $.post(
                         "${pageContext.request.contextPath}/secured/ventas/removeReferralGuide", {
                             facVenCabCod: $("#deleteReferralGuide").text()
                         }
-                ).done(function() {
+                ).done(function () {
                     $("#messageReferralGuide").modal('hide');
                     $("#addReferralGuide").modal('show');
                 });
             }
-            
+
+            function deleteCarrierGuide() {
+                $.post(
+                        "${pageContext.request.contextPath}/secured/ventas/removeCarrierGuide", {
+                            facVenCabCod: $("#deleteCarrierGuide").text()
+                        }
+                ).done(function () {
+                    $("#messageCarrierGuide").modal('hide');
+                    $("#addCarrierGuide").modal('show');
+                });
+            }
+
             $.validator.addMethod("codePattern", function (value, element) {
                 return /^[0-9]{3}-[0-9]{6}$/.test(value);
             }, "Patrón: [0-9]{3}-[0-9]{6}");
-                        
+
             $("#addReferralGuideForm").validate({
                 rules: {
                     guiRemRemNum: {
@@ -624,6 +809,35 @@
                         required: "Denominación"
                     },
                     guiRemRemDes: {
+                        required: "Descripción"
+                    }
+                },
+                submitHandler: function (form) {
+                    form.submit();
+                }
+            });
+
+            $("#addCarrierGuideForm").validate({
+                rules: {
+                    guiTraTraNum: {
+                        required: true,
+                        codePattern: true
+                    },
+                    guiTraTraDen: {
+                        required: true
+                    },
+                    guiTraTraDes: {
+                        required: true
+                    }
+                },
+                messages: {
+                    guiTraTraNum: {
+                        required: "Número de Guía de Remisión",
+                    },
+                    guiTraTraDen: {
+                        required: "Denominación"
+                    },
+                    guiTraTraDes: {
                         required: "Descripción"
                     }
                 },
