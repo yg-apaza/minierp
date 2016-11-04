@@ -77,19 +77,19 @@
                                            data-estcivcod="${cli.taGzzEstadoCivil.estCivCod}" data-estcivdet="${cli.taGzzEstadoCivil.estCivDet}" 
                                            data-enp1mclientesrutases="${cli.enP1mClientesRutases}" 
                                            data-enp1mdocumentoclientes="${cli.enP1mClientesRutases}" >
-                                            <i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i>
+                                            <i class="fa fa-pencil-square-o fa-lg" style="color: black;"></i>
                                         </a>
                                         <a href="#" data-toggle="modal" data-target="#disableModal" 
                                            data-clicod="${cli.cliCod}" data-clirazsoc="${cli.cliRazSoc}" >
-                                            <i class="fa fa-trash-o fa-2x" style="color: black;"></i>
+                                            <i class="fa fa-trash-o fa-lg" style="color: black;"></i>
                                         </a>
                                         <a href="#" data-toggle="modal" data-target="#rutaModal" 
                                            data-clicod="${cli.cliCod}" data-clirazsoc="${cli.cliRazSoc}">
-                                            <i class="fa fa-automobile fa-2x" style="color: black;"></i>
+                                            <i class="fa fa-automobile fa-lg" style="color: black;"></i>
                                         </a>
                                         <a href="#" data-toggle="modal" data-target="#documentoModal" 
                                            data-clicod="${cli.cliCod}" data-clirazsoc="${cli.cliRazSoc}">
-                                            <i class="fa fa-file-text fa-2x" style="color: black;"></i>
+                                            <i class="fa fa-file-text fa-lg" style="color: black;"></i>
                                         </a>
                                     </td>
                                     </cc:if>
