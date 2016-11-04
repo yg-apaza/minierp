@@ -2,21 +2,25 @@
 package org.epis.minierp.business.ventas;
 
 import java.util.Date;
+import org.epis.minierp.dao.ventas.EnP1mFacturaVentaCabDao;
 import org.epis.minierp.dao.ventas.EnP1mPagosCuotasCabDao;
 import org.epis.minierp.dao.ventas.EnP1tPagosCuotasDetDao;
 import org.epis.minierp.model.EnP1mFacturaVentaCab;
 import org.epis.minierp.model.EnP1mPagosCuotasCab;
 import org.epis.minierp.model.EnP1tPagosCuotasDet;
 import org.epis.minierp.model.EnP1tPagosCuotasDetId;
+import org.epis.minierp.model.TaGzzEstadoFactura;
 import org.epis.minierp.util.DateUtil;
 
 public class EnP1mPagosCuotasBusiness {
     EnP1mPagosCuotasCabDao pagCuoCabDao;
     EnP1tPagosCuotasDetDao pagCuoDetDao;
+    EnP1mFacturaVentaCabDao facVenDao;
 
     public EnP1mPagosCuotasBusiness() {
         pagCuoCabDao = new EnP1mPagosCuotasCabDao();
         pagCuoDetDao = new EnP1tPagosCuotasDetDao();
+        facVenDao = new EnP1mFacturaVentaCabDao();
     }
     
     public void create(String facVenCabCod, int pagCuoNum, 
@@ -53,7 +57,6 @@ public class EnP1mPagosCuotasBusiness {
         
         double totalPagado = cabcuo.getPagCuoTotPag();
         double totalDeuda = cabcuo.getPagCuoDeuTot();
-        int numPagActual = cabcuo.getPagCuoNum();
         int numPagTot = cabcuo.getPagCuoNumPag();
         Date diaNextPago = cabcuo.getPagCuoFecPag();
         cabcuo.setPagCuoTotPag(totalPagado+montoPagado);
@@ -61,8 +64,16 @@ public class EnP1mPagosCuotasBusiness {
         cabcuo.setPagCuoFecPag(DateUtil.addDays(diaNextPago, 30));
         if(totalPagado + montoPagado >= totalDeuda){
             cabcuo.setEstRegCod('I');
+            
+            //pasando a pagado la factura
+            EnP1mFacturaVentaCab facVenCab = facVenDao.getById(facVenCabCod);
+            TaGzzEstadoFactura pagado = new TaGzzEstadoFactura();
+            pagado.setEstFacCod(1);//estado cancelado
+            facVenCab.setTaGzzEstadoFactura(pagado);
+            facVenDao.update(facVenCab);
         }
         pagCuoCabDao.save(cabcuo);
+
     }
 
     private void setEstRegCod(String facVenCabCod, char estRegCod){
