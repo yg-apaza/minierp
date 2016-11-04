@@ -2,6 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="minierptemplate" %>
+<%@ taglib prefix='cc' uri='http://java.sun.com/jsp/jstl/core' %>
 <minierptemplate:template>
     <jsp:attribute name="titulo">
         <title>MiniERP - Pagos</title>
@@ -59,7 +60,7 @@
             </div>
             <div class="col-md-12">
                 <div class="table-responsive">
-                    <table class="table table-striped table-hover ">
+                    <table class="table table-bordered table-striped table-hover " id="tablaCuotas">
                         <thead>
                             <tr>
                                 <th>Cod. Factura</th>
@@ -70,7 +71,9 @@
                                 <th>Fecha Inicio</th>
                                 <th>Fecha Fin</th>
                                 <th>Fecha Pago</th>
+                                <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                                 <th>Acciones</th>
+                                </cc:if>
                             </tr>
                         </thead>
                         <tbody>
@@ -84,6 +87,7 @@
                                     <td><fmt:formatDate value="${c.pagCuoFecIni}" pattern="dd/MM/yyyy"/></td>
                                     <td><fmt:formatDate value="${c.pagCuoFecFin}" pattern="dd/MM/yyyy"/></td>
                                     <td><fmt:formatDate value="${c.pagCuoFecPag}" pattern="dd/MM/yyyy"/></td>
+                                    <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                                     <td class="text-center">
                                         <!--
                                         <a href="#" data-toggle="modal" data-target="#modificarModal">
@@ -97,6 +101,7 @@
                                             <i class="fa fa-dollar fa-2x" style="color: black;"></i>
                                         </a>
                                     </td>
+                                    </cc:if>
                                 </tr>
                             </c:forEach>
                         </tbody>
@@ -186,6 +191,9 @@
         </div>
         
         <script>
+            $('#tablaCuotas').DataTable({
+                responsive: true
+            });
             var updateModal = $("#modificarModal");
             var pagarModal = $("#pagarModal");
             

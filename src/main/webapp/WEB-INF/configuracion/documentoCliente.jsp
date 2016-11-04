@@ -5,41 +5,46 @@
         <title>Configuraciones - Documentos de clientes</title>
     </jsp:attribute>
     <jsp:attribute name="contenido">
-            
+        <br>
         <div class="pagel-body">
-           
-           <br>
-           <div id="sucursal">
-		<div class="row">
-			<h2 class="page-header"> Documentos de clientes 
-                        <a href="#" class="btn btn-success btn-circle" data-toggle="modal" onclick="validarNumDoc()" data-target="#agregarModal"><i class="fa fa-plus"></i></a></h2>
-            
-			<table class="table table-bordered table-striped table-hover" id="clientTable">
-				<tr>    
-					<th>Cliente</th>
-                                        <th>Tipo de documento</th>
-					<th>Número de documento</th>
-                                        <th class="text-left">Acciones</th>
-					
-				</tr>
-                                <c:forEach items="${docClientes}" var="docClientes">
-                                    
-                                    <tr>
-                                      <td value="${docClientes}"> ${docClientes.enP1mCliente.cliApePat} ${docClientes.enP1mCliente.cliApeMat}, ${docClientes.enP1mCliente.cliNom} </td>
-                                      <td value="${docClientes}"> ${docClientes.taGzzTipoDocCliente.tipDocCliDet} </td>
-                                      <td value="${docClientes}"> ${docClientes.docCliNum} </td>
-                                      <td class="text-left">
-                                          <a href="#" data-toggle="modal" onclick="validarNumDocUpdt()" data-target="#modificarModal" data-clicod="${docClientes.enP1mCliente.cliCod}" data-cli="${docClientes.enP1mCliente.cliApePat} ${docClientes.enP1mCliente.cliApeMat}, ${docClientes.enP1mCliente.cliNom}" data-tipocod="${docClientes.taGzzTipoDocCliente.tipDocCliCod}" data-tipo="${docClientes.taGzzTipoDocCliente.tipDocCliDet}" data-num="${docClientes.docCliNum}" >
-                                            <i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i> </a> 
-                                          <a href="#" data-toggle="modal" data-target="#eliminarModal" data-clicod="${docClientes.enP1mCliente.cliCod}" data-cli="${docClientes.enP1mCliente.cliApePat} ${docClientes.enP1mCliente.cliApeMat}, ${docClientes.enP1mCliente.cliNom}" data-tipocod="${docClientes.taGzzTipoDocCliente.tipDocCliCod}" data-tipo="${docClientes.taGzzTipoDocCliente.tipDocCliDet}" data-num="${docClientes.docCliNum}" >
-                                            <i class="fa fa-trash-o fa-2x" style="color: black;"></i> </a>                                   
-                                       </td>
-                                    </tr> 
-                                </c:forEach>		
-			</table>
-		</div>
-            </div>            
-                                
+            <h1 class="page-header"> Documentos de clientes 
+                <c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
+                <a href="#" class="btn btn-success btn-circle" data-toggle="modal" onclick="validarNumDoc()" data-target="#agregarModal"><i class="fa fa-plus"></i></a>
+                </c:if>
+            </h1>
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped table-hover" id="tablaDocClientes">
+                        <thead>
+                            <tr>    
+                                <th>Cliente</th>
+                                <th>Tipo de documento</th>
+                                <th>Número de documento</th>
+                                <c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
+                                <th class="text-left">Acciones</th>
+                                </c:if>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <c:forEach items="${docClientes}" var="docClientes">
+                                <tr>
+                                    <td value="${docClientes}"> ${docClientes.enP1mCliente.cliApePat} ${docClientes.enP1mCliente.cliApeMat}, ${docClientes.enP1mCliente.cliNom} </td>
+                                    <td value="${docClientes}"> ${docClientes.taGzzTipoDocCliente.tipDocCliDet} </td>
+                                    <td value="${docClientes}"> ${docClientes.docCliNum} </td>
+                                    <c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
+                                    <td class="text-left">
+                                        <a href="#" data-toggle="modal" onclick="validarNumDocUpdt()" data-target="#modificarModal" data-clicod="${docClientes.enP1mCliente.cliCod}" data-cli="${docClientes.enP1mCliente.cliApePat} ${docClientes.enP1mCliente.cliApeMat}, ${docClientes.enP1mCliente.cliNom}" data-tipocod="${docClientes.taGzzTipoDocCliente.tipDocCliCod}" data-tipo="${docClientes.taGzzTipoDocCliente.tipDocCliDet}" data-num="${docClientes.docCliNum}" >
+                                        <i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i> </a> 
+                                        <a href="#" data-toggle="modal" data-target="#eliminarModal" data-clicod="${docClientes.enP1mCliente.cliCod}" data-cli="${docClientes.enP1mCliente.cliApePat} ${docClientes.enP1mCliente.cliApeMat}, ${docClientes.enP1mCliente.cliNom}" data-tipocod="${docClientes.taGzzTipoDocCliente.tipDocCliCod}" data-tipo="${docClientes.taGzzTipoDocCliente.tipDocCliDet}" data-num="${docClientes.docCliNum}" >
+                                        <i class="fa fa-trash-o fa-2x" style="color: black;"></i> </a>                                   
+                                   </td>
+                                    </c:if>
+                                </tr> 
+                            </c:forEach>		
+                        </tbody>
+                    </table>
+                </div>
+            </div>                        
         </div>       
         
         <!-- MODAL PARA AGREGAR -->
@@ -149,6 +154,9 @@
                           
                         
         <script>
+            $('#tablaDocClientes').DataTable({
+                responsive: true
+            });
             var updateModal = $("#modificarModal");
             var deleteModal = $("#eliminarModal");
             

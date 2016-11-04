@@ -2,6 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="minierptemplate" %>
+<%@ taglib prefix='cc' uri='http://java.sun.com/jsp/jstl/core' %>
 <minierptemplate:template>
     <jsp:attribute name="titulo">
         <title>Compras - Factura</title>
@@ -17,7 +18,10 @@
                 <div class="row">
                     <div class="col-lg-8">
                         <form role=form" method="get" action="${pageContext.request.contextPath}/secured/compras/factura/addFactura">
-                            <button type="submit" class="btn btn-success">Crear Factura <i class="fa fa-plus"></i></button>   
+                            <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
+                                <button type="submit" class="btn btn-success">Crear Factura <i class="fa fa-plus"></i></button>
+                            </cc:if>
+                            
                         </form>
                     </div>
                     <div class="col-lg-4">
@@ -38,7 +42,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="table-responsive">    
-                            <table class="table table-striped table-bordered table-hover">
+                            <table class="table table-striped table-bordered table-hover" id="tablePurchases">
                                 <thead>
                                     <tr>
                                         <th>Fecha</th>
@@ -47,19 +51,17 @@
                                         <th>Comprador</th>
                                         <th>Importe</th>
                                         <th>Tipo</th>
-                                        <th>Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <c:forEach items="${facturasCompra}" var="c">
                                         <tr>
-                                            <td>${c.facComCabFec}</td>
+                                            <td>${c.facComCabFecEmi}</td>
                                             <td>${c.facComCabCod}</td>
-                                            <td>${c.enP4mProveedor.proDet}</td>
+                                            <td>${c.enP4mProveedor.prvDet}</td>
                                             <td>${c.enP1mUsuario.usuNom}</td>
                                             <td>${c.facComCabTot}</td>                            
                                             <td>${c.taGzzTipoPagoFactura.tipPagDet}</td>
-                                            <td width="50px">Acciones</td>
                                         </tr>
                                     </c:forEach>
                                 </tbody>
@@ -78,5 +80,12 @@
                 </div>
             </div>
         </div>
+        <script>
+            $(document).ready(function() {
+                $('#tablePurchases').DataTable({
+                    responsive: true
+                });
+            });
+        </script>
     </jsp:attribute>
 </minierptemplate:template>

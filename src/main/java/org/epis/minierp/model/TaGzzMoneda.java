@@ -1,5 +1,5 @@
 package org.epis.minierp.model;
-// Generated 31/10/2016 01:37:15 AM by Hibernate Tools 4.3.1
+// Generated 02/11/2016 08:41:29 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -12,6 +12,7 @@ public class TaGzzMoneda  implements java.io.Serializable {
 
 
      private Integer monCod;
+     private String monSim;
      private String monDet;
      private char estRegCod;
      private Set enP2mProductos = new HashSet(0);
@@ -28,7 +29,8 @@ public class TaGzzMoneda  implements java.io.Serializable {
         this.monDet = monDet;
         this.estRegCod = estRegCod;
     }
-    public TaGzzMoneda(String monDet, char estRegCod, Set enP2mProductos, Set enP4mFacturaCompraCabs, Set enP3mAsientoCabs, Set enP1mPreventaCabs, Set enP1mFacturaVentaCabs) {
+    public TaGzzMoneda(String monSim, String monDet, char estRegCod, Set enP2mProductos, Set enP4mFacturaCompraCabs, Set enP3mAsientoCabs, Set enP1mPreventaCabs, Set enP1mFacturaVentaCabs) {
+       this.monSim = monSim;
        this.monDet = monDet;
        this.estRegCod = estRegCod;
        this.enP2mProductos = enP2mProductos;
@@ -44,6 +46,13 @@ public class TaGzzMoneda  implements java.io.Serializable {
     
     public void setMonCod(Integer monCod) {
         this.monCod = monCod;
+    }
+    public String getMonSim() {
+        return this.monSim;
+    }
+    
+    public void setMonSim(String monSim) {
+        this.monSim = monSim;
     }
     public String getMonDet() {
         return this.monDet;

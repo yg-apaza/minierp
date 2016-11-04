@@ -43,7 +43,17 @@ public class EnP1mClienteDao {
         return estado;
     }
     
-    public List<EnP1mCliente> getByTipoCLiente(int id) {
+    public EnP1mCliente getByCodigoTipoCliente(int id, String cliCod) {
+        Query query = session.createQuery("from EnP1mCliente C where C.cliCod = :code and C.taGzzTipoCliente.tipCliCod = :id and C.estRegCod = 'A'");
+        query.setParameter("id", id);
+        query.setParameter("code", cliCod);
+        List <EnP1mCliente> clientes = query.list();
+        if(clientes.size() == 0)
+            return null;
+        return clientes.get(0);
+    }
+    
+    public List<EnP1mCliente> getByTipoCliente(int id) {
         Query query = session.createQuery("from EnP1mCliente C where C.taGzzTipoCliente.tipCliCod = :id and C.estRegCod = 'A'");
         query.setParameter("id", id);
         List <EnP1mCliente> clientes = query.list();

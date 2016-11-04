@@ -17,9 +17,10 @@ CREATE TABLE en_p1m_preventa_cab
 (
   PreVenCabCod Char(10) NOT NULL,
   CliCod Char(15) NOT NULL,
-  CatRutCod Int(2) ZEROFILL,
+  CatRutCod Int(3) ZEROFILL,
   UsuCod Char(15) NOT NULL,
-  PreVenCabFec Date NOT NULL,
+  PreVenCabFecEmi Date NOT NULL,
+  PreVenCabFecVen Date,
   PreVenCabPla Int(3) NOT NULL,
   PreVenCabTot Double(10,2) NOT NULL,
   TipDesCod Int(2) ZEROFILL,
@@ -54,14 +55,16 @@ CREATE INDEX IX_Relationship110 ON en_p1m_preventa_cab (CatRutCod)
 CREATE TABLE en_p1t_preventa_det
 (
   PreVenCabCod Char(10) NOT NULL,
-  PreVenDetCod Int(3) ZEROFILL NOT NULL AUTO_INCREMENT,
+  PreVenDetCod Int(3) ZEROFILL NOT NULL,
   ClaProCod Char(2) NOT NULL,
   SubClaProCod Char(2) NOT NULL,
   ProCod Char(15) NOT NULL,
   PreVenDetCan Double(10,2) NOT NULL,
-  PreVenDetValUni Double(10,2) NOT NULL,
- PRIMARY KEY (PreVenDetCod,PreVenCabCod)
+  PreVenDetValUni Double(10,2) NOT NULL
 )
+;
+
+ALTER TABLE en_p1t_preventa_det ADD PRIMARY KEY (PreVenDetCod,PreVenCabCod)
 ;
 
 CREATE INDEX IX_Relationship9 ON en_p1t_preventa_det (ProCod,SubClaProCod,ClaProCod)
@@ -88,9 +91,10 @@ CREATE TABLE en_p1m_factura_venta_cab
   GuiRemRemNum Char(15),
   GuiRemTraNum Char(15),
   CliCod Char(15) NOT NULL,
-  CatRutCod Int(2) ZEROFILL,
+  CatRutCod Int(3) ZEROFILL,
   UsuCod Char(15) NOT NULL,
-  FacVenCabFec Date NOT NULL,
+  FacVenCabFecEmi Date NOT NULL,
+  FacVenCabFecVen Date,
   FacVenCabTot Double(10,2) NOT NULL,
   TipDesCod Int(2) ZEROFILL,
   FacVenCabSubTot Double(10,2) NOT NULL,
@@ -100,7 +104,6 @@ CREATE TABLE en_p1m_factura_venta_cab
   MetPagCod Int(2) ZEROFILL NOT NULL,
   TipPagCod Int(2) ZEROFILL NOT NULL,
   MonCod Int(2) ZEROFILL NOT NULL,
-  FacVenCabComVal Double(10,2),
   EstRegCod Char(1) NOT NULL
 )
 ;
@@ -143,14 +146,16 @@ CREATE INDEX IX_Relationship109 ON en_p1m_factura_venta_cab (CatRutCod)
 CREATE TABLE en_p1t_factura_venta_det
 (
   FacVenCabCod Char(10) NOT NULL,
-  FacVenDetCod Int(3) ZEROFILL NOT NULL AUTO_INCREMENT,
+  FacVenDetCod Int(3) ZEROFILL NOT NULL,
   ClaProCod Char(2) NOT NULL,
   SubClaProCod Char(2) NOT NULL,
   ProCod Char(15) NOT NULL,
   FacVenDetCan Double(10,2) NOT NULL,
-  FacVenDetValUni Double(10,2) NOT NULL,
- PRIMARY KEY (FacVenDetCod,FacVenCabCod)
+  FacVenDetValUni Double(10,2) NOT NULL
 )
+;
+
+ALTER TABLE en_p1t_factura_venta_det ADD PRIMARY KEY (FacVenDetCod,FacVenCabCod)
 ;
 
 CREATE INDEX IX_Relationship19 ON en_p1t_factura_venta_det (ProCod,SubClaProCod,ClaProCod)
@@ -311,6 +316,8 @@ CREATE TABLE en_p2m_producto
   ClaProCod Char(2) NOT NULL,
   SubClaProCod Char(2) NOT NULL,
   ProCod Char(15) NOT NULL,
+  ProCodBar Char(30),
+  AlmCod Char(15),
   ProDet Char(90) NOT NULL,
   UniMedCod Int(2) ZEROFILL NOT NULL,
   ProPreUniVen Double(10,2) NOT NULL,
@@ -331,6 +338,9 @@ ALTER TABLE en_p2m_producto ADD PRIMARY KEY (ProCod,SubClaProCod,ClaProCod)
 ;
 
 CREATE INDEX IX_Relationship33 ON en_p2m_producto (UniMedCod)
+;
+
+CREATE INDEX IX_Relationship114 ON en_p2m_producto (AlmCod)
 ;
 
 -- Table episerp.en_p2m_almacen
@@ -485,7 +495,8 @@ CREATE TABLE en_p4m_factura_compra_cab
   GuiRemTraNum Char(15),
   PrvCod Char(15) NOT NULL,
   UsuCod Char(15) NOT NULL,
-  FacComCabFec Date NOT NULL,
+  FacComCabFecEmi Date NOT NULL,
+  FacComCabFecVen Date,
   FacComCabTot Double(10,2) NOT NULL,
   TipDesCod Int(2) ZEROFILL,
   FacComCabSubTot Double(10,2) NOT NULL,
@@ -534,14 +545,16 @@ CREATE INDEX IX_Relationship102 ON en_p4m_factura_compra_cab (GuiRemRemNum)
 CREATE TABLE en_p4t_factura_compra_det
 (
   FacComCabCod Char(10) NOT NULL,
-  FacComDetCod Int(3) ZEROFILL NOT NULL AUTO_INCREMENT,
+  FacComDetCod Int(3) ZEROFILL NOT NULL,
   ClaProCod Char(2) NOT NULL,
   SubClaProCod Char(2) NOT NULL,
   ProCod Char(15) NOT NULL,
   FacComDetCan Double(10,2) NOT NULL,
-  FacComDetValUni Double(10,2) NOT NULL,
- PRIMARY KEY (FacComDetCod,FacComCabCod)
+  FacComDetValUni Double(10,2) NOT NULL
 )
+;
+
+ALTER TABLE en_p4t_factura_compra_det ADD PRIMARY KEY (FacComDetCod,FacComCabCod)
 ;
 
 CREATE INDEX IX_Relationship56 ON en_p4t_factura_compra_det (ProCod,SubClaProCod,ClaProCod)
@@ -589,6 +602,7 @@ ALTER TABLE en_p4m_documento_proveedor ADD PRIMARY KEY (PrvCod,TipDocProCod)
 CREATE TABLE ta_gzz_unidad_med
 (
   UniMedCod Int(2) ZEROFILL NOT NULL AUTO_INCREMENT,
+  UniMedSim Char(5),
   UniMedDet Char(90) NOT NULL,
   EstRegCod Char(1) NOT NULL,
  PRIMARY KEY (UniMedCod)
@@ -600,6 +614,7 @@ CREATE TABLE ta_gzz_unidad_med
 CREATE TABLE ta_gzz_moneda
 (
   MonCod Int(2) ZEROFILL NOT NULL AUTO_INCREMENT,
+  MonSim Char(5),
   MonDet Char(90) NOT NULL,
   EstRegCod Char(1) NOT NULL,
  PRIMARY KEY (MonCod)
@@ -800,10 +815,10 @@ CREATE TABLE ta_gzz_motivo_traslado
 
 CREATE TABLE ta_gzz_tipo_destinatario
 (
-  TipDesCod Int(2) ZEROFILL NOT NULL AUTO_INCREMENT,
-  TipDesDet Char(90) NOT NULL,
+  TipDstCod Int(2) ZEROFILL NOT NULL AUTO_INCREMENT,
+  TipDstDet Char(90) NOT NULL,
   EstRegCod Char(1),
- PRIMARY KEY (TipDesCod)
+ PRIMARY KEY (TipDstCod)
 )
 ;
 
@@ -882,7 +897,7 @@ CREATE TABLE en_p2m_guia_rem_remitente
   GuiRemRemDen Char(50) NOT NULL DEFAULT 'GUÍA DE REMISIÓN-REMINTENTE',
   MotTraCod Int(2) ZEROFILL NOT NULL,
   EmpCod Int(2) ZEROFILL NOT NULL,
-  TipDesCod Int(2) ZEROFILL NOT NULL,
+  TipDstCod Int(2) ZEROFILL NOT NULL,
   GuiRemRemDes Char(15) NOT NULL,
   EstRegCod Char(1) NOT NULL
 )
@@ -894,7 +909,7 @@ ALTER TABLE en_p2m_guia_rem_remitente ADD PRIMARY KEY (GuiRemRemNum)
 CREATE INDEX IX_Relationship71 ON en_p2m_guia_rem_remitente (MotTraCod)
 ;
 
-CREATE INDEX IX_Relationship72 ON en_p2m_guia_rem_remitente (TipDesCod)
+CREATE INDEX IX_Relationship72 ON en_p2m_guia_rem_remitente (TipDstCod)
 ;
 
 CREATE INDEX IX_Relationship73 ON en_p2m_guia_rem_remitente (EmpCod)
@@ -910,7 +925,7 @@ CREATE TABLE en_p2m_guia_rem_transportista
   UniTraCod Char(15) NOT NULL,
   EmpCod Int(2) ZEROFILL NOT NULL,
   GuiRemTraNumReg Char(20),
-  TipDesCod Int(2) ZEROFILL NOT NULL,
+  TipDstCod Int(2) ZEROFILL NOT NULL,
   GuiRemTraDes Char(15) NOT NULL,
   EstRegCod Char(1) NOT NULL
 )
@@ -928,7 +943,7 @@ CREATE INDEX IX_Relationship75 ON en_p2m_guia_rem_transportista (UniTraCod)
 CREATE INDEX IX_Relationship76 ON en_p2m_guia_rem_transportista (EmpCod)
 ;
 
-CREATE INDEX IX_Relationship77 ON en_p2m_guia_rem_transportista (TipDesCod)
+CREATE INDEX IX_Relationship77 ON en_p2m_guia_rem_transportista (TipDstCod)
 ;
 
 -- Table episerp.en_p2m_unidad_transporte
@@ -1030,8 +1045,7 @@ CREATE INDEX IX_Relationship80 ON en_p2t_inventario_det (ProCod,SubClaProCod,Cla
 CREATE TABLE en_p1c_devolucion_ventas
 (
   FacVenCabCod Char(10) NOT NULL,
-  GuiRemRemNum Char(15),
-  GuiRemTraNum Char(15),
+  DevVenNewFac Char(10),
   DevVenDet Char(100),
   DevVenFec Date NOT NULL,
   TipDevCod Int(2) ZEROFILL,
@@ -1045,10 +1059,7 @@ ALTER TABLE en_p1c_devolucion_ventas ADD PRIMARY KEY (FacVenCabCod)
 CREATE INDEX IX_Relationship81 ON en_p1c_devolucion_ventas (TipDevCod)
 ;
 
-CREATE INDEX IX_Relationship85 ON en_p1c_devolucion_ventas (GuiRemTraNum)
-;
-
-CREATE INDEX IX_Relationship87 ON en_p1c_devolucion_ventas (GuiRemRemNum)
+CREATE INDEX IX_Relationship115 ON en_p1c_devolucion_ventas (DevVenNewFac)
 ;
 
 -- Table episerp.en_p2c_devolucion_compras
@@ -1056,8 +1067,7 @@ CREATE INDEX IX_Relationship87 ON en_p1c_devolucion_ventas (GuiRemRemNum)
 CREATE TABLE en_p2c_devolucion_compras
 (
   FacComCabCod Char(10) NOT NULL,
-  GuiRemRemNum Char(15),
-  GuiRemTraNum Char(15),
+  DevComNewFac Char(10),
   DevComDet Char(100),
   DevComFec Date NOT NULL,
   TipDevCod Int(2) ZEROFILL,
@@ -1071,28 +1081,27 @@ ALTER TABLE en_p2c_devolucion_compras ADD PRIMARY KEY (FacComCabCod)
 CREATE INDEX IX_Relationship82 ON en_p2c_devolucion_compras (TipDevCod)
 ;
 
-CREATE INDEX IX_Relationship86 ON en_p2c_devolucion_compras (GuiRemTraNum)
-;
-
-CREATE INDEX IX_Relationship88 ON en_p2c_devolucion_compras (GuiRemRemNum)
+CREATE INDEX IX_Relationship116 ON en_p2c_devolucion_compras (DevComNewFac)
 ;
 
 -- Table episerp.en_p1m_catalogo_ruta
 
 CREATE TABLE en_p1m_catalogo_ruta
 (
-  CatRutCod Int(2) ZEROFILL NOT NULL AUTO_INCREMENT,
+  CatRutCod Int(3) ZEROFILL NOT NULL,
   CatRutDet Char(90) NOT NULL,
-  EstRegCod Char(1) NOT NULL,
- PRIMARY KEY (CatRutCod)
+  EstRegCod Char(1) NOT NULL
 )
+;
+
+ALTER TABLE en_p1m_catalogo_ruta ADD PRIMARY KEY (CatRutCod)
 ;
 
 -- Table episerp.en_p1m_clientes_rutas
 
 CREATE TABLE en_p1m_clientes_rutas
 (
-  CatRutCod Int(2) ZEROFILL NOT NULL,
+  CatRutCod Int(3) ZEROFILL NOT NULL,
   CliCod Char(15) NOT NULL,
   CliRutDes Char(100) NOT NULL,
   EstRegCod Char(1) NOT NULL
@@ -1281,7 +1290,7 @@ ALTER TABLE en_p2m_unidad_transporte ADD CONSTRAINT Relationship70 FOREIGN KEY (
 ALTER TABLE en_p2m_guia_rem_remitente ADD CONSTRAINT Relationship71 FOREIGN KEY (MotTraCod) REFERENCES ta_gzz_motivo_traslado (MotTraCod) ON DELETE NO ACTION ON UPDATE NO ACTION
 ;
 
-ALTER TABLE en_p2m_guia_rem_remitente ADD CONSTRAINT Relationship72 FOREIGN KEY (TipDesCod) REFERENCES ta_gzz_tipo_destinatario (TipDesCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+ALTER TABLE en_p2m_guia_rem_remitente ADD CONSTRAINT Relationship72 FOREIGN KEY (TipDstCod) REFERENCES ta_gzz_tipo_destinatario (TipDstCod) ON DELETE NO ACTION ON UPDATE NO ACTION
 ;
 
 ALTER TABLE en_p2m_guia_rem_remitente ADD CONSTRAINT Relationship73 FOREIGN KEY (EmpCod) REFERENCES en_p1m_empresa (EmpCod) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -1296,7 +1305,7 @@ ALTER TABLE en_p2m_guia_rem_transportista ADD CONSTRAINT Relationship75 FOREIGN 
 ALTER TABLE en_p2m_guia_rem_transportista ADD CONSTRAINT Relationship76 FOREIGN KEY (EmpCod) REFERENCES en_p1m_empresa (EmpCod) ON DELETE NO ACTION ON UPDATE NO ACTION
 ;
 
-ALTER TABLE en_p2m_guia_rem_transportista ADD CONSTRAINT Relationship77 FOREIGN KEY (TipDesCod) REFERENCES ta_gzz_tipo_destinatario (TipDesCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+ALTER TABLE en_p2m_guia_rem_transportista ADD CONSTRAINT Relationship77 FOREIGN KEY (TipDstCod) REFERENCES ta_gzz_tipo_destinatario (TipDstCod) ON DELETE NO ACTION ON UPDATE NO ACTION
 ;
 
 ALTER TABLE en_p2m_inventario_cab ADD CONSTRAINT Relationship78 FOREIGN KEY (UsuCod) REFERENCES en_p1m_usuario (UsuCod) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -1312,18 +1321,6 @@ ALTER TABLE en_p1c_devolucion_ventas ADD CONSTRAINT Relationship81 FOREIGN KEY (
 ;
 
 ALTER TABLE en_p2c_devolucion_compras ADD CONSTRAINT Relationship82 FOREIGN KEY (TipDevCod) REFERENCES ta_gzz_tipo_devolucion (TipDevCod) ON DELETE NO ACTION ON UPDATE NO ACTION
-;
-
-ALTER TABLE en_p1c_devolucion_ventas ADD CONSTRAINT Relationship85 FOREIGN KEY (GuiRemTraNum) REFERENCES en_p2m_guia_rem_transportista (GuiRemTraNum) ON DELETE NO ACTION ON UPDATE NO ACTION
-;
-
-ALTER TABLE en_p2c_devolucion_compras ADD CONSTRAINT Relationship86 FOREIGN KEY (GuiRemTraNum) REFERENCES en_p2m_guia_rem_transportista (GuiRemTraNum) ON DELETE NO ACTION ON UPDATE NO ACTION
-;
-
-ALTER TABLE en_p1c_devolucion_ventas ADD CONSTRAINT Relationship87 FOREIGN KEY (GuiRemRemNum) REFERENCES en_p2m_guia_rem_remitente (GuiRemRemNum) ON DELETE NO ACTION ON UPDATE NO ACTION
-;
-
-ALTER TABLE en_p2c_devolucion_compras ADD CONSTRAINT Relationship88 FOREIGN KEY (GuiRemRemNum) REFERENCES en_p2m_guia_rem_remitente (GuiRemRemNum) ON DELETE NO ACTION ON UPDATE NO ACTION
 ;
 
 ALTER TABLE en_p1m_factura_venta_cab ADD CONSTRAINT Relationship91 FOREIGN KEY (TipDesCod) REFERENCES ta_gzz_tipo_descuento (TipDesCod) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -1372,6 +1369,15 @@ ALTER TABLE en_p3m_cuenta ADD CONSTRAINT Relationship111 FOREIGN KEY (CueAmaDeb)
 ;
 
 ALTER TABLE en_p3m_cuenta ADD CONSTRAINT Relationship113 FOREIGN KEY (CueAmaHab) REFERENCES en_p3m_cuenta (CueCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p2m_producto ADD CONSTRAINT Relationship114 FOREIGN KEY (AlmCod) REFERENCES en_p2m_almacen (AlmCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p1c_devolucion_ventas ADD CONSTRAINT Relationship115 FOREIGN KEY (DevVenNewFac) REFERENCES en_p1m_factura_venta_cab (FacVenCabCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p2c_devolucion_compras ADD CONSTRAINT Relationship116 FOREIGN KEY (DevComNewFac) REFERENCES en_p4m_factura_compra_cab (FacComCabCod) ON DELETE NO ACTION ON UPDATE NO ACTION
 ;
 
 

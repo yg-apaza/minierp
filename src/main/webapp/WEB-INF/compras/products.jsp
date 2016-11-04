@@ -1,5 +1,6 @@
 <%@ taglib tagdir="/WEB-INF/tags" prefix="minierptemplate" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix='cc' uri='http://java.sun.com/jsp/jstl/core' %>
 <minierptemplate:template>
     <jsp:attribute name="titulo">
         <title>Logística - Productos</title>
@@ -13,7 +14,9 @@
             </div>            
             <div class="row">
                 <div class="col-lg-7">
+                    <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addProduct"> Agregar nuevo <i class="fa fa-plus"></i></button>                
+                    </cc:if>
                 </div>
                 <div class=" col-lg-5">
                     <div class="col-lg-offset-4 col-lg-2">
@@ -41,30 +44,33 @@
                             <th>Código</th>
                             <th>Descripción</th>
                             <th>Estado</th>
+                            <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                             <th>Acciones</th>
+                            </cc:if>
                         </tr>
                     </thead>
                     <tbody>
-                        <c:forEach items="${productos}" var="p">
+                       <c:forEach items="${productos}" var="p">
                             <tr>
                                 <td width="150px">${p.enP2mSubclaseProducto.enP2mClaseProducto.claProDet}</td>
                                 <td width="200px">${p.enP2mSubclaseProducto.subClaProDet}</td>                                        
                                 <td width="100px">${p.id.proCod}</td>
                                 <td width="300px">${p.proDet}</td>
                                 <td class="text-center" width="50px">${p.estRegCod}</td>
+                                <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                                 <td class="text-center" width="50px">
                                     <a href="#" data-toggle="modal" data-target="#modifyProduct" 
                                        data-pCla="${p.id.claProCod}"
                                        data-pSub="${p.id.subClaProCod}"
                                        data-pCod="${p.id.proCod}"
                                        data-pDes="${p.proDet}"
-                                       data-pAlmCod="${p.enP2mAlmacen.almCod}"
+                                       
                                        data-pMonCod="${p.taGzzMoneda.monCod}"
                                        data-pUniMedCod="${p.taGzzUnidadMed.uniMedCod}"
                                        data-pProStkMax="${p.proStkMax}"
                                        data-pProStkMin="${p.proStkMin}"
                                        data-pVolUniAlm="${p.volUniAlm}"
-                                       data-pPreUni="${p.proPreUni}"
+                                       data-pPreUni="${p.proPreUniVen}"
                                        data-pObs="${p.proObs}"
                                        data-pEst="${p.estRegCod}"
                                        >
@@ -74,6 +80,7 @@
                                         <i class="fa fa-trash-o fa-2x" style="color: black;"></i>
                                     </a>
                                 </td>
+                                </cc:if>
                             </tr>
                         </c:forEach>
                     </tbody>
@@ -322,6 +329,9 @@
         <script language="javascript">
             $(document).ready(function () {
                 changingValues();
+                $('#tableSuppliers').DataTable({
+                    responsive: true
+                    });
             });
 
             function changingValues() {

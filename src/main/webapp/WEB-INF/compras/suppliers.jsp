@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="minierptemplate" %>
+<%@ taglib prefix='cc' uri='http://java.sun.com/jsp/jstl/core' %>
 <minierptemplate:template>
     <jsp:attribute name="titulo">
         <title>Logística - Proveedores</title>
@@ -15,7 +16,9 @@
             </div>
             <div class="row">
                 <div class="col-lg-7">
+                    <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                     <button type="button" data-toggle="modal" class="btn btn-success" id="addbtn" data-target="#addSupplier"> Agregar nuevo <i class="fa fa-plus"></i></button> 
+                    </cc:if>
                 </div>
                 <div class=" col-lg-5">
                     <div class="col-lg-offset-4 col-lg-2">
@@ -48,7 +51,9 @@
                                 <th style="text-align: center">Dirección</th>
                                 <th style="text-align: center">Celular</th>
                                 <th style="text-align: center">Email</th>
+                                <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                                 <th style="text-align: center">Acciones</th>
+                                </cc:if>
                             </tr>               
                         </thead>
                         <tbody>
@@ -59,6 +64,7 @@
                                     <td><c:out value="${proveedor.prvDir}"/></td>
                                     <td style="text-align: center"><c:out value="${proveedor.prvTelCel}"/></td>
                                     <td style="text-align: center"><c:out value="${proveedor.prvEmail}"/></td>
+                                    <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                                     <td>
                                         <a href="#" data-toggle="modal" data-target="#editSupplier" data-cod="${proveedor.prvCod}"
                                                                                                       data-det="${proveedor.prvDet}"
@@ -76,6 +82,7 @@
                                             <i class="fa fa-trash-o fa-2x" style="color: black;"></i>
                                         </a> 
                                     </td>
+                                    </cc:if>
                                 </tr>
                             </c:forEach>  
                         </tbody>
@@ -256,6 +263,10 @@
             </div>
         </div>
         <script>
+            $('#id_table').DataTable({
+                responsive: true
+            });
+            
             var updateModal = $("#editSupplier");
             var deleteModal = $("#deleteSupplier");
             
@@ -291,8 +302,8 @@
             });
             
             $.validator.addMethod("codePattern", function (value, element) {
-                return /^[0-9]{3}-[0-9]{6}$/.test(value);
-            }, "Patrón: [0-9]{3}-[0-9]{6}");
+                return /^[0-9]{11}$/.test(value);
+            }, "RUC: Debe tener 11 digitos");
             
             $("#addSupplierform").validate({
                 rules: {
@@ -312,7 +323,7 @@
                 },
                 messages: {
                     codPro: {
-                        required: "Ingrese codigo de Proveedor"
+                        required: "Ingrese RUC de Proveedor"
                     },
                     detPro: {
                         required: "Ingrese nombre de proveedor"

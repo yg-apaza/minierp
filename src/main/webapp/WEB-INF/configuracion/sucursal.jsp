@@ -12,36 +12,46 @@
 		<div class="row">
                     <div class="col-lg-12">
 			<h1 class="page-header"> Sucursales 
+                            <c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                             <a href="#" class="btn btn-success btn-circle" data-toggle="modal" data-target="#agregarModal"><i class="fa fa-plus"></i></a>
                             <a href="#" class="btn btn-info btn-circle" data-toggle="modal" data-target="#estadosModal"><i class="fa fa-eye"></i></a>
+                            </c:if>
                         </h1>
                     </div>        
 		</div>
                <div class="row">
                    <div class="col-lg-12">
                        <div class="table-responsive">
-                            <table class="table table-bordered table-striped table-hover" id="productTableM">
+                            <table class="table table-bordered table-striped table-hover" id="tablaSucursales">
+                                <thead>
                                     <tr>    
                                         <th> Código </th>
                                         <th>Descripción</th>
                                         <th>Dirección</th>
+                                        <c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                                         <th>Acciones </th>
+                                        </c:if>
                                     </tr>
+                                </thead>
+                                <tbody>
                                     <c:forEach items="${sucursales}" var="sucursales">
 
                                         <tr>
                                           <td value="${sucursales}"> ${sucursales.sucCod} </td> 
                                           <td value="${sucursales}"> ${sucursales.sucDes} </td> 
                                           <td value="${sucursales}"> ${sucursales.sucDir} </td>
+                                          <c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                                           <td class="text-left">
                                               <a href="#" data-toggle="modal" data-target="#modificarModal" data-cod="${sucursales.sucCod}" data-des="${sucursales.sucDes}" data-dir="${sucursales.sucDir}" >
                                                 <i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i> </a> 
                                               <a href="#" data-toggle="modal" data-target="#disableModal" data-cod="${sucursales.sucCod}" data-des="${sucursales.sucDes}" data-dir="${sucursales.sucDir}" >
                                                 <i class="fa fa-trash-o fa-2x" style="color: black;"></i> </a>                                   
                                            </td>
+                                          </c:if>
                                         </tr> 
 
-                                    </c:forEach>		
+                                    </c:forEach>
+                                </tbody>
                             </table>
                         </div>
                    </div>
@@ -125,7 +135,6 @@
                         <h4 class="modal-title">Reactivar o Eliminar Sucursal</h4>
                     </div>
                     <div class="modal-body">
-                        <div class="table-responsive">
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
@@ -155,7 +164,6 @@
                                     </c:forEach>
                                 </tbody>
                             </table>
-                        </div>  
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-outline btn-danger" data-dismiss="modal">Cancelar</button>
@@ -235,6 +243,9 @@
                 
                         
     <script>
+        $('#tablaSucursales').DataTable({
+            responsive: true
+        });
             var updateModal = $("#modificarModal");
             var deleteModal = $("#eliminarModal");
             var activeModal = $("#activeModal");

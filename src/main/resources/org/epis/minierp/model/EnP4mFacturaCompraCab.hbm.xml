@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 31/10/2016 01:37:17 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 02/11/2016 08:41:31 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="org.epis.minierp.model.EnP4mFacturaCompraCab" table="en_p4m_factura_compra_cab" catalog="episerp" optimistic-lock="version">
         <id name="facComCabCod" type="string">
@@ -35,8 +35,11 @@
         <many-to-one name="taGzzTipoPagoFactura" class="org.epis.minierp.model.TaGzzTipoPagoFactura" fetch="select">
             <column name="TipPagCod" not-null="true" />
         </many-to-one>
-        <property name="facComCabFec" type="date">
-            <column name="FacComCabFec" length="10" not-null="true" />
+        <property name="facComCabFecEmi" type="date">
+            <column name="FacComCabFecEmi" length="10" not-null="true" />
+        </property>
+        <property name="facComCabFecVen" type="date">
+            <column name="FacComCabFecVen" length="10" />
         </property>
         <property name="facComCabTot" type="double">
             <column name="FacComCabTot" precision="10" not-null="true" />
@@ -53,7 +56,13 @@
         <property name="estRegCod" type="char">
             <column name="EstRegCod" length="1" not-null="true" />
         </property>
-        <one-to-one name="enP2cDevolucionCompras" class="org.epis.minierp.model.EnP2cDevolucionCompras"></one-to-one>
+        <one-to-one name="enP2cDevolucionComprasByFacComCabCod" class="org.epis.minierp.model.EnP2cDevolucionCompras"></one-to-one>
+        <set name="enP2cDevolucionComprasesForDevComNewFac" table="en_p2c_devolucion_compras" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="DevComNewFac" length="10" />
+            </key>
+            <one-to-many class="org.epis.minierp.model.EnP2cDevolucionCompras" />
+        </set>
         <set name="enP4tFacturaCompraDets" table="en_p4t_factura_compra_det" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="FacComCabCod" length="10" not-null="true" />

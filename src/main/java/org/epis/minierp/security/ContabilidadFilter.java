@@ -34,7 +34,7 @@ public class ContabilidadFilter implements Filter
         else
         {
             EnP1mUsuario u = (EnP1mUsuario) session.getAttribute("usuario");
-            if(u.getTaGzzTipoUsuario().getTipUsuCod() == 1 || u.getTaGzzTipoUsuario().getTipUsuCod() == 4)
+            if(u.getTaGzzTipoUsuario().getTipUsuCod() == 1 || u.getTaGzzTipoUsuario().getTipUsuCod() == 4 || u.getTaGzzTipoUsuario().getTipUsuCod() == 5)
                 chain.doFilter(req, res);
             else
                 response.sendRedirect(request.getContextPath() + "/");

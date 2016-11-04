@@ -1,5 +1,5 @@
 package org.epis.minierp.model;
-// Generated 31/10/2016 01:37:15 AM by Hibernate Tools 4.3.1
+// Generated 02/11/2016 08:41:29 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -12,9 +12,11 @@ public class EnP2mProducto  implements java.io.Serializable {
 
 
      private EnP2mProductoId id;
+     private EnP2mAlmacen enP2mAlmacen;
      private EnP2mSubclaseProducto enP2mSubclaseProducto;
      private TaGzzMoneda taGzzMoneda;
      private TaGzzUnidadMed taGzzUnidadMed;
+     private String proCodBar;
      private String proDet;
      private double proPreUniVen;
      private Double proPreUniCom;
@@ -47,11 +49,13 @@ public class EnP2mProducto  implements java.io.Serializable {
         this.proObs = proObs;
         this.estRegCod = estRegCod;
     }
-    public EnP2mProducto(EnP2mProductoId id, EnP2mSubclaseProducto enP2mSubclaseProducto, TaGzzMoneda taGzzMoneda, TaGzzUnidadMed taGzzUnidadMed, String proDet, double proPreUniVen, Double proPreUniCom, double proStk, Double proStkRea, double proStkPreVen, Double volUniAlm, Double proStkMin, Double proStkMax, String proObs, char estRegCod, Set enP1tFacturaVentaDets, Set enP2tInventarioDets, Set enP1tPreventaDets, Set enP4tFacturaCompraDets) {
+    public EnP2mProducto(EnP2mProductoId id, EnP2mAlmacen enP2mAlmacen, EnP2mSubclaseProducto enP2mSubclaseProducto, TaGzzMoneda taGzzMoneda, TaGzzUnidadMed taGzzUnidadMed, String proCodBar, String proDet, double proPreUniVen, Double proPreUniCom, double proStk, Double proStkRea, double proStkPreVen, Double volUniAlm, Double proStkMin, Double proStkMax, String proObs, char estRegCod, Set enP1tFacturaVentaDets, Set enP2tInventarioDets, Set enP1tPreventaDets, Set enP4tFacturaCompraDets) {
        this.id = id;
+       this.enP2mAlmacen = enP2mAlmacen;
        this.enP2mSubclaseProducto = enP2mSubclaseProducto;
        this.taGzzMoneda = taGzzMoneda;
        this.taGzzUnidadMed = taGzzUnidadMed;
+       this.proCodBar = proCodBar;
        this.proDet = proDet;
        this.proPreUniVen = proPreUniVen;
        this.proPreUniCom = proPreUniCom;
@@ -76,6 +80,13 @@ public class EnP2mProducto  implements java.io.Serializable {
     public void setId(EnP2mProductoId id) {
         this.id = id;
     }
+    public EnP2mAlmacen getEnP2mAlmacen() {
+        return this.enP2mAlmacen;
+    }
+    
+    public void setEnP2mAlmacen(EnP2mAlmacen enP2mAlmacen) {
+        this.enP2mAlmacen = enP2mAlmacen;
+    }
     public EnP2mSubclaseProducto getEnP2mSubclaseProducto() {
         return this.enP2mSubclaseProducto;
     }
@@ -96,6 +107,13 @@ public class EnP2mProducto  implements java.io.Serializable {
     
     public void setTaGzzUnidadMed(TaGzzUnidadMed taGzzUnidadMed) {
         this.taGzzUnidadMed = taGzzUnidadMed;
+    }
+    public String getProCodBar() {
+        return this.proCodBar;
+    }
+    
+    public void setProCodBar(String proCodBar) {
+        this.proCodBar = proCodBar;
     }
     public String getProDet() {
         return this.proDet;

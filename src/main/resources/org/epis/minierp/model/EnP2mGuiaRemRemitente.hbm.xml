@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 31/10/2016 01:37:17 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 02/11/2016 08:41:31 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="org.epis.minierp.model.EnP2mGuiaRemRemitente" table="en_p2m_guia_rem_remitente" catalog="episerp" optimistic-lock="version">
         <id name="guiRemRemNum" type="string">
@@ -15,7 +15,7 @@
             <column name="MotTraCod" not-null="true" />
         </many-to-one>
         <many-to-one name="taGzzTipoDestinatario" class="org.epis.minierp.model.TaGzzTipoDestinatario" fetch="select">
-            <column name="TipDesCod" not-null="true" />
+            <column name="TipDstCod" not-null="true" />
         </many-to-one>
         <property name="guiRemRemDen" type="string">
             <column name="GuiRemRemDen" length="50" not-null="true" />
@@ -26,12 +26,6 @@
         <property name="estRegCod" type="char">
             <column name="EstRegCod" length="1" not-null="true" />
         </property>
-        <set name="enP1cDevolucionVentases" table="en_p1c_devolucion_ventas" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="GuiRemRemNum" length="15" />
-            </key>
-            <one-to-many class="org.epis.minierp.model.EnP1cDevolucionVentas" />
-        </set>
         <set name="enP1mFacturaVentaCabs" table="en_p1m_factura_venta_cab" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="GuiRemRemNum" length="15" />
@@ -43,12 +37,6 @@
                 <column name="GuiRemRemNum" length="15" />
             </key>
             <one-to-many class="org.epis.minierp.model.EnP4mFacturaCompraCab" />
-        </set>
-        <set name="enP2cDevolucionComprases" table="en_p2c_devolucion_compras" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="GuiRemRemNum" length="15" />
-            </key>
-            <one-to-many class="org.epis.minierp.model.EnP2cDevolucionCompras" />
         </set>
     </class>
 </hibernate-mapping>

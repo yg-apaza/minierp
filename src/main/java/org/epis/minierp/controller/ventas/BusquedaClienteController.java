@@ -5,6 +5,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import javax.servlet.ServletException;
@@ -12,10 +13,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.epis.minierp.dao.ventas.EnP1mClienteDao;
+import org.epis.minierp.dao.ventas.EnP1mClientesRutasDao;
 import org.epis.minierp.model.EnP1mCliente;
+import org.epis.minierp.model.EnP1mClientesRutas;
 
-public class BusquedaClienteController extends HttpServlet
-{
+public class BusquedaClienteController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
@@ -28,7 +30,7 @@ public class BusquedaClienteController extends HttpServlet
         switch(action) {
             case "tipo":
                 tipCliCod = Integer.parseInt(request.getParameter("tipCliCod"));
-                clientes = (new EnP1mClienteDao()).getByTipoCLiente(tipCliCod);
+                clientes = (new EnP1mClienteDao()).getByTipoCliente(tipCliCod);
                 data = new JsonObject();                
                 clients = new JsonArray();
                 
@@ -65,16 +67,16 @@ public class BusquedaClienteController extends HttpServlet
             case "tipoSearch":
                 tipCliCod = Integer.parseInt(request.getParameter("tipCliCod"));
                 String cliCod = request.getParameter("cliCod");
-                cliente = (new EnP1mClienteDao()).getById(cliCod);
-                Map <String, Object> client = new HashMap <String, Object>();
-                if(cliente != null) {
-                    client.put("cliCod", cliente.getCliCod());
-                    client.put("cliRazSoc", cliente.getCliRazSoc());
+                cliente = (new EnP1mClienteDao()).getByCodigoTipoCliente(tipCliCod,cliCod);   
+                data = new JsonObject(); 
+                if(cliente != null) {                    
+                    data.addProperty("cliCod", cliente.getCliCod());
+                    data.addProperty("cliRazSoc", cliente.getCliRazSoc());
                 }
                 
                 response.setContentType("application/json");
                 response.setCharacterEncoding("UTF-8");
-                response.getWriter().write(new Gson().toJson(client));
+                response.getWriter().write(new Gson().toJson(data));
                 break;
             
             case "desSearch":
@@ -87,15 +89,16 @@ public class BusquedaClienteController extends HttpServlet
                     cliente = (new EnP1mClienteDao()).getByNombreComercial(cliDes);
                 }
                                 
-                Map <String, Object> clientMap = new HashMap <String, Object>();
+                data = new JsonObject(); 
                 if(cliente != null) {
-                    clientMap.put("cliCod", cliente.getCliCod());
-                    clientMap.put("tipCliCod", cliente.getTaGzzTipoCliente().getTipCliCod());
+                    data.addProperty("cliCod", cliente.getCliCod());
+                    data.addProperty("cliRazSoc", cliente.getCliRazSoc());
+                    data.addProperty("tipCliCod",cliente.getTaGzzTipoCliente().getTipCliCod());                    
                 }
                 
                 response.setContentType("application/json");
                 response.setCharacterEncoding("UTF-8");
-                response.getWriter().write(new Gson().toJson(clientMap));
+                response.getWriter().write(new Gson().toJson(data));
                 break;
         }
     }

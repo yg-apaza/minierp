@@ -13,9 +13,10 @@
                 <input type="hidden" class="form-control" name="productsAmounts" id="proAmo">
                 <input type="hidden" class="form-control" name="productsCodes" id="proCodes">
                 <input type="hidden" class="form-control" name="productsPrices" id="proPrices">
+                <input class="hidden" type="text" name="cliCod" id="facCli">
                 <div class="row">
                     <div class="col-md-4">
-                        <br><h1 class="page-header"> Factura de Venta</h1>
+                        <br><h1 class="page-header">Factura de Venta</h1>
                     </div>
                     <div class="col-md-6 col-md-offset-2"><br>
                         <div class="col-md-8">
@@ -24,13 +25,12 @@
                                 <span class="input-group-addon"><i class="fa fa-child"></i></span>
                                 <input type="hidden" class="form-control" name="usuCod" value="${usuario.usuCod}" readonly>
                                 <input type="text" class="form-control" value="${usuario.usuCod} - ${usuario.usuNom}" readonly>
-                                
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group input-group">
                                 <span class="input-group-addon"><i class="fa fa-home"></i></span>
-                                <input type="text" class="form-control" value="${punto.id.sucCod}-${punto.id.punVenCod}" readonly>
+                                <input type="text" class="form-control" value="${punto.id.sucCod} - ${punto.id.punVenCod}" readonly>
                             </div>
                         </div>
                     </div>
@@ -45,45 +45,27 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group input-group">
-                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                    <span class="input-group-addon"><i class="fa fa-clipboard"></i></span>
                                                     <input type="text" class="form-control" name="facVenCabCod" placeholder="Número de Factura">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group input-group" >
+                                                    <span class="input-group-addon">Emisión</span>
+                                                    <input type="date" class="form-control" name="facVenCabFecEmi">
                                                     <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                    <input type="date" class="form-control" name="facVenCabFec">
                                                 </div>
-                                            </div>
+                                            </div>  
                                         </div>
                                         <div class="row">
-                                            <div class="col-md-12">
+                                            <div class="col-md-6">
                                                 <div class="form-group input-group" >
-                                                    <input class="hidden" type="text" name="cliCod" id="facCli">
-                                                    <span class="input-group-addon">Cliente</span>
-                                                    <select class="form-control" id="tipoClienteCode" disabled>
-                                                        <c:forEach items="${tiposCliente}" var="tipoCliente">
-                                                            <option value="${tipoCliente.tipCliCod}">${tipoCliente.tipCliDet}</option>
-                                                        </c:forEach>
-                                                    </select> 
-                                                    <input class="form-control" type="text" id="cliCodShow" placeholder="Código" readOnly>
-                                                    <span class="input-group-addon" onclick="changeClientIcon()"><i class="fa" id="iconClientCriteria"></i></span>
-                                                    <select class="form-control" id="desClienteCode" disabled>
-                                                        <option value="1">Razón Social</option>
-                                                        <option value="2">Nombre Comercial</option>
-                                                    </select> 
-                                                    <input class="form-control" type="text" id="cliDesShow" placeholder="Descripción" readOnly>
-                                                </div>                                                
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-3">
-                                                <div class="form-group input-group" >
-                                                    <span class="input-group-addon">IGV</span>
-                                                    <input type="number" class="form-control" name="facVenCabIgv" value="${empresa.empIgv}" id="facIgv" readOnly>
+                                                    <span class="input-group-addon">Vencimiento</span>
+                                                    <input type="date" class="form-control" name="facVenCabFecVen">
+                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                                                 </div>
                                             </div>
-                                            <div class="col-md-5">
+                                            <div class="col-md-6">
                                                 <div class="form-group input-group" >
                                                     <span class="input-group-addon">Moneda</i></span>
                                                     <select class="form-control" name="monCod">
@@ -94,19 +76,27 @@
                                                     <span class="input-group-addon"><i class="fa fa-money"></i></span>
                                                 </div>
                                             </div>
-                                            <div class="col-md-4">
-                                                <div class="form-group input-group" >
-                                                    <span class="input-group-addon">Ruta</i></span>
-                                                    <select class="form-control" name="monCod">
-                                                        <c:forEach items="${monedas}" var="moneda">
-                                                            <option value="${moneda.monCod}">${moneda.monDet}</option>
-                                                        </c:forEach>
-                                                    </select>
-                                                    <span class="input-group-addon"><i class="fa fa-money"></i></span>
-                                                </div>
-                                            </div>
                                         </div>
                                         <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group input-group" >                                                    
+                                                    <span class="input-group-addon">Cliente</span>
+                                                    <select class="form-control" id="desClienteCode" disabled>
+                                                        <option value="1">Razón Social</option>
+                                                        <option value="2">Nombre Comercial</option>
+                                                    </select> 
+                                                    <input class="form-control" type="text" id="cliDesShow" placeholder="Descripción" readOnly>
+                                                    <span class="input-group-addon" onclick="changeClientIcon()"><i class="fa" id="iconClientCriteria"></i></span>
+                                                    <select class="form-control" id="tipoClienteCode" disabled>
+                                                        <c:forEach items="${tiposCliente}" var="tipoCliente">
+                                                            <option value="${tipoCliente.tipCliCod}">${tipoCliente.tipCliDet}</option>
+                                                        </c:forEach>
+                                                    </select> 
+                                                    <input class="form-control" type="text" id="cliCodShow" placeholder="Código" readOnly>
+                                                </div>                                                
+                                            </div>
+                                        </div>
+                                        <div class="row">                                            
                                             <div class="col-md-6">
                                                 <div class="form-group input-group" >
                                                     <span class="input-group-addon">Método de Pago</span>
@@ -133,7 +123,7 @@
                                     </div>
                                     <div class="col-xs-12 col-md-3">
                                         <textarea class="form-control" rows="10" name="facVenCabObs" placeholder="Observaciones"></textarea>
-                                    </div>
+                                    </div>                                    
                                 </div>
                             </div>
                             <div class="panel-body">
@@ -144,15 +134,16 @@
                                             <div class="col-md-7">
                                                 <div class="form-group input-group" >
                                                     <span class="input-group-addon">Producto</span>
-                                                    <input class="form-control" type="text" name="proCod" id="proCodShow" placeholder="Código" size="60" readOnly>
+                                                    <input class="form-control" type="text" name="proDes" id="proDesShow" placeholder="Descripción" size="100" readOnly>                                                    
                                                     <span class="input-group-addon" onclick="changeIcon()"><i class="fa" id="iconCriteria"></i></span>
-                                                    <input class="form-control" type="text" name="proDes" id="proDesShow" placeholder="Descripción" size="100" readOnly>
+                                                    <input class="form-control" type="text" name="proCod" id="proCodShow" placeholder="Código" size="60" readOnly>
                                                 </div>
                                             </div>
                                             <div class="col-md-2">
                                                 <div class="form-group input-group" >
                                                     <span class="input-group-addon"><i class="fa fa-money"></i></span>
-                                                    <input type="number" class="form-control" id="priceShow" readOnly>                                                    
+                                                    <input type="number" class="form-control" id="priceShow" readOnly>        
+                                                    <input type="hidden" class="form-control" id="unitShow" readOnly>     
                                                 </div>
                                             </div>
                                             <div class="col-md-2">
@@ -173,7 +164,7 @@
                                             <tr >
                                                 <th>Código</th>
                                                 <th>Cantidad</th>
-                                                <th>Descripción del Producto</th>
+                                                <th colspan="2">Descripción del Producto</th>
                                                 <th colspan="2">Precio Unitario</th>
                                             </tr>
                                         </thead>
@@ -181,33 +172,31 @@
                                         </tbody>
                                     </table>
                                 </div>
-                                <input type="hidden" class="form-control" name="productsAmounts" id="proAmo">
-                                <input type="hidden" class="form-control" name="productsDescriptions" id="proDes">
                                 <div class="row">
-                                    <div class="col-md-3">
+                                    <div class="col-md-6">
+                                        <div class="form-group input-group" >
+                                            <span class="input-group-addon">Tipo Descuento</i></span>
+                                            <select class="form-control" name="tipDesCod" id="selectDiscount">
+                                                <c:forEach items="${tiposDescuentos}" var="tipoDescuentos">
+                                                    <option value="${tipoDescuentos.tipDesCod}">${tipoDescuentos.tipDesDet}</option>
+                                                </c:forEach>
+                                            </select> 
+                                            <span class="input-group-addon">Valor (%)</i></span>
+                                            <input type="number" class="form-control" id="tipDesVal" readonly>
+                                            <span class="input-group-addon"><i class="fa fa-sort-amount-asc"></i></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">                                        
+                                        <div class="form-group input-group" >
+                                            <span class="input-group-addon">IGV</span>
+                                            <input type="number" class="form-control" name="facVenCabIgv" value="${empresa.empIgv}" id="facIgv" readOnly>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">      
                                         <div class="form-group input-group" >
                                             <span class="input-group-addon">SubTotal + IGV</span>
                                             <input type="number" class="form-control" name="facVenCabSubTot" id="facSub" value="0" readonly>
                                             <span class="input-group-addon"><i class="fa fa-usd"></i></span>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="form-group input-group" >
-                                            <span class="input-group-addon">Descuento</span>
-                                            <input type="number" class="form-control" name="facVenCabDes" min="0" step="any" value="0" id="facDes">
-                                            <span class="input-group-addon"><i class="fa fa-sort-amount-asc"></i></span>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group input-group" >
-                                            <span class="input-group-addon">Tipo Descuento</i></span>
-                                            <select class="form-control" name="metPagCod">
-                                                <c:forEach items="${metodosPagoFactura}" var="metodoPagoFactura">
-                                                    <option value="${metodoPagoFactura.metPagCod}">${metodoPagoFactura.metPagDet}</option>
-                                                </c:forEach>
-                                            </select> 
-                                            <span class="input-group-addon">Valor</i></span>
-                                            <input type="number" class="form-control" name="facVenCabTot" id="facTot" readonly>
                                         </div>
                                     </div>
                                 </div>
@@ -246,27 +235,26 @@
             </div>
         </div>
         <script language="javascript">
-            var codeCriteria = true;
-            var codeClientCriteria = true;
+            var codeCriteria = false;
+            var codeClientCriteria = false;
             var productCodes = new Array();
             var productDescriptions = new Array();
+            var discounts = new Array();
             
             <c:forEach items="${productos}" var="p" varStatus="loop">
                 productCodes.push("${p.id.claProCod}-${p.id.subClaProCod}-${p.id.proCod}");
                 productDescriptions.push("${p.proDet}");
             </c:forEach>
             
-            $(document).ready(function () {
-                changeClientCode();
-            });
+            <c:forEach items="${tiposDescuentos}" var="t" varStatus="loop">
+                discounts.push("${t.tipDesPor}");
+            </c:forEach>
             
             $(document).ready(function () {
-                $("#facDes").change(function () {
-                    var total = (Number($('#facSub').val()) - Number($('#facDes').val())).toFixed(2)
-                    $('#facTot').val(total);
-                });
+                changeClientDescription();
+                changeDiscount();
             });
-
+            
             $(document).ready(function () {
                 $("#productTable").on('click', '.btnDelete', function () {
                     $(this).closest('tr').remove();
@@ -276,18 +264,18 @@
 
             $(document).ready(function () {
                 $("#iconCriteria").addClass("fa-chevron-left");
-                $('#proCodShow').attr('readOnly', false);
-                $('#proDesShow').attr('readOnly', true);     
+                $('#proCodShow').attr('readOnly', true);
+                $('#proDesShow').attr('readOnly', false);     
                 $("#iconClientCriteria").addClass("fa-chevron-left");
-                $('#cliCodShow').attr('readOnly', false);
-                $("#tipoClienteCode").prop('disabled', false);
-                $('#cliDesShow').attr('readOnly', true); 
-                $("#desClienteCode").prop('disabled', true);
+                $('#cliCodShow').attr('readOnly', true);
+                $("#tipoClienteCode").prop('disabled', true);
+                $('#cliDesShow').attr('readOnly', false); 
+                $("#desClienteCode").prop('disabled', false);
             });
             
             $(document).ready(function () {
                 $('#addDetail').on('click', function () {
-                    if ($('#proCodShow').val() == "Desconocido" || $('#proDesShow').val() == "Desconocido") {
+                    if ($('#proCodShow').val() == "Desconocido" || $('#proCodShow').val() == "" || $('#proDesShow').val() == "Desconocido" || $('#proDesShow').val() == "")  {
                         $("#errorMessage").text("Producto Desconocido. Ingrese un producto disponible");
                         $('#errorMessageModal').modal('show');
                     } else if (!$('input[name="canPro"]').valid()) {
@@ -306,11 +294,16 @@
                         });
 
                         if (finalValidation) {
-                            $('#productTable tbody').append('<tr align="center"><td width="20%"></td><td width="10%"></td><td width="55%"></td><td width="10%"></td><td width="5%"><button type="button" class="btnDelete btn btn-danger")><i class="fa fa-trash-o fa-1x"></i></button></td></tr>');
+                            $('#productTable tbody').append('<tr align="center"><td width="20%"></td><td width="10%"></td><td width="40%"></td><td width="15%"></td><td width="10%"></td><td width="5%"><button type="button" class="btnDelete btn btn-danger")><i class="fa fa-trash-o fa-1x"></i></button></td></tr>');
                             $('#productTable tr:last td:eq(0)').html($("#proCodShow").val());
                             $('#productTable tr:last td:eq(1)').html($("#amountShow").val());
                             $('#productTable tr:last td:eq(2)').html($("#proDesShow").val());
-                            $('#productTable tr:last td:eq(3)').html($("#priceShow").val());
+                            $('#productTable tr:last td:eq(3)').html($("#unitShow").val());
+                            $('#productTable tr:last td:eq(4)').html($("#priceShow").val());
+                            $('#proDesShow').val("");
+                            $('#proCodShow').val("");
+                            $('#priceShow').val("");
+                            $('#amountShow').val(0);
                             updateAll();
                         }
                     }
@@ -323,6 +316,11 @@
                 return /^[0-9]{3}-[0-9]{6}$/.test(value);
             }, "Patrón: [0-9]{3}-[0-9]{6}");
             
+            $.validator.addMethod("verifiedValue", function (value, element) {
+                console.log(value);
+                return value != "";
+            }, "Ingrese datos correctos");
+            
             function updateAll() {
                 var productsCodes = new Array();
                 var amounts = new Array();
@@ -331,15 +329,15 @@
                 $("#productTable tbody tr").each(function () {
                     productsCodes.push($(this)[0].childNodes[0].textContent);
                     amounts.push($(this)[0].childNodes[1].textContent);
-                    prices.push($(this)[0].childNodes[3].textContent);
-                    subTotal += Number($(this)[0].childNodes[1].textContent) * Number($(this)[0].childNodes[3].textContent);
+                    prices.push($(this)[0].childNodes[4].textContent);
+                    subTotal += Number($(this)[0].childNodes[1].textContent) * Number($(this)[0].childNodes[4].textContent);
                 });
                 $('#proCodes').val(productsCodes);
                 $('#proAmo').val(amounts);
                 $('#proPrices').val(prices);
                 subTotal = (subTotal * (1 + Number($('#facIgv').val() / 100))).toFixed(2);
                 $('#facSub').val(subTotal);
-                var total = (subTotal - Number($('#facDes').val())).toFixed(2);
+                var total = ((1 - Number($('#tipDesVal').val() / 100))*subTotal).toFixed(2);
                 $('#facTot').val(total);
 
                 if ($("#productTable tr").length > 1) {
@@ -353,33 +351,28 @@
                 if(codeCriteria) {
                     $('#iconCriteria').removeClass("fa-chevron-left").addClass("fa-chevron-right");
                     $('#proDesShow').attr('readOnly', false);
-                    $('#proCodShow').attr('readOnly', true);
-                    $('#proCodShow').val("");
-                    $('#proDesShow').val("");
-                    $('#priceShow').val("");
-                    $('#amountShow').val(0);
+                    $('#proCodShow').attr('readOnly', true);                    
                     codeCriteria = false;
                 } else {
                     $('#iconCriteria').removeClass("fa-chevron-right").addClass("fa-chevron-left");
                     $('#proCodShow').attr('readOnly', false);
                     $('#proDesShow').attr('readOnly', true);
-                    $('#proDesShow').val("");
-                    $('#proCodShow').val("");
-                    $('#priceShow').val("");
-                    $('#amountShow').val(0);
                     codeCriteria = true;
                 }
+                
+                $('#proDesShow').val("");
+                $('#proCodShow').val("");
+                $('#priceShow').val("");
+                $('#amountShow').val(0);
             }
             
-            function changeClientIcon() {
+            function changeClientIcon() {                
                 if(codeClientCriteria) {
                     $('#iconClientCriteria').removeClass("fa-chevron-left").addClass("fa-chevron-right");
                     $('#cliCodShow').attr('readOnly', true);
                     $("#tipoClienteCode").prop('disabled', true);
                     $('#cliDesShow').attr('readOnly', false); 
                     $("#desClienteCode").prop('disabled', false);
-                    $('#cliCodShow').val("");
-                    $('#cliDesShow').val("");
                     codeClientCriteria = false;
                     changeClientDescription();
                 } else {
@@ -388,17 +381,18 @@
                     $("#tipoClienteCode").prop('disabled', false);
                     $('#cliDesShow').attr('readOnly', true); 
                     $("#desClienteCode").prop('disabled', true);
-                    $("#desClienteCode").val("1");
-                    $('#cliCodShow').val("");
-                    $('#cliDesShow').val("");
+                    $("#desClienteCode").val("1");                    
                     codeClientCriteria = true;
                     changeClientCode();
                 }
+                
+                $('#cliCodShow').val("");
+                $('#cliDesShow').val("");
             }
             
             function changeClientCode() {
                 $.post(
-                        "${pageContext.request.contextPath}/secured/ventas/searchSupplier", {
+                        "${pageContext.request.contextPath}/secured/ventas/searchClient", {
                             action: "tipo",
                             tipCliCod: $("#tipoClienteCode").val()
                         }
@@ -418,7 +412,7 @@
             
             function changeClientDescription() {
                 $.post(
-                        "${pageContext.request.contextPath}/secured/ventas/searchSupplier", {
+                        "${pageContext.request.contextPath}/secured/ventas/searchClient", {
                             action: "descripcion"
                         }
                     ).done(function (data) {
@@ -445,6 +439,17 @@
                         }                        
                     });
             } 
+            
+            function changeDiscount() {
+                var index = $("#selectDiscount option:selected").index();
+                $('#tipDesVal').val(discounts[index]);
+                var total = ((1 - Number($('#tipDesVal').val() / 100))*Number($('#facSub').val())).toFixed(2);
+                $('#facTot').val(total);
+            }
+            
+            $('#selectDiscount').on('change', function() {
+                changeDiscount();
+            });
             
             $('#tipoClienteCode').on('change', function() {
                 changeClientCode();
@@ -478,6 +483,7 @@
                                 $("#proDesShow").val(data.proDet);
                                 $("#priceShow").val(data.proPreUni);
                                 $('#amountShow')[0].max = data.proStk;
+                                $('#unitShow').val(data.proUnit);
                             }
                             else {
                                 $("#proDesShow").val("Desconocido");
@@ -498,6 +504,7 @@
                                 $("#proCodShow").val(data.proCod);
                                 $("#priceShow").val(data.proPreUni);
                                 $('#amountShow')[0].max = data.proStk;
+                                $('#unitShow').val(data.proUnit);
                             }
                             else {
                                 $("#proCodShow").val("Desconocido");
@@ -507,62 +514,61 @@
             });
 
             $('#cliCodShow').keyup(function () {
-                $.post(
-                        "${pageContext.request.contextPath}/secured/ventas/searchSupplier", {
-                            action: "tipoSearch",
-                            tipCliCod: $("#tipoClienteCode").val(),
-                            cliCod: $("#cliCodShow").val()
-                        }
-                    ).done(function (client) {
-                            if(client.cliCod != null) {
-                                $("#facCli").val(client.cliCod);
-                                $("#cliDesShow").val(client.cliRazSoc);                               
-                            } else {
-                                $("#cliDesShow").val("Desconocido");
+                if(codeClientCriteria) {
+                    $.post(
+                            "${pageContext.request.contextPath}/secured/ventas/searchClient", {
+                                action: "tipoSearch",
+                                tipCliCod: $("#tipoClienteCode").val(),
+                                cliCod: $("#cliCodShow").val()
                             }
-                        });
+                        ).done(function (data) {
+                                if(data.cliCod != null) {
+                                    $("#facCli").val(data.cliCod);
+                                    $("#cliDesShow").val(data.cliRazSoc);                                      
+                                } else {
+                                    $("#facCli").val("");
+                                    $("#cliDesShow").val("Desconocido");
+                                }
+                            });
+                }
             });    
             
             $('#cliDesShow').keyup(function () {
-                $.post(
-                        "${pageContext.request.contextPath}/secured/ventas/searchSupplier", {
-                            action: "desSearch",
-                            tipCliDes: $("#desClienteCode").val(),
-                            cliDes: $("#cliDesShow").val()
-                        }
-                    ).done(function (clientMap) {
-                            if(clientMap.cliCod != null) {
-                                $("#facCli").val(clientMap.cliCod);
-                                $("#cliCodShow").val(clientMap.cliCod);    
-                                $("#tipoClienteCode").val(clientMap.tipCliCod);
-                            } else {
-                                $("#cliCodShow").val("Desconocido");
+                if(!codeClientCriteria) {
+                    $.post(
+                            "${pageContext.request.contextPath}/secured/ventas/searchClient", {
+                                action: "desSearch",
+                                tipCliDes: $("#desClienteCode").val(),
+                                cliDes: $("#cliDesShow").val()
                             }
-                        });
+                        ).done(function (data) {
+                                if(data.cliCod != null) {
+                                    $("#facCli").val(data.cliCod);
+                                    $("#cliCodShow").val(data.cliCod);    
+                                    $("#tipoClienteCode").val(data.tipCliCod);                                    
+                                } else {
+                                    $("#facCli").val("");
+                                    $("#cliCodShow").val("Desconocido");
+                                }
+                            });
+                }
             });  
             
             $("#registerBill").validate({
+                ignore: "",
                 rules: {
                     facVenCabCod: {
                         required: true,
                         codePattern: true
                     },
                     cliCod: {
-                        required: true,
-                        digits: true,
-                        minlength: "8",
-                        maxlength: "11"
+                        verifiedValue: true,
+                        required: true
+                    }, 
+                    facVenCabFecEmi: {
+                        required: true
                     },
-                    cliNom: {
-                        required: true,
-                    },
-                    cliApePat: {
-                        required: true,
-                    },
-                    cliApeMat: {
-                        required: true,
-                    },
-                    facVenCabFec: {
+                    facVenCabFecVen: {
                         required: true
                     }
                 },
@@ -571,21 +577,12 @@
                         required: "Ingrese el código de la factura"
                     },
                     cliCod: {
-                        required: "Ingrese código de cliente",
-                        digits: "Ingresar solo dígitos",
-                        minlength: "Mínimo 8 digitos",
-                        maxlength: "Máximo 11 digitos"
+                        required: "Ingrese cliente válido",
                     },
-                    cliNom: {
-                        required: "Ingrese nombre de cliente"
+                    facVenCabFecEmi: {
+                        required: "Seleccione una fecha"
                     },
-                    cliApePat: {
-                        required: "Ingrese apellido paterno"
-                    },
-                    cliApeMat: {
-                        required: "Ingrese apellido materno"
-                    },
-                    facVenCabFec: {
+                    facVenCabFecVen: {
                         required: "Seleccione una fecha"
                     }
                 },

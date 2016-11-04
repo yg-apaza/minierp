@@ -1,5 +1,5 @@
 package org.epis.minierp.model;
-// Generated 31/10/2016 01:37:15 AM by Hibernate Tools 4.3.1
+// Generated 02/11/2016 08:41:29 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -11,8 +11,8 @@ import java.util.Set;
 public class TaGzzTipoDestinatario  implements java.io.Serializable {
 
 
-     private Integer tipDesCod;
-     private String tipDesDet;
+     private Integer tipDstCod;
+     private String tipDstDet;
      private Character estRegCod;
      private Set enP2mGuiaRemRemitentes = new HashSet(0);
      private Set enP2mGuiaRemTransportistas = new HashSet(0);
@@ -21,29 +21,29 @@ public class TaGzzTipoDestinatario  implements java.io.Serializable {
     }
 
 	
-    public TaGzzTipoDestinatario(String tipDesDet) {
-        this.tipDesDet = tipDesDet;
+    public TaGzzTipoDestinatario(String tipDstDet) {
+        this.tipDstDet = tipDstDet;
     }
-    public TaGzzTipoDestinatario(String tipDesDet, Character estRegCod, Set enP2mGuiaRemRemitentes, Set enP2mGuiaRemTransportistas) {
-       this.tipDesDet = tipDesDet;
+    public TaGzzTipoDestinatario(String tipDstDet, Character estRegCod, Set enP2mGuiaRemRemitentes, Set enP2mGuiaRemTransportistas) {
+       this.tipDstDet = tipDstDet;
        this.estRegCod = estRegCod;
        this.enP2mGuiaRemRemitentes = enP2mGuiaRemRemitentes;
        this.enP2mGuiaRemTransportistas = enP2mGuiaRemTransportistas;
     }
    
-    public Integer getTipDesCod() {
-        return this.tipDesCod;
+    public Integer getTipDstCod() {
+        return this.tipDstCod;
     }
     
-    public void setTipDesCod(Integer tipDesCod) {
-        this.tipDesCod = tipDesCod;
+    public void setTipDstCod(Integer tipDstCod) {
+        this.tipDstCod = tipDstCod;
     }
-    public String getTipDesDet() {
-        return this.tipDesDet;
+    public String getTipDstDet() {
+        return this.tipDstDet;
     }
     
-    public void setTipDesDet(String tipDesDet) {
-        this.tipDesDet = tipDesDet;
+    public void setTipDstDet(String tipDstDet) {
+        this.tipDstDet = tipDstDet;
     }
     public Character getEstRegCod() {
         return this.estRegCod;

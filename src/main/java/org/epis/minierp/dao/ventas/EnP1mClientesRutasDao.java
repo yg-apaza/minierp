@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.epis.minierp.dao.ventas;
 
 import java.util.List;
@@ -13,10 +8,6 @@ import org.hibernate.ObjectNotFoundException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-/**
- *
- * @author Christian
- */
 public class EnP1mClientesRutasDao {
     
     private Session session;
@@ -54,9 +45,9 @@ public class EnP1mClientesRutasDao {
     }
     
     public List<EnP1mClientesRutas> getRutas4CliCod(String cliCod){
-        Query query = session.createQuery("from EnP1mClientesRutas E where E.cliCod = '" + cliCod + "'");
-        List<EnP1mClientesRutas> estados = query.list();
-        System.out.println(estados);
+        Query query = session.createQuery("from EnP1mClientesRutas C where C.enP1mCliente.cliCod = :id and C.estRegCod = 'A'");
+        query.setParameter("id", cliCod);
+        List <EnP1mClientesRutas> estados = query.list();
         return estados;
     }
     

@@ -3,13 +3,15 @@
 <%@ taglib tagdir="/WEB-INF/tags" prefix="minierptemplate" %>
 <minierptemplate:template>
     <jsp:attribute name="titulo">
-        <title>MiniERP - Puntos de Venta</title>
+        <title>Puntos de Venta</title>
     </jsp:attribute>
     <jsp:attribute name="contenido">
         <div class="panel-body">
             <h1 class="page-header">Documentos de los Usuarios
+                <c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                 <a href="#" class="btn btn-success btn-circle" data-toggle="modal" data-target="#agregarModal"><i class="fa fa-plus"></i></a>
                 <a href="#" class="btn btn-info btn-circle" data-toggle="modal" data-target="#estadosModal"><i class="fa fa-eye"></i></a>
+                </c:if>
             </h1>  
             <!--
             <div class="row">
@@ -32,7 +34,7 @@
             <br>-->
             <div class="col-md-12">
                 <div class="table-responsive">
-                    <table class="table table-bordered table-striped table-hover">
+                    <table class="table table-bordered table-striped table-hover" id="tablaDocUsuarios">
                         <thead>
                             <tr>
                                 <th>Cod Usuario</th>
@@ -40,7 +42,9 @@
                                 <th>Tipo de Documento</th>
                                 <th>Numero de Documento</th>
                                 <th>Registro</th>
+                                <c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                                 <th class="text-right">Acciones</th>
+                                </c:if>
                             </tr>
                         </thead>
                         <tbody>
@@ -51,6 +55,7 @@
                                     <td>${docusu.id.tipDocUsuCod} - ${docusu.taGzzTipoDocUsuario.tipDocUsuDet}</td>
                                     <td>${docusu.docUsuNum}</td>
                                     <td>${docusu.estRegCod}</td>
+                                    <c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                                     <td class="text-right">
                                         <a href="#" data-toggle="modal" data-target="#modificarModal" 
                                            data-usucod="${docusu.id.usuCod}" data-tipdocusucod="${docusu.id.tipDocUsuCod}" data-docusunum="${docusu.docUsuNum}" 
@@ -65,6 +70,7 @@
                                             <i class="fa fa-trash-o fa-2x" style="color: black;"></i>
                                         </a>
                                     </td>
+                                    </c:if>
                                 </tr>
                             </c:forEach>
                         </tbody>
@@ -273,6 +279,9 @@
 
 
         <script>
+            $('#tablaDocUsuarios').DataTable({
+                responsive: true
+            });
             var updateModal = $("#modificarModal");
             var disableModal = $("#disableModal");
             var activateModal = $("#activateModal");

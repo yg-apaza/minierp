@@ -24,7 +24,9 @@
                                         <tr>
                                             <th>Número</th>
                                             <th>Descripción</th>
+                                            <c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                                             <th class="text-right">Acciones</th>
+                                            </c:if>
                                         </tr>
                                     </thead>
                                     <tbody>

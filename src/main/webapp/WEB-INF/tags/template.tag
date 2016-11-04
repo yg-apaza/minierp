@@ -14,6 +14,7 @@
         <link href="${pageContext.request.contextPath}/css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <link href="${pageContext.request.contextPath}/css/jquery-ui.min.css" rel="stylesheet" type="text/css">
         <link href="${pageContext.request.contextPath}/css/select2.css" rel="stylesheet" type="text/css">
+        <link href="${pageContext.request.contextPath}/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
         <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
         <script src="${pageContext.request.contextPath}/js/moment.min.js"></script>
         <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
@@ -27,6 +28,8 @@
         <script src="${pageContext.request.contextPath}/js/metisMenu.min.js"></script>
         <script src="${pageContext.request.contextPath}/js/sb-admin-2.min.js"></script>
         <script src="${pageContext.request.contextPath}/js/select2.min.js"></script>
+        <script src="${pageContext.request.contextPath}/js/jquery.dataTables.min.js"></script>
+            
         <link rel="shortcut icon" href="${pageContext.request.contextPath}/favicon.ico" />
         <jsp:invoke fragment="titulo"/>
     </head>
@@ -57,7 +60,7 @@
                         <i class="fa fa-sign-out" aria-hidden="true"></i> Salir
                     </a></li>
                 </ul>
-                    
+                         
                 <div class="navbar-default sidebar" role="navigation">
                     <div class="sidebar-nav navbar-collapse">
                         <ul class="nav" id="side-menu">
@@ -70,11 +73,11 @@
                                     </button>
                                 </span>
                                 </div>
-                            </li>
+                            </li>                         
                             <li>
                                 <a href="${pageContext.request.contextPath}/"><i class="fa fa-home fa-fw"></i> Inicio</a>
                             </li>
-                            <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()==1 || sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()==3}">
+                            <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()==1 || sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()==3 || sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()==5}">
                             <li>
                                 <a href="#"><i class="fa fa-truck fa-fw"></i> Logística<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
@@ -115,18 +118,17 @@
                                 </ul>
                             </li>
                             </cc:if>
-                            <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()==1 || sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()==2}">
+                            <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()==1 || sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()==2 || sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()==5 || sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()==6}">
                             <li>
                                 <a href="#"><i class="fa fa-cart-arrow-down fa-fw"></i> Ventas<span class="fa arrow"></span></a>
-                                <ul class="nav nav-second-level">     
+                                <ul class="nav nav-second-level">  
+                                    
                                     <li>
                                         <a href="${pageContext.request.contextPath}/secured/ventas/factura">Factura de Venta</a>
                                     </li>
+                                    <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=6}">
                                     <li>
                                         <a href="${pageContext.request.contextPath}/secured/ventas/preventa">Preventa</a>
-                                    </li>
-                                    <li>
-                                        <a href="${pageContext.request.contextPath}/secured/ventas/preventa/addPreventa">Agregar Preventa</a>
                                     </li>
                                     <li>
                                         <a href="${pageContext.request.contextPath}/secured/ventas/clientes">Clientes</a>
@@ -134,10 +136,11 @@
                                     <li>
                                         <a href="${pageContext.request.contextPath}/secured/ventas/pagos">Pagos y Cuotas</a>
                                     </li>
+                                    </cc:if>
                                 </ul>
                             </li>
                             </cc:if>
-                            <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()==1 || sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()==4}">
+                            <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()==1 || sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()==4 || sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()==5}">
                             <li>
                                 <a href="#"><i class="fa fa-book fa-fw"></i> Contabilidad<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
@@ -179,7 +182,7 @@
                                 </ul>
                             </li>
                             </cc:if>
-                            <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()==1}">
+                            <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()==1 || sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()==5}">
                             <li>
                                 <a href="#"><i class="fa fa-gears fa-fw"></i> Configuraciones<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
@@ -200,6 +203,9 @@
                                     </li>
                                     <li>
                                         <a href="${pageContext.request.contextPath}/secured/configuracion/datosEmpresa">Datos de la empresa</a>
+                                    </li>
+                                    <li>
+                                        <a href="${pageContext.request.contextPath}/secured/configuracion/catalogoRutas">Catalogo de Rutas</a>
                                     </li>
                                 </ul>
                             </li>

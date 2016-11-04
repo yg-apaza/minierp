@@ -10,8 +10,10 @@
     <jsp:attribute name="contenido">
         <div class="panel-body">
             <h1 class="page-header">Usuarios
+                <c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                 <a href="#" class="btn btn-success btn-circle" data-toggle="modal" data-target="#agregarModal"><i class="fa fa-plus"></i></a>
                 <a href="#" class="btn btn-info btn-circle" data-toggle="modal" data-target="#estadosModal"><i class="fa fa-eye"></i></a>
+                </c:if>
             </h1>     
             <!--<div class="row">
                 <div class="col-sm-4">
@@ -35,54 +37,58 @@
             </div>    
             <br>-->
             <div class="col-md-12">
-
-                <table class="table table-striped table-hover ">
-                    <thead>
-                        <tr>
-                            <th>Codigo</th>
-                            <th>Documentos</th>
-                            <th>Nombres y Apellidos</th>
-                            <th>Género</th>
-                            <th>Login</th>
-                            <th>Tipo Usuario</th>
-                            <th>Sucursal</th>
-                            <th>Acciones</th>
-                            
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <c:forEach var="u" items="${usuarios}">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped table-hover" id="tablaUsuarios">
+                        <thead>
                             <tr>
-                                <td>${u.usuCod}</td>
-                                <td>
-                                    <c:forEach var="docs" items="${u.enP1mDocumentoUsuarios}">
-                                        ${docs.taGzzTipoDocUsuario.tipDocUsuDet} - ${docs.docUsuNum} <br>
-                                    </c:forEach>
-                                </td>
-                                <td>${u.usuNom} ${u.usuApePat} ${u.usuApeMat}</td>
-                                <td>${u.usuSex}</td>
-                                <td>${u.usuLog}</td>
-                                <td>${u.taGzzTipoUsuario.tipUsuDet}</td>
-                                <td>${u.enP1mSucursal.sucDes}</td>
+                                <th>Codigo</th>
+                                <th>Documentos</th>
+                                <th>Nombres y Apellidos</th>
+                                <th>Género</th>
+                                <th>Login</th>
+                                <th>Tipo Usuario</th>
+                                <th>Sucursal</th>
+                                <c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
+                                <th>Acciones</th>
+                                </c:if>
 
-                                <td class="text-right">
-                                    <a href="#" data-toggle="modal" data-target="#modificarModal" 
-                                       data-usucod="${u.usuCod}" data-usunom="${u.usuNom}" data-usuapepat="${u.usuApePat}" 
-                                       data-usuapemat="${u.usuApeMat}" data-usulog="${u.usuLog}" data-tipusucod="${u.taGzzTipoUsuario.tipUsuCod}" 
-                                       data-succod="${u.enP1mSucursal.sucCod}" data-usufecnac="${u.usuFecNac}"
-                                       data-estcivcod="${u.taGzzEstadoCivil.estCivCod}" data-ususex="${u.usuSex}">
-                                       <i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i>
-                                    </a>
-                                    <a href="#" data-toggle="modal" data-target="#disableModal" 
-                                       data-usucod="${u.usuCod}" data-usunom="${u.usuNom}" data-usuapepat="${u.usuApePat}" 
-                                       data-usuapemat="${u.usuApeMat}">
-                                        <i class="fa fa-trash-o fa-2x" style="color: black;"></i>
-                                    </a>
-                                </td>
                             </tr>
-                        </c:forEach>
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            <c:forEach var="u" items="${usuarios}">
+                                <tr>
+                                    <td>${u.usuCod}</td>
+                                    <td>
+                                        <c:forEach var="docs" items="${u.enP1mDocumentoUsuarios}">
+                                            ${docs.taGzzTipoDocUsuario.tipDocUsuDet} - ${docs.docUsuNum} <br>
+                                        </c:forEach>
+                                    </td>
+                                    <td>${u.usuNom} ${u.usuApePat} ${u.usuApeMat}</td>
+                                    <td>${u.usuSex}</td>
+                                    <td>${u.usuLog}</td>
+                                    <td>${u.taGzzTipoUsuario.tipUsuDet}</td>
+                                    <td>${u.enP1mSucursal.sucDes}</td>
+                                    <c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
+                                    <td class="text-right">
+                                        <a href="#" data-toggle="modal" data-target="#modificarModal" 
+                                           data-usucod="${u.usuCod}" data-usunom="${u.usuNom}" data-usuapepat="${u.usuApePat}" 
+                                           data-usuapemat="${u.usuApeMat}" data-usulog="${u.usuLog}" data-tipusucod="${u.taGzzTipoUsuario.tipUsuCod}" 
+                                           data-succod="${u.enP1mSucursal.sucCod}" data-usufecnac="${u.usuFecNac}"
+                                           data-estcivcod="${u.taGzzEstadoCivil.estCivCod}" data-ususex="${u.usuSex}">
+                                           <i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i>
+                                        </a>
+                                        <a href="#" data-toggle="modal" data-target="#disableModal" 
+                                           data-usucod="${u.usuCod}" data-usunom="${u.usuNom}" data-usuapepat="${u.usuApePat}" 
+                                           data-usuapemat="${u.usuApeMat}">
+                                            <i class="fa fa-trash-o fa-2x" style="color: black;"></i>
+                                        </a>
+                                    </td>
+                                    </c:if>
+                                </tr>
+                            </c:forEach>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 
@@ -306,7 +312,7 @@
                     </div>
                     <div class="modal-body">
                         <div class="table-responsive">
-                            <table class="table table-hover">                                                                
+                            <table class="table table-hover" id="tablaUsuarios">                                                                
                                 <thead>
                                     <tr>
                                         <th>Codigo Usuario</th>
@@ -403,6 +409,9 @@
         </div>
 
         <script>
+            $('#tablaUsuarios').DataTable({
+                responsive: true
+            });
             var updateModal = $("#modificarModal");
             var disableModal = $("#disableModal");
             var activateModal = $("#activateModal");
