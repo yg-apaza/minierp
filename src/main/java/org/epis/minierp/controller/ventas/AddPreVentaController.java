@@ -72,7 +72,6 @@ public class AddPreVentaController extends HttpServlet{
             String preVenCabObs = request.getParameter("preVenCabObs");
             double preVenCabTot = Double.parseDouble(request.getParameter("preVenCabTot"));
             double preVenCabSubTot = Double.parseDouble(request.getParameter("preVenCabSubTot"));
-            int rutCod = Integer.parseInt(request.getParameter("rutCod"));
             int tipDesCod = Integer.parseInt(request.getParameter("tipDesCod"));
             
             EnP1mPreventaCabDao preventa = new EnP1mPreventaCabDao();
@@ -90,7 +89,6 @@ public class AddPreVentaController extends HttpServlet{
             header.setPreVenCabObs(preVenCabObs);
             header.setPreVenCabPla(preVenCabPla);
             header.setTaGzzMoneda((new TaGzzMonedaDao()).getById(monCod));
-            header.setEnP1mCatalogoRuta((new EnP1mCatalogoRutaDao()).getById(rutCod));
             header.setTaGzzTipoDescuento((new TaGzzTipoDescuentoDao()).getById(tipDesCod));
             header.setEstRegCod('A');
 

@@ -7,7 +7,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 @SuppressWarnings("unused")
-public class PrinterBusiness {
+public class ImpresoraMatricial {
 
     private static final char ESC = 27; //escape
     private static final char AT = 64; //@
@@ -52,7 +52,7 @@ public class PrinterBusiness {
     private GuiaRemisionPrinter gP;
     private String type;
     
-    public PrinterBusiness(String file, String dir, String type) {
+    public ImpresoraMatricial(String file, String dir, String type) {
         try {
             writer = new FileWriter(file);
             this.type = type;
@@ -72,7 +72,7 @@ public class PrinterBusiness {
             }
             start();
         } catch (IOException ex) {
-            Logger.getLogger(PrinterBusiness.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ImpresoraMatricial.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -335,6 +335,7 @@ public class PrinterBusiness {
         val += bP.getObs();
         setAbsoluteHorizontalPosition(val);
         writer.write(obs);
+        advanceVertical(bP.getTopFacDet());
         newLine();
     }
     
@@ -366,6 +367,7 @@ public class PrinterBusiness {
         val += gP.getHora();
         setAbsoluteHorizontalPosition(val);
         writer.write(numInt);
+        advanceVertical(gP.getTopFacDet());
         newLine();
     }
     
@@ -399,32 +401,36 @@ public class PrinterBusiness {
     
     public void writeBolDetalle(String proCod, double proCan, String proUni, String proDes, 
             double proValVen, String proDes1, double proValNet) throws IOException{
-        advanceVertical(bP.getTopFacDet());
         writer.write(proCod);
         float val = bP.getProCod();
         setAbsoluteHorizontalPosition(val);
+        System.out.println("asd"+val);
         writer.write(Double.toString(proCan));
         val += bP.getProCan();
         setAbsoluteHorizontalPosition(val);
+       System.out.println("asd"+val);
         writer.write(proUni);   
         val += bP.getProUni();    
         setAbsoluteHorizontalPosition(val);
+        System.out.println("asd"+val);
         writer.write(proDes);
         val += bP.getProDes();
         setAbsoluteHorizontalPosition(val);
+        System.out.println("asd"+val);
         writer.write(Double.toString(proValVen));
         val += bP.getProValVen();
         setAbsoluteHorizontalPosition(val);
+        System.out.println("asd"+val);
         writer.write(proDes1);
         val += bP.getProDes1();
         setAbsoluteHorizontalPosition(val);
+        System.out.println("asd"+val);
         writer.write(Double.toString(proValNet));
         newLine();
     }
     
     public void writeGuiRemDetalle(String proCod, double proCan, String proUni, String proDes, 
             double proValUni, String proDes1, double proValNet) throws IOException{
-        advanceVertical(gP.getTopFacDet());
         writer.write(proCod);
         float val = gP.getProCod();
         setAbsoluteHorizontalPosition(val);

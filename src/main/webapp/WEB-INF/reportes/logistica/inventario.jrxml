@@ -1,17 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4e1be15c-f926-46b9-99c9-7b47f6347850">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="650" pageHeight="595" orientation="Landscape" columnWidth="610" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4e1be15c-f926-46b9-99c9-7b47f6347850">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
+	<parameter name="IMAGE" class="java.lang.String"/>
 	<title>
 		<band height="53" splitType="Stretch">
 			<staticText>
-				<reportElement mode="Opaque" x="12" y="19" width="767" height="20" uuid="185fe808-0b67-45d9-8fc7-5a63ad1f481e"/>
+				<reportElement mode="Opaque" x="273" y="18" width="116" height="20" uuid="185fe808-0b67-45d9-8fc7-5a63ad1f481e"/>
 				<textElement textAlignment="Center" markup="none">
 					<font size="14" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Inventario al ]]></text>
 			</staticText>
+			<image scaleImage="RetainShape" onErrorType="Icon">
+				<reportElement x="15" y="12" width="218" height="32" uuid="c656121c-e560-4358-8388-bdae2b079509"/>
+				<imageExpression><![CDATA[$P{IMAGE}]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="389" y="18" width="154" height="20" uuid="75250676-2c97-46c9-a743-0fa8667a0110"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
 		</band>
 	</title>
 	<columnHeader>
