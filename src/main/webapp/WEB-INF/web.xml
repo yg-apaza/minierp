@@ -564,6 +564,26 @@
     </servlet-mapping>
     <servlet>
         <description/>
+        <display-name>ReferralGuideController</display-name>
+        <servlet-name>ReferralGuideController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.ventas.ReferralGuideController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ReferralGuideController</servlet-name>
+        <url-pattern>/secured/ventas/searchReferralGuide</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <description/>
+        <display-name>CarrierGuideController</display-name>
+        <servlet-name>CarrierGuideController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.ventas.CarrierGuideController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CarrierGuideController</servlet-name>
+        <url-pattern>/secured/ventas/searchCarrierGuide</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <description/>
         <display-name>PagosController</display-name>
         <servlet-name>PagosController</servlet-name>
         <servlet-class>org.epis.minierp.controller.ventas.PagosController</servlet-class>
