@@ -58,8 +58,7 @@ public class Impresora {
             fac.writeFacCabecera(cliCod, conPag, fecVen, venZon, numSec, dis, rut, traNom);
             
             proCod = 0;
-            List<EnP1tFacturaVentaDet> detalles = new ArrayList();
-            detalles.addAll((Set<EnP1tFacturaVentaDet>)f.getEnP1tFacturaVentaDets());
+            List<EnP1tFacturaVentaDet> detalles = (new EnP1mFacturaVentaCabDao()).getFacVenDets(cod);
             for(EnP1tFacturaVentaDet d : detalles){
                 proCod++;
                 proCan = d.getFacVenDetCan();
@@ -105,7 +104,8 @@ public class Impresora {
             fac.writeFacCabecera(cliCod, conPag, fecVen, venZon, numSec, dis, rut, traNom);
 
             proCod = 0;
-            for(EnP1tFacturaVentaDet d : (Set<EnP1tFacturaVentaDet>)f.getEnP1tFacturaVentaDets()){
+            List<EnP1tFacturaVentaDet> detalles = (new EnP1mFacturaVentaCabDao()).getFacVenDets(cod);            
+            for(EnP1tFacturaVentaDet d : detalles){
                 proCod++;
                 proCan = d.getFacVenDetCan();
                 proUni = d.getEnP2mProducto().getTaGzzUnidadMed().getUniMedDet();
@@ -151,7 +151,8 @@ public class Impresora {
                 bol.writeBolCabecera(cliCod, conPag, fecVen, venRut, pdv, obs);
 
                 proCod = 0;
-                for(EnP1tFacturaVentaDet d : (Set<EnP1tFacturaVentaDet>)f.getEnP1tFacturaVentaDets()){
+                List<EnP1tFacturaVentaDet> detalles = (new EnP1mFacturaVentaCabDao()).getFacVenDets(cod);            
+                for(EnP1tFacturaVentaDet d : detalles){
                     proCod++;
                     proCan = d.getFacVenDetCan();
                     proUni = d.getEnP2mProducto().getTaGzzUnidadMed().getUniMedDet();

@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import org.epis.minierp.model.EnP1mFacturaVentaCab;
+import org.epis.minierp.model.EnP1tFacturaVentaDet;
 import org.epis.minierp.util.HibernateUtil;
 import org.hibernate.ObjectNotFoundException;
 import org.hibernate.Query;
@@ -62,6 +63,14 @@ public class EnP1mFacturaVentaCabDao {
             return 1;
         }
         
+    }
+    
+    public List<EnP1tFacturaVentaDet> getFacVenDets(String facVenDetCod){
+        Query query = session.createQuery("from EnP1tFacturaVentaDet E "
+                + "where E.id.facVenCabCod = '"+facVenDetCod+"' "
+                + "order by E.id.facVenDetCod asc");
+        List<EnP1tFacturaVentaDet> estados = query.list();
+        return estados;
     }
     
     public void save(EnP1mFacturaVentaCab facturaCab) {
