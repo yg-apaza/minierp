@@ -70,7 +70,10 @@
                     <form id="createForm" method="post" action="${pageContext.request.contextPath}/secured/configuracion/unidadTransporte">
                         <div class="modal-body">
                             <input type="hidden" name="accion" value="create">
-                            <input type="hidden" name="unTraCod" id="unTraCod">
+                            <div class="form-group">
+                                    <label> Código: </label><br/>
+                                    <input type="text" class="form-control" name="unTraCod" id="unTraCod">
+                            </div>
                             <div class="form-group"> 
                                     <label> Tipo de Unidad: </label><br/>
                                     <select name="tipUnTraCod" id="tipUnTraCod" class="form-control">
