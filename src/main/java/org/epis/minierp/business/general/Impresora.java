@@ -3,7 +3,9 @@ package org.epis.minierp.business.general;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -56,7 +58,9 @@ public class Impresora {
             fac.writeFacCabecera(cliCod, conPag, fecVen, venZon, numSec, dis, rut, traNom);
             
             proCod = 0;
-            for(EnP1tFacturaVentaDet d : (Set<EnP1tFacturaVentaDet>)f.getEnP1tFacturaVentaDets()){
+            List<EnP1tFacturaVentaDet> detalles = new ArrayList();
+            detalles.addAll((Set<EnP1tFacturaVentaDet>)f.getEnP1tFacturaVentaDets());
+            for(EnP1tFacturaVentaDet d : detalles){
                 proCod++;
                 proCan = d.getFacVenDetCan();
                 proUni = d.getEnP2mProducto().getTaGzzUnidadMed().getUniMedDet();
