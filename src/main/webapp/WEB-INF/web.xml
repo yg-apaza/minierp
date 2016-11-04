@@ -286,6 +286,17 @@
         <servlet-name>TransportistaController</servlet-name>
         <url-pattern>/secured/configuracion/datosTransportista</url-pattern>
     </servlet-mapping>
+    <!--Sub Modulo Unidades de Tranporte-->
+    <servlet>
+        <description/>
+        <display-name>UnidadTransporteController</display-name>
+        <servlet-name>UnidadTransporteController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.general.UnidadTransporteController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UnidadTransporteController</servlet-name>
+        <url-pattern>/secured/configuracion/unidadTransporte</url-pattern>
+    </servlet-mapping>
     <!--Sub Modulo Sucursal-->
     <servlet>
         <description/>
