@@ -2,6 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="minierptemplate" %>
+<%@ taglib prefix='cc' uri='http://java.sun.com/jsp/jstl/core' %>
 <minierptemplate:template>
     <jsp:attribute name="titulo">
         <title>Ventas - Preventa</title>
@@ -16,13 +17,17 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-8">
+                        <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                         <form role=form" method="get" action="${pageContext.request.contextPath}/secured/ventas/preventa/addPreventa">
                             <button type="submit" class="btn btn-success">Crear Preventa <i class="fa fa-plus"></i></button>   
                         </form>
+                        </cc:if>
                     </div>
                     <div class="col-lg-4">
                         <div class="col-lg-8">
+                            <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                             <button type="button" id="transformar" class="btn btn-info btn-block"> Transformar a Ventas </button>
+                            </cc:if>
                         </div>
                     </div>
                 </div><br>                
@@ -39,7 +44,9 @@
                                         <th style="text-align: center">Fecha</th>
                                         <th style="text-align: center">Moneda</th>
                                         <th style="text-align: center">Cantidad total</th>
+                                        <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                                         <th style="text-align: center">Check</th>
+                                        </cc:if>
                                     </tr>               
                                 </thead>
                                 <tbody>
@@ -48,10 +55,12 @@
                                             <td><c:out value="${preventa.preVenCabCod}"/> </td>
                                             <td><c:out value="${preventa.enP1mCliente.cliNom} ${preventa.enP1mCliente.cliApePat}"/></td>
                                             <td><c:out value="${preventa.enP1mUsuario.usuNom} ${preventa.enP1mUsuario.usuApePat}"/></td>
-                                            <td><c:out value="${preventa.preVenCabFec}"/></td>
+                                            <td><c:out value="${preventa.preVenCabFecEmi}"/></td>
                                             <td><c:out value="${preventa.taGzzMoneda.monDet}"/></td>
                                             <td><c:out value="${preventa.preVenCabTot}"/></td>
+                                            <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                                             <td><input type="checkbox" name="preventas" value="${preventa.preVenCabCod}"></td>
+                                            </cc:if>
                                         </tr>
                                     </c:forEach>  
                                 </tbody>

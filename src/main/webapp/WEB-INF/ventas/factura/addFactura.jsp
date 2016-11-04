@@ -13,6 +13,7 @@
                 <input type="hidden" class="form-control" name="productsAmounts" id="proAmo">
                 <input type="hidden" class="form-control" name="productsCodes" id="proCodes">
                 <input type="hidden" class="form-control" name="productsPrices" id="proPrices">
+                <input class="hidden" type="text" name="cliCod" id="facCli">
                 <div class="row">
                     <div class="col-md-4">
                         <br><h1 class="page-header">Factura de Venta</h1>
@@ -44,21 +45,41 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group input-group">
-                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                    <span class="input-group-addon"><i class="fa fa-clipboard"></i></span>
                                                     <input type="text" class="form-control" name="facVenCabCod" placeholder="Número de Factura">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group input-group" >
+                                                    <span class="input-group-addon">Emisión</span>
+                                                    <input type="date" class="form-control" name="facVenCabFecEmi">
                                                     <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                    <input type="date" class="form-control" name="facVenCabFec">
                                                 </div>
-                                            </div>                                            
+                                            </div>  
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group input-group" >
+                                                    <span class="input-group-addon">Vencimiento</span>
+                                                    <input type="date" class="form-control" name="facVenCabFecVen">
+                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group input-group" >
+                                                    <span class="input-group-addon">Moneda</i></span>
+                                                    <select class="form-control" name="monCod">
+                                                        <c:forEach items="${monedas}" var="moneda">
+                                                            <option value="${moneda.monCod}">${moneda.monDet}</option>
+                                                        </c:forEach>
+                                                    </select>
+                                                    <span class="input-group-addon"><i class="fa fa-money"></i></span>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <div class="form-group input-group" >
-                                                    <input class="hidden" type="text" name="cliCod" id="facCli">
+                                                <div class="form-group input-group" >                                                    
                                                     <span class="input-group-addon">Cliente</span>
                                                     <select class="form-control" id="desClienteCode" disabled>
                                                         <option value="1">Razón Social</option>
@@ -73,28 +94,6 @@
                                                     </select> 
                                                     <input class="form-control" type="text" id="cliCodShow" placeholder="Código" readOnly>
                                                 </div>                                                
-                                            </div>
-                                        </div>
-                                        <div class="row">                                            
-                                            <div class="col-md-6">
-                                                <div class="form-group input-group" >
-                                                    <span class="input-group-addon">Moneda</i></span>
-                                                    <select class="form-control" name="monCod">
-                                                        <c:forEach items="${monedas}" var="moneda">
-                                                            <option value="${moneda.monCod}">${moneda.monDet}</option>
-                                                        </c:forEach>
-                                                    </select>
-                                                    <span class="input-group-addon"><i class="fa fa-money"></i></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group input-group" >
-                                                    <span class="input-group-addon">Ruta</i></span>
-                                                    <select class="form-control" id="routeSelect" name="rutCod">
-                                                        <option value="">Desconocida</option>
-                                                    </select>
-                                                    <span class="input-group-addon"><i class="fa fa-money"></i></span>
-                                                </div>
                                             </div>
                                         </div>
                                         <div class="row">                                            
@@ -389,10 +388,6 @@
                 
                 $('#cliCodShow').val("");
                 $('#cliDesShow').val("");
-                $("#routeSelect").empty().append($('<option>', {
-                        value: "",
-                        text : "Desconocida" 
-                }));
             }
             
             function changeClientCode() {
@@ -529,28 +524,10 @@
                         ).done(function (data) {
                                 if(data.cliCod != null) {
                                     $("#facCli").val(data.cliCod);
-                                    $("#cliDesShow").val(data.cliRazSoc);  
-                                    $("#routeSelect").empty();
-                                    if(data.cliRut.length > 0) {
-                                        data.cliRut.forEach(function(route) {
-                                            $("#routeSelect").append($('<option>', {
-                                                value: route.cliRutCod,
-                                                text : route.cliRutDet 
-                                            }));
-                                        });
-                                    } else {
-                                        $("#routeSelect").empty().append($('<option>', {
-                                            value: "",
-                                            text : "No posee rutas" 
-                                        }));
-                                    }
+                                    $("#cliDesShow").val(data.cliRazSoc);                                      
                                 } else {
                                     $("#facCli").val("");
                                     $("#cliDesShow").val("Desconocido");
-                                    $("#routeSelect").empty().append($('<option>', {
-                                            value: "",
-                                            text : "Desconocida" 
-                                    }));
                                 }
                             });
                 }
@@ -568,28 +545,10 @@
                                 if(data.cliCod != null) {
                                     $("#facCli").val(data.cliCod);
                                     $("#cliCodShow").val(data.cliCod);    
-                                    $("#tipoClienteCode").val(data.tipCliCod);
-                                    $("#routeSelect").empty();
-                                    if(data.cliRut.length > 0) {
-                                        data.cliRut.forEach(function(route) {
-                                            $("#routeSelect").append($('<option>', {
-                                                value: route.cliRutCod,
-                                                text : route.cliRutDet 
-                                            }));
-                                        });
-                                    } else {
-                                        $("#routeSelect").empty().append($('<option>', {
-                                            value: "",
-                                            text : "No posee rutas" 
-                                        }));
-                                    }
+                                    $("#tipoClienteCode").val(data.tipCliCod);                                    
                                 } else {
                                     $("#facCli").val("");
                                     $("#cliCodShow").val("Desconocido");
-                                    $("#routeSelect").empty().append($('<option>', {
-                                            value: "",
-                                            text : "Desconocida" 
-                                    }));
                                 }
                             });
                 }
@@ -606,7 +565,10 @@
                         verifiedValue: true,
                         required: true
                     }, 
-                    facVenCabFec: {
+                    facVenCabFecEmi: {
+                        required: true
+                    },
+                    facVenCabFecVen: {
                         required: true
                     }
                 },
@@ -617,7 +579,10 @@
                     cliCod: {
                         required: "Ingrese cliente válido",
                     },
-                    facVenCabFec: {
+                    facVenCabFecEmi: {
+                        required: "Seleccione una fecha"
+                    },
+                    facVenCabFecVen: {
                         required: "Seleccione una fecha"
                     }
                 },

@@ -2,6 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="minierptemplate" %>
+<%@ taglib prefix='cc' uri='http://java.sun.com/jsp/jstl/core' %>
 <minierptemplate:template>
     <jsp:attribute name="titulo">
         <title>Compras - Factura</title>
@@ -17,7 +18,10 @@
                 <div class="row">
                     <div class="col-lg-8">
                         <form role=form" method="get" action="${pageContext.request.contextPath}/secured/compras/factura/addFactura">
-                            <button type="submit" class="btn btn-success">Crear Factura <i class="fa fa-plus"></i></button>   
+                            <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
+                                <button type="submit" class="btn btn-success">Crear Factura <i class="fa fa-plus"></i></button>
+                            </cc:if>
+                            
                         </form>
                     </div>
                     <div class="col-lg-4">
@@ -52,7 +56,7 @@
                                 <tbody>
                                     <c:forEach items="${facturasCompra}" var="c">
                                         <tr>
-                                            <td>${c.facComCabFec}</td>
+                                            <td>${c.facComCabFecEmi}</td>
                                             <td>${c.facComCabCod}</td>
                                             <td>${c.enP4mProveedor.prvDet}</td>
                                             <td>${c.enP1mUsuario.usuNom}</td>

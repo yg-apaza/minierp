@@ -8,8 +8,10 @@
     <jsp:attribute name="contenido">
         <div class="panel-body">
             <h1 class="page-header">Puntos de Venta
+                <c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                 <a href="#" class="btn btn-success btn-circle" data-toggle="modal" data-target="#agregarModal"><i class="fa fa-plus"></i></a>
                 <a href="#" class="btn btn-info btn-circle" data-toggle="modal" data-target="#estadosModal"><i class="fa fa-eye"></i></a>
+                </c:if>
             </h1>     
             <!--<div class="row">
                 <div class="col-md-4">
@@ -39,7 +41,9 @@
                                 <th>Cod Punto de Venta</th>
                                 <th>Descripcion</th>
                                 <th>Registro</th>
+                                <c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                                 <th class="text-right">Acciones</th>
+                                </c:if>
                             </tr>
                         </thead>
                         <tbody>
@@ -50,6 +54,7 @@
                                     <td>${pv.id.punVenCod}</td>
                                     <td>${pv.punVenDes}</td>
                                     <td>${pv.estRegCod}</td>
+                                    <c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                                     <td class="text-right">
                                         <a href="#" data-toggle="modal" data-target="#modificarModal" data-succod="${pv.id.sucCod}" data-sucdes="${pv.enP1mSucursal.sucDes}" data-punvencod="${pv.id.punVenCod}" data-punvendes="${pv.punVenDes}">
                                             <i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i>
@@ -58,6 +63,7 @@
                                             <i class="fa fa-trash-o fa-2x" style="color: black;"></i>
                                         </a>
                                     </td>
+                                    </c:if>
                                 </tr>
                             </c:forEach>
                         </tbody>

@@ -72,15 +72,6 @@ public class BusquedaClienteController extends HttpServlet {
                 if(cliente != null) {                    
                     data.addProperty("cliCod", cliente.getCliCod());
                     data.addProperty("cliRazSoc", cliente.getCliRazSoc());
-                    List <EnP1mClientesRutas> routesClient = (new EnP1mClientesRutasDao()).getRutas4CliCod(cliCod);
-                    JsonArray routes = new JsonArray();
-                    for(EnP1mClientesRutas r: routesClient) {
-                        JsonObject route = new JsonObject();
-                        route.addProperty("cliRutCod", r.getEnP1mCatalogoRuta().getCatRutCod());
-                        route.addProperty("cliRutDet", r.getEnP1mCatalogoRuta().getCatRutDet());
-                        routes.add(route);
-                    }
-                    data.add("cliRut", routes);
                 }
                 
                 response.setContentType("application/json");
@@ -102,16 +93,7 @@ public class BusquedaClienteController extends HttpServlet {
                 if(cliente != null) {
                     data.addProperty("cliCod", cliente.getCliCod());
                     data.addProperty("cliRazSoc", cliente.getCliRazSoc());
-                    data.addProperty("tipCliCod",cliente.getTaGzzTipoCliente().getTipCliCod());
-                    List <EnP1mClientesRutas> routesClient = (new EnP1mClientesRutasDao()).getRutas4CliCod(cliente.getCliCod());
-                    JsonArray routes = new JsonArray();
-                    for(EnP1mClientesRutas r: routesClient) {
-                        JsonObject route = new JsonObject();
-                        route.addProperty("cliRutCod", r.getEnP1mCatalogoRuta().getCatRutCod());
-                        route.addProperty("cliRutDet", r.getEnP1mCatalogoRuta().getCatRutDet());
-                        routes.add(route);
-                    }
-                    data.add("cliRut", routes);
+                    data.addProperty("tipCliCod",cliente.getTaGzzTipoCliente().getTipCliCod());                    
                 }
                 
                 response.setContentType("application/json");
