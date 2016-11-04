@@ -595,6 +595,46 @@
     </servlet-mapping>
     <servlet>
         <description/>
+        <display-name>AddCarrierGuide</display-name>
+        <servlet-name>AddCarrierGuide</servlet-name>
+        <servlet-class>org.epis.minierp.controller.ventas.AddCarrierGuide</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddCarrierGuide</servlet-name>
+        <url-pattern>/secured/ventas/addCarrierGuide</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <description/>
+        <display-name>AddReferralGuide</display-name>
+        <servlet-name>AddReferralGuide</servlet-name>
+        <servlet-class>org.epis.minierp.controller.ventas.AddReferralGuide</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddReferralGuide</servlet-name>
+        <url-pattern>/secured/ventas/addReferralGuide</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <description/>
+        <display-name>RemoveCarrierGuide</display-name>
+        <servlet-name>RemoveCarrierGuide</servlet-name>
+        <servlet-class>org.epis.minierp.controller.ventas.RemoveCarrierGuide</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RemoveCarrierGuide</servlet-name>
+        <url-pattern>/secured/ventas/removeCarrierGuide</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <description/>
+        <display-name>RemoveReferralGuide</display-name>
+        <servlet-name>RemoveReferralGuide</servlet-name>
+        <servlet-class>org.epis.minierp.controller.ventas.RemoveReferralGuide</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RemoveReferralGuide</servlet-name>
+        <url-pattern>/secured/ventas/removeReferralGuide</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <description/>
         <display-name>PagosController</display-name>
         <servlet-name>PagosController</servlet-name>
         <servlet-class>org.epis.minierp.controller.ventas.PagosController</servlet-class>

@@ -42,6 +42,17 @@ public class EnP1mFacturaVentaCabDao {
         return estado;
     }
     
+    public boolean verifyReferralGuide(String id) {
+        EnP1mFacturaVentaCab factura = null;
+        try {
+            factura = (EnP1mFacturaVentaCab) session.load(EnP1mFacturaVentaCab.class, id);
+        } catch (ObjectNotFoundException e) {
+            return false;
+        }
+        
+        return (factura.getEnP2mGuiaRemRemitente() == null);
+    }
+    
     /**
      * Devuelve el mayor numero de factura emitida por lote, maximo 3 caracteres (999)
      * @param lote numero del lote 001-123456 lote=001
