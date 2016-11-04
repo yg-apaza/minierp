@@ -23,9 +23,9 @@
 		<band/>
 	</background>
 	<title>
-		<band height="72">
+		<band height="83">
 			<image scaleImage="RetainShape" onErrorType="Icon">
-				<reportElement x="29" y="21" width="218" height="32" uuid="3a200e3f-2d4f-4a9f-b66d-ddea267c01ec"/>
+				<reportElement x="21" y="21" width="193" height="48" uuid="3a200e3f-2d4f-4a9f-b66d-ddea267c01ec"/>
 				<imageExpression><![CDATA[$P{IMAGE}]]></imageExpression>
 			</image>
 			<staticText>

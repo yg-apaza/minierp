@@ -9,28 +9,30 @@
 	</queryString>
 	<field name="enP4mDocumentoProveedors" class="java.util.Set"/>
 	<field name="enP4mFacturaCompraCabs" class="java.util.Set"/>
-	<field name="enP4mGuiaCompraCabs" class="java.util.Set"/>
 	<field name="estRegCod" class="java.lang.Character"/>
-	<field name="proCod" class="java.lang.String"/>
-	<field name="proCon" class="java.lang.String"/>
-	<field name="proDet" class="java.lang.String"/>
-	<field name="proDir" class="java.lang.String"/>
-	<field name="proEmail" class="java.lang.String"/>
-	<field name="proObs" class="java.lang.String"/>
-	<field name="proPagWeb" class="java.lang.String"/>
-	<field name="proTelCel" class="java.lang.String"/>
-	<field name="proTelFij" class="java.lang.String"/>
+	<field name="prvCod" class="java.lang.String"/>
+	<field name="prvCon" class="java.lang.String"/>
+	<field name="prvDet" class="java.lang.String"/>
+	<field name="prvDir" class="java.lang.String"/>
+	<field name="prvDomFis" class="java.lang.String"/>
+	<field name="prvEmail" class="java.lang.String"/>
+	<field name="prvNomCom" class="java.lang.String"/>
+	<field name="prvObs" class="java.lang.String"/>
+	<field name="prvPagWeb" class="java.lang.String"/>
+	<field name="prvRazSoc" class="java.lang.String"/>
+	<field name="prvTelCel" class="java.lang.String"/>
+	<field name="prvTelFij" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<pageHeader>
 		<band height="54">
 			<staticText>
-				<reportElement mode="Opaque" x="233" y="18" width="311" height="20" uuid="383a41f8-13d5-4c70-bf30-3d47463a02c8"/>
+				<reportElement mode="Opaque" x="233" y="19" width="311" height="20" uuid="383a41f8-13d5-4c70-bf30-3d47463a02c8"/>
 				<textElement textAlignment="Center" markup="none">
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA["PADRON DE PROOVEDORES DE SUMINISTROS DE ALMACEN "
+				<text><![CDATA["PADRON DE PROVEEDORES DE SUMINISTROS DE ALMACEN "
 ]]></text>
 			</staticText>
 			<image scaleImage="RetainShape" onErrorType="Icon">
@@ -82,50 +84,47 @@
 	<detail>
 		<band height="20" splitType="Stretch">
 			<textField>
-				<reportElement x="10" y="0" width="50" height="20" uuid="4e282dd0-1634-4c72-b184-109eaf1a2337"/>
-				<textElement textAlignment="Center">
-					<font size="9"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{proCod}]]></textFieldExpression>
-			</textField>
-			<textField>
 				<reportElement x="61" y="0" width="87" height="20" uuid="0018de36-189a-424f-890c-63b4ec26442a"/>
 				<textElement textAlignment="Center">
 					<font size="9"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{proDet}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{prvDet}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="149" y="0" width="85" height="20" uuid="a66932ed-939f-4f34-98a6-97d1614035a1"/>
 				<textElement textAlignment="Center">
 					<font size="9"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{proCon}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{prvCon}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="244" y="0" width="120" height="20" uuid="56c8c1ff-a438-4e4d-9296-a60791d2effc"/>
 				<textElement textAlignment="Center">
 					<font size="9"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{proDir}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{prvDir}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="366" y="0" width="55" height="20" uuid="366be20a-d757-485e-a243-1e436532d9bd"/>
 				<textElement textAlignment="Center">
 					<font size="9"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{proTelFij}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{prvTelFij}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="421" y="0" width="114" height="20" uuid="763f262b-bba1-4be8-92dc-e1150fdbba05"/>
 				<textElement textAlignment="Center">
 					<font size="9"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{proPagWeb}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{prvPagWeb}]]></textFieldExpression>
 			</textField>
 			<line>
 				<reportElement x="13" y="19" width="525" height="1" uuid="f739c406-44c6-47b0-8c0e-d9a540c6d753"/>
 			</line>
+			<textField>
+				<reportElement x="9" y="0" width="52" height="20" uuid="14c22fd8-084e-4d81-944a-ce228dc92765"/>
+				<textFieldExpression><![CDATA[$F{prvCod}]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 	<summary>
