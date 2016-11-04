@@ -6,8 +6,19 @@
     <jsp:attribute name="titulo">
         <title>Logística - Kardex</title>
     </jsp:attribute>
-    <jsp:attribute name="contenido">
-         <script type="text/javascript" language="javasript">
+        <jsp:attribute name="contenido">
+<!--            <script src="js/bootstrap.min.js" type="text/javascript"></script>
+            <script src="js/datatables/jquery.dataTables.js" type="text/javascript"></script>
+            <script src="js/datatables/dataTables.bootstrap.js" type="text/javascript"></script>-->
+            <script type="text/javascript">
+               $(function() {
+                $("#table1").dataTable({
+                    "iDisplayLength": 10,
+                    "aLengthMenu": [[10, 25, 50, 100,  -1], [10, 25, 50, 100, "Todos"]]
+                   });
+               });
+            </script>
+            <script type="text/javascript" language="javasript">
             var idProducto="";
             var nombreProducto="";
             function Show(valor)
@@ -99,10 +110,12 @@
                    
                 </form>    
             </div>
-            <div class="row">
+            
                 <br><br>
+                <div class="row">
                 <div class="table-responsive">
-                    <table class="table table-bordered table-striped table-hover">
+                    
+                    <table class="table table-bordered table-condensed" width="1600" id="table1">
                         <thead class="thead-inverse" >
                             <tr class="success">
                                 <th style="text-align: center;">Fecha</th>
@@ -146,8 +159,8 @@
                         </tbody>
                     </table>
                 </div>
-
             </div>
+          
         </div>
         <script>
             if (typeof(Storage) !== "undefined") {
