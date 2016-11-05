@@ -53,7 +53,7 @@ public class EnP2mAlmacenBusiness {
         almacenDao.update(almacen);
     }
     
-     private void setEstRegCod(String AlmCod, char estRegCod){
+    private void setEstRegCod(String AlmCod, char estRegCod){
         EnP2mAlmacen almacen=almacenDao.getById(AlmCod);
         almacen.setEstRegCod(estRegCod);
         almacenDao.update(almacen);
