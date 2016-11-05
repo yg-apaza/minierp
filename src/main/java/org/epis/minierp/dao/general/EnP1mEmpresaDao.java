@@ -38,6 +38,15 @@ public class EnP1mEmpresaDao {
         return estado;
     }
     
+    public EnP1mEmpresa getByDes(String des) {
+        Query query = session.createQuery("from EnP1mEmpresa E where E.empDes = :id");
+        query.setParameter("id", des);
+        List <EnP1mEmpresa> empresas = query.list();
+        if(empresas.isEmpty())
+            return null;
+        return empresas.get(0);
+    }
+    
     public void save(EnP1mEmpresa clase) {
         session.save(clase);     
     }

@@ -24,7 +24,9 @@
                                         <tr>
                                             <th>Número</th>
                                             <th>Descripción</th>
+                                            <c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                                             <th class="text-right">Acciones</th>
+                                            </c:if>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -77,6 +79,14 @@
                                     <label>Nombre de cuenta:</label>
                                     <input class="form-control" id="addCueDes" name="cueDes">
                                 </div>
+                                <div class="form-group">
+                                    <label>Cuenta de Amarre Debe:</label>
+                                    <input class="form-control" id="addCueAmaDeb" name="cueAmaDeb">
+                                </div>
+                                <div class="form-group">
+                                    <label>Cuenta de Amarre Haber:</label>
+                                    <input class="form-control" id="addCueAmaHab" name="cueAmaHab">
+                                </div>
                             </div>
                             <div class="modal-footer">
                                 <button type="submit" class="btn btn-outline btn-success">Agregar</button>
@@ -105,6 +115,14 @@
                                 <div class="form-group">
                                     <label>Nombre de cuenta:</label>
                                     <input class="form-control" id="updateCueDes" name="cueDes">
+                                </div>
+                                <div class="form-group">
+                                    <label>Cuenta de Amarre Debe:</label>
+                                    <input class="form-control" id="updateCueAmaDeb" name="cueAmaDeb">
+                                </div>
+                                <div class="form-group">
+                                    <label>Cuenta de Amarre Haber:</label>
+                                    <input class="form-control" id="updateCueAmaHab" name="cueAmaHab">
                                 </div>
                             </div>
                             <div class="modal-footer">
@@ -152,6 +170,8 @@
             var updateCueCod = $("#updateCueCod");
             var updateCueNum = $("#updateCueNum");
             var updateCueDes = $("#updateCueDes");
+            var updateCueAmaDeb = $("#updateCueAmaDeb");
+            var updateCueAmaHab = $("#updateCueAmaHab");
             
             var deleteCueCod = $("#deleteCueCod");
             var deleteCueNum = $("#deleteCueNum");
@@ -166,6 +186,8 @@
                 updateCueCod.val($(e.relatedTarget).data('codigo'));
                 updateCueNum.val($(e.relatedTarget).data('numero'));
                 updateCueDes.val($(e.relatedTarget).data('nombre'));
+                updateCueAmaDeb.val($(e.relatedTarget).data('amadeb'));
+                updateCueAmaHab.val($(e.relatedTarget).data('amahab'));
             });
             
             deleteModal.on('show.bs.modal', function(e){

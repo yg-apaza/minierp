@@ -1,5 +1,6 @@
 <%@ taglib tagdir="/WEB-INF/tags" prefix="minierptemplate" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix='cc' uri='http://java.sun.com/jsp/jstl/core' %>
 <minierptemplate:template>
     <jsp:attribute name="titulo">
         <title>Logística - Productos</title>
@@ -15,7 +16,9 @@
                     </div>            
                     <div class="row">
                         <div class="col-lg-6">
-                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addClass"> Agregar nueva <i class="fa fa-plus"></i></button>                
+                            <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
+                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addClass"> Agregar nueva <i class="fa fa-plus"></i></button>
+                            </cc:if>
                         </div>
                     </div><br>
                     <div class="table-responsive">
@@ -24,7 +27,9 @@
                                 <tr>
                                     <th>Descripción</th>
                                     <th>Estado</th>
+                                    <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                                     <th>Acciones</th>
+                                    </cc:if>
                                 </tr>
                             </thead>
                             <tbody>
@@ -32,6 +37,7 @@
                                     <tr>
                                         <td width="450px">${c.claProDet}</td>
                                         <td class="text-center" width="50px">${c.estRegCod}</td>
+                                        <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                                         <td class="text-center" width="50px">
                                             <a href="#" data-toggle="modal" data-target="#modifyClass" data-cCod="${c.claProCod}" data-cDes="${c.claProDet}" data-cEst="${c.estRegCod}">
                                                 <i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i>
@@ -40,6 +46,7 @@
                                                 <i class="fa fa-trash-o fa-2x" style="color: black;"></i>
                                             </a>
                                         </td>
+                                        </cc:if>
                                     </tr>
                                 </c:forEach>
                             </tbody>
@@ -131,7 +138,9 @@
                     </div>            
                     <div class="row">
                         <div class="col-lg-6">
-                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addSubclass"> Agregar nuevo <i class="fa fa-plus"></i></button>                
+                            <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
+                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addSubclass"> Agregar nuevo <i class="fa fa-plus"></i></button>
+                            </cc:if>                
                         </div>
                     </div><br>
                     <div class="table-responsive">
@@ -140,7 +149,9 @@
                                 <tr>
                                     <th>Descripción</th>
                                     <th>Estado</th>
+                                    <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                                     <th>Acciones</th>
+                                    </cc:if>
                                 </tr>
                             </thead>
                             <tbody>
@@ -148,6 +159,7 @@
                                     <tr>
                                         <td width="450px">${s.subClaProDet}</td>
                                         <td class="text-center" width="50px">${s.estRegCod}</td>
+                                        <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                                         <td class="text-center" width="50px">
                                             <a href="#" data-toggle="modal" data-target="#modifySubclass" data-sCod="${s.id.subClaProCod}" data-sCla="${s.id.claProCod}" data-sDes="${s.subClaProDet}" data-sEst="${s.estRegCod}">
                                                 <i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i>
@@ -156,6 +168,7 @@
                                                 <i class="fa fa-trash-o fa-2x" style="color: black;"></i>
                                             </a>
                                         </td>
+                                        </cc:if>
                                     </tr>
                                 </c:forEach>
                             </tbody>

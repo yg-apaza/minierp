@@ -4,7 +4,10 @@
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
-		<defaultValueExpression><![CDATA["D:\\UNSA\\TI\\Proyectos\\minierp\\src\\main\\webapp\\WEB-INF\\reportes\\ventas\\"]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA["D:\\UNSA\\2016\\TI\\Proyecto\\minierp\\src\\main\\webapp\\WEB-INF\\reportes\\ventas\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="IMAGE" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<queryString language="hql">
 		<![CDATA[From EnP1mSucursal where estRegCod = 'A']]>
@@ -20,24 +23,19 @@
 		<band/>
 	</background>
 	<title>
-		<band height="72">
-			<frame>
-				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="7a10a67b-cf16-4c7d-a264-e76700063d90"/>
-				<staticText>
-					<reportElement x="20" y="20" width="335" height="43" forecolor="#FFFFFF" uuid="4f626026-4c57-4fd6-8e9b-45152648010d"/>
-					<textElement>
-						<font size="34" isBold="true"/>
-					</textElement>
-					<text><![CDATA[Sucursales]]></text>
-				</staticText>
-				<staticText>
-					<reportElement x="395" y="43" width="180" height="20" forecolor="#FFFFFF" uuid="d6c8f916-6ab1-418d-a57e-261305df80f9"/>
-					<textElement textAlignment="Right">
-						<font size="14" isBold="false"/>
-					</textElement>
-					<text><![CDATA[MINERP]]></text>
-				</staticText>
-			</frame>
+		<band height="83">
+			<image scaleImage="RetainShape" onErrorType="Icon">
+				<reportElement x="21" y="21" width="193" height="48" uuid="3a200e3f-2d4f-4a9f-b66d-ddea267c01ec"/>
+				<imageExpression><![CDATA[$P{IMAGE}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement mode="Opaque" x="260" y="25" width="279" height="20" uuid="e4a0ac4e-013a-4e3b-a724-4fcdd8cccf70"/>
+				<textElement textAlignment="Center" markup="none">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA["LISTADO DE SUCURSALES"
+]]></text>
+			</staticText>
 		</band>
 	</title>
 	<detail>
@@ -46,15 +44,12 @@
 				<reportElement x="21" y="0" width="100" height="20" uuid="3f4bdd15-f9ca-4767-a3e5-75f89b8184aa"/>
 				<textFieldExpression><![CDATA[$F{sucDes}]]></textFieldExpression>
 			</textField>
-			<line>
-				<reportElement x="0" y="82" width="555" height="1" uuid="7da776c0-b4cb-4fff-a496-2afd813927cf"/>
-			</line>
 			<textField>
 				<reportElement x="21" y="20" width="100" height="20" uuid="8ee5d002-fe82-406f-905b-aaa104e8beca"/>
 				<textFieldExpression><![CDATA[$F{sucDir}]]></textFieldExpression>
 			</textField>
 			<subreport>
-				<reportElement x="166" y="0" width="389" height="82" uuid="09c5c04a-d8b2-4ac6-97db-3aaa6a4fa242"/>
+				<reportElement x="196" y="0" width="359" height="82" uuid="09c5c04a-d8b2-4ac6-97db-3aaa6a4fa242"/>
 				<subreportParameter name="HIBERNATE_SESSION">
 					<subreportParameterExpression><![CDATA[$P{HIBERNATE_SESSION}]]></subreportParameterExpression>
 				</subreportParameter>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <boletaPrinter>
     <size>0</size>
-    <leftMargin>1</leftMargin>
+    <leftMargin>3</leftMargin>
     <rightMargin>1</rightMargin>
     <topMargin>2</topMargin>
     <cliNom>1.8</cliNom>
@@ -15,11 +15,11 @@
     <pdv>1.5</pdv>
     <obs>3.5</obs>
     <topFacDet>0.25</topFacDet>
-    <proCod>0.75</proCod>
-    <proCan>1.2</proCan>
-    <proUni>1.2</proUni>
-    <proDes>7.1</proDes>
-    <proValVen>1.85</proValVen>
+    <proCod>0.8</proCod>
+    <proCan>1.3</proCan>
+    <proUni>1.3</proUni>
+    <proDes>7.2</proDes>
+    <proValVen>1.4</proValVen>
     <proDes1>1.3</proDes1>
     <proPreNet>1.4</proPreNet>
     <totalMargin>12.0</totalMargin>

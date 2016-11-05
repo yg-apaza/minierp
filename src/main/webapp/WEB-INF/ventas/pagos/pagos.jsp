@@ -2,6 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="minierptemplate" %>
+<%@ taglib prefix='cc' uri='http://java.sun.com/jsp/jstl/core' %>
 <minierptemplate:template>
     <jsp:attribute name="titulo">
         <title>MiniERP - Pagos</title>
@@ -35,28 +36,7 @@
                 </div>                
             </div> 
             <br>-->
-            <div class="row">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <div class="form-horizontal">
-                            <div class="form-group">
-                                <form id="Ingreso"  method="post" action="${pageContext.request.contextPath}/secured/ventas/pagos">
-                                    <div class="col-md-6">
-                                        <label class="control-label">Código Factura</label>                    
-                                        <input type="text" class="form-control" placeholder="Código Factura" name="CodCabFac">
-                                    </div>
-                                    <div class="col-md-3">
-                                        <button type="submit" class="btn btn-default btn-block" name="buscarFactura">Buscar <i class="fa fa-search-plus fa-1x"></i></button>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <button type="submit" class="btn btn-default btn-block" name="todos">Todos <i class="fa fa-child"></i></button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
             <div class="col-md-12">
                 <div class="table-responsive">
                     <table class="table table-bordered table-striped table-hover " id="tablaCuotas">
@@ -66,11 +46,14 @@
                                 <th>Total Cuotas</th>
                                 <th>Cuotas Pagadas</th>
                                 <th>Deuda Total</th>
+                                <th>Deuda Pagada</th>
                                 <th>Monto de Cuota</th>
                                 <th>Fecha Inicio</th>
                                 <th>Fecha Fin</th>
                                 <th>Fecha Pago</th>
+                                <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                                 <th>Acciones</th>
+                                </cc:if>
                             </tr>
                         </thead>
                         <tbody>
@@ -80,10 +63,12 @@
                                     <td>${c.pagCuoNum}</td>
                                     <td>${c.pagCuoNumPag}</td>
                                     <td>${c.pagCuoDeuTot}</td>
-                                    <td>${c.pagCuoMonXCuo}</td>
-                                    <td><fmt:formatDate value="${c.pagCuoFecIni}" pattern="dd/MM/yyyy"/></td>
-                                    <td><fmt:formatDate value="${c.pagCuoFecFin}" pattern="dd/MM/yyyy"/></td>
-                                    <td><fmt:formatDate value="${c.pagCuoFecPag}" pattern="dd/MM/yyyy"/></td>
+                                    <td>${c.pagCuoTotPag}</td>
+                                    <td>${c.pagCuoMonXcuo}</td>
+                                    <td>${c.pagCuoFecIni}</td>
+                                    <td>${c.pagCuoFecFin}</td>
+                                    <td>${c.pagCuoFecPag}</td>
+                                    <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                                     <td class="text-center">
                                         <!--
                                         <a href="#" data-toggle="modal" data-target="#modificarModal">
@@ -93,10 +78,12 @@
                                         <a href="#" data-toggle="modal" data-target="#pagarModal" 
                                            data-faccab="${c.facVenCabCod}" 
                                            data-deutot="${c.pagCuoDeuTot}" data-deupag="${c.pagCuoTotPag}" 
-                                           data-cuotot="${c.pagCuoNum}" data-cuopend="${c.pagCuoNumPag}">
+                                           data-cuotot="${c.pagCuoNum}" data-cuopag="${c.pagCuoNumPag}"
+                                           data-monpag="${c.pagCuoMonXcuo}">
                                             <i class="fa fa-dollar fa-2x" style="color: black;"></i>
                                         </a>
                                     </td>
+                                    </cc:if>
                                 </tr>
                             </c:forEach>
                         </tbody>
@@ -148,29 +135,29 @@
                                     <div class="form-group">
                                         <div class="col-sm-4">
                                             <label class="control-label">Código Factura</label>
-                                            <input type="text" class="form-control" id="pagarFacCab"  name="facVenCabCod" readonly>
+                                            <input class="form-control" id="pagarFacCab"  name="facVenCabCod" readonly>
                                         </div>
                                         <div class="col-sm-4">
                                             <label class="control-label">Deuda Total</label>
-                                            <input type="number" class="form-control" id="pagarDeuTot"  name="deuTot" readonly>
+                                            <input class="form-control" id="pagarDeuTot"  name="deuTot" readonly>
                                         </div>
                                         <div class="col-sm-4">
                                             <label class="control-label">Deuda Pagada</label>
-                                            <input type="number" class="form-control" id="pagarDeuPag"  name="deuPag" readonly>
+                                            <input class="form-control" id="pagarDeuPag"  name="deuPag" readonly>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="col-sm-4">
                                             <label class="control-label">Cuotas Totales</label>
-                                            <input type="number" class="form-control" id="pagarCuoTot"  name="numCuoTot" readonly>
+                                            <input class="form-control" id="pagarCuoTot"  name="numCuoTot" readonly>
                                         </div>
                                         <div class="col-sm-4">
                                             <label class="control-label">Cuotas Pagadas</label>
-                                            <input type="number" class="form-control" id="pagarCuoPag"  name="numCuoPag" readonly>
+                                            <input class="form-control" id="pagarCuoPag"  name="numCuoPag" readonly>
                                         </div>
                                         <div class="col-sm-4">
                                             <label class="control-label">Monto Pago</label>
-                                            <input type="text" class="form-control" name="pagCuoTotPag">
+                                            <input class="form-control" name="pagCuoTotPag" id="pagarMonXCuo">
                                         </div>
                                     </div>
                                 </div>
@@ -200,8 +187,7 @@
             var pagarDeuPag=$("#pagarDeuPag");
             var pagarCuoTot=$("#pagarCuoTot");
             var pagarCuoPag=$("#pagarCuoPag");
-            
-           // var pagarPago=$("#pagarPago");
+            var pagarMonXCuo=$("#pagarMonXCuo");
             
             updateModal.on('show.bs.modal',function(e){
                 updateNumCuo.val($(e.relatedTarget).data('numcuo'));
@@ -215,6 +201,7 @@
                 pagarCuoTot.val($(e.relatedTarget).data('cuotot'));
                 pagarCuoPag.val($(e.relatedTarget).data('cuopag'));
                 pagarFacCab.val($(e.relatedTarget).data('faccab'));
+                pagarMonXCuo.val($(e.relatedTarget).data('monpag'));
                 console.log(pagarFacCab);
                 //pagarPago.val($(e.relatedTarget).data('pagar'));
             });

@@ -14,7 +14,7 @@ public class PurchaseController extends HttpServlet {
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<EnP4mFacturaCompraCab> facturasCompra = (new EnP4mFacturaCompraCabDao()).getAll();
+        List <EnP4mFacturaCompraCab> facturasCompra = (new EnP4mFacturaCompraCabDao()).getAll();
         request.setAttribute("facturasCompra", facturasCompra);
         
         request.getRequestDispatcher("/WEB-INF/compras/factura/purchase.jsp").forward(request, response);

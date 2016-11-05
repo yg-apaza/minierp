@@ -129,7 +129,7 @@
                                     <li>
                                         <a href="${pageContext.request.contextPath}/secured/ventas/factura">Factura de Venta</a>
                                     </li>
-                                    <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()==1 || sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()==2 || sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()==5}">
+                                    <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=6}">
                                     <li>
                                         <a href="${pageContext.request.contextPath}/secured/ventas/preventa">Preventa</a>
                                     </li>
@@ -206,6 +206,12 @@
                                     </li>
                                     <li>
                                         <a href="${pageContext.request.contextPath}/secured/configuracion/datosEmpresa">Datos de la empresa</a>
+                                    </li>
+                                    <li>
+                                        <a href="${pageContext.request.contextPath}/secured/configuracion/datosTransportista">Datos de los Transportistas</a>
+                                    </li>
+                                    <li>
+                                        <a href="${pageContext.request.contextPath}/secured/configuracion/unidadTransporte">Unidades de transporte</a>
                                     </li>
                                     <li>
                                         <a href="${pageContext.request.contextPath}/secured/configuracion/catalogoRutas">Catalogo de Rutas</a>

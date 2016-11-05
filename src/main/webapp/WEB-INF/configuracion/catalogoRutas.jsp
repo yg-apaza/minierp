@@ -8,8 +8,10 @@
     <jsp:attribute name="contenido">
         <div class="panel-body">
             <h1 class="page-header">Catalogo de Rutas
+                <c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                 <a href="#" class="btn btn-success btn-circle" data-toggle="modal" data-target="#agregarModal"><i class="fa fa-plus"></i></a>
                 <a href="#" class="btn btn-info btn-circle" data-toggle="modal" data-target="#estadosModal"><i class="fa fa-eye"></i></a>
+                </c:if>
             </h1>     
             <!--<div class="row">
                 <div class="col-md-4">
@@ -37,7 +39,9 @@
                                 <th>Codigo de Ruta</th>
                                 <th>Detalle de la Ruta</th>
                                 <th>clientes de la Ruta</th>
+                                <c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                                 <th>Acciones</th>
+                                </c:if>
                             </tr>
                         </thead>
                         <tbody>
@@ -50,6 +54,7 @@
                                             ${cli.enP1mCliente.cliCod} - ${cli.enP1mCliente.cliRazSoc}<br>
                                         </c:forEach>
                                     </td>
+                                    <c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                                     <td class="text-right">
                                         <a href="#" data-toggle="modal" data-target="#modificarModal" 
                                            data-catrutcod="${cr.catRutCod}" data-catrutdet="${cr.catRutDet}">
@@ -60,6 +65,7 @@
                                             <i class="fa fa-trash-o fa-2x" style="color: black;"></i>
                                         </a>
                                     </td>
+                                    </c:if>
                                 </tr>
                             </c:forEach>
                         </tbody>

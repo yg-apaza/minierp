@@ -1,5 +1,6 @@
 <%@ taglib tagdir="/WEB-INF/tags" prefix="minierptemplate" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix='cc' uri='http://java.sun.com/jsp/jstl/core' %>
 <minierptemplate:template>
     <jsp:attribute name="titulo">
         <title>Logística - Productos</title>
@@ -13,7 +14,9 @@
             </div>            
             <div class="row">
                 <div class="col-lg-7">
+                    <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addProduct"> Agregar nuevo <i class="fa fa-plus"></i></button>                
+                    </cc:if>
                 </div>
                 <div class=" col-lg-5">
                     <div class="col-lg-offset-4 col-lg-2">
@@ -40,8 +43,10 @@
                             <th>SubClase</th>
                             <th>Código</th>
                             <th>Descripción</th>
-                            <th>Estado</th>
+                            <th>Precio de venta</th>
+                            <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                             <th>Acciones</th>
+                            </cc:if>
                         </tr>
                     </thead>
                     <tbody>
@@ -51,7 +56,8 @@
                                 <td width="200px">${p.enP2mSubclaseProducto.subClaProDet}</td>                                        
                                 <td width="100px">${p.id.proCod}</td>
                                 <td width="300px">${p.proDet}</td>
-                                <td class="text-center" width="50px">${p.estRegCod}</td>
+                                <td class="text-center" width="50px">${p.proPreUniVen}</td>
+                                <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                                 <td class="text-center" width="50px">
                                     <a href="#" data-toggle="modal" data-target="#modifyProduct" 
                                        data-pCla="${p.id.claProCod}"
@@ -74,6 +80,7 @@
                                         <i class="fa fa-trash-o fa-2x" style="color: black;"></i>
                                     </a>
                                 </td>
+                                </cc:if>
                             </tr>
                         </c:forEach>
                     </tbody>
@@ -241,7 +248,7 @@
                                             <span class="input-group-addon"><i class="fa fa-dollar"></i></span>
                                             <select class="form-control" id="updMonCod" name="monCodUpd">
                                                 <c:forEach items="${monedas}" var="moneda">
-                                                    <option value="${moneda.monCod}">${moneda.monDet}</option>
+                                                    <option value="${monedaDes.monCod}">${moneda.monDet}</option>
                                                 </c:forEach>
                                             </select> 
                                         </div>

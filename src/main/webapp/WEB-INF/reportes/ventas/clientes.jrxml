@@ -25,7 +25,7 @@
 		<band/>
 	</background>
 	<title>
-		<band height="53">
+		<band height="67">
 			<staticText>
 				<reportElement mode="Opaque" x="23" y="15" width="779" height="20" uuid="de06f141-209a-4eca-911a-b895d32e1859"/>
 				<textElement textAlignment="Center" markup="none">
@@ -34,6 +34,10 @@
 				<text><![CDATA["LISTADO DE CLIENTES DE LA EMPRESA "
 ]]></text>
 			</staticText>
+			<image scaleImage="RetainShape" onErrorType="Icon">
+				<reportElement x="19" y="11" width="203" height="46" uuid="dc95073f-181d-4f73-94b9-e55fce80c7e4"/>
+				<imageExpression><![CDATA[$P{IMAGE}]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<columnHeader>

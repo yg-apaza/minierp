@@ -2,6 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="minierptemplate" %>
+<%@ taglib prefix='cc' uri='http://java.sun.com/jsp/jstl/core' %>
 <minierptemplate:template>
     <jsp:attribute name="titulo">
         <title>Compras - Factura</title>
@@ -17,7 +18,10 @@
                 <div class="row">
                     <div class="col-lg-8">
                         <form role=form" method="get" action="${pageContext.request.contextPath}/secured/compras/factura/addFactura">
-                            <button type="submit" class="btn btn-success">Crear Factura <i class="fa fa-plus"></i></button>   
+                            <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
+                                <button type="submit" class="btn btn-success">Crear Factura <i class="fa fa-plus"></i></button>
+                            </cc:if>
+                            
                         </form>
                     </div>
                     <div class="col-lg-4">
@@ -25,11 +29,11 @@
                             <label>Flujo Efectivo</label>
                         </div> 
                         <div class="col-lg-7">
-                            <a href="" class="btn btn-danger" >
+                            <a href="${pageContext.request.contextPath}/secured/general/reporte?type=pdf&&report=flujoefectivo&&jdbc=true&&key=null&&value=null" class="btn btn-danger" >
                                 <i class="fa fa-file-pdf-o"></i>
                             </a>
 
-                            <a  href="" class="btn  btn-primary" >
+                            <a  href="${pageContext.request.contextPath}/secured/general/reporte?type=doc&&report=flujoefectivo&&jdbc=true&&key=null&&value=null" class="btn  btn-primary" >
                                 <i class="fa fa-file-word-o"></i>
                             </a>
                         </div>

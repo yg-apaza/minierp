@@ -9,7 +9,9 @@
         <div class="panel-body">
             <h1 class="page-header">
                 Plantillas de Asientos
+                <c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                 <a href="#" class="btn btn-success btn-circle" data-toggle="modal" data-target="#agregarModal"><i class="fa fa-plus"></i></a>
+                </c:if>
             </h1>
             <br>
             <div class="col-md-12">
@@ -20,7 +22,9 @@
                                 <th>Código</th>
                                 <th>Descripción</th>
                                 <th>Glosa por defecto</th>
+                                <c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                                 <th class="text-right">Acciones</th>
+                                </c:if>
                             </tr>
                         </thead>
                         <tbody>
@@ -29,15 +33,17 @@
                                     <td>${p.plaCod}</td>
                                     <td>${p.plaDet}</td>
                                     <td>${p.plaGlo}</td>
-                                    <c:if test="${p.plaHab}">
-                                        <td class="text-right">
-                                            <a href="#" data-toggle="modal" data-target="#deleteModal" data-codigo="${p.plaCod}" data-descripcion="${p.plaDet}">
-                                                <i class="fa fa-trash-o fa-2x" style="color: black;"></i>
-                                            </a>
-                                        </td>
-                                    </c:if>
-                                    <c:if test="${!p.plaHab}">
-                                        <td class="text-right">No editable</td>
+                                    <c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
+                                        <c:if test="${p.plaHab}">
+                                            <td class="text-right">
+                                                <a href="#" data-toggle="modal" data-target="#deleteModal" data-codigo="${p.plaCod}" data-descripcion="${p.plaDet}">
+                                                    <i class="fa fa-trash-o fa-2x" style="color: black;"></i>
+                                                </a>
+                                            </td>
+                                        </c:if>
+                                        <c:if test="${!p.plaHab}">
+                                            <td class="text-right">No editable</td>
+                                        </c:if>
                                     </c:if>
                                 </tr>
                             </c:forEach>

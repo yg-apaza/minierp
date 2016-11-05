@@ -39,18 +39,26 @@ public class SubcuentaController extends HttpServlet
                 int cueNiv = Integer.parseInt(request.getParameter("cueNiv"));
                 String cueDes = request.getParameter("cueDes");
                 String cueNum = request.getParameter("cueNum1") + request.getParameter("cueNum2");
+                String cueAmaDeb = request.getParameter("cueAmaDeb");
+                String cueAmaHab = request.getParameter("cueAmaHab");
                 EnP3mCuenta c = new EnP3mCuenta();
                 c.setEnP3mCuentaByCuePad(dao.getByIdActive(cuePad));
                 c.setCueNiv(cueNiv);
                 c.setCueDes(cueDes);
                 c.setCueNum(cueNum);
                 c.setEstRegCod('A');
+                EnP3mCuenta amadeb = dao.getByNumActive(cueAmaDeb);
+                EnP3mCuenta amahab = dao.getByNumActive(cueAmaHab);
+                c.setEnP3mCuentaByCueAmaDeb(amadeb);
+                c.setEnP3mCuentaByCueAmaHab(amahab);
                 dao.save(c);
                 break;
             case "update":
                 int updateCueCod = Integer.parseInt(request.getParameter("cueCod"));
                 String updateCueDes = request.getParameter("cueDes");
-                dao.update(updateCueCod, updateCueDes);
+                String updateCueAmaDeb = request.getParameter("cueAmaDeb");
+                String updateCueAmaHab = request.getParameter("cueAmaHab");
+                dao.update(updateCueCod, updateCueDes, updateCueAmaDeb, updateCueAmaHab);
                 break;
             case "delete":
                 int deleteCueCod = Integer.parseInt(request.getParameter("cueCod"));

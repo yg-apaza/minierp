@@ -275,6 +275,28 @@
         <servlet-name>DatosEmpresaController</servlet-name>
         <url-pattern>/secured/configuracion/datosEmpresa</url-pattern>
     </servlet-mapping>
+    <!--Sub Modulo Datos de Transportista-->
+    <servlet>
+        <description/>
+        <display-name>TransportistaController</display-name>
+        <servlet-name>TransportistaController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.configuracion.TransportistaController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TransportistaController</servlet-name>
+        <url-pattern>/secured/configuracion/datosTransportista</url-pattern>
+    </servlet-mapping>
+    <!--Sub Modulo Unidades de Tranporte-->
+    <servlet>
+        <description/>
+        <display-name>UnidadTransporteController</display-name>
+        <servlet-name>UnidadTransporteController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.general.UnidadTransporteController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UnidadTransporteController</servlet-name>
+        <url-pattern>/secured/configuracion/unidadTransporte</url-pattern>
+    </servlet-mapping>
     <!--Sub Modulo Sucursal-->
     <servlet>
         <description/>
@@ -564,6 +586,66 @@
     </servlet-mapping>
     <servlet>
         <description/>
+        <display-name>ReferralGuideController</display-name>
+        <servlet-name>ReferralGuideController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.ventas.ReferralGuideController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ReferralGuideController</servlet-name>
+        <url-pattern>/secured/ventas/searchReferralGuide</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <description/>
+        <display-name>CarrierGuideController</display-name>
+        <servlet-name>CarrierGuideController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.ventas.CarrierGuideController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CarrierGuideController</servlet-name>
+        <url-pattern>/secured/ventas/searchCarrierGuide</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <description/>
+        <display-name>AddCarrierGuideController</display-name>
+        <servlet-name>AddCarrierGuideController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.ventas.AddCarrierGuideController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddCarrierGuideController</servlet-name>
+        <url-pattern>/secured/ventas/addCarrierGuide</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <description/>
+        <display-name>AddReferralGuideController</display-name>
+        <servlet-name>AddReferralGuideController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.ventas.AddReferralGuideController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddReferralGuideController</servlet-name>
+        <url-pattern>/secured/ventas/addReferralGuide</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <description/>
+        <display-name>RemoveCarrierGuideController</display-name>
+        <servlet-name>RemoveCarrierGuideController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.ventas.RemoveCarrierGuideController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RemoveCarrierGuideController</servlet-name>
+        <url-pattern>/secured/ventas/removeCarrierGuide</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <description/>
+        <display-name>RemoveReferralGuideController</display-name>
+        <servlet-name>RemoveReferralGuideController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.ventas.RemoveReferralGuideController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RemoveReferralGuideController</servlet-name>
+        <url-pattern>/secured/ventas/removeReferralGuide</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <description/>
         <display-name>PagosController</display-name>
         <servlet-name>PagosController</servlet-name>
         <servlet-class>org.epis.minierp.controller.ventas.PagosController</servlet-class>
@@ -592,7 +674,6 @@
         <servlet-name>facturaLotesController</servlet-name>
         <url-pattern>/secured/ventas/factura/facturaLotes</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <description/>
         <display-name>catalogoRutasController</display-name>

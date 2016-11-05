@@ -7,7 +7,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 @SuppressWarnings("unused")
-public class PrinterBusiness {
+public class ImpresoraMatricial {
 
     private static final char ESC = 27; //escape
     private static final char AT = 64; //@
@@ -44,15 +44,15 @@ public class PrinterBusiness {
     private static final float CM_PER_INCH = 2.54f;
     
     private FileWriter writer;
-    private  XMLReader<FacturaPrinter> xmlFactura;
-    private  XMLReader<BoletaPrinter> xmlBoleta;
-    private  XMLReader<GuiaRemisionPrinter> xmlGuiaRemision;
+    private XMLReader<FacturaPrinter> xmlFactura;
+    private XMLReader<BoletaPrinter> xmlBoleta;
+    private XMLReader<GuiaRemisionPrinter> xmlGuiaRemision;
     private FacturaPrinter fP;
     private BoletaPrinter bP;
     private GuiaRemisionPrinter gP;
     private String type;
     
-    public PrinterBusiness(String file, String dir, String type) {
+    public ImpresoraMatricial(String file, String dir, String type) {
         try {
             writer = new FileWriter(file);
             this.type = type;
@@ -72,7 +72,7 @@ public class PrinterBusiness {
             }
             start();
         } catch (IOException ex) {
-            Logger.getLogger(PrinterBusiness.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ImpresoraMatricial.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -99,7 +99,6 @@ public class PrinterBusiness {
                     select10CPI();
                 else
                     select15CPI(); 
-                System.out.println("margen izq: "+bP.getLeftMargin());
                 setMargins(bP.getLeftMargin(), bP.getRightMargin());
                 break;
             case "guiaRemision":
@@ -120,6 +119,11 @@ public class PrinterBusiness {
     public void newLine() throws IOException{
         writer.write(CR);
         writer.write(LF);
+    }
+    
+    public void addLines(int n) throws IOException{
+        for(int i = 0; i < n; i++)
+            newLine();
     }
     
     public void newPage() throws IOException{
@@ -293,32 +297,27 @@ public class PrinterBusiness {
         writer.write(cliCod);
         float val = fP.getCliCod();
         setAbsoluteHorizontalPosition(val);
-        System.out.println(val);
         writer.write(conPag);
         val += fP.getConPag();
-        System.out.println(val);
         setAbsoluteHorizontalPosition(val);
         writer.write(fecVen);
         val += fP.getFecVen();
-        System.out.println(val);
         setAbsoluteHorizontalPosition(val);
         writer.write(venZon);
         val += fP.getVenZon();
-        System.out.println(val);
         setAbsoluteHorizontalPosition(val);
         writer.write(numSec);
         val += fP.getNumSec();
-        System.out.println(val);
         setAbsoluteHorizontalPosition(val);
         writer.write(dis);
         val += fP.getDis();
-        System.out.println(val);
         setAbsoluteHorizontalPosition(val);
         writer.write(rut);
         val += fP.getRut();
-        System.out.println(val);
-        setAbsoluteHorizontalPosition(val);
+        advanceHorizontal(fP.getRut());
+        //setAbsoluteHorizontalPosition(17.6f);
         writer.write(traNom);
+        advanceVertical(fP.getTopFacDet());
         newLine();
     }
     
@@ -341,6 +340,7 @@ public class PrinterBusiness {
         val += bP.getObs();
         setAbsoluteHorizontalPosition(val);
         writer.write(obs);
+        advanceVertical(bP.getTopFacDet());
         newLine();
     }
     
@@ -372,12 +372,12 @@ public class PrinterBusiness {
         val += gP.getHora();
         setAbsoluteHorizontalPosition(val);
         writer.write(numInt);
+        advanceVertical(gP.getTopFacDet());
         newLine();
     }
     
     public void writeFacDetalle(String proCod, double proCan, String proUni, String proDes, 
-            double proValUni, String proDes1, String proDes2, double proValNet) throws IOException{
-        advanceVertical(fP.getTopFacDet());
+            double proValUni, String proDes1, String proDes2, String proValNet) throws IOException{
         writer.write(proCod);
         float val = fP.getProCod();
         setAbsoluteHorizontalPosition(val);
@@ -395,42 +395,47 @@ public class PrinterBusiness {
         setAbsoluteHorizontalPosition(val);
         writer.write(proDes1);
         val += fP.getProDes1();
-        setAbsoluteHorizontalPosition(val);
+        //setAbsoluteHorizontalPosition(17.48f);
+        advanceHorizontal(fP.getProDes1());
         writer.write(proDes2);
         val += fP.getProDes2();
         setAbsoluteHorizontalPosition(val);
-        writer.write(Double.toString(proValNet));
+        writer.write(proValNet);
         newLine();
     }
     
     public void writeBolDetalle(String proCod, double proCan, String proUni, String proDes, 
-            double proValVen, String proDes1, double proValNet) throws IOException{
-        advanceVertical(bP.getTopFacDet());
+            double proValVen, String proDes1, String proValNet) throws IOException{
         writer.write(proCod);
         float val = bP.getProCod();
         setAbsoluteHorizontalPosition(val);
+        System.out.println("asd"+val);
         writer.write(Double.toString(proCan));
         val += bP.getProCan();
         setAbsoluteHorizontalPosition(val);
+       System.out.println("asd"+val);
         writer.write(proUni);   
         val += bP.getProUni();    
         setAbsoluteHorizontalPosition(val);
+        System.out.println("asd"+val);
         writer.write(proDes);
         val += bP.getProDes();
         setAbsoluteHorizontalPosition(val);
+        System.out.println("asd"+val);
         writer.write(Double.toString(proValVen));
         val += bP.getProValVen();
         setAbsoluteHorizontalPosition(val);
+        System.out.println("asd"+val);
         writer.write(proDes1);
         val += bP.getProDes1();
         setAbsoluteHorizontalPosition(val);
-        writer.write(Double.toString(proValNet));
+        System.out.println("asd"+val);
+        writer.write(proValNet);
         newLine();
     }
     
     public void writeGuiRemDetalle(String proCod, double proCan, String proUni, String proDes, 
-            double proValUni, String proDes1, double proValNet) throws IOException{
-        advanceVertical(gP.getTopFacDet());
+            double proValUni, String proDes1, String proValNet) throws IOException{
         writer.write(proCod);
         float val = gP.getProCod();
         setAbsoluteHorizontalPosition(val);
@@ -449,12 +454,12 @@ public class PrinterBusiness {
         writer.write(proDes1);
         val += gP.getProDes1();
         setAbsoluteHorizontalPosition(val);
-        writer.write(Double.toString(proValNet));
+        writer.write(proValNet);
         newLine();
     }
 
     public void writeFacTotal(double subTotal, double igv, double total) throws IOException{
-        advanceVertical(7.0f);
+        advanceVertical(1.0f);
         setAbsoluteHorizontalPosition(fP.getTotalMargin());
         writer.write(Double.toString(subTotal));
         newLine();
@@ -467,7 +472,7 @@ public class PrinterBusiness {
     }
     
     public void writeBolTotal( double total) throws IOException{
-        advanceVertical(7.0f);
+        advanceVertical(1.0f);
         setAbsoluteHorizontalPosition(bP.getTotalMargin());
         writer.write(Double.toString(total));
         newLine();
