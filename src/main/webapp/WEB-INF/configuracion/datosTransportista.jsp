@@ -62,7 +62,7 @@
         
         <!-- MODAL PARA AGREGAR -->
         <div id="agregarModal" class="modal fade" role="dialog">
-            <div class="modal-dialog modal-sm">
+            <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -70,48 +70,60 @@
                     </div>
                     <form id="createForm" method="post" action="${pageContext.request.contextPath}/secured/configuracion/datosTransportista">
                         <div class="modal-body">
-                            <input type="hidden" name="accion" value="create">
-                            <div class="form-group">
-                                <label> Código: </label><br/>
-                                <input type="text" class="form-control" name="traCod" id="traCod">
+                        <input type="hidden" name="accion" value="create">
+                            <div class="form-horizontal">    
+                                <div class="form-group">
+                                    <div class="col-sm-6">
+                                        <label> Código: </label><br/>
+                                        <input type="text" class="form-control" name="traCod" id="traCod">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label> Nombre: </label><br/>
+                                        <input type="text" class="form-control" name="traNom" id="traNom">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-6">
+                                        <label> Apellido paterno: </label><br/>
+                                        <input type="text" class="form-control" name="traApePat" id="traApePat">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label> Apellido materno: </label><br/>
+                                        <input type="text" class="form-control" name="traApeMat" id="traApeMat">
+                                    </div>
+                                </div>                                
+                                <div class="form-group">
+                                    <div class="col-sm-6">
+                                        <label> Razón social: </label><br/>
+                                        <input type="text" class="form-control" name="traRazSoc" id="traRazSoc">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label> Nombre de la compañía: </label><br/>
+                                        <input type="text" class="form-control" name="traNomCom" id="traNomCom">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-6">
+                                        <label> Dominio fiscal: </label><br/>
+                                        <input type="text" class="form-control" name="traDomFis" id="traDomFis">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label> Teléfono: </label><br/>
+                                        <input type="text" class="form-control" name="traTel" id="traTel">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-6">
+                                        <label> E-mail: </label><br/>
+                                        <input type="text" class="form-control" name="traEmail" id="traEmail">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label> Dirección: </label><br/>
+                                        <input type="text" class="form-control" name="traDir" id="traDir">
+                                    </div>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label> Nombre: </label><br/>
-                                <input type="text" class="form-control" name="traNom" id="traNom">
-                            </div>
-                            <div class="form-group">
-                                <label> Apellido paterno: </label><br/>
-                                <input type="text" class="form-control" name="traApePat" id="traApePat">
-                            </div>
-                            <div class="form-group">
-                                <label> Apellido materno: </label><br/>
-                                <input type="text" class="form-control" name="traApeMat" id="traApeMat">
-                            </div>
-                            <div class="form-group">
-                                <label> Razón social: </label><br/>
-                                <input type="text" class="form-control" name="traRazSoc" id="traRazSoc">
-                            </div>
-                            <div class="form-group">
-                                <label> Nombre de la compañía: </label><br/>
-                                <input type="text" class="form-control" name="traNomCom" id="traNomCom">
-                            </div>
-                            <div class="form-group">
-                                <label> Dominio fiscal: </label><br/>
-                                <input type="text" class="form-control" name="traDomFis" id="traDomFis">
-                            </div>
-                            <div class="form-group">
-                                <label> Teléfono: </label><br/>
-                                <input type="text" class="form-control" name="traTel" id="traTel">
-                            </div>
-                            <div class="form-group">
-                                <label> E-mail: </label><br/>
-                                <input type="text" class="form-control" name="traEmail" id="traEmail">
-                            </div>
-                            <div class="form-group">
-                                <label> Dirección: </label><br/>
-                                <input type="text" class="form-control" name="traDir" id="traDir">
-                            </div>
-                        </div>   
+                        </div>
                         <div class="modal-footer">
                             <button type="submit" class="btn btn-outline btn-success">Agregar</button>
                             <button type="button" class="btn btn-outline btn-danger" data-dismiss="modal">Cancelar</button>
