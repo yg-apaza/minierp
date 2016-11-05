@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 05/11/2016 04:10:35 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="org.epis.minierp.model.TaGzzTipoFallaProducto" table="ta_gzz_tipo_falla_producto" catalog="episerp" optimistic-lock="version">
+        <id name="tipFallProCod" type="java.lang.Integer">
+            <column name="TipFallProCod" />
+            <generator class="identity" />
+        </id>
+        <property name="tipFallProDet" type="string">
+            <column name="TipFallProDet" length="90" not-null="true" />
+        </property>
+        <property name="estRegCod" type="char">
+            <column name="EstRegCod" length="1" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

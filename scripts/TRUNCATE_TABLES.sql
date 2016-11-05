@@ -59,6 +59,7 @@ TRUNCATE TABLE episerp.ta_gzz_tipo_doc_cliente;
 TRUNCATE TABLE episerp.ta_gzz_tipo_doc_proveedor;
 TRUNCATE TABLE episerp.ta_gzz_tipo_doc_transportista;
 TRUNCATE TABLE episerp.ta_gzz_tipo_doc_usuario;
+TRUNCATE TABLE episerp.ta_gzz_tipo_falla_producto;
 TRUNCATE TABLE episerp.ta_gzz_tipo_pago_factura;
 TRUNCATE TABLE episerp.ta_gzz_tipo_uni_transporte;
 TRUNCATE TABLE episerp.ta_gzz_tipo_usuario;

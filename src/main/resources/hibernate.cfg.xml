@@ -33,6 +33,7 @@
     <mapping resource="org/epis/minierp/model/EnP1mPuntoVenta.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/TaGzzEstadoCivil.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP1cDevolucionVentas.hbm.xml"/>
+    <mapping resource="org/epis/minierp/model/TaGzzTipoFallaProducto.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/TaGzzTipoUniTransporte.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP1tFacturaVentaDet.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP2tInventarioDet.hbm.xml"/>

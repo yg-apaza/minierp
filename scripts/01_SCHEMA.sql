@@ -1145,6 +1145,17 @@ CREATE TABLE ta_gzz_canal_cliente
 )
 ;
 
+-- Table episerp.ta_gzz_tipo_falla_producto
+
+CREATE TABLE ta_gzz_tipo_falla_producto
+(
+  TipFallProCod Int(2) ZEROFILL NOT NULL AUTO_INCREMENT,
+  TipFallProDet Char(90) NOT NULL,
+  EstRegCod Char(1) NOT NULL,
+ PRIMARY KEY (TipFallProCod)
+)
+;
+
 -- Create relationships section ------------------------------------------------- 
 
 ALTER TABLE en_p1m_preventa_cab ADD CONSTRAINT Relationship3 FOREIGN KEY (CliCod) REFERENCES en_p1m_cliente (CliCod) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -1422,3 +1433,5 @@ ALTER TABLE en_p1m_cartera_clientes ADD CONSTRAINT Relationship118 FOREIGN KEY (
 
 ALTER TABLE en_p1m_cliente ADD CONSTRAINT Relationship119 FOREIGN KEY (CanCliCod) REFERENCES ta_gzz_canal_cliente (CanCliCod) ON DELETE NO ACTION ON UPDATE NO ACTION
 ;
+
+
