@@ -584,7 +584,7 @@
         <servlet-name>SearchBillController</servlet-name>
         <url-pattern>/secured/ventas/searchBill</url-pattern>
     </servlet-mapping>
-        <servlet>
+    <servlet>
         <description/>
         <display-name>TotalRefundController</display-name>
         <servlet-name>TotalRefundController</servlet-name>
@@ -594,6 +594,16 @@
         <servlet-name>TotalRefundController</servlet-name>
         <url-pattern>/secured/ventas/totalRefund</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <description/>
+        <display-name>PartialRefundController</display-name>
+        <servlet-name>PartialRefundController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.ventas.PartialRefundController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PartialRefundController</servlet-name>
+        <url-pattern>/secured/ventas/partialRefund</url-pattern>
+    </servlet-mapping>    
     <servlet>
         <description/>
         <display-name>ReferralGuideController</display-name>

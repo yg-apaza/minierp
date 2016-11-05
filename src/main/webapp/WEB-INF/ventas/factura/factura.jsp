@@ -93,10 +93,10 @@
                                                         <a onclick='makeDoCarrierGuide("${c.facVenCabCod}")'>
                                                             <i class="fa fa-truck fa-2x" style="color: black;"></i>
                                                         </a>
-                                                        <a href="#" data-toggle="modal" data-target="#">
+                                                        <a onclick='makeDoRefund("${c.facVenCabCod}","partial")'>
                                                             <i class="fa fa-wrench fa-2x" style="color: black;"></i>
                                                         </a>
-                                                        <a href="#" data-toggle="modal" data-target="#messageTotalRefund" data-code="${c.facVenCabCod}">
+                                                        <a onclick='makeDoRefund("${c.facVenCabCod}","total")'>
                                                             <i class="fa fa-trash fa-2x" style="color: black;"></i>
                                                         </a>
                                                     </td>
@@ -569,25 +569,26 @@
                 </div>         
             </div>
         </div>
-        <div id="messageTotalRefund" class="modal fade">
+        <div id="messageRefund" class="modal fade">
             <div class="modal-dialog modal-sm">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Devolución Total</h4>
+                        <button type="button" class="close" data-dismiss="modal" id="refundDiss">&times;</button>
+                        <h4 class="modal-title">Devolución</h4>
                     </div>
                     <div class="modal-body">
-                        <p align="center"><span id="totalRefund"></span></p>
+                        <p align="center"><span id="refund"></span></p>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>                                            
-                        <button type="button" class="btn btn-success" onclick="evaluateTotalRefund()">Aceptar</button>                                            
+                        <button type="button" class="btn btn-danger" data-dismiss="modal" id="refundCancel">Cancelar</button>                                            
+                        <button type="button" class="btn btn-success" onclick="evaluateRefund()" id="refundAccept">Aceptar</button>                                            
                     </div>
                 </div>         
             </div>
         </div>
         <script language="javascript">
-            var stateTotalRefund = "";
+            var codeRefund = "";
+            var typeRefund = "";
             
             $(document).ready(function () {
                 $('#tablePurchases').DataTable({
@@ -673,11 +674,6 @@
                     $("#guiTraTipDes").val(data.tipDes);
                     $("#guiTraTraDes").val(data.traDes);
                 });
-            });
-            
-            $("#messageTotalRefund").on('show.bs.modal', function (e) {
-                $("#totalRefund").text("¿Desea realizar una devolución total de todos los productos de la factura " + $(e.relatedTarget).data('code') + " ? Tener en cuenta que la factura se eliminará ");
-                stateTotalRefund = $(e.relatedTarget).data('code');
             });
             
             function loadNewReferralGuide(data) {
@@ -785,24 +781,44 @@
                 });
             }
             
-            function makeDoTotalRefund(facVenCod) {
-                
-                $.post(
-                        "${pageContext.request.contextPath}/secured/ventas/searchCarrierGuide", {
-                            action: "verify",
-                            facVenCabCod: facVenCod
-                        }
-                ).done(function (data) {
-                    loadNewCarrierGuide(data);
-                    if (data.state) {
-                        $("#addCarrierGuide").modal('show');
-                    } else {
-                        $("#deleteCarrierGuide").text(facVenCod);
-                        $("#messageCarrierGuide").modal('show');
-                    }
+            function makeDoRefund(facVenCod,type) {
+                $("#messageRefund").modal({
+                    backdrop: 'static',
+                    keyboard: true
                 });
+                codeRefund = facVenCod;
+                
+                if(type == "partial") {
+                    typeRefund = "partial";
+                    $("#refund").text("¿Desea realizar una devolución parcial de los productos asociados a la factura " + facVenCod + " ? Tener en cuenta que solo podrà modificar su detalle ");
+                } else if(type == "total") {
+                    typeRefund = "total";
+                    $("#refund").text("¿Desea realizar una devolución total de todos los productos de la factura " + facVenCod + " ? Tener en cuenta que la factura se eliminará ");                    
+                }
+                
+                $("#messageRefund").modal('show');
             }
-
+            
+            function evaluateRefund() {
+                $("#refundDiss").prop('disabled',true);
+                $("#refundCancel").prop('disabled',true);
+                $("#refundAccept").prop('disabled',true);
+                        
+                if(typeRefund == "partial") {
+                    $("#refund").text("Redireccionando ...");
+                    window.location = "${pageContext.request.contextPath}/secured/ventas/partialRefund?code=" + codeRefund;                    
+                } else if(typeRefund == "total") {                               
+                    $("#refund").text("Espere mientras se realiza la devolución");                    
+                    $.post(
+                        "${pageContext.request.contextPath}/secured/ventas/totalRefund", {
+                            facVenCabCod: codeRefund
+                        }
+                    ).done(function(){
+                        location.reload();
+                    });
+                }
+            }
+            
             function deleteReferralGuide() {
                 $.post(
                         "${pageContext.request.contextPath}/secured/ventas/removeReferralGuide", {
@@ -823,19 +839,6 @@
                     $("#messageCarrierGuide").modal('hide');
                     $("#addCarrierGuide").modal('show');
                 });
-            }
-            
-            function evaluateTotalRefund() {
-                $("#totalRefund").text("Espere mientras se realiza la devolución");
-                if(stateTotalRefund != "") {
-                    $.post(
-                        "${pageContext.request.contextPath}/secured/ventas/totalRefund", {
-                            facVenCabCod: stateTotalRefund
-                        }
-                    ).done(function(){
-                        location.reload();
-                    });
-                }
             }
             
             $.validator.addMethod("codePattern", function (value, element) {
