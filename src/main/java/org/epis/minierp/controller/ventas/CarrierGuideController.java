@@ -38,7 +38,7 @@ public class CarrierGuideController extends HttpServlet {
                 bill = (new EnP1mFacturaVentaCabDao()).getById(facVenCabCod);
                 data = new JsonObject();
 
-                if (bill.getEnP2mGuiaRemRemitente() != null) {
+                if (bill.getEnP2mGuiaRemTransportista() != null) {
                     data.addProperty("empDes", bill.getEnP2mGuiaRemTransportista().getEnP1mEmpresa().getEmpDes());
                     data.addProperty("facCod", bill.getFacVenCabCod());
                     data.addProperty("traNum", bill.getEnP2mGuiaRemTransportista().getGuiRemTraNum());
