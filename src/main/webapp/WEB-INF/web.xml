@@ -603,7 +603,16 @@
         <servlet-name>catalogoRutasController</servlet-name>
         <url-pattern>/secured/configuracion/catalogoRutas</url-pattern>
     </servlet-mapping>
-    
+    <servlet>
+        <description/>
+        <display-name>almacenController</display-name>
+        <servlet-name>almacenController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.logistica.AlmacenController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>almacenController</servlet-name>
+        <url-pattern>/secured/logistica/almacen</url-pattern>
+    </servlet-mapping>
     <!--         ERRORS         -->
     <error-page>
         <location>/error.jsp</location>

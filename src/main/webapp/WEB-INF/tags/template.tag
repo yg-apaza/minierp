@@ -113,6 +113,9 @@
                                             <li>
                                                 <a href="${pageContext.request.contextPath}/secured/compras/claseSubclase">Clase/Subclase</a>
                                             </li>
+                                            <li>
+                                                <a href="${pageContext.request.contextPath}/secured/logistica/almacen">Almacen</a>
+                                            </li>
                                         </ul>
                                     </li>
                                 </ul>

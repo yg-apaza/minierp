@@ -26,7 +26,12 @@ public class EnP2mProductoDao {
         List <EnP2mProducto> productos =  query.list();
         return productos;
     }
-    
+    public List <EnP2mProducto> getAllByAlmacen(String AlmCod){
+        Query query = session.createQuery("from EnP2mProducto T where T.estRegCod = 'A' and T.enP2mAlmacen.almCod=:p1");
+        query.setParameter("p1", AlmCod);
+        List <EnP2mProducto> productos =  query.list();
+        return productos;
+    }
     public List <EnP2mProducto> getA() {
         Query query = session.createQuery("FROM EnP2mProducto WHERE proPreUniVen > (SELECT Avg(proPreUniVen) FROM EnP2mProducto WHERE estRegCod = 'A') and proStk < (SELECT Avg(proStk) FROM EnP2mProducto WHERE estRegCod = 'A') and estRegCod = 'A'");
         List <EnP2mProducto> productos =  query.list();

@@ -27,6 +27,12 @@ public class EnP2mAlmacenDao {
         System.out.println(estados);
         return estados;
     }
+  public List<EnP2mAlmacen> getAllInactive() {
+        Query query = session.createQuery("from EnP2mAlmacen E where E.estRegCod = 'I'");
+        List<EnP2mAlmacen> inactivos = query.list();
+        System.out.println(inactivos);
+        return inactivos;
+    }
 
     public EnP2mAlmacen getById(String id) {
         EnP2mAlmacen estado = null;
