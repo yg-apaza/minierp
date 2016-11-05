@@ -21,7 +21,7 @@
                     </div>
                     <div class="col-md-4 col-md-offset-4"><br>
                             <div class="form-group input-group">
-                                <span class="input-group-addon">Comprador</span>
+                                <span class="input-group-addon">Almacenero</span>
                                 <span class="input-group-addon"><i class="fa fa-child"></i></span>
                                 <input type="hidden" class="form-control" name="usuCod" value="${usuario.usuCod}" readonly>
                                 <input type="text" class="form-control" value="${usuario.usuCod} - ${usuario.usuNom}" readonly>

@@ -48,7 +48,7 @@
                                         <th>Fecha</th>
                                         <th>Factura</th>
                                         <th>Proveedor</th>
-                                        <th>Comprador</th>
+                                        <th>Almacenero</th>
                                         <th>Importe</th>
                                         <th>Tipo</th>
                                     </tr>
