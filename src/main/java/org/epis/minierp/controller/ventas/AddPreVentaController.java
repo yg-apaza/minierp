@@ -22,7 +22,6 @@ import org.epis.minierp.dao.general.EnP1mUsuarioDao;
 import org.epis.minierp.dao.general.TaGzzTipoClienteDao;
 import org.epis.minierp.dao.general.TaGzzTipoDescuentoDao;
 import org.epis.minierp.dao.logistica.EnP2mProductoDao;
-import org.epis.minierp.dao.ventas.EnP1mCatalogoRutaDao;
 import org.epis.minierp.dao.ventas.EnP1tPreventaDetDao;
 import org.epis.minierp.model.EnP1mEmpresa;
 import org.epis.minierp.model.EnP1mPreventaCab;

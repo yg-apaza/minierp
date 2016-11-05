@@ -26,7 +26,6 @@ import org.epis.minierp.dao.ventas.EnP1mClienteDao;
 import org.epis.minierp.dao.ventas.EnP1mFacturaVentaCabDao;
 import org.epis.minierp.dao.general.EnP1mUsuarioDao;
 import org.epis.minierp.dao.logistica.EnP2mProductoDao;
-import org.epis.minierp.dao.ventas.EnP1mCatalogoRutaDao;
 import org.epis.minierp.dao.ventas.EnP1mMovimientoPuntoVenDao;
 import org.epis.minierp.dao.ventas.EnP1tFacturaVentaDetDao;
 import org.epis.minierp.dao.general.TaGzzTipoClienteDao;
@@ -178,6 +177,5 @@ public class AddFacturaController extends HttpServlet {
         } catch (ParseException ex) {
             Logger.getLogger(AddFacturaController.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
 }

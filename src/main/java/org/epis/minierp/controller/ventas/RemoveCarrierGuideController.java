@@ -10,7 +10,7 @@ import org.epis.minierp.dao.ventas.EnP1mFacturaVentaCabDao;
 import org.epis.minierp.model.EnP1mFacturaVentaCab;
 import org.epis.minierp.model.EnP2mGuiaRemTransportista;
 
-public class RemoveCarrierGuide extends HttpServlet {
+public class RemoveCarrierGuideController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

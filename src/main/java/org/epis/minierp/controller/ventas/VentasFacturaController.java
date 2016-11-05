@@ -15,7 +15,7 @@ public class VentasFacturaController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<EnP1mFacturaVentaCab> facturasVenta = (new EnP1mFacturaVentaCabDao()).getAll();
+        List <EnP1mFacturaVentaCab> facturasVenta = (new EnP1mFacturaVentaCabDao()).getAll();
         request.setAttribute("facturasVenta", facturasVenta);
         
         request.getRequestDispatcher("/WEB-INF/ventas/factura/factura.jsp").forward(request, response);

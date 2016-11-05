@@ -10,7 +10,7 @@ import org.epis.minierp.dao.ventas.EnP1mFacturaVentaCabDao;
 import org.epis.minierp.model.EnP1mFacturaVentaCab;
 import org.epis.minierp.model.EnP2mGuiaRemRemitente;
 
-public class RemoveReferralGuide extends HttpServlet {
+public class RemoveReferralGuideController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

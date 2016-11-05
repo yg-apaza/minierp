@@ -606,42 +606,42 @@
     </servlet-mapping>
     <servlet>
         <description/>
-        <display-name>AddCarrierGuide</display-name>
-        <servlet-name>AddCarrierGuide</servlet-name>
-        <servlet-class>org.epis.minierp.controller.ventas.AddCarrierGuide</servlet-class>
+        <display-name>AddCarrierGuideController</display-name>
+        <servlet-name>AddCarrierGuideController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.ventas.AddCarrierGuideController</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>AddCarrierGuide</servlet-name>
+        <servlet-name>AddCarrierGuideController</servlet-name>
         <url-pattern>/secured/ventas/addCarrierGuide</url-pattern>
     </servlet-mapping>
     <servlet>
         <description/>
-        <display-name>AddReferralGuide</display-name>
-        <servlet-name>AddReferralGuide</servlet-name>
-        <servlet-class>org.epis.minierp.controller.ventas.AddReferralGuide</servlet-class>
+        <display-name>AddReferralGuideController</display-name>
+        <servlet-name>AddReferralGuideController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.ventas.AddReferralGuideController</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>AddReferralGuide</servlet-name>
+        <servlet-name>AddReferralGuideController</servlet-name>
         <url-pattern>/secured/ventas/addReferralGuide</url-pattern>
     </servlet-mapping>
     <servlet>
         <description/>
-        <display-name>RemoveCarrierGuide</display-name>
-        <servlet-name>RemoveCarrierGuide</servlet-name>
-        <servlet-class>org.epis.minierp.controller.ventas.RemoveCarrierGuide</servlet-class>
+        <display-name>RemoveCarrierGuideController</display-name>
+        <servlet-name>RemoveCarrierGuideController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.ventas.RemoveCarrierGuideController</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>RemoveCarrierGuide</servlet-name>
+        <servlet-name>RemoveCarrierGuideController</servlet-name>
         <url-pattern>/secured/ventas/removeCarrierGuide</url-pattern>
     </servlet-mapping>
     <servlet>
         <description/>
-        <display-name>RemoveReferralGuide</display-name>
-        <servlet-name>RemoveReferralGuide</servlet-name>
-        <servlet-class>org.epis.minierp.controller.ventas.RemoveReferralGuide</servlet-class>
+        <display-name>RemoveReferralGuideController</display-name>
+        <servlet-name>RemoveReferralGuideController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.ventas.RemoveReferralGuideController</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>RemoveReferralGuide</servlet-name>
+        <servlet-name>RemoveReferralGuideController</servlet-name>
         <url-pattern>/secured/ventas/removeReferralGuide</url-pattern>
     </servlet-mapping>
     <servlet>
@@ -674,7 +674,6 @@
         <servlet-name>facturaLotesController</servlet-name>
         <url-pattern>/secured/ventas/factura/facturaLotes</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <description/>
         <display-name>catalogoRutasController</display-name>
@@ -685,7 +684,6 @@
         <servlet-name>catalogoRutasController</servlet-name>
         <url-pattern>/secured/configuracion/catalogoRutas</url-pattern>
     </servlet-mapping>
-    
     <!--         ERRORS         -->
     <error-page>
         <location>/error.jsp</location>

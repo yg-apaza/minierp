@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.epis.minierp.dao.general.EnP1mEmpresaDao;
 import org.epis.minierp.dao.general.EnP2mUnidadTransporteDao;
-import org.epis.minierp.dao.general.TaGzzMotivoTrasladoDao;
 import org.epis.minierp.dao.general.TaGzzTipoDestinatarioDao;
 import org.epis.minierp.dao.logistica.EnP2mTransportistaDao;
 import org.epis.minierp.dao.ventas.EnP1mClientesRutasDao;
@@ -21,7 +20,6 @@ import org.epis.minierp.model.EnP1mEmpresa;
 import org.epis.minierp.model.EnP1mFacturaVentaCab;
 import org.epis.minierp.model.EnP2mTransportista;
 import org.epis.minierp.model.EnP2mUnidadTransporte;
-import org.epis.minierp.model.TaGzzMotivoTraslado;
 import org.epis.minierp.model.TaGzzTipoDestinatario;
 
 public class CarrierGuideController extends HttpServlet {

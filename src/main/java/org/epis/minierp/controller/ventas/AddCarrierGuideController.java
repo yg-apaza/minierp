@@ -14,9 +14,8 @@ import org.epis.minierp.dao.ventas.EnP1mCatalogoRutaDao;
 import org.epis.minierp.dao.ventas.EnP1mFacturaVentaCabDao;
 import org.epis.minierp.model.EnP1mFacturaVentaCab;
 import org.epis.minierp.model.EnP2mGuiaRemTransportista;
-import org.epis.minierp.model.EnP2mUnidadTransporte;
 
-public class AddCarrierGuide extends HttpServlet {
+public class AddCarrierGuideController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -30,7 +29,6 @@ public class AddCarrierGuide extends HttpServlet {
         int guiTraRutDes = Integer.parseInt(request.getParameter("guiTraRutDes"));
         int guiTraTipDes = Integer.parseInt(request.getParameter("guiTraTipDes"));
         String guiTraTraDes = request.getParameter("guiTraTraDes");
-        System.out.println("waaaaaaaa " + guiTraEmpDes);
         EnP2mGuiaRemTransportistaDao guide = new EnP2mGuiaRemTransportistaDao();
         EnP2mGuiaRemTransportista carrierGuide = new EnP2mGuiaRemTransportista();
         

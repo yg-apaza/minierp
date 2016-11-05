@@ -13,7 +13,7 @@ import org.epis.minierp.dao.ventas.EnP2mGuiaRemRemitenteDao;
 import org.epis.minierp.model.EnP1mFacturaVentaCab;
 import org.epis.minierp.model.EnP2mGuiaRemRemitente;
 
-public class AddReferralGuide extends HttpServlet {
+public class AddReferralGuideController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
