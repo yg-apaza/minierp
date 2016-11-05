@@ -71,7 +71,7 @@
                                                 <td width="3%" align="center"><input type="checkbox" name="codigos" value="${c.facVenCabCod}"></td>
                                                 <td width="10%" align="center">${c.facVenCabFecEmi}</td>
                                                 <td width="15%" align="center">${c.facVenCabCod}</td>
-                                                <td width="15%">${c.enP1mCliente.cliNom}</td>
+                                                <td width="19%">${c.enP1mCliente.cliNom}</td>
                                                 <td width="15%">${c.enP1mUsuario.usuNom}</td>
                                                 <td width="10%" align="center">${c.facVenCabTot}</td>                                                                            
                                                 <td width="12%" align="center">
@@ -86,7 +86,7 @@
                                                     </a>
                                                 </td>
                                                 <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
-                                                    <td width="20%" align="center">
+                                                    <td width="16%" align="center">
                                                         <a onclick='makeDoReferralGuide("${c.facVenCabCod}")'>
                                                             <i class="fa fa-book fa-2x" style="color: black;"></i>
                                                         </a>
@@ -96,8 +96,8 @@
                                                         <a href="#" data-toggle="modal" data-target="#">
                                                             <i class="fa fa-wrench fa-2x" style="color: black;"></i>
                                                         </a>
-                                                        <a href="#" data-toggle="modal" data-target="#">
-                                                            <i class="fa fa-paste fa-2x" style="color: black;"></i>
+                                                        <a href="#" data-toggle="modal" data-target="#messageTotalRefund" data-code="${c.facVenCabCod}">
+                                                            <i class="fa fa-trash fa-2x" style="color: black;"></i>
                                                         </a>
                                                     </td>
                                                 </cc:if>
@@ -551,7 +551,7 @@
                     </div>
                 </div>         
             </div>
-        </div>
+        </div>        
         <div id="messageCarrierGuide" class="modal fade">
             <div class="modal-dialog modal-sm">
                 <div class="modal-content">
@@ -569,7 +569,26 @@
                 </div>         
             </div>
         </div>
+        <div id="messageTotalRefund" class="modal fade">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Devolución Total</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p align="center"><span id="totalRefund"></span></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>                                            
+                        <button type="button" class="btn btn-success" onclick="evaluateTotalRefund()">Aceptar</button>                                            
+                    </div>
+                </div>         
+            </div>
+        </div>
         <script language="javascript">
+            var stateTotalRefund = "";
+            
             $(document).ready(function () {
                 $('#tablePurchases').DataTable({
                     responsive: true
@@ -655,7 +674,12 @@
                     $("#guiTraTraDes").val(data.traDes);
                 });
             });
-
+            
+            $("#messageTotalRefund").on('show.bs.modal', function (e) {
+                $("#totalRefund").text("¿Desea realizar una devolución total de todos los productos de la factura " + $(e.relatedTarget).data('code') + " ? Tener en cuenta que la factura se eliminará ");
+                stateTotalRefund = $(e.relatedTarget).data('code');
+            });
+            
             function loadNewReferralGuide(data) {
                 $("#guiRemAddEmpDes").val(data.empDes);
                 $("#guiRemAddFacCod").val(data.facCod);
@@ -727,7 +751,6 @@
                 });
             }
 
-
             function makeDoReferralGuide(facVenCod) {
                 $.post(
                         "${pageContext.request.contextPath}/secured/ventas/searchReferralGuide", {
@@ -746,6 +769,24 @@
             }
 
             function makeDoCarrierGuide(facVenCod) {
+                $.post(
+                        "${pageContext.request.contextPath}/secured/ventas/searchCarrierGuide", {
+                            action: "verify",
+                            facVenCabCod: facVenCod
+                        }
+                ).done(function (data) {
+                    loadNewCarrierGuide(data);
+                    if (data.state) {
+                        $("#addCarrierGuide").modal('show');
+                    } else {
+                        $("#deleteCarrierGuide").text(facVenCod);
+                        $("#messageCarrierGuide").modal('show');
+                    }
+                });
+            }
+            
+            function makeDoTotalRefund(facVenCod) {
+                
                 $.post(
                         "${pageContext.request.contextPath}/secured/ventas/searchCarrierGuide", {
                             action: "verify",
@@ -783,7 +824,20 @@
                     $("#addCarrierGuide").modal('show');
                 });
             }
-
+            
+            function evaluateTotalRefund() {
+                $("#totalRefund").text("Espere mientras se realiza la devolución");
+                if(stateTotalRefund != "") {
+                    $.post(
+                        "${pageContext.request.contextPath}/secured/ventas/totalRefund", {
+                            facVenCabCod: stateTotalRefund
+                        }
+                    ).done(function(){
+                        location.reload();
+                    });
+                }
+            }
+            
             $.validator.addMethod("codePattern", function (value, element) {
                 return /^[0-9]{3}-[0-9]{6}$/.test(value);
             }, "Patrón: [0-9]{3}-[0-9]{6}");

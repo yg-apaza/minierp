@@ -29,7 +29,8 @@ public class AddCarrierGuideController extends HttpServlet {
         int guiTraRutDes = Integer.parseInt(request.getParameter("guiTraRutDes"));
         int guiTraTipDes = Integer.parseInt(request.getParameter("guiTraTipDes"));
         String guiTraTraDes = request.getParameter("guiTraTraDes");
-        EnP2mGuiaRemTransportistaDao guide = new EnP2mGuiaRemTransportistaDao();
+        
+        //Creando nueva Guía de remisión de transportista
         EnP2mGuiaRemTransportista carrierGuide = new EnP2mGuiaRemTransportista();
         
         carrierGuide.setGuiRemTraNum(guiTraTraNum);
@@ -42,12 +43,14 @@ public class AddCarrierGuideController extends HttpServlet {
         carrierGuide.setGuiRemTraDes(guiTraTraDes);
         carrierGuide.setEstRegCod('A');
         
+        EnP2mGuiaRemTransportistaDao guide = new EnP2mGuiaRemTransportistaDao();
         guide.save(carrierGuide);
         
+        //Actualizando la guía de remisión de transportista en la factura de venta asociada
         EnP1mFacturaVentaCabDao billDao = new EnP1mFacturaVentaCabDao();
         EnP1mFacturaVentaCab bill = billDao.getById(guiTraFacCod);
         bill.setEnP2mGuiaRemTransportista(carrierGuide);
-        bill.setEnP1mCatalogoRuta((new EnP1mCatalogoRutaDao()).getById(guiTraRutDes));
+        bill.setEnP1mCatalogoRuta((new EnP1mCatalogoRutaDao()).getById(guiTraRutDes)); //Actualizando la ruta
         billDao.update(bill);
         
         response.sendRedirect(request.getContextPath() + "/secured/ventas/factura");

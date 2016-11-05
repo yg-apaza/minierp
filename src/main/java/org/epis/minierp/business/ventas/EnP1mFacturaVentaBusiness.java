@@ -37,8 +37,7 @@ public class EnP1mFacturaVentaBusiness {
         proDao = new EnP2mProductoDao();
     }
         
-    public void devolucionParcial(String facVenCabCod, String facVenNewCod){
-        
+    public void devolucionParcial(String facVenCabCod, String facVenNewCod){        
         EnP1mFacturaVentaCab cabFacVen = facVenCabDao.getById(facVenCabCod);
         EnP1mFacturaVentaCab cabNewFac = facVenCabDao.getById(facVenNewCod);
         
@@ -109,32 +108,31 @@ public class EnP1mFacturaVentaBusiness {
             guiRemTraDao.update(guiRemTra);
         }
         
-        //inabilita el registros de pagos por cuotas si este tiene uno (estRegCod = I)
+        //Inhabilita el registro de pagos por cuotas si este tiene uno (estRegCod = I)
         EnP1mPagosCuotasCab pagCuo = cabFacVen.getEnP1mPagosCuotasCab();
         if(pagCuo != null){
             pagCuo.setEstRegCod('I');
             pagCuoDao.update(pagCuo);
         }
         
-        //se crea la entidad de devolucion
+        //Se crea la entidad de devolución
         EnP1cDevolucionVentas devVen = new EnP1cDevolucionVentas();
         devVen.setEnP1mFacturaVentaCabByFacVenCabCod(cabFacVen);
         devVen.setFacVenCabCod(facVenCabCod);
-        devVen.setEnP1mFacturaVentaCabByDevVenNewFac(null); //no hay nueva factura ya que es una devolucion total
+        devVen.setEnP1mFacturaVentaCabByDevVenNewFac(null); //No hay nueva factura ya que es una devolucion total
         devVen.setDevVenDet("Devolucion Total de la Factura y sus productos");
-        devVen.setDevVenFec(DateUtil.getthisDate()); //el dia q se ejecuta esta funcion
+        devVen.setDevVenFec(DateUtil.getthisDate()); //Fecha actual
         devVen.setDevVenMon(cabFacVen.getFacVenCabTot());
         devVenDao.save(devVen);
         
-        //listando todos los detalles
-        List<EnP1tFacturaVentaDet> detFacVen = new ArrayList<>();
-        detFacVen.addAll(cabFacVen.getEnP1tFacturaVentaDets());
+        //Listando todos los detalles
+        List <EnP1tFacturaVentaDet> detFacVen = new ArrayList<>(cabFacVen.getEnP1tFacturaVentaDets());
         
-        //devolviendo el stock a cada producto del detalle
-        EnP2mProducto temp;
+        //Devolviendo el stock a cada producto del detalle
+        EnP2mProducto temp = null;
         for (EnP1tFacturaVentaDet detalle : detFacVen) {
             temp = detalle.getEnP2mProducto();
-            //insertar aqui parte contable por producto
+            //Insertar aqui parte contable por producto
             temp.setProStk(temp.getProStk() + detalle.getFacVenDetCan());
             proDao.update(temp);
         }
@@ -142,7 +140,5 @@ public class EnP1mFacturaVentaBusiness {
         //Se cambia su estado de registros (estRegCod = I)
         cabFacVen.setEstRegCod('I');
         facVenCabDao.update(cabFacVen);
-    }
-    
-    
+    }  
 }
