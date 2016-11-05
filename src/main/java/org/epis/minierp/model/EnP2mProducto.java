@@ -1,5 +1,5 @@
 package org.epis.minierp.model;
-// Generated 02/11/2016 08:41:29 PM by Hibernate Tools 4.3.1
+// Generated 05/11/2016 03:48:27 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -19,7 +19,9 @@ public class EnP2mProducto  implements java.io.Serializable {
      private String proCodBar;
      private String proDet;
      private double proPreUniVen;
-     private Double proPreUniCom;
+     private double proPreUniCom;
+     private double proPreUniMar;
+     private double proPreUniFle;
      private double proStk;
      private Double proStkRea;
      private double proStkPreVen;
@@ -28,6 +30,7 @@ public class EnP2mProducto  implements java.io.Serializable {
      private Double proStkMax;
      private String proObs;
      private char estRegCod;
+     private Double proPesNet;
      private Set enP1tFacturaVentaDets = new HashSet(0);
      private Set enP2tInventarioDets = new HashSet(0);
      private Set enP1tPreventaDets = new HashSet(0);
@@ -37,19 +40,22 @@ public class EnP2mProducto  implements java.io.Serializable {
     }
 
 	
-    public EnP2mProducto(EnP2mProductoId id, EnP2mSubclaseProducto enP2mSubclaseProducto, TaGzzMoneda taGzzMoneda, TaGzzUnidadMed taGzzUnidadMed, String proDet, double proPreUniVen, double proStk, double proStkPreVen, String proObs, char estRegCod) {
+    public EnP2mProducto(EnP2mProductoId id, EnP2mSubclaseProducto enP2mSubclaseProducto, TaGzzMoneda taGzzMoneda, TaGzzUnidadMed taGzzUnidadMed, String proDet, double proPreUniVen, double proPreUniCom, double proPreUniMar, double proPreUniFle, double proStk, double proStkPreVen, String proObs, char estRegCod) {
         this.id = id;
         this.enP2mSubclaseProducto = enP2mSubclaseProducto;
         this.taGzzMoneda = taGzzMoneda;
         this.taGzzUnidadMed = taGzzUnidadMed;
         this.proDet = proDet;
         this.proPreUniVen = proPreUniVen;
+        this.proPreUniCom = proPreUniCom;
+        this.proPreUniMar = proPreUniMar;
+        this.proPreUniFle = proPreUniFle;
         this.proStk = proStk;
         this.proStkPreVen = proStkPreVen;
         this.proObs = proObs;
         this.estRegCod = estRegCod;
     }
-    public EnP2mProducto(EnP2mProductoId id, EnP2mAlmacen enP2mAlmacen, EnP2mSubclaseProducto enP2mSubclaseProducto, TaGzzMoneda taGzzMoneda, TaGzzUnidadMed taGzzUnidadMed, String proCodBar, String proDet, double proPreUniVen, Double proPreUniCom, double proStk, Double proStkRea, double proStkPreVen, Double volUniAlm, Double proStkMin, Double proStkMax, String proObs, char estRegCod, Set enP1tFacturaVentaDets, Set enP2tInventarioDets, Set enP1tPreventaDets, Set enP4tFacturaCompraDets) {
+    public EnP2mProducto(EnP2mProductoId id, EnP2mAlmacen enP2mAlmacen, EnP2mSubclaseProducto enP2mSubclaseProducto, TaGzzMoneda taGzzMoneda, TaGzzUnidadMed taGzzUnidadMed, String proCodBar, String proDet, double proPreUniVen, double proPreUniCom, double proPreUniMar, double proPreUniFle, double proStk, Double proStkRea, double proStkPreVen, Double volUniAlm, Double proStkMin, Double proStkMax, String proObs, char estRegCod, Double proPesNet, Set enP1tFacturaVentaDets, Set enP2tInventarioDets, Set enP1tPreventaDets, Set enP4tFacturaCompraDets) {
        this.id = id;
        this.enP2mAlmacen = enP2mAlmacen;
        this.enP2mSubclaseProducto = enP2mSubclaseProducto;
@@ -59,6 +65,8 @@ public class EnP2mProducto  implements java.io.Serializable {
        this.proDet = proDet;
        this.proPreUniVen = proPreUniVen;
        this.proPreUniCom = proPreUniCom;
+       this.proPreUniMar = proPreUniMar;
+       this.proPreUniFle = proPreUniFle;
        this.proStk = proStk;
        this.proStkRea = proStkRea;
        this.proStkPreVen = proStkPreVen;
@@ -67,6 +75,7 @@ public class EnP2mProducto  implements java.io.Serializable {
        this.proStkMax = proStkMax;
        this.proObs = proObs;
        this.estRegCod = estRegCod;
+       this.proPesNet = proPesNet;
        this.enP1tFacturaVentaDets = enP1tFacturaVentaDets;
        this.enP2tInventarioDets = enP2tInventarioDets;
        this.enP1tPreventaDets = enP1tPreventaDets;
@@ -129,12 +138,26 @@ public class EnP2mProducto  implements java.io.Serializable {
     public void setProPreUniVen(double proPreUniVen) {
         this.proPreUniVen = proPreUniVen;
     }
-    public Double getProPreUniCom() {
+    public double getProPreUniCom() {
         return this.proPreUniCom;
     }
     
-    public void setProPreUniCom(Double proPreUniCom) {
+    public void setProPreUniCom(double proPreUniCom) {
         this.proPreUniCom = proPreUniCom;
+    }
+    public double getProPreUniMar() {
+        return this.proPreUniMar;
+    }
+    
+    public void setProPreUniMar(double proPreUniMar) {
+        this.proPreUniMar = proPreUniMar;
+    }
+    public double getProPreUniFle() {
+        return this.proPreUniFle;
+    }
+    
+    public void setProPreUniFle(double proPreUniFle) {
+        this.proPreUniFle = proPreUniFle;
     }
     public double getProStk() {
         return this.proStk;
@@ -191,6 +214,13 @@ public class EnP2mProducto  implements java.io.Serializable {
     
     public void setEstRegCod(char estRegCod) {
         this.estRegCod = estRegCod;
+    }
+    public Double getProPesNet() {
+        return this.proPesNet;
+    }
+    
+    public void setProPesNet(Double proPesNet) {
+        this.proPesNet = proPesNet;
     }
     public Set getEnP1tFacturaVentaDets() {
         return this.enP1tFacturaVentaDets;

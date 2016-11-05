@@ -1,5 +1,5 @@
 package org.epis.minierp.model;
-// Generated 02/11/2016 08:41:29 PM by Hibernate Tools 4.3.1
+// Generated 05/11/2016 03:48:27 PM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -22,6 +22,7 @@ public class EnP1mPreventaCab  implements java.io.Serializable {
      private Date preVenCabFecVen;
      private int preVenCabPla;
      private double preVenCabTot;
+     private Integer preVenPorDes;
      private double preVenCabSubTot;
      private int preVenCabIgv;
      private String preVenCabObs;
@@ -46,7 +47,7 @@ public class EnP1mPreventaCab  implements java.io.Serializable {
         this.preVenCabObs = preVenCabObs;
         this.estRegCod = estRegCod;
     }
-    public EnP1mPreventaCab(String preVenCabCod, EnP1mCatalogoRuta enP1mCatalogoRuta, EnP1mCliente enP1mCliente, EnP1mUsuario enP1mUsuario, TaGzzMoneda taGzzMoneda, TaGzzTipoDescuento taGzzTipoDescuento, Date preVenCabFecEmi, Date preVenCabFecVen, int preVenCabPla, double preVenCabTot, double preVenCabSubTot, int preVenCabIgv, String preVenCabObs, char estRegCod, Set enP1cPreventaRealizadases, Set enP1tPreventaDets) {
+    public EnP1mPreventaCab(String preVenCabCod, EnP1mCatalogoRuta enP1mCatalogoRuta, EnP1mCliente enP1mCliente, EnP1mUsuario enP1mUsuario, TaGzzMoneda taGzzMoneda, TaGzzTipoDescuento taGzzTipoDescuento, Date preVenCabFecEmi, Date preVenCabFecVen, int preVenCabPla, double preVenCabTot, Integer preVenPorDes, double preVenCabSubTot, int preVenCabIgv, String preVenCabObs, char estRegCod, Set enP1cPreventaRealizadases, Set enP1tPreventaDets) {
        this.preVenCabCod = preVenCabCod;
        this.enP1mCatalogoRuta = enP1mCatalogoRuta;
        this.enP1mCliente = enP1mCliente;
@@ -57,6 +58,7 @@ public class EnP1mPreventaCab  implements java.io.Serializable {
        this.preVenCabFecVen = preVenCabFecVen;
        this.preVenCabPla = preVenCabPla;
        this.preVenCabTot = preVenCabTot;
+       this.preVenPorDes = preVenPorDes;
        this.preVenCabSubTot = preVenCabSubTot;
        this.preVenCabIgv = preVenCabIgv;
        this.preVenCabObs = preVenCabObs;
@@ -134,6 +136,13 @@ public class EnP1mPreventaCab  implements java.io.Serializable {
     
     public void setPreVenCabTot(double preVenCabTot) {
         this.preVenCabTot = preVenCabTot;
+    }
+    public Integer getPreVenPorDes() {
+        return this.preVenPorDes;
+    }
+    
+    public void setPreVenPorDes(Integer preVenPorDes) {
+        this.preVenPorDes = preVenPorDes;
     }
     public double getPreVenCabSubTot() {
         return this.preVenCabSubTot;

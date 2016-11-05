@@ -1097,14 +1097,14 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `episerp`;
-INSERT INTO `episerp`.`ta_gzz_tipo_descuento` (`TipDesCod`, `TipDesDet`, `TipDesPor`, `EstRegCod`) VALUES ('01', 'Ninguno', 0, 'A');
-INSERT INTO `episerp`.`ta_gzz_tipo_descuento` (`TipDesCod`, `TipDesDet`, `TipDesPor`, `EstRegCod`) VALUES ('02', 'Bonos', 10, 'A');
-INSERT INTO `episerp`.`ta_gzz_tipo_descuento` (`TipDesCod`, `TipDesDet`, `TipDesPor`, `EstRegCod`) VALUES ('03', 'Promociones', 2, 'A');
-INSERT INTO `episerp`.`ta_gzz_tipo_descuento` (`TipDesCod`, `TipDesDet`, `TipDesPor`, `EstRegCod`) VALUES ('04', 'Devolucion', 10, 'A');
-INSERT INTO `episerp`.`ta_gzz_tipo_descuento` (`TipDesCod`, `TipDesDet`, `TipDesPor`, `EstRegCod`) VALUES ('05', 'Fallas del producto', 5, 'A');
-INSERT INTO `episerp`.`ta_gzz_tipo_descuento` (`TipDesCod`, `TipDesDet`, `TipDesPor`, `EstRegCod`) VALUES ('06', 'Entregas extenporaneas', 8, 'A');
-INSERT INTO `episerp`.`ta_gzz_tipo_descuento` (`TipDesCod`, `TipDesDet`, `TipDesPor`, `EstRegCod`) VALUES ('07', 'Errores de envio', 3, 'A');
-INSERT INTO `episerp`.`ta_gzz_tipo_descuento` (`TipDesCod`, `TipDesDet`, `TipDesPor`, `EstRegCod`) VALUES ('08', 'Otros', 1, 'A');
+INSERT INTO `episerp`.`ta_gzz_tipo_descuento` (`TipDesCod`, `TipDesDet`, `EstRegCod`) VALUES ('01', 'Ninguno', 'A');
+INSERT INTO `episerp`.`ta_gzz_tipo_descuento` (`TipDesCod`, `TipDesDet`, `EstRegCod`) VALUES ('02', 'Bonos', 'A');
+INSERT INTO `episerp`.`ta_gzz_tipo_descuento` (`TipDesCod`, `TipDesDet`, `EstRegCod`) VALUES ('03', 'Promociones', 'A');
+INSERT INTO `episerp`.`ta_gzz_tipo_descuento` (`TipDesCod`, `TipDesDet`, `EstRegCod`) VALUES ('04', 'Devolucion', 'A');
+INSERT INTO `episerp`.`ta_gzz_tipo_descuento` (`TipDesCod`, `TipDesDet`, `EstRegCod`) VALUES ('05', 'Fallas del producto', 'A');
+INSERT INTO `episerp`.`ta_gzz_tipo_descuento` (`TipDesCod`, `TipDesDet`, `EstRegCod`) VALUES ('06', 'Entregas extenporaneas', 'A');
+INSERT INTO `episerp`.`ta_gzz_tipo_descuento` (`TipDesCod`, `TipDesDet`, `EstRegCod`) VALUES ('07', 'Errores de envio', 'A');
+INSERT INTO `episerp`.`ta_gzz_tipo_descuento` (`TipDesCod`, `TipDesDet`, `EstRegCod`) VALUES ('08', 'Otros', 'A');
 
 COMMIT;
 

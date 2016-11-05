@@ -1,5 +1,5 @@
 package org.epis.minierp.model;
-// Generated 02/11/2016 08:41:29 PM by Hibernate Tools 4.3.1
+// Generated 05/11/2016 03:48:27 PM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -28,6 +28,7 @@ public class EnP1mUsuario  implements java.io.Serializable {
      private Set enP1mPreventaCabs = new HashSet(0);
      private Set enP4mFacturaCompraCabs = new HashSet(0);
      private Set enP1mDocumentoUsuarios = new HashSet(0);
+     private Set enP1mCarteraClienteses = new HashSet(0);
      private Set enP1mFacturaVentaCabs = new HashSet(0);
      private Set enP2mInventarioCabs = new HashSet(0);
 
@@ -44,7 +45,7 @@ public class EnP1mUsuario  implements java.io.Serializable {
         this.usuSex = usuSex;
         this.estRegCod = estRegCod;
     }
-    public EnP1mUsuario(String usuCod, EnP1mSucursal enP1mSucursal, TaGzzEstadoCivil taGzzEstadoCivil, TaGzzTipoUsuario taGzzTipoUsuario, String usuNom, String usuApePat, String usuApeMat, String usuLog, String usuPas, Date usuFecNac, char usuSex, char estRegCod, Set enP1mMovimientoPuntoVens, Set enP1mPreventaCabs, Set enP4mFacturaCompraCabs, Set enP1mDocumentoUsuarios, Set enP1mFacturaVentaCabs, Set enP2mInventarioCabs) {
+    public EnP1mUsuario(String usuCod, EnP1mSucursal enP1mSucursal, TaGzzEstadoCivil taGzzEstadoCivil, TaGzzTipoUsuario taGzzTipoUsuario, String usuNom, String usuApePat, String usuApeMat, String usuLog, String usuPas, Date usuFecNac, char usuSex, char estRegCod, Set enP1mMovimientoPuntoVens, Set enP1mPreventaCabs, Set enP4mFacturaCompraCabs, Set enP1mDocumentoUsuarios, Set enP1mCarteraClienteses, Set enP1mFacturaVentaCabs, Set enP2mInventarioCabs) {
        this.usuCod = usuCod;
        this.enP1mSucursal = enP1mSucursal;
        this.taGzzEstadoCivil = taGzzEstadoCivil;
@@ -61,6 +62,7 @@ public class EnP1mUsuario  implements java.io.Serializable {
        this.enP1mPreventaCabs = enP1mPreventaCabs;
        this.enP4mFacturaCompraCabs = enP4mFacturaCompraCabs;
        this.enP1mDocumentoUsuarios = enP1mDocumentoUsuarios;
+       this.enP1mCarteraClienteses = enP1mCarteraClienteses;
        this.enP1mFacturaVentaCabs = enP1mFacturaVentaCabs;
        this.enP2mInventarioCabs = enP2mInventarioCabs;
     }
@@ -176,6 +178,13 @@ public class EnP1mUsuario  implements java.io.Serializable {
     
     public void setEnP1mDocumentoUsuarios(Set enP1mDocumentoUsuarios) {
         this.enP1mDocumentoUsuarios = enP1mDocumentoUsuarios;
+    }
+    public Set getEnP1mCarteraClienteses() {
+        return this.enP1mCarteraClienteses;
+    }
+    
+    public void setEnP1mCarteraClienteses(Set enP1mCarteraClienteses) {
+        this.enP1mCarteraClienteses = enP1mCarteraClienteses;
     }
     public Set getEnP1mFacturaVentaCabs() {
         return this.enP1mFacturaVentaCabs;

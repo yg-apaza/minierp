@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 02/11/2016 08:41:31 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 05/11/2016 03:48:29 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="org.epis.minierp.model.EnP2mProducto" table="en_p2m_producto" catalog="episerp" optimistic-lock="version">
         <composite-id name="id" class="org.epis.minierp.model.EnP2mProductoId">
@@ -37,8 +37,14 @@
         <property name="proPreUniVen" type="double">
             <column name="ProPreUniVen" precision="10" not-null="true" />
         </property>
-        <property name="proPreUniCom" type="java.lang.Double">
-            <column name="ProPreUniCom" precision="10" />
+        <property name="proPreUniCom" type="double">
+            <column name="ProPreUniCom" precision="10" not-null="true" />
+        </property>
+        <property name="proPreUniMar" type="double">
+            <column name="ProPreUniMar" precision="10" not-null="true" />
+        </property>
+        <property name="proPreUniFle" type="double">
+            <column name="ProPreUniFle" precision="10" not-null="true" />
         </property>
         <property name="proStk" type="double">
             <column name="ProStk" precision="10" not-null="true" />
@@ -63,6 +69,9 @@
         </property>
         <property name="estRegCod" type="char">
             <column name="EstRegCod" length="1" not-null="true" />
+        </property>
+        <property name="proPesNet" type="java.lang.Double">
+            <column name="ProPesNet" precision="10" />
         </property>
         <set name="enP1tFacturaVentaDets" table="en_p1t_factura_venta_det" inverse="true" lazy="true" fetch="select">
             <key>

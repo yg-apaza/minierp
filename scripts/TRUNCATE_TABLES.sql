@@ -2,6 +2,7 @@ SET FOREIGN_KEY_CHECKS = 0;
 
 TRUNCATE TABLE episerp.en_p1c_devolucion_ventas;
 TRUNCATE TABLE episerp.en_p1c_preventa_realizadas;
+TRUNCATE TABLE episerp.en_p1m_cartera_clientes;
 TRUNCATE TABLE episerp.en_p1m_catalogo_ruta;
 TRUNCATE TABLE episerp.en_p1m_cliente;
 TRUNCATE TABLE episerp.en_p1m_clientes_rutas;
@@ -42,6 +43,7 @@ TRUNCATE TABLE episerp.en_p4m_factura_compra_cab;
 TRUNCATE TABLE episerp.en_p4m_proveedor;
 TRUNCATE TABLE episerp.en_p4t_factura_compra_det;
 TRUNCATE TABLE episerp.ta_gzz_banco;
+TRUNCATE TABLE episerp.ta_gzz_canal_cliente;
 TRUNCATE TABLE episerp.ta_gzz_estado_civil;
 TRUNCATE TABLE episerp.ta_gzz_estado_factura;
 TRUNCATE TABLE episerp.ta_gzz_estado_uni_transporte;

@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 05/11/2016 03:48:29 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="org.epis.minierp.model.EnP1mCarteraClientes" table="en_p1m_cartera_clientes" catalog="episerp" optimistic-lock="version">
+        <composite-id name="id" class="org.epis.minierp.model.EnP1mCarteraClientesId">
+            <key-property name="cliCod" type="string">
+                <column name="CliCod" length="15" />
+            </key-property>
+            <key-property name="usuCod" type="string">
+                <column name="UsuCod" length="15" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="enP1mCliente" class="org.epis.minierp.model.EnP1mCliente" update="false" insert="false" fetch="select">
+            <column name="CliCod" length="15" not-null="true" />
+        </many-to-one>
+        <many-to-one name="enP1mUsuario" class="org.epis.minierp.model.EnP1mUsuario" update="false" insert="false" fetch="select">
+            <column name="UsuCod" length="15" not-null="true" />
+        </many-to-one>
+        <property name="usuCliDes" type="string">
+            <column name="UsuCliDes" length="90" not-null="true" />
+        </property>
+        <property name="usuCliEstReg" type="char">
+            <column name="UsuCliEstReg" length="1" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

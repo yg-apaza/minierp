@@ -24,6 +24,7 @@ CREATE TABLE en_p1m_preventa_cab
   PreVenCabPla Int(3) NOT NULL,
   PreVenCabTot Double(10,2) NOT NULL,
   TipDesCod Int(2) ZEROFILL,
+  PreVenPorDes Int(3),
   PreVenCabSubTot Double(10,2) NOT NULL,
   PreVenCabIGV Int(3) NOT NULL DEFAULT 19,
   PreVenCabObs Char(90) NOT NULL DEFAULT 'Ninguna',
@@ -97,6 +98,7 @@ CREATE TABLE en_p1m_factura_venta_cab
   FacVenCabFecVen Date,
   FacVenCabTot Double(10,2) NOT NULL,
   TipDesCod Int(2) ZEROFILL,
+  FacVenPorDes Int(3),
   FacVenCabSubTot Double(10,2) NOT NULL,
   FacVenCabIGV Int(3) NOT NULL DEFAULT 19,
   FacVenCabObs Char(90) NOT NULL DEFAULT 'Ninguna',
@@ -198,6 +200,7 @@ CREATE TABLE en_p1m_cliente
 (
   CliCod Char(15) NOT NULL,
   TipCliCod Int(2) ZEROFILL,
+  CanCliCod Int(2) ZEROFILL,
   CliRazSoc Char(90) NOT NULL,
   CliNomCom Char(90),
   CliDomFis Char(90),
@@ -221,6 +224,9 @@ CREATE INDEX IX_Relationship28 ON en_p1m_cliente (EstCivCod)
 ;
 
 CREATE INDEX IX_Relationship95 ON en_p1m_cliente (TipCliCod)
+;
+
+CREATE INDEX IX_Relationship119 ON en_p1m_cliente (CanCliCod)
 ;
 
 -- Table episerp.en_p1m_documento_cliente
@@ -321,7 +327,9 @@ CREATE TABLE en_p2m_producto
   ProDet Char(90) NOT NULL,
   UniMedCod Int(2) ZEROFILL NOT NULL,
   ProPreUniVen Double(10,2) NOT NULL,
-  ProPreUniCom Double(10,2),
+  ProPreUniCom Double(10,2) NOT NULL,
+  ProPreUniMar Double(10,2) NOT NULL,
+  ProPreUniFle Double(10,2) NOT NULL,
   MonCod Int(2) ZEROFILL NOT NULL,
   ProStk Double(10,2) NOT NULL,
   ProStkRea Double(10,2),
@@ -330,7 +338,8 @@ CREATE TABLE en_p2m_producto
   ProStkMin Double(10,2),
   ProStkMax Double(10,2),
   ProObs Char(90) NOT NULL DEFAULT 'Ninguna',
-  EstRegCod Char(1) NOT NULL
+  EstRegCod Char(1) NOT NULL,
+  ProPesNet Double(10,2)
 )
 ;
 
@@ -499,6 +508,7 @@ CREATE TABLE en_p4m_factura_compra_cab
   FacComCabFecVen Date,
   FacComCabTot Double(10,2) NOT NULL,
   TipDesCod Int(2) ZEROFILL,
+  FacComPorDes Int(3),
   FacComCabSubTot Double(10,2) NOT NULL,
   FacComCabIGV Int(3) NOT NULL DEFAULT 19,
   FacComCabObs Char(90) NOT NULL DEFAULT 'Ninguna',
@@ -883,7 +893,6 @@ CREATE TABLE ta_gzz_tipo_descuento
 (
   TipDesCod Int(2) ZEROFILL NOT NULL AUTO_INCREMENT,
   TipDesDet Char(90) NOT NULL,
-  TipDesPor Double(5,2),
   EstRegCod Char(1),
  PRIMARY KEY (TipDesCod)
 )
@@ -1109,6 +1118,31 @@ CREATE TABLE en_p1m_clientes_rutas
 ;
 
 ALTER TABLE en_p1m_clientes_rutas ADD PRIMARY KEY (CatRutCod,CliCod)
+;
+
+-- Table episerp.en_p1m_cartera_clientes
+
+CREATE TABLE en_p1m_cartera_clientes
+(
+  UsuCod Char(15) NOT NULL,
+  CliCod Char(15) NOT NULL,
+  UsuCliDes Char(90) NOT NULL,
+  UsuCliEstReg Char(1) NOT NULL
+)
+;
+
+ALTER TABLE en_p1m_cartera_clientes ADD PRIMARY KEY (CliCod,UsuCod)
+;
+
+-- Table episerp.ta_gzz_canal_cliente
+
+CREATE TABLE ta_gzz_canal_cliente
+(
+  CanCliCod Int(2) ZEROFILL NOT NULL AUTO_INCREMENT,
+  CanCliDet Char(90) NOT NULL,
+  EstRegCod Char(1) NOT NULL,
+ PRIMARY KEY (CanCliCod)
+)
 ;
 
 -- Create relationships section ------------------------------------------------- 
@@ -1380,4 +1414,11 @@ ALTER TABLE en_p1c_devolucion_ventas ADD CONSTRAINT Relationship115 FOREIGN KEY 
 ALTER TABLE en_p2c_devolucion_compras ADD CONSTRAINT Relationship116 FOREIGN KEY (DevComNewFac) REFERENCES en_p4m_factura_compra_cab (FacComCabCod) ON DELETE NO ACTION ON UPDATE NO ACTION
 ;
 
+ALTER TABLE en_p1m_cartera_clientes ADD CONSTRAINT Relationship117 FOREIGN KEY (CliCod) REFERENCES en_p1m_cliente (CliCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
 
+ALTER TABLE en_p1m_cartera_clientes ADD CONSTRAINT Relationship118 FOREIGN KEY (UsuCod) REFERENCES en_p1m_usuario (UsuCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p1m_cliente ADD CONSTRAINT Relationship119 FOREIGN KEY (CanCliCod) REFERENCES ta_gzz_canal_cliente (CanCliCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;

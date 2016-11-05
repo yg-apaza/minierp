@@ -1,13 +1,16 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 02/11/2016 08:41:31 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 05/11/2016 03:48:29 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="org.epis.minierp.model.EnP1mCliente" table="en_p1m_cliente" catalog="episerp" optimistic-lock="version">
         <id name="cliCod" type="string">
             <column name="CliCod" length="15" />
             <generator class="assigned" />
         </id>
+        <many-to-one name="taGzzCanalCliente" class="org.epis.minierp.model.TaGzzCanalCliente" fetch="select">
+            <column name="CanCliCod" />
+        </many-to-one>
         <many-to-one name="taGzzEstadoCivil" class="org.epis.minierp.model.TaGzzEstadoCivil" fetch="select">
             <column name="EstCivCod" not-null="true" />
         </many-to-one>
@@ -55,6 +58,12 @@
                 <column name="CliCod" length="15" not-null="true" />
             </key>
             <one-to-many class="org.epis.minierp.model.EnP1mPreventaCab" />
+        </set>
+        <set name="enP1mCarteraClienteses" table="en_p1m_cartera_clientes" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="CliCod" length="15" not-null="true" />
+            </key>
+            <one-to-many class="org.epis.minierp.model.EnP1mCarteraClientes" />
         </set>
         <set name="enP1mClientesRutases" table="en_p1m_clientes_rutas" inverse="true" lazy="true" fetch="select">
             <key>

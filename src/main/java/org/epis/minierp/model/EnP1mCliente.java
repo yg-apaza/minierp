@@ -1,5 +1,5 @@
 package org.epis.minierp.model;
-// Generated 02/11/2016 08:41:29 PM by Hibernate Tools 4.3.1
+// Generated 05/11/2016 03:48:27 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -12,6 +12,7 @@ public class EnP1mCliente  implements java.io.Serializable {
 
 
      private String cliCod;
+     private TaGzzCanalCliente taGzzCanalCliente;
      private TaGzzEstadoCivil taGzzEstadoCivil;
      private TaGzzTipoCliente taGzzTipoCliente;
      private String cliRazSoc;
@@ -27,6 +28,7 @@ public class EnP1mCliente  implements java.io.Serializable {
      private String cliEmail;
      private char estRegCod;
      private Set enP1mPreventaCabs = new HashSet(0);
+     private Set enP1mCarteraClienteses = new HashSet(0);
      private Set enP1mClientesRutases = new HashSet(0);
      private Set enP1mDocumentoClientes = new HashSet(0);
      private Set enP1mFacturaVentaCabs = new HashSet(0);
@@ -44,8 +46,9 @@ public class EnP1mCliente  implements java.io.Serializable {
         this.cliEmail = cliEmail;
         this.estRegCod = estRegCod;
     }
-    public EnP1mCliente(String cliCod, TaGzzEstadoCivil taGzzEstadoCivil, TaGzzTipoCliente taGzzTipoCliente, String cliRazSoc, String cliNomCom, String cliDomFis, String cliNom, String cliApePat, String cliApeMat, char cliSex, String cliDir, String cliTelFij, String cliTelCel, String cliEmail, char estRegCod, Set enP1mPreventaCabs, Set enP1mClientesRutases, Set enP1mDocumentoClientes, Set enP1mFacturaVentaCabs) {
+    public EnP1mCliente(String cliCod, TaGzzCanalCliente taGzzCanalCliente, TaGzzEstadoCivil taGzzEstadoCivil, TaGzzTipoCliente taGzzTipoCliente, String cliRazSoc, String cliNomCom, String cliDomFis, String cliNom, String cliApePat, String cliApeMat, char cliSex, String cliDir, String cliTelFij, String cliTelCel, String cliEmail, char estRegCod, Set enP1mPreventaCabs, Set enP1mCarteraClienteses, Set enP1mClientesRutases, Set enP1mDocumentoClientes, Set enP1mFacturaVentaCabs) {
        this.cliCod = cliCod;
+       this.taGzzCanalCliente = taGzzCanalCliente;
        this.taGzzEstadoCivil = taGzzEstadoCivil;
        this.taGzzTipoCliente = taGzzTipoCliente;
        this.cliRazSoc = cliRazSoc;
@@ -61,6 +64,7 @@ public class EnP1mCliente  implements java.io.Serializable {
        this.cliEmail = cliEmail;
        this.estRegCod = estRegCod;
        this.enP1mPreventaCabs = enP1mPreventaCabs;
+       this.enP1mCarteraClienteses = enP1mCarteraClienteses;
        this.enP1mClientesRutases = enP1mClientesRutases;
        this.enP1mDocumentoClientes = enP1mDocumentoClientes;
        this.enP1mFacturaVentaCabs = enP1mFacturaVentaCabs;
@@ -72,6 +76,13 @@ public class EnP1mCliente  implements java.io.Serializable {
     
     public void setCliCod(String cliCod) {
         this.cliCod = cliCod;
+    }
+    public TaGzzCanalCliente getTaGzzCanalCliente() {
+        return this.taGzzCanalCliente;
+    }
+    
+    public void setTaGzzCanalCliente(TaGzzCanalCliente taGzzCanalCliente) {
+        this.taGzzCanalCliente = taGzzCanalCliente;
     }
     public TaGzzEstadoCivil getTaGzzEstadoCivil() {
         return this.taGzzEstadoCivil;
@@ -177,6 +188,13 @@ public class EnP1mCliente  implements java.io.Serializable {
     
     public void setEnP1mPreventaCabs(Set enP1mPreventaCabs) {
         this.enP1mPreventaCabs = enP1mPreventaCabs;
+    }
+    public Set getEnP1mCarteraClienteses() {
+        return this.enP1mCarteraClienteses;
+    }
+    
+    public void setEnP1mCarteraClienteses(Set enP1mCarteraClienteses) {
+        this.enP1mCarteraClienteses = enP1mCarteraClienteses;
     }
     public Set getEnP1mClientesRutases() {
         return this.enP1mClientesRutases;

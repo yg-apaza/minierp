@@ -38,6 +38,7 @@
     <mapping resource="org/epis/minierp/model/EnP2tInventarioDet.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP1mFacturaVentaCab.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP1mClientesRutas.hbm.xml"/>
+    <mapping resource="org/epis/minierp/model/EnP1mCarteraClientes.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP2mSubclaseProducto.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/TaGzzTipoDocProveedor.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP1mSucursal.hbm.xml"/>
@@ -66,6 +67,7 @@
     <mapping resource="org/epis/minierp/model/TaGzzTipoPagoFactura.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/TaGzzTipoCliente.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP3mLibroDiario.hbm.xml"/>
+    <mapping resource="org/epis/minierp/model/TaGzzCanalCliente.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP2mGuiaRemTransportista.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP1mPreventaCab.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP3mCuentaBanco.hbm.xml"/>
