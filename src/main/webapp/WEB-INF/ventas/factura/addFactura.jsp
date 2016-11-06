@@ -18,8 +18,8 @@
                     <div class="col-md-4">
                         <br><h1 class="page-header">Factura de Venta</h1>
                     </div>
-                    <div class="col-md-6 col-md-offset-2"><br>
-                        <div class="col-md-8">
+                    <div class="col-md-8 col-md-offset-0"><br>
+                        <div class="col-md-7">
                             <div class="form-group input-group">
                                 <span class="input-group-addon">Vendedor</span>
                                 <span class="input-group-addon"><i class="fa fa-child"></i></span>
@@ -27,10 +27,10 @@
                                 <input type="text" class="form-control" value="${usuario.usuCod} - ${usuario.usuNom}" readonly>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-5">
                             <div class="form-group input-group">
                                 <span class="input-group-addon"><i class="fa fa-home"></i></span>
-                                <input type="text" class="form-control" value="${punto.id.sucCod} - ${punto.id.punVenCod}" readonly>
+                                <input type="text" class="form-control" value="${punto.id.sucCod} - ${sucursal.sucDes} / ${punto.id.punVenCod}" readonly>
                             </div>
                         </div>
                     </div>
@@ -76,7 +76,7 @@
                                                     <span class="input-group-addon"><i class="fa fa-money"></i></span>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div>  
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="form-group input-group" >                                                    
