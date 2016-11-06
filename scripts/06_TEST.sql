@@ -2354,6 +2354,36 @@ INSERT INTO `en_p4t_factura_compra_det` (`FacComCabCod`,`FacComDetCod`,`ClaProCo
 COMMIT;
 
 
+
+-- -----------------------------------------------------
+-- Data for table `episerp`.`en_p1c_devolucion_ventas`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `episerp`;
+INSERT INTO `episerp`.`en_p1c_devolucion_ventas` (`FacVenCabCod`, `DevVenNewFac`, `DevVenDet`, `DevVenFec`, `TipDevCod`, `DevVenMon`) VALUES ('001-000001','001-000021','FiePat','2016-10-09','2','39500.38');
+INSERT INTO `episerp`.`en_p1c_devolucion_ventas` (`FacVenCabCod`, `DevVenNewFac`, `DevVenDet`, `DevVenFec`, `TipDevCod`, `DevVenMon`) VALUES ('001-000002','001-000022','Nav','2016-10-09','4','40375.63');
+INSERT INTO `episerp`.`en_p1c_devolucion_ventas` (`FacVenCabCod`, `DevVenNewFac`, `DevVenDet`, `DevVenFec`, `TipDevCod`, `DevVenMon`) VALUES ('001-000003','001-000023','CampEsc','2016-10-09','2','34271.64');
+INSERT INTO `episerp`.`en_p1c_devolucion_ventas` (`FacVenCabCod`, `DevVenNewFac`, `DevVenDet`, `DevVenFec`, `TipDevCod`, `DevVenMon`) VALUES ('001-000004','001-000024','FiePat','2016-10-09','7','42412.91');
+INSERT INTO `episerp`.`en_p1c_devolucion_ventas` (`FacVenCabCod`, `DevVenNewFac`, `DevVenDet`, `DevVenFec`, `TipDevCod`, `DevVenMon`) VALUES ('001-000005','001-000025','Nav','2016-10-09','4','45269.39');
+INSERT INTO `episerp`.`en_p1c_devolucion_ventas` (`FacVenCabCod`, `DevVenNewFac`, `DevVenDet`, `DevVenFec`, `TipDevCod`, `DevVenMon`) VALUES ('001-000006','001-000026','Cuar','2016-10-09','7','46019.44');
+INSERT INTO `episerp`.`en_p1c_devolucion_ventas` (`FacVenCabCod`, `DevVenNewFac`, `DevVenDet`, `DevVenFec`, `TipDevCod`, `DevVenMon`) VALUES ('001-000007','001-000027','Cuar','2016-10-09','1','44679.26');
+INSERT INTO `episerp`.`en_p1c_devolucion_ventas` (`FacVenCabCod`, `DevVenNewFac`, `DevVenDet`, `DevVenFec`, `TipDevCod`, `DevVenMon`) VALUES ('001-000008','001-000028','DiaEst','2016-10-09','4','49996.78');
+INSERT INTO `episerp`.`en_p1c_devolucion_ventas` (`FacVenCabCod`, `DevVenNewFac`, `DevVenDet`, `DevVenFec`, `TipDevCod`, `DevVenMon`) VALUES ('001-000009','001-000029','DiaMad','2016-10-09','4','42349.36');
+INSERT INTO `episerp`.`en_p1c_devolucion_ventas` (`FacVenCabCod`, `DevVenNewFac`, `DevVenDet`, `DevVenFec`, `TipDevCod`, `DevVenMon`) VALUES ('001-000010','001-000030','DiaPat','2016-10-09','8','40843.42');
+INSERT INTO `episerp`.`en_p1c_devolucion_ventas` (`FacVenCabCod`, `DevVenNewFac`, `DevVenDet`, `DevVenFec`, `TipDevCod`, `DevVenMon`) VALUES ('001-000011','001-000031','ArbVid','2016-10-09','7','37138.47');
+INSERT INTO `episerp`.`en_p1c_devolucion_ventas` (`FacVenCabCod`, `DevVenNewFac`, `DevVenDet`, `DevVenFec`, `TipDevCod`, `DevVenMon`) VALUES ('001-000012','001-000032','CampEsc','2016-10-09','7','34258.91');
+INSERT INTO `episerp`.`en_p1c_devolucion_ventas` (`FacVenCabCod`, `DevVenNewFac`, `DevVenDet`, `DevVenFec`, `TipDevCod`, `DevVenMon`) VALUES ('001-000013','001-000033','Nav','2016-10-09','2','48040.06');
+INSERT INTO `episerp`.`en_p1c_devolucion_ventas` (`FacVenCabCod`, `DevVenNewFac`, `DevVenDet`, `DevVenFec`, `TipDevCod`, `DevVenMon`) VALUES ('001-000014','001-000034','Cuar','2016-10-09','8','41020.73');
+INSERT INTO `episerp`.`en_p1c_devolucion_ventas` (`FacVenCabCod`, `DevVenNewFac`, `DevVenDet`, `DevVenFec`, `TipDevCod`, `DevVenMon`) VALUES ('001-000015','001-000035','Cuar','2016-10-09','1','45401.83');
+INSERT INTO `episerp`.`en_p1c_devolucion_ventas` (`FacVenCabCod`, `DevVenNewFac`, `DevVenDet`, `DevVenFec`, `TipDevCod`, `DevVenMon`) VALUES ('001-000016','001-000036','DiaEst','2016-10-09','5','37291.86');
+INSERT INTO `episerp`.`en_p1c_devolucion_ventas` (`FacVenCabCod`, `DevVenNewFac`, `DevVenDet`, `DevVenFec`, `TipDevCod`, `DevVenMon`) VALUES ('001-000017','001-000037','DiaPat','2016-10-09','4','39952.46');
+INSERT INTO `episerp`.`en_p1c_devolucion_ventas` (`FacVenCabCod`, `DevVenNewFac`, `DevVenDet`, `DevVenFec`, `TipDevCod`, `DevVenMon`) VALUES ('001-000018','001-000038','Cuar','2016-10-09','3','38830.29');
+INSERT INTO `episerp`.`en_p1c_devolucion_ventas` (`FacVenCabCod`, `DevVenNewFac`, `DevVenDet`, `DevVenFec`, `TipDevCod`, `DevVenMon`) VALUES ('001-000019','001-000039','Cuar','2016-10-09','1','45910.79');
+INSERT INTO `episerp`.`en_p1c_devolucion_ventas` (`FacVenCabCod`, `DevVenNewFac`, `DevVenDet`, `DevVenFec`, `TipDevCod`, `DevVenMon`) VALUES ('001-000020','001-000040','Cuar','2016-10-09','6','43919.69');
+
+COMMIT;
+
+
 /* CLEAR TRIGGERS */
 
 
