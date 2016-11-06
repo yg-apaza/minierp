@@ -5,8 +5,7 @@
 	<property name="ireport.y" value="0"/>
 	<parameter name="IMAGE" class="java.lang.String"/>
 	<queryString language="hql">
-		<![CDATA[FROM EnP2mProducto WHERE EstRegCod = 'A'
-]]>
+		<![CDATA[FROM EnP2mProducto WHERE EstRegCod = 'A']]>
 	</queryString>
 	<field name="enP1tFacturaVentaDets" class="java.util.Set"/>
 	<field name="enP1tPreventaDets" class="java.util.Set"/>
@@ -41,7 +40,7 @@
 				</textElement>
 				<text><![CDATA[LISTADO DE PRODUCTOS]]></text>
 			</staticText>
-			<image scaleImage="RetainShape" onErrorType="Icon">
+			<image scaleImage="RetainShape" onErrorType="Blank">
 				<reportElement x="29" y="21" width="203" height="46" uuid="26443de1-a171-4846-8e23-c6891998e93d"/>
 				<imageExpression><![CDATA[$P{IMAGE}]]></imageExpression>
 			</image>
@@ -78,6 +77,12 @@
 				<reportElement x="602" y="0" width="100" height="20" uuid="7a0adfc4-a3cf-4e9a-bf2c-4d77ed8448d9"/>
 				<text><![CDATA[U. Medida]]></text>
 			</staticText>
+			<line>
+				<reportElement x="0" y="20" width="802" height="1" uuid="291ec9f3-0922-415c-8544-c4eb26c82640"/>
+			</line>
+			<line>
+				<reportElement x="0" y="1" width="802" height="1" uuid="33448d39-795a-4789-85e8-162857c85d86"/>
+			</line>
 		</band>
 	</columnHeader>
 	<detail>
