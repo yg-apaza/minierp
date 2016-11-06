@@ -214,6 +214,9 @@
                                         <a href="${pageContext.request.contextPath}/secured/configuracion/unidadTransporte">Unidades de transporte</a>
                                     </li>
                                     <li>
+                                        <a href="${pageContext.request.contextPath}/secured/configuracion/tablasGenerales">Tablas generales</a>
+                                    </li>
+                                    <li>
                                         <a href="${pageContext.request.contextPath}/secured/configuracion/catalogoRutas">Catalogo de Rutas</a>
                                     </li>
                                 </ul>

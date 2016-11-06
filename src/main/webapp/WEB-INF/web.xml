@@ -297,6 +297,17 @@
         <servlet-name>UnidadTransporteController</servlet-name>
         <url-pattern>/secured/configuracion/unidadTransporte</url-pattern>
     </servlet-mapping>
+    <!--Sub Modulo Tablas Generales-->
+    <servlet>
+        <description/>
+        <display-name>TablasGeneralesController</display-name>
+        <servlet-name>TablasGeneralesController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.configuracion.TablasGeneralesController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TablasGeneralesController</servlet-name>
+        <url-pattern>/secured/configuracion/tablasGenerales</url-pattern>
+    </servlet-mapping>
     <!--Sub Modulo Sucursal-->
     <servlet>
         <description/>
