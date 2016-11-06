@@ -243,4 +243,17 @@ public class EnP2mProductoBusiness {
         setEstRegCod(proCod, subClaProCod, claProCod,'*');
     }
     
+    public void cantidad2Stock(String proCod, String proCan ){
+        EnP2mProducto producto = proDao.getById(proCod);
+        producto.setProStk(Double.parseDouble(proCan));
+        proDao.save(producto);
+    }
+    
+    public void actualizarInventario(String[] proCod, String[] proCan){
+        int size = proCod.length;
+        for (int i = 0; i < size; i++) {
+            cantidad2Stock(proCod[i], proCan[i]);
+        }
+    }
+    
 }
