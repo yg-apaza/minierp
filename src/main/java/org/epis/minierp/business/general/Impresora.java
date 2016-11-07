@@ -15,7 +15,7 @@ import org.epis.minierp.model.EnP1tFacturaVentaDet;
 
 public class Impresora {
     private static final int MAX_FAC_DET = 20;
-    private static final int MAX_BOL_DET = 15;
+    private static final int MAX_BOL_DET = 11;
     private static final int MAX_REM_DET = 20;
     
     String path;
@@ -67,7 +67,7 @@ public class Impresora {
             for(EnP1tFacturaVentaDet d : detalles){
                 proCod++;
                 proCan = d.getFacVenDetCan();
-                proUni = d.getEnP2mProducto().getTaGzzUnidadMed().getUniMedDet();
+                proUni = d.getEnP2mProducto().getTaGzzUnidadMed().getUniMedSim();
                 proDes = d.getEnP2mProducto().getProDet();
                 proValUni = d.getFacVenDetValUni();
                 proDes1 = "3";
