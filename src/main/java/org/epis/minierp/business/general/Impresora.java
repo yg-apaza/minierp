@@ -67,7 +67,7 @@ public class Impresora {
             for(EnP1tFacturaVentaDet d : detalles){
                 proCod++;
                 proCan = d.getFacVenDetCan();
-                proUni = d.getEnP2mProducto().getTaGzzUnidadMed().getUniMedDet();
+                proUni = d.getEnP2mProducto().getTaGzzUnidadMed().getUniMedSim();
                 proDes = d.getEnP2mProducto().getProDet();
                 proValUni = d.getFacVenDetValUni();
                 proDes1 = "3";
