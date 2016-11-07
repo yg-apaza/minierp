@@ -39,11 +39,15 @@
                 <table width="100%" class="table table-striped table-bordered table-hover" id="tableSuppliers">
                     <thead>
                         <tr>
-                            <th>Clase</th>
-                            <th>SubClase</th>
                             <th>Código</th>
-                            <th>Descripción</th>
-                            <th>Precio de venta</th>
+                            <th>Codigo de Barras</th>
+                            <th>Detalle</th>
+                            <th>Unidad</th>
+                            <th>Precio</th>
+                            <th>Peso</th>    
+                            <th>Almacen</th>
+                            <th>Stock</th>
+                            <th>Preventa</th>
                             <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                             <th>Acciones</th>
                             </cc:if>
@@ -52,31 +56,42 @@
                     <tbody>
                        <c:forEach items="${productos}" var="p">
                             <tr>
-                                <td width="150px">${p.enP2mSubclaseProducto.enP2mClaseProducto.claProDet}</td>
-                                <td width="200px">${p.enP2mSubclaseProducto.subClaProDet}</td>                                        
-                                <td width="100px">${p.id.proCod}</td>
-                                <td width="300px">${p.proDet}</td>
-                                <td class="text-center" width="50px">${p.proPreUniVen}</td>
+                                <td>${p.id.proCod}</td>                                        
+                                <td>${p.proCodBar}</td>
+                                <td>${p.proDet}</td>
+                                <td>${p.taGzzUnidadMed.uniMedSim}</td>
+                                <td>${p.proPreUniVen}</td>
+                                <td>${p.proPesNet}</td>
+                                <td>${p.enP2mAlmacen.almDet}</td>
+                                <td>${p.proStk}</td>
+                                <td>${p.proStkPreVen}</td>
                                 <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
-                                <td class="text-center" width="50px">
-                                    <a href="#" data-toggle="modal" data-target="#modifyProduct" 
-                                       data-pCla="${p.id.claProCod}"
-                                       data-pSub="${p.id.subClaProCod}"
-                                       data-pCod="${p.id.proCod}"
-                                       data-pDes="${p.proDet}"
-                                       
-                                       data-pMonCod="${p.taGzzMoneda.monCod}"
-                                       data-pUniMedCod="${p.taGzzUnidadMed.uniMedCod}"
-                                       data-pProStkMax="${p.proStkMax}"
-                                       data-pProStkMin="${p.proStkMin}"
-                                       data-pVolUniAlm="${p.volUniAlm}"
-                                       data-pPreUni="${p.proPreUniVen}"
-                                       data-pObs="${p.proObs}"
-                                       data-pEst="${p.estRegCod}"
-                                       >
+                                <td>
+                                    <a href="#" data-toggle="modal" data-target="#updateModal" 
+                                       data-claprocod="${p.id.claProCod}"
+                                       data-claprodet="${p.enP2mSubclaseProducto.enP2mClaseProducto.claProDet}"
+                                       data-subclaprocod="${p.id.subClaProCod}"
+                                       data-subclaprodet="${p.enP2mSubclaseProducto.subClaProDet}"
+                                       data-procod="${p.id.proCod}"
+                                       data-procodbar="${p.proCodBar}"
+                                       data-prodet="${p.proDet}"
+                                       data-almcod="${p.enP2mAlmacen.almCod}"
+                                       data-unimedcod="${p.taGzzUnidadMed.uniMedCod}"
+                                       data-volunialm="${p.volUniAlm}"
+                                       data-prostkmax="${p.proStkMax}"
+                                       data-prostkmin="${p.proStkMin}"
+                                       data-propesnet="${p.proPesNet}"
+                                       data-propreunicom="${p.proPreUniCom}"
+                                       data-propreunifle="${p.proPreUniFle}"
+                                       data-propreunimar="${p.proPreUniMar}"
+                                       data-proobs="${p.proObs}">
                                         <i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i>
                                     </a>
-                                    <a href="#" data-toggle="modal" data-target="#deleteProduct" data-pCode="${p.id.proCod}/${p.id.subClaProCod}/${p.id.claProCod}" data-pDes="${p.proDet}" data-pEst="${p.estRegCod}">
+                                    <a href="#" data-toggle="modal" data-target="#disableModal" 
+                                       data-claprocod="${p.id.claProCod}"
+                                       data-subclaprocod="${p.id.subClaProCod}"
+                                       data-procod="${p.id.proCod}"
+                                       data-prodet="${p.proDet}">
                                         <i class="fa fa-trash-o fa-2x" style="color: black;"></i>
                                     </a>
                                 </td>
@@ -87,7 +102,7 @@
                 </table>     
             </div>
             <div class="modal fade" id="addProduct">
-                <div class="modal-dialog">
+                <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -95,12 +110,12 @@
                         </div>
                         <form id="addForm" method="post" action="${pageContext.request.contextPath}/secured/compras/productos">
                             <div class="modal-body">
-                                <input type="hidden" name="action" value="add">
+                                <input type="hidden" name="action" value="create">
                                 <div class="col-md-12 form-group input-group">
                                     <div class="col-xs-12 col-md-6">
                                         <div class="form-group input-group">
                                             <span class="input-group-addon">Clase</span>
-                                            <select class="form-control" id="addClaProCod" name="claProCodAdd" onchange="changingValues()">
+                                            <select class="form-control" id="addClaProCod" name="claProCod" onchange="changingValues()">
                                                 <c:forEach items="${clases}" var="clase">
                                                     <option value="${clase.claProCod}">${clase.claProDet}</option>
                                                 </c:forEach>
@@ -108,80 +123,118 @@
                                             <span class="input-group-addon"><i class="fa fa-book"></i></span>
                                         </div>
                                     </div>
+                                    
                                     <div class="col-xs-12 col-md-6">
                                         <div class="form-group input-group">
                                             <span class="input-group-addon">SubClase</span>
-                                            <select class="form-control" id="addSubClaProCod" name="subClaProCodAdd">
+                                            <select class="form-control" id="addSubClaProCod" name="subClaProCod">
                                             </select> 
                                             <span class="input-group-addon"><i class="fa fa-tag"></i></span>
                                         </div>
                                     </div>
-                                    <div class="col-xs-12 col-md-12">
+                                    
+                                    <div class="col-xs-12 col-md-6">
                                         <div class="form-group input-group" >
-                                            <span class="input-group-addon"><i class="fa fa-edit"></i></span>
-                                            <input type="text" class="form-control" name="proDetAdd" placeholder="Descripción del Producto">
+                                            <span class="input-group-addon">Codigo</span>
+                                            <input type="text" class="form-control" name="proCod" >
+                                            <span class="input-group-addon"><i class="fa fa-th"></i></span>
                                         </div>
                                     </div>
+                                    
+                                    <div class="col-xs-12 col-md-6">
+                                        <div class="form-group input-group" >
+                                            <span class="input-group-addon">Codigo de Barras</span>
+                                            <input type="text" class="form-control" name="proCodBar" >
+                                            <span class="input-group-addon"><i class="fa fa-th"></i></span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-xs-12 col-md-12">
+                                        <div class="form-group input-group" >
+                                            <span class="input-group-addon">Descripcion</span>
+                                            <input type="text" class="form-control" name="proDet" placeholder="Descripcion del producto">
+                                        </div>
+                                    </div>
+                                    
                                     <div class="col-xs-12 col-md-4">
                                         <div class="form-group input-group" >
-                                            <span class="input-group-addon"><i class="fa fa-database"></i></span>
-                                            <select class="form-control" name="almCodAdd">
+                                            <span class="input-group-addon">Almacen</span>
+                                            <select class="form-control" name="almCod">
                                                 <c:forEach items="${almacenes}" var="almacen">
                                                     <option value="${almacen.almCod}">${almacen.almDet}</option>
                                                 </c:forEach>
                                             </select> 
                                         </div>
                                     </div>
+                                    
                                     <div class="col-xs-12 col-md-4">
                                         <div class="form-group input-group" >
-                                            <span class="input-group-addon"><i class="fa fa-dollar"></i></span>
-                                            <select class="form-control" name="monCodAdd">
-                                                <c:forEach items="${monedas}" var="moneda">
-                                                    <option value="${moneda.monCod}">${moneda.monDet}</option>
-                                                </c:forEach>
-                                            </select> 
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-12 col-md-4">
-                                        <div class="form-group input-group" >
-                                            <span class="input-group-addon"><i class="fa fa-gears"></i></span>
-                                            <select class="form-control" name="uniMedCodAdd">
+                                            <span class="input-group-addon">Unidad</span>
+                                            <select class="form-control" name="uniMedCod">
                                                 <c:forEach items="${medidas}" var="medida">
                                                     <option value="${medida.uniMedCod}">${medida.uniMedDet}</option>
                                                 </c:forEach>
                                             </select> 
                                         </div>
                                     </div>
-                                    <div class="col-xs-12 col-md-6">
-                                        <div class="form-group input-group" >
-                                            <span class="input-group-addon">Stock Máximo</span>                                                            
-                                            <input type="number" class="form-control" name="proStkMaxAdd" min="0.0" step="any" value="0.0">
-                                            <span class="input-group-addon"><i class="fa fa-chevron-up"></i></span>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-12 col-md-6">
-                                        <div class="form-group input-group" >
-                                            <span class="input-group-addon">Stock Mínimo</span>                                                           
-                                            <input type="number" class="form-control" id="addProStkMin" name="proStkMinAdd" min="0.0" step="any" value="0.0">
-                                            <span class="input-group-addon"><i class="fa fa-chevron-down"></i></span>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-12 col-md-6">
+                                    
+                                    <div class="col-xs-12 col-md-4">
                                         <div class="form-group input-group" >
                                             <span class="input-group-addon">Volúmen</span>
-                                            <input type="number" class="form-control" name="volUniAlmAdd" min="0.0" step="any" value="0.0">                                                              
+                                            <input type="number" class="form-control" name="volUniAlm" min="0.0" step="any" value="0.0">                                                              
                                             <span class="input-group-addon"><i class="fa fa-th"></i></span>
                                         </div>
                                     </div>
-                                    <div class="col-xs-12 col-md-6">
+                                    
+                                    <div class="col-xs-12 col-md-4">
                                         <div class="form-group input-group" >
-                                            <span class="input-group-addon">Precio</span>                                                            
-                                            <input type="number" class="form-control" name="proPreUniAdd" min="0.0" step="any" value="0.0">
+                                            <span class="input-group-addon">Stock Máximo</span>                                                            
+                                            <input type="number" class="form-control" name="proStkMax" min="0.0" step="any" value="0.0">
+                                            <span class="input-group-addon"><i class="fa fa-chevron-up"></i></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-md-4">
+                                        <div class="form-group input-group" >
+                                            <span class="input-group-addon">Stock Mínimo</span>                                                           
+                                            <input type="number" class="form-control" id="addProStkMin" name="proStkMin" min="0.0" step="any" value="0.0">
+                                            <span class="input-group-addon"><i class="fa fa-chevron-down"></i></span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-xs-12 col-md-4">
+                                        <div class="form-group input-group" >
+                                            <span class="input-group-addon">Peso(Kg)</span>                                                            
+                                            <input type="number" class="form-control" name="proPesNet" min="0.0" step="any" value="0.0">
                                             <span class="input-group-addon"><i class="fa fa-money"></i></span>
                                         </div>
-                                    </div>    
+                                    </div>
+                                                                        
+                                    <div class="col-xs-12 col-md-4">
+                                        <div class="form-group input-group" >
+                                            <span class="input-group-addon">P. Compra</span>                                                            
+                                            <input type="number" class="form-control" name="proPreUniCom" min="0.0" step="any" value="0.0">
+                                            <span class="input-group-addon"><i class="fa fa-money"></i></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xs-12 col-md-4">
+                                        <div class="form-group input-group" >
+                                            <span class="input-group-addon">P. Flete</span>                                                            
+                                            <input type="number" class="form-control" name="proPreUniFle" min="0.0" step="any" value="0.0">
+                                            <span class="input-group-addon"><i class="fa fa-money"></i></span>
+                                        </div>
+                                    </div>
+                                                                        
+                                    <div class="col-xs-12 col-md-4">
+                                        <div class="form-group input-group" >
+                                            <span class="input-group-addon">Margen</span>                                                            
+                                            <input type="number" class="form-control" name="proPreUniMar" min="0.0" step="any" value="0.0">
+                                            <span class="input-group-addon"><i class="fa fa-money"></i></span>
+                                        </div>
+                                    </div>
+                                                                     
                                     <div class="col-xs-12 col-md-12">
-                                        Observaciones<br><br><textarea class="form-control" rows="1" name="proObsAdd" placeholder="No hay comentarios"></textarea>
+                                        Observaciones<br><br><textarea class="form-control" rows="3" name="proObs" placeholder="No hay comentarios"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -193,119 +246,201 @@
                     </div>
                 </div>
             </div>
-            <div class="modal fade" id="modifyProduct">
-                <div class="modal-dialog">
+            
+            <div class="modal fade" id="updateModal">
+                <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            <h4 class="modal-title">Modificar Producto</h4>
+                            <h4 class="modal-title" id="myModalLabel">Modificar Producto</h4>
                         </div>
-                        <form id="modifyForm" method="post" action="${pageContext.request.contextPath}/secured/compras/productos">
-                            <input type="hidden" class="form-control" name="proCodUpd" id="udpProCod">
+                        
+                        <form id="updateForm" method="post" action="${pageContext.request.contextPath}/secured/compras/productos">
                             <div class="modal-body">
-                                <p align="center"><span id="errorMessage"></span></p>
-                                <input type="hidden" name="action" value="modify">
+                                <input type="hidden" name="action" value="update">
+                                <input type="hidden" name="claProCod" id="updateClaProCod">
+                                <input type="hidden" name="subClaProCod" id="updateSubClaProCod">
                                 <div class="col-md-12 form-group input-group">
                                     <div class="col-xs-12 col-md-6">
                                         <div class="form-group input-group">
-                                            <input type="hidden" id="updClaProCod" name="claProCodUpd">
                                             <span class="input-group-addon">Clase</span>
-                                            <select class="form-control" id="udpClaProCodId">
-                                                <c:forEach items="${clases}" var="clase">
-                                                    <option value="${clase.claProCod}">${clase.claProDet}</option>
-                                                </c:forEach>
-                                            </select> 
+                                                <input type="text" class="form-control" id="updateClaProCodAll" readonly>
                                             <span class="input-group-addon"><i class="fa fa-book"></i></span>
                                         </div>
                                     </div>
+                                    
                                     <div class="col-xs-12 col-md-6">
                                         <div class="form-group input-group">
-                                            <input type="hidden" id="updSubClaProCod" name="subClaProCodUpd">
                                             <span class="input-group-addon">SubClase</span>
-                                            <select class="form-control" id="updSubClaProCodId">
-                                            </select> 
+                                                <input type="text" class="form-control" id="updateSubClaProCodAll" readonly>
                                             <span class="input-group-addon"><i class="fa fa-tag"></i></span>
                                         </div>
                                     </div>
-                                    <div class="col-xs-12 col-md-12">
+                                    
+                                    <div class="col-xs-12 col-md-6">
                                         <div class="form-group input-group" >
-                                            <span class="input-group-addon"><i class="fa fa-edit"></i></span>
-                                            <input type="text" class="form-control" name="proDetUpd" placeholder="Descripción del Producto" id="udpDes">
+                                            <span class="input-group-addon">Codigo</span>
+                                                <input type="text" class="form-control" name="proCod" id="updateProCod">
+                                            <span class="input-group-addon"><i class="fa fa-th"></i></span>
                                         </div>
                                     </div>
+                                    
+                                    <div class="col-xs-12 col-md-6">
+                                        <div class="form-group input-group" >
+                                            <span class="input-group-addon">Codigo de Barras</span>
+                                            <input type="text" class="form-control" name="proCodBar" id="updateProCodBar">
+                                            <span class="input-group-addon"><i class="fa fa-th"></i></span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-xs-12 col-md-12">
+                                        <div class="form-group input-group" >
+                                            <span class="input-group-addon">Descripcion</span>
+                                            <input type="text" class="form-control" name="proDet" id="updateProDet">
+                                        </div>
+                                    </div>
+                                    
                                     <div class="col-xs-12 col-md-4">
                                         <div class="form-group input-group" >
-                                            <span class="input-group-addon"><i class="fa fa-database"></i></span>
-                                            <select class="form-control" id="udpAlmCod" name="almCodUpd">
+                                            <span class="input-group-addon">Almacen</span>
+                                            <select class="form-control" name="almCod" id="updateAlmCod">
                                                 <c:forEach items="${almacenes}" var="almacen">
                                                     <option value="${almacen.almCod}">${almacen.almDet}</option>
                                                 </c:forEach>
                                             </select> 
                                         </div>
                                     </div>
+                                    
                                     <div class="col-xs-12 col-md-4">
                                         <div class="form-group input-group" >
-                                            <span class="input-group-addon"><i class="fa fa-dollar"></i></span>
-                                            <select class="form-control" id="updMonCod" name="monCodUpd">
-                                                <c:forEach items="${monedas}" var="moneda">
-                                                    <option value="${monedaDes.monCod}">${moneda.monDet}</option>
-                                                </c:forEach>
-                                            </select> 
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-12 col-md-4">
-                                        <div class="form-group input-group" >
-                                            <span class="input-group-addon"><i class="fa fa-gears"></i></span>
-                                            <select class="form-control" id="updUniMedCod" name="uniMedCodUpd">
+                                            <span class="input-group-addon">Unidad</span>
+                                            <select class="form-control" name="uniMedCod" id="updateUniMedCod">
                                                 <c:forEach items="${medidas}" var="medida">
                                                     <option value="${medida.uniMedCod}">${medida.uniMedDet}</option>
                                                 </c:forEach>
                                             </select> 
                                         </div>
                                     </div>
-                                    <div class="col-xs-12 col-md-6">
-                                        <div class="form-group input-group" >
-                                            <span class="input-group-addon">Stock Máximo</span>                                                            
-                                            <input type="number" class="form-control" id="udpProStkMax" name="proStkMaxUpd" min="0.0" step="any" value="0.0">
-                                            <span class="input-group-addon"><i class="fa fa-chevron-up"></i></span>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-12 col-md-6">
-                                        <div class="form-group input-group" >
-                                            <span class="input-group-addon">Stock Mínimo</span>                                                           
-                                            <input type="number" class="form-control" id="udpProStkMin" name="proStkMinUpd" min="0.0" step="any" value="0.0">
-                                            <span class="input-group-addon"><i class="fa fa-chevron-down"></i></span>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-12 col-md-6">
+                                    
+                                    <div class="col-xs-12 col-md-4">
                                         <div class="form-group input-group" >
                                             <span class="input-group-addon">Volúmen</span>
-                                            <input type="number" class="form-control" id="udpVolUniAlm" name="volUniAlmUpd" min="0.0" step="any" value="0.0">                                                              
+                                            <input type="number" class="form-control" name="volUniAlm" min="0.0" step="any" value="0.0" id="updateVolUniAlm">                                                              
                                             <span class="input-group-addon"><i class="fa fa-th"></i></span>
                                         </div>
                                     </div>
-                                    <div class="col-xs-12 col-md-6">
+                                    
+                                    <div class="col-xs-12 col-md-4">
                                         <div class="form-group input-group" >
-                                            <span class="input-group-addon">Precio</span>                                                            
-                                            <input type="number" class="form-control" id="udpProPreUni" name="proPreUniUpd" min="0.0" step="any" value="0.0">
+                                            <span class="input-group-addon">Stock Máximo</span>                                                            
+                                            <input type="number" class="form-control" name="proStkMax" min="0.0" step="any" value="0.0" id="updateProStkMax">
+                                            <span class="input-group-addon"><i class="fa fa-chevron-up"></i></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-md-4">
+                                        <div class="form-group input-group" >
+                                            <span class="input-group-addon">Stock Mínimo</span>                                                           
+                                            <input type="number" class="form-control" name="proStkMin" min="0.0" step="any" value="0.0" id="updateProStkMin" >
+                                            <span class="input-group-addon"><i class="fa fa-chevron-down"></i></span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-xs-12 col-md-4">
+                                        <div class="form-group input-group" >
+                                            <span class="input-group-addon">Peso(Kg)</span>                                                            
+                                            <input type="number" class="form-control" name="proPesNet" min="0.0" step="any" value="0.0" id="updateProPesNet">
                                             <span class="input-group-addon"><i class="fa fa-money"></i></span>
                                         </div>
-                                    </div>    
+                                    </div>
+                                                                        
+                                    <div class="col-xs-12 col-md-4">
+                                        <div class="form-group input-group" >
+                                            <span class="input-group-addon">P. Compra</span>                                                            
+                                            <input type="number" class="form-control" name="proPreUniCom" min="0.0" step="any" value="0.0" id="updateProPreUniCom">
+                                            <span class="input-group-addon"><i class="fa fa-money"></i></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xs-12 col-md-4">
+                                        <div class="form-group input-group" >
+                                            <span class="input-group-addon">P. Flete</span>                                                            
+                                            <input type="number" class="form-control" name="proPreUniFle" min="0.0" step="any" value="0.0" id="updateProPreUniFle">
+                                            <span class="input-group-addon"><i class="fa fa-money"></i></span>
+                                        </div>
+                                    </div>
+                                                                     
+                                    <div class="col-xs-12 col-md-4">
+                                        <div class="form-group input-group" >
+                                            <span class="input-group-addon">Margen</span>                                                            
+                                            <input type="number" class="form-control" name="proPreUniMar" min="0.0" step="any" value="0.0" id="updateProPreUniMar">
+                                            <span class="input-group-addon"><i class="fa fa-money"></i></span>
+                                        </div>
+                                    </div>
+                                                                     
                                     <div class="col-xs-12 col-md-12">
-                                        Observaciones<br><br><textarea class="form-control" id="udpProObs" rows="1" name="proObsUpd" placeholder="No hay comentarios"></textarea>
+                                        Observaciones<br><br><textarea class="form-control" rows="3" name="proObs" id="updateProObs"></textarea>
                                     </div>
                                 </div>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-                                <button type="submit" id="udpAccept" class="btn btn-success">Aceptar</button>
+                                <button type="submit" class="btn btn-success">Aceptar</button>
                             </div>
                         </form>
                     </div>
                 </div>
+            </div>                
+                            
+            <div id="disableModal" class="modal fade">
+                <div class="modal-dialog modal-md">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Inhabilitar Producto</h4>
+                        </div>
+                        <form id="disableForm" method="post" action="${pageContext.request.contextPath}/secured/compras/productos">
+                            <div class="modal-body">
+                                <input type="hidden" name="action" value="disable">
+                                <input type="hidden" name="claProCod" id="disableClaProCod">
+                                <input type="hidden" name="subClaProCod" id="disableSubClaProCod">
+                                <input type="hidden" name="proCod" id="disableProCod">
+                                <p> ¿Desea Inhabilitar el producto: <span id="disableProAll"></span> ?</p>                                
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                                <button type="submit" class="btn btn-success">Aceptar</button>                                            
+                            </div>
+                        </form>
+                    </div>              
+                </div>
             </div>
-            <div id="deleteProduct" class="modal fade">
-                <div class="modal-dialog modal-sm">
+                            
+            <div id="activateModal" class="modal fade">
+                <div class="modal-dialog modal-md">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Activar Producto</h4>
+                        </div>
+                        <form id="activateForm" method="post" action="${pageContext.request.contextPath}/secured/compras/productos">
+                            <div class="modal-body">
+                                <input type="hidden" name="action" value="activate">
+                                <input type="hidden" name="claProCod" id="activateClaProCod">
+                                <input type="hidden" name="subClaProCod" id="activateSubClaProCod">
+                                <input type="hidden" name="proCod" id="activateProCod">
+                                <p> ¿Desea Activar el producto: <span id="activateProAll"></span> ?</p>                                
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                                <button type="submit" class="btn btn-success">Aceptar</button>                                            
+                            </div>
+                        </form>
+                    </div>              
+                </div>
+            </div>
+            
+            <div id="deleteModal" class="modal fade">
+                <div class="modal-dialog modal-md">
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -314,17 +449,45 @@
                         <form id="deleteForm" method="post" action="${pageContext.request.contextPath}/secured/compras/productos">
                             <div class="modal-body">
                                 <input type="hidden" name="action" value="delete">
-                                <input type="hidden" name="proCodDel" id="delProCod">
-                                <span id="delMes"></span>                                
+                                <input type="hidden" name="claProCod" id="deleteClaProCod">
+                                <input type="hidden" name="subClaProCod" id="deleteSubClaProCod">
+                                <input type="hidden" name="proCod" id="deleteProCod">
+                                <p> ¿Desea Eliminar el producto: <span id="deleteProAll"></span> ?</p>                                
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-                                <button type="submit" id="delAccept" class="btn btn-success">Aceptar</button>                                            
+                                <button type="submit" class="btn btn-success">Aceptar</button>                                            
                             </div>
                         </form>
                     </div>              
                 </div>
             </div>
+            
+            <div id="viewModal" class="modal fade">
+                <div class="modal-dialog modal-md">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Producto Inhabilitados</h4>
+                        </div>
+                        <form id="disableForm" method="post" action="${pageContext.request.contextPath}/secured/compras/productos">
+                            <div class="modal-body">
+                                <input type="hidden" name="action" value="disable">
+                                <input type="hidden" name="claProCod" id="disableClaProCod">
+                                <input type="hidden" name="subClaProCod" id="disableSubClaProCod">
+                                <input type="hidden" name="proCod" id="disableProCod">
+                                <p> ¿Desea Inhabilitar el producto: <span id="disableProAll"></span> ?</p>                                
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                                <button type="submit" class="btn btn-success">Aceptar</button>                                            
+                            </div>
+                        </form>
+                    </div>              
+                </div>
+            </div>                
+                            
+                            
         </div>       
         <script language="javascript">
             $(document).ready(function () {
@@ -361,24 +524,24 @@
 
             $("#addForm").validate({
                 rules: {
-                    proDetAdd: {
+                    proDet: {
                         required: true
                     },
-                    subClaProCodAdd: {
+                    subClaProCod: {
                         required: true
                     },
-                    proStkMaxAdd: {
+                    proStkMax: {
                         greaterThan: "#addProStkMin"
                     }
                 },
                 messages: {
-                    proDetAdd: {
+                    proDet: {
                         required: "Ingrese una descripción para el producto"
                     },
-                    subClaProCodAdd: {
+                    subClaProCod: {
                         required: ""
                     },
-                    proStkMaxAdd: {
+                    proStkMax: {
                         greaterThan: "> Minimo"
                     }
                 },
@@ -386,80 +549,105 @@
                     form.submit();
                 }
             });
-
-            $("#deleteProduct").on('show.bs.modal', function (e) {                
-                if($(e.relatedTarget).data('pest') == 'E') {
-                    $("#delMes").text("El elemento ya ha sido elimado");
-                    $("#delAccept").prop("disabled", true);
-                } else {
-                    $("#delProCod").val($(e.relatedTarget).data('pcode'));
-                    $("#delMes").text("¿Desea eliminar el producto '" + $(e.relatedTarget).data('pdes') + "' de forma permanente?");
-                    $("#delAccept").prop("disabled", false);
-                }                
+           
+            var disableModal = $("#disableModal");
+            
+            var disableClaProCod = $("#disableClaProCod");
+            var disableSubClaProCod = $("#disableSubClaProCod");
+            var disableProCod = $("#disableProCod");
+            var disableProAll = $("#disableProAll");
+            
+            disableModal.on('show.bs.modal', function (e) {
+                disableClaProCod.val($(e.relatedTarget).data('claprocod'));
+                disableSubClaProCod.val($(e.relatedTarget).data('subclaprocod'));
+                disableProCod.val($(e.relatedTarget).data('procod'));
+                disableProAll.text($(e.relatedTarget).data('prodet'));
             });
-
-            $("#modifyProduct").on('show.bs.modal', function (e) {
-                $("#udpClaProCodId").val($(e.relatedTarget).data('pcla'));
-                changingUpdatedValues();
-                $("#updSubClaProCodId").val($(e.relatedTarget).data('psub'));
-                $("#udpProCod").val($(e.relatedTarget).data('pcod'));
-                $("#udpDes").val($(e.relatedTarget).data('pdes'));
-                $("#udpAlmCod").val($(e.relatedTarget).data('palmcod'));
-                $("#updMonCod").val($(e.relatedTarget).data('pmoncod'));
-                $("#updUniMedCod").val($(e.relatedTarget).data('punimedcod'));
-                $("#udpProStkMax").val($(e.relatedTarget).data('pprostkmax'));
-                $("#udpProStkMin").val($(e.relatedTarget).data('pprostkmin'));
-                $("#udpVolUniAlm").val($(e.relatedTarget).data('pvolunialm'));
-                $("#udpProPreUni").val($(e.relatedTarget).data('ppreuni'));
-                $("#udpProObs").val($(e.relatedTarget).data('pobs'));
-                $("#updClaProCod").val($(e.relatedTarget).data('pcla'));
-                $("#updSubClaProCod").val($(e.relatedTarget).data('psub'));
-                $("#udpClaProCodId").prop("disabled", true);
-                $("#updSubClaProCodId").prop("disabled", true);
-
-                if ($(e.relatedTarget).data('pest') == 'A') {
-                    $("#udpDes").prop("disabled", false);
-                    $("#udpAlmCod").prop("disabled", false);
-                    $("#updMonCod").prop("disabled", false);
-                    $("#updUniMedCod").prop("disabled", false);
-                    $("#udpProStkMax").prop("disabled", false);
-                    $("#udpProStkMin").prop("disabled", false);
-                    $("#udpVolUniAlm").prop("disabled", false);
-                    $("#udpProPreUni").prop("disabled", false);
-                    $("#udpVolUniAlm").prop("disabled", false);
-                    $("#udpProObs").prop("disabled", false);
-                    $("#udpAccept").prop("disabled", false);
-                    $("#errorMessage").text("");
-                } else {
-                    $("#udpDes").prop("disabled", true);
-                    $("#udpAlmCod").prop("disabled", true);
-                    $("#updMonCod").prop("disabled", true);
-                    $("#updUniMedCod").prop("disabled", true);
-                    $("#udpProStkMax").prop("disabled", true);
-                    $("#udpProStkMin").prop("disabled", true);
-                    $("#udpVolUniAlm").prop("disabled", true);
-                    $("#udpProPreUni").prop("disabled", true);
-                    $("#udpVolUniAlm").prop("disabled", true);
-                    $("#udpProObs").prop("disabled", true);
-                    $("#udpAccept").prop("disabled", true);
-                    $("#errorMessage").text("El producto seleccionado se encuentra eliminado, por lo tanto sus atributos no se pueden modificar");
-                }
+            
+            var activateModal = $("#activateModal");
+            
+            var activateClaProCod = $("#activateClaProCod");
+            var activateSubClaProCod = $("#activateSubClaProCod");
+            var activateProCod = $("#activateProCod");
+            var activateProAll = $("#activateProAll");
+            
+            activateModal.on('show.bs.modal', function (e) {
+                activateClaProCod.val($(e.relatedTarget).data('claprocod'));
+                activateSubClaProCod.val($(e.relatedTarget).data('subclaprocod'));
+                activateProCod.val($(e.relatedTarget).data('procod'));
+                activateProAll.text($(e.relatedTarget).data('prodet'));
             });
+            
+            var deleteModal = $("#deleteModal");
+            
+            var deleteClaProCod = $("#deleteClaProCod");
+            var deleteSubClaProCod = $("#deleteSubClaProCod");
+            var deleteProCod = $("#deleteProCod");
+            var deleteProAll = $("#deleteProAll");
+            
+            deleteModal.on('show.bs.modal', function (e) {
+                deleteClaProCod.val($(e.relatedTarget).data('claprocod'));
+                deleteSubClaProCod.val($(e.relatedTarget).data('subclaprocod'));
+                deleteProCod.val($(e.relatedTarget).data('procod'));
+                deleteProAll.text($(e.relatedTarget).data('prodet'));
+            });
+            
+            var updateModal = $("#updateModal");
+            
+            var updateClaProCod = $("#updateClaProCod");
+            var updateSubClaProCod = $("#updateSubClaProCod");
+            var updateClaProCodAll = $("#updateClaProCodAll");
+            var updateSubClaProCodAll = $("#updateSubClaProCodAll");
+            var updateProCod = $("#updateProCod");
+            var updateProCodBar = $("#updateProCodBar");
+            var updateProDet = $("#updateProDet");
+            var updateAlmCod = $("#updateAlmCod");
+            var updateUniMedCod = $("#updateUniMedCod");
+            var updateVolUniAlm = $("#updateVolUniAlm");
+            var updateProStkMax = $("#updateProStkMax");
+            var updateProStkMin = $("#updateProStkMin");
+            var updateProPesNet = $("#updateProPesNet");
+            var updateProPreUniCom = $("#updateProPreUniCom");
+            var updateProPreUniFle = $("#updateProPreUniFle");
+            var updateProPreUniMar = $("#updateProPreUniMar");
+            var updateProObs = $("#updateProObs");
+            
+            updateModal.on('show.bs.modal', function (e) {
+                updateClaProCod.val($(e.relatedTarget).data('claprocod'));
+                updateSubClaProCod.val($(e.relatedTarget).data('subclaprocod'));
+                updateClaProCodAll.val($(e.relatedTarget).data('claprocod') + " - " + $(e.relatedTarget).data('claprodet'));
+                updateSubClaProCodAll.val($(e.relatedTarget).data('subclaprocod') + " - " + $(e.relatedTarget).data('subclaprodet'));
+                updateProCod.val($(e.relatedTarget).data('procod'));
+                updateProCodBar.val($(e.relatedTarget).data('procodbar'));
+                updateProDet.val($(e.relatedTarget).data('prodet'));
+                updateAlmCod.val($(e.relatedTarget).data('almcod'));
+                updateUniMedCod.val($(e.relatedTarget).data('unimedcod'));
+                updateVolUniAlm.val($(e.relatedTarget).data('volunialm'));
+                updateProStkMax.val($(e.relatedTarget).data('prostkmax'));
+                updateProStkMin.val($(e.relatedTarget).data('prostkmin'));
+                updateProPesNet.val($(e.relatedTarget).data('propesnet'));
+                updateProPreUniCom.val($(e.relatedTarget).data('propreunicom'));
+                updateProPreUniFle.val($(e.relatedTarget).data('propreunifle'));
+                updateProPreUniMar.val($(e.relatedTarget).data('propreunimar'));
+                updateProObs.val($(e.relatedTarget).data('proobs'));
+            });
+             
+ 
 
-            $("#modifyForm").validate({
+            $("#updateForm").validate({
                 rules: {
-                    proDetUpd: {
+                    proDet: {
                         required: true
                     },
-                    proStkMaxUpd: {
-                        greaterThan: "#udpProStkMin"
+                    proStkMax: {
+                        greaterThan: "#updateProStkMin"
                     }
                 },
                 messages: {
-                    proDetUpd: {
+                    proDet: {
                         required: "Ingrese una descripción para el producto"
                     },
-                    proStkMaxUpd: {
+                    proStkMax: {
                         greaterThan: "> Minimo"
                     }
                 },
@@ -467,28 +655,6 @@
                     form.submit();
                 }
             });
-
-            function changingUpdatedValues() {
-                $('#updSubClaProCodId').empty();
-                var code = Number($("#udpClaProCodId").val());
-
-                var tag = true;
-                <c:forEach items="${subclases}" var="subclass">
-                    if (${subclass.id.claProCod} == code) {
-                        tag = false;
-                        $('#updSubClaProCodId').append($('<option>', {
-                            value: "${subclass.id.subClaProCod}",
-                            text: "${subclass.subClaProDet}"
-                        }));
-                    }
-                </c:forEach>
-                if (tag) {
-                    $('#updSubClaProCodId').append($('<option>', {
-                        value: "",
-                        text: "No existen subclases"
-                    }));
-                }
-            }
         </script>
     </jsp:attribute>
 </minierptemplate:template>

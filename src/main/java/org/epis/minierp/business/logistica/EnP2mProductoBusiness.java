@@ -131,8 +131,7 @@ public class EnP2mProductoBusiness {
      */
     public void addItems2Stk(String claProCod, String subClaProCod, String proCod, double numItems){
         if(numItems > 0){
-            EnP2mProductoId id = new EnP2mProductoId(proCod, subClaProCod, claProCod);
-            EnP2mProducto producto = proDao.getById(id);
+            EnP2mProducto producto = proDao.getById(new EnP2mProductoId(proCod, subClaProCod, claProCod));
             double myStk = producto.getProStk();
             producto.setProStk(myStk + numItems);
             producto.setProStkRea(myStk + numItems);
@@ -151,8 +150,7 @@ public class EnP2mProductoBusiness {
      */
     public void removeItems2Stk(String claProCod, String subClaProCod, String proCod, double numItems){
         if(numItems > 0){
-            EnP2mProductoId id = new EnP2mProductoId(proCod, subClaProCod, claProCod);
-            EnP2mProducto producto = proDao.getById(id);
+            EnP2mProducto producto = proDao.getById(new EnP2mProductoId(proCod, subClaProCod, claProCod));
             double myStk = producto.getProStk();
             if(myStk >= numItems){
                 producto.setProStk(myStk - numItems);
@@ -171,8 +169,7 @@ public class EnP2mProductoBusiness {
      */
     public void addItems2PreVen(String claProCod, String subClaProCod, String proCod, double numItems){
         if(numItems > 0){
-            EnP2mProductoId id = new EnP2mProductoId(proCod, subClaProCod, claProCod);
-            EnP2mProducto producto = proDao.getById(id);
+            EnP2mProducto producto = proDao.getById(new EnP2mProductoId(proCod, subClaProCod, claProCod));
             double myStk = producto.getProStk();
             double myPreVen = producto.getProStkPreVen();
             if(myStk >= myPreVen + numItems){
@@ -193,8 +190,7 @@ public class EnP2mProductoBusiness {
      */
     public void removeItems2PreVen(String claProCod, String subClaProCod, String proCod, double numItems){
         if(numItems > 0){
-            EnP2mProductoId id = new EnP2mProductoId(proCod, subClaProCod, claProCod);
-            EnP2mProducto producto = proDao.getById(id);
+            EnP2mProducto producto = proDao.getById(new EnP2mProductoId(proCod, subClaProCod, claProCod));
             double myPreVen = producto.getProStkPreVen();
             if(myPreVen >= numItems){
                 producto.setProStkPreVen(myPreVen - numItems);
@@ -213,8 +209,7 @@ public class EnP2mProductoBusiness {
      */
     public void removeItems2PreVen_Ven(String claProCod, String subClaProCod, String proCod, double numItems){
         if(numItems > 0){
-            EnP2mProductoId id = new EnP2mProductoId(proCod, subClaProCod, claProCod);
-            EnP2mProducto producto = proDao.getById(id);
+            EnP2mProducto producto = proDao.getById(new EnP2mProductoId(proCod, subClaProCod, claProCod));
             double myStk = producto.getProStk();
             double myPreVen = producto.getProStkPreVen();
             if(myPreVen >= numItems){
@@ -232,15 +227,15 @@ public class EnP2mProductoBusiness {
     }
     
     public void activate(String claProCod, String subClaProCod, String proCod){
-        setEstRegCod(proCod, subClaProCod, claProCod,'A');
+        setEstRegCod(claProCod, subClaProCod, proCod,'A');
     }
     
     public void disable(String claProCod, String subClaProCod, String proCod){
-        setEstRegCod(proCod, subClaProCod, claProCod,'I');
+        setEstRegCod(claProCod, subClaProCod, proCod,'I');
     }
     
     public void delete(String claProCod, String subClaProCod, String proCod){
-        setEstRegCod(proCod, subClaProCod, claProCod,'*');
+        setEstRegCod(claProCod, subClaProCod, proCod,'*');
     }
     
     public void cantidad2Stock(String proCod, String proCan ){

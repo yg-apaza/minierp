@@ -54,8 +54,8 @@ public class ProductController extends HttpServlet {
         String action = request.getParameter("action");
         
         String claProCod, subClaProCod, proCod, proCodBar, almCod, proDet, proObs;
-        int uniMedCod, monCod;
-        double proPreUniCom, proPreUniMar, proPreUniFle, proPesNet, proStk, 
+        int uniMedCod;
+        double proPreUniCom, proPreUniMar, proPreUniFle, proPesNet,
                 volUniAlm, proStkMin, proStkMax;
         
         switch (action) {
@@ -72,18 +72,17 @@ public class ProductController extends HttpServlet {
                 proPreUniMar = Double.parseDouble(request.getParameter("proPreUniMar"));
                 
                 proPreUniFle = Double.parseDouble(request.getParameter("proPreUniFle"));
-                monCod = Integer.parseInt(request.getParameter("monCodAdd"));
-                volUniAlm = Double.parseDouble(request.getParameter("volUniAlmAdd"));
-                proStkMin = Double.parseDouble(request.getParameter("proStkMinAdd"));
+                volUniAlm = Double.parseDouble(request.getParameter("volUniAlm"));
+                proStkMin = Double.parseDouble(request.getParameter("proStkMin"));
                 
-                proStkMax = Double.parseDouble(request.getParameter("proStkMaxAdd"));
-                proObs = request.getParameter("proObsAdd");
+                proStkMax = Double.parseDouble(request.getParameter("proStkMax"));
+                proObs = request.getParameter("proObs");
                 proPesNet = Double.parseDouble(request.getParameter("proPesNet"));
                 
-                //iniciando con proStk = 0
+                //iniciando con proStk = 0 y monCod = 1 Soles
                 proBusiness.create(claProCod, subClaProCod, proCod, proCodBar, 
                         almCod, proDet, uniMedCod, proPreUniCom, proPreUniMar, 
-                        proPreUniFle, monCod, 0, volUniAlm, proStkMin, 
+                        proPreUniFle, 1, 0, volUniAlm, proStkMin, 
                         proStkMax, proObs, proPesNet, 'A');
                 
                 break;
@@ -101,39 +100,39 @@ public class ProductController extends HttpServlet {
                 proPreUniMar = Double.parseDouble(request.getParameter("proPreUniMar"));
                 
                 proPreUniFle = Double.parseDouble(request.getParameter("proPreUniFle"));
-                monCod = Integer.parseInt(request.getParameter("monCodAdd"));
-                volUniAlm = Double.parseDouble(request.getParameter("volUniAlmAdd"));
-                proStkMin = Double.parseDouble(request.getParameter("proStkMinAdd"));
+                volUniAlm = Double.parseDouble(request.getParameter("volUniAlm"));
+                proStkMin = Double.parseDouble(request.getParameter("proStkMin"));
                 
-                proStkMax = Double.parseDouble(request.getParameter("proStkMaxAdd"));
-                proObs = request.getParameter("proObsAdd");
+                proStkMax = Double.parseDouble(request.getParameter("proStkMax"));
+                proObs = request.getParameter("proObs");
                 proPesNet = Double.parseDouble(request.getParameter("proPesNet"));
                 
+                //monCod = 1 Soles
                 proBusiness.update(claProCod, subClaProCod, proCod, proCodBar, 
                         almCod, proDet, uniMedCod, proPreUniCom, proPreUniMar, 
-                        proPreUniFle, monCod, volUniAlm, proStkMin, proStkMax, 
+                        proPreUniFle, 1, volUniAlm, proStkMin, proStkMax, 
                         proObs, proPesNet);
                 
                 break;
                 
             case "disable":
-                claProCod = request.getParameter("claProCodAdd");
-                subClaProCod = request.getParameter("subClaProCodAdd");
-                proCod = request.getParameter("proCodAdd");
+                claProCod = request.getParameter("claProCod");
+                subClaProCod = request.getParameter("subClaProCod");
+                proCod = request.getParameter("proCod");
                 proBusiness.disable(claProCod, subClaProCod, proCod);
                 break;
                 
             case "activate":
-                claProCod = request.getParameter("claProCodAdd");
-                subClaProCod = request.getParameter("subClaProCodAdd");
-                proCod = request.getParameter("proCodAdd"); //falta
+                claProCod = request.getParameter("claProCod");
+                subClaProCod = request.getParameter("subClaProCod");
+                proCod = request.getParameter("proCod"); //falta
                 proBusiness.activate(claProCod, subClaProCod, proCod);
                 break;
                 
             case "delete":
-                claProCod = request.getParameter("claProCodAdd");
-                subClaProCod = request.getParameter("subClaProCodAdd");
-                proCod = request.getParameter("proCodAdd"); //falta
+                claProCod = request.getParameter("claProCod");
+                subClaProCod = request.getParameter("subClaProCod");
+                proCod = request.getParameter("proCod"); //falta
                 proBusiness.delete(claProCod, subClaProCod, proCod);
                 break;
                
