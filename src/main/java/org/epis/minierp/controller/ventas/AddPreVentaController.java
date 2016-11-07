@@ -5,6 +5,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.StringTokenizer;
@@ -44,12 +45,16 @@ public class AddPreVentaController extends HttpServlet{
         List <TaGzzTipoCliente> tiposCliente = (new TaGzzTipoClienteDao()).getAllActive();
         List <TaGzzTipoDescuento> tiposDescuentos = (new TaGzzTipoDescuentoDao()).getAllActive();
         EnP1mEmpresa empresa = (new EnP1mEmpresaDao()).getAll().get(0);
-
+        DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        String fechaActual = format.format(Calendar.getInstance().getTime());
+        
         request.setAttribute("monedas", monedas);
         request.setAttribute("productos", productos);
         request.setAttribute("tiposCliente", tiposCliente);
         request.setAttribute("tiposDescuentos", tiposDescuentos);
         request.setAttribute("empresa", empresa);
+        request.setAttribute("fechaActual", fechaActual);
+        
         request.getRequestDispatcher("/WEB-INF/ventas/preventa/addPreventa.jsp").forward(request, response);
     }
     
@@ -69,6 +74,7 @@ public class AddPreVentaController extends HttpServlet{
             int monCod = Integer.parseInt(request.getParameter("monCod")); 
             int preVenCabPla = Integer.parseInt(request.getParameter("preVenCabPla")); 
             String preVenCabObs = request.getParameter("preVenCabObs");
+            int preVenPorDes = Integer.parseInt(request.getParameter("preVenPorDes")); 
             double preVenCabTot = Double.parseDouble(request.getParameter("preVenCabTot"));
             double preVenCabSubTot = Double.parseDouble(request.getParameter("preVenCabSubTot"));
             int tipDesCod = Integer.parseInt(request.getParameter("tipDesCod"));
@@ -82,6 +88,7 @@ public class AddPreVentaController extends HttpServlet{
             header.setEnP1mUsuario(user);
             header.setPreVenCabFecEmi(preVenCabFecEmi);
             header.setPreVenCabFecVen(preVenCabFecVen);
+            header.setPreVenPorDes(preVenPorDes);
             header.setPreVenCabTot(preVenCabTot);
             header.setPreVenCabSubTot(preVenCabSubTot);
             header.setPreVenCabIgv(preVenCabIgv);

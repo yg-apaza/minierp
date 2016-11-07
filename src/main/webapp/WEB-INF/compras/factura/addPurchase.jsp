@@ -301,7 +301,6 @@
             }, "Patrón: [0-9]{3}-[0-9]{6}");
             
             $.validator.addMethod("verifiedValue", function (value, element) {
-                console.log(value);
                 return value != "";
             }, "Ingrese datos correctos");
             

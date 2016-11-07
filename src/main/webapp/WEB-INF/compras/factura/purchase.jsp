@@ -20,8 +20,8 @@
                         <form role=form" method="get" action="${pageContext.request.contextPath}/secured/compras/factura/addFactura">
                             <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                                 <button type="submit" class="btn btn-success">Crear Factura <i class="fa fa-plus"></i></button>
-                            </cc:if>
-                            
+                                </cc:if>
+
                         </form>
                     </div>
                     <div class="col-lg-4">
@@ -48,20 +48,24 @@
                                         <th>Fecha</th>
                                         <th>Factura</th>
                                         <th>Proveedor</th>
-                                        <th>Almacenero</th>
                                         <th>Importe</th>
                                         <th>Tipo</th>
+                                        <th>Vistas</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <c:forEach items="${facturasCompra}" var="c">
                                         <tr>
-                                            <td>${c.facComCabFecEmi}</td>
-                                            <td>${c.facComCabCod}</td>
-                                            <td>${c.enP4mProveedor.prvDet}</td>
-                                            <td>${c.enP1mUsuario.usuNom}</td>
-                                            <td>${c.facComCabTot}</td>                            
-                                            <td>${c.taGzzTipoPagoFactura.tipPagDet}</td>
+                                            <td width="10%" align="center">${c.facComCabFecEmi}</td>
+                                            <td width="15%" align="center">${c.facComCabCod}</td>
+                                            <td width="40%">${c.enP4mProveedor.prvDet}</td>
+                                            <td width="10%" align="center">${c.facComCabTot}</td>                            
+                                            <td width="15%" align="center">${c.taGzzTipoPagoFactura.tipPagDet}</td>
+                                            <td width="10%" align="center">
+                                                <a href="#" data-toggle="" data-target="#" data-code="${c.facComCabCod}">
+                                                    <i class="fa fa-list-alt fa-2x" style="color: black;"></i>
+                                                </a>
+                                            </td>
                                         </tr>
                                     </c:forEach>
                                 </tbody>
@@ -81,7 +85,7 @@
             </div>
         </div>
         <script>
-            $(document).ready(function() {
+            $(document).ready(function () {
                 $('#tablePurchases').DataTable({
                     responsive: true
                 });
