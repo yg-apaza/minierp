@@ -42,6 +42,8 @@ public class ProductController extends HttpServlet {
         request.setAttribute("almacenes", almDao.getAllActive());
         request.setAttribute("monedas", monDao.getAllActive());
         request.setAttribute("medidas", uniMedDao.getAllActive());
+        request.setAttribute("inactivos", proDao.getAllInactive());
+        
         
         request.getRequestDispatcher("/WEB-INF/compras/products.jsp").forward(request, response);
     }

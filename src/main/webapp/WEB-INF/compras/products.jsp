@@ -17,6 +17,9 @@
                     <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addProduct"> Agregar nuevo <i class="fa fa-plus"></i></button>                
                     </cc:if>
+                    <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
+                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#viewModal"> Ver Inhabilitados <i class="fa fa-eye"></i></button>                
+                    </cc:if>
                 </div>
                 <div class=" col-lg-5">
                     <div class="col-lg-offset-4 col-lg-2">
@@ -391,7 +394,7 @@
                 </div>
             </div>                
                             
-            <div id="disableModal" class="modal fade">
+            <div id="disableModal" class="modal fade" role="dialog">
                 <div class="modal-dialog modal-md">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -415,7 +418,71 @@
                 </div>
             </div>
                             
-            <div id="activateModal" class="modal fade">
+            <div id="viewModal" class="modal fade" role="dialog">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Producto Inhabilitados</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="col-md-12 form-group input-group">
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-bordered table-hover" id="tableInactives">
+                                        <thead>
+                                            <tr>
+                                                <th>Código</th>
+                                                <th>Codigo de Barras</th>
+                                                <th>Detalle</th>
+                                                <th>Precio</th>
+                                                <th>Almacen</th>
+                                                <th>Stock</th>
+                                                <th>Preventa</th>
+                                                <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
+                                                <th>Acciones</th>
+                                                </cc:if>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                           <c:forEach items="${inactivos}" var="p">
+                                                <tr>
+                                                    <td>${p.id.proCod}</td>                                        
+                                                    <td>${p.proCodBar}</td>
+                                                    <td>${p.proDet}</td>
+                                                    <td>${p.proPreUniVen}</td>
+                                                    <td>${p.enP2mAlmacen.almDet}</td>
+                                                    <td>${p.proStk}</td>
+                                                    <td>${p.proStkPreVen}</td>
+                                                    <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
+                                                    <td>
+                                                        <a href="#" data-toggle="modal" data-target="#activateModal" 
+                                                           data-claprocod="${p.id.claProCod}"
+                                                           data-subclaprocod="${p.id.subClaProCod}"
+                                                           data-procod="${p.id.proCod}"
+                                                           data-prodet="${p.proDet}">
+                                                            <i class="fa fa-check fa-2x" style="color: green;"></i>
+                                                        </a>
+                                                        <a href="#" data-toggle="modal" data-target="#deleteModal" 
+                                                           data-claprocod="${p.id.claProCod}"
+                                                           data-subclaprocod="${p.id.subClaProCod}"
+                                                           data-procod="${p.id.proCod}"
+                                                           data-prodet="${p.proDet}">
+                                                            <i class="fa fa-trash-o fa-2x" style="color: red;"></i>
+                                                        </a>
+                                                    </td>
+                                                    </cc:if>
+                                                </tr>
+                                            </c:forEach>
+                                        </tbody>
+                                    </table>     
+                                </div>
+                            </div>
+                        </div>
+                    </div>              
+                </div>
+            </div>                
+               
+            <div id="activateModal" class="modal fade" role="dialog">
                 <div class="modal-dialog modal-md">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -439,7 +506,7 @@
                 </div>
             </div>
             
-            <div id="deleteModal" class="modal fade">
+            <div id="deleteModal" class="modal fade" role="dialog">
                 <div class="modal-dialog modal-md">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -461,32 +528,7 @@
                         </form>
                     </div>              
                 </div>
-            </div>
-            
-            <div id="viewModal" class="modal fade">
-                <div class="modal-dialog modal-md">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Producto Inhabilitados</h4>
-                        </div>
-                        <form id="disableForm" method="post" action="${pageContext.request.contextPath}/secured/compras/productos">
-                            <div class="modal-body">
-                                <input type="hidden" name="action" value="disable">
-                                <input type="hidden" name="claProCod" id="disableClaProCod">
-                                <input type="hidden" name="subClaProCod" id="disableSubClaProCod">
-                                <input type="hidden" name="proCod" id="disableProCod">
-                                <p> ¿Desea Inhabilitar el producto: <span id="disableProAll"></span> ?</p>                                
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-                                <button type="submit" class="btn btn-success">Aceptar</button>                                            
-                            </div>
-                        </form>
-                    </div>              
-                </div>
             </div>                
-                            
                             
         </div>       
         <script language="javascript">
@@ -495,8 +537,11 @@
                 $('#tableSuppliers').DataTable({
                     responsive: true
                     });
+                $('#tableInactives').DataTable({
+                    responsive: true
+                    });    
             });
-
+            
             function changingValues() {
                 $('#addSubClaProCod').empty();
                 var code = Number($("#addClaProCod").val());
