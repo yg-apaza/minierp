@@ -34,7 +34,7 @@
 				<text><![CDATA["LISTADO DE CLIENTES DE LA EMPRESA "
 ]]></text>
 			</staticText>
-			<image scaleImage="RetainShape" onErrorType="Icon">
+			<image scaleImage="RetainShape" onErrorType="Blank">
 				<reportElement x="19" y="11" width="203" height="46" uuid="dc95073f-181d-4f73-94b9-e55fce80c7e4"/>
 				<imageExpression><![CDATA[$P{IMAGE}]]></imageExpression>
 			</image>
@@ -43,7 +43,7 @@
 	<columnHeader>
 		<band height="34">
 			<line>
-				<reportElement x="0" y="32" width="802" height="1" forecolor="#666666" uuid="8ab4ce63-1958-43c4-93eb-94f91aca48bd"/>
+				<reportElement x="0" y="33" width="802" height="1" forecolor="#666666" uuid="8ab4ce63-1958-43c4-93eb-94f91aca48bd"/>
 			</line>
 			<staticText>
 				<reportElement positionType="FixRelativeToBottom" x="156" y="12" width="84" height="20" uuid="23eb01e4-21f9-4b65-b112-21ef81e4e730"/>
@@ -95,6 +95,9 @@
 				<textElement textAlignment="Center"/>
 				<text><![CDATA[Correo]]></text>
 			</staticText>
+			<line>
+				<reportElement x="0" y="1" width="802" height="1" forecolor="#666666" uuid="15db5658-fc60-4535-b3aa-72fd332fde3b"/>
+			</line>
 		</band>
 	</columnHeader>
 	<detail>

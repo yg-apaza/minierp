@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Productos" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c0a86258-e6eb-456e-bfe4-a65c690f0fbc">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="IMAGE" class="java.lang.String"/>
+	<queryString language="hql">
+		<![CDATA[FROM EnP2mProducto WHERE EstRegCod = 'A']]>
+	</queryString>
+	<field name="enP1tFacturaVentaDets" class="java.util.Set"/>
+	<field name="enP1tPreventaDets" class="java.util.Set"/>
+	<field name="enP2mAlmacen" class="org.epis.minierp.model.EnP2mAlmacen"/>
+	<field name="enP2mSubclaseProducto" class="org.epis.minierp.model.EnP2mSubclaseProducto"/>
+	<field name="enP2tInventarioDets" class="java.util.Set"/>
+	<field name="enP4tFacturaCompraDets" class="java.util.Set"/>
+	<field name="estRegCod" class="java.lang.Character"/>
+	<field name="id" class="org.epis.minierp.model.EnP2mProductoId"/>
+	<field name="proCodBar" class="java.lang.String"/>
+	<field name="proDet" class="java.lang.String"/>
+	<field name="proObs" class="java.lang.String"/>
+	<field name="proPesNet" class="java.lang.Double"/>
+	<field name="proPreUniCom" class="java.lang.Double"/>
+	<field name="proPreUniFle" class="java.lang.Double"/>
+	<field name="proPreUniMar" class="java.lang.Double"/>
+	<field name="proPreUniVen" class="java.lang.Double"/>
+	<field name="proStk" class="java.lang.Double"/>
+	<field name="proStkMax" class="java.lang.Double"/>
+	<field name="proStkMin" class="java.lang.Double"/>
+	<field name="proStkPreVen" class="java.lang.Double"/>
+	<field name="proStkRea" class="java.lang.Double"/>
+	<field name="taGzzMoneda" class="org.epis.minierp.model.TaGzzMoneda"/>
+	<field name="taGzzUnidadMed" class="org.epis.minierp.model.TaGzzUnidadMed"/>
+	<field name="volUniAlm" class="java.lang.Double"/>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="322" y="31" width="228" height="20" uuid="f00d352f-c768-4130-8b35-ace07d6dfaae"/>
+				<textElement textAlignment="Center" markup="none">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LISTADO DE PRODUCTOS]]></text>
+			</staticText>
+			<image scaleImage="RetainShape" onErrorType="Blank">
+				<reportElement x="29" y="21" width="203" height="46" uuid="26443de1-a171-4846-8e23-c6891998e93d"/>
+				<imageExpression><![CDATA[$P{IMAGE}]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="21" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="120" height="20" uuid="bec8d9b6-8448-4acc-b100-87888da6a077"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Clase]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="120" y="0" width="120" height="20" uuid="53797b94-1229-4b6b-b17f-f487ad8e0f0c"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Subclase]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="240" y="0" width="100" height="20" uuid="d77f98db-ab5e-4189-8e92-9b19d8354d40"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Código]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="340" y="0" width="262" height="20" uuid="df30d66e-3e41-4c13-a492-cea09717c6da"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Descripción]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="702" y="1" width="100" height="20" uuid="bbb95a06-dffc-43d9-bf2d-32fa98a9ce69"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Precio de Venta]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="602" y="0" width="100" height="20" uuid="7a0adfc4-a3cf-4e9a-bf2c-4d77ed8448d9"/>
+				<text><![CDATA[U. Medida]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="20" width="802" height="1" uuid="291ec9f3-0922-415c-8544-c4eb26c82640"/>
+			</line>
+			<line>
+				<reportElement x="0" y="1" width="802" height="1" uuid="33448d39-795a-4789-85e8-162857c85d86"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="120" height="20" uuid="46fa337b-2e4e-4065-8291-e8e2f51d4681"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{enP2mSubclaseProducto}.getEnP2mClaseProducto().getClaProDet()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="120" y="0" width="120" height="20" uuid="6847f120-b024-4a56-b667-78a71f8acc15"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{enP2mSubclaseProducto}.getSubClaProDet()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="240" y="1" width="100" height="20" uuid="d27c32c9-e2a8-4594-badf-443961b320f4"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{id}.getProCod()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="340" y="1" width="262" height="20" uuid="d36a9991-4d9b-4efe-b141-2e11d10d481f"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{proDet}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="20" width="802" height="1" uuid="da4f5a9c-be35-44d2-8ef3-601fab87c96c"/>
+			</line>
+			<textField>
+				<reportElement x="702" y="1" width="100" height="20" uuid="41cc315f-5b0e-4b89-aa52-ed48213b5d4f"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{proPreUniVen}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="602" y="1" width="100" height="20" uuid="72b4a4c2-fda5-4de8-9697-d38c4e44abf3"/>
+				<textFieldExpression><![CDATA[$F{taGzzUnidadMed}.getUniMedDet()]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

@@ -43,7 +43,7 @@
                                     <div class="col-md-4">
                                         <div class="form-group input-group" >
                                             <span class="input-group-addon">Emisión</span>
-                                            <input type="date" class="form-control" name="facComCabFecEmi">
+                                            <input type="date" class="form-control" name="facComCabFecEmi" value="${fechaActual}" readonly>
                                             <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                                         </div>
                                     </div>       
@@ -154,6 +154,8 @@
                                         </div>
                                     </div>                                    
                                 </div>
+                                <div class="row">
+                                    <div class="col-md-12">
                                 <div class="table-responsive">
                                     <table width="100%" class="table table-striped table-bordered table-hover" id="productTable">
                                         <thead align="center">
@@ -168,17 +170,19 @@
                                         </tbody>
                                     </table>
                                 </div>
+                                </div>
+                                    </div>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group input-group" >
                                             <span class="input-group-addon">Tipo Descuento</i></span>
-                                            <select class="form-control" name="tipDesCod" id="selectDiscount">
+                                            <select class="form-control" name="tipDesCod">
                                                 <c:forEach items="${tiposDescuentos}" var="tipoDescuentos">
                                                     <option value="${tipoDescuentos.tipDesCod}">${tipoDescuentos.tipDesDet}</option>
                                                 </c:forEach>
                                             </select> 
                                             <span class="input-group-addon">Valor (%)</i></span>
-                                            <input type="number" class="form-control" id="tipDesVal" readonly>
+                                            <input type="number" class="form-control" name="facComCabPorDes" id="porDes" min="0" step="any" value="0" max="100">
                                             <span class="input-group-addon"><i class="fa fa-sort-amount-asc"></i></span>
                                         </div>
                                     </div>
@@ -234,17 +238,12 @@
             var codeProductCriteria = false;
             var productCodes = new Array();
             var productDescriptions = new Array();
-            var discounts = new Array();
             
             <c:forEach items="${productos}" var="p" varStatus="loop">
                 productCodes.push("${p.id.claProCod}-${p.id.subClaProCod}-${p.id.proCod}");
                 productDescriptions.push("${p.proDet}");
             </c:forEach>
-            
-            <c:forEach items="${tiposDescuentos}" var="t" varStatus="loop">
-                discounts.push("${t.tipDesPor}");
-            </c:forEach>
-            
+                        
             $(document).ready(function () {
                 changeSupplierDescription();
                 changeDiscount();
@@ -322,7 +321,7 @@
                 $('#proPrices').val(prices);
                 subTotal = (subTotal * (1 + Number($('#facIgv').val() / 100))).toFixed(2);
                 $('#facSub').val(subTotal);
-                var total = ((1 - Number($('#tipDesVal').val() / 100))*subTotal).toFixed(2);
+                var total = ((1 - Number($('#porDes').val() / 100))*subTotal).toFixed(2);
                 $('#facTot').val(total);
 
                 if ($("#productTable tr").length > 1) {
@@ -382,9 +381,7 @@
             } 
             
             function changeDiscount() {
-                var index = $("#selectDiscount option:selected").index();
-                $('#tipDesVal').val(discounts[index]);
-                var total = ((1 - Number($('#tipDesVal').val() / 100))*Number($('#facSub').val())).toFixed(2);
+                var total = ((1 - Number($('#porDes').val() / 100))*Number($('#facSub').val())).toFixed(2);
                 $('#facTot').val(total);
             }
             
@@ -398,7 +395,11 @@
                 changeDiscount();
             }
             
-            $('#selectDiscount').on('change', function() {
+            $('#porDes').on('change', function() {
+                changeDiscount();
+            });
+            
+            $('#porDes').keyup(function () {
                 changeDiscount();
             });
             
@@ -493,6 +494,9 @@
                     }, 
                     facComCabFecVen: {
                         required: true
+                    },
+                    facComCabPorDes: {
+                        required: true
                     }
                 },
                 messages: {
@@ -500,13 +504,16 @@
                         required: "Ingrese el código de la factura"
                     },
                     prvDes: {
-                        required: "Ingrese cliente válido",
+                        required: "Ingrese cliente válido"
                     },
                     facComCabFecEmi: {
                         required: "Seleccione una fecha"
                     },
                     facComCabFecVen: {
                         required: "Seleccione una fecha"
+                    },
+                    facComCabPorDes: {
+                        required: "Considere descuento 0"
                     }
                 },
                 submitHandler: function (form) {
