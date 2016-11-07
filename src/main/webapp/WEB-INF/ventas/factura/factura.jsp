@@ -25,22 +25,19 @@
                         <div class="col-lg-9">
                             <div class="col-lg-3">
                                 <select  class="form-control input-small" name="report" id="report"> 
-                                    <option type="submit" value="factura">Factura</option>
-                                    <option type="submit" value="boleta">Boleta</option>
-                                    <option type="submit" value="guiaRemision">Guía de Remisión</option>
+                                    <option value="factura">Factura</option>
+                                    <option value="boleta">Boleta</option>
+                                    <option value="guiaRemision">Guía de Remisión</option>
                                 </select>  
                             </div>
                             <div class="col-lg-3">
                                 <div id="imprimir" class="btn btn-success"> Imprimir</div>  
                             </div> 
-                            <div class="col-lg-3">
-                                <label>Flujo Efectivo</label>
-                            </div> 
-                            <div class="col-lg-6">
+                            <div class="col-lg-9">
+                                <label>Flujo Efectivo: </label>
                                 <a  href="${pageContext.request.contextPath}/secured/general/reporte?type=pdf&&report=flujoefectivo&&jdbc=true&&key=null&&value=null" class="btn btn-danger" >
                                     <i class="fa fa-file-pdf-o"></i>
                                 </a>
-
                                 <a  href="${pageContext.request.contextPath}/secured/general/reporte?type=doc&&report=flujoefectivo&&jdbc=true&&key=null&&value=null" class="btn  btn-primary" >
                                     <i class="fa fa-file-word-o"></i>
                                 </a>

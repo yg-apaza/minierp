@@ -196,6 +196,398 @@ IF idProducto != ''
 END $$
 DELIMITER ;
 
+
+/* PROCEDURE KARDEX_PEPS */
+
+DROP PROCEDURE IF EXISTS `kardex_peps`;
+DELIMITER $$
+CREATE  PROCEDURE `kardex_peps`(IN idProducto CHAR(15))
+BEGIN
+
+
+DECLARE saldoCantidad DOUBLE default 0;
+DECLARE saldoPrecioUni DOUBLE default 0;
+DECLARE saldoPrecioTot DOUBLE default 0;
+DECLARE n INT DEFAULT 0;
+DECLARE m INT DEFAULT 0;
+DECLARE i INT DEFAULT 0;
+DECLARE j INT DEFAULT 0;
+DECLARE k INT DEFAULT 0;
+DECLARE cantSalida DOUBLE default 0;
+DECLARE cantEntrada DOUBLE default 0;
+DECLARE entro VARCHAR(1) default 'f';
+DECLARE entro2 VARCHAR(1) default 'f';
+DECLARE fechaInventario DATE default '1000-01-01';
+SET @saldoCantidad :=0;
+SET @saldoPrecioUni :=0;
+SET @saldoPrecioTot :=0;
+
+
+SET @fechaInventario := (SELECT MAX(ic.InvCabFec) FROM en_p2m_inventario_cab ic
+INNER JOIN en_p2t_inventario_det id ON id.ProCod=idProducto AND ic.EstRegCod='A');
+
+IF COALESCE(@fechaInventario,0) =0
+THEN
+SET @fechaInventario := '1000-01-01';
+END IF;
+DROP TABLE IF EXISTS temp_kardex;
+
+
+IF idProducto != '' 
+	THEN
+    CREATE TABLE temp_kardex
+		(
+			SELECT 
+					@fechaInventario fecha,				
+					ic.InvCabCod numero_factura,
+					pp.ProDet producto,
+                    pp.ProCod codigo_producto,
+					(pp.ProStk+id.InvDetDifStk) cantidad_entrada,
+					pp.ProPreUniVen precio_unitario_entrada,
+					((pp.ProStk+id.InvDetDifStk)*pp.ProPreUniVen) precio_total_entrada,
+					0 cantidad_salida,
+					0 precio_unitario_salida,
+					0 precio_total_salida,
+                    (pp.ProStk+id.InvDetDifStk) cantidad_saldo,
+                    ((pp.ProStk+id.InvDetDifStk)*pp.ProPreUniVen) precio_total_saldo,
+                    pp.ProPreUniVen precio_unitario_saldo,
+                    'Inventario' tipo_operacion,
+                    'Inventario' glosa
+                    
+				FROM en_p2m_inventario_cab ic
+				INNER JOIN en_p2t_inventario_det id ON id.ProCod=idProducto AND ic.EstRegCod='A' AND ic.InvCabFec=@fechaInventario
+                INNER JOIN en_p2m_producto pp ON id.ProCod=pp.ProCod 
+        )
+        UNION ALL
+		(
+			SELECT 
+				a.fecha,
+				a.numero_factura,
+				a.producto,
+                a.codigo_producto,
+				a.cantidad_entrada,
+				a.precio_unitario_entrada,
+				a.precio_total_entrada,
+				a.cantidad_salida,
+				a.precio_unitario_salida,
+				a.precio_total_salida,
+				0 cantidad_saldo,
+				0 precio_total_saldo,
+				0 precio_unitario_saldo,
+			   a.tipo_operacion,
+			   a.glosa
+			
+			FROM
+			(
+				
+				(
+					SELECT 
+						fcc.FacComCabFecEmi fecha,				
+						fcc.FacComCabCod numero_factura,
+						pp.ProDet producto,
+                        pp.ProCod codigo_producto,
+						fcd.FacComDetCan cantidad_entrada,
+						fcd.FacComDetValUni precio_unitario_entrada,
+						(SELECT cantidad_entrada*precio_unitario_entrada) precio_total_entrada,
+						0 cantidad_salida,
+						0 precio_unitario_salida,
+						0 precio_total_salida,
+						'Compra' tipo_operacion,
+						'Factura' glosa
+						
+					FROM en_p4t_factura_compra_det fcd
+					INNER JOIN en_p2m_producto pp ON fcd.ProCod=pp.ProCod AND pp.ProCod=idProducto
+					INNER JOIN en_p4m_factura_compra_cab fcc ON fcc.FacComCabCod = fcd.FacComCabCod AND fcc.EstRegCod='A'
+				)
+				UNION ALL
+				(
+				
+					SELECT 
+						fvc.FacVenCabFecEmi fecha,
+						fvc.FacVenCabCod numero_factura,
+						pp.ProDet producto,
+                        pp.ProCod codigo_producto,
+						0 cantidad_entrada,
+						0 precio_unitario_entrada,
+						0 precio_total_entrada,
+						fvd.FacVenDetCan cantidad_salida,
+						fvd.FacVenDetValUni precio_unitario_salida,
+						(SELECT cantidad_salida*precio_unitario_salida) precio_total_salida,
+						'Venta' tipo_operacion,
+						'Factura' glosa
+						
+					FROM en_p1t_factura_venta_det fvd
+					INNER JOIN en_p2m_producto pp ON fvd.ProCod=pp.ProCod AND pp.ProCod=idProducto
+					INNER JOIN en_p1m_factura_venta_cab fvc ON fvc.FacVenCabCod = fvd.FacVenCabCod AND fvc.EstRegCod='A'
+					INNER JOIN en_p1m_cliente cl ON fvc.CliCod=cl.CliCod 
+					INNER JOIN ta_gzz_tipo_cliente tc ON tc.TipCliCod=cl.TipCliCod AND tc.TipCliCod='02'
+				)
+				UNION ALL
+				(
+				
+					SELECT 
+						fvc.FacVenCabFecEmi fecha,
+						fvc.FacVenCabCod numero_factura,
+						pp.ProDet producto,
+                        pp.ProCod codigo_producto,
+						0 cantidad_entrada,
+						0 precio_unitario_entrada,
+						0 precio_total_entrada,
+						fvd.FacVenDetCan cantidad_salida,
+						fvd.FacVenDetValUni precio_unitario_salida,
+						(SELECT cantidad_salida*precio_unitario_salida) precio_total_salida,
+						'Venta' tipo_operacion,
+						'Boleta' glosa
+						
+					FROM en_p1t_factura_venta_det fvd
+					INNER JOIN en_p2m_producto pp ON fvd.ProCod=pp.ProCod AND pp.ProCod=idProducto
+					INNER JOIN en_p1m_factura_venta_cab fvc ON fvc.FacVenCabCod = fvd.FacVenCabCod AND fvc.EstRegCod='A'
+					INNER JOIN en_p1m_cliente cl ON fvc.CliCod=cl.CliCod 
+					INNER JOIN ta_gzz_tipo_cliente tc ON tc.TipCliCod=cl.TipCliCod AND tc.TipCliCod='01'
+				)
+				UNION ALL
+				(
+					SELECT 
+						dc.DevComFec fecha,
+						dc.DevComNewFac numero_factura,
+						pp.ProDet producto,
+                        pp.ProCod codigo_producto,
+						0 cantidad_entrada,
+						0 precio_unitario_entrada,
+						0 precio_total_entrada,
+						fcd.FacComDetCan cantidad_salida,
+						fcd.FacComDetValUni precio_unitario_salida,
+						(SELECT cantidad_salida*precio_unitario_salida) precio_total_salida,
+						td.TipDevDet tipo_operacion,
+						'Factura' glosa
+						
+					FROM en_p2c_devolucion_compras dc
+					INNER JOIN ta_gzz_tipo_devolucion td ON dc.TipDevCod=td.TipDevCod AND td.EstRegCod='A'
+					INNER JOIN en_p4m_factura_compra_cab fcc ON fcc.FacComCabCod = dc.FacComCabCod-- AND dv.EstRegCod='A'
+					INNER JOIN en_p4t_factura_compra_det fcd ON fcd.FacComCabCod=fcc.FacComCabCod
+					INNER JOIN en_p2m_producto pp ON fcd.ProCod=pp.ProCod AND pp.ProCod=idProducto
+					
+				)
+				
+				UNION ALL
+				(
+					SELECT 
+						dv.DevVenFec fecha,
+						dv.DevVenNewFac numero_factura,
+						pp.ProDet producto,
+                        pp.ProCod codigo_producto,
+						fvd.FacVenDetCan cantidad_entrada,
+						fvd.FacVenDetValUni precio_unitario_entrada,
+						(SELECT cantidad_entrada*precio_unitario_entrada) precio_total_entrada,
+						0 cantidad_salida,
+						0 precio_unitario_salida,
+						0 precio_total_salida,
+						td.TipDevDet tipo_operacion,
+						'Factura' glosa
+						
+					FROM en_p1c_devolucion_ventas dv
+					INNER JOIN ta_gzz_tipo_devolucion td ON dv.TipDevCod=td.TipDevCod AND td.EstRegCod='A'
+					INNER JOIN en_p1m_factura_venta_cab fvc ON fvc.FacVenCabCod = dv.FacVenCabCod-- AND dv.EstRegCod='A'
+					INNER JOIN en_p1t_factura_venta_det fvd ON fvd.FacVenCabCod=fvc.FacVenCabCod
+					INNER JOIN en_p2m_producto pp ON fvd.ProCod=pp.ProCod AND pp.ProCod=idProducto
+					
+				)
+			) a WHERE a.fecha>@fechaInventario
+            ORDER BY a.fecha,a.numero_factura
+		) ;
+		
+        DROP TABLE IF EXISTS temp_compras;
+		CREATE TABLE temp_compras
+		SELECT 
+			fecha,				
+			numero_factura,
+			producto,
+            codigo_producto,
+			cantidad_entrada,
+			precio_unitario_entrada,
+			precio_total_entrada,
+			cantidad_salida,
+			precio_unitario_salida,
+			precio_total_salida,
+            cantidad_saldo,
+            precio_total_saldo,
+            precio_unitario_saldo,
+            tipo_operacion,
+            glosa
+		FROM temp_kardex 
+		WHERE  cantidad_entrada>0;
+        
+        DROP TABLE IF EXISTS kardex_peps;
+		CREATE TABLE kardex_peps
+		(
+			fecha date,				
+			numero_factura varchar(20),
+			producto varchar(100),
+            codigo_producto varchar(20),
+			cantidad_entrada double,
+			precio_unitario_entrada double,
+			precio_total_entrada double,
+			cantidad_salida double,
+			precio_unitario_salida double,
+			precio_total_salida double,
+            cantidad_saldo double,
+            precio_total_saldo double,
+            precio_unitario_saldo double,
+            tipo_operacion varchar(50),
+            glosa varchar(20)
+		);
+		
+      
+        /*temp_kardex*/
+        SET n =0;
+		SET i = 0;
+        /*temp_compras*/
+        SET m =0;
+		SET j = 0;
+        SET k = 0;
+        SET cantSalida=0;
+        SET cantEntrada=0;
+        SET entro='f';
+		SELECT COUNT(*) FROM temp_kardex INTO n;
+		SELECT COUNT(*) FROM temp_compras INTO m;
+          
+        SET @saldoCantidad :=0;  
+        
+		WHILE i<n DO
+			
+			IF entro='f'
+            THEN
+				SET cantSalida=(SELECT tk.cantidad_salida FROM temp_kardex tk LIMIT i,1);
+            
+			END IF;
+			IF cantSalida>0
+            THEN 
+				IF entro2='f'
+				THEN
+					SET cantEntrada=(SELECT tcm.cantidad_entrada FROM temp_compras tcm LIMIT j,1);
+                END IF;
+				IF cantEntrada>=cantSalida
+                THEN
+					SET cantEntrada=cantEntrada-cantSalida;
+                    SET @saldoCantidad:=@saldoCantidad-cantSalida;
+                    IF (SELECT i+1<n)
+                    THEN
+						SET k=i+1;
+                    END IF;
+                    IF (SELECT cantidad_entrada FROM temp_kardex LIMIT k,1)>0 ||i+1=n
+                    THEN
+						INSERT INTO kardex_peps(fecha, numero_factura,producto,codigo_producto,cantidad_entrada,precio_unitario_entrada,precio_total_entrada,cantidad_salida,precio_unitario_salida,precio_total_salida,cantidad_saldo,precio_total_saldo,precio_unitario_saldo,tipo_operacion,glosa)
+						SELECT 
+							fecha,
+							(SELECT tcm.numero_factura FROM temp_compras tcm LIMIT j,1) numero_factura,
+							producto,
+							codigo_producto,
+							cantidad_entrada,
+							precio_unitario_entrada,
+							precio_total_entrada,
+							cantSalida cantidad_salida,
+							(SELECT tcm.precio_unitario_entrada FROM temp_compras tcm LIMIT j,1) precio_unitario_salida,
+							(SELECT cantSalida*(SELECT tcm.precio_unitario_entrada FROM temp_compras tcm LIMIT j,1)) precio_total_salida,
+							@saldoCantidad cantidad_saldo,
+							(SELECT tcm.precio_unitario_entrada FROM temp_compras tcm LIMIT j,1)*@saldoCantidad precio_total_saldo,
+							(SELECT tcm.precio_unitario_entrada FROM temp_compras tcm LIMIT j,1) precio_unitario_saldo,
+							tipo_operacion,glosa
+						FROM temp_kardex LIMIT i,1;
+					ELSE
+						INSERT INTO kardex_peps(fecha, numero_factura,producto,codigo_producto,cantidad_entrada,precio_unitario_entrada,precio_total_entrada,cantidad_salida,precio_unitario_salida,precio_total_salida,cantidad_saldo,precio_total_saldo,precio_unitario_saldo,tipo_operacion,glosa)
+						SELECT 
+							fecha,
+							(SELECT tcm.numero_factura FROM temp_compras tcm LIMIT j,1) numero_factura,
+							producto,
+							codigo_producto,
+							cantidad_entrada,
+							precio_unitario_entrada,
+							precio_total_entrada,
+							cantSalida cantidad_salida,
+							(SELECT tcm.precio_unitario_entrada FROM temp_compras tcm LIMIT j,1) precio_unitario_salida,
+							(SELECT cantSalida*(SELECT tcm.precio_unitario_entrada FROM temp_compras tcm LIMIT j,1)) precio_total_salida,
+							0 cantidad_saldo,
+							0 precio_total_saldo,
+							0 precio_unitario_saldo,
+							tipo_operacion,glosa
+						FROM temp_kardex LIMIT i,1;
+					END IF;
+                    
+					SET entro='f';
+                    IF cantEntrada=0
+                    THEN
+						SET entro2='f';
+                        SET j = j + 1;
+                    ELSE
+						SET entro2='t';
+					END IF;
+                ELSE
+					
+					INSERT INTO kardex_peps(fecha, numero_factura,producto,codigo_producto,cantidad_entrada,precio_unitario_entrada,precio_total_entrada,cantidad_salida,precio_unitario_salida,precio_total_salida,cantidad_saldo,precio_total_saldo,precio_unitario_saldo,tipo_operacion,glosa)
+					SELECT 
+						fecha,
+                        (SELECT tcm.numero_factura FROM temp_compras tcm LIMIT j,1) numero_factura,
+                        producto,
+                        codigo_producto,
+                        cantidad_entrada,
+                        precio_unitario_entrada,
+                        precio_total_entrada,
+                        cantEntrada cantidad_salida,
+                        (SELECT tcm.precio_unitario_entrada FROM temp_compras tcm LIMIT j,1) precio_unitario_salida,
+                        (SELECT cantEntrada*(SELECT tcm.precio_unitario_entrada FROM temp_compras tcm LIMIT j,1)) precio_total_salida,
+                        0 cantidad_saldo,
+                        0 precio_total_saldo,
+                        0 precio_unitario_saldo,
+                        tipo_operacion,
+                        glosa
+					FROM temp_kardex LIMIT i,1;
+                    SET @saldoCantidad:=@saldoCantidad-cantEntrada;
+                    SET cantSalida=cantSalida-cantEntrada;
+                    SET j = j + 1;
+                    IF j<m
+                    THEN
+						SET entro2='f';
+						SET entro='t';
+                        SET i = i - 1;
+                    END IF;
+                END IF;      
+			ELSE
+				
+				INSERT INTO kardex_peps(fecha, numero_factura,producto,codigo_producto,cantidad_entrada,precio_unitario_entrada,precio_total_entrada,cantidad_salida,precio_unitario_salida,precio_total_salida,cantidad_saldo,precio_total_saldo,precio_unitario_saldo,tipo_operacion,glosa)
+                SELECT 
+					fecha,
+					numero_factura,
+                    producto,codigo_producto,
+                    cantidad_entrada,
+                    precio_unitario_entrada,
+                    precio_total_entrada,
+                    cantidad_salida,
+                    precio_unitario_salida,
+                    precio_total_salida,
+                    cantidad_entrada cantidad_saldo,
+                    cantidad_entrada*precio_unitario_entrada precio_total_saldo,
+                    precio_unitario_entrada precio_unitario_saldo,
+                    tipo_operacion,
+                    glosa 
+				FROM temp_kardex LIMIT i,1;
+				SET @saldoCantidad :=@saldoCantidad+(SELECT cantidad_entrada FROM temp_kardex LIMIT i,1);
+               
+            END IF;
+            
+			SET i = i + 1;
+		END WHILE;
+   DROP TABLE temp_compras;
+   DROP TABLE temp_kardex;
+   
+   SELECT * FROM kardex_peps;
+
+   
+	END IF;
+END $$
+DELIMITER ;
+
+
+
 /* PROCEDURE PROC_IngresosPreventas */
 
 DROP PROCEDURE IF EXISTS `PROC_IngresosPreventas`;

@@ -50,9 +50,11 @@ import org.epis.minierp.model.TaGzzTipoPagoFactura;
 
 public class AddFacturaController extends HttpServlet {	
     private static final long serialVersionUID = 1L;
+    
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        
         HttpSession session = request.getSession(true);
         EnP1mUsuario user = (EnP1mUsuario) session.getAttribute("usuario");
         
@@ -64,6 +66,8 @@ public class AddFacturaController extends HttpServlet {
         List <TaGzzTipoDescuento> tiposDescuentos = (new TaGzzTipoDescuentoDao()).getAllActive();
         EnP1mEmpresa empresa = (new EnP1mEmpresaDao()).getAll().get(0);
         EnP1mPuntoVenta punto = (EnP1mPuntoVenta) user.getEnP1mSucursal().getEnP1mPuntoVentas().iterator().next(); //Getting the first one
+        EnP1mSucursal sucursal = user.getEnP1mSucursal();
+                
         DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         String fechaActual = format.format(Calendar.getInstance().getTime());
         
@@ -75,6 +79,8 @@ public class AddFacturaController extends HttpServlet {
         request.setAttribute("tiposDescuentos", tiposDescuentos);
         request.setAttribute("empresa", empresa);
         request.setAttribute("punto", punto);
+        request.setAttribute("usuario", user);
+        request.setAttribute("sucursal", sucursal);
         request.setAttribute("fechaActual", fechaActual);
         
         request.getRequestDispatcher("/WEB-INF/ventas/factura/addFactura.jsp").forward(request, response);

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <facturaPrinter>
     <size>0</size>
-    <leftMargin>4</leftMargin>
-    <rightMargin>2</rightMargin>
-    <topMargin>4.3</topMargin>
+    <leftMargin>2</leftMargin>
+    <rightMargin>0</rightMargin>
+    <topMargin>4.0</topMargin>
     <cliNom>1.8</cliNom>
     <cliDir>1.8</cliDir>
     <fecEmi>16.5</fecEmi>

@@ -15,7 +15,7 @@ import org.epis.minierp.model.EnP1tFacturaVentaDet;
 
 public class Impresora {
     private static final int MAX_FAC_DET = 20;
-    private static final int MAX_BOL_DET = 15;
+    private static final int MAX_BOL_DET = 11;
     private static final int MAX_REM_DET = 20;
     
     String path;

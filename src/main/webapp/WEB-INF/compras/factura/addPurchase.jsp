@@ -20,13 +20,13 @@
                         <br><h1 class="page-header">Factura de Compra</h1>
                     </div>
                     <div class="col-md-4 col-md-offset-4"><br>
-                            <div class="form-group input-group">
-                                <span class="input-group-addon">Almacenero</span>
-                                <span class="input-group-addon"><i class="fa fa-child"></i></span>
-                                <input type="hidden" class="form-control" name="usuCod" value="${usuario.usuCod}" readonly>
-                                <input type="text" class="form-control" value="${usuario.usuCod} - ${usuario.usuNom}" readonly>
-                            </div>
+                        <div class="form-group input-group">
+                            <span class="input-group-addon">Almacenero</span>
+                            <span class="input-group-addon"><i class="fa fa-child"></i></span>
+                            <input type="hidden" class="form-control" name="usuCod" value="${usuario.usuCod}" readonly>
+                            <input type="text" class="form-control" value="${usuario.usuCod} - ${usuario.usuNom}" readonly>
                         </div>
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-12">
@@ -120,11 +120,20 @@
                                     </div>
                                     <div class="col-xs-12 col-md-3">
                                         <textarea class="form-control" rows="5" name="facComCabObs" placeholder="Observaciones"></textarea>
-                                    </div>                                    
+                                    </div>
                                 </div>
                             </div>
                             <div class="panel-body">
-                                <h4>Detalle de Compra</h4><br>
+                                <div class="row">
+                                    <div class="col-md-10">
+                                        <h4>Detalle de Compra</h4>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group input-group">
+                                            <button type="button" class="btn btn-warning" onclick='addNewProduct()'>Añadir producto <i class="fa fa-plus"></i></button>                
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="row">
                                     <div class="col-xs-12 col-md-12">
                                         <div class="row">
@@ -156,22 +165,22 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
-                                <div class="table-responsive">
-                                    <table width="100%" class="table table-striped table-bordered table-hover" id="productTable">
-                                        <thead align="center">
-                                            <tr >
-                                                <th>Código</th>
-                                                <th>Cantidad</th>
-                                                <th colspan="2">Descripción del Producto</th>
-                                                <th colspan="2">Precio Unitario</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>                                        
-                                        </tbody>
-                                    </table>
-                                </div>
-                                </div>
+                                        <div class="table-responsive">
+                                            <table width="100%" class="table table-striped table-bordered table-hover" id="productTable">
+                                                <thead align="center">
+                                                    <tr >
+                                                        <th>Código</th>
+                                                        <th>Cantidad</th>
+                                                        <th colspan="2">Descripción del Producto</th>
+                                                        <th colspan="2">Precio Unitario</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>                                        
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
+                                </div>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group input-group" >
@@ -223,7 +232,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Detalle de Venta</h4>
+                        <h4 class="modal-title">Detalle de Compra</h4>
                     </div>
                     <div class="modal-body">
                         <p align="center"><span id="errorMessage"></span></p>
@@ -234,21 +243,94 @@
                 </div>              
             </div>
         </div>
+        <div class="modal fade" id="addNewProduct">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Añadir Producto</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p align="center"><span id="messageAddProduct"></span></p>
+                        <div class="col-md-12 form-group input-group">
+                            <div class="col-xs-12 col-md-6">
+                                <div class="form-group input-group">
+                                    <span class="input-group-addon">Clase</span>
+                                    <select class="form-control" id="addClaProCod" onchange="changingValues()">
+                                    </select> 
+                                    <span class="input-group-addon"><i class="fa fa-book"></i></span>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-md-6">
+                                <div class="form-group input-group">
+                                    <span class="input-group-addon">SubClase</span>
+                                    <select class="form-control" id="addSubClaProCod">
+                                    </select> 
+                                    <span class="input-group-addon"><i class="fa fa-tag"></i></span>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-md-6">
+                                <div class="form-group input-group" >
+                                    <span class="input-group-addon">Codigo</span>
+                                        <input type="text" class="form-control" id="addProCod">
+                                    <span class="input-group-addon"><i class="fa fa-th"></i></span>
+                                </div>
+                            </div>                            
+                            <div class="col-xs-12 col-md-12">
+                                <div class="form-group input-group">
+                                    <span class="input-group-addon"><i class="fa fa-edit"></i></span>
+                                    <input type="text" class="form-control" id="addProDet" placeholder="Descripción del Producto">
+                                </div>
+                            </div>                            
+                            <div class="col-xs-12 col-md-6">
+                                <div class="form-group input-group" >
+                                    <span class="input-group-addon">Moneda</span>                                    
+                                    <select class="form-control" id="addMonCod">
+                                    </select> 
+                                    <span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-md-6">
+                                <div class="form-group input-group" >
+                                    <span class="input-group-addon">Unidad de Medida</span>                                    
+                                    <select class="form-control" id="addUniMedCod">
+                                    </select> 
+                                    <span class="input-group-addon"><i class="fa fa-gears"></i></span>
+                                </div>
+                            </div>   
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-success" onclick='validityAddProduct()'>Aceptar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="loading" class="modal fade">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <p align="center">Cargando ... </p>
+                    </div>
+                </div>         
+            </div>
+        </div>
         <script language="javascript">
             var codeProductCriteria = false;
             var productCodes = new Array();
             var productDescriptions = new Array();
-            
+
             <c:forEach items="${productos}" var="p" varStatus="loop">
                 productCodes.push("${p.id.claProCod}-${p.id.subClaProCod}-${p.id.proCod}");
                 productDescriptions.push("${p.proDet}");
             </c:forEach>
-                        
+
             $(document).ready(function () {
                 changeSupplierDescription();
                 changeDiscount();
             });
-            
+
             $(document).ready(function () {
                 $("#productTable").on('click', '.btnDelete', function () {
                     $(this).closest('tr').remove();
@@ -259,12 +341,12 @@
             $(document).ready(function () {
                 $("#iconCriteria").addClass("fa-chevron-left");
                 $('#proCodShow').attr('readOnly', true);
-                $('#proDesShow').attr('readOnly', false);                 
+                $('#proDesShow').attr('readOnly', false);
             });
-            
+
             $(document).ready(function () {
                 $('#addDetail').on('click', function () {
-                    if ($('#proCodShow').val() == "Desconocido" || $('#proCodShow').val() == "" || $('#proDesShow').val() == "Desconocido" || $('#proDesShow').val() == "")  {
+                    if ($('#proCodShow').val() == "Desconocido" || $('#proCodShow').val() == "" || $('#proDesShow').val() == "Desconocido" || $('#proDesShow').val() == "") {
                         $("#errorMessage").text("Producto Desconocido. Ingrese un producto disponible");
                         $('#errorMessageModal').modal('show');
                     } else {
@@ -295,43 +377,43 @@
                     }
                 });
             });
-            
+
             $.validator.addMethod("codePattern", function (value, element) {
                 return /^[0-9]{3}-[0-9]{6}$/.test(value);
             }, "Patrón: [0-9]{3}-[0-9]{6}");
-            
+
             $.validator.addMethod("verifiedValue", function (value, element) {
                 return value != "";
             }, "Ingrese datos correctos");
-            
-            function updateAll() {
-                var productsCodes = new Array();
-                var amounts = new Array();
-                var prices = new Array();
-                var subTotal = 0;
-                $("#productTable tbody tr").each(function () {
-                    productsCodes.push($(this)[0].childNodes[0].textContent);
-                    amounts.push($(this)[0].childNodes[1].textContent);
-                    prices.push($(this)[0].childNodes[4].textContent);
-                    subTotal += Number($(this)[0].childNodes[1].textContent) * Number($(this)[0].childNodes[4].textContent);
-                });
-                $('#proCodes').val(productsCodes);
-                $('#proAmo').val(amounts);
-                $('#proPrices').val(prices);
-                subTotal = (subTotal * (1 + Number($('#facIgv').val() / 100))).toFixed(2);
-                $('#facSub').val(subTotal);
-                var total = ((1 - Number($('#porDes').val() / 100))*subTotal).toFixed(2);
-                $('#facTot').val(total);
 
-                if ($("#productTable tr").length > 1) {
-                    $("#register").prop('disabled', false);
-                } else {
-                    $("#register").prop('disabled', true);
+            function updateAll() {
+                    var productsCodes = new Array();
+                    var amounts = new Array();
+                    var prices = new Array();
+                    var subTotal = 0;
+                    $("#productTable tbody tr").each(function () {
+                        productsCodes.push($(this)[0].childNodes[0].textContent);
+                        amounts.push($(this)[0].childNodes[1].textContent);
+                        prices.push($(this)[0].childNodes[4].textContent);
+                        subTotal += Number($(this)[0].childNodes[1].textContent) * Number($(this)[0].childNodes[4].textContent);
+                    });
+                    $('#proCodes').val(productsCodes);
+                    $('#proAmo').val(amounts);
+                    $('#proPrices').val(prices);
+                    subTotal = (subTotal * (1 + Number($('#facIgv').val() / 100))).toFixed(2);
+                    $('#facSub').val(subTotal);
+                    var total = ((1 - Number($('#porDes').val() / 100)) * subTotal).toFixed(2);
+                    $('#facTot').val(total);
+
+                    if ($("#productTable tr").length > 1) {
+                        $("#register").prop('disabled', false);
+                    } else {
+                        $("#register").prop('disabled', true);
+                    }
                 }
-            }
-            
+
             function changeIcon() {
-                if(codeProductCriteria) {
+                if (codeProductCriteria) {
                     $('#iconCriteria').removeClass("fa-chevron-left").addClass("fa-chevron-right");
                     $('#proDesShow').attr('readOnly', false);
                     $('#proCodShow').attr('readOnly', true);
@@ -342,79 +424,79 @@
                     $('#proDesShow').attr('readOnly', true);
                     codeProductCriteria = true;
                 }
-                
+
                 $('#proCodShow').val("");
                 $('#proDesShow').val("");
                 $('#priceShow').val(1);
                 $('#amountShow').val(1);
-            }                    
-            
+            }
+
             function changeSupplierDescription() {
                 $.post(
                         "${pageContext.request.contextPath}/secured/compras/factura/searchSupplier", {
                             action: "all"
                         }
-                    ).done(function (data) {
-                        if (data.suppliers.length > 0) {
-                            if($("#desProveedor").val() == "1") { //Razón Social
-                                var suppliersRS = new Array();
-                                data.suppliers.forEach(function(supplier) {
-                                    suppliersRS.push(supplier.prvRazSoc);
-                                });
-                                
-                                $("#prvDesShow").autocomplete({
-                                    source: suppliersRS
-                                });
-                            } else if($("#desProveedor").val() == "2") { //Nombre Comercial
-                                var suppliersNC = new Array();
-                                data.suppliers.forEach(function(supplier) {
-                                    suppliersNC.push(supplier.prvNomCom);
-                                });
-                                
-                                $("#prvDesShow").autocomplete({
-                                    source: suppliersNC
-                                });
-                            }                            
-                        }                        
-                    });
-            } 
-            
+                ).done(function (data) {
+                    if (data.suppliers.length > 0) {
+                        if ($("#desProveedor").val() == "1") { //Razón Social
+                            var suppliersRS = new Array();
+                            data.suppliers.forEach(function (supplier) {
+                                suppliersRS.push(supplier.prvRazSoc);
+                            });
+
+                            $("#prvDesShow").autocomplete({
+                                source: suppliersRS
+                            });
+                        } else if ($("#desProveedor").val() == "2") { //Nombre Comercial
+                            var suppliersNC = new Array();
+                            data.suppliers.forEach(function (supplier) {
+                                suppliersNC.push(supplier.prvNomCom);
+                            });
+
+                            $("#prvDesShow").autocomplete({
+                                source: suppliersNC
+                            });
+                        }
+                    }
+                });
+            }
+
             function changeDiscount() {
-                var total = ((1 - Number($('#porDes').val() / 100))*Number($('#facSub').val())).toFixed(2);
+                var total = ((1 - Number($('#porDes').val() / 100)) * Number($('#facSub').val())).toFixed(2);
                 $('#facTot').val(total);
             }
-            
+
             function changeIGV() {
                 var subTotal = 0;
-                $("#productTable tbody tr").each(function () {                    
+                $("#productTable tbody tr").each(function () {
                     subTotal += Number($(this)[0].childNodes[1].textContent) * Number($(this)[0].childNodes[4].textContent);
                 });
                 subTotal = (subTotal * (1 + Number($('#facIgv').val() / 100))).toFixed(2);
                 $('#facSub').val(subTotal);
                 changeDiscount();
             }
-            
-            $('#porDes').on('change', function() {
+
+            $('#porDes').on('change', function () {
                 changeDiscount();
             });
-            
+
             $('#porDes').keyup(function () {
                 changeDiscount();
             });
-            
-            $('#facIgv').change(function() {
+
+            $('#facIgv').change(function () {
                 changeIGV();
             });
-            
+
             $('#facIgv').keyup(function () {
                 changeIGV();
             });
-            
-            $('#desProveedor').on('change', function() {
+
+            $('#desProveedor').on('change', function () {
                 changeSupplierDescription();
                 $("#prvDesShow").val("");
             });
-                        
+
             $("#proCodShow").autocomplete({
                 source: productCodes
             });
@@ -424,40 +506,39 @@
             });
 
             $('#proCodShow').keyup(function () {
-                if(codeProductCriteria) {
+                if (codeProductCriteria) {
                     $.post(
-                        "${pageContext.request.contextPath}/secured/ventas/searchProduct", {
-                            proCod: $("#proCodShow").val(),
-                            proDet: ""
-                        }
+                            "${pageContext.request.contextPath}/secured/ventas/searchProduct", {
+                                proCod: $("#proCodShow").val(),
+                                proDet: ""
+                            }
                     ).done(function (data) {
-                            if (data.proCod != null) {
-                                $("#proDesShow").val(data.proDet);                                
-                                $('#unitShow').val(data.proUnit);
-                            }
-                            else {
-                                $("#proDesShow").val("Desconocido");
-                            }
-                        });
+                        if (data.proCod != null) {
+                            $("#proDesShow").val(data.proDet);
+                            $('#unitShow').val(data.proUnit);
+                        } else {
+                            $("#proDesShow").val("Desconocido");
+                        }
+                    });
                 }
             });
-            
+
             $('#proDesShow').keyup(function () {
-                if(!codeProductCriteria) {
+                if (!codeProductCriteria) {
                     $.post(
-                        "${pageContext.request.contextPath}/secured/ventas/searchProduct", {
-                            proCod: "",
-                            proDet: $("#proDesShow").val()
-                        }
+                            "${pageContext.request.contextPath}/secured/ventas/searchProduct", {
+                                proCod: "",
+                                proDet: $("#proDesShow").val()
+                            }
                     ).done(function (data) {
-                            if (data.proCod != null) {
-                                $("#proCodShow").val(data.proCod);                                
-                                $('#unitShow').val(data.proUnit);
-                            }
-                            else {
-                                $("#proCodShow").val("Desconocido");
-                            }
-                        });
+                        console.log(data);
+                        if (data.proCod != null) {
+                            $("#proCodShow").val(data.proCod);
+                            $('#unitShow').val(data.proUnit);
+                        } else {
+                            $("#proCodShow").val("Desconocido");
+                        }
+                    });
                 }
             });
 
@@ -468,17 +549,17 @@
                             prvDes: $("#prvDesShow").val(),
                             prvTyp: $("#desProveedor").val()
                         }
-                    ).done(function (data) {
-                            if(data.prvCod != null) {
-                                $("#facPrv").val(data.prvCod);
-                                $('#iconSupplierCriteria').removeClass("fa-unlock").addClass("fa-lock");
-                            } else {
-                                $("#facPrv").val("");
-                                $('#iconSupplierCriteria').removeClass("fa-lock").addClass("fa-unlock");
-                            }
-                        });
-            });  
-            
+                ).done(function (data) {
+                    if (data.prvCod != null) {
+                        $("#facPrv").val(data.prvCod);
+                        $('#iconSupplierCriteria').removeClass("fa-unlock").addClass("fa-lock");
+                    } else {
+                        $("#facPrv").val("");
+                        $('#iconSupplierCriteria').removeClass("fa-lock").addClass("fa-unlock");
+                    }
+                });
+            });
+
             $("#registerBill").validate({
                 rules: {
                     facComCabCod: {
@@ -487,10 +568,10 @@
                     },
                     prvDes: {
                         required: true
-                    }, 
+                    },
                     facComCabFecEmi: {
                         required: true
-                    }, 
+                    },
                     facComCabFecVen: {
                         required: true
                     },
@@ -518,7 +599,114 @@
                 submitHandler: function (form) {
                     form.submit();
                 }
-            });  
+            });
+
+            function addNewProduct(){
+                $.post(
+                        "${pageContext.request.contextPath}/secured/compras/addProduct", {
+                            action: "getData"
+                        }
+                ).done(function (data) {
+                    $('#addClaProCod').empty();
+                    
+                    data.claDet.forEach(function (cla) {
+                        $("#addClaProCod").append($('<option>', {
+                            value: cla.claProCod,
+                            text: cla.claProDet
+                        }));
+                    });
+                    
+                    $('#addMonCod').empty();
+                    
+                    data.monDet.forEach(function (mon) {
+                        $("#addMonCod").append($('<option>', {
+                            value: mon.monCod,
+                            text: mon.monDet
+                        }));
+                    });
+                    
+                    $('#addUniMedCod').empty();
+                    
+                    data.meaUnitDet.forEach(function (mea) {
+                        $("#addUniMedCod").append($('<option>', {
+                            value: mea.uniMedCod,
+                            text: mea.uniMedDet
+                        }));
+                    });
+                    
+                    changingValues();
+                    
+                    $("#addNewProduct").modal('show');
+                });
+            
+        }
+           
+        function changingValues() {
+            $.post(
+                    "${pageContext.request.contextPath}/secured/compras/addProduct", {
+                        action: "getSubClass",
+                        claProCod: $("#addClaProCod").val()
+                    }
+                ).done(function (data) {
+                   $('#addSubClaProCod').empty();
+
+                   if(data.subDet.length > 0) {
+                        data.subDet.forEach(function (sub) {
+                            $("#addSubClaProCod").append($('<option>', {
+                                value: sub.subClaProCod,
+                                text: sub.subClaProDet
+                            }));
+                        }); 
+                   } else {
+                       $('#addSubClaProCod').append($('<option>', {
+                            value: "",
+                            text: "No existen subclases"
+                        }));
+                   }
+                });
+        }
+        
+        function validityAddProduct() {
+            if($('#addProDet').val() == "") {
+                $('#messageAddProduct').text("Es necesario ingresar el detalle del producto");
+            } else if($('#addProCod').val() == ""){
+                 $('#messageAddProduct').text("Es necesario ingresar el código del producto");
+            }else {
+                $('#messageAddProduct').text("");
+                $('#addNewProduct').modal('hide');
+                $('#loading').modal('show');
+                $.post(
+                    "${pageContext.request.contextPath}/secured/compras/addProduct", {
+                        action: "saveProduct",
+                        claProCod: $("#addClaProCod").val(),
+                        subClaProCod: $("#addSubClaProCod").val(),
+                        proCod: $("#addProCod").val(),
+                        proDet: $("#addProDet").val(),
+                        monCod: $("#addMonCod").val(),
+                        uniMedCod: $("#addUniMedCod").val(),
+                    }
+                ).done(function (data) {
+                    productCodes = new Array();
+                    productDescriptions = new Array();
+                    
+                    data.proDet.forEach(function (pro) {
+                        productCodes.push(pro.proCod);
+                        productDescriptions.push(pro.proDes)
+                    });
+                    
+                    $("#proCodShow").autocomplete({
+                        source: productCodes
+                    });
+
+                    $("#proDesShow").autocomplete({
+                        source: productDescriptions
+                    });
+                    
+                    $('#loading').modal('hide');
+                });
+            }
+        }
+            
         </script>
     </jsp:attribute>
 </minierptemplate:template>
