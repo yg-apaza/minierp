@@ -232,7 +232,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Detalle de Venta</h4>
+                        <h4 class="modal-title">Detalle de Compra</h4>
                     </div>
                     <div class="modal-body">
                         <p align="center"><span id="errorMessage"></span></p>
@@ -251,11 +251,12 @@
                         <h4 class="modal-title">Añadir Producto</h4>
                     </div>
                     <div class="modal-body">
+                        <p align="center"><span id="messageAddProduct"></span></p>
                         <div class="col-md-12 form-group input-group">
                             <div class="col-xs-12 col-md-6">
                                 <div class="form-group input-group">
                                     <span class="input-group-addon">Clase</span>
-                                    <select class="form-control" id="addClaProCod" name="claProCodAdd" onchange="changingValues()">
+                                    <select class="form-control" id="addClaProCod" onchange="changingValues()">
                                     </select> 
                                     <span class="input-group-addon"><i class="fa fa-book"></i></span>
                                 </div>
@@ -263,7 +264,7 @@
                             <div class="col-xs-12 col-md-6">
                                 <div class="form-group input-group">
                                     <span class="input-group-addon">SubClase</span>
-                                    <select class="form-control" id="addSubClaProCod" name="subClaProCodAdd">
+                                    <select class="form-control" id="addSubClaProCod">
                                     </select> 
                                     <span class="input-group-addon"><i class="fa fa-tag"></i></span>
                                 </div>
@@ -271,13 +272,13 @@
                             <div class="col-xs-12 col-md-12">
                                 <div class="form-group input-group">
                                     <span class="input-group-addon"><i class="fa fa-edit"></i></span>
-                                    <input type="text" class="form-control" id="addProDet" name="proDetAdd" placeholder="Descripción del Producto">
+                                    <input type="text" class="form-control" id="addProDet" placeholder="Descripción del Producto">
                                 </div>
                             </div>                            
                             <div class="col-xs-12 col-md-6">
                                 <div class="form-group input-group" >
                                     <span class="input-group-addon">Moneda</span>                                    
-                                    <select class="form-control" id="addMonCod" name="monCodAdd">
+                                    <select class="form-control" id="addMonCod">
                                     </select> 
                                     <span class="input-group-addon"><i class="fa fa-dollar"></i></span>
                                 </div>
@@ -285,25 +286,27 @@
                             <div class="col-xs-12 col-md-6">
                                 <div class="form-group input-group" >
                                     <span class="input-group-addon">Unidad de Medida</span>                                    
-                                    <select class="form-control" id="addUniMedCod" name="uniMedCodAdd">
+                                    <select class="form-control" id="addUniMedCod">
                                     </select> 
                                     <span class="input-group-addon"><i class="fa fa-gears"></i></span>
                                 </div>
-                            </div>
-                            <div class="col-xs-12 col-md-6">
-                                <div class="form-group input-group" >
-                                    <span class="input-group-addon">Precio de Venta</span>                                                            
-                                    <input type="number" class="form-control" name="addProPreUniVen" name="proPreUniVenAdd" min="0.0" step="any" value="0.0">
-                                    <span class="input-group-addon"><i class="fa fa-money"></i></span>
-                                </div>
-                            </div>    
+                            </div>   
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-                        <button type="button" class="btn btn-success">Aceptar</button>
+                        <button type="button" class="btn btn-success" onclick='validityAddProduct()'>Aceptar</button>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div id="loading" class="modal fade">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <p align="center">Cargando ... </p>
+                    </div>
+                </div>         
             </div>
         </div>
         <script language="javascript">
@@ -312,7 +315,7 @@
             var productDescriptions = new Array();
 
             <c:forEach items="${productos}" var="p" varStatus="loop">
-            productCodes.push("${p.id.claProCod}-${p.id.subClaProCod}-${p.id.proCod}");
+                productCodes.push("${p.id.claProCod}-${p.id.subClaProCod}-${p.id.proCod}");
                 productDescriptions.push("${p.proDet}");
             </c:forEach>
 
@@ -521,6 +524,7 @@
                                 proDet: $("#proDesShow").val()
                             }
                     ).done(function (data) {
+                        console.log(data);
                         if (data.proCod != null) {
                             $("#proCodShow").val(data.proCod);
                             $('#unitShow').val(data.proUnit);
@@ -596,7 +600,6 @@
                             action: "getData"
                         }
                 ).done(function (data) {
-                    console.log(data);
                     $('#addClaProCod').empty();
                     
                     data.claDet.forEach(function (cla) {
@@ -632,14 +635,12 @@
         }
            
         function changingValues() {
-            console.log($("#addClaProCod").val());
             $.post(
                     "${pageContext.request.contextPath}/secured/compras/addProduct", {
                         action: "getSubClass",
                         claProCod: $("#addClaProCod").val()
                     }
                 ).done(function (data) {
-                    console.log(data);
                    $('#addSubClaProCod').empty();
 
                    if(data.subDet.length > 0) {
@@ -656,6 +657,44 @@
                         }));
                    }
                 });
+        }
+        
+        function validityAddProduct() {
+            if($('#addProDet').val() == "") {
+                $('#messageAddProduct').text("Es necesario ingresar el detalle del producto");
+            } else {
+                $('#messageAddProduct').text("");
+                $('#addNewProduct').modal('hide');
+                $('#loading').modal('show');
+                $.post(
+                    "${pageContext.request.contextPath}/secured/compras/addProduct", {
+                        action: "saveProduct",
+                        claProCod: $("#addClaProCod").val(),
+                        subClaProCod: $("#addSubClaProCod").val(),
+                        proDet: $("#addProDet").val(),
+                        monCod: $("#addMonCod").val(),
+                        uniMedCod: $("#addUniMedCod").val(),
+                    }
+                ).done(function (data) {
+                    productCodes = new Array();
+                    productDescriptions = new Array();
+                    
+                    data.proDet.forEach(function (pro) {
+                        productCodes.push(pro.proCod);
+                        productDescriptions.push(pro.proDes)
+                    });
+                    
+                    $("#proCodShow").autocomplete({
+                        source: productCodes
+                    });
+
+                    $("#proDesShow").autocomplete({
+                        source: productDescriptions
+                    });
+                    
+                    $('#loading').modal('hide');
+                });
+            }
         }
             
         </script>

@@ -12,8 +12,11 @@ import javax.servlet.http.HttpServletResponse;
 import org.epis.minierp.dao.general.TaGzzMonedaDao;
 import org.epis.minierp.dao.general.TaGzzUnidadMedDao;
 import org.epis.minierp.dao.logistica.EnP2mClaseProductoDao;
+import org.epis.minierp.dao.logistica.EnP2mProductoDao;
 import org.epis.minierp.dao.logistica.EnP2mSubclaseProductoDao;
 import org.epis.minierp.model.EnP2mClaseProducto;
+import org.epis.minierp.model.EnP2mProducto;
+import org.epis.minierp.model.EnP2mProductoId;
 import org.epis.minierp.model.EnP2mSubclaseProducto;
 import org.epis.minierp.model.TaGzzMoneda;
 import org.epis.minierp.model.TaGzzUnidadMed;
@@ -71,11 +74,11 @@ public class AddProductController extends HttpServlet {
                 break;
             
             case "getSubClass":
-                String claProCod = request.getParameter("claProCod");
+                String claProCodSearch = request.getParameter("claProCod");
                 data = new JsonObject();
                 
                 JsonArray productsSubclasses = new JsonArray();
-                List <EnP2mSubclaseProducto> subclasesProductos = (new EnP2mSubclaseProductoDao()).getByClass(claProCod);
+                List <EnP2mSubclaseProducto> subclasesProductos = (new EnP2mSubclaseProductoDao()).getByClass(claProCodSearch);
                 
                 for(EnP2mSubclaseProducto subclaseProductos: subclasesProductos) {
                     JsonObject productSubclass = new JsonObject();
@@ -85,6 +88,53 @@ public class AddProductController extends HttpServlet {
                 }
                 
                 data.add("subDet", productsSubclasses);
+                
+                response.setContentType("application/json");
+                response.setCharacterEncoding("UTF-8");
+                response.getWriter().write(new Gson().toJson(data));
+                break;
+            
+            case "saveProduct":
+                String claProCod = request.getParameter("claProCod");
+                String subClaProCod = request.getParameter("subClaProCod");
+                int monCod = Integer.parseInt(request.getParameter("monCod"));
+                int uniMedCod = Integer.parseInt(request.getParameter("uniMedCod"));
+                String proDet = request.getParameter("proDet");
+                
+                EnP2mProductoId productId = new EnP2mProductoId();
+                productId.setClaProCod(claProCod);
+                productId.setSubClaProCod(subClaProCod);
+                productId.setProCod(String.valueOf((int) (System.currentTimeMillis() % Integer.MAX_VALUE)));
+                
+                EnP2mProducto product = new EnP2mProducto(); 
+                product.setId(productId);
+                product.setProDet(proDet);
+                product.setTaGzzUnidadMed((new TaGzzUnidadMedDao()).getById(uniMedCod));
+                product.setProPreUniCom(0);
+                product.setProPreUniMar(0);
+                product.setProPreUniFle(0);
+                product.setTaGzzMoneda((new TaGzzMonedaDao()).getById(monCod));
+                product.setProStk(0);
+                product.setProStkPreVen(0);
+                product.setProPreUniVen(0);
+                product.setEstRegCod('A');
+                product.setProObs("");
+                
+                EnP2mProductoDao producto = new EnP2mProductoDao();
+                producto.save(product);
+                
+                data = new JsonObject();
+                JsonArray products = new JsonArray();
+                List <EnP2mProducto> productos = producto.getAllActive();
+                
+                for(EnP2mProducto productoNew: productos) {
+                    JsonObject productNew = new JsonObject();
+                    productNew.addProperty("proCod", productoNew.getId().getClaProCod() + "-" + productoNew.getId().getSubClaProCod() + "-" + productoNew.getId().getProCod());
+                    productNew.addProperty("proDes", productoNew.getProDet());
+                    products.add(productNew);
+                }
+                
+                data.add("proDet", products);
                 
                 response.setContentType("application/json");
                 response.setCharacterEncoding("UTF-8");
