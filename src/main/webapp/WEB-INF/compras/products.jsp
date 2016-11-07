@@ -117,7 +117,7 @@
                                         </div>
                                     </div>
                                     <div class="col-xs-12 col-md-12">
-                                        <div class="form-group input-group" >
+                                        <div class="form-group input-group">
                                             <span class="input-group-addon"><i class="fa fa-edit"></i></span>
                                             <input type="text" class="form-control" name="proDetAdd" placeholder="Descripción del Producto">
                                         </div>
