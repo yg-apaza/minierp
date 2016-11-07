@@ -46,8 +46,19 @@
                                             <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-4" >
                                         <div class="form-group input-group" >
+                                                    <span class="input-group-addon">Moneda</i></span>
+                                                    <select class="form-control" name="monCod">
+                                                        <c:forEach items="${monedas}" var="moneda">
+                                                            <option value="${moneda.monCod}">${moneda.monDet}</option>
+                                                        </c:forEach>
+                                                    </select>
+                                                    <span class="input-group-addon"><i class="fa fa-money"></i></span>
+                                                </div>
+                                        
+                                        
+                                        <div class="form-group input-group" style='display:none;'>
                                             <span class="input-group-addon">Vencimiento</span>
                                             <input type="date" class="form-control" name="preVenCabFecVen">
                                             <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
@@ -74,7 +85,7 @@
                                             </div>
                                         </div>
                                         <div class="row">                                            
-                                            <div class="col-md-6">
+                                            <div class="col-md-6" style='display:none;'>
                                                 <div class="form-group input-group" >
                                                     <span class="input-group-addon">Moneda</i></span>
                                                     <select class="form-control" name="monCod">
@@ -85,7 +96,7 @@
                                                     <span class="input-group-addon"><i class="fa fa-money"></i></span>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-6" style='display:none;'>
                                                 <div class="form-group input-group" >
                                                     <span class="input-group-addon">Plazo (días)</span>
                                                     <input type="number" class="form-control" name="preVenCabPla" value="1" min="1">

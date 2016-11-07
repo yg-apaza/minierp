@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.epis.minierp.business.ventas.EnP1mClienteBusiness;
+import org.epis.minierp.dao.general.TaGzzCanalClienteDao;
 import org.epis.minierp.dao.general.TaGzzEstadoCivilDao;
 import org.epis.minierp.dao.general.TaGzzTipoDocClienteDao;
 import org.epis.minierp.dao.ventas.EnP1mCatalogoRutaDao;
@@ -13,6 +14,7 @@ import org.epis.minierp.dao.ventas.EnP1mClienteDao;
 import org.epis.minierp.dao.ventas.EnP1mClientesRutasDao;
 import org.epis.minierp.dao.ventas.EnP1mDocumentoClienteDao;
 import org.epis.minierp.dao.general.TaGzzTipoClienteDao;
+import org.epis.minierp.model.TaGzzCanalCliente;
 
 public class ClienteController extends HttpServlet {
     
@@ -25,6 +27,7 @@ public class ClienteController extends HttpServlet {
     EnP1mCatalogoRutaDao rutaDao;
     TaGzzTipoDocClienteDao tipDocDao;
     EnP1mDocumentoClienteDao docCliDao;
+    TaGzzCanalClienteDao canalDao;
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -35,11 +38,13 @@ public class ClienteController extends HttpServlet {
         tipDocDao = new TaGzzTipoDocClienteDao();
         docCliDao = new EnP1mDocumentoClienteDao();
         cliRutDao = new EnP1mClientesRutasDao();
+        canalDao = new TaGzzCanalClienteDao();
         
         request.setAttribute("cliente", clienteDao.getAllActive());
         request.setAttribute("estCivil", estadoCivilDao.getAllActive());
         request.setAttribute("tipCliente", tipClienteDao.getAllActive());
         request.setAttribute("rutas", rutaDao.getAllActive());
+        request.setAttribute("canales", canalDao.getAllActive());
         request.setAttribute("documentos", tipDocDao.getAllActive());
         request.setAttribute("allDocClientes", docCliDao.getAllActiveOrdered());
         request.setAttribute("allRutClientes", cliRutDao.getAllActiveOrdered());
@@ -53,7 +58,7 @@ public class ClienteController extends HttpServlet {
         clienteBusiness = new EnP1mClienteBusiness();
         
         String cliCod, cliRazSoc, cliNomCom, cliDomFis, cliNom, cliApePat, cliApeMat, cliDir, cliTelFij, cliTelCel, cliEmail, cliRutDes, docCliNum;
-        int tipCliCod, estCivCod, catRutCod, tipDocCliCod;
+        int tipCliCod, estCivCod, catRutCod, tipDocCliCod, canCod;
         char cliSex;
         
         switch(action) {
@@ -72,10 +77,11 @@ public class ClienteController extends HttpServlet {
                 cliTelFij = request.getParameter("cliTelFij");
                 cliTelCel = request.getParameter("cliTelCel");
                 cliEmail = request.getParameter("cliEmail");
+                canCod = Integer.parseInt(request.getParameter("canCod"));
                 
                 clienteBusiness.create(cliCod, tipCliCod, cliRazSoc, cliNomCom, 
                         cliDomFis, cliNom, cliApePat, cliApeMat, cliSex, cliDir, 
-                        estCivCod, cliTelFij, cliTelCel, cliEmail, 'A');
+                        estCivCod, cliTelFij, cliTelCel, cliEmail, canCod, 'A');
                 
                 break;
                 
@@ -94,10 +100,11 @@ public class ClienteController extends HttpServlet {
                 cliTelFij = request.getParameter("cliTelFij");
                 cliTelCel = request.getParameter("cliTelCel");
                 cliEmail = request.getParameter("cliEmail");
+                canCod = Integer.parseInt(request.getParameter("canCod"));
                 
                 clienteBusiness.update(cliCod, tipCliCod, cliRazSoc, cliNomCom, 
                         cliDomFis, cliNom, cliApePat, cliApeMat, cliSex, cliDir, 
-                        estCivCod, cliTelFij, cliTelCel, cliEmail);
+                        estCivCod, cliTelFij, cliTelCel, cliEmail,canCod);
                 
                 break;
                 
