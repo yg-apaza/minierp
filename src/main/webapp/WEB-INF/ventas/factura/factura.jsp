@@ -75,13 +75,13 @@
                                                 <td width="15%">${c.enP1mUsuario.usuNom}</td>
                                                 <td width="10%" align="center">${c.facVenCabTot}</td>                                                                            
                                                 <td width="12%" align="center">
-                                                    <a href="#" data-toggle="modal" data-target="#viewSaleBill" data-code="${c.facVenCabCod}">
+                                                    <a onclick='viewSaleBill("${c.facVenCabCod}")'>
                                                         <i class="fa fa-list-alt fa-2x" style="color: black;"></i>
                                                     </a> 
-                                                    <a href="#" data-toggle="modal" data-target="#viewReferralGuide" data-code="${c.facVenCabCod}">
+                                                    <a onclick='viewReferralGuide("${c.facVenCabCod}")'>
                                                         <i class="fa fa-book fa-2x" style="color: black;"></i>
                                                     </a>
-                                                    <a href="#" data-toggle="modal" data-target="#viewCarrierGuide" data-code="${c.facVenCabCod}">
+                                                    <a onclick='viewCarrierGuide("${c.facVenCabCod}")'>
                                                         <i class="fa fa-truck fa-2x" style="color: black;"></i>
                                                     </a>
                                                 </td>
@@ -586,6 +586,15 @@
                 </div>         
             </div>
         </div>
+        <div id="loading" class="modal fade">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <p align="center">Cargando ... </p>
+                    </div>
+                </div>         
+            </div>
+        </div>
         <script language="javascript">
             var codeRefund = "";
             var typeRefund = "";
@@ -615,11 +624,12 @@
                     }
                 });
             });
-
-            $("#viewSaleBill").on('show.bs.modal', function (e) {
+            
+            function viewSaleBill(facVenCabCod) {
+                $("#loading").modal('show');
                 $.post(
                         "${pageContext.request.contextPath}/secured/ventas/searchBill", {
-                            facVenCabCod: $(e.relatedTarget).data('code')
+                            facVenCabCod: facVenCabCod
                         }
                 ).done(function (data) {
                     $("#facVenCabCod").val(data.cod);
@@ -636,14 +646,17 @@
                     $('#facVenDetPro').DataTable({
                         responsive: true
                     });
+                    $("#loading").modal('hide');
+                    $("#viewSaleBill").modal('show');
                 });
-            });
-
-            $("#viewReferralGuide").on('show.bs.modal', function (e) {
+            }
+            
+            function viewReferralGuide(facVenCabCod) {
+                $("#loading").modal('show');
                 $.post(
                         "${pageContext.request.contextPath}/secured/ventas/searchReferralGuide", {
                             action: "search",
-                            facVenCabCod: $(e.relatedTarget).data('code')
+                            facVenCabCod: facVenCabCod
                         }
                 ).done(function (data) {
                     $("#guiRemEmpDes").val(data.empDes);
@@ -653,14 +666,17 @@
                     $("#guiRemMotTra").val(data.motTra);
                     $("#guiRemTipDes").val(data.tipDes);
                     $("#guiRemRemDes").val(data.remDes);
+                    $("#loading").modal('hide');
+                    $("#viewReferralGuide").modal('show');
                 });
-            });
-
-            $("#viewCarrierGuide").on('show.bs.modal', function (e) {
+            }
+            
+            function viewCarrierGuide(facVenCabCod) {
+                $("#loading").modal('show');
                 $.post(
                         "${pageContext.request.contextPath}/secured/ventas/searchCarrierGuide", {
                             action: "search",
-                            facVenCabCod: $(e.relatedTarget).data('code')
+                            facVenCabCod: facVenCabCod
                         }
                 ).done(function (data) {
                     $("#guiTraEmpDes").val(data.empDes);
@@ -673,8 +689,10 @@
                     $("#guiTraRutDes").val(data.rutDes);
                     $("#guiTraTipDes").val(data.tipDes);
                     $("#guiTraTraDes").val(data.traDes);
+                    $("#loading").modal('hide');
+                    $("#viewCarrierGuide").modal('show');
                 });
-            });
+            }
             
             function loadNewReferralGuide(data) {
                 $("#guiRemAddEmpDes").val(data.empDes);
