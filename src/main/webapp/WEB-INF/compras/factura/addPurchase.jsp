@@ -269,6 +269,13 @@
                                     <span class="input-group-addon"><i class="fa fa-tag"></i></span>
                                 </div>
                             </div>
+                            <div class="col-xs-12 col-md-6">
+                                <div class="form-group input-group" >
+                                    <span class="input-group-addon">Codigo</span>
+                                        <input type="text" class="form-control" id="addProCod">
+                                    <span class="input-group-addon"><i class="fa fa-th"></i></span>
+                                </div>
+                            </div>                            
                             <div class="col-xs-12 col-md-12">
                                 <div class="form-group input-group">
                                     <span class="input-group-addon"><i class="fa fa-edit"></i></span>
@@ -662,7 +669,9 @@
         function validityAddProduct() {
             if($('#addProDet').val() == "") {
                 $('#messageAddProduct').text("Es necesario ingresar el detalle del producto");
-            } else {
+            } else if($('#addProCod').val() == ""){
+                 $('#messageAddProduct').text("Es necesario ingresar el código del producto");
+            }else {
                 $('#messageAddProduct').text("");
                 $('#addNewProduct').modal('hide');
                 $('#loading').modal('show');
@@ -671,6 +680,7 @@
                         action: "saveProduct",
                         claProCod: $("#addClaProCod").val(),
                         subClaProCod: $("#addSubClaProCod").val(),
+                        proCod: $("#addProCod").val(),
                         proDet: $("#addProDet").val(),
                         monCod: $("#addMonCod").val(),
                         uniMedCod: $("#addUniMedCod").val(),
