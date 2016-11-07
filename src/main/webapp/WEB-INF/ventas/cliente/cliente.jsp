@@ -76,7 +76,8 @@
                                            data-clitelfij="${cli.cliTelFij}" data-clitelcel="${cli.cliTelCel}" data-cliemail="${cli.cliEmail}" 
                                            data-estcivcod="${cli.taGzzEstadoCivil.estCivCod}" data-estcivdet="${cli.taGzzEstadoCivil.estCivDet}" 
                                            data-enp1mclientesrutases="${cli.enP1mClientesRutases}" 
-                                           data-enp1mdocumentoclientes="${cli.enP1mClientesRutases}" >
+                                           data-enp1mdocumentoclientes="${cli.enP1mClientesRutases}" 
+                                           data-cancod="${cli.taGzzCanalCliente.canCliCod}">
                                             <i class="fa fa-pencil-square-o fa-lg" style="color: black;"></i>
                                         </a>
                                         <a href="#" data-toggle="modal" data-target="#disableModal" 
@@ -181,7 +182,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-sm-3">
+                                    <div class="col-sm-6">
                                         <label>Estado Civil:</label>
                                         <select class="form-control" name="estCivCod">
                                             <c:forEach var="ec" items="${estCivil}">
@@ -189,11 +190,27 @@
                                             </c:forEach>
                                         </select>
                                     </div>
+                                    <div class="col-sm-6">
+                                        <label>Canal</label> 
+                                        <select class="form-control" name="canCod">
+                                            <c:forEach var="c" items="${canales}">
+                                                <option value="${c.canCliCod}">${c.canCliCod} - ${c.canCliDet}</option>
+                                            </c:forEach>
+                                        </select>
+                                    </div>
+                                    <!--
                                     <div class="col-sm-9">
                                         <label>Correo Eletronico:</label>
                                         <input type="text" class="form-control" placeholder="example@domain.com" name="cliEmail">
                                     </div>
-                                </div>   
+                                    -->
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <label>Correo Eletronico:</label>
+                                        <input type="text" class="form-control" placeholder="example@domain.com" name="cliEmail">
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -285,7 +302,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-sm-3">
+                                    <div class="col-sm-6">
                                         <label>Estado Civil:</label>
                                         <select class="form-control" name="estCivCod" id="updateEstCivCod">
                                             <c:forEach var="ec" items="${estCivil}">
@@ -293,11 +310,21 @@
                                             </c:forEach>
                                         </select>
                                     </div>
-                                    <div class="col-sm-9">
+                                    <div class="col-sm-6">
+                                        <label>Canal</label> 
+                                        <select class="form-control" name="canCod" id="updateCanCod">
+                                            <c:forEach var="c" items="${canales}">
+                                                <option value="${c.canCliCod}">${c.canCliCod} - ${c.canCliDet}</option>
+                                            </c:forEach>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-12">
                                         <label>Correo Electrónico:</label>
                                         <input type="text" class="form-control" placeholder="example@domain.com" name="cliEmail" id="updateCliEmail">
                                     </div>
-                                </div>   
+                                </div>
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -787,7 +814,8 @@
             var updateCliTelCel = $("#updateCliTelCel");
             var updateCliEmail = $("#updateCliEmail");
             var updateEstCivCod = $("#updateEstCivCod");
-
+            var updateCanCod = $("#updateCanCod");
+                    
             var disableCliCod = $("#disableCliCod");
             var disableCliRazSoc = $("#disableCliRazSoc");
 
@@ -844,6 +872,7 @@
                 updateCliTelCel.val($(e.relatedTarget).data('clitelcel'));
                 updateCliEmail.val($(e.relatedTarget).data('cliemail'));
                 updateEstCivCod.val($(e.relatedTarget).data('estcivcod'));
+                updateCanCod.val($(e.relatedTarget).data('cancod'));
                 
                 rutas.val($(e.relatedTarget).data('enp1mclientesrutases'));
                 documentos.val($(e.relatedTarget).data('enp1mdocumentoclientes'));

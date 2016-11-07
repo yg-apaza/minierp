@@ -95,501 +95,421 @@ public class TablasGeneralesController extends HttpServlet {
         int regCod;
         switch(action) {
             case "create":
-                switch(sel){
-                    case "0":
-                        TaGzzBancoDao bDao= new TaGzzBancoDao();
-                        TaGzzBanco b = new TaGzzBanco();
-                        b.setBanCod(null);
-                        b.setBanDet(regDet);
-                        b.setEstRegCod('A');
-                        bDao.save(b);
-                        break;
-                    case "1":
-                        TaGzzEstadoCivilDao ecDao= new TaGzzEstadoCivilDao();
-                        TaGzzEstadoCivil ec= new TaGzzEstadoCivil();
-                        ec.setEstCivCod(null);
-                        ec.setEstCivDet(regDet);
-                        ec.setEstRegCod('A');
-                        ecDao.save(ec);
-                        break;
-                    case "2":
-                        TaGzzEstadoFacturaDao efDao= new TaGzzEstadoFacturaDao();
-                        TaGzzEstadoFactura ef= new TaGzzEstadoFactura();
-                        ef.setEstFacCod(null);
-                        ef.setEstFacDet(regDet);
-                        ef.setEstRegCod('A');
-                        efDao.save(ef);
-                        break;
-                    case "3":
-                        TaGzzEstadoUniTransporteDao eutDao= new TaGzzEstadoUniTransporteDao();
-                        TaGzzEstadoUniTransporte eut= new TaGzzEstadoUniTransporte();
-                        eut.setEstUniTraCod(null);
-                        eut.setEstUniTraDet(regDet);
-                        eut.setEstRegCod('A');
-                        eutDao.save(eut);
-                        break;
-                    case "4":
-                        TaGzzMetodoPagoFacturaDao mpfDao= new TaGzzMetodoPagoFacturaDao();
-                        TaGzzMetodoPagoFactura mpf= new TaGzzMetodoPagoFactura();
-                        mpf.setMetPagCod(null);
-                        mpf.setMetPagDet(regDet);
-                        mpf.setEstRegCod('A');
-                        mpfDao.save(mpf);
-                        break;
-                    case "5":
-                        TaGzzMonedaDao mDao= new TaGzzMonedaDao();
-                        TaGzzMoneda m= new TaGzzMoneda();
-                        m.setMonCod(null);
-                        m.setMonDet(regDet);
-                        m.setEstRegCod('A');
-                        mDao.save(m);
-                        break;
-                    case "6":
-                        TaGzzMotivoTrasladoDao mtDao= new TaGzzMotivoTrasladoDao();
-                        TaGzzMotivoTraslado mt= new TaGzzMotivoTraslado();
-                        mt.setMotTraCod(null);
-                        mt.setMotTraDet(regDet);
-                        mt.setEstRegCod('A');
-                        mtDao.save(mt);
-                        break;
-                    case "7":
-                        TaGzzTipoClienteDao tclDao= new TaGzzTipoClienteDao();
-                        TaGzzTipoCliente tcl= new TaGzzTipoCliente();
-                        tcl.setTipCliCod(null);
-                        tcl.setTipCliDet(regDet);
-                        tcl.setEstRegCod('A');
-                        tclDao.save(tcl);
-                        break;
-                    case "8":
-                        TaGzzTipoComprobanteDao tcrDao= new TaGzzTipoComprobanteDao();
-                        TaGzzTipoComprobante tcr= new TaGzzTipoComprobante();
-                        tcr.setTipComCod(null);
-                        tcr.setTipComDet(regDet);
-                        tcr.setEstRegCod('A');
-                        tcrDao.save(tcr);
-                        break;
-                    case "9":
-                        TaGzzTipoDescuentoDao tdesDao= new TaGzzTipoDescuentoDao();
-                        TaGzzTipoDescuento tdes= new TaGzzTipoDescuento();
-                        tdes.setTipDesCod(null);
-                        tdes.setTipDesDet(regDet);
-                        tdes.setEstRegCod('A');
-                        tdesDao.save(tdes);
-                        break;
-                    case "10":
-                        TaGzzTipoDestinatarioDao tdstDao= new TaGzzTipoDestinatarioDao();
-                        TaGzzTipoDestinatario tdst= new TaGzzTipoDestinatario();
-                        tdst.setTipDstCod(null);
-                        tdst.setTipDstDet(regDet);
-                        tdst.setEstRegCod('A');
-                        tdstDao.save(tdst);
-                        break;
-                    case "11":
-                        TaGzzTipoDevolucionDao tdevDao= new TaGzzTipoDevolucionDao();
-                        TaGzzTipoDevolucion tdev= new TaGzzTipoDevolucion();
-                        tdev.setTipDevCod(null);
-                        tdev.setTipDevDet(regDet);
-                        tdev.setEstRegCod('A');
-                        tdevDao.save(tdev);
-                        break;
-                    case "12":
-                        TaGzzTipoDocClienteDao tdcDao= new TaGzzTipoDocClienteDao();
-                        TaGzzTipoDocCliente tdc= new TaGzzTipoDocCliente();
-                        tdc.setTipDocCliCod(null);
-                        tdc.setTipDocCliDet(regDet);
-                        tdc.setEstRegCod('A');
-                        tdcDao.save(tdc);
-                        break;
-                    case "13":
-                        TaGzzTipoDocProveedorDao tdpDao= new TaGzzTipoDocProveedorDao();
-                        TaGzzTipoDocProveedor tdp= new TaGzzTipoDocProveedor();
-                        tdp.setTipDocProCod(null);
-                        tdp.setTipDocProDet(regDet);
-                        tdp.setEstRegCod('A');
-                        tdpDao.save(tdp);
-                        break;
-                    case "14":
-                        TaGzzTipoDocTransportistaDao tdtDao= new TaGzzTipoDocTransportistaDao();
-                        TaGzzTipoDocTransportista tdt= new TaGzzTipoDocTransportista();
-                        tdt.setTipDocTraCod(null);
-                        tdt.setTipDocTraDet(regDet);
-                        tdt.setEstRegCod('A');
-                        tdtDao.save(tdt);
-                        break;
-                    case "15":
-                        TaGzzTipoDocUsuarioDao tduDao= new TaGzzTipoDocUsuarioDao();
-                        TaGzzTipoDocUsuario tdu= new TaGzzTipoDocUsuario();
-                        tdu.setTipDocUsuCod(null);
-                        tdu.setTipDocUsuDet(regDet);
-                        tdu.setEstRegCod('A');
-                        tduDao.save(tdu);
-                        break;
-                    case "16":
-                        TaGzzTipoPagoFacturaDao tpfDao= new TaGzzTipoPagoFacturaDao();
-                        TaGzzTipoPagoFactura tpf= new TaGzzTipoPagoFactura();
-                        tpf.setTipPagCod(null);
-                        tpf.setTipPagDet(regDet);
-                        tpf.setEstRegCod('A');
-                        tpfDao.save(tpf);
-                        break;
-                    case "17":
-                        TaGzzTipoUniTransporteDao tutDao= new TaGzzTipoUniTransporteDao();
-                        TaGzzTipoUniTransporte tut= new TaGzzTipoUniTransporte();
-                        tut.setTipUniTraCod(null);
-                        tut.setTipUniTraDet(regDet);
-                        tut.setEstRegCod('A');
-                        tutDao.save(tut);
-                        break;
-                    case "18":
-                        TaGzzTipoUsuarioDao tuDao= new TaGzzTipoUsuarioDao();
-                        TaGzzTipoUsuario tu= new TaGzzTipoUsuario();
-                        tu.setTipUsuCod(null);
-                        tu.setTipUsuDet(regDet);
-                        tu.setEstRegCod('A');
-                        tuDao.save(tu);
-                        break;
-                    case "19":
-                        TaGzzUnidadMedDao umDao= new TaGzzUnidadMedDao();
-                        TaGzzUnidadMed um= new TaGzzUnidadMed();
-                        um.setUniMedCod(null);
-                        um.setUniMedDet(regDet);
-                        um.setEstRegCod('A');
-                        umDao.save(um);
-                        break;
-                }
+                tipo(sel, 0, regDet,'A');
                 break;
             case "update":
                 regCod = Integer.parseInt(request.getParameter("regTabCod"));
-                switch(sel){
-                    case "0":
-                        TaGzzBancoDao bDao= new TaGzzBancoDao();
-                        TaGzzBanco b = new TaGzzBanco();
-                        b.setBanCod(regCod);
-                        b.setBanDet(regDet);
-                        b.setEstRegCod('A');
-                        bDao.update(b);
-                        break;
-                    case "1":
-                        TaGzzEstadoCivilDao ecDao= new TaGzzEstadoCivilDao();
-                        TaGzzEstadoCivil ec= new TaGzzEstadoCivil();
-                        ec.setEstCivCod(regCod);
-                        ec.setEstCivDet(regDet);
-                        ec.setEstRegCod('A');
-                        ecDao.update(ec);
-                        break;
-                    case "2":
-                        TaGzzEstadoFacturaDao efDao= new TaGzzEstadoFacturaDao();
-                        TaGzzEstadoFactura ef= new TaGzzEstadoFactura();
-                        ef.setEstFacCod(regCod);
-                        ef.setEstFacDet(regDet);
-                        ef.setEstRegCod('A');
-                        efDao.update(ef);
-                        break;
-                    case "3":
-                        TaGzzEstadoUniTransporteDao eutDao= new TaGzzEstadoUniTransporteDao();
-                        TaGzzEstadoUniTransporte eut= new TaGzzEstadoUniTransporte();
-                        eut.setEstUniTraCod(regCod);
-                        eut.setEstUniTraDet(regDet);
-                        eut.setEstRegCod('A');
-                        eutDao.update(eut);
-                        break;
-                    case "4":
-                        TaGzzMetodoPagoFacturaDao mpfDao= new TaGzzMetodoPagoFacturaDao();
-                        TaGzzMetodoPagoFactura mpf= new TaGzzMetodoPagoFactura();
-                        mpf.setMetPagCod(regCod);
-                        mpf.setMetPagDet(regDet);
-                        mpf.setEstRegCod('A');
-                        mpfDao.update(mpf);
-                        break;
-                    case "5":
-                        TaGzzMonedaDao mDao= new TaGzzMonedaDao();
-                        TaGzzMoneda m= new TaGzzMoneda();
-                        m.setMonCod(regCod);
-                        m.setMonDet(regDet);
-                        m.setEstRegCod('A');
-                        mDao.update(m);
-                        break;
-                    case "6":
-                        TaGzzMotivoTrasladoDao mtDao= new TaGzzMotivoTrasladoDao();
-                        TaGzzMotivoTraslado mt= new TaGzzMotivoTraslado();
-                        mt.setMotTraCod(regCod);
-                        mt.setMotTraDet(regDet);
-                        mt.setEstRegCod('A');
-                        mtDao.update(mt);
-                        break;
-                    case "7":
-                        TaGzzTipoClienteDao tclDao= new TaGzzTipoClienteDao();
-                        TaGzzTipoCliente tcl= new TaGzzTipoCliente();
-                        tcl.setTipCliCod(regCod);
-                        tcl.setTipCliDet(regDet);
-                        tcl.setEstRegCod('A');
-                        tclDao.update(tcl);
-                        break;
-                    case "8":
-                        TaGzzTipoComprobanteDao tcrDao= new TaGzzTipoComprobanteDao();
-                        TaGzzTipoComprobante tcr= new TaGzzTipoComprobante();
-                        tcr.setTipComCod(regCod);
-                        tcr.setTipComDet(regDet);
-                        tcr.setEstRegCod('A');
-                        tcrDao.update(tcr);
-                        break;
-                    case "9":
-                        TaGzzTipoDescuentoDao tdesDao= new TaGzzTipoDescuentoDao();
-                        TaGzzTipoDescuento tdes= new TaGzzTipoDescuento();
-                        tdes.setTipDesCod(regCod);
-                        tdes.setTipDesDet(regDet);
-                        tdes.setEstRegCod('A');
-                        tdesDao.update(tdes);
-                        break;
-                    case "10":
-                        TaGzzTipoDestinatarioDao tdstDao= new TaGzzTipoDestinatarioDao();
-                        TaGzzTipoDestinatario tdst= new TaGzzTipoDestinatario();
-                        tdst.setTipDstCod(regCod);
-                        tdst.setTipDstDet(regDet);
-                        tdst.setEstRegCod('A');
-                        tdstDao.update(tdst);
-                        break;
-                    case "11":
-                        TaGzzTipoDevolucionDao tdevDao= new TaGzzTipoDevolucionDao();
-                        TaGzzTipoDevolucion tdev= new TaGzzTipoDevolucion();
-                        tdev.setTipDevCod(regCod);
-                        tdev.setTipDevDet(regDet);
-                        tdev.setEstRegCod('A');
-                        tdevDao.update(tdev);
-                        break;
-                    case "12":
-                        TaGzzTipoDocClienteDao tdcDao= new TaGzzTipoDocClienteDao();
-                        TaGzzTipoDocCliente tdc= new TaGzzTipoDocCliente();
-                        tdc.setTipDocCliCod(regCod);
-                        tdc.setTipDocCliDet(regDet);
-                        tdc.setEstRegCod('A');
-                        tdcDao.update(tdc);
-                        break;
-                    case "13":
-                        TaGzzTipoDocProveedorDao tdpDao= new TaGzzTipoDocProveedorDao();
-                        TaGzzTipoDocProveedor tdp= new TaGzzTipoDocProveedor();
-                        tdp.setTipDocProCod(regCod);
-                        tdp.setTipDocProDet(regDet);
-                        tdp.setEstRegCod('A');
-                        tdpDao.update(tdp);
-                        break;
-                    case "14":
-                        TaGzzTipoDocTransportistaDao tdtDao= new TaGzzTipoDocTransportistaDao();
-                        TaGzzTipoDocTransportista tdt= new TaGzzTipoDocTransportista();
-                        tdt.setTipDocTraCod(regCod);
-                        tdt.setTipDocTraDet(regDet);
-                        tdt.setEstRegCod('A');
-                        tdtDao.update(tdt);
-                        break;
-                    case "15":
-                        TaGzzTipoDocUsuarioDao tduDao= new TaGzzTipoDocUsuarioDao();
-                        TaGzzTipoDocUsuario tdu= new TaGzzTipoDocUsuario();
-                        tdu.setTipDocUsuCod(regCod);
-                        tdu.setTipDocUsuDet(regDet);
-                        tdu.setEstRegCod('A');
-                        tduDao.update(tdu);
-                        break;
-                    case "16":
-                        TaGzzTipoPagoFacturaDao tpfDao= new TaGzzTipoPagoFacturaDao();
-                        TaGzzTipoPagoFactura tpf= new TaGzzTipoPagoFactura();
-                        tpf.setTipPagCod(regCod);
-                        tpf.setTipPagDet(regDet);
-                        tpf.setEstRegCod('A');
-                        tpfDao.update(tpf);
-                        break;
-                    case "17":
-                        TaGzzTipoUniTransporteDao tutDao= new TaGzzTipoUniTransporteDao();
-                        TaGzzTipoUniTransporte tut= new TaGzzTipoUniTransporte();
-                        tut.setTipUniTraCod(regCod);
-                        tut.setTipUniTraDet(regDet);
-                        tut.setEstRegCod('A');
-                        tutDao.update(tut);
-                        break;
-                    case "18":
-                        TaGzzTipoUsuarioDao tuDao= new TaGzzTipoUsuarioDao();
-                        TaGzzTipoUsuario tu= new TaGzzTipoUsuario();
-                        tu.setTipUsuCod(regCod);
-                        tu.setTipUsuDet(regDet);
-                        tu.setEstRegCod('A');
-                        tuDao.update(tu);
-                        break;
-                    case "19":
-                        TaGzzUnidadMedDao umDao= new TaGzzUnidadMedDao();
-                        TaGzzUnidadMed um= new TaGzzUnidadMed();
-                        um.setUniMedCod(regCod);
-                        um.setUniMedDet(regDet);
-                        um.setEstRegCod('A');
-                        umDao.update(um);
-                        break;
-                }
+                tipo(sel, regCod, regDet, 'C');
                 break;
             case "delete":
                 regCod = Integer.parseInt(request.getParameter("regTabCod"));
-                switch(sel){
-                    case "0":
-                        TaGzzBancoDao bDao= new TaGzzBancoDao();
-                        TaGzzBanco b = new TaGzzBanco();
-                        b.setBanCod(regCod);
-                        b.setBanDet(regDet);
-                        b.setEstRegCod('I');
-                        bDao.update(b);
-                        break;
-                    case "1":
-                        TaGzzEstadoCivilDao ecDao= new TaGzzEstadoCivilDao();
-                        TaGzzEstadoCivil ec= new TaGzzEstadoCivil();
-                        ec.setEstCivCod(regCod);
-                        ec.setEstCivDet(regDet);
-                        ec.setEstRegCod('I');
-                        ecDao.update(ec);
-                        break;
-                    case "2":
-                        TaGzzEstadoFacturaDao efDao= new TaGzzEstadoFacturaDao();
-                        TaGzzEstadoFactura ef= new TaGzzEstadoFactura();
-                        ef.setEstFacCod(regCod);
-                        ef.setEstFacDet(regDet);
-                        ef.setEstRegCod('I');
-                        efDao.update(ef);
-                        break;
-                    case "3":
-                        TaGzzEstadoUniTransporteDao eutDao= new TaGzzEstadoUniTransporteDao();
-                        TaGzzEstadoUniTransporte eut= new TaGzzEstadoUniTransporte();
-                        eut.setEstUniTraCod(regCod);
-                        eut.setEstUniTraDet(regDet);
-                        eut.setEstRegCod('I');
-                        eutDao.update(eut);
-                        break;
-                    case "4":
-                        TaGzzMetodoPagoFacturaDao mpfDao= new TaGzzMetodoPagoFacturaDao();
-                        TaGzzMetodoPagoFactura mpf= new TaGzzMetodoPagoFactura();
-                        mpf.setMetPagCod(regCod);
-                        mpf.setMetPagDet(regDet);
-                        mpf.setEstRegCod('I');
-                        mpfDao.update(mpf);
-                        break;
-                    case "5":
-                        TaGzzMonedaDao mDao= new TaGzzMonedaDao();
-                        TaGzzMoneda m= new TaGzzMoneda();
-                        m.setMonCod(regCod);
-                        m.setMonDet(regDet);
-                        m.setEstRegCod('I');
-                        mDao.update(m);
-                        break;
-                    case "6":
-                        TaGzzMotivoTrasladoDao mtDao= new TaGzzMotivoTrasladoDao();
-                        TaGzzMotivoTraslado mt= new TaGzzMotivoTraslado();
-                        mt.setMotTraCod(regCod);
-                        mt.setMotTraDet(regDet);
-                        mt.setEstRegCod('I');
-                        mtDao.update(mt);
-                        break;
-                    case "7":
-                        TaGzzTipoClienteDao tclDao= new TaGzzTipoClienteDao();
-                        TaGzzTipoCliente tcl= new TaGzzTipoCliente();
-                        tcl.setTipCliCod(regCod);
-                        tcl.setTipCliDet(regDet);
-                        tcl.setEstRegCod('I');
-                        tclDao.update(tcl);
-                        break;
-                    case "8":
-                        TaGzzTipoComprobanteDao tcrDao= new TaGzzTipoComprobanteDao();
-                        TaGzzTipoComprobante tcr= new TaGzzTipoComprobante();
-                        tcr.setTipComCod(regCod);
-                        tcr.setTipComDet(regDet);
-                        tcr.setEstRegCod('I');
-                        tcrDao.update(tcr);
-                        break;
-                    case "9":
-                        TaGzzTipoDescuentoDao tdesDao= new TaGzzTipoDescuentoDao();
-                        TaGzzTipoDescuento tdes= new TaGzzTipoDescuento();
-                        tdes.setTipDesCod(regCod);
-                        tdes.setTipDesDet(regDet);
-                        tdes.setEstRegCod('I');
-                        tdesDao.update(tdes);
-                        break;
-                    case "10":
-                        TaGzzTipoDestinatarioDao tdstDao= new TaGzzTipoDestinatarioDao();
-                        TaGzzTipoDestinatario tdst= new TaGzzTipoDestinatario();
-                        tdst.setTipDstCod(regCod);
-                        tdst.setTipDstDet(regDet);
-                        tdst.setEstRegCod('I');
-                        tdstDao.update(tdst);
-                        break;
-                    case "11":
-                        TaGzzTipoDevolucionDao tdevDao= new TaGzzTipoDevolucionDao();
-                        TaGzzTipoDevolucion tdev= new TaGzzTipoDevolucion();
-                        tdev.setTipDevCod(regCod);
-                        tdev.setTipDevDet(regDet);
-                        tdev.setEstRegCod('I');
-                        tdevDao.update(tdev);
-                        break;
-                    case "12":
-                        TaGzzTipoDocClienteDao tdcDao= new TaGzzTipoDocClienteDao();
-                        TaGzzTipoDocCliente tdc= new TaGzzTipoDocCliente();
-                        tdc.setTipDocCliCod(regCod);
-                        tdc.setTipDocCliDet(regDet);
-                        tdc.setEstRegCod('I');
-                        tdcDao.update(tdc);
-                        break;
-                    case "13":
-                        TaGzzTipoDocProveedorDao tdpDao= new TaGzzTipoDocProveedorDao();
-                        TaGzzTipoDocProveedor tdp= new TaGzzTipoDocProveedor();
-                        tdp.setTipDocProCod(regCod);
-                        tdp.setTipDocProDet(regDet);
-                        tdp.setEstRegCod('I');
-                        tdpDao.update(tdp);
-                        break;
-                    case "14":
-                        TaGzzTipoDocTransportistaDao tdtDao= new TaGzzTipoDocTransportistaDao();
-                        TaGzzTipoDocTransportista tdt= new TaGzzTipoDocTransportista();
-                        tdt.setTipDocTraCod(regCod);
-                        tdt.setTipDocTraDet(regDet);
-                        tdt.setEstRegCod('I');
-                        tdtDao.update(tdt);
-                        break;
-                    case "15":
-                        TaGzzTipoDocUsuarioDao tduDao= new TaGzzTipoDocUsuarioDao();
-                        TaGzzTipoDocUsuario tdu= new TaGzzTipoDocUsuario();
-                        tdu.setTipDocUsuCod(regCod);
-                        tdu.setTipDocUsuDet(regDet);
-                        tdu.setEstRegCod('I');
-                        tduDao.update(tdu);
-                        break;
-                    case "16":
-                        TaGzzTipoPagoFacturaDao tpfDao= new TaGzzTipoPagoFacturaDao();
-                        TaGzzTipoPagoFactura tpf= new TaGzzTipoPagoFactura();
-                        tpf.setTipPagCod(regCod);
-                        tpf.setTipPagDet(regDet);
-                        tpf.setEstRegCod('I');
-                        tpfDao.update(tpf);
-                        break;
-                    case "17":
-                        TaGzzTipoUniTransporteDao tutDao= new TaGzzTipoUniTransporteDao();
-                        TaGzzTipoUniTransporte tut= new TaGzzTipoUniTransporte();
-                        tut.setTipUniTraCod(regCod);
-                        tut.setTipUniTraDet(regDet);
-                        tut.setEstRegCod('I');
-                        tutDao.update(tut);
-                        break;
-                    case "18":
-                        TaGzzTipoUsuarioDao tuDao= new TaGzzTipoUsuarioDao();
-                        TaGzzTipoUsuario tu= new TaGzzTipoUsuario();
-                        tu.setTipUsuCod(regCod);
-                        tu.setTipUsuDet(regDet);
-                        tu.setEstRegCod('I');
-                        tuDao.update(tu);
-                        break;
-                    case "19":
-                        TaGzzUnidadMedDao umDao= new TaGzzUnidadMedDao();
-                        TaGzzUnidadMed um= new TaGzzUnidadMed();
-                        um.setUniMedCod(regCod);
-                        um.setUniMedDet(regDet);
-                        um.setEstRegCod('I');
-                        umDao.update(um);
-                        break;
-                }
+                tipo(sel, regCod, regDet, 'B');
                 break;
         }
         
         response.sendRedirect(request.getContextPath() + "/secured/configuracion/tablasGenerales");
+    }
+    private void tipo(String sel, int regCod, String regDet, char op){
+        switch(sel){
+            case "0":
+                TaGzzBancoDao bDao= new TaGzzBancoDao();
+                TaGzzBanco b = new TaGzzBanco();
+                b.setBanDet(regDet);
+                if(op=='A'){
+                    b.setBanCod(null);
+                    b.setEstRegCod('A');
+                    bDao.save(b);
+                }
+                else if(op=='C'){
+                    b.setBanCod(regCod);
+                    b.setEstRegCod('A');
+                    bDao.update(b);
+                }
+                else{
+                    b.setBanCod(regCod);
+                    b.setEstRegCod('I');
+                    bDao.update(b);
+                }
+                break;
+            case "1":
+                TaGzzEstadoCivilDao ecDao= new TaGzzEstadoCivilDao();
+                TaGzzEstadoCivil ec= new TaGzzEstadoCivil();
+                ec.setEstCivDet(regDet);
+                if(op=='A'){
+                    ec.setEstCivCod(null);
+                    ec.setEstRegCod('A');
+                    ecDao.save(ec);
+                }
+                else if(op=='C'){
+                    ec.setEstCivCod(regCod);
+                    ec.setEstRegCod('A');
+                    ecDao.update(ec);
+                }
+                else{
+                    ec.setEstCivCod(regCod);
+                    ec.setEstRegCod('I');
+                    ecDao.update(ec);
+                }
+                break;
+            case "2":
+                TaGzzEstadoFacturaDao efDao= new TaGzzEstadoFacturaDao();
+                TaGzzEstadoFactura ef= new TaGzzEstadoFactura();
+                ef.setEstFacDet(regDet);
+                if(op=='A'){
+                ef.setEstFacCod(null);
+                ef.setEstRegCod('A');
+                efDao.save(ef);
+                }
+                else if(op=='C'){
+                ef.setEstFacCod(regCod);
+                ef.setEstRegCod('A');
+                efDao.update(ef);
+                }
+                else{
+                ef.setEstFacCod(regCod);
+                ef.setEstRegCod('I');
+                efDao.update(ef);
+                }
+                break;
+            case "3":
+                TaGzzEstadoUniTransporteDao eutDao= new TaGzzEstadoUniTransporteDao();
+                TaGzzEstadoUniTransporte eut= new TaGzzEstadoUniTransporte();
+                eut.setEstUniTraDet(regDet);
+                if(op=='A'){
+                eut.setEstUniTraCod(null);
+                eut.setEstRegCod(op);
+                eutDao.save(eut);
+                }
+                else if(op=='C'){
+                eut.setEstUniTraCod(regCod);
+                eut.setEstRegCod('A');
+                eutDao.update(eut);
+                }
+                
+                else{
+                eut.setEstUniTraCod(regCod);
+                eut.setEstRegCod('I');
+                eutDao.update(eut);
+                }
+                break;
+            case "4":
+                TaGzzMetodoPagoFacturaDao mpfDao= new TaGzzMetodoPagoFacturaDao();
+                TaGzzMetodoPagoFactura mpf= new TaGzzMetodoPagoFactura();
+                mpf.setMetPagDet(regDet);
+                if(op=='A'){
+                mpf.setMetPagCod(null);
+                mpf.setEstRegCod(op);
+                mpfDao.save(mpf);
+                }
+                else if(op=='C'){
+                mpf.setMetPagCod(regCod);
+                mpf.setEstRegCod('A');
+                mpfDao.update(mpf);
+                }
+                else{
+                mpf.setMetPagCod(regCod);
+                mpf.setEstRegCod('I');
+                mpfDao.update(mpf);
+                }
+                break;
+            case "5":
+                TaGzzMonedaDao mDao= new TaGzzMonedaDao();
+                TaGzzMoneda m= new TaGzzMoneda();
+                m.setMonDet(regDet);
+                if(op=='A'){
+                m.setMonCod(null);
+                m.setEstRegCod(op);
+                mDao.save(m);
+                }
+                else if(op=='C'){
+                m.setMonCod(regCod);
+                m.setEstRegCod('A');
+                mDao.update(m);
+                }
+                else{
+                m.setMonCod(regCod);
+                m.setEstRegCod('I');
+                mDao.update(m);
+                }
+                break;
+            case "6":
+                TaGzzMotivoTrasladoDao mtDao= new TaGzzMotivoTrasladoDao();
+                TaGzzMotivoTraslado mt= new TaGzzMotivoTraslado();
+                mt.setMotTraDet(regDet);
+                if(op=='A'){
+                mt.setMotTraCod(null);
+                mt.setEstRegCod(op);
+                mtDao.save(mt);
+                }
+                else if(op=='C'){
+                mt.setMotTraCod(regCod);
+                mt.setEstRegCod('A');
+                mtDao.update(mt);
+                }
+                else{
+                mt.setMotTraCod(regCod);
+                mt.setEstRegCod('I');
+                mtDao.update(mt);
+                }
+                break;
+            case "7":
+                TaGzzTipoClienteDao tclDao= new TaGzzTipoClienteDao();
+                TaGzzTipoCliente tcl= new TaGzzTipoCliente();
+                tcl.setTipCliDet(regDet);
+                if(op=='A'){
+                tcl.setTipCliCod(null);
+                tcl.setEstRegCod(op);
+                tclDao.save(tcl);
+                }
+                else if(op=='C'){
+                tcl.setTipCliCod(regCod);
+                tcl.setEstRegCod('A');
+                tclDao.update(tcl);
+                }
+                else{
+                tcl.setTipCliCod(regCod);
+                tcl.setEstRegCod('I');
+                tclDao.update(tcl);
+                }
+                break;
+            case "8":
+                TaGzzTipoComprobanteDao tcrDao= new TaGzzTipoComprobanteDao();
+                TaGzzTipoComprobante tcr= new TaGzzTipoComprobante();
+                tcr.setTipComDet(regDet);
+                if(op=='A'){
+                tcr.setTipComCod(null);
+                tcr.setEstRegCod(op);
+                tcrDao.save(tcr);
+                }
+                else if(op=='C'){
+                tcr.setTipComCod(regCod);
+                tcr.setEstRegCod('A');
+                tcrDao.update(tcr);
+                }
+                else{
+                tcr.setTipComCod(regCod);
+                tcr.setEstRegCod('I');
+                tcrDao.update(tcr);
+                }
+                break;
+            case "9":
+                TaGzzTipoDescuentoDao tdesDao= new TaGzzTipoDescuentoDao();
+                TaGzzTipoDescuento tdes= new TaGzzTipoDescuento();
+                tdes.setTipDesDet(regDet);
+                if(op=='A'){
+                tdes.setTipDesCod(null);
+                tdes.setEstRegCod(op);
+                tdesDao.save(tdes);
+                }
+                else if(op=='C'){
+                tdes.setTipDesCod(regCod);
+                tdes.setEstRegCod('A');
+                tdesDao.update(tdes);
+                }
+                else{
+                tdes.setTipDesCod(regCod);
+                tdes.setEstRegCod('I');
+                tdesDao.update(tdes);
+                }
+                break;
+            case "10":
+                TaGzzTipoDestinatarioDao tdstDao= new TaGzzTipoDestinatarioDao();
+                TaGzzTipoDestinatario tdst= new TaGzzTipoDestinatario();
+                tdst.setTipDstDet(regDet);
+                if(op=='A'){
+                tdst.setTipDstCod(null);
+                tdst.setEstRegCod(op);
+                tdstDao.save(tdst);
+                }
+                else if(op=='C'){
+                tdst.setTipDstCod(regCod);
+                tdst.setEstRegCod('A');
+                tdstDao.update(tdst);
+                }
+                else{
+                tdst.setTipDstCod(regCod);
+                tdst.setEstRegCod('I');
+                tdstDao.update(tdst);
+                }
+                break;
+            case "11":
+                TaGzzTipoDevolucionDao tdevDao= new TaGzzTipoDevolucionDao();
+                TaGzzTipoDevolucion tdev= new TaGzzTipoDevolucion();
+                tdev.setTipDevDet(regDet);
+                if(op=='A'){
+                tdev.setTipDevCod(null);
+                tdev.setEstRegCod(op);
+                tdevDao.save(tdev);
+                }
+                else if(op=='C'){
+                tdev.setTipDevCod(regCod);
+                tdev.setEstRegCod('A');
+                tdevDao.update(tdev);
+                }
+                else{
+                tdev.setTipDevCod(regCod);
+                tdev.setEstRegCod('I');
+                tdevDao.update(tdev);
+                }
+                break;
+            case "12":
+                TaGzzTipoDocClienteDao tdcDao= new TaGzzTipoDocClienteDao();
+                TaGzzTipoDocCliente tdc= new TaGzzTipoDocCliente();
+                tdc.setTipDocCliDet(regDet);
+                if(op=='A'){
+                tdc.setTipDocCliCod(null);
+                tdc.setEstRegCod(op);
+                tdcDao.save(tdc);
+                }
+                else if(op=='C'){
+                tdc.setTipDocCliCod(regCod);
+                tdc.setEstRegCod('A');
+                tdcDao.update(tdc);
+                }
+                else{
+                tdc.setTipDocCliCod(regCod);
+                tdc.setEstRegCod('I');
+                tdcDao.update(tdc);
+                }
+                break;
+            case "13":
+                TaGzzTipoDocProveedorDao tdpDao= new TaGzzTipoDocProveedorDao();
+                TaGzzTipoDocProveedor tdp= new TaGzzTipoDocProveedor();
+                tdp.setTipDocProDet(regDet);
+                if(op=='A'){
+                tdp.setTipDocProCod(null);
+                tdp.setEstRegCod(op);
+                tdpDao.save(tdp);
+                }
+                else if(op=='C'){
+                tdp.setTipDocProCod(regCod);
+                tdp.setEstRegCod('A');
+                tdpDao.update(tdp);
+                }
+                else{
+                tdp.setTipDocProCod(regCod);
+                tdp.setEstRegCod('I');
+                tdpDao.update(tdp);
+                }
+                break;
+            case "14":
+                TaGzzTipoDocTransportistaDao tdtDao= new TaGzzTipoDocTransportistaDao();
+                TaGzzTipoDocTransportista tdt= new TaGzzTipoDocTransportista();
+                tdt.setTipDocTraDet(regDet);
+                if(op=='A'){
+                tdt.setTipDocTraCod(null);
+                tdt.setEstRegCod(op);
+                tdtDao.save(tdt);
+                }
+                else if(op=='C'){
+                tdt.setTipDocTraCod(regCod);
+                tdt.setEstRegCod('A');
+                tdtDao.update(tdt);
+                }
+                else{
+                tdt.setTipDocTraCod(regCod);
+                tdt.setEstRegCod('I');
+                tdtDao.update(tdt);
+                }
+                break;
+            case "15":
+                TaGzzTipoDocUsuarioDao tduDao= new TaGzzTipoDocUsuarioDao();
+                TaGzzTipoDocUsuario tdu= new TaGzzTipoDocUsuario();
+                tdu.setTipDocUsuDet(regDet);
+                if(op=='A'){
+                tdu.setTipDocUsuCod(null);
+                tdu.setEstRegCod(op);
+                tduDao.save(tdu);
+                }
+                else if(op=='C'){
+                tdu.setTipDocUsuCod(regCod);
+                tdu.setEstRegCod('A');
+                tduDao.update(tdu);
+                }
+                else{
+                tdu.setTipDocUsuCod(regCod);
+                tdu.setEstRegCod('I');
+                tduDao.update(tdu);
+                }
+                break;
+            case "16":
+                TaGzzTipoPagoFacturaDao tpfDao= new TaGzzTipoPagoFacturaDao();
+                TaGzzTipoPagoFactura tpf= new TaGzzTipoPagoFactura();
+                tpf.setTipPagDet(regDet);
+                if(op=='A'){
+                tpf.setTipPagCod(null);
+                tpf.setEstRegCod(op);
+                tpfDao.save(tpf);
+                }
+                else if(op=='C'){
+                tpf.setTipPagCod(regCod);
+                tpf.setEstRegCod('A');
+                tpfDao.update(tpf);
+                }
+                tpf.setTipPagCod(regCod);
+                tpf.setEstRegCod('I');
+                tpfDao.update(tpf);
+                break;
+            case "17":
+                TaGzzTipoUniTransporteDao tutDao= new TaGzzTipoUniTransporteDao();
+                TaGzzTipoUniTransporte tut= new TaGzzTipoUniTransporte();
+                tut.setTipUniTraDet(regDet);
+                if(op=='A'){
+                tut.setTipUniTraCod(null);
+                tut.setEstRegCod(op);
+                tutDao.save(tut);
+                }
+                else if(op=='C'){
+                tut.setTipUniTraCod(null);
+                tut.setEstRegCod('A');
+                tutDao.update(tut);
+                }
+                else{
+                tut.setTipUniTraCod(null);
+                tut.setEstRegCod('I');
+                tutDao.update(tut);
+                }
+                break;
+            case "18":
+                TaGzzTipoUsuarioDao tuDao= new TaGzzTipoUsuarioDao();
+                TaGzzTipoUsuario tu= new TaGzzTipoUsuario();
+                tu.setTipUsuDet(regDet);
+                if(op=='A'){
+                tu.setTipUsuCod(null);
+                tu.setEstRegCod(op);
+                tuDao.save(tu);
+                }
+                else if(op=='C'){
+                tu.setTipUsuCod(regCod);
+                tu.setEstRegCod('A');
+                tuDao.update(tu);
+                }
+                else{
+                tu.setTipUsuCod(regCod);
+                tu.setEstRegCod('I');
+                tuDao.update(tu);
+                }
+                break;
+            case "19":
+                TaGzzUnidadMedDao umDao= new TaGzzUnidadMedDao();
+                TaGzzUnidadMed um= new TaGzzUnidadMed();
+                um.setUniMedDet(regDet);
+                if(op=='A'){
+                um.setUniMedCod(null);
+                um.setEstRegCod(op);
+                umDao.save(um);
+                }
+                else if(op=='C'){
+                um.setUniMedCod(regCod);
+                um.setEstRegCod('A');
+                umDao.update(um);
+                }
+                else{
+                um.setUniMedCod(regCod);
+                um.setEstRegCod('I');
+                umDao.update(um);
+                }
+                break;
+        }
     }
 }

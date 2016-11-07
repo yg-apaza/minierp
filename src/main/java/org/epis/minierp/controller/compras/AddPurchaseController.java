@@ -5,6 +5,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.StringTokenizer;
@@ -47,13 +48,16 @@ public class AddPurchaseController extends HttpServlet {
         List <EnP2mProducto> productos = (new EnP2mProductoDao()).getAll(); 
         List <TaGzzEstadoFactura> estadosFactura = (new TaGzzEstadoFacturaDao().getAll());
         List <TaGzzTipoDescuento> tiposDescuentos = (new TaGzzTipoDescuentoDao()).getAllActive();
-
+        DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        String fechaActual = format.format(Calendar.getInstance().getTime());
+            
         request.setAttribute("metodosPagoFactura", metodosPagoFactura);
         request.setAttribute("monedas", monedas);
         request.setAttribute("tiposPagoFactura", tiposPagoFactura);
         request.setAttribute("productos", productos);
         request.setAttribute("estadosFactura", estadosFactura);
         request.setAttribute("tiposDescuentos", tiposDescuentos);
+        request.setAttribute("fechaActual", fechaActual);
         
         request.getRequestDispatcher("/WEB-INF/compras/factura/addPurchase.jsp").forward(request, response);
     }
@@ -75,6 +79,7 @@ public class AddPurchaseController extends HttpServlet {
             int estFacCod = Integer.parseInt(request.getParameter("estFacCod"));
             String facComCabObs = request.getParameter("facComCabObs");
             int tipDesCod = Integer.parseInt(request.getParameter("tipDesCod"));
+            int facComCabPorDes = Integer.parseInt(request.getParameter("facComCabPorDes"));
             int facComCabIgv = Integer.parseInt(request.getParameter("facComCabIgv"));
             double facComCabSubTot = Double.parseDouble(request.getParameter("facComCabSubTot"));
             double facComCabTot = Double.parseDouble(request.getParameter("facComCabTot"));
@@ -111,6 +116,7 @@ public class AddPurchaseController extends HttpServlet {
             header.setTaGzzTipoPagoFactura((new TaGzzTipoPagoFacturaDao()).getById(tipPagCod));
             header.setTaGzzTipoDescuento((new TaGzzTipoDescuentoDao()).getById(tipDesCod));
             header.setFacComCabObs(facComCabObs);
+            header.setFacComPorDes(facComCabPorDes);
             header.setFacComCabIgv(facComCabIgv);
             header.setFacComCabSubTot(facComCabSubTot);
             header.setFacComCabTot(facComCabTot);
