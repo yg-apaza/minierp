@@ -5,7 +5,9 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.StringTokenizer;
 import java.util.logging.Level;
@@ -33,6 +35,7 @@ import org.epis.minierp.model.EnP2mProductoId;
 import org.epis.minierp.model.TaGzzMoneda;
 import org.epis.minierp.model.TaGzzTipoCliente;
 import org.epis.minierp.model.TaGzzTipoDescuento;
+import org.epis.minierp.util.DateUtil;
 
 public class AddPreVentaController extends HttpServlet{
     private static final long serialVersionUID = 1L;
@@ -65,9 +68,14 @@ public class AddPreVentaController extends HttpServlet{
             int preVenCabIgv = (int)Double.parseDouble(request.getParameter("preVenCabIgv"));
             DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
             Date preVenCabFecEmi = format.parse(request.getParameter("preVenCabFecEmi"));
-            Date preVenCabFecVen = format.parse(request.getParameter("preVenCabFecVen"));
+            //Date preVenCabFecVen = format.parse(request.getParameter("preVenCabFecVen"));
+            Calendar c= new GregorianCalendar();
+            c.setTime(preVenCabFecEmi);
+            c.set(c.get(Calendar.YEAR),c.get(Calendar.MONTH)+1,c.get(Calendar.DAY_OF_MONTH)+1);
+            Date preVenCabFecVen=c.getTime();
+            
             int monCod = Integer.parseInt(request.getParameter("monCod")); 
-            int preVenCabPla = Integer.parseInt(request.getParameter("preVenCabPla")); 
+            //int preVenCabPla = Integer.parseInt(request.getParameter("preVenCabPla")); 
             String preVenCabObs = request.getParameter("preVenCabObs");
             double preVenCabTot = Double.parseDouble(request.getParameter("preVenCabTot"));
             double preVenCabSubTot = Double.parseDouble(request.getParameter("preVenCabSubTot"));
@@ -86,7 +94,8 @@ public class AddPreVentaController extends HttpServlet{
             header.setPreVenCabSubTot(preVenCabSubTot);
             header.setPreVenCabIgv(preVenCabIgv);
             header.setPreVenCabObs(preVenCabObs);
-            header.setPreVenCabPla(preVenCabPla);
+            //header.setPreVenCabPla(preVenCabPla);
+            header.setPreVenCabPla(1);
             header.setTaGzzMoneda((new TaGzzMonedaDao()).getById(monCod));
             header.setTaGzzTipoDescuento((new TaGzzTipoDescuentoDao()).getById(tipDesCod));
             header.setEstRegCod('A');

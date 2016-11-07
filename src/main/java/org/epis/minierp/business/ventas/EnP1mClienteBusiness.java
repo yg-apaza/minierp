@@ -11,6 +11,7 @@ import org.epis.minierp.model.EnP1mClientesRutas;
 import org.epis.minierp.model.EnP1mClientesRutasId;
 import org.epis.minierp.model.EnP1mDocumentoCliente;
 import org.epis.minierp.model.EnP1mDocumentoClienteId;
+import org.epis.minierp.model.TaGzzCanalCliente;
 import org.epis.minierp.model.TaGzzEstadoCivil;
 import org.epis.minierp.model.TaGzzTipoCliente;
 
@@ -31,7 +32,7 @@ public class EnP1mClienteBusiness {
     
     public void create(String cliCod,int tipCliCod,String cliRazSoc, String cliNomCom, String cliDomFis,
             String cliNom, String cliApePat, String cliApeMat, char cliSex, String cliDir, int estCivCod, 
-            String cliTelFij, String cliTelCel, String cliEmail, char estRegCod){
+            String cliTelFij, String cliTelCel, String cliEmail, int canCod, char estRegCod){
         
         EnP1mCliente cli = new EnP1mCliente();
         
@@ -41,8 +42,12 @@ public class EnP1mClienteBusiness {
         TaGzzEstadoCivil ec = new TaGzzEstadoCivil();
         ec.setEstCivCod(estCivCod);
         
+        TaGzzCanalCliente cn=new TaGzzCanalCliente();
+        cn.setCanCliCod(canCod);
+        
         cli.setCliCod(cliCod);
         cli.setTaGzzTipoCliente(tc);
+        cli.setTaGzzCanalCliente(cn);
         cli.setCliRazSoc(cliRazSoc);
         cli.setCliNomCom(cliNomCom);
         cli.setCliDomFis(cliDomFis);
@@ -54,7 +59,7 @@ public class EnP1mClienteBusiness {
         cli.setTaGzzEstadoCivil(ec);
         cli.setCliTelFij(cliTelFij);
         cli.setCliTelCel(cliTelCel);
-        cli.setCliEmail(cliEmail);
+        cli.setCliEmail(cliEmail);        
         cli.setEstRegCod(estRegCod);
         cliDao.save(cli);
               
@@ -62,7 +67,7 @@ public class EnP1mClienteBusiness {
     
     public void update(String cliCod,int tipCliCod,String cliRazSoc, String cliNomCom, String cliDomFis,
             String cliNom, String cliApePat, String cliApeMat, char cliSex, String cliDir, int estCivCod, 
-            String cliTelFij, String cliTelCel, String cliEmail){
+            String cliTelFij, String cliTelCel, String cliEmail, int canCod){
         
         EnP1mCliente cliUpdate = cliDao.getById(cliCod);
         
@@ -72,7 +77,11 @@ public class EnP1mClienteBusiness {
         TaGzzEstadoCivil ec = new TaGzzEstadoCivil();
         ec.setEstCivCod(estCivCod);
         
+        TaGzzCanalCliente cn=new TaGzzCanalCliente();
+        cn.setCanCliCod(canCod);
+        
         cliUpdate.setTaGzzTipoCliente(tc);
+        cliUpdate.setTaGzzCanalCliente(cn);
         cliUpdate.setCliRazSoc(cliRazSoc);
         cliUpdate.setCliNomCom(cliNomCom);
         cliUpdate.setCliDomFis(cliDomFis);

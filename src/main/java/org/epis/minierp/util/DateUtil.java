@@ -58,6 +58,10 @@ public class DateUtil {
         Calendar calendar = Calendar.getInstance();
         return calendar.get(Calendar.MONTH) + 1;
     }
+    public static Integer getDiaActual(){
+        Calendar calendar = Calendar.getInstance();
+        return calendar.get(Calendar.DATE) + 1;
+    }
 
     public static boolean esFechaValida(Date fecha) {
         Calendar cal = Calendar.getInstance();
