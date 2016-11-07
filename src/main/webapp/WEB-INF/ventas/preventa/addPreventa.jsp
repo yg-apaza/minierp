@@ -42,26 +42,19 @@
                                     <div class="col-md-4">
                                         <div class="form-group input-group" >
                                             <span class="input-group-addon">Emisión</span>
-                                            <input type="date" class="form-control" name="preVenCabFecEmi">
+                                            <input type="date" class="form-control" name="preVenCabFecEmi" value="${fechaActual}" readonly>
                                             <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                                         </div>
                                     </div>
                                     <div class="col-md-4" >
                                         <div class="form-group input-group" >
-                                                    <span class="input-group-addon">Moneda</i></span>
-                                                    <select class="form-control" name="monCod">
-                                                        <c:forEach items="${monedas}" var="moneda">
-                                                            <option value="${moneda.monCod}">${moneda.monDet}</option>
-                                                        </c:forEach>
-                                                    </select>
-                                                    <span class="input-group-addon"><i class="fa fa-money"></i></span>
-                                                </div>
-                                        
-                                        
-                                        <div class="form-group input-group" style='display:none;'>
-                                            <span class="input-group-addon">Vencimiento</span>
-                                            <input type="date" class="form-control" name="preVenCabFecVen">
-                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                            <span class="input-group-addon">Moneda</i></span>
+                                            <select class="form-control" name="monCod">
+                                                <c:forEach items="${monedas}" var="moneda">
+                                                    <option value="${moneda.monCod}">${moneda.monDet}</option>
+                                                </c:forEach>
+                                            </select>
+                                            <span class="input-group-addon"><i class="fa fa-money"></i></span>
                                         </div>
                                     </div>
                                     <div class="col-xs-12 col-md-9">
@@ -106,7 +99,7 @@
                                         </div>
                                     </div>
                                     <div class="col-xs-12 col-md-3">                                        
-                                        <textarea class="form-control" rows="5" name="preVenCabObs" placeholder="Observaciones"></textarea>
+                                        <textarea class="form-control" rows="2" name="preVenCabObs" placeholder="Observaciones"></textarea>
                                     </div>                                    
                                 </div>
                             </div>
@@ -166,7 +159,7 @@
                                                 </c:forEach>
                                             </select> 
                                             <span class="input-group-addon">Valor (%)</i></span>
-                                            <input type="number" class="form-control" id="tipDesVal" readonly>
+                                            <input type="number" class="form-control" name="preVenPorDes" id="porDes" min="0" step="any" value="0" discountTop="100">
                                             <span class="input-group-addon"><i class="fa fa-sort-amount-asc"></i></span>
                                         </div>
                                     </div>
@@ -223,22 +216,17 @@
             var codeClientCriteria = false;
             var productCodes = new Array();
             var productDescriptions = new Array();
-            var discounts = new Array();
-            
+
             <c:forEach items="${productos}" var="p" varStatus="loop">
-                productCodes.push("${p.id.claProCod}-${p.id.subClaProCod}-${p.id.proCod}");
+            productCodes.push("${p.id.claProCod}-${p.id.subClaProCod}-${p.id.proCod}");
                 productDescriptions.push("${p.proDet}");
             </c:forEach>
-            
-            <c:forEach items="${tiposDescuentos}" var="t" varStatus="loop">
-                discounts.push("${t.tipDesPor}");
-            </c:forEach>
-            
+
             $(document).ready(function () {
                 changeClientDescription();
                 changeDiscount();
             });
-            
+
             $(document).ready(function () {
                 $("#productTable").on('click', '.btnDelete', function () {
                     $(this).closest('tr').remove();
@@ -249,17 +237,17 @@
             $(document).ready(function () {
                 $("#iconCriteria").addClass("fa-chevron-left");
                 $('#proCodShow').attr('readOnly', true);
-                $('#proDesShow').attr('readOnly', false);     
+                $('#proDesShow').attr('readOnly', false);
                 $("#iconClientCriteria").addClass("fa-chevron-left");
                 $('#cliCodShow').attr('readOnly', true);
                 $("#tipoClienteCode").prop('disabled', true);
-                $('#cliDesShow').attr('readOnly', false); 
+                $('#cliDesShow').attr('readOnly', false);
                 $("#desClienteCode").prop('disabled', false);
             });
-            
+
             $(document).ready(function () {
                 $('#addDetail').on('click', function () {
-                    if ($('#proCodShow').val() == "Desconocido" || $('#proCodShow').val() == "" || $('#proDesShow').val() == "Desconocido" || $('#proDesShow').val() == "")  {
+                    if ($('#proCodShow').val() == "Desconocido" || $('#proCodShow').val() == "" || $('#proDesShow').val() == "Desconocido" || $('#proDesShow').val() == "") {
                         $("#errorMessage").text("Producto Desconocido. Ingrese un producto disponible");
                         $('#errorMessageModal').modal('show');
                     } else if (!$('input[name="canPro"]').valid()) {
@@ -293,18 +281,21 @@
                     }
                 });
             });
-          
+
             $.validator.messages.max = "Stock superado";
-            
+
             $.validator.addMethod("codePattern", function (value, element) {
                 return /^[0-9]{3}-[0-9]{6}$/.test(value);
             }, "Patrón: [0-9]{3}-[0-9]{6}");
-            
+
             $.validator.addMethod("verifiedValue", function (value, element) {
-                console.log(value);
                 return value != "";
             }, "Ingrese datos correctos");
-            
+
+            $.validator.addMethod("discountTop", function (value, element) {
+                return value <= 100;
+            }, "Descuento <= 100%");
+
             function updateAll() {
                 var productsCodes = new Array();
                 var amounts = new Array();
@@ -321,7 +312,7 @@
                 $('#proPrices').val(prices);
                 subTotal = (subTotal * (1 + Number($('#preIgv').val() / 100))).toFixed(2);
                 $('#preSub').val(subTotal);
-                var total = ((1 - Number($('#tipDesVal').val() / 100))*subTotal).toFixed(2);
+                var total = ((1 - Number($('#porDes').val() / 100)) * subTotal).toFixed(2);
                 $('#preTot').val(total);
 
                 if ($("#productTable tr").length > 1) {
@@ -330,9 +321,9 @@
                     $("#register").prop('disabled', true);
                 }
             }
-            
+
             function changeIcon() {
-                if(codeCriteria) {
+                if (codeCriteria) {
                     $('#iconCriteria').removeClass("fa-chevron-left").addClass("fa-chevron-right");
                     $('#proDesShow').attr('readOnly', false);
                     $('#proCodShow').attr('readOnly', true);
@@ -343,19 +334,19 @@
                     $('#proDesShow').attr('readOnly', true);
                     codeCriteria = true;
                 }
-                
+
                 $('#proCodShow').val("");
                 $('#proDesShow').val("");
                 $('#priceShow').val("");
                 $('#amountShow').val(1);
             }
-            
+
             function changeClientIcon() {
-                if(codeClientCriteria) {
+                if (codeClientCriteria) {
                     $('#iconClientCriteria').removeClass("fa-chevron-left").addClass("fa-chevron-right");
                     $('#cliCodShow').attr('readOnly', true);
                     $("#tipoClienteCode").prop('disabled', true);
-                    $('#cliDesShow').attr('readOnly', false); 
+                    $('#cliDesShow').attr('readOnly', false);
                     $("#desClienteCode").prop('disabled', false);
                     codeClientCriteria = false;
                     changeClientDescription();
@@ -363,90 +354,92 @@
                     $('#iconClientCriteria').removeClass("fa-chevron-right").addClass("fa-chevron-left");
                     $('#cliCodShow').attr('readOnly', false);
                     $("#tipoClienteCode").prop('disabled', false);
-                    $('#cliDesShow').attr('readOnly', true); 
+                    $('#cliDesShow').attr('readOnly', true);
                     $("#desClienteCode").prop('disabled', true);
-                    $("#desClienteCode").val("1");                    
+                    $("#desClienteCode").val("1");
                     codeClientCriteria = true;
                     changeClientCode();
                 }
-                
+
                 $('#cliCodShow').val("");
                 $('#cliDesShow').val("");
             }
-            
+
             function changeClientCode() {
                 $.post(
                         "${pageContext.request.contextPath}/secured/ventas/searchClient", {
                             action: "tipo",
                             tipCliCod: $("#tipoClienteCode").val()
                         }
-                    ).done(function (data) {
-                        if (data.clients != null) {
-                            var clientsCodes = new Array();
-                            data.clients.forEach(function(client) {
-                                clientsCodes.push(client.cliCod);
-                            });
-                            
-                            $("#cliCodShow").autocomplete({
-                                source: clientsCodes
-                            });
-                        }                        
-                    });
-            } 
-            
+                ).done(function (data) {
+                    if (data.clients != null) {
+                        var clientsCodes = new Array();
+                        data.clients.forEach(function (client) {
+                            clientsCodes.push(client.cliCod);
+                        });
+
+                        $("#cliCodShow").autocomplete({
+                            source: clientsCodes
+                        });
+                    }
+                });
+            }
+
             function changeClientDescription() {
                 $.post(
                         "${pageContext.request.contextPath}/secured/ventas/searchClient", {
                             action: "descripcion"
                         }
-                    ).done(function (data) {
-                        if (data.clients != null) {
-                            if($("#desClienteCode").val() == "1") { //Razón Social
-                                var clientsRS = new Array();
-                                data.clients.forEach(function(client) {
-                                    clientsRS.push(client.cliRazSoc);
-                                });
-                                
-                                $("#cliDesShow").autocomplete({
-                                    source: clientsRS
-                                });
-                            } else if($("#desClienteCode").val() == "2") { //Nombre Comercial
-                                var clientsNC = new Array();
-                                data.clients.forEach(function(client) {
-                                    clientsNC.push(client.cliNomCom);
-                                });
-                                
-                                $("#cliDesShow").autocomplete({
-                                    source: clientsNC
-                                });
-                            }                            
-                        }                        
-                    });
-            } 
-            
+                ).done(function (data) {
+                    if (data.clients != null) {
+                        if ($("#desClienteCode").val() == "1") { //Razón Social
+                            var clientsRS = new Array();
+                            data.clients.forEach(function (client) {
+                                clientsRS.push(client.cliRazSoc);
+                            });
+
+                            $("#cliDesShow").autocomplete({
+                                source: clientsRS
+                            });
+                        } else if ($("#desClienteCode").val() == "2") { //Nombre Comercial
+                            var clientsNC = new Array();
+                            data.clients.forEach(function (client) {
+                                clientsNC.push(client.cliNomCom);
+                            });
+
+                            $("#cliDesShow").autocomplete({
+                                source: clientsNC
+                            });
+                        }
+                    }
+                });
+            }
+
             function changeDiscount() {
-                var index = $("#selectDiscount option:selected").index();
-                $('#tipDesVal').val(discounts[index]);
-                var total = ((1 - Number($('#tipDesVal').val() / 100))*Number($('#preSub').val())).toFixed(2);
+                var total = ((1 - Number($('#porDes').val() / 100)) * Number($('#preSub').val())).toFixed(2);
                 $('#preTot').val(total);
             }
-            
-            $('#selectDiscount').on('change', function() {
+
+            $('#porDes').on('change', function () {
                 changeDiscount();
             });
-            
-            $('#tipoClienteCode').on('change', function() {
+
+            $('#porDes').keyup(function () {
+                changeDiscount();
+            });
+
+            $('#tipoClienteCode').on('change', function () {
                 changeClientCode();
                 $("#cliCodShow").val("");
                 $("#cliDesShow").val("");
             });
-            
-            $('#desClienteCode').on('change', function() {
+
+            $('#desClienteCode').on('change', function () {
                 changeClientDescription();
                 $("#cliCodShow").val("");
                 $("#cliDesShow").val("");
             });
-                        
+
             $("#proCodShow").autocomplete({
                 source: productCodes
             });
@@ -456,88 +449,86 @@
             });
 
             $('#proCodShow').keyup(function () {
-                if(codeCriteria) {
+                if (codeCriteria) {
                     $.post(
-                        "${pageContext.request.contextPath}/secured/ventas/searchProduct", {
-                            proCod: $("#proCodShow").val(),
-                            proDet: ""
-                        }
+                            "${pageContext.request.contextPath}/secured/ventas/searchProduct", {
+                                proCod: $("#proCodShow").val(),
+                                proDet: ""
+                            }
                     ).done(function (data) {
-                            if (data.proCod != null) {
-                                $("#proDesShow").val(data.proDet);
-                                $("#priceShow").val(data.proPreUni);
-                                $('#amountShow')[0].max = data.proStk;
-                                $('#unitShow').val(data.proUnit);
-                            }
-                            else {
-                                $("#proDesShow").val("Desconocido");
-                            }
-                        });
+                        if (data.proCod != null) {
+                            $("#proDesShow").val(data.proDet);
+                            $("#priceShow").val(data.proPreUni);
+                            $('#amountShow')[0].max = data.proStk;
+                            $('#unitShow').val(data.proUnit);
+                        } else {
+                            $("#proDesShow").val("Desconocido");
+                        }
+                    });
                 }
             });
-            
+
             $('#proDesShow').keyup(function () {
-                if(!codeCriteria) {
+                if (!codeCriteria) {
                     $.post(
-                        "${pageContext.request.contextPath}/secured/ventas/searchProduct", {
-                            proCod: "",
-                            proDet: $("#proDesShow").val()
-                        }
+                            "${pageContext.request.contextPath}/secured/ventas/searchProduct", {
+                                proCod: "",
+                                proDet: $("#proDesShow").val()
+                            }
                     ).done(function (data) {
-                            if (data.proCod != null) {
-                                $("#proCodShow").val(data.proCod);
-                                $("#priceShow").val(data.proPreUni);
-                                $('#amountShow')[0].max = data.proStk;
-                                $('#unitShow').val(data.proUnit);
-                            }
-                            else {
-                                $("#proCodShow").val("Desconocido");
-                            }
-                        });
+                        if (data.proCod != null) {
+                            $("#proCodShow").val(data.proCod);
+                            $("#priceShow").val(data.proPreUni);
+                            $('#amountShow')[0].max = data.proStk;
+                            $('#unitShow').val(data.proUnit);
+                        } else {
+                            $("#proCodShow").val("Desconocido");
+                        }
+                    });
                 }
             });
 
             $('#cliCodShow').keyup(function () {
-                if(codeClientCriteria) {
+                if (codeClientCriteria) {
                     $.post(
                             "${pageContext.request.contextPath}/secured/ventas/searchClient", {
                                 action: "tipoSearch",
                                 tipCliCod: $("#tipoClienteCode").val(),
                                 cliCod: $("#cliCodShow").val()
                             }
-                        ).done(function (data) {
-                                if(data.cliCod != null) {
-                                    $("#preCli").val(data.cliCod);
-                                    $("#cliDesShow").val(data.cliRazSoc);                                      
-                                } else {
-                                    $("#preCli").val("");
-                                    $("#cliDesShow").val("Desconocido");
-                                }
-                            });
+                    ).done(function (data) {
+                        if (data.cliCod != null) {
+                            $("#preCli").val(data.cliCod);
+                            $("#cliDesShow").val(data.cliRazSoc);
+                        } else {
+                            $("#preCli").val("");
+                            $("#cliDesShow").val("Desconocido");
+                        }
+                    });
                 }
-            });    
-            
+            });
+
             $('#cliDesShow').keyup(function () {
-                if(!codeClientCriteria) {
+                if (!codeClientCriteria) {
                     $.post(
                             "${pageContext.request.contextPath}/secured/ventas/searchClient", {
                                 action: "desSearch",
                                 tipCliDes: $("#desClienteCode").val(),
                                 cliDes: $("#cliDesShow").val()
                             }
-                        ).done(function (data) {
-                                if(data.cliCod != null) {
-                                    $("#preCli").val(data.cliCod);
-                                    $("#cliCodShow").val(data.cliCod);    
-                                    $("#tipoClienteCode").val(data.tipCliCod);                                    
-                                } else {
-                                    $("#preCli").val("");
-                                    $("#cliCodShow").val("Desconocido");
-                                }
-                            });
+                    ).done(function (data) {
+                        if (data.cliCod != null) {
+                            $("#preCli").val(data.cliCod);
+                            $("#cliCodShow").val(data.cliCod);
+                            $("#tipoClienteCode").val(data.tipCliCod);
+                        } else {
+                            $("#preCli").val("");
+                            $("#cliCodShow").val("Desconocido");
+                        }
+                    });
                 }
-            });  
-            
+            });
+
             $("#registerBill").validate({
                 ignore: "",
                 rules: {
@@ -548,11 +539,11 @@
                     cliCod: {
                         verifiedValue: true,
                         required: true
-                    }, 
+                    },
                     preVenCabFecEmi: {
                         required: true
-                    }, 
-                    preVenCabFecVen: {
+                    },
+                    preVenPorDes: {
                         required: true
                     }
                 },
@@ -566,14 +557,14 @@
                     preVenCabFecEmi: {
                         required: "Seleccione una fecha"
                     },
-                    preVenCabFecVen: {
-                        required: "Seleccione una fecha"
+                    preVenPorDes: {
+                        required: "Considere descuento 0"
                     }
                 },
                 submitHandler: function (form) {
                     form.submit();
                 }
-            });  
+            });
         </script>
     </jsp:attribute>
 </minierptemplate:template>
