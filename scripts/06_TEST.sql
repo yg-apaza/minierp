@@ -2384,6 +2384,37 @@ INSERT INTO `episerp`.`en_p1c_devolucion_ventas` (`FacVenCabCod`, `DevVenNewFac`
 COMMIT;
 
 
+-- -----------------------------------------------------
+-- Data for table `episerp`.`en_p2c_devolucion_compras`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `episerp`;
+INSERT INTO `episerp`.`en_p2c_devolucion_compras` (`FacComCabCod`, `DevComNewFac`, `DevComDet`, `DevComFec`, `TipDevCod`, `DevComMon`) VALUES ('001-000001','001-000021','FiePat','2016-02-11','1','443452.61');
+INSERT INTO `episerp`.`en_p2c_devolucion_compras` (`FacComCabCod`, `DevComNewFac`, `DevComDet`, `DevComFec`, `TipDevCod`, `DevComMon`) VALUES ('001-000002','001-000022','Nav','2016-02-11','8','474412.39');
+INSERT INTO `episerp`.`en_p2c_devolucion_compras` (`FacComCabCod`, `DevComNewFac`, `DevComDet`, `DevComFec`, `TipDevCod`, `DevComMon`) VALUES ('001-000003','001-000023','CampEsc','2016-02-11','8','480968.35');
+INSERT INTO `episerp`.`en_p2c_devolucion_compras` (`FacComCabCod`, `DevComNewFac`, `DevComDet`, `DevComFec`, `TipDevCod`, `DevComMon`) VALUES ('001-000004','001-000024','FiePat','2016-02-11','1','457746.43');
+INSERT INTO `episerp`.`en_p2c_devolucion_compras` (`FacComCabCod`, `DevComNewFac`, `DevComDet`, `DevComFec`, `TipDevCod`, `DevComMon`) VALUES ('001-000005','001-000025','Nav','2016-02-11','4','418487.24');
+INSERT INTO `episerp`.`en_p2c_devolucion_compras` (`FacComCabCod`, `DevComNewFac`, `DevComDet`, `DevComFec`, `TipDevCod`, `DevComMon`) VALUES ('001-000006','001-000026','Cuar','2016-02-11','8','553143.64');
+INSERT INTO `episerp`.`en_p2c_devolucion_compras` (`FacComCabCod`, `DevComNewFac`, `DevComDet`, `DevComFec`, `TipDevCod`, `DevComMon`) VALUES ('001-000007','001-000027','Cuar','2016-02-11','3','508581.77');
+INSERT INTO `episerp`.`en_p2c_devolucion_compras` (`FacComCabCod`, `DevComNewFac`, `DevComDet`, `DevComFec`, `TipDevCod`, `DevComMon`) VALUES ('001-000008','001-000028','DiaEst','2016-02-11','8','496106.34');
+INSERT INTO `episerp`.`en_p2c_devolucion_compras` (`FacComCabCod`, `DevComNewFac`, `DevComDet`, `DevComFec`, `TipDevCod`, `DevComMon`) VALUES ('001-000009','001-000029','DiaMad','2016-02-11','7','431132.94');
+INSERT INTO `episerp`.`en_p2c_devolucion_compras` (`FacComCabCod`, `DevComNewFac`, `DevComDet`, `DevComFec`, `TipDevCod`, `DevComMon`) VALUES ('001-000010','001-000030','DiaPat','2016-02-11','1','538483.8');
+INSERT INTO `episerp`.`en_p2c_devolucion_compras` (`FacComCabCod`, `DevComNewFac`, `DevComDet`, `DevComFec`, `TipDevCod`, `DevComMon`) VALUES ('001-000011','001-000031','ArbVid','2016-02-11','2','500746.81');
+INSERT INTO `episerp`.`en_p2c_devolucion_compras` (`FacComCabCod`, `DevComNewFac`, `DevComDet`, `DevComFec`, `TipDevCod`, `DevComMon`) VALUES ('001-000012','001-000032','CampEsc','2016-02-11','1','479462.79');
+INSERT INTO `episerp`.`en_p2c_devolucion_compras` (`FacComCabCod`, `DevComNewFac`, `DevComDet`, `DevComFec`, `TipDevCod`, `DevComMon`) VALUES ('001-000013','001-000033','Nav','2016-02-11','4','456067.88');
+INSERT INTO `episerp`.`en_p2c_devolucion_compras` (`FacComCabCod`, `DevComNewFac`, `DevComDet`, `DevComFec`, `TipDevCod`, `DevComMon`) VALUES ('001-000014','001-000034','Cuar','2016-02-11','5','465061.01');
+INSERT INTO `episerp`.`en_p2c_devolucion_compras` (`FacComCabCod`, `DevComNewFac`, `DevComDet`, `DevComFec`, `TipDevCod`, `DevComMon`) VALUES ('001-000015','001-000035','Cuar','2016-02-11','2','511245.27');
+INSERT INTO `episerp`.`en_p2c_devolucion_compras` (`FacComCabCod`, `DevComNewFac`, `DevComDet`, `DevComFec`, `TipDevCod`, `DevComMon`) VALUES ('001-000016','001-000036','DiaEst','2016-02-11','6','517551.66');
+INSERT INTO `episerp`.`en_p2c_devolucion_compras` (`FacComCabCod`, `DevComNewFac`, `DevComDet`, `DevComFec`, `TipDevCod`, `DevComMon`) VALUES ('001-000017','001-000037','DiaPat','2016-02-11','2','505336.3');
+INSERT INTO `episerp`.`en_p2c_devolucion_compras` (`FacComCabCod`, `DevComNewFac`, `DevComDet`, `DevComFec`, `TipDevCod`, `DevComMon`) VALUES ('001-000018','001-000038','Cuar','2016-02-11','4','466589.7');
+INSERT INTO `episerp`.`en_p2c_devolucion_compras` (`FacComCabCod`, `DevComNewFac`, `DevComDet`, `DevComFec`, `TipDevCod`, `DevComMon`) VALUES ('001-000019','001-000039','Cuar','2016-02-11','4','423572.45');
+INSERT INTO `episerp`.`en_p2c_devolucion_compras` (`FacComCabCod`, `DevComNewFac`, `DevComDet`, `DevComFec`, `TipDevCod`, `DevComMon`) VALUES ('001-000020','001-000040','Cuar','2016-02-11','4','495964.86');
+
+COMMIT;
+
+
+
+
 /* CLEAR TRIGGERS */
 
 

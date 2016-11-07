@@ -1195,3 +1195,33 @@ INSERT INTO `ta_gzz_tipo_uni_transporte` (`TipUniTraCod`,`TipUniTraDet`,`EstRegC
 INSERT INTO `ta_gzz_tipo_uni_transporte` (`TipUniTraCod`,`TipUniTraDet`,`EstRegCod`) VALUES (07,"Otros","A");
 
 COMMIT;
+
+-- -----------------------------------------------------
+-- Data for table `episerp`.`ta_gzz_canal_cliente`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `episerp`;
+INSERT INTO `episerp`.`ta_gzz_canal_cliente` (`CanCliCod`, `CanCliDet`, `EstRegCod`) VALUES ('1', 'Minoristas', 'A');
+INSERT INTO `episerp`.`ta_gzz_canal_cliente` (`CanCliCod`, `CanCliDet`, `EstRegCod`) VALUES ('2', 'Mayoristas', 'A');
+INSERT INTO `episerp`.`ta_gzz_canal_cliente` (`CanCliCod`, `CanCliDet`, `EstRegCod`) VALUES ('3', 'Intermediarios', 'A');
+INSERT INTO `episerp`.`ta_gzz_canal_cliente` (`CanCliCod`, `CanCliDet`, `EstRegCod`) VALUES ('4', 'Almacenistas', 'A');
+INSERT INTO `episerp`.`ta_gzz_canal_cliente` (`CanCliCod`, `CanCliDet`, `EstRegCod`) VALUES ('5', 'Revendedores', 'A');
+INSERT INTO `episerp`.`ta_gzz_canal_cliente` (`CanCliCod`, `CanCliDet`, `EstRegCod`) VALUES ('6', 'Agentes comerciales', 'A');
+INSERT INTO `episerp`.`ta_gzz_canal_cliente` (`CanCliCod`, `CanCliDet`, `EstRegCod`) VALUES ('7', 'Industriales', 'A');
+
+COMMIT;
+
+-- -----------------------------------------------------
+-- Data for table `episerp`.`ta_gzz_tipo_falla_producto`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `episerp`;
+INSERT INTO `episerp`.`ta_gzz_tipo_falla_producto` (`TipFallProCod`, `TipFallProDet`, `EstRegCod`) VALUES ('1', 'Error de Diseño', 'A');
+INSERT INTO `episerp`.`ta_gzz_tipo_falla_producto` (`TipFallProCod`, `TipFallProDet`, `EstRegCod`) VALUES ('2', 'Error de Empaquetado/Etiquetado', 'A');
+INSERT INTO `episerp`.`ta_gzz_tipo_falla_producto` (`TipFallProCod`, `TipFallProDet`, `EstRegCod`) VALUES ('3', 'Cantidad Equivocada', 'A');
+INSERT INTO `episerp`.`ta_gzz_tipo_falla_producto` (`TipFallProCod`, `TipFallProDet`, `EstRegCod`) VALUES ('4', 'Exceso de Almacenamiento', 'A');
+INSERT INTO `episerp`.`ta_gzz_tipo_falla_producto` (`TipFallProCod`, `TipFallProDet`, `EstRegCod`) VALUES ('5', 'Inadecuado de Almacenamiento', 'A');
+INSERT INTO `episerp`.`ta_gzz_tipo_falla_producto` (`TipFallProCod`, `TipFallProDet`, `EstRegCod`) VALUES ('6', 'Error de Transformación', 'A');
+INSERT INTO `episerp`.`ta_gzz_tipo_falla_producto` (`TipFallProCod`, `TipFallProDet`, `EstRegCod`) VALUES ('7', 'Error de Comercialización', 'A');
+
+COMMIT;
