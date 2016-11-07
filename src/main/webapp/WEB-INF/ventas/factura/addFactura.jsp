@@ -182,7 +182,7 @@
                                                 </c:forEach>
                                             </select> 
                                             <span class="input-group-addon">Valor (%)</i></span>
-                                            <input type="number" class="form-control" name="facVenPorDes" id="porDes" min="0" step="any" value="0" max="100">
+                                            <input type="number" class="form-control" name="facVenPorDes" id="porDes" min="0" step="any" value="0" discountTop="100">
                                             <span class="input-group-addon"><i class="fa fa-sort-amount-asc"></i></span>
                                         </div>
                                     </div>
@@ -314,6 +314,10 @@
             $.validator.addMethod("verifiedValue", function (value, element) {
                 return value != "";
             }, "Ingrese datos correctos");
+            
+            $.validator.addMethod("discountTop", function (value, element) {
+                return value <= 100;
+            }, "Descuento <= 100%");
             
             function updateAll() {
                 var productsCodes = new Array();
