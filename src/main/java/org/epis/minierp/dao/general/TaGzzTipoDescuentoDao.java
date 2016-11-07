@@ -29,4 +29,19 @@ public class TaGzzTipoDescuentoDao {
         List <TaGzzTipoDescuento> tipos = query.list();
         return tipos;
     }
+    public void save(TaGzzTipoDescuento tipoDes) {
+        session.save(tipoDes);     
+    }
+    
+    public void update(TaGzzTipoDescuento tipoDes){
+        session.update(tipoDes);
+    }
+    
+    public void saveOrUpdate(TaGzzTipoDescuento tipoDes){
+        session.saveOrUpdate(tipoDes);
+    }
+    
+    public void delete(TaGzzTipoDescuento tipoDes){
+        session.delete(tipoDes);
+    }
 }

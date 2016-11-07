@@ -26,13 +26,13 @@
                         <label>Reporte</label>
                     </div>
                     <div class="col-lg-6">
-                        <a href="" class="btn btn-danger">
+                        <a href="${pageContext.request.contextPath}/secured/general/reporte?type=pdf&&report=productos&&jdbc=false&&key=null&&value=null" class="btn btn-danger">
                             <i class="fa fa-file-pdf-o"></i>
                         </a>
-                        <a href="" class="btn btn-success">
+                        <a href="${pageContext.request.contextPath}/secured/general/reporte?type=xls&&report=productos&&jdbc=false&&key=null&&value=null" class="btn btn-success">
                             <i class="fa fa-file-excel-o"></i>
                         </a>
-                        <a href="" class="btn  btn-primary">
+                        <a href="${pageContext.request.contextPath}/secured/general/reporte?type=doc&&report=productos&&jdbc=false&&key=null&&value=null" class="btn  btn-primary">
                             <i class="fa fa-file-word-o"></i>
                         </a>
                     </div>

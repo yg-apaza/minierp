@@ -242,6 +242,26 @@
         <servlet-name>ClassSubClassController</servlet-name>
         <url-pattern>/secured/compras/claseSubclase</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <description/>
+        <display-name>SearchPurchaseBillController</display-name>
+        <servlet-name>SearchPurchaseBillController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.compras.SearchPurchaseBillController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SearchPurchaseBillController</servlet-name>
+        <url-pattern>/secured/compras/searchBill</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <description/>
+        <display-name>AddProductController</display-name>
+        <servlet-name>AddProductController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.compras.AddProductController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddProductController</servlet-name>
+        <url-pattern>/secured/compras/addProduct</url-pattern>
+    </servlet-mapping>
     <!--Modulo de Configuraciones-->
     <servlet>
         <description/>
@@ -296,6 +316,17 @@
     <servlet-mapping>
         <servlet-name>UnidadTransporteController</servlet-name>
         <url-pattern>/secured/configuracion/unidadTransporte</url-pattern>
+    </servlet-mapping>
+    <!--Sub Modulo Tablas Generales-->
+    <servlet>
+        <description/>
+        <display-name>TablasGeneralesController</display-name>
+        <servlet-name>TablasGeneralesController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.configuracion.TablasGeneralesController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TablasGeneralesController</servlet-name>
+        <url-pattern>/secured/configuracion/tablasGenerales</url-pattern>
     </servlet-mapping>
     <!--Sub Modulo Sucursal-->
     <servlet>
@@ -576,12 +607,12 @@
     </servlet-mapping>
     <servlet>
         <description/>
-        <display-name>SearchBillController</display-name>
-        <servlet-name>SearchBillController</servlet-name>
-        <servlet-class>org.epis.minierp.controller.ventas.SearchBillController</servlet-class>
+        <display-name>SearchSaleBillController</display-name>
+        <servlet-name>SearchSaleBillController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.ventas.SearchSaleBillController</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>SearchBillController</servlet-name>
+        <servlet-name>SearchSaleBillController</servlet-name>
         <url-pattern>/secured/ventas/searchBill</url-pattern>
     </servlet-mapping>
     <servlet>
@@ -603,7 +634,7 @@
     <servlet-mapping>
         <servlet-name>PartialRefundController</servlet-name>
         <url-pattern>/secured/ventas/partialRefund</url-pattern>
-    </servlet-mapping>    
+    </servlet-mapping>
     <servlet>
         <description/>
         <display-name>ReferralGuideController</display-name>
