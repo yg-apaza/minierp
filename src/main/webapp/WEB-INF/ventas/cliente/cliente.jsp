@@ -8,32 +8,39 @@
     </jsp:attribute>
     <jsp:attribute name="contenido">
         <div class="panel-body">
-            <h1 class="page-header">Clientes
-                <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
-                <a href="#" class="btn btn-success btn-circle" data-toggle="modal" data-target="#agregarModal"><i class="fa fa-plus"></i></a>
-                <a href="#" class="btn btn-info btn-circle" data-toggle="modal" data-target="#estadosModal"><i class="fa fa-eye"></i></a>
-                <a href="#" class="btn btn-danger btn-circle" data-toggle="modal" data-target="#delDocumentoModal"><i class="fa fa-file-text"></i></a>
-                <a href="#" class="btn btn-danger btn-circle" data-toggle="modal" data-target="#delRutaModal"><i class="fa fa-automobile"></i></a>
-                </cc:if>
-            </h1>     
             <div class="row">
-                <div class="col-md-4">
-                    <a href="${pageContext.request.contextPath}/secured/general/reporte?type=pdf&&report=clientes&&jdbc=false&&key=null&&value=null" class="btn btn-outline btn-danger btn-lg btn-block">
-                        <i class="fa fa-file-pdf-o"></i>
-                        Reporte [PDF]
-                    </a></div>
-                <div class="col-md-4">
-                    <a href="${pageContext.request.contextPath}/secured/general/reporte?type=xls&&report=clientes&&jdbc=false&&key=null&&value=null" class="btn btn-outline btn-success btn-lg btn-block">
-                        <i class="fa fa-file-excel-o"></i>
-                        Reporte [XLS]
-                    </a></div>
-                <div class="col-md-4">
-                    <a href="${pageContext.request.contextPath}/secured/general/reporte?type=doc&&report=clientes&&jdbc=false&&key=null&&value=null" class="btn btn-outline btn-primary btn-lg btn-block">
-                        <i class="fa fa-file-word-o"></i>
-                        Reporte [DOC]
-                    </a></div>
+                <div class="col-lg-12">
+                    <h1 class="page-header"> Clientes </h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="col-xs-12 col-md-9">
+                        <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
+                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregarModal"> Agregar Nuevo <i class="fa fa-plus"></i></button>                
+                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#estadosModal"> Ver Inhabilitados <i class="fa fa-eye"></i></button>
+                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delDocumentoModal"> Gestionar Documentos Asociados <i class="fa fa-file-text"></i></button>
+                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delRutaModal"> Gestionar Rutas Asociados <i class="fa fa-automobile"></i></button>
+                        </cc:if>
+                    </div>
+                    <div class="col-xs-12 col-md-3">
+                        <div class="form-group input-group" >
+                            <span class="input-group-addon">Reportes</span>
+                            <a href="${pageContext.request.contextPath}/secured/general/reporte?type=pdf&&report=clientes&&jdbc=false&&key=null&&value=null" class="btn btn-danger">
+                                <i class="fa fa-file-pdf-o"></i>
+                            </a> 
+                            <a href="${pageContext.request.contextPath}/secured/general/reporte?type=xls&&report=clientes&&jdbc=false&&key=null&&value=null" class="btn btn-success">
+                                <i class="fa fa-file-excel-o"></i>
+                            </a> 
+                            <a href="${pageContext.request.contextPath}/secured/general/reporte?type=doc&&report=clientes&&jdbc=false&&key=null&&value=null" class="btn  btn-primary">
+                                <i class="fa fa-file-word-o"></i>
+                            </a>
+                        </div>
+                    </div>    
+                </div>
             </div>
             <br>
+            
             <div class="col-md-12">
                 <div class="table-responsive">
                     <table class="table table-bordered table-striped table-hover" id="tablaClientes">
@@ -70,26 +77,39 @@
                                     <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                                     <td>
                                         <a href="#" data-toggle="modal" data-target="#modificarModal"
-                                           data-clicod="${cli.cliCod}" data-tipclicod="${cli.taGzzTipoCliente.tipCliCod}" data-clirazsoc="${cli.cliRazSoc}" 
-                                           data-clinomcom="${cli.cliNomCom}" data-clidomfis="${cli.cliDomFis}" data-clinom="${cli.cliNom}" data-cliapepat="${cli.cliApePat}" 
-                                           data-cliapemat="${cli.cliApeMat}" data-clisex="${cli.cliSex}" data-clidir="${cli.cliDir}" 
-                                           data-clitelfij="${cli.cliTelFij}" data-clitelcel="${cli.cliTelCel}" data-cliemail="${cli.cliEmail}" 
-                                           data-estcivcod="${cli.taGzzEstadoCivil.estCivCod}" data-estcivdet="${cli.taGzzEstadoCivil.estCivDet}" 
+                                           data-clicod="${cli.cliCod}" 
+                                           data-tipclicod="${cli.taGzzTipoCliente.tipCliCod}" 
+                                           data-clirazsoc="${cli.cliRazSoc}" 
+                                           data-clinomcom="${cli.cliNomCom}" 
+                                           data-clidomfis="${cli.cliDomFis}" 
+                                           data-clinom="${cli.cliNom}" 
+                                           data-cliapepat="${cli.cliApePat}" 
+                                           data-cliapemat="${cli.cliApeMat}" 
+                                           data-clisex="${cli.cliSex}" 
+                                           data-clidir="${cli.cliDir}" 
+                                           data-clitelfij="${cli.cliTelFij}" 
+                                           data-clitelcel="${cli.cliTelCel}" 
+                                           data-cliemail="${cli.cliEmail}" 
+                                           data-estcivcod="${cli.taGzzEstadoCivil.estCivCod}" 
+                                           data-estcivdet="${cli.taGzzEstadoCivil.estCivDet}" 
                                            data-enp1mclientesrutases="${cli.enP1mClientesRutases}" 
                                            data-enp1mdocumentoclientes="${cli.enP1mClientesRutases}" 
                                            data-cancod="${cli.taGzzCanalCliente.canCliCod}">
                                             <i class="fa fa-pencil-square-o fa-lg" style="color: black;"></i>
                                         </a>
                                         <a href="#" data-toggle="modal" data-target="#disableModal" 
-                                           data-clicod="${cli.cliCod}" data-clirazsoc="${cli.cliRazSoc}" >
+                                           data-clicod="${cli.cliCod}" 
+                                           data-clirazsoc="${cli.cliRazSoc}" >
                                             <i class="fa fa-trash-o fa-lg" style="color: black;"></i>
                                         </a>
                                         <a href="#" data-toggle="modal" data-target="#rutaModal" 
-                                           data-clicod="${cli.cliCod}" data-clirazsoc="${cli.cliRazSoc}">
+                                           data-clicod="${cli.cliCod}" 
+                                           data-clirazsoc="${cli.cliRazSoc}">
                                             <i class="fa fa-automobile fa-lg" style="color: black;"></i>
                                         </a>
                                         <a href="#" data-toggle="modal" data-target="#documentoModal" 
-                                           data-clicod="${cli.cliCod}" data-clirazsoc="${cli.cliRazSoc}">
+                                           data-clicod="${cli.cliCod}" 
+                                           data-clirazsoc="${cli.cliRazSoc}">
                                             <i class="fa fa-file-text fa-lg" style="color: black;"></i>
                                         </a>
                                     </td>
@@ -198,12 +218,6 @@
                                             </c:forEach>
                                         </select>
                                     </div>
-                                    <!--
-                                    <div class="col-sm-9">
-                                        <label>Correo Eletronico:</label>
-                                        <input type="text" class="form-control" placeholder="example@domain.com" name="cliEmail">
-                                    </div>
-                                    -->
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-12">
@@ -367,7 +381,7 @@
                     </div>
                     <div class="modal-body">
                         <div class="table-responsive">
-                            <table class="table table-bordered table-striped table-hover">
+                            <table class="table table-bordered table-striped table-hover" id="tablaEstadosModal">
                                 <thead>
                                     <tr>
                                         <th>Codigo</th>
@@ -548,7 +562,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Eliminar Ruta</h4>
+                        <h4 class="modal-title">Gestionar Ruta</h4>
                     </div>
                     <form id="delRutaForm" method="post" action="${pageContext.request.contextPath}/secured/ventas/clientes">
                         <div class="modal-body">
@@ -557,7 +571,7 @@
                                 <div class="form-group">
                                     <div class="col-sm-12">
                                         <div class="table-responsive">
-                                            <table class="table table-bordered table-striped table-hover">
+                                            <table class="table table-bordered table-striped table-hover" id="tablaDelRutaForm">
                                                 <thead>
                                                     <tr>
                                                         <th>Cliente</th>
@@ -605,7 +619,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Eliminar Documento</h4>
+                        <h4 class="modal-title">Gestionar Documento</h4>
                     </div>
                     <form id="delDocumentoForm" method="post" action="${pageContext.request.contextPath}/secured/ventas/clientes">
                         <div class="modal-body">
@@ -614,7 +628,7 @@
                                 <div class="form-group">
                                     <div class="col-md-12">
                                         <div class="table-responsive">
-                                            <table class="table table-bordered table-striped table-hover">
+                                            <table class="table table-bordered table-striped table-hover" id="tablaDelDocumentoForm">
                                                 <thead>
                                                     <tr>
                                                         <th>Cliente</th>
@@ -783,10 +797,22 @@
             </div>
         </div>
 
-        <script>
-            $('#tablaClientes').DataTable({
-                responsive: true
+        <script language="javascript">
+            $(document).ready(function () {
+                $('#tablaClientes').DataTable({
+                    responsive: true
+                    });
+                $('#tablaEstadosModal').DataTable({
+                    responsive: true
+                    }); 
+                $('#tablaDelRutaForm').DataTable({
+                    responsive: true
+                    });    
+                $('#tablaDelDocumentoForm').DataTable({
+                    responsive: true
+                    });       
             });
+
             var updateModal = $("#modificarModal");
             var disableModal = $("#disableModal");
             var activateModal = $("#activateModal");

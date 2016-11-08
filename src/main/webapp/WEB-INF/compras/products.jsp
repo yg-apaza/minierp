@@ -13,19 +13,15 @@
                 </div>
             </div>            
             <div class="row">
-                <div class="col-lg-7">
+                <div class="col-xs-12 col-md-9">
                     <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addProduct"> Agregar nuevo <i class="fa fa-plus"></i></button>                
-                    </cc:if>
-                    <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                     <button type="button" class="btn btn-info" data-toggle="modal" data-target="#viewModal"> Ver Inhabilitados <i class="fa fa-eye"></i></button>                
                     </cc:if>
                 </div>
-                <div class=" col-lg-5">
-                    <div class="col-lg-offset-4 col-lg-2">
-                        <label>Reporte</label>
-                    </div>
-                    <div class="col-lg-6">
+                <div class="col-xs-12 col-md-3">
+                    <div class="form-group input-group" >
+                        <span class="input-group-addon">Reportes</span>
                         <a href="${pageContext.request.contextPath}/secured/general/reporte?type=pdf&&report=productos&&jdbc=false&&key=null&&value=null" class="btn btn-danger">
                             <i class="fa fa-file-pdf-o"></i>
                         </a>
