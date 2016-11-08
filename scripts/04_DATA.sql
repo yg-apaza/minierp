@@ -129,12 +129,12 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `episerp`;
-INSERT INTO `episerp`.`ta_gzz_unidad_med` (`UniMedCod`, `UniMedDet`, `EstRegCod`) VALUES (1, 'Unidades', 'A');
-INSERT INTO `episerp`.`ta_gzz_unidad_med` (`UniMedCod`, `UniMedDet`, `EstRegCod`) VALUES (2, 'Kilogramos', 'A');
-INSERT INTO `episerp`.`ta_gzz_unidad_med` (`UniMedCod`, `UniMedDet`, `EstRegCod`) VALUES (3, 'Litros', 'A');
-INSERT INTO `episerp`.`ta_gzz_unidad_med` (`UniMedCod`, `UniMedDet`, `EstRegCod`) VALUES (4, 'Metros', 'A');
-INSERT INTO `episerp`.`ta_gzz_unidad_med` (`UniMedCod`, `UniMedDet`, `EstRegCod`) VALUES (5, 'Cajas', 'A');
-INSERT INTO `episerp`.`ta_gzz_unidad_med` (`UniMedCod`, `UniMedDet`, `EstRegCod`) VALUES (6, 'Bolsas', 'A');
+INSERT INTO `ta_gzz_unidad_med` (`UniMedCod`,`UniMedSim`,`UniMedDet`,`EstRegCod`) VALUES (01,'u','Unidades','A');
+INSERT INTO `ta_gzz_unidad_med` (`UniMedCod`,`UniMedSim`,`UniMedDet`,`EstRegCod`) VALUES (02,'kg','Kilogramos','A');
+INSERT INTO `ta_gzz_unidad_med` (`UniMedCod`,`UniMedSim`,`UniMedDet`,`EstRegCod`) VALUES (03,'l','Litros','A');
+INSERT INTO `ta_gzz_unidad_med` (`UniMedCod`,`UniMedSim`,`UniMedDet`,`EstRegCod`) VALUES (04,'m','Metros','A');
+INSERT INTO `ta_gzz_unidad_med` (`UniMedCod`,`UniMedSim`,`UniMedDet`,`EstRegCod`) VALUES (05,'ca','Cajas','A');
+INSERT INTO `ta_gzz_unidad_med` (`UniMedCod`,`UniMedSim`,`UniMedDet`,`EstRegCod`) VALUES (06,'bol','Bolsas','A');
 
 COMMIT;
 
