@@ -18,11 +18,12 @@ public class ImpresoraMatricial {
     private static final char BACKSLASH = 92;
     
     private static final char P = 80; //10cpi pitch
+    private static final char M = 77; //12cpi pitch
     private static final char g = 103; //15cpi pitch
-     
+
     private static final char E = 69; //bold font on
     private static final char F = 70; //bold font off
-    
+
     private static final char C = 4; //bold font on
     private static final char D = 5; //bold font off
      
@@ -88,27 +89,26 @@ public class ImpresoraMatricial {
         setFont("Serif");
         switch(type){
             case "factura":
-                if(fP.getSize() == 0)
-                    select10CPI();
-                else
-                    select15CPI(); 
+                setSize(fP.getSize());
                 setMargins(fP.getLeftMargin(), fP.getRightMargin());
                 break;
             case "boleta":
-                if(bP.getSize() == 0)
-                    select10CPI();
-                else
-                    select15CPI(); 
+                setSize(bP.getSize()); 
                 setMargins(bP.getLeftMargin(), bP.getRightMargin());
                 break;
             case "guiaRemision":
-                if(gP.getSize() == 0)
-                    select10CPI();
-                else
-                    select15CPI();
+                setSize(gP.getSize());
                 setMargins(gP.getLeftMargin(), gP.getRightMargin());
                 break;
         }       
+    }
+    
+    public void setSize(int v) throws IOException{
+        switch (v){
+            case 0: select10CPI(); break;
+            case 1: select12CPI(); break;
+            case 2: select15CPI(); break;
+        }
     }
 
     public void clearStyle() throws IOException {
@@ -149,6 +149,11 @@ public class ImpresoraMatricial {
     public void select10CPI() throws IOException {
         writer.write(ESC);
         writer.write(P);
+    }
+    
+    public void select12CPI() throws IOException {
+        writer.write(ESC);
+        writer.write(M);
     }
     
     public void select15CPI() throws IOException {

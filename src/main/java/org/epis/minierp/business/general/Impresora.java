@@ -18,6 +18,7 @@ public class Impresora {
     private static final int MAX_BOL_DET = 11;
     private static final int MAX_REM_DET = 27;
     
+    String extension = ".prn";
     String path;
     SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
     DateFormat fecha = new SimpleDateFormat("dd/MM/yyyy");
@@ -42,7 +43,7 @@ public class Impresora {
     }
 
     public String generateFactura(String cod){
-        String file = "Factura_"+sf.format(date.getTime())+".txt";
+        String file = "Factura_"+sf.format(date.getTime())+extension;
         ImpresoraMatricial fac = new ImpresoraMatricial(file, path, "factura");
         try {
             EnP1mFacturaVentaCab f = (new EnP1mFacturaVentaCabDao()).getById(cod);
@@ -71,7 +72,7 @@ public class Impresora {
                 proDes = d.getEnP2mProducto().getProDet();
                 proValUni = d.getFacVenDetValUni();
                 proDes1 = "3";
-                proDes2 = "5";
+                proDes2 = " ";
                 proValNet = proCan * proValUni;
                 fac.writeFacDetalle(Integer.toString(proCod), proCan, proUni, proDes, proValUni, proDes1, proDes2, df.format(proValNet));
             }
@@ -88,7 +89,7 @@ public class Impresora {
     }
     
     public String generateFacturas(String[] cods){
-        String file = "Facturas_"+sf.format(date.getTime())+".txt";
+        String file = "Facturas_"+sf.format(date.getTime())+extension;
         ImpresoraMatricial fac = new ImpresoraMatricial(file, path, "factura");
         try {
         for (String cod : cods){
@@ -103,8 +104,8 @@ public class Impresora {
             conPag = f.getTaGzzMetodoPagoFactura().getMetPagDet();
             fecVen = fecha.format(f.getFacVenCabFecVen());
             venZon = f.getEnP1mUsuario().getUsuNom();
-            numSec = "1";
-            dis = "Cercado";
+            numSec = "num";
+            dis = "distrito";
             rut = Integer.toString(f.getEnP1mCatalogoRuta().getCatRutCod());
             traNom = f.getEnP2mGuiaRemTransportista().getEnP2mTransportista().getTraNom();
             fac.writeFacCabecera(cliCod, conPag, fecVen, venZon, numSec, dis, rut, traNom);
@@ -118,7 +119,7 @@ public class Impresora {
                 proDes = d.getEnP2mProducto().getProDet();
                 proValUni = d.getFacVenDetValUni();
                 proDes1 = "3";
-                proDes2 = "5";
+                proDes2 = " ";
                 proValNet = proCan * proValUni;
                 fac.writeFacDetalle(Integer.toString(proCod), proCan, proUni, proDes, proValUni, proDes1, proDes2, df.format(proValNet));
             }
@@ -138,7 +139,7 @@ public class Impresora {
     }
     
     public String generateBoletas(String[] cods){
-        String file = "Boletas_"+sf.format(date.getTime())+".txt";
+        String file = "Boletas_"+sf.format(date.getTime())+extension;
         ImpresoraMatricial bol = new ImpresoraMatricial(file, path, "boleta");
         try {
             for (String cod : cods) {
@@ -151,9 +152,9 @@ public class Impresora {
                 cliCod = f.getEnP1mCliente().getCliCod();
                 conPag = f.getTaGzzMetodoPagoFactura().getMetPagDet();
                 fecVen = fecha.format(f.getFacVenCabFecVen());
-                venRut = " ";
-                pdv = " ";
-                obs = " ";
+                venRut = Integer.toString(f.getEnP1mCatalogoRuta().getCatRutCod());
+                pdv = "pdv";
+                obs = f.getFacVenCabObs();
                 bol.writeBolCabecera(cliCod, conPag, fecVen, venRut, pdv, obs);
 
                 proCod = 0;
@@ -182,27 +183,27 @@ public class Impresora {
     }
     
     public String generateGuiaRemision(String[] cods){
-        String file = "Remision_"+sf.format(date.getTime())+".txt";
+        String file = "Remision_"+sf.format(date.getTime())+extension;
         ImpresoraMatricial rem = new ImpresoraMatricial(file, path, "guiaRemision");
         try {
             for (String cod : cods) {
 
                 EnP1mFacturaVentaCab f = (new EnP1mFacturaVentaCabDao()).getById(cod);
                 cliCod = f.getEnP1mCliente().getCliCod();
-                cliNom = f.getEnP1mCliente().getCliRazSoc();
+                cliNom = f.getEnP1mCliente().getCliNom();
                 punPar = " ";
                 punLle = f.getEnP1mCliente().getCliDir();
                 traNom = f.getEnP2mGuiaRemTransportista().getEnP2mTransportista().getTraNom();
                 rem.writeGuiRemSobCab(cliNom, punPar, punLle, traNom);
 
                 fecVen = fecha.format(f.getFacVenCabFecVen());
-                ven = f.getEnP1mUsuario().getUsuNom();
-                zon = " ";
-                con = " ";
-                oc = " ";
+                ven = f.getEnP1mUsuario().getUsuCod();
+                zon = "zona";
+                con = "con";
+                oc = "oc";
                 facNum = f.getFacVenCabCod();
-                hora = " ";
-                numInt = " ";
+                hora = "hora";
+                numInt = "numInt";
                 rem.writeGuiRemCabecera(fecVen, ven, zon, con, cliCod, oc, facNum, hora, numInt);
 
                 proCod = 0;

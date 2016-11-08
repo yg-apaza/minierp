@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <facturaPrinter>
-    <size>0</size>
+    <size>1</size>
     <leftMargin>2</leftMargin>
-    <rightMargin>0</rightMargin>
+    <rightMargin>1</rightMargin>
     <topMargin>4.0</topMargin>
     <cliNom>1.8</cliNom>
     <cliDir>1.8</cliDir>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <boletaPrinter>
-    <size>0</size>
-    <leftMargin>3</leftMargin>
+    <size>1</size>
+    <leftMargin>2</leftMargin>
     <rightMargin>1</rightMargin>
     <topMargin>2</topMargin>
     <cliNom>1.8</cliNom>
@@ -10,7 +10,7 @@
     <topFacCab>0.4</topFacCab>
     <cliCod>2.1</cliCod>
     <conPag>2.2</conPag>
-    <fecVen>2.2</fecVen>
+    <fecVen>3</fecVen>
     <venRut>2.85</venRut>
     <pdv>1.5</pdv>
     <obs>3.5</obs>

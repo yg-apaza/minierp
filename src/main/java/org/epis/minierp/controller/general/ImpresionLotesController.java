@@ -43,6 +43,8 @@ public class ImpresionLotesController extends HttpServlet {
         File file = new File(fileGenerated);
         response.addHeader("Content-Disposition", "attachment; filename=" + file.getName());
         response.setContentLength((int) file.length());
+        response.setContentType("text/plain; charset=utf-8");
+        response.setCharacterEncoding("utf-8");
         FileInputStream fileInputStream = new FileInputStream(file);
         OutputStream responseOutputStream = response.getOutputStream();
         int bytes;

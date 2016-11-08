@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <guiaRemisionPrinter>
-    <size>0</size>
+    <size>1</size>
     <leftMargin>2</leftMargin>
     <rightMargin>1</rightMargin>
     <topMargin>4.5</topMargin>
