@@ -14,9 +14,9 @@ import org.epis.minierp.model.EnP1mFacturaVentaCab;
 import org.epis.minierp.model.EnP1tFacturaVentaDet;
 
 public class Impresora {
-    private static final int MAX_FAC_DET = 20;
-    private static final int MAX_BOL_DET = 15;
-    private static final int MAX_REM_DET = 20;
+    private static final int MAX_FAC_DET = 25;
+    private static final int MAX_BOL_DET = 11;
+    private static final int MAX_REM_DET = 27;
     
     String path;
     SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
@@ -67,7 +67,7 @@ public class Impresora {
             for(EnP1tFacturaVentaDet d : detalles){
                 proCod++;
                 proCan = d.getFacVenDetCan();
-                proUni = d.getEnP2mProducto().getTaGzzUnidadMed().getUniMedDet();
+                proUni = d.getEnP2mProducto().getTaGzzUnidadMed().getUniMedSim();
                 proDes = d.getEnP2mProducto().getProDet();
                 proValUni = d.getFacVenDetValUni();
                 proDes1 = "3";
@@ -114,7 +114,7 @@ public class Impresora {
             for(EnP1tFacturaVentaDet d : detalles){
                 proCod++;
                 proCan = d.getFacVenDetCan();
-                proUni = d.getEnP2mProducto().getTaGzzUnidadMed().getUniMedDet();
+                proUni = d.getEnP2mProducto().getTaGzzUnidadMed().getUniMedSim();
                 proDes = d.getEnP2mProducto().getProDet();
                 proValUni = d.getFacVenDetValUni();
                 proDes1 = "3";
@@ -161,7 +161,7 @@ public class Impresora {
                 for(EnP1tFacturaVentaDet d : detalles){
                     proCod++;
                     proCan = d.getFacVenDetCan();
-                    proUni = d.getEnP2mProducto().getTaGzzUnidadMed().getUniMedDet();
+                    proUni = d.getEnP2mProducto().getTaGzzUnidadMed().getUniMedSim();
                     proDes = d.getEnP2mProducto().getProDet();
                     proValUni = d.getFacVenDetValUni();
                     proDes1 = "3";
@@ -209,7 +209,7 @@ public class Impresora {
                 for(EnP1tFacturaVentaDet d : (Set<EnP1tFacturaVentaDet>)f.getEnP1tFacturaVentaDets()){
                     proCod++;
                     proCan = d.getFacVenDetCan();
-                    proUni = d.getEnP2mProducto().getTaGzzUnidadMed().getUniMedDet();
+                    proUni = d.getEnP2mProducto().getTaGzzUnidadMed().getUniMedSim();
                     proDes = d.getEnP2mProducto().getProDet();
                     proValUni = d.getFacVenDetValUni();
                     proDes1 = "3";

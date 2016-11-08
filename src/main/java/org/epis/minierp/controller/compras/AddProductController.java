@@ -97,6 +97,7 @@ public class AddProductController extends HttpServlet {
             case "saveProduct":
                 String claProCod = request.getParameter("claProCod");
                 String subClaProCod = request.getParameter("subClaProCod");
+                String proCod = request.getParameter("proCod");
                 int monCod = Integer.parseInt(request.getParameter("monCod"));
                 int uniMedCod = Integer.parseInt(request.getParameter("uniMedCod"));
                 String proDet = request.getParameter("proDet");
@@ -104,7 +105,7 @@ public class AddProductController extends HttpServlet {
                 EnP2mProductoId productId = new EnP2mProductoId();
                 productId.setClaProCod(claProCod);
                 productId.setSubClaProCod(subClaProCod);
-                productId.setProCod(String.valueOf((int) (System.currentTimeMillis() % Integer.MAX_VALUE)));
+                productId.setProCod(proCod);
                 
                 EnP2mProducto product = new EnP2mProducto(); 
                 product.setId(productId);
