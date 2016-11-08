@@ -2,6 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="minierptemplate" %>
+<%@ taglib prefix='cc' uri='http://java.sun.com/jsp/jstl/core' %>
 
 <minierptemplate:template>
     <jsp:attribute name="titulo">
@@ -9,33 +10,39 @@
     </jsp:attribute>
     <jsp:attribute name="contenido">
         <div class="panel-body">
-            <h1 class="page-header">Usuarios
-                <c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
-                <a href="#" class="btn btn-success btn-circle" data-toggle="modal" data-target="#agregarModal"><i class="fa fa-plus"></i></a>
-                <a href="#" class="btn btn-info btn-circle" data-toggle="modal" data-target="#estadosModal"><i class="fa fa-eye"></i></a>
-                </c:if>
-            </h1>     
-            <!--<div class="row">
-                <div class="col-sm-4">
-                    <a href="${pageContext.request.contextPath}/secured/reporte?type=pdf&&report=puntodeventa" class="btn btn-outline btn-danger btn-lg btn-block">
-                        <i class="fa fa-file-pdf-o"></i>
-                        Reporte [PDF]
-                    </a>   
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header"> Usuarios </h1>
                 </div>
-                <div class="col-sm-4">
-                    <a href="${pageContext.request.contextPath}/secured/reporte?type=xls&&report=puntodeventa" class="btn btn-outline btn-success btn-lg btn-block">
-                        <i class="fa fa-file-excel-o"></i>
-                        Reporte [XLS]
-                    </a>   
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="col-xs-12 col-md-9">
+                        <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
+                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregarModal"> Agregar Nuevo <i class="fa fa-plus"></i></button>                
+                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#estadosModal"> Ver Inhabilitados <i class="fa fa-eye"></i></button>
+                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#viewDocumentoModal"> Gestionar Documentos Asociados <i class="fa fa-file-text"></i></button>
+                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#viewClienteModal"> Gestionar Clientes Asociados <i class="fa fa-child"></i></button>
+                        </cc:if>
+                    </div>
+                    <!--
+                    <div class="col-xs-12 col-md-3">
+                        <div class="form-group input-group" >
+                            <span class="input-group-addon">Reportes</span>
+                            <a href="${pageContext.request.contextPath}/secured/general/reporte?type=pdf&&report=clientes&&jdbc=false&&key=null&&value=null" class="btn btn-danger">
+                                <i class="fa fa-file-pdf-o"></i>
+                            </a> 
+                            <a href="${pageContext.request.contextPath}/secured/general/reporte?type=xls&&report=clientes&&jdbc=false&&key=null&&value=null" class="btn btn-success">
+                                <i class="fa fa-file-excel-o"></i>
+                            </a> 
+                            <a href="${pageContext.request.contextPath}/secured/general/reporte?type=doc&&report=clientes&&jdbc=false&&key=null&&value=null" class="btn  btn-primary">
+                                <i class="fa fa-file-word-o"></i>
+                            </a>
+                        </div>
+                    </div>  -->  
                 </div>
-                <div class="col-sm-4">
-                    <a href="${pageContext.request.contextPath}/secured/reporte?type=doc&&report=puntodeventa" class="btn btn-outline btn-primary btn-lg btn-block">
-                        <i class="fa fa-file-word-o"></i>
-                        Reporte [DOC]
-                    </a>
-                </div>                
-            </div>    
-            <br>-->
+            </div><br>
+                                
             <div class="col-md-12">
                 <div class="table-responsive">
                     <table class="table table-bordered table-striped table-hover" id="tablaUsuarios">
@@ -44,14 +51,11 @@
                                 <th>Codigo</th>
                                 <th>Documentos</th>
                                 <th>Nombres y Apellidos</th>
-                                <th>Género</th>
-                                <th>Login</th>
-                                <th>Tipo Usuario</th>
-                                <th>Sucursal</th>
-                                <c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
-                                <th>Acciones</th>
-                                </c:if>
-
+                                <th>Tipo</th>
+                                <th>Catalogo de Clientes</th>
+                                <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
+                                    <th>Acciones</th>
+                                </cc:if>
                             </tr>
                         </thead>
                         <tbody>
@@ -64,26 +68,50 @@
                                         </c:forEach>
                                     </td>
                                     <td>${u.usuNom} ${u.usuApePat} ${u.usuApeMat}</td>
-                                    <td>${u.usuSex}</td>
-                                    <td>${u.usuLog}</td>
                                     <td>${u.taGzzTipoUsuario.tipUsuDet}</td>
-                                    <td>${u.enP1mSucursal.sucDes}</td>
-                                    <c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
-                                    <td class="text-right">
+                                    <td>
+                                        <c:forEach var="cli" items="${u.enP1mCarteraClienteses}">
+                                           ${cli.enP1mCliente.cliCod} - ${cli.enP1mCliente.cliRazSoc}<br>
+                                        </c:forEach>
+                                    </td>
+                                    <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
+                                    <td>
                                         <a href="#" data-toggle="modal" data-target="#modificarModal" 
-                                           data-usucod="${u.usuCod}" data-usunom="${u.usuNom}" data-usuapepat="${u.usuApePat}" 
-                                           data-usuapemat="${u.usuApeMat}" data-usulog="${u.usuLog}" data-tipusucod="${u.taGzzTipoUsuario.tipUsuCod}" 
-                                           data-succod="${u.enP1mSucursal.sucCod}" data-usufecnac="${u.usuFecNac}"
-                                           data-estcivcod="${u.taGzzEstadoCivil.estCivCod}" data-ususex="${u.usuSex}">
-                                           <i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i>
+                                           data-usucod="${u.usuCod}" 
+                                           data-usunom="${u.usuNom}" 
+                                           data-usuapepat="${u.usuApePat}" 
+                                           data-usuapemat="${u.usuApeMat}" 
+                                           data-tipusucod="${u.taGzzTipoUsuario.tipUsuCod}" 
+                                           data-succod="${u.enP1mSucursal.sucCod}" 
+                                           data-usufecnac="${u.usuFecNac}"
+                                           data-estcivcod="${u.taGzzEstadoCivil.estCivCod}" 
+                                           data-ususex="${u.usuSex}"
+                                           data-usulog="${u.usuLog}">
+                                           <i class="fa fa-pencil-square-o fa-lg" style="color: black;"></i>
                                         </a>
                                         <a href="#" data-toggle="modal" data-target="#disableModal" 
-                                           data-usucod="${u.usuCod}" data-usunom="${u.usuNom}" data-usuapepat="${u.usuApePat}" 
+                                           data-usucod="${u.usuCod}" 
+                                           data-usunom="${u.usuNom}" 
+                                           data-usuapepat="${u.usuApePat}" 
                                            data-usuapemat="${u.usuApeMat}">
-                                            <i class="fa fa-trash-o fa-2x" style="color: black;"></i>
+                                            <i class="fa fa-trash-o fa-lg" style="color: black;"></i>
+                                        </a>
+                                        <a href="#" data-toggle="modal" data-target="#documentoModal" 
+                                           data-usucod="${u.usuCod}" 
+                                           data-usunom="${u.usuNom}" 
+                                           data-usuapepat="${u.usuApePat}" 
+                                           data-usuapemat="${u.usuApeMat}">
+                                            <i class="fa fa-file-text fa-lg" style="color: black;"></i>
+                                        </a>
+                                        <a href="#" data-toggle="modal" data-target="#clienteModal" 
+                                           data-usucod="${u.usuCod}" 
+                                           data-usunom="${u.usuNom}" 
+                                           data-usuapepat="${u.usuApePat}" 
+                                           data-usuapemat="${u.usuApeMat}">
+                                            <i class="fa fa-child fa-lg" style="color: black;"></i>
                                         </a>
                                     </td>
-                                    </c:if>
+                                    </cc:if>
                                 </tr>
                             </c:forEach>
                         </tbody>
@@ -312,18 +340,18 @@
                     </div>
                     <div class="modal-body">
                         <div class="table-responsive">
-                            <table class="table table-hover" id="tablaUsuarios">                                                                
+                            <table class="table table-bordered table-striped table-hover" id="tablaUsuariosInactivos">                                                                
                                 <thead>
                                     <tr>
                                         <th>Codigo Usuario</th>
                                         <th>Nombre y Apellidos</th>
                                         <th>Fecha Nacimiento</th>
                                         <th>Estado Civil</th>
-                                        <th>Sexo</th>
                                         <th>Login</th>
                                         <th>Tipo Usuario</th>
-                                        <th>Sucursal</th>                                                                                
-                                        <th class="text-right">Acciones </th>
+                                        <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
+                                        <th>Acciones</th>
+                                        </cc:if>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -333,23 +361,26 @@
                                             <td>${u.usuNom} ${u.usuApePat} ${u.usuApeMat}</td>
                                             <td><fmt:formatDate value="${u.usuFecNac}" pattern="dd/MM/yyyy"/></td>
                                             <td>${u.taGzzEstadoCivil.estCivDet}</td>
-                                            <td>${u.usuSex}</td>
                                             <td>${u.usuLog}</td>
                                             <td>${u.taGzzTipoUsuario.tipUsuDet}</td>
-                                            <td>${u.enP1mSucursal.sucDes}</td>
-
-                                            <td class="text-right">
-                                                <a href="#" data-toggle="modal" data-target="#activateModal" 
-                                                   data-usucod="${u.usuCod}" data-usunom="${u.usuNom}" data-usuapepat="${u.usuApePat}" 
-                                                   data-usuapemat="${u.usuApeMat}">
-                                                    <i class="fa fa-check fa-2x" style="color: green;"></i>
-                                                </a>
-                                                <a href="#" data-toggle="modal" data-target="#deleteModal"  
-                                                   data-usucod="${u.usuCod}" data-usunom="${u.usuNom}" data-usuapepat="${u.usuApePat}" 
-                                                   data-usuapemat="${u.usuApeMat}">
-                                                    <i class="fa fa-trash-o fa-2x" style="color: red;"></i>
-                                                </a>
-                                            </td>
+                                            <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
+                                                <td>
+                                                    <a href="#" data-toggle="modal" data-target="#activateModal" 
+                                                       data-usucod="${u.usuCod}" 
+                                                       data-usunom="${u.usuNom}" 
+                                                       data-usuapepat="${u.usuApePat}" 
+                                                       data-usuapemat="${u.usuApeMat}">
+                                                        <i class="fa fa-check fa-2x" style="color: green;"></i>
+                                                    </a>
+                                                    <a href="#" data-toggle="modal" data-target="#deleteModal"  
+                                                       data-usucod="${u.usuCod}" 
+                                                       data-usunom="${u.usuNom}" 
+                                                       data-usuapepat="${u.usuApePat}" 
+                                                       data-usuapemat="${u.usuApeMat}">
+                                                        <i class="fa fa-trash-o fa-2x" style="color: red;"></i>
+                                                    </a>
+                                                </td>
+                                            </cc:if>
                                         </tr>
                                     </c:forEach>
                                 </tbody>
@@ -407,15 +438,384 @@
                 </div>
             </div>
         </div>
-
-        <script>
-            $('#tablaUsuarios').DataTable({
+        
+        <div id="clienteModal" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-md">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Agregar Cliente</h4>
+                    </div>
+                    <form id="clienteForm" method="post" action="${pageContext.request.contextPath}/secured/configuracion/usuario/usuarios">
+                        <div class="modal-body">
+                            <input type="hidden" name="accion" value="cliente">
+                            <div class="form-horizontal">   
+                                <div class="form-group">
+                                    <div class="col-sm-6">
+                                        <label>Usuario:</label>
+                                        <input type="hidden" name="usuCod" id="clienteUsuCod">
+                                        <input type="text" class="form-control" id="clienteUsuCodShow" readonly>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label>Catalogo de Clientes:</label>
+                                        <select class="form-control" name="cliCod">
+                                            <c:forEach var="cli" items="${clientes}">
+                                                <option value="${cli.cliCod}">${cli.cliCod} - ${cli.cliRazSoc}</option>
+                                            </c:forEach>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <label>Descripcion:</label>
+                                        <input type="text" class="form-control" placeholder="Descripcion" name="usuCliDes">
+                                    </div>
+                                </div> 
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-outline btn-success">Agregar Cliente</button>
+                            <button type="button" class="btn btn-outline btn-danger" data-dismiss="modal">Cancelar</button>
+                        </div>
+                    </form>
+                </div>                                        
+            </div>
+        </div>                
+                        
+        <div id="documentoModal" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-md">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Agregar Documento</h4>
+                    </div>
+                    <form id="documentoForm" method="post" action="${pageContext.request.contextPath}/secured/configuracion/usuario/usuarios">
+                        <div class="modal-body">
+                            <input type="hidden" name="accion" value="documento">
+                            <div class="form-horizontal">   
+                                <div class="form-group">
+                                    <div class="col-sm-6">
+                                        <label>Usuario:</label>
+                                        <input type="hidden" name="usuCod" id="documentoUsuCod">
+                                        <input type="text" class="form-control" id="documentoUsuCodShow" readonly>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label>Documentos Disponibles:</label>
+                                        <select class="form-control" name="tipDocUsuCod">
+                                            <c:forEach var="docs" items="${documentos}">
+                                                <option value="${docs.tipDocUsuCod}">${docs.tipDocUsuCod} - ${docs.tipDocUsuDet}</option>
+                                            </c:forEach>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <label>Numero de Documento:</label>
+                                        <input type="text" class="form-control" placeholder="Numero del documento" name="docUsuNum">
+                                    </div>
+                                </div> 
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-outline btn-success">Agregar Documento</button>
+                            <button type="button" class="btn btn-outline btn-danger" data-dismiss="modal">Cancelar</button>
+                        </div>
+                    </form>
+                </div>                                        
+            </div>
+        </div>                
+        
+        <div id="viewDocumentoModal" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Gestion Documento</h4>
+                    </div>
+                    <form id="viewDocumentoForm" method="post" action="${pageContext.request.contextPath}/secured/configuracion/usuario/usuarios">
+                        <div class="modal-body">
+                            <div class="form-horizontal">   
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered table-striped table-hover" id="tablaViewDocumento">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Usuario</th>
+                                                        <th>Tipo de Documento</th>
+                                                        <th>Numero del Documento</th>
+                                                        <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
+                                                            <th>Acciones</th>
+                                                        </cc:if>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <c:forEach var="docUsu" items="${documentosUsuarios}">
+                                                        <tr>
+                                                            <td>${docUsu.enP1mUsuario.usuCod} - ${docUsu.enP1mUsuario.usuApePat} ${docUsu.enP1mUsuario.usuApeMat}, ${docUsu.enP1mUsuario.usuNom}</td>
+                                                            <td>${docUsu.taGzzTipoDocUsuario.tipDocUsuCod} - ${docUsu.taGzzTipoDocUsuario.tipDocUsuDet}</td>
+                                                            <td>${docUsu.docUsuNum}</td>
+                                                            <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
+                                                                <td>
+                                                                    <a href="#" data-toggle="modal" data-target="#modDocumentoModal" 
+                                                                       data-usucod="${docUsu.enP1mUsuario.usuCod}" 
+                                                                       data-usunom="${docUsu.enP1mUsuario.usuNom}" 
+                                                                       data-usuapepat="${docUsu.enP1mUsuario.usuApePat}" 
+                                                                       data-usuapemat="${docUsu.enP1mUsuario.usuApeMat}"
+                                                                       data-tipdocusucod="${docUsu.taGzzTipoDocUsuario.tipDocUsuCod}"
+                                                                       data-tipdocusudet="${docUsu.taGzzTipoDocUsuario.tipDocUsuDet}"
+                                                                       data-docusunum="${docUsu.docUsuNum}">
+                                                                        <i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i>
+                                                                    </a>
+                                                                    <a href="#" data-toggle="modal" data-target="#delDocumentoModal" 
+                                                                       data-usucod="${docUsu.enP1mUsuario.usuCod}" 
+                                                                       data-usunom="${docUsu.enP1mUsuario.usuNom}" 
+                                                                       data-usuapepat="${docUsu.enP1mUsuario.usuApePat}" 
+                                                                       data-usuapemat="${docUsu.enP1mUsuario.usuApeMat}"
+                                                                       data-tipdocusucod="${docUsu.taGzzTipoDocUsuario.tipDocUsuCod}"
+                                                                       data-tipdocusudet="${docUsu.taGzzTipoDocUsuario.tipDocUsuDet}">
+                                                                        <i class="fa fa-trash-o fa-2x" style="color: red;"></i>
+                                                                    </a>
+                                                                </td>
+                                                            </cc:if>
+                                                        </tr>
+                                                    </c:forEach>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>                                        
+            </div>
+        </div>                
+        
+        <div id="viewClienteModal" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Gestion Cliente</h4>
+                    </div>
+                    <form id="viewClienteForm" method="post" action="${pageContext.request.contextPath}/secured/configuracion/usuario/usuarios">
+                        <div class="modal-body">
+                            <div class="form-horizontal">   
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered table-striped table-hover" id="tablaViewCliente">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Usuario</th>
+                                                        <th>Cartera de Clientes</th>
+                                                        <th>Descripcion</th>
+                                                        <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
+                                                            <th>Acciones</th>
+                                                        </cc:if>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <c:forEach var="carCli" items="${carteraCli}">
+                                                        <tr>
+                                                            <td>${carCli.enP1mUsuario.usuCod} - ${carCli.enP1mUsuario.usuApePat} ${carCli.enP1mUsuario.usuApeMat}, ${carCli.enP1mUsuario.usuNom}</td>
+                                                            <td>${carCli.enP1mCliente.cliCod} - ${carCli.enP1mCliente.cliRazSoc}</td>
+                                                            <td>${carCli.usuCliDes}</td>
+                                                            <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
+                                                                <td>
+                                                                    <a href="#" data-toggle="modal" data-target="#modClienteModal" 
+                                                                       data-usucod="${carCli.enP1mUsuario.usuCod}" 
+                                                                       data-usunom="${carCli.enP1mUsuario.usuNom}" 
+                                                                       data-usuapepat="${carCli.enP1mUsuario.usuApePat}" 
+                                                                       data-usuapemat="${carCli.enP1mUsuario.usuApeMat}"
+                                                                       data-clicod="${carCli.enP1mCliente.cliCod}"
+                                                                       data-clirazsoc="${carCli.enP1mCliente.cliRazSoc}"
+                                                                       data-usuclides="${carCli.usuCliDes}">
+                                                                        <i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i>
+                                                                    </a>
+                                                                    <a href="#" data-toggle="modal" data-target="#delClienteModal" 
+                                                                       data-usucod="${carCli.enP1mUsuario.usuCod}" 
+                                                                       data-usunom="${carCli.enP1mUsuario.usuNom}" 
+                                                                       data-usuapepat="${carCli.enP1mUsuario.usuApePat}" 
+                                                                       data-usuapemat="${carCli.enP1mUsuario.usuApeMat}"
+                                                                       data-clicod="${carCli.enP1mCliente.cliCod}"
+                                                                       data-clirazsoc="${carCli.enP1mCliente.cliRazSoc}">
+                                                                        <i class="fa fa-trash-o fa-2x" style="color: red;"></i>
+                                                                    </a>
+                                                                </td>
+                                                            </cc:if>
+                                                        </tr>
+                                                    </c:forEach>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>                                        
+            </div>
+        </div> 
+                        
+        <div id="modClienteModal" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-md">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Modificar Cliente</h4>
+                    </div>
+                    <form id="modClienteForm" method="post" action="${pageContext.request.contextPath}/secured/configuracion/usuario/usuarios">
+                        <div class="modal-body">
+                            <input type="hidden" name="accion" value="modCliente">
+                            <div class="form-horizontal">   
+                                <div class="form-group">
+                                    <input type="hidden" name="usuCod" id="modClienteUsuCod">
+                                    <input type="hidden" name="cliCod" id="modClienteCliCod">
+                                    <div class="col-sm-6">
+                                        <label>Usuario:</label>
+                                        <input type="text" class="form-control" id="modClienteUsuAll" readonly>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label>Cliente:</label>
+                                        <input type="text" class="form-control" id="modClienteCliAll" readonly>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <label>Descripcion:</label>
+                                        <input type="text" class="form-control" id="modClienteUsuCliDes" name="usuCliDes">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-outline btn-success">Modificar Cliente</button>
+                            <button type="button" class="btn btn-outline btn-danger" data-dismiss="modal">Cancelar</button>
+                        </div>
+                    </form>
+                </div>                                        
+            </div>
+        </div>    
+                        
+        <div id="modDocumentoModal" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-md">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Modificar Documento</h4>
+                    </div>
+                    <form id="modDocumentoForm" method="post" action="${pageContext.request.contextPath}/secured/configuracion/usuario/usuarios">
+                        <div class="modal-body">
+                            <input type="hidden" name="accion" value="modDocumento">
+                            <div class="form-horizontal">   
+                                <div class="form-group">
+                                    <input type="hidden" name="usuCod" id="modDocumentoUsuCod">
+                                    <input type="hidden" name="tipDocUsuCod" id="modDocumentotipDocUsuCod">
+                                    <div class="col-sm-6">
+                                        <label>Usuario:</label>
+                                        <input type="text" class="form-control" id="modDocumentoUsuAll" readonly>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label>Tipo de Documento:</label>
+                                        <input type="text" class="form-control" id="modDocumentoTipDocAll" readonly>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <label>Numero del documento:</label>
+                                        <input type="text" class="form-control" id="modDocumentoDocUsuNum" name="docUsuNum">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-outline btn-success">Modificar Documento</button>
+                            <button type="button" class="btn btn-outline btn-danger" data-dismiss="modal">Cancelar</button>
+                        </div>
+                    </form>
+                </div>                                        
+            </div>
+        </div>                
+                        
+        <div id="delClienteModal" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-md">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Eliminar Cliente</h4>
+                    </div>
+                    <form id="delClienteForm" method="post" action="${pageContext.request.contextPath}/secured/configuracion/usuario/usuarios">
+                        <div class="modal-body">
+                            <input type="hidden" name="accion" value="delCliente">
+                            <input type="hidden" name="usuCod" id="delClienteUsuCod">
+                            <input type="hidden" name="cliCod" id="delClienteCliCod">
+                            <p> ¿Desea Eliminar el cliente: <span id="delClienteCliAll"></span> del catalogo del usuario: <span id="delClienteUsuAll"></span> ?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-outline btn-success">Si</button>
+                            <button type="button" class="btn btn-outline btn-danger" data-dismiss="modal">Cancelar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+                        
+        <div id="delDocumentoModal" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-md">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Eliminar Cliente</h4>
+                    </div>
+                    <form id="delDocumentoForm" method="post" action="${pageContext.request.contextPath}/secured/configuracion/usuario/usuarios">
+                        <div class="modal-body">
+                            <input type="hidden" name="accion" value="delDocumento">
+                            <input type="hidden" name="usuCod" id="delDocumentoUsuCod">
+                            <input type="hidden" name="tipDocUsuCod" id="delDocumentoTipDocUsuCod">
+                            <p> ¿Desea Eliminar el Documento <span id="delDocumentoDocUsuAll"></span> del catalogo del usuario: <span id="delDocumentoUsuAll"></span> ?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-outline btn-success">Si</button>
+                            <button type="button" class="btn btn-outline btn-danger" data-dismiss="modal">Cancelar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>                
+                        
+        <script language="javascript">
+            
+            $(document).ready(function () {
+                $('#tablaUsuarios').DataTable({
                 responsive: true
+                });   
+                $('#tablaUsuariosInactivos').DataTable({
+                responsive: true
+                });
+                $('#tablaViewDocumento').DataTable({
+                responsive: true
+                });
+                $('#tablaViewCliente').DataTable({
+                responsive: true
+                });
             });
+            
             var updateModal = $("#modificarModal");
             var disableModal = $("#disableModal");
             var activateModal = $("#activateModal");
             var deleteModal = $("#deleteModal");
+            
+            var viewDocumentoModal = $("#viewDocumentoModal");
+            var viewClienteModal = $("#viewClienteModal");
+            
+            var clienteModal = $("#clienteModal");
+            var documentoModal = $("#documentoModal");
+            var modClienteModal = $("#modClienteModal");
+            var modDocumentoModal = $("#modDocumentoModal");
+            var delClienteModal = $("#delClienteModal");
+            var delDocumentoModal = $("#delDocumentoModal");
 
             var updateUsuCod = $("#updateUsuCod");
             var updateUsuNom = $("#updateUsuNom");
@@ -463,6 +863,74 @@
             deleteModal.on('show.bs.modal', function (e) {
                 deleteUsuCod.val($(e.relatedTarget).data('usucod'));
                 deleteUsuNomCom.text($(e.relatedTarget).data('usuapepat') + " " + $(e.relatedTarget).data('usuapemat') + ", " + $(e.relatedTarget).data('usunom'));
+            });
+            
+            var clienteUsuCod = $("#clienteUsuCod");
+            var clienteUsuCodShow = $("#clienteUsuCodShow");
+            
+            clienteModal.on('show.bs.modal', function (e) {
+                clienteUsuCod.val($(e.relatedTarget).data('usucod'));
+                clienteUsuCodShow.val($(e.relatedTarget).data('usuapepat') + " " + $(e.relatedTarget).data('usuapemat') + ", " + $(e.relatedTarget).data('usunom'));
+            });
+            
+            var documentoUsuCod = $("#documentoUsuCod");
+            var documentoUsuCodShow = $("#documentoUsuCodShow");
+            
+            documentoModal.on('show.bs.modal', function (e) {
+                documentoUsuCod.val($(e.relatedTarget).data('usucod'));
+                documentoUsuCodShow.val($(e.relatedTarget).data('usuapepat') + " " + $(e.relatedTarget).data('usuapemat') + ", " + $(e.relatedTarget).data('usunom'));
+            });
+            
+            var modClienteUsuCod = $("#modClienteUsuCod");
+            var modClienteCliCod = $("#modClienteCliCod");
+            var modClienteUsuAll = $("#modClienteUsuAll");
+            var modClienteCliAll = $("#modClienteCliAll");
+            var modClienteUsuCliDes = $("#modClienteUsuCliDes");
+            
+            modClienteModal.on('show.bs.modal', function (e) {
+                modClienteUsuCod.val($(e.relatedTarget).data('usucod'));
+                modClienteCliCod.val($(e.relatedTarget).data('clicod'));
+                modClienteUsuCliDes.val($(e.relatedTarget).data('usuclides'));
+                modClienteUsuAll.val($(e.relatedTarget).data('usuapepat') + " " + $(e.relatedTarget).data('usuapemat') + ", " + $(e.relatedTarget).data('usunom'));
+                modClienteCliAll.val($(e.relatedTarget).data('clicod') + " - " + $(e.relatedTarget).data('clirazsoc'));
+            });
+            
+            var modDocumentoUsuCod = $("#modDocumentoUsuCod");
+            var modDocumentotipDocUsuCod = $("#modDocumentotipDocUsuCod");
+            var modDocumentoUsuAll = $("#modDocumentoUsuAll");
+            var modDocumentoTipDocAll = $("#modDocumentoTipDocAll");
+            var modDocumentoDocUsuNum = $("#modDocumentoDocUsuNum");
+            
+            modDocumentoModal.on('show.bs.modal', function (e) {
+                modDocumentoUsuCod.val($(e.relatedTarget).data('usucod'));
+                modDocumentotipDocUsuCod.val($(e.relatedTarget).data('tipdocusucod'));
+                modDocumentoDocUsuNum.val($(e.relatedTarget).data('docusunum'));
+                modDocumentoUsuAll.val($(e.relatedTarget).data('usuapepat') + " " + $(e.relatedTarget).data('usuapemat') + ", " + $(e.relatedTarget).data('usunom'));
+                modDocumentoTipDocAll.val($(e.relatedTarget).data('tipdocusucod') + " - " + $(e.relatedTarget).data('tipdocusudet'));
+            });
+            
+            var delClienteUsuCod = $("#delClienteUsuCod");
+            var delClienteCliCod = $("#delClienteCliCod");
+            var delClienteCliAll = $("#delClienteCliAll");
+            var delClienteUsuAll = $("#delClienteUsuAll");
+            
+            delClienteModal.on('show.bs.modal', function (e) {
+                delClienteUsuCod.val($(e.relatedTarget).data('usucod'));
+                delClienteCliCod.val($(e.relatedTarget).data('clicod'));
+                delClienteUsuAll.text($(e.relatedTarget).data('usuapepat') + " " + $(e.relatedTarget).data('usuapemat') + ", " + $(e.relatedTarget).data('usunom'));
+                delClienteCliAll.text($(e.relatedTarget).data('clicod') + " - " + $(e.relatedTarget).data('clirazsoc'));
+            });
+            
+            var delDocumentoUsuCod = $("#delDocumentoUsuCod");
+            var delDocumentoTipDocUsuCod = $("#delDocumentoTipDocUsuCod");
+            var delDocumentoDocUsuAll = $("#delDocumentoDocUsuAll");
+            var delDocumentoUsuAll = $("#delDocumentoUsuAll");
+            
+            delDocumentoModal.on('show.bs.modal', function (e) {
+                delDocumentoUsuCod.val($(e.relatedTarget).data('usucod'));
+                delDocumentoTipDocUsuCod.val($(e.relatedTarget).data('tipdocusucod'));
+                delDocumentoUsuAll.text($(e.relatedTarget).data('usuapepat') + " " + $(e.relatedTarget).data('usuapemat') + ", " + $(e.relatedTarget).data('usunom'));
+                delDocumentoDocUsuAll.text($(e.relatedTarget).data('tipdocusucod') + " - " + $(e.relatedTarget).data('tipdocusudet'));
             });
             
             $("#createForm").validate({
