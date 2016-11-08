@@ -42,6 +42,8 @@ public class TablasGeneralesController extends HttpServlet {
         TaGzzTipoUniTransporteDao tutDao= new TaGzzTipoUniTransporteDao();
         TaGzzTipoUsuarioDao tuDao= new TaGzzTipoUsuarioDao();
         TaGzzUnidadMedDao umDao= new TaGzzUnidadMedDao();
+        TaGzzCanalClienteDao ccDao= new TaGzzCanalClienteDao();
+        TaGzzTipoFallaProductoDao tfpDao= new TaGzzTipoFallaProductoDao();
         
         List<TaGzzBanco> t1 = bDao.getAllActive();
         List<TaGzzEstadoCivil> t2 = ecDao.getAllActive();
@@ -63,6 +65,8 @@ public class TablasGeneralesController extends HttpServlet {
         List<TaGzzTipoUniTransporte> t18 = tutDao.getAllActive();
         List<TaGzzTipoUsuario> t19 = tuDao.getAllActive();
         List<TaGzzUnidadMed> t20 = umDao.getAllActive();
+        List<TaGzzCanalCliente> t21 = ccDao.getAllActive();
+        List<TaGzzTipoFallaProducto> t22 = tfpDao.getAllActive();
         
         request.setAttribute("banco", t1);
         request.setAttribute("estadocivil", t2);
@@ -84,6 +88,8 @@ public class TablasGeneralesController extends HttpServlet {
         request.setAttribute("tipounitransporte", t18);
         request.setAttribute("tipousuario", t19);
         request.setAttribute("unidadmed", t20);
+        request.setAttribute("canalcliente", t21);
+        request.setAttribute("tipofallaprod", t22);
         request.getRequestDispatcher("/WEB-INF/configuracion/tablasGenerales.jsp").forward(request, response);
     }
 
@@ -508,6 +514,46 @@ public class TablasGeneralesController extends HttpServlet {
                 um.setUniMedCod(regCod);
                 um.setEstRegCod('I');
                 umDao.update(um);
+                }
+                break;
+            case "20":
+                TaGzzCanalClienteDao ccDao= new TaGzzCanalClienteDao();
+                TaGzzCanalCliente cc= new TaGzzCanalCliente();
+                cc.setCanCliDet(regDet);
+                if(op=='A'){
+                cc.setCanCliCod(null);
+                cc.setEstRegCod(op);
+                ccDao.save(cc);
+                }
+                else if(op=='C'){
+                cc.setCanCliCod(regCod);
+                cc.setEstRegCod('A');
+                ccDao.update(cc);
+                }
+                else{
+                cc.setCanCliCod(regCod);
+                cc.setEstRegCod('I');
+                ccDao.update(cc);
+                }
+                break;
+            case "21":
+                TaGzzTipoFallaProductoDao tfpDao= new TaGzzTipoFallaProductoDao();
+                TaGzzTipoFallaProducto tfp= new TaGzzTipoFallaProducto();
+                tfp.setTipFallProDet(regDet);
+                if(op=='A'){
+                tfp.setTipFallProCod(null);
+                tfp.setEstRegCod(op);
+                tfpDao.save(tfp);
+                }
+                else if(op=='C'){
+                tfp.setTipFallProCod(regCod);
+                tfp.setEstRegCod('A');
+                tfpDao.update(tfp);
+                }
+                else{
+                tfp.setTipFallProCod(regCod);
+                tfp.setEstRegCod('I');
+                tfpDao.update(tfp);
                 }
                 break;
         }

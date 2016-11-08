@@ -1,141 +1,143 @@
 package org.epis.minierp.controller.compras;
 
 import java.io.IOException;
-import java.util.List;
-import java.util.StringTokenizer;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.epis.minierp.business.logistica.EnP2mProductoBusiness;
 import org.epis.minierp.dao.general.TaGzzMonedaDao;
 import org.epis.minierp.dao.general.TaGzzUnidadMedDao;
 import org.epis.minierp.dao.logistica.EnP2mAlmacenDao;
 import org.epis.minierp.dao.logistica.EnP2mClaseProductoDao;
 import org.epis.minierp.dao.logistica.EnP2mProductoDao;
 import org.epis.minierp.dao.logistica.EnP2mSubclaseProductoDao;
-import org.epis.minierp.model.EnP2mAlmacen;
-import org.epis.minierp.model.EnP2mClaseProducto;
-import org.epis.minierp.model.EnP2mProducto;
-import org.epis.minierp.model.EnP2mProductoId;
-import org.epis.minierp.model.EnP2mSubclaseProducto;
-import org.epis.minierp.model.TaGzzMoneda;
-import org.epis.minierp.model.TaGzzUnidadMed;
 
 public class ProductController extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
+    
+    EnP2mProductoDao proDao;
+    EnP2mClaseProductoDao claProDao;
+    EnP2mSubclaseProductoDao subClaProDao;
+    EnP2mAlmacenDao almDao;
+    TaGzzMonedaDao monDao;
+    TaGzzUnidadMedDao uniMedDao;
+    EnP2mProductoBusiness proBusiness;
+    
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<EnP2mProducto> productos = (new EnP2mProductoDao()).getAll();
-        List<EnP2mClaseProducto> clases = (new EnP2mClaseProductoDao()).getAll();
-        List<EnP2mSubclaseProducto> subclases = (new EnP2mSubclaseProductoDao()).getAll();
-        List<EnP2mAlmacen> almacenes = (new EnP2mAlmacenDao()).getAll();
-        List<TaGzzMoneda> monedas = (new TaGzzMonedaDao()).getAll();
-        List<TaGzzUnidadMed> medidas = (new TaGzzUnidadMedDao()).getAll();
 
-        request.setAttribute("productos", productos);
-        request.setAttribute("clases", clases);
-        request.setAttribute("subclases", subclases);
-        request.setAttribute("almacenes", almacenes);
-        request.setAttribute("monedas", monedas);
-        request.setAttribute("medidas", medidas);
+        proDao = new EnP2mProductoDao();
+        claProDao = new EnP2mClaseProductoDao();
+        subClaProDao = new EnP2mSubclaseProductoDao();
+        almDao = new EnP2mAlmacenDao();
+        monDao = new TaGzzMonedaDao();
+        uniMedDao = new TaGzzUnidadMedDao();
+        
+        request.setAttribute("productos", proDao.getAllActive());
+        request.setAttribute("clases", claProDao.getAllActive());
+        request.setAttribute("subclases", subClaProDao.getAllActive());
+        request.setAttribute("almacenes", almDao.getAllActive());
+        request.setAttribute("monedas", monDao.getAllActive());
+        request.setAttribute("medidas", uniMedDao.getAllActive());
+        request.setAttribute("inactivos", proDao.getAllInactive());
+        
+        
         request.getRequestDispatcher("/WEB-INF/compras/products.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        
+        proBusiness = new EnP2mProductoBusiness();
+
         String action = request.getParameter("action");
-        EnP2mProductoId productId = new EnP2mProductoId();
-        EnP2mProducto product = new EnP2mProducto();
-        EnP2mProductoDao producto = new EnP2mProductoDao();
+        
+        String claProCod, subClaProCod, proCod, proCodBar, almCod, proDet, proObs;
+        int uniMedCod;
+        double proPreUniCom, proPreUniMar, proPreUniFle, proPesNet,
+                volUniAlm, proStkMin, proStkMax;
         
         switch (action) {
-            case "add":
-                String claProCod = request.getParameter("claProCodAdd");
-                String subClaProCod = request.getParameter("subClaProCodAdd");
-                String proDet = request.getParameter("proDetAdd");
-                String almCod = request.getParameter("almCodAdd");
-                int monCod = Integer.parseInt(request.getParameter("monCodAdd"));
-                int uniMedCod = Integer.parseInt(request.getParameter("uniMedCodAdd"));
-                double proStkMax = Double.parseDouble(request.getParameter("proStkMaxAdd"));
-                double proStkMin = Double.parseDouble(request.getParameter("proStkMinAdd"));
-                double volUniAlm = Double.parseDouble(request.getParameter("volUniAlmAdd"));
-                double proPreUni = Double.parseDouble(request.getParameter("proPreUniAdd"));
-                String proObs = request.getParameter("proObsAdd");
-
-                productId = new EnP2mProductoId();  
-                productId.setClaProCod(claProCod);
-                productId.setSubClaProCod(subClaProCod);
-                productId.setProCod(String.valueOf((int) (System.currentTimeMillis() % Integer.MAX_VALUE)));
+            case "create":
+                claProCod = request.getParameter("claProCod");
+                subClaProCod = request.getParameter("subClaProCod");
+                proCod = request.getParameter("proCod");
+                proCodBar = request.getParameter("proCodBar");
                 
-                product = new EnP2mProducto(); 
-                product.setId(productId);
-                //product.setEnP2mAlmacen((new EnP2mAlmacenDao()).getById(almCod));
-                product.setEstRegCod('A');
-                product.setProDet(proDet);
-                product.setProObs(proObs);
-                product.setProPreUniVen(proPreUni);
-                product.setProStk(0);
-                product.setProStkMax(proStkMax);
-                product.setProStkMin(proStkMin);
-                product.setProStkPreVen(0);
-                product.setTaGzzMoneda((new TaGzzMonedaDao()).getById(monCod));
-                product.setTaGzzUnidadMed((new TaGzzUnidadMedDao()).getById(uniMedCod));
-                product.setVolUniAlm(volUniAlm);
-
-                producto.save(product);
+                almCod = request.getParameter("almCod");
+                proDet = request.getParameter("proDet");
+                uniMedCod = Integer.parseInt(request.getParameter("uniMedCod"));
+                proPreUniCom = Double.parseDouble(request.getParameter("proPreUniCom"));
+                proPreUniMar = Double.parseDouble(request.getParameter("proPreUniMar"));
+                
+                proPreUniFle = Double.parseDouble(request.getParameter("proPreUniFle"));
+                volUniAlm = Double.parseDouble(request.getParameter("volUniAlm"));
+                proStkMin = Double.parseDouble(request.getParameter("proStkMin"));
+                
+                proStkMax = Double.parseDouble(request.getParameter("proStkMax"));
+                proObs = request.getParameter("proObs");
+                proPesNet = Double.parseDouble(request.getParameter("proPesNet"));
+                
+                //iniciando con proStk = 0 y monCod = 1 Soles
+                proBusiness.create(claProCod, subClaProCod, proCod, proCodBar, 
+                        almCod, proDet, uniMedCod, proPreUniCom, proPreUniMar, 
+                        proPreUniFle, 1, 0, volUniAlm, proStkMin, 
+                        proStkMax, proObs, proPesNet, 'A');
+                
                 break;
             
-            case "modify":
-                String proCod = request.getParameter("proCodUpd");
-                claProCod = request.getParameter("claProCodUpd");
-                subClaProCod = request.getParameter("subClaProCodUpd");
-                proDet = request.getParameter("proDetUpd");
-                almCod = request.getParameter("almCodUpd");
-                monCod = Integer.parseInt(request.getParameter("monCodUpd"));
-                uniMedCod = Integer.parseInt(request.getParameter("uniMedCodUpd"));
-                proStkMax = Double.parseDouble(request.getParameter("proStkMaxUpd"));
-                proStkMin = Double.parseDouble(request.getParameter("proStkMinUpd"));
-                volUniAlm = Double.parseDouble(request.getParameter("volUniAlmUpd"));
-                proPreUni = Double.parseDouble(request.getParameter("proPreUniUpd"));
-                proObs = request.getParameter("proObsUpd");
-
-                productId = new EnP2mProductoId();  
-                productId.setClaProCod(claProCod);
-                productId.setSubClaProCod(subClaProCod);
-                productId.setProCod(proCod);
+            case "update":
+                claProCod = request.getParameter("claProCod");
+                subClaProCod = request.getParameter("subClaProCod");
+                proCod = request.getParameter("proCod");
+                proCodBar = request.getParameter("proCodBar");
                 
-                EnP2mProductoDao productDao = new EnP2mProductoDao();
-                product = productDao.getById(productId);
-                //product.setEnP2mAlmacen((new EnP2mAlmacenDao()).getById(almCod));
-                product.setProDet(proDet);
-                product.setProObs(proObs);
-                product.setProPreUniVen(proPreUni);
-                product.setProStkMax(proStkMax);
-                product.setProStkMin(proStkMin);
-                product.setTaGzzMoneda((new TaGzzMonedaDao()).getById(monCod));
-                product.setTaGzzUnidadMed((new TaGzzUnidadMedDao()).getById(uniMedCod));
-                product.setVolUniAlm(volUniAlm);
-
-                producto.update(product);
+                almCod = request.getParameter("almCod");
+                proDet = request.getParameter("proDet");
+                uniMedCod = Integer.parseInt(request.getParameter("uniMedCod"));
+                proPreUniCom = Double.parseDouble(request.getParameter("proPreUniCom"));
+                proPreUniMar = Double.parseDouble(request.getParameter("proPreUniMar"));
+                
+                proPreUniFle = Double.parseDouble(request.getParameter("proPreUniFle"));
+                volUniAlm = Double.parseDouble(request.getParameter("volUniAlm"));
+                proStkMin = Double.parseDouble(request.getParameter("proStkMin"));
+                
+                proStkMax = Double.parseDouble(request.getParameter("proStkMax"));
+                proObs = request.getParameter("proObs");
+                proPesNet = Double.parseDouble(request.getParameter("proPesNet"));
+                
+                //monCod = 1 Soles
+                proBusiness.update(claProCod, subClaProCod, proCod, proCodBar, 
+                        almCod, proDet, uniMedCod, proPreUniCom, proPreUniMar, 
+                        proPreUniFle, 1, volUniAlm, proStkMin, proStkMax, 
+                        proObs, proPesNet);
+                
+                break;
+                
+            case "disable":
+                claProCod = request.getParameter("claProCod");
+                subClaProCod = request.getParameter("subClaProCod");
+                proCod = request.getParameter("proCod");
+                proBusiness.disable(claProCod, subClaProCod, proCod);
+                break;
+                
+            case "activate":
+                claProCod = request.getParameter("claProCod");
+                subClaProCod = request.getParameter("subClaProCod");
+                proCod = request.getParameter("proCod"); //falta
+                proBusiness.activate(claProCod, subClaProCod, proCod);
                 break;
                 
             case "delete":
-                proCod = request.getParameter("proCodDel");
-                StringTokenizer st = new StringTokenizer(proCod,"/");
-                
-                productId = new EnP2mProductoId();                
-                productId.setProCod(st.nextToken());
-                productId.setSubClaProCod(st.nextToken());
-                productId.setClaProCod(st.nextToken());
-                
-                product = new EnP2mProducto(); 
-                product = producto.getById(productId);
-                product.setEstRegCod('E');
-                
-                producto.update(product);
+                claProCod = request.getParameter("claProCod");
+                subClaProCod = request.getParameter("subClaProCod");
+                proCod = request.getParameter("proCod"); //falta
+                proBusiness.delete(claProCod, subClaProCod, proCod);
                 break;
+               
         }
         
         response.sendRedirect(request.getContextPath() + "/secured/compras/productos");

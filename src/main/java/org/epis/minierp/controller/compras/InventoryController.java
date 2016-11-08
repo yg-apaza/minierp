@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.epis.minierp.dao.logistica.EnP2mProductoDao;
 import org.epis.minierp.model.EnP2mProducto;
-import org.epis.minierp.business.compras.EnP2mProductoBusiness;
+import org.epis.minierp.business.logistica.EnP2mProductoBusiness;
 
 public class InventoryController extends HttpServlet {
     private static final long serialVersionUID = 1L;

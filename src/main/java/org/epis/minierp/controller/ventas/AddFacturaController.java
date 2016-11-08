@@ -6,6 +6,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.StringTokenizer;
@@ -49,9 +50,11 @@ import org.epis.minierp.model.TaGzzTipoPagoFactura;
 
 public class AddFacturaController extends HttpServlet {	
     private static final long serialVersionUID = 1L;
+    
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        
         HttpSession session = request.getSession(true);
         EnP1mUsuario user = (EnP1mUsuario) session.getAttribute("usuario");
         
@@ -63,7 +66,11 @@ public class AddFacturaController extends HttpServlet {
         List <TaGzzTipoDescuento> tiposDescuentos = (new TaGzzTipoDescuentoDao()).getAllActive();
         EnP1mEmpresa empresa = (new EnP1mEmpresaDao()).getAll().get(0);
         EnP1mPuntoVenta punto = (EnP1mPuntoVenta) user.getEnP1mSucursal().getEnP1mPuntoVentas().iterator().next(); //Getting the first one
-
+        EnP1mSucursal sucursal = user.getEnP1mSucursal();
+                
+        DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        String fechaActual = format.format(Calendar.getInstance().getTime());
+        
         request.setAttribute("metodosPagoFactura", metodosPagoFactura);
         request.setAttribute("monedas", monedas);
         request.setAttribute("tiposPagoFactura", tiposPagoFactura);
@@ -72,6 +79,9 @@ public class AddFacturaController extends HttpServlet {
         request.setAttribute("tiposDescuentos", tiposDescuentos);
         request.setAttribute("empresa", empresa);
         request.setAttribute("punto", punto);
+        request.setAttribute("usuario", user);
+        request.setAttribute("sucursal", sucursal);
+        request.setAttribute("fechaActual", fechaActual);
         
         request.getRequestDispatcher("/WEB-INF/ventas/factura/addFactura.jsp").forward(request, response);
     }
@@ -93,6 +103,7 @@ public class AddFacturaController extends HttpServlet {
             int metPagCod = Integer.parseInt(request.getParameter("metPagCod"));
             int tipPagCod = Integer.parseInt(request.getParameter("tipPagCod"));
             String facVenCabObs = request.getParameter("facVenCabObs");
+            int facVenPorDes = Integer.parseInt(request.getParameter("facVenPorDes"));
             double facVenCabTot = Double.parseDouble(request.getParameter("facVenCabTot"));
             double facVenCabSubTot = Double.parseDouble(request.getParameter("facVenCabSubTot"));
             int tipDesCod = Integer.parseInt(request.getParameter("tipDesCod"));
@@ -112,6 +123,7 @@ public class AddFacturaController extends HttpServlet {
             header.setEnP1mUsuario(user);
             header.setFacVenCabFecEmi(facVenCabFecEmi);
             header.setFacVenCabFecVen(facVenCabFecVen);
+            header.setFacVenPorDes(facVenPorDes);
             header.setFacVenCabTot(facVenCabTot);
             header.setFacVenCabSubTot(facVenCabSubTot);
             header.setFacVenCabIgv(facVenCabIgv);

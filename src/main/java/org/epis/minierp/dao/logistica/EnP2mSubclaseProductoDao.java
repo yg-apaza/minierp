@@ -39,6 +39,13 @@ public class EnP2mSubclaseProductoDao {
         return estado;
     }
     
+    public List<EnP2mSubclaseProducto> getByClass(String id) {
+        Query query = session.createQuery("from EnP2mSubclaseProducto S where S.enP2mClaseProducto.claProCod = :id and S.estRegCod = 'A'");
+        query.setParameter("id", id);
+        List <EnP2mSubclaseProducto> subclases = query.list();
+        return subclases;
+    }
+    
     public void save(EnP2mSubclaseProducto subclase) {
         session.save(subclase);     
     }

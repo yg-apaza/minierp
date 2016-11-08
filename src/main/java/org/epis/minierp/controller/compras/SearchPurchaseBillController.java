@@ -1,4 +1,4 @@
-package org.epis.minierp.controller.ventas;
+package org.epis.minierp.controller.compras;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
@@ -10,30 +10,31 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.epis.minierp.dao.ventas.EnP1mFacturaVentaCabDao;
-import org.epis.minierp.model.EnP1mFacturaVentaCab;
-import org.epis.minierp.model.EnP1tFacturaVentaDet;
+import org.epis.minierp.dao.compras.EnP4mFacturaCompraCabDao;
+import org.epis.minierp.model.EnP4mFacturaCompraCab;
+import org.epis.minierp.model.EnP4tFacturaCompraDet;
 
-public class SearchBillController extends HttpServlet {
+public class SearchPurchaseBillController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String facVenCabCod = request.getParameter("facVenCabCod");
-        EnP1mFacturaVentaCab bill = (new EnP1mFacturaVentaCabDao()).getById(facVenCabCod);
+        String facComCabCod = request.getParameter("facComCabCod");
+        System.out.println("Code: " + facComCabCod);
+        EnP4mFacturaCompraCab bill = (new EnP4mFacturaCompraCabDao()).getById(facComCabCod);
         JsonObject data = new JsonObject(); 
         
-        data.addProperty("cod", bill.getFacVenCabCod());
-        data.addProperty("cliNomCom", bill.getEnP1mCliente().getCliNomCom());
+        data.addProperty("cod", bill.getFacComCabCod());
+        data.addProperty("pvrNomCom", bill.getEnP4mProveedor().getPrvNomCom());
         data.addProperty("usuNom", bill.getEnP1mUsuario().getUsuNom());
         
         JsonArray detailList = new JsonArray();
-        List <EnP1tFacturaVentaDet> details = new ArrayList <>(bill.getEnP1tFacturaVentaDets());
+        List <EnP4tFacturaCompraDet> details = new ArrayList <>(bill.getEnP4tFacturaCompraDets());
         
-        for(EnP1tFacturaVentaDet detail: details) {
+        for(EnP4tFacturaCompraDet detail: details) {
             JsonObject detailObject = new JsonObject();
-            detailObject.addProperty("detCan", detail.getFacVenDetCan());
+            detailObject.addProperty("detCan", detail.getFacComDetCan());
             detailObject.addProperty("proDet", detail.getEnP2mProducto().getProDet());
-            detailObject.addProperty("preUniVen", detail.getEnP2mProducto().getProPreUniVen());
-            detailObject.addProperty("detImp", detail.getFacVenDetCan()*detail.getEnP2mProducto().getProPreUniVen());
+            detailObject.addProperty("valUni", detail.getFacComDetValUni());
+            detailObject.addProperty("detImp", detail.getFacComDetCan()*detail.getFacComDetValUni());
             detailList.add(detailObject);
         }
         

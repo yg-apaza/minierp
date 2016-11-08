@@ -18,8 +18,8 @@
                     <div class="col-md-4">
                         <br><h1 class="page-header">Factura de Venta</h1>
                     </div>
-                    <div class="col-md-6 col-md-offset-2"><br>
-                        <div class="col-md-8">
+                    <div class="col-md-8 col-md-offset-0"><br>
+                        <div class="col-md-7">
                             <div class="form-group input-group">
                                 <span class="input-group-addon">Vendedor</span>
                                 <span class="input-group-addon"><i class="fa fa-child"></i></span>
@@ -27,10 +27,10 @@
                                 <input type="text" class="form-control" value="${usuario.usuCod} - ${usuario.usuNom}" readonly>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-5">
                             <div class="form-group input-group">
                                 <span class="input-group-addon"><i class="fa fa-home"></i></span>
-                                <input type="text" class="form-control" value="${punto.id.sucCod} - ${punto.id.punVenCod}" readonly>
+                                <input type="text" class="form-control" value="${punto.id.sucCod} - ${sucursal.sucDes} / ${punto.id.punVenCod}" readonly>
                             </div>
                         </div>
                     </div>
@@ -52,7 +52,7 @@
                                             <div class="col-md-6">
                                                 <div class="form-group input-group" >
                                                     <span class="input-group-addon">Emisión</span>
-                                                    <input type="date" class="form-control" name="facVenCabFecEmi">
+                                                    <input type="date" class="form-control" name="facVenCabFecEmi" value="${fechaActual}" readonly>
                                                     <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                                                 </div>
                                             </div>  
@@ -76,7 +76,7 @@
                                                     <span class="input-group-addon"><i class="fa fa-money"></i></span>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div>  
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="form-group input-group" >                                                    
@@ -182,7 +182,7 @@
                                                 </c:forEach>
                                             </select> 
                                             <span class="input-group-addon">Valor (%)</i></span>
-                                            <input type="number" class="form-control" id="tipDesVal" readonly>
+                                            <input type="number" class="form-control" name="facVenPorDes" id="porDes" min="0" step="any" value="0" discountTop="100">
                                             <span class="input-group-addon"><i class="fa fa-sort-amount-asc"></i></span>
                                         </div>
                                     </div>
@@ -239,15 +239,10 @@
             var codeClientCriteria = false;
             var productCodes = new Array();
             var productDescriptions = new Array();
-            var discounts = new Array();
             
             <c:forEach items="${productos}" var="p" varStatus="loop">
                 productCodes.push("${p.id.claProCod}-${p.id.subClaProCod}-${p.id.proCod}");
                 productDescriptions.push("${p.proDet}");
-            </c:forEach>
-            
-            <c:forEach items="${tiposDescuentos}" var="t" varStatus="loop">
-                discounts.push("${t.tipDesPor}");
             </c:forEach>
             
             $(document).ready(function () {
@@ -317,9 +312,12 @@
             }, "Patrón: [0-9]{3}-[0-9]{6}");
             
             $.validator.addMethod("verifiedValue", function (value, element) {
-                console.log(value);
                 return value != "";
             }, "Ingrese datos correctos");
+            
+            $.validator.addMethod("discountTop", function (value, element) {
+                return value <= 100;
+            }, "Descuento <= 100%");
             
             function updateAll() {
                 var productsCodes = new Array();
@@ -337,7 +335,7 @@
                 $('#proPrices').val(prices);
                 subTotal = (subTotal * (1 + Number($('#facIgv').val() / 100))).toFixed(2);
                 $('#facSub').val(subTotal);
-                var total = ((1 - Number($('#tipDesVal').val() / 100))*subTotal).toFixed(2);
+                var total = ((1 - Number($('#porDes').val() / 100))*subTotal).toFixed(2);
                 $('#facTot').val(total);
 
                 if ($("#productTable tr").length > 1) {
@@ -441,13 +439,15 @@
             } 
             
             function changeDiscount() {
-                var index = $("#selectDiscount option:selected").index();
-                $('#tipDesVal').val(discounts[index]);
-                var total = ((1 - Number($('#tipDesVal').val() / 100))*Number($('#facSub').val())).toFixed(2);
+                var total = ((1 - Number($('#porDes').val() / 100))*Number($('#facSub').val())).toFixed(2);
                 $('#facTot').val(total);
             }
             
-            $('#selectDiscount').on('change', function() {
+            $('#porDes').on('change', function() {
+                changeDiscount();
+            });
+            
+            $('#porDes').keyup(function () {
                 changeDiscount();
             });
             
@@ -570,6 +570,9 @@
                     },
                     facVenCabFecVen: {
                         required: true
+                    },
+                    facVenPorDes: {
+                        required: true
                     }
                 },
                 messages: {
@@ -584,6 +587,9 @@
                     },
                     facVenCabFecVen: {
                         required: "Seleccione una fecha"
+                    },
+                    facVenPorDes: {
+                        required: "Considere descuento 0"
                     }
                 },
                 submitHandler: function (form) {

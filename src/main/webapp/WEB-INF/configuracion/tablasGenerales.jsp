@@ -42,6 +42,8 @@
                     <option value="17">Tipo de unidad de transporte</option>
                     <option value="18">Tipo de usuario</option>
                     <option value="19">Unidad de medida</option>
+                    <option value="20">Canal de cliente</option>
+                    <option value="21">Tipo de falla de producto</option>
                 </select>
             </div>
             
@@ -407,6 +409,32 @@
                                     '<a href="#" data-toggle="modal" data-target="#modificarModal" data-regcod="${unidadmed.uniMedCod}" data-regdet="${unidadmed.uniMedDet}" >'+
                                     '<i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i> </a>'+
                                     '<a href="#" data-toggle="modal" data-target="#eliminarModal" data-regcod="${unidadmed.uniMedCod}" data-regdet="${unidadmed.uniMedDet}" >'+
+                                    '<i class="fa fa-trash-o fa-2x" style="color: black;"></i> </a></td>'+'</c:if>'+
+                                    '</tr> '+
+                                '</c:forEach>';
+                            $('#tableId').html(html);
+                            break;
+                        case "20":
+                            html='<c:forEach items="${canalcliente}" var="canalcliente">'+
+                                    '<tr><td value="${canalcliente.canCliCod}"> ${canalcliente.canCliDet} </td>'+
+                                    '<c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">'+
+                                    '<td class="text-left">'+
+                                    '<a href="#" data-toggle="modal" data-target="#modificarModal" data-regcod="${canalcliente.canCliCod}" data-regdet="${canalcliente.canCliDet}" >'+
+                                    '<i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i> </a>'+
+                                    '<a href="#" data-toggle="modal" data-target="#eliminarModal" data-regcod="${canalcliente.canCliCod}" data-regdet="${canalcliente.canCliDet}" >'+
+                                    '<i class="fa fa-trash-o fa-2x" style="color: black;"></i> </a></td>'+'</c:if>'+
+                                    '</tr> '+
+                                '</c:forEach>';
+                            $('#tableId').html(html);
+                            break;
+                        case "21":
+                            html='<c:forEach items="${tipofallaprod}" var="tipofallaprod">'+
+                                    '<tr><td value="${tipofallaprod.tipFallProCod}"> ${tipofallaprod.tipFallProDet} </td>'+
+                                    '<c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">'+
+                                    '<td class="text-left">'+
+                                    '<a href="#" data-toggle="modal" data-target="#modificarModal" data-regcod="${tipofallaprod.tipFallProCod}" data-regdet="${tipofallaprod.tipFallProDet}" >'+
+                                    '<i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i> </a>'+
+                                    '<a href="#" data-toggle="modal" data-target="#eliminarModal" data-regcod="${tipofallaprod.tipFallProCod}" data-regdet="${tipofallaprod.tipFallProDet}" >'+
                                     '<i class="fa fa-trash-o fa-2x" style="color: black;"></i> </a></td>'+'</c:if>'+
                                     '</tr> '+
                                 '</c:forEach>';
