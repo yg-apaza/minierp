@@ -9,10 +9,15 @@
     </jsp:attribute>
     <jsp:attribute name="contenido">
         <div class="panel-body">
-            <form method="post" action="${pageContext.request.contextPath}/secured/ventas/partialRefund">
-                <input type="hidden" class="form-control" name="productsAmounts" id="proAmo">
+            <form id="partialRefund" method="post" action="${pageContext.request.contextPath}/secured/ventas/partialRefund">
+                <input type="hidden" class="form-control" name="productsAmountsOld" id="proAmoOld">
+                <input type="hidden" class="form-control" name="productsAmountsNew" id="proAmoNew">
                 <input type="hidden" class="form-control" name="productsCodes" id="proCodes">
                 <input type="hidden" class="form-control" name="productsPrices" id="proPrices">
+                <input type="hidden" class="form-control" name="facVenTot" id="facVenTot">
+                <input type="hidden" class="form-control" name="facVenSubTot" id="facVenSubTot">
+                <input type="hidden" class="form-control" id="facVenIgv" value="${igv}">
+                <input type="hidden" class="form-control" id="facVenDes" value="${descuento}">
                 <div class="form-group">
                     <div class="row">
                         <div class="col-lg-12">
@@ -41,7 +46,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group input-group">
                                                 <span class="input-group-addon">Número de Factura  Nueva</span>
-                                                <input type="text" class="form-control" name="facVenCabCodNew" required>
+                                                <input type="text" class="form-control" name="facVenCabCodNew">
                                                 <span class="input-group-addon"><i class="fa fa-clipboard"></i></span>
                                             </div>
                                         </div>
@@ -97,6 +102,7 @@
         <script language="javascript">
             $(document).ready(function () {
                 updateAll();
+                $('#proAmoOld').val($('#proAmoNew').val());
             });
             
             $("#productTable").on("change", function() {
@@ -107,15 +113,42 @@
                 var productsCodes = new Array();
                 var amounts = new Array();
                 var prices = new Array();
+                var subTotal = 0;
                 $("#productTable tbody tr").each(function () {
                     productsCodes.push($(this)[0].children[0].textContent);
                     amounts.push($(this)[0].children[1].children[0].value);
                     prices.push($(this)[0].children[4].textContent);
-                });
+                    subTotal += Number($(this)[0].children[1].children[0].value)*Number($(this)[0].children[4].textContent);
+                });                
                 $('#proCodes').val(productsCodes);
-                $('#proAmo').val(amounts);
+                $('#proAmoNew').val(amounts);
                 $('#proPrices').val(prices);
+                subTotal = (subTotal * (1 + Number($('#facVenIgv').val() / 100))).toFixed(2);
+                $('#facVenSubTot').val(subTotal);
+                var total = ((1 - Number($('#facVenDes').val() / 100))*subTotal).toFixed(2);
+                $('#facVenTot').val(total);
             }
+            
+            $.validator.addMethod("codePattern", function (value) {
+                return /^[0-9]{3}-[0-9]{6}$/.test(value);
+            }, "Patrón: [0-9]{3}-[0-9]{6}");
+            
+            $("#partialRefund").validate({
+                rules: {
+                    facVenCabCodNew: {
+                        required: true,
+                        codePattern: true
+                    }
+                },
+                messages: {
+                    facVenCabCodNew: {
+                        required: "Campo requerido"
+                    }
+                },
+                submitHandler: function (form) {
+                    form.submit();
+                }
+            }); 
         </script>
     </jsp:attribute>        
 </minierptemplate:template>
