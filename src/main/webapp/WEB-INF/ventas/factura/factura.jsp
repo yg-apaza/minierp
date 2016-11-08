@@ -603,12 +603,6 @@
             });
 
             $(document).ready(function () {
-                $('#facVenDetPro').DataTable({
-                    responsive: true
-                });
-            });
-
-            $(document).ready(function () {
                 $('#imprimir').on('click', function () {
                     if ($(':checkbox:checked').length > 0)
                     {
@@ -632,6 +626,7 @@
                     $("#facVenCabCod").val(data.cod);
                     $("#facVenCabUsuNom").val(data.usuNom);
                     $("#facVenCabCliNomCom").val(data.cliNomCom);
+                    $('#facVenDetPro').DataTable().clear().draw();
                     $('#facVenDetPro').DataTable().destroy();
                     data.detailList.forEach(function (detail) {
                         $('#facVenDetPro tbody').append('<tr><td width="16%" align="center"></td><td width="44%"></td><td width="20%" align="center"></td><td width="20%" align="center"></td></tr>');
