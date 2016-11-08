@@ -34,11 +34,12 @@ public class KardexController extends HttpServlet {
             if ("btn_ver".equals(button)) {
                 KardexDao daoUsu = new KardexDao();
                 EnP2mProductoDao prodDao = new EnP2mProductoDao();
+                String tipoKardex = request.getParameter("optradio");
                 String pro[] = request.getParameter("item").split(",");
                 String proCod=pro[0];
                 if (proCod.length() > 0) {
 
-                    List<Kardex> registros = daoUsu.getAll(proCod);
+                    List<Kardex> registros = daoUsu.getAll(proCod,tipoKardex);
 
                     request.setAttribute("registros", registros);
                 }
