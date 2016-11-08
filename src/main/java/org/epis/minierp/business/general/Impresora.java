@@ -16,14 +16,14 @@ import org.epis.minierp.model.EnP1tFacturaVentaDet;
 public class Impresora {
     private static final int MAX_FAC_DET = 25;
     private static final int MAX_BOL_DET = 11;
-    private static final int MAX_REM_DET = 27;
+    private static final int MAX_REM_DET = 25;
     
     String extension = ".prn";
     String path;
     SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
     DateFormat fecha = new SimpleDateFormat("dd/MM/yyyy");
     Date date = new Date();
-    DecimalFormat df = new DecimalFormat("#.00"); 
+    DecimalFormat df = new DecimalFormat("0.00"); 
     
     String cliNom, cliDir, fecEmi;
     //Factura
