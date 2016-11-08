@@ -55,14 +55,14 @@ public class EnP1mFacturaVentaBusiness {
             guiRemTraDao.update(guiRemTra);
         }
         
-        //inabilita el registros de pagos por cuotas si este tiene uno (estRegCod = I)
+        //Inhabilita el registro de pagos por cuotas si este tiene uno (estRegCod = I)
         EnP1mPagosCuotasCab pagCuo = cabFacVen.getEnP1mPagosCuotasCab();
         if(pagCuo != null){
             pagCuo.setEstRegCod('I');
             pagCuoDao.update(pagCuo);
         }
         
-        //se crea la entidad de devolucion
+        //Se crea la entidad de devolucion
         EnP1cDevolucionVentas devVen = new EnP1cDevolucionVentas();
         devVen.setEnP1mFacturaVentaCabByFacVenCabCod(cabFacVen);
         devVen.setFacVenCabCod(facVenCabCod);
@@ -72,9 +72,8 @@ public class EnP1mFacturaVentaBusiness {
         devVen.setDevVenMon(cabFacVen.getFacVenCabTot());
         devVenDao.save(devVen);
         
-        //listando todos los detalles
-        List<EnP1tFacturaVentaDet> detFacVen = new ArrayList<>();
-        detFacVen.addAll(cabFacVen.getEnP1tFacturaVentaDets());
+        //Listando todos los detalles
+        List <EnP1tFacturaVentaDet> detFacVen = new ArrayList<>(cabFacVen.getEnP1tFacturaVentaDets());
         
         //devolviendo el stock a cada producto del detalle
         EnP2mProducto temp;

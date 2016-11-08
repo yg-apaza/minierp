@@ -266,7 +266,7 @@
                         });
 
                         if (finalValidation) {
-                            $('#productTable tbody').append('<tr align="center"><td width="20%"></td><td width="10%"></td><td width="40%"></td><td width="15%"></td><td width="10%"></td><td width="5%"><button type="button" class="btnDelete btn btn-danger")><i class="fa fa-trash-o fa-1x"></i></button></td></tr>');
+                            $('#productTable tbody').append('<tr align="center"><td width="20%"></td><td width="10%"></td><td width="40%"></td><td width="15%"></td><td width="10%"></td><td width="5%"><button type="button" class="btnDelete btn btn-danger"><i class="fa fa-trash-o fa-1x"></i></button></td></tr>');
                             $('#productTable tr:last td:eq(0)').html($("#proCodShow").val());
                             $('#productTable tr:last td:eq(1)').html($("#amountShow").val());
                             $('#productTable tr:last td:eq(2)').html($("#proDesShow").val());
