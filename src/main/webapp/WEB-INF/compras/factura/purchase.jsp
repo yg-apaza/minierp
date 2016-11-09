@@ -164,12 +164,6 @@
                 });
             });
             
-            $(document).ready(function () {
-                $('#facComDetPro').DataTable({
-                    responsive: true
-                });
-            });
-            
             function viewPurchaseBill(facComCabCod) {
                 $("#loading").modal('show');
                 $.post(
@@ -179,7 +173,8 @@
                 ).done(function (data) {
                     $("#facComCabCod").val(data.cod);
                     $("#facComCabUsuNom").val(data.usuNom);
-                    $("#facComCabPrvNomCom").val(data.pvrNomCom);
+                    $("#facComCabPrvNomCom").val(data.pvrNomCom);                    
+                    $('#facComDetPro').DataTable().clear().draw();
                     $('#facComDetPro').DataTable().destroy();
                     data.detailList.forEach(function (detail) {
                         $('#facComDetPro tbody').append('<tr><td width="16%" align="center"></td><td width="44%"></td><td width="20%" align="center"></td><td width="20%" align="center"></td></tr>');

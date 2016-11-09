@@ -16,13 +16,22 @@ public class KardexDao {
         session = HibernateUtil.getSessionFactory().getCurrentSession();  
     }
 
-    public List<Kardex> getAll(String codProd) {
-        List<Kardex> resultados=null;
-        Query query = session.createSQLQuery(
-	"CALL kardex_prom_ponderado(:prodCode)")
-	.addEntity(Kardex.class)
-	.setParameter("prodCode",codProd );
-        resultados=query.list();
+    public List<Kardex> getAll(String codProd, String tipoKardex) {
+        List<Kardex> resultados = null;
+        Query query = null;
+        if (tipoKardex.equals("prom")) {
+            query = session.createSQLQuery(
+                    "CALL kardex_prom_ponderado(:prodCode)")
+                    .addEntity(Kardex.class)
+                    .setParameter("prodCode", codProd);
+        } else if (tipoKardex.equals("peps")) {
+            query = session.createSQLQuery(
+                    "CALL kardex_peps(:prodCode)")
+                    .addEntity(Kardex.class)
+                    .setParameter("prodCode", codProd);
+        }
+
+        resultados = query.list();
         return resultados;
     }
 }

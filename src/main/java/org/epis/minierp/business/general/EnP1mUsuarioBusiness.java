@@ -3,7 +3,10 @@ package org.epis.minierp.business.general;
 import java.util.Date;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.epis.minierp.dao.general.EnP1mUsuarioDao;
+import org.epis.minierp.dao.ventas.EnP1mCarteraClientesDao;
 import org.epis.minierp.dao.ventas.EnP1mDocumentoUsuarioDao;
+import org.epis.minierp.model.EnP1mCarteraClientes;
+import org.epis.minierp.model.EnP1mCarteraClientesId;
 import org.epis.minierp.model.EnP1mDocumentoUsuario;
 import org.epis.minierp.model.EnP1mDocumentoUsuarioId;
 import org.epis.minierp.model.EnP1mSucursal;
@@ -14,10 +17,12 @@ import org.epis.minierp.model.TaGzzTipoUsuario;
 public class EnP1mUsuarioBusiness {
     EnP1mUsuarioDao usuDao;
     EnP1mDocumentoUsuarioDao docUsuDao;
+    EnP1mCarteraClientesDao carCliDao;
 
     public EnP1mUsuarioBusiness() {
         usuDao = new EnP1mUsuarioDao();
         docUsuDao = new EnP1mDocumentoUsuarioDao();
+        carCliDao = new EnP1mCarteraClientesDao();
     }
     
     public void create(String usuCod, String usuNom, String usuApePat, String usuApeMat, 
@@ -44,13 +49,7 @@ public class EnP1mUsuarioBusiness {
         usu.setUsuSex(usuSex);
         usu.setEstRegCod(estRegCod);
         usuDao.save(usu);
-        
-        EnP1mDocumentoUsuario docUsu = new EnP1mDocumentoUsuario();
-        docUsu.setId(new EnP1mDocumentoUsuarioId(usuCod, 1)); //DNI
-        docUsu.setDocUsuNum(usuCod);
-        docUsu.setEstRegCod('A');
-        docUsuDao.save(docUsu);
-        
+       
     }
     
     public void update(String usuCod, String usuNom, String usuApePat, String usuApeMat, 
@@ -80,6 +79,44 @@ public class EnP1mUsuarioBusiness {
         EnP1mUsuario usu = usuDao.getById(usuCod);
         usu.setUsuPas(DigestUtils.sha256Hex(pass));
         usuDao.update(usu);
+    }
+    
+    public void createCarteraCli(String usuCod, String cliCod, String usuCliDes, char estRegCod){
+        EnP1mCarteraClientes carCli = new EnP1mCarteraClientes();
+        carCli.setId(new EnP1mCarteraClientesId(cliCod, usuCod));
+        carCli.setUsuCliDes(usuCliDes);
+        carCli.setUsuCliEstReg(estRegCod);
+        carCliDao.save(carCli);
+    }
+    
+    public void deleteCarteraCli(String usuCod, String cliCod){
+        EnP1mCarteraClientes carCli = carCliDao.getById(new EnP1mCarteraClientesId(cliCod, usuCod));
+        carCliDao.delete(carCli);
+    }
+    
+    public void updateCarteraCli(String usuCod, String cliCod, String UsuCliDes){
+        EnP1mCarteraClientes carCli = carCliDao.getById(new EnP1mCarteraClientesId(cliCod, usuCod));
+        carCli.setUsuCliDes(UsuCliDes);
+        carCliDao.update(carCli);
+    }
+    
+    public void createDocumento(String usuCod, int tipDocUsuCod, String docUsuNum, char estRegCod){
+        EnP1mDocumentoUsuario docUsu = new EnP1mDocumentoUsuario();
+        docUsu.setId(new EnP1mDocumentoUsuarioId(usuCod, tipDocUsuCod));
+        docUsu.setDocUsuNum(docUsuNum);
+        docUsu.setEstRegCod(estRegCod);
+        docUsuDao.save(docUsu);
+    }
+    
+    public void deleteDocumento(String usuCod, int tipDocUsuCod){
+        EnP1mDocumentoUsuario docUsu = docUsuDao.getById(new EnP1mDocumentoUsuarioId(usuCod, tipDocUsuCod));
+        docUsuDao.delete(docUsu);
+    }
+    
+    public void updateDocumento(String usuCod, int tipDocUsuCod, String docUsuNum){
+        EnP1mDocumentoUsuario docUsu = docUsuDao.getById(new EnP1mDocumentoUsuarioId(usuCod, tipDocUsuCod));
+        docUsu.setDocUsuNum(docUsuNum);
+        docUsuDao.update(docUsu);
     }
     
     private void setEstRegCod(String usuCod, char estRegCod){

@@ -23,7 +23,7 @@
                         <div class="form-group input-group">
                             <span class="input-group-addon">Almacenero</span>
                             <span class="input-group-addon"><i class="fa fa-child"></i></span>
-                            <input type="hidden" class="form-control" name="usuCod" value="${usuario.usuCod}" readonly>
+                            <input type="hidden" class="form-control" name="usuCod" value="${usuario.usuCod}">
                             <input type="text" class="form-control" value="${usuario.usuCod} - ${usuario.usuNom}" readonly>
                         </div>
                     </div>
@@ -83,7 +83,7 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group input-group" >
-                                                    <span class="input-group-addon">Moneda</i></span>
+                                                    <span class="input-group-addon">Moneda</span>
                                                     <select class="form-control" name="monCod">
                                                         <c:forEach items="${monedas}" var="moneda">
                                                             <option value="${moneda.monCod}">${moneda.monDet}</option>
@@ -184,13 +184,13 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group input-group" >
-                                            <span class="input-group-addon">Tipo Descuento</i></span>
+                                            <span class="input-group-addon">Tipo Descuento</span>
                                             <select class="form-control" name="tipDesCod">
                                                 <c:forEach items="${tiposDescuentos}" var="tipoDescuentos">
                                                     <option value="${tipoDescuentos.tipDesCod}">${tipoDescuentos.tipDesDet}</option>
                                                 </c:forEach>
                                             </select> 
-                                            <span class="input-group-addon">Valor (%)</i></span>
+                                            <span class="input-group-addon">Valor (%)</span>
                                             <input type="number" class="form-control" name="facComCabPorDes" id="porDes" min="0" step="any" value="0" max="100">
                                             <span class="input-group-addon"><i class="fa fa-sort-amount-asc"></i></span>
                                         </div>
@@ -212,7 +212,7 @@
                                 <div class="row">
                                     <div class="col-md-3 col-md-offset-9">
                                         <div class="form-group input-group" >
-                                            <span class="input-group-addon">Total</i></span>
+                                            <span class="input-group-addon">Total</span>
                                             <input type="number" class="form-control" name="facComCabTot" id="facTot" value="0" readonly>
                                             <span class="input-group-addon"><i class="fa fa-usd"></i></span>
                                         </div>
@@ -531,7 +531,6 @@
                                 proDet: $("#proDesShow").val()
                             }
                     ).done(function (data) {
-                        console.log(data);
                         if (data.proCod != null) {
                             $("#proCodShow").val(data.proCod);
                             $('#unitShow').val(data.proUnit);

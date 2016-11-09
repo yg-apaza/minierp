@@ -6,7 +6,6 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.StringTokenizer;
@@ -31,7 +30,6 @@ import org.epis.minierp.dao.ventas.EnP1mMovimientoPuntoVenDao;
 import org.epis.minierp.dao.ventas.EnP1tFacturaVentaDetDao;
 import org.epis.minierp.dao.general.TaGzzTipoClienteDao;
 import org.epis.minierp.dao.general.TaGzzTipoDescuentoDao;
-import org.epis.minierp.model.EnP1mEmpresa;
 import org.epis.minierp.model.EnP1mFacturaVentaCab;
 import org.epis.minierp.model.EnP1mMovimientoPuntoVen;
 import org.epis.minierp.model.EnP1mMovimientoPuntoVenId;
@@ -42,46 +40,55 @@ import org.epis.minierp.model.EnP1tFacturaVentaDet;
 import org.epis.minierp.model.EnP1tFacturaVentaDetId;
 import org.epis.minierp.model.EnP2mProducto;
 import org.epis.minierp.model.EnP2mProductoId;
-import org.epis.minierp.model.TaGzzMetodoPagoFactura;
-import org.epis.minierp.model.TaGzzMoneda;
-import org.epis.minierp.model.TaGzzTipoCliente;
-import org.epis.minierp.model.TaGzzTipoDescuento;
-import org.epis.minierp.model.TaGzzTipoPagoFactura;
+    import org.epis.minierp.util.DateUtil;
 
 public class AddFacturaController extends HttpServlet {	
     private static final long serialVersionUID = 1L;
+    TaGzzMetodoPagoFacturaDao metPagFacDao;
+    TaGzzMonedaDao monDao;
+    TaGzzTipoPagoFacturaDao tipPagFacDao;
+    EnP2mProductoDao proDao;
+    TaGzzTipoClienteDao tipCliDao;
+    TaGzzTipoDescuentoDao tipDesDao;
+    EnP1mEmpresaDao empDao;
+    EnP1mUsuario user;
+    EnP1mPuntoVenta punto;
+    EnP1mSucursal sucursal;
     
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
         HttpSession session = request.getSession(true);
-        EnP1mUsuario user = (EnP1mUsuario) session.getAttribute("usuario");
+        metPagFacDao = new TaGzzMetodoPagoFacturaDao();
+        monDao = new TaGzzMonedaDao();
+        tipPagFacDao = new TaGzzTipoPagoFacturaDao();
+        proDao = new EnP2mProductoDao();
+        tipCliDao = new TaGzzTipoClienteDao();
+        tipDesDao = new TaGzzTipoDescuentoDao();
+        empDao = new EnP1mEmpresaDao();
         
-        List <TaGzzMetodoPagoFactura> metodosPagoFactura = (new TaGzzMetodoPagoFacturaDao()).getAllActive();
-        List <TaGzzMoneda> monedas = (new TaGzzMonedaDao()).getAllActive();
-        List <TaGzzTipoPagoFactura> tiposPagoFactura = (new TaGzzTipoPagoFacturaDao()).getAllActive(); 
-        List <EnP2mProducto> productos = (new EnP2mProductoDao()).getAllActive();
-        List <TaGzzTipoCliente> tiposCliente = (new TaGzzTipoClienteDao()).getAllActive();
-        List <TaGzzTipoDescuento> tiposDescuentos = (new TaGzzTipoDescuentoDao()).getAllActive();
-        EnP1mEmpresa empresa = (new EnP1mEmpresaDao()).getAll().get(0);
-        EnP1mPuntoVenta punto = (EnP1mPuntoVenta) user.getEnP1mSucursal().getEnP1mPuntoVentas().iterator().next(); //Getting the first one
-        EnP1mSucursal sucursal = user.getEnP1mSucursal();
-                
-        DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        String fechaActual = format.format(Calendar.getInstance().getTime());
+        user = (EnP1mUsuario) session.getAttribute("usuario");
+        punto = (EnP1mPuntoVenta) user.getEnP1mSucursal().getEnP1mPuntoVentas().iterator().next(); //Getting the first one
+        sucursal = user.getEnP1mSucursal();
+         
+        Date hoy = DateUtil.getthisDate();
         
-        request.setAttribute("metodosPagoFactura", metodosPagoFactura);
-        request.setAttribute("monedas", monedas);
-        request.setAttribute("tiposPagoFactura", tiposPagoFactura);
-        request.setAttribute("productos", productos);
-        request.setAttribute("tiposCliente", tiposCliente);
-        request.setAttribute("tiposDescuentos", tiposDescuentos);
-        request.setAttribute("empresa", empresa);
+        String fechaEmision = DateUtil.getString2Date(hoy);
+        String fechaVencimiento = DateUtil.getString2Date(DateUtil.addDays(hoy, 1));
+        
+        request.setAttribute("metodosPagoFactura", metPagFacDao.getAllActive());
+        request.setAttribute("monedas", monDao.getAllActive());
+        request.setAttribute("tiposPagoFactura", tipPagFacDao.getAllActive());
+        request.setAttribute("productos", proDao.getAllActive());
+        request.setAttribute("tiposCliente", tipCliDao.getAllActive());
+        request.setAttribute("tiposDescuentos", tipDesDao.getAllActive());
+        request.setAttribute("empresa", empDao.getAll().get(0));
         request.setAttribute("punto", punto);
         request.setAttribute("usuario", user);
         request.setAttribute("sucursal", sucursal);
-        request.setAttribute("fechaActual", fechaActual);
+        
+        request.setAttribute("fechaEmision", fechaEmision);
+        request.setAttribute("fechaVencimiento", fechaVencimiento);
         
         request.getRequestDispatcher("/WEB-INF/ventas/factura/addFactura.jsp").forward(request, response);
     }
@@ -124,8 +131,8 @@ public class AddFacturaController extends HttpServlet {
             header.setFacVenCabFecEmi(facVenCabFecEmi);
             header.setFacVenCabFecVen(facVenCabFecVen);
             header.setFacVenPorDes(facVenPorDes);
-            header.setFacVenCabTot(facVenCabTot);
-            header.setFacVenCabSubTot(facVenCabSubTot);
+            header.setFacVenCabTot(facVenCabSubTot);//invertido para que funcione correctamente
+            header.setFacVenCabSubTot(facVenCabTot);//invertido para que funcione correctament
             header.setFacVenCabIgv(facVenCabIgv);
             header.setFacVenCabObs(facVenCabObs);
             header.setTaGzzEstadoFactura((new TaGzzEstadoFacturaDao()).getById(estFacCod));
@@ -164,30 +171,10 @@ public class AddFacturaController extends HttpServlet {
             
                 detalles.save(det);
             }
-            
-            EnP1mMovimientoPuntoVenDao movPunVenDao = new EnP1mMovimientoPuntoVenDao(); 
-            EnP1mMovimientoPuntoVen movPunVen = new EnP1mMovimientoPuntoVen();
-            EnP1mSucursal brachOffice = user.getEnP1mSucursal();
-            EnP1mPuntoVenta salePoint = (EnP1mPuntoVenta) brachOffice.getEnP1mPuntoVentas().iterator().next(); //Getting the first one
-            
-            EnP1mMovimientoPuntoVenId movPunVenId = new EnP1mMovimientoPuntoVenId();
-            movPunVenId.setSucCod(brachOffice.getSucCod());
-            movPunVenId.setPunVenCod(salePoint.getId().getPunVenCod());
-            movPunVenId.setMovPunVenCod((int) (System.currentTimeMillis() % Integer.MAX_VALUE));
-            
-            movPunVen.setId(movPunVenId);
-            movPunVen.setEnP1mUsuario(user);
-            movPunVen.setEstRegCod('A');
-            movPunVen.setTaGzzTipoComprobante((new TaGzzTipoComprobanteDao()).getById(1));
-            movPunVen.setMovPunVenFec(facVenCabFecEmi);
-            movPunVen.setMovPunVenMon(facVenCabTot);
-            movPunVen.setMovPunVenComCod(facVenCabCod);
-            
-            movPunVenDao.save(movPunVen);       
-            
+                
             response.sendRedirect(request.getContextPath() + "/secured/ventas/factura/addFactura");
+            
         } catch (ParseException ex) {
-            Logger.getLogger(AddFacturaController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

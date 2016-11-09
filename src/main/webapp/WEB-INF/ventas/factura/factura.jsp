@@ -17,24 +17,28 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-3">
+                        <div class="col-md-3">
                             <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                                 <a href="${pageContext.request.contextPath}/secured/ventas/factura/addFactura" class="btn btn-success">Crear Factura <i class="fa fa-plus"></i></a>
                                 </cc:if>
                         </div>
-                        <div class="col-lg-9">
-                            <div class="col-lg-3">
-                                <select  class="form-control input-small" name="report" id="report"> 
-                                    <option value="factura">Factura</option>
-                                    <option value="boleta">Boleta</option>
-                                    <option value="guiaRemision">Guía de Remisión</option>
-                                </select>  
-                            </div>
-                            <div class="col-lg-3">
-                                <div id="imprimir" class="btn btn-success"> Imprimir</div>  
-                            </div> 
-                            <div class="col-lg-9">
-                                <label>Flujo Efectivo: </label>
+                        <div class="col-md-4">
+                                <div class="form-group input-group" >
+                                    <span class="input-group-addon">Imprimir:</span>
+                                    <select  class="form-control" name="report" id="report"> 
+                                        <option value="factura">Factura</option>
+                                        <option value="boleta">Boleta</option>
+                                    </select>
+                                </div>
+                                    
+                        </div>
+                        <div class="col-md-2">
+                            <a href="" class="btn btn-success"><i class="fa fa-send-o"></i></a>
+
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group input-group" >
+                                <span class="input-group-addon">Flujo Efectivo:</span>
                                 <a  href="${pageContext.request.contextPath}/secured/general/reporte?type=pdf&&report=flujoefectivo&&jdbc=true&&key=null&&value=null" class="btn btn-danger" >
                                     <i class="fa fa-file-pdf-o"></i>
                                 </a>
@@ -43,6 +47,7 @@
                                 </a>
                             </div>
                         </div>
+                        
                     </div><br>
                     <div class="row">
                         <div class="col-lg-12">
@@ -603,12 +608,6 @@
             });
 
             $(document).ready(function () {
-                $('#facVenDetPro').DataTable({
-                    responsive: true
-                });
-            });
-
-            $(document).ready(function () {
                 $('#imprimir').on('click', function () {
                     if ($(':checkbox:checked').length > 0)
                     {
@@ -632,6 +631,7 @@
                     $("#facVenCabCod").val(data.cod);
                     $("#facVenCabUsuNom").val(data.usuNom);
                     $("#facVenCabCliNomCom").val(data.cliNomCom);
+                    $('#facVenDetPro').DataTable().clear().draw();
                     $('#facVenDetPro').DataTable().destroy();
                     data.detailList.forEach(function (detail) {
                         $('#facVenDetPro tbody').append('<tr><td width="16%" align="center"></td><td width="44%"></td><td width="20%" align="center"></td><td width="20%" align="center"></td></tr>');

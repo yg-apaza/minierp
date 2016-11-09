@@ -21,6 +21,19 @@
             <script type="text/javascript" language="javasript">
             var idProducto="";
             var nombreProducto="";
+            var kardexf="kardexfisico";
+            var kardexv="kardexvalorizado";
+            
+            function cambiom()
+            {
+                kardexf="kardexfisico";
+                kardexv="kardexvalorizado";
+            }
+            function cambiop()
+            {
+                kardexf="kardexfisicopeps";
+                kardexv="kardexvalorizadopeps";
+            }
             function Show(valor)
             {
                  if(valor !== "")
@@ -67,47 +80,60 @@
                         </div>
                         <div class="col-xs-3">
                             <button type="submit" class="btn btn-primary" name="button" value="btn_ver" >Ver</button>
+                            
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+
+                        <div class="col-xs-12">
+                            <label>Tipo: </label>
+                        </div>
+                        <div class="col-xs-6">
+                            <label><input class="radio" type="radio" name="optradio" value="prom" checked onclick="cambiom()">Prom.</label>
+                        </div>
+                        <div class="col-xs-6">
+                            <label><input class="radio" type="radio" name="optradio" value="peps" onclick="cambiop()">PEPS</label>
                         </div>
                         
-
+                        
                     </div>
-                   
-                    <div class="col-lg-4">
+                    <div class="col-lg-3">
                         <div class="col-xs-12">
                             <label>Kardex Físico</label>
                         </div>
                         <div class="col-xs-12">
-                            <a  href="${pageContext.request.contextPath}/secured/general/reporte?type=pdf&&report=kardexfisico&&jdbc=true&&key=PRODUCTO_ID&&value=" class="btn btn-danger" onclick="location.href=this.href+idProducto;return false;">
+                            <a  href="${pageContext.request.contextPath}/secured/general/reporte?type=pdf&&jdbc=true&&key=PRODUCTO_ID&&value=" class="btn btn-danger" onclick="location.href=this.href+idProducto+'\&report='+kardexf;return false;">
                                 <i class="fa fa-file-pdf-o"></i>
                             </a>
-                            <a  href="${pageContext.request.contextPath}/secured/general/reporte?type=xls&&report=kardexfisico&&jdbc=true&&key=PRODUCTO_ID&&value=" class="btn btn-success" onclick="location.href=this.href+idProducto;return false;">
+                            <a  href="${pageContext.request.contextPath}/secured/general/reporte?type=xls&&jdbc=true&&key=PRODUCTO_ID&&value=" class="btn btn-success" onclick="location.href=this.href+idProducto+'\&report='+kardexf;return false;">
                                 <i class="fa fa-file-excel-o"></i>
                             </a>
-                            <a  href="${pageContext.request.contextPath}/secured/general/reporte?type=doc&&report=kardexfisico&&jdbc=true&&key=PRODUCTO_ID&&value=" class="btn  btn-primary" onclick="location.href=this.href+idProducto;return false;">
+                            <a  href="${pageContext.request.contextPath}/secured/general/reporte?type=doc&&jdbc=true&&key=PRODUCTO_ID&&value=" class="btn  btn-primary" onclick="location.href=this.href+idProducto+'\&report='+kardexf;return false;">
                                 <i class="fa fa-file-word-o"></i>
                             </a>
                         </div>
                     </div>
 
-                    <div class="col-lg-4">  
+                    <div class="col-lg-3">  
                         <div class="col-xs-12">
                             <label>Kardex Valorado</label>
                         </div>
                         
                         <div class="col-xs-12">
-                            <a href="${pageContext.request.contextPath}/secured/general/reporte?type=pdf&&report=kardexvalorizado&&jdbc=true&&key=PRODUCTO_ID&&value=" class="btn  btn-danger" onclick="location.href=this.href+idProducto;return false;">
+                            <a href="${pageContext.request.contextPath}/secured/general/reporte?type=pdf&&jdbc=true&&key=PRODUCTO_ID&&value=" class="btn  btn-danger" onclick="location.href=this.href+idProducto+'\&report='+kardexv;return false;">
                                 <i class="fa fa-file-pdf-o"></i>
                             </a>
-                            <a href="${pageContext.request.contextPath}/secured/general/reporte?type=xls&&report=kardexvalorizado&&jdbc=true&&key=PRODUCTO_ID&&value=" class="btn  btn-success" onclick="location.href=this.href+idProducto;return false;">
+                            <a href="${pageContext.request.contextPath}/secured/general/reporte?type=xls&&jdbc=true&&key=PRODUCTO_ID&&value=" class="btn  btn-success" onclick="location.href=this.href+idProducto+'\&report='+kardexv;return false;">
                                 <i class="fa fa-file-excel-o"></i>
                             </a>
-                            <a href="${pageContext.request.contextPath}/secured/general/reporte?type=doc&&report=kardexvalorizado&&jdbc=true&&key=PRODUCTO_ID&&value=" class="btn  btn-primary" onclick="location.href=this.href+idProducto;return false;">
+                            <a href="${pageContext.request.contextPath}/secured/general/reporte?type=doc&&jdbc=true&&key=PRODUCTO_ID&&value=" class="btn  btn-primary" onclick="location.href=this.href+idProducto+'\&report='+kardexv;return false;">
                                 <i class="fa fa-file-word-o"></i>
                             </a>
                         </div>
                        
                     </div>
-                   
+                    <br>
+                    
                 </form>    
             </div>
             
