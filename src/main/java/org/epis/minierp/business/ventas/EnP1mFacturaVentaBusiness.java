@@ -1,6 +1,7 @@
 package org.epis.minierp.business.ventas;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.StringTokenizer;
 import org.epis.minierp.dao.general.TaGzzEstadoFacturaDao;
@@ -193,5 +194,9 @@ public class EnP1mFacturaVentaBusiness {
         //Se cambia su estado de registros (estRegCod = I)
         cabFacVen.setEstRegCod('I');
         facVenCabDao.update(cabFacVen);
-    }  
+    }
+    
+    public void arqueoCaja(String usuCod, Date facVenCabFecEmi, double montoReal){
+        
+    }
 }

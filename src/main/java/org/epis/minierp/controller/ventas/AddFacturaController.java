@@ -131,8 +131,8 @@ public class AddFacturaController extends HttpServlet {
             header.setFacVenCabFecEmi(facVenCabFecEmi);
             header.setFacVenCabFecVen(facVenCabFecVen);
             header.setFacVenPorDes(facVenPorDes);
-            header.setFacVenCabTot(facVenCabTot);
-            header.setFacVenCabSubTot(facVenCabSubTot);
+            header.setFacVenCabTot(facVenCabSubTot);//invertido para que funcione correctamente
+            header.setFacVenCabSubTot(facVenCabTot);//invertido para que funcione correctament
             header.setFacVenCabIgv(facVenCabIgv);
             header.setFacVenCabObs(facVenCabObs);
             header.setTaGzzEstadoFactura((new TaGzzEstadoFacturaDao()).getById(estFacCod));

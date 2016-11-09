@@ -139,6 +139,9 @@
                                     <li>
                                         <a href="${pageContext.request.contextPath}/secured/ventas/pagos">Pagos y Cuotas</a>
                                     </li>
+                                    <li>
+                                        <a href="${pageContext.request.contextPath}/secured/ventas/arqueoCaja">Arqueo de Caja</a>
+                                    </li>
                                     </cc:if>
                                 </ul>
                             </li>
