@@ -531,7 +531,6 @@
                                 proDet: $("#proDesShow").val()
                             }
                     ).done(function (data) {
-                        console.log(data);
                         if (data.proCod != null) {
                             $("#proCodShow").val(data.proCod);
                             $('#unitShow').val(data.proUnit);
