@@ -52,7 +52,7 @@
                                             <div class="col-md-6">
                                                 <div class="form-group input-group" >
                                                     <span class="input-group-addon">Emisión</span>
-                                                    <input type="date" class="form-control" name="facVenCabFecEmi" value="${fechaActual}" readonly>
+                                                    <input type="date" class="form-control" name="facVenCabFecEmi" value="${fechaEmision}" readonly>
                                                     <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                                                 </div>
                                             </div>  
@@ -61,13 +61,13 @@
                                             <div class="col-md-6">
                                                 <div class="form-group input-group" >
                                                     <span class="input-group-addon">Vencimiento</span>
-                                                    <input type="date" class="form-control" name="facVenCabFecVen">
+                                                    <input type="date" class="form-control" name="facVenCabFecVen" value="${fechaVencimiento}">
                                                     <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group input-group" >
-                                                    <span class="input-group-addon">Moneda</i></span>
+                                                    <span class="input-group-addon">Moneda</span>
                                                     <select class="form-control" name="monCod">
                                                         <c:forEach items="${monedas}" var="moneda">
                                                             <option value="${moneda.monCod}">${moneda.monDet}</option>
@@ -97,7 +97,7 @@
                                             </div>
                                         </div>
                                         <div class="row">                                            
-                                            <div class="col-md-6">
+                                            <div class="col-md-4">
                                                 <div class="form-group input-group" >
                                                     <span class="input-group-addon">Método de Pago</span>
                                                     <select class="form-control" name="metPagCod">
@@ -108,7 +108,7 @@
                                                     <span class="input-group-addon"><i class="fa fa-fax"></i></span>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-4">
                                                 <div class="form-group input-group" >
                                                     <span class="input-group-addon">Tipo de Pago</span>
                                                     <select class="form-control" name="tipPagCod">
@@ -117,6 +117,16 @@
                                                         </c:forEach>
                                                     </select> 
                                                     <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group input-group" >
+                                                    <span class="input-group-addon">Modalidad</span>
+                                                    <select class="form-control" name="facVenCabModVen">
+                                                            <option value="F">Factura</option>
+                                                            <option value="B">Boleta</option>
+                                                    </select>
+                                                    <span class="input-group-addon"><i class="fa fa-sort-amount-asc"></i></span>
                                                 </div>
                                             </div>
                                         </div>

@@ -238,15 +238,22 @@ public class EnP2mProductoBusiness {
         setEstRegCod(claProCod, subClaProCod, proCod,'*');
     }
     
-    public void cantidad2Stock(String proCod, String proCan ){
+    public void cantidad2Stock(String proCod, String proCan){
         EnP2mProducto producto = proDao.getById(proCod);
         producto.setProStk(Double.parseDouble(proCan));
+        
+     //   producto.setProObs("-"+obs.substring(0,obs.length()-4)+"-");
         proDao.save(producto);
     }
     
+    @SuppressWarnings("empty-statement")
     public void actualizarInventario(String[] proCod, String[] proCan){
         int size = proCod.length;
         for (int i = 0; i < size; i++) {
+            if(proCan[i].equals("0"))
+                continue;
+            if(proCan[i].substring(proCan[i].length()-1).equals(">"))
+                proCan[i] = proCan[i].substring(0,proCan[i].length()-4);
             cantidad2Stock(proCod[i], proCan[i]);
         }
     }

@@ -43,8 +43,9 @@
                                 <th style="text-align: center">Código</th>
                                 <th style="text-align: center">Descripción del producto</th>
                                 <th style="text-align: center">Precio</th>
-                                <th style="text-align: center">Cantidad</th>
-                                <th style="text-align: center">Actual</th>
+                                <th style="text-align: center" width="15px">Cantidad</th>
+                                <th style="text-align: center" width="15px">Actual</th>
+                                <th style="text-align: center" width="20px" >Motivo</th>
                                 <th style="display:none;"></th>
                                 <th style="display:none;"></th>
                             </tr>               
@@ -56,7 +57,15 @@
                                     <td><c:out value="${producto.proDet}"/></td>
                                     <td><c:out value="${producto.proPreUniVen}"/></td>
                                     <td><c:out value="${producto.proStk}"/></td>
-                                    <td>0</td>
+                                    <td contenteditable="true">0</td>
+                                <!--    <td> <input type="text" width="10px" name="${producto.id.proCod}" value="0"> </td>-->
+                                    <td>
+                                        <select class="form-control" style="width: 170px; display: inline-block;">
+                                        <c:forEach items = "${falla_producto}" var = "falla_producto">
+                                            <option> ${falla_producto.tipFallProDet} </option>
+                                        </c:forEach>  
+                                        </select>   
+                                    </td>
                                     <td style="display:none;"><input type="checkbox" name="proCodigos" value="${producto.id.proCod}" checked></td>
                                     <td style="display:none;"><input type="checkbox" name="proCantidades" value="0" checked></td>
                                 </tr>
@@ -84,7 +93,7 @@
             function updateInventory() {
                 var list = [];
                 $('#id_table tr').each(function () {
-                    var can = $(this).find("td").eq(4).html()
+                    var can = $(this).find("td").eq(4).html();
                     list.push(can);
                 });
                 var i = 1;
