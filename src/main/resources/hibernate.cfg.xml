@@ -30,12 +30,12 @@
     <mapping resource="org/epis/minierp/model/EnP2mAlmacen.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP2mClaseProducto.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/TaGzzEstadoFactura.hbm.xml"/>
-    <mapping resource="org/epis/minierp/model/EnP1mPuntoVenta.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/TaGzzEstadoCivil.hbm.xml"/>
+    <mapping resource="org/epis/minierp/model/EnP1mPuntoVenta.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP1cDevolucionVentas.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/TaGzzTipoFallaProducto.hbm.xml"/>
-    <mapping resource="org/epis/minierp/model/TaGzzTipoUniTransporte.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP1tFacturaVentaDet.hbm.xml"/>
+    <mapping resource="org/epis/minierp/model/TaGzzTipoUniTransporte.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP2tInventarioDet.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP1mFacturaVentaCab.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP1mClientesRutas.hbm.xml"/>
@@ -48,8 +48,8 @@
     <mapping resource="org/epis/minierp/model/EnP4mFacturaCompraCab.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP1mDocumentoUsuario.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP1mCliente.hbm.xml"/>
-    <mapping resource="org/epis/minierp/model/TaGzzMotivoTraslado.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/TaGzzEstadoUniTransporte.hbm.xml"/>
+    <mapping resource="org/epis/minierp/model/TaGzzMotivoTraslado.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP1mPagosCuotasCab.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP2cDevolucionCompras.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP3tAsientoDet.hbm.xml"/>
@@ -67,8 +67,8 @@
     <mapping resource="org/epis/minierp/model/EnP1mEmpresa.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/TaGzzTipoPagoFactura.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/TaGzzTipoCliente.hbm.xml"/>
-    <mapping resource="org/epis/minierp/model/EnP3mLibroDiario.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/TaGzzCanalCliente.hbm.xml"/>
+    <mapping resource="org/epis/minierp/model/EnP3mLibroDiario.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP2mGuiaRemTransportista.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP1mPreventaCab.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP3mCuentaBanco.hbm.xml"/>
@@ -78,7 +78,6 @@
     <mapping resource="org/epis/minierp/model/TaGzzBanco.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP1tPagosCuotasDet.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP4mProveedor.hbm.xml"/>
-    <mapping resource="org/epis/minierp/model/EnP1mMovimientoPuntoVen.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP2mDocumentoTransportista.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/TaGzzMetodoPagoFactura.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/TaGzzTipoDestinatario.hbm.xml"/>

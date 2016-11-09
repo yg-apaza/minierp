@@ -10,7 +10,6 @@ TRUNCATE TABLE episerp.en_p1m_documento_cliente;
 TRUNCATE TABLE episerp.en_p1m_documento_usuario;
 TRUNCATE TABLE episerp.en_p1m_empresa;
 TRUNCATE TABLE episerp.en_p1m_factura_venta_cab;
-TRUNCATE TABLE episerp.en_p1m_movimiento_punto_ven;
 TRUNCATE TABLE episerp.en_p1m_pagos_cuotas_cab;
 TRUNCATE TABLE episerp.en_p1m_preventa_cab;
 TRUNCATE TABLE episerp.en_p1m_punto_venta;

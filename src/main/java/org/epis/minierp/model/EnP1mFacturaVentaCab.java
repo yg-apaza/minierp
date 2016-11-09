@@ -1,5 +1,5 @@
 package org.epis.minierp.model;
-// Generated 05/11/2016 04:10:34 PM by Hibernate Tools 4.3.1
+// Generated 09/11/2016 04:17:17 PM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -23,6 +23,7 @@ public class EnP1mFacturaVentaCab  implements java.io.Serializable {
      private TaGzzMoneda taGzzMoneda;
      private TaGzzTipoDescuento taGzzTipoDescuento;
      private TaGzzTipoPagoFactura taGzzTipoPagoFactura;
+     private Character facVenCabModVen;
      private Date facVenCabFecEmi;
      private Date facVenCabFecVen;
      private double facVenCabTot;
@@ -56,7 +57,7 @@ public class EnP1mFacturaVentaCab  implements java.io.Serializable {
         this.facVenCabObs = facVenCabObs;
         this.estRegCod = estRegCod;
     }
-    public EnP1mFacturaVentaCab(String facVenCabCod, EnP1mCatalogoRuta enP1mCatalogoRuta, EnP1mCliente enP1mCliente, EnP1mUsuario enP1mUsuario, EnP2mGuiaRemRemitente enP2mGuiaRemRemitente, EnP2mGuiaRemTransportista enP2mGuiaRemTransportista, TaGzzEstadoFactura taGzzEstadoFactura, TaGzzMetodoPagoFactura taGzzMetodoPagoFactura, TaGzzMoneda taGzzMoneda, TaGzzTipoDescuento taGzzTipoDescuento, TaGzzTipoPagoFactura taGzzTipoPagoFactura, Date facVenCabFecEmi, Date facVenCabFecVen, double facVenCabTot, Integer facVenPorDes, double facVenCabSubTot, int facVenCabIgv, String facVenCabObs, char estRegCod, EnP1mPagosCuotasCab enP1mPagosCuotasCab, Set enP1cDevolucionVentasesForDevVenNewFac, EnP1cDevolucionVentas enP1cDevolucionVentasByFacVenCabCod, Set enP1tFacturaVentaDets, Set enP1cPreventaRealizadases) {
+    public EnP1mFacturaVentaCab(String facVenCabCod, EnP1mCatalogoRuta enP1mCatalogoRuta, EnP1mCliente enP1mCliente, EnP1mUsuario enP1mUsuario, EnP2mGuiaRemRemitente enP2mGuiaRemRemitente, EnP2mGuiaRemTransportista enP2mGuiaRemTransportista, TaGzzEstadoFactura taGzzEstadoFactura, TaGzzMetodoPagoFactura taGzzMetodoPagoFactura, TaGzzMoneda taGzzMoneda, TaGzzTipoDescuento taGzzTipoDescuento, TaGzzTipoPagoFactura taGzzTipoPagoFactura, Character facVenCabModVen, Date facVenCabFecEmi, Date facVenCabFecVen, double facVenCabTot, Integer facVenPorDes, double facVenCabSubTot, int facVenCabIgv, String facVenCabObs, char estRegCod, EnP1mPagosCuotasCab enP1mPagosCuotasCab, Set enP1cDevolucionVentasesForDevVenNewFac, EnP1cDevolucionVentas enP1cDevolucionVentasByFacVenCabCod, Set enP1tFacturaVentaDets, Set enP1cPreventaRealizadases) {
        this.facVenCabCod = facVenCabCod;
        this.enP1mCatalogoRuta = enP1mCatalogoRuta;
        this.enP1mCliente = enP1mCliente;
@@ -68,6 +69,7 @@ public class EnP1mFacturaVentaCab  implements java.io.Serializable {
        this.taGzzMoneda = taGzzMoneda;
        this.taGzzTipoDescuento = taGzzTipoDescuento;
        this.taGzzTipoPagoFactura = taGzzTipoPagoFactura;
+       this.facVenCabModVen = facVenCabModVen;
        this.facVenCabFecEmi = facVenCabFecEmi;
        this.facVenCabFecVen = facVenCabFecVen;
        this.facVenCabTot = facVenCabTot;
@@ -159,6 +161,13 @@ public class EnP1mFacturaVentaCab  implements java.io.Serializable {
     
     public void setTaGzzTipoPagoFactura(TaGzzTipoPagoFactura taGzzTipoPagoFactura) {
         this.taGzzTipoPagoFactura = taGzzTipoPagoFactura;
+    }
+    public Character getFacVenCabModVen() {
+        return this.facVenCabModVen;
+    }
+    
+    public void setFacVenCabModVen(Character facVenCabModVen) {
+        this.facVenCabModVen = facVenCabModVen;
     }
     public Date getFacVenCabFecEmi() {
         return this.facVenCabFecEmi;

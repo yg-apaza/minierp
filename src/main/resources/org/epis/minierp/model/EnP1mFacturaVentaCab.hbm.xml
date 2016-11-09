@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 05/11/2016 04:10:35 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 09/11/2016 04:17:19 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="org.epis.minierp.model.EnP1mFacturaVentaCab" table="en_p1m_factura_venta_cab" catalog="episerp" optimistic-lock="version">
         <id name="facVenCabCod" type="string">
@@ -38,6 +38,9 @@
         <many-to-one name="taGzzTipoPagoFactura" class="org.epis.minierp.model.TaGzzTipoPagoFactura" fetch="select">
             <column name="TipPagCod" not-null="true" />
         </many-to-one>
+        <property name="facVenCabModVen" type="java.lang.Character">
+            <column name="FacVenCabModVen" length="1" />
+        </property>
         <property name="facVenCabFecEmi" type="date">
             <column name="FacVenCabFecEmi" length="10" not-null="true" />
         </property>

@@ -1,6 +1,5 @@
 package org.epis.minierp.controller.ventas;
 
-import org.epis.minierp.dao.general.TaGzzTipoComprobanteDao;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -9,8 +8,6 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.StringTokenizer;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -26,13 +23,10 @@ import org.epis.minierp.dao.ventas.EnP1mClienteDao;
 import org.epis.minierp.dao.ventas.EnP1mFacturaVentaCabDao;
 import org.epis.minierp.dao.general.EnP1mUsuarioDao;
 import org.epis.minierp.dao.logistica.EnP2mProductoDao;
-import org.epis.minierp.dao.ventas.EnP1mMovimientoPuntoVenDao;
 import org.epis.minierp.dao.ventas.EnP1tFacturaVentaDetDao;
 import org.epis.minierp.dao.general.TaGzzTipoClienteDao;
 import org.epis.minierp.dao.general.TaGzzTipoDescuentoDao;
 import org.epis.minierp.model.EnP1mFacturaVentaCab;
-import org.epis.minierp.model.EnP1mMovimientoPuntoVen;
-import org.epis.minierp.model.EnP1mMovimientoPuntoVenId;
 import org.epis.minierp.model.EnP1mPuntoVenta;
 import org.epis.minierp.model.EnP1mSucursal;
 import org.epis.minierp.model.EnP1mUsuario;
@@ -40,7 +34,7 @@ import org.epis.minierp.model.EnP1tFacturaVentaDet;
 import org.epis.minierp.model.EnP1tFacturaVentaDetId;
 import org.epis.minierp.model.EnP2mProducto;
 import org.epis.minierp.model.EnP2mProductoId;
-    import org.epis.minierp.util.DateUtil;
+import org.epis.minierp.util.DateUtil;
 
 public class AddFacturaController extends HttpServlet {	
     private static final long serialVersionUID = 1L;

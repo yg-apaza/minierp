@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 05/11/2016 04:10:35 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 09/11/2016 04:17:19 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="org.epis.minierp.model.TaGzzMoneda" table="ta_gzz_moneda" catalog="episerp" optimistic-lock="version">
         <id name="monCod" type="java.lang.Integer">
@@ -17,12 +17,6 @@
         <property name="estRegCod" type="char">
             <column name="EstRegCod" length="1" not-null="true" />
         </property>
-        <set name="enP2mProductos" table="en_p2m_producto" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="MonCod" not-null="true" />
-            </key>
-            <one-to-many class="org.epis.minierp.model.EnP2mProducto" />
-        </set>
         <set name="enP4mFacturaCompraCabs" table="en_p4m_factura_compra_cab" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="MonCod" not-null="true" />
@@ -46,6 +40,12 @@
                 <column name="MonCod" not-null="true" />
             </key>
             <one-to-many class="org.epis.minierp.model.EnP1mFacturaVentaCab" />
+        </set>
+        <set name="enP2mProductos" table="en_p2m_producto" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="MonCod" />
+            </key>
+            <one-to-many class="org.epis.minierp.model.EnP2mProducto" />
         </set>
     </class>
 </hibernate-mapping>

@@ -94,6 +94,7 @@ CREATE TABLE en_p1m_factura_venta_cab
   CliCod Char(15) NOT NULL,
   CatRutCod Int(3) ZEROFILL,
   UsuCod Char(15) NOT NULL,
+  FacVenCabModVen Char(1),
   FacVenCabFecEmi Date NOT NULL,
   FacVenCabFecVen Date,
   FacVenCabTot Double(10,2) NOT NULL,
@@ -324,13 +325,14 @@ CREATE TABLE en_p2m_producto
   ProCod Char(15) NOT NULL,
   ProCodBar Char(30),
   AlmCod Char(15),
+  MonCod Int(2) ZEROFILL,
   ProDet Char(90) NOT NULL,
   UniMedCod Int(2) ZEROFILL NOT NULL,
   ProPreUniVen Double(10,2) NOT NULL,
   ProPreUniCom Double(10,2) NOT NULL,
   ProPreUniMar Double(10,2) NOT NULL,
   ProPreUniFle Double(10,2) NOT NULL,
-  MonCod Int(2) ZEROFILL NOT NULL,
+  ProPesNet Double(10,2),
   ProStk Double(10,2) NOT NULL,
   ProStkRea Double(10,2),
   ProStkPreVen Double(10,2) NOT NULL DEFAULT 0,
@@ -338,8 +340,7 @@ CREATE TABLE en_p2m_producto
   ProStkMin Double(10,2),
   ProStkMax Double(10,2),
   ProObs Char(90) NOT NULL DEFAULT 'Ninguna',
-  EstRegCod Char(1) NOT NULL,
-  ProPesNet Double(10,2)
+  EstRegCod Char(1) NOT NULL
 )
 ;
 
@@ -350,6 +351,9 @@ CREATE INDEX IX_Relationship33 ON en_p2m_producto (UniMedCod)
 ;
 
 CREATE INDEX IX_Relationship114 ON en_p2m_producto (AlmCod)
+;
+
+CREATE INDEX IX_Relationship120 ON en_p2m_producto (MonCod)
 ;
 
 -- Table episerp.en_p2m_almacen
@@ -751,29 +755,6 @@ CREATE TABLE en_p1m_sucursal
   EstRegCod Char(1) NOT NULL,
  PRIMARY KEY (SucCod)
 )
-;
-
--- Table episerp.en_p1m_movimiento_punto_ven
-
-CREATE TABLE en_p1m_movimiento_punto_ven
-(
-  SucCod Int(5) ZEROFILL NOT NULL,
-  PunVenCod Int(6) ZEROFILL NOT NULL,
-  MovPunVenCod Int(10) ZEROFILL NOT NULL AUTO_INCREMENT,
-  TipComCod Int(2) ZEROFILL,
-  MovPunVenComCod Char(10) NOT NULL,
-  UsuCod Char(15) NOT NULL,
-  MovPunVenFec Date,
-  MovPunVenMon Double(10,2),
-  EstRegCod Char(1),
- PRIMARY KEY (MovPunVenCod,PunVenCod,SucCod)
-)
-;
-
-CREATE INDEX IX_Relationship64 ON en_p1m_movimiento_punto_ven (TipComCod)
-;
-
-CREATE INDEX IX_Relationship65 ON en_p1m_movimiento_punto_ven (UsuCod)
 ;
 
 -- Table episerp.en_p1m_punto_venta
@@ -1236,9 +1217,6 @@ ALTER TABLE en_p1m_documento_usuario ADD CONSTRAINT Relationship29 FOREIGN KEY (
 ALTER TABLE en_p1m_documento_usuario ADD CONSTRAINT Relationship30 FOREIGN KEY (TipDocUsuCod) REFERENCES ta_gzz_tipo_doc_usuario (TipDocUsuCod) ON DELETE NO ACTION ON UPDATE NO ACTION
 ;
 
-ALTER TABLE en_p2m_producto ADD CONSTRAINT Relationship31 FOREIGN KEY (MonCod) REFERENCES ta_gzz_moneda (MonCod) ON DELETE NO ACTION ON UPDATE NO ACTION
-;
-
 ALTER TABLE en_p2m_producto ADD CONSTRAINT Relationship33 FOREIGN KEY (UniMedCod) REFERENCES ta_gzz_unidad_med (UniMedCod) ON DELETE NO ACTION ON UPDATE NO ACTION
 ;
 
@@ -1309,15 +1287,6 @@ ALTER TABLE en_p2m_almacen ADD CONSTRAINT Relationship61 FOREIGN KEY (SucCod) RE
 ;
 
 ALTER TABLE en_p1m_punto_venta ADD CONSTRAINT Relationship62 FOREIGN KEY (SucCod) REFERENCES en_p1m_sucursal (SucCod) ON DELETE NO ACTION ON UPDATE NO ACTION
-;
-
-ALTER TABLE en_p1m_movimiento_punto_ven ADD CONSTRAINT Relationship63 FOREIGN KEY (PunVenCod, SucCod) REFERENCES en_p1m_punto_venta (PunVenCod, SucCod) ON DELETE NO ACTION ON UPDATE NO ACTION
-;
-
-ALTER TABLE en_p1m_movimiento_punto_ven ADD CONSTRAINT Relationship64 FOREIGN KEY (TipComCod) REFERENCES ta_gzz_tipo_comprobante (TipComCod) ON DELETE NO ACTION ON UPDATE NO ACTION
-;
-
-ALTER TABLE en_p1m_movimiento_punto_ven ADD CONSTRAINT Relationship65 FOREIGN KEY (UsuCod) REFERENCES en_p1m_usuario (UsuCod) ON DELETE NO ACTION ON UPDATE NO ACTION
 ;
 
 ALTER TABLE en_p2m_documento_transportista ADD CONSTRAINT Relationship67 FOREIGN KEY (TipDocTraCod) REFERENCES ta_gzz_tipo_doc_transportista (TipDocTraCod) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -1434,4 +1403,5 @@ ALTER TABLE en_p1m_cartera_clientes ADD CONSTRAINT Relationship118 FOREIGN KEY (
 ALTER TABLE en_p1m_cliente ADD CONSTRAINT Relationship119 FOREIGN KEY (CanCliCod) REFERENCES ta_gzz_canal_cliente (CanCliCod) ON DELETE NO ACTION ON UPDATE NO ACTION
 ;
 
-
+ALTER TABLE en_p2m_producto ADD CONSTRAINT Relationship120 FOREIGN KEY (MonCod) REFERENCES ta_gzz_moneda (MonCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;

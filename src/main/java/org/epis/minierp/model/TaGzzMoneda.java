@@ -1,5 +1,5 @@
 package org.epis.minierp.model;
-// Generated 05/11/2016 04:10:34 PM by Hibernate Tools 4.3.1
+// Generated 09/11/2016 04:17:17 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -15,11 +15,11 @@ public class TaGzzMoneda  implements java.io.Serializable {
      private String monSim;
      private String monDet;
      private char estRegCod;
-     private Set enP2mProductos = new HashSet(0);
      private Set enP4mFacturaCompraCabs = new HashSet(0);
      private Set enP3mAsientoCabs = new HashSet(0);
      private Set enP1mPreventaCabs = new HashSet(0);
      private Set enP1mFacturaVentaCabs = new HashSet(0);
+     private Set enP2mProductos = new HashSet(0);
 
     public TaGzzMoneda() {
     }
@@ -29,15 +29,15 @@ public class TaGzzMoneda  implements java.io.Serializable {
         this.monDet = monDet;
         this.estRegCod = estRegCod;
     }
-    public TaGzzMoneda(String monSim, String monDet, char estRegCod, Set enP2mProductos, Set enP4mFacturaCompraCabs, Set enP3mAsientoCabs, Set enP1mPreventaCabs, Set enP1mFacturaVentaCabs) {
+    public TaGzzMoneda(String monSim, String monDet, char estRegCod, Set enP4mFacturaCompraCabs, Set enP3mAsientoCabs, Set enP1mPreventaCabs, Set enP1mFacturaVentaCabs, Set enP2mProductos) {
        this.monSim = monSim;
        this.monDet = monDet;
        this.estRegCod = estRegCod;
-       this.enP2mProductos = enP2mProductos;
        this.enP4mFacturaCompraCabs = enP4mFacturaCompraCabs;
        this.enP3mAsientoCabs = enP3mAsientoCabs;
        this.enP1mPreventaCabs = enP1mPreventaCabs;
        this.enP1mFacturaVentaCabs = enP1mFacturaVentaCabs;
+       this.enP2mProductos = enP2mProductos;
     }
    
     public Integer getMonCod() {
@@ -68,13 +68,6 @@ public class TaGzzMoneda  implements java.io.Serializable {
     public void setEstRegCod(char estRegCod) {
         this.estRegCod = estRegCod;
     }
-    public Set getEnP2mProductos() {
-        return this.enP2mProductos;
-    }
-    
-    public void setEnP2mProductos(Set enP2mProductos) {
-        this.enP2mProductos = enP2mProductos;
-    }
     public Set getEnP4mFacturaCompraCabs() {
         return this.enP4mFacturaCompraCabs;
     }
@@ -102,6 +95,13 @@ public class TaGzzMoneda  implements java.io.Serializable {
     
     public void setEnP1mFacturaVentaCabs(Set enP1mFacturaVentaCabs) {
         this.enP1mFacturaVentaCabs = enP1mFacturaVentaCabs;
+    }
+    public Set getEnP2mProductos() {
+        return this.enP2mProductos;
+    }
+    
+    public void setEnP2mProductos(Set enP2mProductos) {
+        this.enP2mProductos = enP2mProductos;
     }
 
 
