@@ -74,8 +74,8 @@
                                 <tr>
                                     <td>${c[0]}</td>
                                     <td>${c[1]} ${c[2]}, ${c[3]}</td>
-                                    <td>${c[4]}</td>
                                     <td>${c[5]}</td>
+                                    <td>${c[4]}</td>
                                     <td>${c[6]}</td>
                                     <!-- Ajuste para Rendimiento de Cuentas
                                     <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
