@@ -707,6 +707,16 @@
     </servlet-mapping>
     <servlet>
         <description/>
+        <display-name>ArqueoCajaController</display-name>
+        <servlet-name>ArqueoCajaController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.ventas.ArqueoCajaController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ArqueoCajaController</servlet-name>
+        <url-pattern>/secured/ventas/arqueoCaja</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <description/>
         <display-name>addPagoController</display-name>
         <servlet-name>addPagoController</servlet-name>
         <servlet-class>org.epis.minierp.controller.ventas.AddPagoController</servlet-class>

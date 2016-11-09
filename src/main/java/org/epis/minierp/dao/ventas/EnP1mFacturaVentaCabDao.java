@@ -1,6 +1,7 @@
 package org.epis.minierp.dao.ventas;
 
 import java.util.Collections;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -85,6 +86,43 @@ public class EnP1mFacturaVentaCabDao {
             return 1;
         }
         
+    }
+    
+    /**
+     * Retorna array[usuCod, usuApePat, usuApeMat, usuNom, fecVenCabTot, 
+     * facVenCabSubTot - facVenCabTot,  tipDesCod]
+     * @param usuCod codigo de usuario
+     * @param fecIni fecha de inicio
+     * @param fecFin fecha de fin
+     * @return 
+     */
+    public List ingresos4Usuario(String usuCod, Date fecIni, Date fecFin){
+        String myQuery = null;
+        if(usuCod.equals("-1")){//todos
+            myQuery = "select E.enP1mUsuario.usuCod, E.enP1mUsuario.usuApePat, "
+                + "E.enP1mUsuario.usuApeMat, E.enP1mUsuario.usuNom, "
+                + "sum(E.facVenCabSubTot), sum(E.facVenCabTot), sum(E.facVenCabTot - E.facVenCabSubTot) "
+                + "from EnP1mFacturaVentaCab E "
+                + "where E.estRegCod = 'A' and "
+                + "E.facVenCabFecEmi between :_fecIni and :_fecFin "
+                + "group by E.enP1mUsuario.usuCod "
+                + "order by E.enP1mUsuario.usuCod";
+        }else{
+            myQuery = "select E.enP1mUsuario.usuCod, E.enP1mUsuario.usuApePat, "
+                + "E.enP1mUsuario.usuApeMat, E.enP1mUsuario.usuNom, "
+                + "sum(E.facVenCabSubTot), sum(E.facVenCabTot), sum(E.facVenCabTot - E.facVenCabSubTot) "
+                + "from EnP1mFacturaVentaCab E "
+                + "where E.estRegCod = 'A' and "
+                + "E.facVenCabFecEmi between :_fecIni and :_fecFin and "
+                + "E.enP1mUsuario.usuCod = '"+usuCod+"' "
+                + "order by E.enP1mUsuario.usuCod";
+        }
+        Query query = session.createQuery(myQuery);
+        
+        query.setParameter("_fecIni", fecIni);
+        query.setParameter("_fecFin", fecFin);
+        List estados = query.list();
+        return estados;
     }
     
     public List<EnP1tFacturaVentaDet> getFacVenDets(String facVenCabCod){
