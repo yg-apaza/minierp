@@ -9,14 +9,16 @@ import java.util.List;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.epis.minierp.dao.general.EnP1mEmpresaDao;
 import org.epis.minierp.dao.ventas.EnP1mFacturaVentaCabDao;
 import org.epis.minierp.model.EnP1mFacturaVentaCab;
 import org.epis.minierp.model.EnP1tFacturaVentaDet;
+import org.epis.minierp.util.DateUtil;
 
 public class Impresora {
-    private static final int MAX_FAC_DET = 25;
+    private static final int MAX_FAC_DET = 23;
     private static final int MAX_BOL_DET = 11;
-    private static final int MAX_REM_DET = 24;
+    private static final int MAX_REM_DET = 23;
     
     String extension = ".prn";
     String path;
@@ -24,6 +26,8 @@ public class Impresora {
     DateFormat fecha = new SimpleDateFormat("dd/MM/yyyy");
     Date date = new Date();
     DecimalFormat df = new DecimalFormat("0.00"); 
+    
+    EnP1mEmpresaDao empDao;
     
     String cliNom, cliDir, fecEmi;
     //Factura
@@ -40,6 +44,7 @@ public class Impresora {
 
     public Impresora(String path) {
         this.path = path;
+        empDao = new EnP1mEmpresaDao();
     }
 
     public String generateFactura(String cod){
@@ -104,8 +109,8 @@ public class Impresora {
             conPag = f.getTaGzzMetodoPagoFactura().getMetPagDet();
             fecVen = fecha.format(f.getFacVenCabFecVen());
             venZon = f.getEnP1mUsuario().getUsuNom();
-            numSec = "num";
-            dis = "distrito";
+            numSec = " ";
+            dis = " ";
             rut = Integer.toString(f.getEnP1mCatalogoRuta().getCatRutCod());
             traNom = f.getEnP2mGuiaRemTransportista().getEnP2mTransportista().getTraNom();
             fac.writeFacCabecera(cliCod, conPag, fecVen, venZon, numSec, dis, rut, traNom);
@@ -118,8 +123,8 @@ public class Impresora {
                 proUni = d.getEnP2mProducto().getTaGzzUnidadMed().getUniMedSim();
                 proDes = d.getEnP2mProducto().getProDet();
                 proValUni = d.getFacVenDetValUni();
-                proDes1 = "3";
-                proDes2 = " ";
+                proDes1 = Integer.toString(f.getFacVenPorDes())+"%";
+                proDes2 = "0%";
                 proValNet = proCan * proValUni;
                 fac.writeFacDetalle(Integer.toString(proCod), proCan, proUni, proDes, proValUni, proDes1, proDes2, df.format(proValNet));
             }
@@ -153,7 +158,7 @@ public class Impresora {
                 conPag = f.getTaGzzMetodoPagoFactura().getMetPagDet();
                 fecVen = fecha.format(f.getFacVenCabFecVen());
                 venRut = Integer.toString(f.getEnP1mCatalogoRuta().getCatRutCod());
-                pdv = "pdv";
+                pdv = " ";
                 obs = f.getFacVenCabObs();
                 bol.writeBolCabecera(cliCod, conPag, fecVen, venRut, pdv, obs);
 
@@ -165,7 +170,7 @@ public class Impresora {
                     proUni = d.getEnP2mProducto().getTaGzzUnidadMed().getUniMedSim();
                     proDes = d.getEnP2mProducto().getProDet();
                     proValUni = d.getFacVenDetValUni();
-                    proDes1 = "3";
+                    proDes1 = Integer.toString(f.getFacVenPorDes());
                     proValNet = proCan * proValUni;
                     bol.writeBolDetalle(Integer.toString(proCod), proCan, proUni, proDes, proValUni, proDes1, df.format(proValNet));
                 }
@@ -191,19 +196,19 @@ public class Impresora {
                 EnP1mFacturaVentaCab f = (new EnP1mFacturaVentaCabDao()).getById(cod);
                 cliCod = f.getEnP1mCliente().getCliCod();
                 cliNom = f.getEnP1mCliente().getCliNom();
-                punPar = " ";
+                punPar = empDao.getAll().get(0).getEmpDomFis();
                 punLle = f.getEnP1mCliente().getCliDir();
                 traNom = f.getEnP2mGuiaRemTransportista().getEnP2mTransportista().getTraNom();
                 rem.writeGuiRemSobCab(cliNom, punPar, punLle, traNom);
 
                 fecVen = fecha.format(f.getFacVenCabFecVen());
                 ven = f.getEnP1mUsuario().getUsuCod();
-                zon = "zona";
-                con = "con";
-                oc = "oc";
+                zon = " ";
+                con = f.getTaGzzTipoPagoFactura().getTipPagDet();
+                oc = " ";
                 facNum = f.getFacVenCabCod();
-                hora = "hora";
-                numInt = "numInt";
+                hora = DateUtil.getHoraActual();
+                numInt = " ";
                 rem.writeGuiRemCabecera(fecVen, ven, zon, con, cliCod, oc, facNum, hora, numInt);
 
                 proCod = 0;
@@ -213,7 +218,7 @@ public class Impresora {
                     proUni = d.getEnP2mProducto().getTaGzzUnidadMed().getUniMedSim();
                     proDes = d.getEnP2mProducto().getProDet();
                     proValUni = d.getFacVenDetValUni();
-                    proDes1 = "3";
+                    proDes1 = Integer.toString(f.getFacVenPorDes());
                     proValNet = proCan * proValUni;
                     
                     rem.writeGuiRemDetalle(Integer.toString(proCod), proCan, proUni, proDes, proValUni, proDes1, df.format(proValNet));
