@@ -16,7 +16,7 @@ import org.epis.minierp.model.EnP1tFacturaVentaDet;
 public class Impresora {
     private static final int MAX_FAC_DET = 25;
     private static final int MAX_BOL_DET = 11;
-    private static final int MAX_REM_DET = 25;
+    private static final int MAX_REM_DET = 24;
     
     String extension = ".prn";
     String path;
@@ -57,8 +57,8 @@ public class Impresora {
             conPag = f.getTaGzzMetodoPagoFactura().getMetPagDet();
             fecVen = fecha.format(f.getFacVenCabFecVen());
             venZon = f.getEnP1mUsuario().getUsuNom();
-            numSec = "1";
-            dis = "Cercado";
+            numSec = "num";
+            dis = "distrito";
             rut = Integer.toString(f.getEnP1mCatalogoRuta().getCatRutCod());
             traNom = f.getEnP2mGuiaRemTransportista().getEnP2mTransportista().getTraNom();
             fac.writeFacCabecera(cliCod, conPag, fecVen, venZon, numSec, dis, rut, traNom);
@@ -80,7 +80,7 @@ public class Impresora {
             subTotal = f.getFacVenCabSubTot();
             igv = subTotal * f.getFacVenCabIgv();
             total = f.getFacVenCabTot();
-            fac.writeFacTotal(subTotal, igv, total);
+            fac.writeFacTotal(df.format(subTotal), df.format(igv), df.format(total));
             fac.close();
         } catch (IOException ex) {
             Logger.getLogger(Impresora.class.getName()).log(Level.SEVERE, null, ex);
@@ -127,7 +127,7 @@ public class Impresora {
             subTotal = f.getFacVenCabSubTot();
             igv = subTotal * f.getFacVenCabIgv();
             total = f.getFacVenCabTot();
-            fac.writeFacTotal(subTotal, igv, total);
+            fac.writeFacTotal(df.format(subTotal), df.format(igv), df.format(total));
 
             fac.newPage();
         }
@@ -171,7 +171,7 @@ public class Impresora {
                 }
                 bol.addLines(MAX_BOL_DET - proCod); 
                 total = f.getFacVenCabTot();
-                bol.writeBolTotal(total);
+                bol.writeBolTotal(df.format(total));
 
                 bol.newPage();
             }

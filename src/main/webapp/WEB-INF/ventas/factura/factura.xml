@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <facturaPrinter>
-    <size>1</size>
+    <size>2</size>
     <leftMargin>2</leftMargin>
     <rightMargin>1</rightMargin>
     <topMargin>4.0</topMargin>

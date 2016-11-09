@@ -414,27 +414,21 @@ public class ImpresoraMatricial {
         writer.write(proCod);
         float val = bP.getProCod();
         setAbsoluteHorizontalPosition(val);
-        System.out.println("asd"+val);
         writer.write(Double.toString(proCan));
         val += bP.getProCan();
         setAbsoluteHorizontalPosition(val);
-       System.out.println("asd"+val);
         writer.write(proUni);   
         val += bP.getProUni();    
         setAbsoluteHorizontalPosition(val);
-        System.out.println("asd"+val);
         writer.write(proDes);
         val += bP.getProDes();
         setAbsoluteHorizontalPosition(val);
-        System.out.println("asd"+val);
         writer.write(Double.toString(proValVen));
         val += bP.getProValVen();
         setAbsoluteHorizontalPosition(val);
-        System.out.println("asd"+val);
         writer.write(proDes1);
         val += bP.getProDes1();
         setAbsoluteHorizontalPosition(val);
-        System.out.println("asd"+val);
         writer.write(proValNet);
         newLine();
     }
@@ -463,23 +457,23 @@ public class ImpresoraMatricial {
         newLine();
     }
 
-    public void writeFacTotal(double subTotal, double igv, double total) throws IOException{
+    public void writeFacTotal(String subTotal, String igv, String total) throws IOException{
         advanceVertical(1.0f);
         setAbsoluteHorizontalPosition(fP.getTotalMargin());
-        writer.write(Double.toString(subTotal));
+        writer.write(subTotal);
         newLine();
         setAbsoluteHorizontalPosition(fP.getTotalMargin());
-        writer.write(Double.toString(igv));
+        writer.write(igv);
         newLine();
         setAbsoluteHorizontalPosition(fP.getTotalMargin());
-        writer.write(Double.toString(total));
+        writer.write(total);
         newLine();
     }
     
-    public void writeBolTotal( double total) throws IOException{
+    public void writeBolTotal(String total) throws IOException{
         advanceVertical(1.0f);
         setAbsoluteHorizontalPosition(bP.getTotalMargin());
-        writer.write(Double.toString(total));
+        writer.write(total);
         newLine();
     }
     
