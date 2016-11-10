@@ -29,6 +29,12 @@ public class TaGzzTipoDestinatarioDao {
         System.out.println(estados);
         return estados;
     }
+    public List<TaGzzTipoDestinatario> getAllInactive() {
+        Query query = session.createQuery("from TaGzzTipoDestinatario E where E.estRegCod = 'I'");
+        List<TaGzzTipoDestinatario> estados = query.list();
+        System.out.println(estados);
+        return estados;
+    }
 
     public TaGzzTipoDestinatario getById(int id) {
         TaGzzTipoDestinatario estado = null;

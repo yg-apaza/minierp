@@ -35,6 +35,12 @@ public class TaGzzTipoFallaProductoDao {
         System.out.println(estados);
         return estados;
     }
+    public List<TaGzzTipoFallaProducto> getAllInactive() {
+        Query query = session.createQuery("from TaGzzTipoFallaProducto E where E.estRegCod = 'I'");
+        List<TaGzzTipoFallaProducto> estados = query.list();
+        System.out.println(estados);
+        return estados;
+    }
 
     public TaGzzTipoFallaProducto getById(int id) {
         TaGzzTipoFallaProducto estado = null;

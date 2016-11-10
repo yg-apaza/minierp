@@ -28,7 +28,7 @@ public class TaGzzTipoClienteDao {
         return estados;
     }
     
-    public List<TaGzzTipoCliente> getAllInactives() {
+    public List<TaGzzTipoCliente> getAllInactive() {
         Query query = session.createQuery("from TaGzzTipoCliente E where E.estRegCod = 'I'");
         List<TaGzzTipoCliente> estados = query.list();
         System.out.println(estados);

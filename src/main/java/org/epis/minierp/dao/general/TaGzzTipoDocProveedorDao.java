@@ -35,6 +35,12 @@ public class TaGzzTipoDocProveedorDao {
         System.out.println(estados);
         return estados;
     }
+    public List<TaGzzTipoDocProveedor> getAllInactive() {
+        Query query = session.createQuery("from TaGzzTipoDocProveedor E where E.estRegCod = 'I'");
+        List<TaGzzTipoDocProveedor> estados = query.list();
+        System.out.println(estados);
+        return estados;
+    }
 
     public TaGzzTipoDocProveedor getById(int id) {
         TaGzzTipoDocProveedor estado = null;

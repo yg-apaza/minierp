@@ -27,6 +27,12 @@ public class TaGzzUnidadMedDao {
         System.out.println(estados);
         return estados;
     }
+    public List<TaGzzUnidadMed> getAllInactive() {
+        Query query = session.createQuery("from TaGzzUnidadMed E where E.estRegCod = 'I'");
+        List<TaGzzUnidadMed> estados = query.list();
+        System.out.println(estados);
+        return estados;
+    }
 
     public TaGzzUnidadMed getById(int id) {
         TaGzzUnidadMed estado = null;

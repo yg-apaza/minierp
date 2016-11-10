@@ -27,6 +27,13 @@ public class TaGzzEstadoCivilDao {
         System.out.println(estados);
         return estados;
     }
+    public List<TaGzzEstadoCivil> getAllInactive() {
+        Query query = session.createQuery("from TaGzzEstadoCivil E where E.estRegCod = 'I'");
+        List<TaGzzEstadoCivil> estados = query.list();
+        System.out.println(estados);
+        return estados;
+    }
+    
 
     public TaGzzEstadoCivil getById(int id) {
         TaGzzEstadoCivil estado = null;

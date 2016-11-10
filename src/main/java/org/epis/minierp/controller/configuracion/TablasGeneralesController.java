@@ -68,6 +68,29 @@ public class TablasGeneralesController extends HttpServlet {
         List<TaGzzCanalCliente> t21 = ccDao.getAllActive();
         List<TaGzzTipoFallaProducto> t22 = tfpDao.getAllActive();
         
+        List<TaGzzBanco> ti1 = bDao.getAllInactive();
+        List<TaGzzEstadoCivil> ti2 = ecDao.getAllInactive();
+        List<TaGzzEstadoFactura> ti3 = efDao.getAllInactive();
+        List<TaGzzEstadoUniTransporte> ti4 = eutDao.getAllInactive();
+        List<TaGzzMetodoPagoFactura> ti5 = mpfDao.getAllInactive();
+        List<TaGzzMoneda> ti6 = mDao.getAllInactive();
+        List<TaGzzMotivoTraslado> ti7 = mtDao.getAllInactive();
+        List<TaGzzTipoCliente> ti8 = tclDao.getAllInactive();
+        List<TaGzzTipoComprobante> ti9 = tcrDao.getAllInactive();
+        List<TaGzzTipoDescuento> ti10 = tdisDao.getAllInactive();
+        List<TaGzzTipoDestinatario> ti11 = tdesDao.getAllInactive();
+        List<TaGzzTipoDevolucion> ti12 = tdevDao.getAllInactive();
+        List<TaGzzTipoDocCliente> ti13 = tdcDao.getAllInactive();
+        List<TaGzzTipoDocProveedor> ti14 = tdpDao.getAllInactive();
+        List<TaGzzTipoDocTransportista> ti15 = tdtDao.getAllInactive();
+        List<TaGzzTipoDocUsuario> ti16 = tduDao.getAllInactive();
+        List<TaGzzTipoPagoFactura> ti17 = tpfDao.getAllInactive();
+        List<TaGzzTipoUniTransporte> ti18 = tutDao.getAllInactive();
+        List<TaGzzTipoUsuario> ti19 = tuDao.getAllInactive();
+        List<TaGzzUnidadMed> ti20 = umDao.getAllInactive();
+        List<TaGzzCanalCliente> ti21 = ccDao.getAllInactive();
+        List<TaGzzTipoFallaProducto> ti22 = tfpDao.getAllInactive();
+        
         request.setAttribute("banco", t1);
         request.setAttribute("estadocivil", t2);
         request.setAttribute("estadofactura", t3);
@@ -90,6 +113,30 @@ public class TablasGeneralesController extends HttpServlet {
         request.setAttribute("unidadmed", t20);
         request.setAttribute("canalcliente", t21);
         request.setAttribute("tipofallaprod", t22);
+       
+        
+        request.setAttribute("ibanco", ti1);
+        request.setAttribute("iestadocivil", ti2);
+        request.setAttribute("iestadofactura", ti3);
+        request.setAttribute("iestadounitransporte", ti4);
+        request.setAttribute("imetodopagofactura", ti5);
+        request.setAttribute("imoneda", ti6);
+        request.setAttribute("imotivotraslado", ti7);
+        request.setAttribute("itipocliente", ti8);
+        request.setAttribute("itipocomprobante", ti9);
+        request.setAttribute("itipodescuento", ti10);
+        request.setAttribute("itipodestinatario", ti11);
+        request.setAttribute("itipodevolucion", ti12);
+        request.setAttribute("itipodoccliente", ti13);
+        request.setAttribute("itipodocproveedor", ti14);
+        request.setAttribute("itipodoctransportista", ti15);
+        request.setAttribute("itipodocusuario", ti16);
+        request.setAttribute("itipopagofactura", ti17);
+        request.setAttribute("itipounitransporte", ti18);
+        request.setAttribute("itipousuario", ti19);
+        request.setAttribute("iunidadmed", ti20);
+        request.setAttribute("icanalcliente", ti21);
+        request.setAttribute("itipofallaprod", ti22);
         request.getRequestDispatcher("/WEB-INF/configuracion/tablasGenerales.jsp").forward(request, response);
     }
 
@@ -101,39 +148,40 @@ public class TablasGeneralesController extends HttpServlet {
         int regCod;
         switch(action) {
             case "create":
-                tipo(sel, 0, regDet,'A');
+                tipo(sel, 0, regDet,'A',' ');
                 break;
             case "update":
                 regCod = Integer.parseInt(request.getParameter("regTabCod"));
-                tipo(sel, regCod, regDet, 'C');
+                char regEst = request.getParameter("regTabEst").charAt(0);
+                tipo(sel, regCod, regDet, 'C', regEst);
                 break;
             case "delete":
                 regCod = Integer.parseInt(request.getParameter("regTabCod"));
-                tipo(sel, regCod, regDet, 'B');
+                tipo(sel, regCod, regDet, 'B', ' ');
                 break;
         }
         
         response.sendRedirect(request.getContextPath() + "/secured/configuracion/tablasGenerales");
     }
-    private void tipo(String sel, int regCod, String regDet, char op){
-        switch(sel){
-            case "0":
+    private void tipo(String sel, int regCod, String regDet, char op, char regEst){
+        switch(sel){                                        //regEst es para activar o inactivar 
+            case "0":                                       //en caso elregistro se modifique
                 TaGzzBancoDao bDao= new TaGzzBancoDao();
                 TaGzzBanco b = new TaGzzBanco();
                 b.setBanDet(regDet);
                 if(op=='A'){
                     b.setBanCod(null);
-                    b.setEstRegCod('A');
+                    b.setEstRegCod(op);
                     bDao.save(b);
                 }
                 else if(op=='C'){
                     b.setBanCod(regCod);
-                    b.setEstRegCod('A');
+                    b.setEstRegCod(regEst);
                     bDao.update(b);
                 }
                 else{
                     b.setBanCod(regCod);
-                    b.setEstRegCod('I');
+                    b.setEstRegCod('*');
                     bDao.update(b);
                 }
                 break;
@@ -143,17 +191,17 @@ public class TablasGeneralesController extends HttpServlet {
                 ec.setEstCivDet(regDet);
                 if(op=='A'){
                     ec.setEstCivCod(null);
-                    ec.setEstRegCod('A');
+                    ec.setEstRegCod(op);
                     ecDao.save(ec);
                 }
                 else if(op=='C'){
                     ec.setEstCivCod(regCod);
-                    ec.setEstRegCod('A');
+                    ec.setEstRegCod(regEst);
                     ecDao.update(ec);
                 }
                 else{
                     ec.setEstCivCod(regCod);
-                    ec.setEstRegCod('I');
+                    ec.setEstRegCod('*');
                     ecDao.update(ec);
                 }
                 break;
@@ -163,17 +211,17 @@ public class TablasGeneralesController extends HttpServlet {
                 ef.setEstFacDet(regDet);
                 if(op=='A'){
                 ef.setEstFacCod(null);
-                ef.setEstRegCod('A');
+                ef.setEstRegCod(op);
                 efDao.save(ef);
                 }
                 else if(op=='C'){
                 ef.setEstFacCod(regCod);
-                ef.setEstRegCod('A');
+                ef.setEstRegCod(regEst);
                 efDao.update(ef);
                 }
                 else{
                 ef.setEstFacCod(regCod);
-                ef.setEstRegCod('I');
+                ef.setEstRegCod('*');
                 efDao.update(ef);
                 }
                 break;
@@ -188,13 +236,13 @@ public class TablasGeneralesController extends HttpServlet {
                 }
                 else if(op=='C'){
                 eut.setEstUniTraCod(regCod);
-                eut.setEstRegCod('A');
+                eut.setEstRegCod(regEst);
                 eutDao.update(eut);
                 }
                 
                 else{
                 eut.setEstUniTraCod(regCod);
-                eut.setEstRegCod('I');
+                eut.setEstRegCod('*');
                 eutDao.update(eut);
                 }
                 break;
@@ -209,12 +257,12 @@ public class TablasGeneralesController extends HttpServlet {
                 }
                 else if(op=='C'){
                 mpf.setMetPagCod(regCod);
-                mpf.setEstRegCod('A');
+                mpf.setEstRegCod(regEst);
                 mpfDao.update(mpf);
                 }
                 else{
                 mpf.setMetPagCod(regCod);
-                mpf.setEstRegCod('I');
+                mpf.setEstRegCod('*');
                 mpfDao.update(mpf);
                 }
                 break;
@@ -229,12 +277,12 @@ public class TablasGeneralesController extends HttpServlet {
                 }
                 else if(op=='C'){
                 m.setMonCod(regCod);
-                m.setEstRegCod('A');
+                m.setEstRegCod(regEst);
                 mDao.update(m);
                 }
                 else{
                 m.setMonCod(regCod);
-                m.setEstRegCod('I');
+                m.setEstRegCod('*');
                 mDao.update(m);
                 }
                 break;
@@ -249,12 +297,12 @@ public class TablasGeneralesController extends HttpServlet {
                 }
                 else if(op=='C'){
                 mt.setMotTraCod(regCod);
-                mt.setEstRegCod('A');
+                mt.setEstRegCod(regEst);
                 mtDao.update(mt);
                 }
                 else{
                 mt.setMotTraCod(regCod);
-                mt.setEstRegCod('I');
+                mt.setEstRegCod('*');
                 mtDao.update(mt);
                 }
                 break;
@@ -269,12 +317,12 @@ public class TablasGeneralesController extends HttpServlet {
                 }
                 else if(op=='C'){
                 tcl.setTipCliCod(regCod);
-                tcl.setEstRegCod('A');
+                tcl.setEstRegCod(regEst);
                 tclDao.update(tcl);
                 }
                 else{
                 tcl.setTipCliCod(regCod);
-                tcl.setEstRegCod('I');
+                tcl.setEstRegCod('*');
                 tclDao.update(tcl);
                 }
                 break;
@@ -289,12 +337,12 @@ public class TablasGeneralesController extends HttpServlet {
                 }
                 else if(op=='C'){
                 tcr.setTipComCod(regCod);
-                tcr.setEstRegCod('A');
+                tcr.setEstRegCod(regEst);
                 tcrDao.update(tcr);
                 }
                 else{
                 tcr.setTipComCod(regCod);
-                tcr.setEstRegCod('I');
+                tcr.setEstRegCod('*');
                 tcrDao.update(tcr);
                 }
                 break;
@@ -309,12 +357,12 @@ public class TablasGeneralesController extends HttpServlet {
                 }
                 else if(op=='C'){
                 tdes.setTipDesCod(regCod);
-                tdes.setEstRegCod('A');
+                tdes.setEstRegCod(regEst);
                 tdesDao.update(tdes);
                 }
                 else{
                 tdes.setTipDesCod(regCod);
-                tdes.setEstRegCod('I');
+                tdes.setEstRegCod('*');
                 tdesDao.update(tdes);
                 }
                 break;
@@ -329,12 +377,12 @@ public class TablasGeneralesController extends HttpServlet {
                 }
                 else if(op=='C'){
                 tdst.setTipDstCod(regCod);
-                tdst.setEstRegCod('A');
+                tdst.setEstRegCod(regEst);
                 tdstDao.update(tdst);
                 }
                 else{
                 tdst.setTipDstCod(regCod);
-                tdst.setEstRegCod('I');
+                tdst.setEstRegCod('*');
                 tdstDao.update(tdst);
                 }
                 break;
@@ -349,12 +397,12 @@ public class TablasGeneralesController extends HttpServlet {
                 }
                 else if(op=='C'){
                 tdev.setTipDevCod(regCod);
-                tdev.setEstRegCod('A');
+                tdev.setEstRegCod(regEst);
                 tdevDao.update(tdev);
                 }
                 else{
                 tdev.setTipDevCod(regCod);
-                tdev.setEstRegCod('I');
+                tdev.setEstRegCod('*');
                 tdevDao.update(tdev);
                 }
                 break;
@@ -369,12 +417,12 @@ public class TablasGeneralesController extends HttpServlet {
                 }
                 else if(op=='C'){
                 tdc.setTipDocCliCod(regCod);
-                tdc.setEstRegCod('A');
+                tdc.setEstRegCod(regEst);
                 tdcDao.update(tdc);
                 }
                 else{
                 tdc.setTipDocCliCod(regCod);
-                tdc.setEstRegCod('I');
+                tdc.setEstRegCod('*');
                 tdcDao.update(tdc);
                 }
                 break;
@@ -389,12 +437,12 @@ public class TablasGeneralesController extends HttpServlet {
                 }
                 else if(op=='C'){
                 tdp.setTipDocProCod(regCod);
-                tdp.setEstRegCod('A');
+                tdp.setEstRegCod(regEst);
                 tdpDao.update(tdp);
                 }
                 else{
                 tdp.setTipDocProCod(regCod);
-                tdp.setEstRegCod('I');
+                tdp.setEstRegCod('*');
                 tdpDao.update(tdp);
                 }
                 break;
@@ -409,12 +457,12 @@ public class TablasGeneralesController extends HttpServlet {
                 }
                 else if(op=='C'){
                 tdt.setTipDocTraCod(regCod);
-                tdt.setEstRegCod('A');
+                tdt.setEstRegCod(regEst);
                 tdtDao.update(tdt);
                 }
                 else{
                 tdt.setTipDocTraCod(regCod);
-                tdt.setEstRegCod('I');
+                tdt.setEstRegCod('*');
                 tdtDao.update(tdt);
                 }
                 break;
@@ -429,12 +477,12 @@ public class TablasGeneralesController extends HttpServlet {
                 }
                 else if(op=='C'){
                 tdu.setTipDocUsuCod(regCod);
-                tdu.setEstRegCod('A');
+                tdu.setEstRegCod(regEst);
                 tduDao.update(tdu);
                 }
                 else{
                 tdu.setTipDocUsuCod(regCod);
-                tdu.setEstRegCod('I');
+                tdu.setEstRegCod('*');
                 tduDao.update(tdu);
                 }
                 break;
@@ -449,11 +497,11 @@ public class TablasGeneralesController extends HttpServlet {
                 }
                 else if(op=='C'){
                 tpf.setTipPagCod(regCod);
-                tpf.setEstRegCod('A');
+                tpf.setEstRegCod(regEst);
                 tpfDao.update(tpf);
                 }
                 tpf.setTipPagCod(regCod);
-                tpf.setEstRegCod('I');
+                tpf.setEstRegCod('*');
                 tpfDao.update(tpf);
                 break;
             case "17":
@@ -466,13 +514,13 @@ public class TablasGeneralesController extends HttpServlet {
                 tutDao.save(tut);
                 }
                 else if(op=='C'){
-                tut.setTipUniTraCod(null);
-                tut.setEstRegCod('A');
+                tut.setTipUniTraCod(regCod);
+                tut.setEstRegCod(regEst);
                 tutDao.update(tut);
                 }
                 else{
-                tut.setTipUniTraCod(null);
-                tut.setEstRegCod('I');
+                tut.setTipUniTraCod(regCod);
+                tut.setEstRegCod('*');
                 tutDao.update(tut);
                 }
                 break;
@@ -487,12 +535,12 @@ public class TablasGeneralesController extends HttpServlet {
                 }
                 else if(op=='C'){
                 tu.setTipUsuCod(regCod);
-                tu.setEstRegCod('A');
+                tu.setEstRegCod(regEst);
                 tuDao.update(tu);
                 }
                 else{
                 tu.setTipUsuCod(regCod);
-                tu.setEstRegCod('I');
+                tu.setEstRegCod('*');
                 tuDao.update(tu);
                 }
                 break;
@@ -507,12 +555,12 @@ public class TablasGeneralesController extends HttpServlet {
                 }
                 else if(op=='C'){
                 um.setUniMedCod(regCod);
-                um.setEstRegCod('A');
+                um.setEstRegCod(regEst);
                 umDao.update(um);
                 }
                 else{
                 um.setUniMedCod(regCod);
-                um.setEstRegCod('I');
+                um.setEstRegCod('*');
                 umDao.update(um);
                 }
                 break;
@@ -527,12 +575,12 @@ public class TablasGeneralesController extends HttpServlet {
                 }
                 else if(op=='C'){
                 cc.setCanCliCod(regCod);
-                cc.setEstRegCod('A');
+                cc.setEstRegCod(regEst);
                 ccDao.update(cc);
                 }
                 else{
                 cc.setCanCliCod(regCod);
-                cc.setEstRegCod('I');
+                cc.setEstRegCod('*');
                 ccDao.update(cc);
                 }
                 break;
@@ -547,12 +595,12 @@ public class TablasGeneralesController extends HttpServlet {
                 }
                 else if(op=='C'){
                 tfp.setTipFallProCod(regCod);
-                tfp.setEstRegCod('A');
+                tfp.setEstRegCod(regEst);
                 tfpDao.update(tfp);
                 }
                 else{
                 tfp.setTipFallProCod(regCod);
-                tfp.setEstRegCod('I');
+                tfp.setEstRegCod('*');
                 tfpDao.update(tfp);
                 }
                 break;

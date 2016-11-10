@@ -35,6 +35,17 @@ public class TaGzzBancoDao {
         System.out.println(estados);
         return estados;
     }
+    public List<TaGzzBanco> getAllInactive() {
+        Query query = session.createQuery("from TaGzzBanco A where A.estRegCod = 'I'");
+        try{
+        List<TaGzzBanco> estados = query.list();
+        System.out.println(estados);
+        return estados;
+        }
+        catch(Exception e){
+         return null;   
+        }
+    }
 
     public TaGzzBanco getById(int id) {
         TaGzzBanco estado = null;

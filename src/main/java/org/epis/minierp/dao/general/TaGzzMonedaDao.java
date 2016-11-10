@@ -27,6 +27,12 @@ public class TaGzzMonedaDao {
         System.out.println(estados);
         return estados;
     }
+    public List<TaGzzMoneda> getAllInactive() {
+        Query query = session.createQuery("from TaGzzMoneda E where E.estRegCod = 'I'");
+        List<TaGzzMoneda> estados = query.list();
+        System.out.println(estados);
+        return estados;
+    }
 
     public TaGzzMoneda getById(int id) {
         TaGzzMoneda estado = null;

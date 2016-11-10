@@ -35,6 +35,13 @@ public class TaGzzTipoDevolucionDao {
         System.out.println(estados);
         return estados;
     }
+    
+    public List<TaGzzTipoDevolucion> getAllInactive() {
+        Query query = session.createQuery("from TaGzzTipoDevolucion E where E.estRegCod = 'I'");
+        List<TaGzzTipoDevolucion> estados = query.list();
+        System.out.println(estados);
+        return estados;
+    }
 
     public TaGzzTipoDevolucion getById(int id) {
         TaGzzTipoDevolucion estado = null;

@@ -27,6 +27,12 @@ public class TaGzzMetodoPagoFacturaDao {
         System.out.println(estados);
         return estados;
     }
+    public List<TaGzzMetodoPagoFactura> getAllInactive() {
+        Query query = session.createQuery("from TaGzzMetodoPagoFactura E where E.estRegCod = 'I'");
+        List<TaGzzMetodoPagoFactura> estados = query.list();
+        System.out.println(estados);
+        return estados;
+    }
 
     public TaGzzMetodoPagoFactura getById(int id) {
         TaGzzMetodoPagoFactura estado = null;

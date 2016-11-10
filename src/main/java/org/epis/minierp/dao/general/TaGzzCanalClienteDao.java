@@ -36,7 +36,7 @@ public class TaGzzCanalClienteDao {
         return canales;
     }
     
-    public List<TaGzzCanalCliente> getAllInactives() {
+    public List<TaGzzCanalCliente> getAllInactive() {
         Query query = session.createQuery("from TaGzzCanalCliente E where E.estRegCod = 'I'");
         List<TaGzzCanalCliente> canales = query.list();
         System.out.println(canales);

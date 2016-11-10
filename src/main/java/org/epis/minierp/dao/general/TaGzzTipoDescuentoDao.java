@@ -29,6 +29,11 @@ public class TaGzzTipoDescuentoDao {
         List <TaGzzTipoDescuento> tipos = query.list();
         return tipos;
     }
+    public List <TaGzzTipoDescuento> getAllInactive() {
+        Query query = session.createQuery("from TaGzzTipoDescuento E where E.estRegCod = 'I'");
+        List <TaGzzTipoDescuento> tipos = query.list();
+        return tipos;
+    }
     public void save(TaGzzTipoDescuento tipoDes) {
         session.save(tipoDes);     
     }

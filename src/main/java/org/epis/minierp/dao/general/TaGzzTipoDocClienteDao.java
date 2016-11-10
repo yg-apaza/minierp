@@ -27,6 +27,12 @@ public class TaGzzTipoDocClienteDao {
         System.out.println(estados);
         return estados;
     }
+    public List<TaGzzTipoDocCliente> getAllInactive() {
+        Query query = session.createQuery("from TaGzzTipoDocCliente E where E.estRegCod = 'I'");
+        List<TaGzzTipoDocCliente> estados = query.list();
+        System.out.println(estados);
+        return estados;
+    }
 
     public TaGzzTipoDocCliente getById(int id) {
         TaGzzTipoDocCliente estado = null;

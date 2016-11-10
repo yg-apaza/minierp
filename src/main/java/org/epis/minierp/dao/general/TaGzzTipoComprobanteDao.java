@@ -27,7 +27,7 @@ public class TaGzzTipoComprobanteDao {
         return tipos;
     }
     
-    public List<TaGzzTipoComprobante> getAllInactives() {
+    public List<TaGzzTipoComprobante> getAllInactive() {
         Query query = session.createQuery("from TaGzzTipoComprobante E where E.estRegCod = 'I'");
         List<TaGzzTipoComprobante> tipos = query.list();
         return tipos;

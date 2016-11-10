@@ -36,7 +36,7 @@ public class TaGzzEstadoUniTransporteDao {
         return estados;
     }
     
-    public List<TaGzzEstadoUniTransporte> getAllInactives() {
+    public List<TaGzzEstadoUniTransporte> getAllInactive() {
         Query query = session.createQuery("from TaGzzEstadoUniTransporte E where E.estRegCod = 'I'");
         List<TaGzzEstadoUniTransporte> estados = query.list();
         System.out.println(estados);

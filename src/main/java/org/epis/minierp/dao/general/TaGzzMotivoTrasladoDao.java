@@ -29,6 +29,12 @@ public class TaGzzMotivoTrasladoDao {
         System.out.println(estados);
         return estados;
     }
+    public List<TaGzzMotivoTraslado> getAllInactive() {
+        Query query = session.createQuery("from TaGzzMotivoTraslado E where E.estRegCod = 'I'");
+        List<TaGzzMotivoTraslado> estados = query.list();
+        System.out.println(estados);
+        return estados;
+    }
 
     public TaGzzMotivoTraslado getById(int id) {
         TaGzzMotivoTraslado estado = null;
