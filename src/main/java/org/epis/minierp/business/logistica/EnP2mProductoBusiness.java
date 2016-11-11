@@ -1,8 +1,17 @@
 
 package org.epis.minierp.business.logistica;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import org.epis.minierp.dao.general.EnP1mUsuarioDao;
+import org.epis.minierp.dao.logistica.EnP2mInventarioCabDao;
 import org.epis.minierp.dao.logistica.EnP2mProductoDao;
+import org.epis.minierp.model.EnP1mUsuario;
 import org.epis.minierp.model.EnP2mAlmacen;
+import org.epis.minierp.model.EnP2mInventarioCab;
 import org.epis.minierp.model.EnP2mProducto;
 import org.epis.minierp.model.EnP2mProductoId;
 import org.epis.minierp.model.EnP2mSubclaseProducto;
@@ -14,9 +23,12 @@ import org.epis.minierp.model.TaGzzUnidadMed;
 public class EnP2mProductoBusiness {
 
     EnP2mProductoDao proDao; 
+    EnP2mInventarioCabDao invDao;
+    
     
     public EnP2mProductoBusiness() {
         proDao = new EnP2mProductoDao();
+        
     }
     
     public void create(String claProCod, String subClaProCod, String proCod, 
@@ -246,8 +258,27 @@ public class EnP2mProductoBusiness {
         proDao.save(producto);
     }
     
+    public void CabeceraInventario() throws ParseException
+    {
+        //EnP1mUsuarioDao usuDao = new EnP1mUsuarioDao();
+        //EnP1mUsuario usuario = usuDao.getById("4");
+        
+        DateFormat formatoDelTexto = new SimpleDateFormat("yyyy-MM-dd");
+        Date fecha = formatoDelTexto.parse("2016-11-10");
+        EnP2mInventarioCab invent = new EnP2mInventarioCab();
+        invent.setInvCabCod("1002");
+        invent.setEnP1mUsuario((new EnP1mUsuarioDao()).getById("1"));
+        invent.setInvCabFec(fecha);
+        invent.setInvCabEst(true);
+        invent.setEstRegCod('A');
+        invDao.save(invent);
+    }
+    
     @SuppressWarnings("empty-statement")
-    public void actualizarInventario(String[] proCod, String[] proCan){
+    public void actualizarInventario(String[] proCod, String[] proCan, List<EnP2mProducto> productos) throws ParseException{
+        //Creando Inventario Cab
+         CabeceraInventario();
+        
         int size = proCod.length;
         for (int i = 0; i < size; i++) {
             if(proCan[i].equals("0"))
