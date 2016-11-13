@@ -15,7 +15,13 @@ public class EnP2mInventarioCabDao {
     public EnP2mInventarioCabDao() {
         session = HibernateUtil.getSessionFactory().getCurrentSession();
     }
-
+   
+    public List<EnP2mInventarioCab> getAll() {
+        Query query = session.createQuery("from EnP2mInventarioCab");
+        List<EnP2mInventarioCab> estados = query.list();
+        return estados;
+    }
+    
     public EnP2mInventarioCab getById(String id) {
         EnP2mInventarioCab estado = null;
         try {
