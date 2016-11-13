@@ -1,7 +1,10 @@
 package org.epis.minierp.controller.compras;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -36,10 +39,17 @@ public class InventoryController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         productoBusiness = new EnP2mProductoBusiness();
         
+        EnP2mProductoDao daoPro = new EnP2mProductoDao();
+        List<EnP2mProducto> productos = daoPro.getAllActive();
+        
         String[] codigos = request.getParameterValues("proCodigos");
         String[] cantidades = request.getParameterValues("proCantidades");
 
-        productoBusiness.actualizarInventario(codigos, cantidades);
+        try {
+            productoBusiness.actualizarInventario(codigos, cantidades, productos);
+        } catch (ParseException ex) {
+            Logger.getLogger(InventoryController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         response.sendRedirect(request.getContextPath() + "/secured/compras/inventario");
     }
