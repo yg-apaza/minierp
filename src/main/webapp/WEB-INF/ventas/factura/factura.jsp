@@ -8,7 +8,7 @@
         <title>Ventas - Factura</title>
     </jsp:attribute>
     <jsp:attribute name="contenido">
-        <form id="facturaLoteForm" role="form" action="${pageContext.request.contextPath}/secured/ventas/factura/facturaLotes" method="post">
+        <form id="formLote" role="form" action="" method="post">
             <div class="panel-body">
                 <div class="form-group">
                     <div class="row">
@@ -17,24 +17,27 @@
                         </div>
                     </div>
                     <div class="row">
+                        <div class="col-md-2">
+                            <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
+                            <a href="${pageContext.request.contextPath}/secured/ventas/factura/addFactura" class="btn btn-success">Crear Factura <i class="fa fa-plus"></i></a>
+                            </cc:if>
+                        </div>
                         <div class="col-md-3">
                             <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
-                                <a href="${pageContext.request.contextPath}/secured/ventas/factura/addFactura" class="btn btn-success">Crear Factura <i class="fa fa-plus"></i></a>
-                                </cc:if>
+                            <button type="button" id="guiaTranportista" class="btn btn-primary btn-block">Generar Guía de Transportista</button>
+                            </cc:if>
                         </div>
-                        <div class="col-md-4">
-                                <div class="form-group input-group" >
-                                    <span class="input-group-addon">Imprimir:</span>
-                                    <select  class="form-control" name="report" id="report"> 
-                                        <option value="factura">Factura</option>
-                                        <option value="boleta">Boleta</option>
-                                    </select>
-                                </div>
-                                    
+                        <div class="col-md-3">
+                            <div class="form-group input-group" >
+                                <span class="input-group-addon">Imprimir:</span>
+                                <select class="form-control" name="report" id="report">
+                                    <option value="factura">Factura</option>
+                                    <option value="boleta">Boleta</option>
+                                </select>
+                            </div>
                         </div>
-                        <div class="col-md-2">
-                            <a href="" class="btn btn-success"><i class="fa fa-send-o"></i></a>
-
+                        <div class="col-md-1">
+                            <button type="button" id="imprimir" class="btn btn-primary btn-success"><i class="fa fa-print"></i></button>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group input-group" >
@@ -47,7 +50,6 @@
                                 </a>
                             </div>
                         </div>
-                        
                     </div><br>
                     <div class="row">
                         <div class="col-lg-12">
@@ -121,15 +123,15 @@
                     </div>
                 </div>
             </div>
-            <div id="confimarMessageModal" class="modal fade">
+            <div id="impresionLotesModal" class="modal fade">
                 <div class="modal-dialog modal-sm">
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Impresión por lote</h4>
+                            <h4 class="modal-title">Impresión por Lotes</h4>
                         </div>
                         <div class="modal-body">
-                            <p align="center"><span id="confirmarMessage"></span></p>
+                            <p align="center">¿Está seguro de realizar la impresión?</p>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-outline btn-danger" data-dismiss="modal"> Cancelar </button>
@@ -138,13 +140,77 @@
                     </div>              
                 </div>
             </div>
+            <div id="guiaTransportistaModal" class="modal fade">
+                <div class="modal-dialog modal-md">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Guía de Transportista</h4>
+                        </div>
+                        <div class="modal-body">
+                            <!-- inputs -->
+                            <div class="col-xs-12 col-md-12">
+                                <div class="form-group input-group">
+                                    <span class="input-group-addon">Guía de Transportista</span>
+                                    <input type="text" class="form-control" id="guiTraLotTraNum" name="guiTraLotTraNum">
+                                    <span class="input-group-addon"><i class="fa fa-file-text-o"></i></span>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-md-12">
+                                <div class="form-group input-group">
+                                    <span class="input-group-addon">Transportista</span>
+                                    <select class="form-control" id="guiTraLotTraDat" name="guiTraLotTraDat">
+                                        <c:forEach items="${transportistas}" var="t">
+                                        <option value="${t.traCod}">${t.traNomCom}</option>
+                                        </c:forEach>
+                                    </select>
+                                    <span class="input-group-addon"><i class="fa fa-truck"></i></span>
+                                </div>
+                            </div>      
+                            <div class="col-xs-12 col-md-12">
+                                <div class="form-group input-group">
+                                    <span class="input-group-addon">Unidad</span>
+                                    <select class="form-control" id="guiTraLotNumPla" name="guiTraLotNumPla">
+                                        <c:forEach items="${unidades}" var="u">
+                                        <option value="${u.uniTraCod}">${u.uniTraNumPla}</option>    
+                                        </c:forEach>
+                                    </select> 
+                                    <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-md-12">
+                                <div class="form-group input-group">
+                                    <span class="input-group-addon">Ruta</span>
+                                    <select class="form-control" id="guiTraLotRutDes" name="guiTraLotRutDes">
+                                        <c:forEach items="${rutas}" var="r">
+                                        <option value="${r.catRutCod}">${r.catRutDet}</option>       
+                                        </c:forEach>
+                                    </select> 
+                                    <span class="input-group-addon"><i class="fa fa-road"></i></span>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-md-12">
+                                <div class="form-group input-group">
+                                    <span class="input-group-addon">Descripción</span>
+                                    <input type="text" class="form-control" id="guiTraLotTraDes" name="guiTraLotTraDes">
+                                    <span class="input-group-addon"><i class="fa fa-reorder"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline btn-danger" data-dismiss="modal"> Cancelar </button>
+                            <button type="submit" class="btn btn-outline btn-success"> Aceptar </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </form>
         <div id="errorMessageModal" class="modal fade">
             <div class="modal-dialog modal-sm">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Impresión por lote</h4>
+                        <h4 class="modal-title">Error</h4>
                     </div>
                     <div class="modal-body">
                         <p align="center"><span id="errorMessage"></span></p>
@@ -485,7 +551,7 @@
                                     <div class="form-group input-group">
                                         <span class="input-group-addon">Transportista</span>
                                         <select class="form-control" id="guiTraAddTraDat" name="guiTraTraDat">
-                                        </select> 
+                                        </select>
                                         <span class="input-group-addon"><i class="fa fa-truck"></i></span>
                                     </div>
                                 </div>      
@@ -609,13 +675,25 @@
 
             $(document).ready(function () {
                 $('#imprimir').on('click', function () {
+                    $('#formLote').attr('action', '${pageContext.request.contextPath}/secured/ventas/factura/facturaLotes');
                     if ($(':checkbox:checked').length > 0)
                     {
-                        $("#confirmarMessage").text("¿Está seguro de realizar la impresión? ");
-                        $('#confimarMessageModal').modal('show');
+                        $('#impresionLotesModal').modal('show');
                     } else
                     {
                         $("#errorMessage").text("Debe seleccionar al menos una factura ");
+                        $('#errorMessageModal').modal('show');
+                    }
+                });
+                
+                $('#guiaTranportista').on('click', function () {
+                    $('#formLote').attr('action', '${pageContext.request.contextPath}/secured/ventas/factura/guiaTransportista');
+                    if ($(':checkbox:checked').length > 0)
+                    {
+                        $('#guiaTransportistaModal').modal('show');
+                    } else
+                    {
+                        $("#errorMessage").text("Debe seleccionar al menos una factura");
                         $('#errorMessageModal').modal('show');
                     }
                 });

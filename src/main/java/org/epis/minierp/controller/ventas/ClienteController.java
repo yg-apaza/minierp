@@ -14,7 +14,6 @@ import org.epis.minierp.dao.ventas.EnP1mClienteDao;
 import org.epis.minierp.dao.ventas.EnP1mClientesRutasDao;
 import org.epis.minierp.dao.ventas.EnP1mDocumentoClienteDao;
 import org.epis.minierp.dao.general.TaGzzTipoClienteDao;
-import org.epis.minierp.model.TaGzzCanalCliente;
 
 public class ClienteController extends HttpServlet {
     

@@ -121,7 +121,7 @@ public class CarrierGuideController extends HttpServlet {
                     routs.add(rout);
                 }
                 
-                data.add("rutDes", routs);                
+                data.add("rutDes", routs);
                 
                 response.setContentType("application/json");
                 response.setCharacterEncoding("UTF-8");
