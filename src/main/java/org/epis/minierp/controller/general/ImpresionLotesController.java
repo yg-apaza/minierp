@@ -20,7 +20,7 @@ public class ImpresionLotesController extends HttpServlet {
     
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-            String[] codigos = request.getParameterValues("codigos");
+        String[] codigos = request.getParameterValues("codigos");
         String report = request.getParameter("report");
 
         String path = getServletContext().getRealPath("/WEB-INF/");

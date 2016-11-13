@@ -667,6 +667,16 @@
     </servlet-mapping>
     <servlet>
         <description/>
+        <display-name>GuiaRemTransportistaController</display-name>
+        <servlet-name>GuiaRemTransportistaController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.ventas.GuiaRemTransportistaController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GuiaRemTransportistaController</servlet-name>
+        <url-pattern>/secured/ventas/carrierGuideLote</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <description/>
         <display-name>AddReferralGuideController</display-name>
         <servlet-name>AddReferralGuideController</servlet-name>
         <servlet-class>org.epis.minierp.controller.ventas.AddReferralGuideController</servlet-class>

@@ -687,7 +687,7 @@
                 });
                 
                 $('#guiaTranportista').on('click', function () {
-                    $('#formLote').attr('action', '${pageContext.request.contextPath}/secured/ventas/factura/guiaTransportista');
+                    $('#formLote').attr('action', '${pageContext.request.contextPath}/secured/ventas/carrierGuideLote');
                     if ($(':checkbox:checked').length > 0)
                     {
                         $('#guiaTransportistaModal').modal('show');
