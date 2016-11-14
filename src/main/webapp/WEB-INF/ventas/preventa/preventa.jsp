@@ -16,9 +16,9 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-8">
+                    <div class="col-lg-2">
                         <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
-                        <form role=form" method="get" action="${pageContext.request.contextPath}/secured/ventas/preventa/addPreventa">
+                        <form role="form" method="get" action="${pageContext.request.contextPath}/secured/ventas/preventa/addPreventa">
                             <button type="submit" class="btn btn-success">Crear Preventa <i class="fa fa-plus"></i></button>   
                         </form>
                         </cc:if>
@@ -26,7 +26,7 @@
                     <div class="col-lg-4">
                         <div class="col-lg-8">
                             <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
-                            <button type="button" id="transformar" class="btn btn-info btn-block"> Transformar a Ventas </button>
+                            <button type="button" id="transformar" class="btn btn-info btn-block"> Transformar a Ventas <i class="fa fa-arrow-right"></i></button>
                             </cc:if>
                         </div>
                     </div>
@@ -41,12 +41,13 @@
                                         <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                                         <th style="text-align: center"></th>
                                         </cc:if>
-                                        <th style="text-align: center">Código Preventa</th>
+                                        <th style="text-align: center">Código</th>
                                         <th style="text-align: center">Cliente</th>
                                         <th style="text-align: center">Usuario</th>
                                         <th style="text-align: center">Fecha</th>
-                                        <th style="text-align: center">Moneda</th>
-                                        <th style="text-align: center">Cantidad total</th>
+                                        <th style="text-align: center">Total+IGV</th>
+                                        <th style="text-align: center">SubTotal</th>
+                                        <th style="text-align: center">Vista</th>
                                     </tr>    
                                 </thead>
                                 <tbody>
@@ -59,8 +60,13 @@
                                             <td><c:out value="${preventa.enP1mCliente.cliNom} ${preventa.enP1mCliente.cliApePat}"/></td>
                                             <td><c:out value="${preventa.enP1mUsuario.usuNom} ${preventa.enP1mUsuario.usuApePat}"/></td>
                                             <td><c:out value="${preventa.preVenCabFecEmi}"/></td>
-                                            <td><c:out value="${preventa.taGzzMoneda.monDet}"/></td>
-                                            <td><c:out value="${preventa.preVenCabTot}"/></td>
+                                            <td><c:out value="${preventa.taGzzMoneda.monSim} ${preventa.preVenCabTot}"/></td>
+                                            <td><c:out value="${preventa.taGzzMoneda.monSim} ${preventa.preVenCabSubTot}"/></td>
+                                            <td>
+                                                <a onclick='viewPreVen("${preventa.preVenCabCod}")'>
+                                                    <i class="fa fa-list-alt fa-2x" style="color: black;"></i>
+                                                </a> 
+                                            </td>
                                         </tr>
                                     </c:forEach>  
                                 </tbody>
@@ -124,23 +130,6 @@
                     </div>
                 </div>
             </form>
-            <!--div class="modal fade" id="alertaModal" role="dialog">
-                <div class="modal-dialog modal-sm">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal">&times;</button>
-                      <h4 class="modal-title">Alerta</h4>
-                    </div>
-                    <div class="modal-body">
-                        <label> Esta operación es irreversible, ¿Está seguro que desea continuar? </label>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-outline btn-success"> Aceptar </button>
-                        <button type="button" class="btn btn-outline btn-danger" data-dismiss="modal"> Cancelar </button>
-                    </div>
-                  </div>
-                </div>
-            </div-->
         </div>
                 
         <div id="errorMessageModal" class="modal fade">
@@ -159,15 +148,133 @@
                 </div>              
             </div>
             </div>
-                
         </div>
+        
+        <!- Vista de Detalles ->        
+        <div class="modal fade" id="viewPreVen">
+            <div class="modal-dialog modal-md">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h3 class="modal-title">Pre-Venta</h3>
+                    </div>
+                    <div class="modal-body">   
+                        <div class="panel-body">
+                            <ul class="nav nav-pills">
+                                <li class="active"><a href="#general" data-toggle="tab">Información General</a></li>
+                                <li><a href="#detail" data-toggle="tab">Detalle de Venta</a></li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane fade in active" id="general"><br>
+                                    <div class="col-xs-12 col-md-12">
+                                        <div class="col-xs-12 col-md-8">
+                                            <div class="form-group input-group">
+                                                <span class="input-group-addon">Pre-Venta</span>
+                                                <input type="text" class="form-control" id="preVenCabCod" readOnly>
+                                                <span class="input-group-addon"><i class="fa fa-clipboard"></i></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-md-4">
+                                            <div class="form-group input-group">
+                                                <span class="input-group-addon">IGV</span>
+                                                <input type="text" class="form-control" id="preVenCabIgv" readOnly>
+                                                <span class="input-group-addon"><i class="fa fa-venus"></i></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-md-12">
+                                            <div class="form-group input-group">
+                                                <span class="input-group-addon">Vendedor</span>
+                                                <input type="text" class="form-control" id="preVenCabUsuNom" readOnly>
+                                                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-md-12">
+                                            <div class="form-group input-group" >
+                                                <span class="input-group-addon">Cliente</span>
+                                                <input type="text" class="form-control" id="preVenCabCliNomCom" readOnly>
+                                                <span class="input-group-addon"><i class="fa fa-shopping-cart"></i></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-md-8">
+                                            <div class="form-group input-group" >
+                                                <span class="input-group-addon">Descuento</span>
+                                                <input type="text" class="form-control" id="tipDesDet" readOnly>
+                                                <span class="input-group-addon"><i class="fa fa-arrow-down"></i></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-md-4">
+                                            <div class="form-group input-group" >
+                                                <span class="input-group-addon">%</span>
+                                                <input type="text" class="form-control" id="preVenPorDes" readOnly>
+                                                <span class="input-group-addon"><i class="fa fa-venus"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="detail"><br>
+                                    <div class="col-xs-12 col-md-12">
+                                        <div class="table-responsive">
+                                            <table width="100%" class="table table-striped table-bordered table-hover" id="preVenDetPro">
+                                                <thead align="center">
+                                                    <tr >
+                                                        <th>Cant.</th>
+                                                        <th>Descripción</th>
+                                                        <th>Precio</th>
+                                                        <th>Importe</th>
+                                                    </tr>
+                                                </thead>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" data-dismiss="modal">Aceptar</button>
+                    </div>
+                </div>
+            </div>
+        </div>        
+                
+                
         <script> 
             function addFiltro() {
                 var filterName = $("#filterName").val();
                 var filterSelect = $("#filterSelect").val();
                 $("#filters").append($("<button onclick=\"$(this).remove()\" type=\"button\" class=\"btn btn-outline\">"+filterSelect+": "+ filterName+"</button>"));
-            }    
-
+            };
+            
+            function viewPreVen(preVenCabCod) {
+                $("#loading").modal('show');
+                $.post(
+                        "${pageContext.request.contextPath}/secured/ventas/searchPreVen", {
+                            preVenCabCod: preVenCabCod
+                        }
+                ).done(function (data) {
+                    $("#preVenCabCod").val(data.cod);
+                    $("#preVenCabUsuNom").val(data.usuNom);
+                    $("#preVenCabCliNomCom").val(data.cliNomCom);
+                    $("#tipDesDet").val(data.tipDesDet);
+                    $("#preVenCabIgv").val(data.preVenCabIgv);
+                    $("#preVenPorDes").val(data.preVenPorDes);
+                    $('#preVenDetPro').DataTable().clear().draw();
+                    $('#preVenDetPro').DataTable().destroy();
+                    data.detailList.forEach(function (detail) {
+                        $('#preVenDetPro tbody').append('<tr><td width="16%" align="center"></td><td width="44%"></td><td width="20%" align="center"></td><td width="20%" align="center"></td></tr>');
+                        $('#preVenDetPro tr:last td:eq(0)').html(detail.detCan);
+                        $('#preVenDetPro tr:last td:eq(1)').html(detail.proDet);
+                        $('#preVenDetPro tr:last td:eq(2)').html(detail.preUniVen);
+                        $('#preVenDetPro tr:last td:eq(3)').html((Number(detail.detImp)).toFixed(2));
+                    });
+                    $('#preVenDetPro').DataTable({
+                        responsive: true
+                    });
+                    $("#loading").modal('hide');
+                    $("#viewPreVen").modal('show');
+                });
+            }
+            
             $(document).ready(function(){
                 $('#id_table').DataTable({
                     responsive: true
@@ -176,6 +283,10 @@
                 $('#addFiltro').click(function(){
                    addFiltro();
                 });
+                
+                $.validator.addMethod("codePattern", function (value, element) {
+                return /^[0-9]{3}-[0-9]{6}$/.test(value);
+                }, "Patrón: [0-9]{3}-[0-9]{6}");
                 
                 $('#transformar').on('click', function () {
                     if($(':checkbox:checked').length > 0)
@@ -201,8 +312,9 @@
                 
                 $("#preventaLoteForm").validate({
                     rules: {
-                        numLot:{
+                        iniFacVenCabCod: {
                             required: true,
+                            codePattern: true
                         },
                         numCuo: {
                             required: true,
@@ -211,7 +323,7 @@
                         }
                     },
                     messages: {
-                        numLot: {
+                        iniFacVenCabCod: {
                             required: "Ingrese número de la factura inicial"
                         },
                         numCuo: {
