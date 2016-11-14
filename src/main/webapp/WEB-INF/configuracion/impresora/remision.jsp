@@ -119,7 +119,7 @@
                             <tr>
                                 <th>CÓDIGO</th>
                                 <th>CANTIDAD</th>
-                                <th>UNID./th>
+                                <th>UNID.</th>
                                 <th>DESCRIPCION</th>
                                 <th>VALOR VENTA<br>UNITARIO</th>
                                 <th></th>

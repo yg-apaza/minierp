@@ -72,7 +72,7 @@
                             <tr>
                                 <th>CÓDIGO CLIENTE</th>
                                 <th>CONDICIÓN PAGO</th>
-                                <th>FECHA VCTO.<br></th>
+                                <th>FECHA VCTO.</th>
                                 <th>VENDEDOR-RUTA</th>
                                 <th>PDV</th>
                                 <th>OBSERVACIÓN</th>
