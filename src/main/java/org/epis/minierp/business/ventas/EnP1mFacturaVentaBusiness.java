@@ -284,12 +284,8 @@ public class EnP1mFacturaVentaBusiness {
         EnP2mProductoId pId = new EnP2mProductoId(proCod, subClaProCod, claProCod);
         EnP2mProducto p = proDao.getById(pId);
 
-        EnP1mFacturaVentaCab fvc = new EnP1mFacturaVentaCab();
-        fvc.setFacVenCabCod(facVenCabCod);
-
         EnP1tFacturaVentaDet fvd = new EnP1tFacturaVentaDet();
         fvd.setId(new EnP1tFacturaVentaDetId(facVenDetCod, facVenCabCod));
-        fvd.setEnP1mFacturaVentaCab(fvc);
         fvd.setEnP2mProducto(p);
         fvd.setFacVenDetCan(facVenDetCan);
         fvd.setFacVenDetValUni(facVenDetValUni);
@@ -302,10 +298,12 @@ public class EnP1mFacturaVentaBusiness {
         if (proStk - proStkPreVen >= facVenDetCan) {
             p.setProStk(proStk - facVenDetCan);
             proDao.update(p);
+            
+            //crear detalle si reduce el stock!
+            facVenDetDao.save(fvd);
         }
 
-        //crear detalle
-        facVenDetDao.save(fvd);
+        
 
     }
 
@@ -365,7 +363,7 @@ public class EnP1mFacturaVentaBusiness {
         //se calcula el numero de facturas totales
         int size = detalles.size(); //cantidad de detalles insertados;
         int numFacs = size / maxDet4FacVen;
-        if (numFacs % maxDet4FacVen > 0) {
+        if (numFacs % maxDet4FacVen > 0 || size < maxDet4FacVen) {
             numFacs++;
         }
 
@@ -378,21 +376,27 @@ public class EnP1mFacturaVentaBusiness {
         for (int j = 0; j < numFacs; j++) {
             //creando cabecera facVenCabTot= 0 y facVenCabSubTot = 0
             tempFacVenCabCod = GenerateFacVenCabCod(facVenCabCod, j);
+            
             createFacVenCab(tempFacVenCabCod, cliCod, usuCod, facVenCabModVen, facVenCabFecEmi,
                     facVenCabFecVen, 0, tipDesCod, facVenPorDes, 0,
-                    facVenCabIGV, facVenCabObs, estFacCod, tipPagCod, tipPagCod, monCod,
+                    facVenCabIGV, facVenCabObs, estFacCod, metPagFac, tipPagCod, monCod,
                     pagCuoNum, estRegCod);
 
             for (int i = 0; i < maxDet4FacVen && tempDets < size; i++) {
                 tempFvd = detalles.get(tempDets);
-                createFacVenDet(tempFvd);
+                createFacVenDet(tempFacVenCabCod, i+1, 
+                        tempFvd.getEnP2mProducto().getId().getClaProCod(), 
+                        tempFvd.getEnP2mProducto().getId().getSubClaProCod(), 
+                        tempFvd.getEnP2mProducto().getId().getProCod(), 
+                        tempFvd.getFacVenDetCan(), tempFvd.getFacVenDetValUni());
+                
                 tempDets++;
-                tempFacVenCabTot = tempFacVenCabTot + tempFvd.getFacVenDetValUni();
+                tempFacVenCabTot = tempFacVenCabTot + tempFvd.getFacVenDetValUni()*tempFvd.getFacVenDetCan();
             }
 
-            tempFacVenCabTot = tempFacVenCabTot * (100 + facVenCabIGV / 100); //Agregando Costo del IGV
-            tempFacVenCabSubTot = tempFacVenCabTot * ((100 - facVenPorDes) / 100); //Agregando el descuento
-
+            tempFacVenCabTot = tempFacVenCabTot * ((100.0 + (double)facVenCabIGV) / 100.0); //Agregando Costo del IGV
+            tempFacVenCabSubTot = tempFacVenCabTot * ((100.0 - (double)facVenPorDes) / 100.0); //Agregando el descuento
+            
             //cambiando los valores de total y subtotal con respecto a sus detalles
             setFacVenCabTot(tempFacVenCabCod, tempFacVenCabTot);
             setFacVenCabSubTot(tempFacVenCabCod, tempFacVenCabSubTot);
@@ -435,18 +439,11 @@ public class EnP1mFacturaVentaBusiness {
      * @return
      */
     public String GenerateFacVenCabCod(String facVenCabCod, int add) {
-        //String.format("%03d",lote)+"-"+String.format("%06d",maxMore1);
         int last6digits = Integer.parseInt(facVenCabCod.substring(4));
         last6digits = last6digits + add;
-        String lote = facVenCabCod.substring(0, 3); //lote xxx-
+        String lote = facVenCabCod.substring(0, 4); //lote xxx-
         String code = String.format("%06d", last6digits); //formato de 6 digitos con 0s a la izquierda
         return lote + code;
-    }
-
-    private void setFacVenCabSubTot(String facVenCabCod, double value) {
-        EnP1mFacturaVentaCab fvc = facVenCabDao.getById(facVenCabCod);
-        fvc.setFacVenCabSubTot(value);
-        facVenCabDao.update(fvc);
     }
 
     private void setFacVenCabTot(String facVenCabCod, double value) {
@@ -454,4 +451,11 @@ public class EnP1mFacturaVentaBusiness {
         fvc.setFacVenCabTot(value);
         facVenCabDao.update(fvc);
     }
+    
+    private void setFacVenCabSubTot(String facVenCabCod, double value) {
+        EnP1mFacturaVentaCab fvc = facVenCabDao.getById(facVenCabCod);
+        fvc.setFacVenCabSubTot(value);
+        facVenCabDao.update(fvc);
+    }
+
 }
