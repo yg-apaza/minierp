@@ -98,7 +98,13 @@
                                                     </a>
                                                 </td>
                                                 <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
-                                                    <td width="10%" align="center">
+                                                    <td width="15%" align="center">
+                                                        <a onclick='makeDoReferralGuide("${c.facVenCabCod}")'>
+                                                         <i class="fa fa-book fa-2x" style="color: black;"></i>
+                                                        </a>
+                                                        <a onclick='makeDoCarrierGuide("${c.facVenCabCod}")'>
+                                                         <i class="fa fa-truck fa-2x" style="color: black;"></i>
+                                                        </a>
                                                         <a onclick='makeDoRefund("${c.facVenCabCod}","partial")'>
                                                             <i class="fa fa-wrench fa-2x" style="color: black;"></i>
                                                         </a>
