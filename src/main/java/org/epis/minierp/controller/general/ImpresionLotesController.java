@@ -24,7 +24,7 @@ public class ImpresionLotesController extends HttpServlet {
         String report = request.getParameter("report");
 
         String path = getServletContext().getRealPath("/WEB-INF/");
-        path = path + "ventas/factura";
+        path = path + "configuracion/impresora";
         Impresora generador = new Impresora(path);
 
         String fileGenerated = "";

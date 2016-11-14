@@ -62,8 +62,8 @@ public class Impresora {
             conPag = f.getTaGzzMetodoPagoFactura().getMetPagDet();
             fecVen = fecha.format(f.getFacVenCabFecVen());
             venZon = f.getEnP1mUsuario().getUsuNom();
-            numSec = "num";
-            dis = "distrito";
+            numSec = " ";
+            dis = " ";
             rut = Integer.toString(f.getEnP1mCatalogoRuta().getCatRutCod());
             traNom = f.getEnP2mGuiaRemTransportista().getEnP2mTransportista().getTraNom();
             fac.writeFacCabecera(cliCod, conPag, fecVen, venZon, numSec, dis, rut, traNom);
@@ -76,8 +76,8 @@ public class Impresora {
                 proUni = d.getEnP2mProducto().getTaGzzUnidadMed().getUniMedSim();
                 proDes = d.getEnP2mProducto().getProDet();
                 proValUni = d.getFacVenDetValUni();
-                proDes1 = "3";
-                proDes2 = " ";
+                proDes1 = Integer.toString(f.getFacVenPorDes())+"%";
+                proDes2 = "0%";
                 proValNet = proCan * proValUni;
                 fac.writeFacDetalle(Integer.toString(proCod), proCan, proUni, proDes, proValUni, proDes1, proDes2, df.format(proValNet));
             }
@@ -189,7 +189,7 @@ public class Impresora {
     
     public String generateGuiaRemision(String[] cods){
         String file = "Remision_"+sf.format(date.getTime())+extension;
-        ImpresoraMatricial rem = new ImpresoraMatricial(file, path, "guiaRemision");
+        ImpresoraMatricial rem = new ImpresoraMatricial(file, path, "remision");
         try {
             for (String cod : cods) {
 

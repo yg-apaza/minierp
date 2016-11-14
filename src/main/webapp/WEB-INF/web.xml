@@ -382,6 +382,37 @@
         <servlet-name>PointSaleController</servlet-name>
         <url-pattern>/secured/configuracion/puntodeventa</url-pattern>
     </servlet-mapping>
+    <!--Sub Modulo Impresora-->
+    <servlet>
+        <description/>
+        <display-name>ImpresoraFacturaController</display-name>
+        <servlet-name>ImpresoraFacturaController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.configuracion.impresora.ImpresoraFacturaController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ImpresoraFacturaController</servlet-name>
+        <url-pattern>/secured/configuracion/impresora/factura</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <description/>
+        <display-name>ImpresoraBoletaController</display-name>
+        <servlet-name>ImpresoraBoletaController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.configuracion.impresora.ImpresoraBoletaController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ImpresoraBoletaController</servlet-name>
+        <url-pattern>/secured/configuracion/impresora/boleta</url-pattern>
+    </servlet-mapping>
+<servlet>
+        <description/>
+        <display-name>ImpresoraRemisionController</display-name>
+        <servlet-name>ImpresoraRemisionController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.configuracion.impresora.ImpresoraRemisionController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ImpresoraRemisionController</servlet-name>
+        <url-pattern>/secured/configuracion/impresora/remision</url-pattern>
+    </servlet-mapping>
     <!-- Modulo de Contabilidad -->
     <servlet>
         <description/>
