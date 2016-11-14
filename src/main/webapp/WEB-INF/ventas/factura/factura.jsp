@@ -57,28 +57,36 @@
                                 <table class="table table-striped table-bordered table-hover" id="tablePurchases">
                                     <thead>
                                         <tr>
-                                            <th></th>
-                                            <th>Fecha</th>
-                                            <th>Factura</th>
-                                            <th>Cliente</th>
-                                            <th>Vendedor</th>
-                                            <th>Importe</th>
-                                            <th>Vistas</th>
-                                                <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
-                                                <th>Acciones</th>
-                                                </cc:if>
+                                            <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
+                                            <th style="text-align: center"></th>
+                                            </cc:if>
+                                            <th style="text-align: center">Código</th>
+                                            <th style="text-align: center">F/B</th>
+                                            <th style="text-align: center">Cliente</th>
+                                            <th style="text-align: center">Usuario</th>
+                                            <th style="text-align: center">Fecha</th>
+                                            <th style="text-align: center">Total+IGV</th>
+                                            <th style="text-align: center">SubTotal</th>
+                                            <th style="text-align: center">Vista</th>
+                                            <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
+                                            <th>Acciones</th>
+                                            </cc:if>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <c:forEach items="${facturasVenta}" var="c">
                                             <tr>
+                                                <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                                                 <td width="3%" align="center"><input type="checkbox" name="codigos" value="${c.facVenCabCod}"></td>
-                                                <td width="10%" align="center">${c.facVenCabFecEmi}</td>
-                                                <td width="15%" align="center">${c.facVenCabCod}</td>
-                                                <td width="19%">${c.enP1mCliente.cliNom}</td>
-                                                <td width="15%">${c.enP1mUsuario.usuNom}</td>
-                                                <td width="10%" align="center">${c.facVenCabTot}</td>                                                                            
-                                                <td width="12%" align="center">
+                                                </cc:if>
+                                                <td> <c:out value="${c.facVenCabCod}"/></td>
+                                                <td> <c:out value="${c.facVenCabModVen}"/></td>
+                                                <td> <c:out value="${c.enP1mCliente.cliNom} ${c.enP1mCliente.cliApePat}"/></td>
+                                                <td> <c:out value="${c.enP1mUsuario.usuNom} ${c.enP1mUsuario.usuApePat}"/></td>
+                                                <td> <c:out value="${c.facVenCabFecEmi}"/></td>
+                                                <td> <c:out value="${c.facVenCabTot}"/></td>
+                                                <td> <c:out value="${c.facVenCabSubTot}"/></td>
+                                                <td>
                                                     <a onclick='viewSaleBill("${c.facVenCabCod}")'>
                                                         <i class="fa fa-list-alt fa-2x" style="color: black;"></i>
                                                     </a> 
@@ -90,13 +98,7 @@
                                                     </a>
                                                 </td>
                                                 <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
-                                                    <td width="16%" align="center">
-                                                        <a onclick='makeDoReferralGuide("${c.facVenCabCod}")'>
-                                                            <i class="fa fa-book fa-2x" style="color: black;"></i>
-                                                        </a>
-                                                        <a onclick='makeDoCarrierGuide("${c.facVenCabCod}")'>
-                                                            <i class="fa fa-truck fa-2x" style="color: black;"></i>
-                                                        </a>
+                                                    <td width="10%" align="center">
                                                         <a onclick='makeDoRefund("${c.facVenCabCod}","partial")'>
                                                             <i class="fa fa-wrench fa-2x" style="color: black;"></i>
                                                         </a>
@@ -222,7 +224,7 @@
             </div>
         </div>
         <div class="modal fade" id="viewSaleBill">
-            <div class="modal-dialog">
+            <div class="modal-dialog modal-md">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -237,11 +239,18 @@
                             <div class="tab-content">
                                 <div class="tab-pane fade in active" id="general"><br>
                                     <div class="col-xs-12 col-md-12">
-                                        <div class="col-xs-12 col-md-6">
+                                        <div class="col-xs-12 col-md-8">
                                             <div class="form-group input-group">
                                                 <span class="input-group-addon">Factura</span>
                                                 <input type="text" class="form-control" id="facVenCabCod" readOnly>
                                                 <span class="input-group-addon"><i class="fa fa-clipboard"></i></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-md-4">
+                                            <div class="form-group input-group">
+                                                <span class="input-group-addon">IGV</span>
+                                                <input type="text" class="form-control" id="preVenCabIgv" readOnly>
+                                                <span class="input-group-addon"><i class="fa fa-venus"></i></span>
                                             </div>
                                         </div>
                                         <div class="col-xs-12 col-md-6">
@@ -352,7 +361,7 @@
             </div>
         </div>
         <div class="modal fade" id="addReferralGuide">
-            <div class="modal-dialog">
+            <div class="modal-dialog modal-md">
                 <form id="addReferralGuideForm" role="form" action="${pageContext.request.contextPath}/secured/ventas/addReferralGuide" method="post">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -423,7 +432,7 @@
             </div>
         </div>
         <div class="modal fade" id="viewCarrierGuide">
-            <div class="modal-dialog">
+            <div class="modal-dialog modal-md">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -510,7 +519,7 @@
             </div>
         </div>
         <div class="modal fade" id="addCarrierGuide">
-            <div class="modal-dialog">
+            <div class="modal-dialog modal-md">
                 <form id="addCarrierGuideForm" role="form" action="${pageContext.request.contextPath}/secured/ventas/addCarrierGuide" method="post">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -953,7 +962,7 @@
                 },
                 messages: {
                     guiRemRemNum: {
-                        required: "Número de Guía de Remisión",
+                        required: "Número de Guía de Remisión"
                     },
                     guiRemRemDen: {
                         required: "Denominación"

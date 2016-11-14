@@ -648,6 +648,16 @@
     </servlet-mapping>
     <servlet>
         <description/>
+        <display-name>SearchPreVentaController</display-name>
+        <servlet-name>SearchPreVentaController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.ventas.SearchPreVentaController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SearchPreVentaController</servlet-name>
+        <url-pattern>/secured/ventas/searchPreVen</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <description/>
         <display-name>TotalRefundController</display-name>
         <servlet-name>TotalRefundController</servlet-name>
         <servlet-class>org.epis.minierp.controller.ventas.TotalRefundController</servlet-class>

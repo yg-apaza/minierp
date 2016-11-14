@@ -55,9 +55,13 @@ public class PreVentaController extends HttpServlet {
             pagCuoNum = Integer.parseInt(numCuo);
         }
         
-        //Tope de Factura = 23
+        //maxDet4FacVen std = 15
+        int maxDet4FacVen = 15;
+        if(facVenCabModVen == 'F') maxDet4FacVen = 23;
+        if(facVenCabModVen == 'B') maxDet4FacVen = 11;    
+        
         preventaBusiness.preVenta2Venta4Lotes(preventas, iniFacVenCabCod, estFacCod, 
-                metPagCod, tipPagCod, facVenCabModVen, pagCuoNum, 23);
+                metPagCod, tipPagCod, facVenCabModVen, pagCuoNum, maxDet4FacVen);
         
         response.sendRedirect(request.getContextPath() + "/secured/ventas/factura");
     }
