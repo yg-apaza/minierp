@@ -259,7 +259,7 @@
                                                 <span class="input-group-addon"><i class="fa fa-venus"></i></span>
                                             </div>
                                         </div>
-                                        <div class="col-xs-12 col-md-6">
+                                        <div class="col-xs-12 col-md-12">
                                             <div class="form-group input-group">
                                                 <span class="input-group-addon">Vendedor</span>
                                                 <input type="text" class="form-control" id="facVenCabUsuNom" readOnly>
