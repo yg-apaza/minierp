@@ -48,14 +48,14 @@
                                 <td colspan="2" rowspan="2"></td>
                             </tr>
                             <tr>
-                                <td style="text-align: right"><input type="number" name="punLle" value="${rem.getPunLle()}">cm</td>
+                                <td><input type="number" name="punLle" value="${rem.getPunLle()}">cm</td>
                             </tr>
                             <tr>
                                 <td colspan="3"></td>
                                 <td>Transportista</td>
                             </tr>
                             <tr>
-                                <td colspan="3"><input type="number" name="traNom" value="${rem.getTraNom()}">cm</td>
+                                <td colspan="3" style="text-align: right"><input type="number" name="traNom" value="${rem.getTraNom()}">cm</td>
                                 <td>Nombres y apellidos</td>
                             </tr>
                         </table>
