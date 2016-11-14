@@ -83,6 +83,6 @@ public class ImpresoraBoletaController extends HttpServlet {
         bPrinter.setTotalMargin(totalMargin);
         bolDAO.save(bPrinter);
         
-        response.sendRedirect(request.getContextPath() + "/secured/configuracion/boleta");    
+        response.sendRedirect(request.getContextPath() + "/secured/ventas/factura");    
     }
 }

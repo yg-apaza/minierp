@@ -91,7 +91,7 @@ public class ImpresoraRemisionController extends HttpServlet {
         rPrinter.setTotalMargin(totalMargin);
         remDAO.save(rPrinter);
         
-        response.sendRedirect(request.getContextPath() + "/secured/configuracion/remision");
+        response.sendRedirect(request.getContextPath() + "/secured/ventas/factura");    
         
     }
 

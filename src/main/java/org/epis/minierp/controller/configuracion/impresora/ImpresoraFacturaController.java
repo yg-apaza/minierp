@@ -89,6 +89,6 @@ public class ImpresoraFacturaController extends HttpServlet {
         fPrinter.setTotalMargin(totalMargin);
         facDAO.save(fPrinter);
         
-        response.sendRedirect(request.getContextPath() + "/secured/configuracion/factura");     
+        response.sendRedirect(request.getContextPath() + "/secured/ventas/factura");    
     }
 }
