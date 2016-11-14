@@ -38,29 +38,29 @@
                             <table class = "table table-striped table-bordered table-hover"  id = "id_table">
                                 <thead>
                                     <tr>
+                                        <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
+                                        <th style="text-align: center"></th>
+                                        </cc:if>
                                         <th style="text-align: center">Código Preventa</th>
                                         <th style="text-align: center">Cliente</th>
                                         <th style="text-align: center">Usuario</th>
                                         <th style="text-align: center">Fecha</th>
                                         <th style="text-align: center">Moneda</th>
                                         <th style="text-align: center">Cantidad total</th>
-                                        <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
-                                        <th style="text-align: center">Check</th>
-                                        </cc:if>
-                                    </tr>               
+                                    </tr>    
                                 </thead>
                                 <tbody>
                                      <c:forEach items = "${preventas}" var = "preventa">    
                                         <tr>
+                                            <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
+                                            <td width="3%" align="center"><input type="checkbox" name="preventas" value="${preventa.preVenCabCod}"></td>
+                                            </cc:if>
                                             <td><c:out value="${preventa.preVenCabCod}"/> </td>
                                             <td><c:out value="${preventa.enP1mCliente.cliNom} ${preventa.enP1mCliente.cliApePat}"/></td>
                                             <td><c:out value="${preventa.enP1mUsuario.usuNom} ${preventa.enP1mUsuario.usuApePat}"/></td>
                                             <td><c:out value="${preventa.preVenCabFecEmi}"/></td>
                                             <td><c:out value="${preventa.taGzzMoneda.monDet}"/></td>
                                             <td><c:out value="${preventa.preVenCabTot}"/></td>
-                                            <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
-                                            <td><input type="checkbox" name="preventas" value="${preventa.preVenCabCod}"></td>
-                                            </cc:if>
                                         </tr>
                                     </c:forEach>  
                                 </tbody>
