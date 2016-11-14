@@ -17,7 +17,7 @@ public class FacturaDAO {
         return printer;
     }
     
-    public void save(FacturaPrinter print){
-        xmlFactura.writeXML("factura", print);
+    public void save(FacturaPrinter factura){
+        xmlFactura.writeXML("factura", factura);
     }
 }

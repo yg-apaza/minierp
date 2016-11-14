@@ -12,14 +12,14 @@ import javax.xml.bind.annotation.XmlType;
     "cliNom",
     "cliDir",
     "fecEmi",
-    "topFacCab",
+    "topBolCab",
     "cliCod",
     "conPag",
     "fecVen",
     "venRut",
     "pdv",
     "obs",
-    "topFacDet",
+    "topBolDet",
     "proCod",
     "proCan",
     "proUni",
@@ -38,14 +38,14 @@ public class BoletaPrinter {
     float cliNom;
     float cliDir;
     float fecEmi;
-    float topFacCab;
+    float topBolCab;
     float cliCod;
     float conPag;
     float fecVen;
     float venRut;
     float pdv;
     float obs;
-    float topFacDet;
+    float topBolDet;
     float proCod;
     float proCan;
     float proUni;
@@ -114,12 +114,12 @@ public class BoletaPrinter {
         this.fecEmi = fecEmi;
     }
 
-    public float getTopFacCab() {
-        return topFacCab;
+    public float getTopBolCab() {
+        return topBolCab;
     }
 
-    public void setTopFacCab(float topFacCab) {
-        this.topFacCab = topFacCab;
+    public void setTopBolCab(float topBolCab) {
+        this.topBolCab = topBolCab;
     }
 
     public float getCliCod() {
@@ -170,12 +170,12 @@ public class BoletaPrinter {
         this.obs = obs;
     }
 
-    public float getTopFacDet() {
-        return topFacDet;
+    public float getTopBolDet() {
+        return topBolDet;
     }
 
-    public void setTopFacDet(float topFacDet) {
-        this.topFacDet = topFacDet;
+    public void setTopBolDet(float topBolDet) {
+        this.topBolDet = topBolDet;
     }
 
     public float getProCod() {

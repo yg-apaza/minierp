@@ -26,8 +26,8 @@ public class ImpresoraFacturaController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String path = getServletContext().getRealPath("/WEB-INF/");
         path = path + "configuracion/impresora";
-        FacturaDAO facDao = new FacturaDAO(path);
-        FacturaPrinter fp = facDao.read();
+        FacturaDAO facDAO = new FacturaDAO(path);
+        FacturaPrinter fPrinter = facDAO.read();
         
         /* int size = Int.parseInteger(request.getParameter("size")); */
         
@@ -60,37 +60,35 @@ public class ImpresoraFacturaController extends HttpServlet {
         float proDes2 = Float.parseFloat(request.getParameter("proDes2"));
         float proValNet = Float.parseFloat(request.getParameter("proValNet"));
                
-        fp.setCliNom(cliNom);
-        fp.setCliDir(cliDir);
-        fp.setFecEmi(fecEmi);
+        fPrinter.setCliNom(cliNom);
+        fPrinter.setCliDir(cliDir);
+        fPrinter.setFecEmi(fecEmi);
         
-        fp.setCliCod(cliCod);
-        fp.setConPag(conPag);
-        fp.setFecVen(fecVen);
-        fp.setVenZon(venZon);
-        fp.setNumSec(numSec);
-        fp.setDis(dis);
-        fp.setRut(rut);
-        fp.setTra(tra);
+        fPrinter.setCliCod(cliCod);
+        fPrinter.setConPag(conPag);
+        fPrinter.setFecVen(fecVen);
+        fPrinter.setVenZon(venZon);
+        fPrinter.setNumSec(numSec);
+        fPrinter.setDis(dis);
+        fPrinter.setRut(rut);
+        fPrinter.setTra(tra);
         
-        fp.setProCod(proCod);
-        fp.setProCan(proCan);
-        fp.setProUni(proUni);
-        fp.setProDes(proDes);
-        fp.setProValUni(proValUni);
-        fp.setProDes1(proDes1);
-        fp.setProDes2(proDes2);
-        fp.setProValNet(proValNet);
+        fPrinter.setProCod(proCod);
+        fPrinter.setProCan(proCan);
+        fPrinter.setProUni(proUni);
+        fPrinter.setProDes(proDes);
+        fPrinter.setProValUni(proValUni);
+        fPrinter.setProDes1(proDes1);
+        fPrinter.setProDes2(proDes2);
+        fPrinter.setProValNet(proValNet);
 
-        fp.setLeftMargin(leftMargin);
-        fp.setTopMargin(topMargin);
-        fp.setTopFacCab(topFacCab);
-        fp.setTopFacDet(topFacDet);
-        fp.setTotalMargin(totalMargin);
-        facDao.save(fp);
+        fPrinter.setLeftMargin(leftMargin);
+        fPrinter.setTopMargin(topMargin);
+        fPrinter.setTopFacCab(topFacCab);
+        fPrinter.setTopFacDet(topFacDet);
+        fPrinter.setTotalMargin(totalMargin);
+        facDAO.save(fPrinter);
         
-        response.sendRedirect(request.getContextPath() + "/secured/configuracion/sucursal");
-        
+        response.sendRedirect(request.getContextPath() + "/secured/configuracion/factura");     
     }
-
 }

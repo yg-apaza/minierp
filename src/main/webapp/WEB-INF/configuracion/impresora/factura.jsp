@@ -11,14 +11,14 @@
             <form id="updateFactura" method="post" action="${pageContext.request.contextPath}/secured/configuracion/impresora/factura">
                 <div class="col-md-12">
                     <div class="table-responsive">
-                        <table class="table table-bordered table-striped table-hover table-condensed" id="tablaFacCab">
+                        <table class="table table-bordered table-striped table-hover table-condensed" id="tablaFacMar">
                             <tr>
                                 <th>MARGEN IZQUIERDO</th>
                                 <th>MARGEN SUPERIOR</th>
                             </tr>
                             <tr>
-                                <td><input type="number" name="cliCod" value="${fac.getLeftMargin()}">cm</td>
-                                <td><input type="number" name="conPag" value="${fac.getTopMargin()}">cm</td>
+                                <td><input type="number" name="leftMargin" value="${fac.getLeftMargin()}">cm</td>
+                                <td><input type="number" name="topMargin" value="${fac.getTopMargin()}">cm</td>
                             </tr>
                         </table>
                     </div>
@@ -58,10 +58,10 @@
                     <div class="table-responsive">
                         <table class="table table-bordered table-striped table-hover table-condensed" id="tablaTopFacCab">
                             <tr>
-                                <th>SEPARACIÓN</th>
+                                <th style="text-align: center">SEPARACIÓN</th>
                             </tr>
                             <tr>
-                                <td><input type="number" name="cliCod" value="${fac.getTopFacCab()}">cm</td>
+                                <td style="text-align: center"><input type="number" name="topFacCab" value="${fac.getTopFacCab()}">cm</td>
                             </tr>
                         </table>
                     </div>
@@ -96,10 +96,10 @@
                     <div class="table-responsive">
                         <table class="table table-bordered table-striped table-hover table-condensed" id="tablaTopFacDet">
                             <tr>
-                                <th>SEPARACIÓN</th>
+                                <th style="text-align: center">SEPARACIÓN</th>
                             </tr>
                             <tr>
-                                <td><input type="number" name="cliCod" value="${fac.getTopFacDet()}">cm</td>
+                                <td style="text-align: center"><input type="number" name="topFacDet" value="${fac.getTopFacDet()}">cm</td>
                             </tr>
                         </table>
                     </div>

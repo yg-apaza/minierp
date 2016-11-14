@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guiaRemisionPrinter>
+<remisionPrinter>
     <size>2</size>
     <leftMargin>2</leftMargin>
     <rightMargin>1</rightMargin>
@@ -27,4 +27,4 @@
     <proDes1>1.6</proDes1>
     <proValNet>2.8</proValNet>
     <totalMargin>19.0</totalMargin>
-</guiaRemisionPrinter>
+</remisionPrinter>

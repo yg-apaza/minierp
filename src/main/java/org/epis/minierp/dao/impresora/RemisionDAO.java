@@ -5,15 +5,19 @@ import org.epis.minierp.business.general.RemisionPrinter;
 import org.epis.minierp.business.general.XMLReader;
 
 public class RemisionDAO {
-    private XMLReader<RemisionPrinter> xmlFactura;
+    private XMLReader<RemisionPrinter> xmlRemision;
     private RemisionPrinter printer;
     
     public RemisionDAO(String file) {
-        xmlFactura = new XMLReader(RemisionPrinter.class, new File(file));
+        xmlRemision = new XMLReader(RemisionPrinter.class, new File(file));
     }
     
     public RemisionPrinter read(){
-        printer = xmlFactura.openXML("remision");
+        printer = xmlRemision.openXML("remision");
         return printer;
+    }
+    
+    public void save(RemisionPrinter remision){
+        xmlRemision.writeXML("remision", remision);
     }
 }

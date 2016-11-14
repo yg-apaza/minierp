@@ -189,7 +189,7 @@ public class Impresora {
     
     public String generateGuiaRemision(String[] cods){
         String file = "Remision_"+sf.format(date.getTime())+extension;
-        ImpresoraMatricial rem = new ImpresoraMatricial(file, path, "guiaRemision");
+        ImpresoraMatricial rem = new ImpresoraMatricial(file, path, "remision");
         try {
             for (String cod : cods) {
 

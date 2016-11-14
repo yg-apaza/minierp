@@ -324,7 +324,7 @@ public class ImpresoraMatricial {
     
     public void writeBolCabecera(String cliCod, String conPag, String fecVen,
             String venRut, String pdv, String obs) throws IOException{
-        advanceVertical(bP.getTopFacCab());
+        advanceVertical(bP.getTopBolCab());
         writer.write(cliCod);
         float val = bP.getCliCod();
         setAbsoluteHorizontalPosition(val);
@@ -341,13 +341,13 @@ public class ImpresoraMatricial {
         val += bP.getObs();
         setAbsoluteHorizontalPosition(val);
         writer.write(obs);
-        advanceVertical(bP.getTopFacDet());
+        advanceVertical(bP.getTopBolDet());
         newLine();
     }
     
     public void writeGuiRemCabecera(String fecVen, String ven, String zon,
             String con, String cliCod, String oc, String facNum, String hora, String numInt) throws IOException{
-        advanceVertical(gP.getTopFacCab());
+        advanceVertical(gP.getTopRemCab());
         writer.write(fecVen);
         float val = gP.getFecVen();
         setAbsoluteHorizontalPosition(val);
@@ -373,7 +373,7 @@ public class ImpresoraMatricial {
         val += gP.getHora();
         setAbsoluteHorizontalPosition(val);
         writer.write(numInt);
-        advanceVertical(gP.getTopFacDet());
+        advanceVertical(gP.getTopRemDet());
         newLine();
     }
     
