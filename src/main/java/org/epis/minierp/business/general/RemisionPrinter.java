@@ -34,7 +34,7 @@ import javax.xml.bind.annotation.XmlType;
     "totalMargin"
 })
 
-public class GuiaRemisionPrinter {
+public class RemisionPrinter {
     int size;
     int leftMargin;
     int rightMargin;
@@ -63,7 +63,7 @@ public class GuiaRemisionPrinter {
     float proValNet;
     float totalMargin;
 
-    public GuiaRemisionPrinter() {
+    public RemisionPrinter() {
     }
 
     public int getSize() {

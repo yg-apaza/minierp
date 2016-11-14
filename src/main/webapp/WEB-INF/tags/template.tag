@@ -222,6 +222,9 @@
                                     <li>
                                         <a href="${pageContext.request.contextPath}/secured/configuracion/catalogoRutas">Catalogo de Rutas</a>
                                     </li>
+                                    <li>
+                                        <a href="${pageContext.request.contextPath}/secured/configuracion/impresora/factura">Factura</a>
+                                    </li>
                                 </ul>
                             </li>
                             </cc:if>

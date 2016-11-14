@@ -5,6 +5,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.epis.minierp.dao.impresora.BoletaDAO;
+import org.epis.minierp.dao.impresora.FacturaDAO;
+import org.epis.minierp.dao.impresora.RemisionDAO;
 
 @SuppressWarnings("unused")
 public class ImpresoraMatricial {
@@ -45,30 +48,23 @@ public class ImpresoraMatricial {
     private static final float CM_PER_INCH = 2.54f;
     
     private FileWriter writer;
-    private XMLReader<FacturaPrinter> xmlFactura;
-    private XMLReader<BoletaPrinter> xmlBoleta;
-    private XMLReader<GuiaRemisionPrinter> xmlGuiaRemision;
-    private FacturaPrinter fP;
     private BoletaPrinter bP;
-    private GuiaRemisionPrinter gP;
+    private RemisionPrinter gP;
     private String type;
-    
+    private FacturaPrinter fP;
     public ImpresoraMatricial(String file, String dir, String type) {
         try {
             writer = new FileWriter(file);
             this.type = type;
-            xmlFactura = new XMLReader(FacturaPrinter.class, new File(dir));
-            xmlBoleta = new XMLReader(BoletaPrinter.class, new File(dir));
-            xmlGuiaRemision = new XMLReader(GuiaRemisionPrinter.class, new File(dir));
             switch(type){
                 case "factura":
-                    fP = xmlFactura.openXML(type);
+                    fP = new FacturaDAO(dir).read();
                     break;
                 case "boleta":
-                    bP = xmlBoleta.openXML(type);
+                    bP = new BoletaDAO(dir).read();
                     break;
                 case "guiaRemision":
-                    gP = xmlGuiaRemision.openXML(type);
+                    gP = new RemisionDAO(dir).read();
                     break;
             }
             start();
