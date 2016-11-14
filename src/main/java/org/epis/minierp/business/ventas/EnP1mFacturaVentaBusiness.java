@@ -4,29 +4,32 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.StringTokenizer;
-import org.epis.minierp.dao.general.TaGzzEstadoFacturaDao;
-import org.epis.minierp.dao.general.TaGzzMetodoPagoFacturaDao;
-import org.epis.minierp.dao.general.TaGzzMonedaDao;
-import org.epis.minierp.dao.general.TaGzzTipoDescuentoDao;
-import org.epis.minierp.dao.general.TaGzzTipoPagoFacturaDao;
 import org.epis.minierp.dao.logistica.EnP2mGuiaRemRemitenteDao;
 import org.epis.minierp.dao.logistica.EnP2mGuiaRemTransportistaDao;
 import org.epis.minierp.dao.logistica.EnP2mProductoDao;
 import org.epis.minierp.dao.ventas.EnP1cDevolucionVentasDao;
-import org.epis.minierp.dao.ventas.EnP1mClienteDao;
 import org.epis.minierp.dao.ventas.EnP1mFacturaVentaCabDao;
 import org.epis.minierp.dao.ventas.EnP1mPagosCuotasCabDao;
 import org.epis.minierp.dao.ventas.EnP1tFacturaVentaDetDao;
 import org.epis.minierp.model.EnP1cDevolucionVentas;
+import org.epis.minierp.model.EnP1mCatalogoRuta;
+import org.epis.minierp.model.EnP1mCliente;
 import org.epis.minierp.model.EnP1mFacturaVentaCab;
 import org.epis.minierp.model.EnP1mPagosCuotasCab;
+import org.epis.minierp.model.EnP1mUsuario;
 import org.epis.minierp.model.EnP1tFacturaVentaDet;
 import org.epis.minierp.model.EnP1tFacturaVentaDetId;
 import org.epis.minierp.model.EnP2mGuiaRemRemitente;
 import org.epis.minierp.model.EnP2mGuiaRemTransportista;
 import org.epis.minierp.model.EnP2mProducto;
 import org.epis.minierp.model.EnP2mProductoId;
+import org.epis.minierp.model.TaGzzEstadoFactura;
+import org.epis.minierp.model.TaGzzMetodoPagoFactura;
+import org.epis.minierp.model.TaGzzMoneda;
+import org.epis.minierp.model.TaGzzTipoDescuento;
+import org.epis.minierp.model.TaGzzTipoPagoFactura;
 import org.epis.minierp.util.DateUtil;
+
 
 
 public class EnP1mFacturaVentaBusiness {
@@ -38,6 +41,7 @@ public class EnP1mFacturaVentaBusiness {
     EnP1cDevolucionVentasDao devVenDao;
     EnP2mProductoDao proDao;
     EnP1tFacturaVentaDetDao facVenDetDao;
+    EnP1mPagosCuotasBusiness pagosCuoBusiness;
 
     public EnP1mFacturaVentaBusiness() {
         facVenCabDao = new EnP1mFacturaVentaCabDao();
@@ -47,6 +51,7 @@ public class EnP1mFacturaVentaBusiness {
         devVenDao = new EnP1cDevolucionVentasDao();
         proDao = new EnP2mProductoDao();
         facVenDetDao = new EnP1tFacturaVentaDetDao();
+        pagosCuoBusiness = new EnP1mPagosCuotasBusiness();
     }
         
     public void devolucionParcial(String facVenCabCod, String facVenNewCod, List <String> proCods, 
@@ -196,7 +201,264 @@ public class EnP1mFacturaVentaBusiness {
         facVenCabDao.update(cabFacVen);
     }
     
+    /**
+     * Guias y las Rutas se Agregan despues de la creacion, la canidad de 
+     * cuotas solo se agrega si se presenta pagos por cuotas
+     * @param facVenCabCod
+     * @param cliCod
+     * @param usuCod
+     * @param facVenCabModVen   Modalidad de Venta (Factura = F, Boleta = B)
+     * @param facVenCabFecEmi
+     * @param facVenCabFecVen
+     * @param facVenCabTot
+     * @param tipDesCod
+     * @param facVenPorDes
+     * @param facVenCabSubTot
+     * @param facVenCabIGV
+     * @param facVenCabObs
+     * @param estFacCod
+     * @param metPagFac
+     * @param tipPagCod
+     * @param monCod
+     * @param pagCuoNum si pagos por cuotas no esta activo valor = 0
+     * @param estRegCod 
+     */
+    private void createFacVenCab(String facVenCabCod, String cliCod, String usuCod, char facVenCabModVen, 
+            Date facVenCabFecEmi, Date facVenCabFecVen, double facVenCabTot, int tipDesCod, 
+            int facVenPorDes, double facVenCabSubTot, int facVenCabIGV, String facVenCabObs, 
+            int estFacCod, int metPagCod, int tipPagCod, int monCod,int pagCuoNum, char estRegCod){
+        
+        EnP1mCliente c = new EnP1mCliente();
+        c.setCliCod(cliCod);
+        
+        EnP1mUsuario u = new EnP1mUsuario();
+        u.setUsuCod(usuCod);
+        
+        TaGzzTipoDescuento td = new TaGzzTipoDescuento();
+        td.setTipDesCod(tipDesCod);
+        
+        TaGzzEstadoFactura ef = new TaGzzEstadoFactura();
+        ef.setEstFacCod(estFacCod);
+        
+        TaGzzMetodoPagoFactura mpf = new TaGzzMetodoPagoFactura();
+        mpf.setMetPagCod(metPagCod);
+        
+        TaGzzTipoPagoFactura tpf = new TaGzzTipoPagoFactura();
+        tpf.setTipPagCod(tipPagCod);
+        
+        TaGzzMoneda m = new TaGzzMoneda();
+        m.setMonCod(monCod);
+        
+        //creacion de la factura
+        EnP1mFacturaVentaCab fvc = new EnP1mFacturaVentaCab();
+        fvc.setFacVenCabCod(facVenCabCod);
+        fvc.setEnP1mCliente(c);
+        fvc.setEnP1mUsuario(u);
+        fvc.setFacVenCabModVen(facVenCabModVen);
+        fvc.setFacVenCabFecEmi(facVenCabFecEmi);
+        fvc.setFacVenCabFecVen(facVenCabFecVen);
+        fvc.setFacVenCabTot(facVenCabTot);
+        fvc.setTaGzzTipoDescuento(td);
+        fvc.setFacVenPorDes(facVenPorDes);
+        fvc.setFacVenCabSubTot(facVenCabSubTot);
+        fvc.setFacVenCabIgv(facVenCabIGV);
+        fvc.setFacVenCabObs(facVenCabObs);
+        fvc.setTaGzzEstadoFactura(ef);
+        fvc.setTaGzzMetodoPagoFactura(mpf);
+        fvc.setTaGzzTipoPagoFactura(tpf);
+        fvc.setTaGzzMoneda(m);
+        fvc.setEstRegCod(estRegCod);
+        
+        facVenCabDao.save(fvc);
+        
+        //si es pago por cuotas
+        if(tipPagCod == 2){
+            //es pago por cuotas
+            pagosCuoBusiness.create(facVenCabCod, pagCuoNum, facVenCabSubTot, facVenCabFecEmi);
+        }
+        
+    }
+    
+    private void createFacVenDet(String facVenCabCod, int facVenDetCod, String claProCod, 
+            String subClaProCod, String proCod, double facVenDetCan, double facVenDetValUni){
+        
+        EnP2mProductoId pId = new EnP2mProductoId(proCod, subClaProCod, claProCod);
+        EnP2mProducto p = proDao.getById(pId);
+        
+        EnP1mFacturaVentaCab fvc = new EnP1mFacturaVentaCab();
+        fvc.setFacVenCabCod(facVenCabCod);
+        
+        EnP1tFacturaVentaDet fvd = new EnP1tFacturaVentaDet();
+        fvd.setId(new EnP1tFacturaVentaDetId(facVenDetCod, facVenCabCod));
+        fvd.setEnP1mFacturaVentaCab(fvc);
+        fvd.setEnP2mProducto(p);
+        fvd.setFacVenDetCan(facVenDetCan);
+        fvd.setFacVenDetValUni(facVenDetValUni);
+        
+        //actualizando stoks
+        double proStk = p.getProStk();
+        double proStkPreVen = p.getProStkPreVen();
+        
+        //stock actual - stock preventa >= cantidad que se quiere vender
+        if(proStk - proStkPreVen >= facVenDetCan){
+            p.setProStk(proStk - facVenDetCan );
+            proDao.update(p);
+        }
+        
+        //crear detalle
+        facVenDetDao.save(fvd);
+        
+    }
+    
+    private void createFacVenDet(EnP1tFacturaVentaDet facVenDet){
+        String proCod = facVenDet.getEnP2mProducto().getId().getProCod();
+        String subClaProCod = facVenDet.getEnP2mProducto().getId().getSubClaProCod();
+        String claProCod = facVenDet.getEnP2mProducto().getId().getClaProCod();
+        double facVenDetCan = facVenDet.getFacVenDetCan();
+        
+        //actualizando stoks
+        EnP2mProductoId pId = new EnP2mProductoId(proCod, subClaProCod, claProCod);
+        EnP2mProducto p = proDao.getById(pId);
+        
+        double proStk = p.getProStk();
+        double proStkPreVen = p.getProStkPreVen();
+        
+        //stock actual - stock preventa >= cantidad que se quiere vender
+        if(proStk - proStkPreVen >= facVenDetCan){
+            p.setProStk(proStk - facVenDetCan );
+            proDao.update(p);
+        }
+        
+        //crear detalle
+        facVenDetDao.save(facVenDet);
+        
+    }
+    
+    /**
+     * Guias y las Rutas se Agregan despues de la creacion, la canidad de 
+     * cuotas solo se agrega si se presenta pagos por cuotas, caso contrario colocar 0
+     * @param facVenCabCod
+     * @param cliCod
+     * @param usuCod
+     * @param facVenCabModVen Modalidad de Venta (Factura = F, Boleta = B)
+     * @param facVenCabFecEmi
+     * @param facVenCabFecVen
+     * @param tipDesCod
+     * @param facVenPorDes
+     * @param facVenCabIGV
+     * @param facVenCabObs
+     * @param estFacCod
+     * @param metPagFac
+     * @param tipPagCod
+     * @param monCod
+     * @param pagCuoNum si pagos por cuotas no esta activo valor = 0
+     * @param estRegCod
+     * @param detalles 
+     * @param maxDet4FacVen cantidad maxima de detalles por factura de venta
+     */
+    public void create(String facVenCabCod, String cliCod, String usuCod, char facVenCabModVen, 
+            Date facVenCabFecEmi, Date facVenCabFecVen, int tipDesCod, int facVenPorDes, 
+            int facVenCabIGV, String facVenCabObs, int estFacCod, int metPagFac, int tipPagCod, 
+            int monCod,int pagCuoNum, char estRegCod, 
+            List<EnP1tFacturaVentaDet> detalles, int maxDet4FacVen){
+        
+        //se calcula el numero de facturas totales
+        int size = detalles.size(); //cantidad de detalles insertados;
+        int numFacs = size/maxDet4FacVen;
+        if(numFacs%maxDet4FacVen > 0){
+            numFacs++;
+        }
+        
+        EnP1tFacturaVentaDet tempFvd;
+        String tempFacVenCabCod;
+        int tempDets = 0;
+        double tempFacVenCabTot = 0;
+        double tempFacVenCabSubTot = 0;
+               
+        for (int j =0; j< numFacs; j++){
+            //creando cabecera facVenCabTot= 0 y facVenCabSubTot = 0
+            tempFacVenCabCod = GenerateFacVenCabCod(facVenCabCod, j);
+            createFacVenCab(tempFacVenCabCod, cliCod, usuCod, facVenCabModVen, facVenCabFecEmi,
+                facVenCabFecVen, 0, tipDesCod, facVenPorDes, 0, 
+                facVenCabIGV, facVenCabObs, estFacCod, tipPagCod, tipPagCod, monCod, 
+                pagCuoNum, estRegCod);
+            
+            
+            for (int i = 0; i < maxDet4FacVen && tempDets < size; i++) {
+                tempFvd = detalles.get(tempDets);
+                createFacVenDet(tempFvd);
+                tempDets++;
+                tempFacVenCabTot = tempFacVenCabTot + tempFvd.getFacVenDetValUni();
+            }
+                        
+            tempFacVenCabTot = tempFacVenCabTot*(100+facVenCabIGV/100); //Agregando Costo del IGV
+            tempFacVenCabSubTot = tempFacVenCabTot*((100-facVenPorDes)/100); //Agregando el descuento
+            
+            //cambiando los valores de total y subtotal con respecto a sus detalles
+            setFacVenCabTot(tempFacVenCabCod, tempFacVenCabTot);
+            setFacVenCabSubTot(tempFacVenCabCod, tempFacVenCabSubTot);
+            
+            //reinicianod variables
+            tempFacVenCabTot = 0;
+            tempFacVenCabSubTot = 0;
+        }
+    }
+    
+    
+    public void setGuiRemRemNum(String facVenCabCod, String guiRemRemNum){
+        EnP2mGuiaRemRemitente grr = new EnP2mGuiaRemRemitente();
+        grr.setGuiRemRemNum(guiRemRemNum);
+        EnP1mFacturaVentaCab fvc = facVenCabDao.getById(facVenCabCod);
+        fvc.setEnP2mGuiaRemRemitente(grr);
+        facVenCabDao.update(fvc);
+    }
+    
+    public void setGuiRemTraNum(String facVenCabCod, String guiRemTraNum){
+        EnP2mGuiaRemTransportista grt = new EnP2mGuiaRemTransportista();
+        grt.setGuiRemTraNum(guiRemTraNum);
+        EnP1mFacturaVentaCab fvc = facVenCabDao.getById(facVenCabCod);
+        fvc.setEnP2mGuiaRemTransportista(grt);
+        facVenCabDao.update(fvc);
+    }
+    
+    public void setCatRutCod(String facVenCabCod, int catRutCod){
+        EnP1mCatalogoRuta cr = new EnP1mCatalogoRuta();
+        cr.setCatRutCod(catRutCod);
+        EnP1mFacturaVentaCab fvc = facVenCabDao.getById(facVenCabCod);
+        fvc.setEnP1mCatalogoRuta(cr);
+        facVenCabDao.update(fvc);
+    }
+    
+    //Construccion 
     public void arqueoCaja(String usuCod, Date facVenCabFecEmi, double montoReal){
         
+    }
+    
+    /**
+     * Agrega un adicional al codigo de la factura
+     * 001-000001 -> 001-000002 add=1
+     * @param facVenCabCod
+     * @param add
+     * @return 
+     */
+    public static String GenerateFacVenCabCod(String facVenCabCod, int add){
+        //String.format("%03d",lote)+"-"+String.format("%06d",maxMore1);
+        int last6digits = Integer.parseInt(facVenCabCod.substring(4));
+        last6digits = last6digits + add;
+        String lote = facVenCabCod.substring(0, 3); //lote xxx-
+        String code = String.format("%06d",last6digits); //formato de 6 digitos con 0s a la izquierda
+        return lote+code;
+    }
+    
+    private void setFacVenCabSubTot(String facVenCabCod, double value){
+        EnP1mFacturaVentaCab fvc = facVenCabDao.getById(facVenCabCod);
+        fvc.setFacVenCabSubTot(value);
+        facVenCabDao.update(fvc);
+    }
+    
+    private void setFacVenCabTot(String facVenCabCod, double value){
+        EnP1mFacturaVentaCab fvc = facVenCabDao.getById(facVenCabCod);
+        fvc.setFacVenCabTot(value);
+        facVenCabDao.update(fvc);
     }
 }

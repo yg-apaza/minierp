@@ -77,8 +77,8 @@
                             </div>
                             <div class="modal-body">
                                 <div class="form-group">
-                                    <label> Número de Lote</label>
-                                    <input id="numLot" class="form-control" name="numLot">
+                                    <label> Factura Inicial</label>
+                                    <input id="numLot" class="form-control" name="iniFacVenCabCod" placeholder="Ejm. 001-000001">
                                 </div>
                                 <div class="form-group">
                                       <label> Estado de las Facturas </label>
@@ -94,6 +94,13 @@
                                           <c:forEach items="${metodos}" var="metodo">
                                               <option value="${metodo.metPagCod}">${metodo.metPagDet}</option>
                                           </c:forEach>
+                                      </select>                          
+                                </div>
+                                <div class="form-group">
+                                    <label> Modalidad de Venta </label>
+                                      <select class="form-control" name="facVenCabModVen">
+                                              <option value="F">Factura</option>
+                                              <option value="B">Boleta</option>
                                       </select>                          
                                 </div>
                                 <div class="form-group">
@@ -196,9 +203,6 @@
                     rules: {
                         numLot:{
                             required: true,
-                            digits: true,
-                            min: 1,
-                            max: 999
                         },
                         numCuo: {
                             required: true,
@@ -208,10 +212,7 @@
                     },
                     messages: {
                         numLot: {
-                            required: "Ingrese número de lote",
-                            digits: 'Ingresar solo dígitos',
-                            min: 'Número de lote debe estar entre 1 y 999',
-                            max: 'Número de lote debe estar entre 1 y 999'
+                            required: "Ingrese número de la factura inicial"
                         },
                         numCuo: {
                             required: "Ingrese número de cuotas",

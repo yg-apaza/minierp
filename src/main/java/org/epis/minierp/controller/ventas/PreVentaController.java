@@ -45,7 +45,8 @@ public class PreVentaController extends HttpServlet {
         int estFacCod = Integer.parseInt(request.getParameter("estFacCod"));
         int metPagCod = Integer.parseInt(request.getParameter("metPagCod"));
         int tipPagCod = Integer.parseInt(request.getParameter("tipPagCod"));
-        int numLot = Integer.parseInt(request.getParameter("numLot"));
+        String iniFacVenCabCod = request.getParameter("iniFacVenCabCod");
+        char facVenCabModVen = request.getParameter("facVenCabModVen").charAt(0);
         String numCuo = request.getParameter("numCuo");
         int pagCuoNum;
         if(numCuo == null){
@@ -54,7 +55,10 @@ public class PreVentaController extends HttpServlet {
             pagCuoNum = Integer.parseInt(numCuo);
         }
         
-        preventaBusiness.preVenta2Venta4Lotes(preventas, numLot, estFacCod, metPagCod, tipPagCod, pagCuoNum);
+        //Tope de Factura = 23
+        preventaBusiness.preVenta2Venta4Lotes(preventas, iniFacVenCabCod, estFacCod, 
+                metPagCod, tipPagCod, facVenCabModVen, pagCuoNum, 23);
+        
         response.sendRedirect(request.getContextPath() + "/secured/ventas/factura");
     }
 }
