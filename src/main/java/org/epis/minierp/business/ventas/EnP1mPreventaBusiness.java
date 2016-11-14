@@ -202,7 +202,7 @@ public class EnP1mPreventaBusiness {
         //preOk.setEnP1mPreventaCab(pvc);
 
         preOk.setPreVenReaFec(facVenCabFecEmi);
-        preOkDao.save(preOk);
+        //preOkDao.save(preOk);
 
         //inactiva la preventa una vez finalizado el proceso
         pvc.setEstRegCod('I');
