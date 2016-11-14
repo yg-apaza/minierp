@@ -9,13 +9,17 @@ import java.util.List;
 import org.epis.minierp.dao.general.EnP1mUsuarioDao;
 import org.epis.minierp.dao.logistica.EnP2mInventarioCabDao;
 import org.epis.minierp.dao.logistica.EnP2mProductoDao;
+import org.epis.minierp.dao.logistica.EnP2tInventarioDetDao;
 import org.epis.minierp.model.EnP1mUsuario;
+import org.epis.minierp.model.EnP1tFacturaVentaDetId;
 import org.epis.minierp.model.EnP2mAlmacen;
 import org.epis.minierp.model.EnP2mInventarioCab;
 import org.epis.minierp.model.EnP2mProducto;
 import org.epis.minierp.model.EnP2mProductoId;
 import org.epis.minierp.model.EnP2mSubclaseProducto;
 import org.epis.minierp.model.EnP2mSubclaseProductoId;
+import org.epis.minierp.model.EnP2tInventarioDet;
+import org.epis.minierp.model.EnP2tInventarioDetId;
 import org.epis.minierp.model.TaGzzMoneda;
 import org.epis.minierp.model.TaGzzUnidadMed;
 
@@ -24,10 +28,15 @@ public class EnP2mProductoBusiness {
 
     EnP2mProductoDao proDao; 
     EnP2mInventarioCabDao invDao;
+    EnP2tInventarioDetDao invDet;
+    EnP2mInventarioCab invent;
+    double Diferencia;
     
     
     public EnP2mProductoBusiness() {
         proDao = new EnP2mProductoDao();
+        invDao = new EnP2mInventarioCabDao();
+        invDet = new EnP2tInventarioDetDao();
         
     }
     
@@ -252,32 +261,36 @@ public class EnP2mProductoBusiness {
     
     public void cantidad2Stock(String proCod, String proCan){
         EnP2mProducto producto = proDao.getById(proCod);
+        Diferencia = producto.getProStk()-Double.parseDouble(proCan);
         producto.setProStk(Double.parseDouble(proCan));
         
      //   producto.setProObs("-"+obs.substring(0,obs.length()-4)+"-");
         proDao.save(producto);
     }
     
-    public void CabeceraInventario() throws ParseException
+    public void CabeceraInventario(String fechaE, String UsuCod, int LonInv) throws ParseException
     {
         //EnP1mUsuarioDao usuDao = new EnP1mUsuarioDao();
         //EnP1mUsuario usuario = usuDao.getById("4");
         
+        //Ingresar Cabecera Inventario
         DateFormat formatoDelTexto = new SimpleDateFormat("yyyy-MM-dd");
-        Date fecha = formatoDelTexto.parse("2016-11-10");
-        EnP2mInventarioCab invent = new EnP2mInventarioCab();
-        invent.setInvCabCod("1002");
-        invent.setEnP1mUsuario((new EnP1mUsuarioDao()).getById("1"));
+        Date fecha = formatoDelTexto.parse(fechaE);
+        
+        invent = new EnP2mInventarioCab();
+        invent.setInvCabCod(String.valueOf(LonInv+1));
+        invent.setEnP1mUsuario((new EnP1mUsuarioDao()).getById(UsuCod));
         invent.setInvCabFec(fecha);
         invent.setInvCabEst(true);
         invent.setEstRegCod('A');
         invDao.save(invent);
+        
     }
     
     @SuppressWarnings("empty-statement")
-    public void actualizarInventario(String[] proCod, String[] proCan, List<EnP2mProducto> productos) throws ParseException{
+    public void actualizarInventario(String[] proCod, String[] proCan, List<EnP2mProducto> productos, String fecha, String UsuCod, int LonInventario) throws ParseException{
         //Creando Inventario Cab
-         CabeceraInventario();
+         CabeceraInventario(fecha,UsuCod, LonInventario);
         
         int size = proCod.length;
         for (int i = 0; i < size; i++) {
@@ -286,6 +299,23 @@ public class EnP2mProductoBusiness {
             if(proCan[i].substring(proCan[i].length()-1).equals(">"))
                 proCan[i] = proCan[i].substring(0,proCan[i].length()-4);
             cantidad2Stock(proCod[i], proCan[i]);
+            
+            //Ingresar Cabecera Detalle
+        
+            EnP2mProductoDao productDao = new EnP2mProductoDao();
+            EnP2mProducto product = productDao.getById(proCod[i]);
+
+            EnP2tInventarioDet det = new EnP2tInventarioDet();
+            EnP2tInventarioDetId detId = new EnP2tInventarioDetId();
+
+            detId.setInvCabCod(String.valueOf(LonInventario+1));
+            detId.setInvDetCod(i);
+            det.setId(detId);
+            det.setEnP2mInventarioCab(invent);
+            det.setEnP2mProducto(product);
+            det.setInvDetDifStk(Diferencia);
+
+            invDet.save(det);
         }
     }
     
