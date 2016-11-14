@@ -197,12 +197,8 @@ public class EnP1mPreventaBusiness {
         //documento de transicion
         EnP1cPreventaRealizadas preOk = new EnP1cPreventaRealizadas();
         preOk.setId(new EnP1cPreventaRealizadasId(preVenCabCod, facVenCabCod));
-        //EnP1mFacturaVentaCab f = cabVenDao.getById(facVenCabCod);
-        //preOk.setEnP1mFacturaVentaCab(f);
-        //preOk.setEnP1mPreventaCab(pvc);
-
         preOk.setPreVenReaFec(facVenCabFecEmi);
-        //preOkDao.save(preOk);
+        preOkDao.save(preOk);
 
         //inactiva la preventa una vez finalizado el proceso
         pvc.setEstRegCod('I');
@@ -215,13 +211,11 @@ public class EnP1mPreventaBusiness {
 
         int size = preVenCabCod.length;
         EnP1mPreventaCab tempPvc;
-
         int tempSizeDet4PreVen = 0; //numero de detalles por preventa
         int tempNumFac4PreVen = 0; //numero de facturas por preventa
 
         String facVenCabCod = iniFacVenCabCod;
         for (int i = 0; i < size; i++) {
-
             preVenta2Venta(preVenCabCod[i], facVenCabCod, estFacCod, metPagCod,
                     tipPagCod, facVenCabModVen, pagCuoNum, maxDet4FacVen);
 
@@ -229,7 +223,7 @@ public class EnP1mPreventaBusiness {
             tempPvc = preVenCabDao.getById(preVenCabCod[i]);
             tempSizeDet4PreVen = tempPvc.getEnP1tPreventaDets().size();
             tempNumFac4PreVen = tempSizeDet4PreVen / maxDet4FacVen;
-            if (tempNumFac4PreVen % maxDet4FacVen > 0) {
+            if (tempNumFac4PreVen % maxDet4FacVen > 0 || tempSizeDet4PreVen < maxDet4FacVen) {
                 tempNumFac4PreVen++;
             }
             //nuevo codigo de factura considerando las facturas previas generadas
