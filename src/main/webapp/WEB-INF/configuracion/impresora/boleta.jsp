@@ -48,7 +48,7 @@
                                 <td rowspan="2" style="vertical-align:middle">10/11/2016</td>
                             </tr>
                             <tr>
-                                <td colspan="3"><input type="number" name="fecEmi" value="${bol.getFecEmi()}">cm</td>
+                                <td colspan="3" style="text-align: right"><input type="number" name="fecEmi" value="${bol.getFecEmi()}">cm</td>
                                 <td></td>
                             </tr>
                         </table>
@@ -72,7 +72,7 @@
                             <tr>
                                 <th>CÓDIGO CLIENTE</th>
                                 <th>CONDICIÓN PAGO</th>
-                                <th>FECHA VCTO.<br></th>
+                                <th>FECHA VCTO.</th>
                                 <th>VENDEDOR-RUTA</th>
                                 <th>PDV</th>
                                 <th>OBSERVACIÓN</th>
