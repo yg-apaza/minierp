@@ -33,6 +33,7 @@
                                 <select class="form-control" name="report" id="report">
                                     <option value="factura">Factura</option>
                                     <option value="boleta">Boleta</option>
+                                    <option value="guiaRemision">Guía de Remisión</option>
                                 </select>
                             </div>
                         </div>

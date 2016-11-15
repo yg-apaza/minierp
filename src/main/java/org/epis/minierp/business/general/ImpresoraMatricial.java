@@ -1,6 +1,5 @@
 package org.epis.minierp.business.general;
 
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -292,8 +291,7 @@ public class ImpresoraMatricial {
         writeLine(traNom);
     }
 
-    public void writeFacCabecera(String cliCod, String conPag, String fecVen,
-            String venZon, String numSec, String dis, String rut, String traNom) throws IOException{
+    public void writeFacCabecera(String cliCod, String conPag, String fecVen, String venZon, String numSec, String dis, String rut, String traNom) throws IOException{
         advanceVertical(fP.getTopFacCab());
         writer.write(cliCod);
         float val = fP.getCliCod();
