@@ -22,7 +22,7 @@
                         <div class="form-group input-group">
                             <span class="input-group-addon">Vendedor</span>
                             <span class="input-group-addon"><i class="fa fa-child"></i></span>
-                            <input type="hidden" class="form-control" name="usuCod" value="${usuario.usuCod}" readonly>
+                            <input type="hidden" class="form-control" name="usuCod" value="${usuario.usuCod}">
                             <input type="text" class="form-control" value="${usuario.usuCod} - ${usuario.usuNom}" readonly>
                         </div>
                     </div>
@@ -48,7 +48,7 @@
                                     </div>
                                     <div class="col-md-4" >
                                         <div class="form-group input-group" >
-                                            <span class="input-group-addon">Moneda</i></span>
+                                            <span class="input-group-addon">Moneda</span>
                                             <select class="form-control" name="monCod">
                                                 <c:forEach items="${monedas}" var="moneda">
                                                     <option value="${moneda.monCod}">${moneda.monDet}</option>
@@ -80,7 +80,7 @@
                                         <div class="row">                                            
                                             <div class="col-md-6" style='display:none;'>
                                                 <div class="form-group input-group" >
-                                                    <span class="input-group-addon">Moneda</i></span>
+                                                    <span class="input-group-addon">Moneda</span>
                                                     <select class="form-control" name="monCod">
                                                         <c:forEach items="${monedas}" var="moneda">
                                                             <option value="${moneda.monCod}">${moneda.monDet}</option>
@@ -120,7 +120,7 @@
                                                 <div class="form-group input-group" >
                                                     <span class="input-group-addon"><i class="fa fa-money"></i></span>
                                                     <input type="number" class="form-control" id="priceShow" readOnly>        
-                                                    <input type="hidden" class="form-control" id="unitShow" readOnly>     
+                                                    <input type="hidden" class="form-control" id="unitShow">     
                                                 </div>
                                             </div>
                                             <div class="col-md-2">
@@ -152,13 +152,13 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group input-group" >
-                                            <span class="input-group-addon">Tipo Descuento</i></span>
+                                            <span class="input-group-addon">Tipo Descuento</span>
                                             <select class="form-control" name="tipDesCod" id="selectDiscount">
                                                 <c:forEach items="${tiposDescuentos}" var="tipoDescuentos">
                                                     <option value="${tipoDescuentos.tipDesCod}">${tipoDescuentos.tipDesDet}</option>
                                                 </c:forEach>
                                             </select> 
-                                            <span class="input-group-addon">Valor (%)</i></span>
+                                            <span class="input-group-addon">Valor (%)</span>
                                             <input type="number" class="form-control" name="preVenPorDes" id="porDes" min="0" step="any" value="0" discountTop="100">
                                             <span class="input-group-addon"><i class="fa fa-sort-amount-asc"></i></span>
                                         </div>
@@ -166,13 +166,13 @@
                                     <div class="col-md-2">                                        
                                         <div class="form-group input-group" >
                                             <span class="input-group-addon">IGV</span>
-                                            <input type="number" class="form-control" name="preVenCabIgv" value="${empresa.empIgv}" id="preIgv" readOnly>
+                                            <input class="form-control" name="preVenCabIgv" value="${empresa.empIgv}" id="preIgv" readOnly>
                                         </div>
                                     </div>
                                     <div class="col-md-4">      
                                         <div class="form-group input-group" >
-                                            <span class="input-group-addon">SubTotal + IGV</span>
-                                            <input type="number" class="form-control" name="preVenCabSubTot" id="preSub" value="0" readonly>
+                                            <span class="input-group-addon">Total + IGV</span>
+                                            <input type="number" class="form-control" name="preVenCabTot" id="preSub" value="0" readonly>
                                             <span class="input-group-addon"><i class="fa fa-usd"></i></span>
                                         </div>
                                     </div>
@@ -180,8 +180,8 @@
                                 <div class="row">
                                     <div class="col-md-3 col-md-offset-9">
                                         <div class="form-group input-group" >
-                                            <span class="input-group-addon">Total</i></span>
-                                            <input type="number" class="form-control" name="preVenCabTot" id="preTot" value="0" readonly>
+                                            <span class="input-group-addon">SubTotal</span>
+                                            <input type="number" class="form-control" name="preVenCabSubTot" id="preTot" value="0" readonly>
                                             <span class="input-group-addon"><i class="fa fa-usd"></i></span>
                                         </div>
                                     </div>

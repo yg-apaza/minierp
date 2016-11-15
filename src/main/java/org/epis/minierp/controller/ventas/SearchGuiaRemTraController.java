@@ -12,10 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.epis.minierp.dao.logistica.EnP2mGuiaRemTransportistaDao;
 import org.epis.minierp.dao.ventas.EnP1mClienteDao;
-import org.epis.minierp.dao.ventas.EnP1mPreventaCabDao;
 import org.epis.minierp.model.EnP1mCliente;
-import org.epis.minierp.model.EnP1mPreventaCab;
-import org.epis.minierp.model.EnP1tPreventaDet;
+import org.epis.minierp.model.EnP1mFacturaVentaCab;
+import org.epis.minierp.model.EnP1tFacturaVentaDet;
 import org.epis.minierp.model.EnP2mGuiaRemTransportista;
 
 public class SearchGuiaRemTraController extends HttpServlet {
@@ -28,18 +27,18 @@ public class SearchGuiaRemTraController extends HttpServlet {
         cliDao = new EnP1mClienteDao();
         
         String guiRemTraNum = request.getParameter("guiRemTraNum");
-        EnP2mGuiaRemTransportista guiaTran = guiRemTraDao.getById(guiRemTraNum);
+        EnP2mGuiaRemTransportista carrierGuide = guiRemTraDao.getById(guiRemTraNum);
         JsonObject data = new JsonObject();
         
-        String tra = guiaTran.getEnP2mTransportista().getTraNom()+ " " +
-                guiaTran.getEnP2mTransportista().getTraApePat()+ " " +
-                guiaTran.getEnP2mTransportista().getTraApeMat();
+        String tra = carrierGuide.getEnP2mTransportista().getTraNom()+ " " +
+                carrierGuide.getEnP2mTransportista().getTraApePat()+ " " +
+                carrierGuide.getEnP2mTransportista().getTraApeMat();
         
-        String vehiculo = guiaTran.getEnP2mUnidadTransporte().getUniTraNumPla();
+        String vehiculo = carrierGuide.getEnP2mUnidadTransporte().getUniTraNumPla();
         
-        String remitente = guiaTran.getEnP1mEmpresa().getEmpNomCom();
+        String remitente = carrierGuide.getEnP1mEmpresa().getEmpNomCom();
         
-        EnP1mCliente c = cliDao.getById(guiaTran.getGuiRemTraDes());
+        EnP1mCliente c = (new EnP1mClienteDao()).getById(carrierGuide.getGuiRemTraDes());
         String destinatario = c.getCliNom() + " " + c.getCliApePat() + " " + c.getCliApeMat();
         
         data.addProperty("guiRemTraNum", guiRemTraNum);
@@ -47,20 +46,28 @@ public class SearchGuiaRemTraController extends HttpServlet {
         data.addProperty("traNom", tra);
         data.addProperty("empNomCom", remitente);
         data.addProperty("cliNom", destinatario);
-        JsonArray detailList = new JsonArray();
-        List <EnP1tPreventaDet> details = new ArrayList();
-        //= new ArrayList <>(preventa.getEnP1tPreventaDets());
+        JsonArray traList = new JsonArray();
         
-        for(EnP1tPreventaDet detail: details) {
-            JsonObject detailObject = new JsonObject();
-            detailObject.addProperty("detCan", detail.getPreVenDetCan());
-            detailObject.addProperty("proDet", detail.getEnP2mProducto().getProDet());
-            detailObject.addProperty("preUniVen", detail.getPreVenDetValUni());
-            detailObject.addProperty("detImp", detail.getPreVenDetCan()*detail.getPreVenDetValUni());
-            detailList.add(detailObject);
+        List <EnP1tFacturaVentaDet> details = new ArrayList<>();
+        
+        //Agregando a detalles todos los detalles de las facturas que tiene asociada la clave de la guia de Transportista
+        List <EnP1mFacturaVentaCab> cabs = new ArrayList<>();
+        cabs.addAll(carrierGuide.getEnP1mFacturaVentaCabs());
+        for(EnP1mFacturaVentaCab facVenCabs: cabs) {
+            if(facVenCabs.getEstRegCod() == 'A')
+                details.addAll(facVenCabs.getEnP1tFacturaVentaDets());
         }
         
-        data.add("detailList", detailList);
+        for(EnP1tFacturaVentaDet detail: details) {
+            JsonObject detailObject = new JsonObject();
+            detailObject.addProperty("detCan", detail.getFacVenDetCan());
+            detailObject.addProperty("proDet", detail.getEnP2mProducto().getProDet());
+            detailObject.addProperty("preUniVen", detail.getFacVenDetValUni());
+            detailObject.addProperty("detImp", detail.getFacVenDetCan()*detail.getFacVenDetValUni());
+            traList.add(detailObject);
+        }
+        
+        data.add("traList", traList);
         
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");

@@ -442,78 +442,108 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title">Guía de Transportista</h4>
+                        <h3 class="modal-title">Guia de Remision Transportista</h3>
                     </div>
-                    <div class="modal-body">
-                        <div class="col-md-12 form-group input-group">
-                            <div class="col-xs-12 col-md-12">
-                                <div class="form-group input-group">
-                                    <span class="input-group-addon">Empresa</span>
-                                    <input type="text" class="form-control" id="guiTraEmpDes" readOnly>
-                                    <span class="input-group-addon"><i class="fa fa-building-o"></i></span>
+                    <div class="modal-body">   
+                        <div class="panel-body">
+                            <ul class="nav nav-pills">
+                                <li class="active"><a href="#generalguiTra" data-toggle="tab">Información General</a></li>
+                                <li><a href="#detailgui" data-toggle="tab">Detalles</a></li>
+                                <li><a href="#client" data-toggle="tab">Clientes</a></li>
+                                <li><a href="#facts" data-toggle="tab">Facturas</a></li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane fade in active" id="generalguiTra"><br>
+                                    <div class="col-xs-12 col-md-12">
+                                        <div class="col-xs-12 col-md-12">
+                                            <div class="form-group input-group">
+                                                <span class="input-group-addon">Numero de Guia de Transportista</span>
+                                                <input type="text" class="form-control" id="guiRemTraNum" readOnly>
+                                                <span class="input-group-addon"><i class="fa fa-clipboard"></i></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-md-12">
+                                            <div class="form-group input-group">
+                                                <span class="input-group-addon">Transportista</span>
+                                                <input type="text" class="form-control" id="traNomCom" readOnly>
+                                                <span class="input-group-addon"><i class="fa fa-child"></i></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-md-12">
+                                            <div class="form-group input-group">
+                                                <span class="input-group-addon">Vehiculo</span>
+                                                <input type="text" class="form-control" id="vehiculo" readOnly>
+                                                <span class="input-group-addon"><i class="fa fa-car"></i></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-md-12">
+                                            <div class="form-group input-group" >
+                                                <span class="input-group-addon">Remitente(Empresa)</span>
+                                                <input type="text" class="form-control" id="remitente" readOnly>
+                                                <span class="input-group-addon"><i class="fa fa-building"></i></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-md-12">
+                                            <div class="form-group input-group" >
+                                                <span class="input-group-addon">Destinatario(Cliente)</span>
+                                                <input type="text" class="form-control" id="destinatario" readOnly>
+                                                <span class="input-group-addon"><i class="fa fa-building"></i></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-md-12">
+                                            <div class="form-group input-group" >
+                                                <span class="input-group-addon">Ruta</span>
+                                                <input type="text" class="form-control" id="ruta" readOnly>
+                                                <span class="input-group-addon"><i class="fa fa-road"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-xs-12 col-md-6">
-                                <div class="form-group input-group">
-                                    <span class="input-group-addon">Factura Ven.</span>
-                                    <input type="text" class="form-control" id="guiTraFacCod" readOnly>
-                                    <span class="input-group-addon"><i class="fa fa-clipboard"></i></span>
+                                <div class="tab-pane fade" id="detailgui"><br>
+                                    <div class="col-xs-12 col-md-12">
+                                        <div class="table-responsive">
+                                            <table width="100%" class="table table-striped table-bordered table-hover" id="guiTraDetPro">
+                                                <thead align="center">
+                                                    <tr >
+                                                        <th>Cant.</th>
+                                                        <th>Descripción</th>
+                                                        <th>Precio</th>
+                                                        <th>Importe</th>
+                                                    </tr>
+                                                </thead>
+                                            </table>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-xs-12 col-md-6">
-                                <div class="form-group input-group">
-                                    <span class="input-group-addon">Guía de Tra.</span>
-                                    <input type="text" class="form-control" id="guiTraTraNum" readOnly>
-                                    <span class="input-group-addon"><i class="fa fa-file-text-o"></i></span>
+                                <div class="tab-pane fade" id="client"><br>
+                                    <div class="col-xs-12 col-md-12">
+                                        <div class="table-responsive">
+                                            <table width="100%" class="table table-striped table-bordered table-hover" id="guiTraCli">
+                                                <thead align="center">
+                                                    <tr >
+                                                        <th>Codigo</th>
+                                                        <th>Nombre Comercial</th>
+                                                    </tr>
+                                                </thead>
+                                            </table>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-xs-12 col-md-12">
-                                <div class="form-group input-group">
-                                    <span class="input-group-addon">Denominación</span>
-                                    <input type="text" class="form-control" id="guiTraTraDen" readOnly>
-                                    <span class="input-group-addon"><i class="fa fa-paperclip"></i></span>
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-md-12">
-                                <div class="form-group input-group">
-                                    <span class="input-group-addon">Transportista</span>
-                                    <input type="text" class="form-control" id="guiTraTraDat" readOnly>
-                                    <span class="input-group-addon"><i class="fa fa-truck"></i></span>
-                                </div>
-                            </div>      
-                            <div class="col-xs-12 col-md-12">
-                                <div class="form-group input-group">
-                                    <span class="input-group-addon">Unidad</span>
-                                    <input type="text" class="form-control" id="guiTraNumPla" readOnly>
-                                    <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-md-12">
-                                <div class="form-group input-group">
-                                    <span class="input-group-addon">Número Registro</span>
-                                    <input type="text" class="form-control" id="guiTraNumReg" readOnly>
-                                    <span class="input-group-addon"><i class="fa fa-list-alt"></i></span>
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-md-12">
-                                <div class="form-group input-group">
-                                    <span class="input-group-addon">Ruta</span>
-                                    <input type="text" class="form-control" id="guiTraRutDes" readOnly>
-                                    <span class="input-group-addon"><i class="fa fa-road"></i></span>
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-md-12">
-                                <div class="form-group input-group">
-                                    <span class="input-group-addon">Tipo de Destinatario</span>
-                                    <input type="text" class="form-control" id="guiTraTipDes" readOnly>
-                                    <span class="input-group-addon"><i class="fa fa-exchange"></i></span>
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-md-12">
-                                <div class="form-group input-group">
-                                    <span class="input-group-addon">Descripción</span>
-                                    <input type="text" class="form-control" id="guiTraTraDes" readOnly>
-                                    <span class="input-group-addon"><i class="fa fa-reorder"></i></span>
+                                <div class="tab-pane fade" id="facts"><br>
+                                    <div class="col-xs-12 col-md-12">
+                                        <div class="table-responsive">
+                                            <table width="100%" class="table table-striped table-bordered table-hover" id="guiTraFac">
+                                                <thead align="center">
+                                                    <tr >
+                                                        <th>Codigo</th>
+                                                        <th>Fecha</th>
+                                                        <th>Total</th>
+                                                        <th>SubTotal</th>
+                                                    </tr>
+                                                </thead>
+                                            </table>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -678,6 +708,7 @@
                 </div>         
             </div>
         </div>
+                    
         <script language="javascript">
             var codeRefund = "";
             var typeRefund = "";
@@ -769,16 +800,50 @@
                             facVenCabCod: facVenCabCod
                         }
                 ).done(function (data) {
-                    $("#guiTraEmpDes").val(data.empDes);
-                    $("#guiTraFacCod").val(data.facCod);
-                    $("#guiTraTraNum").val(data.traNum);
-                    $("#guiTraTraDen").val(data.traDen);
-                    $("#guiTraTraDat").val(data.traDat);
-                    $("#guiTraNumPla").val(data.numPla);
-                    $("#guiTraNumReg").val(data.numReg);
-                    $("#guiTraRutDes").val(data.rutDes);
-                    $("#guiTraTipDes").val(data.tipDes);
-                    $("#guiTraTraDes").val(data.traDes);
+                    $("#guiRemTraNum").val(data.guiRemTraNum);
+                    $("#traNomCom").val(data.traNomCom);
+                    $("#vehiculo").val(data.vehiculo);
+                    $("#remitente").val(data.remitente);
+                    $("#destinatario").val(data.destinatario);
+                    $("#ruta").val(data.ruta);
+                    
+                    $('#guiTraDetPro').DataTable().clear().draw();
+                    $('#guiTraDetPro').DataTable().destroy();
+                    data.traList.forEach(function (detailgui) {
+                        $('#guiTraDetPro tbody').append('<tr><td width="16%" align="center"></td><td width="44%"></td><td width="20%" align="center"></td><td width="20%" align="center"></td></tr>');
+                        $('#guiTraDetPro tr:last td:eq(0)').html(detailgui.detCan);
+                        $('#guiTraDetPro tr:last td:eq(1)').html(detailgui.proDet);
+                        $('#guiTraDetPro tr:last td:eq(2)').html(detailgui.preUniVen);
+                        $('#guiTraDetPro tr:last td:eq(3)').html((Number(detailgui.detImp)).toFixed(2));
+                    }); 
+                    $('#guiTraDetPro').DataTable({
+                        responsive: true
+                    });
+                    
+                    $('#guiTraCli').DataTable().clear().draw();
+                    $('#guiTraCli').DataTable().destroy();
+                    data.traCliList.forEach(function (client) {
+                        $('#guiTraCli tbody').append('<tr><td width="20%" align="center"></td><td width="80%"></td></tr>');
+                        $('#guiTraCli tr:last td:eq(0)').html(client.cliCod);
+                        $('#guiTraCli tr:last td:eq(1)').html(client.cliNomCom);
+                    });
+                    $('#guiTraCli').DataTable({
+                        responsive: true
+                    });
+                    
+                    $('#guiTraFac').DataTable().clear().draw();
+                    $('#guiTraFac').DataTable().destroy();
+                    data.facVenList.forEach(function (guiTraFac) {
+                        $('#guiTraFac tbody').append('<tr><td width="20%" align="center"></td><td width="20%"></td><td width="30%" align="center"></td><td width="30%" align="center"></td></tr>');
+                        $('#guiTraFac tr:last td:eq(0)').html(guiTraFac.facVenCabCod);
+                        $('#guiTraFac tr:last td:eq(1)').html(guiTraFac.facVenCabFecEmi);
+                        $('#guiTraFac tr:last td:eq(2)').html(guiTraFac.facVenCabTot);
+                        $('#guiTraFac tr:last td:eq(3)').html(guiTraFac.facVenCabSubTot);
+                    });
+                    $('#guiTraFac').DataTable({
+                        responsive: true
+                    });
+                    
                     $("#loading").modal('hide');
                     $("#viewCarrierGuide").modal('show');
                 });
