@@ -1,8 +1,8 @@
 package org.epis.minierp.dao.impresora;
 
 import java.io.File;
-import org.epis.minierp.business.general.FacturaPrinter;
-import org.epis.minierp.business.general.XMLReader;
+import org.epis.minierp.business.impresora.FacturaPrinter;
+import org.epis.minierp.business.impresora.XMLReader;
 
 public class FacturaDAO {
     private XMLReader<FacturaPrinter> xmlFactura;

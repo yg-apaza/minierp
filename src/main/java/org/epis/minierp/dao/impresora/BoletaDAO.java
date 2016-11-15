@@ -1,8 +1,8 @@
 package org.epis.minierp.dao.impresora;
 
 import java.io.File;
-import org.epis.minierp.business.general.BoletaPrinter;
-import org.epis.minierp.business.general.XMLReader;
+import org.epis.minierp.business.impresora.BoletaPrinter;
+import org.epis.minierp.business.impresora.XMLReader;
 
 public class BoletaDAO {
     private XMLReader<BoletaPrinter> xmlBoleta;

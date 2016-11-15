@@ -8,7 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.epis.minierp.business.general.Impresora;
+import org.epis.minierp.business.impresora.Impresora;
 
 public class ImpresionLotesController extends HttpServlet {
     private static final long serialVersionUID = 1L;
