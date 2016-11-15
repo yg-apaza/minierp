@@ -5,7 +5,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.epis.minierp.business.general.FacturaPrinter;
+import org.epis.minierp.business.impresora.FacturaPrinter;
 import org.epis.minierp.dao.impresora.FacturaDAO;
 
 public class ImpresoraFacturaController extends HttpServlet {
@@ -31,7 +31,7 @@ public class ImpresoraFacturaController extends HttpServlet {
         
         /* int size = Int.parseInteger(request.getParameter("size")); */
         
-        int leftMargin = Integer.parseInt(request.getParameter("leftMargin"));
+        float leftMargin = Float.parseFloat(request.getParameter("leftMargin"));
         float topMargin = Float.parseFloat(request.getParameter("topMargin"));
         float topFacCab = Float.parseFloat(request.getParameter("topFacCab"));
         float topFacDet = Float.parseFloat(request.getParameter("topFacDet"));
