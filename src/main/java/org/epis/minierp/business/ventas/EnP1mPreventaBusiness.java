@@ -13,7 +13,6 @@ import org.epis.minierp.model.EnP1cPreventaRealizadas;
 import org.epis.minierp.model.EnP1cPreventaRealizadasId;
 import org.epis.minierp.model.EnP1mCatalogoRuta;
 import org.epis.minierp.model.EnP1mCliente;
-import org.epis.minierp.model.EnP1mFacturaVentaCab;
 import org.epis.minierp.model.EnP1mPreventaCab;
 import org.epis.minierp.model.EnP1mUsuario;
 import org.epis.minierp.model.EnP1tFacturaVentaDet;
