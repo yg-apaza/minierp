@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
@@ -62,7 +63,9 @@ public class AddFacturaController extends HttpServlet {
         empDao = new EnP1mEmpresaDao();
         
         user = (EnP1mUsuario) session.getAttribute("usuario");
-        punto = (EnP1mPuntoVenta) user.getEnP1mSucursal().getEnP1mPuntoVentas().iterator().next(); //Getting the first one
+        List<EnP1mPuntoVenta> pv = new ArrayList();
+        pv.addAll(user.getEnP1mSucursal().getEnP1mPuntoVentas());
+        punto = pv.get(0); //Getting the first one
         sucursal = user.getEnP1mSucursal();
          
         Date hoy = DateUtil.getthisDate();
@@ -108,7 +111,7 @@ public class AddFacturaController extends HttpServlet {
             double facVenCabTot = Double.parseDouble(request.getParameter("facVenCabTot"));
             double facVenCabSubTot = Double.parseDouble(request.getParameter("facVenCabSubTot"));
             int tipDesCod = Integer.parseInt(request.getParameter("tipDesCod"));
-            
+            char facVenCabModVen = request.getParameter("facVenCabModVen").charAt(0);
             int estFacCod = 1;
             switch(tipPagCod) {
                 case 2: estFacCod = 2;
@@ -134,6 +137,7 @@ public class AddFacturaController extends HttpServlet {
             header.setTaGzzTipoPagoFactura((new TaGzzTipoPagoFacturaDao()).getById(tipPagCod));
             header.setTaGzzMoneda((new TaGzzMonedaDao()).getById(monCod));
             header.setTaGzzTipoDescuento((new TaGzzTipoDescuentoDao()).getById(tipDesCod));
+            header.setFacVenCabModVen(facVenCabModVen);
             header.setEstRegCod('A');
             
             factura.save(header);
