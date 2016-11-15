@@ -1,6 +1,8 @@
 
 package org.epis.minierp.business.logistica;
 
+import java.util.ArrayList;
+import java.util.List;
 import org.epis.minierp.dao.compras.EnP4mFacturaCompraCabDao;
 import org.epis.minierp.dao.general.EnP1mEmpresaDao;
 import org.epis.minierp.dao.general.TaGzzMotivoTrasladoDao;
@@ -35,14 +37,15 @@ public class EnP2mGuiaRemRemitenteBusiness {
      * @param GuiRemRemDes
      * @param estRegCod 
      */
-    public void create(String guiRemRemNum, int motTraCod, int empCod, 
+    public void create(String guiRemRemNum, int motTraCod, 
             int tipDesCod, String GuiRemRemDes, char estRegCod){
         
         TaGzzMotivoTraslado mt = new TaGzzMotivoTraslado();
         mt.setMotTraCod(motTraCod);
         
-        EnP1mEmpresa em = new EnP1mEmpresa();
-        em.setEmpCod(empCod);
+        List <EnP1mEmpresa> le = new ArrayList<>();
+        le.addAll((new EnP1mEmpresaDao()).getAll());
+        EnP1mEmpresa e = le.get(0); //primera empresa por defecto
         
         TaGzzTipoDestinatario td = new TaGzzTipoDestinatario();
         td.setTipDstCod(tipDesCod);
@@ -51,7 +54,7 @@ public class EnP2mGuiaRemRemitenteBusiness {
         guiaRemRem.setGuiRemRemNum(guiRemRemNum);
         guiaRemRem.setGuiRemRemDen("GUÍA DE REMISIÓN-REMINTENTE");
         guiaRemRem.setTaGzzMotivoTraslado(mt);
-        guiaRemRem.setEnP1mEmpresa(em);
+        guiaRemRem.setEnP1mEmpresa(e);
         guiaRemRem.setTaGzzTipoDestinatario(td);
         guiaRemRem.setGuiRemRemDen(GuiRemRemDes);
         guiaRemRem.setEstRegCod(estRegCod);
@@ -59,21 +62,15 @@ public class EnP2mGuiaRemRemitenteBusiness {
     }
     
     public void create4Ventas(String facVenCabCod, String guiRemRemNum, 
-            int motTraCod, int empCod, String cliCod, char estRegCod){
+            int motTraCod, String cliCod, char estRegCod){
         
-        //factura seleccionada
-        EnP1mFacturaVentaCab facCab = facCabVenDao.getById(facVenCabCod);
-        EnP2mGuiaRemRemitente guiRemRemOld = facCab.getEnP2mGuiaRemRemitente();
-        if(guiRemRemOld != null){
-            guiRemRemOld.setEstRegCod('I');
-            guiRemRemDao.update(guiRemRemOld);
-        }
-                 
+        
         TaGzzMotivoTraslado mt = new TaGzzMotivoTraslado();
         mt.setMotTraCod(motTraCod);
         
-        EnP1mEmpresa em = new EnP1mEmpresa();
-        em.setEmpCod(empCod);
+         List <EnP1mEmpresa> le = new ArrayList<>();
+        le.addAll((new EnP1mEmpresaDao()).getAll());
+        EnP1mEmpresa e = le.get(0); //primera empresa por defecto
         
         //tipo de destinatario cliente
         TaGzzTipoDestinatario td = new TaGzzTipoDestinatario();
@@ -83,15 +80,17 @@ public class EnP2mGuiaRemRemitenteBusiness {
         guiaRemRem.setGuiRemRemNum(guiRemRemNum);
         guiaRemRem.setGuiRemRemDen("GUÍA DE REMISIÓN-REMINTENTE");
         guiaRemRem.setTaGzzMotivoTraslado(mt);
-        guiaRemRem.setEnP1mEmpresa(em);
+        guiaRemRem.setEnP1mEmpresa(e);
         guiaRemRem.setTaGzzTipoDestinatario(td);
         guiaRemRem.setGuiRemRemDes(cliCod);
         guiaRemRem.setEstRegCod(estRegCod);
-        guiRemRemDao.save(guiaRemRem);
+        guiRemRemDao.saveOrUpdate(guiaRemRem);
         
-        //se cambia el valor de la guia de remision de la factura
+                //factura seleccionada
+        EnP1mFacturaVentaCab facCab = facCabVenDao.getById(facVenCabCod);
         facCab.setEnP2mGuiaRemRemitente(guiaRemRem);
-        facCabVenDao.update(facCab);
+        facCabVenDao.update(facCab); 
+        
     }
     
     public void create4Compras(String facComCabCod, String guiRemRemNum, 

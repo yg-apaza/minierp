@@ -1,7 +1,11 @@
 
 package org.epis.minierp.business.logistica;
 
+import java.util.ArrayList;
+import java.util.List;
+import org.epis.minierp.business.ventas.EnP1mFacturaVentaBusiness;
 import org.epis.minierp.dao.compras.EnP4mFacturaCompraCabDao;
+import org.epis.minierp.dao.general.EnP1mEmpresaDao;
 import org.epis.minierp.dao.logistica.EnP2mGuiaRemTransportistaDao;
 import org.epis.minierp.dao.ventas.EnP1mFacturaVentaCabDao;
 import org.epis.minierp.model.EnP1mEmpresa;
@@ -17,11 +21,13 @@ public class EnP2mGuiaRemTransportistaBusiness {
     EnP2mGuiaRemTransportistaDao guiRemTraDao;
     EnP1mFacturaVentaCabDao facCabVenDao;
     EnP4mFacturaCompraCabDao facCabComDao;
+    EnP1mFacturaVentaBusiness facturaBusiness;
 
     public EnP2mGuiaRemTransportistaBusiness() {
         guiRemTraDao = new EnP2mGuiaRemTransportistaDao(); 
         facCabVenDao = new EnP1mFacturaVentaCabDao();
-        facCabComDao = new EnP4mFacturaCompraCabDao();        
+        facCabComDao = new EnP4mFacturaCompraCabDao();
+        facturaBusiness = new EnP1mFacturaVentaBusiness();
     }
     
     /**
@@ -35,28 +41,28 @@ public class EnP2mGuiaRemTransportistaBusiness {
      * @param guiRemTraDes
      * @param estRegCod 
      */
-    public void create(String guiRemTraNum, String traCod, String uniTraCod, 
-            int empCod, String guiRemTraNumReg, int tipDesCod, 
-            String guiRemTraDes, char estRegCod){
+    private void create(String guiRemTraNum, String traCod, String uniTraCod, 
+            int tipDstCod, String guiRemTraNumReg, String guiRemTraDes, char estRegCod){
         
-        EnP2mTransportista tra = new EnP2mTransportista();
-        tra.setTraCod(traCod);
+        EnP2mTransportista t = new EnP2mTransportista();
+        t.setTraCod(traCod);
         
-        EnP2mUnidadTransporte uniTra = new EnP2mUnidadTransporte();
-        uniTra.setUniTraCod(uniTraCod);
+        EnP2mUnidadTransporte ut = new EnP2mUnidadTransporte();
+        ut.setUniTraCod(uniTraCod);
         
-        EnP1mEmpresa em = new EnP1mEmpresa();
-        em.setEmpCod(empCod);
+        List <EnP1mEmpresa> le = new ArrayList<>();
+        le.addAll((new EnP1mEmpresaDao()).getAll());
+        EnP1mEmpresa e = le.get(0); //primera empresa por defecto
         
         TaGzzTipoDestinatario td = new TaGzzTipoDestinatario();
-        td.setTipDstCod(tipDesCod);
+        td.setTipDstCod(tipDstCod);
         
         EnP2mGuiaRemTransportista guiaRemTra = new EnP2mGuiaRemTransportista();
         guiaRemTra.setGuiRemTraNum(guiRemTraNum);
         guiaRemTra.setGuiRemTraDen("GUÍA DE REMISIÓN -TRANSPORTISTA");
-        guiaRemTra.setEnP2mTransportista(tra);
-        guiaRemTra.setEnP2mUnidadTransporte(uniTra);
-        guiaRemTra.setEnP1mEmpresa(em);
+        guiaRemTra.setEnP2mTransportista(t);
+        guiaRemTra.setEnP2mUnidadTransporte(ut);
+        guiaRemTra.setEnP1mEmpresa(e);
         guiaRemTra.setGuiRemTraNumReg(guiRemTraNumReg);
         guiaRemTra.setTaGzzTipoDestinatario(td);
         guiaRemTra.setGuiRemTraDes(guiRemTraDes);
@@ -65,88 +71,51 @@ public class EnP2mGuiaRemTransportistaBusiness {
         
     }
     
-    public void create4Ventas(String facVenCabCod, String guiRemTraNum, String traCod, String uniTraCod, 
-            int empCod, String guiRemTraNumReg, String cliCod, char estRegCod){
-        
-        //factura seleccionada
-        EnP1mFacturaVentaCab facCab = facCabVenDao.getById(facVenCabCod);
-        EnP2mGuiaRemTransportista guiRemTraOld = facCab.getEnP2mGuiaRemTransportista();
-        if(guiRemTraOld != null){
-            guiRemTraOld.setEstRegCod('I');
-            guiRemTraDao.update(guiRemTraOld);
+    public void create4Ventas(String[] facVenCabCod, String guiRemTraNumIni, 
+            String traCod, String uniTraCod, String guiRemTraNumReg, 
+            String cliCod, char estRegCod, int numMaxDet4GuiRemTra){
+               
+        //facturas asociadas
+        List <EnP1mFacturaVentaCab> cabs = new ArrayList<>();
+        int cods = facVenCabCod.length;
+        for (int i = 0; i < cods; i++) {
+            cabs.add(facCabVenDao.getById(facVenCabCod[i]));
         }
         
-        EnP2mTransportista tra = new EnP2mTransportista();
-        tra.setTraCod(traCod);
-        
-        EnP2mUnidadTransporte uniTra = new EnP2mUnidadTransporte();
-        uniTra.setUniTraCod(uniTraCod);
-        
-        EnP1mEmpresa em = new EnP1mEmpresa();
-        em.setEmpCod(empCod);
-        
-        //tipo de destinatario cliente
-        TaGzzTipoDestinatario td = new TaGzzTipoDestinatario();
-        td.setTipDstCod(1);
-        
-        EnP2mGuiaRemTransportista guiaRemTra = new EnP2mGuiaRemTransportista();
-        guiaRemTra.setGuiRemTraNum(guiRemTraNum);
-        guiaRemTra.setGuiRemTraDen("GUÍA DE REMISIÓN -TRANSPORTISTA");
-        guiaRemTra.setEnP2mTransportista(tra);
-        guiaRemTra.setEnP2mUnidadTransporte(uniTra);
-        guiaRemTra.setEnP1mEmpresa(em);
-        guiaRemTra.setGuiRemTraNumReg(guiRemTraNumReg);
-        guiaRemTra.setTaGzzTipoDestinatario(td);
-        guiaRemTra.setGuiRemTraDes(cliCod);
-        guiaRemTra.setEstRegCod(estRegCod);
-        guiRemTraDao.save(guiaRemTra);
-        
-        //se cambia el valor de la guia de remision de la factura
-        facCab.setEnP2mGuiaRemTransportista(guiaRemTra);
-        facCabVenDao.update(facCab);
-        
-    }
-    
-    public void create4Compras(String facComCabCod, String guiRemTraNum, String traCod, String uniTraCod, 
-            int empCod, String guiRemTraNumReg, String prvCod, char estRegCod){
-        
-        //factura seleccionada
-        EnP4mFacturaCompraCab facCab = facCabComDao.getById(facComCabCod);
-        EnP2mGuiaRemTransportista guiRemTraOld = facCab.getEnP2mGuiaRemTransportista();
-        if(guiRemTraOld != null){
-            guiRemTraOld.setEstRegCod('I');
-            guiRemTraDao.update(guiRemTraOld);
+        String guiRemTraNum = guiRemTraNumIni;
+        int numDets4Gui = 0;
+        int temp;
+        int ini = 0;
+        for(int i = 0; i < cods; i++){
+            temp = cabs.get(i).getEnP1tFacturaVentaDets().size(); //numero de detalles
+            numDets4Gui = numDets4Gui + temp;
+            //solo una factura
+            if(cods == 1){
+                create(guiRemTraNum, traCod, uniTraCod, 1, guiRemTraNumReg, cliCod, 'A');
+                facturaBusiness.setGuiRemTraNum(facVenCabCod[0], guiRemTraNum);
+                break;
+            }
+                        
+            if(numDets4Gui > numMaxDet4GuiRemTra){
+                //tipDstCod = 1 -> cliente guiRemTraDes = CliCod
+                create(guiRemTraNum, traCod, uniTraCod, 1, guiRemTraNumReg, cliCod, 'A');
+                for(int a = ini; a < i; a++){
+                    facturaBusiness.setGuiRemTraNum(facVenCabCod[a], guiRemTraNum);
+                }
+                ini = i;
+                guiRemTraNum = facturaBusiness.GenerateFacVenCabCod(guiRemTraNum,1);
+                numDets4Gui = 0;
+                i=i-1;
+            }
+            
+            //ultimo
+            if(i == cods-1 && numDets4Gui <= numMaxDet4GuiRemTra){
+                create(guiRemTraNum, traCod, uniTraCod, 1, guiRemTraNumReg, cliCod, 'A');
+                for(int a = ini; a <= i; a++){
+                    facturaBusiness.setGuiRemTraNum(facVenCabCod[a], guiRemTraNum);
+                }
+            }
         }
-        
-        EnP2mTransportista tra = new EnP2mTransportista();
-        tra.setTraCod(traCod);
-        
-        EnP2mUnidadTransporte uniTra = new EnP2mUnidadTransporte();
-        uniTra.setUniTraCod(uniTraCod);
-        
-        EnP1mEmpresa em = new EnP1mEmpresa();
-        em.setEmpCod(empCod);
-        
-        //tipo de destinatario proveedor
-        TaGzzTipoDestinatario td = new TaGzzTipoDestinatario();
-        td.setTipDstCod(2);
-        
-        EnP2mGuiaRemTransportista guiaRemTra = new EnP2mGuiaRemTransportista();
-        guiaRemTra.setGuiRemTraNum(guiRemTraNum);
-        guiaRemTra.setGuiRemTraDen("GUÍA DE REMISIÓN -TRANSPORTISTA");
-        guiaRemTra.setEnP2mTransportista(tra);
-        guiaRemTra.setEnP2mUnidadTransporte(uniTra);
-        guiaRemTra.setEnP1mEmpresa(em);
-        guiaRemTra.setGuiRemTraNumReg(guiRemTraNumReg);
-        guiaRemTra.setTaGzzTipoDestinatario(td);
-        guiaRemTra.setGuiRemTraDes(prvCod);
-        guiaRemTra.setEstRegCod(estRegCod);
-        guiRemTraDao.save(guiaRemTra);
-        
-        //se cambia el valor de la guia de remision de la factura
-        facCab.setEnP2mGuiaRemTransportista(guiaRemTra);
-        facCabComDao.update(facCab);
-        
     }
     
     public void update(String guiRemTraNum, String traCod, String uniTraCod, 
