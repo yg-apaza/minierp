@@ -658,16 +658,6 @@
     </servlet-mapping>
     <servlet>
         <description/>
-        <display-name>SearchGuiaRemTraController</display-name>
-        <servlet-name>SearchGuiaRemTraController</servlet-name>
-        <servlet-class>org.epis.minierp.controller.ventas.SearchGuiaRemTraController</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>SearchGuiaRemTraController</servlet-name>
-        <url-pattern>/secured/ventas/SearchGuiaRemTra</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <description/>
         <display-name>TotalRefundController</display-name>
         <servlet-name>TotalRefundController</servlet-name>
         <servlet-class>org.epis.minierp.controller.ventas.TotalRefundController</servlet-class>
