@@ -5,7 +5,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.epis.minierp.business.general.BoletaPrinter;
+import org.epis.minierp.business.impresora.BoletaPrinter;
 import org.epis.minierp.dao.impresora.BoletaDAO;
 
 public class ImpresoraBoletaController extends HttpServlet {
@@ -31,7 +31,7 @@ public class ImpresoraBoletaController extends HttpServlet {
         
         /* int size = Int.parseInteger(request.getParameter("size")); */
         
-        int leftMargin = Integer.parseInt(request.getParameter("leftMargin"));
+        float leftMargin = Float.parseFloat(request.getParameter("leftMargin"));
         float topMargin = Float.parseFloat(request.getParameter("topMargin"));
         float topBolCab = Float.parseFloat(request.getParameter("topBolCab"));
         float topBolDet = Float.parseFloat(request.getParameter("topBolDet"));

@@ -17,8 +17,8 @@
                                 <th>MARGEN SUPERIOR</th>
                             </tr>
                             <tr>
-                                <td><input type="number" name="leftMargin" value="${rem.getLeftMargin()}">cm</td>
-                                <td><input type="number" name="topMargin" value="${rem.getTopMargin()}">cm</td>
+                                <td><input min="0" step="0.1" type="number" name="leftMargin" value="${rem.getLeftMargin()}">cm</td>
+                                <td><input min="0" step="0.1" type="number" name="topMargin" value="${rem.getTopMargin()}">cm</td>
                             </tr>
                         </table>
                     </div>
@@ -32,7 +32,7 @@
                                 <td colspan="2" rowspan="2"></td>
                             </tr>
                             <tr>
-                                <td><input type="number" name="cliNom" value="${rem.getCliNom()}">cm</td>
+                                <td><input min="0" step="0.1" type="number" name="cliNom" value="${rem.getCliNom()}">cm</td>
                             </tr>
                             <tr>
                                 <td>PUNTO DE PARTIDA:</td>
@@ -40,7 +40,7 @@
                                 <td colspan="2" rowspan="2"></td>
                             </tr>
                             <tr>
-                                <td><input type="number" name="punPar" value="${rem.getPunPar()}">cm</td>
+                                <td><input min="0" step="0.1" type="number" name="punPar" value="${rem.getPunPar()}">cm</td>
                             </tr>
                             <tr>
                                 <td>PUNTO DE LLEGADA</td>
@@ -48,14 +48,14 @@
                                 <td colspan="2" rowspan="2"></td>
                             </tr>
                             <tr>
-                                <td style="text-align: right"><input type="number" name="punLle" value="${rem.getPunLle()}">cm</td>
+                                <td><input min="0" step="0.1" type="number" name="punLle" value="${rem.getPunLle()}">cm</td>
                             </tr>
                             <tr>
                                 <td colspan="3"></td>
                                 <td>Transportista</td>
                             </tr>
                             <tr>
-                                <td colspan="3"><input type="number" name="traNom" value="${rem.getTraNom()}">cm</td>
+                                <td colspan="3" style="text-align: right"><input min="0" step="0.1" type="number" name="traNom" value="${rem.getTraNom()}">cm</td>
                                 <td>Nombres y apellidos</td>
                             </tr>
                         </table>
@@ -68,7 +68,7 @@
                                 <th style="text-align: center">SEPARACIÓN</th>
                             </tr>
                             <tr>
-                                <td style="text-align: center"><input type="number" name="topRemCab" value="${rem.getTopRemCab()}">cm</td>
+                                <td style="text-align: center"><input min="0" step="0.1" type="number" name="topRemCab" value="${rem.getTopRemCab()}">cm</td>
                             </tr>
                         </table>
                     </div>
@@ -88,15 +88,15 @@
                                 <th>NÚMERO INTERNO</th>
                             </tr>
                             <tr>
-                                <td><input type="number" name="fecVen" value="${rem.getFecVen()}">cm</td>
-                                <td><input type="number" name="ven" value="${rem.getVen()}">cm</td>
-                                <td><input type="number" name="zon" value="${rem.getZon()}">cm</td>
-                                <td><input type="number" name="con" value="${rem.getCon()}">cm</td>
-                                <td><input type="number" name="cliCod" value="${rem.getCliCod()}">cm</td>
-                                <td><input type="number" name="oc" value="${rem.getOc()}">cm</td>
-                                <td><input type="number" name="facNum" value="${rem.getFacNum()}">cm</td>
-                                <td><input type="number" name="hora" value="${rem.getHora()}">cm</td>
-                                <td><input type="number" name="numInt" value="${rem.getNumInt()}">cm</td>
+                                <td><input min="0" step="0.1" type="number" name="fecVen" value="${rem.getFecVen()}">cm</td>
+                                <td><input min="0" step="0.1" type="number" name="ven" value="${rem.getVen()}">cm</td>
+                                <td><input min="0" step="0.1" type="number" name="zon" value="${rem.getZon()}">cm</td>
+                                <td><input min="0" step="0.1" type="number" name="con" value="${rem.getCon()}">cm</td>
+                                <td><input min="0" step="0.1" type="number" name="cliCod" value="${rem.getCliCod()}">cm</td>
+                                <td><input min="0" step="0.1" type="number" name="oc" value="${rem.getOc()}">cm</td>
+                                <td><input min="0" step="0.1" type="number" name="facNum" value="${rem.getFacNum()}">cm</td>
+                                <td><input min="0" step="0.1" type="number" name="hora" value="${rem.getHora()}">cm</td>
+                                <td><input min="0" step="0.1" type="number" name="numInt" value="${rem.getNumInt()}">cm</td>
                             </tr>
                         </table>
                     </div>
@@ -108,7 +108,7 @@
                                 <th style="text-align: center">SEPARACIÓN</th>
                             </tr>
                             <tr>
-                                <td style="text-align: center"><input type="number" name="topRemDet" value="${rem.getTopRemDet()}">cm</td>
+                                <td style="text-align: center"><input min="0" step="0.1" type="number" name="topRemDet" value="${rem.getTopRemDet()}">cm</td>
                             </tr>
                         </table>
                     </div>
@@ -119,20 +119,20 @@
                             <tr>
                                 <th>CÓDIGO</th>
                                 <th>CANTIDAD</th>
-                                <th>UNID./th>
+                                <th>UNID.</th>
                                 <th>DESCRIPCION</th>
                                 <th>VALOR VENTA<br>UNITARIO</th>
                                 <th></th>
                                 <th>VALOR VENTA<BR>NETA</th>
                             </tr>
                             <tr>
-                                <td><input type="number" name="proCod" value="${rem.getProCod()}">cm</td>
-                                <td><input type="number" name="proCan" value="${rem.getProCan()}">cm</td>
-                                <td><input type="number" name="proUni" value="${rem.getProUni()}">cm</td>
-                                <td><input type="number" name="proDes" value="${rem.getProDes()}">cm</td>
-                                <td><input type="number" name="proValUni" value="${rem.getProValUni()}">cm</td>
-                                <td><input type="number" name="proDes1" value="${rem.getProDes1()}">cm</td>
-                                <td><input type="number" name="proValNet" value="${rem.getProValNet()}">cm</td>
+                                <td><input min="0" step="0.1" type="number" name="proCod" value="${rem.getProCod()}">cm</td>
+                                <td><input min="0" step="0.1" type="number" name="proCan" value="${rem.getProCan()}">cm</td>
+                                <td><input min="0" step="0.1" type="number" name="proUni" value="${rem.getProUni()}">cm</td>
+                                <td><input min="0" step="0.1" type="number" name="proDes" value="${rem.getProDes()}">cm</td>
+                                <td><input min="0" step="0.1" type="number" name="proValUni" value="${rem.getProValUni()}">cm</td>
+                                <td><input min="0" step="0.1" type="number" name="proDes1" value="${rem.getProDes1()}">cm</td>
+                                <td><input min="0" step="0.1" type="number" name="proValNet" value="${rem.getProValNet()}">cm</td>
                             </tr>
                         </table>
                     </div>
@@ -141,13 +141,13 @@
                     <div class="table-responsive">
                         <table class="table table-bordered table-striped table-hover table-condensed" id="tablaRemTot">            
                             <tr>
-                                <td style="text-align: right"><input type="number" name="totalMargin" value="${rem.getTotalMargin()}">cm</td>
+                                <td style="text-align: right"><input min="0" step="0.1" type="number" name="totalMargin" value="${rem.getTotalMargin()}">cm</td>
                                 <td>TOTAL</td>                                
                             </tr>
                         </table>
                     </div>
                 </div> 
-                <button type="submit" id="update" class="btn btn-primary">Actualizar cambios</button>       
+                <button type="submit" formnovalidate="formnovalidate" id="update" class="btn btn-primary">Actualizar cambios</button>       
             </form>           
         </div>
     </jsp:attribute>

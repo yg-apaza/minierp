@@ -292,19 +292,12 @@ public class EnP1mFacturaVentaBusiness {
 
         //actualizando stoks
         double proStk = p.getProStk();
-        double proStkPreVen = p.getProStkPreVen();
 
-        //stock actual - stock preventa >= cantidad que se quiere vender
-        if (proStk - proStkPreVen >= facVenDetCan) {
-            p.setProStk(proStk - facVenDetCan);
-            proDao.update(p);
+        p.setProStk(proStk - facVenDetCan);
+        proDao.update(p);
             
-            //crear detalle si reduce el stock!
-            facVenDetDao.save(fvd);
-        }
-
-        
-
+        //crear detalle
+        facVenDetDao.save(fvd);
     }
 
     private void createFacVenDet(EnP1tFacturaVentaDet facVenDet) {
@@ -317,18 +310,23 @@ public class EnP1mFacturaVentaBusiness {
         EnP2mProductoId pId = new EnP2mProductoId(proCod, subClaProCod, claProCod);
         EnP2mProducto p = proDao.getById(pId);
 
+        //actualizando stoks
         double proStk = p.getProStk();
-        double proStkPreVen = p.getProStkPreVen();
 
-        //stock actual - stock preventa >= cantidad que se quiere vender
-        if (proStk - proStkPreVen >= facVenDetCan) {
-            p.setProStk(proStk - facVenDetCan);
-            proDao.update(p);
-        }
-
+        p.setProStk(proStk - facVenDetCan);
+        proDao.update(p);
+            
         //crear detalle
         facVenDetDao.save(facVenDet);
-
+    }
+    
+    private void reducirproStkPreVen(String claProCod, String subClaProCod, String proCod, double value){
+        EnP2mProductoId pId = new EnP2mProductoId(proCod, subClaProCod, claProCod);
+        EnP2mProducto p = proDao.getById(pId);
+        
+        double proStkPreVen = p.getProStkPreVen();
+        p.setProStkPreVen(proStkPreVen - value);
+        proDao.update(p);
     }
 
     /**
@@ -382,14 +380,19 @@ public class EnP1mFacturaVentaBusiness {
                     facVenCabIGV, facVenCabObs, estFacCod, metPagFac, tipPagCod, monCod,
                     pagCuoNum, estRegCod);
 
+            String claProCod;
+            String subClaProCod;
+            String proCod;
             for (int i = 0; i < maxDet4FacVen && tempDets < size; i++) {
                 tempFvd = detalles.get(tempDets);
-                createFacVenDet(tempFacVenCabCod, i+1, 
-                        tempFvd.getEnP2mProducto().getId().getClaProCod(), 
-                        tempFvd.getEnP2mProducto().getId().getSubClaProCod(), 
-                        tempFvd.getEnP2mProducto().getId().getProCod(), 
+                claProCod = tempFvd.getEnP2mProducto().getId().getClaProCod();
+                subClaProCod = tempFvd.getEnP2mProducto().getId().getSubClaProCod();
+                proCod = tempFvd.getEnP2mProducto().getId().getProCod();
+                
+                createFacVenDet(tempFacVenCabCod, i+1, claProCod, subClaProCod, proCod, 
                         tempFvd.getFacVenDetCan(), tempFvd.getFacVenDetValUni());
                 
+                reducirproStkPreVen(claProCod, subClaProCod, proCod, tempFvd.getFacVenDetCan());
                 tempDets++;
                 tempFacVenCabTot = tempFacVenCabTot + tempFvd.getFacVenDetValUni()*tempFvd.getFacVenDetCan();
             }

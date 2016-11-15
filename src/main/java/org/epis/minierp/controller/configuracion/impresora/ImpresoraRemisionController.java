@@ -5,7 +5,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.epis.minierp.business.general.RemisionPrinter;
+import org.epis.minierp.business.impresora.RemisionPrinter;
 import org.epis.minierp.dao.impresora.RemisionDAO;
 
 public class ImpresoraRemisionController extends HttpServlet {
@@ -31,7 +31,7 @@ public class ImpresoraRemisionController extends HttpServlet {
         
         /* int size = Int.parseInteger(request.getParameter("size")); */
         
-        int leftMargin = Integer.parseInt(request.getParameter("leftMargin"));
+        float leftMargin = Float.parseFloat(request.getParameter("leftMargin"));
         float topMargin = Float.parseFloat(request.getParameter("topMargin"));
         float topRemCab = Float.parseFloat(request.getParameter("topRemCab"));
         float topRemDet = Float.parseFloat(request.getParameter("topRemDet"));

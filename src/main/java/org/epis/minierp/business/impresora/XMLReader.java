@@ -1,4 +1,4 @@
-package org.epis.minierp.business.general;
+package org.epis.minierp.business.impresora;
 
 import java.io.File;
 import javax.xml.bind.JAXBContext;

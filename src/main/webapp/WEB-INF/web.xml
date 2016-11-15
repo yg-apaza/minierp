@@ -691,6 +691,16 @@
         <servlet-name>CarrierGuideController</servlet-name>
         <url-pattern>/secured/ventas/searchCarrierGuide</url-pattern>
     </servlet-mapping>
+        <servlet>
+        <description/>
+        <display-name>SearchGuiaRemTraController</display-name>
+        <servlet-name>SearchGuiaRemTraController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.ventas.SearchGuiaRemTraController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SearchGuiaRemTraController</servlet-name>
+        <url-pattern>/secured/ventas/GuiaTransportista</url-pattern>
+    </servlet-mapping>
     <servlet>
         <description/>
         <display-name>AddCarrierGuideController</display-name>

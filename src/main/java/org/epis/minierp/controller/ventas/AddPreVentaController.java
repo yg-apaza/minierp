@@ -79,8 +79,8 @@ public class AddPreVentaController extends HttpServlet{
             int monCod = Integer.parseInt(request.getParameter("monCod")); 
             String preVenCabObs = request.getParameter("preVenCabObs");
             int preVenPorDes = Integer.parseInt(request.getParameter("preVenPorDes")); 
-            double preVenCabTot = Double.parseDouble(request.getParameter("preVenCabSubTot")); // invertido
-            double preVenCabSubTot = Double.parseDouble(request.getParameter("preVenCabTot"));// invertido
+            double preVenCabTot = Double.parseDouble(request.getParameter("preVenCabTot")); 
+            double preVenCabSubTot = Double.parseDouble(request.getParameter("preVenCabSubTot"));
             int tipDesCod = Integer.parseInt(request.getParameter("tipDesCod"));
             
             EnP1mPreventaCabDao preventa = new EnP1mPreventaCabDao();
@@ -116,7 +116,7 @@ public class AddPreVentaController extends HttpServlet{
             
                 EnP2mProductoDao productDao = new EnP2mProductoDao();
                 EnP2mProducto product = productDao.getById(productId);
-                product.setProStkPreVen(product.getProStkPreVen() - Double.parseDouble(productsAmounts.get(i))); /*Updating stock preventa*/ 
+                product.setProStkPreVen(product.getProStkPreVen() + Double.parseDouble(productsAmounts.get(i))); /*Updating stock preventa*/ 
                 productDao.update(product);
             
                 EnP1tPreventaDet det = new EnP1tPreventaDet();

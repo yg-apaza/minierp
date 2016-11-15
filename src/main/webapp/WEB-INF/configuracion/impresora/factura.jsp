@@ -17,8 +17,8 @@
                                 <th>MARGEN SUPERIOR</th>
                             </tr>
                             <tr>
-                                <td><input type="number" name="leftMargin" value="${fac.getLeftMargin()}">cm</td>
-                                <td><input type="number" name="topMargin" value="${fac.getTopMargin()}">cm</td>
+                                <td><input min="0" step="0.1" type="number" name="leftMargin" value="${fac.getLeftMargin()}">cm</td>
+                                <td><input min="0" step="0.1" type="number" name="topMargin" value="${fac.getTopMargin()}">cm</td>
                             </tr>
                         </table>
                     </div>
@@ -32,7 +32,7 @@
                                 <td colspan="2" rowspan="2"></td>
                             </tr>
                             <tr>
-                                <td><input type="number" name="cliNom" value="${fac.getCliNom()}">cm</td>
+                                <td><input min="0" step="0.1" type="number" name="cliNom" value="${fac.getCliNom()}">cm</td>
                             </tr>
                             <tr>
                                 <td>DIRECCIÓN:</td>
@@ -40,7 +40,7 @@
                                 <td colspan="2" rowspan="2"></td>
                             </tr>
                             <tr>
-                                <td><input type="number" name="cliDir" value="${fac.getCliDir()}">cm</td>
+                                <td><input min="0" step="0.1" type="number" name="cliDir" value="${fac.getCliDir()}">cm</td>
                             </tr>
                             <tr>
                                 <td colspan="2"></td>
@@ -48,7 +48,7 @@
                                 <td rowspan="2" style="vertical-align:middle">10/11/2016</td>
                             </tr>
                             <tr>
-                                <td colspan="3"><input type="number" name="fecEmi" value="${fac.getFecEmi()}">cm</td>
+                                <td colspan="3"><input min="0" step="0.1" type="number" name="fecEmi" value="${fac.getFecEmi()}">cm</td>
                                 <td></td>
                             </tr>
                         </table>
@@ -61,7 +61,7 @@
                                 <th style="text-align: center">SEPARACIÓN</th>
                             </tr>
                             <tr>
-                                <td style="text-align: center"><input type="number" name="topFacCab" value="${fac.getTopFacCab()}">cm</td>
+                                <td style="text-align: center"><input min="0" step="0.1" type="number" name="topFacCab" value="${fac.getTopFacCab()}">cm</td>
                             </tr>
                         </table>
                     </div>
@@ -80,14 +80,14 @@
                                 <th>TRANSPORTISTA</th>
                             </tr>
                             <tr>
-                                <td><input type="number" name="cliCod" value="${fac.getCliCod()}">cm</td>
-                                <td><input type="number" name="conPag" value="${fac.getConPag()}">cm</td>
-                                <td><input type="number" name="fecVen" value="${fac.getFecVen()}">cm</td>
-                                <td><input type="number" name="venZon" value="${fac.getVenZon()}">cm</td>
-                                <td><input type="number" name="numSec" value="${fac.getNumSec()}">cm</td>
-                                <td><input type="number" name="dis" value="${fac.getDis()}">cm</td>
-                                <td><input type="number" name="rut" value="${fac.getRut()}">cm</td>
-                                <td><input type="number" name="tra" value="${fac.getTra()}">cm</td>
+                                <td><input min="0" step="0.1" type="number" name="cliCod" value="${fac.getCliCod()}">cm</td>
+                                <td><input min="0" step="0.1" type="number" name="conPag" value="${fac.getConPag()}">cm</td>
+                                <td><input min="0" step="0.1" type="number" name="fecVen" value="${fac.getFecVen()}">cm</td>
+                                <td><input min="0" step="0.1" type="number" name="venZon" value="${fac.getVenZon()}">cm</td>
+                                <td><input min="0" step="0.1" type="number" name="numSec" value="${fac.getNumSec()}">cm</td>
+                                <td><input min="0" step="0.1" type="number" name="dis" value="${fac.getDis()}">cm</td>
+                                <td><input min="0" step="0.1" type="number" name="rut" value="${fac.getRut()}">cm</td>
+                                <td><input min="0" step="0.1" type="number" name="tra" value="${fac.getTra()}">cm</td>
                             </tr>
                         </table>
                     </div>
@@ -99,7 +99,7 @@
                                 <th style="text-align: center">SEPARACIÓN</th>
                             </tr>
                             <tr>
-                                <td style="text-align: center"><input type="number" name="topFacDet" value="${fac.getTopFacDet()}">cm</td>
+                                <td style="text-align: center"><input min="0" step="0.1" type="number" name="topFacDet" value="${fac.getTopFacDet()}">cm</td>
                             </tr>
                         </table>
                     </div>
@@ -118,14 +118,14 @@
                                 <th>V. NETO</th>
                             </tr>
                             <tr>
-                                <td><input type="number" name="proCod" value="${fac.getProCod()}">cm</td>
-                                <td><input type="number" name="proCan" value="${fac.getProCan()}">cm</td>
-                                <td><input type="number" name="proUni" value="${fac.getProUni()}">cm</td>
-                                <td><input type="number" name="proDes" value="${fac.getProDes()}">cm</td>
-                                <td><input type="number" name="proValUni" value="${fac.getProValUni()}">cm</td>
-                                <td><input type="number" name="proDes1" value="${fac.getProDes1()}">cm</td>
-                                <td><input type="number" name="proDes2" value="${fac.getProDes2()}">cm</td>
-                                <td><input type="number" name="proValNet" value="${fac.getProValNet()}">cm</td>
+                                <td><input min="0" step="0.1" type="number" name="proCod" value="${fac.getProCod()}">cm</td>
+                                <td><input min="0" step="0.1" type="number" name="proCan" value="${fac.getProCan()}">cm</td>
+                                <td><input min="0" step="0.1" type="number" name="proUni" value="${fac.getProUni()}">cm</td>
+                                <td><input min="0" step="0.1" type="number" name="proDes" value="${fac.getProDes()}">cm</td>
+                                <td><input min="0" step="0.1" type="number" name="proValUni" value="${fac.getProValUni()}">cm</td>
+                                <td><input min="0" step="0.1" type="number" name="proDes1" value="${fac.getProDes1()}">cm</td>
+                                <td><input min="0" step="0.1" type="number" name="proDes2" value="${fac.getProDes2()}">cm</td>
+                                <td><input min="0" step="0.1" type="number" name="proValNet" value="${fac.getProValNet()}">cm</td>
                             </tr>
                         </table>
                     </div>
@@ -134,13 +134,13 @@
                     <div class="table-responsive">
                         <table class="table table-bordered table-striped table-hover table-condensed" id="tablaFacTot">            
                             <tr>
-                                <td style="text-align: right"><input type="number" name="totalMargin" value="${fac.getTotalMargin()}">cm</td>
+                                <td style="text-align: right"><input min="0" step="0.1" type="number" name="totalMargin" value="${fac.getTotalMargin()}">cm</td>
                                 <td>TOTAL</td>                                
                             </tr>
                         </table>
                     </div>
                 </div> 
-                <button type="submit" id="update" class="btn btn-primary">Actualizar cambios</button>       
+                <button type="submit" formnovalidate="formnovalidate" id="update" class="btn btn-primary">Actualizar cambios</button>       
             </form>           
         </div>
     </jsp:attribute>

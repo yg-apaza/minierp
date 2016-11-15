@@ -1,4 +1,4 @@
-package org.epis.minierp.business.general;
+package org.epis.minierp.business.impresora;
 
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
@@ -32,8 +32,8 @@ import javax.xml.bind.annotation.XmlType;
 
 public class BoletaPrinter {
     int size;
-    int leftMargin;
-    int rightMargin;
+    float leftMargin;
+    float rightMargin;
     float topMargin;
     float cliNom;
     float cliDir;
@@ -66,19 +66,19 @@ public class BoletaPrinter {
         this.size = size;
     }
 
-    public int getLeftMargin() {
+    public float getLeftMargin() {
         return leftMargin;
     }
 
-    public void setLeftMargin(int leftMargin) {
+    public void setLeftMargin(float leftMargin) {
         this.leftMargin = leftMargin;
     }
 
-    public int getRightMargin() {
+    public float getRightMargin() {
         return rightMargin;
     }
 
-    public void setRightMargin(int rightMargin) {
+    public void setRightMargin(float rightMargin) {
         this.rightMargin = rightMargin;
     }
 

@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -13,14 +14,19 @@ import org.epis.minierp.dao.general.EnP1mEmpresaDao;
 import org.epis.minierp.dao.general.EnP2mUnidadTransporteDao;
 import org.epis.minierp.dao.general.TaGzzTipoDestinatarioDao;
 import org.epis.minierp.dao.logistica.EnP2mTransportistaDao;
+import org.epis.minierp.dao.ventas.EnP1mClienteDao;
 import org.epis.minierp.dao.ventas.EnP1mClientesRutasDao;
 import org.epis.minierp.dao.ventas.EnP1mFacturaVentaCabDao;
+import org.epis.minierp.model.EnP1mCliente;
 import org.epis.minierp.model.EnP1mClientesRutas;
 import org.epis.minierp.model.EnP1mEmpresa;
 import org.epis.minierp.model.EnP1mFacturaVentaCab;
+import org.epis.minierp.model.EnP1tFacturaVentaDet;
+import org.epis.minierp.model.EnP2mGuiaRemTransportista;
 import org.epis.minierp.model.EnP2mTransportista;
 import org.epis.minierp.model.EnP2mUnidadTransporte;
 import org.epis.minierp.model.TaGzzTipoDestinatario;
+import org.epis.minierp.util.DateUtil;
 
 public class CarrierGuideController extends HttpServlet {
 
@@ -29,35 +35,95 @@ public class CarrierGuideController extends HttpServlet {
         String action = request.getParameter("action");
         String facVenCabCod = request.getParameter("facVenCabCod");
         EnP1mFacturaVentaCab bill = null;
+        EnP2mGuiaRemTransportista carrierGuide = null;
         JsonObject data = null;
-
+        JsonArray traList = null;
+        JsonArray traCliList = null;
+        JsonArray facVenList = null;
+        
         switch (action) {
             case "search":
                 bill = (new EnP1mFacturaVentaCabDao()).getById(facVenCabCod);
+                carrierGuide = bill.getEnP2mGuiaRemTransportista();
                 data = new JsonObject();
+                traList = new JsonArray();
+                traCliList = new JsonArray();
+                facVenList = new JsonArray();
+                
+                if (carrierGuide != null) {
+                    
+                    String traNomCom = carrierGuide.getEnP2mTransportista().getTraNom()+ " " +
+                        carrierGuide.getEnP2mTransportista().getTraApePat()+ " " +
+                        carrierGuide.getEnP2mTransportista().getTraApeMat();
+        
+                    String vehiculo = carrierGuide.getEnP2mUnidadTransporte().getUniTraNumPla();
+        
+                    String remitente = carrierGuide.getEnP1mEmpresa().getEmpNomCom();
+                    
+                    EnP1mCliente mainClient = (new EnP1mClienteDao()).getById(carrierGuide.getGuiRemTraDes());
+                    String destinatario = mainClient.getCliNom() + " " + mainClient.getCliApePat() + " " + mainClient.getCliApeMat();
+                    
+                    String ruta = bill.getEnP1mCatalogoRuta().getCatRutDet();
 
-                if (bill.getEnP2mGuiaRemTransportista() != null) {
-                    data.addProperty("empDes", bill.getEnP2mGuiaRemTransportista().getEnP1mEmpresa().getEmpDes());
-                    data.addProperty("facCod", bill.getFacVenCabCod());
-                    data.addProperty("traNum", bill.getEnP2mGuiaRemTransportista().getGuiRemTraNum());
-                    data.addProperty("traDen", bill.getEnP2mGuiaRemTransportista().getGuiRemTraDen());
-                    data.addProperty("traDat", bill.getEnP2mGuiaRemTransportista().getEnP2mTransportista().getTraNomCom());
-                    data.addProperty("numPla", bill.getEnP2mGuiaRemTransportista().getEnP2mUnidadTransporte().getUniTraNumPla());
-                    data.addProperty("numReg", bill.getEnP2mGuiaRemTransportista().getGuiRemTraNumReg());
-                    data.addProperty("rutDes", bill.getEnP1mCatalogoRuta().getCatRutDet());
-                    data.addProperty("tipDes", bill.getEnP2mGuiaRemTransportista().getTaGzzTipoDestinatario().getTipDstDet());
-                    data.addProperty("traDes", bill.getEnP2mGuiaRemTransportista().getGuiRemTraDes());
+                    data.addProperty("guiRemTraNum", carrierGuide.getGuiRemTraNum());
+                    data.addProperty("traNomCom", traNomCom);
+                    data.addProperty("vehiculo", vehiculo);
+                    data.addProperty("remitente", remitente);
+                    data.addProperty("destinatario", destinatario);
+                    data.addProperty("ruta", ruta);
+                    
+                    List <EnP1mCliente> clients = new ArrayList<>();
+                    List <EnP1tFacturaVentaDet> details = new ArrayList<>();
+                    
+                    //Agregando todos los detalles y clientes de las facturas que tiene asociada la clave de la guia de Transportista
+                    List <EnP1mFacturaVentaCab> cabs = new ArrayList<>();
+                    cabs.addAll(carrierGuide.getEnP1mFacturaVentaCabs());
+                    for(EnP1mFacturaVentaCab cab: cabs) {
+                        JsonObject detailObject = new JsonObject();
+                        if(cab.getEstRegCod() == 'A'){
+                            //detalles
+                            details.addAll(cab.getEnP1tFacturaVentaDets());
+                            //clientes
+                            addWhitOutRepeatClient(clients,cab.getEnP1mCliente());
+                            //facturas
+                            detailObject.addProperty("facVenCabCod", cab.getFacVenCabCod());
+                            detailObject.addProperty("facVenCabFecEmi", DateUtil.getString2Date(cab.getFacVenCabFecEmi()));
+                            detailObject.addProperty("facVenCabTot", cab.getFacVenCabTot());
+                            detailObject.addProperty("facVenCabSubTot", cab.getFacVenCabSubTot());
+                            facVenList.add(detailObject);
+                        }
+                    }
+                    
+                    for(EnP1tFacturaVentaDet detail: details) {
+                        JsonObject detailObject = new JsonObject();
+                        detailObject.addProperty("detCan", detail.getFacVenDetCan());
+                        detailObject.addProperty("proDet", detail.getEnP2mProducto().getProDet());
+                        detailObject.addProperty("preUniVen", detail.getFacVenDetValUni());
+                        detailObject.addProperty("detImp", detail.getFacVenDetCan()*detail.getFacVenDetValUni());
+                        traList.add(detailObject);
+                    }
+                    for(EnP1mCliente cli: clients) {
+                        JsonObject detailObject = new JsonObject();
+                        detailObject.addProperty("cliNomCom", cli.getCliNomCom());
+                        detailObject.addProperty("cliCod", cli.getCliCod());
+                        traCliList.add(detailObject);
+                    }
+                    
+                    data.add("traList", traList);
+                    data.add("traCliList", traCliList);
+                    data.add("facVenList", facVenList);
+                    
+                    
                 } else {
-                    data.addProperty("empDes", "No Generado");
-                    data.addProperty("facCod", bill.getFacVenCabCod());
-                    data.addProperty("traNum", "No Generado");
-                    data.addProperty("traDen", "No Generado");
-                    data.addProperty("traDat", "No Generado");
-                    data.addProperty("numPla", "No Generado");
-                    data.addProperty("numReg", "No Generado");
-                    data.addProperty("rutDes", "No Generado");
-                    data.addProperty("tipDes", "No Generado");
-                    data.addProperty("traDes", "No Generado");
+                    data.addProperty("guiRemTraNum", "No Generado");
+                    data.addProperty("traNomCom", "No Generado");
+                    data.addProperty("vehiculo", "No Generado");
+                    data.addProperty("remitente", "No Generado");
+                    data.addProperty("destinatario", "No Generado");
+                    data.addProperty("ruta", "No Generado");
+                    data.add("traList", traList);
+                    data.add("traCliList", traCliList);
+                    data.add("facVenList", facVenList);
                 }
 
                 response.setContentType("application/json");
@@ -128,5 +194,13 @@ public class CarrierGuideController extends HttpServlet {
                 response.getWriter().write(new Gson().toJson(data));
                 break;
         }
+    }
+    
+    private void addWhitOutRepeatClient(List <EnP1mCliente> l, EnP1mCliente cli){
+        for(EnP1mCliente dt: l){
+            if(cli.getCliCod().equals(dt.getCliCod()))
+                return;
+        }
+        l.add(cli);
     }
 }

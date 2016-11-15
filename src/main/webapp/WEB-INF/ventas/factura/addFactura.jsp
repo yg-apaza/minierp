@@ -204,8 +204,8 @@
                                     </div>
                                     <div class="col-md-4">      
                                         <div class="form-group input-group" >
-                                            <span class="input-group-addon">SubTotal + IGV</span>
-                                            <input type="number" class="form-control" name="facVenCabSubTot" id="facSub" value="0" readonly>
+                                            <span class="input-group-addon">Total + IGV</span>
+                                            <input type="number" class="form-control" name="facVenCabTot" id="facSub" value="0" readonly>
                                             <span class="input-group-addon"><i class="fa fa-usd"></i></span>
                                         </div>
                                     </div>
@@ -213,8 +213,8 @@
                                 <div class="row">
                                     <div class="col-md-3 col-md-offset-9">
                                         <div class="form-group input-group" >
-                                            <span class="input-group-addon">Total</i></span>
-                                            <input type="number" class="form-control" name="facVenCabTot" id="facTot" value="0" readonly>
+                                            <span class="input-group-addon">SubTotal</i></span>
+                                            <input type="number" class="form-control" name="facVenCabSubTot" id="facTot" value="0" readonly>
                                             <span class="input-group-addon"><i class="fa fa-usd"></i></span>
                                         </div>
                                     </div>
