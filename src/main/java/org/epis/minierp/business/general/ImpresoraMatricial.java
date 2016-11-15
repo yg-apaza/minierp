@@ -62,7 +62,7 @@ public class ImpresoraMatricial {
                 case "boleta":
                     bP = new BoletaDAO(dir).read();
                     break;
-                case "guiaRemision":
+                case "remision":
                     gP = new RemisionDAO(dir).read();
                     break;
             }
@@ -91,7 +91,7 @@ public class ImpresoraMatricial {
                 setSize(bP.getSize()); 
                 setMargins(bP.getLeftMargin(), bP.getRightMargin());
                 break;
-            case "guiaRemision":
+            case "remision":
                 setSize(gP.getSize());
                 setMargins(gP.getLeftMargin(), gP.getRightMargin());
                 break;
