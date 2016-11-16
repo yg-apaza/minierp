@@ -24,7 +24,7 @@
                         </div>
                         <div class="col-md-3">
                             <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
-                            <button type="button" id="guiaTranportista" class="btn btn-primary btn-block">Generar Guía de Transportista</button>
+                            <button type="button" id="guiaTranportista" class="btn btn-primary btn-block">Generar Guías de Remision</button>
                             </cc:if>
                         </div>
                         <div class="col-md-3">
@@ -265,7 +265,7 @@
                                         <div class="col-xs-12 col-md-8">
                                             <div class="form-group input-group">
                                                 <span class="input-group-addon">Factura</span>
-                                                <input type="text" class="form-control" id="facVenCabCod" readOnly>
+                                                <input type="text" class="form-control" id="codFacVen" readOnly>
                                                 <span class="input-group-addon"><i class="fa fa-clipboard"></i></span>
                                             </div>
                                         </div>
@@ -288,6 +288,20 @@
                                                 <span class="input-group-addon">Cliente</span>
                                                 <input type="text" class="form-control" id="facVenCabCliNomCom" readOnly>
                                                 <span class="input-group-addon"><i class="fa fa-shopping-cart"></i></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-md-8">
+                                            <div class="form-group input-group" >
+                                                <span class="input-group-addon">Descuento</span>
+                                                <input type="text" class="form-control" id="tipDesDet" readOnly>
+                                                <span class="input-group-addon"><i class="fa fa-arrow-down"></i></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-md-4">
+                                            <div class="form-group input-group" >
+                                                <span class="input-group-addon">%</span>
+                                                <input type="text" class="form-control" id="facVenPorDes" readOnly>
+                                                <span class="input-group-addon"><i class="fa fa-venus"></i></span>
                                             </div>
                                         </div>
                                     </div>
@@ -322,13 +336,13 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title">Guía de Remisión</h4>
+                        <h3 class="modal-title">Guia de Remision Remitente</h3>
                     </div>
                         <div class="modal-body">
                             <div class="panel-body">
                             <ul class="nav nav-pills">
                                 <li class="active"><a href="#generalGuiRem" data-toggle="tab">Información General</a></li>
-                                <li><a href="#detailGuiRem" data-toggle="tab">Detalle de Venta</a></li>
+                                <li><a href="#detailGuiRem" data-toggle="tab">Detalle de Guia de Remitente</a></li>
                             </ul>
                                 <div class="tab-content">
                                     <div class="tab-pane fade in active" id="generalGuiRem"><br>
@@ -779,9 +793,13 @@
                             facVenCabCod: facVenCabCod
                         }
                 ).done(function (data) {
-                    $("#facVenCabCod").val(data.cod);
-                    $("#facVenCabUsuNom").val(data.usuNom);
-                    $("#facVenCabCliNomCom").val(data.cliNomCom);
+                    $("#codFacVen").val(data.codFacVen);
+                    $("#preVenCabIgv").val(data.preVenCabIgv);
+                    $("#facVenCabUsuNom").val(data.facVenCabUsuNom);
+                    $("#facVenCabCliNomCom").val(data.facVenCabCliNomCom);
+                    $("#tipDesDet").val(data.tipDesDet);
+                    $("#facVenPorDes").val(data.facVenPorDes);
+                    
                     $('#facVenDetPro').DataTable().clear().draw();
                     $('#facVenDetPro').DataTable().destroy();
                     data.detailList.forEach(function (detail) {
@@ -807,13 +825,25 @@
                             facVenCabCod: facVenCabCod
                         }
                 ).done(function (data) {
-                    $("#guiRemEmpDes").val(data.empDes);
-                    $("#guiRemFacCod").val(data.facCod);
-                    $("#guiRemRemNum").val(data.remNum);
-                    $("#guiRemRemDen").val(data.remDen);
-                    $("#guiRemMotTra").val(data.motTra);
-                    $("#guiRemTipDes").val(data.tipDes);
-                    $("#guiRemRemDes").val(data.remDes);
+                    $("#guiRemRemNum").val(data.guiRemRemNum);
+                    $("#guiRemEmpDes").val(data.guiRemEmpDes);
+                    $("#guiRemCliCod").val(data.guiRemCliCod);
+                    $("#guiRemFacCod").val(data.guiRemFacCod);
+                    $("#guiRemMotTra").val(data.guiRemMotTra);
+                    
+                    $('#GuiRemDetPro').DataTable().clear().draw();
+                    $('#GuiRemDetPro').DataTable().destroy();
+                    data.remList.forEach(function (detailguirem) {
+                        $('#GuiRemDetPro tbody').append('<tr><td width="16%" align="center"></td><td width="44%"></td><td width="20%" align="center"></td><td width="20%" align="center"></td></tr>');
+                        $('#GuiRemDetPro tr:last td:eq(0)').html(detailguirem.detCan);
+                        $('#GuiRemDetPro tr:last td:eq(1)').html(detailguirem.proDet);
+                        $('#GuiRemDetPro tr:last td:eq(2)').html(detailguirem.preUniVen);
+                        $('#GuiRemDetPro tr:last td:eq(3)').html((Number(detailguirem.detImp)).toFixed(2));
+                    });
+                    $('#GuiRemDetPro').DataTable({
+                        responsive: true
+                    });
+                    
                     $("#loading").modal('hide');
                     $("#viewReferralGuide").modal('show');
                 });
