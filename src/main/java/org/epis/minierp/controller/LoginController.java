@@ -14,7 +14,7 @@ import org.epis.minierp.model.EnP1mUsuario;
 public class LoginController extends HttpServlet
 {
     private static final long serialVersionUID = 1L;
-
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession(false);
@@ -31,6 +31,7 @@ public class LoginController extends HttpServlet
         HttpSession session = request.getSession(true);
         String username = (String)request.getParameter("usuario");
         String password = (String)request.getParameter("password");
+               
         EnP1mUsuario u = daoUsu.getByUsername(username);
         
         if(u != null && u.getUsuPas().equals(DigestUtils.sha256Hex(password)))
