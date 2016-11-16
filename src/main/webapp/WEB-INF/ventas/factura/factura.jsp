@@ -24,7 +24,7 @@
                         </div>
                         <div class="col-md-3">
                             <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
-                            <button type="button" id="guiaTranportista" class="btn btn-primary btn-block">Generar Guías de Remision</button>
+                            <button type="button" id="guiaTranportista" class="btn btn-primary btn-block">Generar Guías de Remisión</button>
                             </cc:if>
                         </div>
                         <div class="col-md-3">

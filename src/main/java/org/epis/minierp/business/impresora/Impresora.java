@@ -83,7 +83,7 @@ public class Impresora {
             }
             fac.addLines(MAX_FAC_DET - proCod); 
             subTotal = f.getFacVenCabSubTot();
-            igv = subTotal * f.getFacVenCabIgv();
+            igv = subTotal * f.getFacVenCabIgv() / 100;
             total = f.getFacVenCabTot();
             fac.writeFacTotal(df.format(subTotal), df.format(igv), df.format(total));
             fac.close();
@@ -130,7 +130,7 @@ public class Impresora {
             }
             fac.addLines(MAX_FAC_DET - proCod); 
             subTotal = f.getFacVenCabSubTot();
-            igv = subTotal * f.getFacVenCabIgv();
+            igv = subTotal * f.getFacVenCabIgv() / 100;
             total = f.getFacVenCabTot();
             fac.writeFacTotal(df.format(subTotal), df.format(igv), df.format(total));
 

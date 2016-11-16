@@ -8,8 +8,8 @@
         <br>
         <div class="pagel-body">
             <h1 class="page-header"> Configuración de Boleta </h1>
-            <form id="updateBoleta" method="post" action="${pageContext.request.contextPath}/secured/configuracion/impresora/boleta">
-                <div class="col-md-12">
+            <form id="updateBoleta" method="post" action="${pageContext.request.contextPath}/secured/configuracion/impresora/boleta">               
+                <div class="col-md-6">
                     <div class="table-responsive">
                         <table class="table table-bordered table-striped table-hover table-condensed" id="tablaBolMar">
                             <tr>
@@ -23,6 +23,9 @@
                         </table>
                     </div>
                 </div>
+                <div class="col-md-6 text-center">
+                    <button type="submit" formnovalidate="formnovalidate" id="update" class="btn btn-primary">Actualizar cambios</button>       
+                </div>  
                 <div class="col-md-12">
                     <div class="table-responsive">
                         <table class="table table-bordered table-striped table-hover table-condensed" id="tablaBolSobCab">
@@ -36,7 +39,7 @@
                             </tr>
                             <tr>
                                 <td>DIRECCIÓN:</td>
-                                <td rowspan="2" style="vertical-align:middle">Avenida</td>
+                                <td rowspan="2" style="vertical-align:middle">Dirección</td>
                                 <td colspan="2" rowspan="2"></td>
                             </tr>
                             <tr>
@@ -134,7 +137,6 @@
                         </table>
                     </div>
                 </div> 
-                <button type="submit" formnovalidate="formnovalidate" id="update" class="btn btn-primary">Actualizar cambios</button>       
             </form>           
         </div>
     </jsp:attribute>

@@ -40,7 +40,7 @@
                                 <th>Cod Usuario</th>
                                 <th>Nombres y Apellidos</th>
                                 <th>Tipo de Documento</th>
-                                <th>Numero de Documento</th>
+                                <th>Número de Documento</th>
                                 <th>Registro</th>
                                 <c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                                 <th class="text-right">Acciones</th>
