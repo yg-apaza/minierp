@@ -248,7 +248,7 @@
             
             <div class="modal fade" id="updateModal">
                 <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
+                    <div class="modal-content" style="overflow-y: auto">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                             <h4 class="modal-title" id="myModalLabel">Modificar Producto</h4>
@@ -392,7 +392,7 @@
                             
             <div id="disableModal" class="modal fade" role="dialog">
                 <div class="modal-dialog modal-md">
-                    <div class="modal-content">
+                    <div class="modal-content" style="overflow-y: auto">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                             <h4 class="modal-title">Inhabilitar Producto</h4>
@@ -416,7 +416,7 @@
                             
             <div id="viewModal" class="modal fade" role="dialog">
                 <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
+                    <div class="modal-content" style="overflow-y: auto">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                             <h4 class="modal-title">Producto Inhabilitados</h4>
@@ -480,7 +480,7 @@
                
             <div id="activateModal" class="modal fade" role="dialog">
                 <div class="modal-dialog modal-md">
-                    <div class="modal-content">
+                    <div class="modal-content" style="overflow-y: auto">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                             <h4 class="modal-title">Activar Producto</h4>
@@ -504,7 +504,7 @@
             
             <div id="deleteModal" class="modal fade" role="dialog">
                 <div class="modal-dialog modal-md">
-                    <div class="modal-content">
+                    <div class="modal-content" style="overflow-y: auto">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                             <h4 class="modal-title">Eliminar Producto</h4>

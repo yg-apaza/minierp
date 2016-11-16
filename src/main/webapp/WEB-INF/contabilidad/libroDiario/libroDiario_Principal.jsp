@@ -170,7 +170,7 @@
         <!--  FIN_PANELDERECHO -->
 
         <!-- MODAL1 -->
-        <div id="opeAgregar" class="modal fade" role="dialog"><div class="modal-dialog"><div class="modal-content">
+        <div id="opeAgregar" class="modal fade" role="dialog"><div class="modal-dialog"><div class="modal-content" style="overflow-y: auto">
             <!-- TITULO-->
             <div class="modal-header"> <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title">Agregar Operacion al Libro Diario</h4>
@@ -251,7 +251,7 @@
         <!-- FIN MODAL1 -->
         
         <!-- MODAL2 -->
-        <div id="libDiarAgregar" class="modal fade" role="dialog"><div class="modal-dialog"><div class="modal-content">
+        <div id="libDiarAgregar" class="modal fade" role="dialog"><div class="modal-dialog"><div class="modal-content" style="overflow-y: auto">
             <!-- TITULO-->
             <div class="modal-header"> <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title">Agregar Libro Diario</h4>
@@ -281,7 +281,7 @@
         <!-- FIN MODAL2 -->
         
         <!-- MODAL3 -->
-        <div id="libDiarCerrar" class="modal fade" role="dialog"><div class="modal-dialog"><div class="modal-content">
+        <div id="libDiarCerrar" class="modal fade" role="dialog"><div class="modal-dialog"><div class="modal-content" style="overflow-y: auto">
             <!-- TITULO-->
             <div class="modal-header"> <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title">Cerrar Libro Diario</h4>

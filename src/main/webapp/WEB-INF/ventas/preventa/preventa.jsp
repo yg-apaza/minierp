@@ -76,7 +76,7 @@
                 </div>
                 <div class="modal fade" id="configurarModal" role="dialog">
                     <div class="modal-dialog modal-sm">
-                        <div class="modal-content">
+                        <div class="modal-content" style="overflow-y: auto">
                             <div class="modal-header">
                               <button type="button" class="close" data-dismiss="modal">&times;</button>
                               <h4 class="modal-title">Configurar pagos</h4>
@@ -134,7 +134,7 @@
                 
         <div id="errorMessageModal" class="modal fade">
             <div class="modal-dialog modal-sm">
-                <div class="modal-content">
+                <div class="modal-content" style="overflow-y: auto">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Transformar a Venta</h4>
@@ -153,7 +153,7 @@
         <!- Vista de Detalles ->        
         <div class="modal fade" id="viewPreVen">
             <div class="modal-dialog modal-md">
-                <div class="modal-content">
+                <div class="modal-content" style="overflow-y: auto">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         <h3 class="modal-title">Pre-Venta</h3>

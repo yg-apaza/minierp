@@ -128,7 +128,7 @@
 
         <div id="agregarModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-md">
-                <div class="modal-content">
+                <div class="modal-content" style="overflow-y: auto">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Agregar Cliente</h4>
@@ -242,7 +242,7 @@
 
         <div id="modificarModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-md">
-                <div class="modal-content">
+                <div class="modal-content" style="overflow-y: auto">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Modificar Cliente</h4>
@@ -356,7 +356,7 @@
 
         <div id="disableModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-md">
-                <div class="modal-content">
+                <div class="modal-content" style="overflow-y: auto">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Inhabilitar Cliente</h4>
@@ -378,7 +378,7 @@
 
         <div id="estadosModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-lg">
-                <div class="modal-content">
+                <div class="modal-content" style="overflow-y: auto">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Reactivar o Eliminar Clientes</h4>
@@ -434,7 +434,7 @@
 
         <div id="activateModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-md">
-                <div class="modal-content">
+                <div class="modal-content" style="overflow-y: auto">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Activar Cliente</h4>
@@ -456,7 +456,7 @@
 
         <div id="deleteModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-md">
-                <div class="modal-content">
+                <div class="modal-content" style="overflow-y: auto">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Eliminar Cliente</h4>
@@ -478,7 +478,7 @@
                         
         <div id="rutaModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-md">
-                <div class="modal-content">
+                <div class="modal-content" style="overflow-y: auto">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Agregar Ruta</h4>
@@ -521,7 +521,7 @@
                         
         <div id="documentoModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-md">
-                <div class="modal-content">
+                <div class="modal-content" style="overflow-y: auto">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Agregar Documento</h4>
@@ -563,7 +563,7 @@
         
         <div id="delRutaModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-lg">
-                <div class="modal-content">
+                <div class="modal-content" style="overflow-y: auto">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Gestionar Ruta</h4>
@@ -620,7 +620,7 @@
                         
         <div id="delDocumentoModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-lg">
-                <div class="modal-content">
+                <div class="modal-content" style="overflow-y: auto">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Gestionar Documento</h4>
@@ -677,7 +677,7 @@
                         
         <div id="modRutClienteModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-md">
-                <div class="modal-content">
+                <div class="modal-content" style="overflow-y: auto">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Modificar Ruta</h4>
@@ -717,7 +717,7 @@
                         
         <div id="modDocClienteModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-md">
-                <div class="modal-content">
+                <div class="modal-content" style="overflow-y: auto">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Modificar Cliente</h4>
@@ -757,7 +757,7 @@
                         
         <div id="delRutClienteModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-md">
-                <div class="modal-content">
+                <div class="modal-content" style="overflow-y: auto">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Eliminar Ruta</h4>
@@ -780,7 +780,7 @@
                         
         <div id="delDocClienteModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-md">
-                <div class="modal-content">
+                <div class="modal-content" style="overflow-y: auto">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Eliminar Documento</h4>

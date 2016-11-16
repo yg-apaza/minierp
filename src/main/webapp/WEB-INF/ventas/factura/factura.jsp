@@ -128,7 +128,7 @@
             </div>
             <div id="impresionLotesModal" class="modal fade">
                 <div class="modal-dialog modal-sm">
-                    <div class="modal-content">
+                    <div class="modal-content" style="overflow-y: auto">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                             <h4 class="modal-title">Impresión</h4>
@@ -145,7 +145,7 @@
             </div>
             <div id="guiaTransportistaModal" class="modal fade">
                 <div class="modal-dialog modal-md">
-                    <div class="modal-content">
+                    <div class="modal-content" style="overflow-y: auto">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                             <h4 class="modal-title">Guía de Transportista</h4>
@@ -232,7 +232,7 @@
         </form>
         <div id="errorMessageModal" class="modal fade">
             <div class="modal-dialog modal-sm">
-                <div class="modal-content">
+                <div class="modal-content" style="overflow-y: auto">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Error</h4>
@@ -248,7 +248,7 @@
         </div>
         <div class="modal fade" id="viewSaleBill">
             <div class="modal-dialog modal-md">
-                <div class="modal-content">
+                <div class="modal-content" style="overflow-y: auto">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         <h3 class="modal-title">Factura de Venta</h3>
@@ -333,7 +333,7 @@
         </div>
         <div class="modal fade" id="viewReferralGuide">
             <div class="modal-dialog">
-                <div class="modal-content">
+                <div class="modal-content" style="overflow-y: auto">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         <h3 class="modal-title">Guía de Remisión Remitente</h3>
@@ -410,7 +410,7 @@
         <div class="modal fade" id="addReferralGuide">
             <div class="modal-dialog modal-md">
                 <form id="addReferralGuideForm" role="form" action="${pageContext.request.contextPath}/secured/ventas/addReferralGuide" method="post">
-                    <div class="modal-content">
+                    <div class="modal-content" style="overflow-y: auto">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                             <h4 class="modal-title">Guía de Remisión</h4>
@@ -480,7 +480,7 @@
         </div>
         <div class="modal fade" id="viewCarrierGuide">
             <div class="modal-dialog modal-md">
-                <div class="modal-content">
+                <div class="modal-content" style="overflow-y: auto">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         <h3 class="modal-title">Guía de Remisión Transportista</h3>
@@ -598,7 +598,7 @@
         <div class="modal fade" id="addCarrierGuide">
             <div class="modal-dialog modal-md">
                 <form id="addCarrierGuideForm" role="form" action="${pageContext.request.contextPath}/secured/ventas/addCarrierGuide" method="post">
-                    <div class="modal-content">
+                    <div class="modal-content" style="overflow-y: auto">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                             <h4 class="modal-title">Guía de Transportista</h4>
@@ -691,7 +691,7 @@
         </div>
         <div id="messageReferralGuide" class="modal fade">
             <div class="modal-dialog modal-sm">
-                <div class="modal-content">
+                <div class="modal-content" style="overflow-y: auto">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Guía de Remisión</h4>
@@ -708,7 +708,7 @@
         </div>        
         <div id="messageCarrierGuide" class="modal fade">
             <div class="modal-dialog modal-sm">
-                <div class="modal-content">
+                <div class="modal-content" style="overflow-y: auto">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Guía de Transportista</h4>
@@ -725,7 +725,7 @@
         </div>
         <div id="messageRefund" class="modal fade">
             <div class="modal-dialog modal-sm">
-                <div class="modal-content">
+                <div class="modal-content" style="overflow-y: auto">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" id="refundDiss">&times;</button>
                         <h4 class="modal-title">Devolución</h4>
@@ -742,7 +742,7 @@
         </div>
         <div id="loading" class="modal fade">
             <div class="modal-dialog modal-sm">
-                <div class="modal-content">
+                <div class="modal-content" style="overflow-y: auto">
                     <div class="modal-body">
                         <p align="center">Cargando ... </p>
                     </div>

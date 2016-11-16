@@ -93,7 +93,7 @@
 
             <div id="modificarModal" class="modal fade" role="dialog">
                 <div class="modal-dialog modal-sm">
-                    <div class="modal-content">
+                    <div class="modal-content" style="overflow-y: auto">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                             <h4 class="modal-title">Número de Cuotas</h4>
@@ -123,7 +123,7 @@
 
             <div id="pagarModal" class="modal fade" role="dialog">
                 <div class="modal-dialog modal-md">
-                    <div class="modal-content">
+                    <div class="modal-content" style="overflow-y: auto">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                             <h4 class="modal-title">Realizar Pago</h4>
