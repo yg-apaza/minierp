@@ -29,7 +29,7 @@ public class ComprasFilter implements Filter
         HttpSession session = request.getSession(false);
         if (session == null || session.getAttribute("usuario") == null)
         {
-            response.sendRedirect(request.getContextPath() + "/");
+            response.sendRedirect(request.getContextPath() + "/login");
         }
         else
         {
@@ -37,7 +37,7 @@ public class ComprasFilter implements Filter
             if(u.getTaGzzTipoUsuario().getTipUsuCod() == 1 || u.getTaGzzTipoUsuario().getTipUsuCod() == 3 || u.getTaGzzTipoUsuario().getTipUsuCod() == 5)
                 chain.doFilter(req, res);
             else
-                response.sendRedirect(request.getContextPath() + "/");
+                response.sendRedirect(request.getContextPath() + "/login");
         }
     }
 
