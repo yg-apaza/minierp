@@ -29,7 +29,7 @@ public class VentasFilter implements Filter
         HttpSession session = request.getSession(false);
         if (session == null || session.getAttribute("usuario") == null)
         {
-            response.sendRedirect(request.getContextPath() + "/");
+            response.sendRedirect(request.getContextPath() + "/login");
         }
         else
         {
@@ -37,7 +37,7 @@ public class VentasFilter implements Filter
             if(u.getTaGzzTipoUsuario().getTipUsuCod() == 1 || u.getTaGzzTipoUsuario().getTipUsuCod() == 2 || u.getTaGzzTipoUsuario().getTipUsuCod() == 5 || u.getTaGzzTipoUsuario().getTipUsuCod() == 6)
                 chain.doFilter(req, res);
             else
-                response.sendRedirect(request.getContextPath() + "/");
+                response.sendRedirect(request.getContextPath() + "/login");
         }
     }
 
