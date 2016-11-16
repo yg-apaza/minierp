@@ -157,7 +157,10 @@ public class Impresora {
                 cliCod = f.getEnP1mCliente().getCliCod();
                 conPag = f.getTaGzzMetodoPagoFactura().getMetPagDet();
                 fecVen = fecha.format(f.getFacVenCabFecVen());
-                venRut = Integer.toString(f.getEnP1mCatalogoRuta().getCatRutCod());
+                if (f.getEnP1mCatalogoRuta() == null)
+                    venRut = " ";
+                else
+                    venRut = Integer.toString(f.getEnP1mCatalogoRuta().getCatRutCod());
                 pdv = " ";
                 obs = f.getFacVenCabObs();
                 bol.writeBolCabecera(cliCod, conPag, fecVen, venRut, pdv, obs);
@@ -198,7 +201,10 @@ public class Impresora {
                 cliNom = f.getEnP1mCliente().getCliNom();
                 punPar = empDao.getAll().get(0).getEmpDomFis();
                 punLle = f.getEnP1mCliente().getCliDir();
-                traNom = f.getEnP2mGuiaRemTransportista().getEnP2mTransportista().getTraNom();
+                if (f.getEnP2mGuiaRemTransportista() == null)
+                    traNom = " ";
+                else 
+                    traNom = f.getEnP2mGuiaRemTransportista().getEnP2mTransportista().getTraNom();
                 rem.writeGuiRemSobCab(cliNom, punPar, punLle, traNom);
 
                 fecVen = fecha.format(f.getFacVenCabFecVen());
