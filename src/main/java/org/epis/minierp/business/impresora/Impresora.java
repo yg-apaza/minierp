@@ -112,7 +112,10 @@ public class Impresora {
             numSec = " ";
             dis = " ";
             rut = Integer.toString(f.getEnP1mCatalogoRuta().getCatRutCod());
-            traNom = f.getEnP2mGuiaRemTransportista().getEnP2mTransportista().getTraNom();
+            if (f.getEnP2mGuiaRemTransportista() == null)
+                    traNom = " ";
+                else
+                    traNom = f.getEnP2mGuiaRemTransportista().getEnP2mTransportista().getTraNom();
             fac.writeFacCabecera(cliCod, conPag, fecVen, venZon, numSec, dis, rut, traNom);
 
             proCod = 0;
