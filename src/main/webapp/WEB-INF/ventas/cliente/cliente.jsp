@@ -15,12 +15,16 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <div class="col-xs-12 col-md-9">
+                    <div class="col-xs-6 col-md-4 text-center">
                         <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregarModal"> Agregar Nuevo <i class="fa fa-plus"></i></button>                
                         <button type="button" class="btn btn-info" data-toggle="modal" data-target="#estadosModal"> Ver Inhabilitados <i class="fa fa-eye"></i></button>
-                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delDocumentoModal"> Gestionar Documentos Asociados <i class="fa fa-file-text"></i></button>
+                        </cc:if>
+                    </div>
+                    <div class="col-xs-6 col-md-4 text-center">
+                        <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                         <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delRutaModal"> Gestionar Rutas Asociados <i class="fa fa-automobile"></i></button>
+                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delDocumentoModal"> Gestionar Documentos Asociados <i class="fa fa-file-text"></i></button>
                         </cc:if>
                     </div>
                     <div class="col-xs-12 col-md-3">

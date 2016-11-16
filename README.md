@@ -1,7 +1,5 @@
 # MiniERP WEB
 
-[Demo Online](http://tomcat8-yga.rhcloud.com/minierp/)
-
 ![Panel principal de administrador](screenshot_admin.png)
 ![Panel principal de Vendedor](screenshot_vendedor.png)
 

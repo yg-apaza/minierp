@@ -1,10 +1,12 @@
-package org.epis.minierp.business.general;
+package org.epis.minierp.business.impresora;
 
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.epis.minierp.dao.impresora.BoletaDAO;
+import org.epis.minierp.dao.impresora.FacturaDAO;
+import org.epis.minierp.dao.impresora.RemisionDAO;
 
 @SuppressWarnings("unused")
 public class ImpresoraMatricial {
@@ -45,30 +47,23 @@ public class ImpresoraMatricial {
     private static final float CM_PER_INCH = 2.54f;
     
     private FileWriter writer;
-    private XMLReader<FacturaPrinter> xmlFactura;
-    private XMLReader<BoletaPrinter> xmlBoleta;
-    private XMLReader<GuiaRemisionPrinter> xmlGuiaRemision;
-    private FacturaPrinter fP;
     private BoletaPrinter bP;
-    private GuiaRemisionPrinter gP;
+    private RemisionPrinter gP;
     private String type;
-    
+    private FacturaPrinter fP;
     public ImpresoraMatricial(String file, String dir, String type) {
         try {
             writer = new FileWriter(file);
             this.type = type;
-            xmlFactura = new XMLReader(FacturaPrinter.class, new File(dir));
-            xmlBoleta = new XMLReader(BoletaPrinter.class, new File(dir));
-            xmlGuiaRemision = new XMLReader(GuiaRemisionPrinter.class, new File(dir));
             switch(type){
                 case "factura":
-                    fP = xmlFactura.openXML(type);
+                    fP = new FacturaDAO(dir).read();
                     break;
                 case "boleta":
-                    bP = xmlBoleta.openXML(type);
+                    bP = new BoletaDAO(dir).read();
                     break;
-                case "guiaRemision":
-                    gP = xmlGuiaRemision.openXML(type);
+                case "remision":
+                    gP = new RemisionDAO(dir).read();
                     break;
             }
             start();
@@ -96,7 +91,7 @@ public class ImpresoraMatricial {
                 setSize(bP.getSize()); 
                 setMargins(bP.getLeftMargin(), bP.getRightMargin());
                 break;
-            case "guiaRemision":
+            case "remision":
                 setSize(gP.getSize());
                 setMargins(gP.getLeftMargin(), gP.getRightMargin());
                 break;
@@ -180,7 +175,7 @@ public class ImpresoraMatricial {
     public void advanceVertical(float centimeters) throws IOException {
         //pre: centimeters >= 0 (cm)
         //post: advances vertical print position approx. y centimeters (not precise due to truncation)
-        float inches = centimeters / CM_PER_INCH;
+        float inches = (float) (Math.round((centimeters / CM_PER_INCH)*100)/100.0);//float inches = centimeters / CM_PER_INCH;
         int units = (int) (inches * (escp24pin ? MAX_ADVANCE_24PIN : MAX_ADVANCE_9PIN));
         
         while (units > 0) {
@@ -201,7 +196,7 @@ public class ImpresoraMatricial {
     public void advanceHorizontal(float centimeters) throws IOException {
         //pre: centimeters >= 0
         //post: advances horizontal print position approx. centimeters
-        float inches = centimeters / CM_PER_INCH;
+        float inches = (float) (Math.round((centimeters / CM_PER_INCH)*100)/100.0);//float inches = centimeters / CM_PER_INCH;
         int units_low = (int) (inches * 120) % 256;
         int units_high = (int) (inches * 120) / 256;
         
@@ -214,7 +209,7 @@ public class ImpresoraMatricial {
     public void setAbsoluteHorizontalPosition(float centimeters) throws IOException {
         //pre: centimenters >= 0 (cm)
         //post: sets absolute horizontal print position to x centimeters from left margin
-        float inches = centimeters / CM_PER_INCH;
+        float inches = (float) (Math.round((centimeters / CM_PER_INCH)*100)/100.0);//float inches = centimeters / CM_PER_INCH;
         int units_low = (int) (inches * 60) % 256;
         int units_high = (int) (inches * 60) / 256;
         
@@ -227,7 +222,7 @@ public class ImpresoraMatricial {
     public void setAbsoluteVerticalPosition(float centimeters) throws IOException {
         //pre: centimenters >= 0 (cm)
         //post: sets absolute vertical print position to x centimeters
-        float inches = centimeters / CM_PER_INCH;
+        float inches = (float) (Math.round((centimeters / CM_PER_INCH)*100)/100.0);//float inches = centimeters / CM_PER_INCH;
         int units_low = (int) (inches * 60) % 256;
         int units_high = (int) (inches * 60) / 256;
         
@@ -249,6 +244,21 @@ public class ImpresoraMatricial {
         //pre: columnsLeft > 0 && <= 255, columnsRight > 0 && <= 255
         //post: sets left margin to columnsLeft columns and right margin to columnsRight columns
         //left
+        
+        writer.write(ESC);
+        writer.write(l);
+        writer.write((char) columnsLeft);
+        
+        //right
+        writer.write(ESC);
+        writer.write(Q);
+        writer.write((char) columnsRight);
+    }
+    
+    public void setMargins(float centimetersL, float centimetersR) throws IOException {
+        //left
+        int columnsLeft = ((int)(centimetersL))*2;
+        int columnsRight = ((int)(centimetersR))*2;
         writer.write(ESC);
         writer.write(l);
         writer.write((char) columnsLeft);
@@ -296,8 +306,7 @@ public class ImpresoraMatricial {
         writeLine(traNom);
     }
 
-    public void writeFacCabecera(String cliCod, String conPag, String fecVen,
-            String venZon, String numSec, String dis, String rut, String traNom) throws IOException{
+    public void writeFacCabecera(String cliCod, String conPag, String fecVen, String venZon, String numSec, String dis, String rut, String traNom) throws IOException{
         advanceVertical(fP.getTopFacCab());
         writer.write(cliCod);
         float val = fP.getCliCod();
@@ -328,7 +337,7 @@ public class ImpresoraMatricial {
     
     public void writeBolCabecera(String cliCod, String conPag, String fecVen,
             String venRut, String pdv, String obs) throws IOException{
-        advanceVertical(bP.getTopFacCab());
+        advanceVertical(bP.getTopBolCab());
         writer.write(cliCod);
         float val = bP.getCliCod();
         setAbsoluteHorizontalPosition(val);
@@ -345,13 +354,13 @@ public class ImpresoraMatricial {
         val += bP.getObs();
         setAbsoluteHorizontalPosition(val);
         writer.write(obs);
-        advanceVertical(bP.getTopFacDet());
+        advanceVertical(bP.getTopBolDet());
         newLine();
     }
     
     public void writeGuiRemCabecera(String fecVen, String ven, String zon,
             String con, String cliCod, String oc, String facNum, String hora, String numInt) throws IOException{
-        advanceVertical(gP.getTopFacCab());
+        advanceVertical(gP.getTopRemCab());
         writer.write(fecVen);
         float val = gP.getFecVen();
         setAbsoluteHorizontalPosition(val);
@@ -377,7 +386,7 @@ public class ImpresoraMatricial {
         val += gP.getHora();
         setAbsoluteHorizontalPosition(val);
         writer.write(numInt);
-        advanceVertical(gP.getTopFacDet());
+        advanceVertical(gP.getTopRemDet());
         newLine();
     }
     

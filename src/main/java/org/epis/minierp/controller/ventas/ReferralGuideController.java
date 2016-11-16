@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -12,9 +13,13 @@ import javax.servlet.http.HttpServletResponse;
 import org.epis.minierp.dao.general.EnP1mEmpresaDao;
 import org.epis.minierp.dao.general.TaGzzMotivoTrasladoDao;
 import org.epis.minierp.dao.general.TaGzzTipoDestinatarioDao;
+import org.epis.minierp.dao.ventas.EnP1mClienteDao;
 import org.epis.minierp.dao.ventas.EnP1mFacturaVentaCabDao;
+import org.epis.minierp.model.EnP1mCliente;
 import org.epis.minierp.model.EnP1mEmpresa;
 import org.epis.minierp.model.EnP1mFacturaVentaCab;
+import org.epis.minierp.model.EnP1tFacturaVentaDet;
+import org.epis.minierp.model.EnP2mGuiaRemRemitente;
 import org.epis.minierp.model.TaGzzMotivoTraslado;
 import org.epis.minierp.model.TaGzzTipoDestinatario;
 
@@ -25,30 +30,51 @@ public class ReferralGuideController extends HttpServlet {
         String action = request.getParameter("action");
         String facVenCabCod = request.getParameter("facVenCabCod");
         JsonObject data = null;
+        EnP1mFacturaVentaCab bill = null;
+        EnP2mGuiaRemRemitente referralGuide = null;
+        JsonArray remList = null;
         
         switch (action) {
             case "search":
-                EnP1mFacturaVentaCab bill = (new EnP1mFacturaVentaCabDao()).getById(facVenCabCod);
+                bill = (new EnP1mFacturaVentaCabDao()).getById(facVenCabCod);
+                referralGuide = bill.getEnP2mGuiaRemRemitente();
                 data = new JsonObject();
-
+                remList = new JsonArray();
+                
                 if (bill.getEnP2mGuiaRemRemitente() != null) {
-                    data.addProperty("facCod", bill.getFacVenCabCod());
-                    data.addProperty("remNum", bill.getEnP2mGuiaRemRemitente().getGuiRemRemNum());
-                    data.addProperty("remDen", bill.getEnP2mGuiaRemRemitente().getGuiRemRemDen());
-                    data.addProperty("motTra", bill.getEnP2mGuiaRemRemitente().getTaGzzMotivoTraslado().getMotTraDet());
-                    data.addProperty("empDes", bill.getEnP2mGuiaRemRemitente().getEnP1mEmpresa().getEmpDes());
-                    data.addProperty("tipDes", bill.getEnP2mGuiaRemRemitente().getTaGzzTipoDestinatario().getTipDstDet());
-                    data.addProperty("remDes", bill.getEnP2mGuiaRemRemitente().getGuiRemRemDes());
+                    
+                    EnP1mCliente cli = (new EnP1mClienteDao()).getById(referralGuide.getGuiRemRemDes());
+                    String destinatario = cli.getCliNom() + " " + cli.getCliApePat() + " " + cli.getCliApeMat();
+                
+                    List <EnP1tFacturaVentaDet> details = new ArrayList<>();
+                    details.addAll(bill.getEnP1tFacturaVentaDets());
+                    
+                    for(EnP1tFacturaVentaDet detail: details) {
+                        JsonObject detailObject = new JsonObject();
+                        detailObject.addProperty("detCan", detail.getFacVenDetCan());
+                        detailObject.addProperty("proDet", detail.getEnP2mProducto().getProDet());
+                        detailObject.addProperty("preUniVen", detail.getFacVenDetValUni());
+                        detailObject.addProperty("detImp", detail.getFacVenDetCan()*detail.getFacVenDetValUni());
+                        remList.add(detailObject);
+                    }
+                    
+                    data.addProperty("guiRemRemNum", referralGuide.getGuiRemRemNum());
+                    data.addProperty("guiRemEmpDes", referralGuide.getEnP1mEmpresa().getEmpNomCom());
+                    data.addProperty("guiRemCliCod", destinatario);
+                    data.addProperty("guiRemFacCod", bill.getFacVenCabCod());
+                    data.addProperty("guiRemMotTra", referralGuide.getTaGzzMotivoTraslado().getMotTraDet());
+                    data.add("remList", remList);
+                
                 } else {
-                    data.addProperty("facCod", bill.getFacVenCabCod());
-                    data.addProperty("remNum", "No Generado");
-                    data.addProperty("remDen", "No Generado");
-                    data.addProperty("motTra", "No Generado");
-                    data.addProperty("empDes", "No Generado");
-                    data.addProperty("tipDes", "No Generado");
-                    data.addProperty("remDes", "No Generado");
+                    data.addProperty("guiRemRemNum", "No Generado");
+                    data.addProperty("guiRemEmpDes", "No Generado");
+                    data.addProperty("guiRemCliCod", "No Generado");
+                    data.addProperty("guiRemFacCod", bill.getFacVenCabCod());
+                    data.addProperty("guiRemMotTra", "No generado");
+                    data.add("remList", remList);
+                
                 }
-
+                
                 response.setContentType("application/json");
                 response.setCharacterEncoding("UTF-8");
                 response.getWriter().write(new Gson().toJson(data));

@@ -1,9 +1,9 @@
-package org.epis.minierp.business.general;
+package org.epis.minierp.business.impresora;
 
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-@XmlRootElement (name="guiaRemisionPrinter")
+@XmlRootElement (name="remisionPrinter")
 @XmlType(propOrder = {
     "size",
     "leftMargin",
@@ -13,7 +13,7 @@ import javax.xml.bind.annotation.XmlType;
     "punPar",
     "punLle",
     "traNom",
-    "topFacCab",
+    "topRemCab",
     "fecVen",
     "ven",
     "zon",
@@ -23,7 +23,7 @@ import javax.xml.bind.annotation.XmlType;
     "facNum",
     "hora",
     "numInt",
-    "topFacDet",
+    "topRemDet",
     "proCod",
     "proCan",
     "proUni",
@@ -34,16 +34,16 @@ import javax.xml.bind.annotation.XmlType;
     "totalMargin"
 })
 
-public class GuiaRemisionPrinter {
+public class RemisionPrinter {
     int size;
-    int leftMargin;
-    int rightMargin;
+    float leftMargin;
+    float rightMargin;
     float topMargin;
     float cliNom;
     float punPar;
     float punLle;
     float traNom;
-    float topFacCab;
+    float topRemCab;
     float fecVen;
     float ven;
     float zon;
@@ -53,7 +53,7 @@ public class GuiaRemisionPrinter {
     float facNum;
     float hora;
     float numInt;
-    float topFacDet;
+    float topRemDet;
     float proCod;
     float proCan;
     float proUni;
@@ -63,7 +63,7 @@ public class GuiaRemisionPrinter {
     float proValNet;
     float totalMargin;
 
-    public GuiaRemisionPrinter() {
+    public RemisionPrinter() {
     }
 
     public int getSize() {
@@ -74,19 +74,19 @@ public class GuiaRemisionPrinter {
         this.size = size;
     }
 
-    public int getLeftMargin() {
+    public float getLeftMargin() {
         return leftMargin;
     }
 
-    public void setLeftMargin(int leftMargin) {
+    public void setLeftMargin(float leftMargin) {
         this.leftMargin = leftMargin;
     }
 
-    public int getRightMargin() {
+    public float getRightMargin() {
         return rightMargin;
     }
 
-    public void setRightMargin(int rightMargin) {
+    public void setRightMargin(float rightMargin) {
         this.rightMargin = rightMargin;
     }
 
@@ -130,12 +130,12 @@ public class GuiaRemisionPrinter {
         this.traNom = traNom;
     }
 
-    public float getTopFacCab() {
-        return topFacCab;
+    public float getTopRemCab() {
+        return topRemCab;
     }
 
-    public void setTopFacCab(float topFacCab) {
-        this.topFacCab = topFacCab;
+    public void setTopRemCab(float topRemCab) {
+        this.topRemCab = topRemCab;
     }
 
     public float getFecVen() {
@@ -210,12 +210,12 @@ public class GuiaRemisionPrinter {
         this.numInt = numInt;
     }
 
-    public float getTopFacDet() {
-        return topFacDet;
+    public float getTopRemDet() {
+        return topRemDet;
     }
 
-    public void setTopFacDet(float topFacDet) {
-        this.topFacDet = topFacDet;
+    public void setTopRemDet(float topRemDet) {
+        this.topRemDet = topRemDet;
     }
 
     public float getProCod() {

@@ -1,5 +1,6 @@
 package org.epis.minierp.business.ventas;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import org.epis.minierp.dao.logistica.EnP2mProductoDao;
@@ -12,7 +13,6 @@ import org.epis.minierp.model.EnP1cPreventaRealizadas;
 import org.epis.minierp.model.EnP1cPreventaRealizadasId;
 import org.epis.minierp.model.EnP1mCatalogoRuta;
 import org.epis.minierp.model.EnP1mCliente;
-import org.epis.minierp.model.EnP1mFacturaVentaCab;
 import org.epis.minierp.model.EnP1mPreventaCab;
 import org.epis.minierp.model.EnP1mUsuario;
 import org.epis.minierp.model.EnP1tFacturaVentaDet;
@@ -21,14 +21,12 @@ import org.epis.minierp.model.EnP1tPreventaDet;
 import org.epis.minierp.model.EnP1tPreventaDetId;
 import org.epis.minierp.model.EnP2mProducto;
 import org.epis.minierp.model.EnP2mProductoId;
-import org.epis.minierp.model.TaGzzEstadoFactura;
-import org.epis.minierp.model.TaGzzMetodoPagoFactura;
 import org.epis.minierp.model.TaGzzMoneda;
 import org.epis.minierp.model.TaGzzTipoDescuento;
-import org.epis.minierp.model.TaGzzTipoPagoFactura;
 import org.epis.minierp.util.DateUtil;
 
 public class EnP1mPreventaBusiness {
+
     EnP1mPreventaCabDao preVenCabDao;
     EnP1tPreventaDetDao preVenDetDao;
     EnP1cPreventaRealizadasDao daoPreVenOk;
@@ -37,6 +35,7 @@ public class EnP1mPreventaBusiness {
     EnP2mProductoDao proDao;
     EnP1cPreventaRealizadasDao preOkDao;
     EnP1mPagosCuotasBusiness pagosCuoBusiness;
+    EnP1mFacturaVentaBusiness facturaBusiness;
 
     public EnP1mPreventaBusiness() {
         preVenCabDao = new EnP1mPreventaCabDao();
@@ -47,35 +46,36 @@ public class EnP1mPreventaBusiness {
         proDao = new EnP2mProductoDao();
         preOkDao = new EnP1cPreventaRealizadasDao();
         pagosCuoBusiness = new EnP1mPagosCuotasBusiness();
+        facturaBusiness = new EnP1mFacturaVentaBusiness();
     }
-    
-    public void createCab(String preVenCabCod, String cliCod, int catRutCod, String usuCod, 
-            Date preVenCabFecEmi, Date preVenCabFecVen, int preVenCabPla, double preVenCabTot, 
-            int tipDesCod, double preVenCabSubTot, int preVenCabIGV, String preVenCabObs, 
-            int monCod, char estRegCod){
-        
+
+    private void createPreVenCab(String preVenCabCod, String cliCod, int catRutCod, String usuCod,
+            Date preVenCabFecEmi, Date preVenCabFecVen, int preVenCabPla, double preVenCabTot,
+            int tipDesCod, double preVenCabSubTot, int preVenCabIGV, String preVenCabObs,
+            int monCod, char estRegCod) {
+
         EnP1mPreventaCab preVenCab = new EnP1mPreventaCab();
-        
+
         //cliente
         EnP1mCliente cli = new EnP1mCliente();
         cli.setCliCod(cliCod);
-        
+
         //ruta
         EnP1mCatalogoRuta ruta = new EnP1mCatalogoRuta();
         ruta.setCatRutCod(catRutCod);
-        
+
         //usuario
         EnP1mUsuario usu = new EnP1mUsuario();
         usu.setUsuCod(usuCod);
-        
+
         //tipo de descuento
         TaGzzTipoDescuento des = new TaGzzTipoDescuento();
         des.setTipDesCod(tipDesCod);
-        
+
         //moneda
         TaGzzMoneda mon = new TaGzzMoneda();
         mon.setMonCod(monCod);
-        
+
         preVenCab.setPreVenCabCod(preVenCabCod);
         preVenCab.setEnP1mCliente(cli);
         preVenCab.setEnP1mCatalogoRuta(ruta);
@@ -90,23 +90,23 @@ public class EnP1mPreventaBusiness {
         preVenCab.setPreVenCabObs(preVenCabObs);
         preVenCab.setTaGzzMoneda(mon);
         preVenCab.setEstRegCod(estRegCod);
-        
+
         preVenCabDao.save(preVenCab);
-        
+
     }
-    
-    public void createDet(String preVenCabCod, String claProCod, 
-            String subClaProCod, String proCod, double preVenDetCan){
-        
+
+    private void createPreVenDet(String preVenCabCod, String claProCod,
+            String subClaProCod, String proCod, double preVenDetCan) {
+
         //Actualiza StkPreVen del producto
         EnP2mProducto pro = proDao.getById(new EnP2mProductoId(proCod, subClaProCod, claProCod));
         double proStkPreVen = pro.getProStkPreVen();
         double proStk = pro.getProStk();
-        if(proStk >= proStkPreVen + preVenDetCan){//verifica no sobrepasar el stock para prevender
+        if (proStk >= proStkPreVen + preVenDetCan) {//verifica no sobrepasar el stock para prevender
             pro.setProStkPreVen(proStkPreVen + preVenDetCan);
         }
         proDao.update(pro);
-        
+
         //Crea el detalle
         double proValUni = pro.getProPreUniVen();
         EnP1tPreventaDet preVenDet = new EnP1tPreventaDet();
@@ -117,121 +117,117 @@ public class EnP1mPreventaBusiness {
         preVenDet.setPreVenDetValUni(proValUni);
         preVenDetDao.save(preVenDet);
     }
-    
-    public void createDet(EnP1tPreventaDet preVenDet){
+
+    private void createPreVenDet(EnP1tPreventaDet preVenDet) {
         String proCod = preVenDet.getEnP2mProducto().getId().getProCod();
         String subClaProCod = preVenDet.getEnP2mProducto().getId().getSubClaProCod();
         String claProCod = preVenDet.getEnP2mProducto().getId().getClaProCod();
         double preVenDetCan = preVenDet.getPreVenDetCan();
-        
+
         //Actualiza StkPreVen del producto
-        EnP2mProducto pro = proDao.getById(new EnP2mProductoId(proCod, subClaProCod, claProCod));
-        double proStkPreVen = pro.getProStkPreVen();
-        double proStk = pro.getProStk();
-        if(proStk >= proStkPreVen + preVenDetCan){//verifica no sobrepasar el stock para prevender
-            pro.setProStkPreVen(proStkPreVen + preVenDetCan);
+        EnP2mProductoId pId = new EnP2mProductoId(proCod, subClaProCod, claProCod);
+        EnP2mProducto p = proDao.getById(pId);
+        double proStkPreVen = p.getProStkPreVen();
+        double proStk = p.getProStk();
+        if (proStk >= proStkPreVen + preVenDetCan) {//verifica no sobrepasar el stock para prevender
+            p.setProStkPreVen(proStkPreVen + preVenDetCan);
         }
-        proDao.update(pro);
-        
+        proDao.update(p);
+
         //Crea el detalle
         preVenDetDao.save(preVenDet);
     }
-    
-    public void create(String preVenCabCod, String cliCod, int catRutCod, String usuCod, 
-            Date preVenCabFecEmi, Date preVenCabFecVen, int preVenCabPla, double preVenCabTot, 
-            int tipDesCod, double preVenCabSubTot, int preVenCabIGV, String preVenCabObs, 
-            int monCod, char estRegCod, List<EnP1tPreventaDet> preVenDets){
-        
-        createCab(preVenCabCod, cliCod, catRutCod, usuCod, preVenCabFecEmi, preVenCabFecVen, 
-                preVenCabPla, preVenCabTot, tipDesCod, preVenCabSubTot, preVenCabIGV, preVenCabObs, 
+
+    public void create(String preVenCabCod, String cliCod, int catRutCod, String usuCod,
+            Date preVenCabFecEmi, Date preVenCabFecVen, int preVenCabPla, double preVenCabTot,
+            int tipDesCod, double preVenCabSubTot, int preVenCabIGV, String preVenCabObs,
+            int monCod, char estRegCod, List<EnP1tPreventaDet> preVenDets) {
+
+        createPreVenCab(preVenCabCod, cliCod, catRutCod, usuCod, preVenCabFecEmi, preVenCabFecVen,
+                preVenCabPla, preVenCabTot, tipDesCod, preVenCabSubTot, preVenCabIGV, preVenCabObs,
                 monCod, estRegCod);
-        
-        for(int i = 0; i < preVenDets.size(); i++){
-            createDet(preVenDets.get(i));
+
+        for (int i = 0; i < preVenDets.size(); i++) {
+            createPreVenDet(preVenDets.get(i));
         }
     }
-    
-    public void preVenta2Venta(String preVenCabCod,int lote, int estFacCod, int metPagCod, int tipPagCod, int pagCuoNum){
-        EnP1mPreventaCab preVenCab = preVenCabDao.getById(preVenCabCod);
 
-        EnP1mFacturaVentaCab venCab = new EnP1mFacturaVentaCab();
-        Date hoy = DateUtil.getthisDate();
-        Date hoyMore3 = DateUtil.addDays(hoy, 3);
-        
-        TaGzzEstadoFactura estFac = new TaGzzEstadoFactura();
-        estFac.setEstFacCod(estFacCod);
-        TaGzzMetodoPagoFactura metPag = new TaGzzMetodoPagoFactura();
-        metPag.setMetPagCod(metPagCod);
-        TaGzzTipoPagoFactura tipPag = new TaGzzTipoPagoFactura();
-        tipPag.setTipPagCod(tipPagCod);
-        
-        int maxMore1 = cabVenDao.getMaxValue4Lote(lote);
-        
-        //creando la factura con los datos de la preventa
-        String facVenCabCod = String.format("%03d",lote)+"-"+String.format("%06d",maxMore1);
-        venCab.setFacVenCabCod(facVenCabCod);
-        venCab.setEnP1mCliente(preVenCab.getEnP1mCliente());
-        venCab.setEnP1mCatalogoRuta(preVenCab.getEnP1mCatalogoRuta());
-        venCab.setEnP1mUsuario(preVenCab.getEnP1mUsuario());
-        venCab.setFacVenCabFecEmi(hoy);
-        venCab.setFacVenCabFecVen(hoyMore3);
-        venCab.setFacVenCabTot(preVenCab.getPreVenCabTot());
-        venCab.setTaGzzTipoDescuento(preVenCab.getTaGzzTipoDescuento());
-        venCab.setFacVenCabSubTot(preVenCab.getPreVenCabSubTot());
-        venCab.setFacVenCabIgv(preVenCab.getPreVenCabIgv());
-        venCab.setFacVenCabObs(preVenCab.getPreVenCabObs());
-        venCab.setTaGzzEstadoFactura(estFac);
-        venCab.setTaGzzMetodoPagoFactura(metPag);
-        venCab.setTaGzzTipoPagoFactura(tipPag);
-        venCab.setTaGzzMoneda(preVenCab.getTaGzzMoneda());
-        venCab.setEstRegCod('A');
-        cabVenDao.save(venCab);
-        
-        List<EnP1tPreventaDet> preVenDets = preVenDetDao.getAllDet4PreVenCab(preVenCabCod);
-        EnP1tPreventaDet temp;
-        EnP1tFacturaVentaDet detVen;
-        EnP2mProducto proTemp;
-        for(int i = 0; i < preVenDets.size(); i++){
-            temp = preVenDets.get(i);
-            proTemp = temp.getEnP2mProducto();
-            
-            detVen = new EnP1tFacturaVentaDet();
-            detVen.setId(new EnP1tFacturaVentaDetId(i+1, facVenCabCod));
-            detVen.setEnP2mProducto(proTemp);
-            detVen.setFacVenDetCan(temp.getPreVenDetCan());
-            detVen.setFacVenDetValUni(temp.getPreVenDetValUni());
-            
-            //descuendo al stock del producto
-            proTemp.setProStk(proTemp.getProStk() - temp.getPreVenDetCan());
-            //descuento al stock de preventa del producto
-            proTemp.setProStkPreVen(proTemp.getProStkPreVen() - temp.getPreVenDetCan());
-            proDao.update(proTemp);
-            
-            //crea el detalle
-            detVenDao.save(detVen);
+    public void preVenta2Venta(String preVenCabCod, String facVenCabCod,
+            int estFacCod, int metPagCod, int tipPagCod, char facVenCabModVen,
+            int pagCuoNum, int maxDet4FacVen) {
+
+        EnP1mPreventaCab pvc = preVenCabDao.getById(preVenCabCod);
+
+        String cliCod = pvc.getEnP1mCliente().getCliCod();
+        String usuCod = pvc.getEnP1mUsuario().getUsuCod();
+        Date facVenCabFecEmi = DateUtil.getthisDate();
+        Date facVenCabFecVen = DateUtil.addDays(facVenCabFecEmi, 1);
+        int tipDesCod = pvc.getTaGzzTipoDescuento().getTipDesCod();
+        int facVenPorDes = pvc.getPreVenPorDes();
+        int facVenCabIGV = pvc.getPreVenCabIgv();
+        String facVenCabObs = pvc.getPreVenCabObs();
+        int monCod = pvc.getTaGzzMoneda().getMonCod();
+
+        List<EnP1tFacturaVentaDet> detalles = new ArrayList();
+
+        //cargar detalles de preventa a detalles de venta
+        List<EnP1tPreventaDet> preventaDets = new ArrayList();
+        preventaDets.addAll(pvc.getEnP1tPreventaDets());
+
+        EnP1tFacturaVentaDet tempFacturaVentaDet;
+        EnP1tPreventaDet tempPreventaDet;
+
+        for (int i = 0; i < preventaDets.size(); i++) {
+            tempPreventaDet = preventaDets.get(i);
+
+            tempFacturaVentaDet = new EnP1tFacturaVentaDet();
+            tempFacturaVentaDet.setId(new EnP1tFacturaVentaDetId(i + 1, facVenCabCod));
+            tempFacturaVentaDet.setEnP2mProducto(tempPreventaDet.getEnP2mProducto());
+            tempFacturaVentaDet.setFacVenDetCan(tempPreventaDet.getPreVenDetCan());
+            tempFacturaVentaDet.setFacVenDetValUni(tempPreventaDet.getPreVenDetValUni());
+            detalles.add(tempFacturaVentaDet);
         }
-        
+
+        facturaBusiness.create(facVenCabCod, cliCod, usuCod, facVenCabModVen,
+                facVenCabFecEmi, facVenCabFecVen, tipDesCod, facVenPorDes,
+                facVenCabIGV, facVenCabObs, estFacCod, metPagCod, tipPagCod,
+                monCod, pagCuoNum, 'A', detalles, maxDet4FacVen);
+
         //documento de transicion
         EnP1cPreventaRealizadas preOk = new EnP1cPreventaRealizadas();
         preOk.setId(new EnP1cPreventaRealizadasId(preVenCabCod, facVenCabCod));
-        preOk.setPreVenReaFec(hoy);
+        preOk.setPreVenReaFec(facVenCabFecEmi);
         preOkDao.save(preOk);
-        
-        if(tipPagCod == 2){
-            //es pago por cuotas
-            pagosCuoBusiness.create(facVenCabCod, pagCuoNum, preVenCab.getPreVenCabTot(), hoy);
-        }
 
         //inactiva la preventa una vez finalizado el proceso
-        preVenCab.setEstRegCod('I');
-        preVenCabDao.update(preVenCab);
+        pvc.setEstRegCod('I');
+        preVenCabDao.update(pvc);
     }
-    
-    public void preVenta2Venta4Lotes(String[] preVenCabCod,int lote, int estFacCod, int metPagCod, int tipPagCod, int pagCuoNum){
+
+    public void preVenta2Venta4Lotes(String[] preVenCabCod, String iniFacVenCabCod,
+            int estFacCod, int metPagCod, int tipPagCod, char facVenCabModVen,
+            int pagCuoNum, int maxDet4FacVen) {
+
         int size = preVenCabCod.length;
+        EnP1mPreventaCab tempPvc;
+        int tempSizeDet4PreVen = 0; //numero de detalles por preventa
+        int tempNumFac4PreVen = 0; //numero de facturas por preventa
+
+        String facVenCabCod = iniFacVenCabCod;
         for (int i = 0; i < size; i++) {
-            preVenta2Venta(preVenCabCod[i], lote, estFacCod, metPagCod, tipPagCod, pagCuoNum);
+            preVenta2Venta(preVenCabCod[i], facVenCabCod, estFacCod, metPagCod,
+                    tipPagCod, facVenCabModVen, pagCuoNum, maxDet4FacVen);
+
+            //se calcula el siguiente numero de factura para el proximo lote de facturas por preventa
+            tempPvc = preVenCabDao.getById(preVenCabCod[i]);
+            tempSizeDet4PreVen = tempPvc.getEnP1tPreventaDets().size();
+            tempNumFac4PreVen = tempSizeDet4PreVen / maxDet4FacVen;
+            if (tempNumFac4PreVen % maxDet4FacVen > 0 || tempSizeDet4PreVen < maxDet4FacVen) {
+                tempNumFac4PreVen++;
+            }
+            //nuevo codigo de factura considerando las facturas previas generadas
+            facVenCabCod = facturaBusiness.GenerateFacVenCabCod(facVenCabCod, tempNumFac4PreVen);
         }
     }
-    
+
 }

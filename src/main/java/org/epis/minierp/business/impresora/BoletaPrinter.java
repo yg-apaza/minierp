@@ -1,4 +1,4 @@
-package org.epis.minierp.business.general;
+package org.epis.minierp.business.impresora;
 
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
@@ -12,14 +12,14 @@ import javax.xml.bind.annotation.XmlType;
     "cliNom",
     "cliDir",
     "fecEmi",
-    "topFacCab",
+    "topBolCab",
     "cliCod",
     "conPag",
     "fecVen",
     "venRut",
     "pdv",
     "obs",
-    "topFacDet",
+    "topBolDet",
     "proCod",
     "proCan",
     "proUni",
@@ -32,20 +32,20 @@ import javax.xml.bind.annotation.XmlType;
 
 public class BoletaPrinter {
     int size;
-    int leftMargin;
-    int rightMargin;
+    float leftMargin;
+    float rightMargin;
     float topMargin;
     float cliNom;
     float cliDir;
     float fecEmi;
-    float topFacCab;
+    float topBolCab;
     float cliCod;
     float conPag;
     float fecVen;
     float venRut;
     float pdv;
     float obs;
-    float topFacDet;
+    float topBolDet;
     float proCod;
     float proCan;
     float proUni;
@@ -66,19 +66,19 @@ public class BoletaPrinter {
         this.size = size;
     }
 
-    public int getLeftMargin() {
+    public float getLeftMargin() {
         return leftMargin;
     }
 
-    public void setLeftMargin(int leftMargin) {
+    public void setLeftMargin(float leftMargin) {
         this.leftMargin = leftMargin;
     }
 
-    public int getRightMargin() {
+    public float getRightMargin() {
         return rightMargin;
     }
 
-    public void setRightMargin(int rightMargin) {
+    public void setRightMargin(float rightMargin) {
         this.rightMargin = rightMargin;
     }
 
@@ -114,12 +114,12 @@ public class BoletaPrinter {
         this.fecEmi = fecEmi;
     }
 
-    public float getTopFacCab() {
-        return topFacCab;
+    public float getTopBolCab() {
+        return topBolCab;
     }
 
-    public void setTopFacCab(float topFacCab) {
-        this.topFacCab = topFacCab;
+    public void setTopBolCab(float topBolCab) {
+        this.topBolCab = topBolCab;
     }
 
     public float getCliCod() {
@@ -170,12 +170,12 @@ public class BoletaPrinter {
         this.obs = obs;
     }
 
-    public float getTopFacDet() {
-        return topFacDet;
+    public float getTopBolDet() {
+        return topBolDet;
     }
 
-    public void setTopFacDet(float topFacDet) {
-        this.topFacDet = topFacDet;
+    public void setTopBolDet(float topBolDet) {
+        this.topBolDet = topBolDet;
     }
 
     public float getProCod() {

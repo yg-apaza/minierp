@@ -1,5 +1,5 @@
 package org.epis.minierp.model;
-// Generated 09/11/2016 04:17:17 PM by Hibernate Tools 4.3.1
+// Generated 15/11/2016 11:23:24 PM by Hibernate Tools 4.3.1
 
 
 
@@ -12,6 +12,7 @@ public class EnP2tInventarioDet  implements java.io.Serializable {
      private EnP2tInventarioDetId id;
      private EnP2mInventarioCab enP2mInventarioCab;
      private EnP2mProducto enP2mProducto;
+     private TaGzzTipoFallaProducto taGzzTipoFallaProducto;
      private double invDetDifStk;
 
     public EnP2tInventarioDet() {
@@ -23,10 +24,11 @@ public class EnP2tInventarioDet  implements java.io.Serializable {
         this.enP2mInventarioCab = enP2mInventarioCab;
         this.invDetDifStk = invDetDifStk;
     }
-    public EnP2tInventarioDet(EnP2tInventarioDetId id, EnP2mInventarioCab enP2mInventarioCab, EnP2mProducto enP2mProducto, double invDetDifStk) {
+    public EnP2tInventarioDet(EnP2tInventarioDetId id, EnP2mInventarioCab enP2mInventarioCab, EnP2mProducto enP2mProducto, TaGzzTipoFallaProducto taGzzTipoFallaProducto, double invDetDifStk) {
        this.id = id;
        this.enP2mInventarioCab = enP2mInventarioCab;
        this.enP2mProducto = enP2mProducto;
+       this.taGzzTipoFallaProducto = taGzzTipoFallaProducto;
        this.invDetDifStk = invDetDifStk;
     }
    
@@ -50,6 +52,13 @@ public class EnP2tInventarioDet  implements java.io.Serializable {
     
     public void setEnP2mProducto(EnP2mProducto enP2mProducto) {
         this.enP2mProducto = enP2mProducto;
+    }
+    public TaGzzTipoFallaProducto getTaGzzTipoFallaProducto() {
+        return this.taGzzTipoFallaProducto;
+    }
+    
+    public void setTaGzzTipoFallaProducto(TaGzzTipoFallaProducto taGzzTipoFallaProducto) {
+        this.taGzzTipoFallaProducto = taGzzTipoFallaProducto;
     }
     public double getInvDetDifStk() {
         return this.invDetDifStk;

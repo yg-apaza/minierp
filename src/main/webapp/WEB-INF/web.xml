@@ -5,9 +5,6 @@
     xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
     version="3.1">
     <display-name>MiniERPServlet</display-name>
-    <welcome-file-list>
-        <welcome-file>login.jsp</welcome-file>
-    </welcome-file-list>
     <!--         FILTERS         -->
     <filter>
         <filter-name>HibernateFilter</filter-name>
@@ -60,14 +57,12 @@
     <!--         SERVLETS         -->
     <!-- Login -->
     <servlet>
-        <description/>
-        <display-name>LoginController</display-name>
         <servlet-name>LoginController</servlet-name>
         <servlet-class>org.epis.minierp.controller.LoginController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginController</servlet-name>
-        <url-pattern/>
+        <url-pattern></url-pattern>
     </servlet-mapping>
     <servlet>
         <description/>
@@ -386,6 +381,37 @@
         <servlet-name>PointSaleController</servlet-name>
         <url-pattern>/secured/configuracion/puntodeventa</url-pattern>
     </servlet-mapping>
+    <!--Sub Modulo Impresora-->
+    <servlet>
+        <description/>
+        <display-name>ImpresoraFacturaController</display-name>
+        <servlet-name>ImpresoraFacturaController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.configuracion.impresora.ImpresoraFacturaController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ImpresoraFacturaController</servlet-name>
+        <url-pattern>/secured/configuracion/impresora/factura</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <description/>
+        <display-name>ImpresoraBoletaController</display-name>
+        <servlet-name>ImpresoraBoletaController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.configuracion.impresora.ImpresoraBoletaController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ImpresoraBoletaController</servlet-name>
+        <url-pattern>/secured/configuracion/impresora/boleta</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <description/>
+        <display-name>ImpresoraRemisionController</display-name>
+        <servlet-name>ImpresoraRemisionController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.configuracion.impresora.ImpresoraRemisionController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ImpresoraRemisionController</servlet-name>
+        <url-pattern>/secured/configuracion/impresora/remision</url-pattern>
+    </servlet-mapping>
     <!-- Modulo de Contabilidad -->
     <servlet>
         <description/>
@@ -621,6 +647,16 @@
     </servlet-mapping>
     <servlet>
         <description/>
+        <display-name>SearchPreVentaController</display-name>
+        <servlet-name>SearchPreVentaController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.ventas.SearchPreVentaController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SearchPreVentaController</servlet-name>
+        <url-pattern>/secured/ventas/searchPreVen</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <description/>
         <display-name>TotalRefundController</display-name>
         <servlet-name>TotalRefundController</servlet-name>
         <servlet-class>org.epis.minierp.controller.ventas.TotalRefundController</servlet-class>
@@ -658,6 +694,16 @@
     <servlet-mapping>
         <servlet-name>CarrierGuideController</servlet-name>
         <url-pattern>/secured/ventas/searchCarrierGuide</url-pattern>
+    </servlet-mapping>
+        <servlet>
+        <description/>
+        <display-name>SearchGuiaRemTraController</display-name>
+        <servlet-name>SearchGuiaRemTraController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.ventas.SearchGuiaRemTraController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SearchGuiaRemTraController</servlet-name>
+        <url-pattern>/secured/ventas/GuiaTransportista</url-pattern>
     </servlet-mapping>
     <servlet>
         <description/>
@@ -771,6 +817,28 @@
     </servlet-mapping>
     <!--         ERRORS         -->
     <error-page>
+        <!-- Missing login -->
+        <error-code>401</error-code>
+        <location>/error.jsp</location>
+    </error-page>
+    <error-page>
+        <!-- Forbidden directory listing -->
+        <error-code>403</error-code>
+        <location>/error.jsp</location>
+    </error-page>
+    <error-page>
+        <!-- Missing resource -->
+        <error-code>404</error-code>
+        <location>/error.jsp</location>
+    </error-page>
+    <error-page>
+        <!-- Uncaught exception -->
+        <error-code>500</error-code>
+        <location>/error.jsp</location>
+    </error-page>
+    <error-page>
+        <!-- Unsupported servlet method -->
+        <error-code>503</error-code>
         <location>/error.jsp</location>
     </error-page>
 </web-app>

@@ -39,7 +39,7 @@
                                 <th>Cod Sucursal</th>
                                 <th>Det Sucursal</th>
                                 <th>Cod Punto de Venta</th>
-                                <th>Descripcion</th>
+                                <th>Descripción</th>
                                 <th>Registro</th>
                                 <c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                                 <th class="text-right">Acciones</th>

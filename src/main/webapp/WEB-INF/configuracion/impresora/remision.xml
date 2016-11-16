@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<guiaRemisionPrinter>
+<remisionPrinter>
     <size>2</size>
     <leftMargin>2</leftMargin>
     <rightMargin>1</rightMargin>
@@ -8,7 +8,7 @@
     <punPar>2.4</punPar>
     <punLle>2.4</punLle>
     <traNom>11</traNom>
-    <topFacCab>0.5</topFacCab>
+    <topRemCab>0.5</topRemCab>
     <fecVen>2.05</fecVen>
     <ven>1.2</ven>
     <zon>1.2</zon>
@@ -18,7 +18,7 @@
     <facNum>2.0</facNum>
     <hora>1.3</hora>
     <numInt>2.4</numInt>
-    <topFacDet>0.8</topFacDet>
+    <topRemDet>0.8</topRemDet>
     <proCod>1.3</proCod>
     <proCan>1.2</proCan>
     <proUni>0.7</proUni>
@@ -27,4 +27,4 @@
     <proDes1>1.6</proDes1>
     <proValNet>2.8</proValNet>
     <totalMargin>19.0</totalMargin>
-</guiaRemisionPrinter>
+</remisionPrinter>

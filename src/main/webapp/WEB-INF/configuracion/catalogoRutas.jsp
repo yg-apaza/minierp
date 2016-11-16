@@ -3,11 +3,11 @@
 <%@ taglib tagdir="/WEB-INF/tags" prefix="minierptemplate" %>
 <minierptemplate:template>
     <jsp:attribute name="titulo">
-        <title>MiniERP - Catalogo de Rutas</title>
+        <title>MiniERP - Cátalogo de Rutas</title>
     </jsp:attribute>
     <jsp:attribute name="contenido">
         <div class="panel-body">
-            <h1 class="page-header">Catalogo de Rutas
+            <h1 class="page-header">Catálogo de Rutas
                 <c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                 <a href="#" class="btn btn-success btn-circle" data-toggle="modal" data-target="#agregarModal"><i class="fa fa-plus"></i></a>
                 <a href="#" class="btn btn-info btn-circle" data-toggle="modal" data-target="#estadosModal"><i class="fa fa-eye"></i></a>
@@ -36,9 +36,9 @@
                     <table class="table table-bordered table-striped table-hover">
                         <thead>
                             <tr>
-                                <th>Codigo de Ruta</th>
+                                <th>Código de Ruta</th>
                                 <th>Detalle de la Ruta</th>
-                                <th>clientes de la Ruta</th>
+                                <th>Clientes de la Ruta</th>
                                 <c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                                 <th>Acciones</th>
                                 </c:if>

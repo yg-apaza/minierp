@@ -41,7 +41,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `episerp`;
-INSERT INTO `episerp`.`en_p1m_usuario` (`UsuCod`, `UsuNom`, `UsuApePat`, `UsuApeMat`, `UsuLog`, `UsuPas`, `TipUsuCod`, `SucCod`, `UsuFecNac`, `EstCivCod`, `UsuSex`, `EstRegCod`) VALUES ('1', 'Administrador', 'Administrador', 'Administrador', 'admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', 1, 1, '1990-01-01', 1, 'N', 'A');
+INSERT INTO `episerp`.`en_p1m_usuario` (`UsuCod`, `UsuNom`, `UsuApePat`, `UsuApeMat`, `UsuLog`, `UsuPas`, `TipUsuCod`, `SucCod`, `UsuFecNac`, `EstCivCod`, `UsuSex`, `EstRegCod`) VALUES ('1', 'Administrador', 'Administrador', 'Administrador', 'admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', 1, 101, '1990-01-01', 1, 'N', 'A');
 
 COMMIT;
 
@@ -61,9 +61,9 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `episerp`;
-INSERT INTO `episerp`.`ta_gzz_moneda` (`MonCod`, `MonDet`, `EstRegCod`) VALUES (1, 'NUEVOS SOLES', 'A');
-INSERT INTO `episerp`.`ta_gzz_moneda` (`MonCod`, `MonDet`, `EstRegCod`) VALUES (2, 'DOLARES AMERICANOS', 'A');
-INSERT INTO `episerp`.`ta_gzz_moneda` (`MonCod`, `MonDet`, `EstRegCod`) VALUES (9, 'OTRA MONEDA', 'A');
+INSERT INTO `ta_gzz_moneda` (`MonCod`,`MonSim`,`MonDet`,`EstRegCod`) VALUES (01,'s/.','NUEVOS SOLES','A');
+INSERT INTO `ta_gzz_moneda` (`MonCod`,`MonSim`,`MonDet`,`EstRegCod`) VALUES (02,'$','DOLARES AMERICANOS','A');
+INSERT INTO `ta_gzz_moneda` (`MonCod`,`MonSim`,`MonDet`,`EstRegCod`) VALUES (09,NULL,'OTRA MONEDA','A');
 
 COMMIT;
 
