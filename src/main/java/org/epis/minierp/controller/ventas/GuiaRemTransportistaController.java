@@ -5,30 +5,32 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.epis.minierp.business.logistica.EnP2mGuiaRemRemitenteBusiness;
+import org.epis.minierp.business.logistica.EnP2mGuiaRemTransportistaBusiness;
+import org.epis.minierp.business.ventas.EnP1mFacturaVentaBusiness;
 
 public class GuiaRemTransportistaController extends HttpServlet
 {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String[] codigos = request.getParameterValues("codigos");
-        String guiTraLotTraNum = request.getParameter("guiTraLotTraNum");
-        String guiTraLotTraDat = request.getParameter("guiTraLotTraDat");
-        String guiTraLotNumPla = request.getParameter("guiTraLotNumPla");
-        String guiTraLotRutDes = request.getParameter("guiTraLotRutDes");
-        String guiTraLotTraDes = request.getParameter("guiTraLotTraDes");
+        String guiRemTraNumIni = request.getParameter("guiTraLotTraNum");
+        String traCod = request.getParameter("guiTraLotTraDat");
+        String uniTraCod = request.getParameter("guiTraLotNumPla");
+        int catRutCod = Integer.parseInt(request.getParameter("guiTraLotRutDes"));
+        int motTraCod = Integer.parseInt(request.getParameter("motTraCod"));
+        String cliCod = request.getParameter("guiTraMainCli");
         
-        System.out.println("-------------------------");
-        System.out.println("TEST");
-        System.out.println("-------------------------");
-        System.out.println("Guia Nro:" + guiTraLotTraNum);
-        System.out.println("Codigo de Transportista: " + guiTraLotTraDat);
-        System.out.println("Codigo de Unidad: " + guiTraLotNumPla);
-        System.out.println("Codigo de Ruta: " + guiTraLotRutDes);
-        System.out.println("Descripcion: " + guiTraLotTraDes);
-        System.out.println("Codigo de Facturas:");
-        for(int i = 0; i < codigos.length; i++)
-            System.out.println(codigos[i]);
-        System.out.println("-------------------------");
+        EnP2mGuiaRemTransportistaBusiness guiaTBusiness = new EnP2mGuiaRemTransportistaBusiness();
+        guiaTBusiness.create4Ventas(codigos, guiRemTraNumIni, traCod, uniTraCod, "", cliCod, 'A', 23);
+        
+        EnP1mFacturaVentaBusiness facturaVBusiness = new EnP1mFacturaVentaBusiness();
+        EnP2mGuiaRemRemitenteBusiness guiaRBusiness = new EnP2mGuiaRemRemitenteBusiness();
+        
+        for(int i=0; i <codigos.length ;i++){
+            facturaVBusiness.setCatRutCod(codigos[i], catRutCod);
+            guiaRBusiness.create4Ventas(codigos[i], codigos[i], motTraCod, cliCod, 'A');
+        }
         
         response.sendRedirect(request.getContextPath() + "/secured/ventas/factura");
     }

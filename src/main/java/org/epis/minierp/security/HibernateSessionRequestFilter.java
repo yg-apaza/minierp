@@ -21,7 +21,7 @@ public class HibernateSessionRequestFilter implements Filter
     private static Log log = LogFactory.getLog(HibernateSessionRequestFilter.class);  
 
     private SessionFactory sf;  
-
+    
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException
     {
@@ -31,7 +31,7 @@ public class HibernateSessionRequestFilter implements Filter
             
             // Set Logo
             EnP1mEmpresaDao empDAO = new EnP1mEmpresaDao();
-            EnP1mEmpresa emp = empDAO.getById(01);
+            EnP1mEmpresa emp = empDAO.getById(1);
             File af;
             if(emp.getEmpImgUrl()!=null ){
                 String empImg = emp.getEmpImgUrl();//new String(valueDecoded);
@@ -45,7 +45,6 @@ public class HibernateSessionRequestFilter implements Filter
             else{
                 request.setAttribute("empImg", "nada");
             }
-            
             // Call the next filter (continue request processing)
             chain.doFilter(request, response);
 

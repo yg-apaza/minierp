@@ -10,8 +10,11 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.epis.minierp.dao.general.EnP1mUsuarioDao;
 import org.epis.minierp.dao.ventas.EnP1mFacturaVentaCabDao;
+import org.epis.minierp.model.EnP1mCliente;
 import org.epis.minierp.model.EnP1mFacturaVentaCab;
+import org.epis.minierp.model.EnP1mUsuario;
 import org.epis.minierp.model.EnP1tFacturaVentaDet;
 
 public class SearchSaleBillController extends HttpServlet {
@@ -21,9 +24,18 @@ public class SearchSaleBillController extends HttpServlet {
         EnP1mFacturaVentaCab bill = (new EnP1mFacturaVentaCabDao()).getById(facVenCabCod);
         JsonObject data = new JsonObject(); 
         
-        data.addProperty("cod", bill.getFacVenCabCod());
-        data.addProperty("cliNomCom", bill.getEnP1mCliente().getCliNomCom());
-        data.addProperty("usuNom", bill.getEnP1mUsuario().getUsuNom());
+        EnP1mUsuario u = bill.getEnP1mUsuario();
+        String vendedor = u.getUsuNom() + " " + u.getUsuApePat() + " " + u.getUsuApeMat();
+        
+        EnP1mCliente c = bill.getEnP1mCliente();
+        String cliente = c.getCliNomCom() + " " + c.getCliApePat() + " " + c.getCliApeMat();
+        
+        data.addProperty("codFacVen", bill.getFacVenCabCod());
+        data.addProperty("preVenCabIgv", bill.getFacVenCabIgv());
+        data.addProperty("facVenCabUsuNom", vendedor);
+        data.addProperty("facVenCabCliNomCom", cliente);
+        data.addProperty("tipDesDet", bill.getTaGzzTipoDescuento().getTipDesDet());
+        data.addProperty("facVenPorDes", bill.getFacVenPorDes());
         
         JsonArray detailList = new JsonArray();
         List <EnP1tFacturaVentaDet> details = new ArrayList <>(bill.getEnP1tFacturaVentaDets());
