@@ -1022,12 +1022,16 @@ CREATE TABLE en_p2t_inventario_det
   ClaProCod Char(2),
   SubClaProCod Char(2),
   ProCod Char(15),
+  TipFallProCod Int(2) ZEROFILL,
   InvDetDifStk Double(10,2) NOT NULL DEFAULT 0,
  PRIMARY KEY (InvDetCod,InvCabCod)
 )
 ;
 
 CREATE INDEX IX_Relationship80 ON en_p2t_inventario_det (ProCod,SubClaProCod,ClaProCod)
+;
+
+CREATE INDEX IX_Relationship121 ON en_p2t_inventario_det (TipFallProCod)
 ;
 
 -- Table episerp.en_p1c_devolucion_ventas
@@ -1405,3 +1409,8 @@ ALTER TABLE en_p1m_cliente ADD CONSTRAINT Relationship119 FOREIGN KEY (CanCliCod
 
 ALTER TABLE en_p2m_producto ADD CONSTRAINT Relationship120 FOREIGN KEY (MonCod) REFERENCES ta_gzz_moneda (MonCod) ON DELETE NO ACTION ON UPDATE NO ACTION
 ;
+
+ALTER TABLE en_p2t_inventario_det ADD CONSTRAINT Relationship121 FOREIGN KEY (TipFallProCod) REFERENCES ta_gzz_tipo_falla_producto (TipFallProCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+
