@@ -15,6 +15,7 @@
         <link href="${pageContext.request.contextPath}/css/jquery-ui.min.css" rel="stylesheet" type="text/css">
         <link href="${pageContext.request.contextPath}/css/select2.css" rel="stylesheet" type="text/css">
         <link href="${pageContext.request.contextPath}/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
+        <link href="${pageContext.request.contextPath}/css/modal.css" rel="stylesheet" type="text/css">
         <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
         <script src="${pageContext.request.contextPath}/js/moment.min.js"></script>
         <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
