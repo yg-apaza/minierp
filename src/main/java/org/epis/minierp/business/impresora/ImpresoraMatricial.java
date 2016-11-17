@@ -175,7 +175,8 @@ public class ImpresoraMatricial {
     public void advanceVertical(float centimeters) throws IOException {
         //pre: centimeters >= 0 (cm)
         //post: advances vertical print position approx. y centimeters (not precise due to truncation)
-        float inches = (float) (Math.round((centimeters / CM_PER_INCH)*100)/100.0);//float inches = centimeters / CM_PER_INCH;
+        float inches = centimeters / CM_PER_INCH;
+        //float inches = (float) (Math.round((centimeters / CM_PER_INCH)*100)/100.0);//float inches = centimeters / CM_PER_INCH;
         int units = (int) (inches * (escp24pin ? MAX_ADVANCE_24PIN : MAX_ADVANCE_9PIN));
         
         while (units > 0) {
@@ -196,7 +197,8 @@ public class ImpresoraMatricial {
     public void advanceHorizontal(float centimeters) throws IOException {
         //pre: centimeters >= 0
         //post: advances horizontal print position approx. centimeters
-        float inches = (float) (Math.round((centimeters / CM_PER_INCH)*100)/100.0);//float inches = centimeters / CM_PER_INCH;
+        float inches = centimeters / CM_PER_INCH;
+        //float inches = (float) (Math.round((centimeters / CM_PER_INCH)*100)/100.0);//float inches = centimeters / CM_PER_INCH;
         int units_low = (int) (inches * 120) % 256;
         int units_high = (int) (inches * 120) / 256;
         
@@ -209,7 +211,8 @@ public class ImpresoraMatricial {
     public void setAbsoluteHorizontalPosition(float centimeters) throws IOException {
         //pre: centimenters >= 0 (cm)
         //post: sets absolute horizontal print position to x centimeters from left margin
-        float inches = (float) (Math.round((centimeters / CM_PER_INCH)*100)/100.0);//float inches = centimeters / CM_PER_INCH;
+        float inches = centimeters / CM_PER_INCH;
+        //float inches = (float) (Math.round((centimeters / CM_PER_INCH)*100)/100.0);//float inches = centimeters / CM_PER_INCH;
         int units_low = (int) (inches * 60) % 256;
         int units_high = (int) (inches * 60) / 256;
         
@@ -222,7 +225,8 @@ public class ImpresoraMatricial {
     public void setAbsoluteVerticalPosition(float centimeters) throws IOException {
         //pre: centimenters >= 0 (cm)
         //post: sets absolute vertical print position to x centimeters
-        float inches = (float) (Math.round((centimeters / CM_PER_INCH)*100)/100.0);//float inches = centimeters / CM_PER_INCH;
+        float inches = centimeters / CM_PER_INCH;        
+        //float inches = (float) (Math.round((centimeters / CM_PER_INCH)*100)/100.0);//float inches = centimeters / CM_PER_INCH;
         int units_low = (int) (inches * 60) % 256;
         int units_high = (int) (inches * 60) / 256;
         
@@ -244,7 +248,6 @@ public class ImpresoraMatricial {
         //pre: columnsLeft > 0 && <= 255, columnsRight > 0 && <= 255
         //post: sets left margin to columnsLeft columns and right margin to columnsRight columns
         //left
-        
         writer.write(ESC);
         writer.write(l);
         writer.write((char) columnsLeft);
@@ -409,7 +412,6 @@ public class ImpresoraMatricial {
         setAbsoluteHorizontalPosition(val);
         writer.write(proDes1);
         val += fP.getProDes1();
-        //setAbsoluteHorizontalPosition(17.48f);
         advanceHorizontal(fP.getProDes1());
         writer.write(proDes2);
         val += fP.getProDes2();
