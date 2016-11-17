@@ -229,7 +229,7 @@
         </div>                                  
         <div id="errorMessageModal" class="modal fade">
             <div class="modal-dialog modal-sm">
-                <div class="modal-content">
+                <div class="modal-content" style="overflow-y: auto">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Detalle de Compra</h4>
@@ -245,7 +245,7 @@
         </div>
         <div class="modal fade" id="addNewProduct">
             <div class="modal-dialog">
-                <div class="modal-content">
+                <div class="modal-content" style="overflow-y: auto">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         <h4 class="modal-title">Añadir Producto</h4>
@@ -309,7 +309,7 @@
         </div>
         <div id="loading" class="modal fade">
             <div class="modal-dialog modal-sm">
-                <div class="modal-content">
+                <div class="modal-content" style="overflow-y: auto">
                     <div class="modal-body">
                         <p align="center">Cargando ... </p>
                     </div>

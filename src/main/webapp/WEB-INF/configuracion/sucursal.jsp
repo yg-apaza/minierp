@@ -64,7 +64,7 @@
            
             <div class="modal-dialog modal-sm" >
                 
-                <div class="modal-content">
+                <div class="modal-content" style="overflow-y: auto">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Agregar Sucursal</h4>
@@ -95,7 +95,7 @@
                         
         <div id="modificarModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-sm">
-                <div class="modal-content">
+                <div class="modal-content" style="overflow-y: auto">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Modificar Sucursal</h4>
@@ -129,7 +129,7 @@
          
         <div id="estadosModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-lg">
-                <div class="modal-content">
+                <div class="modal-content" style="overflow-y: auto">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Reactivar o Eliminar Sucursal</h4>
@@ -174,7 +174,7 @@
                         
                          <div id="activeModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-sm">
-                <div class="modal-content">
+                <div class="modal-content" style="overflow-y: auto">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Activar sucursal</h4>
@@ -197,7 +197,7 @@
                         
         <div id="disableModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-sm">
-                <div class="modal-content">
+                <div class="modal-content" style="overflow-y: auto">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Desactivar sucursal</h4>
@@ -219,7 +219,7 @@
                         
         <div id="eliminarModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-sm">
-                <div class="modal-content">
+                <div class="modal-content" style="overflow-y: auto">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Eliminar sucursal</h4>

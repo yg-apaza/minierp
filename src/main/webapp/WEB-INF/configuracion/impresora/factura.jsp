@@ -8,8 +8,8 @@
         <br>
         <div class="pagel-body">
             <h1 class="page-header"> Configuración de Factura </h1>
-            <form id="updateFactura" method="post" action="${pageContext.request.contextPath}/secured/configuracion/impresora/factura">
-                <div class="col-md-12">
+            <form id="updateFactura" method="post" action="${pageContext.request.contextPath}/secured/configuracion/impresora/factura">  
+                <div class="col-md-6">
                     <div class="table-responsive">
                         <table class="table table-bordered table-striped table-hover table-condensed" id="tablaFacMar">
                             <tr>
@@ -23,6 +23,9 @@
                         </table>
                     </div>
                 </div>
+                <div class="col-md-6 text-center">
+                    <button type="submit" formnovalidate="formnovalidate" id="update" class="btn btn-primary">Actualizar cambios</button>       
+                </div>  
                 <div class="col-md-12">
                     <div class="table-responsive">
                         <table class="table table-bordered table-striped table-hover table-condensed" id="tablaFacSobCab">
@@ -36,7 +39,7 @@
                             </tr>
                             <tr>
                                 <td>DIRECCIÓN:</td>
-                                <td rowspan="2" style="vertical-align:middle">Avenida</td>
+                                <td rowspan="2" style="vertical-align:middle">Dirección</td>
                                 <td colspan="2" rowspan="2"></td>
                             </tr>
                             <tr>
@@ -48,7 +51,7 @@
                                 <td rowspan="2" style="vertical-align:middle">10/11/2016</td>
                             </tr>
                             <tr>
-                                <td colspan="3"><input min="0" step="0.1" type="number" name="fecEmi" value="${fac.getFecEmi()}">cm</td>
+                                <td colspan="3" style="text-align: right"><input min="0" step="0.1" type="number" name="fecEmi" value="${fac.getFecEmi()}">cm</td>
                                 <td></td>
                             </tr>
                         </table>
@@ -140,7 +143,6 @@
                         </table>
                     </div>
                 </div> 
-                <button type="submit" formnovalidate="formnovalidate" id="update" class="btn btn-primary">Actualizar cambios</button>       
             </form>           
         </div>
     </jsp:attribute>

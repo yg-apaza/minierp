@@ -9,8 +9,8 @@ FOR EACH ROW
 BEGIN
 	UPDATE en_p1m_preventa_cab
 	SET 
-		PreVenCabSubTot=(PreVenCabSubTot+NEW.PreVenDetValUni * NEW.PreVenDetCan),
-		PreVenCabTot=PreVenCabSubTot*(100 + PreVenCabIGV)/100
+		PreVenCabTot=(PreVenCabTot + NEW.PreVenDetValUni * NEW.PreVenDetCan)*(100 + PreVenCabIGV)/100,
+		PreVenCabSubTot=PreVenCabTot*(100 + PreVenPorDes)/100
     WHERE PreVenCabCod=NEW.PreVenCabCod;
 END $$
 DELIMITER ;
@@ -26,8 +26,8 @@ FOR EACH ROW
 BEGIN
 	UPDATE en_p1m_factura_venta_cab
 	SET 
-		FacVenCabSubTot=(FacVenCabSubTot+NEW.FacVenDetValUni * NEW.FacVenDetCan),
-		FacVenCabTot=FacVenCabSubTot*(100 + FacVenCabIGV)/100
+		FacVenCabTot=(FacVenCabTot + NEW.FacVenDetValUni * NEW.FacVenDetCan)*(100 + FacVenCabIGV)/100,
+		FacVenCabSubTot=FacVenCabTot*(100 + FacVenPorDes)/100
     WHERE FacVenCabCod=NEW.FacVenCabCod;
 END $$
 DELIMITER ;
@@ -43,8 +43,8 @@ FOR EACH ROW
 BEGIN
 	UPDATE en_p4m_factura_compra_cab
 	SET 
-		FacComCabSubTot=(FacComCabSubTot+NEW.FacComDetValUni * NEW.FacComDetCan),
-		FacComCabTot=FacComCabSubTot*(100 + FacComCabIGV)/100
+		FacComCabTot=(FacComCabTot + NEW.FacComDetValUni * NEW.FacComDetCan)*(100 + FacComCabIGV)/100,
+		FacComCabSubTot=FacComCabTot*(100 + FacComPorDes)/100
     WHERE FacComCabCod=NEW.FacComCabCod;
 END $$
 DELIMITER ;

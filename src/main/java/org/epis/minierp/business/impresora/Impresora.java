@@ -83,7 +83,7 @@ public class Impresora {
             }
             fac.addLines(MAX_FAC_DET - proCod); 
             subTotal = f.getFacVenCabSubTot();
-            igv = subTotal * f.getFacVenCabIgv();
+            igv = subTotal * f.getFacVenCabIgv() / 100;
             total = f.getFacVenCabTot();
             fac.writeFacTotal(df.format(subTotal), df.format(igv), df.format(total));
             fac.close();
@@ -112,7 +112,10 @@ public class Impresora {
             numSec = " ";
             dis = " ";
             rut = Integer.toString(f.getEnP1mCatalogoRuta().getCatRutCod());
-            traNom = f.getEnP2mGuiaRemTransportista().getEnP2mTransportista().getTraNom();
+            if (f.getEnP2mGuiaRemTransportista() == null)
+                    traNom = " ";
+                else
+                    traNom = f.getEnP2mGuiaRemTransportista().getEnP2mTransportista().getTraNom();
             fac.writeFacCabecera(cliCod, conPag, fecVen, venZon, numSec, dis, rut, traNom);
 
             proCod = 0;
@@ -130,7 +133,7 @@ public class Impresora {
             }
             fac.addLines(MAX_FAC_DET - proCod); 
             subTotal = f.getFacVenCabSubTot();
-            igv = subTotal * f.getFacVenCabIgv();
+            igv = subTotal * f.getFacVenCabIgv() / 100;
             total = f.getFacVenCabTot();
             fac.writeFacTotal(df.format(subTotal), df.format(igv), df.format(total));
 
@@ -157,7 +160,10 @@ public class Impresora {
                 cliCod = f.getEnP1mCliente().getCliCod();
                 conPag = f.getTaGzzMetodoPagoFactura().getMetPagDet();
                 fecVen = fecha.format(f.getFacVenCabFecVen());
-                venRut = Integer.toString(f.getEnP1mCatalogoRuta().getCatRutCod());
+                if (f.getEnP1mCatalogoRuta() == null)
+                    venRut = " ";
+                else
+                    venRut = Integer.toString(f.getEnP1mCatalogoRuta().getCatRutCod());
                 pdv = " ";
                 obs = f.getFacVenCabObs();
                 bol.writeBolCabecera(cliCod, conPag, fecVen, venRut, pdv, obs);
@@ -198,7 +204,10 @@ public class Impresora {
                 cliNom = f.getEnP1mCliente().getCliNom();
                 punPar = empDao.getAll().get(0).getEmpDomFis();
                 punLle = f.getEnP1mCliente().getCliDir();
-                traNom = f.getEnP2mGuiaRemTransportista().getEnP2mTransportista().getTraNom();
+                if (f.getEnP2mGuiaRemTransportista() == null)
+                    traNom = " ";
+                else 
+                    traNom = f.getEnP2mGuiaRemTransportista().getEnP2mTransportista().getTraNom();
                 rem.writeGuiRemSobCab(cliNom, punPar, punLle, traNom);
 
                 fecVen = fecha.format(f.getFacVenCabFecVen());

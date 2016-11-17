@@ -17,7 +17,7 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <div class="col-xs-12 col-md-9">
+                    <div class="col-xs-12 col-md-12 text-center">
                         <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregarModal"> Agregar Nuevo <i class="fa fa-plus"></i></button>                
                         <button type="button" class="btn btn-info" data-toggle="modal" data-target="#estadosModal"> Ver Inhabilitados <i class="fa fa-eye"></i></button>
@@ -48,11 +48,11 @@
                     <table class="table table-bordered table-striped table-hover" id="tablaUsuarios">
                         <thead>
                             <tr>
-                                <th>Codigo</th>
+                                <th>Código</th>
                                 <th>Documentos</th>
                                 <th>Nombres y Apellidos</th>
                                 <th>Tipo</th>
-                                <th>Catalogo de Clientes</th>
+                                <th>Catálogo de Clientes</th>
                                 <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                                     <th>Acciones</th>
                                 </cc:if>
@@ -122,7 +122,7 @@
 
         <div id="agregarModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-lg">
-                <div class="modal-content">
+                <div class="modal-content" style="overflow-y: auto">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Agregar Usuario</h4>
@@ -219,7 +219,7 @@
 
         <div id="modificarModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-md">
-                <div class="modal-content">
+                <div class="modal-content" style="overflow-y: auto">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Modificar Usuario</h4>
@@ -311,7 +311,7 @@
 
         <div id="disableModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-md">
-                <div class="modal-content">
+                <div class="modal-content" style="overflow-y: auto">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Inhabilitar Usuario</h4>
@@ -397,7 +397,7 @@
                         
         <div id="activateModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-md">
-                <div class="modal-content">
+                <div class="modal-content" style="overflow-y: auto">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Activar Usuario</h4>
@@ -419,7 +419,7 @@
 
         <div id="deleteModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-md">
-                <div class="modal-content">
+                <div class="modal-content" style="overflow-y: auto">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Eliminar Usuario</h4>
@@ -441,7 +441,7 @@
         
         <div id="clienteModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-md">
-                <div class="modal-content">
+                <div class="modal-content" style="overflow-y: auto">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Agregar Cliente</h4>
@@ -484,7 +484,7 @@
                         
         <div id="documentoModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-md">
-                <div class="modal-content">
+                <div class="modal-content" style="overflow-y: auto">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Agregar Documento</h4>
@@ -527,7 +527,7 @@
         
         <div id="viewDocumentoModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-lg">
-                <div class="modal-content">
+                <div class="modal-content" style="overflow-y: auto">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Gestion Documento</h4>
@@ -594,7 +594,7 @@
         
         <div id="viewClienteModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-lg">
-                <div class="modal-content">
+                <div class="modal-content" style="overflow-y: auto">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Gestion Cliente</h4>
@@ -661,7 +661,7 @@
                         
         <div id="modClienteModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-md">
-                <div class="modal-content">
+                <div class="modal-content" style="overflow-y: auto">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Modificar Cliente</h4>
@@ -701,7 +701,7 @@
                         
         <div id="modDocumentoModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-md">
-                <div class="modal-content">
+                <div class="modal-content" style="overflow-y: auto">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Modificar Documento</h4>
@@ -741,7 +741,7 @@
                         
         <div id="delClienteModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-md">
-                <div class="modal-content">
+                <div class="modal-content" style="overflow-y: auto">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Eliminar Cliente</h4>
@@ -764,7 +764,7 @@
                         
         <div id="delDocumentoModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-md">
-                <div class="modal-content">
+                <div class="modal-content" style="overflow-y: auto">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Eliminar Cliente</h4>

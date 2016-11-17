@@ -3,11 +3,11 @@
 <%@ taglib tagdir="/WEB-INF/tags" prefix="minierptemplate" %>
 <minierptemplate:template>
     <jsp:attribute name="titulo">
-        <title>MiniERP - Catalogo de Rutas</title>
+        <title>MiniERP - Cátalogo de Rutas</title>
     </jsp:attribute>
     <jsp:attribute name="contenido">
         <div class="panel-body">
-            <h1 class="page-header">Catalogo de Rutas
+            <h1 class="page-header">Catálogo de Rutas
                 <c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                 <a href="#" class="btn btn-success btn-circle" data-toggle="modal" data-target="#agregarModal"><i class="fa fa-plus"></i></a>
                 <a href="#" class="btn btn-info btn-circle" data-toggle="modal" data-target="#estadosModal"><i class="fa fa-eye"></i></a>
@@ -36,9 +36,9 @@
                     <table class="table table-bordered table-striped table-hover">
                         <thead>
                             <tr>
-                                <th>Codigo de Ruta</th>
+                                <th>Código de Ruta</th>
                                 <th>Detalle de la Ruta</th>
-                                <th>clientes de la Ruta</th>
+                                <th>Clientes de la Ruta</th>
                                 <c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                                 <th>Acciones</th>
                                 </c:if>
@@ -76,7 +76,7 @@
 
         <div id="agregarModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-md">
-                <div class="modal-content">
+                <div class="modal-content" style="overflow-y: auto">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Agregar Ruta</h4>
@@ -104,7 +104,7 @@
 
         <div id="modificarModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-md">
-                <div class="modal-content">
+                <div class="modal-content" style="overflow-y: auto">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Modificar Ruta</h4>
@@ -132,7 +132,7 @@
 
         <div id="disableModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-md">
-                <div class="modal-content">
+                <div class="modal-content" style="overflow-y: auto">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Inhabilitar Ruta</h4>
@@ -154,7 +154,7 @@
 
         <div id="estadosModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-lg">
-                <div class="modal-content">
+                <div class="modal-content" style="overflow-y: auto">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Reactivar o Eliminar Rutas</h4>
@@ -199,7 +199,7 @@
 
         <div id="activateModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-md">
-                <div class="modal-content">
+                <div class="modal-content" style="overflow-y: auto">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Activar Ruta</h4>
@@ -221,7 +221,7 @@
 
         <div id="deleteModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-md">
-                <div class="modal-content">
+                <div class="modal-content" style="overflow-y: auto">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Eliminar Ruta</h4>

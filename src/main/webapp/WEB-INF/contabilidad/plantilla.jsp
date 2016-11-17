@@ -54,7 +54,7 @@
         </div>
         <div id="agregarModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-lg">
-                <div class="modal-content">
+                <div class="modal-content" style="overflow-y: auto">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Agregar plantilla</h4>
@@ -136,7 +136,7 @@
         
         <div id="deleteModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-sm">
-                <div class="modal-content">
+                <div class="modal-content" style="overflow-y: auto">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Eliminar plantilla</h4>
@@ -158,7 +158,7 @@
         
         <div id="errorMessageModal" class="modal fade">
             <div class="modal-dialog modal-sm">
-                <div class="modal-content">
+                <div class="modal-content" style="overflow-y: auto">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Detalle de Plantilla</h4>

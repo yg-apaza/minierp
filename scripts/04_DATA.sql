@@ -61,9 +61,9 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `episerp`;
-INSERT INTO `episerp`.`ta_gzz_moneda` (`MonCod`, `MonDet`, `EstRegCod`) VALUES (1, 'NUEVOS SOLES', 'A');
-INSERT INTO `episerp`.`ta_gzz_moneda` (`MonCod`, `MonDet`, `EstRegCod`) VALUES (2, 'DOLARES AMERICANOS', 'A');
-INSERT INTO `episerp`.`ta_gzz_moneda` (`MonCod`, `MonDet`, `EstRegCod`) VALUES (9, 'OTRA MONEDA', 'A');
+INSERT INTO `ta_gzz_moneda` (`MonCod`,`MonSim`,`MonDet`,`EstRegCod`) VALUES (01,'s/.','NUEVOS SOLES','A');
+INSERT INTO `ta_gzz_moneda` (`MonCod`,`MonSim`,`MonDet`,`EstRegCod`) VALUES (02,'$','DOLARES AMERICANOS','A');
+INSERT INTO `ta_gzz_moneda` (`MonCod`,`MonSim`,`MonDet`,`EstRegCod`) VALUES (09,NULL,'OTRA MONEDA','A');
 
 COMMIT;
 

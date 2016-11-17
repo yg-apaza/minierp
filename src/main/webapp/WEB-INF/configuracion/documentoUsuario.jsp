@@ -40,7 +40,7 @@
                                 <th>Cod Usuario</th>
                                 <th>Nombres y Apellidos</th>
                                 <th>Tipo de Documento</th>
-                                <th>Numero de Documento</th>
+                                <th>Número de Documento</th>
                                 <th>Registro</th>
                                 <c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                                 <th class="text-right">Acciones</th>
@@ -81,7 +81,7 @@
 
         <div id="agregarModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-md">
-                <div class="modal-content">
+                <div class="modal-content" style="overflow-y: auto">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Agregar Documento del Usuario</h4>
@@ -121,7 +121,7 @@
 
         <div id="modificarModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-md">
-                <div class="modal-content">
+                <div class="modal-content" style="overflow-y: auto">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Modificar Documento de Usuario</h4>
@@ -155,7 +155,7 @@
 
         <div id="disableModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-md">
-                <div class="modal-content">
+                <div class="modal-content" style="overflow-y: auto">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Inhabilitar Documento de Usuario</h4>
@@ -178,7 +178,7 @@
 
         <div id="estadosModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-lg">
-                <div class="modal-content">
+                <div class="modal-content" style="overflow-y: auto">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Reactivar o Eliminar Punto de Venta</h4>
@@ -233,7 +233,7 @@
 
         <div id="activateModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-md">
-                <div class="modal-content">
+                <div class="modal-content" style="overflow-y: auto">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Activar Documento de Usuario</h4>
@@ -256,7 +256,7 @@
 
         <div id="deleteModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-md">
-                <div class="modal-content">
+                <div class="modal-content" style="overflow-y: auto">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Eliminar Documento de Usuario</h4>

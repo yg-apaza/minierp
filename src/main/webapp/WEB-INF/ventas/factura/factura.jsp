@@ -24,7 +24,7 @@
                         </div>
                         <div class="col-md-3">
                             <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
-                            <button type="button" id="guiaTranportista" class="btn btn-primary btn-block">Generar Guías de Remision</button>
+                            <button type="button" id="guiaTranportista" class="btn btn-primary btn-block">Generar Guías de Remisión</button>
                             </cc:if>
                         </div>
                         <div class="col-md-3">
@@ -128,13 +128,13 @@
             </div>
             <div id="impresionLotesModal" class="modal fade">
                 <div class="modal-dialog modal-sm">
-                    <div class="modal-content">
+                    <div class="modal-content" style="overflow-y: auto">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Impresión por Lotes</h4>
+                            <h4 class="modal-title">Impresión</h4>
                         </div>
                         <div class="modal-body">
-                            <p align="center">¿Está seguro de realizar la impresión?</p>
+                            <p align="center">¿Desea continuar descargando el archivo de impresión?</p>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-outline btn-danger" data-dismiss="modal"> Cancelar </button>
@@ -145,7 +145,7 @@
             </div>
             <div id="guiaTransportistaModal" class="modal fade">
                 <div class="modal-dialog modal-md">
-                    <div class="modal-content">
+                    <div class="modal-content" style="overflow-y: auto">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                             <h4 class="modal-title">Guía de Transportista</h4>
@@ -154,7 +154,7 @@
                             <!-- inputs -->
                             <div class="col-xs-12 col-md-12">
                                 <div class="form-group input-group">
-                                    <span class="input-group-addon">Codigo de Guia Transportista</span>
+                                    <span class="input-group-addon">Código de Guía Transportista</span>
                                     <input type="text" class="form-control" id="guiTraLotTraNum" name="guiTraLotTraNum">
                                     <span class="input-group-addon"><i class="fa fa-file-text-o"></i></span>
                                 </div>
@@ -190,7 +190,7 @@
                             </div>      
                             <div class="col-xs-12 col-md-12">
                                 <div class="form-group input-group">
-                                    <span class="input-group-addon">Vehiculo</span>
+                                    <span class="input-group-addon">Vehículo</span>
                                     <select class="form-control" name="guiTraLotNumPla">
                                         <c:forEach items="${unidades}" var="u">
                                         <option value="${u.uniTraCod}">${u.uniTraNumPla}</option>    
@@ -232,7 +232,7 @@
         </form>
         <div id="errorMessageModal" class="modal fade">
             <div class="modal-dialog modal-sm">
-                <div class="modal-content">
+                <div class="modal-content" style="overflow-y: auto">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Error</h4>
@@ -248,7 +248,7 @@
         </div>
         <div class="modal fade" id="viewSaleBill">
             <div class="modal-dialog modal-md">
-                <div class="modal-content">
+                <div class="modal-content" style="overflow-y: auto">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         <h3 class="modal-title">Factura de Venta</h3>
@@ -333,10 +333,10 @@
         </div>
         <div class="modal fade" id="viewReferralGuide">
             <div class="modal-dialog">
-                <div class="modal-content">
+                <div class="modal-content" style="overflow-y: auto">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h3 class="modal-title">Guia de Remision Remitente</h3>
+                        <h3 class="modal-title">Guía de Remisión Remitente</h3>
                     </div>
                         <div class="modal-body">
                             <div class="panel-body">
@@ -348,7 +348,7 @@
                                     <div class="tab-pane fade in active" id="generalGuiRem"><br>
                                         <div class="col-xs-12 col-md-12">
                                             <div class="form-group input-group">
-                                                <span class="input-group-addon">Numero de Guia de Remitente</span>
+                                                <span class="input-group-addon">Número de Guia de Remitente</span>
                                                 <input type="text" class="form-control" id="guiRemRemNum" readOnly>
                                                 <span class="input-group-addon"><i class="fa fa-file-text-o"></i></span>
                                             </div>
@@ -410,7 +410,7 @@
         <div class="modal fade" id="addReferralGuide">
             <div class="modal-dialog modal-md">
                 <form id="addReferralGuideForm" role="form" action="${pageContext.request.contextPath}/secured/ventas/addReferralGuide" method="post">
-                    <div class="modal-content">
+                    <div class="modal-content" style="overflow-y: auto">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                             <h4 class="modal-title">Guía de Remisión</h4>
@@ -480,10 +480,10 @@
         </div>
         <div class="modal fade" id="viewCarrierGuide">
             <div class="modal-dialog modal-md">
-                <div class="modal-content">
+                <div class="modal-content" style="overflow-y: auto">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h3 class="modal-title">Guia de Remision Transportista</h3>
+                        <h3 class="modal-title">Guía de Remisión Transportista</h3>
                     </div>
                     <div class="modal-body">   
                         <div class="panel-body">
@@ -498,7 +498,7 @@
                                     <div class="col-xs-12 col-md-12">
                                         <div class="col-xs-12 col-md-12">
                                             <div class="form-group input-group">
-                                                <span class="input-group-addon">Numero de Guia de Transportista</span>
+                                                <span class="input-group-addon">Número de Guía de Transportista</span>
                                                 <input type="text" class="form-control" id="guiRemTraNum" readOnly>
                                                 <span class="input-group-addon"><i class="fa fa-clipboard"></i></span>
                                             </div>
@@ -562,7 +562,7 @@
                                             <table width="100%" class="table table-striped table-bordered table-hover" id="guiTraCli">
                                                 <thead align="center">
                                                     <tr >
-                                                        <th>Codigo</th>
+                                                        <th>Código</th>
                                                         <th>Nombre Comercial</th>
                                                     </tr>
                                                 </thead>
@@ -576,7 +576,7 @@
                                             <table width="100%" class="table table-striped table-bordered table-hover" id="guiTraFac">
                                                 <thead align="center">
                                                     <tr >
-                                                        <th>Codigo</th>
+                                                        <th>Código</th>
                                                         <th>Fecha</th>
                                                         <th>Total</th>
                                                         <th>SubTotal</th>
@@ -598,7 +598,7 @@
         <div class="modal fade" id="addCarrierGuide">
             <div class="modal-dialog modal-md">
                 <form id="addCarrierGuideForm" role="form" action="${pageContext.request.contextPath}/secured/ventas/addCarrierGuide" method="post">
-                    <div class="modal-content">
+                    <div class="modal-content" style="overflow-y: auto">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                             <h4 class="modal-title">Guía de Transportista</h4>
@@ -691,7 +691,7 @@
         </div>
         <div id="messageReferralGuide" class="modal fade">
             <div class="modal-dialog modal-sm">
-                <div class="modal-content">
+                <div class="modal-content" style="overflow-y: auto">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Guía de Remisión</h4>
@@ -708,7 +708,7 @@
         </div>        
         <div id="messageCarrierGuide" class="modal fade">
             <div class="modal-dialog modal-sm">
-                <div class="modal-content">
+                <div class="modal-content" style="overflow-y: auto">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Guía de Transportista</h4>
@@ -725,7 +725,7 @@
         </div>
         <div id="messageRefund" class="modal fade">
             <div class="modal-dialog modal-sm">
-                <div class="modal-content">
+                <div class="modal-content" style="overflow-y: auto">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" id="refundDiss">&times;</button>
                         <h4 class="modal-title">Devolución</h4>
@@ -742,7 +742,7 @@
         </div>
         <div id="loading" class="modal fade">
             <div class="modal-dialog modal-sm">
-                <div class="modal-content">
+                <div class="modal-content" style="overflow-y: auto">
                     <div class="modal-body">
                         <p align="center">Cargando ... </p>
                     </div>
