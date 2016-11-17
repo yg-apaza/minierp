@@ -361,7 +361,7 @@ public class EnP1mFacturaVentaBusiness {
         //se calcula el numero de facturas totales
         int size = detalles.size(); //cantidad de detalles insertados;
         int numFacs = size / maxDet4FacVen;
-        if (numFacs % maxDet4FacVen > 0 || size < maxDet4FacVen) {
+        if (size % maxDet4FacVen > 0 || size < maxDet4FacVen) {
             numFacs++;
         }
 
