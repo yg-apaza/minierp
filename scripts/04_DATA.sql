@@ -37,16 +37,6 @@ COMMIT;
 
 
 -- -----------------------------------------------------
--- Data for table `episerp`.`en_p1m_usuario`
--- -----------------------------------------------------
-START TRANSACTION;
-USE `episerp`;
-INSERT INTO `episerp`.`en_p1m_usuario` (`UsuCod`, `UsuNom`, `UsuApePat`, `UsuApeMat`, `UsuLog`, `UsuPas`, `TipUsuCod`, `SucCod`, `UsuFecNac`, `EstCivCod`, `UsuSex`, `EstRegCod`) VALUES ('1', 'Administrador', 'Administrador', 'Administrador', 'admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', 1, 101, '1990-01-01', 1, 'N', 'A');
-
-COMMIT;
-
-
--- -----------------------------------------------------
 -- Data for table `episerp`.`en_p1m_empresa`
 -- -----------------------------------------------------
 START TRANSACTION;
@@ -1225,3 +1215,13 @@ INSERT INTO `episerp`.`ta_gzz_tipo_falla_producto` (`TipFallProCod`, `TipFallPro
 INSERT INTO `episerp`.`ta_gzz_tipo_falla_producto` (`TipFallProCod`, `TipFallProDet`, `EstRegCod`) VALUES ('7', 'Error de Comercialización', 'A');
 
 COMMIT;
+
+-- -----------------------------------------------------
+-- Data for table `episerp`.`en_p1m_usuario`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `episerp`;
+INSERT INTO `episerp`.`en_p1m_usuario` (`UsuCod`, `UsuNom`, `UsuApePat`, `UsuApeMat`, `UsuLog`, `UsuPas`, `TipUsuCod`, `SucCod`, `UsuFecNac`, `EstCivCod`, `UsuSex`, `EstRegCod`) VALUES ('1', 'Administrador', 'Administrador', 'Administrador', 'admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', 1, 1, '1990-01-01', 1, 'N', 'A');
+
+COMMIT;
+
