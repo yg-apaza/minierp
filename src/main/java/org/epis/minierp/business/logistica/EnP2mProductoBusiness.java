@@ -7,6 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import org.epis.minierp.dao.general.EnP1mUsuarioDao;
+import org.epis.minierp.dao.general.TaGzzTipoFallaProductoDao;
 import org.epis.minierp.dao.logistica.EnP2mInventarioCabDao;
 import org.epis.minierp.dao.logistica.EnP2mProductoDao;
 import org.epis.minierp.dao.logistica.EnP2tInventarioDetDao;
@@ -21,6 +22,7 @@ import org.epis.minierp.model.EnP2mSubclaseProductoId;
 import org.epis.minierp.model.EnP2tInventarioDet;
 import org.epis.minierp.model.EnP2tInventarioDetId;
 import org.epis.minierp.model.TaGzzMoneda;
+import org.epis.minierp.model.TaGzzTipoFallaProducto;
 import org.epis.minierp.model.TaGzzUnidadMed;
 
 
@@ -288,7 +290,7 @@ public class EnP2mProductoBusiness {
     }
     
     @SuppressWarnings("empty-statement")
-    public void actualizarInventario(String[] proCod, String[] proCan, List<EnP2mProducto> productos, String fecha, String UsuCod, int LonInventario) throws ParseException{
+    public void actualizarInventario(String[] proCod, String[] proCan, String[] proFalla, List<EnP2mProducto> productos, String fecha, String UsuCod, int LonInventario) throws ParseException{
         //Creando Inventario Cab
          CabeceraInventario(fecha,UsuCod, LonInventario);
         
@@ -307,6 +309,9 @@ public class EnP2mProductoBusiness {
 
             EnP2tInventarioDet det = new EnP2tInventarioDet();
             EnP2tInventarioDetId detId = new EnP2tInventarioDetId();
+            
+            TaGzzTipoFallaProductoDao fDao= new TaGzzTipoFallaProductoDao();
+            TaGzzTipoFallaProducto f = fDao.getById(Integer.parseInt(proFalla[i]));
 
             detId.setInvCabCod(String.valueOf(LonInventario+1));
             detId.setInvDetCod(i);
@@ -314,6 +319,7 @@ public class EnP2mProductoBusiness {
             det.setEnP2mInventarioCab(invent);
             det.setEnP2mProducto(product);
             det.setInvDetDifStk(Diferencia);
+            det.setTaGzzTipoFallaProducto(f);
 
             invDet.save(det);
         }

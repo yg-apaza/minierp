@@ -51,7 +51,8 @@
                             </tr>               
                         </thead>
                         <tbody>
-                            <c:forEach items = "${productos}" var = "producto">    
+                            <c:set var="count" value="0" scope="page" />
+                            <c:forEach items = "${productos}" var = "producto">
                                 <tr id="${producto.id.proCod}">
                                     <td><c:out value="${producto.id.proCod}"/> </td>
                                     <td><c:out value="${producto.proDet}"/></td>
@@ -60,14 +61,19 @@
                                     <td contenteditable="true">0</td>
                                 <!--    <td> <input type="text" width="10px" name="${producto.id.proCod}" value="0"> </td>-->
                                     <td>
-                                        <select class="form-control" style="width: 170px; display: inline-block;">
+                                        <!-- CADA FALLA ES UN SELECT Y LO QUE MANDO AL CONTROLADOR ES SU VALOR,
+                                            SU VALOR ES EL CODIGO DEL TIPO DE FALLA-->
+                                        
+                                        <select id="falla${count}" name="falla${count}" class="form-control" style="width: 170px; display: inline-block;">
                                         <c:forEach items = "${falla_producto}" var = "falla_producto">
-                                            <option> ${falla_producto.tipFallProDet} </option>
+                                            <option value="${falla_producto.tipFallProCod}"> ${falla_producto.tipFallProDet} </option>
                                         </c:forEach>  
                                         </select>   
                                     </td>
                                     <td style="display:none;"><input type="checkbox" name="proCodigos" value="${producto.id.proCod}" checked></td>
                                     <td style="display:none;"><input type="checkbox" name="proCantidades" value="0" checked></td>
+                                    <td style="display:none;"><input type="checkbox" name="proFallas" value="0" checked></td>
+                                    <c:set var="count" value="${count + 1}" scope="page"/>
                                 </tr>
                             </c:forEach>  
                         </tbody>
@@ -92,14 +98,23 @@
             
             function updateInventory() {
                 var list = [];
+                var listF = [];
                 $('#id_table tr').each(function () {
                     var can = $(this).find("td").eq(4).html();
+                    var fal = $(this).find("select").val();
                     list.push(can);
+                    listF.push(fal);
                 });
                 var i = 1;
-                $.each($("input[name='proCantidades']:checked"), function(){            
+                $.each($("input[name='proCantidades']:checked"), function(){
                    $(this).val(list[i]);
                    i++;
+                });
+                var j=1;
+                $.each($("input[name='proFallas']:checked"), function(){
+                    console.log(listF[j]);
+                   $(this).val(listF[j]);
+                   j++;
                 });
             };
             

@@ -53,6 +53,7 @@ public class InventoryController extends HttpServlet {
         
         String[] codigos = request.getParameterValues("proCodigos");
         String[] cantidades = request.getParameterValues("proCantidades");
+        String[] fallas = request.getParameterValues("proFallas");
         //Como ya actualiza inventario al momento de actualizar inventario ya ingresa todos los valore al inventario
         //Fecha
         Date hoy = DateUtil.getthisDate();
@@ -65,7 +66,7 @@ public class InventoryController extends HttpServlet {
         int LonInvetario = inventario.size();
         
         try {
-            productoBusiness.actualizarInventario(codigos, cantidades, productos, fechaEmision, user.getUsuCod(), LonInvetario);
+            productoBusiness.actualizarInventario(codigos, cantidades, fallas, productos, fechaEmision, user.getUsuCod(), LonInvetario);
         } catch (ParseException ex) {
             Logger.getLogger(InventoryController.class.getName()).log(Level.SEVERE, null, ex);
         }
