@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="subreporte_kardex_valorizado" pageWidth="802" pageHeight="555" orientation="Landscape" columnWidth="802" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="720e7502-c91e-4486-8ca5-9974e7003448">
 	<property name="ireport.zoom" value="1.3310000000000008"/>
-	<property name="ireport.x" value="0"/>
+	<property name="ireport.x" value="241"/>
 	<property name="ireport.y" value="0"/>
 	<style name="Crosstab Data Text" hAlign="Center"/>
 	<parameter name="PRODUCTO_ID" class="java.lang.String">
@@ -26,27 +26,27 @@
 	<field name="glosa" class="java.lang.String"/>
 	<variable name="canEnTotal" class="java.math.BigDecimal" calculation="Sum">
 		<variableExpression><![CDATA[$F{cantidad_entrada}]]></variableExpression>
-		<initialValueExpression><![CDATA[]]></initialValueExpression>
+		<initialValueExpression><![CDATA[new java.math.BigDecimal(10.0)]]></initialValueExpression>
 	</variable>
 	<variable name="cosEnTotal" class="java.math.BigDecimal" calculation="Sum">
 		<variableExpression><![CDATA[$F{precio_total_entrada}]]></variableExpression>
-		<initialValueExpression><![CDATA[]]></initialValueExpression>
+		<initialValueExpression><![CDATA[new java.math.BigDecimal(10.0)]]></initialValueExpression>
 	</variable>
 	<variable name="canSalida" class="java.math.BigDecimal" calculation="Sum">
 		<variableExpression><![CDATA[$F{cantidad_salida}]]></variableExpression>
-		<initialValueExpression><![CDATA[]]></initialValueExpression>
+		<initialValueExpression><![CDATA[new java.math.BigDecimal(10.0)]]></initialValueExpression>
 	</variable>
 	<variable name="preTotalSalida" class="java.math.BigDecimal" calculation="Sum">
 		<variableExpression><![CDATA[$F{precio_total_salida}]]></variableExpression>
-		<initialValueExpression><![CDATA[]]></initialValueExpression>
+		<initialValueExpression><![CDATA[new java.math.BigDecimal(10.0)]]></initialValueExpression>
 	</variable>
 	<variable name="canSaldoTot" class="java.math.BigDecimal" calculation="Sum">
 		<variableExpression><![CDATA[$F{cantidad_saldo}]]></variableExpression>
-		<initialValueExpression><![CDATA[]]></initialValueExpression>
+		<initialValueExpression><![CDATA[new java.math.BigDecimal(10.0)]]></initialValueExpression>
 	</variable>
 	<variable name="costoSaldoTot" class="java.math.BigDecimal" calculation="Sum">
 		<variableExpression><![CDATA[$F{precio_total_saldo}]]></variableExpression>
-		<initialValueExpression><![CDATA[]]></initialValueExpression>
+		<initialValueExpression><![CDATA[new java.math.BigDecimal(10.0)]]></initialValueExpression>
 	</variable>
 	<background>
 		<band splitType="Stretch"/>
@@ -257,17 +257,17 @@
 			<textField>
 				<reportElement x="354" y="3" width="43" height="20" uuid="6f9552ca-ed25-444c-9945-d5c56cb625cd"/>
 				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA[new Double($V{canEnTotal}.doubleValue()==0 ? 0:($V{cosEnTotal}.doubleValue()/$V{canEnTotal}.doubleValue()))]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$V{canEnTotal}.doubleValue()==0?0:new Double($V{cosEnTotal}.doubleValue()/$V{canEnTotal}.doubleValue())]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="514" y="4" width="43" height="20" uuid="dff89c3a-7d7f-4004-93e7-d99f8eddbb9f"/>
 				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA[$V{preTotalSalida}.divide($V{canSalida})]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$V{canSalida}.doubleValue()==0?0:new Double($V{preTotalSalida}.doubleValue()/$V{canSalida}.doubleValue() )]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="684" y="4" width="43" height="20" uuid="7dd429bf-a86b-4a72-b6e8-061cfbc03bcd"/>
 				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA[new Double($V{canSaldoTot}.doubleValue()==0?0:($V{costoSaldoTot}.doubleValue()/$V{canSaldoTot}.doubleValue()))]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$V{canSaldoTot}.doubleValue()==0?0:new Double($V{costoSaldoTot}.doubleValue()/$V{canSaldoTot}.doubleValue())]]></textFieldExpression>
 			</textField>
 		</band>
 	</summary>
