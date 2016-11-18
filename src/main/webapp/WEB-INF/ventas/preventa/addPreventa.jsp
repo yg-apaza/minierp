@@ -545,6 +545,9 @@
                     },
                     preVenPorDes: {
                         required: true
+                    },
+                    preVenCabObs: {
+                        maxlength: 90
                     }
                 },
                 messages: {
@@ -559,6 +562,9 @@
                     },
                     preVenPorDes: {
                         required: "Considere descuento 0"
+                    },
+                    preVenCabObs: {
+                        maxlength: "Sólo se admiten 90 caracteres"
                     }
                 },
                 submitHandler: function (form) {

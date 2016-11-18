@@ -583,6 +583,9 @@
                     },
                     facVenPorDes: {
                         required: true
+                    },
+                    facVenCabObs: {
+                        maxlength: 90
                     }
                 },
                 messages: {
@@ -600,6 +603,9 @@
                     },
                     facVenPorDes: {
                         required: "Considere descuento 0"
+                    },
+                    facVenCabObs: {
+                        maxlength: "Sólo se admiten 90 caracteres."
                     }
                 },
                 submitHandler: function (form) {
