@@ -94,6 +94,7 @@ public class EnP1mFacturaVentaBusiness {
         cabNewFac.setTaGzzTipoPagoFactura(cabFacVen.getTaGzzTipoPagoFactura());
         cabNewFac.setTaGzzMoneda(cabFacVen.getTaGzzMoneda());
         cabNewFac.setTaGzzTipoDescuento(cabFacVen.getTaGzzTipoDescuento());
+        cabNewFac.setFacVenCabModVen(cabFacVen.getFacVenCabModVen());
         cabNewFac.setEstRegCod('A');
 
         facVenCabDao.save(cabNewFac);
