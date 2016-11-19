@@ -166,9 +166,9 @@
                                     '<c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">'+
                                         '<td class="text-left">'+
                                         '<a href="#" data-toggle="modal" data-target="#modificarModal" data-regcod="${banco.banCod}" data-regdet="${banco.banDet}">'+
-                                        '<i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i> </a>'+
+                                        '<i class="fa fa-pencil-square-o fa-lg" style="color: black;"></i> </a>'+
                                         '<a href="#" data-toggle="modal" data-target="#eliminarModal" data-regcod="${banco.banCod}" data-regdet="${banco.banDet}">'+
-                                        '<i class="fa fa-trash-o fa-2x" style="color: black;"></i> </a></td>'+
+                                        '<i class="fa fa-trash-o fa-lg" style="color: black;"></i> </a></td>'+
                                     '</c:if>'+'</tr> '+
                                 '</c:forEach>';
                             html+='<c:forEach items="${ibanco}" var="ibanco">'+
@@ -176,9 +176,9 @@
                                     '<c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">'+
                                         '<td class="text-left">'+
                                         '<a href="#" data-toggle="modal" data-target="#modificarModal" data-regcod="${ibanco.banCod}" data-regdet="${ibanco.banDet}">'+
-                                        '<i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i> </a>'+
+                                        '<i class="fa fa-pencil-square-o fa-lg" style="color: black;"></i> </a>'+
                                         '<a href="#" data-toggle="modal" data-target="#eliminarModal" data-regcod="${ibanco.banCod}" data-regdet="${ibanco.banDet}">'+
-                                        '<i class="fa fa-trash-o fa-2x" style="color: black;"></i> </a></td>'+
+                                        '<i class="fa fa-trash-o fa-lg" style="color: black;"></i> </a></td>'+
                                     '</c:if>'+'</tr> '+
                                 '</c:forEach>';
                             $('#tableId').html(html);
@@ -189,9 +189,9 @@
                                     '<c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">'+
                                     '<td class="text-left">'+
                                     '<a href="#" data-toggle="modal" data-target="#modificarModal" data-regcod="${estadocivil.estCivCod}" data-regdet="${estadocivil.estCivDet}" >'+
-                                    '<i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i> </a>'+
+                                    '<i class="fa fa-pencil-square-o fa-lg" style="color: black;"></i> </a>'+
                                     '<a href="#" data-toggle="modal" data-target="#eliminarModal" data-regcod="${estadocivil.estCivCod}" data-regdet="${estadocivil.estCivDet}" >'+
-                                    '<i class="fa fa-trash-o fa-2x" style="color: black;"></i> </a></td>'+'</c:if>'+
+                                    '<i class="fa fa-trash-o fa-lg" style="color: black;"></i> </a></td>'+'</c:if>'+
                                     '</tr> '+
                                 '</c:forEach>';
                             html+='<c:forEach items="${iestadocivil}" var="iestadocivil">'+
@@ -199,9 +199,9 @@
                                     '<c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">'+
                                     '<td class="text-left">'+
                                     '<a href="#" data-toggle="modal" data-target="#modificarModal" data-regcod="${iestadocivil.estCivCod}" data-regdet="${iestadocivil.estCivDet}" >'+
-                                    '<i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i> </a>'+
+                                    '<i class="fa fa-pencil-square-o fa-lg" style="color: black;"></i> </a>'+
                                     '<a href="#" data-toggle="modal" data-target="#eliminarModal" data-regcod="${iestadocivil.estCivCod}" data-regdet="${iestadocivil.estCivDet}" >'+
-                                    '<i class="fa fa-trash-o fa-2x" style="color: black;"></i> </a></td>'+'</c:if>'+
+                                    '<i class="fa fa-trash-o fa-lg" style="color: black;"></i> </a></td>'+'</c:if>'+
                                     '</tr> '+
                                 '</c:forEach>';
                             $('#tableId').html(html);
@@ -212,9 +212,9 @@
                                     '<c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">'+
                                     '<td class="text-left">'+
                                     '<a href="#" data-toggle="modal" data-target="#modificarModal" data-regcod="${estadofactura.estFacCod}" data-regdet="${estadofactura.estFacDet}" >'+
-                                    '<i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i> </a>'+
+                                    '<i class="fa fa-pencil-square-o fa-lg" style="color: black;"></i> </a>'+
                                     '<a href="#" data-toggle="modal" data-target="#eliminarModal" data-regcod="${estadofactura.estFacCod}" data-regdet="${estadofactura.estFacDet}" >'+
-                                    '<i class="fa fa-trash-o fa-2x" style="color: black;"></i> </a></td>'+'</c:if>'+
+                                    '<i class="fa fa-trash-o fa-lg" style="color: black;"></i> </a></td>'+'</c:if>'+
                                     '</tr> '+
                                 '</c:forEach>';
                             html+='<c:forEach items="${iestadofactura}" var="iestadofactura">'+
@@ -222,9 +222,9 @@
                                     '<c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">'+
                                     '<td class="text-left">'+
                                     '<a href="#" data-toggle="modal" data-target="#modificarModal" data-regcod="${iestadofactura.estFacCod}" data-regdet="${iestadofactura.estFacDet}" >'+
-                                    '<i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i> </a>'+
+                                    '<i class="fa fa-pencil-square-o fa-lg" style="color: black;"></i> </a>'+
                                     '<a href="#" data-toggle="modal" data-target="#eliminarModal" data-regcod="${iestadofactura.estFacCod}" data-regdet="${iestadofactura.estFacDet}" >'+
-                                    '<i class="fa fa-trash-o fa-2x" style="color: black;"></i> </a></td>'+'</c:if>'+
+                                    '<i class="fa fa-trash-o fa-lg" style="color: black;"></i> </a></td>'+'</c:if>'+
                                     '</tr> '+
                                 '</c:forEach>';
                             $('#tableId').html(html);
@@ -235,9 +235,9 @@
                                     '<c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">'+
                                     '<td class="text-left">'+
                                     '<a href="#" data-toggle="modal" data-target="#modificarModal" data-regcod="${estadounitransporte.estUniTraCod}" data-regdet="${estadounitransporte.estUniTraDet}" >'+
-                                    '<i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i> </a>'+
+                                    '<i class="fa fa-pencil-square-o fa-lg" style="color: black;"></i> </a>'+
                                     '<a href="#" data-toggle="modal" data-target="#eliminarModal" data-regcod="${estadounitransporte.estUniTraCod}" data-regdet="${estadounitransporte.estUniTraDet}" >'+
-                                    '<i class="fa fa-trash-o fa-2x" style="color: black;"></i> </a></td>'+'</c:if>'+
+                                    '<i class="fa fa-trash-o fa-lg" style="color: black;"></i> </a></td>'+'</c:if>'+
                                     '</tr> '+
                                 '</c:forEach>';
                             html+='<c:forEach items="${iestadounitransporte}" var="iestadounitransporte">'+
@@ -245,9 +245,9 @@
                                     '<c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">'+
                                     '<td class="text-left">'+
                                     '<a href="#" data-toggle="modal" data-target="#modificarModal" data-regcod="${iestadounitransporte.estUniTraCod}" data-regdet="${iestadounitransporte.estUniTraDet}" >'+
-                                    '<i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i> </a>'+
+                                    '<i class="fa fa-pencil-square-o fa-lg" style="color: black;"></i> </a>'+
                                     '<a href="#" data-toggle="modal" data-target="#eliminarModal" data-regcod="${iestadounitransporte.estUniTraCod}" data-regdet="${iestadounitransporte.estUniTraDet}" >'+
-                                    '<i class="fa fa-trash-o fa-2x" style="color: black;"></i> </a></td>'+'</c:if>'+
+                                    '<i class="fa fa-trash-o fa-lg" style="color: black;"></i> </a></td>'+'</c:if>'+
                                     '</tr> '+
                                 '</c:forEach>';
                             $('#tableId').html(html);
@@ -258,9 +258,9 @@
                                     '<c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">'+
                                     '<td class="text-left">'+
                                     '<a href="#" data-toggle="modal" data-target="#modificarModal" data-regcod="${metodopagofactura.metPagCod}" data-regdet="${metodopagofactura.metPagDet}" >'+
-                                    '<i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i> </a>'+
+                                    '<i class="fa fa-pencil-square-o fa-lg" style="color: black;"></i> </a>'+
                                     '<a href="#" data-toggle="modal" data-target="#eliminarModal" data-regcod="${metodopagofactura.metPagCod}" data-regdet="${metodopagofactura.metPagDet}" >'+
-                                    '<i class="fa fa-trash-o fa-2x" style="color: black;"></i> </a></td>'+'</c:if>'+
+                                    '<i class="fa fa-trash-o fa-lg" style="color: black;"></i> </a></td>'+'</c:if>'+
                                     '</tr> '+
                                 '</c:forEach>';
                             html+='<c:forEach items="${imetodopagofactura}" var="imetodopagofactura">'+
@@ -268,9 +268,9 @@
                                     '<c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">'+
                                     '<td class="text-left">'+
                                     '<a href="#" data-toggle="modal" data-target="#modificarModal" data-regcod="${imetodopagofactura.metPagCod}" data-regdet="${imetodopagofactura.metPagDet}" >'+
-                                    '<i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i> </a>'+
+                                    '<i class="fa fa-pencil-square-o fa-lg" style="color: black;"></i> </a>'+
                                     '<a href="#" data-toggle="modal" data-target="#eliminarModal" data-regcod="${imetodopagofactura.metPagCod}" data-regdet="${imetodopagofactura.metPagDet}" >'+
-                                    '<i class="fa fa-trash-o fa-2x" style="color: black;"></i> </a></td>'+'</c:if>'+
+                                    '<i class="fa fa-trash-o fa-lg" style="color: black;"></i> </a></td>'+'</c:if>'+
                                     '</tr> '+
                                 '</c:forEach>';
                             $('#tableId').html(html);
@@ -281,9 +281,9 @@
                                     '<c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">'+
                                     '<td class="text-left">'+
                                     '<a href="#" data-toggle="modal" data-target="#modificarModal" data-regcod="${moneda.monCod}" data-regdet="${moneda.monDet}" >'+
-                                    '<i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i> </a>'+
+                                    '<i class="fa fa-pencil-square-o fa-lg" style="color: black;"></i> </a>'+
                                     '<a href="#" data-toggle="modal" data-target="#eliminarModal" data-regcod="${moneda.monCod}" data-regdet="${moneda.monDet}" >'+
-                                    '<i class="fa fa-trash-o fa-2x" style="color: black;"></i> </a></td>'+'</c:if>'+
+                                    '<i class="fa fa-trash-o fa-lg" style="color: black;"></i> </a></td>'+'</c:if>'+
                                     '</tr> '+
                                 '</c:forEach>';
                             html+='<c:forEach items="${imoneda}" var="imoneda">'+
@@ -291,9 +291,9 @@
                                     '<c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">'+
                                     '<td class="text-left">'+
                                     '<a href="#" data-toggle="modal" data-target="#modificarModal" data-regcod="${imoneda.monCod}" data-regdet="${imoneda.monDet}" >'+
-                                    '<i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i> </a>'+
+                                    '<i class="fa fa-pencil-square-o fa-lg" style="color: black;"></i> </a>'+
                                     '<a href="#" data-toggle="modal" data-target="#eliminarModal" data-regcod="${imoneda.monCod}" data-regdet="${imoneda.monDet}" >'+
-                                    '<i class="fa fa-trash-o fa-2x" style="color: black;"></i> </a></td>'+'</c:if>'+
+                                    '<i class="fa fa-trash-o fa-lg" style="color: black;"></i> </a></td>'+'</c:if>'+
                                     '</tr> '+
                                 '</c:forEach>';
                             $('#tableId').html(html);
@@ -304,9 +304,9 @@
                                     '<c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">'+
                                     '<td class="text-left">'+
                                     '<a href="#" data-toggle="modal" data-target="#modificarModal" data-regcod="${motivotraslado.motTraCod}" data-regdet="${motivotraslado.motTraDet}" >'+
-                                    '<i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i> </a>'+
+                                    '<i class="fa fa-pencil-square-o fa-lg" style="color: black;"></i> </a>'+
                                     '<a href="#" data-toggle="modal" data-target="#eliminarModal" data-regcod="${motivotraslado.motTraCod}" data-regdet="${motivotraslado.motTraDet}" >'+
-                                    '<i class="fa fa-trash-o fa-2x" style="color: black;"></i> </a></td>'+'</c:if>'+
+                                    '<i class="fa fa-trash-o fa-lg" style="color: black;"></i> </a></td>'+'</c:if>'+
                                     '</tr> '+
                                 '</c:forEach>';
                             html+='<c:forEach items="${imotivotraslado}" var="imotivotraslado">'+
@@ -314,9 +314,9 @@
                                     '<c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">'+
                                     '<td class="text-left">'+
                                     '<a href="#" data-toggle="modal" data-target="#modificarModal" data-regcod="${imotivotraslado.motTraCod}" data-regdet="${imotivotraslado.motTraDet}" >'+
-                                    '<i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i> </a>'+
+                                    '<i class="fa fa-pencil-square-o fa-lg" style="color: black;"></i> </a>'+
                                     '<a href="#" data-toggle="modal" data-target="#eliminarModal" data-regcod="${imotivotraslado.motTraCod}" data-regdet="${imotivotraslado.motTraDet}" >'+
-                                    '<i class="fa fa-trash-o fa-2x" style="color: black;"></i> </a></td>'+'</c:if>'+
+                                    '<i class="fa fa-trash-o fa-lg" style="color: black;"></i> </a></td>'+'</c:if>'+
                                     '</tr> '+
                                 '</c:forEach>';
                             $('#tableId').html(html);
@@ -327,9 +327,9 @@
                                     '<c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">'+
                                     '<td class="text-left">'+
                                     '<a href="#" data-toggle="modal" data-target="#modificarModal" data-regcod="${tipocliente.tipCliCod}" data-regdet="${tipocliente.tipCliDet}" >'+
-                                    '<i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i> </a>'+
+                                    '<i class="fa fa-pencil-square-o fa-lg" style="color: black;"></i> </a>'+
                                     '<a href="#" data-toggle="modal" data-target="#eliminarModal" data-regcod="${tipocliente.tipCliCod}" data-regdet="${tipocliente.tipCliDet}" >'+
-                                    '<i class="fa fa-trash-o fa-2x" style="color: black;"></i> </a></td>'+'</c:if>'+
+                                    '<i class="fa fa-trash-o fa-lg" style="color: black;"></i> </a></td>'+'</c:if>'+
                                     '</tr> '+
                                 '</c:forEach>';
                             html+='<c:forEach items="${itipocliente}" var="itipocliente">'+
@@ -337,9 +337,9 @@
                                     '<c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">'+
                                     '<td class="text-left">'+
                                     '<a href="#" data-toggle="modal" data-target="#modificarModal" data-regcod="${itipocliente.tipCliCod}" data-regdet="${itipocliente.tipCliDet}" >'+
-                                    '<i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i> </a>'+
+                                    '<i class="fa fa-pencil-square-o fa-lg" style="color: black;"></i> </a>'+
                                     '<a href="#" data-toggle="modal" data-target="#eliminarModal" data-regcod="${itipocliente.tipCliCod}" data-regdet="${itipocliente.tipCliDet}" >'+
-                                    '<i class="fa fa-trash-o fa-2x" style="color: black;"></i> </a></td>'+'</c:if>'+
+                                    '<i class="fa fa-trash-o fa-lg" style="color: black;"></i> </a></td>'+'</c:if>'+
                                     '</tr> '+
                                 '</c:forEach>';
                             $('#tableId').html(html);
@@ -350,9 +350,9 @@
                                     '<c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">'+
                                     '<td class="text-left">'+
                                     '<a href="#" data-toggle="modal" data-target="#modificarModal" data-regcod="${tipocomprobante.tipComCod}" data-regdet="${tipocomprobante.tipComDet}" >'+
-                                    '<i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i> </a>'+
+                                    '<i class="fa fa-pencil-square-o fa-lg" style="color: black;"></i> </a>'+
                                     '<a href="#" data-toggle="modal" data-target="#eliminarModal" data-regcod="${tipocomprobante.tipComCod}" data-regdet="${tipocomprobante.tipComDet}" >'+
-                                    '<i class="fa fa-trash-o fa-2x" style="color: black;"></i> </a></td>'+'</c:if>'+
+                                    '<i class="fa fa-trash-o fa-lg" style="color: black;"></i> </a></td>'+'</c:if>'+
                                     '</tr> '+
                                 '</c:forEach>';
                             html+='<c:forEach items="${itipocomprobante}" var="itipocomprobante">'+
@@ -360,9 +360,9 @@
                                     '<c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">'+
                                     '<td class="text-left">'+
                                     '<a href="#" data-toggle="modal" data-target="#modificarModal" data-regcod="${itipocomprobante.tipComCod}" data-regdet="${itipocomprobante.tipComDet}" >'+
-                                    '<i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i> </a>'+
+                                    '<i class="fa fa-pencil-square-o fa-lg" style="color: black;"></i> </a>'+
                                     '<a href="#" data-toggle="modal" data-target="#eliminarModal" data-regcod="${itipocomprobante.tipComCod}" data-regdet="${itipocomprobante.tipComDet}" >'+
-                                    '<i class="fa fa-trash-o fa-2x" style="color: black;"></i> </a></td>'+'</c:if>'+
+                                    '<i class="fa fa-trash-o fa-lg" style="color: black;"></i> </a></td>'+'</c:if>'+
                                     '</tr> '+
                                 '</c:forEach>';
                             $('#tableId').html(html);
@@ -374,9 +374,9 @@
                                     '<c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">'+
                                     '<td class="text-left">'+
                                     '<a href="#" data-toggle="modal" data-target="#modificarModal" data-regcod="${tipodescuento.tipDesCod}" data-regdet="${tipodescuento.tipDesDet}" >'+
-                                    '<i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i> </a>'+
+                                    '<i class="fa fa-pencil-square-o fa-lg" style="color: black;"></i> </a>'+
                                     '<a href="#" data-toggle="modal" data-target="#eliminarModal" data-regcod="${tipodescuento.tipDesCod}" data-regdet="${tipodescuento.tipDesDet}" >'+
-                                    '<i class="fa fa-trash-o fa-2x" style="color: black;"></i> </a></td>'+'</c:if>'+
+                                    '<i class="fa fa-trash-o fa-lg" style="color: black;"></i> </a></td>'+'</c:if>'+
                                     '</tr> '+
                                 '</c:forEach>';
                             html+='<c:forEach items="${itipodescuento}" var="itipodescuento">'+
@@ -385,9 +385,9 @@
                                     '<c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">'+
                                     '<td class="text-left">'+
                                     '<a href="#" data-toggle="modal" data-target="#modificarModal" data-regcod="${tipodescuento.itipDesCod}" data-regdet="${itipodescuento.tipDesDet}" >'+
-                                    '<i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i> </a>'+
+                                    '<i class="fa fa-pencil-square-o fa-lg" style="color: black;"></i> </a>'+
                                     '<a href="#" data-toggle="modal" data-target="#eliminarModal" data-regcod="${tipodescuento.itipDesCod}" data-regdet="${itipodescuento.tipDesDet}" >'+
-                                    '<i class="fa fa-trash-o fa-2x" style="color: black;"></i> </a></td>'+'</c:if>'+
+                                    '<i class="fa fa-trash-o fa-lg" style="color: black;"></i> </a></td>'+'</c:if>'+
                                     '</tr> '+
                                 '</c:forEach>';
                             $('#tableId').html(html);
@@ -399,9 +399,9 @@
                                     '<c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">'+
                                     '<td class="text-left">'+
                                     '<a href="#" data-toggle="modal" data-target="#modificarModal" data-regcod="${tipodestinatario.tipDstCod}" data-regdet="${tipodestinatario.tipDstDet}" >'+
-                                    '<i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i> </a>'+
+                                    '<i class="fa fa-pencil-square-o fa-lg" style="color: black;"></i> </a>'+
                                     '<a href="#" data-toggle="modal" data-target="#eliminarModal" data-regcod="${tipodestinatario.tipDstCod}" data-regdet="${tipodestinatario.tipDstDet}" >'+
-                                    '<i class="fa fa-trash-o fa-2x" style="color: black;"></i> </a></td>'+'</c:if>'+
+                                    '<i class="fa fa-trash-o fa-lg" style="color: black;"></i> </a></td>'+'</c:if>'+
                                     '</tr> '+
                                 '</c:forEach>';
                             html+='<c:forEach items="${itipodestinatario}" var="itipodestinatario">'+
@@ -410,9 +410,9 @@
                                     '<c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">'+
                                     '<td class="text-left">'+
                                     '<a href="#" data-toggle="modal" data-target="#modificarModal" data-regcod="${itipodestinatario.tipDstCod}" data-regdet="${itipodestinatario.tipDstDet}" >'+
-                                    '<i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i> </a>'+
+                                    '<i class="fa fa-pencil-square-o fa-lg" style="color: black;"></i> </a>'+
                                     '<a href="#" data-toggle="modal" data-target="#eliminarModal" data-regcod="${itipodestinatario.tipDstCod}" data-regdet="${itipodestinatario.tipDstDet}" >'+
-                                    '<i class="fa fa-trash-o fa-2x" style="color: black;"></i> </a></td>'+'</c:if>'+
+                                    '<i class="fa fa-trash-o fa-lg" style="color: black;"></i> </a></td>'+'</c:if>'+
                                     '</tr> '+
                                 '</c:forEach>';
                             $('#tableId').html(html);
@@ -424,9 +424,9 @@
                                     '<c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">'+
                                     '<td class="text-left">'+
                                     '<a href="#" data-toggle="modal" data-target="#modificarModal" data-regcod="${tipodevolucion.tipDevCod}" data-regdet="${tipodevolucion.tipDevDet}" >'+
-                                    '<i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i> </a>'+
+                                    '<i class="fa fa-pencil-square-o fa-lg" style="color: black;"></i> </a>'+
                                     '<a href="#" data-toggle="modal" data-target="#eliminarModal" data-regcod="${tipodevolucion.tipDevCod}" data-regdet="${tipodevolucion.tipDevDet}" >'+
-                                    '<i class="fa fa-trash-o fa-2x" style="color: black;"></i> </a></td>'+'</c:if>'+
+                                    '<i class="fa fa-trash-o fa-lg" style="color: black;"></i> </a></td>'+'</c:if>'+
                                     '</tr> '+
                                 '</c:forEach>';
                             html+='<c:forEach items="${itipodevolucion}" var="itipodevolucion">'+
@@ -435,9 +435,9 @@
                                     '<c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">'+
                                     '<td class="text-left">'+
                                     '<a href="#" data-toggle="modal" data-target="#modificarModal" data-regcod="${itipodevolucion.tipDevCod}" data-regdet="${itipodevolucion.tipDevDet}" >'+
-                                    '<i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i> </a>'+
+                                    '<i class="fa fa-pencil-square-o fa-lg" style="color: black;"></i> </a>'+
                                     '<a href="#" data-toggle="modal" data-target="#eliminarModal" data-regcod="${itipodevolucion.tipDevCod}" data-regdet="${itipodevolucion.tipDevDet}" >'+
-                                    '<i class="fa fa-trash-o fa-2x" style="color: black;"></i> </a></td>'+'</c:if>'+
+                                    '<i class="fa fa-trash-o fa-lg" style="color: black;"></i> </a></td>'+'</c:if>'+
                                     '</tr> '+
                                 '</c:forEach>';
                             $('#tableId').html(html);
@@ -449,9 +449,9 @@
                                     '<c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">'+
                                     '<td class="text-left">'+
                                     '<a href="#" data-toggle="modal" data-target="#modificarModal" data-regcod="${tipodoccliente.tipDocCliCod}" data-regdet="${tipodoccliente.tipDocCliDet}" >'+
-                                    '<i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i> </a>'+
+                                    '<i class="fa fa-pencil-square-o fa-lg" style="color: black;"></i> </a>'+
                                     '<a href="#" data-toggle="modal" data-target="#eliminarModal" data-regcod="${tipodoccliente.tipDocCliCod}" data-regdet="${tipodoccliente.tipDocCliDet}" >'+
-                                    '<i class="fa fa-trash-o fa-2x" style="color: black;"></i> </a></td>'+'</c:if>'+
+                                    '<i class="fa fa-trash-o fa-lg" style="color: black;"></i> </a></td>'+'</c:if>'+
                                     '</tr> '+
                                 '</c:forEach>';
                             html+='<c:forEach items="${itipodoccliente}" var="itipodoccliente">'+
@@ -460,9 +460,9 @@
                                     '<c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">'+
                                     '<td class="text-left">'+
                                     '<a href="#" data-toggle="modal" data-target="#modificarModal" data-regcod="${itipodoccliente.tipDocCliCod}" data-regdet="${itipodoccliente.tipDocCliDet}" >'+
-                                    '<i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i> </a>'+
+                                    '<i class="fa fa-pencil-square-o fa-lg" style="color: black;"></i> </a>'+
                                     '<a href="#" data-toggle="modal" data-target="#eliminarModal" data-regcod="${itipodoccliente.tipDocCliCod}" data-regdet="${itipodoccliente.tipDocCliDet}" >'+
-                                    '<i class="fa fa-trash-o fa-2x" style="color: black;"></i> </a></td>'+'</c:if>'+
+                                    '<i class="fa fa-trash-o fa-lg" style="color: black;"></i> </a></td>'+'</c:if>'+
                                     '</tr> '+
                                 '</c:forEach>';
                             $('#tableId').html(html);
@@ -474,9 +474,9 @@
                                     '<c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">'+
                                     '<td class="text-left">'+
                                     '<a href="#" data-toggle="modal" data-target="#modificarModal" data-regcod="${tipodocproveedor.tipDocProCod}" data-regdet="${tipodocproveedor.tipDocProDet}" >'+
-                                    '<i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i> </a>'+
+                                    '<i class="fa fa-pencil-square-o fa-lg" style="color: black;"></i> </a>'+
                                     '<a href="#" data-toggle="modal" data-target="#eliminarModal" data-regcod="${tipodocproveedor.tipDocProCod}" data-regdet="${tipodocproveedor.tipDocProDet}" >'+
-                                    '<i class="fa fa-trash-o fa-2x" style="color: black;"></i> </a></td>'+'</c:if>'+
+                                    '<i class="fa fa-trash-o fa-lg" style="color: black;"></i> </a></td>'+'</c:if>'+
                                     '</tr> '+
                                 '</c:forEach>';
                             html+='<c:forEach items="${itipodocproveedor}" var="itipodocproveedor">'+
@@ -485,9 +485,9 @@
                                     '<c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">'+
                                     '<td class="text-left">'+
                                     '<a href="#" data-toggle="modal" data-target="#modificarModal" data-regcod="${itipodocproveedor.tipDocProCod}" data-regdet="${itipodocproveedor.tipDocProDet}" >'+
-                                    '<i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i> </a>'+
+                                    '<i class="fa fa-pencil-square-o fa-lg" style="color: black;"></i> </a>'+
                                     '<a href="#" data-toggle="modal" data-target="#eliminarModal" data-regcod="${itipodocproveedor.tipDocProCod}" data-regdet="${itipodocproveedor.tipDocProDet}" >'+
-                                    '<i class="fa fa-trash-o fa-2x" style="color: black;"></i> </a></td>'+'</c:if>'+
+                                    '<i class="fa fa-trash-o fa-lg" style="color: black;"></i> </a></td>'+'</c:if>'+
                                     '</tr> '+
                                 '</c:forEach>';
                             $('#tableId').html(html);
@@ -499,9 +499,9 @@
                                     '<c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">'+
                                     '<td class="text-left">'+
                                     '<a href="#" data-toggle="modal" data-target="#modificarModal" data-regcod="${tipodoctransportista.tipDocTraCod}" data-regdet="${tipodoctransportista.tipDocTraDet}" >'+
-                                    '<i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i> </a>'+
+                                    '<i class="fa fa-pencil-square-o fa-lg" style="color: black;"></i> </a>'+
                                     '<a href="#" data-toggle="modal" data-target="#eliminarModal" data-regcod="${tipodoctransportista.tipDocTraCod}" data-regdet="${tipodoctransportista.tipDocTraDet}" >'+
-                                    '<i class="fa fa-trash-o fa-2x" style="color: black;"></i> </a></td>'+'</c:if>'+
+                                    '<i class="fa fa-trash-o fa-lg" style="color: black;"></i> </a></td>'+'</c:if>'+
                                     '</tr> '+
                                 '</c:forEach>';
                             html+='<c:forEach items="${itipodoctransportista}" var="itipodoctransportista">'+
@@ -510,9 +510,9 @@
                                     '<c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">'+
                                     '<td class="text-left">'+
                                     '<a href="#" data-toggle="modal" data-target="#modificarModal" data-regcod="${itipodoctransportista.tipDocTraCod}" data-regdet="${itipodoctransportista.tipDocTraDet}" >'+
-                                    '<i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i> </a>'+
+                                    '<i class="fa fa-pencil-square-o fa-lg" style="color: black;"></i> </a>'+
                                     '<a href="#" data-toggle="modal" data-target="#eliminarModal" data-regcod="${itipodoctransportista.tipDocTraCod}" data-regdet="${itipodoctransportista.tipDocTraDet}" >'+
-                                    '<i class="fa fa-trash-o fa-2x" style="color: black;"></i> </a></td>'+'</c:if>'+
+                                    '<i class="fa fa-trash-o fa-lg" style="color: black;"></i> </a></td>'+'</c:if>'+
                                     '</tr> '+
                                 '</c:forEach>';
                             $('#tableId').html(html);
@@ -524,9 +524,9 @@
                                     '<c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">'+
                                     '<td class="text-left">'+
                                     '<a href="#" data-toggle="modal" data-target="#modificarModal" data-regcod="${tipodocusuario.tipDocUsuCod}" data-regdet="${tipodocusuario.tipDocUsuDet}" >'+
-                                    '<i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i> </a>'+
+                                    '<i class="fa fa-pencil-square-o fa-lg" style="color: black;"></i> </a>'+
                                     '<a href="#" data-toggle="modal" data-target="#eliminarModal" data-regcod="${tipodocusuario.tipDocUsuCod}" data-regdet="${tipodocusuario.tipDocUsuDet}" >'+
-                                    '<i class="fa fa-trash-o fa-2x" style="color: black;"></i> </a></td>'+'</c:if>'+
+                                    '<i class="fa fa-trash-o fa-lg" style="color: black;"></i> </a></td>'+'</c:if>'+
                                     '</tr> '+
                                 '</c:forEach>';
                             html+='<c:forEach items="${itipodocusuario}" var="itipodocusuario">'+
@@ -535,9 +535,9 @@
                                     '<c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">'+
                                     '<td class="text-left">'+
                                     '<a href="#" data-toggle="modal" data-target="#modificarModal" data-regcod="${itipodocusuario.tipDocUsuCod}" data-regdet="${itipodocusuario.tipDocUsuDet}" >'+
-                                    '<i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i> </a>'+
+                                    '<i class="fa fa-pencil-square-o fa-lg" style="color: black;"></i> </a>'+
                                     '<a href="#" data-toggle="modal" data-target="#eliminarModal" data-regcod="${itipodocusuario.tipDocUsuCod}" data-regdet="${itipodocusuario.tipDocUsuDet}" >'+
-                                    '<i class="fa fa-trash-o fa-2x" style="color: black;"></i> </a></td>'+'</c:if>'+
+                                    '<i class="fa fa-trash-o fa-lg" style="color: black;"></i> </a></td>'+'</c:if>'+
                                     '</tr> '+
                                 '</c:forEach>';
                             $('#tableId').html(html);
@@ -549,9 +549,9 @@
                                     '<c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">'+
                                     '<td class="text-left">'+
                                     '<a href="#" data-toggle="modal" data-target="#modificarModal" data-regcod="${tipopagofactura.tipPagCod}" data-regdet="${tipopagofactura.tipPagDet}" >'+
-                                    '<i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i> </a>'+
+                                    '<i class="fa fa-pencil-square-o fa-lg" style="color: black;"></i> </a>'+
                                     '<a href="#" data-toggle="modal" data-target="#eliminarModal" data-regcod="${tipopagofactura.tipPagCod}" data-regdet="${tipopagofactura.tipPagDet}" >'+
-                                    '<i class="fa fa-trash-o fa-2x" style="color: black;"></i> </a></td>'+'</c:if>'+
+                                    '<i class="fa fa-trash-o fa-lg" style="color: black;"></i> </a></td>'+'</c:if>'+
                                     '</tr> '+
                                 '</c:forEach>';
                             html+='<c:forEach items="${itipopagofactura}" var="itipopagofactura">'+
@@ -560,9 +560,9 @@
                                     '<c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">'+
                                     '<td class="text-left">'+
                                     '<a href="#" data-toggle="modal" data-target="#modificarModal" data-regcod="${itipopagofactura.tipPagCod}" data-regdet="${itipopagofactura.tipPagDet}" >'+
-                                    '<i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i> </a>'+
+                                    '<i class="fa fa-pencil-square-o fa-lg" style="color: black;"></i> </a>'+
                                     '<a href="#" data-toggle="modal" data-target="#eliminarModal" data-regcod="${itipopagofactura.tipPagCod}" data-regdet="${itipopagofactura.tipPagDet}" >'+
-                                    '<i class="fa fa-trash-o fa-2x" style="color: black;"></i> </a></td>'+'</c:if>'+
+                                    '<i class="fa fa-trash-o fa-lg" style="color: black;"></i> </a></td>'+'</c:if>'+
                                     '</tr> '+
                                 '</c:forEach>';
                             $('#tableId').html(html);
@@ -574,9 +574,9 @@
                                     '<c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">'+
                                     '<td class="text-left">'+
                                     '<a href="#" data-toggle="modal" data-target="#modificarModal" data-regcod="${tipounitransporte.tipUniTraCod}" data-regdet="${tipounitransporte.tipUniTraDet}" >'+
-                                    '<i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i> </a>'+
+                                    '<i class="fa fa-pencil-square-o fa-lg" style="color: black;"></i> </a>'+
                                     '<a href="#" data-toggle="modal" data-target="#eliminarModal" data-regcod="${tipounitransporte.tipUniTraCod}" data-regdet="${tipounitransporte.tipUniTraDet}" >'+
-                                    '<i class="fa fa-trash-o fa-2x" style="color: black;"></i> </a></td>'+'</c:if>'+
+                                    '<i class="fa fa-trash-o fa-lg" style="color: black;"></i> </a></td>'+'</c:if>'+
                                     '</tr> '+
                                 '</c:forEach>';
                             html+='<c:forEach items="${itipounitransporte}" var="itipounitransporte">'+
@@ -585,9 +585,9 @@
                                     '<c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">'+
                                     '<td class="text-left">'+
                                     '<a href="#" data-toggle="modal" data-target="#modificarModal" data-regcod="${itipounitransporte.tipUniTraCod}" data-regdet="${itipounitransporte.tipUniTraDet}" >'+
-                                    '<i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i> </a>'+
+                                    '<i class="fa fa-pencil-square-o fa-lg" style="color: black;"></i> </a>'+
                                     '<a href="#" data-toggle="modal" data-target="#eliminarModal" data-regcod="${itipounitransporte.tipUniTraCod}" data-regdet="${itipounitransporte.tipUniTraDet}" >'+
-                                    '<i class="fa fa-trash-o fa-2x" style="color: black;"></i> </a></td>'+'</c:if>'+
+                                    '<i class="fa fa-trash-o fa-lg" style="color: black;"></i> </a></td>'+'</c:if>'+
                                     '</tr> '+
                                 '</c:forEach>';
                             $('#tableId').html(html);
@@ -599,9 +599,9 @@
                                     '<c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">'+
                                     '<td class="text-left">'+
                                     '<a href="#" data-toggle="modal" data-target="#modificarModal" data-regcod="${tipousuario.tipUsuCod}" data-regdet="${tipousuario.tipUsuDet}" >'+
-                                    '<i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i> </a>'+
+                                    '<i class="fa fa-pencil-square-o fa-lg" style="color: black;"></i> </a>'+
                                     '<a href="#" data-toggle="modal" data-target="#eliminarModal" data-regcod="${tipousuario.tipUsuCod}" data-regdet="${tipousuario.tipUsuDet}" >'+
-                                    '<i class="fa fa-trash-o fa-2x" style="color: black;"></i> </a></td>'+'</c:if>'+
+                                    '<i class="fa fa-trash-o fa-lg" style="color: black;"></i> </a></td>'+'</c:if>'+
                                     '</tr> '+
                                 '</c:forEach>';
                             html+='<c:forEach items="${itipousuario}" var="itipousuario">'+
@@ -610,9 +610,9 @@
                                     '<c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">'+
                                     '<td class="text-left">'+
                                     '<a href="#" data-toggle="modal" data-target="#modificarModal" data-regcod="${itipousuario.tipUsuCod}" data-regdet="${itipousuario.tipUsuDet}" >'+
-                                    '<i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i> </a>'+
+                                    '<i class="fa fa-pencil-square-o fa-lg" style="color: black;"></i> </a>'+
                                     '<a href="#" data-toggle="modal" data-target="#eliminarModal" data-regcod="${itipousuario.tipUsuCod}" data-regdet="${itipousuario.tipUsuDet}" >'+
-                                    '<i class="fa fa-trash-o fa-2x" style="color: black;"></i> </a></td>'+'</c:if>'+
+                                    '<i class="fa fa-trash-o fa-lg" style="color: black;"></i> </a></td>'+'</c:if>'+
                                     '</tr> '+
                                 '</c:forEach>';
                             $('#tableId').html(html);
@@ -624,9 +624,9 @@
                                     '<c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">'+
                                     '<td class="text-left">'+
                                     '<a href="#" data-toggle="modal" data-target="#modificarModal" data-regcod="${unidadmed.uniMedCod}" data-regdet="${unidadmed.uniMedDet}" >'+
-                                    '<i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i> </a>'+
+                                    '<i class="fa fa-pencil-square-o fa-lg" style="color: black;"></i> </a>'+
                                     '<a href="#" data-toggle="modal" data-target="#eliminarModal" data-regcod="${unidadmed.uniMedCod}" data-regdet="${unidadmed.uniMedDet}" >'+
-                                    '<i class="fa fa-trash-o fa-2x" style="color: black;"></i> </a></td>'+'</c:if>'+
+                                    '<i class="fa fa-trash-o fa-lg" style="color: black;"></i> </a></td>'+'</c:if>'+
                                     '</tr> '+
                                 '</c:forEach>';
                             html+='<c:forEach items="${iunidadmed}" var="iunidadmed">'+
@@ -635,9 +635,9 @@
                                     '<c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">'+
                                     '<td class="text-left">'+
                                     '<a href="#" data-toggle="modal" data-target="#modificarModal" data-regcod="${iunidadmed.uniMedCod}" data-regdet="${iunidadmed.uniMedDet}" >'+
-                                    '<i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i> </a>'+
+                                    '<i class="fa fa-pencil-square-o fa-lg" style="color: black;"></i> </a>'+
                                     '<a href="#" data-toggle="modal" data-target="#eliminarModal" data-regcod="${iunidadmed.uniMedCod}" data-regdet="${iunidadmed.uniMedDet}" >'+
-                                    '<i class="fa fa-trash-o fa-2x" style="color: black;"></i> </a></td>'+'</c:if>'+
+                                    '<i class="fa fa-trash-o fa-lg" style="color: black;"></i> </a></td>'+'</c:if>'+
                                     '</tr> '+
                                 '</c:forEach>';
                             $('#tableId').html(html);
@@ -649,9 +649,9 @@
                                     '<c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">'+
                                     '<td class="text-left">'+
                                     '<a href="#" data-toggle="modal" data-target="#modificarModal" data-regcod="${canalcliente.canCliCod}" data-regdet="${canalcliente.canCliDet}" >'+
-                                    '<i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i> </a>'+
+                                    '<i class="fa fa-pencil-square-o fa-lg" style="color: black;"></i> </a>'+
                                     '<a href="#" data-toggle="modal" data-target="#eliminarModal" data-regcod="${canalcliente.canCliCod}" data-regdet="${canalcliente.canCliDet}" >'+
-                                    '<i class="fa fa-trash-o fa-2x" style="color: black;"></i> </a></td>'+'</c:if>'+
+                                    '<i class="fa fa-trash-o fa-lg" style="color: black;"></i> </a></td>'+'</c:if>'+
                                     '</tr> '+
                                 '</c:forEach>';
                             html+='<c:forEach items="${icanalcliente}" var="icanalcliente">'+
@@ -660,9 +660,9 @@
                                     '<c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">'+
                                     '<td class="text-left">'+
                                     '<a href="#" data-toggle="modal" data-target="#modificarModal" data-regcod="${icanalcliente.canCliCod}" data-regdet="${icanalcliente.canCliDet}" >'+
-                                    '<i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i> </a>'+
+                                    '<i class="fa fa-pencil-square-o fa-lg" style="color: black;"></i> </a>'+
                                     '<a href="#" data-toggle="modal" data-target="#eliminarModal" data-regcod="${icanalcliente.canCliCod}" data-regdet="${icanalcliente.canCliDet}" >'+
-                                    '<i class="fa fa-trash-o fa-2x" style="color: black;"></i> </a></td>'+'</c:if>'+
+                                    '<i class="fa fa-trash-o fa-lg" style="color: black;"></i> </a></td>'+'</c:if>'+
                                     '</tr> '+
                                 '</c:forEach>';
                             $('#tableId').html(html);
@@ -674,9 +674,9 @@
                                     '<c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">'+
                                     '<td class="text-left">'+
                                     '<a href="#" data-toggle="modal" data-target="#modificarModal" data-regcod="${tipofallaprod.tipFallProCod}" data-regdet="${tipofallaprod.tipFallProDet}" >'+
-                                    '<i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i> </a>'+
+                                    '<i class="fa fa-pencil-square-o fa-lg" style="color: black;"></i> </a>'+
                                     '<a href="#" data-toggle="modal" data-target="#eliminarModal" data-regcod="${tipofallaprod.tipFallProCod}" data-regdet="${tipofallaprod.tipFallProDet}" >'+
-                                    '<i class="fa fa-trash-o fa-2x" style="color: black;"></i> </a></td>'+'</c:if>'+
+                                    '<i class="fa fa-trash-o fa-lg" style="color: black;"></i> </a></td>'+'</c:if>'+
                                     '</tr> '+
                                 '</c:forEach>';
                             html+='<c:forEach items="${itipofallaprod}" var="itipofallaprod">'+
@@ -685,9 +685,9 @@
                                     '<c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">'+
                                     '<td class="text-left">'+
                                     '<a href="#" data-toggle="modal" data-target="#modificarModal" data-regcod="${itipofallaprod.tipFallProCod}" data-regdet="${itipofallaprod.tipFallProDet}" >'+
-                                    '<i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i> </a>'+
+                                    '<i class="fa fa-pencil-square-o fa-lg" style="color: black;"></i> </a>'+
                                     '<a href="#" data-toggle="modal" data-target="#eliminarModal" data-regcod="${itipofallaprod.tipFallProCod}" data-regdet="${itipofallaprod.tipFallProDet}" >'+
-                                    '<i class="fa fa-trash-o fa-2x" style="color: black;"></i> </a></td>'+'</c:if>'+
+                                    '<i class="fa fa-trash-o fa-lg" style="color: black;"></i> </a></td>'+'</c:if>'+
                                     '</tr> '+
                                 '</c:forEach>';
                             $('#tableId').html(html);

@@ -39,11 +39,13 @@
                                         <td class="text-center" width="50px">${c.estRegCod}</td>
                                         <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                                         <td class="text-center" width="50px">
-                                            <a href="#" data-toggle="modal" data-target="#modifyClass" data-cCod="${c.claProCod}" data-cDes="${c.claProDet}" data-cEst="${c.estRegCod}">
-                                                <i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i>
+                                            <a href="#" data-toggle="modal" data-target="#modifyClass" title="Modificar Clase"
+                                               data-cCod="${c.claProCod}" data-cDes="${c.claProDet}" data-cEst="${c.estRegCod}">
+                                                <i class="fa fa-pencil-square-o fa-lg" style="color: black;"></i>
                                             </a>
-                                            <a href="#" data-toggle="modal" data-target="#deleteClass" data-cCod="${c.claProCod}" data-cDes="${c.claProDet}" data-cEst="${c.estRegCod}">
-                                                <i class="fa fa-trash-o fa-2x" style="color: black;"></i>
+                                            <a href="#" data-toggle="modal" data-target="#deleteClass" title="Eliminar Clase"
+                                               data-cCod="${c.claProCod}" data-cDes="${c.claProDet}" data-cEst="${c.estRegCod}">
+                                                <i class="fa fa-trash-o fa-lg" style="color: black;"></i>
                                             </a>
                                         </td>
                                         </cc:if>
@@ -161,11 +163,13 @@
                                         <td class="text-center" width="50px">${s.estRegCod}</td>
                                         <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                                         <td class="text-center" width="50px">
-                                            <a href="#" data-toggle="modal" data-target="#modifySubclass" data-sCod="${s.id.subClaProCod}" data-sCla="${s.id.claProCod}" data-sDes="${s.subClaProDet}" data-sEst="${s.estRegCod}">
-                                                <i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i>
+                                            <a href="#" data-toggle="modal" data-target="#modifySubclass" title="Modificar Sub-Clase" 
+                                               data-sCod="${s.id.subClaProCod}" data-sCla="${s.id.claProCod}" data-sDes="${s.subClaProDet}" data-sEst="${s.estRegCod}">
+                                                <i class="fa fa-pencil-square-o fa-lg" style="color: black;"></i>
                                             </a>
-                                            <a href="#" data-toggle="modal" data-target="#deleteSubclass" data-sCod="${s.id.subClaProCod}" data-sCla="${s.id.claProCod}" data-sDes="${s.subClaProDet}" data-sEst="${s.estRegCod}">
-                                                <i class="fa fa-trash-o fa-2x" style="color: black;"></i>
+                                            <a href="#" data-toggle="modal" data-target="#deleteSubclass" title="Eliminar Sub-Clase"
+                                               data-sCod="${s.id.subClaProCod}" data-sCla="${s.id.claProCod}" data-sDes="${s.subClaProDet}" data-sEst="${s.estRegCod}">
+                                                <i class="fa fa-trash-o fa-lg" style="color: black;"></i>
                                             </a>
                                         </td>
                                         </cc:if>

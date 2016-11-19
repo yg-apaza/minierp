@@ -67,6 +67,7 @@
                                 <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                                 <td>
                                     <a href="#" data-toggle="modal" data-target="#updateModal" 
+                                       title="Modificar Producto" 
                                        data-claprocod="${p.id.claProCod}"
                                        data-claprodet="${p.enP2mSubclaseProducto.enP2mClaseProducto.claProDet}"
                                        data-subclaprocod="${p.id.subClaProCod}"
@@ -84,14 +85,15 @@
                                        data-propreunifle="${p.proPreUniFle}"
                                        data-propreunimar="${p.proPreUniMar}"
                                        data-proobs="${p.proObs}">
-                                        <i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i>
+                                        <i class="fa fa-pencil-square-o fa-lg" style="color: black;"></i>
                                     </a>
                                     <a href="#" data-toggle="modal" data-target="#disableModal" 
+                                       title="Inhabilitar Producto"
                                        data-claprocod="${p.id.claProCod}"
                                        data-subclaprocod="${p.id.subClaProCod}"
                                        data-procod="${p.id.proCod}"
                                        data-prodet="${p.proDet}">
-                                        <i class="fa fa-trash-o fa-2x" style="color: black;"></i>
+                                        <i class="fa fa-trash-o fa-lg" style="color: black;"></i>
                                     </a>
                                 </td>
                                 </cc:if>
@@ -452,18 +454,20 @@
                                                     <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                                                     <td>
                                                         <a href="#" data-toggle="modal" data-target="#activateModal" 
+                                                           title="Re-Activar Producto"
                                                            data-claprocod="${p.id.claProCod}"
                                                            data-subclaprocod="${p.id.subClaProCod}"
                                                            data-procod="${p.id.proCod}"
                                                            data-prodet="${p.proDet}">
-                                                            <i class="fa fa-check fa-2x" style="color: green;"></i>
+                                                            <i class="fa fa-check fa-lg" style="color: green;"></i>
                                                         </a>
                                                         <a href="#" data-toggle="modal" data-target="#deleteModal" 
+                                                           title="Eliminar Producto" 
                                                            data-claprocod="${p.id.claProCod}"
                                                            data-subclaprocod="${p.id.subClaProCod}"
                                                            data-procod="${p.id.proCod}"
                                                            data-prodet="${p.proDet}">
-                                                            <i class="fa fa-trash-o fa-2x" style="color: red;"></i>
+                                                            <i class="fa fa-trash-o fa-lg" style="color: red;"></i>
                                                         </a>
                                                     </td>
                                                     </cc:if>

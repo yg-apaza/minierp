@@ -66,20 +66,24 @@
                                     <td style="text-align: center"><c:out value="${proveedor.prvEmail}"/></td>
                                     <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                                     <td>
-                                        <a href="#" data-toggle="modal" data-target="#editSupplier" data-cod="${proveedor.prvCod}"
-                                                                                                      data-det="${proveedor.prvDet}"
-                                                                                                      data-con="${proveedor.prvCon}"
-                                                                                                      data-dir="${proveedor.prvDir}"
-                                                                                                      data-telfij="${proveedor.prvTelFij}"
-                                                                                                      data-telcel="${proveedor.prvTelCel}"
-                                                                                                      data-email="${proveedor.prvEmail}"
-                                                                                                      data-pagweb="${proveedor.prvPagWeb}"
-                                                                                                      data-obs="${proveedor.prvObs}">
-                                            <i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i>
+                                        <a href="#" data-toggle="modal" data-target="#editSupplier" 
+                                           title="Modificar Proveedor"
+                                           data-cod="${proveedor.prvCod}"
+                                           data-det="${proveedor.prvDet}"
+                                           data-con="${proveedor.prvCon}"
+                                           data-dir="${proveedor.prvDir}"
+                                           data-telfij="${proveedor.prvTelFij}"
+                                           data-telcel="${proveedor.prvTelCel}"
+                                           data-email="${proveedor.prvEmail}"
+                                           data-pagweb="${proveedor.prvPagWeb}"
+                                           data-obs="${proveedor.prvObs}">
+                                            <i class="fa fa-pencil-square-o fa-lg" style="color: black;"></i>
                                         </a> 
-                                        <a href="#" data-toggle="modal" data-target="#deleteSupplier" data-cod="${proveedor.prvCod}"
-                                                                                                      data-det="${proveedor.prvDet}">
-                                            <i class="fa fa-trash-o fa-2x" style="color: black;"></i>
+                                        <a href="#" data-toggle="modal" data-target="#deleteSupplier" 
+                                           title="Eliminar Proveedor"
+                                           data-cod="${proveedor.prvCod}"
+                                           data-det="${proveedor.prvDet}">
+                                            <i class="fa fa-trash-o fa-lg" style="color: black;"></i>
                                         </a> 
                                     </td>
                                     </cc:if>

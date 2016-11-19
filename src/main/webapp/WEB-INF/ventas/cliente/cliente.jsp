@@ -15,20 +15,20 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <div class="col-xs-6 col-md-4 text-center">
+                    <div class="col-xs-6 col-md-4">
                         <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregarModal"> Agregar Nuevo <i class="fa fa-plus"></i></button>                
                         <button type="button" class="btn btn-info" data-toggle="modal" data-target="#estadosModal"> Ver Inhabilitados <i class="fa fa-eye"></i></button>
                         </cc:if>
                     </div>
-                    <div class="col-xs-6 col-md-4 text-center">
+                    <div class="col-xs-6 col-md-5">
                         <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
-                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delRutaModal"> Gestionar Rutas Asociados <i class="fa fa-automobile"></i></button>
-                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delDocumentoModal"> Gestionar Documentos Asociados <i class="fa fa-file-text"></i></button>
+                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delRutaModal"> Gestionar Rutas <i class="fa fa-automobile"></i></button>
+                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delDocumentoModal"> Gestionar Documentos <i class="fa fa-file-text"></i></button>
                         </cc:if>
                     </div>
                     <div class="col-xs-12 col-md-3">
-                        <div class="form-group input-group" >
+                        <div class="form-group input-group"  >
                             <span class="input-group-addon">Reportes</span>
                             <a href="${pageContext.request.contextPath}/secured/general/reporte?type=pdf&&report=clientes&&jdbc=false&&key=null&&value=null" class="btn btn-danger">
                                 <i class="fa fa-file-pdf-o"></i>
@@ -50,14 +50,14 @@
                     <table class="table table-bordered table-striped table-hover" id="tablaClientes">
                         <thead>
                             <tr>
-                                <th>Codigo</th>
-                                <th>Documentos</th>
-                                <th>Razon Social</th>
-                                <th>Nombre Comercial</th>
-                                <th>Rutas Asociadas</th>
-                                <th>Tipo</th>
+                                <th style="text-align: center">C</th>
+                                <th style="text-align: center">Docs</th>
+                                <th style="text-align: center">Razon Social</th>
+                                <th style="text-align: center">Nombre Comercial</th>
+                                <th style="text-align: center">Rutas Asociadas</th>
+                                <th style="text-align: center">Tipo</th>
                                 <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
-                                <th>Acciones</th>
+                                <th style="text-align: center">Acciones</th>
                                 </cc:if>
                             </tr>
                         </thead>
@@ -74,13 +74,13 @@
                                     <td>${cli.cliNomCom}</td>
                                     <td>
                                         <c:forEach var="ruts" items="${cli.enP1mClientesRutases}">
-                                           ${ruts.id.catRutCod} - ${ruts.enP1mCatalogoRuta.catRutDet} <br>
+                                           ${ruts.enP1mCatalogoRuta.catRutDet} <br>
                                         </c:forEach>
                                     </td>
-                                    <td>${cli.taGzzTipoCliente.tipCliCod} - ${cli.taGzzTipoCliente.tipCliDet}</td>
+                                    <td>${cli.taGzzTipoCliente.tipCliDet}</td>
                                     <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                                     <td>
-                                        <a href="#" data-toggle="modal" data-target="#modificarModal"
+                                        <a href="#" data-toggle="modal" data-target="#modificarModal" title="Modificar Cliente" 
                                            data-clicod="${cli.cliCod}" 
                                            data-tipclicod="${cli.taGzzTipoCliente.tipCliCod}" 
                                            data-clirazsoc="${cli.cliRazSoc}" 
@@ -101,17 +101,17 @@
                                            data-cancod="${cli.taGzzCanalCliente.canCliCod}">
                                             <i class="fa fa-pencil-square-o fa-lg" style="color: black;"></i>
                                         </a>
-                                        <a href="#" data-toggle="modal" data-target="#disableModal" 
+                                        <a href="#" data-toggle="modal" data-target="#disableModal" title="Inhabilitar Cliente" 
                                            data-clicod="${cli.cliCod}" 
                                            data-clirazsoc="${cli.cliRazSoc}" >
                                             <i class="fa fa-trash-o fa-lg" style="color: black;"></i>
                                         </a>
-                                        <a href="#" data-toggle="modal" data-target="#rutaModal" 
+                                        <a href="#" data-toggle="modal" data-target="#rutaModal" title="Agregar Ruta al Cliente" 
                                            data-clicod="${cli.cliCod}" 
                                            data-clirazsoc="${cli.cliRazSoc}">
                                             <i class="fa fa-automobile fa-lg" style="color: black;"></i>
                                         </a>
-                                        <a href="#" data-toggle="modal" data-target="#documentoModal" 
+                                        <a href="#" data-toggle="modal" data-target="#documentoModal" title="Agregar Documentos al Cliente"
                                            data-clicod="${cli.cliCod}" 
                                            data-clirazsoc="${cli.cliRazSoc}">
                                             <i class="fa fa-file-text fa-lg" style="color: black;"></i>
@@ -410,13 +410,13 @@
                                             <td>${cli.taGzzTipoCliente.tipCliCod} - ${cli.taGzzTipoCliente.tipCliDet}</td>
 
                                             <td class="text-right">
-                                                <a href="#" data-toggle="modal" data-target="#activateModal" 
+                                                <a href="#" data-toggle="modal" data-target="#activateModal" title="Re-Activar Cliente" 
                                                    data-clicod="${cli.cliCod}" data-clirazsoc="${cli.cliRazSoc}" >
-                                                    <i class="fa fa-check fa-2x" style="color: green;"></i>
+                                                    <i class="fa fa-check fa-lg" style="color: green;"></i>
                                                 </a>
-                                                <a href="#" data-toggle="modal" data-target="#deleteModal" 
+                                                <a href="#" data-toggle="modal" data-target="#deleteModal" title="Eliminar Cliente" 
                                                    data-clicod="${cli.cliCod}" data-clirazsoc="${cli.cliRazSoc}" >
-                                                    <i class="fa fa-trash-o fa-2x" style="color: red;"></i>
+                                                    <i class="fa fa-trash-o fa-lg" style="color: red;"></i>
                                                 </a>
                                             </td>
                                         </tr>
@@ -592,16 +592,16 @@
                                                             <td>${cliRut.cliRutDes}</td>
                                                             
                                                             <td>
-                                                                <a href="#" data-toggle="modal" data-target="#modRutClienteModal"
+                                                                <a href="#" data-toggle="modal" data-target="#modRutClienteModal" title="Modificar Descripcion de la Ruta del Cliente"
                                                                    data-clicod="${cliRut.enP1mCliente.cliCod}" data-clirazsoc="${cliRut.enP1mCliente.cliRazSoc}"
                                                                    data-catrutcod="${cliRut.enP1mCatalogoRuta.catRutCod}" data-catrutdet="${cliRut.enP1mCatalogoRuta.catRutDet}" 
                                                                    data-clirutdes="${cliRut.cliRutDes}" >
-                                                                    <i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i>
+                                                                    <i class="fa fa-pencil-square-o fa-lg" style="color: black;"></i>
                                                                 </a>
-                                                                <a href="#" data-toggle="modal" data-target="#delRutClienteModal" 
+                                                                <a href="#" data-toggle="modal" data-target="#delRutClienteModal" title="Eliminar Ruta del Cliente" 
                                                                    data-clicod="${cliRut.enP1mCliente.cliCod}" data-clirazsoc="${cliRut.enP1mCliente.cliRazSoc}"
                                                                    data-catrutcod="${cliRut.enP1mCatalogoRuta.catRutCod}" data-catrutdet="${cliRut.enP1mCatalogoRuta.catRutDet}">
-                                                                    <i class="fa fa-trash-o fa-2x" style="color: red;"></i>
+                                                                    <i class="fa fa-trash-o fa-lg" style="color: red;"></i>
                                                                 </a>
                                                             </td>
                                                         </tr>
@@ -649,16 +649,16 @@
                                                             <td>${cliDoc.docCliNum}</td>
                                                             
                                                             <td>
-                                                                <a href="#" data-toggle="modal" data-target="#modDocClienteModal" 
+                                                                <a href="#" data-toggle="modal" data-target="#modDocClienteModal" title="Modificar # del Documento del Cliente" 
                                                                    data-clicod="${cliDoc.enP1mCliente.cliCod}" data-clirazsoc="${cliDoc.enP1mCliente.cliRazSoc}"
                                                                    data-tipdocclicod="${cliDoc.taGzzTipoDocCliente.tipDocCliCod}" data-tipdocclidet="${cliDoc.taGzzTipoDocCliente.tipDocCliDet}"
                                                                    data-docclinum="${cliDoc.docCliNum}">
-                                                                    <i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i>
+                                                                    <i class="fa fa-pencil-square-o fa-lg" style="color: black;"></i>
                                                                 </a>
-                                                                <a href="#" data-toggle="modal" data-target="#delDocClienteModal" 
+                                                                <a href="#" data-toggle="modal" data-target="#delDocClienteModal" title="Eliminar Documento del Cliente" 
                                                                    data-clicod="${cliDoc.enP1mCliente.cliCod}" data-clirazsoc="${cliDoc.enP1mCliente.cliRazSoc}"
                                                                    data-tipdocclicod="${cliDoc.taGzzTipoDocCliente.tipDocCliCod}" data-tipdocclidet="${cliDoc.taGzzTipoDocCliente.tipDocCliDet}">
-                                                                    <i class="fa fa-trash-o fa-2x" style="color: red;"></i>
+                                                                    <i class="fa fa-trash-o fa-lg" style="color: red;"></i>
                                                                 </a>
                                                             </td>
                                                         </tr>

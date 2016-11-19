@@ -45,10 +45,14 @@
                                     <td value="${unTrs}"> ${unTrs.taGzzEstadoUniTransporte.estUniTraDet} </td>
                                     <c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                                         <td class="text-left">
-                                            <a href="#" data-toggle="modal" data-target="#modificarModal" data-untracod="${unTrs.uniTraCod}" data-tipuntracod="${unTrs.taGzzTipoUniTransporte.tipUniTraCod}" data-untramod="${unTrs.uniTraMod}" data-untramar="${unTrs.uniTraMar}" data-untrapes="${unTrs.uniTraPes}" data-untranumpla="${unTrs.uniTraNumPla}" data-estuntracod="${unTrs.taGzzEstadoUniTransporte.estUniTraCod}">
-                                            <i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i> </a> 
-                                            <a href="#" data-toggle="modal" data-target="#eliminarModal" data-untracod="${unTrs.uniTraCod}" data-tipuntradet="${unTrs.taGzzTipoUniTransporte.tipUniTraDet}" data-tipuntracod="${unTrs.taGzzTipoUniTransporte.tipUniTraCod}" data-untramod="${unTrs.uniTraMod}" data-untramar="${unTrs.uniTraMar}" data-untrapes="${unTrs.uniTraPes}" data-untranumpla="${unTrs.uniTraNumPla}" data-estuntracod="${unTrs.taGzzEstadoUniTransporte.estUniTraCod}">
-                                            <i class="fa fa-trash-o fa-2x" style="color: black;"></i> </a>                                   
+                                            <a href="#" data-toggle="modal" data-target="#modificarModal" 
+                                               title="Modificar Unidad de Transporte"
+                                               data-untracod="${unTrs.uniTraCod}" data-tipuntracod="${unTrs.taGzzTipoUniTransporte.tipUniTraCod}" data-untramod="${unTrs.uniTraMod}" data-untramar="${unTrs.uniTraMar}" data-untrapes="${unTrs.uniTraPes}" data-untranumpla="${unTrs.uniTraNumPla}" data-estuntracod="${unTrs.taGzzEstadoUniTransporte.estUniTraCod}">
+                                            <i class="fa fa-pencil-square-o fa-lg" style="color: black;"></i> </a> 
+                                            <a href="#" data-toggle="modal" data-target="#eliminarModal" 
+                                               title="Eliminar Unidad de Transporte"
+                                               data-untracod="${unTrs.uniTraCod}" data-tipuntradet="${unTrs.taGzzTipoUniTransporte.tipUniTraDet}" data-tipuntracod="${unTrs.taGzzTipoUniTransporte.tipUniTraCod}" data-untramod="${unTrs.uniTraMod}" data-untramar="${unTrs.uniTraMar}" data-untrapes="${unTrs.uniTraPes}" data-untranumpla="${unTrs.uniTraNumPla}" data-estuntracod="${unTrs.taGzzEstadoUniTransporte.estUniTraCod}">
+                                            <i class="fa fa-trash-o fa-lg" style="color: black;"></i> </a>                                   
                                         </td>
                                     </c:if>
                                 </tr> 

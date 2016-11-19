@@ -71,16 +71,18 @@
                                     <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                                     <td class="text-center">
                                         <!--
-                                        <a href="#" data-toggle="modal" data-target="#modificarModal">
-                                           <i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i>
+                                        <a href="#" data-toggle="modal" data-target="#modificarModal"
+                                        title="Modificar Pago por Cuota">
+                                           <i class="fa fa-pencil-square-o fa-lg" style="color: black;"></i>
                                         </a>
                                         -->
                                         <a href="#" data-toggle="modal" data-target="#pagarModal" 
+                                           title="Pagar Una Cuota"
                                            data-faccab="${c.facVenCabCod}" 
                                            data-deutot="${c.pagCuoDeuTot}" data-deupag="${c.pagCuoTotPag}" 
                                            data-cuotot="${c.pagCuoNum}" data-cuopag="${c.pagCuoNumPag}"
                                            data-monpag="${c.pagCuoMonXcuo}">
-                                            <i class="fa fa-dollar fa-2x" style="color: black;"></i>
+                                            <i class="fa fa-dollar fa-lg" style="color: black;"></i>
                                         </a>
                                     </td>
                                     </cc:if>

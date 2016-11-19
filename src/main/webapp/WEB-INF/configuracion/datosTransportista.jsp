@@ -46,10 +46,14 @@
                                     <td value="${trs}"> ${trs.traDir} </td>
                                     <c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                                     <td class="text-left">
-                                        <a href="#" data-toggle="modal" data-target="#modificarModal" data-tracod="${trs.traCod}" data-tranom="${trs.traNom}" data-traapepat="${trs.traApePat}" data-traapemat="${trs.traApeMat}" data-trarazsoc="${trs.traRazSoc}" data-tranomcom="${trs.traNomCom}" data-tradomfis="${trs.traDomFis}" data-tratel="${trs.traTel}" data-traemail="${trs.traEmail}" data-tradir="${trs.traDir}" >
-                                        <i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i> </a> 
-                                        <a href="#" data-toggle="modal" data-target="#eliminarModal" data-tracod="${trs.traCod}" data-tranom="${trs.traNom}" data-traapepat="${trs.traApePat}" data-traapemat="${trs.traApeMat}" data-trarazsoc="${trs.traRazSoc}" data-tranomcom="${trs.traNomCom}" data-tradomfis="${trs.traDomFis}" data-tratel="${trs.traTel}" data-traemail="${trs.traEmail}" data-tradir="${trs.traDir}" >
-                                        <i class="fa fa-trash-o fa-2x" style="color: black;"></i> </a>                                   
+                                        <a href="#" data-toggle="modal" data-target="#modificarModal" 
+                                           title="Modificar Transportista"
+                                           data-tracod="${trs.traCod}" data-tranom="${trs.traNom}" data-traapepat="${trs.traApePat}" data-traapemat="${trs.traApeMat}" data-trarazsoc="${trs.traRazSoc}" data-tranomcom="${trs.traNomCom}" data-tradomfis="${trs.traDomFis}" data-tratel="${trs.traTel}" data-traemail="${trs.traEmail}" data-tradir="${trs.traDir}" >
+                                        <i class="fa fa-pencil-square-o fa-lg" style="color: black;"></i> </a> 
+                                        <a href="#" data-toggle="modal" data-target="#eliminarModal" 
+                                           title="Eliminar Transportista"
+                                           data-tracod="${trs.traCod}" data-tranom="${trs.traNom}" data-traapepat="${trs.traApePat}" data-traapemat="${trs.traApeMat}" data-trarazsoc="${trs.traRazSoc}" data-tranomcom="${trs.traNomCom}" data-tradomfis="${trs.traDomFis}" data-tratel="${trs.traTel}" data-traemail="${trs.traEmail}" data-tradir="${trs.traDir}" >
+                                        <i class="fa fa-trash-o fa-lg" style="color: black;"></i> </a>                                   
                                    </td>
                                     </c:if>
                                 </tr> 

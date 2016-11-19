@@ -58,16 +58,18 @@
                                     <c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                                     <td class="text-right">
                                         <a href="#" data-toggle="modal" data-target="#modificarModal" 
+                                           title="Modificar Usuario"
                                            data-usucod="${docusu.id.usuCod}" data-tipdocusucod="${docusu.id.tipDocUsuCod}" data-docusunum="${docusu.docUsuNum}" 
                                            data-usunom="${docusu.enP1mUsuario.usuNom}" data-usuapepat="${docusu.enP1mUsuario.usuApePat}" data-usuapemat="${docusu.enP1mUsuario.usuApeMat}" 
                                            data-tipdocusudet="${docusu.taGzzTipoDocUsuario.tipDocUsuDet}" >
-                                            <i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i>
+                                            <i class="fa fa-pencil-square-o fa-lg" style="color: black;"></i>
                                         </a>
                                         <a href="#" data-toggle="modal" data-target="#disableModal" 
+                                           title="InHabilitar Usuario"
                                            data-usucod="${docusu.id.usuCod}" data-tipdocusucod="${docusu.id.tipDocUsuCod}"
                                            data-usunom="${docusu.enP1mUsuario.usuNom}" data-usuapepat="${docusu.enP1mUsuario.usuApePat}" 
                                            data-usuapemat="${docusu.enP1mUsuario.usuApeMat}" data-tipdocusudet="${docusu.taGzzTipoDocUsuario.tipDocUsuDet}">
-                                            <i class="fa fa-trash-o fa-2x" style="color: black;"></i>
+                                            <i class="fa fa-trash-o fa-lg" style="color: black;"></i>
                                         </a>
                                     </td>
                                     </c:if>
@@ -206,16 +208,18 @@
                                     <td>${docusu.estRegCod}</td>
                                     <td class="text-right">
                                         <a href="#" data-toggle="modal" data-target="#activateModal" 
+                                           title="Re-Activar Usuario"
                                            data-usucod="${docusu.id.usuCod}" data-tipdocusucod="${docusu.id.tipDocUsuCod}"
                                            data-usunom="${docusu.enP1mUsuario.usuNom}" data-usuapepat="${docusu.enP1mUsuario.usuApePat}" 
                                            data-usuapemat="${docusu.enP1mUsuario.usuApeMat}" data-tipdocusudet="${docusu.taGzzTipoDocUsuario.tipDocUsuDet}">
-                                            <i class="fa fa-check fa-2x" style="color: green;"></i>
+                                            <i class="fa fa-check fa-lg" style="color: green;"></i>
                                         </a>
                                         <a href="#" data-toggle="modal" data-target="#deleteModal" 
+                                           title="Eliminar Usuario"
                                            data-usucod="${docusu.id.usuCod}" data-tipdocusucod="${docusu.id.tipDocUsuCod}"
                                            data-usunom="${docusu.enP1mUsuario.usuNom}" data-usuapepat="${docusu.enP1mUsuario.usuApePat}" 
                                            data-usuapemat="${docusu.enP1mUsuario.usuApeMat}" data-tipdocusudet="${docusu.taGzzTipoDocUsuario.tipDocUsuDet}">
-                                            <i class="fa fa-trash-o fa-2x" style="color: red;"></i>
+                                            <i class="fa fa-trash-o fa-lg" style="color: red;"></i>
                                         </a>
                                     </td>
                                 </tr>

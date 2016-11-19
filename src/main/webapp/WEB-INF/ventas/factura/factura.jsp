@@ -64,10 +64,10 @@
                                             <th style="text-align: center">Código</th>
                                             <th style="text-align: center">F/B</th>
                                             <th style="text-align: center">Cliente</th>
-                                            <th style="text-align: center">Usuario</th>
+                                            <th style="text-align: center">Vendedor</th>
                                             <th style="text-align: center">Fecha</th>
-                                            <th style="text-align: center">Total+IGV</th>
-                                            <th style="text-align: center">SubTotal</th>
+                                            <th style="text-align: center">Tot+IGV</th>
+                                            <th style="text-align: center">SubTot</th>
                                             <th style="text-align: center">Vista</th>
                                             <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                                             <th>Dev</th>
@@ -88,23 +88,23 @@
                                                 <td> <c:out value="${c.facVenCabTot}"/></td>
                                                 <td> <c:out value="${c.facVenCabSubTot}"/></td>
                                                 <td>
-                                                    <a onclick='viewSaleBill("${c.facVenCabCod}")'>
-                                                        <i class="fa fa-list-alt fa-2x" style="color: black;"></i>
+                                                    <a onclick='viewSaleBill("${c.facVenCabCod}")' title="Vista Detallada de Factura de Venta">
+                                                        <i class="fa fa-list-alt fa-lg" style="color: black;"></i>
                                                     </a> 
-                                                    <a onclick='viewReferralGuide("${c.facVenCabCod}")'>
-                                                        <i class="fa fa-book fa-2x" style="color: black;"></i>
+                                                    <a onclick='viewReferralGuide("${c.facVenCabCod}")' title="Vista Detallada de Guia R. Remitente">
+                                                        <i class="fa fa-book fa-lg" style="color: black;"></i>
                                                     </a>
-                                                    <a onclick='viewCarrierGuide("${c.facVenCabCod}")'>
-                                                        <i class="fa fa-truck fa-2x" style="color: black;"></i>
+                                                    <a onclick='viewCarrierGuide("${c.facVenCabCod}")' title="Vista Detallada de Guia R. Transportista">
+                                                        <i class="fa fa-truck fa-lg" style="color: black;"></i>
                                                     </a>
                                                 </td>
                                                 <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                                                     <td>
-                                                        <a onclick='makeDoRefund("${c.facVenCabCod}","partial")'>
-                                                            <i class="fa fa-wrench fa-2x" style="color: black;"></i>
+                                                        <a onclick='makeDoRefund("${c.facVenCabCod}","partial")' title="Devolucion Parcial">
+                                                            <i class="fa fa-wrench fa-lg" style="color: black;"></i>
                                                         </a>
-                                                        <a onclick='makeDoRefund("${c.facVenCabCod}","total")'>
-                                                            <i class="fa fa-trash fa-2x" style="color: black;"></i>
+                                                        <a onclick='makeDoRefund("${c.facVenCabCod}","total")' title="Devolucion Total">
+                                                            <i class="fa fa-trash fa-lg" style="color: black;"></i>
                                                         </a>
                                                     </td>
                                                 </cc:if>

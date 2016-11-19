@@ -63,8 +63,8 @@
                                             <td><c:out value="${preventa.taGzzMoneda.monSim} ${preventa.preVenCabTot}"/></td>
                                             <td><c:out value="${preventa.taGzzMoneda.monSim} ${preventa.preVenCabSubTot}"/></td>
                                             <td>
-                                                <a onclick='viewPreVen("${preventa.preVenCabCod}")'>
-                                                    <i class="fa fa-list-alt fa-2x" style="color: black;"></i>
+                                                <a onclick='viewPreVen("${preventa.preVenCabCod}")' title="Vista Detallada de Pre-Venta">
+                                                    <i class="fa fa-list-alt fa-lg" style="color: black;"></i>
                                                 </a> 
                                             </td>
                                         </tr>

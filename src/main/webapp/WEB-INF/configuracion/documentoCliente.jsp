@@ -33,10 +33,14 @@
                                     <td value="${docClientes}"> ${docClientes.docCliNum} </td>
                                     <c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                                     <td class="text-left">
-                                        <a href="#" data-toggle="modal" onclick="validarNumDocUpdt()" data-target="#modificarModal" data-clicod="${docClientes.enP1mCliente.cliCod}" data-cli="${docClientes.enP1mCliente.cliApePat} ${docClientes.enP1mCliente.cliApeMat}, ${docClientes.enP1mCliente.cliNom}" data-tipocod="${docClientes.taGzzTipoDocCliente.tipDocCliCod}" data-tipo="${docClientes.taGzzTipoDocCliente.tipDocCliDet}" data-num="${docClientes.docCliNum}" >
-                                        <i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i> </a> 
-                                        <a href="#" data-toggle="modal" data-target="#eliminarModal" data-clicod="${docClientes.enP1mCliente.cliCod}" data-cli="${docClientes.enP1mCliente.cliApePat} ${docClientes.enP1mCliente.cliApeMat}, ${docClientes.enP1mCliente.cliNom}" data-tipocod="${docClientes.taGzzTipoDocCliente.tipDocCliCod}" data-tipo="${docClientes.taGzzTipoDocCliente.tipDocCliDet}" data-num="${docClientes.docCliNum}" >
-                                        <i class="fa fa-trash-o fa-2x" style="color: black;"></i> </a>                                   
+                                        <a href="#" data-toggle="modal" onclick="validarNumDocUpdt()" data-target="#modificarModal" 
+                                           title="Modificar Documento del Cliente"
+                                           data-clicod="${docClientes.enP1mCliente.cliCod}" data-cli="${docClientes.enP1mCliente.cliApePat} ${docClientes.enP1mCliente.cliApeMat}, ${docClientes.enP1mCliente.cliNom}" data-tipocod="${docClientes.taGzzTipoDocCliente.tipDocCliCod}" data-tipo="${docClientes.taGzzTipoDocCliente.tipDocCliDet}" data-num="${docClientes.docCliNum}" >
+                                        <i class="fa fa-pencil-square-o fa-lg" style="color: black;"></i> </a> 
+                                        <a href="#" data-toggle="modal" data-target="#eliminarModal" 
+                                           title="Eliminar Documento del Cliente"
+                                           data-clicod="${docClientes.enP1mCliente.cliCod}" data-cli="${docClientes.enP1mCliente.cliApePat} ${docClientes.enP1mCliente.cliApeMat}, ${docClientes.enP1mCliente.cliNom}" data-tipocod="${docClientes.taGzzTipoDocCliente.tipDocCliCod}" data-tipo="${docClientes.taGzzTipoDocCliente.tipDocCliDet}" data-num="${docClientes.docCliNum}" >
+                                        <i class="fa fa-trash-o fa-lg" style="color: black;"></i> </a>                                   
                                    </td>
                                     </c:if>
                                 </tr> 

@@ -10,8 +10,8 @@
     <jsp:attribute name="contenido">
         <div class="panel-body">
             <h1 class="page-header">Almacen
-                <a href="#" class="btn btn-success btn-circle" data-toggle="modal" data-target="#agregarModal"><i class="fa fa-plus"></i></a>
-                <a href="#" class="btn btn-info btn-circle" data-toggle="modal" data-target="#estadosModal"><i class="fa fa-eye"></i></a>
+                <a href="#" class="btn btn-success btn-circle" data-toggle="modal" data-target="#agregarModal" title="Agregar Almacen"><i class="fa fa-plus"></i></a>
+                <a href="#" class="btn btn-info btn-circle" data-toggle="modal" data-target="#estadosModal" title="Almacenes Inhabilitados"><i class="fa fa-eye"></i></a>
             </h1>     
             <div class="form-horizontal">
                 <div class="col-sm-12">      
@@ -36,18 +36,21 @@
                                     <td>${u.almObs}</td>
                                      <td class="text-center">
                                          <a href="#" data-toggle="modal" data-target="#verModal" 
+                                            title="Productos del Almacen"
                                             data-almcod="${u.almCod}">
-                                             <i class="fa fa-eye fa-2x" style="color: black;"></i> 
+                                             <i class="fa fa-eye fa-lg" style="color: black;"></i> 
                                          </a>
                                         <a href="#" data-toggle="modal" data-target="#modificarModal" 
+                                           title="Modificar Almacen"
                                            data-almcod="${u.almCod}" data-almdet="${u.almDet}" data-succod="${u.enP1mSucursal.sucCod}"
                                            data-almvoltot="${u.almVolTot}" data-almobs="${u.almObs}">
-                                           <i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i>
+                                           <i class="fa fa-pencil-square-o fa-lg" style="color: black;"></i>
                                         </a>
                                         <a href="#" data-toggle="modal" data-target="#disableModal" 
+                                           title="InHabilitar Almacen"
                                            data-almcod="${u.almCod}" data-almdet="${u.almDet}" data-succod="${u.enP1mSucursal.sucCod}"
                                            data-almvoltot="${u.almVolTot}" data-almobs="${u.almObs}">
-                                           <i class="fa fa-trash-o fa-2x" style="color: black;"></i>
+                                           <i class="fa fa-trash-o fa-lg" style="color: black;"></i>
                                         </a>
                                     </td>
                                 </tr>
@@ -267,13 +270,15 @@
                                             <td>${u.almVolTot}</td>
                                             <td>${u.almObs}</td>
                                             <td class="text-center">
-                                                <a href="#" data-toggle="modal" data-target="#activateModal" 
+                                                <a href="#" data-toggle="modal" data-target="#activateModal"
+                                                   title="Re-Activar Almacen"
                                                    data-almcod="${u.almCod}" data-almdet="${u.almDet}">
-                                                    <i class="fa fa-check fa-2x" style="color: green;"></i>
+                                                    <i class="fa fa-check fa-lg" style="color: green;"></i>
                                                 </a>
-                                                <a href="#" data-toggle="modal" data-target="#deleteModal"  
+                                                <a href="#" data-toggle="modal" data-target="#deleteModal" 
+                                                   title="Eliminar Almacen"
                                                    data-almcod="${u.almCod}" data-almdet="${u.almDet}">
-                                                    <i class="fa fa-trash-o fa-2x" style="color: red;"></i>
+                                                    <i class="fa fa-trash-o fa-lg" style="color: red;"></i>
                                                 </a>
                                             </td>
                                         </tr>

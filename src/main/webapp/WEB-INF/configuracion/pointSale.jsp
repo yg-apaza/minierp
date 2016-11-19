@@ -56,11 +56,15 @@
                                     <td>${pv.estRegCod}</td>
                                     <c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                                     <td class="text-right">
-                                        <a href="#" data-toggle="modal" data-target="#modificarModal" data-succod="${pv.id.sucCod}" data-sucdes="${pv.enP1mSucursal.sucDes}" data-punvencod="${pv.id.punVenCod}" data-punvendes="${pv.punVenDes}">
-                                            <i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i>
+                                        <a href="#" data-toggle="modal" data-target="#modificarModal" 
+                                           title="Modificar Punto de Venta"
+                                           data-succod="${pv.id.sucCod}" data-sucdes="${pv.enP1mSucursal.sucDes}" data-punvencod="${pv.id.punVenCod}" data-punvendes="${pv.punVenDes}">
+                                            <i class="fa fa-pencil-square-o fa-lg" style="color: black;"></i>
                                         </a>
-                                        <a href="#" data-toggle="modal" data-target="#disableModal" data-succod="${pv.id.sucCod}" data-punvencod="${pv.id.punVenCod}" data-punvendes="${pv.punVenDes}">
-                                            <i class="fa fa-trash-o fa-2x" style="color: black;"></i>
+                                        <a href="#" data-toggle="modal" data-target="#disableModal" 
+                                           title="InHabilitar Punto de Venta"
+                                           data-succod="${pv.id.sucCod}" data-punvencod="${pv.id.punVenCod}" data-punvendes="${pv.punVenDes}">
+                                            <i class="fa fa-trash-o fa-lg" style="color: black;"></i>
                                         </a>
                                     </td>
                                     </c:if>
@@ -186,11 +190,15 @@
                                             <td>${pvi.punVenDes}</td>
                                             <td>${pvi.estRegCod}</td>
                                             <td class="text-right">
-                                                <a href="#" data-toggle="modal" data-target="#activateModal" data-succod="${pvi.id.sucCod}" data-punvencod="${pvi.id.punVenCod}" data-punvendes="${pvi.punVenDes}">
-                                                    <i class="fa fa-check fa-2x" style="color: green;"></i>
+                                                <a href="#" data-toggle="modal" data-target="#activateModal" 
+                                                   title="Re-Activar Punto de Venta"
+                                                   data-succod="${pvi.id.sucCod}" data-punvencod="${pvi.id.punVenCod}" data-punvendes="${pvi.punVenDes}">
+                                                    <i class="fa fa-check fa-lg" style="color: green;"></i>
                                                 </a>
-                                                <a href="#" data-toggle="modal" data-target="#deleteModal" data-succod="${pvi.id.sucCod}" data-punvencod="${pvi.id.punVenCod}" data-punvendes="${pvi.punVenDes}">
-                                                    <i class="fa fa-trash-o fa-2x" style="color: red;"></i>
+                                                <a href="#" data-toggle="modal" data-target="#deleteModal" 
+                                                   title="Eliminar Punto de Venta" 
+                                                   data-succod="${pvi.id.sucCod}" data-punvencod="${pvi.id.punVenCod}" data-punvendes="${pvi.punVenDes}">
+                                                    <i class="fa fa-trash-o fa-lg" style="color: red;"></i>
                                                 </a>
                                             </td>
                                         </tr>

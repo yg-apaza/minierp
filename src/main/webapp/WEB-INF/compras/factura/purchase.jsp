@@ -62,8 +62,8 @@
                                             <td width="10%" align="center">${c.facComCabTot}</td>                            
                                             <td width="15%" align="center">${c.taGzzTipoPagoFactura.tipPagDet}</td>
                                             <td width="10%" align="center">
-                                                <a onclick='viewPurchaseBill("${c.facComCabCod}")'>
-                                                    <i class="fa fa-list-alt fa-2x" style="color: black;"></i>
+                                                <a onclick='viewPurchaseBill("${c.facComCabCod}")' title="Vista Detallada de Factura de Compra">
+                                                    <i class="fa fa-list-alt fa-lg" style="color: black;"></i>
                                                 </a>
                                             </td>
                                         </tr>

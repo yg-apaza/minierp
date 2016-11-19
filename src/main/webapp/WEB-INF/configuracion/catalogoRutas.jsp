@@ -57,12 +57,14 @@
                                     <c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                                     <td class="text-right">
                                         <a href="#" data-toggle="modal" data-target="#modificarModal" 
+                                           title ="Modificar Ruta"
                                            data-catrutcod="${cr.catRutCod}" data-catrutdet="${cr.catRutDet}">
-                                            <i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i>
+                                            <i class="fa fa-pencil-square-o fa-lg" style="color: black;"></i>
                                         </a>
                                         <a href="#" data-toggle="modal" data-target="#disableModal" 
+                                           title="InHabilitar Ruta" 
                                            data-catrutcod="${cr.catRutCod}" data-catrutdet="${cr.catRutDet}">
-                                            <i class="fa fa-trash-o fa-2x" style="color: black;"></i>
+                                            <i class="fa fa-trash-o fa-lg" style="color: black;"></i>
                                         </a>
                                     </td>
                                     </c:if>
@@ -176,12 +178,14 @@
                                             <td>${cri.catRutDet}</td>
                                             <td>
                                                 <a href="#" data-toggle="modal" data-target="#activateModal" 
+                                                   title="Re-Activar Ruta"
                                                    data-catrutcod="${cri.catRutCod}" data-catrutdet="${cri.catRutDet}">
-                                                    <i class="fa fa-check fa-2x" style="color: green;"></i>
+                                                    <i class="fa fa-check fa-lg" style="color: green;"></i>
                                                 </a>
                                                 <a href="#" data-toggle="modal" data-target="#deleteModal" 
+                                                   title="Eliminar Ruta"
                                                    data-catrutcod="${cri.catRutCod}" data-catrutdet="${cri.catRutDet}">
-                                                    <i class="fa fa-trash-o fa-2x" style="color: red;"></i>
+                                                    <i class="fa fa-trash-o fa-lg" style="color: red;"></i>
                                                 </a>
                                             </td>
                                         </tr>

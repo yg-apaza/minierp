@@ -42,10 +42,14 @@
                                           <td value="${sucursales}"> ${sucursales.sucDir} </td>
                                           <c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                                           <td class="text-left">
-                                              <a href="#" data-toggle="modal" data-target="#modificarModal" data-cod="${sucursales.sucCod}" data-des="${sucursales.sucDes}" data-dir="${sucursales.sucDir}" >
-                                                <i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i> </a> 
-                                              <a href="#" data-toggle="modal" data-target="#disableModal" data-cod="${sucursales.sucCod}" data-des="${sucursales.sucDes}" data-dir="${sucursales.sucDir}" >
-                                                <i class="fa fa-trash-o fa-2x" style="color: black;"></i> </a>                                   
+                                              <a href="#" data-toggle="modal" data-target="#modificarModal" 
+                                                 title="Modificar Sucursal" 
+                                                 data-cod="${sucursales.sucCod}" data-des="${sucursales.sucDes}" data-dir="${sucursales.sucDir}" >
+                                                <i class="fa fa-pencil-square-o fa-lg" style="color: black;"></i> </a> 
+                                              <a href="#" data-toggle="modal" data-target="#disableModal" 
+                                                 title="Eliminar Sucursal"
+                                                 data-cod="${sucursales.sucCod}" data-des="${sucursales.sucDes}" data-dir="${sucursales.sucDir}" >
+                                                <i class="fa fa-trash-o fa-lg" style="color: black;"></i> </a>                                   
                                            </td>
                                           </c:if>
                                         </tr> 
@@ -153,11 +157,15 @@
                                           <td value="${inactivos}"> ${inactivos.sucDir} </td>
                                           <td value="${inactivos}"> ${inactivos.estRegCod} </td>
                                             <td class="text-right">
-                                                <a href="#" data-toggle="modal" data-target="#activeModal" data-cod="${inactivos.sucCod}" data-des="${inactivos.sucDes}" data-dir="${inactivos.sucDir}">
-                                                    <i class="fa fa-check fa-2x" style="color: green;"></i>
+                                                <a href="#" data-toggle="modal" data-target="#activeModal" 
+                                                   title="Re-Activar Sucursal"
+                                                   data-cod="${inactivos.sucCod}" data-des="${inactivos.sucDes}" data-dir="${inactivos.sucDir}">
+                                                    <i class="fa fa-check fa-lg" style="color: green;"></i>
                                                 </a>
-                                                <a href="#" data-toggle="modal" data-target="#eliminarModal" data-cod="${inactivos.sucCod}" data-des="${inactivos.sucDes}" data-dir="${inactivos.sucDir}">
-                                                    <i class="fa fa-trash-o fa-2x" style="color: red;"></i>
+                                                <a href="#" data-toggle="modal" data-target="#eliminarModal" 
+                                                   title="Eliminar Sucursal"
+                                                   data-cod="${inactivos.sucCod}" data-des="${inactivos.sucDes}" data-dir="${inactivos.sucDir}">
+                                                    <i class="fa fa-trash-o fa-lg" style="color: red;"></i>
                                                 </a>
                                             </td>
                                         </tr>

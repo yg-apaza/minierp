@@ -77,6 +77,7 @@
                                     <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                                     <td>
                                         <a href="#" data-toggle="modal" data-target="#modificarModal" 
+                                           title="Modificar Usuario" 
                                            data-usucod="${u.usuCod}" 
                                            data-usunom="${u.usuNom}" 
                                            data-usuapepat="${u.usuApePat}" 
@@ -90,6 +91,7 @@
                                            <i class="fa fa-pencil-square-o fa-lg" style="color: black;"></i>
                                         </a>
                                         <a href="#" data-toggle="modal" data-target="#disableModal" 
+                                           title="InHabilitar Usuario"
                                            data-usucod="${u.usuCod}" 
                                            data-usunom="${u.usuNom}" 
                                            data-usuapepat="${u.usuApePat}" 
@@ -97,6 +99,7 @@
                                             <i class="fa fa-trash-o fa-lg" style="color: black;"></i>
                                         </a>
                                         <a href="#" data-toggle="modal" data-target="#documentoModal" 
+                                           title="Agregar Documentos al Usuario"
                                            data-usucod="${u.usuCod}" 
                                            data-usunom="${u.usuNom}" 
                                            data-usuapepat="${u.usuApePat}" 
@@ -104,6 +107,7 @@
                                             <i class="fa fa-file-text fa-lg" style="color: black;"></i>
                                         </a>
                                         <a href="#" data-toggle="modal" data-target="#clienteModal" 
+                                           title="Agregar Clientes al Usuario"
                                            data-usucod="${u.usuCod}" 
                                            data-usunom="${u.usuNom}" 
                                            data-usuapepat="${u.usuApePat}" 
@@ -366,18 +370,20 @@
                                             <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                                                 <td>
                                                     <a href="#" data-toggle="modal" data-target="#activateModal" 
+                                                       title="Re-Activar Usuario"
                                                        data-usucod="${u.usuCod}" 
                                                        data-usunom="${u.usuNom}" 
                                                        data-usuapepat="${u.usuApePat}" 
                                                        data-usuapemat="${u.usuApeMat}">
-                                                        <i class="fa fa-check fa-2x" style="color: green;"></i>
+                                                        <i class="fa fa-check fa-lg" style="color: green;"></i>
                                                     </a>
-                                                    <a href="#" data-toggle="modal" data-target="#deleteModal"  
+                                                    <a href="#" data-toggle="modal" data-target="#deleteModal" 
+                                                       title="Eliminar Usuario"
                                                        data-usucod="${u.usuCod}" 
                                                        data-usunom="${u.usuNom}" 
                                                        data-usuapepat="${u.usuApePat}" 
                                                        data-usuapemat="${u.usuApeMat}">
-                                                        <i class="fa fa-trash-o fa-2x" style="color: red;"></i>
+                                                        <i class="fa fa-trash-o fa-lg" style="color: red;"></i>
                                                     </a>
                                                 </td>
                                             </cc:if>
@@ -558,6 +564,7 @@
                                                             <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                                                                 <td>
                                                                     <a href="#" data-toggle="modal" data-target="#modDocumentoModal" 
+                                                                       title="Modificar # del Documento del Usuario"
                                                                        data-usucod="${docUsu.enP1mUsuario.usuCod}" 
                                                                        data-usunom="${docUsu.enP1mUsuario.usuNom}" 
                                                                        data-usuapepat="${docUsu.enP1mUsuario.usuApePat}" 
@@ -565,16 +572,17 @@
                                                                        data-tipdocusucod="${docUsu.taGzzTipoDocUsuario.tipDocUsuCod}"
                                                                        data-tipdocusudet="${docUsu.taGzzTipoDocUsuario.tipDocUsuDet}"
                                                                        data-docusunum="${docUsu.docUsuNum}">
-                                                                        <i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i>
+                                                                        <i class="fa fa-pencil-square-o fa-lg" style="color: black;"></i>
                                                                     </a>
                                                                     <a href="#" data-toggle="modal" data-target="#delDocumentoModal" 
+                                                                       title="Eliminar el Documento del Usuario" 
                                                                        data-usucod="${docUsu.enP1mUsuario.usuCod}" 
                                                                        data-usunom="${docUsu.enP1mUsuario.usuNom}" 
                                                                        data-usuapepat="${docUsu.enP1mUsuario.usuApePat}" 
                                                                        data-usuapemat="${docUsu.enP1mUsuario.usuApeMat}"
                                                                        data-tipdocusucod="${docUsu.taGzzTipoDocUsuario.tipDocUsuCod}"
                                                                        data-tipdocusudet="${docUsu.taGzzTipoDocUsuario.tipDocUsuDet}">
-                                                                        <i class="fa fa-trash-o fa-2x" style="color: red;"></i>
+                                                                        <i class="fa fa-trash-o fa-lg" style="color: red;"></i>
                                                                     </a>
                                                                 </td>
                                                             </cc:if>
@@ -625,6 +633,7 @@
                                                             <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                                                                 <td>
                                                                     <a href="#" data-toggle="modal" data-target="#modClienteModal" 
+                                                                       title="Modificar Descripcion del Cliente del Usuario"
                                                                        data-usucod="${carCli.enP1mUsuario.usuCod}" 
                                                                        data-usunom="${carCli.enP1mUsuario.usuNom}" 
                                                                        data-usuapepat="${carCli.enP1mUsuario.usuApePat}" 
@@ -632,16 +641,17 @@
                                                                        data-clicod="${carCli.enP1mCliente.cliCod}"
                                                                        data-clirazsoc="${carCli.enP1mCliente.cliRazSoc}"
                                                                        data-usuclides="${carCli.usuCliDes}">
-                                                                        <i class="fa fa-pencil-square-o fa-2x" style="color: black;"></i>
+                                                                        <i class="fa fa-pencil-square-o fa-lg" style="color: black;"></i>
                                                                     </a>
                                                                     <a href="#" data-toggle="modal" data-target="#delClienteModal" 
+                                                                       title="Eliminar Cliente del Usuario" 
                                                                        data-usucod="${carCli.enP1mUsuario.usuCod}" 
                                                                        data-usunom="${carCli.enP1mUsuario.usuNom}" 
                                                                        data-usuapepat="${carCli.enP1mUsuario.usuApePat}" 
                                                                        data-usuapemat="${carCli.enP1mUsuario.usuApeMat}"
                                                                        data-clicod="${carCli.enP1mCliente.cliCod}"
                                                                        data-clirazsoc="${carCli.enP1mCliente.cliRazSoc}">
-                                                                        <i class="fa fa-trash-o fa-2x" style="color: red;"></i>
+                                                                        <i class="fa fa-trash-o fa-lg" style="color: red;"></i>
                                                                     </a>
                                                                 </td>
                                                             </cc:if>
