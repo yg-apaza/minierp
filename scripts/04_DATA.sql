@@ -1225,3 +1225,13 @@ INSERT INTO `episerp`.`en_p1m_usuario` (`UsuCod`, `UsuNom`, `UsuApePat`, `UsuApe
 
 COMMIT;
 
+
+-- -----------------------------------------------------
+-- Data for table `episerp`.`ta_gzz_tipo_cliente`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `episerp`;
+INSERT INTO `episerp`.`ta_gzz_tipo_cliente` (`TipCliCod`, `TipCliDet`, `EstRegCod`) VALUES ('1', 'Persona Natural', 'A');
+INSERT INTO `episerp`.`ta_gzz_tipo_cliente` (`TipCliCod`, `TipCliDet`, `EstRegCod`) VALUES ('2', 'Persona Jurídica', 'A');
+
+COMMIT;
