@@ -5,7 +5,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.epis.minierp.business.impresora.FacturaPrinter;
+import org.epis.minierp.model.impresora.FacturaPrinter;
 import org.epis.minierp.dao.impresora.FacturaDAO;
 
 public class ImpresoraFacturaController extends HttpServlet {

@@ -1,9 +1,7 @@
 package org.epis.minierp.controller.general;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.OutputStream;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -40,8 +38,9 @@ public class ImpresionLotesController extends HttpServlet {
                 fileGenerated =  generador.generateGuiaRemision(codigos);
                 break;
         }
-        File file = new File(fileGenerated);
-        response.addHeader("Content-Disposition", "attachment; filename=" + file.getName());
+        generador.sendToPrinter(new File(fileGenerated));
+        
+        /*response.addHeader("Content-Disposition", "attachment; filename=" + file.getName());
         response.setContentLength((int) file.length());
         //response.setContentType("text/plain; charset=utf-8");
         //response.setCharacterEncoding("utf-8");
@@ -50,6 +49,6 @@ public class ImpresionLotesController extends HttpServlet {
         int bytes;
         while ((bytes = fileInputStream.read()) != -1) {
             responseOutputStream.write(bytes);
-        }
+        }*/
     }
 }

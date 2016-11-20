@@ -1,14 +1,18 @@
 package org.epis.minierp.business.impresora;
 
+import java.io.File;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.print.PrintService;
+import javax.print.PrintServiceLookup;
 import org.epis.minierp.dao.general.EnP1mEmpresaDao;
 import org.epis.minierp.dao.ventas.EnP1mFacturaVentaCabDao;
 import org.epis.minierp.model.EnP1mFacturaVentaCab;
@@ -240,5 +244,27 @@ public class Impresora {
             Logger.getLogger(Impresora.class.getName()).log(Level.SEVERE, null, ex);
         }     
         return file;
+    }
+    
+    public void sendToPrinter(File f){
+        try {
+            String printerName;
+            String ipAddress = "127.0.0.1";
+            
+            PrintService printer = PrintServiceLookup.lookupDefaultPrintService();
+            printerName = printer.getName();
+            String printerDevice = "\\\\" + ipAddress + "\\" + printerName;
+            
+            String file = f.getAbsolutePath();
+            ArrayList<String> commands = new ArrayList<>();
+            commands.add("cmd.exe");
+            commands.add("/B");
+            commands.add("/C");
+            commands.add("copy "+ file + " " + printerDevice);
+            ProcessBuilder pb = new ProcessBuilder(commands);
+            Process p = pb.start();
+        } catch (IOException ex) {
+            Logger.getLogger(Impresora.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

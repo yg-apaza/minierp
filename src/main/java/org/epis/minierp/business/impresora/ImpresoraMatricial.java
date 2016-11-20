@@ -1,5 +1,8 @@
 package org.epis.minierp.business.impresora;
 
+import org.epis.minierp.model.impresora.BoletaPrinter;
+import org.epis.minierp.model.impresora.FacturaPrinter;
+import org.epis.minierp.model.impresora.RemisionPrinter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -332,7 +335,6 @@ public class ImpresoraMatricial {
         writer.write(rut);
         val += fP.getRut();
         advanceHorizontal(fP.getRut());
-        //setAbsoluteHorizontalPosition(17.6f);
         writer.write(traNom);
         advanceVertical(fP.getTopFacDet());
         newLine();

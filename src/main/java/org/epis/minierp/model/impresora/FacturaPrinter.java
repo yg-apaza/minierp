@@ -1,9 +1,9 @@
-package org.epis.minierp.business.impresora;
+package org.epis.minierp.model.impresora;
 
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-@XmlRootElement (name="boletaPrinter")
+@XmlRootElement (name="facturaPrinter")
 @XmlType(propOrder = {
     "size",
     "leftMargin",
@@ -12,25 +12,28 @@ import javax.xml.bind.annotation.XmlType;
     "cliNom",
     "cliDir",
     "fecEmi",
-    "topBolCab",
+    "topFacCab",
     "cliCod",
     "conPag",
     "fecVen",
-    "venRut",
-    "pdv",
-    "obs",
-    "topBolDet",
+    "venZon",
+    "numSec",
+    "dis",
+    "rut",
+    "tra",
+    "topFacDet",
     "proCod",
     "proCan",
     "proUni",
     "proDes",
-    "proValVen",
+    "proValUni",
     "proDes1",
-    "proPreNet",
+    "proDes2",
+    "proValNet",
     "totalMargin"
 })
 
-public class BoletaPrinter {
+public class FacturaPrinter {
     int size;
     float leftMargin;
     float rightMargin;
@@ -38,24 +41,56 @@ public class BoletaPrinter {
     float cliNom;
     float cliDir;
     float fecEmi;
-    float topBolCab;
+    float topFacCab;
     float cliCod;
     float conPag;
     float fecVen;
-    float venRut;
-    float pdv;
-    float obs;
-    float topBolDet;
+    float venZon;
+    float numSec;
+    float dis;
+    float rut;
+    float tra;
+    float topFacDet;
     float proCod;
     float proCan;
     float proUni;
     float proDes;
-    float proValVen;
+    float proValUni;
     float proDes1;
-    float proPreNet;
+    float proDes2;
+    float proValNet;
     float totalMargin;
 
-    public BoletaPrinter() {
+    public FacturaPrinter(int size, int leftMargin, int rightMargin, float topMargin, float cliNom, float cliDir, float fecEmi, float topFacCab, float cliCod, float conPag, float fecVen, float venZon, float numSec, float dis, float rut, float tra, float topFacDet, float proCod, float proCan, float proUni, float proDes, float proValUni, float proDes1, float proDes2, float proValNet, float totalMargin) {
+        this.size = size;
+        this.leftMargin = leftMargin;
+        this.rightMargin = rightMargin;
+        this.topMargin = topMargin;
+        this.cliNom = cliNom;
+        this.cliDir = cliDir;
+        this.fecEmi = fecEmi;
+        this.topFacCab = topFacCab;
+        this.cliCod = cliCod;
+        this.conPag = conPag;
+        this.fecVen = fecVen;
+        this.venZon = venZon;
+        this.numSec = numSec;
+        this.dis = dis;
+        this.rut = rut;
+        this.tra = tra;
+        this.topFacDet = topFacDet;
+        this.proCod = proCod;
+        this.proCan = proCan;
+        this.proUni = proUni;
+        this.proDes = proDes;
+        this.proValUni = proValUni;
+        this.proDes1 = proDes1;
+        this.proDes2 = proDes2;
+        this.proValNet = proValNet;
+        this.totalMargin = totalMargin;
+    }
+
+    public FacturaPrinter() {
     }
 
     public int getSize() {
@@ -114,12 +149,12 @@ public class BoletaPrinter {
         this.fecEmi = fecEmi;
     }
 
-    public float getTopBolCab() {
-        return topBolCab;
+    public float getTopFacCab() {
+        return topFacCab;
     }
 
-    public void setTopBolCab(float topBolCab) {
-        this.topBolCab = topBolCab;
+    public void setTopFacCab(float topFacCab) {
+        this.topFacCab = topFacCab;
     }
 
     public float getCliCod() {
@@ -146,36 +181,52 @@ public class BoletaPrinter {
         this.fecVen = fecVen;
     }
 
-    public float getVenRut() {
-        return venRut;
+    public float getVenZon() {
+        return venZon;
     }
 
-    public void setVenRut(float venRut) {
-        this.venRut = venRut;
+    public void setVenZon(float venZon) {
+        this.venZon = venZon;
     }
 
-    public float getPdv() {
-        return pdv;
+    public float getNumSec() {
+        return numSec;
     }
 
-    public void setPdv(float pdv) {
-        this.pdv = pdv;
+    public void setNumSec(float numSec) {
+        this.numSec = numSec;
     }
 
-    public float getObs() {
-        return obs;
+    public float getDis() {
+        return dis;
     }
 
-    public void setObs(float obs) {
-        this.obs = obs;
+    public void setDis(float dis) {
+        this.dis = dis;
     }
 
-    public float getTopBolDet() {
-        return topBolDet;
+    public float getRut() {
+        return rut;
     }
 
-    public void setTopBolDet(float topBolDet) {
-        this.topBolDet = topBolDet;
+    public void setRut(float rut) {
+        this.rut = rut;
+    }
+
+    public float getTra() {
+        return tra;
+    }
+
+    public void setTra(float tra) {
+        this.tra = tra;
+    }
+
+    public float getTopFacDet() {
+        return topFacDet;
+    }
+
+    public void setTopFacDet(float topFacDet) {
+        this.topFacDet = topFacDet;
     }
 
     public float getProCod() {
@@ -210,12 +261,12 @@ public class BoletaPrinter {
         this.proDes = proDes;
     }
 
-    public float getProValVen() {
-        return proValVen;
+    public float getProValUni() {
+        return proValUni;
     }
 
-    public void setProValVen(float proValVen) {
-        this.proValVen = proValVen;
+    public void setProValUni(float proValUni) {
+        this.proValUni = proValUni;
     }
 
     public float getProDes1() {
@@ -226,12 +277,20 @@ public class BoletaPrinter {
         this.proDes1 = proDes1;
     }
 
-    public float getProPreNet() {
-        return proPreNet;
+    public float getProDes2() {
+        return proDes2;
     }
 
-    public void setProPreNet(float proPreNet) {
-        this.proPreNet = proPreNet;
+    public void setProDes2(float proDes2) {
+        this.proDes2 = proDes2;
+    }
+
+    public float getProValNet() {
+        return proValNet;
+    }
+
+    public void setProValNet(float proValNet) {
+        this.proValNet = proValNet;
     }
 
     public float getTotalMargin() {
@@ -242,5 +301,4 @@ public class BoletaPrinter {
         this.totalMargin = totalMargin;
     }
 
-    
 }

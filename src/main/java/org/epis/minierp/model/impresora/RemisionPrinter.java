@@ -1,4 +1,4 @@
-package org.epis.minierp.business.impresora;
+package org.epis.minierp.model.impresora;
 
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
