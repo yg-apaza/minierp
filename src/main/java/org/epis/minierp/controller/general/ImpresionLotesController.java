@@ -39,7 +39,8 @@ public class ImpresionLotesController extends HttpServlet {
                 break;
         }
         generador.sendToPrinter(new File(fileGenerated));
-        
+        response.sendRedirect(request.getContextPath() + "/secured/ventas/factura");
+
         /*response.addHeader("Content-Disposition", "attachment; filename=" + file.getName());
         response.setContentLength((int) file.length());
         //response.setContentType("text/plain; charset=utf-8");
