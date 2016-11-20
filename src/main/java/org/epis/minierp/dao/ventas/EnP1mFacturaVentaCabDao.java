@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Set;
 import org.epis.minierp.model.EnP1mFacturaVentaCab;
 import org.epis.minierp.model.EnP1tFacturaVentaDet;
+import org.epis.minierp.model.EnP2mGuiaRemTransportista;
 import org.epis.minierp.util.HibernateUtil;
 import org.hibernate.ObjectNotFoundException;
 import org.hibernate.Query;
@@ -32,7 +33,13 @@ public class EnP1mFacturaVentaCabDao {
         System.out.println(estados);
         return estados;
     }
-
+    public List<EnP1mFacturaVentaCab> getByGuiaRemTransportista(EnP2mGuiaRemTransportista t){
+        Query q=session.createQuery("from EnP1mFacturaVentaCab E where E.enP2mGuiaRemTransportista=:p1");
+        q.setParameter("p1", t);
+        List<EnP1mFacturaVentaCab> facs= q.list();
+        System.out.println(facs);
+        return facs;
+    }
     public EnP1mFacturaVentaCab getById(String id) {
         EnP1mFacturaVentaCab estado = null;
         try {
@@ -42,7 +49,7 @@ public class EnP1mFacturaVentaCabDao {
         }
         return estado;
     }
-    
+        
     public boolean verifyReferralGuide(String id) {
         EnP1mFacturaVentaCab factura = null;
         try {

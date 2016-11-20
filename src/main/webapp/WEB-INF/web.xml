@@ -574,6 +574,29 @@
         <servlet-name>PreVentaController</servlet-name>
         <servlet-class>org.epis.minierp.controller.ventas.PreVentaController</servlet-class>
     </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>GuiaRemisionTransportistaController</servlet-name>
+        <url-pattern>/secured/ventas/guiaRemisionTransporista</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <description/>
+        <display-name>GuiaRemisionTransportistaController</display-name>
+        <servlet-name>GuiaRemisionTransportistaController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.ventas.GuiaRemisionTransportistaController</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>BuscarFacturasEnGuiaRemTransporte</servlet-name>
+        <url-pattern>/secured/ventas/buscarFacturasEnGuiaRemTransporte</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <description/>
+        <display-name>BuscarFacturasEnGuiaRemTransporte</display-name>
+        <servlet-name>BuscarFacturasEnGuiaRemTransporte</servlet-name>
+        <servlet-class>org.epis.minierp.controller.ventas.BuscarFacturasEnGuiaRemTransporte</servlet-class>
+    </servlet>
+    
     <servlet-mapping>
         <servlet-name>PreVentaController</servlet-name>
         <url-pattern>/secured/ventas/preventa</url-pattern>
