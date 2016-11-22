@@ -37,6 +37,16 @@ COMMIT;
 
 
 -- -----------------------------------------------------
+-- Data for table `episerp`.`en_p1m_punto_venta`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `episerp`;
+INSERT INTO `en_p1m_punto_venta` (`SucCod`, `PunVenCod`, `PunVenDes`, `EstRegCod`) VALUES ( '1', '1', 'Punto de Venta Principal', 'A');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
 -- Data for table `episerp`.`en_p1m_empresa`
 -- -----------------------------------------------------
 START TRANSACTION;
