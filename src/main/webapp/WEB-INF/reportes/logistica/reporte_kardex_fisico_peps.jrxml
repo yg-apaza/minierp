@@ -8,7 +8,9 @@
 		<defaultValueExpression><![CDATA["."]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[SELECT 2016 periodo,"20701820992" ruc,"Escuela Profesional EPISUNSA" apellidos_nombres,"AREQUIPA" establecimiento, "10A" existencia,"A" tipo,"01" unidadMedida, p.ProDet descripcion FROM en_p2m_producto p WHERE p.ProCod=$P{PRODUCTO_ID}]]>
+		<![CDATA[SELECT YEAR(NOW()) periodo,pe.EmpRUC ruc,pe.EmpRazSoc apellidos_nombres,pe.EmpDir establecimiento, "10A" existencia,"A" tipo,"01" unidadMedida, p.ProDet descripcion
+ FROM en_p2m_producto p,en_p1m_empresa pe
+ WHERE p.ProCod=$P{PRODUCTO_ID} LIMIT 1 ]]>
 	</queryString>
 	<field name="periodo" class="java.lang.Long"/>
 	<field name="ruc" class="java.lang.String"/>

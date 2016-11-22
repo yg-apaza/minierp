@@ -1,34 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reporte_inventario" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="bf3f0b5a-9e74-4d24-a170-6bbe19d632d2">
-	<property name="ireport.zoom" value="1.1000000000000016"/>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reporte_inventario" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" whenResourceMissingType="Empty" uuid="bf3f0b5a-9e74-4d24-a170-6bbe19d632d2">
+	<property name="ireport.zoom" value="1.3310000000000028"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<queryString>
 		<![CDATA[SELECT
-MAX(ic.InvCabFec),
+MAX(ic.InvCabFec) fecha,
 pp.ProCod,pp.ProDet,
 pp.ProStk,id.InvDetDifStk,
-(pp.ProStk+id.InvDetDifStk) canReal
+(pp.ProStk+id.InvDetDifStk) canReal,/**
+(SELECT
+CASE IFNULL(ivf.TipFallProDet,0)
+WHEN 0 THEN 'No definido'
+ELSE ivf.TipFallProDet
+END ) falla**/
+ivf.TipFallProDet falla
 FROM en_p2m_inventario_cab ic
 INNER JOIN en_p2t_inventario_det id ON id.InvCabCod=ic.InvCabCod AND ic.EstRegCod='A'
-INNER JOIN en_p2m_producto pp ON pp.ProCod=id.ProCod]]>
+INNER JOIN en_p2m_producto pp ON pp.ProCod=id.ProCod
+INNER JOIN ta_gzz_tipo_falla_producto ivf ON  ivf.TipFallProCod=id.TipFallProCod AND ivf.EstRegCod='A'
+GROUP BY pp.ProCod]]>
 	</queryString>
-	<field name="MAX(ic.InvCabFec)" class="java.sql.Date">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
+	<field name="fecha" class="java.sql.Date"/>
 	<field name="ProCod" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="ProDet" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="ProStk" class="java.math.BigDecimal">
+	<field name="ProStk" class="java.lang.Double">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="InvDetDifStk" class="java.math.BigDecimal">
+	<field name="InvDetDifStk" class="java.lang.Double">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="canReal" class="java.math.BigDecimal"/>
+	<field name="canReal" class="java.lang.Double"/>
+	<field name="falla" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -41,68 +48,78 @@ INNER JOIN en_p2m_producto pp ON pp.ProCod=id.ProCod]]>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="360" y="0" width="100" height="20" uuid="02e88e84-8355-42ef-960a-1e348ad5fca8"/>
-				<textFieldExpression><![CDATA[$F{MAX(ic.InvCabFec)}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
 			</textField>
 		</band>
 	</title>
 	<columnHeader>
 		<band height="21" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="0" width="98" height="20" uuid="c6d86c09-accd-4067-8c57-5175c9d8de20"/>
+				<reportElement x="0" y="0" width="88" height="20" uuid="c6d86c09-accd-4067-8c57-5175c9d8de20"/>
 				<textElement textAlignment="Center"/>
 				<text><![CDATA[Codigo]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="120" y="0" width="127" height="20" uuid="a27e7552-e31b-4ce4-a724-22d0850dad8a"/>
+				<reportElement x="98" y="0" width="115" height="20" uuid="a27e7552-e31b-4ce4-a724-22d0850dad8a"/>
 				<textElement textAlignment="Center"/>
 				<text><![CDATA[Descripcion]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="262" y="0" width="82" height="20" uuid="08adf882-f9c2-43ff-bea2-c8f679bdebfc"/>
+				<reportElement x="229" y="0" width="62" height="20" uuid="08adf882-f9c2-43ff-bea2-c8f679bdebfc"/>
 				<textElement textAlignment="Center"/>
 				<text><![CDATA[Cant. Virtual]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="360" y="0" width="82" height="20" uuid="bab64995-ca62-430d-8683-0afc2ccf428e"/>
+				<reportElement x="302" y="0" width="82" height="20" uuid="bab64995-ca62-430d-8683-0afc2ccf428e"/>
 				<textElement textAlignment="Center"/>
 				<text><![CDATA[Cant. Real]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="452" y="0" width="82" height="20" uuid="f83ada43-0a2f-49e1-bf9d-9f241d8739ae"/>
+				<reportElement x="394" y="0" width="66" height="20" uuid="f83ada43-0a2f-49e1-bf9d-9f241d8739ae"/>
 				<textElement textAlignment="Center"/>
 				<text><![CDATA[Diferencia]]></text>
 			</staticText>
 			<line>
 				<reportElement x="0" y="20" width="555" height="1" uuid="a14d3be4-40c5-4f5e-bbc9-09f4ff9a9f24"/>
 			</line>
+			<staticText>
+				<reportElement x="478" y="0" width="66" height="20" uuid="7ba9c0f6-dab3-4a36-91c1-7767c3985d1c"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Falencia]]></text>
+			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
 		<band height="20" splitType="Stretch">
 			<textField isBlankWhenNull="true">
-				<reportElement x="0" y="0" width="98" height="20" uuid="52695ea9-9bd5-46e6-b10b-4b024991aefd"/>
+				<reportElement x="0" y="0" width="88" height="20" uuid="52695ea9-9bd5-46e6-b10b-4b024991aefd"/>
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{ProCod}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="262" y="0" width="82" height="20" uuid="057e4248-c9d9-4835-81af-6c25e2a63952"/>
-				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA[$F{ProStk}]]></textFieldExpression>
-			</textField>
-			<textField isBlankWhenNull="true">
-				<reportElement x="360" y="0" width="82" height="20" uuid="66b6dc95-ce67-41f1-aae2-8ef7159f8590"/>
+				<reportElement x="302" y="0" width="82" height="20" uuid="66b6dc95-ce67-41f1-aae2-8ef7159f8590"/>
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{canReal}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="452" y="0" width="82" height="20" uuid="24072eb7-b00b-481b-aa47-3f9cd10fbe5d"/>
+				<reportElement x="98" y="0" width="115" height="20" uuid="ddb65016-8ef5-46a8-882e-296d72d40c11"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{ProDet}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="229" y="0" width="62" height="20" uuid="057e4248-c9d9-4835-81af-6c25e2a63952"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{ProStk}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="394" y="0" width="66" height="20" uuid="24072eb7-b00b-481b-aa47-3f9cd10fbe5d"/>
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{InvDetDifStk}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="120" y="0" width="127" height="20" uuid="ddb65016-8ef5-46a8-882e-296d72d40c11"/>
+				<reportElement x="478" y="0" width="66" height="20" uuid="b285a05c-c701-474b-b138-1ffc78bd1238"/>
 				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA[$F{ProDet}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{falla}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
