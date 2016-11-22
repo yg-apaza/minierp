@@ -1,9 +1,3 @@
-<%-- 
-    Document   : unidadTransporte
-    Created on : 04-nov-2016, 10:13:29
-    Author     : Bryan
---%>
-
 <%@ taglib tagdir="/WEB-INF/tags" prefix="minierptemplate" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <minierptemplate:template>
@@ -13,11 +7,18 @@
     <jsp:attribute name="contenido">
         <br>
         <div class="pagel-body">
-            <h1 class="page-header"> Unidades de Transporte
-                <c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
-                <a href="#" class="btn btn-success btn-circle" data-toggle="modal" data-target="#agregarModal"><i class="fa fa-plus"></i></a>
-                </c:if>
-            </h1>
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header"> Unidades de Transporte </h1>
+                </div>        
+            </div>
+            <div class="row">
+                <div class="col-xs-6 col-md-5">
+                    <c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
+                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregarModal"> Agregar Nuevo <i class="fa fa-plus"></i></button>
+                    </c:if>
+                </div>
+            </div><br> 
             <div class="col-md-12">
                 <div class="table-responsive">
                     <table class="table table-bordered table-striped table-hover" id="tablaDocClientes">

@@ -7,12 +7,19 @@
     </jsp:attribute>
     <jsp:attribute name="contenido">
         <div class="panel-body">
-            <h1 class="page-header">Documentos de los Usuarios
-                <c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
-                <a href="#" class="btn btn-success btn-circle" data-toggle="modal" data-target="#agregarModal"><i class="fa fa-plus"></i></a>
-                <a href="#" class="btn btn-info btn-circle" data-toggle="modal" data-target="#estadosModal"><i class="fa fa-eye"></i></a>
-                </c:if>
-            </h1>  
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header"> Documentos de los Usuarios </h1>
+                </div>        
+            </div>
+            <div class="row">
+                <div class="col-xs-6 col-md-5">
+                    <c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
+                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregarModal"> Agregar Nuevo <i class="fa fa-plus"></i></button>
+                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#estadosModal"> Ver Inhabilitados <i class="fa fa-eye"></i></button>
+                    </c:if>
+                </div>
+            </div><br> 
             <!--
             <div class="row">
                 <div class="col-md-4">

@@ -9,10 +9,18 @@
     </jsp:attribute>
     <jsp:attribute name="contenido">
         <div class="panel-body">
-            <h1 class="page-header">Almacén
-                <a href="#" class="btn btn-success btn-circle" data-toggle="modal" data-target="#agregarModal" title="Agregar Almacen"><i class="fa fa-plus"></i></a>
-                <a href="#" class="btn btn-info btn-circle" data-toggle="modal" data-target="#estadosModal" title="Almacenes Inhabilitados"><i class="fa fa-eye"></i></a>
-            </h1>     
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Almacén</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6 col-md-4">
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregarModal"> Agregar nuevo <i class="fa fa-plus"></i></button>                
+                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#estadosModal"> Ver Inhabilitados <i class="fa fa-eye"></i></button>    
+                </div>
+            </div>
+            <br>
             <div class="form-horizontal">
                 <div class="col-sm-12">      
                     <table class="table table-bordered table-striped table-hover" id="tablaProductos">

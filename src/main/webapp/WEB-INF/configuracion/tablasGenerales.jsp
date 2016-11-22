@@ -1,9 +1,3 @@
-<%-- 
-    Document   : tablasGenerales
-    Created on : 06-nov-2016, 11:13:15
-    Author     : Bryan
---%>
-
 <%@ taglib tagdir="/WEB-INF/tags" prefix="minierptemplate" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <minierptemplate:template>
@@ -13,41 +7,45 @@
     <jsp:attribute name="contenido">
         <br>
         <div class="pagel-body">
-            <h1 class="page-header"> Tablas Generales
-                <c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
-                <a href="#" class="btn btn-success btn-circle" data-toggle="modal" data-target="#agregarModal"><i class="fa fa-plus"></i></a>
-                </c:if>
-            </h1>
-            
-            <div class="form-group"> 
-                <label> Tablas: </label><br/>
-                <select id="tab" name="tab" class="form-control">
-                    <option value="0">Banco</option>
-                    <option value="1">Estado civil</option>
-                    <option value="2">Estado de factura</option>
-                    <option value="3">Estado de unidad de transporte</option>
-                    <option value="4">Método de pago de factura</option>
-                    <option value="5">Moneda</option>
-                    <option value="6">Motivo de traslado</option>
-                    <option value="7">Tipo de cliente</option>
-                    <option value="8">Tipo de comprobante</option>
-                    <option value="9">Tipo de descuento</option>
-                    <option value="10">Tipo de destinatario</option>
-                    <option value="11">Tipo de devolución</option>
-                    <option value="12">Tipo de documento de cliente</option>
-                    <option value="13">Tipo de documento de proveedor</option>
-                    <option value="14">Tipo de documento de transportista</option>
-                    <option value="15">Tipo de documento de usuario</option>
-                    <option value="16">Tipo de pago de factura</option>
-                    <option value="17">Tipo de unidad de transporte</option>
-                    <option value="18">Tipo de usuario</option>
-                    <option value="19">Unidad de medida</option>
-                    <option value="20">Canal de cliente</option>
-                    <option value="21">Tipo de falla de producto</option>
-                </select>
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header"> Tablas Generales </h1>
+                </div>        
             </div>
-            
-            
+            <div class="row">
+                <div class="col-xs-6 col-md-5">
+                    <c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
+                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregarModal"> Agregar Nuevo <i class="fa fa-plus"></i></button>
+                    </c:if>
+                </div>
+                <div class="col-xs-6 col-md-5 form-group">
+                    <label> Tablas: </label><br/>
+                    <select id="tab" name="tab" class="form-control">
+                        <option value="0">Banco</option>
+                        <option value="1">Estado civil</option>
+                        <option value="2">Estado de factura</option>
+                        <option value="3">Estado de unidad de transporte</option>
+                        <option value="4">Método de pago de factura</option>
+                        <option value="5">Moneda</option>
+                        <option value="6">Motivo de traslado</option>
+                        <option value="7">Tipo de cliente</option>
+                        <option value="8">Tipo de comprobante</option>
+                        <option value="9">Tipo de descuento</option>
+                        <option value="10">Tipo de destinatario</option>
+                        <option value="11">Tipo de devolución</option>
+                        <option value="12">Tipo de documento de cliente</option>
+                        <option value="13">Tipo de documento de proveedor</option>
+                        <option value="14">Tipo de documento de transportista</option>
+                        <option value="15">Tipo de documento de usuario</option>
+                        <option value="16">Tipo de pago de factura</option>
+                        <option value="17">Tipo de unidad de transporte</option>
+                        <option value="18">Tipo de usuario</option>
+                        <option value="19">Unidad de medida</option>
+                        <option value="20">Canal de cliente</option>
+                        <option value="21">Tipo de falla de producto</option>
+                    </select>
+                </div>
+            </div><br> 
             <div class="col-md-12">
                 <div class="table-responsive">
                     <table class="table table-bordered table-striped table-hover" id="tablaDocClientes">

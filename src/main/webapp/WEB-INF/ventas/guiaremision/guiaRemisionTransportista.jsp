@@ -45,7 +45,7 @@
                                          <td><c:out value="${c.taGzzTipoDestinatario.tipDstDet}"/></td>                                         
                                          <td><c:out value="${c.guiRemTraDes}"/></td>                                         
                                          <td>
-                                            <a onclick='viewFactura("${c.guiRemTraNum}")'>
+                                            <a onclick='viewFactura("${c.guiRemTraNum}")' title="Vista detallada de guía">
                                                 <i class="fa fa-list-alt fa-2x" style="color: black;"></i>
                                             </a>
                                          </td>

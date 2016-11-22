@@ -7,12 +7,19 @@
     </jsp:attribute>
     <jsp:attribute name="contenido">
         <div class="panel-body">
-            <h1 class="page-header">Catálogo de Rutas
-                <c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
-                <a href="#" class="btn btn-success btn-circle" data-toggle="modal" data-target="#agregarModal"><i class="fa fa-plus"></i></a>
-                <a href="#" class="btn btn-info btn-circle" data-toggle="modal" data-target="#estadosModal"><i class="fa fa-eye"></i></a>
-                </c:if>
-            </h1>     
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header"> Catálogo de Rutas </h1>
+                </div>        
+            </div>
+            <div class="row">
+                <div class="col-xs-6 col-md-5">
+                    <c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
+                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregarModal"> Agregar Nuevo <i class="fa fa-plus"></i></button>
+                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#estadosModal"> Ver Inhabilitados <i class="fa fa-eye"></i></button>
+                    </c:if>
+                </div>
+            </div><br> 
             <!--<div class="row">
                 <div class="col-md-4">
                     <a href="${pageContext.request.contextPath}/secured/reporte?type=pdf&&report=puntodeventa" class="btn btn-outline btn-danger btn-lg btn-block">
@@ -87,11 +94,11 @@
                         <div class="modal-body">
                             <input type="hidden" name="accion" value="create">
                             <div class="form-group">
-                                <label>Codigo de Ruta:</label>
+                                <label>Código de Ruta:</label>
                                 <input class="form-control" name="catRutCod">
                             </div>
                             <div class="form-group">
-                                <label>Descripcion de la Ruta:</label>
+                                <label>Descripción de la Ruta:</label>
                                 <input class="form-control" name="catRutDet">
                             </div>
                         </div>
@@ -115,11 +122,11 @@
                         <div class="modal-body">
                             <div class="form-group">
                                 <input type="hidden" name="accion" value="update">
-                                <label>Codigo de Ruta:</label>
+                                <label>Código de Ruta:</label>
                                 <input class="form-control" name="catRutCod" id="updateCatRutCod" readonly>
                             </div>
                             <div class="form-group">
-                                <label>Descripcion de la Ruta:</label>
+                                <label>Descripción de la Ruta:</label>
                                 <input class="form-control" name="catRutDet" id="updateCatRutDet">
                             </div>
                         </div>
@@ -166,7 +173,7 @@
                             <table class="table table-bordered table-striped table-hover">
                                 <thead>
                                     <tr>
-                                        <th>Codigo de Ruta</th>
+                                        <th>Código de Ruta</th>
                                         <th>Detalle de la Ruta</th>
                                         <th>Acciones</th>
                                     </tr>
@@ -303,12 +310,12 @@
                 },
                 messages: {
                     catRutCod: {
-                        required: "El codigo es requerido",
-                        number: "El codigo debe ser numerico"
+                        required: "El código es requerido",
+                        number: "El código debe ser numérico"
                     },
                     catRutDet:
                     {
-                        required: "Ingrese una descripcion"
+                        required: "Ingrese una descripcin"
                     }
                 },
                 submitHandler: function (form) {
@@ -330,12 +337,12 @@
                 },
                 messages: {
                     catRutCod: {
-                        required: "El codigo es requerido",
-                        number: "El codigo debe ser numerico"
+                        required: "El código es requerido",
+                        number: "El código debe ser numérico"
                     },
                     catRutDet:
                     {
-                        required: "Ingrese una descripcion"
+                        required: "Ingrese una descripción"
                     }
                 },
                 submitHandler: function (form) {
