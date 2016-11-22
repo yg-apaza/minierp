@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reporte_kardex_fisico" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="70d99bdf-88ad-4e5e-bd8f-983f531bb5f6">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reporte_kardex_fisico" pageWidth="842" pageHeight="595" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="70d99bdf-88ad-4e5e-bd8f-983f531bb5f6">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
@@ -8,7 +8,9 @@
 		<defaultValueExpression><![CDATA["."]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[SELECT 2016 periodo,"20701820992" ruc,"Escuela Profesional EPISUNSA" apellidos_nombres,"AREQUIPA" establecimiento, "10A" existencia,"A" tipo,"01" unidadMedida, p.ProDet descripcion FROM en_p2m_producto p WHERE p.ProCod=$P{PRODUCTO_ID}]]>
+		<![CDATA[SELECT YEAR(NOW()) periodo,pe.EmpRUC ruc,pe.EmpRazSoc apellidos_nombres,pe.EmpDir establecimiento, "10A" existencia,"A" tipo,"01" unidadMedida, p.ProDet descripcion
+ FROM en_p2m_producto p,en_p1m_empresa pe
+ WHERE p.ProCod=$P{PRODUCTO_ID} LIMIT 1 ]]>
 	</queryString>
 	<field name="periodo" class="java.lang.Long"/>
 	<field name="ruc" class="java.lang.String"/>
