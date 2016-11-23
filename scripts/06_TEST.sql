@@ -30,7 +30,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `episerp`;
-INSERT INTO `en_p1m_punto_venta` (`SucCod`, `PunVenCod`, `PunVenDes`, `EstRegCod`) VALUES ( '1', '1', 'Puntito de Venta', 'A');
+
 INSERT INTO `en_p1m_punto_venta` (`SucCod`, `PunVenCod`, `PunVenDes`, `EstRegCod`) VALUES ( '00101', '1', 'Punto de Venta Calle Mercaderes', 'A');
 INSERT INTO `en_p1m_punto_venta` (`SucCod`, `PunVenCod`, `PunVenDes`, `EstRegCod`) VALUES ( '00102', '2', 'VILLEGAS ASOCIADOS', 'A');
 INSERT INTO `en_p1m_punto_venta` (`SucCod`, `PunVenCod`, `PunVenDes`, `EstRegCod`) VALUES ( '00108', '3', 'ZETTA COMUNICADORES LIMITADA', 'A');
