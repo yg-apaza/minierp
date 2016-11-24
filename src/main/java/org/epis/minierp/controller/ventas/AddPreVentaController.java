@@ -1,5 +1,7 @@
 package org.epis.minierp.controller.ventas;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -132,7 +134,12 @@ public class AddPreVentaController extends HttpServlet{
                 detalles.save(det);
             }
             
-            response.sendRedirect(request.getContextPath() + "/secured/ventas/preventa/addPreventa");
+            JsonObject data = new JsonObject();
+            data.addProperty("state", true);
+            data.addProperty("redirect", request.getContextPath() + "/secured/ventas/preventa/addPreventa");
+            response.setContentType("application/json");
+            response.setCharacterEncoding("UTF-8");
+            response.getWriter().write(new Gson().toJson(data));
         } catch (ParseException ex) {
             Logger.getLogger(AddPreVentaController.class.getName()).log(Level.SEVERE, null, ex);
         }
