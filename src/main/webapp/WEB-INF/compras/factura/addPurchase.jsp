@@ -271,7 +271,7 @@
                             </div>
                             <div class="col-xs-12 col-md-6">
                                 <div class="form-group input-group" >
-                                    <span class="input-group-addon">Codigo</span>
+                                    <span class="input-group-addon">Código</span>
                                         <input type="text" class="form-control" id="addProCod">
                                     <span class="input-group-addon"><i class="fa fa-th"></i></span>
                                 </div>

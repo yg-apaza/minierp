@@ -30,7 +30,7 @@
                                             <th style="text-align: center">Num. Registro</th>
                                             <th style="text-align: center">Tipo Destinataraio</th>
                                             <th style="text-align: center">Destino</th>
-                                            <th style="text-align: center">Accion</th>
+                                            <th style="text-align: center">Acción</th>
                                          </tr>
                                      </thead>
                                      <tbody>
@@ -92,7 +92,7 @@
                                             <table width="100%" class="table table-striped table-bordered table-hover" id="guiFacturas">
                                                 <thead align="center">
                                                     <tr >
-                                                        <th>Codigo</th>
+                                                        <th>Código</th>
                                                         <th>F/B</th>
                                                         <th>Cliente</th>
                                                         <th>Usuario</th>

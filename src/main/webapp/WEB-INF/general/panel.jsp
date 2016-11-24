@@ -103,7 +103,7 @@
                     <div class="row">
                         <div class="col-sm-4">
                             <div class="form-group input-group">
-                                <span class="input-group-addon">Almacen</span>
+                                <span class="input-group-addon">Almacén</span>
                                 <select name="AlmPro" id="almSelected" class="form-control validate[requiered]" onchange="changingAlmacen()">
                                     <option disabled="" selected="">Select Option</option>
                                     <c:forEach items="${almacenes}" var="alm">

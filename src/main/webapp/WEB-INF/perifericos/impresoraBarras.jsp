@@ -22,7 +22,7 @@
                                     <label>Código </label>
                                     <div class="form-group input-group">
                                         <span class="input-group-addon"><i class="fa fa-barcode"></i></span>
-                                        <input type="text" class="form-control" placeholder="Codigo" id="proCod">
+                                        <input type="text" class="form-control" placeholder="Código" id="proCod">
                                     </div>
                                 </div>
                             </div>

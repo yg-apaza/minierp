@@ -39,12 +39,12 @@
                     <thead>
                         <tr>
                             <th>Código</th>
-                            <th>Codigo de Barras</th>
+                            <th>Código de Barras</th>
                             <th>Detalle</th>
                             <th>Unidad</th>
                             <th>Precio</th>
                             <th>Peso</th>    
-                            <th>Almacen</th>
+                            <th>Almacén</th>
                             <th>Stock</th>
                             <th>Preventa</th>
                             <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
@@ -136,7 +136,7 @@
                                     
                                     <div class="col-xs-12 col-md-6">
                                         <div class="form-group input-group" >
-                                            <span class="input-group-addon">Codigo</span>
+                                            <span class="input-group-addon">Código</span>
                                             <input type="text" class="form-control" name="proCod" >
                                             <span class="input-group-addon"><i class="fa fa-th"></i></span>
                                         </div>
@@ -144,7 +144,7 @@
                                     
                                     <div class="col-xs-12 col-md-6">
                                         <div class="form-group input-group" >
-                                            <span class="input-group-addon">Codigo de Barras</span>
+                                            <span class="input-group-addon">Código de Barras</span>
                                             <input type="text" class="form-control" name="proCodBar" >
                                             <span class="input-group-addon"><i class="fa fa-th"></i></span>
                                         </div>
@@ -152,14 +152,14 @@
                                     
                                     <div class="col-xs-12 col-md-12">
                                         <div class="form-group input-group" >
-                                            <span class="input-group-addon">Descripcion</span>
+                                            <span class="input-group-addon">Descripción</span>
                                             <input type="text" class="form-control" name="proDet" placeholder="Descripcion del producto">
                                         </div>
                                     </div>
                                     
                                     <div class="col-xs-12 col-md-4">
                                         <div class="form-group input-group" >
-                                            <span class="input-group-addon">Almacen</span>
+                                            <span class="input-group-addon">Almacén</span>
                                             <select class="form-control" name="almCod">
                                                 <c:forEach items="${almacenes}" var="almacen">
                                                     <option value="${almacen.almCod}">${almacen.almDet}</option>
@@ -181,7 +181,7 @@
                                     
                                     <div class="col-xs-12 col-md-4">
                                         <div class="form-group input-group" >
-                                            <span class="input-group-addon">Volúmen</span>
+                                            <span class="input-group-addon">Volumen</span>
                                             <input type="number" class="form-control" name="volUniAlm" min="0.0" step="any" value="0.0">                                                              
                                             <span class="input-group-addon"><i class="fa fa-th"></i></span>
                                         </div>
@@ -280,7 +280,7 @@
                                     
                                     <div class="col-xs-12 col-md-6">
                                         <div class="form-group input-group" >
-                                            <span class="input-group-addon">Codigo</span>
+                                            <span class="input-group-addon">Código</span>
                                                 <input type="text" class="form-control" name="proCod" id="updateProCod" readonly>
                                             <span class="input-group-addon"><i class="fa fa-th"></i></span>
                                         </div>
@@ -288,7 +288,7 @@
                                     
                                     <div class="col-xs-12 col-md-6">
                                         <div class="form-group input-group" >
-                                            <span class="input-group-addon">Codigo de Barras</span>
+                                            <span class="input-group-addon">Código de Barras</span>
                                             <input type="text" class="form-control" name="proCodBar" id="updateProCodBar">
                                             <span class="input-group-addon"><i class="fa fa-th"></i></span>
                                         </div>
@@ -296,14 +296,14 @@
                                     
                                     <div class="col-xs-12 col-md-12">
                                         <div class="form-group input-group" >
-                                            <span class="input-group-addon">Descripcion</span>
+                                            <span class="input-group-addon">Descripción</span>
                                             <input type="text" class="form-control" name="proDet" id="updateProDet">
                                         </div>
                                     </div>
                                     
                                     <div class="col-xs-12 col-md-4">
                                         <div class="form-group input-group" >
-                                            <span class="input-group-addon">Almacen</span>
+                                            <span class="input-group-addon">Almacén</span>
                                             <select class="form-control" name="almCod" id="updateAlmCod">
                                                 <c:forEach items="${almacenes}" var="almacen">
                                                     <option value="${almacen.almCod}">${almacen.almDet}</option>
@@ -325,7 +325,7 @@
                                     
                                     <div class="col-xs-12 col-md-4">
                                         <div class="form-group input-group" >
-                                            <span class="input-group-addon">Volúmen</span>
+                                            <span class="input-group-addon">Volumen</span>
                                             <input type="number" class="form-control" name="volUniAlm" min="0.0" step="any" value="0.0" id="updateVolUniAlm">                                                              
                                             <span class="input-group-addon"><i class="fa fa-th"></i></span>
                                         </div>
@@ -430,10 +430,10 @@
                                         <thead>
                                             <tr>
                                                 <th>Código</th>
-                                                <th>Codigo de Barras</th>
+                                                <th>Código de Barras</th>
                                                 <th>Detalle</th>
                                                 <th>Precio</th>
-                                                <th>Almacen</th>
+                                                <th>Almacén</th>
                                                 <th>Stock</th>
                                                 <th>Preventa</th>
                                                 <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">

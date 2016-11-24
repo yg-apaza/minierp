@@ -44,7 +44,7 @@
                     <br><br> 
                     
                     <div class="form-group">
-                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Codigo de Cuenta:  </label>
+                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Código de Cuenta:  </label>
                         <div class="col-sm-9">
                             <input type="text" id="form-field-1" name = "codCue" placeholder="${cuenta.cueCod}" class="form-control" >
                         </div>

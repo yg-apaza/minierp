@@ -336,7 +336,7 @@
                         required: "Ingrese contacto de proveedor"
                     },
                     dirPro: {
-                        required: "Ingrese direccion"
+                        required: "Ingrese dirección"
                     }    
                 },
                 submitHandler: function (form) {

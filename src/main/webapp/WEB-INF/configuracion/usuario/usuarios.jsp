@@ -138,7 +138,7 @@
                                 <div class="form-group">
                                     <div class="col-sm-6">
                                         <label class="control-label">Código Usuario</label>
-                                        <input type="text" class="form-control" placeholder="Codigo Usuario" name="usuCod">
+                                        <input type="text" class="form-control" placeholder="Código Usuario" name="usuCod">
                                     </div>
                                     <div class="col-sm-6">                               
                                         <label class="control-label">Nombre Usuario</label>
@@ -347,7 +347,7 @@
                             <table class="table table-bordered table-striped table-hover" id="tablaUsuariosInactivos">                                                                
                                 <thead>
                                     <tr>
-                                        <th>Codigo Usuario</th>
+                                        <th>Código Usuario</th>
                                         <th>Nombre y Apellidos</th>
                                         <th>Fecha Nacimiento</th>
                                         <th>Estado Civil</th>
@@ -516,8 +516,8 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-12">
-                                        <label>Numero de Documento:</label>
-                                        <input type="text" class="form-control" placeholder="Numero del documento" name="docUsuNum">
+                                        <label>Número de Documento:</label>
+                                        <input type="text" class="form-control" placeholder="Número del documento" name="docUsuNum">
                                     </div>
                                 </div> 
                             </div>
@@ -549,7 +549,7 @@
                                                     <tr>
                                                         <th>Usuario</th>
                                                         <th>Tipo de Documento</th>
-                                                        <th>Numero del Documento</th>
+                                                        <th>Número del Documento</th>
                                                         <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                                                             <th>Acciones</th>
                                                         </cc:if>
@@ -734,7 +734,7 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-12">
-                                        <label>Numero del documento:</label>
+                                        <label>Número del documento:</label>
                                         <input type="text" class="form-control" id="modDocumentoDocUsuNum" name="docUsuNum">
                                     </div>
                                 </div>
@@ -952,8 +952,8 @@
                 },
                 messages: {
                     usuCod: {
-                        required: "El Codigo de Usuario es Requerido",
-                        number: "El Codigo de Usuario debe ser Numerico"
+                        required: "El Código de Usuario es Requerido",
+                        number: "El Código de Usuario debe ser Numérico"
                     }
                 },
                 submitHandler: function (form) {

@@ -146,7 +146,7 @@
                             <tr class="success">
                                 <th style="text-align: center;">Fecha</th>
                                 <th style="text-align: center;">Glosa </th>
-                                <th style="text-align: center;">Operacion </th>
+                                <th style="text-align: center;">Operación </th>
                                 <th style="text-align: center;">Nro. </th>
                                 <th style="text-align: center;">Producto</th>
                                 <th style="text-align: center;">Cantidad Entrada</th>

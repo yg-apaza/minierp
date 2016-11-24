@@ -83,7 +83,7 @@
                             </div>
                            
                             <div class="form-group">
-                                <label>Direccion:</label>
+                                <label>Dirección:</label>
                                 <input class="form-control" name="sucDir">
                             </div>
                         </div>   
@@ -117,7 +117,7 @@
                             </div>
                             
                              <div class="form-group">
-                                <label>Direccion:</label>
+                                <label>Dirección:</label>
                                 <input class="form-control" name="sucDir" id="updateSucDir">
                             </div>
                         </div>
@@ -324,7 +324,7 @@
                 },
                 messages: {
                     sucDir: {
-                        required: "Es necesario ingresar una Direccion"
+                        required: "Es necesario ingresar una Dirección"
                     }    
                 },
                 submitHandler: function(form) {

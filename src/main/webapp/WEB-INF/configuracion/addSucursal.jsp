@@ -15,10 +15,10 @@
                     </div>
                 </div>
                 <form class="form-group-sm" id="registerBill" method="post" action="${pageContext.request.contextPath}/secured/configuracion/addsucursal"> 
-                    <label class = "form-control" for = "sucCod"> Codigo: </label>
-                    <input class = "form-control" name = "sucCod" type = "text" placeholder = "Codigo de la Sucursal">
+                    <label class = "form-control" for = "sucCod"> Código </label>
+                    <input class = "form-control" name = "sucCod" type = "text" placeholder = "Código de la Sucursal">
                     <br>
-                    <label class = "form-control" for = "sucDes"> Descripcion de la Sucursal: </label>
+                    <label class = "form-control" for = "sucDes"> Descripción de la Sucursal: </label>
                     <input class = "form-control" name = "sucDes" type = "text" placeholder = "Nombre de la Sucursal">
                     <br>
                     <label class = "form-control" for = "sucDir"> Dirección: </label>

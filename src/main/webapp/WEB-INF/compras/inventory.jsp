@@ -62,7 +62,7 @@
                                 <!--    <td> <input type="text" width="10px" name="${producto.id.proCod}" value="0"> </td>-->
                                     <td>
                                         <!-- CADA FALLA ES UN SELECT Y LO QUE MANDO AL CONTROLADOR ES SU VALOR,
-                                            SU VALOR ES EL CODIGO DEL TIPO DE FALLA-->
+                                            SU VALOR ES EL CÓDIGO DEL TIPO DE FALLA-->
                                         
                                         <select id="falla${count}" name="falla${count}" class="form-control" style="width: 170px; display: inline-block;">
                                         <c:forEach items = "${falla_producto}" var = "falla_producto">

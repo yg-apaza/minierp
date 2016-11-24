@@ -58,7 +58,7 @@
                     <table class="table table-bordered table-striped table-hover" id="tablaMovimientos">
                         <thead>
                             <tr>
-                                <th>Codigo</th>
+                                <th>Código</th>
                                 <th>Usuario</th>
                                 <th>Total Calculado</th>
                                 <th>Total Cobrado</th>

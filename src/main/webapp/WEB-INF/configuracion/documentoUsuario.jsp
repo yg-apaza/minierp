@@ -115,7 +115,7 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label>Numero del Documento:</label>
+                                <label>Número del Documento:</label>
                                 <input class="form-control" name="docUsuNum">
                             </div>
                         </div>
@@ -149,7 +149,7 @@
                                 <input class="form-control" id="updateTipDocUsuCodNam" readonly>
                             </div>
                             <div class="form-group">
-                                <label>Numero del Documento:</label>
+                                <label>Número del Documento:</label>
                                 <input class="form-control" name="docUsuNum" id="updateDocUsuNum">
                             </div>
                         </div>
@@ -200,7 +200,7 @@
                                 <th>Cod Usuario</th>
                                 <th>Nombres y Apellidos</th>
                                 <th>Tipo de Documento</th>
-                                <th>Numero de Documento</th>
+                                <th>Número de Documento</th>
                                 <th>Registro</th>
                                 <th class="text-right">Acciones</th>
                             </tr>
@@ -277,7 +277,7 @@
                             <input type="hidden" name="accion" value="delete">
                             <input type="hidden" name="usuCod" id="deleteUsuCod">
                             <input type="hidden" name="tipDocUsuCod" id="deleteTipDocUsuCod">
-                            <p> ¿Desea Eliminar el Documento: <span id="deleteArgument"></span> ? (Operacion Irreversible)</p>
+                            <p> ¿Desea Eliminar el Documento: <span id="deleteArgument"></span> ? (Operación Irreversible)</p>
                         </div>
                         <div class="modal-footer">
                             <button type="submit" class="btn btn-outline btn-success">Si</button>
@@ -358,7 +358,7 @@
                 },
                 messages: {
                     docUsuNum: {
-                        required: "Se requiere un codigo"
+                        required: "Se requiere un código"
                     }
                 },
                 submitHandler: function (form) {
@@ -374,7 +374,7 @@
                 },
                 messages: {
                     docUsuNum: {
-                        required: "Se requiere un codigo"
+                        required: "Se requiere un código"
                     }
                 },
                 submitHandler: function (form) {

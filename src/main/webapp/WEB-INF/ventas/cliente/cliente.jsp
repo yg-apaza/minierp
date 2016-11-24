@@ -52,7 +52,7 @@
                             <tr>
                                 <th style="text-align: center">C</th>
                                 <th style="text-align: center">Docs</th>
-                                <th style="text-align: center">Razon Social</th>
+                                <th style="text-align: center">Razón Social</th>
                                 <th style="text-align: center">Nombre Comercial</th>
                                 <th style="text-align: center">Rutas Asociadas</th>
                                 <th style="text-align: center">Tipo</th>
@@ -153,8 +153,8 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-6">
-                                        <label>Razon Social:</label>
-                                        <input type="text" class="form-control" placeholder="Razon Social" name="cliRazSoc">
+                                        <label>Razón Social:</label>
+                                        <input type="text" class="form-control" placeholder="Razón Social" name="cliRazSoc">
                                     </div>
                                     <div class="col-sm-6">
                                         <label>Nombre Comercial:</label>
@@ -164,7 +164,7 @@
                                 <div class="form-group">
                                     <div class="col-sm-6">
                                         <label>Dominio Fiscal:</label>
-                                        <input type="text" class="form-control" placeholder="Razon Social" name="cliDomFis">
+                                        <input type="text" class="form-control" placeholder="Razón Social" name="cliDomFis">
                                     </div>
                                     <div class="col-sm-6">
                                         <label>Nombres:</label>
@@ -267,8 +267,8 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-6">
-                                        <label>Razon Social:</label>
-                                        <input type="text" class="form-control" placeholder="Razon Social" name="cliRazSoc" id="updateCliRazSoc">
+                                        <label>Razón Social:</label>
+                                        <input type="text" class="form-control" placeholder="Razón Social" name="cliRazSoc" id="updateCliRazSoc">
                                     </div>
                                     <div class="col-sm-6">
                                         <label>Nombre Comercial:</label>
@@ -278,7 +278,7 @@
                                 <div class="form-group">
                                     <div class="col-sm-6">
                                         <label>Dominio Fiscal:</label>
-                                        <input type="text" class="form-control" placeholder="Razon Social" name="cliDomFis" id="updateCliDomFis">
+                                        <input type="text" class="form-control" placeholder="Razón Social" name="cliDomFis" id="updateCliDomFis">
                                     </div>
                                     <div class="col-sm-6">
                                         <label>Nombres:</label>
@@ -388,9 +388,9 @@
                             <table class="table table-bordered table-striped table-hover" id="tablaEstadosModal">
                                 <thead>
                                     <tr>
-                                        <th>Codigo</th>
+                                        <th>Código</th>
                                         <th>Documentos</th>
-                                        <th>Razon Social</th>
+                                        <th>Razón Social</th>
                                         <th>Nombre Comercial</th>
                                         <th>Tipo</th>
                                         <th class="text-right">Acciones</th>
@@ -546,8 +546,8 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-12">
-                                        <label>Numero de Documento:</label>
-                                        <input type="text" class="form-control" placeholder="Numero del documento" name="docCliNum">
+                                        <label>Número de Documento:</label>
+                                        <input type="text" class="form-control" placeholder="Número del documento" name="docCliNum">
                                     </div>
                                 </div> 
                             </div>
@@ -637,7 +637,7 @@
                                                     <tr>
                                                         <th>Cliente</th>
                                                         <th>Tipo de Documento</th>
-                                                        <th>Numero del Documento</th>
+                                                        <th>Número del Documento</th>
                                                         <th>Acciones</th>
                                                     </tr>
                                                 </thead>
@@ -740,7 +740,7 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-12">
-                                        <label>Numero del Documento:</label>
+                                        <label>Número del Documento:</label>
                                         <input type="text" class="form-control" id="modDocDocCliNum" name="docCliNum">
                                     </div>
                                 </div>
@@ -986,7 +986,7 @@
                         number: "El Código de Cliente debe ser Numérico"
                     },
                     cliRazSoc: {
-                        required: "La razon social es Requerida"
+                        required: "La Razón social es Requerida"
                     },
                     cliSex: {
                         required: "El Sexo es Requerido"
@@ -1024,7 +1024,7 @@
                         number: "El Código de Cliente debe ser Numérico"
                     },
                     cliRazSoc: {
-                        required: "La razon social es Requerida"
+                        required: "La Razón social es Requerida"
                     },
                     cliSex: {
                         required: "El Sexo es Requerido"

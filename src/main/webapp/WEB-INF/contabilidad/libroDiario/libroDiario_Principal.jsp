@@ -101,18 +101,18 @@
                                     <table width="100%" class="table table-striped table-bordered table-hover" id="miTabla">
                                         <thead>
                                           <tr >
-                                            <th rowspan="2">NÚMERO CORRELATIVO <br>DE LA OPERACION</th>
-                                            <th rowspan="2">FECHA DE LA <br>OPERACION</th>
-                                            <th rowspan="2">GLOSA O DESCRIPCION DE LA <br>OPERACION</th>
-                                            <th colspan="2">REFERENCIA DE LA OPERACION</th>
-                                            <th colspan="2">CUENTA CONTABLE ASOCIADA A LA OPERACION</th>
+                                            <th rowspan="2">NÚMERO CORRELATIVO <br>DE LA OPERACIÓN</th>
+                                            <th rowspan="2">FECHA DE LA <br>OPERACIÓN</th>
+                                            <th rowspan="2">GLOSA O DESCRIPCION DE LA <br>OPERACIÓN</th>
+                                            <th colspan="2">REFERENCIA DE LA OPERACIÓN</th>
+                                            <th colspan="2">CUENTA CONTABLE ASOCIADA A LA OPERACIÓN</th>
                                             <th colspan="2">MOVIMIENTO</th>
                                           </tr>
                                           <tr>
-                                            <th>CODIGO DEL LIBRO O<br>REGISTRO</th>
-                                            <th>NUMERO DEL DOCUMENTO<br>SUSTENTATORIO</th>
-                                            <th>CODIGO</th>
-                                            <th>DENOMINACION</th>
+                                            <th>CÓDIGO DEL LIBRO O<br>REGISTRO</th>
+                                            <th>NÚMERO DEL DOCUMENTO<br>SUSTENTATORIO</th>
+                                            <th>CÓDIGO</th>
+                                            <th>DENOMINACIÓN</th>
                                             <th>DEBE</th>
                                             <th>HABER</th>
                                           </tr>
@@ -173,7 +173,7 @@
         <div id="opeAgregar" class="modal fade" role="dialog"><div class="modal-dialog"><div class="modal-content" style="overflow-y: auto">
             <!-- TITULO-->
             <div class="modal-header"> <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Agregar Operacion al Libro Diario</h4>
+                <h4 class="modal-title">Agregar Operación al Libro Diario</h4>
             </div>
             <!-- FIN_TITULO -->
             <form method="post" onsubmit= "actualizarDatos('tablaDetalles')" action="${pageContext.request.contextPath}/secured/contabilidad/librodiario">
@@ -181,7 +181,7 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <input type="hidden" name="operacion" value=2>
-                        <label>Numero Correlativo de la Operacion:</label>
+                        <label>Número Correlativo de la Operación:</label>
                         <input name="asiCabCod" type="number" class="form-control" required>
 
                         <label>Seleccione tipo de moneda </label>
@@ -196,13 +196,13 @@
                                   <option value="${co.tipComCod}" >${co.tipComDet}</option> 
                               </c:forEach>
                         </select>
-                        <label>Fecha de la Operacion:</label>  
+                        <label>Fecha de la Operación:</label>  
                         <input name="asiCabFec" type="date" class="form-control" required>
-                        <label>Glosa de la Operacion:</label>
+                        <label>Glosa de la Operación:</label>
                         <input name="asiCabGlo" type="text" class="form-control" required> 
-                        <label>Codigo del Registro:</label>
+                        <label>Código del Registro:</label>
                         <input name="asiCabTip" type="text" class="form-control" required>
-                        <label>Numero del Documento:</label>
+                        <label>Número del Documento:</label>
                         <input name="asiCabNumCom" type="text" class="form-control" required> 
                     </div>
                     
@@ -262,7 +262,7 @@
                 <div class="modal-body"  >
                     <div class="form-group">
                       <input type="hidden" name="operacion" value=1>
-                      <label>Codigo:</label>
+                      <label>Código:</label>
                       <input name="libDiaCod" type="number" min="0" class="form-control">
                       <label>Periodo:</label>
                       <input name="libDiaPer" type="text" class="form-control">
@@ -291,7 +291,7 @@
                 <!-- CONTENIDO -->
                 <div class="modal-body"  >
                     <input type="hidden" name="operacion" value=5>
-                    <label>Esta seguro que desa eliminar el libro diario con codigo: "${libDiaCod}" </label>
+                    <label>Está seguro que desa eliminar el libro diario con código: "${libDiaCod}" </label>
                 </div>
                 <!-- FIN CONTENIDO-->
                 <!-- PIE -->

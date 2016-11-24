@@ -44,18 +44,18 @@
                                     <td>${u.almObs}</td>
                                     <td class="text-center">
                                          <a href="#" data-toggle="modal" data-target="#verModal" 
-                                            title="Productos del Almacen"
+                                            title="Productos del Almacén"
                                             data-almcod="${u.almCod}">
                                              <i class="fa fa-eye fa-lg" style="color: black;"></i> 
                                          </a>
                                         <a href="#" data-toggle="modal" data-target="#modificarModal" 
-                                           title="Modificar Almacen"
+                                           title="Modificar Almacén"
                                            data-almcod="${u.almCod}" data-almdet="${u.almDet}" data-succod="${u.enP1mSucursal.sucCod}"
                                            data-almvoltot="${u.almVolTot}" data-almobs="${u.almObs}">
                                            <i class="fa fa-pencil-square-o fa-lg" style="color: black;"></i>
                                         </a>
                                         <a href="#" data-toggle="modal" data-target="#disableModal" 
-                                           title="InHabilitar Almacen"
+                                           title="Inhabilitar Almacén"
                                            data-almcod="${u.almCod}" data-almdet="${u.almDet}" data-succod="${u.enP1mSucursal.sucCod}"
                                            data-almvoltot="${u.almVolTot}" data-almobs="${u.almObs}">
                                            <i class="fa fa-trash-o fa-lg" style="color: black;"></i>
@@ -84,11 +84,11 @@
                                 <div class="form-group">
                                     <div class="col-sm-6">
                                         <label class="control-label">Código Almacén</label>
-                                        <input type="text" class="form-control" placeholder="Codigo Almacen" name="almCod" readonly>
+                                        <input type="text" class="form-control" placeholder="Código Almacén" name="almCod" readonly>
                                     </div>
                                     <div class="col-sm-6">
                                         <label class="control-label">Nombre Almacén</label>
-                                        <input type="text" class="form-control" placeholder="Nombre Almacen" name="almDet" readonly>
+                                        <input type="text" class="form-control" placeholder="Nombre Almacén" name="almDet" readonly>
                                     </div>
                                 </div>
                             </div>
@@ -138,11 +138,11 @@
                                 <div class="form-group">
                                     <div class="col-sm-6">
                                         <label class="control-label">Código Almacén</label>
-                                        <input type="text" class="form-control" placeholder="Codigo Almacen" name="almCod">
+                                        <input type="text" class="form-control" placeholder="Código Almacén" name="almCod">
                                     </div>
                                     <div class="col-sm-6">                               
                                         <label class="control-label">Nombre Almacén</label>
-                                        <input type="text" class="form-control" placeholder="Nombre Almacen" name="almDet">
+                                        <input type="text" class="form-control" placeholder="Nombre Almacén" name="almDet">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -190,11 +190,11 @@
                                 <div class="form-group">
                                     <div class="col-sm-6">
                                         <label class="control-label">Código Almacén</label>
-                                        <input type="text" class="form-control" id="updateAlmCod" placeholder="Codigo Almacen" name="almCod" readonly>
+                                        <input type="text" class="form-control" id="updateAlmCod" placeholder="Código Almacén" name="almCod" readonly>
                                     </div>
                                     <div class="col-sm-6">                               
                                         <label class="control-label">Nombre Almacén</label>
-                                        <input type="text" class="form-control" name="almDet" id="updateAlmDet" placeholder="Nombre Almacen" >
+                                        <input type="text" class="form-control" name="almDet" id="updateAlmDet" placeholder="Nombre Almacén" >
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -280,12 +280,12 @@
                                             <td>${u.almObs}</td>
                                             <td class="text-center">
                                                 <a href="#" data-toggle="modal" data-target="#activateModal"
-                                                   title="Re-Activar Almacen"
+                                                   title="Re-Activar Almacén"
                                                    data-almcod="${u.almCod}" data-almdet="${u.almDet}">
                                                     <i class="fa fa-check fa-lg" style="color: green;"></i>
                                                 </a>
                                                 <a href="#" data-toggle="modal" data-target="#deleteModal" 
-                                                   title="Eliminar Almacen"
+                                                   title="Eliminar Almacén"
                                                    data-almcod="${u.almCod}" data-almdet="${u.almDet}">
                                                     <i class="fa fa-trash-o fa-lg" style="color: red;"></i>
                                                 </a>
@@ -403,8 +403,8 @@
                 },
                 messages: {
                     usuCod: {
-                        required: "El Codigo de Usuario es Requerido",
-                        number: "El Codigo de Usuario debe ser Numerico"
+                        required: "El Código de Usuario es Requerido",
+                        number: "El Código de Usuario debe ser Numérico"
                     }
                 },
                 submitHandler: function (form) {
