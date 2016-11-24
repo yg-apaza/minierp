@@ -91,10 +91,10 @@
                                                     <a onclick='viewSaleBill("${c.facVenCabCod}")' title="Vista Detallada de Factura de Venta">
                                                         <i class="fa fa-list-alt fa-lg" style="color: black;"></i>
                                                     </a> 
-                                                    <a onclick='viewReferralGuide("${c.facVenCabCod}")' title="Vista Detallada de Guia R. Remitente">
+                                                    <a onclick='viewReferralGuide("${c.facVenCabCod}")' title="Vista Detallada de Guía R. Remitente">
                                                         <i class="fa fa-book fa-lg" style="color: black;"></i>
                                                     </a>
-                                                    <a onclick='viewCarrierGuide("${c.facVenCabCod}")' title="Vista Detallada de Guia R. Transportista">
+                                                    <a onclick='viewCarrierGuide("${c.facVenCabCod}")' title="Vista Detallada de Guía R. Transportista">
                                                         <i class="fa fa-truck fa-lg" style="color: black;"></i>
                                                     </a>
                                                 </td>
@@ -342,13 +342,13 @@
                             <div class="panel-body">
                             <ul class="nav nav-pills">
                                 <li class="active"><a href="#generalGuiRem" data-toggle="tab">Información General</a></li>
-                                <li><a href="#detailGuiRem" data-toggle="tab">Detalle de Guia de Remitente</a></li>
+                                <li><a href="#detailGuiRem" data-toggle="tab">Detalle de Guía de Remitente</a></li>
                             </ul>
                                 <div class="tab-content">
                                     <div class="tab-pane fade in active" id="generalGuiRem"><br>
                                         <div class="col-xs-12 col-md-12">
                                             <div class="form-group input-group">
-                                                <span class="input-group-addon">Número de Guia de Remitente</span>
+                                                <span class="input-group-addon">Número de Guía de Remitente</span>
                                                 <input type="text" class="form-control" id="guiRemRemNum" readOnly>
                                                 <span class="input-group-addon"><i class="fa fa-file-text-o"></i></span>
                                             </div>

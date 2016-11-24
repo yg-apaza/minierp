@@ -5,7 +5,7 @@
 <%@ taglib prefix='cc' uri='http://java.sun.com/jsp/jstl/core' %>
 <minierptemplate:template>
      <jsp:attribute name="titulo">
-        <title>Guia Remision Transportista</title>
+        <title>Guía Remisión Transportista</title>
     </jsp:attribute>
      <jsp:attribute name="contenido">
          <form id="formLote" role="form" action="" method="post">
@@ -13,7 +13,7 @@
                  <div class="form-group">
                      <div class="row">
                         <div class="col-lg-12">
-                            <h1 class="page-header">Guia Remision Transportista</h1>
+                            <h1 class="page-header">Guía Remisión Transportista</h1>
                         </div>
                     </div>
                      <div class="row">
@@ -28,7 +28,7 @@
                                             <th style="text-align: center">Uni.Transporte</th>
                                             <th style="text-align: center">Empresa</th>
                                             <th style="text-align: center">Num. Registro</th>
-                                            <th style="text-align: center">Tipo Destinataraio</th>
+                                            <th style="text-align: center">Tipo Destinatario</th>
                                             <th style="text-align: center">Destino</th>
                                             <th style="text-align: center">Acción</th>
                                          </tr>

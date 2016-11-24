@@ -144,7 +144,7 @@
                                         <a href="${pageContext.request.contextPath}/secured/ventas/arqueoCaja">Arqueo de Caja</a>
                                     </li>
                                     <li>
-                                        <a href="${pageContext.request.contextPath}/secured/ventas/guiaRemisionTransporista">Guia de Remision de Transportista</a>
+                                        <a href="${pageContext.request.contextPath}/secured/ventas/guiaRemisionTransporista">Guía de Remisión de Transportista</a>
                                     </li>
                                     </cc:if>
                                 </ul>
