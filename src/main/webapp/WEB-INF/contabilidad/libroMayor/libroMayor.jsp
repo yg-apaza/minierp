@@ -53,8 +53,9 @@
                         <input type="text" id="form-field-1" name = "codCue" placeholder="${cuenta.cueDes}" class="form-control" readonly>
                     </div>
                     <div class="col-md-2">
-                        <a class="btn btn-success btn-sm" type="submit">
-                        <i class="fa fa-filter" aria-hidden="true"></i> Filtrar</a>
+                        <button type="submit" class="btn btn-success btn-sm">
+                            <i class="fa fa-filter" aria-hidden="true"></i> Filtrar
+                        </button>
                     </div>
                 </div>
                 <br><br> 
