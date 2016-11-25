@@ -11,7 +11,7 @@ import org.epis.minierp.dao.general.EnP1mEmpresaDao;
 
 public class LibroMayorController extends HttpServlet{
     private static final long serialVersionUID = 1L;
-    String codigo_cuenta ="101";
+    String codigo_cuenta ="10";
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
