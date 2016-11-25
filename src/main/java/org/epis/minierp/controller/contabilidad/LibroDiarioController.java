@@ -164,7 +164,7 @@ public class LibroDiarioController extends HttpServlet {
                     }
                     break;
                 case 3:
-                    libDiaCod = Integer.parseInt(request.getParameter("libDiaCod"));                   
+                    libDiaCod = Integer.parseInt(request.getParameter("libDiaCod"));
                     break;
                 case 4:
                     mes = Integer.parseInt(request.getParameter("mes"));

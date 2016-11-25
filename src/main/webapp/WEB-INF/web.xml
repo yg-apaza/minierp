@@ -435,6 +435,16 @@
     <!-- Modulo de Contabilidad -->
     <servlet>
         <description/>
+        <display-name>RegistroAsientoController</display-name>
+        <servlet-name>RegistroAsientoController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.contabilidad.RegistroAsientoController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RegistroAsientoController</servlet-name>
+        <url-pattern>/secured/contabilidad/asientos</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <description/>
         <display-name>LibroDiarioController</display-name>
         <servlet-name>LibroDiarioController</servlet-name>
         <servlet-class>org.epis.minierp.controller.contabilidad.LibroDiarioController</servlet-class>

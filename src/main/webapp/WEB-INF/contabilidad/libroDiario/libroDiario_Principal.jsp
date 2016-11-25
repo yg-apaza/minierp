@@ -88,13 +88,6 @@
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 Operaciones
-                                
-                                <c:if test = "${libDiaCod!=0 && sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5 }">
-                                    <div class="pull-right">
-                                        <button type="button" data-toggle="modal" data-target="#opeAgregar" class="btn btn-outline btn-warning btn-xs">Agregar Nuevo</button>
-                                    </div>
-                                    
-                                </c:if>
                             </div>
                             <div class="panel-body">
                                 <div class="table-responsive">

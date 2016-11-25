@@ -169,7 +169,7 @@
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-success" data-dismiss="modal">Aceptar</button>                                            
                     </div>
-                </div>              
+                </div>
             </div>
         </div>
         <script>
@@ -218,7 +218,7 @@
                 }
                 else
                 {
-                    $('#detallesTable tbody').append('<tr align="center"><td></td><td></td><td></td><td><button type="button" class="btnDelete btn btn-danger")><i class="fa fa-trash-o fa-1x"></i></button></td></tr>');
+                    $('#detallesTable tbody').append('<tr align="center"><td></td><td></td><td></td><td><button type="button" class="btnDelete btn btn-danger"><i class="fa fa-trash-o fa-1x"></i></button></td></tr>');
                     $('#detallesTable tr:last td:eq(0)').html('<input type="text" name="cueNum" class="form-control" value="'+ $("#cueNum").val() +'" readonly>');
                     $('#detallesTable tr:last td:eq(1)').html('<input type="text" name="plaDetDebHab" class="form-control" value="'+ $("#plaDetDebHab").val() +'" readonly>');
                     $('#detallesTable tr:last td:eq(2)').html('<input type="text" name="plaDetPor" class="form-control" value="'+ $("#plaDetPor").val() +'" readonly>');

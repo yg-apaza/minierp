@@ -155,6 +155,9 @@
                                 <a href="#"><i class="fa fa-book fa-fw"></i> Contabilidad<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
+                                        <a href="${pageContext.request.contextPath}/secured/contabilidad/asientos">Registro de Asientos</a>
+                                    </li>
+                                    <li>
                                         <a href="${pageContext.request.contextPath}/secured/contabilidad/plantilla">Plantillas de Asientos</a>
                                     </li>
                                     <li>

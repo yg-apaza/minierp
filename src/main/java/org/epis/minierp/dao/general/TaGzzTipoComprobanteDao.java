@@ -33,7 +33,7 @@ public class TaGzzTipoComprobanteDao {
         return tipos;
     }
 
-    public TaGzzTipoComprobante getById(int id) {
+    public TaGzzTipoComprobante getById(Integer id) {
         TaGzzTipoComprobante tipo = null;
         try {
             tipo = (TaGzzTipoComprobante) session.load(TaGzzTipoComprobante.class, id);
