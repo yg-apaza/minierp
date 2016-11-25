@@ -148,7 +148,7 @@ INSERT INTO `episerp`.`ta_gzz_tipo_comprobante` (`TipComCod`, `TipComDet`, `EstR
 INSERT INTO `episerp`.`ta_gzz_tipo_comprobante` (`TipComCod`, `TipComDet`, `EstRegCod`) VALUES (2, 'Recibo por Honorarios', 'A');
 INSERT INTO `episerp`.`ta_gzz_tipo_comprobante` (`TipComCod`, `TipComDet`, `EstRegCod`) VALUES (3, 'Boleta de Venta', 'A');
 INSERT INTO `episerp`.`ta_gzz_tipo_comprobante` (`TipComCod`, `TipComDet`, `EstRegCod`) VALUES (4, 'Liquidación de compra', 'A');
-INSERT INTO `episerp`.`ta_gzz_tipo_comprobante` (`TipComCod`, `TipComDet`, `EstRegCod`) VALUES (5, 'Boleto de companhía de aviación comercial por el servicio de transporte aéreo de pasajeros', 'A');
+INSERT INTO `episerp`.`ta_gzz_tipo_comprobante` (`TipComCod`, `TipComDet`, `EstRegCod`) VALUES (5, 'Boleto de compañía de aviación comercial por el servicio de transporte aéreo de pasajeros', 'A');
 INSERT INTO `episerp`.`ta_gzz_tipo_comprobante` (`TipComCod`, `TipComDet`, `EstRegCod`) VALUES (6, 'Carta de porte aéreo por el servicio de transporte de carga aérea', 'A');
 INSERT INTO `episerp`.`ta_gzz_tipo_comprobante` (`TipComCod`, `TipComDet`, `EstRegCod`) VALUES (7, 'Nota de crédito', 'A');
 INSERT INTO `episerp`.`ta_gzz_tipo_comprobante` (`TipComCod`, `TipComDet`, `EstRegCod`) VALUES (8, 'Nota de Débito', 'A');
@@ -173,7 +173,7 @@ INSERT INTO `episerp`.`ta_gzz_tipo_comprobante` (`TipComCod`, `TipComDet`, `EstR
 INSERT INTO `episerp`.`ta_gzz_tipo_comprobante` (`TipComCod`, `TipComDet`, `EstRegCod`) VALUES (27, 'Seguro Complementario de Trabajo de Riesgo', 'A');
 INSERT INTO `episerp`.`ta_gzz_tipo_comprobante` (`TipComCod`, `TipComDet`, `EstRegCod`) VALUES (28, 'Tarifa Unificada de Uso de Aeropuerto', 'A');
 INSERT INTO `episerp`.`ta_gzz_tipo_comprobante` (`TipComCod`, `TipComDet`, `EstRegCod`) VALUES (29, 'Documentos emitidos por la COFOPRI', 'A');
-INSERT INTO `episerp`.`ta_gzz_tipo_comprobante` (`TipComCod`, `TipComDet`, `EstRegCod`) VALUES (30, 'Documentos emitidos por las empresas que desempenhan el rol adquirente', 'A');
+INSERT INTO `episerp`.`ta_gzz_tipo_comprobante` (`TipComCod`, `TipComDet`, `EstRegCod`) VALUES (30, 'Documentos emitidos por las empresas que desempeñan el rol adquirente', 'A');
 INSERT INTO `episerp`.`ta_gzz_tipo_comprobante` (`TipComCod`, `TipComDet`, `EstRegCod`) VALUES (31, 'Guía de Remisión - Transportista', 'A');
 INSERT INTO `episerp`.`ta_gzz_tipo_comprobante` (`TipComCod`, `TipComDet`, `EstRegCod`) VALUES (32, 'Documentos emitidos por las empresas recaudadoras', 'A');
 INSERT INTO `episerp`.`ta_gzz_tipo_comprobante` (`TipComCod`, `TipComDet`, `EstRegCod`) VALUES (34, 'Documento del Operador', 'A');
@@ -467,7 +467,7 @@ INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `
 INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (207, 34, 3, '342', 'Patentes y propiedad industrial', 'A');
 INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (208, 34, 3, '343', 'Programas de computadora (software)', 'A');
 INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (209, 34, 3, '344', 'Costos de exploración y desarrollo', 'A');
-INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (210, 34, 3, '345', 'Fórmulas, disenhos y prototipos', 'A');
+INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (210, 34, 3, '345', 'Fórmulas, diseños y prototipos', 'A');
 INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (211, 34, 3, '346', 'Reservas de recursos extraibles', 'A');
 INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (212, 34, 3, '347', 'Plusvalía mercantil', 'A');
 INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (213, 34, 3, '349', 'Otros activos intangibles', 'A');
@@ -737,7 +737,7 @@ INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `
 INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (477, 113, 4, '1443', 'Entregas a rendir cuenta', 'A');
 INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (478, 115, 4, '1611', 'Con garantía', 'A');
 INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (479, 115, 4, '1612', 'Sin garantía', 'A');
-INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (480, 116, 4, '1621', 'Companhías aseguradoras', 'A');
+INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (480, 116, 4, '1621', 'Compañías aseguradoras', 'A');
 INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (481, 116, 4, '1622', 'Transportadoras', 'A');
 INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (482, 116, 4, '1623', 'Servicios públicos ', 'A');
 INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (483, 116, 4, '1624', 'Tributos', 'A');
@@ -814,7 +814,7 @@ INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `
 INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (554, 171, 4, '2732', 'Patentes y propiedad industrial', 'A');
 INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (555, 171, 4, '2733', 'Programas de computadora (software)', 'A');
 INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (556, 171, 4, '2734', 'Costos de exploración y desarrollo', 'A');
-INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (557, 171, 4, '2735', 'Fórmulas, disenhos y prototipos', 'A');
+INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (557, 171, 4, '2735', 'Fórmulas, diseños y prototipos', 'A');
 INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (558, 171, 4, '2736', 'Reservas de recursos extraíbles', 'A');
 INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (559, 171, 4, '2739', 'Otros activos intangibles', 'A');
 INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (560, 172, 4, '2741', 'Activos biológicos en producción', 'A');
@@ -830,7 +830,7 @@ INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `
 INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (570, 175, 4, '2772', 'Patentes y propiedad industrial', 'A');
 INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (571, 175, 4, '2773', 'Programas de computadora (software)', 'A');
 INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (572, 175, 4, '2774', 'Costos de exploración y desarrollo', 'A');
-INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (573, 175, 4, '2775', 'Fórmulas, disenhos y prototipos', 'A');
+INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (573, 175, 4, '2775', 'Fórmulas, diseños y prototipos', 'A');
 INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (574, 175, 4, '2776', 'Reservas de recursos extraíbles', 'A');
 INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (575, 175, 4, '2779', 'Otros activos intangibles', 'A');
 INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (576, 176, 4, '2781', 'Activos biológicos en producción', 'A');
@@ -933,7 +933,7 @@ INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `
 INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (673, 209, 4, '3441', 'Costos de exploración', 'A');
 INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (674, 209, 4, '3442', 'Costos de desarrollo', 'A');
 INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (675, 210, 4, '3451', 'Fórmulas', 'A');
-INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (676, 210, 4, '3452', 'Disenhos y prototipos', 'A');
+INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (676, 210, 4, '3452', 'Diseños y prototipos', 'A');
 INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (677, 211, 4, '3461', 'Minerales', 'A');
 INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (678, 211, 4, '3462', 'Petróleo y gas', 'A');
 INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (679, 211, 4, '3463', 'Madera', 'A');
@@ -957,7 +957,7 @@ INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `
 INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (697, 218, 4, '3642', 'Patentes y propiedad industrial', 'A');
 INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (698, 218, 4, '3643', 'Programas de computadora (software)', 'A');
 INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (699, 218, 4, '3644', 'Costos de exploración y desarrollo', 'A');
-INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (700, 218, 4, '3645', 'Fórmulas, disenhos y prototipos', 'A');
+INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (700, 218, 4, '3645', 'Fórmulas, diseños y prototipos', 'A');
 INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (701, 218, 4, '3647', 'Plusvalía mercantil', 'A');
 INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (702, 218, 4, '3649', 'Otros activos intangibles', 'A');
 INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (703, 219, 4, '3651', 'Activos biológicos en producción', 'A');
@@ -1216,13 +1216,14 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `episerp`;
-INSERT INTO `episerp`.`ta_gzz_tipo_falla_producto` (`TipFallProCod`, `TipFallProDet`, `EstRegCod`) VALUES ('1', 'Error de Disenho', 'A');
+INSERT INTO `episerp`.`ta_gzz_tipo_falla_producto` (`TipFallProCod`, `TipFallProDet`, `EstRegCod`) VALUES ('1', 'Error de Diseño', 'A');
 INSERT INTO `episerp`.`ta_gzz_tipo_falla_producto` (`TipFallProCod`, `TipFallProDet`, `EstRegCod`) VALUES ('2', 'Error de Empaquetado/Etiquetado', 'A');
 INSERT INTO `episerp`.`ta_gzz_tipo_falla_producto` (`TipFallProCod`, `TipFallProDet`, `EstRegCod`) VALUES ('3', 'Cantidad Equivocada', 'A');
 INSERT INTO `episerp`.`ta_gzz_tipo_falla_producto` (`TipFallProCod`, `TipFallProDet`, `EstRegCod`) VALUES ('4', 'Exceso de Almacenamiento', 'A');
 INSERT INTO `episerp`.`ta_gzz_tipo_falla_producto` (`TipFallProCod`, `TipFallProDet`, `EstRegCod`) VALUES ('5', 'Inadecuado de Almacenamiento', 'A');
 INSERT INTO `episerp`.`ta_gzz_tipo_falla_producto` (`TipFallProCod`, `TipFallProDet`, `EstRegCod`) VALUES ('6', 'Error de Transformación', 'A');
 INSERT INTO `episerp`.`ta_gzz_tipo_falla_producto` (`TipFallProCod`, `TipFallProDet`, `EstRegCod`) VALUES ('7', 'Error de Comercialización', 'A');
+INSERT INTO `episerp`.`ta_gzz_tipo_falla_producto` (`TipFallProCod`, `TipFallProDet`, `EstRegCod`) VALUES ('8', 'No hay error', 'A');
 
 COMMIT;
 
