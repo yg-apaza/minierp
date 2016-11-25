@@ -289,7 +289,7 @@ public class EnP2mProductoBusiness {
         
     }
     
-    @SuppressWarnings("empty-statement")
+     @SuppressWarnings("empty-statement")
     public void actualizarInventario(String[] proCod, String[] proCan, String[] proFalla, List<EnP2mProducto> productos, String fecha, String UsuCod, int LonInventario) throws ParseException{
         //Creando Inventario Cab
          CabeceraInventario(fecha,UsuCod, LonInventario);
@@ -298,35 +298,20 @@ public class EnP2mProductoBusiness {
         for (int i = 0; i < size; i++) {
             if(proCan[i].equals("0"))
                 continue;
-            String can=proCan[i].replaceAll("\\s","");
-            if(can.substring(can.length()-1).equals(">"))
-            {
-                int m;
-                for(m=can.length()-2;m>0;m--)
-                {
-                    if(can.substring(m,m+1).equals("="))
-                        break;
-                    
-                }
-                can = can.substring(m+2,can.length()-2);
-            }
-            cantidad2Stock(proCod[i], can);
+            if(proCan[i].substring(proCan[i].length()-1).equals(">"))
+                proCan[i] = proCan[i].substring(0,proCan[i].length()-4);
+            cantidad2Stock(proCod[i], proCan[i]);
             
             //Ingresar Cabecera Detalle
         
             EnP2mProductoDao productDao = new EnP2mProductoDao();
-            System.out.println(i);
             EnP2mProducto product = productDao.getById(proCod[i]);
 
             EnP2tInventarioDet det = new EnP2tInventarioDet();
             EnP2tInventarioDetId detId = new EnP2tInventarioDetId();
-            TaGzzTipoFallaProducto f =null;
-            if(proFalla[i].length()>0)
-            {
-                TaGzzTipoFallaProductoDao fDao= new TaGzzTipoFallaProductoDao();
-                f = fDao.getById(Integer.parseInt(proFalla[i]));
-            }
             
+            TaGzzTipoFallaProductoDao fDao= new TaGzzTipoFallaProductoDao();
+            TaGzzTipoFallaProducto f= fDao.getById(Integer.parseInt(proFalla[i]));
 
             detId.setInvCabCod(String.valueOf(LonInventario+1));
             detId.setInvDetCod(i);
