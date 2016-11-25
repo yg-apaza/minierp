@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <remisionPrinter>
     <size>2</size>
-    <leftMargin>2</leftMargin>
+    <leftMargin>1</leftMargin>
     <rightMargin>1</rightMargin>
-    <topMargin>4.5</topMargin>
+    <topMargin>4.4</topMargin>
+    <botMargin>4.0</botMargin>
     <cliNom>1.4</cliNom>
     <punPar>2.4</punPar>
     <punLle>2.4</punLle>

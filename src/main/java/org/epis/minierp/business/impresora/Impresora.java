@@ -20,9 +20,9 @@ import org.epis.minierp.model.EnP1tFacturaVentaDet;
 import org.epis.minierp.util.DateUtil;
 
 public class Impresora {
-    private static final int MAX_FAC_DET = 23;
-    private static final int MAX_BOL_DET = 11;
-    private static final int MAX_REM_DET = 23;
+    private static final int MAX_FAC_DET = 27;
+    private static final int MAX_BOL_DET = 10;
+    private static final int MAX_REM_DET = 25;
     
     String extension = ".prn";
     String path;
@@ -141,7 +141,7 @@ public class Impresora {
             total = f.getFacVenCabTot();
             fac.writeFacTotal(df.format(subTotal), df.format(igv), df.format(total));
 
-            fac.newPage();
+            //fac.newPage();
         }
         fac.close();
         } catch (IOException ex) {
@@ -188,7 +188,7 @@ public class Impresora {
                 total = f.getFacVenCabTot();
                 bol.writeBolTotal(df.format(total));
 
-                bol.newPage();
+                //bol.newPage();
             }
             bol.close();
         } catch (IOException ex) {
@@ -237,7 +237,7 @@ public class Impresora {
                     rem.writeGuiRemDetalle(Integer.toString(proCod), proCan, proUni, proDes, proValUni, proDes1, df.format(proValNet));
                 }
                 rem.addLines(MAX_REM_DET - proCod); 
-                rem.newPage();
+                //rem.newPage();
             }
         rem.close();
         } catch (IOException ex) {

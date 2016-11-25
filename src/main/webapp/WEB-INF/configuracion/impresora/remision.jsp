@@ -9,21 +9,23 @@
         <div class="pagel-body">
             <h1 class="page-header"> Configuración de Guía de Remisión </h1>
             <form id="updateRemision" method="post" action="${pageContext.request.contextPath}/secured/configuracion/impresora/remision">
-                <div class="col-md-6">
+                <div class="col-md-8">
                     <div class="table-responsive">
                         <table class="table table-bordered table-striped table-hover table-condensed" id="tablaRemMar">
                             <tr>
                                 <th>MARGEN IZQUIERDO</th>
                                 <th>MARGEN SUPERIOR</th>
+                                <th>MARGEN INFERIOR</th>
                             </tr>
                             <tr>
                                 <td><input min="0" step="0.1" type="number" name="leftMargin" value="${rem.getLeftMargin()}">cm</td>
                                 <td><input min="0" step="0.1" type="number" name="topMargin" value="${rem.getTopMargin()}">cm</td>
+                                <td><input min="0" step="0.1" type="number" name="botMargin" value="${rem.getBotMargin()}">cm</td>
                             </tr>
                         </table>
                     </div>
                 </div>
-                <div class="col-md-6 text-center">
+                <div class="col-md-4 text-center">
                     <button type="submit" formnovalidate="formnovalidate" id="update" class="btn btn-primary">Actualizar cambios</button>       
                 </div>              
                 <div class="col-md-12">
