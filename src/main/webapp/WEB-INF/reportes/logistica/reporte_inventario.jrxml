@@ -5,27 +5,39 @@
 	<property name="ireport.y" value="0"/>
 	<queryString>
 		<![CDATA[SELECT
-MAX(ic.InvCabFec) fecha,
+ic.InvCabFec fecha,
 pp.ProCod,pp.ProDet,
+id.InvCabCod,
 pp.ProStk,id.InvDetDifStk,
-(pp.ProStk+id.InvDetDifStk) canReal,/**
+(pp.ProStk+id.InvDetDifStk) canReal,
+ivf.TipFallProDet falla
+/**
+
 (SELECT
 CASE IFNULL(ivf.TipFallProDet,0)
 WHEN 0 THEN 'No definido'
 ELSE ivf.TipFallProDet
 END ) falla**/
-ivf.TipFallProDet falla
+
 FROM en_p2m_inventario_cab ic
 INNER JOIN en_p2t_inventario_det id ON id.InvCabCod=ic.InvCabCod AND ic.EstRegCod='A'
+INNER JOIN
+(
+	SELECT MAX(idd.InvCabCod) maxcod,idd.InvDetCod
+	FROM en_p2t_inventario_det idd
+) idv ON  idv.maxcod=ic.InvCabCod
 INNER JOIN en_p2m_producto pp ON pp.ProCod=id.ProCod
-INNER JOIN ta_gzz_tipo_falla_producto ivf ON  ivf.TipFallProCod=id.TipFallProCod AND ivf.EstRegCod='A'
-GROUP BY pp.ProCod]]>
+LEFT JOIN ta_gzz_tipo_falla_producto ivf ON  ivf.TipFallProCod=id.TipFallProCod AND ivf.EstRegCod='A'
+]]>
 	</queryString>
-	<field name="fecha" class="java.sql.Date"/>
+	<field name="fecha" class="java.sql.Timestamp"/>
 	<field name="ProCod" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="ProDet" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="InvCabCod" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="ProStk" class="java.lang.Double">
