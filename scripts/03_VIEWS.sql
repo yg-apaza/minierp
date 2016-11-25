@@ -58,7 +58,6 @@ CREATE OR REPLACE VIEW VIEW_BANCOS AS (
 CREATE OR REPLACE VIEW VIEW_LIBRO_DIARIO AS (
 	SELECT
 		libDia.LibDiaCod,
-		libDia.LibDiaPer,
 		asiCab.AsiCabCod,
 		asiDet.AsiDetCod,
 		asiCab.AsiCabFec,

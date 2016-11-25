@@ -3,6 +3,7 @@ package org.epis.minierp.dao.contabilidad;
 import java.util.List;
 import org.epis.minierp.model.EnP3mPlantillaCab;
 import org.epis.minierp.util.HibernateUtil;
+import org.hibernate.ObjectNotFoundException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
@@ -24,9 +25,17 @@ public class PlantillaCabDao
         session.save(plantillaCab);
     }
     
-    public void delete(int plaCod){
-        EnP3mPlantillaCab plantilla = (EnP3mPlantillaCab)session.get(EnP3mPlantillaCab.class, plaCod);
-        plantilla.setEstRegCod('*');
-	session.update(plantilla);
+    public void update(EnP3mPlantillaCab plantillaCab){
+        session.update(plantillaCab);
+    }
+    
+    public EnP3mPlantillaCab getById(Integer id){
+        EnP3mPlantillaCab plantillaCab = null;
+        try {
+            plantillaCab = (EnP3mPlantillaCab) session.load(EnP3mPlantillaCab.class, id);
+        } catch (ObjectNotFoundException e) {
+            return null;
+        }
+        return plantillaCab;
     }
 }

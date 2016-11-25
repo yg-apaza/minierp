@@ -51,7 +51,7 @@ public class LibroDiarioView implements Serializable
     public void setIdPK(LibroDiarioPKView idPK) {
         this.idPK = idPK;
     }
-
+    
     public Date getAsiCabFec() {
         return asiCabFec;
     }
@@ -131,7 +131,7 @@ public class LibroDiarioView implements Serializable
     public void setEstRegCod(String estRegCod) {
         this.estRegCod = estRegCod;
     }
-    
+
     @Override
     public String toString() {
         return "LibroDiarioView{" + "idPK=" + idPK + ", asiCabFec=" + asiCabFec + ", asiCabGlo=" + asiCabGlo + ", asiCabTip=" + asiCabTip + ", asiCabNumCom=" + asiCabNumCom + ", cueCod=" + cueCod + ", cueNum=" + cueNum + ", cueDes=" + cueDes + ", asiDetDebHab=" + asiDetDebHab + ", asiDetMon=" + asiDetMon + ", estRegCod=" + estRegCod + '}';

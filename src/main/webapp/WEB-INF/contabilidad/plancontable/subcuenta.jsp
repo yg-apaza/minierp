@@ -78,7 +78,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-6">
-                                            <label>Nombre de cuenta:</label>
+                                            <label>Nombre de cuenta nueva:</label>
                                             <input class="form-control" id="addCueDes" name="cueDes">
                                         </div>
                                     </div>

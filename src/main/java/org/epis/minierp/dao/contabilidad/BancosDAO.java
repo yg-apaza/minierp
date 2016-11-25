@@ -22,10 +22,12 @@ public class BancosDAO {
     {  
         session = HibernateUtil.getSessionFactory().getCurrentSession();  
     }
+    
     public List<BancosView> getView(){
         Query query = session.createQuery("from BancosView");
         return query.list();
     }
+    
     public List<Bancos> getBancos(){
         BancosDAO bancosDAO = new BancosDAO();
         Iterator <BancosView> diario = bancosDAO.getView().iterator();
@@ -59,6 +61,7 @@ public class BancosDAO {
         }
         return bancos;
     }
+    
     public List<Bancos> getBancos(String banco){
         BancosDAO bancosDAO = new BancosDAO();
         Iterator <BancosView> diario = bancosDAO.getView().iterator();
@@ -93,6 +96,7 @@ public class BancosDAO {
         }
         return bancos;
     }
+    
     public Set<Bancos> getTodo(){
         BancosDAO bancosDAO = new BancosDAO();
         Iterator <BancosView> diario = bancosDAO.getView().iterator();
@@ -109,6 +113,7 @@ public class BancosDAO {
         }
         return bancos;
     }
+    
     public Map<String, Double> getTotal(String banco){
         Iterator <Bancos> diario = getBancos(banco).iterator();
         Map<String, Double> sumas=  new TreeMap<>();
@@ -125,6 +130,7 @@ public class BancosDAO {
         sumas.put("haber",haber);
         return sumas;
     }
+    
     public Map<String, String> getCuenta(String cuenta){
         String descripcion = "";
         BancosDAO bancosDAO = new BancosDAO();
