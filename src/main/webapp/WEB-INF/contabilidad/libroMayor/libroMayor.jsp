@@ -1,4 +1,4 @@
-<%@ page import="java.text.SimpleDateFormat" %> 
++<%@ page import="java.text.SimpleDateFormat" %> 
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -47,13 +47,13 @@
                 <div class="form-group form-group-sm">
                     <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Cuenta:  </label>
                     <div class="col-sm-2">
-                        <input type="number" maxlength="2" id="form-field-1" name = "codCue" placeholder="${cuenta.cueCod}" class="form-control" >
+                        <input type="number" maxlength="2" id="form-field-1" name = "codCue" placeholder="${cuenta.cueNum}" class="form-control" >
                     </div>
                     <div class="col-sm-6">
                         <input type="text" id="form-field-1" name = "codCue" placeholder="${cuenta.cueDes}" class="form-control" readonly>
                     </div>
                     <div class="col-md-2">
-                        <a class="btn btn-success btn-sm" type="submit" onclick="return updateInventory()" href="#">
+                        <a class="btn btn-success btn-sm" type="submit">
                         <i class="fa fa-filter" aria-hidden="true"></i> Filtrar</a>
                     </div>
                 </div>
@@ -76,10 +76,18 @@
                 <c:forEach items="${operaciones}" var="u"> 
                          <tr>
                              <td><fmt:formatDate value="${u.asiCabFec}" pattern="dd/MM/yyyy" /></td>
-                             <td>${u.asiCabCod}</td>
+                             <td>${u.idPK.asiCabCod}</td>
                              <td>${u.asiCabGlo}</td>
-                             <td>${u.debe}</td>
-                             <td>${u.haber}</td>                           
+                             <td>
+                             <c:if test="${u.asiDetDebHab}" >
+                                 <c:out value="${u.asiDetMon}"/> 
+                             </c:if>
+                             </td>
+                             <td>
+                             <c:if test="${not u.asiDetDebHab}" >
+                                 <c:out value="${u.asiDetMon}"/> 
+                             </c:if> 
+                             </td>                          
                          </tr>
                  </c:forEach>        
             </tbody>

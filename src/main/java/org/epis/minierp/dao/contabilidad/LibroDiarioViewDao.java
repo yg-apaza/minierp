@@ -26,4 +26,10 @@ public class LibroDiarioViewDao
         List<LibroDiarioView> operaciones = query.list();
         return operaciones;
     }
+    
+    public List<LibroDiarioView> getAllNiv(String cueNum){
+        Query query = session.createQuery("from LibroDiarioView where (cueNum like :cod)");
+        query.setParameter("cod", cueNum);
+        return query.list();
+    }
 }
