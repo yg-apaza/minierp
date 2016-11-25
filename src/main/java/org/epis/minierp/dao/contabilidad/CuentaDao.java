@@ -32,7 +32,10 @@ public class CuentaDao
         query.setParameter("num", num);
         query.setParameter("niv", niv);
         List<EnP3mCuenta> cuentas = query.list();
-        cuenta = cuentas.get(0);
+        try{
+            cuenta = cuentas.get(0);
+        }
+        catch(Exception e){}
         return cuenta;
     }
     

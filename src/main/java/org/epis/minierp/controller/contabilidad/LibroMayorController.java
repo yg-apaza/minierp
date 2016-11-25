@@ -5,7 +5,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.epis.minierp.dao.contabilidad.LibroMayorDAO;
+import org.epis.minierp.dao.contabilidad.CuentaDao;
+import org.epis.minierp.dao.contabilidad.LibroDiarioViewDao;
 import org.epis.minierp.dao.general.EnP1mEmpresaDao;
 
 
@@ -15,13 +16,14 @@ public class LibroMayorController extends HttpServlet{
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        LibroMayorDAO libroMayorDAO = new LibroMayorDAO();
+        LibroDiarioViewDao libroDiarioDAO = new LibroDiarioViewDao();
         
         EnP1mEmpresaDao empDao = new EnP1mEmpresaDao();
-        request.setAttribute("operaciones",libroMayorDAO.getLibroMayor(codigo_cuenta));
         request.setAttribute("empresa", empDao.getAll().get(0));
-        request.setAttribute("totales", libroMayorDAO.getTotal(codigo_cuenta));
-        request.setAttribute("cuenta", libroMayorDAO.getCuenta(codigo_cuenta));
+        request.setAttribute("cuenta", new CuentaDao().getByNumNivActive(codigo_cuenta,2));
+        System.out.println(libroDiarioDAO.getAllNiv(codigo_cuenta));
+        request.setAttribute("operaciones",libroDiarioDAO.getAllNiv(codigo_cuenta));
+        //request.setAttribute("totales", libroMayorDAO.getTotal(codigo_cuenta));
         request.getRequestDispatcher("/WEB-INF/contabilidad/libroMayor/libroMayor.jsp").forward(request, response);
     }
     @Override

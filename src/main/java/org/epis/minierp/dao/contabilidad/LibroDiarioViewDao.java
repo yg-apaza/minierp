@@ -3,8 +3,10 @@ package org.epis.minierp.dao.contabilidad;
 import java.util.List;
 import org.epis.minierp.model.contabilidad.LibroDiarioView;
 import org.epis.minierp.util.HibernateUtil;
+import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 
 public class LibroDiarioViewDao
 {
@@ -25,5 +27,11 @@ public class LibroDiarioViewDao
         query.setParameter("cod", codigo);
         List<LibroDiarioView> operaciones = query.list();
         return operaciones;
+    }
+    
+    public List<LibroDiarioView> getAllNiv(String cueNum){
+        Criteria criteria = session.createCriteria(LibroDiarioView.class)
+            .add(Restrictions.like("cueNum", cueNum+"%"));
+        return criteria.list();
     }
 }
