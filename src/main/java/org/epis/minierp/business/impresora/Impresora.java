@@ -141,7 +141,7 @@ public class Impresora {
             total = f.getFacVenCabTot();
             fac.writeFacTotal(df.format(subTotal), df.format(igv), df.format(total));
 
-            //fac.newPage();
+            fac.newPage();
         }
         fac.close();
         } catch (IOException ex) {
@@ -188,7 +188,7 @@ public class Impresora {
                 total = f.getFacVenCabTot();
                 bol.writeBolTotal(df.format(total));
 
-                //bol.newPage();
+                bol.newPage();
             }
             bol.close();
         } catch (IOException ex) {
@@ -237,7 +237,7 @@ public class Impresora {
                     rem.writeGuiRemDetalle(Integer.toString(proCod), proCan, proUni, proDes, proValUni, proDes1, df.format(proValNet));
                 }
                 rem.addLines(MAX_REM_DET - proCod); 
-                //rem.newPage();
+                rem.newPage();
             }
         rem.close();
         } catch (IOException ex) {
