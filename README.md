@@ -12,7 +12,7 @@
 ## Instalación
 
 - Ejecutar los archivos SQL que están dentro de la carpeta scripts en una base de datos 'episerp' en el siguiente orden: SCHEMA.sql, VIEWS.sql, PROCEDURES.sql, DATA.sql
-- Opcionalmente ejecutar TRIGGERS.sql y TEST.sql para datos de prueba
+- Opcionalmente ejecutar TRIGGERS.sql y TEST.sql para datos de prueba (No ejecutar TRUNCATE.sql)
 - Crear el usuario alumno
 ``` sql
 CREATE USER 'alumno'@'%' IDENTIFIED BY '1234';
