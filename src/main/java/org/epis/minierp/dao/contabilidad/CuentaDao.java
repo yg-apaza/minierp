@@ -6,6 +6,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.epis.minierp.model.EnP3mCuenta;
 import org.epis.minierp.util.HibernateUtil;
+import org.hibernate.ObjectNotFoundException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
@@ -65,10 +66,24 @@ public class CuentaDao
         return cuenta;
     }
     
+    public EnP3mCuenta getById(Integer id){
+        EnP3mCuenta cuenta = null;
+        try {
+            cuenta = (EnP3mCuenta) session.load(EnP3mCuenta.class, id);
+        } catch (ObjectNotFoundException e) {
+            return null;
+        }
+        return cuenta;
+    }
+    
     public void save(EnP3mCuenta cuenta) {
         session.save(cuenta);     
     }
     
+    public void update(EnP3mCuenta cuenta) {
+        session.update(cuenta);
+    }
+    /*
     public void update(int cueCod, String cueDes, String cueAmaDeb, String cueAmaHab) {
         EnP3mCuenta cuenta = (EnP3mCuenta)session.get(EnP3mCuenta.class, cueCod);
         cuenta.setCueDes(cueDes);
@@ -89,4 +104,5 @@ public class CuentaDao
             delete(c.getCueCod());
         }
     }
+    */
 }

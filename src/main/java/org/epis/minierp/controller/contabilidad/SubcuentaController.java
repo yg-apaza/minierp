@@ -5,6 +5,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.epis.minierp.business.contabilidad.CuentaBusiness;
 import org.epis.minierp.dao.contabilidad.CuentaDao;
 import org.epis.minierp.model.EnP3mCuenta;
 
@@ -32,7 +33,7 @@ public class SubcuentaController extends HttpServlet
         String action = request.getParameter("accion");
         int origen = Integer.parseInt(request.getParameter("origen"));
         
-        CuentaDao dao = new CuentaDao();
+        CuentaBusiness business = new CuentaBusiness();
         switch(action) {
             case "create":
                 int cuePad = Integer.parseInt(request.getParameter("cuePad"));
@@ -41,28 +42,18 @@ public class SubcuentaController extends HttpServlet
                 String cueNum = request.getParameter("cueNum1") + request.getParameter("cueNum2");
                 String cueAmaDeb = request.getParameter("cueAmaDeb");
                 String cueAmaHab = request.getParameter("cueAmaHab");
-                EnP3mCuenta c = new EnP3mCuenta();
-                c.setEnP3mCuentaByCuePad(dao.getByIdActive(cuePad));
-                c.setCueNiv(cueNiv);
-                c.setCueDes(cueDes);
-                c.setCueNum(cueNum);
-                c.setEstRegCod('A');
-                EnP3mCuenta amadeb = dao.getByNumActive(cueAmaDeb);
-                EnP3mCuenta amahab = dao.getByNumActive(cueAmaHab);
-                c.setEnP3mCuentaByCueAmaDeb(amadeb);
-                c.setEnP3mCuentaByCueAmaHab(amahab);
-                dao.save(c);
+                business.create(cuePad, cueNiv, cueDes, cueNum, cueAmaDeb, cueAmaHab);
                 break;
             case "update":
                 int updateCueCod = Integer.parseInt(request.getParameter("cueCod"));
                 String updateCueDes = request.getParameter("cueDes");
                 String updateCueAmaDeb = request.getParameter("cueAmaDeb");
                 String updateCueAmaHab = request.getParameter("cueAmaHab");
-                dao.update(updateCueCod, updateCueDes, updateCueAmaDeb, updateCueAmaHab);
+                business.update(updateCueCod, updateCueDes, updateCueAmaDeb, updateCueAmaHab);
                 break;
             case "delete":
                 int deleteCueCod = Integer.parseInt(request.getParameter("cueCod"));
-                dao.delete(deleteCueCod);
+                business.delete(deleteCueCod);
         }
         response.sendRedirect(request.getContextPath() + "/secured/contabilidad/plan/subcuenta?cuenta=" + origen);
     }

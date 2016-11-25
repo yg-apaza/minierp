@@ -1,6 +1,7 @@
 package org.epis.minierp.dao.contabilidad;
 
 import java.util.List;
+import org.epis.minierp.business.contabilidad.CuentaBusiness;
 import org.epis.minierp.model.EnP3mCuentaBanco;
 import org.epis.minierp.util.HibernateUtil;
 import org.hibernate.ObjectNotFoundException;
@@ -48,8 +49,8 @@ public class CuentaBancoDao
 
     public void delete(int deleteCueBanCod) {
         EnP3mCuentaBanco cuentaBanco = (EnP3mCuentaBanco)session.get(EnP3mCuentaBanco.class, deleteCueBanCod);
-        CuentaDao cuentaDao = new CuentaDao();
-        cuentaDao.delete(cuentaBanco.getEnP3mCuenta().getCueCod());
+        CuentaBusiness business = new CuentaBusiness();
+        business.delete(cuentaBanco.getEnP3mCuenta().getCueCod());
         cuentaBanco.setEstRegCod('*');
 	session.update(cuentaBanco);
     }
