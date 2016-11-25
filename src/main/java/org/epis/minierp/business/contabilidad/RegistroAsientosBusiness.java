@@ -4,7 +4,6 @@ import java.util.Date;
 import java.util.Iterator;
 import org.epis.minierp.dao.contabilidad.AsientoCabDao;
 import org.epis.minierp.dao.contabilidad.AsientoDetDao;
-import org.epis.minierp.dao.contabilidad.CuentaDao;
 import org.epis.minierp.model.EnP3mAsientoCab;
 import org.epis.minierp.model.EnP3mAsientoCabId;
 import org.epis.minierp.model.EnP3mCuenta;
@@ -14,8 +13,8 @@ import org.epis.minierp.model.EnP3tAsientoDetId;
 public class RegistroAsientosBusiness
 {
     
-    RegistroAsientosBusiness(EnP3mAsientoCab asientoCab){
-        
+    public void generarAsientosAmarre(EnP3mAsientoCab asientoCab)
+    {
         AsientoCabDao daoAsientoCab = new AsientoCabDao();
         AsientoDetDao daoAsientoDet = new AsientoDetDao();
         
@@ -28,7 +27,7 @@ public class RegistroAsientosBusiness
         asientoCabId.setAsiCabCod(asiCabCod);
         asientoCabId.setLibDiaCod(libDiaCod);
         
-        //asiCab.setTaGzzMoneda();
+        asiCab.setTaGzzMoneda(asientoCab.getTaGzzMoneda());
         //asiCab.setTaGzzTipoComprobante();
         asiCab.setAsiCabFec(new Date());
         asiCab.setAsiCabGlo("Asiento Amarre");
@@ -70,9 +69,7 @@ public class RegistroAsientosBusiness
             asiDet2.setAsiDetMon(asientoDet.getAsiDetMon());
             asiDet2.setEnP3mCuenta(enP3mCuenta.getEnP3mCuentaByCueAmaHab());
             asiDet2.setId(asientoDetId2);
-            daoAsientoDet.save(asiDet2);
-                
+            daoAsientoDet.save(asiDet2);            
         }
-
     }
 }
