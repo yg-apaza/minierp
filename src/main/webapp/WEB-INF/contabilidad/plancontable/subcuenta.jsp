@@ -44,7 +44,7 @@
                 </div>
             </div>
             <div id="agregarModal" class="modal fade" role="dialog">
-                <div class="modal-dialog modal-sm">
+                <div class="modal-dialog modal-md">
                     <div class="modal-content" style="overflow-y: auto">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -53,39 +53,61 @@
                         <form id="createForm" method="post" action="${pageContext.request.contextPath}/secured/contabilidad/plan/subcuenta">
                             <div class="modal-body">
                                 <div class="form-group">
-                                    <label>Número de cuenta</label>
-                                    <div class="input-group">
-                                        <input type="hidden" name="accion" value="create">
-                                        <input type="hidden" name="origen" value="${cuenta.cueCod}">
-                                        <input type="hidden" name="cuePad" id="addCuePad">
-                                        <input type="hidden" name="cueNiv" id="addCueNiv">
-                                        <input class="form-control" name="cueNum1" id="addCueNum1" readonly>
-                                        <span class="input-group-addon">-</span>
-                                        <select class="form-control" name="cueNum2">
-                                            <option value="0">0</option>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                            <option value="6">6</option>
-                                            <option value="7">7</option>
-                                            <option value="8">8</option>
-                                            <option value="9">9</option>
-                                        </select>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Número de cuenta</label>
+                                            <div class="input-group">
+                                                <input type="hidden" name="accion" value="create">
+                                                <input type="hidden" name="origen" value="${cuenta.cueCod}">
+                                                <input type="hidden" name="cuePad" id="addCuePad">
+                                                <input type="hidden" name="cueNiv" id="addCueNiv">
+                                                <input class="form-control" name="cueNum1" id="addCueNum1" readonly>
+                                                <span class="input-group-addon">-</span>
+                                                <select class="form-control" name="cueNum2">
+                                                    <option value="0">0 </option>
+                                                    <option value="1">1 </option>
+                                                    <option value="2">2 </option>
+                                                    <option value="3">3 </option>
+                                                    <option value="4">4 </option>
+                                                    <option value="5">5 </option>
+                                                    <option value="6">6 </option>
+                                                    <option value="7">7 </option>
+                                                    <option value="8">8 </option>
+                                                    <option value="9">9 </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label>Nombre de cuenta:</label>
+                                            <input class="form-control" id="addCueDes" name="cueDes">
+                                        </div>
                                     </div>
                                 </div>
+                                
                                 <div class="form-group">
-                                    <label>Nombre de cuenta:</label>
-                                    <input class="form-control" id="addCueDes" name="cueDes">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label>Cuenta de Amarre Debe:</label>
+                                            <input class="form-control" id="addCueAmaDeb" name="cueAmaDeb">
+                                        </div>
+                                        <div class="col-md-8">
+                                            <label>Nombre de Cuenta:</label>
+                                            <input class="form-control" id="addCueAmaDebDet" readonly>
+                                        </div>
+                                    </div>
                                 </div>
+                                
                                 <div class="form-group">
-                                    <label>Cuenta de Amarre Debe:</label>
-                                    <input class="form-control" id="addCueAmaDeb" name="cueAmaDeb">
-                                </div>
-                                <div class="form-group">
-                                    <label>Cuenta de Amarre Haber:</label>
-                                    <input class="form-control" id="addCueAmaHab" name="cueAmaHab">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label>Cuenta de Amarre Haber:</label>
+                                            <input class="form-control" id="addCueAmaHab" name="cueAmaHab">
+                                        </div>
+                                        <div class="col-md-8">
+                                            <label>Nombre de Cuenta:</label>
+                                            <input class="form-control" id="addCueAmaHabDet" readonly>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="modal-footer">
@@ -93,11 +115,11 @@
                                 <button type="button" class="btn btn-outline btn-danger" data-dismiss="modal">Cancelar</button>
                             </div>
                         </form>
-                    </div>                                        
+                    </div>
                 </div>
             </div>
             <div id="modificarModal" class="modal fade" role="dialog">
-                <div class="modal-dialog modal-sm">
+                <div class="modal-dialog modal-md">
                     <div class="modal-content" style="overflow-y: auto">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>

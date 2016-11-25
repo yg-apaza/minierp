@@ -58,7 +58,7 @@
                                                         <td>
                                                             <a href="${pageContext.request.contextPath}/secured/contabilidad/plan/subcuenta?cuenta=${s.cueCod}" 
                                                                title="SubCuentas">
-                                                                <i class="fa fa-sign-in fa-lg" style="color: black;"></i>
+                                                                <i class="fa fa-sign-in fa-lg fa-2x" style="color: black;"></i>
                                                             </a>
                                                         </td>
                                                     </tr>
