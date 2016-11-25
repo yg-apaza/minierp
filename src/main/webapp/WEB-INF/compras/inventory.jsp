@@ -2,234 +2,121 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="minierptemplate" %>
-<%@ taglib prefix='cc' uri='http://java.sun.com/jsp/jstl/core' %>
+
 <minierptemplate:template>
     <jsp:attribute name="titulo">
-        <title>Logistica - Inventario</title>
+        <title>Logística - Inventario</title>
     </jsp:attribute>
     <jsp:attribute name="contenido">
-        <form id="formLote" role="form" action="" method="post">
-            <div class="panel-body">
-                <div class="form-group">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <h1 class="page-header">Inventario</h1>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-2">
-                            
-                            <a href="${pageContext.request.contextPath}/secured/compras/addInventario" class="btn btn-success">Nuevo Inventario <i class="fa fa-plus"></i></a>
-                            
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group input-group" >
-                                <span class="input-group-addon">Flujo Efectivo:</span>
-                                <a  href="${pageContext.request.contextPath}/secured/general/reporte?type=pdf&&report=flujoefectivo&&jdbc=true&&key=null&&value=null" class="btn btn-danger" >
-                                    <i class="fa fa-file-pdf-o"></i>
-                                </a>
-                                <a  href="${pageContext.request.contextPath}/secured/general/reporte?type=doc&&report=flujoefectivo&&jdbc=true&&key=null&&value=null" class="btn  btn-primary" >
-                                    <i class="fa fa-file-word-o"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div><br>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="table-responsive">    
-                                <table class="table table-striped table-bordered table-hover" id="tableInventarios">
-                                    <thead>
-                                        <tr>
-                                            
-                                            <th style="text-align: center">Código</th>
-                                            <th style="text-align: center">Usuario</th>
-                                            <th style="text-align: center">Fecha</th>
-                                            <th style="text-align: center">Vista</th>
-                                            
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <c:forEach items="${invetariosCab}" var="c">
-                                            <tr>
-                                               
-                                                <td style="text-align: center"> <c:out value="${c.invCabCod}"/></td>
-                                                <td style="text-align: center"> <c:out value="${c.enP1mUsuario.usuNom} ${c.enP1mUsuario.usuApePat} ${c.enP1mUsuario.usuApeMat}"/></td>
-                                                <td style="text-align: center"> <c:out value="${c.invCabFec}"/></td>
-                                                <td style="text-align: center">
-                                                    <a onclick='viewInventory("${c.invCabCod}")' title="Vista Detallada de Inventario">
-                                                        <i class="fa fa-list-alt fa-lg" style="color: black;"></i>
-                                                    </a> 
-                                                </td>
-                                               
-                                            </tr>
-                                        </c:forEach>
-                                    </tbody>
-                                </table>  
-                            </div>
-                        </div>
-                    </div>
-<!--                    <div class="row">
-                        <div class="col-lg-4">
-                            <a href="$pageContext.request.contextPath}/secured/general/reporte?type=pdf&&report=registroventas&&jdbc=false&&key=null&&value=null" class="btn btn-outline btn-danger">
-                                <i class="fa fa-file-pdf-o"></i>
-                                Descargar Registro [PDF]
-                            </a>
-                        </div>
-                        <div class="col-lg-4"></div>        
-                    </div>-->
-                </div>
-            </div>
-            
-            
-        </form>
-        <div id="errorMessageModal" class="modal fade">
-            <div class="modal-dialog modal-sm">
-                <div class="modal-content" style="overflow-y: auto">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Error</h4>
-                    </div>
-                    <div class="modal-body">
-                        <p align="center"><span id="errorMessage"></span></p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-success" data-dismiss="modal">Aceptar</button>                                            
-                    </div>
-                </div>         
-            </div>
-        </div>
-        <div class="modal fade" id="viewInventory">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content" style="overflow-y: auto">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h3 class="modal-title">Inventario</h3>
-                    </div>
-                    <div class="modal-body " style="max-height: calc(100vh - 210px);overflow-y: auto;">   
-                        <div class="panel-body">
-                            <ul class="nav nav-pills">
-                                <li class="active"><a href="#general" data-toggle="tab">Información General</a></li>
-                                <li><a href="#detail" data-toggle="tab">Detalle de Inventario</a></li>
-                            </ul>
-                            <div class="tab-content">
-                                <div class="tab-pane fade in active" id="general"><br>
-                                    <div class="col-xs-12 col-md-12">
-                                        <div class="col-xs-12">
-                                            <div class="col-xs-12 col-md-4">
-                                                <div class="form-group input-group">
-                                                    <span class="input-group-addon">Inventario</span>
-                                                    <input type="text" class="form-control" id="codInvCab" readOnly>
-                                                    <span class="input-group-addon"><i class="fa fa-clipboard"></i></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-12">
-                                            <div class="col-xs-12 col-md-6">
-                                                <div class="form-group input-group">
-                                                    <span class="input-group-addon">Usuario</span>
-                                                    <input type="text" class="form-control" id="usuInvCabNom" readOnly>
-                                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-12 col-md-6">
-                                                <div class="form-group input-group">
-                                                    <span class="input-group-addon">Codigo</span>
-                                                    <input type="text" class="form-control" id="usuInvCabCod" readOnly>
-                                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-12">
-                                            <div class="col-xs-12 col-md-4">
-                                                <div class="form-group input-group" >
-                                                    <span class="input-group-addon">Fecha</span>
-                                                    <input type="text" class="form-control" id="fecInvCab" readOnly>
-                                                    <span class="input-group-addon"><i class="fa fa-arrow-down"></i></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                                <div class="tab-pane fade" id="detail"><br>
-                                    <div class="col-xs-12 col-md-12">
-                                        <div class="table-responsive">
-                                            <table width="100%" class="table table-striped table-bordered table-hover" id="invCabDet">
-                                                <thead align="center">
-                                                    <tr >
-                                                        <th style="text-align: center">Producto</th>
-                                                        <th style="text-align: center">Diferencia</th>
-                                                        <th style="text-align: center">Estado</th>
-                                                        <th style="text-align: center">Cant. Real</th>
-                                                        <th style="text-align: center">Cant. Virtual</th>
-                                                    </tr>
-                                                </thead>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-success" data-dismiss="modal">Aceptar</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div id="loading" class="modal fade">
-            <div class="modal-dialog modal-sm">
-                <div class="modal-content" style="overflow-y: auto">
-                    <div class="modal-body">
-                        <p align="center">Cargando ... </p>
-                    </div>
-                </div>         
-            </div>
-        </div>
-                    
-        <script language="javascript">
-            var codeRefund = "";
-            var typeRefund = "";
-            
-            $(document).ready(function () {
-                $('#tableInventarios').DataTable({
-                    responsive: true
-                });
-            });
 
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header"> Inventario </h1>
+                </div>
+            </div>
+            <form id="preventaLoteForm" role="form" action="${pageContext.request.contextPath}/secured/compras/inventario" method="post">
+           <div class="row">
+                <div class="col-md-6">
+                    <label>Código del producto</label>
+                    <div class="form-group input-group">
+                        <span class="input-group-addon"><i class="fa fa-barcode"></i></span>
+                        <input type="text" class="form-control" id="proCod" name="proCod" placeholder="Código del producto">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <button type="submit" onclick="return updateInventory()" class="btn btn-success"> Actualizar inventario</button>  
+                </div>
+                <div class="col-md-3">
+                    <a href="${pageContext.request.contextPath}/secured/general/reporte?type=pdf&&report=inventario&&jdbc=true&&key=null&&value=null" class="btn btn-outline btn-danger">
+                        <i class="fa fa-file-pdf-o"></i>
+                        Descargar Reporte [PDF]
+                    </a>
+                </div>
+           </div>
+            <br>
+            <div class="row">
+                <div class="table-responsive">
+                    <table class = "table table-bordered table-condensed"  id = "id_table">
+                        <thead>
+                            <tr>
+                                <th style="text-align: center">Código</th>
+                                <th style="text-align: center">Descripción del producto</th>
+                                <th style="text-align: center">Precio</th>
+                                <th style="text-align: center" width="15px">Cantidad</th>
+                                <th style="text-align: center" width="15px">Actual</th>
+                                <th style="text-align: center" width="20px" >Motivo</th>
+                                <th style="display:none;"></th>
+                                <th style="display:none;"></th>
+                            </tr>               
+                        </thead>
+                        <tbody>
+                            <c:set var="count" value="0" scope="page" />
+                            <c:forEach items = "${productos}" var = "producto">
+                                <tr id="${producto.id.proCod}">
+                                    <td><c:out value="${producto.id.proCod}"/> </td>
+                                    <td><c:out value="${producto.proDet}"/></td>
+                                    <td><c:out value="${producto.proPreUniVen}"/></td>
+                                    <td><c:out value="${producto.proStk}"/></td>
+                                    <td contenteditable="true">0</td>
+                                <!--    <td> <input type="text" width="10px" name="${producto.id.proCod}" value="0"> </td>-->
+                                    <td>
+                                        <!-- CADA FALLA ES UN SELECT Y LO QUE MANDO AL CONTROLADOR ES SU VALOR,
+                                            SU VALOR ES EL CÓDIGO DEL TIPO DE FALLA-->
+                                        
+                                        <select id="falla${count}" name="falla${count}" class="form-control" style="width: 170px; display: inline-block;">
+                                        <c:forEach items = "${falla_producto}" var = "falla_producto">
+                                            <option value="${falla_producto.tipFallProCod}"> ${falla_producto.tipFallProDet} </option>
+                                        </c:forEach>  
+                                        </select>   
+                                    </td>
+                                    <td style="display:none;"><input type="checkbox" name="proCodigos" value="${producto.id.proCod}" checked></td>
+                                    <td style="display:none;"><input type="checkbox" name="proCantidades" value="0" checked></td>
+                                    <td style="display:none;"><input type="checkbox" name="proFallas" value="0" checked></td>
+                                    <c:set var="count" value="${count + 1}" scope="page"/>
+                                </tr>
+                            </c:forEach>  
+                        </tbody>
+                    </table>            
+                </div>
+            </div>
+            </form> 
+        </div>
+        <script language="javascript"> 
+            $('#proCod').bind('input', function(){
+                var length = $("#proCod").val().length;
+                if (length >= 13) {  
+                    var actualValue = $("#id_table").find('tr#'+$("#proCod").val()).find('td:eq(4)').html();
+                    $("#id_table").find('tr#'+$("#proCod").val()).find('td:eq(4)').html(parseInt(actualValue)+1);
+                    $("#proCod").val('');
+                }
+            });
             
+            $('#id_table').DataTable({
+                responsive: true
+            });
             
-            function viewInventory(invCabCod) {
-                $("#loading").modal('show');
-                $.post(
-                        "${pageContext.request.contextPath}/secured/compras/searchInventory", {
-                            invCabCod: invCabCod
-                        }
-                ).done(function (data) {
-                    $("#codInvCab").val(data.cod);
-                    $("#usuInvCabNom").val(data.usuNom);
-                    $("#fecInvCab").val(data.fec);
-                    $("#usuInvCabCod").val(data.usuCod);
-                    $('#invCabDet').DataTable().clear().draw();
-                    $('#invCabDet').DataTable().destroy();
-                    data.detailList.forEach(function (detail) {
-                        $('#invCabDet tbody').append('<tr><td width="40%" align="center"></td><td width="16%" align="center"></td><td width="20%" align="center"></td><td width="20%" align="center"></td><td width="20%" align="center"></td></tr>');
-                        $('#invCabDet tr:last td:eq(0)').html(detail.proDet);
-                        $('#invCabDet tr:last td:eq(1)').html(detail.proDif);
-                        $('#invCabDet tr:last td:eq(2)').html(detail.proFal);
-                        $('#invCabDet tr:last td:eq(3)').html(detail.proVir);
-                        $('#invCabDet tr:last td:eq(4)').html(detail.proTot);
-                    });
-                    $('#invCabDet').DataTable({
-                        responsive: true
-                    });
-                    $("#loading").modal('hide');
-                    $("#viewInventory").modal('show');
+            function updateInventory() {
+                var list = [];
+                var listF = [];
+                $('#id_table tr').each(function () {
+                    var can = $(this).find("td").eq(4).html();
+                    var fal = $(this).find("select").val();
+                    list.push(can);
+                    listF.push(fal);
                 });
-            }
-            
-            
+                var i = 1;
+                $.each($("input[name='proCantidades']:checked"), function(){
+                   $(this).val(list[i]);
+                   i++;
+                });
+                var j=1;
+                $.each($("input[name='proFallas']:checked"), function(){
+                    console.log(listF[j]);
+                   $(this).val(listF[j]);
+                   j++;
+                });
+            };
             
         </script>
     </jsp:attribute>
