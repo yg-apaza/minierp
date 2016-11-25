@@ -39,11 +39,13 @@ public class RegistroAsientosBusiness
         daoAsientoCab.save(asiCab); 
         
         Iterator it =  asientoCab.getEnP3tAsientoDets().iterator();
+        System.out.println(":)");
         while(it.hasNext()){
             
             EnP3tAsientoDet asientoDet = (EnP3tAsientoDet)it.next();
             EnP3mCuenta enP3mCuenta = asientoDet.getEnP3mCuenta();
-            
+            System.out.println(enP3mCuenta.getEnP3mCuentaByCueAmaDeb().getCueCod());
+
             //1er ASIENTO_DETALLE DEBE
             
             EnP3tAsientoDetId asientoDetId1 = new EnP3tAsientoDetId();
