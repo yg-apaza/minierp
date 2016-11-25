@@ -50,7 +50,7 @@
                                     <div class="col-md-4">
                                         <div class="form-group input-group" >
                                             <span class="input-group-addon">Vencimiento</span>
-                                            <input type="date" class="form-control" name="facComCabFecVen">
+                                            <input type="date" class="form-control" name="facComCabFecVen" value="${fechaActual}">
                                             <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                                         </div>
                                     </div> 
@@ -311,7 +311,16 @@
             <div class="modal-dialog modal-sm">
                 <div class="modal-content" style="overflow-y: auto">
                     <div class="modal-body">
-                        <p align="center">Cargando ... </p>
+                        <p class="text-center text-info">Cargando ... </p>
+                    </div>
+                </div>         
+            </div>
+        </div>
+        <div id="fcSuccess" class="modal fade">
+            <div class="modal-dialog modal-md">
+                <div class="modal-content" style="overflow-y: auto">
+                    <div class="modal-body">
+                        <p class="text-center text-success">La factura de venta ha sido agregada correctamente</p>
                     </div>
                 </div>         
             </div>
@@ -320,6 +329,7 @@
             var codeProductCriteria = false;
             var productCodes = new Array();
             var productDescriptions = new Array();
+            var newDirection = "";
 
             <c:forEach items="${productos}" var="p" varStatus="loop">
                 productCodes.push("${p.id.claProCod}-${p.id.subClaProCod}-${p.id.proCod}");
@@ -594,12 +604,32 @@
                     facComCabPorDes: {
                         required: "Considere descuento 0"
                     }
-                },
-                submitHandler: function (form) {
-                    form.submit();
                 }
             });
-
+            
+            $("#registerBill").submit(function(e) {
+                $('#loading').modal('show');
+                e.preventDefault();
+                $.ajax({
+                    type: 'POST',
+                    url: $(this).attr('action'),
+                    data: $(this).serialize(),
+                    success: function(data) {
+                        $('#loading').modal('hide');    
+                        if(data.state == true) {
+                            $("#fcSuccess").modal('show');
+                            newDirection = data.redirect;
+                        }
+                    }
+                });
+                
+                return false;
+            });
+            
+            $("#fcSuccess").on("hidden.bs.modal", function (){
+                window.location = newDirection;
+            });
+            
             function addNewProduct(){
                 $.post(
                         "${pageContext.request.contextPath}/secured/compras/addProduct", {

@@ -211,12 +211,31 @@
                 </div>              
             </div>
         </div>
+        <div id="loading" class="modal fade">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content" style="overflow-y: auto">
+                    <div class="modal-body">
+                        <p class="text-center text-info">Cargando ... </p>
+                    </div>
+                </div>         
+            </div>
+        </div>                                
+        <div id="pSuccess" class="modal fade">
+            <div class="modal-dialog modal-md">
+                <div class="modal-content" style="overflow-y: auto">
+                    <div class="modal-body">
+                        <p class="text-center text-success">La preventa ha sido agregada correctamente</p>
+                    </div>
+                </div>         
+            </div>
+        </div>
         <script language="javascript">
             var codeCriteria = false;
             var codeClientCriteria = false;
             var productCodes = new Array();
             var productDescriptions = new Array();
-
+            var newDirection = "";
+            
             <c:forEach items="${productos}" var="p" varStatus="loop">
             productCodes.push("${p.id.claProCod}-${p.id.subClaProCod}-${p.id.proCod}");
                 productDescriptions.push("${p.proDet}");
@@ -566,10 +585,30 @@
                     preVenCabObs: {
                         maxlength: "Sólo se admiten 90 caracteres"
                     }
-                },
-                submitHandler: function (form) {
-                    form.submit();
                 }
+            });
+            
+            $("#registerBill").submit(function(e) {
+                $('#loading').modal('show');
+                e.preventDefault();
+                $.ajax({
+                    type: 'POST',
+                    url: $(this).attr('action'),
+                    data: $(this).serialize(),
+                    success: function(data) {
+                        $('#loading').modal('hide');    
+                        if(data.state == true) {
+                            $("#pSuccess").modal('show');
+                            newDirection = data.redirect;
+                        }
+                    }
+                });
+                
+                return false;
+            });
+            
+            $("#pSuccess").on("hidden.bs.modal", function (){
+                window.location = newDirection;
             });
         </script>
     </jsp:attribute>

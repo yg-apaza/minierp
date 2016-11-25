@@ -1,5 +1,7 @@
 package org.epis.minierp.controller.ventas;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -155,8 +157,13 @@ public class AddFacturaController extends HttpServlet {
         facturaBusiness.create(facVenCabCod, cliCod, usuCod, facVenCabModVen, 
                 facVenCabFecEmi, facVenCabFecVen, tipDesCod, facVenPorDes, 
                 facVenCabIgv, facVenCabObs, estFacCod, metPagCod, tipPagCod, 
-                monCod, pagCuoNum, 'A', detalles, maxDet4FacVen);
+                monCod, pagCuoNum, 'A', detalles, maxDet4FacVen);        
         
-        response.sendRedirect(request.getContextPath() + "/secured/ventas/factura/addFactura");
+        JsonObject data = new JsonObject();
+        data.addProperty("state", true);
+        data.addProperty("redirect", request.getContextPath() + "/secured/ventas/factura/addFactura");
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+        response.getWriter().write(new Gson().toJson(data));  
     }
 }

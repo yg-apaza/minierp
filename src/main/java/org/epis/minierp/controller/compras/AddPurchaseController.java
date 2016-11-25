@@ -1,5 +1,7 @@
 package org.epis.minierp.controller.compras;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -149,8 +151,14 @@ public class AddPurchaseController extends HttpServlet {
                 det.setFacComDetValUni(Double.parseDouble(productsPrices.get(i)));
                 
                 detalles.save(det);                                
-            }                 
-            response.sendRedirect(request.getContextPath() + "/secured/compras/factura/addFactura");
+            } 
+            
+            JsonObject data = new JsonObject();
+            data.addProperty("state", true);
+            data.addProperty("redirect", request.getContextPath() + "/secured/compras/factura/addFactura");
+            response.setContentType("application/json");
+            response.setCharacterEncoding("UTF-8");
+            response.getWriter().write(new Gson().toJson(data));  
         } catch (ParseException ex) {
             Logger.getLogger(AddPurchaseController.class.getName()).log(Level.SEVERE, null, ex);
         }
