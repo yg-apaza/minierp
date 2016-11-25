@@ -52,15 +52,15 @@
                         </div>
                         <form id="createForm" method="post" action="${pageContext.request.contextPath}/secured/contabilidad/plan/subcuenta">
                             <div class="modal-body">
+                                <input type="hidden" name="accion" value="create">
+                                <input type="hidden" name="origen" value="${cuenta.cueCod}">
+                                <input type="hidden" name="cuePad" id="addCuePad">
+                                <input type="hidden" name="cueNiv" id="addCueNiv">
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-md-6">
                                             <label>Número de cuenta</label>
                                             <div class="input-group">
-                                                <input type="hidden" name="accion" value="create">
-                                                <input type="hidden" name="origen" value="${cuenta.cueCod}">
-                                                <input type="hidden" name="cuePad" id="addCuePad">
-                                                <input type="hidden" name="cueNiv" id="addCueNiv">
                                                 <input class="form-control" name="cueNum1" id="addCueNum1" readonly>
                                                 <span class="input-group-addon">-</span>
                                                 <select class="form-control" name="cueNum2">
@@ -127,24 +127,44 @@
                         </div>
                         <form id="updateForm" method="post" action="${pageContext.request.contextPath}/secured/contabilidad/plan/subcuenta">
                             <div class="modal-body">
+                                <input type="hidden" name="accion" value="update">
+                                <input type="hidden" name="origen" value="${cuenta.cueCod}">
+                                <input type="hidden" name="cueCod" id="updateCueCod">
                                 <div class="form-group">
-                                    <label>Número de cuenta</label>
-                                    <input type="hidden" name="accion" value="update">
-                                    <input type="hidden" name="origen" value="${cuenta.cueCod}">
-                                    <input type="hidden" name="cueCod" id="updateCueCod">
-                                    <input class="form-control" id="updateCueNum" readonly>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Número de cuenta</label>
+                                            <input class="form-control" id="updateCueNum" readonly>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label>Nombre de cuenta:</label>
+                                            <input class="form-control" id="updateCueDes" name="cueDes">
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="form-group">
-                                    <label>Nombre de cuenta:</label>
-                                    <input class="form-control" id="updateCueDes" name="cueDes">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label>Cuenta de Amarre Debe:</label>
+                                            <input class="form-control" id="updateCueAmaDeb" name="cueAmaDeb">
+                                        </div>
+                                        <div class="col-md-8">
+                                            <label>Nombre de Cuenta:</label>
+                                            <input class="form-control" id="updateCueAmaDebDet" readonly>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="form-group">
-                                    <label>Cuenta de Amarre Debe:</label>
-                                    <input class="form-control" id="updateCueAmaDeb" name="cueAmaDeb">
-                                </div>
-                                <div class="form-group">
-                                    <label>Cuenta de Amarre Haber:</label>
-                                    <input class="form-control" id="updateCueAmaHab" name="cueAmaHab">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label>Cuenta de Amarre Haber:</label>
+                                            <input class="form-control" id="updateCueAmaHab" name="cueAmaHab">
+                                        </div>
+                                        <div class="col-md-8">
+                                            <label>Nombre de Cuenta:</label>
+                                            <input class="form-control" id="updateCueAmaHabDet" readonly>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="modal-footer">
@@ -248,6 +268,27 @@
                     form.submit();
                 }
             });
+            
+            $('#addCueAmaDeb').on('keyup', {source: '#addCueAmaDeb', to: '#addCueAmaDebDet'}, fillDetail);
+            $('#addCueAmaHab').on('keyup', {source: '#addCueAmaHab', to: '#addCueAmaHabDet'}, fillDetail);
+            $('#updateCueAmaDeb').on('keyup', {source: '#updateCueAmaDeb', to: '#updateCueAmaDebDet'}, fillDetail);
+            $('#updateCueAmaHab').on('keyup', {source: '#updateCueAmaHab', to: '#updateCueAmaHabDet'}, fillDetail);
+            
+            function fillDetail(event){
+                $.post(
+                    "${pageContext.request.contextPath}/secured/contabilidad/busquedaCuenta",
+                    {cueNum: $(event.data.source).val()})
+                .done(function(data) {
+                    if(data.cueCod != null)
+                    {
+                        $(event.data.to).val(data.cueDes);
+                    }
+                    else
+                    {
+                        $(event.data.to).val("Incorrecto");
+                    }
+                });
+            }
         </script>
     </jsp:attribute>
 </minierptemplate:template>
