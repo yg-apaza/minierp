@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 15/11/2016 11:23:25 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 25/11/2016 01:36:00 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="org.epis.minierp.model.EnP3mCuenta" table="en_p3m_cuenta" catalog="episerp" optimistic-lock="version">
         <id name="cueCod" type="java.lang.Integer">
@@ -40,6 +40,18 @@
                 <column name="CueAmaDeb" />
             </key>
             <one-to-many class="org.epis.minierp.model.EnP3mCuenta" />
+        </set>
+        <set name="enP4mProveedors" table="en_p4m_proveedor" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="CueCod" />
+            </key>
+            <one-to-many class="org.epis.minierp.model.EnP4mProveedor" />
+        </set>
+        <set name="enP2mProductos" table="en_p2m_producto" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="CueCod" />
+            </key>
+            <one-to-many class="org.epis.minierp.model.EnP2mProducto" />
         </set>
         <set name="enP3mCuentasForCueAmaHab" table="en_p3m_cuenta" inverse="true" lazy="true" fetch="select">
             <key>

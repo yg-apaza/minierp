@@ -1,5 +1,5 @@
 package org.epis.minierp.model;
-// Generated 15/11/2016 11:23:24 PM by Hibernate Tools 4.3.1
+// Generated 25/11/2016 01:35:59 AM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -27,11 +27,10 @@ public class EnP3mAsientoCab  implements java.io.Serializable {
     }
 
 	
-    public EnP3mAsientoCab(EnP3mAsientoCabId id, EnP3mLibroDiario enP3mLibroDiario, TaGzzMoneda taGzzMoneda, TaGzzTipoComprobante taGzzTipoComprobante, char asiCabTip, Date asiCabFec, char estRegCod) {
+    public EnP3mAsientoCab(EnP3mAsientoCabId id, EnP3mLibroDiario enP3mLibroDiario, TaGzzMoneda taGzzMoneda, char asiCabTip, Date asiCabFec, char estRegCod) {
         this.id = id;
         this.enP3mLibroDiario = enP3mLibroDiario;
         this.taGzzMoneda = taGzzMoneda;
-        this.taGzzTipoComprobante = taGzzTipoComprobante;
         this.asiCabTip = asiCabTip;
         this.asiCabFec = asiCabFec;
         this.estRegCod = estRegCod;

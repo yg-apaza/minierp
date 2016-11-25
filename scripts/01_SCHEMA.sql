@@ -328,6 +328,7 @@ CREATE TABLE en_p2m_producto
   MonCod Int(2) ZEROFILL,
   ProDet Char(90) NOT NULL,
   UniMedCod Int(2) ZEROFILL NOT NULL,
+  CueCod Int(10) ZEROFILL,
   ProPreUniVen Double(10,2) NOT NULL,
   ProPreUniCom Double(10,2) NOT NULL,
   ProPreUniMar Double(10,2) NOT NULL,
@@ -356,6 +357,9 @@ CREATE INDEX IX_Relationship114 ON en_p2m_producto (AlmCod)
 CREATE INDEX IX_Relationship120 ON en_p2m_producto (MonCod)
 ;
 
+CREATE INDEX IX_Relationship123 ON en_p2m_producto (CueCod)
+;
+
 -- Table episerp.en_p2m_almacen
 
 CREATE TABLE en_p2m_almacen
@@ -382,7 +386,6 @@ CREATE TABLE en_p3m_plantilla_cab
   PlaCod Int(10) ZEROFILL NOT NULL AUTO_INCREMENT,
   PlaDet Char(90),
   PlaGlo Char(60),
-  PlaHab Bool NOT NULL,
   EstRegCod Char(1) NOT NULL,
  PRIMARY KEY (PlaCod)
 )
@@ -468,7 +471,7 @@ CREATE TABLE en_p3m_asiento_cab
   AsiCabTip Char(1) NOT NULL,
   AsiCabGlo Char(150),
   AsiCabFec Date NOT NULL,
-  TipComCod Int(2) ZEROFILL NOT NULL,
+  TipComCod Int(2) ZEROFILL,
   AsiCabNumCom Char(15),
   MonCod Int(2) ZEROFILL NOT NULL,
   EstRegCod Char(1) NOT NULL,
@@ -583,6 +586,7 @@ CREATE TABLE en_p4m_proveedor
   PrvRazSoc Char(90),
   PrvNomCom Char(90),
   PrvDomFis Char(90),
+  CueCod Int(10) ZEROFILL,
   PrvCon Char(90),
   PrvDir Char(90) DEFAULT 'Desconocida',
   PrvTelFij Char(15),
@@ -595,6 +599,9 @@ CREATE TABLE en_p4m_proveedor
 ;
 
 ALTER TABLE en_p4m_proveedor ADD PRIMARY KEY (PrvCod)
+;
+
+CREATE INDEX IX_Relationship122 ON en_p4m_proveedor (CueCod)
 ;
 
 -- Table episerp.en_p4m_documento_proveedor
@@ -1413,4 +1420,8 @@ ALTER TABLE en_p2m_producto ADD CONSTRAINT Relationship120 FOREIGN KEY (MonCod) 
 ALTER TABLE en_p2t_inventario_det ADD CONSTRAINT Relationship121 FOREIGN KEY (TipFallProCod) REFERENCES ta_gzz_tipo_falla_producto (TipFallProCod) ON DELETE NO ACTION ON UPDATE NO ACTION
 ;
 
+ALTER TABLE en_p4m_proveedor ADD CONSTRAINT Relationship122 FOREIGN KEY (CueCod) REFERENCES en_p3m_cuenta (CueCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
 
+ALTER TABLE en_p2m_producto ADD CONSTRAINT Relationship123 FOREIGN KEY (CueCod) REFERENCES en_p3m_cuenta (CueCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;

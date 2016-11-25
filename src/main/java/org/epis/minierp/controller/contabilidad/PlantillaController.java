@@ -41,7 +41,6 @@ public class PlantillaController extends HttpServlet
                 EnP3mPlantillaCab nuevo = new EnP3mPlantillaCab();
                 nuevo.setPlaDet(plaDet);
                 nuevo.setPlaGlo(plaGlo);
-                nuevo.setPlaHab(true);
                 nuevo.setEstRegCod('A');
                 dao.save(nuevo);
                 PlantillaDetDao detalleDao = new PlantillaDetDao();

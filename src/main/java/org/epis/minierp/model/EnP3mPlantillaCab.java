@@ -1,5 +1,5 @@
 package org.epis.minierp.model;
-// Generated 15/11/2016 11:23:24 PM by Hibernate Tools 4.3.1
+// Generated 25/11/2016 01:35:59 AM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -14,7 +14,6 @@ public class EnP3mPlantillaCab  implements java.io.Serializable {
      private Integer plaCod;
      private String plaDet;
      private String plaGlo;
-     private boolean plaHab;
      private char estRegCod;
      private Set enP3tPlantillaDets = new HashSet(0);
 
@@ -22,14 +21,12 @@ public class EnP3mPlantillaCab  implements java.io.Serializable {
     }
 
 	
-    public EnP3mPlantillaCab(boolean plaHab, char estRegCod) {
-        this.plaHab = plaHab;
+    public EnP3mPlantillaCab(char estRegCod) {
         this.estRegCod = estRegCod;
     }
-    public EnP3mPlantillaCab(String plaDet, String plaGlo, boolean plaHab, char estRegCod, Set enP3tPlantillaDets) {
+    public EnP3mPlantillaCab(String plaDet, String plaGlo, char estRegCod, Set enP3tPlantillaDets) {
        this.plaDet = plaDet;
        this.plaGlo = plaGlo;
-       this.plaHab = plaHab;
        this.estRegCod = estRegCod;
        this.enP3tPlantillaDets = enP3tPlantillaDets;
     }
@@ -54,13 +51,6 @@ public class EnP3mPlantillaCab  implements java.io.Serializable {
     
     public void setPlaGlo(String plaGlo) {
         this.plaGlo = plaGlo;
-    }
-    public boolean isPlaHab() {
-        return this.plaHab;
-    }
-    
-    public void setPlaHab(boolean plaHab) {
-        this.plaHab = plaHab;
     }
     public char getEstRegCod() {
         return this.estRegCod;

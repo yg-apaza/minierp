@@ -37,18 +37,13 @@
                                     <td>${p.plaDet}</td>
                                     <td>${p.plaGlo}</td>
                                     <c:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
-                                        <c:if test="${p.plaHab}">
-                                            <td class="text-right">
-                                                <a href="#" data-toggle="modal" data-target="#deleteModal" 
-                                                   title="Eliminar Plantilla"
-                                                   data-codigo="${p.plaCod}" data-descripcion="${p.plaDet}">
-                                                    <i class="fa fa-trash-o fa-lg" style="color: black;"></i>
-                                                </a>
-                                            </td>
-                                        </c:if>
-                                        <c:if test="${!p.plaHab}">
-                                            <td class="text-right">No editable</td>
-                                        </c:if>
+                                        <td class="text-right">
+                                            <a href="#" data-toggle="modal" data-target="#deleteModal" 
+                                               title="Eliminar Plantilla"
+                                               data-codigo="${p.plaCod}" data-descripcion="${p.plaDet}">
+                                                <i class="fa fa-trash-o fa-lg" style="color: black;"></i>
+                                            </a>
+                                        </td>
                                     </c:if>
                                 </tr>
                             </c:forEach>
