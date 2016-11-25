@@ -5,9 +5,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.epis.minierp.business.contabilidad.CuentaBusiness;
 import org.epis.minierp.dao.contabilidad.BancoDao;
 import org.epis.minierp.dao.contabilidad.CuentaBancoDao;
-import org.epis.minierp.dao.contabilidad.CuentaDao;
 import org.epis.minierp.model.EnP3mCuenta;
 import org.epis.minierp.model.EnP3mCuentaBanco;
 import org.epis.minierp.model.TaGzzBanco;
@@ -28,7 +28,7 @@ public class CuentaBancoController extends HttpServlet
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("accion");
-        CuentaDao cuentaDao = new CuentaDao();
+        CuentaBusiness cuentaBusiness = new CuentaBusiness();
         BancoDao bancoDao = new BancoDao();
         CuentaBancoDao dao = new CuentaBancoDao();
         
@@ -41,16 +41,8 @@ public class CuentaBancoController extends HttpServlet
                 EnP3mCuentaBanco cb = new EnP3mCuentaBanco();
                 TaGzzBanco banco = bancoDao.getById(createBanCod);
                 cb.setTaGzzBanco(banco);
-                
                 cb.setCueBanNum(createCueBanNum);
-                
-                EnP3mCuenta cuenta = new EnP3mCuenta();
-                cuenta.setCueDes(banco.getBanDet());
-                cuenta.setCueNiv(5);
-                cuenta.setCueNum("1041" + createCueNum);
-                cuenta.setEnP3mCuentaByCuePad(cuentaDao.getByIdActive(434));
-                cuenta.setEstRegCod('A');
-                cuentaDao.save(cuenta);
+                EnP3mCuenta cuenta = cuentaBusiness.create(434, 5, banco.getBanDet(), "1041" + createCueNum, "", "");
                 cb.setEnP3mCuenta(cuenta);
                 cb.setEstRegCod('A');
                 dao.save(cb);

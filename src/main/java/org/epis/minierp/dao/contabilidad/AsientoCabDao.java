@@ -4,8 +4,8 @@ import org.epis.minierp.model.EnP3mAsientoCab;
 import org.epis.minierp.util.HibernateUtil;
 import org.hibernate.Session;
 
-public class AsientoCabDao {
-    
+public class AsientoCabDao
+{
     private Session session;
     
     public AsientoCabDao() {
@@ -15,5 +15,4 @@ public class AsientoCabDao {
     public void save(EnP3mAsientoCab asientoCab){
         session.save(asientoCab);
     }
-    
 }

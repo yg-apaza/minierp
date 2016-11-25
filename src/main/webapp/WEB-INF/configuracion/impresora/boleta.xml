@@ -4,6 +4,7 @@
     <leftMargin>2</leftMargin>
     <rightMargin>1</rightMargin>
     <topMargin>2</topMargin>
+    <botMargin>0.7</botMargin>
     <cliNom>1.8</cliNom>
     <cliDir>1.8</cliDir>
     <fecEmi>8.9</fecEmi>

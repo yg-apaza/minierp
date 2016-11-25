@@ -1,5 +1,5 @@
 package org.epis.minierp.model;
-// Generated 15/11/2016 11:23:24 PM by Hibernate Tools 4.3.1
+// Generated 25/11/2016 01:35:59 AM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -12,6 +12,7 @@ public class EnP4mProveedor  implements java.io.Serializable {
 
 
      private String prvCod;
+     private EnP3mCuenta enP3mCuenta;
      private String prvDet;
      private String prvRazSoc;
      private String prvNomCom;
@@ -36,8 +37,9 @@ public class EnP4mProveedor  implements java.io.Serializable {
         this.prvDet = prvDet;
         this.estRegCod = estRegCod;
     }
-    public EnP4mProveedor(String prvCod, String prvDet, String prvRazSoc, String prvNomCom, String prvDomFis, String prvCon, String prvDir, String prvTelFij, String prvTelCel, String prvEmail, String prvPagWeb, String prvObs, char estRegCod, Set enP4mFacturaCompraCabs, Set enP4mDocumentoProveedors) {
+    public EnP4mProveedor(String prvCod, EnP3mCuenta enP3mCuenta, String prvDet, String prvRazSoc, String prvNomCom, String prvDomFis, String prvCon, String prvDir, String prvTelFij, String prvTelCel, String prvEmail, String prvPagWeb, String prvObs, char estRegCod, Set enP4mFacturaCompraCabs, Set enP4mDocumentoProveedors) {
        this.prvCod = prvCod;
+       this.enP3mCuenta = enP3mCuenta;
        this.prvDet = prvDet;
        this.prvRazSoc = prvRazSoc;
        this.prvNomCom = prvNomCom;
@@ -60,6 +62,13 @@ public class EnP4mProveedor  implements java.io.Serializable {
     
     public void setPrvCod(String prvCod) {
         this.prvCod = prvCod;
+    }
+    public EnP3mCuenta getEnP3mCuenta() {
+        return this.enP3mCuenta;
+    }
+    
+    public void setEnP3mCuenta(EnP3mCuenta enP3mCuenta) {
+        this.enP3mCuenta = enP3mCuenta;
     }
     public String getPrvDet() {
         return this.prvDet;

@@ -1,5 +1,5 @@
 package org.epis.minierp.model;
-// Generated 15/11/2016 11:23:24 PM by Hibernate Tools 4.3.1
+// Generated 25/11/2016 01:35:59 AM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -14,6 +14,7 @@ public class EnP2mProducto  implements java.io.Serializable {
      private EnP2mProductoId id;
      private EnP2mAlmacen enP2mAlmacen;
      private EnP2mSubclaseProducto enP2mSubclaseProducto;
+     private EnP3mCuenta enP3mCuenta;
      private TaGzzMoneda taGzzMoneda;
      private TaGzzUnidadMed taGzzUnidadMed;
      private String proCodBar;
@@ -54,10 +55,11 @@ public class EnP2mProducto  implements java.io.Serializable {
         this.proObs = proObs;
         this.estRegCod = estRegCod;
     }
-    public EnP2mProducto(EnP2mProductoId id, EnP2mAlmacen enP2mAlmacen, EnP2mSubclaseProducto enP2mSubclaseProducto, TaGzzMoneda taGzzMoneda, TaGzzUnidadMed taGzzUnidadMed, String proCodBar, String proDet, double proPreUniVen, double proPreUniCom, double proPreUniMar, double proPreUniFle, Double proPesNet, double proStk, Double proStkRea, double proStkPreVen, Double volUniAlm, Double proStkMin, Double proStkMax, String proObs, char estRegCod, Set enP1tFacturaVentaDets, Set enP2tInventarioDets, Set enP1tPreventaDets, Set enP4tFacturaCompraDets) {
+    public EnP2mProducto(EnP2mProductoId id, EnP2mAlmacen enP2mAlmacen, EnP2mSubclaseProducto enP2mSubclaseProducto, EnP3mCuenta enP3mCuenta, TaGzzMoneda taGzzMoneda, TaGzzUnidadMed taGzzUnidadMed, String proCodBar, String proDet, double proPreUniVen, double proPreUniCom, double proPreUniMar, double proPreUniFle, Double proPesNet, double proStk, Double proStkRea, double proStkPreVen, Double volUniAlm, Double proStkMin, Double proStkMax, String proObs, char estRegCod, Set enP1tFacturaVentaDets, Set enP2tInventarioDets, Set enP1tPreventaDets, Set enP4tFacturaCompraDets) {
        this.id = id;
        this.enP2mAlmacen = enP2mAlmacen;
        this.enP2mSubclaseProducto = enP2mSubclaseProducto;
+       this.enP3mCuenta = enP3mCuenta;
        this.taGzzMoneda = taGzzMoneda;
        this.taGzzUnidadMed = taGzzUnidadMed;
        this.proCodBar = proCodBar;
@@ -101,6 +103,13 @@ public class EnP2mProducto  implements java.io.Serializable {
     
     public void setEnP2mSubclaseProducto(EnP2mSubclaseProducto enP2mSubclaseProducto) {
         this.enP2mSubclaseProducto = enP2mSubclaseProducto;
+    }
+    public EnP3mCuenta getEnP3mCuenta() {
+        return this.enP3mCuenta;
+    }
+    
+    public void setEnP3mCuenta(EnP3mCuenta enP3mCuenta) {
+        this.enP3mCuenta = enP3mCuenta;
     }
     public TaGzzMoneda getTaGzzMoneda() {
         return this.taGzzMoneda;

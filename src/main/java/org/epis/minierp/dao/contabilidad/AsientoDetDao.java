@@ -4,8 +4,8 @@ import org.epis.minierp.model.EnP3tAsientoDet;
 import org.epis.minierp.util.HibernateUtil;
 import org.hibernate.Session;
 
-public class AsientoDetDao {
-    
+public class AsientoDetDao
+{
     private Session session;
 
     public AsientoDetDao() {     
