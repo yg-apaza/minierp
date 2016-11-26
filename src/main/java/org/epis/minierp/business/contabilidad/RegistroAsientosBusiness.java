@@ -39,6 +39,9 @@ public class RegistroAsientosBusiness
         
         Iterator it =  asientoCab.getEnP3tAsientoDets().iterator();
         boolean flag = true;
+        
+        int cont=1;
+        
         while(it.hasNext()){
             
             EnP3tAsientoDet asientoDet = (EnP3tAsientoDet)it.next();
@@ -60,7 +63,7 @@ public class RegistroAsientosBusiness
             EnP3tAsientoDetId asientoDetId1 = new EnP3tAsientoDetId();
             asientoDetId1.setAsiCabCod(asiCabCod);
             asientoDetId1.setLibDiaCod(libDiaCod);
-            asientoDetId1.setAsiDetCod((int) (System.currentTimeMillis() % Integer.MAX_VALUE)); 
+            asientoDetId1.setAsiDetCod(cont++); 
 
             EnP3tAsientoDet asiDet1 = new EnP3tAsientoDet();
             asiDet1.setAsiDetDebHab(true);
@@ -74,7 +77,7 @@ public class RegistroAsientosBusiness
             EnP3tAsientoDetId asientoDetId2 = new EnP3tAsientoDetId();
             asientoDetId2.setAsiCabCod(asiCabCod);
             asientoDetId2.setLibDiaCod(libDiaCod);
-            asientoDetId2.setAsiDetCod((int) (System.currentTimeMillis() % Integer.MAX_VALUE)); 
+            asientoDetId2.setAsiDetCod(cont++); 
 
             EnP3tAsientoDet asiDet2 = new EnP3tAsientoDet();
             asiDet2.setAsiDetDebHab(false);
