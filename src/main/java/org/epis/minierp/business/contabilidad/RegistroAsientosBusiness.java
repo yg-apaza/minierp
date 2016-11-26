@@ -12,7 +12,6 @@ import org.epis.minierp.model.EnP3tAsientoDetId;
 
 public class RegistroAsientosBusiness
 {
-    
     public void generarAsientosAmarre(EnP3mAsientoCab asientoCab)
     {
         AsientoCabDao daoAsientoCab = new AsientoCabDao();
@@ -35,11 +34,10 @@ public class RegistroAsientosBusiness
         //asiCab.setAsiCabNumCom();
         asiCab.setId(asientoCabId);
         asiCab.setEstRegCod('A');   
-        daoAsientoCab.save(asiCab); 
+        daoAsientoCab.save(asiCab);
         
         Iterator it =  asientoCab.getEnP3tAsientoDets().iterator();
         while(it.hasNext()){
-            
             EnP3tAsientoDet asientoDet = (EnP3tAsientoDet)it.next();
             EnP3mCuenta enP3mCuenta = asientoDet.getEnP3mCuenta();
             

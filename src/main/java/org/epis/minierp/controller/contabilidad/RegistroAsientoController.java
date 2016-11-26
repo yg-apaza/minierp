@@ -83,7 +83,6 @@ public class RegistroAsientoController  extends HttpServlet
             for(int i = 0; i < cueNum.length; i++){
                 EnP3tAsientoDet asiDet = new EnP3tAsientoDet();
                 EnP3tAsientoDetId idDet = new EnP3tAsientoDetId();
-                
                 EnP3mCuenta cuenta = cuentaDao.getByNumActive(cueNum[i]);
                 idDet.setLibDiaCod(libDiaCod);
                 idDet.setAsiCabCod(asiCabCod);
@@ -92,13 +91,14 @@ public class RegistroAsientoController  extends HttpServlet
                 asiDet.setEnP3mCuenta(cuenta);
                 asiDet.setAsiDetDebHab(asiDetDebHab[i].equals("DEBE"));
                 asiDet.setAsiDetMon(Double.parseDouble(asiDetMon[i]));
-                daoAsientoDet.save(asiDet); 
+                daoAsientoDet.save(asiDet);
+                asiCab.getEnP3tAsientoDets().add(asiDet);
             }
-            
             RegistroAsientosBusiness regBusiness = new RegistroAsientosBusiness();
             System.out.println("detalles: " + asiCab.getEnP3tAsientoDets().size());
             regBusiness.generarAsientosAmarre(asiCab);
-        } catch (ParseException ex) {
+        } catch (ParseException ex){
+            
         }
         response.sendRedirect(request.getContextPath() + "/secured/contabilidad/asientos");
     }
