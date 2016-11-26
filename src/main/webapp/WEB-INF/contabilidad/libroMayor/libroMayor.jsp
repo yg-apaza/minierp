@@ -25,18 +25,19 @@
                         <div class="form-group form-group-sm">
                           <label class="col-sm-2 control-label" for="sm">Periodo: </label>
                           <div class="col-sm-4">
-                            <input id = "fecIn" class="form-control" type="month" id="sm">
+                            <!--<input id = "fecIn" class="form-control" type="month" id="sm">-->
+                            <input class="form-control" id="sm" value="${libros.libDiaCod} - ${libros.libDiaPer}" readonly>
                           </div>
                           <label class="col-sm-2 control-label" for="sm">RUC: </label>
                           <div class="col-sm-4">
-                            <input class="form-control" type="text" id="sm" placeholder="${empresa.empRuc}" readonly>
+                            <input class="form-control" type="text" id="sm" value="${empresa.empRuc}" readonly>
                           </div>
                         </div>
                         <br><br>
                         <div class="form-group form-group-sm">
                           <label class="col-sm-4 control-label" for="sm">Apellidos y Nombres, Denominación o Razón Social: </label>
                           <div class="col-sm-8">
-                            <input class="form-control" type="text" id="sm" placeholder="${empresa.empNomCom}" readonly>
+                            <input class="form-control" type="text" id="sm" value="${empresa.empNomCom}" readonly>
                           </div>
                         </div>
                     </div>
@@ -47,10 +48,10 @@
                 <div class="form-group form-group-sm">
                     <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Cuenta:  </label>
                     <div class="col-sm-2">
-                        <input type="number" maxlength="2" id="form-field-1" name = "codCue" placeholder="${cuenta.cueNum}" class="form-control" >
+                        <input type="number" maxlength="2" id="form-field-1" name = "codCue" value="${cuenta.cueNum}" class="form-control" >
                     </div>
                     <div class="col-sm-6">
-                        <input type="text" id="form-field-1" name = "codCue" placeholder="${cuenta.cueDes}" class="form-control" readonly>
+                        <input type="text" id="form-field-1" name = "codCue" value="${cuenta.cueDes}" class="form-control" readonly>
                     </div>
                     <div class="col-md-2">
                         <button type="submit" class="btn btn-success btn-sm">
