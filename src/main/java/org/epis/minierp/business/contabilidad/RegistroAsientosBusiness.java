@@ -34,24 +34,39 @@ public class RegistroAsientosBusiness
         //asiCab.setAsiCabNumCom();
         asiCab.setId(asientoCabId);
         asiCab.setEstRegCod('A');   
-        daoAsientoCab.save(asiCab);
+        
         
         Iterator it =  asientoCab.getEnP3tAsientoDets().iterator();
+        boolean flag = true;
+        
+        int cont=1;
+        
         while(it.hasNext()){
             EnP3tAsientoDet asientoDet = (EnP3tAsientoDet)it.next();
-            EnP3mCuenta enP3mCuenta = asientoDet.getEnP3mCuenta();
+           
+            EnP3mCuenta enP3mCuentaDebe = asientoDet.getEnP3mCuenta().getEnP3mCuentaByCueAmaDeb();
+            EnP3mCuenta enP3mCuentaHaber = asientoDet.getEnP3mCuenta().getEnP3mCuentaByCueAmaHab();
             
+            if(enP3mCuentaDebe == null  || enP3mCuentaHaber == null)
+                continue;
+            else if(flag){
+                daoAsientoCab.save(asiCab); 
+                flag=false;  
+            }
+            
+            System.out.println(enP3mCuentaDebe.getCueCod());
+
             //1er ASIENTO_DETALLE DEBE
             
             EnP3tAsientoDetId asientoDetId1 = new EnP3tAsientoDetId();
             asientoDetId1.setAsiCabCod(asiCabCod);
             asientoDetId1.setLibDiaCod(libDiaCod);
-            asientoDetId1.setAsiDetCod((int) (System.currentTimeMillis() % Integer.MAX_VALUE)); 
+            asientoDetId1.setAsiDetCod(cont++); 
 
             EnP3tAsientoDet asiDet1 = new EnP3tAsientoDet();
             asiDet1.setAsiDetDebHab(true);
             asiDet1.setAsiDetMon(asientoDet.getAsiDetMon());
-            asiDet1.setEnP3mCuenta(enP3mCuenta.getEnP3mCuentaByCueAmaDeb());
+            asiDet1.setEnP3mCuenta(enP3mCuentaDebe);
             asiDet1.setId(asientoDetId1);
             daoAsientoDet.save(asiDet1); 
 
@@ -60,12 +75,12 @@ public class RegistroAsientosBusiness
             EnP3tAsientoDetId asientoDetId2 = new EnP3tAsientoDetId();
             asientoDetId2.setAsiCabCod(asiCabCod);
             asientoDetId2.setLibDiaCod(libDiaCod);
-            asientoDetId2.setAsiDetCod((int) (System.currentTimeMillis() % Integer.MAX_VALUE)); 
+            asientoDetId2.setAsiDetCod(cont++); 
 
             EnP3tAsientoDet asiDet2 = new EnP3tAsientoDet();
             asiDet2.setAsiDetDebHab(false);
             asiDet2.setAsiDetMon(asientoDet.getAsiDetMon());
-            asiDet2.setEnP3mCuenta(enP3mCuenta.getEnP3mCuentaByCueAmaHab());
+            asiDet2.setEnP3mCuenta(enP3mCuentaHaber);
             asiDet2.setId(asientoDetId2);
             daoAsientoDet.save(asiDet2);            
         }
