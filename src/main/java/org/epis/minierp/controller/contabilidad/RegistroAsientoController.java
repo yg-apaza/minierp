@@ -4,19 +4,15 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
 import java.util.Date;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.epis.minierp.business.contabilidad.RegistroAsientosBusiness;
 import org.epis.minierp.dao.contabilidad.AsientoCabDao;
 import org.epis.minierp.dao.contabilidad.AsientoDetDao;
 import org.epis.minierp.dao.contabilidad.CuentaDao;
-import org.epis.minierp.dao.contabilidad.LibroDiarioDao;
 import org.epis.minierp.dao.general.TaGzzMonedaDao;
 import org.epis.minierp.dao.general.TaGzzTipoComprobanteDao;
 import org.epis.minierp.model.EnP3mAsientoCab;
@@ -87,7 +83,6 @@ public class RegistroAsientoController  extends HttpServlet
             for(int i = 0; i < cueNum.length; i++){
                 EnP3tAsientoDet asiDet = new EnP3tAsientoDet();
                 EnP3tAsientoDetId idDet = new EnP3tAsientoDetId();
-                
                 EnP3mCuenta cuenta = cuentaDao.getByNumActive(cueNum[i]);
                 idDet.setLibDiaCod(libDiaCod);
                 idDet.setAsiCabCod(asiCabCod);
@@ -96,9 +91,13 @@ public class RegistroAsientoController  extends HttpServlet
                 asiDet.setEnP3mCuenta(cuenta);
                 asiDet.setAsiDetDebHab(asiDetDebHab[i].equals("DEBE"));
                 asiDet.setAsiDetMon(Double.parseDouble(asiDetMon[i]));
-                daoAsientoDet.save(asiDet); 
+                daoAsientoDet.save(asiDet);
+                asiCab.getEnP3tAsientoDets().add(asiDet);
             }
-        } catch (ParseException ex) {
+            RegistroAsientosBusiness regBusiness = new RegistroAsientosBusiness();
+            regBusiness.generarAsientosAmarre(asiCab);
+        } catch (ParseException ex){
+            
         }
         response.sendRedirect(request.getContextPath() + "/secured/contabilidad/asientos");
     }

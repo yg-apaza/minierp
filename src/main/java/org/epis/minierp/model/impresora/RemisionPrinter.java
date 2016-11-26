@@ -9,7 +9,6 @@ import javax.xml.bind.annotation.XmlType;
     "leftMargin",
     "rightMargin",
     "topMargin",
-    "botMargin",
     "cliNom",
     "punPar",
     "punLle",
@@ -40,7 +39,6 @@ public class RemisionPrinter {
     float leftMargin;
     float rightMargin;
     float topMargin;
-    float botMargin;
     float cliNom;
     float punPar;
     float punLle;
@@ -100,14 +98,6 @@ public class RemisionPrinter {
         this.topMargin = topMargin;
     }
 
-    public float getBotMargin() {
-        return botMargin;
-    }
-
-    public void setBotMargin(float botMargin) {
-        this.botMargin = botMargin;
-    }
-    
     public float getCliNom() {
         return cliNom;
     }

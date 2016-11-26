@@ -129,6 +129,5 @@ public class ReporteController extends HttpServlet {
         while ((bytes = fileInputStream.read()) != -1) {
             responseOutputStream.write(bytes);
         }
-        file.delete();
     }
 }
