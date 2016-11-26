@@ -161,6 +161,9 @@
                                         <a href="${pageContext.request.contextPath}/secured/contabilidad/plantilla">Plantillas de Asientos</a>
                                     </li>
                                     <li>
+                                        <a href="${pageContext.request.contextPath}/secured/contabilidad/hojaTrabajo">Hoja de Trabajo</a>
+                                    </li>
+                                    <li>
                                         <a href="#">Estados Financieros<span class="fa arrow"></span></a>
                                         <ul class="nav nav-third-level">
                                             <li>

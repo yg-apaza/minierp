@@ -15,7 +15,6 @@
     <!-- Vistas -->
     <mapping class="org.epis.minierp.model.contabilidad.CajaView"/>
     <mapping class="org.epis.minierp.model.contabilidad.BancosView"/>
-    <mapping class="org.epis.minierp.model.contabilidad.LibroMayorView"/>
     <mapping class="org.epis.minierp.model.contabilidad.LibroDiarioView"/>
     <mapping class="org.epis.minierp.model.compras.Kardex"/>
     <mapping class="org.epis.minierp.model.ventas.Ingresos"/>
