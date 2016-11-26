@@ -10,57 +10,56 @@
         <div class="panel-body" >
             <h1 class="page-header">Caja</h1> 
             <div class="panel">
+                <form id="registerBill" method="post" action="${pageContext.request.contextPath}/secured/contabilidad/caja">
                 
-                <div class="form-group">
-                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Periodo de apertura: </label>
-                    <div class="col-sm-9">
-                        <input type="text" id="form-field-1" placeholder="${periodo.fechaPeriodo}" class="form-control" readonly>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Periodo de apertura: </label>
+                        <div class="col-sm-9">
+                            <input type="text" id="form-field-1" value="${libros.libDiaCod} - ${libros.libDiaPer}" class="form-control" readonly>
+                        </div>
+                        
+                        <br><br>
+                        
+                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> RUC: </label>
+                        <div class="col-sm-9">
+                            <input type="text" id="form-field-1" value="${empresa.empRuc}" class="form-control" readonly>
+                        </div>
+                        
+                        <br><br>
+                        
+                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Apellidos y Nombres, Denominación o Razón Social:  </label>
+                        <div class="col-sm-9">
+                            <input type="text" id="form-field-1" value="${empresa.empNomCom}" class="form-control" readonly>
+                        </div>
+                        
+                        <br><br><br>
+
+                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Filtrar por mes: </label>
+                        <div class="col-sm-9">
+                            <input id = "fecIn" type="month" name = "fechFiltro" id="form-field-1" value="${fecha_Filtro}" class="form-control">
+                        </div>
+                        
                     </div>
-                </div>
 
-                <br><br>
-
-                <div class="form-group">
-                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> RUC: </label>
-                    <div class="col-sm-9">
-                        <input type="text" id="form-field-1" placeholder="${empresa.empRuc}" class="form-control" readonly>
-                    </div>
-                </div>
-
-                <br><br>
-
-                <div class="form-group">
-                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Apellidos y Nombres, Denominación o Razón Social:  </label>
-                    <div class="col-sm-9">
-                        <input type="text" id="form-field-1" placeholder="${empresa.empNomCom}" class="form-control" readonly>
-                    </div>
-                </div>
+                    <br><br>
                     
-                <br><br>
-                
-                <div class="form-group">
-                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Periodo: </label>
-                    <div class="col-sm-9">
-                        <input id = "fecIn" type="month" id="form-field-1" placeholder="Mar-16" class="form-control">
+                    <div class="col-md-3">
+                        <button type="submit" onclick="return updateInventory()" class="btn btn-success"> Actualizar libro</button>  
                     </div>
-                </div>
-                <script>
-                        document.getElementById("fecIn").value = moment().format('YYYY-MM');;
-                </script>
 
-                <br><br>
-                
+                    <br><br>
+                </form>
             </div>
             <div class="table-responsive">
                 <table class="table table-bordered table-striped table-hover">
                     <thead>
                         <tr>
-                            <th>Número Correlativo del Registro o código único de operación</th>
-                            <th>Fecha de operación</th>
-                            <th>Código de la Cuenta Asociada</th>
-                            <th>Denominación de la Cuenta Asociada</th>
-                            <th>Deudor</th>
-                            <th>Acreedor</th>
+                            <th  width="20%">N° Correlativo del Registro o código único de operación</th>
+                            <th  width="10%">Fecha de operación</th>
+                            <th  width="10%">Código de la Cuenta Asociada</th>
+                            <th  width="40%">Denominación de la Cuenta Asociada</th>
+                            <th  width="10%">Deudor</th>
+                            <th  width="10%">Acreedor</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -79,16 +78,30 @@
                 <table class="table table-bordered table-striped table-hover">
                     <tbody>
                     <tr class="info">
-                        <td> <b> DEBE  </b> </td>
-                        <td> ${totales.debe} </td>
-                        <td> <b> HABER </b> </td>
-                        <td> ${totales.haber} </td>
+                        <td  width="80%"> <b> TOTALES </b> </td>
+                        <td  width="10%"> <b> ${totales.debe} </b> </td>
+                        <td  width="10%"> <b> ${totales.haber} </b> </td>
                     </tr>
                     </tbody>
                 </table>
             </div>
         <div>
-            <button class="btn btn-default center-block" type="submit">Imprimir</button>
+            <div class="col-md-3">
+                <a href="${pageContext.request.contextPath}/secured/general/reporte?type=pdf&&report=cuentabancaria&&jdbc=false&&key=null&&value=null" class="btn btn-outline btn-danger btn-lg btn-block">
+                    <i class="fa fa-file-pdf-o"></i>
+                    Reporte [PDF]
+                </a>
+                
+                <a href="${pageContext.request.contextPath}/secured/general/reporte?type=xls&&report=cuentabancaria&&jdbc=false&&key=null&&value=null" class="btn btn-outline btn-success btn-lg btn-block">
+                    <i class="fa fa-file-excel-o"></i>
+                    Reporte [XLS]
+                </a>
+                
+                <a href="${pageContext.request.contextPath}/secured/general/reporte?type=doc&&report=cuentabancaria&&jdbc=false&&key=null&&value=null" class="btn btn-outline btn-primary btn-lg btn-block">
+                    <i class="fa fa-file-word-o"></i>
+                    Reporte [DOC]
+                </a>
+            </div>
         </div>
         </div>
     </jsp:attribute>

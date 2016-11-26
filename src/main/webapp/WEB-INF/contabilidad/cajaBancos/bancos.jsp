@@ -16,59 +16,55 @@
                     <div class="form-group">
                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Periodo de apertura: </label>
                         <div class="col-sm-9">
-                            <input type="text" id="form-field-1" placeholder="${periodo.fechaPeriodo}" class="form-control" readonly>
+                            <input type="text" id="form-field-1" value="${libros.libDiaCod} - ${libros.libDiaPer}" class="form-control" readonly>
                         </div>
-                    </div>
-
-                    <br><br>
-
-                    <div class="form-group">
+                        
+                        <br><br>
+                        
                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> RUC: </label>
                         <div class="col-sm-9">
-                            <input type="text" id="form-field-1" placeholder="${empresa.empRuc}" class="form-control" readonly>
+                            <input type="text" id="form-field-1" value="${empresa.empRuc}" class="form-control" readonly>
                         </div>
-                    </div>
 
-                    <br><br>
+                        <br><br>
 
-                    <div class="form-group">
                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Apellidos y Nombres, Denominación o Razón Social:  </label>
                         <div class="col-sm-9">
-                            <input type="text" id="form-field-1" placeholder="${empresa.empNomCom}" class="form-control" readonly>
+                            <input type="text" id="form-field-1" value="${empresa.empNomCom}" class="form-control" readonly>
                         </div>
                     </div>
-
-                    <br><br>
-
-                    <div class="form-group">
+                        
+                        <br><br>
+                        
+                    <div class="form-group"> 
+                        
                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Entidad Financiera:  </label>
                         <div class="col-sm-9">
-                            <input id="emp2" type="text" id="form-field-1" placeholder="${cuenta.cueDes}" class="form-control">
+                            <input id="emp2" type="text" id="form-field-1" value="${cuenta.cueDes}" class="form-control">
                         </div>
-                    </div>
-
-                    <br><br>
-
-                    <div class="form-group">
+                        
+                        <br><br>
+                        
                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Código de la Cuenta Corriente:  </label>
                         <div class="col-sm-9">
-                            <input id="emp3" type="text" name = "codCue" id="form-field-1" placeholder="${cuenta.cueCod}" class="form-control">
+                            <input id="emp3" type="text" name = "codCue" id="form-field-1" value="${cuenta.cueCod}" class="form-control">
                         </div>
-                    </div>
-
-                    <br><br>
-                    
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Periodo: </label>
+                        
+                        <br><br>
+                        
+                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Filtrar por mes: </label>
                         <div class="col-sm-9">
-                            <input id = "fecIn" type="month" id="form-field-1" placeholder="Mar-16" class="form-control">
+                            <input id = "fecIn" type="month" name = "fechFiltro" id="form-field-1" value="${fecha_Filtro}" class="form-control">
                         </div>
+
+                        <!--
+                        <script>
+                                document.getElementById("fecIn").value = moment().format('YYYY-MM');;
+                        </script>
+                        -->
+                        
                     </div>
-                    <script>
-                            document.getElementById("fecIn").value = moment().format('YYYY-MM');;
-                    </script>                        
-                        
-                        
+ 
                     <br><br>
 
                     <div class="col-md-3">
@@ -85,9 +81,9 @@
                 <table class="table table-bordered table-striped table-hover">
                 <thread>                
                     <tr>
-                        <th>Número Correlativo del Registro o código único de operación</th>
+                        <th>N° Correlativo del Registro o código único de operación</th>
                         <th>Fecha de operación</th>
-                        <th>Número de transacción Bancaria, de documento sustentatorio o Control interno de la operación</th>
+                        <th>N° de transacción Bancaria/ documento sustentatorio/ Control interno de la operación</th>
                         <th>Código de la Cuenta Asociada</th>
                         <th>Denominación de la Cuenta Asociada</th>
                         <th>Deudor</th>
@@ -97,13 +93,13 @@
                 <tbody>
                     <c:forEach items="${operaciones}" var="u"> 
                              <tr>
-                                 <td>${u.asiDetCod}</td>
-                                 <td><fmt:formatDate value="${u.asiCabFec}" pattern="dd/MM/yyyy" /></td>
-                                 <td>${u.asiCabNumCom}</td>
-                                 <td>${u.cueNum}</td>
-                                 <td>${u.cueDes}</td>
-                                 <td>${u.debe}</td>
-                                 <td>${u.haber}</td>                           
+                                 <td  width="15%">${u.asiDetCod}</td>
+                                 <td  width="10%"><fmt:formatDate value="${u.asiCabFec}" pattern="dd/MM/yyyy" /></td>
+                                 <td  width="20%">${u.asiCabNumCom}</td>
+                                 <td  width="5%">${u.cueNum}</td>
+                                 <td  width="30%">${u.cueDes}</td>
+                                 <td  width="10%">${u.debe}</td>
+                                 <td  width="10%">${u.haber}</td>                           
                              </tr>
                      </c:forEach>        
                 </tbody>
@@ -111,10 +107,9 @@
                 <table class="table table-bordered table-striped table-hover">
                     <tbody>
                     <tr class="info">
-                        <td> <b> DEBE  </b> </td>
-                        <td> ${totales.debe} </td>
-                        <td> <b> HABER </b> </td>
-                        <td> ${totales.haber} </td>
+                        <td  width="80%"> <b> TOTALES </b> </td>
+                        <td  width="10%"> <b> ${totales.debe} </b> </td>
+                        <td  width="10%"> <b> ${totales.haber} </b> </td>
                     </tr>
                     </tbody>
                 </table>
