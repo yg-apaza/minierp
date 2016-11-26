@@ -95,7 +95,6 @@ public class RegistroAsientoController  extends HttpServlet
                 asiCab.getEnP3tAsientoDets().add(asiDet);
             }
             RegistroAsientosBusiness regBusiness = new RegistroAsientosBusiness();
-            System.out.println("detalles: " + asiCab.getEnP3tAsientoDets().size());
             regBusiness.generarAsientosAmarre(asiCab);
         } catch (ParseException ex){
             
