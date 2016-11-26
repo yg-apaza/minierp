@@ -15,7 +15,7 @@ import org.epis.minierp.model.EnP3mLibroDiario;
 
 public class LibroMayorController extends HttpServlet{
     private static final long serialVersionUID = 1L;
-    String codigo_cuenta ="10";
+    String codigo_cuenta = null;
     EnP3mLibroDiario libros = null;
     
     @Override
