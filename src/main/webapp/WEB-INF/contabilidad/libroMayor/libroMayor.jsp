@@ -80,28 +80,23 @@
                              <td>${u.idPK.asiCabCod}</td>
                              <td>${u.asiCabGlo}</td>
                              <td>
-                             <c:if test="${u.asiDetDebHab}" >
-                                 <c:out value="${u.asiDetMon}"/> 
-                             </c:if>
+                                 <c:if test="${u.asiDetDebHab}" >
+                                     <c:out value="${u.asiDetMon}"/> 
+                                 </c:if>
                              </td>
                              <td>
-                             <c:if test="${not u.asiDetDebHab}" >
-                                 <c:out value="${u.asiDetMon}"/> 
-                             </c:if> 
+                                 <c:if test="${not u.asiDetDebHab}" >
+                                     <c:out value="${u.asiDetMon}"/> 
+                                 </c:if> 
                              </td>                          
                          </tr>
-                 </c:forEach>        
-            </tbody>
-            </table>
-            <table class="table table-bordered table-striped table-hover">
-                <tbody>
-                <tr class="info">
-                    <td> <b> DEBE  </b> </td>
+                 </c:forEach>  
+                 <tr class="info">
+                    <td colspan="3">TOTALES</td>
                     <td> ${totales.debe} </td>
-                    <td> <b> HABER </b> </td>
                     <td> ${totales.haber} </td>
-                </tr>
-                </tbody>
+                 </tr>      
+            </tbody>
             </table>
         </div>
         <div>
