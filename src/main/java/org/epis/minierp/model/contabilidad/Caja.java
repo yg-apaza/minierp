@@ -13,15 +13,17 @@ public class Caja {
     private String cueNum;
     private double debe;
     private double haber;
+    private String LibDiaPer;
     private String estado;
 
-    public Caja(int asiDetCod, Date asiCabFec, String cueDes, String cueNum, double debe, double haber) {
+    public Caja(int asiDetCod, Date asiCabFec, String cueDes, String cueNum, double debe, double haber, String LibDiaPer) {
         this.asiDetCod = asiDetCod;
         this.asiCabFec = asiCabFec;
         this.cueDes = cueDes;
         this.cueNum = cueNum;
         this.debe = debe;
         this.haber = haber;
+        this.LibDiaPer = LibDiaPer;
     }
 
     public Caja() {
@@ -99,6 +101,14 @@ public class Caja {
         this.haber = haber;
     }
 
+    public String getLibDiaPer() {
+        return LibDiaPer;
+    }
+
+    public void setLibDiaPer(String LibDiaPer) {
+        this.LibDiaPer = LibDiaPer;
+    }
+
     public String getEstado() {
         return estado;
     }
@@ -106,7 +116,5 @@ public class Caja {
     public void setEstado(String estado) {
         this.estado = estado;
     }
-
-    
-    
+  
 }

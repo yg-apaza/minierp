@@ -35,8 +35,19 @@ public class BancosDAO {
         
          while(diario.hasNext()) {
             BancosView asiento = diario.next();
-            Bancos nuevo = new Bancos(asiento.getAsiDetCod(),asiento.getAsiCabFec(),asiento.getCueBanNum(),asiento.getAsiCabNumCom(),asiento.getCueNum(),asiento.getCueDes(),asiento.getDebe(),asiento.getHaber());
+            Bancos nuevo = new Bancos(asiento.getAsiDetCod(),asiento.getAsiCabFec(),asiento.getCueBanNum(),asiento.getAsiCabNumCom(),asiento.getCueNum(),asiento.getCueDes(),asiento.getDebe(),asiento.getHaber(), asiento.getLibDiaPer());
             
+            CajaView asociado = this.getAsociado(asiento);
+            nuevo.setCueDes(asociado.getCueDes());
+            nuevo.setCueNum(asociado.getCueNum());
+            
+            if("0".equals(asiento.getEstado()))
+                nuevo.setHaber(0); 
+            else nuevo.setDebe(0); 
+            bancos.add(nuevo);
+            
+            
+            /*
             CajaDAO cajaDAO = new CajaDAO();
             Iterator <CajaView> diario_ = cajaDAO.getView().iterator();
             CajaView ant=new CajaView();
@@ -57,7 +68,7 @@ public class BancosDAO {
                     break;
                 } 
                 ant = nue;
-            }
+            }*/
         }
         return bancos;
     }
@@ -69,29 +80,23 @@ public class BancosDAO {
         
          while(diario.hasNext()) {
             BancosView asiento = diario.next();
-            Bancos nuevo = new Bancos(asiento.getAsiDetCod(),asiento.getAsiCabFec(),asiento.getCueBanNum(),asiento.getAsiCabNumCom(),asiento.getCueNum(),asiento.getCueDes(),asiento.getDebe(),asiento.getHaber());
+            Bancos nuevo = new Bancos(asiento.getAsiDetCod(),asiento.getAsiCabFec(),asiento.getCueBanNum(),asiento.getAsiCabNumCom(),asiento.getCueNum(),asiento.getCueDes(),asiento.getDebe(),asiento.getHaber(), asiento.getLibDiaPer());
+            
+            CajaView asociado = this.getAsociado(asiento);
+            nuevo.setCueDes(asociado.getCueDes());
+            nuevo.setCueNum(asociado.getCueNum());
+            
             
             CajaDAO cajaDAO = new CajaDAO();
             Iterator <CajaView> diario_ = cajaDAO.getView().iterator();
             CajaView ant=new CajaView();
             CajaView nue;
-
-             while(diario_.hasNext()) {
-                nue = diario_.next();
-                if(banco.equals(asiento.getCueNum())){
-                    //swap
-                    if(nuevo.getAsiDetCod()==(nue.getAsiDetCod())){
-                        nuevo.setCueDes(ant.getCueDes());
-                        nuevo.setCueNum(ant.getCueNum());
-
-                        if("0".equals(asiento.getEstado()))
-                            nuevo.setHaber(0); 
-                        else nuevo.setDebe(0); 
-                        bancos.add(nuevo);
-                        break;
-                    } 
-                }
-                ant = nue;
+            
+            if(banco.equals(asiento.getCueNum())){
+                if("0".equals(asiento.getEstado()))
+                    nuevo.setHaber(0); 
+                else nuevo.setDebe(0); 
+                bancos.add(nuevo);
             }
         }
         return bancos;
@@ -104,7 +109,7 @@ public class BancosDAO {
         Set <Bancos> bancos = new HashSet <> ();
          while(diario.hasNext()) {
             BancosView asiento = diario.next();
-            Bancos nuevo = new Bancos(asiento.getAsiDetCod(),asiento.getAsiCabFec(),asiento.getCueBanNum(),asiento.getAsiCabNumCom(),asiento.getCueNum(),asiento.getCueDes(),asiento.getDebe(),asiento.getHaber());
+            Bancos nuevo = new Bancos(asiento.getAsiDetCod(),asiento.getAsiCabFec(),asiento.getCueBanNum(),asiento.getAsiCabNumCom(),asiento.getCueNum(),asiento.getCueDes(),asiento.getDebe(),asiento.getHaber(),asiento.getLibDiaPer());
             
             if("0".equals(asiento.getEstado()))
                 nuevo.setHaber(0); 
@@ -148,5 +153,20 @@ public class BancosDAO {
         cuentaDes.put("cueCod", cuenta);
         cuentaDes.put("cueDes", descripcion);
         return cuentaDes;
+    }
+    public Map<String, String> getPeriodo(){
+        String periodo=getBancos().get(0).getLibDiaPer();
+        Map<String, String> fechaPeriodo=  new TreeMap<>();
+        fechaPeriodo.put("fechaPeriodo",periodo);
+        return fechaPeriodo;
+    }
+    
+    public CajaView getAsociado(BancosView cab){
+        Query query = session.createQuery("from CajaView B where B.asiCabCod = '" +cab.getAsiCabCod()+ "'");
+        CajaView caja =(CajaView)query.list().get(0);
+        if(cab.getCueNum().equals(caja.getCueNum()))
+            return (CajaView)query.list().get(1);
+        else
+            return (CajaView)query.list().get(0);
     }
 }

@@ -25,27 +25,26 @@ public class CajaDAO {
         Query query = session.createQuery("from CajaView ");
         return query.list();
     }
+
     public List<Caja> getCaja(){
         CajaDAO cajaDAO = new CajaDAO();
         Iterator <CajaView> diario = cajaDAO.getView().iterator();
         List<Caja>caja = new ArrayList<Caja>();
-        Caja ant = new Caja();
-        Caja nuevo;
-        
+ 
          while(diario.hasNext()) {
             CajaView asiento = diario.next();
-            nuevo = new Caja(asiento.getAsiDetCod(),asiento.getAsiCabFec(),asiento.getCueDes(),asiento.getCueNum(),asiento.getDebe(),asiento.getHaber());
+            Caja nuevo = new Caja(asiento.getAsiDetCod(),asiento.getAsiCabFec(),asiento.getCueDes(),asiento.getCueNum(),asiento.getDebe(),asiento.getHaber(),asiento.getLibDiaPer());
             //swap
             if("101".equals(asiento.getCueNum())){
-                nuevo.setCueDes(ant.getCueDes());
-                nuevo.setCueNum(ant.getCueNum());
+                CajaView asociado = this.getAsociado(asiento);
+                nuevo.setCueDes(asociado.getCueDes());
+                nuevo.setCueNum(asociado.getCueNum());
                 
                 if("0".equals(asiento.getEstado()))
                     nuevo.setHaber(0); 
                 else nuevo.setDebe(0); 
                 caja.add(nuevo);
             } 
-            ant = nuevo;
         }
         return caja;
     }
@@ -57,7 +56,7 @@ public class CajaDAO {
         Set <Caja> caja = new HashSet <> ();
          while(diario.hasNext()) {
             CajaView asiento = diario.next();
-            Caja nuevo = new Caja(asiento.getAsiDetCod(),asiento.getAsiCabFec(),asiento.getCueDes(),asiento.getCueNum(),asiento.getDebe(),asiento.getHaber());
+            Caja nuevo = new Caja(asiento.getAsiDetCod(),asiento.getAsiCabFec(),asiento.getCueDes(),asiento.getCueNum(),asiento.getDebe(),asiento.getHaber(), asiento.getLibDiaPer());
             if("0".equals(asiento.getEstado()))
                 nuevo.setHaber(0); 
             else nuevo.setDebe(0); 
@@ -80,5 +79,20 @@ public class CajaDAO {
         sumas.put("debe",debe);
         sumas.put("haber",haber);
         return sumas;
+    }
+    public Map<String, String> getPeriodo(){
+        String periodo=getCaja().get(0).getLibDiaPer();
+        Map<String, String> fechaPeriodo=  new TreeMap<>();
+        fechaPeriodo.put("fechaPeriodo",periodo);
+        return fechaPeriodo;
+    }
+    
+    public CajaView getAsociado(CajaView cab){
+        Query query = session.createQuery("from CajaView B where B.asiCabCod = '" +cab.getAsiCabCod()+ "'");
+        CajaView caja =(CajaView)query.list().get(0);
+        if(cab.getCueNum().equals(caja.getCueNum()))
+            return (CajaView)query.list().get(1);
+        else
+            return (CajaView)query.list().get(0);
     }
 }

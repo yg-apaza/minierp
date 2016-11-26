@@ -44,6 +44,9 @@ public class CajaView implements Serializable {
     
     @Column(name="estado")
     private String estado;
+    
+    @Column(name="LibDiaPer")
+    private String LibDiaPer;
 
     public String getLibDiaCod() {
         return libDiaCod;
@@ -124,4 +127,13 @@ public class CajaView implements Serializable {
     public void setEstado(String estado) {
         this.estado = estado;
     }
+
+    public String getLibDiaPer() {
+        return LibDiaPer;
+    }
+
+    public void setLibDiaPer(String LibDiaPer) {
+        this.LibDiaPer = LibDiaPer;
+    }
+    
 }

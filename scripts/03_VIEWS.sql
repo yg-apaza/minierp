@@ -11,6 +11,7 @@ CREATE OR REPLACE VIEW VIEW_CAJA AS (
 		asiCab.AsiCabFec,
                 asiDet.AsiDetMon AS debe,
                 asiDet.AsiDetMon AS haber,
+		libDia.LibDiaPer,
 		libDia.EstRegCod
 	FROM en_p3t_asiento_det asiDet
 		INNER JOIN en_p3m_cuenta cue
@@ -35,6 +36,7 @@ CREATE OR REPLACE VIEW VIEW_BANCOS AS (
 		asiCab.AsiCabFec,
                 asiDet.AsiDetMon AS debe,
                 asiDet.AsiDetMon AS haber,
+		libDia.LibDiaPer,
 		libDia.EstRegCod,
                 cueBan.CueBanNum,
                 asiCab.AsiCabNumCom

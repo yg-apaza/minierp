@@ -19,6 +19,7 @@ public class CajaController extends HttpServlet{
         request.setAttribute("operaciones",cajaDAO.getCaja());
         request.setAttribute("empresa", empDao.getAll().get(0));
         request.setAttribute("totales", cajaDAO.getTotal());
+        request.setAttribute("periodo", cajaDAO.getPeriodo());
         request.getRequestDispatcher("/WEB-INF/contabilidad/cajaBancos/caja.jsp").forward(request, response);
     }
 }

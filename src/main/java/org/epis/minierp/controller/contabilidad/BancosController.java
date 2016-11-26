@@ -21,6 +21,7 @@ public class BancosController extends HttpServlet{
         request.setAttribute("empresa", empDao.getAll().get(0));
         request.setAttribute("totales", bancosDAO.getTotal(codigo_cuenta));
         request.setAttribute("cuenta", bancosDAO.getCuenta(codigo_cuenta));
+        request.setAttribute("periodo", bancosDAO.getPeriodo());
         request.getRequestDispatcher("/WEB-INF/contabilidad/cajaBancos/bancos.jsp").forward(request, response);
     }
     @Override

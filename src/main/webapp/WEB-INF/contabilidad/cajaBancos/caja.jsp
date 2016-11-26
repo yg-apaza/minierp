@@ -12,14 +12,11 @@
             <div class="panel">
                 
                 <div class="form-group">
-                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Periodo: </label>
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Periodo de apertura: </label>
                     <div class="col-sm-9">
-                        <input id = "fecIn" type="month" id="form-field-1" placeholder="Mar-16" class="form-control">
+                        <input type="text" id="form-field-1" placeholder="${periodo.fechaPeriodo}" class="form-control" readonly>
                     </div>
                 </div>
-                <script>
-                        document.getElementById("fecIn").value = moment().format('YYYY-MM');;
-                </script>
 
                 <br><br>
 
@@ -40,6 +37,19 @@
                 </div>
                     
                 <br><br>
+                
+                <div class="form-group">
+                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Periodo: </label>
+                    <div class="col-sm-9">
+                        <input id = "fecIn" type="month" id="form-field-1" placeholder="Mar-16" class="form-control">
+                    </div>
+                </div>
+                <script>
+                        document.getElementById("fecIn").value = moment().format('YYYY-MM');;
+                </script>
+
+                <br><br>
+                
             </div>
             <div class="table-responsive">
                 <table class="table table-bordered table-striped table-hover">

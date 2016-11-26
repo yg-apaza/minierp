@@ -12,8 +12,9 @@ public class Bancos {
     private String cueDes;
     private double debe;
     private double haber;
+    private String LibDiaPer;
 
-    public Bancos(int asiDetCod, Date asiCabFec, String cueBanNum, String asiCabNumCom, String cueNum, String cueDes, double debe, double haber) {
+    public Bancos(int asiDetCod, Date asiCabFec, String cueBanNum, String asiCabNumCom, String cueNum, String cueDes, double debe, double haber, String LibDiaPer) {
         this.asiDetCod = asiDetCod;
         this.asiCabFec = asiCabFec;
         this.cueBanNum = cueBanNum;
@@ -21,6 +22,7 @@ public class Bancos {
         this.cueDes = cueDes;
         this.debe = debe;
         this.haber = haber;
+        this.LibDiaPer = LibDiaPer;
     }
 
     public Bancos() {
@@ -88,6 +90,14 @@ public class Bancos {
 
     public void setHaber(double haber) {
         this.haber = haber;
+    }
+
+    public String getLibDiaPer() {
+        return LibDiaPer;
+    }
+
+    public void setLibDiaPer(String LibDiaPer) {
+        this.LibDiaPer = LibDiaPer;
     }
 
     
