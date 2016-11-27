@@ -56,7 +56,7 @@
                         </div>
                     </div>
                     <div class="col-md-12 col-sm-12">
-                        <label>Detalle de Plantilla</label>
+                        <label>Detalle de Asiento</label>
                     </div>
                     <div class="col-md-7 col-sm-12">
                         <div class="form-group input-group">

@@ -47,7 +47,6 @@ public class SubcuentaController extends HttpServlet
             case "update":
                 int updateCueCod = Integer.parseInt(request.getParameter("cueCod"));
                 String updateCueDes = request.getParameter("cueDes");
-                System.out.println("test: " + updateCueDes);
                 String updateCueAmaDeb = request.getParameter("cueAmaDeb");
                 String updateCueAmaHab = request.getParameter("cueAmaHab");
                 business.update(updateCueCod, updateCueDes, updateCueAmaDeb, updateCueAmaHab);

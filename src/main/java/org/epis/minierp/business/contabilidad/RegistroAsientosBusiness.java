@@ -4,11 +4,17 @@ import java.util.Date;
 import java.util.Iterator;
 import org.epis.minierp.dao.contabilidad.AsientoCabDao;
 import org.epis.minierp.dao.contabilidad.AsientoDetDao;
+import org.epis.minierp.dao.contabilidad.CuentaDao;
+import org.epis.minierp.dao.contabilidad.LibroDiarioDao;
+import org.epis.minierp.dao.general.TaGzzMonedaDao;
+import org.epis.minierp.dao.general.TaGzzTipoComprobanteDao;
 import org.epis.minierp.model.EnP3mAsientoCab;
 import org.epis.minierp.model.EnP3mAsientoCabId;
 import org.epis.minierp.model.EnP3mCuenta;
 import org.epis.minierp.model.EnP3tAsientoDet;
 import org.epis.minierp.model.EnP3tAsientoDetId;
+import org.epis.minierp.model.TaGzzMoneda;
+import org.epis.minierp.model.TaGzzTipoComprobante;
 
 public class RegistroAsientosBusiness
 {
@@ -84,5 +90,62 @@ public class RegistroAsientosBusiness
             asiDet2.setId(asientoDetId2);
             daoAsientoDet.save(asiDet2);            
         }
+    }
+
+    public void create(char asiCabTip, String asiCabGlo, Date asiCabFec, Integer tipComCod, String asiCabNumCom, int monCod, String[] cueNum, String[] asiDetDeb, String[] asiDetHab) {
+        LibroDiarioDao libDiaDao = new LibroDiarioDao();
+        AsientoCabDao daoAsientoCab = new AsientoCabDao();
+        AsientoDetDao daoAsientoDet = new AsientoDetDao();
+        CuentaDao cuentaDao = new CuentaDao();
+        
+        EnP3mAsientoCab asiCab = new EnP3mAsientoCab();
+        
+        int libDiaCod = libDiaDao.getCurrent().getLibDiaCod();
+        int asiCabCod = daoAsientoCab.getNext();
+        TaGzzMoneda taGzzMoneda = (new TaGzzMonedaDao()).getById(monCod);
+        TaGzzTipoComprobante taGzzTipoComprobante = null;
+        if(tipComCod != 0)
+            taGzzTipoComprobante = (new TaGzzTipoComprobanteDao()).getById(tipComCod);
+        
+        EnP3mAsientoCabId asientoCabId = new EnP3mAsientoCabId();
+        asientoCabId.setAsiCabCod(asiCabCod);
+        asientoCabId.setLibDiaCod(libDiaCod);
+        
+        asiCab.setId(asientoCabId);
+        asiCab.setAsiCabTip(asiCabTip);
+        asiCab.setAsiCabGlo(asiCabGlo);
+        asiCab.setAsiCabFec(asiCabFec);
+        asiCab.setTaGzzTipoComprobante(taGzzTipoComprobante);
+        asiCab.setAsiCabNumCom(asiCabNumCom);
+        asiCab.setTaGzzMoneda(taGzzMoneda);
+        asiCab.setEstRegCod('A');
+        daoAsientoCab.save(asiCab);
+ 
+        for(int i = 0; i < cueNum.length; i++){
+            EnP3tAsientoDet asiDet = new EnP3tAsientoDet();
+            EnP3tAsientoDetId idDet = new EnP3tAsientoDetId();
+            EnP3mCuenta cuenta = cuentaDao.getByNumActive(cueNum[i]);
+            idDet.setLibDiaCod(libDiaCod);
+            idDet.setAsiCabCod(asiCabCod);
+            idDet.setAsiDetCod(i + 1);
+            asiDet.setId(idDet);
+            asiDet.setEnP3mCuenta(cuenta);
+
+            if(Double.parseDouble(asiDetDeb[i]) != 0)
+            {
+                asiDet.setAsiDetDebHab(true);
+                asiDet.setAsiDetMon(Double.parseDouble(asiDetDeb[i]));
+            }
+            else
+            {
+                asiDet.setAsiDetDebHab(false);
+                asiDet.setAsiDetMon(Double.parseDouble(asiDetHab[i]));
+            }
+
+            daoAsientoDet.save(asiDet);
+            asiCab.getEnP3tAsientoDets().add(asiDet);
+        }
+
+        generarAsientosAmarre(asiCab);
     }
 }
