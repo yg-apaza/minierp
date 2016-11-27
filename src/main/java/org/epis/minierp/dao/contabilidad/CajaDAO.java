@@ -1,6 +1,9 @@
 package org.epis.minierp.dao.contabilidad;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Iterator;
 import org.epis.minierp.model.contabilidad.CajaView;
@@ -48,6 +51,29 @@ public class CajaDAO {
         }
         return caja;
     }
+    public List<Caja> getCaja(String fecha_filtro){
+        CajaDAO cajaDAO = new CajaDAO();
+        Iterator <CajaView> diario = cajaDAO.getView().iterator();
+        List<Caja>caja = new ArrayList<Caja>();
+ 
+         while(diario.hasNext()) {
+            CajaView asiento = diario.next();
+            Caja nuevo = new Caja(asiento.getAsiDetCod(),asiento.getAsiCabFec(),asiento.getCueDes(),asiento.getCueNum(),asiento.getDebe(),asiento.getHaber(),asiento.getLibDiaPer());
+
+            String fecha = getMonth(nuevo.getAsiCabFec());
+            if("101".equals(asiento.getCueNum()) && fecha_filtro.equals(fecha)){
+                CajaView asociado = this.getAsociado(asiento);
+                nuevo.setCueDes(asociado.getCueDes());
+                nuevo.setCueNum(asociado.getCueNum());
+                
+                if("0".equals(asiento.getEstado()))
+                    nuevo.setHaber(0); 
+                else nuevo.setDebe(0); 
+                caja.add(nuevo);
+            } 
+        }
+        return caja;
+    }
 
     public Set<Caja> getTodo(){
         CajaDAO cajaDAO = new CajaDAO();
@@ -80,11 +106,21 @@ public class CajaDAO {
         sumas.put("haber",haber);
         return sumas;
     }
-    public Map<String, String> getPeriodo(){
-        String periodo=getCaja().get(0).getLibDiaPer();
-        Map<String, String> fechaPeriodo=  new TreeMap<>();
-        fechaPeriodo.put("fechaPeriodo",periodo);
-        return fechaPeriodo;
+    public Map<String, Double> getTotal(String fecha_filtro){
+        Iterator <Caja> diario = getCaja(fecha_filtro).iterator();
+        Map<String, Double> sumas=  new TreeMap<>();
+        
+        double debe=0;
+        double haber=0;
+        
+        while(diario.hasNext()) {
+            Caja asiento = diario.next();
+            debe+=asiento.getDebe();
+            haber+=asiento.getHaber();          
+        }
+        sumas.put("debe",debe);
+        sumas.put("haber",haber);
+        return sumas;
     }
     
     public CajaView getAsociado(CajaView cab){
@@ -94,5 +130,12 @@ public class CajaDAO {
             return (CajaView)query.list().get(1);
         else
             return (CajaView)query.list().get(0);
+    }
+    
+    public String getMonth(Date fecha){        
+        DateFormat df = new SimpleDateFormat("YYYY-MM");
+        String requiredDate = df.format(fecha).toString();
+        
+        return requiredDate;
     }
 }

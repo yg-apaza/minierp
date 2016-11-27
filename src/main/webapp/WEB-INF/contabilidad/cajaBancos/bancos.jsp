@@ -14,69 +14,55 @@
                 <form id="registerBill" method="post" action="${pageContext.request.contextPath}/secured/contabilidad/bancos">
                     
                     <div class="form-group">
-                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Periodo de apertura: </label>
-                        <div class="col-sm-9">
-                            <input type="text" id="form-field-1" placeholder="${periodo.fechaPeriodo}" class="form-control" readonly>
+                        <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Periodo de apertura: </label>
+                        <div class="col-sm-2">
+                            <input type="text" id="form-field-1" value="${libros.libDiaCod} - ${libros.libDiaPer}" class="form-control" readonly>
                         </div>
-                    </div>
-
-                    <br><br>
-
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> RUC: </label>
-                        <div class="col-sm-9">
-                            <input type="text" id="form-field-1" placeholder="${empresa.empRuc}" class="form-control" readonly>
+                        
+                        <label class="col-sm-1 control-label no-padding-right" for="form-field-1"> RUC: </label>
+                        <div class="col-sm-2">
+                            <input type="text" id="form-field-1" value="${empresa.empRuc}" class="form-control" readonly>
                         </div>
-                    </div>
 
-                    <br><br>
-
-                    <div class="form-group">
                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Apellidos y Nombres, Denominación o Razón Social:  </label>
-                        <div class="col-sm-9">
-                            <input type="text" id="form-field-1" placeholder="${empresa.empNomCom}" class="form-control" readonly>
+                        <div class="col-sm-2">
+                            <input type="text" id="form-field-1" value="${empresa.empNomCom}" class="form-control" readonly>
                         </div>
+                        
+                        <br><br>
                     </div>
-
-                    <br><br>
-
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Entidad Financiera:  </label>
-                        <div class="col-sm-9">
-                            <input id="emp2" type="text" id="form-field-1" placeholder="${cuenta.cueDes}" class="form-control">
+                        
+                    <div class="form-group"> 
+                        
+                        <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Entidad Financiera:  </label>
+                        <div class="col-sm-5">
+                            <input id="emp2" type="text" id="form-field-1" value="${cuenta.cueDes}" class="form-control">
                         </div>
-                    </div>
-
-                    <br><br>
-
-                    <div class="form-group">
+                        
                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Código de la Cuenta Corriente:  </label>
-                        <div class="col-sm-9">
-                            <input id="emp3" type="text" name = "codCue" id="form-field-1" placeholder="${cuenta.cueCod}" class="form-control">
+                        <div class="col-sm-2">
+                            <input id="emp3" type="text" name = "codCue" id="form-field-1" value="${cuenta.cueCod}" class="form-control">
                         </div>
-                    </div>
-
-                    <br><br>
+                        
+                        <br><br>
                     
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Periodo: </label>
-                        <div class="col-sm-9">
-                            <input id = "fecIn" type="month" id="form-field-1" placeholder="Mar-16" class="form-control">
+                    </div>
+                        
+                    <div class="form-group"> 
+                        
+                        <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Filtrar por mes: </label>
+                        <div class="col-sm-3">
+                            <input id = "fecIn" type="month" name = "fechFiltro" id="form-field-1" value="${fecha_Filtro}" class="form-control">
                         </div>
-                    </div>
-                    <script>
-                            document.getElementById("fecIn").value = moment().format('YYYY-MM');;
-                    </script>                        
                         
+                        <div class="col-md-3">
+                            <button type="submit" onclick="return updateInventory()" class="btn btn-success"> Actualizar libro</button>  
+                        </div>
                         
-                    <br><br>
-
-                    <div class="col-md-3">
-                        <button type="submit" onclick="return updateInventory()" class="btn btn-success"> Actualizar libro</button>  
+                        <br><br>
+                        
                     </div>
-
-                    <br><br>
-                    
+                        
                 </form>
             </div>
             
@@ -85,9 +71,9 @@
                 <table class="table table-bordered table-striped table-hover">
                 <thread>                
                     <tr>
-                        <th>Número Correlativo del Registro o código único de operación</th>
+                        <th>N° Correlativo del Registro o código único de operación</th>
                         <th>Fecha de operación</th>
-                        <th>Número de transacción Bancaria, de documento sustentatorio o Control interno de la operación</th>
+                        <th>N° de transacción Bancaria/ documento sustentatorio/ Control interno de la operación</th>
                         <th>Código de la Cuenta Asociada</th>
                         <th>Denominación de la Cuenta Asociada</th>
                         <th>Deudor</th>
@@ -97,13 +83,13 @@
                 <tbody>
                     <c:forEach items="${operaciones}" var="u"> 
                              <tr>
-                                 <td>${u.asiDetCod}</td>
-                                 <td><fmt:formatDate value="${u.asiCabFec}" pattern="dd/MM/yyyy" /></td>
-                                 <td>${u.asiCabNumCom}</td>
-                                 <td>${u.cueNum}</td>
-                                 <td>${u.cueDes}</td>
-                                 <td>${u.debe}</td>
-                                 <td>${u.haber}</td>                           
+                                 <td  width="15%">${u.asiDetCod}</td>
+                                 <td  width="10%"><fmt:formatDate value="${u.asiCabFec}" pattern="dd/MM/yyyy" /></td>
+                                 <td  width="20%">${u.asiCabNumCom}</td>
+                                 <td  width="5%">${u.cueNum}</td>
+                                 <td  width="30%">${u.cueDes}</td>
+                                 <td  width="10%">${u.debe}</td>
+                                 <td  width="10%">${u.haber}</td>                           
                              </tr>
                      </c:forEach>        
                 </tbody>
@@ -111,16 +97,32 @@
                 <table class="table table-bordered table-striped table-hover">
                     <tbody>
                     <tr class="info">
-                        <td> <b> DEBE  </b> </td>
-                        <td> ${totales.debe} </td>
-                        <td> <b> HABER </b> </td>
-                        <td> ${totales.haber} </td>
+                        <td  width="80%"> <b> TOTALES </b> </td>
+                        <td  width="10%"> <b> ${totales.debe} </b> </td>
+                        <td  width="10%"> <b> ${totales.haber} </b> </td>
                     </tr>
                     </tbody>
                 </table>
             </div>
             <div>
-                <button class="btn btn-default center-block" type="submit">Imprimir</button>
+                <div class="col-sm-4">
+                    <a href="${pageContext.request.contextPath}/secured/general/reporte?type=pdf&&report=libroBancos&&jdbc=false&&key=null&&value=null" class="btn btn-outline btn-danger btn-lg btn-block">
+                        <i class="fa fa-file-pdf-o"></i>
+                        Reporte [PDF]
+                    </a>
+                </div>
+                <div class="col-sm-4">   
+                    <a href="${pageContext.request.contextPath}/secured/general/reporte?type=xls&&report=libroBancos&&jdbc=false&&key=null&&value=null" class="btn btn-outline btn-success btn-lg btn-block">
+                        <i class="fa fa-file-excel-o"></i>
+                        Reporte [XLS]
+                    </a>
+                </div>
+                <div class="col-sm-4">      
+                    <a href="${pageContext.request.contextPath}/secured/general/reporte?type=doc&&report=libroBancos&&jdbc=false&&key=null&&value=null" class="btn btn-outline btn-primary btn-lg btn-block">
+                        <i class="fa fa-file-word-o"></i>
+                        Reporte [DOC]
+                    </a>
+                </div>
             </div>
         </div>
 

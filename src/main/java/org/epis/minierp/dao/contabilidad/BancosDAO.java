@@ -1,6 +1,10 @@
 package org.epis.minierp.dao.contabilidad;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -45,30 +49,7 @@ public class BancosDAO {
                 nuevo.setHaber(0); 
             else nuevo.setDebe(0); 
             bancos.add(nuevo);
-            
-            
-            /*
-            CajaDAO cajaDAO = new CajaDAO();
-            Iterator <CajaView> diario_ = cajaDAO.getView().iterator();
-            CajaView ant=new CajaView();
-            CajaView nue;
-
-             while(diario_.hasNext()) {
-                nue = diario_.next();
-                
-                //swap
-                if(nuevo.getAsiDetCod()==(nue.getAsiDetCod())){
-                    nuevo.setCueDes(ant.getCueDes());
-                    nuevo.setCueNum(ant.getCueNum());
-
-                    if("0".equals(asiento.getEstado()))
-                        nuevo.setHaber(0); 
-                    else nuevo.setDebe(0); 
-                    bancos.add(nuevo);
-                    break;
-                } 
-                ant = nue;
-            }*/
+          
         }
         return bancos;
     }
@@ -86,12 +67,6 @@ public class BancosDAO {
             nuevo.setCueDes(asociado.getCueDes());
             nuevo.setCueNum(asociado.getCueNum());
             
-            
-            CajaDAO cajaDAO = new CajaDAO();
-            Iterator <CajaView> diario_ = cajaDAO.getView().iterator();
-            CajaView ant=new CajaView();
-            CajaView nue;
-            
             if(banco.equals(asiento.getCueNum())){
                 if("0".equals(asiento.getEstado()))
                     nuevo.setHaber(0); 
@@ -101,6 +76,32 @@ public class BancosDAO {
         }
         return bancos;
     }
+    
+    public List<Bancos> getBancos(String banco, String fecha_filtro){
+        BancosDAO bancosDAO = new BancosDAO();
+        Iterator <BancosView> diario = bancosDAO.getView().iterator();
+        List<Bancos> bancos = new ArrayList<Bancos>();
+        
+         while(diario.hasNext()) {
+            BancosView asiento = diario.next();
+            Bancos nuevo = new Bancos(asiento.getAsiDetCod(),asiento.getAsiCabFec(),asiento.getCueBanNum(),asiento.getAsiCabNumCom(),asiento.getCueNum(),asiento.getCueDes(),asiento.getDebe(),asiento.getHaber(), asiento.getLibDiaPer());
+            
+            CajaView asociado = this.getAsociado(asiento);
+            nuevo.setCueDes(asociado.getCueDes());
+            nuevo.setCueNum(asociado.getCueNum());
+            
+            String fecha = getMonth(nuevo.getAsiCabFec());
+            
+            if(banco.equals(asiento.getCueNum()) && fecha_filtro.equals(fecha)){
+                if("0".equals(asiento.getEstado()))
+                    nuevo.setHaber(0); 
+                else nuevo.setDebe(0); 
+                bancos.add(nuevo);
+            }
+        }
+        return bancos;
+    }
+    
     
     public Set<Bancos> getTodo(){
         BancosDAO bancosDAO = new BancosDAO();
@@ -136,29 +137,29 @@ public class BancosDAO {
         return sumas;
     }
     
-    public Map<String, String> getCuenta(String cuenta){
-        String descripcion = "";
-        BancosDAO bancosDAO = new BancosDAO();
-        Iterator <BancosView> diario = bancosDAO.getView().iterator();
-
-         while(diario.hasNext()) {
-            BancosView asiento = diario.next();
-            if(cuenta.equals(asiento.getCueNum())){
-                descripcion = asiento.getCueDes();
-                break;
-            }
+    public Map<String, Double> getTotal(String banco, String fecha_filtro){
+        Iterator <Bancos> diario = getBancos(banco, fecha_filtro).iterator();
+        Map<String, Double> sumas=  new TreeMap<>();
+        
+        double debe=0;
+        double haber=0;
+        
+        while(diario.hasNext()) {
+            Bancos asiento = diario.next();
+            debe+=asiento.getDebe();
+            haber+=asiento.getHaber();          
         }
-         
+        sumas.put("debe",debe);
+        sumas.put("haber",haber);
+        return sumas;
+    }
+    
+    public Map<String, String> getCuenta(String cuenta){
+        String descripcion=getBancos().get(0).getCueDes();         
         Map<String, String> cuentaDes=  new TreeMap<>();
         cuentaDes.put("cueCod", cuenta);
         cuentaDes.put("cueDes", descripcion);
         return cuentaDes;
-    }
-    public Map<String, String> getPeriodo(){
-        String periodo=getBancos().get(0).getLibDiaPer();
-        Map<String, String> fechaPeriodo=  new TreeMap<>();
-        fechaPeriodo.put("fechaPeriodo",periodo);
-        return fechaPeriodo;
     }
     
     public CajaView getAsociado(BancosView cab){
@@ -168,5 +169,24 @@ public class BancosDAO {
             return (CajaView)query.list().get(1);
         else
             return (CajaView)query.list().get(0);
+    }
+    public String getMonth(String fecha){
+        String pattern = "dd/MM/yyyy";
+        SimpleDateFormat format = new SimpleDateFormat(pattern);
+        try {
+          Date date = format.parse(fecha);
+          DateFormat df = new SimpleDateFormat("YYYY-MM");
+          fecha = df.format(date).toString();
+        } catch (ParseException e) {
+          e.printStackTrace();
+        }
+        return fecha;
+    }
+    
+    public String getMonth(Date fecha){        
+        DateFormat df = new SimpleDateFormat("YYYY-MM");
+        String requiredDate = df.format(fecha).toString();
+        
+        return requiredDate;
     }
 }

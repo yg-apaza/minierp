@@ -543,6 +543,16 @@
         <servlet-name>BusquedaCuentaController</servlet-name>
         <url-pattern>/secured/contabilidad/busquedaCuenta</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <description/>
+        <display-name>HojaTrabajoController</display-name>
+        <servlet-name>HojaTrabajoController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.contabilidad.HojaTrabajoController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>HojaTrabajoController</servlet-name>
+        <url-pattern>/secured/contabilidad/hojaTrabajo</url-pattern>
+    </servlet-mapping>
     <!-- Modulo de Perifericos -->
     <servlet>
         <description/>
