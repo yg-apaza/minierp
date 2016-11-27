@@ -15,10 +15,12 @@
                             <tr>
                                 <th>MARGEN IZQUIERDO</th>
                                 <th>MARGEN SUPERIOR</th>
+                                <th hidden>MARGEN INFERIOR</th>
                             </tr>
                             <tr>
                                 <td><input min="0" step="0.1" type="number" name="leftMargin" value="${fac.getLeftMargin()}">cm</td>
                                 <td><input min="0" step="0.1" type="number" name="topMargin" value="${fac.getTopMargin()}">cm</td>
+                                <td hidden><input min="0" step="0.1" type="number" name="botMargin" value="${fac.getBotMargin()}">cm</td>                            
                             </tr>
                         </table>
                     </div>

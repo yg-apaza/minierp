@@ -15,10 +15,12 @@
                             <tr>
                                 <th>MARGEN IZQUIERDO</th>
                                 <th>MARGEN SUPERIOR</th>
+                                <th hidden>MARGEN INFERIOR</th>
                             </tr>
                             <tr>
                                 <td><input min="0" step="0.1" type="number" name="leftMargin" value="${bol.getLeftMargin()}">cm</td>
                                 <td><input min="0" step="0.1" type="number" name="topMargin" value="${bol.getTopMargin()}">cm</td>
+                                <td hidden><input min="0" step="0.1" type="number" name="botMargin" value="${bol.getBotMargin()}">cm</td>                            
                             </tr>
                         </table>
                     </div>
