@@ -11,45 +11,43 @@
             <h1 class="page-header">Caja</h1> 
             <div class="panel">
                 <form id="registerBill" method="post" action="${pageContext.request.contextPath}/secured/contabilidad/caja">
-                
+
                     <div class="form-group">
-                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Periodo de apertura: </label>
-                        <div class="col-sm-9">
+                        <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Periodo de apertura: </label>
+                        <div class="col-sm-2">
                             <input type="text" id="form-field-1" value="${libros.libDiaCod} - ${libros.libDiaPer}" class="form-control" readonly>
                         </div>
                         
-                        <br><br>
-                        
-                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> RUC: </label>
-                        <div class="col-sm-9">
+                        <label class="col-sm-1 control-label no-padding-right" for="form-field-1"> RUC: </label>
+                        <div class="col-sm-2">
                             <input type="text" id="form-field-1" value="${empresa.empRuc}" class="form-control" readonly>
                         </div>
                         
-                        <br><br>
-                        
                         <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Apellidos y Nombres, Denominación o Razón Social:  </label>
-                        <div class="col-sm-9">
+                        <div class="col-sm-2">
                             <input type="text" id="form-field-1" value="${empresa.empNomCom}" class="form-control" readonly>
                         </div>
+    
+                        <br><br>
                         
-                        <br><br><br>
-
-                        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Filtrar por mes: </label>
-                        <div class="col-sm-9">
+                    </div>                    
+                    
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> Filtrar por mes: </label>
+                        <div class="col-sm-3">
                             <input id = "fecIn" type="month" name = "fechFiltro" id="form-field-1" value="${fecha_Filtro}" class="form-control">
                         </div>
+
+                        <div class="col-md-3">
+                            <button type="submit" onclick="return updateInventory()" class="btn btn-success"> Actualizar libro</button>  
+                        </div>
                         
-                    </div>
-
-                    <br><br>
-                    
-                    <div class="col-md-3">
-                        <button type="submit" onclick="return updateInventory()" class="btn btn-success"> Actualizar libro</button>  
-                    </div>
-
-                    <br><br>
+                        <br><br>
+                        
+                    </div> 
                 </form>
             </div>
+                        
             <div class="table-responsive">
                 <table class="table table-bordered table-striped table-hover">
                     <thead>
@@ -85,24 +83,26 @@
                     </tbody>
                 </table>
             </div>
-        <div>
-            <div class="col-md-3">
-                <a href="${pageContext.request.contextPath}/secured/general/reporte?type=pdf&&report=cuentabancaria&&jdbc=false&&key=null&&value=null" class="btn btn-outline btn-danger btn-lg btn-block">
-                    <i class="fa fa-file-pdf-o"></i>
-                    Reporte [PDF]
-                </a>
-                
-                <a href="${pageContext.request.contextPath}/secured/general/reporte?type=xls&&report=cuentabancaria&&jdbc=false&&key=null&&value=null" class="btn btn-outline btn-success btn-lg btn-block">
-                    <i class="fa fa-file-excel-o"></i>
-                    Reporte [XLS]
-                </a>
-                
-                <a href="${pageContext.request.contextPath}/secured/general/reporte?type=doc&&report=cuentabancaria&&jdbc=false&&key=null&&value=null" class="btn btn-outline btn-primary btn-lg btn-block">
-                    <i class="fa fa-file-word-o"></i>
-                    Reporte [DOC]
-                </a>
+            <div>
+                <div class="col-sm-4">
+                    <a href="${pageContext.request.contextPath}/secured/general/reporte?type=pdf&&report=libroCaja&&jdbc=false&&key=null&&value=null" class="btn btn-outline btn-danger btn-lg btn-block">
+                        <i class="fa fa-file-pdf-o"></i>
+                        Reporte [PDF]
+                    </a>
+                </div>
+                <div class="col-sm-4">   
+                    <a href="${pageContext.request.contextPath}/secured/general/reporte?type=xls&&report=libroCaja&&jdbc=false&&key=null&&value=null" class="btn btn-outline btn-success btn-lg btn-block">
+                        <i class="fa fa-file-excel-o"></i>
+                        Reporte [XLS]
+                    </a>
+                </div>
+                <div class="col-sm-4">      
+                    <a href="${pageContext.request.contextPath}/secured/general/reporte?type=doc&&report=libroCaja&&jdbc=false&&key=null&&value=null" class="btn btn-outline btn-primary btn-lg btn-block">
+                        <i class="fa fa-file-word-o"></i>
+                        Reporte [DOC]
+                    </a>
+                </div>
             </div>
-        </div>
         </div>
     </jsp:attribute>
 </minierptemplate:template>
