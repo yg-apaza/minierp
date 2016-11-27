@@ -28,7 +28,8 @@ public class HibernateSessionRequestFilter implements Filter
         try {
             log.debug("Starting a database transaction");
             sf.getCurrentSession().beginTransaction();
-            
+            // Encoding
+            request.setCharacterEncoding("UTF-8");
             // Set Logo
             EnP1mEmpresaDao empDAO = new EnP1mEmpresaDao();
             EnP1mEmpresa emp = empDAO.getById(1);

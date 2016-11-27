@@ -13,6 +13,7 @@ import org.epis.minierp.business.contabilidad.RegistroAsientosBusiness;
 import org.epis.minierp.dao.contabilidad.AsientoCabDao;
 import org.epis.minierp.dao.contabilidad.AsientoDetDao;
 import org.epis.minierp.dao.contabilidad.CuentaDao;
+import org.epis.minierp.dao.contabilidad.LibroDiarioDao;
 import org.epis.minierp.dao.general.TaGzzMonedaDao;
 import org.epis.minierp.dao.general.TaGzzTipoComprobanteDao;
 import org.epis.minierp.model.EnP3mAsientoCab;
@@ -34,21 +35,20 @@ public class RegistroAsientoController  extends HttpServlet
         request.setAttribute("comprobantes", comDao.getAllActive());
         TaGzzMonedaDao monDao = new TaGzzMonedaDao();
         request.setAttribute("monedas", monDao.getAllActive());
-        request.setAttribute("libDiaCod", 1);
         request.getRequestDispatcher("/WEB-INF/contabilidad/registroAsientos.jsp").forward(request, response);
     }
     
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-        DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
         AsientoCabDao daoAsientoCab = new AsientoCabDao();
         AsientoDetDao daoAsientoDet = new AsientoDetDao();
-        
+        LibroDiarioDao libDiaDao = new LibroDiarioDao();
         try {
             EnP3mAsientoCab asiCab = new EnP3mAsientoCab();
-            int libDiaCod = Integer.parseInt(request.getParameter("libDiaCod"));
-            int asiCabCod = Integer.parseInt(request.getParameter("asiCabCod"));
+            int libDiaCod = libDiaDao.getCurrent().getLibDiaCod();
+            int asiCabCod = daoAsientoCab.getNext();
             char asiCabTip = 'M';
             String asiCabGlo = request.getParameter("asiCabGlo");
             Date asiCabFec = format.parse(request.getParameter("asiCabFec"));
@@ -75,8 +75,8 @@ public class RegistroAsientoController  extends HttpServlet
             daoAsientoCab.save(asiCab);
 
             String[] cueNum = request.getParameterValues("cueNum");
-            String[] asiDetDebHab = request.getParameterValues("asiDetDebHab");
-            String[] asiDetMon = request.getParameterValues("asiDetMon");
+            String[] asiDetDeb = request.getParameterValues("asiDetDeb");
+            String[] asiDetHab = request.getParameterValues("asiDetHab");
             
             CuentaDao cuentaDao = new CuentaDao();
             
@@ -89,8 +89,18 @@ public class RegistroAsientoController  extends HttpServlet
                 idDet.setAsiDetCod(i + 1);
                 asiDet.setId(idDet);
                 asiDet.setEnP3mCuenta(cuenta);
-                asiDet.setAsiDetDebHab(asiDetDebHab[i].equals("DEBE"));
-                asiDet.setAsiDetMon(Double.parseDouble(asiDetMon[i]));
+                
+                if(Double.parseDouble(asiDetDeb[i]) != 0)
+                {
+                    asiDet.setAsiDetDebHab(true);
+                    asiDet.setAsiDetMon(Double.parseDouble(asiDetDeb[i]));
+                }
+                else
+                {
+                    asiDet.setAsiDetDebHab(false);
+                    asiDet.setAsiDetMon(Double.parseDouble(asiDetHab[i]));
+                }
+                
                 daoAsientoDet.save(asiDet);
                 asiCab.getEnP3tAsientoDets().add(asiDet);
             }

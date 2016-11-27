@@ -230,6 +230,8 @@
                 updateCueDes.val($(e.relatedTarget).data('nombre'));
                 updateCueAmaDeb.val($(e.relatedTarget).data('amadeb'));
                 updateCueAmaHab.val($(e.relatedTarget).data('amahab'));
+                fillDetail({data : {source: '#updateCueAmaDeb', to: '#updateCueAmaDebDet'}});
+                fillDetail({data : {source: '#updateCueAmaHab', to: '#updateCueAmaHabDet'}});
             });
             
             deleteModal.on('show.bs.modal', function(e){
