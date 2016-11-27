@@ -1,6 +1,5 @@
 package org.epis.minierp.dao.contabilidad;
 
-import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -86,26 +85,4 @@ public class CuentaDao
     public void update(EnP3mCuenta cuenta) {
         session.update(cuenta);
     }
-    /*
-    public void update(int cueCod, String cueDes, String cueAmaDeb, String cueAmaHab) {
-        EnP3mCuenta cuenta = (EnP3mCuenta)session.get(EnP3mCuenta.class, cueCod);
-        cuenta.setCueDes(cueDes);
-        EnP3mCuenta amadeb = getByNumActive(cueAmaDeb);
-        EnP3mCuenta amahab = getByNumActive(cueAmaHab);
-        cuenta.setEnP3mCuentaByCueAmaDeb(amadeb);
-        cuenta.setEnP3mCuentaByCueAmaHab(amahab);
-	session.update(cuenta);
-    }
-    
-    public void delete(int cueCod) {
-        EnP3mCuenta cuenta = (EnP3mCuenta)session.get(EnP3mCuenta.class, cueCod); 
-        cuenta.setEstRegCod('*');
-	session.update(cuenta);
-        Iterator<EnP3mCuenta> iterator = cuenta.getEnP3mCuentasForCuePad().iterator();
-        while(iterator.hasNext()) {
-            EnP3mCuenta c = iterator.next();
-            delete(c.getCueCod());
-        }
-    }
-    */
 }

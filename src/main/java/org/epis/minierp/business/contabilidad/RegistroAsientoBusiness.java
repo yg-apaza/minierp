@@ -16,13 +16,18 @@ import org.epis.minierp.model.EnP3tAsientoDetId;
 import org.epis.minierp.model.TaGzzMoneda;
 import org.epis.minierp.model.TaGzzTipoComprobante;
 
-public class RegistroAsientosBusiness
+public class RegistroAsientoBusiness
 {
+    AsientoCabDao daoAsientoCab;
+    AsientoDetDao daoAsientoDet;
+            
+    public RegistroAsientoBusiness() {
+        daoAsientoCab = new AsientoCabDao();
+        daoAsientoDet = new AsientoDetDao();
+    }
+    
     public void generarAsientosAmarre(EnP3mAsientoCab asientoCab)
     {
-        AsientoCabDao daoAsientoCab = new AsientoCabDao();
-        AsientoDetDao daoAsientoDet = new AsientoDetDao();
-        
         EnP3mAsientoCab asiCab = new EnP3mAsientoCab();
         
         int asiCabCod = asientoCab.getId().getAsiCabCod() + 1;
@@ -94,8 +99,6 @@ public class RegistroAsientosBusiness
 
     public void create(char asiCabTip, String asiCabGlo, Date asiCabFec, Integer tipComCod, String asiCabNumCom, int monCod, String[] cueNum, String[] asiDetDeb, String[] asiDetHab) {
         LibroDiarioDao libDiaDao = new LibroDiarioDao();
-        AsientoCabDao daoAsientoCab = new AsientoCabDao();
-        AsientoDetDao daoAsientoDet = new AsientoDetDao();
         CuentaDao cuentaDao = new CuentaDao();
         
         EnP3mAsientoCab asiCab = new EnP3mAsientoCab();

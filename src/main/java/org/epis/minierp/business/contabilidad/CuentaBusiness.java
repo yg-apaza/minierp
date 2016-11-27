@@ -14,9 +14,9 @@ public class CuentaBusiness
     
     public EnP3mCuenta create(int cuePad, int cueNiv, String cueDes, String cueNum, String cueAmaDeb, String cueAmaHab){
         EnP3mCuenta cuenta = new EnP3mCuenta();
-        cuenta.setEnP3mCuentaByCueAmaDeb(cuentaDao.getByNumActive(cueAmaDeb));
-        cuenta.setEnP3mCuentaByCueAmaHab(cuentaDao.getByNumActive(cueAmaHab));
         cuenta.setEnP3mCuentaByCuePad(cuentaDao.getByIdActive(cuePad));
+        //cuenta.setEnP3mCuentaByCueAmaDeb(cuentaDao.getByNumActive(cueAmaDeb));
+        //cuenta.setEnP3mCuentaByCueAmaHab(cuentaDao.getByNumActive(cueAmaHab));
         cuenta.setCueNiv(cueNiv);
         cuenta.setCueDes(cueDes);
         cuenta.setCueNum(cueNum);
