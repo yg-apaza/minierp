@@ -1833,24 +1833,23 @@ COMMIT;
 -- -----------------------------------------------------
 -- Data for table `episerp`.`en_p3m_cuenta`
 -- -----------------------------------------------------
-/*
+
 START TRANSACTION;
 USE `episerp`;
-INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (541, 434, 5, '10410', 'CENTRAL DE RESERVA DEL PERU', 'A');
-INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (542, 434, 5, '10411', 'NACION', 'A');
-INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (543, 434, 5, '10412', 'SCOTIABANK PERU', 'A');
+INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (2000, 434, 5, '10410', 'CENTRAL DE RESERVA DEL PERU', 'A');
+INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (2001, 434, 5, '10411', 'NACION', 'A');
+INSERT INTO `episerp`.`en_p3m_cuenta` (`CueCod`, `CuePad`, `CueNiv`, `CueNum`, `CueDes`, `EstRegCod`) VALUES (2002, 434, 5, '10412', 'SCOTIABANK PERU', 'A');
 
 COMMIT;
-*/
 
 -- -----------------------------------------------------
 -- Data for table `episerp`.`en_p3m_cuenta_banco`
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `episerp`;
-INSERT INTO `en_p3m_cuenta_banco` VALUES (1, 01, '3001033189', 541, 'A');
-INSERT INTO `en_p3m_cuenta_banco` VALUES (2, 18, '4120239490', 542, 'A');
-INSERT INTO `en_p3m_cuenta_banco` VALUES (3, 09, '2003993301', 543, 'A');
+INSERT INTO `en_p3m_cuenta_banco` VALUES (1, 01, '3001033189', 2000, 'A');
+INSERT INTO `en_p3m_cuenta_banco` VALUES (2, 18, '4120239490', 2001, 'A');
+INSERT INTO `en_p3m_cuenta_banco` VALUES (3, 09, '2003993301', 2002, 'A');
 
 COMMIT;
 

@@ -1,5 +1,5 @@
 package org.epis.minierp.model;
-// Generated 25/11/2016 01:35:59 AM by Hibernate Tools 4.3.1
+// Generated 27/11/2016 02:57:20 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -12,6 +12,7 @@ public class EnP2mClaseProducto  implements java.io.Serializable {
 
 
      private String claProCod;
+     private EnP3mCuenta enP3mCuenta;
      private String claProDet;
      private char estRegCod;
      private Set enP2mSubclaseProductos = new HashSet(0);
@@ -25,8 +26,9 @@ public class EnP2mClaseProducto  implements java.io.Serializable {
         this.claProDet = claProDet;
         this.estRegCod = estRegCod;
     }
-    public EnP2mClaseProducto(String claProCod, String claProDet, char estRegCod, Set enP2mSubclaseProductos) {
+    public EnP2mClaseProducto(String claProCod, EnP3mCuenta enP3mCuenta, String claProDet, char estRegCod, Set enP2mSubclaseProductos) {
        this.claProCod = claProCod;
+       this.enP3mCuenta = enP3mCuenta;
        this.claProDet = claProDet;
        this.estRegCod = estRegCod;
        this.enP2mSubclaseProductos = enP2mSubclaseProductos;
@@ -38,6 +40,13 @@ public class EnP2mClaseProducto  implements java.io.Serializable {
     
     public void setClaProCod(String claProCod) {
         this.claProCod = claProCod;
+    }
+    public EnP3mCuenta getEnP3mCuenta() {
+        return this.enP3mCuenta;
+    }
+    
+    public void setEnP3mCuenta(EnP3mCuenta enP3mCuenta) {
+        this.enP3mCuenta = enP3mCuenta;
     }
     public String getClaProDet() {
         return this.claProDet;

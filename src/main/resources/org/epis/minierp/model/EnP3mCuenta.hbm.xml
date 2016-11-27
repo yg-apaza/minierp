@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 25/11/2016 01:36:00 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 27/11/2016 02:57:21 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="org.epis.minierp.model.EnP3mCuenta" table="en_p3m_cuenta" catalog="episerp" optimistic-lock="version">
         <id name="cueCod" type="java.lang.Integer">
@@ -29,6 +29,12 @@
         <property name="estRegCod" type="char">
             <column name="EstRegCod" length="1" not-null="true" />
         </property>
+        <set name="enP2mClaseProductos" table="en_p2m_clase_producto" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="CueCod" />
+            </key>
+            <one-to-many class="org.epis.minierp.model.EnP2mClaseProducto" />
+        </set>
         <set name="enP3tAsientoDets" table="en_p3t_asiento_det" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="CueCod" not-null="true" />
@@ -53,6 +59,12 @@
             </key>
             <one-to-many class="org.epis.minierp.model.EnP2mProducto" />
         </set>
+        <set name="enP2mSubclaseProductos" table="en_p2m_subclase_producto" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="CueCod" />
+            </key>
+            <one-to-many class="org.epis.minierp.model.EnP2mSubclaseProducto" />
+        </set>
         <set name="enP3mCuentasForCueAmaHab" table="en_p3m_cuenta" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="CueAmaHab" />
@@ -65,7 +77,7 @@
             </key>
             <one-to-many class="org.epis.minierp.model.EnP3mCuentaBanco" />
         </set>
-        <set name="enP3mCuentasForCuePad" table="en_p3m_cuenta" inverse="true" lazy="true" fetch="select" sort="natural">
+        <set name="enP3mCuentasForCuePad" table="en_p3m_cuenta" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="CuePad" />
             </key>

@@ -295,11 +295,15 @@ CREATE TABLE en_p2m_clase_producto
 (
   ClaProCod Char(2) NOT NULL,
   ClaProDet Char(90) NOT NULL,
+  CueCod Int(10) ZEROFILL,
   EstRegCod Char(1) NOT NULL
 )
 ;
 
 ALTER TABLE en_p2m_clase_producto ADD PRIMARY KEY (ClaProCod)
+;
+
+CREATE INDEX IX_Relationship125 ON en_p2m_clase_producto (CueCod)
 ;
 
 -- Table episerp.en_p2m_subclase_producto
@@ -309,11 +313,15 @@ CREATE TABLE en_p2m_subclase_producto
   ClaProCod Char(2) NOT NULL,
   SubClaProCod Char(2) NOT NULL,
   SubClaProDet Char(90) NOT NULL,
+  CueCod Int(10) ZEROFILL,
   EstRegCod Char(1) NOT NULL
 )
 ;
 
 ALTER TABLE en_p2m_subclase_producto ADD PRIMARY KEY (SubClaProCod,ClaProCod)
+;
+
+CREATE INDEX IX_Relationship124 ON en_p2m_subclase_producto (CueCod)
 ;
 
 -- Table episerp.en_p2m_producto
@@ -1424,4 +1432,10 @@ ALTER TABLE en_p4m_proveedor ADD CONSTRAINT Relationship122 FOREIGN KEY (CueCod)
 ;
 
 ALTER TABLE en_p2m_producto ADD CONSTRAINT Relationship123 FOREIGN KEY (CueCod) REFERENCES en_p3m_cuenta (CueCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p2m_subclase_producto ADD CONSTRAINT Relationship124 FOREIGN KEY (CueCod) REFERENCES en_p3m_cuenta (CueCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p2m_clase_producto ADD CONSTRAINT Relationship125 FOREIGN KEY (CueCod) REFERENCES en_p3m_cuenta (CueCod) ON DELETE NO ACTION ON UPDATE NO ACTION
 ;
