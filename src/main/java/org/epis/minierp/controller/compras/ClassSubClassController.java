@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.epis.minierp.business.contabilidad.CuentaBusiness;
 import org.epis.minierp.dao.logistica.EnP2mClaseProductoDao;
 import org.epis.minierp.dao.logistica.EnP2mProductoDao;
 import org.epis.minierp.dao.logistica.EnP2mSubclaseProductoDao;
@@ -41,6 +42,7 @@ public class ClassSubClassController extends HttpServlet {
         EnP2mSubclaseProductoDao subClase;
         EnP2mSubclaseProductoId id;
         EnP2mProductoDao producto;
+        CuentaBusiness cuentaBusiness = new CuentaBusiness();
         
         switch (action) {
             case "addClass":
@@ -52,6 +54,7 @@ public class ClassSubClassController extends HttpServlet {
                 classProduct.setClaProDet(claDetAdd);
                 classProduct.setClaProCod(codeClass.substring(codeClass.length() - 2));
                 classProduct.setEstRegCod('A');
+                classProduct.setEnP3mCuenta(cuentaBusiness.getCuentaVenta4Class(claDetAdd));
                 
                 clase.save(classProduct);
                 break;
