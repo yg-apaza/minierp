@@ -5,7 +5,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import org.epis.minierp.business.ventas.EnP1mClienteBusiness;
+import org.epis.minierp.dao.general.EnP1mUsuarioDao;
 import org.epis.minierp.dao.general.TaGzzCanalClienteDao;
 import org.epis.minierp.dao.general.TaGzzEstadoCivilDao;
 import org.epis.minierp.dao.general.TaGzzTipoDocClienteDao;
@@ -14,6 +16,10 @@ import org.epis.minierp.dao.ventas.EnP1mClienteDao;
 import org.epis.minierp.dao.ventas.EnP1mClientesRutasDao;
 import org.epis.minierp.dao.ventas.EnP1mDocumentoClienteDao;
 import org.epis.minierp.dao.general.TaGzzTipoClienteDao;
+import org.epis.minierp.dao.ventas.EnP1mCarteraClientesDao;
+import org.epis.minierp.model.EnP1mCarteraClientes;
+import org.epis.minierp.model.EnP1mCarteraClientesId;
+import org.epis.minierp.model.EnP1mUsuario;
 
 public class ClienteController extends HttpServlet {
     
@@ -27,6 +33,8 @@ public class ClienteController extends HttpServlet {
     TaGzzTipoDocClienteDao tipDocDao;
     EnP1mDocumentoClienteDao docCliDao;
     TaGzzCanalClienteDao canalDao;
+    EnP1mUsuarioDao usuDao;
+    EnP1mCarteraClientesDao carCliDao;
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -38,16 +46,35 @@ public class ClienteController extends HttpServlet {
         docCliDao = new EnP1mDocumentoClienteDao();
         cliRutDao = new EnP1mClientesRutasDao();
         canalDao = new TaGzzCanalClienteDao();
+        usuDao = new EnP1mUsuarioDao();
         
-        request.setAttribute("cliente", clienteDao.getAllActive());
+        HttpSession session = request.getSession(true);
+        EnP1mUsuario usuario = (EnP1mUsuario) session.getAttribute("usuario");
+        int tipUsuCod = usuario.getTaGzzTipoUsuario().getTipUsuCod();
+        String usuCod = usuario.getUsuCod();
+        
+        switch(tipUsuCod){
+            case 2://Vendedor
+                request.setAttribute("cliente", usuDao.getAllClientes4UsuCod(usuCod));
+                request.setAttribute("inactivos", usuDao.getAllClientesInactives4UsuCod(usuCod));
+                request.setAttribute("allDocClientes", usuDao.getDocsCli4UsuCod(usuCod));
+                request.setAttribute("allRutClientes", usuDao.getRutsCli4UsuCod(usuCod));
+                break;
+            default:
+                request.setAttribute("cliente", clienteDao.getAllActive());
+                request.setAttribute("inactivos", clienteDao.getAllInactives());
+                request.setAttribute("allDocClientes", docCliDao.getAllActiveOrdered());
+                request.setAttribute("allRutClientes", cliRutDao.getAllActiveOrdered());
+                break;
+        }    
+        
         request.setAttribute("estCivil", estadoCivilDao.getAllActive());
         request.setAttribute("tipCliente", tipClienteDao.getAllActive());
         request.setAttribute("rutas", rutaDao.getAllActive());
         request.setAttribute("canales", canalDao.getAllActive());
         request.setAttribute("documentos", tipDocDao.getAllActive());
-        request.setAttribute("allDocClientes", docCliDao.getAllActiveOrdered());
-        request.setAttribute("allRutClientes", cliRutDao.getAllActiveOrdered());
-        request.setAttribute("inactivos", clienteDao.getAllInactives());
+        
+ 
         request.getRequestDispatcher("/WEB-INF/ventas/cliente/cliente.jsp").forward(request, response);
     }
     
@@ -55,6 +82,13 @@ public class ClienteController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("accion");
         clienteBusiness = new EnP1mClienteBusiness();
+        carCliDao = new EnP1mCarteraClientesDao();
+        clienteDao = new EnP1mClienteDao();
+        
+        HttpSession session = request.getSession(true);
+        EnP1mUsuario usuario = (EnP1mUsuario) session.getAttribute("usuario");
+        int tipUsuCod = usuario.getTaGzzTipoUsuario().getTipUsuCod();
+        String usuCod = usuario.getUsuCod();
         
         String cliCod, cliRazSoc, cliNomCom, cliDomFis, cliNom, cliApePat, cliApeMat, cliDir, cliTelFij, cliTelCel, cliEmail, cliRutDes, docCliNum;
         int tipCliCod, estCivCod, catRutCod, tipDocCliCod, canCod;
@@ -62,7 +96,8 @@ public class ClienteController extends HttpServlet {
         
         switch(action) {
             case "create":
-                cliCod = request.getParameter("cliCod");
+                //cliCod = request.getParameter("cliCod"); //insertado
+                cliCod = ""+clienteDao.getNextCliCod(); //autogenerado
                 tipCliCod = Integer.parseInt(request.getParameter("tipCliCod"));
                 cliRazSoc = request.getParameter("cliRazSoc");
                 cliNomCom = request.getParameter("cliNomCom");
@@ -81,6 +116,14 @@ public class ClienteController extends HttpServlet {
                 clienteBusiness.create(cliCod, tipCliCod, cliRazSoc, cliNomCom, 
                         cliDomFis, cliNom, cliApePat, cliApeMat, cliSex, cliDir, 
                         estCivCod, cliTelFij, cliTelCel, cliEmail, canCod, 'A');
+                
+                if(tipUsuCod == 2){//vendedor
+                    EnP1mCarteraClientes cartera = new EnP1mCarteraClientes();
+                    cartera.setId(new EnP1mCarteraClientesId(cliCod, usuCod));
+                    cartera.setUsuCliDes("Cliente creado por el Usuario");
+                    cartera.setUsuCliEstReg('A');
+                    carCliDao.save(cartera);
+                }
                 
                 break;
                 

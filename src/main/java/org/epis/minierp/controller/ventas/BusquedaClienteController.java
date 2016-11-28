@@ -4,18 +4,16 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import org.epis.minierp.dao.general.EnP1mUsuarioDao;
 import org.epis.minierp.dao.ventas.EnP1mClienteDao;
-import org.epis.minierp.dao.ventas.EnP1mClientesRutasDao;
 import org.epis.minierp.model.EnP1mCliente;
-import org.epis.minierp.model.EnP1mClientesRutas;
+import org.epis.minierp.model.EnP1mUsuario;
 
 public class BusquedaClienteController extends HttpServlet {
     @Override
@@ -26,13 +24,25 @@ public class BusquedaClienteController extends HttpServlet {
         JsonObject data;
         JsonArray clients;
         EnP1mCliente cliente;
+        HttpSession session = request.getSession(true);
+        EnP1mUsuario usuario = (EnP1mUsuario) session.getAttribute("usuario");
+        int tipUsuCod = usuario.getTaGzzTipoUsuario().getTipUsuCod();
+        String usuCod = usuario.getUsuCod();
         
         switch(action) {
             case "tipo":
                 tipCliCod = Integer.parseInt(request.getParameter("tipCliCod"));
-                clientes = (new EnP1mClienteDao()).getByTipoCliente(tipCliCod);
                 data = new JsonObject();                
                 clients = new JsonArray();
+                
+                switch(tipUsuCod){
+                case 2://Vendedor
+                    clientes = (new EnP1mClienteDao()).getByTipoCliente_UsuCod(tipCliCod, usuCod);
+                    break;
+                default:
+                    clientes = (new EnP1mClienteDao()).getByTipoCliente(tipCliCod);
+                    break;
+                }
                 
                 for(EnP1mCliente c: clientes) {
                     JsonObject client = new JsonObject();
@@ -47,9 +57,17 @@ public class BusquedaClienteController extends HttpServlet {
                 break;
             
             case "descripcion":
-                clientes = (new EnP1mClienteDao()).getAllActive();
                 data = new JsonObject();                
                 clients = new JsonArray();
+                
+                switch(tipUsuCod){
+                case 2://Vendedor
+                    clientes = (new EnP1mUsuarioDao()).getAllClientes4UsuCod(usuCod);
+                    break;
+                default:
+                    clientes = (new EnP1mClienteDao()).getAllActive();
+                    break;
+                }
                 
                 for(EnP1mCliente c: clientes) {
                     JsonObject client = new JsonObject();
