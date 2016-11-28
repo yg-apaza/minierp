@@ -2582,8 +2582,8 @@ INSERT INTO `en_p3t_asiento_det` (`LibDiaCod`,`AsiCabCod`,`AsiDetCod`,`CueCod`,`
 INSERT INTO `en_p3t_asiento_det` (`LibDiaCod`,`AsiCabCod`,`AsiDetCod`,`CueCod`,`AsiDetDebHab`,`AsiDetMon`) VALUES (000001,0000000004,0000000001,0000000094,1,15000.00);
 INSERT INTO `en_p3t_asiento_det` (`LibDiaCod`,`AsiCabCod`,`AsiDetCod`,`CueCod`,`AsiDetDebHab`,`AsiDetMon`) VALUES (000001,0000000005,0000000001,0000001122,1,900.00);
 INSERT INTO `en_p3t_asiento_det` (`LibDiaCod`,`AsiCabCod`,`AsiDetCod`,`CueCod`,`AsiDetDebHab`,`AsiDetMon`) VALUES (000001,0000000006,0000000001,0000001136,1,900.00);
-INSERT INTO `en_p3t_asiento_det` (`LibDiaCod`,`AsiCabCod`,`AsiDetCod`,`CueCod`,`AsiDetDebHab`,`AsiDetMon`) VALUES (000001,0000000007,0000000001,0000001352,1,3728.00);
-INSERT INTO `en_p3t_asiento_det` (`LibDiaCod`,`AsiCabCod`,`AsiDetCod`,`CueCod`,`AsiDetDebHab`,`AsiDetMon`) VALUES (000001,0000000008,0000000001,0000001352,1,932.00);
+INSERT INTO `en_p3t_asiento_det` (`LibDiaCod`,`AsiCabCod`,`AsiDetCod`,`CueCod`,`AsiDetDebHab`,`AsiDetMon`) VALUES (000001,0000000007,0000000001,0000001352,1,3728.80);
+INSERT INTO `en_p3t_asiento_det` (`LibDiaCod`,`AsiCabCod`,`AsiDetCod`,`CueCod`,`AsiDetDebHab`,`AsiDetMon`) VALUES (000001,0000000008,0000000001,0000001352,1,932.20);
 INSERT INTO `en_p3t_asiento_det` (`LibDiaCod`,`AsiCabCod`,`AsiDetCod`,`CueCod`,`AsiDetDebHab`,`AsiDetMon`) VALUES (000001,0000000009,0000000001,0000001202,1,1900.00);
 INSERT INTO `en_p3t_asiento_det` (`LibDiaCod`,`AsiCabCod`,`AsiDetCod`,`CueCod`,`AsiDetDebHab`,`AsiDetMon`) VALUES (000001,0000000010,0000000001,0000001221,1,1050.00);
 INSERT INTO `en_p3t_asiento_det` (`LibDiaCod`,`AsiCabCod`,`AsiDetCod`,`CueCod`,`AsiDetDebHab`,`AsiDetMon`) VALUES (000001,0000000011,0000000001,0000001352,1,7806.88);
@@ -2607,8 +2607,8 @@ INSERT INTO `en_p3t_asiento_det` (`LibDiaCod`,`AsiCabCod`,`AsiDetCod`,`CueCod`,`
 INSERT INTO `en_p3t_asiento_det` (`LibDiaCod`,`AsiCabCod`,`AsiDetCod`,`CueCod`,`AsiDetDebHab`,`AsiDetMon`) VALUES (000001,0000000004,0000000002,0000001349,0,15000.00);
 INSERT INTO `en_p3t_asiento_det` (`LibDiaCod`,`AsiCabCod`,`AsiDetCod`,`CueCod`,`AsiDetDebHab`,`AsiDetMon`) VALUES (000001,0000000005,0000000002,0000001132,1,900.00);
 INSERT INTO `en_p3t_asiento_det` (`LibDiaCod`,`AsiCabCod`,`AsiDetCod`,`CueCod`,`AsiDetDebHab`,`AsiDetMon`) VALUES (000001,0000000006,0000000002,0000001134,0,900.00);
-INSERT INTO `en_p3t_asiento_det` (`LibDiaCod`,`AsiCabCod`,`AsiDetCod`,`CueCod`,`AsiDetDebHab`,`AsiDetMon`) VALUES (000001,0000000007,0000000002,0000001349,0,3728.00);
-INSERT INTO `en_p3t_asiento_det` (`LibDiaCod`,`AsiCabCod`,`AsiDetCod`,`CueCod`,`AsiDetDebHab`,`AsiDetMon`) VALUES (000001,0000000008,0000000002,0000000094,0,932.00);
+INSERT INTO `en_p3t_asiento_det` (`LibDiaCod`,`AsiCabCod`,`AsiDetCod`,`CueCod`,`AsiDetDebHab`,`AsiDetMon`) VALUES (000001,0000000007,0000000002,0000001349,0,3728.80);
+INSERT INTO `en_p3t_asiento_det` (`LibDiaCod`,`AsiCabCod`,`AsiDetCod`,`CueCod`,`AsiDetDebHab`,`AsiDetMon`) VALUES (000001,0000000008,0000000002,0000000094,0,932.20);
 INSERT INTO `en_p3t_asiento_det` (`LibDiaCod`,`AsiCabCod`,`AsiDetCod`,`CueCod`,`AsiDetDebHab`,`AsiDetMon`) VALUES (000001,0000000009,0000000002,0000001207,1,1900.00);
 INSERT INTO `en_p3t_asiento_det` (`LibDiaCod`,`AsiCabCod`,`AsiDetCod`,`CueCod`,`AsiDetDebHab`,`AsiDetMon`) VALUES (000001,0000000010,0000000002,0000001219,0,1050.00);
 INSERT INTO `en_p3t_asiento_det` (`LibDiaCod`,`AsiCabCod`,`AsiDetCod`,`CueCod`,`AsiDetDebHab`,`AsiDetMon`) VALUES (000001,0000000011,0000000002,0000001349,0,7806.88);
