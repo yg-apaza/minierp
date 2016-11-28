@@ -63,6 +63,15 @@ public class ReporteController extends HttpServlet {
                 path = path + "/reportes/contabilidad/cuentaBancaria.jasper";
                 fileGenerated = generador.report(path, "CuentaBancaria_", fileType);
                 break;
+            case "libroCaja":
+                path = path + "/reportes/contabilidad/libroCaja.jasper";
+                fileGenerated = generador.report(path, "LibroCaja_", fileType);
+                break;
+            case "libroBancos":
+                path = path + "/reportes/contabilidad/libroBancos.jasper";
+                fileGenerated = generador.report(path, "LibroBancos_", fileType);
+                break;
+                
 
             //Reportes de Ventas
             case "registroventas":

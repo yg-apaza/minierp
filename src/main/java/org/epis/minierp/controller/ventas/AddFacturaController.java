@@ -146,7 +146,12 @@ public class AddFacturaController extends HttpServlet {
         if(numCuo == null){
             pagCuoNum = 0;
         }else{
-            pagCuoNum = Integer.parseInt(numCuo);
+            try {
+                pagCuoNum = Integer.parseInt(numCuo);
+            } catch (Exception e) {
+                pagCuoNum = 0;
+            }
+
         }
         
         //maxDet4FacVen std = 15

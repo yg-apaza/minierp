@@ -155,7 +155,10 @@ public class BancosDAO {
     }
     
     public Map<String, String> getCuenta(String cuenta){
-        String descripcion=getBancos().get(0).getCueDes();         
+        List<Bancos> b = getBancos();
+        String descripcion = "";
+        if(!b.isEmpty())
+            descripcion=getBancos().get(0).getCueDes(); 
         Map<String, String> cuentaDes=  new TreeMap<>();
         cuentaDes.put("cueCod", cuenta);
         cuentaDes.put("cueDes", descripcion);
