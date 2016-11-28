@@ -1,9 +1,6 @@
 package org.epis.minierp.controller.contabilidad;
 
 import java.io.IOException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -15,7 +12,7 @@ import org.epis.minierp.model.EnP3mLibroDiario;
 
 public class BancosController extends HttpServlet{
     private static final long serialVersionUID = 1L;
-    String codigo_cuenta ="2522";
+    String codigo_cuenta ="10411";
     String fecha_filtro = "";
 
     @Override
