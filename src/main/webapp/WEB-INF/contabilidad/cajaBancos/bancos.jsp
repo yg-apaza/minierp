@@ -148,7 +148,8 @@
                                 <td><b>  Mes: </b> </td>
                                 <td><b> ${fecha_Filtro} </b> </td>
                             </tr>
-                        </table>                        
+                        </table>   
+                            <br><br>
                 </form>
             
                 <table >
@@ -166,13 +167,13 @@
                 <tbody>
                     <c:forEach items="${operaciones}" var="u"> 
                              <tr>
-                                 <td  width="15%">${u.asiDetCod}</td>
-                                 <td  width="10%"><fmt:formatDate value="${u.asiCabFec}" pattern="dd/MM/yyyy" /></td>
-                                 <td  width="20%">${u.asiCabNumCom}</td>
-                                 <td  width="5%">${u.cueNum}</td>
-                                 <td  width="30%">${u.cueDes}</td>
-                                 <td  width="10%">${u.debe}</td>
-                                 <td  width="10%">${u.haber}</td>                           
+                                 <td >${u.asiDetCod}</td>
+                                 <td  ><fmt:formatDate value="${u.asiCabFec}" pattern="dd/MM/yyyy" /></td>
+                                 <td  >${u.asiCabNumCom}</td>
+                                 <td  >${u.cueNum}</td>
+                                 <td  >${u.cueDes}</td>
+                                 <td  >${u.debe}</td>
+                                 <td  >${u.haber}</td>                           
                              </tr>
                      </c:forEach>        
                 </tbody>
