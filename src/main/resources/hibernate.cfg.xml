@@ -49,6 +49,7 @@
     <mapping resource="org/epis/minierp/model/EnP1mCliente.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/TaGzzEstadoUniTransporte.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/TaGzzMotivoTraslado.hbm.xml"/>
+    <mapping resource="org/epis/minierp/model/TaGzzCanalUsuario.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP2cDevolucionCompras.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP1mPagosCuotasCab.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP3tAsientoDet.hbm.xml"/>

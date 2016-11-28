@@ -1,5 +1,5 @@
 package org.epis.minierp.model;
-// Generated 27/11/2016 05:44:55 PM by Hibernate Tools 4.3.1
+// Generated 27/11/2016 07:10:37 PM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -14,6 +14,7 @@ public class EnP1mUsuario  implements java.io.Serializable {
 
      private String usuCod;
      private EnP1mSucursal enP1mSucursal;
+     private TaGzzCanalUsuario taGzzCanalUsuario;
      private TaGzzEstadoCivil taGzzEstadoCivil;
      private TaGzzTipoUsuario taGzzTipoUsuario;
      private String usuNom;
@@ -44,9 +45,10 @@ public class EnP1mUsuario  implements java.io.Serializable {
         this.usuSex = usuSex;
         this.estRegCod = estRegCod;
     }
-    public EnP1mUsuario(String usuCod, EnP1mSucursal enP1mSucursal, TaGzzEstadoCivil taGzzEstadoCivil, TaGzzTipoUsuario taGzzTipoUsuario, String usuNom, String usuApePat, String usuApeMat, String usuLog, String usuPas, Date usuFecNac, char usuSex, char estRegCod, Set enP1mPreventaCabs, Set enP4mFacturaCompraCabs, Set enP1mDocumentoUsuarios, Set enP1mCarteraClienteses, Set enP1mFacturaVentaCabs, Set enP2mInventarioCabs) {
+    public EnP1mUsuario(String usuCod, EnP1mSucursal enP1mSucursal, TaGzzCanalUsuario taGzzCanalUsuario, TaGzzEstadoCivil taGzzEstadoCivil, TaGzzTipoUsuario taGzzTipoUsuario, String usuNom, String usuApePat, String usuApeMat, String usuLog, String usuPas, Date usuFecNac, char usuSex, char estRegCod, Set enP1mPreventaCabs, Set enP4mFacturaCompraCabs, Set enP1mDocumentoUsuarios, Set enP1mCarteraClienteses, Set enP1mFacturaVentaCabs, Set enP2mInventarioCabs) {
        this.usuCod = usuCod;
        this.enP1mSucursal = enP1mSucursal;
+       this.taGzzCanalUsuario = taGzzCanalUsuario;
        this.taGzzEstadoCivil = taGzzEstadoCivil;
        this.taGzzTipoUsuario = taGzzTipoUsuario;
        this.usuNom = usuNom;
@@ -78,6 +80,13 @@ public class EnP1mUsuario  implements java.io.Serializable {
     
     public void setEnP1mSucursal(EnP1mSucursal enP1mSucursal) {
         this.enP1mSucursal = enP1mSucursal;
+    }
+    public TaGzzCanalUsuario getTaGzzCanalUsuario() {
+        return this.taGzzCanalUsuario;
+    }
+    
+    public void setTaGzzCanalUsuario(TaGzzCanalUsuario taGzzCanalUsuario) {
+        this.taGzzCanalUsuario = taGzzCanalUsuario;
     }
     public TaGzzEstadoCivil getTaGzzEstadoCivil() {
         return this.taGzzEstadoCivil;

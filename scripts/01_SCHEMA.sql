@@ -254,6 +254,7 @@ CREATE TABLE en_p1m_usuario
   UsuApeMat Char(20),
   UsuLog Char(30) NOT NULL,
   UsuPas Char(80) NOT NULL,
+  CanUsuCod Int(2),
   TipUsuCod Int(2) ZEROFILL NOT NULL,
   SucCod Int(5) ZEROFILL,
   UsuFecNac Date,
@@ -273,6 +274,9 @@ CREATE INDEX IX_Relationship27 ON en_p1m_usuario (EstCivCod)
 ;
 
 CREATE INDEX IX_Relationship60 ON en_p1m_usuario (SucCod)
+;
+
+CREATE INDEX IX_Relationship136 ON en_p1m_usuario (CanUsuCod)
 ;
 
 -- Table episerp.en_p1m_documento_usuario
@@ -1168,6 +1172,20 @@ CREATE TABLE ta_gzz_tipo_falla_producto
 )
 ;
 
+-- Table episerp.ta_gzz_canal_usuario
+
+CREATE TABLE ta_gzz_canal_usuario
+(
+  CanUsuCod Int(2) NOT NULL,
+  CanUsuDet Char(90) NOT NULL,
+  CanUsuPorAdd Double(4,2),
+  EstRegCod Char(1) NOT NULL
+)
+;
+
+ALTER TABLE ta_gzz_canal_usuario ADD PRIMARY KEY (CanUsuCod)
+;
+
 -- Create relationships section ------------------------------------------------- 
 
 ALTER TABLE en_p1m_preventa_cab ADD CONSTRAINT Relationship3 FOREIGN KEY (CliCod) REFERENCES en_p1m_cliente (CliCod) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -1459,4 +1477,7 @@ ALTER TABLE en_p2m_clase_producto ADD CONSTRAINT Relationship133 FOREIGN KEY (Cu
 ;
 
 ALTER TABLE en_p2m_clase_producto ADD CONSTRAINT Relationship134 FOREIGN KEY (CueVenCod) REFERENCES en_p3m_cuenta (CueCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p1m_usuario ADD CONSTRAINT Relationship136 FOREIGN KEY (CanUsuCod) REFERENCES ta_gzz_canal_usuario (CanUsuCod) ON DELETE NO ACTION ON UPDATE NO ACTION
 ;

@@ -2371,7 +2371,12 @@ INSERT INTO `en_p2t_inventario_det` (`InvCabCod`, `InvDetCod`, `ClaProCod`, `Sub
 
 COMMIT;
 
+/* TEST CONTABILIDAD */
 
+INSERT INTO `en_p3m_cuenta` (`CueCod`,`CuePad`,`CueAmaDeb`,`CueAmaHab`,`CueNiv`,`CueNum`,`CueDes`,`EstRegCod`) VALUES (0000002003,0000000311,NULL,NULL,4,'6111','Mercaderías Manufacturadas','A');
+INSERT INTO `en_p3m_cuenta` (`CueCod`,`CuePad`,`CueAmaDeb`,`CueAmaHab`,`CueNiv`,`CueNum`,`CueDes`,`EstRegCod`) VALUES (0000002004,0000000362,NULL,NULL,4,'6911','Mercaderías Manufacturadas','A');
+INSERT INTO `en_p3m_cuenta` (`CueCod`,`CuePad`,`CueAmaDeb`,`CueAmaHab`,`CueNiv`,`CueNum`,`CueDes`,`EstRegCod`) VALUES (0000002005,0000000306,0000000533,0000002003,4,'6011','Mercaderías Manufacturadas','A');
+INSERT INTO `en_p3m_cuenta` (`CueCod`,`CuePad`,`CueAmaDeb`,`CueAmaHab`,`CueNiv`,`CueNum`,`CueDes`,`EstRegCod`) VALUES (0000002006,0000000367,0000002004,0000000533,4,'7011','Mercaderías Manufacturadas','A');
 
 /* CLEAR TRIGGERS */
 
