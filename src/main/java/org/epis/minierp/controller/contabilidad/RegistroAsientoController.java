@@ -9,7 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.epis.minierp.business.contabilidad.RegistroAsientosBusiness;
+import org.epis.minierp.business.contabilidad.RegistroAsientoBusiness;
 import org.epis.minierp.dao.general.TaGzzMonedaDao;
 import org.epis.minierp.dao.general.TaGzzTipoComprobanteDao;
 
@@ -31,7 +31,7 @@ public class RegistroAsientoController  extends HttpServlet
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-        RegistroAsientosBusiness regBusiness = new RegistroAsientosBusiness();
+        RegistroAsientoBusiness regBusiness = new RegistroAsientoBusiness();
  
         try {
             char asiCabTip = 'M';

@@ -39,11 +39,7 @@ public class CuentaBancoDao
         session.save(cb);
     }
 
-    public void update(int updateCueBanCod, int updateBanCod, String updateCueBanNum) {
-        EnP3mCuentaBanco cuenta = (EnP3mCuentaBanco)session.get(EnP3mCuentaBanco.class, updateCueBanCod); 
-        BancoDao bancoDao = new BancoDao();
-        cuenta.setTaGzzBanco(bancoDao.getById(updateBanCod));
-        cuenta.setCueBanNum(updateCueBanNum);
+    public void update(EnP3mCuentaBanco cuenta) {
 	session.update(cuenta);
     }
 

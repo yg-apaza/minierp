@@ -3,20 +3,23 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 27/11/2016 07:10:38 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="org.epis.minierp.model.TaGzzTipoUsuario" table="ta_gzz_tipo_usuario" catalog="episerp" optimistic-lock="version">
-        <id name="tipUsuCod" type="java.lang.Integer">
-            <column name="TipUsuCod" />
-            <generator class="identity" />
+    <class name="org.epis.minierp.model.TaGzzCanalUsuario" table="ta_gzz_canal_usuario" catalog="episerp" optimistic-lock="version">
+        <id name="canUsuCod" type="int">
+            <column name="CanUsuCod" />
+            <generator class="assigned" />
         </id>
-        <property name="tipUsuDet" type="string">
-            <column name="TipUsuDet" length="20" not-null="true" />
+        <property name="canUsuDet" type="string">
+            <column name="CanUsuDet" length="90" not-null="true" />
+        </property>
+        <property name="canUsuPorAdd" type="java.lang.Double">
+            <column name="CanUsuPorAdd" precision="4" />
         </property>
         <property name="estRegCod" type="char">
             <column name="EstRegCod" length="1" not-null="true" />
         </property>
         <set name="enP1mUsuarios" table="en_p1m_usuario" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="TipUsuCod" not-null="true" />
+                <column name="CanUsuCod" />
             </key>
             <one-to-many class="org.epis.minierp.model.EnP1mUsuario" />
         </set>
