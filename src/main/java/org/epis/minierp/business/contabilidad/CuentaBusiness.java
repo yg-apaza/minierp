@@ -166,4 +166,31 @@ public class CuentaBusiness
         
         return cuentas;
     }
+    
+    public EnP3mCuenta getCuenta4CuentaBanco(String bancoDet, String cueNum){
+        try {
+            Properties prop = new Properties();
+            InputStream inputStream = CuentaBusiness.class.getClassLoader().getResourceAsStream("/contabilidad.properties");
+            prop.load(inputStream);
+            Integer cuentabanco_cod = Integer.parseInt(prop.getProperty("cuentabanco_cod"));
+            return create(cuentabanco_cod, 5, bancoDet, "1041" + cueNum, "", "");
+        } catch (IOException ex) {
+            Logger.getLogger(CuentaBusiness.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
+    public EnP3mCuenta getCuenta4Proveedor(String proDet){
+        try {
+            Properties prop = new Properties();
+            InputStream inputStream = CuentaBusiness.class.getClassLoader().getResourceAsStream("/contabilidad.properties");
+            prop.load(inputStream);
+            Integer proveedor_cod = Integer.parseInt(prop.getProperty("proveedor_cod"));            
+            EnP3mCuenta cuentaPro = create(proveedor_cod, 6, proDet, getNextCueNum(proveedor_cod), "", "");
+            return cuentaPro;
+        } catch (IOException ex) {
+            Logger.getLogger(CuentaBusiness.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
 }

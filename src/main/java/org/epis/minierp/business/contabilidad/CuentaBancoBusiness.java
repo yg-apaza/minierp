@@ -1,5 +1,6 @@
 package org.epis.minierp.business.contabilidad;
 
+import java.util.Properties;
 import org.epis.minierp.dao.contabilidad.BancoDao;
 import org.epis.minierp.dao.contabilidad.CuentaBancoDao;
 import org.epis.minierp.model.EnP3mCuenta;
@@ -15,13 +16,15 @@ public class CuentaBancoBusiness
     }
     
     public void create(int createBanCod, String createCueBanNum, String createCueNum) {
+        Properties prop = new Properties();
         CuentaBusiness cuentaBusiness = new CuentaBusiness();
         BancoDao bancoDao = new BancoDao();
         EnP3mCuentaBanco cb = new EnP3mCuentaBanco();
         TaGzzBanco banco = bancoDao.getById(createBanCod);
+        EnP3mCuenta cuenta = cuentaBusiness.getCuenta4CuentaBanco(banco.getBanDet(), createCueNum);
+        
         cb.setTaGzzBanco(banco);
         cb.setCueBanNum(createCueBanNum);
-        EnP3mCuenta cuenta = cuentaBusiness.create(434, 5, banco.getBanDet(), "1041" + createCueNum, "", "");
         cb.setEnP3mCuenta(cuenta);
         cb.setEstRegCod('A');
         cuentaBancoDao.save(cb);
