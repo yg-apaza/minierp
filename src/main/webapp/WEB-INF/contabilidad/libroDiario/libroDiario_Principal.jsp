@@ -39,7 +39,7 @@
                         <a href="${pageContext.request.contextPath}/secured/general/reporte?type=xls&&report=librodiario&&jdbc=false&&key=null&&value=null" class="btn btn-outline btn-success btn-lg btn-block">
                             <i class="fa fa-file-excel-o"></i>
                             Reporte [XLS]
-                        </a><
+                        </a>
                     </div>
                     <div class="col-md-3">
                         <a href="${pageContext.request.contextPath}/secured/general/reporte?type=doc&&report=librodiario&&jdbc=false&&key=null&&value=null" class="btn btn-outline btn-primary btn-lg btn-block">
