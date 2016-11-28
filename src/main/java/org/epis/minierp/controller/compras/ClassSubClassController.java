@@ -1,6 +1,7 @@
 package org.epis.minierp.controller.compras;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -15,6 +16,7 @@ import org.epis.minierp.model.EnP2mClaseProducto;
 import org.epis.minierp.model.EnP2mProducto;
 import org.epis.minierp.model.EnP2mSubclaseProducto;
 import org.epis.minierp.model.EnP2mSubclaseProductoId;
+import org.epis.minierp.model.EnP3mCuenta;
 
 public class ClassSubClassController extends HttpServlet {
 
@@ -54,7 +56,9 @@ public class ClassSubClassController extends HttpServlet {
                 classProduct.setClaProDet(claDetAdd);
                 classProduct.setClaProCod(codeClass.substring(codeClass.length() - 2));
                 classProduct.setEstRegCod('A');
-                classProduct.setEnP3mCuenta(cuentaBusiness.getCuentaVenta4Class(claDetAdd));
+                ArrayList<EnP3mCuenta> cuentasClass = cuentaBusiness.getCuenta4Class(claDetAdd);
+                classProduct.setEnP3mCuentaByCueComCod(cuentasClass.get(0));
+                classProduct.setEnP3mCuentaByCueVenCod(cuentasClass.get(1));
                 
                 clase.save(classProduct);
                 break;
@@ -90,7 +94,7 @@ public class ClassSubClassController extends HttpServlet {
                     subClase.update(subClass);
                 }
                 
-                classProduct  .setEstRegCod('E');
+                classProduct.setEstRegCod('E');
                 clase.update(classProduct);
                 break;
                 
@@ -106,8 +110,10 @@ public class ClassSubClassController extends HttpServlet {
                 id.setSubClaProCod(codeSubClass.substring(codeSubClass.length() - 2));
                 subClassProduct.setId(id);
                 subClassProduct.setSubClaProDet(subDetAdd);
+                ArrayList<EnP3mCuenta> cuentasSubclass = cuentaBusiness.getCuenta4SubClass(subClaCodAdd, subDetAdd);
+                subClassProduct.setEnP3mCuentaByCueComCod(cuentasSubclass.get(0));
+                subClassProduct.setEnP3mCuentaByCueVenCod(cuentasSubclass.get(1));
                 subClassProduct.setEstRegCod('A');
-                
                 subClase.save(subClassProduct);
                 break;
                 

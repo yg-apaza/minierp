@@ -1,5 +1,5 @@
 package org.epis.minierp.model;
-// Generated 27/11/2016 02:57:20 PM by Hibernate Tools 4.3.1
+// Generated 27/11/2016 07:10:37 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -13,7 +13,8 @@ public class EnP2mSubclaseProducto  implements java.io.Serializable {
 
      private EnP2mSubclaseProductoId id;
      private EnP2mClaseProducto enP2mClaseProducto;
-     private EnP3mCuenta enP3mCuenta;
+     private EnP3mCuenta enP3mCuentaByCueVenCod;
+     private EnP3mCuenta enP3mCuentaByCueComCod;
      private String subClaProDet;
      private char estRegCod;
      private Set enP2mProductos = new HashSet(0);
@@ -28,10 +29,11 @@ public class EnP2mSubclaseProducto  implements java.io.Serializable {
         this.subClaProDet = subClaProDet;
         this.estRegCod = estRegCod;
     }
-    public EnP2mSubclaseProducto(EnP2mSubclaseProductoId id, EnP2mClaseProducto enP2mClaseProducto, EnP3mCuenta enP3mCuenta, String subClaProDet, char estRegCod, Set enP2mProductos) {
+    public EnP2mSubclaseProducto(EnP2mSubclaseProductoId id, EnP2mClaseProducto enP2mClaseProducto, EnP3mCuenta enP3mCuentaByCueVenCod, EnP3mCuenta enP3mCuentaByCueComCod, String subClaProDet, char estRegCod, Set enP2mProductos) {
        this.id = id;
        this.enP2mClaseProducto = enP2mClaseProducto;
-       this.enP3mCuenta = enP3mCuenta;
+       this.enP3mCuentaByCueVenCod = enP3mCuentaByCueVenCod;
+       this.enP3mCuentaByCueComCod = enP3mCuentaByCueComCod;
        this.subClaProDet = subClaProDet;
        this.estRegCod = estRegCod;
        this.enP2mProductos = enP2mProductos;
@@ -51,12 +53,19 @@ public class EnP2mSubclaseProducto  implements java.io.Serializable {
     public void setEnP2mClaseProducto(EnP2mClaseProducto enP2mClaseProducto) {
         this.enP2mClaseProducto = enP2mClaseProducto;
     }
-    public EnP3mCuenta getEnP3mCuenta() {
-        return this.enP3mCuenta;
+    public EnP3mCuenta getEnP3mCuentaByCueVenCod() {
+        return this.enP3mCuentaByCueVenCod;
     }
     
-    public void setEnP3mCuenta(EnP3mCuenta enP3mCuenta) {
-        this.enP3mCuenta = enP3mCuenta;
+    public void setEnP3mCuentaByCueVenCod(EnP3mCuenta enP3mCuentaByCueVenCod) {
+        this.enP3mCuentaByCueVenCod = enP3mCuentaByCueVenCod;
+    }
+    public EnP3mCuenta getEnP3mCuentaByCueComCod() {
+        return this.enP3mCuentaByCueComCod;
+    }
+    
+    public void setEnP3mCuentaByCueComCod(EnP3mCuenta enP3mCuentaByCueComCod) {
+        this.enP3mCuentaByCueComCod = enP3mCuentaByCueComCod;
     }
     public String getSubClaProDet() {
         return this.subClaProDet;
