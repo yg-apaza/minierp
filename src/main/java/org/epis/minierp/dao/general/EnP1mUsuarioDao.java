@@ -1,6 +1,9 @@
 package org.epis.minierp.dao.general;
 
+import java.util.ArrayList;
 import java.util.List;
+import org.epis.minierp.model.EnP1mCarteraClientes;
+import org.epis.minierp.model.EnP1mCliente;
 import org.epis.minierp.model.EnP1mUsuario;
 import org.epis.minierp.util.HibernateUtil;
 import org.hibernate.ObjectNotFoundException;
@@ -56,6 +59,18 @@ public class EnP1mUsuarioDao {
             return null;
         }
         return usuario;
+    }
+    
+    public List getAllClientes4UsuCod(String usuCod){
+        Query query = session.createQuery("from EnP1mCarteraClientes U "
+                + "where U.id.usuCod = :id and U.estRegCod = 'A'");
+        query.setParameter("id", usuCod);
+        List<EnP1mCarteraClientes> cartera = query.list();
+        List<EnP1mCliente> clientes = new ArrayList<>();
+        for (EnP1mCarteraClientes iter : cartera) {
+            clientes.add(iter.getEnP1mCliente());
+        }
+        return clientes;
     }
     
     public void save(EnP1mUsuario usuario) {
