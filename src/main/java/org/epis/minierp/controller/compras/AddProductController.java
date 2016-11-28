@@ -4,11 +4,13 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.epis.minierp.business.contabilidad.CuentaBusiness;
 import org.epis.minierp.dao.general.TaGzzMonedaDao;
 import org.epis.minierp.dao.general.TaGzzUnidadMedDao;
 import org.epis.minierp.dao.logistica.EnP2mClaseProductoDao;
@@ -18,6 +20,7 @@ import org.epis.minierp.model.EnP2mClaseProducto;
 import org.epis.minierp.model.EnP2mProducto;
 import org.epis.minierp.model.EnP2mProductoId;
 import org.epis.minierp.model.EnP2mSubclaseProducto;
+import org.epis.minierp.model.EnP3mCuenta;
 import org.epis.minierp.model.TaGzzMoneda;
 import org.epis.minierp.model.TaGzzUnidadMed;
 
@@ -107,6 +110,9 @@ public class AddProductController extends HttpServlet {
                 productId.setSubClaProCod(subClaProCod);
                 productId.setProCod(proCod);
                 
+                CuentaBusiness cuentaBusiness = new CuentaBusiness();
+                ArrayList<EnP3mCuenta> cuentasProducto = cuentaBusiness.getCuenta4Producto(claProCod, subClaProCod, proDet);
+                
                 EnP2mProducto product = new EnP2mProducto(); 
                 product.setId(productId);
                 product.setProDet(proDet);
@@ -117,6 +123,8 @@ public class AddProductController extends HttpServlet {
                 product.setTaGzzMoneda((new TaGzzMonedaDao()).getById(monCod));
                 product.setProStk(0);
                 product.setProStkPreVen(0);
+                product.setEnP3mCuentaByCueComCod(cuentasProducto.get(0));
+                product.setEnP3mCuentaByCueComCod(cuentasProducto.get(1));
                 product.setProPreUniVen(0);
                 product.setEstRegCod('A');
                 product.setProObs("");

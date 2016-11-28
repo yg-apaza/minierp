@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 25/11/2016 01:36:00 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 27/11/2016 07:10:38 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="org.epis.minierp.model.EnP1mUsuario" table="en_p1m_usuario" catalog="episerp" optimistic-lock="version">
         <id name="usuCod" type="string">
@@ -10,6 +10,9 @@
         </id>
         <many-to-one name="enP1mSucursal" class="org.epis.minierp.model.EnP1mSucursal" fetch="select">
             <column name="SucCod" />
+        </many-to-one>
+        <many-to-one name="taGzzCanalUsuario" class="org.epis.minierp.model.TaGzzCanalUsuario" fetch="select">
+            <column name="CanUsuCod" />
         </many-to-one>
         <many-to-one name="taGzzEstadoCivil" class="org.epis.minierp.model.TaGzzEstadoCivil" fetch="select">
             <column name="EstCivCod" not-null="true" />

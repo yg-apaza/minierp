@@ -39,83 +39,83 @@ public class ReporteController extends HttpServlet {
                 break;
         }
 
-        String path = getServletContext().getRealPath("/WEB-INF/");
+        String path = getServletContext().getRealPath("/WEB-INF");
         String fileGenerated = "";
-        String img = getServletContext().getRealPath("/img/")+"logo.jpg";
+        String img = getServletContext().getRealPath("/img")+"/logo.jpg";
         generador.addParam(img);
         
         switch (report) {
             //Reportes de Configuración
             case "usuarios":
-                path = path + "reportes/general/usuarios.jasper";
+                path = path + "/reportes/general/usuarios.jasper";
                 fileGenerated = generador.report(path, "Usuarios_", fileType);
                 break;
             case "documentosusuarios":
-                path = path + "reportes/general/documentosUsuarios.jasper";
+                path = path + "/reportes/general/documentosUsuarios.jasper";
                 fileGenerated = generador.report(path, "Usuarios_", fileType);
                 break;
             //Reportes de Contabilidad
             case "plancontable":
-                path = path + "reportes/contabilidad/planContable.jasper";
+                path = path + "/reportes/contabilidad/planContable.jasper";
                 fileGenerated = generador.report(path, "PlanContable_", fileType);
                 break;
             case "cuentabancaria":
-                path = path + "reportes/contabilidad/cuentaBancaria.jasper";
+                path = path + "/reportes/contabilidad/cuentaBancaria.jasper";
                 fileGenerated = generador.report(path, "CuentaBancaria_", fileType);
                 break;
 
             //Reportes de Ventas
             case "registroventas":
-                path = path + "reportes/ventas/registroVentas.jasper";
+                path = path + "/reportes/ventas/registroVentas.jasper";
                 fileGenerated = generador.report(path, "RegistroDeVentas_", fileType);
                 break;
             case "clientes":
-                path = path + "reportes/ventas/clientes.jasper";
+                path = path + "/reportes/ventas/clientes.jasper";
                 fileGenerated = generador.report(path, "Clientes_", fileType);
                 break;
             case "puntodeventa":
-                path = path + "reportes/ventas/puntoVenta.jasper";
+                path = path + "/reportes/ventas/puntoVenta.jasper";
                 fileGenerated = generador.report(path, "PuntoDeVenta_", fileType);
                 break;
             case "flujoefectivo":
-                path = path + "reportes/ventas/subreporte_flujo_efectivo.jasper";
+                path = path + "/reportes/ventas/subreporte_flujo_efectivo.jasper";
                 fileGenerated = generador.report(path, "FlujoEfectivoAnual", fileType);
                 break;
             case "factura":
-                path = path + "reportes/ventas/factura_cab.jasper";
+                path = path + "/reportes/ventas/factura_cab.jasper";
                 fileGenerated = generador.report(path, "Factura_", fileType);
                 break;
             case "pagos":
-                path = path + "reportes/ventas/pagos.jasper";
+                path = path + "/reportes/ventas/pagos.jasper";
                 fileGenerated = generador.report(path, "Pagos_", fileType);
                 break;
             //Reportes de Logística
             case "kardexfisico":
-                path = path + "reportes/logistica/reporte_kardex_fisico.jasper";
+                path = path + "/reportes/logistica/reporte_kardex_fisico.jasper";
                 fileGenerated = generador.report(path, "KardexFisico_", fileType);
                 break;
             case "kardexvalorizado":
-                path = path + "reportes/logistica/reporte_kardex_valorizado.jasper";
+                path = path + "/reportes/logistica/reporte_kardex_valorizado.jasper";
                 fileGenerated = generador.report(path, "KardexValorizado", fileType);
                 break;
             case "kardexfisicopeps":
-                path = path + "reportes/logistica/reporte_kardex_fisico_peps.jasper";
+                path = path + "/reportes/logistica/reporte_kardex_fisico_peps.jasper";
                 fileGenerated = generador.report(path, "KardexFisicoPeps_", fileType);
                 break;
             case "kardexvalorizadopeps":
-                path = path + "reportes/logistica/reporte_kardex_valorizado_peps.jasper";
+                path = path + "/reportes/logistica/reporte_kardex_valorizado_peps.jasper";
                 fileGenerated = generador.report(path, "KardexValorizadoPeps", fileType);
                 break;
             case "proveedores":
-                path = path + "reportes/logistica/reporte_proveedor.jasper";
+                path = path + "/reportes/logistica/reporte_proveedor.jasper";
                 fileGenerated = generador.report(path, "Proveedores_", fileType);
                 break;
             case "inventario":
-                path = path + "reportes/logistica/reporte_inventario.jasper";
+                path = path + "/reportes/logistica/reporte_inventario.jasper";
                 fileGenerated = generador.report(path, "Inventario_", fileType);
                 break;
             case "productos":
-                path = path + "reportes/logistica/productos.jasper";
+                path = path + "/reportes/logistica/productos.jasper";
                 fileGenerated = generador.report(path, "Productos_", fileType);
                 break;
         }

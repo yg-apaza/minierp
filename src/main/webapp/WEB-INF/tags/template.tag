@@ -18,6 +18,7 @@
         <link href="${pageContext.request.contextPath}/css/modal.css" rel="stylesheet" type="text/css">
         <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
         <script src="${pageContext.request.contextPath}/js/moment.min.js"></script>
+        <script src="${pageContext.request.contextPath}/js/es.js"></script>
         <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
         <script src="${pageContext.request.contextPath}/js/bootstrap-datetimepicker.min.js"></script>
         <script src="${pageContext.request.contextPath}/js/sb-admin-2.js"></script>

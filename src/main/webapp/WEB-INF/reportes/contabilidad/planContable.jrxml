@@ -10,11 +10,17 @@
 	<field name="cueDes" class="java.lang.String"/>
 	<field name="cueNiv" class="java.lang.Integer"/>
 	<field name="cueNum" class="java.lang.String"/>
-	<field name="enP3mCuenta" class="org.epis.minierp.model.EnP3mCuenta"/>
+	<field name="enP2mProductos" class="java.util.Set"/>
 	<field name="enP3mCuentaBancos" class="java.util.Set"/>
-	<field name="enP3mCuentas" class="java.util.SortedSet"/>
+	<field name="enP3mCuentaByCueAmaDeb" class="org.epis.minierp.model.EnP3mCuenta"/>
+	<field name="enP3mCuentaByCueAmaHab" class="org.epis.minierp.model.EnP3mCuenta"/>
+	<field name="enP3mCuentaByCuePad" class="org.epis.minierp.model.EnP3mCuenta"/>
+	<field name="enP3mCuentasForCueAmaDeb" class="java.util.Set"/>
+	<field name="enP3mCuentasForCueAmaHab" class="java.util.Set"/>
+	<field name="enP3mCuentasForCuePad" class="java.util.Set"/>
 	<field name="enP3tAsientoDets" class="java.util.Set"/>
 	<field name="enP3tPlantillaDets" class="java.util.Set"/>
+	<field name="enP4mProveedors" class="java.util.Set"/>
 	<field name="estRegCod" class="java.lang.Character"/>
 	<background>
 		<band/>
