@@ -20,9 +20,7 @@
                         </h1>
                     </div>
                     <div class="col-md-4 col-md-offset-4"><br>
-                        <div class="col-md-6">
-                        </div>
-                        <div class="col-md-6">
+                        <div class="col-md-offset-6 col-md-6">
                             <div class="form-group input-group" >
                                 <span class="input-group-addon"><i class="fa fa-book"></i></span>
                                 <input type="text" class="form-control" name="sucDes" value="${libDiaCod}" readonly>
@@ -31,12 +29,25 @@
                     </div>   
                 </div>
                 <div class="row">
-                    <div class="col-lg-3">
-                        
+                    <div class="col-md-3">
+                        <a href="${pageContext.request.contextPath}/secured/general/reporte?type=pdf&&report=librodiario&&jdbc=false&&key=null&&value=null" class="btn btn-outline btn-danger btn-lg btn-block">
+                            <i class="fa fa-file-pdf-o"></i>
+                            Reporte [PDF]
+                        </a>
                     </div>
-                    <div class="col-lg-3"></div>
-                    <div class="col-lg-3"></div>
-                    <div class="col-lg-3"> 
+                    <div class="col-md-3">
+                        <a href="${pageContext.request.contextPath}/secured/general/reporte?type=xls&&report=librodiario&&jdbc=false&&key=null&&value=null" class="btn btn-outline btn-success btn-lg btn-block">
+                            <i class="fa fa-file-excel-o"></i>
+                            Reporte [XLS]
+                        </a><
+                    </div>
+                    <div class="col-md-3">
+                        <a href="${pageContext.request.contextPath}/secured/general/reporte?type=doc&&report=librodiario&&jdbc=false&&key=null&&value=null" class="btn btn-outline btn-primary btn-lg btn-block">
+                            <i class="fa fa-file-word-o"></i>
+                            Reporte [DOC]
+                        </a>
+                    </div>
+                    <div class="col-md-3"> 
                         <form method="post" action="${pageContext.request.contextPath}/secured/contabilidad/librodiario">
                             <label>MES</label> 
                             <div class="form-group input-group" >
@@ -66,7 +77,6 @@
                     </div>
                 </div>
                 <br>
-                
                 <div class="row">
 
                     <div class="col-md-12">
@@ -78,7 +88,7 @@
                                 <div class="table-responsive">
                                     <table width="100%" class="table table-striped table-bordered table-hover" id="miTabla">
                                         <thead>
-                                          <tr >
+                                          <tr>
                                             <th rowspan="2">NÚMERO CORRELATIVO <br>DE LA OPERACIÓN</th>
                                             <th rowspan="2">FECHA DE LA <br>OPERACIÓN</th>
                                             <th rowspan="2">GLOSA O DESCRIPCION DE LA <br>OPERACIÓN</th>

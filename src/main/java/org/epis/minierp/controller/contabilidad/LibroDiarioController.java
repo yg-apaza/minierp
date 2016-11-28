@@ -2,6 +2,7 @@ package org.epis.minierp.controller.contabilidad;
 
 import java.io.IOException;
 import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -42,11 +43,11 @@ public class LibroDiarioController extends HttpServlet
             temp += "<tr>";
             temp += "<td>" + operaciones.get(i).getIdPK().getAsiCabCod()+"</td>";
             temp += "<td>" + sdf.format(operaciones.get(i).getAsiCabFec())+"</td>";
-            temp += "<td>" + operaciones.get(i).getAsiCabGlo()+"</td>";
-            temp += "<td>" + operaciones.get(i).getAsiCabTip()+"</td>";
-            temp += "<td>" + operaciones.get(i).getAsiCabNumCom()+"</td>";
-            temp += "<td>" + operaciones.get(i).getCueNum()+"</td>";
-            temp += "<td>" + operaciones.get(i).getCueDes()+"</td>";
+            temp += "<td>" + operaciones.get(i).getAsiCabGlo() + "</td>";
+            temp += "<td>" + operaciones.get(i).getAsiCabTip() + "</td>";
+            temp += "<td>" + (operaciones.get(i).getAsiCabNumCom() == null?"":operaciones.get(i).getAsiCabNumCom()) + "</td>";
+            temp += "<td>" + operaciones.get(i).getCueNum() + "</td>";
+            temp += "<td>" + operaciones.get(i).getCueDes() + "</td>";
             if(operaciones.get(i).isAsiDetDebHab()){
                 temp += "<td>" + df.format(operaciones.get(i).getAsiDetMon()) + "</td>";
                 temp += "<td>" + df.format(0) + "</td>";
