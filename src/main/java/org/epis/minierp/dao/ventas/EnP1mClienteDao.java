@@ -99,7 +99,26 @@ public class EnP1mClienteDao {
         return clientes;
     }
     
-    public List<EnP1mCliente> getByRazonSocial_UsuCod(String cliRazSoc, String usuCod){       
+    public EnP1mCliente getByTipoCliente_CliCod_UsuCod(int tipCliCod, String usuCod, String cliCod){       
+        Query query = session.createQuery("from EnP1mCarteraClientes U "
+                + "where U.id.usuCod = :usucod and U.usuCliEstReg = 'A' and "
+                + "U.enP1mCliente.taGzzTipoCliente.tipCliCod = :tipclicod and "
+                + "U.enP1mCliente.cliCod = :clicod");
+        query.setParameter("usucod", usuCod);
+        query.setParameter("tipclicod", tipCliCod);
+        query.setParameter("clicod", cliCod);
+        
+        List<EnP1mCarteraClientes> cartera = query.list();
+        List<EnP1mCliente> clientes = new ArrayList<>();
+        for (EnP1mCarteraClientes iter : cartera) {
+            clientes.add(iter.getEnP1mCliente());
+        }
+        if(clientes.size() == 0)
+            return null;
+        return clientes.get(0);
+    }
+    
+    public EnP1mCliente getByRazonSocial_UsuCod(String cliRazSoc, String usuCod){       
         Query query = session.createQuery("from EnP1mCarteraClientes U "
                 + "where U.id.usuCod = :usucod and U.usuCliEstReg = 'A' and "
                 + "U.enP1mCliente.cliRazSoc = :clirazsoc");
@@ -111,10 +130,12 @@ public class EnP1mClienteDao {
         for (EnP1mCarteraClientes iter : cartera) {
             clientes.add(iter.getEnP1mCliente());
         }
-        return clientes;
+        if(clientes.size() == 0)
+            return null;
+        return clientes.get(0);
     }
     
-    public List<EnP1mCliente> getByNombreComercial_UsuCod(String cliNomCom, String usuCod){       
+    public EnP1mCliente getByNombreComercial_UsuCod(String cliNomCom, String usuCod){       
         Query query = session.createQuery("from EnP1mCarteraClientes U "
                 + "where U.id.usuCod = :usucod and U.usuCliEstReg = 'A' and "
                 + "U.enP1mCliente.cliNomCom = :clinomcom");
@@ -126,7 +147,9 @@ public class EnP1mClienteDao {
         for (EnP1mCarteraClientes iter : cartera) {
             clientes.add(iter.getEnP1mCliente());
         }
-        return clientes;
+        if(clientes.size() == 0)
+            return null;
+        return clientes.get(0);
     }
 
     public int getNextCliCod(){//Maximo codigo de CLiente + 1

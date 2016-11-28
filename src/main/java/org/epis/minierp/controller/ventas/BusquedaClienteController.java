@@ -85,7 +85,16 @@ public class BusquedaClienteController extends HttpServlet {
             case "tipoSearch":
                 tipCliCod = Integer.parseInt(request.getParameter("tipCliCod"));
                 String cliCod = request.getParameter("cliCod");
-                cliente = (new EnP1mClienteDao()).getByCodigoTipoCliente(tipCliCod,cliCod);   
+                
+                switch(tipUsuCod){
+                case 2://Vendedor
+                    cliente = (new EnP1mClienteDao()).getByTipoCliente_CliCod_UsuCod(tipCliCod,usuCod,cliCod);
+                    break;
+                default:
+                    cliente = (new EnP1mClienteDao()).getByCodigoTipoCliente(tipUsuCod, cliCod);
+                    break;
+                }
+                
                 data = new JsonObject(); 
                 if(cliente != null) {                    
                     data.addProperty("cliCod", cliente.getCliCod());
@@ -101,10 +110,22 @@ public class BusquedaClienteController extends HttpServlet {
                 int tipCliDes = Integer.parseInt(request.getParameter("tipCliDes"));
                 String cliDes = request.getParameter("cliDes");
                 cliente = null;
-                if(tipCliDes == 1) { //Razón Social
-                    cliente = (new EnP1mClienteDao()).getByRazonSocial(cliDes);
-                } else if(tipCliDes == 2) { //Nombre Comercial
-                    cliente = (new EnP1mClienteDao()).getByNombreComercial(cliDes);
+                
+                switch(tipUsuCod){
+                case 2://Vendedor
+                    if(tipCliDes == 1) { //Razón Social
+                        cliente = (new EnP1mClienteDao()).getByRazonSocial_UsuCod(cliDes, usuCod);
+                    } else if(tipCliDes == 2) { //Nombre Comercial
+                        cliente = (new EnP1mClienteDao()).getByNombreComercial(cliDes);
+                    }                    
+                    break;
+                default:
+                    if(tipCliDes == 1) { //Razón Social
+                        cliente = (new EnP1mClienteDao()).getByRazonSocial_UsuCod(cliDes, usuCod);
+                    } else if(tipCliDes == 2) { //Nombre Comercial
+                        cliente = (new EnP1mClienteDao()).getByNombreComercial(cliDes);
+                    }                    
+                    break;
                 }
                                 
                 data = new JsonObject(); 
