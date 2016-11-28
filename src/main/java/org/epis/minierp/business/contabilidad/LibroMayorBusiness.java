@@ -7,7 +7,7 @@ import org.epis.minierp.model.contabilidad.LibroDiarioView;
 public class LibroMayorBusiness {
     public Map<String, Double> getTotal(String cuentaNum){
         Iterator <LibroDiarioView> diario = new LibroDiarioViewDao().getAllNiv(cuentaNum).iterator();
-        Map<String, Double> sumas=  new TreeMap<>();
+        Map<String, Double> sumas =  new TreeMap<>();
         
         double debe=0;
         double haber=0;
