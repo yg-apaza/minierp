@@ -48,7 +48,6 @@ public class AddFacturaController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
-        HttpSession session = request.getSession(true);
         metPagFacDao = new TaGzzMetodoPagoFacturaDao();
         monDao = new TaGzzMonedaDao();
         tipPagFacDao = new TaGzzTipoPagoFacturaDao();
@@ -57,6 +56,7 @@ public class AddFacturaController extends HttpServlet {
         tipDesDao = new TaGzzTipoDescuentoDao();
         empDao = new EnP1mEmpresaDao();
         
+        HttpSession session = request.getSession(true);
         user = (EnP1mUsuario) session.getAttribute("usuario");
         
         List<EnP1mPuntoVenta> pv = new ArrayList();
@@ -146,7 +146,12 @@ public class AddFacturaController extends HttpServlet {
         if(numCuo == null){
             pagCuoNum = 0;
         }else{
-            pagCuoNum = Integer.parseInt(numCuo);
+            try {
+                pagCuoNum = Integer.parseInt(numCuo);
+            } catch (Exception e) {
+                pagCuoNum = 0;
+            }
+
         }
         
         //maxDet4FacVen std = 15

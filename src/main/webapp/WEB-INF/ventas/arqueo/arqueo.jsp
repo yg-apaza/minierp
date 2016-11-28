@@ -22,7 +22,9 @@
                                 <div class="form-group input-group" >
                                     <span class="input-group-addon">Usuario</span>
                                         <select class="form-control" name="usuCod">
+                                            <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=2}">    
                                                 <option value="-1">Todos</option>
+                                            </cc:if>
                                             <c:forEach var="u" items="${usuarios}">
                                                 <option value="${u.usuCod}">${u.usuApePat} ${u.usuApeMat}, ${u.usuNom}</option>
                                             </c:forEach>

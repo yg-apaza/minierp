@@ -33,6 +33,16 @@ public class EnP1mFacturaVentaCabDao {
         System.out.println(estados);
         return estados;
     }
+    
+    public List<EnP1mFacturaVentaCab> getAllActive4UsuCod(String usuCod) {
+        Query query = session.createQuery("from EnP1mFacturaVentaCab E "
+                + "where E.estRegCod = 'A' and E.enP1mUsuario.usuCod = '"
+                + usuCod + "'");
+        List<EnP1mFacturaVentaCab> estados = query.list();
+        System.out.println(estados);
+        return estados;
+    }
+    
     public List<EnP1mFacturaVentaCab> getByGuiaRemTransportista(EnP2mGuiaRemTransportista t){
         Query q=session.createQuery("from EnP1mFacturaVentaCab E where E.enP2mGuiaRemTransportista=:p1");
         q.setParameter("p1", t);
@@ -40,6 +50,7 @@ public class EnP1mFacturaVentaCabDao {
         System.out.println(facs);
         return facs;
     }
+    
     public EnP1mFacturaVentaCab getById(String id) {
         EnP1mFacturaVentaCab estado = null;
         try {
