@@ -6,6 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.epis.minierp.business.contabilidad.CuentaBusiness;
 import org.epis.minierp.dao.compras.EnP4mProveedorDao;
 import org.epis.minierp.model.EnP4mProveedor;
 
@@ -25,6 +26,7 @@ public class SuppliersController extends HttpServlet {
         String action = request.getParameter("accion");
         EnP4mProveedorDao proveedorDao = new EnP4mProveedorDao();
         EnP4mProveedor proveedor = new EnP4mProveedor();
+        CuentaBusiness cuentaBusiness = new CuentaBusiness();
         
         switch(action) {
             case "insert":
@@ -32,6 +34,7 @@ public class SuppliersController extends HttpServlet {
                 proveedor.setPrvDet(request.getParameter("detPro"));
                 proveedor.setPrvCon(request.getParameter("conPro"));
                 proveedor.setPrvDir(request.getParameter("dirPro"));
+                proveedor.setEnP3mCuenta(cuentaBusiness.getCuenta4Proveedor(request.getParameter("detPro")));
                 proveedor.setPrvTelFij(request.getParameter("telFijPro"));
                 proveedor.setPrvTelCel(request.getParameter("telCelPro"));
                 proveedor.setPrvEmail(request.getParameter("emailPro"));
