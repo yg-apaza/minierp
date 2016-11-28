@@ -20,6 +20,9 @@ public class HojaTrabajoController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HojaTrabajoBusiness hojas = new HojaTrabajoBusiness();
+        request.setAttribute("hojaT", hojas.rellenarHojaAjustes());
+        request.setAttribute("totales", hojas.totales());
         request.getRequestDispatcher("/WEB-INF/contabilidad/hojaTrabajo/hojaTrabajo.jsp").forward(request, response);   
     }
 }

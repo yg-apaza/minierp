@@ -106,24 +106,108 @@
             </div>
             <div>
                 <div class="col-sm-4">
-                    <a href="${pageContext.request.contextPath}/secured/general/reporte?type=pdf&&report=libroBancos&&jdbc=false&&key=null&&value=null" class="btn btn-outline btn-danger btn-lg btn-block">
+                    <a href="javascript:imprSelec('dvData')" class="btn btn-outline btn-danger btn-lg btn-block">
                         <i class="fa fa-file-pdf-o"></i>
                         Reporte [PDF]
                     </a>
                 </div>
-                <div class="col-sm-4">   
-                    <a href="${pageContext.request.contextPath}/secured/general/reporte?type=xls&&report=libroBancos&&jdbc=false&&key=null&&value=null" class="btn btn-outline btn-success btn-lg btn-block">
+                <div class="col-sm-4"> 
+                    <a href="" class="btn btn-outline btn-success btn-lg btn-block" id="btnExport">
                         <i class="fa fa-file-excel-o"></i>
                         Reporte [XLS]
                     </a>
                 </div>
-                <div class="col-sm-4">      
-                    <a href="${pageContext.request.contextPath}/secured/general/reporte?type=doc&&report=libroBancos&&jdbc=false&&key=null&&value=null" class="btn btn-outline btn-primary btn-lg btn-block">
-                        <i class="fa fa-file-word-o"></i>
-                        Reporte [DOC]
-                    </a>
-                </div>
             </div>
+                        
+             <!------->
+             <div id="dvData" style='display:none;'>
+                <form id="registerBill" method="post" action="${pageContext.request.contextPath}/secured/contabilidad/bancos">
+                    <table>
+                            <tr>
+                                <td><b> Periodo &nbsp de &nbsp apertura: &nbsp&nbsp&nbsp </b> </td>
+                                <td><b> ${libros.libDiaCod} - ${libros.libDiaPer} </b> </td>
+                            </tr>
+                            <tr>
+                                <td><b>  RUC: </b></td>
+                                <td> <b>  ${empresa.empRuc} </b> </td>
+                            </tr>
+                            <tr>
+                                <td><b>  Apellidos &nbsp y &nbsp Nombres, &nbsp Denominacion &nbsp o &nbsp Razon &nbsp Social: </b> </td>
+                                <td><b> ${empresa.empNomCom} </b> </td>
+
+                            </tr>
+                            <tr>
+                                <td><b>  Entidad &nbsp Financiera: </b> </td>
+                                <td><b> ${cuenta.cueDes} </b> </td>
+                            </tr>
+                            <tr>
+                                <td><b>  Código &nbsp de &nbsp  la &nbsp  Cuenta &nbsp Corriente:  </b> </td>
+                                <td><b> ${cuenta.cueCod} </b> </td>
+                            </tr>
+                            <tr>
+                                <td><b>  Mes: </b> </td>
+                                <td><b> ${fecha_Filtro} </b> </td>
+                            </tr>
+                        </table>                        
+                </form>
+            
+                <table >
+                <thread>                
+                    <tr>
+                        <th>Numero &nbsp Correlativo &nbsp del &nbsp  Registro &nbsp o &nbsp codigo &nbsp  unico &nbsp de &nbsp operacion</th>
+                        <th>Fecha &nbsp de &nbsp operacion</th>
+                        <th>Numero &nbsp  de &nbsp transacción &nbsp Bancaria/ documento &nbsp sustentatorio/ &nbsp Control &nbsp  interno &nbsp  de &nbsp la &nbsp operacion</th>
+                        <th>Codigo &nbsp de &nbsp la &nbsp  Cuenta &nbsp Asociada</th>
+                        <th>Denominacion &nbsp de &nbsp  la &nbsp Cuenta &nbsp Asociada</th>
+                        <th>Deudor</th>
+                        <th>Acreedor</th>
+                    </tr>
+                </thread>
+                <tbody>
+                    <c:forEach items="${operaciones}" var="u"> 
+                             <tr>
+                                 <td  width="15%">${u.asiDetCod}</td>
+                                 <td  width="10%"><fmt:formatDate value="${u.asiCabFec}" pattern="dd/MM/yyyy" /></td>
+                                 <td  width="20%">${u.asiCabNumCom}</td>
+                                 <td  width="5%">${u.cueNum}</td>
+                                 <td  width="30%">${u.cueDes}</td>
+                                 <td  width="10%">${u.debe}</td>
+                                 <td  width="10%">${u.haber}</td>                           
+                             </tr>
+                     </c:forEach>        
+                </tbody>
+                </table>
+                <table >
+                    <tbody>
+                    <tr >
+                        <td > <b> TOTALES </b> </td>
+                        <td > <b>  </b> </td>
+                        <td > <b>  </b> </td>
+                        <td > <b>  </b> </td>
+                        <td > <b> ${totales.debe} </b> </td>
+                        <td > <b> ${totales.haber} </b> </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <script type="text/javascript">
+            function imprSelec(muestra)
+            {
+                    var ficha=document.getElementById(muestra);
+                    var ventimp=window.open(' ','popimpr');
+                    ventimp.document.write(ficha.innerHTML);
+                    ventimp.document.close();
+                    ventimp.print();
+                    ventimp.close();
+            }
+            </script>            
+            <!--<input type="button" id="btnExport" value=" Export Table data into Excel " />-->
+            <script>
+            $("#btnExport").click(function (e) {
+                window.open('data:application/vnd.ms-excel,' + $('#dvData').html());
+                e.preventDefault();
+            });
+            </script>      
         </div>
 
     </jsp:attribute>

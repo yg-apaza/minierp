@@ -9,6 +9,7 @@ import javax.xml.bind.annotation.XmlType;
     "leftMargin",
     "rightMargin",
     "topMargin",
+    "botMargin",
     "cliNom",
     "cliDir",
     "fecEmi",
@@ -38,6 +39,7 @@ public class FacturaPrinter {
     float leftMargin;
     float rightMargin;
     float topMargin;
+    float botMargin;
     float cliNom;
     float cliDir;
     float fecEmi;
@@ -60,35 +62,6 @@ public class FacturaPrinter {
     float proDes2;
     float proValNet;
     float totalMargin;
-
-    public FacturaPrinter(int size, int leftMargin, int rightMargin, float topMargin, float cliNom, float cliDir, float fecEmi, float topFacCab, float cliCod, float conPag, float fecVen, float venZon, float numSec, float dis, float rut, float tra, float topFacDet, float proCod, float proCan, float proUni, float proDes, float proValUni, float proDes1, float proDes2, float proValNet, float totalMargin) {
-        this.size = size;
-        this.leftMargin = leftMargin;
-        this.rightMargin = rightMargin;
-        this.topMargin = topMargin;
-        this.cliNom = cliNom;
-        this.cliDir = cliDir;
-        this.fecEmi = fecEmi;
-        this.topFacCab = topFacCab;
-        this.cliCod = cliCod;
-        this.conPag = conPag;
-        this.fecVen = fecVen;
-        this.venZon = venZon;
-        this.numSec = numSec;
-        this.dis = dis;
-        this.rut = rut;
-        this.tra = tra;
-        this.topFacDet = topFacDet;
-        this.proCod = proCod;
-        this.proCan = proCan;
-        this.proUni = proUni;
-        this.proDes = proDes;
-        this.proValUni = proValUni;
-        this.proDes1 = proDes1;
-        this.proDes2 = proDes2;
-        this.proValNet = proValNet;
-        this.totalMargin = totalMargin;
-    }
 
     public FacturaPrinter() {
     }
@@ -123,6 +96,14 @@ public class FacturaPrinter {
 
     public void setTopMargin(float topMargin) {
         this.topMargin = topMargin;
+    }
+
+    public float getBotMargin() {
+        return botMargin;
+    }
+
+    public void setBotMargin(float botMargin) {
+        this.botMargin = botMargin;
     }
 
     public float getCliNom() {

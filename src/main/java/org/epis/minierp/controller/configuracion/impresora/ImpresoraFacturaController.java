@@ -32,7 +32,8 @@ public class ImpresoraFacturaController extends HttpServlet {
         /* int size = Int.parseInteger(request.getParameter("size")); */
         
         float leftMargin = Float.parseFloat(request.getParameter("leftMargin"));
-        float topMargin = Float.parseFloat(request.getParameter("topMargin"));
+        float topMargin = Float.parseFloat(request.getParameter("topMargin"));       
+        float botMargin = Float.parseFloat(request.getParameter("botMargin"));
         float topFacCab = Float.parseFloat(request.getParameter("topFacCab"));
         float topFacDet = Float.parseFloat(request.getParameter("topFacDet"));
         
@@ -84,6 +85,7 @@ public class ImpresoraFacturaController extends HttpServlet {
 
         fPrinter.setLeftMargin(leftMargin);
         fPrinter.setTopMargin(topMargin);
+        fPrinter.setBotMargin(botMargin);
         fPrinter.setTopFacCab(topFacCab);
         fPrinter.setTopFacDet(topFacDet);
         fPrinter.setTotalMargin(totalMargin);

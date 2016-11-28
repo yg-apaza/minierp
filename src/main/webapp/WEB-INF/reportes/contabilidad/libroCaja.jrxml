@@ -4,7 +4,7 @@
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<queryString language="hql">
-		<![CDATA[from CajaView C]]>
+		<![CDATA[from CajaView]]>
 	</queryString>
 	<field name="asiDetCod" class="java.lang.Integer"/>
 	<field name="asiCabFec" class="java.lang.Integer"/>

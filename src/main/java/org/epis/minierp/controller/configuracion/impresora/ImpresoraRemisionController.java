@@ -33,6 +33,7 @@ public class ImpresoraRemisionController extends HttpServlet {
         
         float leftMargin = Float.parseFloat(request.getParameter("leftMargin"));
         float topMargin = Float.parseFloat(request.getParameter("topMargin"));
+        float botMargin = Float.parseFloat(request.getParameter("botMargin"));
         float topRemCab = Float.parseFloat(request.getParameter("topRemCab"));
         float topRemDet = Float.parseFloat(request.getParameter("topRemDet"));
         
@@ -86,6 +87,7 @@ public class ImpresoraRemisionController extends HttpServlet {
 
         rPrinter.setLeftMargin(leftMargin);
         rPrinter.setTopMargin(topMargin);
+        rPrinter.setBotMargin(botMargin);
         rPrinter.setTopRemCab(topRemCab);
         rPrinter.setTopRemDet(topRemDet);
         rPrinter.setTotalMargin(totalMargin);
