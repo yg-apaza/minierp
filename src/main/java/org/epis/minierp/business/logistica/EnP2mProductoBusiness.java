@@ -4,15 +4,15 @@ package org.epis.minierp.business.logistica;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import org.epis.minierp.business.contabilidad.CuentaBusiness;
 import org.epis.minierp.dao.general.EnP1mUsuarioDao;
 import org.epis.minierp.dao.general.TaGzzTipoFallaProductoDao;
 import org.epis.minierp.dao.logistica.EnP2mInventarioCabDao;
 import org.epis.minierp.dao.logistica.EnP2mProductoDao;
 import org.epis.minierp.dao.logistica.EnP2tInventarioDetDao;
-import org.epis.minierp.model.EnP1mUsuario;
-import org.epis.minierp.model.EnP1tFacturaVentaDetId;
 import org.epis.minierp.model.EnP2mAlmacen;
 import org.epis.minierp.model.EnP2mInventarioCab;
 import org.epis.minierp.model.EnP2mProducto;
@@ -21,6 +21,7 @@ import org.epis.minierp.model.EnP2mSubclaseProducto;
 import org.epis.minierp.model.EnP2mSubclaseProductoId;
 import org.epis.minierp.model.EnP2tInventarioDet;
 import org.epis.minierp.model.EnP2tInventarioDetId;
+import org.epis.minierp.model.EnP3mCuenta;
 import org.epis.minierp.model.TaGzzMoneda;
 import org.epis.minierp.model.TaGzzTipoFallaProducto;
 import org.epis.minierp.model.TaGzzUnidadMed;
@@ -62,6 +63,9 @@ public class EnP2mProductoBusiness {
         TaGzzUnidadMed taGzzUnidadMed = new TaGzzUnidadMed();
         taGzzUnidadMed.setUniMedCod(uniMedCod);
         
+        CuentaBusiness cuentaBusiness = new CuentaBusiness();
+        ArrayList<EnP3mCuenta> cuentasProducto = cuentaBusiness.getCuenta4Producto(claProCod, subClaProCod, proDet);
+        
         //rellenar producto
         EnP2mProducto producto = new EnP2mProducto();
         producto.setId(id);
@@ -78,6 +82,8 @@ public class EnP2mProductoBusiness {
         producto.setProStk(proStk);
         producto.setProStkRea(proStk); //Real = a stock al crear el item
         producto.setProStkPreVen(0); //nada prevendido
+        producto.setEnP3mCuentaByCueComCod(cuentasProducto.get(0));
+        producto.setEnP3mCuentaByCueVenCod(cuentasProducto.get(1));
         producto.setVolUniAlm(volUniAlm);
         producto.setProStkMin(proStkMin);
         producto.setProStkMax(proStkMax);

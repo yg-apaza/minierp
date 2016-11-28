@@ -1,5 +1,5 @@
 package org.epis.minierp.model;
-// Generated 27/11/2016 02:57:20 PM by Hibernate Tools 4.3.1
+// Generated 27/11/2016 05:44:55 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -12,7 +12,8 @@ public class EnP2mClaseProducto  implements java.io.Serializable {
 
 
      private String claProCod;
-     private EnP3mCuenta enP3mCuenta;
+     private EnP3mCuenta enP3mCuentaByCueComCod;
+     private EnP3mCuenta enP3mCuentaByCueVenCod;
      private String claProDet;
      private char estRegCod;
      private Set enP2mSubclaseProductos = new HashSet(0);
@@ -26,9 +27,10 @@ public class EnP2mClaseProducto  implements java.io.Serializable {
         this.claProDet = claProDet;
         this.estRegCod = estRegCod;
     }
-    public EnP2mClaseProducto(String claProCod, EnP3mCuenta enP3mCuenta, String claProDet, char estRegCod, Set enP2mSubclaseProductos) {
+    public EnP2mClaseProducto(String claProCod, EnP3mCuenta enP3mCuentaByCueComCod, EnP3mCuenta enP3mCuentaByCueVenCod, String claProDet, char estRegCod, Set enP2mSubclaseProductos) {
        this.claProCod = claProCod;
-       this.enP3mCuenta = enP3mCuenta;
+       this.enP3mCuentaByCueComCod = enP3mCuentaByCueComCod;
+       this.enP3mCuentaByCueVenCod = enP3mCuentaByCueVenCod;
        this.claProDet = claProDet;
        this.estRegCod = estRegCod;
        this.enP2mSubclaseProductos = enP2mSubclaseProductos;
@@ -41,12 +43,19 @@ public class EnP2mClaseProducto  implements java.io.Serializable {
     public void setClaProCod(String claProCod) {
         this.claProCod = claProCod;
     }
-    public EnP3mCuenta getEnP3mCuenta() {
-        return this.enP3mCuenta;
+    public EnP3mCuenta getEnP3mCuentaByCueComCod() {
+        return this.enP3mCuentaByCueComCod;
     }
     
-    public void setEnP3mCuenta(EnP3mCuenta enP3mCuenta) {
-        this.enP3mCuenta = enP3mCuenta;
+    public void setEnP3mCuentaByCueComCod(EnP3mCuenta enP3mCuentaByCueComCod) {
+        this.enP3mCuentaByCueComCod = enP3mCuentaByCueComCod;
+    }
+    public EnP3mCuenta getEnP3mCuentaByCueVenCod() {
+        return this.enP3mCuentaByCueVenCod;
+    }
+    
+    public void setEnP3mCuentaByCueVenCod(EnP3mCuenta enP3mCuentaByCueVenCod) {
+        this.enP3mCuentaByCueVenCod = enP3mCuentaByCueVenCod;
     }
     public String getClaProDet() {
         return this.claProDet;

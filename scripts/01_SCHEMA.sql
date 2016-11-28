@@ -295,7 +295,8 @@ CREATE TABLE en_p2m_clase_producto
 (
   ClaProCod Char(2) NOT NULL,
   ClaProDet Char(90) NOT NULL,
-  CueCod Int(10) ZEROFILL,
+  CueComCod Int(10) ZEROFILL,
+  CueVenCod Int(10) ZEROFILL,
   EstRegCod Char(1) NOT NULL
 )
 ;
@@ -303,7 +304,10 @@ CREATE TABLE en_p2m_clase_producto
 ALTER TABLE en_p2m_clase_producto ADD PRIMARY KEY (ClaProCod)
 ;
 
-CREATE INDEX IX_Relationship125 ON en_p2m_clase_producto (CueCod)
+CREATE INDEX IX_Relationship133 ON en_p2m_clase_producto (CueComCod)
+;
+
+CREATE INDEX IX_Relationship134 ON en_p2m_clase_producto (CueVenCod)
 ;
 
 -- Table episerp.en_p2m_subclase_producto
@@ -313,7 +317,8 @@ CREATE TABLE en_p2m_subclase_producto
   ClaProCod Char(2) NOT NULL,
   SubClaProCod Char(2) NOT NULL,
   SubClaProDet Char(90) NOT NULL,
-  CueCod Int(10) ZEROFILL,
+  CueComCod Int(10) ZEROFILL,
+  CueVenCod Int(10) ZEROFILL,
   EstRegCod Char(1) NOT NULL
 )
 ;
@@ -321,7 +326,10 @@ CREATE TABLE en_p2m_subclase_producto
 ALTER TABLE en_p2m_subclase_producto ADD PRIMARY KEY (SubClaProCod,ClaProCod)
 ;
 
-CREATE INDEX IX_Relationship124 ON en_p2m_subclase_producto (CueCod)
+CREATE INDEX IX_Relationship131 ON en_p2m_subclase_producto (CueComCod)
+;
+
+CREATE INDEX IX_Relationship132 ON en_p2m_subclase_producto (CueVenCod)
 ;
 
 -- Table episerp.en_p2m_producto
@@ -336,7 +344,6 @@ CREATE TABLE en_p2m_producto
   MonCod Int(2) ZEROFILL,
   ProDet Char(90) NOT NULL,
   UniMedCod Int(2) ZEROFILL NOT NULL,
-  CueCod Int(10) ZEROFILL,
   ProPreUniVen Double(10,2) NOT NULL,
   ProPreUniCom Double(10,2) NOT NULL,
   ProPreUniMar Double(10,2) NOT NULL,
@@ -345,6 +352,8 @@ CREATE TABLE en_p2m_producto
   ProStk Double(10,2) NOT NULL,
   ProStkRea Double(10,2),
   ProStkPreVen Double(10,2) NOT NULL DEFAULT 0,
+  CueComCod Int(10) ZEROFILL,
+  CueVenCod Int(10) ZEROFILL,
   VolUniAlm Double(10,2),
   ProStkMin Double(10,2),
   ProStkMax Double(10,2),
@@ -365,7 +374,10 @@ CREATE INDEX IX_Relationship114 ON en_p2m_producto (AlmCod)
 CREATE INDEX IX_Relationship120 ON en_p2m_producto (MonCod)
 ;
 
-CREATE INDEX IX_Relationship123 ON en_p2m_producto (CueCod)
+CREATE INDEX IX_Relationship129 ON en_p2m_producto (CueComCod)
+;
+
+CREATE INDEX IX_Relationship130 ON en_p2m_producto (CueVenCod)
 ;
 
 -- Table episerp.en_p2m_almacen
@@ -1431,11 +1443,20 @@ ALTER TABLE en_p2t_inventario_det ADD CONSTRAINT Relationship121 FOREIGN KEY (Ti
 ALTER TABLE en_p4m_proveedor ADD CONSTRAINT Relationship122 FOREIGN KEY (CueCod) REFERENCES en_p3m_cuenta (CueCod) ON DELETE NO ACTION ON UPDATE NO ACTION
 ;
 
-ALTER TABLE en_p2m_producto ADD CONSTRAINT Relationship123 FOREIGN KEY (CueCod) REFERENCES en_p3m_cuenta (CueCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+ALTER TABLE en_p2m_producto ADD CONSTRAINT Relationship129 FOREIGN KEY (CueComCod) REFERENCES en_p3m_cuenta (CueCod) ON DELETE NO ACTION ON UPDATE NO ACTION
 ;
 
-ALTER TABLE en_p2m_subclase_producto ADD CONSTRAINT Relationship124 FOREIGN KEY (CueCod) REFERENCES en_p3m_cuenta (CueCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+ALTER TABLE en_p2m_producto ADD CONSTRAINT Relationship130 FOREIGN KEY (CueVenCod) REFERENCES en_p3m_cuenta (CueCod) ON DELETE NO ACTION ON UPDATE NO ACTION
 ;
 
-ALTER TABLE en_p2m_clase_producto ADD CONSTRAINT Relationship125 FOREIGN KEY (CueCod) REFERENCES en_p3m_cuenta (CueCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+ALTER TABLE en_p2m_subclase_producto ADD CONSTRAINT Relationship131 FOREIGN KEY (CueComCod) REFERENCES en_p3m_cuenta (CueCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p2m_subclase_producto ADD CONSTRAINT Relationship132 FOREIGN KEY (CueVenCod) REFERENCES en_p3m_cuenta (CueCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p2m_clase_producto ADD CONSTRAINT Relationship133 FOREIGN KEY (CueComCod) REFERENCES en_p3m_cuenta (CueCod) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE en_p2m_clase_producto ADD CONSTRAINT Relationship134 FOREIGN KEY (CueVenCod) REFERENCES en_p3m_cuenta (CueCod) ON DELETE NO ACTION ON UPDATE NO ACTION
 ;

@@ -13,7 +13,6 @@
     <property name="hibernate.enable_lazy_load_no_trans">true</property>
     
     <!-- Vistas -->
-    
     <mapping class="org.epis.minierp.model.contabilidad.CajaView"/>
     <mapping class="org.epis.minierp.model.contabilidad.BancosView"/>
     <mapping class="org.epis.minierp.model.contabilidad.LibroDiarioView"/>
@@ -22,7 +21,6 @@
     <mapping class="org.epis.minierp.model.ventas.Preventas"/>
     
     <!-- Tablas -->
-    
     <mapping resource="org/epis/minierp/model/TaGzzTipoDocUsuario.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/TaGzzTipoDocTransportista.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/TaGzzTipoComprobante.hbm.xml"/>
@@ -41,8 +39,8 @@
     <mapping resource="org/epis/minierp/model/EnP1mFacturaVentaCab.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP1mClientesRutas.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP1mCarteraClientes.hbm.xml"/>
-    <mapping resource="org/epis/minierp/model/EnP2mSubclaseProducto.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/TaGzzTipoDocProveedor.hbm.xml"/>
+    <mapping resource="org/epis/minierp/model/EnP2mSubclaseProducto.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP1mSucursal.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP4tFacturaCompraDet.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/TaGzzMoneda.hbm.xml"/>

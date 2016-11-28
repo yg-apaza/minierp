@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 27/11/2016 02:57:21 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 27/11/2016 05:44:55 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="org.epis.minierp.model.EnP3mCuenta" table="en_p3m_cuenta" catalog="episerp" optimistic-lock="version">
         <id name="cueCod" type="java.lang.Integer">
@@ -29,17 +29,29 @@
         <property name="estRegCod" type="char">
             <column name="EstRegCod" length="1" not-null="true" />
         </property>
-        <set name="enP2mClaseProductos" table="en_p2m_clase_producto" inverse="true" lazy="true" fetch="select">
+        <set name="enP2mProductosForCueComCod" table="en_p2m_producto" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="CueCod" />
+                <column name="CueComCod" />
             </key>
-            <one-to-many class="org.epis.minierp.model.EnP2mClaseProducto" />
+            <one-to-many class="org.epis.minierp.model.EnP2mProducto" />
         </set>
         <set name="enP3tAsientoDets" table="en_p3t_asiento_det" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="CueCod" not-null="true" />
             </key>
             <one-to-many class="org.epis.minierp.model.EnP3tAsientoDet" />
+        </set>
+        <set name="enP2mSubclaseProductosForCueVenCod" table="en_p2m_subclase_producto" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="CueVenCod" />
+            </key>
+            <one-to-many class="org.epis.minierp.model.EnP2mSubclaseProducto" />
+        </set>
+        <set name="enP2mClaseProductosForCueComCod" table="en_p2m_clase_producto" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="CueComCod" />
+            </key>
+            <one-to-many class="org.epis.minierp.model.EnP2mClaseProducto" />
         </set>
         <set name="enP3mCuentasForCueAmaDeb" table="en_p3m_cuenta" inverse="true" lazy="true" fetch="select">
             <key>
@@ -53,17 +65,11 @@
             </key>
             <one-to-many class="org.epis.minierp.model.EnP4mProveedor" />
         </set>
-        <set name="enP2mProductos" table="en_p2m_producto" inverse="true" lazy="true" fetch="select">
+        <set name="enP2mClaseProductosForCueVenCod" table="en_p2m_clase_producto" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="CueCod" />
+                <column name="CueVenCod" />
             </key>
-            <one-to-many class="org.epis.minierp.model.EnP2mProducto" />
-        </set>
-        <set name="enP2mSubclaseProductos" table="en_p2m_subclase_producto" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="CueCod" />
-            </key>
-            <one-to-many class="org.epis.minierp.model.EnP2mSubclaseProducto" />
+            <one-to-many class="org.epis.minierp.model.EnP2mClaseProducto" />
         </set>
         <set name="enP3mCuentasForCueAmaHab" table="en_p3m_cuenta" inverse="true" lazy="true" fetch="select">
             <key>
@@ -77,11 +83,23 @@
             </key>
             <one-to-many class="org.epis.minierp.model.EnP3mCuentaBanco" />
         </set>
+        <set name="enP2mProductosForCueVenCod" table="en_p2m_producto" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="CueVenCod" />
+            </key>
+            <one-to-many class="org.epis.minierp.model.EnP2mProducto" />
+        </set>
         <set name="enP3mCuentasForCuePad" table="en_p3m_cuenta" inverse="true" lazy="true" fetch="select" sort="natural">
             <key>
                 <column name="CuePad" />
             </key>
             <one-to-many class="org.epis.minierp.model.EnP3mCuenta" />
+        </set>
+        <set name="enP2mSubclaseProductosForCueComCod" table="en_p2m_subclase_producto" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="CueComCod" />
+            </key>
+            <one-to-many class="org.epis.minierp.model.EnP2mSubclaseProducto" />
         </set>
         <set name="enP3tPlantillaDets" table="en_p3t_plantilla_det" inverse="true" lazy="true" fetch="select">
             <key>

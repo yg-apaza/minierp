@@ -1,5 +1,5 @@
 package org.epis.minierp.model;
-// Generated 27/11/2016 02:57:20 PM by Hibernate Tools 4.3.1
+// Generated 27/11/2016 05:44:55 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -20,15 +20,18 @@ public class EnP3mCuenta  implements java.io.Serializable, Comparable<EnP3mCuent
      private String cueNum;
      private String cueDes;
      private char estRegCod;
-     private Set enP2mClaseProductos = new HashSet(0);
+     private Set enP2mProductosForCueComCod = new HashSet(0);
      private Set enP3tAsientoDets = new HashSet(0);
+     private Set enP2mSubclaseProductosForCueVenCod = new HashSet(0);
+     private Set enP2mClaseProductosForCueComCod = new HashSet(0);
      private Set enP3mCuentasForCueAmaDeb = new HashSet(0);
      private Set enP4mProveedors = new HashSet(0);
-     private Set enP2mProductos = new HashSet(0);
-     private Set enP2mSubclaseProductos = new HashSet(0);
+     private Set enP2mClaseProductosForCueVenCod = new HashSet(0);
      private Set enP3mCuentasForCueAmaHab = new HashSet(0);
      private Set enP3mCuentaBancos = new HashSet(0);
+     private Set enP2mProductosForCueVenCod = new HashSet(0);
      private SortedSet enP3mCuentasForCuePad;
+     private Set enP2mSubclaseProductosForCueComCod = new HashSet(0);
      private Set enP3tPlantillaDets = new HashSet(0);
 
     public EnP3mCuenta() {
@@ -41,7 +44,7 @@ public class EnP3mCuenta  implements java.io.Serializable, Comparable<EnP3mCuent
         this.cueDes = cueDes;
         this.estRegCod = estRegCod;
     }
-    public EnP3mCuenta(EnP3mCuenta enP3mCuentaByCueAmaDeb, EnP3mCuenta enP3mCuentaByCueAmaHab, EnP3mCuenta enP3mCuentaByCuePad, int cueNiv, String cueNum, String cueDes, char estRegCod, Set enP2mClaseProductos, Set enP3tAsientoDets, Set enP3mCuentasForCueAmaDeb, Set enP4mProveedors, Set enP2mProductos, Set enP2mSubclaseProductos, Set enP3mCuentasForCueAmaHab, Set enP3mCuentaBancos, SortedSet enP3mCuentasForCuePad, Set enP3tPlantillaDets) {
+    public EnP3mCuenta(EnP3mCuenta enP3mCuentaByCueAmaDeb, EnP3mCuenta enP3mCuentaByCueAmaHab, EnP3mCuenta enP3mCuentaByCuePad, int cueNiv, String cueNum, String cueDes, char estRegCod, Set enP2mProductosForCueComCod, Set enP3tAsientoDets, Set enP2mSubclaseProductosForCueVenCod, Set enP2mClaseProductosForCueComCod, Set enP3mCuentasForCueAmaDeb, Set enP4mProveedors, Set enP2mClaseProductosForCueVenCod, Set enP3mCuentasForCueAmaHab, Set enP3mCuentaBancos, Set enP2mProductosForCueVenCod, SortedSet enP3mCuentasForCuePad, Set enP2mSubclaseProductosForCueComCod, Set enP3tPlantillaDets) {
        this.enP3mCuentaByCueAmaDeb = enP3mCuentaByCueAmaDeb;
        this.enP3mCuentaByCueAmaHab = enP3mCuentaByCueAmaHab;
        this.enP3mCuentaByCuePad = enP3mCuentaByCuePad;
@@ -49,15 +52,18 @@ public class EnP3mCuenta  implements java.io.Serializable, Comparable<EnP3mCuent
        this.cueNum = cueNum;
        this.cueDes = cueDes;
        this.estRegCod = estRegCod;
-       this.enP2mClaseProductos = enP2mClaseProductos;
+       this.enP2mProductosForCueComCod = enP2mProductosForCueComCod;
        this.enP3tAsientoDets = enP3tAsientoDets;
+       this.enP2mSubclaseProductosForCueVenCod = enP2mSubclaseProductosForCueVenCod;
+       this.enP2mClaseProductosForCueComCod = enP2mClaseProductosForCueComCod;
        this.enP3mCuentasForCueAmaDeb = enP3mCuentasForCueAmaDeb;
        this.enP4mProveedors = enP4mProveedors;
-       this.enP2mProductos = enP2mProductos;
-       this.enP2mSubclaseProductos = enP2mSubclaseProductos;
+       this.enP2mClaseProductosForCueVenCod = enP2mClaseProductosForCueVenCod;
        this.enP3mCuentasForCueAmaHab = enP3mCuentasForCueAmaHab;
        this.enP3mCuentaBancos = enP3mCuentaBancos;
+       this.enP2mProductosForCueVenCod = enP2mProductosForCueVenCod;
        this.enP3mCuentasForCuePad = enP3mCuentasForCuePad;
+       this.enP2mSubclaseProductosForCueComCod = enP2mSubclaseProductosForCueComCod;
        this.enP3tPlantillaDets = enP3tPlantillaDets;
     }
    
@@ -117,12 +123,12 @@ public class EnP3mCuenta  implements java.io.Serializable, Comparable<EnP3mCuent
     public void setEstRegCod(char estRegCod) {
         this.estRegCod = estRegCod;
     }
-    public Set getEnP2mClaseProductos() {
-        return this.enP2mClaseProductos;
+    public Set getEnP2mProductosForCueComCod() {
+        return this.enP2mProductosForCueComCod;
     }
     
-    public void setEnP2mClaseProductos(Set enP2mClaseProductos) {
-        this.enP2mClaseProductos = enP2mClaseProductos;
+    public void setEnP2mProductosForCueComCod(Set enP2mProductosForCueComCod) {
+        this.enP2mProductosForCueComCod = enP2mProductosForCueComCod;
     }
     public Set getEnP3tAsientoDets() {
         return this.enP3tAsientoDets;
@@ -130,6 +136,20 @@ public class EnP3mCuenta  implements java.io.Serializable, Comparable<EnP3mCuent
     
     public void setEnP3tAsientoDets(Set enP3tAsientoDets) {
         this.enP3tAsientoDets = enP3tAsientoDets;
+    }
+    public Set getEnP2mSubclaseProductosForCueVenCod() {
+        return this.enP2mSubclaseProductosForCueVenCod;
+    }
+    
+    public void setEnP2mSubclaseProductosForCueVenCod(Set enP2mSubclaseProductosForCueVenCod) {
+        this.enP2mSubclaseProductosForCueVenCod = enP2mSubclaseProductosForCueVenCod;
+    }
+    public Set getEnP2mClaseProductosForCueComCod() {
+        return this.enP2mClaseProductosForCueComCod;
+    }
+    
+    public void setEnP2mClaseProductosForCueComCod(Set enP2mClaseProductosForCueComCod) {
+        this.enP2mClaseProductosForCueComCod = enP2mClaseProductosForCueComCod;
     }
     public Set getEnP3mCuentasForCueAmaDeb() {
         return this.enP3mCuentasForCueAmaDeb;
@@ -145,19 +165,12 @@ public class EnP3mCuenta  implements java.io.Serializable, Comparable<EnP3mCuent
     public void setEnP4mProveedors(Set enP4mProveedors) {
         this.enP4mProveedors = enP4mProveedors;
     }
-    public Set getEnP2mProductos() {
-        return this.enP2mProductos;
+    public Set getEnP2mClaseProductosForCueVenCod() {
+        return this.enP2mClaseProductosForCueVenCod;
     }
     
-    public void setEnP2mProductos(Set enP2mProductos) {
-        this.enP2mProductos = enP2mProductos;
-    }
-    public Set getEnP2mSubclaseProductos() {
-        return this.enP2mSubclaseProductos;
-    }
-    
-    public void setEnP2mSubclaseProductos(Set enP2mSubclaseProductos) {
-        this.enP2mSubclaseProductos = enP2mSubclaseProductos;
+    public void setEnP2mClaseProductosForCueVenCod(Set enP2mClaseProductosForCueVenCod) {
+        this.enP2mClaseProductosForCueVenCod = enP2mClaseProductosForCueVenCod;
     }
     public Set getEnP3mCuentasForCueAmaHab() {
         return this.enP3mCuentasForCueAmaHab;
@@ -173,12 +186,26 @@ public class EnP3mCuenta  implements java.io.Serializable, Comparable<EnP3mCuent
     public void setEnP3mCuentaBancos(Set enP3mCuentaBancos) {
         this.enP3mCuentaBancos = enP3mCuentaBancos;
     }
+    public Set getEnP2mProductosForCueVenCod() {
+        return this.enP2mProductosForCueVenCod;
+    }
+    
+    public void setEnP2mProductosForCueVenCod(Set enP2mProductosForCueVenCod) {
+        this.enP2mProductosForCueVenCod = enP2mProductosForCueVenCod;
+    }
     public SortedSet getEnP3mCuentasForCuePad() {
         return this.enP3mCuentasForCuePad;
     }
     
     public void setEnP3mCuentasForCuePad(SortedSet enP3mCuentasForCuePad) {
         this.enP3mCuentasForCuePad = enP3mCuentasForCuePad;
+    }
+    public Set getEnP2mSubclaseProductosForCueComCod() {
+        return this.enP2mSubclaseProductosForCueComCod;
+    }
+    
+    public void setEnP2mSubclaseProductosForCueComCod(Set enP2mSubclaseProductosForCueComCod) {
+        this.enP2mSubclaseProductosForCueComCod = enP2mSubclaseProductosForCueComCod;
     }
     public Set getEnP3tPlantillaDets() {
         return this.enP3tPlantillaDets;
