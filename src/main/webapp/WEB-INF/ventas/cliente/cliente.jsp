@@ -138,9 +138,19 @@
                             <input type="hidden" name="accion" value="create">
                             <div class="form-horizontal">   
                                 <div class="form-group">
+                                    <!-- Codigo de cliente escrito
                                     <div class="col-sm-6">
                                         <label>Código Cliente:</label>
                                         <input type="text" class="form-control" placeholder="Código Cliente" name="cliCod">
+                                    </div>
+                                    -->
+                                    <div class="col-sm-6">
+                                        <label>Canal</label> 
+                                        <select class="form-control" name="canCod">
+                                            <c:forEach var="c" items="${canales}">
+                                                <option value="${c.canCliCod}">${c.canCliCod} - ${c.canCliDet}</option>
+                                            </c:forEach>
+                                        </select>
                                     </div>
                                     <div class="col-sm-6">
                                         <label>Tipo de Cliente:</label>
@@ -162,11 +172,8 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-sm-6">
-                                        <label>Dominio Fiscal:</label>
-                                        <input type="text" class="form-control" placeholder="Razón Social" name="cliDomFis">
-                                    </div>
-                                    <div class="col-sm-6">
+                                    
+                                    <div class="col-sm-12">
                                         <label>Nombres:</label>
                                         <input type="text" class="form-control" placeholder="Nombre Comercial" name="cliNom">
                                     </div>
@@ -196,17 +203,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-sm-6">
-                                        <label>Teléfono Fijo:</label>
-                                        <input type="text" class="form-control" placeholder="Teléfono Fijo" name="cliTelFij">
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label>Teléfono Celular:</label>
-                                        <input type="text" class="form-control" placeholder="Teléfono Celular" name="cliTelCel">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-4">
                                         <label>Estado Civil:</label>
                                         <select class="form-control" name="estCivCod">
                                             <c:forEach var="ec" items="${estCivil}">
@@ -214,13 +211,19 @@
                                             </c:forEach>
                                         </select>
                                     </div>
+                                    <div class="col-sm-8">
+                                        <label>Dominio Fiscal:</label>
+                                        <input type="text" class="form-control" placeholder="Razón Social" name="cliDomFis">
+                                    </div>
+                                </div>
+                                <div class="form-group">
                                     <div class="col-sm-6">
-                                        <label>Canal</label> 
-                                        <select class="form-control" name="canCod">
-                                            <c:forEach var="c" items="${canales}">
-                                                <option value="${c.canCliCod}">${c.canCliCod} - ${c.canCliDet}</option>
-                                            </c:forEach>
-                                        </select>
+                                        <label>Teléfono Fijo:</label>
+                                        <input type="text" class="form-control" placeholder="Teléfono Fijo" name="cliTelFij">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label>Teléfono Celular:</label>
+                                        <input type="text" class="form-control" placeholder="Teléfono Celular" name="cliTelCel">
                                     </div>
                                 </div>
                                 <div class="form-group">
