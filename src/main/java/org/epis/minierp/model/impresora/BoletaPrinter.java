@@ -8,6 +8,7 @@ import javax.xml.bind.annotation.XmlType;
     "size",
     "leftMargin",
     "rightMargin",
+    "botMargin",
     "topMargin",
     "cliNom",
     "cliDir",
@@ -35,6 +36,7 @@ public class BoletaPrinter {
     float leftMargin;
     float rightMargin;
     float topMargin;
+    float botMargin;
     float cliNom;
     float cliDir;
     float fecEmi;
@@ -88,6 +90,14 @@ public class BoletaPrinter {
 
     public void setTopMargin(float topMargin) {
         this.topMargin = topMargin;
+    }
+
+    public float getBotMargin() {
+        return botMargin;
+    }
+
+    public void setBotMargin(float botMargin) {
+        this.botMargin = botMargin;
     }
 
     public float getCliNom() {
