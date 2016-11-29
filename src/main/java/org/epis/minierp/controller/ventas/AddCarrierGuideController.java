@@ -1,10 +1,12 @@
 package org.epis.minierp.controller.ventas;
 
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.epis.minierp.business.logistica.EnP2mGuiaRemTransportistaBusiness;
 import org.epis.minierp.dao.general.EnP1mEmpresaDao;
 import org.epis.minierp.dao.general.EnP2mUnidadTransporteDao;
 import org.epis.minierp.dao.general.TaGzzTipoDestinatarioDao;
@@ -52,7 +54,7 @@ public class AddCarrierGuideController extends HttpServlet {
         bill.setEnP2mGuiaRemTransportista(carrierGuide);
         bill.setEnP1mCatalogoRuta((new EnP1mCatalogoRutaDao()).getById(guiTraRutDes)); //Actualizando la ruta
         billDao.update(bill);
-        
+                
         response.sendRedirect(request.getContextPath() + "/secured/ventas/factura");
     }
 }

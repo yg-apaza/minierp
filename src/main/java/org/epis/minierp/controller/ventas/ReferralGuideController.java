@@ -79,7 +79,7 @@ public class ReferralGuideController extends HttpServlet {
                 response.setCharacterEncoding("UTF-8");
                 response.getWriter().write(new Gson().toJson(data));
                 break;
-                
+             
             case "verify":
                 boolean state = (new EnP1mFacturaVentaCabDao()).verifyReferralGuide(facVenCabCod);
                 data = new JsonObject();
