@@ -43,7 +43,6 @@ public class EnP1mDocumentoClienteDao {
         Query query = session.createQuery("from EnP1mDocumentoCliente E where E.estRegCod = 'A' "
                 + "order by E.id.cliCod, E.id.tipDocCliCod asc");
         List<EnP1mDocumentoCliente> estados = query.list();
-        System.out.println(estados);
         return estados;
     }
     
