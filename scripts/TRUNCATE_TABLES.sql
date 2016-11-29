@@ -43,6 +43,7 @@ TRUNCATE TABLE episerp.en_p4m_proveedor;
 TRUNCATE TABLE episerp.en_p4t_factura_compra_det;
 TRUNCATE TABLE episerp.ta_gzz_banco;
 TRUNCATE TABLE episerp.ta_gzz_canal_cliente;
+TRUNCATE TABLE episerp.ta_gzz_canal_usuario;
 TRUNCATE TABLE episerp.ta_gzz_estado_civil;
 TRUNCATE TABLE episerp.ta_gzz_estado_factura;
 TRUNCATE TABLE episerp.ta_gzz_estado_uni_transporte;

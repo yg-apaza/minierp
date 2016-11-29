@@ -20,9 +20,7 @@
                         </h1>
                     </div>
                     <div class="col-md-4 col-md-offset-4"><br>
-                        <div class="col-md-6">
-                        </div>
-                        <div class="col-md-6">
+                        <div class="col-md-offset-6 col-md-6">
                             <div class="form-group input-group" >
                                 <span class="input-group-addon"><i class="fa fa-book"></i></span>
                                 <input type="text" class="form-control" name="sucDes" value="${libDiaCod}" readonly>
@@ -31,27 +29,25 @@
                     </div>   
                 </div>
                 <div class="row">
-                    <div class="col-lg-3">
-                        <form method="post" action="${pageContext.request.contextPath}/secured/contabilidad/librodiario">
-                            <label>Seleccione Periodo</label>
-                            <div class="form-group input-group" > 
-                                <input type="hidden" name="operacion" value=3>
-                                <select name="libDiaCod" class="form-control">
-                                    <c:forEach items="${libros}" var="l">  
-                                          <option value="${l.libDiaCod}" ${l.libDiaCod == libDiaCod ? 'selected' : ''}>${l.libDiaCod} - ${l.libDiaPer}</option> 
-                                    </c:forEach>
-                                </select>
-                                <span class="input-group-btn">
-                                    <button class="btn btn-default" type="submit">
-                                        <i class="fa fa-eye"></i>
-                                    </button>
-                                </span>
-                            </div>
-                        </form>
+                    <div class="col-md-3">
+                        <a href="${pageContext.request.contextPath}/secured/general/reporte?type=pdf&&report=librodiario&&jdbc=false&&key=null&&value=null" class="btn btn-outline btn-danger btn-lg btn-block">
+                            <i class="fa fa-file-pdf-o"></i>
+                            Reporte [PDF]
+                        </a>
                     </div>
-                    <div class="col-lg-3"></div>
-                    <div class="col-lg-3"></div>
-                    <div class="col-lg-3"> 
+                    <div class="col-md-3">
+                        <a href="${pageContext.request.contextPath}/secured/general/reporte?type=xls&&report=librodiario&&jdbc=false&&key=null&&value=null" class="btn btn-outline btn-success btn-lg btn-block">
+                            <i class="fa fa-file-excel-o"></i>
+                            Reporte [XLS]
+                        </a>
+                    </div>
+                    <div class="col-md-3">
+                        <a href="${pageContext.request.contextPath}/secured/general/reporte?type=doc&&report=librodiario&&jdbc=false&&key=null&&value=null" class="btn btn-outline btn-primary btn-lg btn-block">
+                            <i class="fa fa-file-word-o"></i>
+                            Reporte [DOC]
+                        </a>
+                    </div>
+                    <div class="col-md-3"> 
                         <form method="post" action="${pageContext.request.contextPath}/secured/contabilidad/librodiario">
                             <label>MES</label> 
                             <div class="form-group input-group" >
@@ -81,7 +77,6 @@
                     </div>
                 </div>
                 <br>
-                
                 <div class="row">
 
                     <div class="col-md-12">
@@ -93,7 +88,7 @@
                                 <div class="table-responsive">
                                     <table width="100%" class="table table-striped table-bordered table-hover" id="miTabla">
                                         <thead>
-                                          <tr >
+                                          <tr>
                                             <th rowspan="2">NÚMERO CORRELATIVO <br>DE LA OPERACIÓN</th>
                                             <th rowspan="2">FECHA DE LA <br>OPERACIÓN</th>
                                             <th rowspan="2">GLOSA O DESCRIPCION DE LA <br>OPERACIÓN</th>
@@ -162,87 +157,6 @@
         
         <!--  FIN_PANELDERECHO -->
 
-        <!-- MODAL1 -->
-        <div id="opeAgregar" class="modal fade" role="dialog"><div class="modal-dialog"><div class="modal-content" style="overflow-y: auto">
-            <!-- TITULO-->
-            <div class="modal-header"> <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Agregar Operación al Libro Diario</h4>
-            </div>
-            <!-- FIN_TITULO -->
-            <form method="post" onsubmit= "actualizarDatos('tablaDetalles')" action="${pageContext.request.contextPath}/secured/contabilidad/librodiario">
-                <!-- CONTENIDO -->
-                <div class="modal-body">
-                    <div class="form-group">
-                        <input type="hidden" name="operacion" value=2>
-                        <label>Número Correlativo de la Operación:</label>
-                        <input name="asiCabCod" type="number" class="form-control" required>
-
-                        <label>Seleccione tipo de moneda </label>
-                        <select name="monCod" class="form-control">
-                            <c:forEach items="${monedas}" var="m">  
-                                  <option value="${m.monCod}" >${m.monDet}</option> 
-                              </c:forEach>
-                        </select>
-                        <label>Seleccione tipo de comprobante</label>
-                        <select name="tipComCod" class="form-control">
-                              <c:forEach items="${comprobantes}" var="co">  
-                                  <option value="${co.tipComCod}" >${co.tipComDet}</option> 
-                              </c:forEach>
-                        </select>
-                        <label>Fecha de la Operación:</label>  
-                        <input name="asiCabFec" type="date" class="form-control" required>
-                        <label>Glosa de la Operación:</label>
-                        <input name="asiCabGlo" type="text" class="form-control" required> 
-                        <label>Código del Registro:</label>
-                        <input name="asiCabTip" type="text" class="form-control" required>
-                        <label>Número del Documento:</label>
-                        <input name="asiCabNumCom" type="text" class="form-control" required> 
-                    </div>
-                    
-                    <div class="table-responsive">
-                        <table width="100%" class="table table-striped table-bordered table-hover" id="tablaDetalles">
-                            <thead>
-                                <th colspan="2">Cuenta</th>
-                                <th>Debe</th>
-                                <th>Haber</th>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>  
-                                        <input type="checkbox">
-                                    </td>
-                                    <td>
-                                        <select class="form-control">
-                                            <c:forEach items="${cuentas}" var="cu">  
-                                                <option value="${cu.cueCod}" >${cu.cueDes}</option> 
-                                            </c:forEach>
-                                        </select>
-                                    </td>
-                                    <td><input type="number" step="0.01" min="0.00" value=0.00 class="form-control"></td>
-                                    <td><input type="number" step="0.01" min="0.00" value=0.00 class="form-control"></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <input type="hidden" class="form-control" name="dataTable" id="idDataTable">
-                    <div class="form-group"> 
-                        <button type="button" class="btn btn-success" onclick="agregarFila('tablaDetalles')"><i class="fa fa-plus"></i></button>
-                        <button type="button" class="btn btn-danger" onclick="eliminarFila('tablaDetalles')"><i class="fa fa-minus"></i></button>
-                    </div>
-                    
-                </div>
-                <!-- FIN CONTENIDO-->
-
-                <!-- PIE -->
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                  <button type="submit" class="btn btn-default">Agregar</button>
-                </div>
-                <!-- FIN PIE -->
-            </form>
-        </div></div></div>
-        <!-- FIN MODAL1 -->
-        
         <!-- MODAL2 -->
         <div id="libDiarAgregar" class="modal fade" role="dialog"><div class="modal-dialog"><div class="modal-content" style="overflow-y: auto">
             <!-- TITULO-->
@@ -296,74 +210,13 @@
             </form>
         </div></div></div>
         <!-- FIN MODAL3 -->
-        
-        
-        
+
         <script language="javascript">
             $(document).ready(function() {
                 $('#miTabla').DataTable({
                     responsive: true
                 });
             });
-            $(document).ready(function () {
-                $("#tablaDetalles").change(actualizarDatos('tablaDetalles'));
-            });
-            
-            
-            function agregarFila(idTabla) {
-                var tabla = document.getElementById(idTabla);
-                var nuevaFila = tabla.insertRow(tabla.rows.length);
-
-                for (var i = 0; i < tabla.rows[1].cells.length; i++) {
-                    var nuevaCelda = nuevaFila.insertCell(i);
-                    nuevaCelda.innerHTML = tabla.rows[1].cells[i].innerHTML;
-                }
-            }
-            function eliminarFila(idTabla) {
-                try {
-                    var tabla = document.getElementById(idTabla);
-                    var rowCount = tabla.rows.length;
-                    
-                    for (var i = 1; i < rowCount ; i++) {
-                        var fila = tabla.rows[i];
-                        var mCheckbox = fila.cells[0].getElementsByTagName("input")[0];
-                        if (mCheckbox.checked == true) {
-                            if (rowCount - 1 <= 1) {
-                                break;
-                            }
-                            tabla.deleteRow(i);
-                            rowCount--;
-                            i--;
-                        }
-                    }
-
-                    actualizarDatos(idTabla);
-                } catch (e) {
-                    alert(e);
-                }
-            }
-            function actualizarDatos(idTabla) {
-                try {
-                    
-                    var tabla = document.getElementById(idTabla);
-                    var aTabla = new Array();
-                    for (var i = 1; i < tabla.rows.length; i++) {
-                        
-                        var afila  = new Array();
-                        afila[0] = tabla.rows[i].cells[1].childNodes[1].value;
-                        afila[1] = tabla.rows[i].cells[2].childNodes[0].value;
-                        afila[2] = tabla.rows[i].cells[3].childNodes[0].value;
-                        
-                        aTabla.push(afila);
-                    }
-                    console.log(aTabla);
-                    $('#idDataTable').val(aTabla);
-                    
-                } catch (e) {
-                    alert(e);
-                }
-            }
-            
         </script>
         
     </jsp:attribute>

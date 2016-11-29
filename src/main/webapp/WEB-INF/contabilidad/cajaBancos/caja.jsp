@@ -48,7 +48,7 @@
                 </form>
             </div>
                         
-            <div class="table-responsive">
+            <div class="table-responsive" id="dvData2" >
                 <table class="table table-bordered table-striped table-hover">
                     <thead>
                         <tr>
@@ -85,24 +85,126 @@
             </div>
             <div>
                 <div class="col-sm-4">
+                    <a href="javascript:imprSelec('dvData')" class="btn btn-outline btn-danger btn-lg btn-block">
+                        <i class="fa fa-file-pdf-o"></i>
+                        Reporte [PDF]
+                    </a>
+                    <!--
                     <a href="${pageContext.request.contextPath}/secured/general/reporte?type=pdf&&report=libroCaja&&jdbc=false&&key=null&&value=null" class="btn btn-outline btn-danger btn-lg btn-block">
                         <i class="fa fa-file-pdf-o"></i>
                         Reporte [PDF]
                     </a>
+                    
+                    -->
                 </div>
-                <div class="col-sm-4">   
-                    <a href="${pageContext.request.contextPath}/secured/general/reporte?type=xls&&report=libroCaja&&jdbc=false&&key=null&&value=null" class="btn btn-outline btn-success btn-lg btn-block">
+                <div class="col-sm-4"> 
+                    <a href="" class="btn btn-outline btn-success btn-lg btn-block" id="btnExport">
                         <i class="fa fa-file-excel-o"></i>
                         Reporte [XLS]
                     </a>
+                    <!--<a href="${pageContext.request.contextPath}/secured/general/reporte?type=xls&&report=libroCaja&&jdbc=false&&key=null&&value=null" class="btn btn-outline btn-success btn-lg btn-block">
+                        <i class="fa fa-file-excel-o"></i>
+                        Reporte [XLS]
+                    </a>
+                    -->
                 </div>
+                <!--
                 <div class="col-sm-4">      
                     <a href="${pageContext.request.contextPath}/secured/general/reporte?type=doc&&report=libroCaja&&jdbc=false&&key=null&&value=null" class="btn btn-outline btn-primary btn-lg btn-block">
                         <i class="fa fa-file-word-o"></i>
                         Reporte [DOC]
                     </a>
                 </div>
+                -->
             </div>
+            <!---
+            -->
+            <div id="dvData" style='display:none;'>
+                <div class="form-group">
+                        <table>
+                            <tr>
+                                <td><b> Periodo &nbsp de &nbsp apertura: &nbsp&nbsp&nbsp </b> </td>
+                                <td><b> ${libros.libDiaCod} - ${libros.libDiaPer} </b> </td>
+                            </tr>
+                            <tr>
+                                <td><b>  RUC: </b></td>
+                                <td> <b>  ${empresa.empRuc} </b> </td>
+                            </tr>
+                            <tr>
+                                <td><b>  Apellidos &nbsp y &nbsp Nombres, &nbsp Denominacion &nbsp o &nbsp Razon &nbsp Social: </b> </td>
+                                <td><b> ${empresa.empNomCom} </b> </td>
+
+                            </tr>
+                            <tr>
+                                <td><b>  Mes: </b> </td>
+                                <td><b> ${fecha_Filtro} </b> </td>
+                            </tr>
+                        </table>
+                        
+                        <br><br>
+                        
+                    </div>                    
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th  >Numero &nbsp Correlativo &nbsp del &nbsp Registro &nbsp  &nbsp codigo &nbsp unico &nbsp de &nbsp operacion</th>
+                            <th  >Fecha &nbsp de &nbsp operacion</th>
+                            <th  >Codigo &nbsp de &nbsp la &nbsp Cuenta &nbsp Asociada</th>
+                            <th  >Denominacion &nbsp de &nbsp la &nbsp Cuenta &nbsp Asociada</th>
+                            <th  >Deudor</th>
+                            <th  >Acreedor</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                       <c:forEach items="${operaciones}" var="u"> 
+                                <tr>
+                                    <td>${u.asiDetCod}</td>
+                                    <td><fmt:formatDate value="${u.asiCabFec}" pattern="dd/MM/yyyy" /></td>
+                                    <td>${u.cueNum}</td>
+                                    <td>${u.cueDes}</td>
+                                    <td>${u.debe}</td>
+                                    <td>${u.haber}</td>
+                                </tr>
+                        </c:forEach>                                             
+                    </tbody>                    
+                </table>
+                <table >
+                    <tbody>
+                    <tr >
+                        <td > <b> TOTALES </b> </td>
+                        <td > <b>  </b> </td>
+                        <td > <b>  </b> </td>
+                        <td > <b>  </b> </td>
+                        <td > <b> ${totales.debe} </b> </td>
+                        <td > <b> ${totales.haber} </b> </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+            <script type="text/javascript">
+            function imprSelec(muestra)
+            {
+                    var ficha=document.getElementById(muestra);
+                    var ventimp=window.open(' ','popimpr');
+                    ventimp.document.write(ficha.innerHTML);
+                    ventimp.document.close();
+                    ventimp.print();
+                    ventimp.close();
+            }
+            </script>            
+            <!--<input type="button" id="btnExport" value=" Export Table data into Excel " />-->
+            <script>
+            $("#btnExport").click(function (e) {
+                window.open('data:application/vnd.ms-excel,' + $('#dvData').html());
+                e.preventDefault();
+            });
+            </script>
+            
+            
+
         </div>
     </jsp:attribute>
 </minierptemplate:template>

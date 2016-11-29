@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Clientes" language="groovy" pageWidth="842" pageHeight="555" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8be6e06b-dbdb-439f-b7cd-595198b58d5a">
+	<property name="ireport.zoom" value="1.100000000000002"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="IMAGE" class="java.lang.String"/>
+	<queryString language="hql">
+		<![CDATA[From LibroDiarioView]]>
+	</queryString>
+	<field name="asiCabFec" class="java.util.Date"/>
+	<field name="asiCabGlo" class="java.lang.String"/>
+	<field name="asiCabNumCom" class="java.lang.String"/>
+	<field name="asiCabTip" class="java.lang.Character"/>
+	<field name="asiDetDebHab" class="java.lang.Boolean"/>
+	<field name="asiDetMon" class="java.lang.Double"/>
+	<field name="cueCod" class="java.lang.Integer"/>
+	<field name="cueDes" class="java.lang.String"/>
+	<field name="cueNum" class="java.lang.String"/>
+	<field name="estRegCod" class="java.lang.String"/>
+	<field name="idPK" class="org.epis.minierp.model.contabilidad.LibroDiarioPKView"/>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="67">
+			<staticText>
+				<reportElement mode="Opaque" x="23" y="15" width="779" height="20" uuid="de06f141-209a-4eca-911a-b895d32e1859"/>
+				<textElement textAlignment="Center" markup="none">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA["LIBRO DIARIO"
+]]></text>
+			</staticText>
+			<image scaleImage="RetainShape" onErrorType="Blank">
+				<reportElement x="19" y="11" width="203" height="46" uuid="dc95073f-181d-4f73-94b9-e55fce80c7e4"/>
+				<imageExpression><![CDATA[$P{IMAGE}]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="34">
+			<line>
+				<reportElement x="0" y="33" width="802" height="1" forecolor="#666666" uuid="8ab4ce63-1958-43c4-93eb-94f91aca48bd"/>
+			</line>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="156" y="4" width="190" height="30" uuid="23eb01e4-21f9-4b65-b112-21ef81e4e730"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Glosa o descripción de la operación]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="346" y="0" width="80" height="32" uuid="d1e130a9-b92f-4c0d-9909-637ce51d85b9"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Cuenta Contable]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="2" width="90" height="30" uuid="bfa93001-5329-4d0d-b771-27dd2f99d214"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Nro. Correlativo del Asiento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="90" y="2" width="66" height="30" uuid="04e82cd3-cade-41bc-a5eb-014766b3a4d2"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Fecha de la operación]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="426" y="2" width="209" height="30" uuid="eb78884d-8d93-4e95-8680-ec1a7724611a"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Denominación]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="635" y="3" width="80" height="31" uuid="d07e982c-904a-4fe1-a02a-4822f22a6ab4"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Debe]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="715" y="3" width="87" height="31" uuid="d5267639-ad3c-4ef4-a29f-4ee17c6e53cc"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Haber]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="1" width="802" height="1" forecolor="#666666" uuid="15db5658-fc60-4535-b3aa-72fd332fde3b"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<textField>
+				<reportElement x="90" y="0" width="66" height="20" uuid="b2d50b9c-822a-4f57-b4f7-27f82199de1f"/>
+				<textElement textAlignment="Justified"/>
+				<textFieldExpression><![CDATA[$F{asiCabFec}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="156" y="0" width="190" height="20" uuid="81476892-c512-43ef-bf18-e012225389d3"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{asiCabGlo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="346" y="0" width="80" height="20" uuid="781b95d8-674d-4a0a-b899-ce2fad90b102"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{cueNum}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="635" y="0" width="80" height="20" uuid="ffa7c58d-e3be-4719-b0b7-f8f3683ca9e4"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{asiDetDebHab}?$F{asiDetMon}:0]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="715" y="0" width="87" height="20" uuid="dfcfc999-cfdb-4d45-9d37-954d58a1cc3d"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{asiDetDebHab}?0:$F{asiDetMon}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="802" height="1" uuid="791fb5d8-aa30-43ef-8e4c-48f291e70bb6"/>
+			</line>
+			<textField>
+				<reportElement x="0" y="0" width="90" height="20" uuid="ba28767a-7011-4889-a10e-b06f1fc1942e"/>
+				<textElement textAlignment="Justified"/>
+				<textFieldExpression><![CDATA[$F{idPK}.getAsiCabCod()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="426" y="0" width="209" height="20" uuid="f6eae911-4ffe-4dfc-bd8d-de308add7517"/>
+				<textFieldExpression><![CDATA[$F{cueDes}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+</jasperReport>

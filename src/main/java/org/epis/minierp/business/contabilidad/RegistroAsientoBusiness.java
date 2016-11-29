@@ -2,6 +2,7 @@ package org.epis.minierp.business.contabilidad;
 
 import java.util.Date;
 import java.util.Iterator;
+import java.util.List;
 import org.epis.minierp.dao.contabilidad.AsientoCabDao;
 import org.epis.minierp.dao.contabilidad.AsientoDetDao;
 import org.epis.minierp.dao.contabilidad.CuentaDao;
@@ -13,6 +14,8 @@ import org.epis.minierp.model.EnP3mAsientoCabId;
 import org.epis.minierp.model.EnP3mCuenta;
 import org.epis.minierp.model.EnP3tAsientoDet;
 import org.epis.minierp.model.EnP3tAsientoDetId;
+import org.epis.minierp.model.EnP4mFacturaCompraCab;
+import org.epis.minierp.model.EnP4tFacturaCompraDet;
 import org.epis.minierp.model.TaGzzMoneda;
 import org.epis.minierp.model.TaGzzTipoComprobante;
 
@@ -25,6 +28,84 @@ public class RegistroAsientoBusiness
         daoAsientoCab = new AsientoCabDao();
         daoAsientoDet = new AsientoDetDao();
     }
+    
+    
+    public void generarAsientosAmarre(EnP4mFacturaCompraCab facturaCompraCab){
+        System.out.println("\n\nentraAmarre: "+facturaCompraCab.getEnP4tFacturaCompraDets().size());
+        LibroDiarioDao libDiaDao = new LibroDiarioDao();
+//        Iterator it = facturaCompraCab.getEnP4tFacturaCompraDets().iterator();
+//        while(it.hasNext()){
+//            EnP4tFacturaCompraDet facturaCompraDet = (EnP4tFacturaCompraDet)it.next();
+//            
+//        }
+        EnP3mAsientoCab asiCab = new EnP3mAsientoCab();
+        int asiCabCod = daoAsientoCab.getNext();
+        int libDiaCod = libDiaDao.getCurrent().getLibDiaCod();
+        
+        EnP3mAsientoCabId  asientoCabId = new EnP3mAsientoCabId();
+        //asientoCabId.setAsiCabCod(asiCabCod);
+        asientoCabId.setLibDiaCod(libDiaCod);
+        
+        asiCab.setTaGzzMoneda(facturaCompraCab.getTaGzzMoneda());
+        //asiCab.setTaGzzTipoComprobante();
+        asiCab.setAsiCabFec(new Date());
+        asiCab.setAsiCabGlo("Asiento Amarre");
+        asiCab.setAsiCabTip('M');
+        //asiCab.setAsiCabNumCom();
+        asiCab.setId(asientoCabId);
+        asiCab.setEstRegCod('A');   
+        
+        
+        Iterator it =  facturaCompraCab.getEnP4tFacturaCompraDets().iterator();
+        boolean flag = true;
+        
+        int cont=1;
+        
+        while(it.hasNext()){
+            EnP4tFacturaCompraDet facturaCompraDet = (EnP4tFacturaCompraDet)it.next();
+           
+            EnP3mCuenta enP3mCuentaDebe = facturaCompraDet.getEnP2mProducto().getEnP3mCuentaByCueComCod().getEnP3mCuentaByCueAmaDeb();
+            EnP3mCuenta enP3mCuentaHaber = facturaCompraDet.getEnP2mProducto().getEnP3mCuentaByCueComCod().getEnP3mCuentaByCueAmaHab();
+            
+            if(enP3mCuentaDebe == null  || enP3mCuentaHaber == null)
+                continue;
+            else if(flag){
+                daoAsientoCab.save(asiCab); 
+                flag=false;  
+            }
+            
+            System.out.println(enP3mCuentaDebe.getCueCod());
+
+            //1er ASIENTO_DETALLE DEBE
+            
+            EnP3tAsientoDetId asientoDetId1 = new EnP3tAsientoDetId();
+            asientoDetId1.setAsiCabCod(asiCabCod);
+            asientoDetId1.setLibDiaCod(libDiaCod);
+            asientoDetId1.setAsiDetCod(cont++); 
+
+            EnP3tAsientoDet asiDet1 = new EnP3tAsientoDet();
+            asiDet1.setAsiDetDebHab(true);
+            asiDet1.setAsiDetMon(facturaCompraDet.getFacComDetValUni());
+            asiDet1.setEnP3mCuenta(enP3mCuentaDebe);
+            asiDet1.setId(asientoDetId1);
+            daoAsientoDet.save(asiDet1); 
+
+            //2do ASIENTO_DETALLE HABER
+
+            EnP3tAsientoDetId asientoDetId2 = new EnP3tAsientoDetId();
+            asientoDetId2.setAsiCabCod(asiCabCod);
+            asientoDetId2.setLibDiaCod(libDiaCod);
+            asientoDetId2.setAsiDetCod(cont++); 
+
+            EnP3tAsientoDet asiDet2 = new EnP3tAsientoDet();
+            asiDet2.setAsiDetDebHab(false);
+            asiDet2.setAsiDetMon(facturaCompraDet.getFacComDetValUni());
+            asiDet2.setEnP3mCuenta(enP3mCuentaHaber);
+            asiDet2.setId(asientoDetId2);
+            daoAsientoDet.save(asiDet2);            
+        }
+    }
+    
     
     public void generarAsientosAmarre(EnP3mAsientoCab asientoCab)
     {
