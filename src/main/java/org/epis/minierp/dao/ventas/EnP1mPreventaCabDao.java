@@ -27,6 +27,16 @@ public class EnP1mPreventaCabDao {
         System.out.println(estados);
         return estados;
     }
+    
+    public List<EnP1mPreventaCab> getAllActive4UsuCod(String usuCod) {
+        Query query = session.createQuery("from EnP1mPreventaCab E "
+                + "where E.estRegCod = 'A' and "
+                + "E.enP1mUsuario.usuCod = :usucod");
+        query.setParameter("usucod", usuCod);
+        List<EnP1mPreventaCab> estados = query.list();
+        System.out.println(estados);
+        return estados;
+    }
 
     public EnP1mPreventaCab getById(String id) {
         EnP1mPreventaCab estado = null;
