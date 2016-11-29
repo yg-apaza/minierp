@@ -467,7 +467,7 @@
                 source: productDescriptions
             });
 
-            $('#proCodShow').keyup(function () {
+            $('#proCodShow').on('keyup click',function () {
                 if (codeCriteria) {
                     $.post(
                             "${pageContext.request.contextPath}/secured/ventas/searchProduct", {
@@ -475,6 +475,7 @@
                                 proDet: ""
                             }
                     ).done(function (data) {
+                        $('#proCodShow').click();
                         if (data.proCod != null) {
                             $("#proDesShow").val(data.proDet);
                             $("#priceShow").val(data.proPreUni);
@@ -487,7 +488,7 @@
                 }
             });
 
-            $('#proDesShow').keyup(function () {
+            $('#proDesShow').on('keyup click',function () {
                 if (!codeCriteria) {
                     $.post(
                             "${pageContext.request.contextPath}/secured/ventas/searchProduct", {
@@ -495,6 +496,7 @@
                                 proDet: $("#proDesShow").val()
                             }
                     ).done(function (data) {
+                        $('#proDesShow').click();
                         if (data.proCod != null) {
                             $("#proCodShow").val(data.proCod);
                             $("#priceShow").val(data.proPreUni);
@@ -507,7 +509,7 @@
                 }
             });
 
-            $('#cliCodShow').keyup(function () {
+            $('#cliCodShow').on('keyup click',function () {
                 if (codeClientCriteria) {
                     $.post(
                             "${pageContext.request.contextPath}/secured/ventas/searchClient", {
@@ -516,6 +518,7 @@
                                 cliCod: $("#cliCodShow").val()
                             }
                     ).done(function (data) {
+                        $('#cliCodShow').click();
                         if (data.cliCod != null) {
                             $("#preCli").val(data.cliCod);
                             $("#cliDesShow").val(data.cliRazSoc);
@@ -527,7 +530,7 @@
                 }
             });
 
-            $('#cliDesShow').keyup(function () {
+            $('#cliDesShow').on('keyup click',function () {
                 if (!codeClientCriteria) {
                     $.post(
                             "${pageContext.request.contextPath}/secured/ventas/searchClient", {
@@ -536,6 +539,7 @@
                                 cliDes: $("#cliDesShow").val()
                             }
                     ).done(function (data) {
+                        $('#cliDesShow').click();
                         if (data.cliCod != null) {
                             $("#preCli").val(data.cliCod);
                             $("#cliCodShow").val(data.cliCod);
