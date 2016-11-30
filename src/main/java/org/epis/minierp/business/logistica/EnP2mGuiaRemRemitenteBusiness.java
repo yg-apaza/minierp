@@ -86,7 +86,7 @@ public class EnP2mGuiaRemRemitenteBusiness {
         guiaRemRem.setEstRegCod(estRegCod);
         guiRemRemDao.saveOrUpdate(guiaRemRem);
         
-                //factura seleccionada
+        //factura seleccionada
         EnP1mFacturaVentaCab facCab = facCabVenDao.getById(facVenCabCod);
         facCab.setEnP2mGuiaRemRemitente(guiaRemRem);
         facCabVenDao.update(facCab); 

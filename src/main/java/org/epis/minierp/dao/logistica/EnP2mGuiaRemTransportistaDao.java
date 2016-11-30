@@ -1,6 +1,7 @@
 
 package org.epis.minierp.dao.logistica;
 
+import java.util.ArrayList;
 import java.util.List;
 import org.epis.minierp.model.EnP2mGuiaRemTransportista;
 import org.epis.minierp.util.HibernateUtil;
@@ -19,13 +20,26 @@ public class EnP2mGuiaRemTransportistaDao {
     
     public List<EnP2mGuiaRemTransportista> getAll() {
         Query query = session.createQuery("from EnP2mGuiaRemTransportista");
-        List<EnP2mGuiaRemTransportista> estados = query.list();
+        List<EnP2mGuiaRemTransportista> guias = query.list();
+        List<EnP2mGuiaRemTransportista> estados = new ArrayList<>();
+        for (EnP2mGuiaRemTransportista guia : guias) {
+            if (!guia.getEnP1mFacturaVentaCabs().isEmpty()) {
+                estados.add(guia);
+            }
+        }
+        System.out.println(estados);
         return estados;
     }
 
     public List<EnP2mGuiaRemTransportista> getAllActive() {
         Query query = session.createQuery("from EnP2mGuiaRemTransportista E where E.estRegCod = 'A'");
-        List<EnP2mGuiaRemTransportista> estados = query.list();
+        List<EnP2mGuiaRemTransportista> guias = query.list();
+        List<EnP2mGuiaRemTransportista> estados = new ArrayList<>();
+        for (EnP2mGuiaRemTransportista guia : guias) {
+            if (!guia.getEnP1mFacturaVentaCabs().isEmpty()) {
+                estados.add(guia);
+            }
+        }
         System.out.println(estados);
         return estados;
     }
