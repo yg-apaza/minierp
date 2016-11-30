@@ -467,7 +467,8 @@
                 source: productDescriptions
             });
 
-            $('#proCodShow').on('keyup click',function () {
+            //$('#proCodShow').on('keyup click',function () {
+            $('#proCodShow').keyup(function () {
                 if (codeCriteria) {
                     $.post(
                             "${pageContext.request.contextPath}/secured/ventas/searchProduct", {
@@ -475,7 +476,11 @@
                                 proDet: ""
                             }
                     ).done(function (data) {
-                        $('#proCodShow').click();
+                        //$('#proCodShow').click();
+                        var e = jQuery.Event("keypress");
+                        e.which = 13;
+                        e.keyCode = 13;
+                        $("#proCodShow").trigger(e);
                         if (data.proCod != null) {
                             $("#proDesShow").val(data.proDet);
                             $("#priceShow").val(data.proPreUni);
@@ -487,8 +492,9 @@
                     });
                 }
             });
-
-            $('#proDesShow').on('keyup click',function () {
+            
+            //$('#proDesShow').on('keyup click',function () {
+            $('#proDesShow').keyup(function () {
                 if (!codeCriteria) {
                     $.post(
                             "${pageContext.request.contextPath}/secured/ventas/searchProduct", {
@@ -496,7 +502,11 @@
                                 proDet: $("#proDesShow").val()
                             }
                     ).done(function (data) {
-                        $('#proDesShow').click();
+                        //$('#proDesShow').click();
+                        var e = jQuery.Event("keypress");
+                        e.which = 13;
+                        e.keyCode = 13;
+                        $("#proDesShow").trigger(e);
                         if (data.proCod != null) {
                             $("#proCodShow").val(data.proCod);
                             $("#priceShow").val(data.proPreUni);
@@ -508,8 +518,9 @@
                     });
                 }
             });
-
-            $('#cliCodShow').on('keyup click',function () {
+            
+            //$('#cliCodShow').on('keyup click',function () {
+            $('#cliCodShow').keyup(function () {
                 if (codeClientCriteria) {
                     $.post(
                             "${pageContext.request.contextPath}/secured/ventas/searchClient", {
@@ -518,7 +529,11 @@
                                 cliCod: $("#cliCodShow").val()
                             }
                     ).done(function (data) {
-                        $('#cliCodShow').click();
+                        //$('#cliCodShow').click();
+                        var e = jQuery.Event("keypress");
+                        e.which = 13;
+                        e.keyCode = 13;
+                        $("#cliCodShow").trigger(e);
                         if (data.cliCod != null) {
                             $("#preCli").val(data.cliCod);
                             $("#cliDesShow").val(data.cliRazSoc);
@@ -529,8 +544,9 @@
                     });
                 }
             });
-
-            $('#cliDesShow').on('keyup click',function () {
+            
+            //$('#cliDesShow').on('keyup click',function () {
+            $('#cliDesShow').keyup(function () {
                 if (!codeClientCriteria) {
                     $.post(
                             "${pageContext.request.contextPath}/secured/ventas/searchClient", {
@@ -539,7 +555,11 @@
                                 cliDes: $("#cliDesShow").val()
                             }
                     ).done(function (data) {
-                        $('#cliDesShow').click();
+                        //$('#cliDesShow').click();
+                        var e = jQuery.Event("keypress");
+                        e.which = 13;
+                        e.keyCode = 13;
+                        $("#cliDesShow").trigger(e);
                         if (data.cliCod != null) {
                             $("#preCli").val(data.cliCod);
                             $("#cliCodShow").val(data.cliCod);
