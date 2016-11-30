@@ -140,8 +140,8 @@ public class Impresora {
             igv = subTotal * f.getFacVenCabIgv() / 100;
             total = f.getFacVenCabTot();
             fac.writeFacTotal(df.format(subTotal), df.format(igv), df.format(total));
-
-            fac.newPage();
+            //fac.newLine();
+            //fac.newPage();
         }
         fac.close();
         } catch (IOException ex) {
@@ -187,8 +187,8 @@ public class Impresora {
                 bol.addLines(MAX_BOL_DET - proCod); 
                 total = f.getFacVenCabTot();
                 bol.writeBolTotal(df.format(total));
-
-                bol.newPage();
+                //bol.newLine();
+                //bol.newPage();
             }
             bol.close();
         } catch (IOException ex) {
@@ -236,8 +236,10 @@ public class Impresora {
                     
                     rem.writeGuiRemDetalle(Integer.toString(proCod), proCan, proUni, proDes, proValUni, proDes1, df.format(proValNet));
                 }
-                rem.addLines(MAX_REM_DET - proCod); 
-                rem.newPage();
+                rem.addLines(MAX_REM_DET - proCod);
+                rem.writeGuiRemTotal();
+                //rem.newLine();
+                //rem.newPage();
             }
         rem.close();
         } catch (IOException ex) {
@@ -249,7 +251,7 @@ public class Impresora {
     public void sendToPrinter(File f){
         try {
             String printerName;
-            String ipAddress = "127.0.0.1";
+            String ipAddress = "localhost";
             
             PrintService printer = PrintServiceLookup.lookupDefaultPrintService();
             printerName = printer.getName();

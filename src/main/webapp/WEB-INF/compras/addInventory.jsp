@@ -85,11 +85,11 @@
         <script language="javascript"> 
             $('#proCod').bind('input', function(){
                 var length = $("#proCod").val().length;
-                if (length >= 13) {  
+                //if (length >= 13) {  
                     var actualValue = $("#id_table").find('tr#'+$("#proCod").val()).find('td:eq(4)').html();
                     $("#id_table").find('tr#'+$("#proCod").val()).find('td:eq(4)').html(parseInt(actualValue)+1);
                     $("#proCod").val('');
-                }
+                //}
             });
             
             $('#id_table').DataTable({

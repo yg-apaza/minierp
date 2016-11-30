@@ -515,7 +515,7 @@
                 source: productDescriptions
             });
 
-            $('#proCodShow').keyup(function () {
+            $('#proCodShow').on('keyup click',function () {
                 if (codeProductCriteria) {
                     $.post(
                             "${pageContext.request.contextPath}/secured/ventas/searchProduct", {
@@ -523,6 +523,7 @@
                                 proDet: ""
                             }
                     ).done(function (data) {
+                        $('#proCodShow').click();                        
                         if (data.proCod != null) {
                             $("#proDesShow").val(data.proDet);
                             $('#unitShow').val(data.proUnit);
@@ -533,7 +534,7 @@
                 }
             });
 
-            $('#proDesShow').keyup(function () {
+            $('#proDesShow').on('keyup click',function () {
                 if (!codeProductCriteria) {
                     $.post(
                             "${pageContext.request.contextPath}/secured/ventas/searchProduct", {
@@ -541,6 +542,7 @@
                                 proDet: $("#proDesShow").val()
                             }
                     ).done(function (data) {
+                        $('#proDesShow').click();                        
                         if (data.proCod != null) {
                             $("#proCodShow").val(data.proCod);
                             $('#unitShow').val(data.proUnit);
@@ -551,7 +553,7 @@
                 }
             });
 
-            $('#prvDesShow').keyup(function () {
+$('#prvDesShow').keyup(function () {
                 $.post(
                         "${pageContext.request.contextPath}/secured/compras/factura/searchSupplier", {
                             action: "search",
