@@ -30,7 +30,7 @@ public class ImpresoraBoletaController extends HttpServlet {
         BoletaPrinter bPrinter = bolDAO.read();
         
         /* int size = Int.parseInteger(request.getParameter("size")); */
-        
+        String name = request.getParameter("name");
         float leftMargin = Float.parseFloat(request.getParameter("leftMargin"));
         float topMargin = Float.parseFloat(request.getParameter("topMargin"));
         float botMargin = Float.parseFloat(request.getParameter("botMargin"));
@@ -57,7 +57,8 @@ public class ImpresoraBoletaController extends HttpServlet {
         float proValVen = Float.parseFloat(request.getParameter("proValVen"));
         float proDes1 = Float.parseFloat(request.getParameter("proDes1"));
         float proPreNet = Float.parseFloat(request.getParameter("proPreNet"));
-               
+        
+        bPrinter.setName(name);
         bPrinter.setCliNom(cliNom);
         bPrinter.setCliDir(cliDir);
         bPrinter.setFecEmi(fecEmi);

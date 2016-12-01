@@ -101,6 +101,18 @@ public class ImpresoraMatricial {
         }       
     }
     
+    public String getName(){
+        switch(type){
+            case "factura":
+                return fP.getName();
+            case "boleta":
+                return bP.getName();
+            case "remision":
+                return gP.getName();
+        }
+        return "Epson";
+    }
+    
     public void setSize(int v) throws IOException{
         switch (v){
             case 0: select10CPI(); break;

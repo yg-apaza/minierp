@@ -5,6 +5,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlRootElement (name="remisionPrinter")
 @XmlType(propOrder = {
+    "name",
     "size",
     "leftMargin",
     "rightMargin",
@@ -36,6 +37,7 @@ import javax.xml.bind.annotation.XmlType;
 })
 
 public class RemisionPrinter {
+    String name;
     int size;
     float leftMargin;
     float rightMargin;
@@ -68,6 +70,14 @@ public class RemisionPrinter {
     public RemisionPrinter() {
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+    
     public int getSize() {
         return size;
     }

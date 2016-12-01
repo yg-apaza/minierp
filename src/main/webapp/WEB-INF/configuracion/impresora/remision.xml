@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <remisionPrinter>
+    <name>Epson</name>
     <size>2</size>
     <leftMargin>2</leftMargin>
     <rightMargin>1</rightMargin>

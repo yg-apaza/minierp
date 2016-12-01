@@ -97,60 +97,61 @@ public class Impresora {
         return file;
     }
     
-    public String generateFacturas(String[] cods){
+    public String[] generateFacturas(String[] cods){
         String file = "Facturas_"+sf.format(date.getTime())+extension;
         ImpresoraMatricial fac = new ImpresoraMatricial(file, path, "factura");
         try {
-        for (String cod : cods){
-            EnP1mFacturaVentaCab f = (new EnP1mFacturaVentaCabDao()).getById(cod);
+            for (String cod : cods){
+                EnP1mFacturaVentaCab f = (new EnP1mFacturaVentaCabDao()).getById(cod);
 
-            cliNom = f.getEnP1mCliente().getCliNom();
-            cliDir = f.getEnP1mCliente().getCliDir();
-            fecEmi = fecha.format(f.getFacVenCabFecEmi());
-            fac.writeFacSobCab(cliNom, cliDir, fecEmi);
+                cliNom = f.getEnP1mCliente().getCliNom();
+                cliDir = f.getEnP1mCliente().getCliDir();
+                fecEmi = fecha.format(f.getFacVenCabFecEmi());
+                fac.writeFacSobCab(cliNom, cliDir, fecEmi);
 
-            cliCod = f.getEnP1mCliente().getCliCod();
-            conPag = f.getTaGzzMetodoPagoFactura().getMetPagDet();
-            fecVen = fecha.format(f.getFacVenCabFecVen());
-            venZon = f.getEnP1mUsuario().getUsuNom();
-            numSec = " ";
-            dis = " ";
-            rut = Integer.toString(f.getEnP1mCatalogoRuta().getCatRutCod());
-            if (f.getEnP2mGuiaRemTransportista() == null)
-                    traNom = " ";
-                else
-                    traNom = f.getEnP2mGuiaRemTransportista().getEnP2mTransportista().getTraNom();
-            fac.writeFacCabecera(cliCod, conPag, fecVen, venZon, numSec, dis, rut, traNom);
+                cliCod = f.getEnP1mCliente().getCliCod();
+                conPag = f.getTaGzzMetodoPagoFactura().getMetPagDet();
+                fecVen = fecha.format(f.getFacVenCabFecVen());
+                venZon = f.getEnP1mUsuario().getUsuNom();
+                numSec = " ";
+                dis = " ";
+                rut = Integer.toString(f.getEnP1mCatalogoRuta().getCatRutCod());
+                if (f.getEnP2mGuiaRemTransportista() == null)
+                        traNom = " ";
+                    else
+                        traNom = f.getEnP2mGuiaRemTransportista().getEnP2mTransportista().getTraNom();
+                fac.writeFacCabecera(cliCod, conPag, fecVen, venZon, numSec, dis, rut, traNom);
 
-            proCod = 0;
-            List<EnP1tFacturaVentaDet> detalles = (new EnP1mFacturaVentaCabDao()).getFacVenDets(cod);            
-            for(EnP1tFacturaVentaDet d : detalles){
-                proCod++;
-                proCan = d.getFacVenDetCan();
-                proUni = d.getEnP2mProducto().getTaGzzUnidadMed().getUniMedSim();
-                proDes = d.getEnP2mProducto().getProDet();
-                proValUni = d.getFacVenDetValUni();
-                proDes1 = Integer.toString(f.getFacVenPorDes())+"%";
-                proDes2 = "0%";
-                proValNet = proCan * proValUni;
-                fac.writeFacDetalle(Integer.toString(proCod), proCan, proUni, proDes, proValUni, proDes1, proDes2, df.format(proValNet));
+                proCod = 0;
+                List<EnP1tFacturaVentaDet> detalles = (new EnP1mFacturaVentaCabDao()).getFacVenDets(cod);            
+                for(EnP1tFacturaVentaDet d : detalles){
+                    proCod++;
+                    proCan = d.getFacVenDetCan();
+                    proUni = d.getEnP2mProducto().getTaGzzUnidadMed().getUniMedSim();
+                    proDes = d.getEnP2mProducto().getProDet();
+                    proValUni = d.getFacVenDetValUni();
+                    proDes1 = Integer.toString(f.getFacVenPorDes())+"%";
+                    proDes2 = "0%";
+                    proValNet = proCan * proValUni;
+                    fac.writeFacDetalle(Integer.toString(proCod), proCan, proUni, proDes, proValUni, proDes1, proDes2, df.format(proValNet));
+                }
+                fac.addLines(MAX_FAC_DET - proCod); 
+                subTotal = f.getFacVenCabSubTot();
+                igv = subTotal * f.getFacVenCabIgv() / 100;
+                total = f.getFacVenCabTot();
+                fac.writeFacTotal(df.format(subTotal), df.format(igv), df.format(total));
+                //fac.newLine();
+                //fac.newPage();
             }
-            fac.addLines(MAX_FAC_DET - proCod); 
-            subTotal = f.getFacVenCabSubTot();
-            igv = subTotal * f.getFacVenCabIgv() / 100;
-            total = f.getFacVenCabTot();
-            fac.writeFacTotal(df.format(subTotal), df.format(igv), df.format(total));
-            //fac.newLine();
-            //fac.newPage();
-        }
-        fac.close();
+            fac.close();
         } catch (IOException ex) {
                 Logger.getLogger(Impresora.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return file;
+        String params[] = {file, fac.getName()};
+        return params;
     }
     
-    public String generateBoletas(String[] cods){
+    public String[] generateBoletas(String[] cods){
         String file = "Boletas_"+sf.format(date.getTime())+extension;
         ImpresoraMatricial bol = new ImpresoraMatricial(file, path, "boleta");
         try {
@@ -194,10 +195,11 @@ public class Impresora {
         } catch (IOException ex) {
             Logger.getLogger(Impresora.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return file;
+        String params[] = {file, bol.getName()};
+        return params;
     }
     
-    public String generateGuiaRemision(String[] cods){
+    public String[] generateGuiaRemision(String[] cods){
         String file = "Remision_"+sf.format(date.getTime())+extension;
         ImpresoraMatricial rem = new ImpresoraMatricial(file, path, "remision");
         try {
@@ -245,16 +247,17 @@ public class Impresora {
         } catch (IOException ex) {
             Logger.getLogger(Impresora.class.getName()).log(Level.SEVERE, null, ex);
         }     
-        return file;
+        String params[] = {file, rem.getName()};
+        return params;
     }
     
-    public void sendToPrinter(File f){
+    public void sendToPrinter(File f, String printerName){
         try {
-            String printerName;
+            //String printerName;
             String ipAddress = "localhost";
             
             PrintService printer = PrintServiceLookup.lookupDefaultPrintService();
-            printerName = printer.getName();
+            //printerName = printer.getName();
             String printerDevice = "\\\\" + ipAddress + "\\" + printerName;
             
             String file = f.getAbsolutePath();

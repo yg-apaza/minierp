@@ -5,6 +5,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlRootElement (name="facturaPrinter")
 @XmlType(propOrder = {
+    "name",
     "size",
     "leftMargin",
     "rightMargin",
@@ -35,6 +36,7 @@ import javax.xml.bind.annotation.XmlType;
 })
 
 public class FacturaPrinter {
+    String name;
     int size;
     float leftMargin;
     float rightMargin;
@@ -66,6 +68,14 @@ public class FacturaPrinter {
     public FacturaPrinter() {
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+ 
     public int getSize() {
         return size;
     }

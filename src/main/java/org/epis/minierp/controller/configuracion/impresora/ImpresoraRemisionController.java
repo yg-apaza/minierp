@@ -30,7 +30,7 @@ public class ImpresoraRemisionController extends HttpServlet {
         RemisionPrinter rPrinter = remDAO.read();
         
         /* int size = Int.parseInteger(request.getParameter("size")); */
-        
+        String name = request.getParameter("name");
         float leftMargin = Float.parseFloat(request.getParameter("leftMargin"));
         float topMargin = Float.parseFloat(request.getParameter("topMargin"));
         float botMargin = Float.parseFloat(request.getParameter("botMargin"));
@@ -61,7 +61,8 @@ public class ImpresoraRemisionController extends HttpServlet {
         float proValUni = Float.parseFloat(request.getParameter("proValUni"));
         float proDes1 = Float.parseFloat(request.getParameter("proDes1"));
         float proValNet = Float.parseFloat(request.getParameter("proValNet"));
-               
+        
+        rPrinter.setName(name);
         rPrinter.setCliNom(cliNom);
         rPrinter.setPunPar(punPar);
         rPrinter.setPunLle(punLle);

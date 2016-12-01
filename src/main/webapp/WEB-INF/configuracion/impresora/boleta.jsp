@@ -9,15 +9,17 @@
         <div class="pagel-body">
             <h1 class="page-header"> Configuración de Boleta </h1>
             <form id="updateBoleta" method="post" action="${pageContext.request.contextPath}/secured/configuracion/impresora/boleta">               
-                <div class="col-md-8">
+                <div class="col-md-9">
                     <div class="table-responsive">
                         <table class="table table-bordered table-striped table-hover table-condensed" id="tablaBolMar">
                             <tr>
+                                <th>NOMBRE IMPRESORA</th>
                                 <th>MARGEN IZQUIERDO</th>
                                 <th>MARGEN SUPERIOR</th>
                                 <th>MARGEN INFERIOR</th>
                             </tr>
                             <tr>
+                                <td><input type="text" name="name" value="${bol.getName()}"></td>
                                 <td><input min="0" step="0.1" type="number" name="leftMargin" value="${bol.getLeftMargin()}">cm</td>
                                 <td><input min="0" step="0.1" type="number" name="topMargin" value="${bol.getTopMargin()}">cm</td>
                                 <td><input min="0" step="0.1" type="number" name="botMargin" value="${bol.getBotMargin()}">cm</td>                            
@@ -25,7 +27,7 @@
                         </table>
                     </div>
                 </div>
-                <div class="col-md-4 text-center">
+                <div class="col-md-3 text-center">
                     <button type="submit" formnovalidate="formnovalidate" id="update" class="btn btn-primary">Actualizar cambios</button>       
                 </div>  
                 <div class="col-md-12">
