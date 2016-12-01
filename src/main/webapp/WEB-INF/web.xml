@@ -314,6 +314,17 @@
         <servlet-name>DatosEmpresaController</servlet-name>
         <url-pattern>/secured/configuracion/datosEmpresa</url-pattern>
     </servlet-mapping>
+    <!--Sub Modulo Canal Usuario-->
+    <servlet>
+        <description/>
+        <display-name>CanalUsuarioController</display-name>
+        <servlet-name>CanalUsuarioController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.configuracion.CanalUsuarioController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CanalUsuarioController</servlet-name>
+        <url-pattern>/secured/configuracion/canalUsuario</url-pattern>
+    </servlet-mapping>
     <!--Sub Modulo Datos de Transportista-->
     <servlet>
         <description/>

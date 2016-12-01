@@ -212,12 +212,14 @@
                                     <li>
                                         <a href="${pageContext.request.contextPath}/secured/configuracion/usuario/usuarios">Usuarios</a>
                                     </li>
+                                    <!--
                                     <li>
                                         <a href="${pageContext.request.contextPath}/secured/configuracion/documentoCliente">Documentos de clientes</a>
                                     </li>
                                     <li>
                                         <a href="${pageContext.request.contextPath}/secured/configuracion/documentoUsuario">Documentos de usuarios</a>
                                     </li>
+                                    -->
                                     <li>
                                         <a href="${pageContext.request.contextPath}/secured/configuracion/datosEmpresa">Datos de la empresa</a>
                                     </li>
@@ -226,6 +228,9 @@
                                     </li>
                                     <li>
                                         <a href="${pageContext.request.contextPath}/secured/configuracion/unidadTransporte">Unidades de transporte</a>
+                                    </li>
+                                    <li>
+                                        <a href="${pageContext.request.contextPath}/secured/configuracion/canalUsuario">Canales de Venta de Usuarios</a>
                                     </li>
                                     <li>
                                         <a href="${pageContext.request.contextPath}/secured/configuracion/tablasGenerales">Tablas generales</a>
