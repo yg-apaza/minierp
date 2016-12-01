@@ -288,7 +288,7 @@
             updateModal.on('show.bs.modal', function (e) {
                 updateCanUsuCod.val($(e.relatedTarget).data('canusucod'));
                 updateCanUsuDet.val($(e.relatedTarget).data('canusudet'));
-                updateCanUsuPorAdd.val($(e.relatedTarget).data('canusuporadd')*100));
+                updateCanUsuPorAdd.val(($(e.relatedTarget).data('canusuporadd')*100).toFixed(2));
             });
 
             disableModal.on('show.bs.modal', function (e) {
