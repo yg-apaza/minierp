@@ -11,6 +11,7 @@ import org.epis.minierp.model.EnP1mDocumentoUsuario;
 import org.epis.minierp.model.EnP1mDocumentoUsuarioId;
 import org.epis.minierp.model.EnP1mSucursal;
 import org.epis.minierp.model.EnP1mUsuario;
+import org.epis.minierp.model.TaGzzCanalUsuario;
 import org.epis.minierp.model.TaGzzEstadoCivil;
 import org.epis.minierp.model.TaGzzTipoUsuario;
 
@@ -27,7 +28,7 @@ public class EnP1mUsuarioBusiness {
     
     public void create(String usuCod, String usuNom, String usuApePat, String usuApeMat, 
             String usuLog, String usuPas, int tipUsuCod, int sucCod, Date usuFecNac, 
-            int estCivCod, char usuSex, char estRegCod){
+            int estCivCod, char usuSex, int canUsuCod, char estRegCod){
         EnP1mUsuario usu = new EnP1mUsuario();  
         TaGzzTipoUsuario tu = new TaGzzTipoUsuario();
         tu.setTipUsuCod(tipUsuCod);
@@ -35,6 +36,8 @@ public class EnP1mUsuarioBusiness {
         suc.setSucCod(sucCod);
         TaGzzEstadoCivil ec = new TaGzzEstadoCivil();
         ec.setEstCivCod(estCivCod);
+        TaGzzCanalUsuario cu = new TaGzzCanalUsuario();
+        cu.setCanUsuCod(canUsuCod);
                
         usu.setUsuCod(usuCod);
         usu.setUsuNom(usuNom);
@@ -47,6 +50,7 @@ public class EnP1mUsuarioBusiness {
         usu.setUsuFecNac(usuFecNac);
         usu.setTaGzzEstadoCivil(ec);
         usu.setUsuSex(usuSex);
+        usu.setTaGzzCanalUsuario(cu);
         usu.setEstRegCod(estRegCod);
         usuDao.save(usu);
        
@@ -54,7 +58,7 @@ public class EnP1mUsuarioBusiness {
     
     public void update(String usuCod, String usuNom, String usuApePat, String usuApeMat, 
             String usuLog, int tipUsuCod, int sucCod, Date usuFecNac, 
-            int estCivCod, char usuSex){
+            int estCivCod, char usuSex, int canUsuCod){
         EnP1mUsuario usuUpdate = usuDao.getById(usuCod);
         TaGzzTipoUsuario tuUpdate = new TaGzzTipoUsuario();
         tuUpdate.setTipUsuCod(tipUsuCod);
@@ -62,6 +66,8 @@ public class EnP1mUsuarioBusiness {
         sucUpdate.setSucCod(sucCod);
         TaGzzEstadoCivil ecUpdate = new TaGzzEstadoCivil();
         ecUpdate.setEstCivCod(estCivCod);
+        TaGzzCanalUsuario cu = new TaGzzCanalUsuario();
+        cu.setCanUsuCod(canUsuCod);
         
         usuUpdate.setUsuNom(usuNom);
         usuUpdate.setUsuApePat(usuApePat);
@@ -72,6 +78,7 @@ public class EnP1mUsuarioBusiness {
         usuUpdate.setUsuFecNac(usuFecNac);
         usuUpdate.setTaGzzEstadoCivil(ecUpdate);
         usuUpdate.setUsuSex(usuSex);
+        usuUpdate.setTaGzzCanalUsuario(cu);
         usuDao.update(usuUpdate);
     }
     
