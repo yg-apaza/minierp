@@ -9,14 +9,14 @@
     <cliNom>1.8</cliNom>
     <cliDir>1.8</cliDir>
     <fecEmi>8.9</fecEmi>
-    <topBolCab>0.4</topBolCab>
+    <topBolCab>0.3</topBolCab>
     <cliCod>2.1</cliCod>
     <conPag>2.2</conPag>
     <fecVen>2.8</fecVen>
     <venRut>2.65</venRut>
-    <pdv>1.5</pdv>
+    <pdv>1.3</pdv>
     <obs>3.5</obs>
-    <topBolDet>0.25</topBolDet>
+    <topBolDet>0.4</topBolDet>
     <proCod>0.8</proCod>
     <proCan>1.3</proCan>
     <proUni>1.3</proUni>

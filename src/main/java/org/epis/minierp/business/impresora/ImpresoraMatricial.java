@@ -494,6 +494,7 @@ public class ImpresoraMatricial {
         writer.write(total);
         newLine();
         advanceHorizontal(fP.getBotMargin());
+        newLine();
     }
     
     public void writeBolTotal(String total) throws IOException{
@@ -502,11 +503,13 @@ public class ImpresoraMatricial {
         writer.write(total);
         newLine();
         advanceHorizontal(bP.getBotMargin());
+        newLine();
     }
     
     public void writeGuiRemTotal() throws IOException{
         newLine();
         advanceHorizontal(gP.getBotMargin());
+        newLine();
     }
     
     public void close() throws IOException{
