@@ -35,17 +35,21 @@ public class Reporte {
     private Date date = new Date();
     private SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
     String key, value;
+    HashMap<String, Object> parametros=new HashMap<>();
     String []values;
     
     public Reporte() {
         session = HibernateUtil.getSessionFactory().getCurrentSession();
     }
 
-    public Reporte(boolean isjdbc, String key, String value) {
+    public Reporte(boolean isjdbc, String key[], String value[]) {
         if (isjdbc) {
             sessionc = DbUtil.getConnection();
-            this.key = key;
-            this.value=value;
+            for(int i=0;i<key.length;i++)
+            {
+                param.put(key[i], value[i]);
+            }
+            
         } else {
             session = HibernateUtil.getSessionFactory().getCurrentSession();
         }

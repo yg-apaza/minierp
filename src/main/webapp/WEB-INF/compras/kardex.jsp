@@ -21,24 +21,28 @@
             <script type="text/javascript" language="javasript">
             var idProducto="";
             var nombreProducto="";
-            var kardexf="kardexfisico";
-            var kardexv="kardexvalorizado";
+            var idInventario="";
+            var fechaInventario="";
+            var kardexf="";
+            var kardexv="";
             
             function cambiom()
             {
                 kardexf="kardexfisico";
                 kardexv="kardexvalorizado";
+                localStorage.setItem("kardexfisico",kardexf );
+                localStorage.setItem("kardexvalorizado",kardexv );
             }
             function cambiop()
             {
                 kardexf="kardexfisicopeps";
                 kardexv="kardexvalorizadopeps";
+                localStorage.setItem("kardexfisico",kardexf );
+                localStorage.setItem("kardexvalorizado",kardexv );
             }
             function Show(valor)
             {
                  if(valor !== "")
-                
-               
                 {   
                     var valarray=valor.split(',');
                     idProducto=valarray[0];
@@ -47,7 +51,18 @@
                     localStorage.setItem("idProd",idProducto );
                 }       
             }
-            
+            function inven(value)
+            {
+                 if(value !== "")
+                {   
+                    var valarray=value.split(',');
+                    idInventario=valarray[0];
+                    fechaInventario=valarray[1];
+                    localStorage.setItem("idInvent",idInventario );
+                    localStorage.setItem("fecInvent",fechaInventario );
+                    
+                }       
+            }
         </script>
         
 
@@ -89,26 +104,26 @@
                             <label>Tipo: </label>
                         </div>
                         <div class="col-xs-6">
-                            <label><input class="radio" type="radio" name="optradio" value="prom" checked onclick="cambiom()">Prom.</label>
+                            <label><input id="cbProm" class="radio" type="radio" name="optradio" value="prom"  onclick="cambiom()">Prom.</label>
                         </div>
                         <div class="col-xs-6">
-                            <label><input class="radio" type="radio" name="optradio" value="peps" onclick="cambiop()">PEPS</label>
+                            <label><input id="cbPeps" class="radio" type="radio" name="optradio" value="peps" onclick="cambiop()">PEPS</label>
                         </div>
                         
                         
                     </div>
-                    <div class="col-lg-3">
+                    <div class="col-lg-3" >
                         <div class="col-xs-12">
                             <label>Kardex Físico</label>
                         </div>
-                        <div class="col-xs-12">
-                            <a  href="${pageContext.request.contextPath}/secured/general/reporte?type=pdf&&jdbc=true&&key=PRODUCTO_ID&&value=" class="btn btn-danger" onclick="location.href=this.href+idProducto+'\&report='+kardexf;return false;">
-                                <i class="fa fa-file-pdf-o"></i>
+                        <div class="col-xs-12" >
+                            <a  id="rpkf" href="${pageContext.request.contextPath}/secured/general/reporte?type=pdf&&jdbc=true&&key=PRODUCTO_ID,INVENTARIO_ID&&value=" class="btn btn-danger" onclick="location.href=this.href+idProducto+'\,'+idInventario+'\&report='+kardexf;return false;">
+                                <i class="fa fa-file-pdf-o" ></i>
                             </a>
-                            <a  href="${pageContext.request.contextPath}/secured/general/reporte?type=xls&&jdbc=true&&key=PRODUCTO_ID&&value=" class="btn btn-success" onclick="location.href=this.href+idProducto+'\&report='+kardexf;return false;">
+                            <a  id="" href="${pageContext.request.contextPath}/secured/general/reporte?type=xls&&jdbc=true&&key=PRODUCTO_ID,INVENTARIO_ID&&value=" class="btn btn-success" onclick="location.href=this.href+idProducto+'\,'+idInventario+'\&report='+kardexf;return false;">
                                 <i class="fa fa-file-excel-o"></i>
                             </a>
-                            <a  href="${pageContext.request.contextPath}/secured/general/reporte?type=doc&&jdbc=true&&key=PRODUCTO_ID&&value=" class="btn  btn-primary" onclick="location.href=this.href+idProducto+'\&report='+kardexf;return false;">
+                            <a  id="" href="${pageContext.request.contextPath}/secured/general/reporte?type=doc&&jdbc=true&&key=PRODUCTO_ID,INVENTARIO_ID&&value=" class="btn  btn-primary" onclick="location.href=this.href+idProducto+'\,'+idInventario+'\&report='+kardexf;return false;">
                                 <i class="fa fa-file-word-o"></i>
                             </a>
                         </div>
@@ -120,20 +135,34 @@
                         </div>
                         
                         <div class="col-xs-12">
-                            <a href="${pageContext.request.contextPath}/secured/general/reporte?type=pdf&&jdbc=true&&key=PRODUCTO_ID&&value=" class="btn  btn-danger" onclick="location.href=this.href+idProducto+'\&report='+kardexv;return false;">
+                            <a id="rpkv" href="${pageContext.request.contextPath}/secured/general/reporte?type=pdf&&jdbc=true&&key=PRODUCTO_ID,INVENTARIO_ID&&value=" class="btn  btn-danger" onclick="location.href=this.href+idProducto+'\,'+idInventario+'\&report='+kardexv;return false;">
                                 <i class="fa fa-file-pdf-o"></i>
                             </a>
-                            <a href="${pageContext.request.contextPath}/secured/general/reporte?type=xls&&jdbc=true&&key=PRODUCTO_ID&&value=" class="btn  btn-success" onclick="location.href=this.href+idProducto+'\&report='+kardexv;return false;">
+                            <a id="rpkv" href="${pageContext.request.contextPath}/secured/general/reporte?type=xls&&jdbc=true&&key=PRODUCTO_ID,INVENTARIO_ID&&value=" class="btn  btn-success" onclick="location.href=this.href+idProducto+'\,'+idInventario+'\&report='+kardexv;return false;">
                                 <i class="fa fa-file-excel-o"></i>
                             </a>
-                            <a href="${pageContext.request.contextPath}/secured/general/reporte?type=doc&&jdbc=true&&key=PRODUCTO_ID&&value=" class="btn  btn-primary" onclick="location.href=this.href+idProducto+'\&report='+kardexv;return false;">
+                            <a id="rpkv" href="${pageContext.request.contextPath}/secured/general/reporte?type=doc&&jdbc=true&&key=PRODUCTO_ID,INVENTARIO_ID&&value=" class="btn  btn-primary" onclick="location.href=this.href+idProducto+'\,'+idInventario+'\&report='+kardexv;return false;">
                                 <i class="fa fa-file-word-o"></i>
                             </a>
                         </div>
-                       
+                        
                     </div>
                     <br>
                     
+                        <div class="col-lg-12">
+                            <div class="col-xs-12">
+                                <label>Desde Inventario: </label>
+                            </div>
+                            <div class="col-xs-3"> 
+                                <select  class="form-control input-small" name="inv" onChange="inven(value);">
+                                    <option id="selI" value="">Seleccione:</option>
+                                    <c:forEach  items="${inventarios}" var="i">  
+                                        <option type="submit" value="${i.invCabCod},${i.invCabFec}" >${i.invCabFec}</option> 
+                                    </c:forEach>
+                                </select>
+                            </div>
+                            
+                        </div>
                 </form>    
             </div>
             
@@ -194,6 +223,34 @@
                 var element=document.getElementById("sel");
                 element.value=localStorage.getItem("idProd")+","+localStorage.getItem("nomProd");
                 idProducto=localStorage.getItem("idProd");
+                               
+                
+                 document.getElementById("selI").innerHTML = localStorage.getItem("fecInvent");  
+                 var element2=document.getElementById("selI");
+                 element2.value=localStorage.getItem("idInvent")+","+localStorage.getItem("fecInvent");
+                
+                idInventario=localStorage.getItem("idInvent"); 
+                fechaInventario=localStorage.getItem("fecInvent"); 
+                if(localStorage.getItem("kardexfisico")=="kardexfisico" ||localStorage.getItem("kardexfisico")=="")
+                {
+                    kardexf="kardexfisico";
+                    kardexv="kardexvalorizado";
+                    document.getElementById("cbProm").checked = true;
+                    document.getElementById("cbPeps").checked = false;
+                    
+                }
+                else{
+                    kardexf="kardexfisicopeps";
+                    kardexv="kardexvalorizadopeps";
+                    document.getElementById("cbProm").checked = false;
+                    document.getElementById("cbPeps").checked = true;
+                }
+                
+//                 kardexf="kardexfisico";
+//                kardexv="kardexvalorizado";
+//                document.getElementById("cbProm").checked = true;
+//                document.getElementById("cbPeps").checked = true;
+                
             }
         </script>
     </jsp:attribute>
