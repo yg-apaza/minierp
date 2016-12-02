@@ -11,11 +11,39 @@
 
         <div class="panel-body">
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-md-8">
                     <h1 class="page-header"> Inventario </h1>
                 </div>
             </div>
             <form id="preventaLoteForm" role="form" action="${pageContext.request.contextPath}/secured/compras/addInventario" method="post">
+            <div class = "row">
+                <div class="col-md-4">
+                    <div class="col-md-12">
+                        <div class="form-group input-group">
+                            <span class="input-group-addon">Responsable:</span>
+                            <span class="input-group-addon"><i class="fa fa-child"></i></span>
+                            <input type="hidden" class="form-control" name="usuCod" value="${usuario.usuCod}" readonly>
+                            <input type="text" class="form-control" value="${usuario.usuCod} - ${usuario.usuNom}" readonly>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group input-group" >
+                        <span class="input-group-addon">Fecha</span>
+                        <input type="date" class="form-control" name="fecEmi" value="${fechaEmision}">
+                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <button type="submit" onclick="return updateInventory()" class="btn btn-success"> Actualizar inventario</button>  
+                </div>
+                <div class="col-md-2">
+                    <a href="${pageContext.request.contextPath}/secured/general/reporte?type=pdf&&report=inventario&&jdbc=true&&key=null&&value=null" class="btn btn-outline btn-danger">
+                        <i class="fa fa-file-pdf-o"></i>
+                        Descargar Reporte [PDF]
+                    </a>
+                </div>
+            </div>    
            <div class="row">
                 <div class="col-md-6">
                     <label>Código del producto</label>
@@ -23,15 +51,6 @@
                         <span class="input-group-addon"><i class="fa fa-barcode"></i></span>
                         <input type="text" class="form-control" id="proCod" name="proCod" placeholder="Código del producto">
                     </div>
-                </div>
-                <div class="col-md-3">
-                    <button type="submit" onclick="return updateInventory()" class="btn btn-success"> Actualizar inventario</button>  
-                </div>
-                <div class="col-md-3">
-                    <a href="${pageContext.request.contextPath}/secured/general/reporte?type=pdf&&report=inventario&&jdbc=true&&key=null&&value=null" class="btn btn-outline btn-danger">
-                        <i class="fa fa-file-pdf-o"></i>
-                        Descargar Reporte [PDF]
-                    </a>
                 </div>
            </div>
             <br>

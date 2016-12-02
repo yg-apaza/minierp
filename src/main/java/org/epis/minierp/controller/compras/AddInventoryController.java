@@ -37,6 +37,10 @@ public class AddInventoryController extends HttpServlet {
         TaGzzTipoFallaProductoDao daoFalla = new TaGzzTipoFallaProductoDao();
         List<TaGzzTipoFallaProducto> falla_producto = daoFalla.getAll();
          request.setAttribute("falla_producto", falla_producto);
+        
+        Date hoy = DateUtil.getthisDate();
+        String fechaEmision = DateUtil.getString2Date(hoy);
+        request.setAttribute("fechaEmision", fechaEmision);
        /* UsuarioDao daoUsu = new UsuarioDao();
         List<EnP1mUsuario> usuarios = daoUsu.getAll();
         request.setAttribute("usuarios", usuarios);*/
@@ -56,7 +60,7 @@ public class AddInventoryController extends HttpServlet {
         String[] fallas = request.getParameterValues("proFallas");
         //Como ya actualiza inventario al momento de actualizar inventario ya ingresa todos los valore al inventario
         //Fecha
-        Date hoy = DateUtil.getthisDate();
+        Date hoy = DateUtil.getDate2String(request.getParameter("fecEmi"));
         String fechaEmision = DateUtil.getString2Date(hoy);
         //usuario
         user = (EnP1mUsuario) session.getAttribute("usuario");
