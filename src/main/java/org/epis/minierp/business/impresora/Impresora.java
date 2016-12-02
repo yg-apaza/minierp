@@ -20,9 +20,9 @@ import org.epis.minierp.model.EnP1tFacturaVentaDet;
 import org.epis.minierp.util.DateUtil;
 
 public class Impresora {
-    private static final int MAX_FAC_DET = 27;
-    private static final int MAX_BOL_DET = 10;
-    private static final int MAX_REM_DET = 25;
+    private static final int MAX_FAC_DET = 24;
+    private static final int MAX_BOL_DET = 9;
+    private static final int MAX_REM_DET = 23;
     
     String extension = ".prn";
     String path;

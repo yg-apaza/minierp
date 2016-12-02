@@ -2,9 +2,9 @@
 <boletaPrinter>
     <name>Epson</name>
     <size>2</size>
-    <leftMargin>0.8</leftMargin>
-    <rightMargin>0.4</rightMargin>
-    <topMargin>1.9</topMargin>
+    <leftMargin>0.6</leftMargin>
+    <rightMargin>0.3</rightMargin>
+    <topMargin>1.85</topMargin>
     <botMargin>0.4</botMargin>
     <cliNom>1.8</cliNom>
     <cliDir>1.8</cliDir>

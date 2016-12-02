@@ -2,9 +2,9 @@
 <remisionPrinter>
     <name>Epson</name>
     <size>2</size>
-    <leftMargin>0.8</leftMargin>
-    <rightMargin>0.4</rightMargin>
-    <topMargin>4.5</topMargin>
+    <leftMargin>0.5</leftMargin>
+    <rightMargin>0.3</rightMargin>
+    <topMargin>2.9</topMargin>
     <botMargin>0.5</botMargin>
     <cliNom>1.4</cliNom>
     <punPar>2.4</punPar>
