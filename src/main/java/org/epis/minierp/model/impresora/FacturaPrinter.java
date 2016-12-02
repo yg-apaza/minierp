@@ -7,6 +7,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(propOrder = {
     "name",
     "size",
+    "maxProducts",
     "leftMargin",
     "rightMargin",
     "topMargin",
@@ -32,12 +33,14 @@ import javax.xml.bind.annotation.XmlType;
     "proDes1",
     "proDes2",
     "proValNet",
+    "topFacTot",
     "totalMargin"
 })
 
 public class FacturaPrinter {
     String name;
     int size;
+    int maxProducts;
     float leftMargin;
     float rightMargin;
     float topMargin;
@@ -63,6 +66,7 @@ public class FacturaPrinter {
     float proDes1;
     float proDes2;
     float proValNet;
+    float topFacTot;
     float totalMargin;
 
     public FacturaPrinter() {
@@ -82,6 +86,14 @@ public class FacturaPrinter {
 
     public void setSize(int size) {
         this.size = size;
+    }
+
+    public int getMaxProducts() {
+        return maxProducts;
+    }
+
+    public void setMaxProducts(int maxProducts) {
+        this.maxProducts = maxProducts;
     }
 
     public float getLeftMargin() {
@@ -282,6 +294,14 @@ public class FacturaPrinter {
 
     public void setProValNet(float proValNet) {
         this.proValNet = proValNet;
+    }
+
+    public float getTopFacTot() {
+        return topFacTot;
+    }
+
+    public void setTopFacTot(float topFacTot) {
+        this.topFacTot = topFacTot;
     }
 
     public float getTotalMargin() {

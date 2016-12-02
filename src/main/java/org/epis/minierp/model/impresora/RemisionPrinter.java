@@ -7,6 +7,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(propOrder = {
     "name",
     "size",
+    "maxProducts",
     "leftMargin",
     "rightMargin",
     "topMargin",
@@ -39,6 +40,7 @@ import javax.xml.bind.annotation.XmlType;
 public class RemisionPrinter {
     String name;
     int size;
+    int maxProducts;
     float leftMargin;
     float rightMargin;
     float topMargin;
@@ -84,6 +86,14 @@ public class RemisionPrinter {
 
     public void setSize(int size) {
         this.size = size;
+    }
+
+    public int getMaxProducts() {
+        return maxProducts;
+    }
+
+    public void setMaxProducts(int maxProducts) {
+        this.maxProducts = maxProducts;
     }
 
     public float getLeftMargin() {

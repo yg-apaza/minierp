@@ -20,10 +20,6 @@ import org.epis.minierp.model.EnP1tFacturaVentaDet;
 import org.epis.minierp.util.DateUtil;
 
 public class Impresora {
-    private static final int MAX_FAC_DET = 24;
-    private static final int MAX_BOL_DET = 11;
-    private static final int MAX_REM_DET = 23;
-    
     String extension = ".prn";
     String path;
     SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
@@ -85,7 +81,7 @@ public class Impresora {
                 proValNet = proCan * proValUni;
                 fac.writeFacDetalle(Integer.toString(proCod), proCan, proUni, proDes, proValUni, proDes1, proDes2, df.format(proValNet));
             }
-            fac.addLines(MAX_FAC_DET - proCod); 
+            fac.addLines(fac.getMax() - proCod); 
             subTotal = f.getFacVenCabSubTot();
             igv = subTotal * f.getFacVenCabIgv() / 100;
             total = f.getFacVenCabTot();
@@ -135,13 +131,11 @@ public class Impresora {
                     proValNet = proCan * proValUni;
                     fac.writeFacDetalle(Integer.toString(proCod), proCan, proUni, proDes, proValUni, proDes1, proDes2, df.format(proValNet));
                 }
-                fac.addLines(MAX_FAC_DET - proCod); 
+                fac.addLines(fac.getMax() - proCod); 
                 subTotal = f.getFacVenCabSubTot();
                 igv = subTotal * f.getFacVenCabIgv() / 100;
                 total = f.getFacVenCabTot();
                 fac.writeFacTotal(df.format(subTotal), df.format(igv), df.format(total));
-                //fac.newLine();
-                //fac.newPage();
             }
             fac.close();
         } catch (IOException ex) {
@@ -185,11 +179,9 @@ public class Impresora {
                     proValNet = proCan * proValUni;
                     bol.writeBolDetalle(Integer.toString(proCod), proCan, proUni, proDes, proValUni, proDes1, df.format(proValNet));
                 }
-                bol.addLines(MAX_BOL_DET - proCod); 
+                bol.addLines(bol.getMax() - proCod); 
                 total = f.getFacVenCabTot();
                 bol.writeBolTotal(df.format(total));
-                //bol.newLine();
-                //bol.newPage();
             }
             bol.close();
         } catch (IOException ex) {
@@ -238,10 +230,8 @@ public class Impresora {
                     
                     rem.writeGuiRemDetalle(Integer.toString(proCod), proCan, proUni, proDes, proValUni, proDes1, df.format(proValNet));
                 }
-                rem.addLines(MAX_REM_DET - proCod);
+                rem.addLines(rem.getMax() - proCod);
                 rem.writeGuiRemTotal();
-                //rem.newLine();
-                //rem.newPage();
             }
         rem.close();
         } catch (IOException ex) {

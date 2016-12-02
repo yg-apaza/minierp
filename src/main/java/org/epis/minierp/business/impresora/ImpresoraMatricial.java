@@ -101,6 +101,18 @@ public class ImpresoraMatricial {
         }       
     }
     
+    public int getMax(){
+        switch(type){
+            case "factura":
+                return fP.getMaxProducts();
+            case "boleta":
+                return bP.getMaxProducts();
+            case "remision":
+                return gP.getMaxProducts();
+        }
+        return 10;
+    }
+    
     public String getName(){
         switch(type){
             case "factura":
