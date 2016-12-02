@@ -108,7 +108,7 @@
                                 <div class="row">
                                     <div class="col-xs-12 col-md-12">
                                         <div class="row">
-                                            <div class="col-md-7">
+                                            <div class="col-md-5">
                                                 <div class="form-group input-group" >
                                                     <span class="input-group-addon">Producto</span>
                                                     <input class="form-control" type="text" name="proDes" id="proDesShow" placeholder="Descripción" size="100" readOnly>
@@ -121,6 +121,12 @@
                                                     <span class="input-group-addon"><i class="fa fa-money"></i></span>
                                                     <input type="number" class="form-control" id="priceShow" readOnly>        
                                                     <input type="hidden" class="form-control" id="unitShow">     
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group input-group" >
+                                                    <span class="input-group-addon">Stock</span>
+                                                    <input type="number" class="form-control" id="stockShow" readOnly>
                                                 </div>
                                             </div>
                                             <div class="col-md-2">
@@ -294,6 +300,7 @@
                             $('#proDesShow').val("");
                             $('#proCodShow').val("");
                             $('#priceShow').val("");
+                            $('#stockShow').val("");
                             $('#amountShow').val(1);
                             updateAll();
                         }
@@ -357,6 +364,7 @@
                 $('#proCodShow').val("");
                 $('#proDesShow').val("");
                 $('#priceShow').val("");
+                $('#stockShow').val("");
                 $('#amountShow').val(1);
             }
 
@@ -484,6 +492,7 @@
                         if (data.proCod != null) {
                             $("#proDesShow").val(data.proDet);
                             $("#priceShow").val(data.proPreUni);
+                            $("#stockShow").val(data.proStk);
                             $('#amountShow')[0].max = data.proStk;
                             $('#unitShow').val(data.proUnit);
                         } else {
@@ -510,6 +519,7 @@
                         if (data.proCod != null) {
                             $("#proCodShow").val(data.proCod);
                             $("#priceShow").val(data.proPreUni);
+                            $("#stockShow").val(data.proStk);
                             $('#amountShow')[0].max = data.proStk;
                             $('#unitShow').val(data.proUnit);
                         } else {
