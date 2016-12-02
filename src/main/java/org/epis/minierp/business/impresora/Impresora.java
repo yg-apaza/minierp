@@ -21,7 +21,7 @@ import org.epis.minierp.util.DateUtil;
 
 public class Impresora {
     private static final int MAX_FAC_DET = 24;
-    private static final int MAX_BOL_DET = 9;
+    private static final int MAX_BOL_DET = 11;
     private static final int MAX_REM_DET = 23;
     
     String extension = ".prn";

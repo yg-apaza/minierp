@@ -494,22 +494,22 @@ public class ImpresoraMatricial {
         writer.write(total);
         newLine();
         advanceHorizontal(fP.getBotMargin());
-        newLine();
+        writer.write("");
     }
     
     public void writeBolTotal(String total) throws IOException{
-        advanceVertical(1.0f);
+        advanceVertical(0.4f);
         setAbsoluteHorizontalPosition(bP.getTotalMargin());
         writer.write(total);
         newLine();
         advanceHorizontal(bP.getBotMargin());
-        newLine();
+        writer.write("");
     }
     
     public void writeGuiRemTotal() throws IOException{
         newLine();
         advanceHorizontal(gP.getBotMargin());
-        newLine();
+        writer.write("");
     }
     
     public void close() throws IOException{
