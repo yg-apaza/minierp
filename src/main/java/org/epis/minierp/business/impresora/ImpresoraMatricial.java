@@ -495,7 +495,7 @@ public class ImpresoraMatricial {
     }
 
     public void writeFacTotal(String subTotal, String igv, String total) throws IOException{
-        advanceVertical(1.0f);
+        advanceVertical(fP.getTopFacTot());
         setAbsoluteHorizontalPosition(fP.getTotalMargin());
         writer.write(subTotal);
         newLine();
@@ -510,7 +510,7 @@ public class ImpresoraMatricial {
     }
     
     public void writeBolTotal(String total) throws IOException{
-        advanceVertical(0.4f);
+        advanceVertical(bP.getTopBolTot());
         setAbsoluteHorizontalPosition(bP.getTotalMargin());
         writer.write(total);
         newLine();
