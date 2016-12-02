@@ -12,8 +12,7 @@
             <form id="registerBill" method="post" action="${pageContext.request.contextPath}/secured/ventas/factura/addFactura">
                 <input type="hidden" class="form-control" name="productsAmounts" id="proAmo">
                 <input type="hidden" class="form-control" name="productsCodes" id="proCodes">
-                <input type="hidden" class="form-control" name="productsPrices" id="proPrices">
-                <input class="hidden" type="text" name="cliCod" id="facCli">
+                <input type="hidden" class="form-control" name="productsPrices" id="proPrices">                
                 <div class="row">
                     <div class="col-md-4">
                         <br><h1 class="page-header">Factura de Venta</h1>
@@ -77,8 +76,9 @@
                                                 </div>
                                             </div>
                                         </div>  
-                                        <div class="row">
+                                        <div class="row">                                            
                                             <div class="col-md-12">
+                                                <input class="hidden" type="text" name="cliCod" id="facCli">
                                                 <div class="form-group input-group" >                                                    
                                                     <span class="input-group-addon">Cliente</span>
                                                     <select class="form-control" id="desClienteCode" disabled>
@@ -93,7 +93,7 @@
                                                         </c:forEach>
                                                     </select> 
                                                     <input class="form-control" type="text" id="cliCodShow" placeholder="Código" readOnly>
-                                                </div>                                                
+                                                </div>                                                  
                                             </div>
                                         </div>
                                         <div class="row">                                            
@@ -257,7 +257,7 @@
             <div class="modal-dialog modal-md">
                 <div class="modal-content" style="overflow-y: auto">
                     <div class="modal-body">
-                        <p class="text-center text-success">La factura de compra ha sido agregada correctamente</p>
+                        <p class="text-center text-success">La factura de venta ha sido agregada correctamente</p>
                     </div>
                 </div>         
             </div>
@@ -654,22 +654,24 @@
             });  
             
             $("#registerBill").submit(function(e) {
-                $('#loading').modal('show');
-                e.preventDefault();
-                $.ajax({
-                    type: 'POST',
-                    url: $(this).attr('action'),
-                    data: $(this).serialize(),
-                    success: function(data) {
-                        $('#loading').modal('hide');    
-                        if(data.state == true) {
-                            $("#fvSuccess").modal('show');
-                            newDirection = data.redirect;
+                if($("#registerBill").valid()) {
+                    $('#loading').modal('show');
+                    e.preventDefault();
+                    $.ajax({
+                        type: 'POST',
+                        url: $(this).attr('action'),
+                        data: $(this).serialize(),
+                        success: function(data) {
+                            $('#loading').modal('hide');    
+                            if(data.state == true) {
+                                $("#fvSuccess").modal('show');
+                                newDirection = data.redirect;
+                            }
                         }
-                    }
-                });
-                
-                return false;
+                    });
+
+                    return false;
+                }
             });
             
             $("#fvSuccess").on("hidden.bs.modal", function (){

@@ -553,7 +553,7 @@
                 }
             });
 
-$('#prvDesShow').keyup(function () {
+            $('#prvDesShow').keyup(function () {
                 $.post(
                         "${pageContext.request.contextPath}/secured/compras/factura/searchSupplier", {
                             action: "search",
@@ -610,22 +610,24 @@ $('#prvDesShow').keyup(function () {
             });
             
             $("#registerBill").submit(function(e) {
-                $('#loading').modal('show');
-                e.preventDefault();
-                $.ajax({
-                    type: 'POST',
-                    url: $(this).attr('action'),
-                    data: $(this).serialize(),
-                    success: function(data) {
-                        $('#loading').modal('hide');    
-                        if(data.state == true) {
-                            $("#fcSuccess").modal('show');
-                            newDirection = data.redirect;
+                if($("#registerBill").valid()) {
+                    $('#loading').modal('show');
+                    e.preventDefault();
+                    $.ajax({
+                        type: 'POST',
+                        url: $(this).attr('action'),
+                        data: $(this).serialize(),
+                        success: function(data) {
+                            $('#loading').modal('hide');    
+                            if(data.state == true) {
+                                $("#fcSuccess").modal('show');
+                                newDirection = data.redirect;
+                            }
                         }
-                    }
-                });
-                
-                return false;
+                    });
+
+                    return false;
+                }                
             });
             
             $("#fcSuccess").on("hidden.bs.modal", function (){

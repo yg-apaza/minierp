@@ -7,23 +7,54 @@
 	<parameter name="PRODUCTO_ID" class="java.lang.String">
 		<defaultValueExpression><![CDATA[1]]></defaultValueExpression>
 	</parameter>
+	<parameter name="INVENTARIO_ID" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
 	<queryString>
-		<![CDATA[{call kardex_prom_ponderado ($P{PRODUCTO_ID})}]]>
+		<![CDATA[{call kardex_prom_ponderado ($P{PRODUCTO_ID},$P{INVENTARIO_ID})}]]>
 	</queryString>
-	<field name="fecha" class="java.sql.Date"/>
-	<field name="numero_factura" class="java.lang.String"/>
-	<field name="producto" class="java.lang.String"/>
-	<field name="cantidad_entrada" class="java.lang.Double"/>
-	<field name="precio_unitario_entrada" class="java.lang.Double"/>
-	<field name="precio_total_entrada" class="java.lang.Double"/>
-	<field name="cantidad_salida" class="java.lang.Double"/>
-	<field name="precio_unitario_salida" class="java.lang.Double"/>
-	<field name="precio_total_salida" class="java.lang.Double"/>
-	<field name="cantidad_saldo" class="java.lang.Double"/>
-	<field name="precio_total_saldo" class="java.lang.Double"/>
-	<field name="precio_unitario_saldo" class="java.math.BigDecimal"/>
-	<field name="tipo_operacion" class="java.lang.String"/>
-	<field name="glosa" class="java.lang.String"/>
+	<field name="fecha" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="numero_factura" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="producto" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cantidad_entrada" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="precio_unitario_entrada" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="precio_total_entrada" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cantidad_salida" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="precio_unitario_salida" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="precio_total_salida" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cantidad_saldo" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="precio_total_saldo" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="precio_unitario_saldo" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tipo_operacion" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="glosa" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
 	<variable name="canEnTotal" class="java.math.BigDecimal" calculation="Sum">
 		<variableExpression><![CDATA[$F{cantidad_entrada}]]></variableExpression>
 		<initialValueExpression><![CDATA[]]></initialValueExpression>

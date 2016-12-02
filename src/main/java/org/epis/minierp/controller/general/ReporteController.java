@@ -23,7 +23,9 @@ public class ReporteController extends HttpServlet {
         String key = request.getParameter("key");
         Reporte generador = null;
         if (jdbc.equals("true")) {
-            generador = new Reporte(true, key, value);
+            String llaves[]=key.split(",");
+            String obj[]=value.split(",");
+            generador = new Reporte(true, llaves, obj);
         } else {
             generador = new Reporte();
         }

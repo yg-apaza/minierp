@@ -12,8 +12,7 @@
             <form id="registerBill" method="post" action="${pageContext.request.contextPath}/secured/ventas/preventa/addPreventa">
                 <input type="hidden" class="form-control" name="productsAmounts" id="proAmo">
                 <input type="hidden" class="form-control" name="productsCodes" id="proCodes">
-                <input type="hidden" class="form-control" name="productsPrices" id="proPrices">
-                <input class="hidden" type="text" name="cliCod" id="preCli">
+                <input type="hidden" class="form-control" name="productsPrices" id="proPrices">                
                 <div class="row">
                     <div class="col-md-8">
                         <br><h1 class="page-header">Preventa</h1>
@@ -60,6 +59,7 @@
                                     <div class="col-xs-12 col-md-9">
                                         <div class="row">
                                             <div class="col-md-12">
+                                                <input class="hidden" type="text" name="cliCod" id="preCli">
                                                 <div class="form-group input-group" >                                                    
                                                     <span class="input-group-addon">Cliente</span>
                                                     <select class="form-control" id="desClienteCode" disabled>
@@ -613,22 +613,24 @@
             });
             
             $("#registerBill").submit(function(e) {
-                $('#loading').modal('show');
-                e.preventDefault();
-                $.ajax({
-                    type: 'POST',
-                    url: $(this).attr('action'),
-                    data: $(this).serialize(),
-                    success: function(data) {
-                        $('#loading').modal('hide');    
-                        if(data.state == true) {
-                            $("#pSuccess").modal('show');
-                            newDirection = data.redirect;
+                if($("#registerBill").valid()) {
+                    $('#loading').modal('show');
+                    e.preventDefault();
+                    $.ajax({
+                        type: 'POST',
+                        url: $(this).attr('action'),
+                        data: $(this).serialize(),
+                        success: function(data) {
+                            $('#loading').modal('hide');    
+                            if(data.state == true) {
+                                $("#pSuccess").modal('show');
+                                newDirection = data.redirect;
+                            }
                         }
-                    }
-                });
-                
-                return false;
+                    });
+
+                    return false;
+                }                
             });
             
             $("#pSuccess").on("hidden.bs.modal", function (){
