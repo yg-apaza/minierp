@@ -16,14 +16,8 @@ import org.epis.minierp.dao.logistica.EnP2mTransportistaDao;
 import org.epis.minierp.dao.ventas.EnP1mCatalogoRutaDao;
 import org.epis.minierp.dao.ventas.EnP1mClienteDao;
 import org.epis.minierp.dao.ventas.EnP1mFacturaVentaCabDao;
-import org.epis.minierp.model.EnP1mCatalogoRuta;
-import org.epis.minierp.model.EnP1mCliente;
 import org.epis.minierp.model.EnP1mEmpresa;
-import org.epis.minierp.model.EnP1mFacturaVentaCab;
 import org.epis.minierp.model.EnP1mUsuario;
-import org.epis.minierp.model.EnP2mTransportista;
-import org.epis.minierp.model.EnP2mUnidadTransporte;
-import org.epis.minierp.model.TaGzzMotivoTraslado;
 
 public class VentasFacturaController extends HttpServlet {
 
