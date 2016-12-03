@@ -23,7 +23,7 @@
             <br>
             <div class="form-horizontal">
                 <div class="col-sm-12">      
-                    <table class="table table-bordered table-striped table-hover" id="tablaProductos">
+                    <table class="table table-bordered table-striped table-hover" id="tablaAlmacenes">
                         <thead>
                             <tr>
                                 <th>Código</th>
@@ -43,9 +43,7 @@
                                     <td>${u.almVolTot}</td>
                                     <td>${u.almObs}</td>
                                     <td class="text-center">
-                                         <a href="#" data-toggle="modal" data-target="#verModal" 
-                                            title="Productos del Almacén"
-                                            data-almcod="${u.almCod}">
+                                         <a onclick='verProductos("${u.almCod}")' title="Productos del Almacén">
                                              <i class="fa fa-eye fa-lg" style="color: black;"></i> 
                                          </a>
                                         <a href="#" data-toggle="modal" data-target="#modificarModal" 
@@ -70,64 +68,44 @@
         </div>
         
         
-        <div id="verModal"class="modal fade" role="dialog">
+        <div id="verProductos" class="modal fade" role="dialog">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content" style="overflow-y: auto">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Productos Almacén</h4>
                     </div>
-                    <form id="createForm" method="post" action="${pageContext.request.contextPath}/secured/logistica/almacen">
-                        <div class="modal-body">
-                            <input type="hidden" name="accion" value="ver">
-                            <div class="form-horizontal">
-                                <div class="form-group">
-                                    <div class="col-sm-6">
-                                        <label class="control-label">Código Almacén</label>
-                                        <input type="text" class="form-control" placeholder="Código Almacén" name="almCod" readonly>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="control-label">Nombre Almacén</label>
-                                        <input type="text" class="form-control" placeholder="Nombre Almacén" name="almDet" readonly>
-                                    </div>
+                    <div class="modal-body">
+                        <div class="panel-body">
+                                <div class="col-md-12" id="prod">                                                        
+                                    <div class="table-responsive">
+                                        <table width="100%" class="table table-striped table-bordered table-hover" id="tablaProductos">
+                                            <thead align="center">
+                                                <tr>
+                                                    <th>Código</th>
+                                                    <th>Cod. Barra</th>
+                                                    <th>Nombre</th>
+                                                    <th>SubClase</th>
+                                                    <th>Clase</th>
+                                                    <th>Pre.Uni.Venta</th>
+                                                    <th>Pre.Uni.Compra</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>                        
                                 </div>
-                            </div>
-                            
-                            <div class="table-responsive">
-                                <table class="table table-bordered table-striped table-hover" id="tablaProductos">
-                                    <thead>
-                                        <tr>
-                                            <th>Código</th>
-                                            <th>Nombre</th>
-                                            <th>SubClase</th>
-                                            <th>Clase</th>
-                                            <th>Pre.Uni.Venta</th>
-                                            <th>Pre.Uni.Compra</th>
-                                            <th>Stock</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-
-                                        <c:forEach var="u" items="${productos}">
-                                            <tr>
-                                            </tr>
-                                        </c:forEach>
-                                    </tbody>
-                                </table>
-                            </div>
-                        
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-outline btn-danger" data-dismiss="modal">Cancelar</button>
-                        </div>
-                    </form>
-                </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline btn-danger" data-dismiss="modal">Cancelar</button>
+                    </div>                    
             </div>
+        </div>
         </div>
         <div id="agregarModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content" style="overflow-y: auto">
-                    <div class="modal-header">
+                   <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Agregar Almacén</h4>
                     </div>
@@ -347,10 +325,46 @@
             </div>
         </div>
 
-        <script>
+        <script language="javascript">
             //$('#tablaUsuarios').DataTable({
               //  responsive: true
             //});
+            $(document).ready(function () {
+                $('#tablaAlmacenes').DataTable({
+                    responsive: true
+                });
+            });
+            function verProductos(almCod){
+                $("#loading").modal('show');
+                $.post(
+                        "${pageContext.request.contextPath}/secured/ventas/buscarProductosAlmacen", {
+                            action: "ver",
+                            almCod: almCod
+                        }
+                ).done(function (data) {                    
+                    $('#tablaProductos').DataTable().clear().draw();
+                    $('#tablaProductos').DataTable().destroy();
+                    data.productos.forEach(function (prod){
+                        $('#tablaProductos tbody').append('<tr><td width="16%" align="center"></td><td width="16%" align="center"></td><td width="25%" align="center"></td><td width="16%" align="center"></td><td width="16%" align="center"></td><td width="16%" align="center"></td><td width="16%" align="center"></td>');
+                        $('#tablaProductos tr:last td:eq(0)').html(prod.proCod);
+                        $('#tablaProductos tr:last td:eq(1)').html(prod.proCodBar);
+                        $('#tablaProductos tr:last td:eq(2)').html(prod.proDet);
+                        $('#tablaProductos tr:last td:eq(3)').html(prod.subClaProd);
+                        $('#tablaProductos tr:last td:eq(4)').html(prod.claProd);
+                        $('#tablaProductos tr:last td:eq(5)').html((Number(prod.preUniCom)).toFixed(2));
+                        $('#tablaProductos tr:last td:eq(6)').html((Number(prod.preUniVen)).toFixed(2));
+                    });
+                    $('#tablaProductos').DataTable({
+                        responsive: true
+                    });
+                    
+                    
+                    $("#loading").modal('hide');
+                    $("#verProductos").modal('show');
+            });
+            
+        }
+            
             var updateModal = $("#modificarModal");
             var disableModal = $("#disableModal");
             var activateModal = $("#activateModal");

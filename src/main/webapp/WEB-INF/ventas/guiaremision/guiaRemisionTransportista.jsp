@@ -194,7 +194,7 @@
 
                     $('#guiTraDetPro').DataTable().clear().draw();
                     $('#guiTraDetPro').DataTable().destroy();
-                    data.traList.forEach(function (detailgui) {
+                    data.traList.forEach(function (detailgui) {                        
                         $('#guiTraDetPro tbody').append('<tr><td width="16%" align="center"></td><td width="44%"></td><td width="20%" align="center"></td><td width="20%" align="center"></td></tr>');
                         $('#guiTraDetPro tr:last td:eq(0)').html(detailgui.detCan);
                         $('#guiTraDetPro tr:last td:eq(1)').html(detailgui.proDet);

@@ -2,6 +2,7 @@
 <remisionPrinter>
     <name>Epson</name>
     <size>2</size>
+    <maxProducts>23</maxProducts>
     <leftMargin>0.5</leftMargin>
     <rightMargin>0.3</rightMargin>
     <topMargin>2.9</topMargin>
