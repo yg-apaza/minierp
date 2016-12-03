@@ -137,6 +137,16 @@
     </servlet-mapping>
     <servlet>
         <description/>
+        <display-name>SearchPurchaseBillCodeController</display-name>
+        <servlet-name>SearchPurchaseBillCodeController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.compras.SearchPurchaseBillCodeController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SearchPurchaseBillCodeController</servlet-name>
+        <url-pattern>/secured/compras/factura/verifyCode</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <description/>
         <display-name>BusquedaProveedorController</display-name>
         <servlet-name>BusquedaProveedorController</servlet-name>
         <servlet-class>org.epis.minierp.controller.compras.BusquedaProveedorController</servlet-class>
@@ -668,6 +678,16 @@
     <servlet-mapping>
         <servlet-name>AddPreVentaController</servlet-name>
         <url-pattern>/secured/ventas/preventa/addPreventa</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <description/>
+        <display-name>SearchPreVentaCodeController</display-name>
+        <servlet-name>SearchPreVentaCodeController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.ventas.SearchPreVentaCodeController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SearchPreVentaCodeController</servlet-name>
+        <url-pattern>/secured/ventas/preventa/addPreventa/verifyCode</url-pattern>
     </servlet-mapping>
     <servlet>
         <description/>

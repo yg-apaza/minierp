@@ -35,7 +35,7 @@
                                     <div class="col-md-4">
                                         <div class="form-group input-group">
                                             <span class="input-group-addon"><i class="fa fa-clipboard"></i></span>
-                                            <input type="text" class="form-control" name="preVenCabCod" placeholder="Número de Preventa">
+                                            <input type="text" class="form-control" id="codePreVenCabCod" name="preVenCabCod" placeholder="Número de Preventa">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
@@ -587,7 +587,12 @@
                 rules: {
                     preVenCabCod: {
                         required: true,
-                        codePattern: true
+                        codePattern: true,
+                        remote: {
+                            type: "POST",
+                            url: "${pageContext.request.contextPath}/secured/ventas/preventa/addPreventa/verifyCode",
+                            data: {preVenCabCod: function() {return $("#codePreVenCabCod").val();}}
+                        }
                     },
                     cliCod: {
                         verifiedValue: true,
@@ -605,7 +610,8 @@
                 },
                 messages: {
                     preVenCabCod: {
-                        required: "Ingrese el código de la preventa"
+                        required: "Ingrese el código de la preventa",
+                        remote: "Código ya registrado"
                     },
                     cliCod: {
                         required: "Ingrese cliente válido",
