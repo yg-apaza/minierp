@@ -909,6 +909,17 @@
         <servlet-name>almacenController</servlet-name>
         <url-pattern>/secured/logistica/almacen</url-pattern>
     </servlet-mapping>
+        <servlet-mapping>
+        <servlet-name>BuscarProductosAlmacenController</servlet-name>
+        <url-pattern>/secured/ventas/buscarProductosAlmacen</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <description/>
+        <display-name>BuscarProductosAlmacenController</display-name>
+        <servlet-name>BuscarProductosAlmacenController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.logistica.BuscarProductosAlmacenController</servlet-class>
+    </servlet>
+    
     <!--         ERRORS         -->
     <error-page>
         <location>/error.jsp</location>

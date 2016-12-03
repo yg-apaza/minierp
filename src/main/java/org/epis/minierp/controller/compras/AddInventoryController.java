@@ -75,6 +75,7 @@ public class AddInventoryController extends HttpServlet {
             Logger.getLogger(AddInventoryController.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        response.sendRedirect(request.getContextPath() + "/secured/compras/addInventario");
+        //response.sendRedirect(request.getContextPath() + "/secured/compras/addInventario");
+        response.sendRedirect(request.getContextPath()+ "/secured/compras/inventario" );
     }
 }
