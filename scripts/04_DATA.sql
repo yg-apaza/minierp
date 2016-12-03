@@ -1490,6 +1490,19 @@ INSERT INTO `episerp`.`ta_gzz_canal_cliente` (`CanCliCod`, `CanCliDet`, `EstRegC
 COMMIT;
 
 -- -----------------------------------------------------
+-- Data for table `episerp`.`ta_gzz_canal_usuario`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `episerp`;
+INSERT INTO `episerp`.`ta_gzz_canal_usuario` (`CanUsuCod`, `CanUsuDet`, `CanUsuPorAdd`,`EstRegCod`) VALUES ('01', 'Bodega','0.9','A');
+INSERT INTO `episerp`.`ta_gzz_canal_usuario` (`CanUsuCod`, `CanUsuDet`, `CanUsuPorAdd`,`EstRegCod`) VALUES ('02', 'Mayorista','0.95','A');
+INSERT INTO `episerp`.`ta_gzz_canal_usuario` (`CanUsuCod`, `CanUsuDet`, `CanUsuPorAdd`,`EstRegCod`) VALUES ('03', 'Venta','1.2','A');
+INSERT INTO `episerp`.`ta_gzz_canal_usuario` (`CanUsuCod`, `CanUsuDet`, `CanUsuPorAdd`,`EstRegCod`) VALUES ('04', 'Distribucion','1.5','A');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
 -- Data for table `episerp`.`ta_gzz_tipo_falla_producto`
 -- -----------------------------------------------------
 START TRANSACTION;
