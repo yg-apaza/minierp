@@ -2363,10 +2363,10 @@ INSERT INTO `en_p3m_cuenta_banco` (`CueBanCod`,`BanCod`,`CueBanNum`,`CueCod`,`Es
 INSERT INTO `en_p3m_cuenta_banco` (`CueBanCod`,`BanCod`,`CueBanNum`,`CueCod`,`EstRegCod`) VALUES (0000000003,100,'3236596111',0000001351,'A');
 
 
-INSERT INTO `en_p4m_proveedor` (`PrvCod`,`PrvDet`,`PrvRazSoc`,`PrvNomCom`,`PrvDomFis`,`CueCod`,`PrvCon`,`PrvDir`,`PrvTelFij`,`PrvTelCel`,`PrvEmail`,`PrvPagWeb`,`PrvObs`,`EstRegCod`) VALUES ('10046362031','XYZ',NULL,NULL,NULL,0000001353,'X. Y. Z.','Av. Arequipa','','','','','','A');
+/* INSERT INTO `en_p4m_proveedor` (`PrvCod`,`PrvDet`,`PrvRazSoc`,`PrvNomCom`,`PrvDomFis`,`CueCod`,`PrvCon`,`PrvDir`,`PrvTelFij`,`PrvTelCel`,`PrvEmail`,`PrvPagWeb`,`PrvObs`,`EstRegCod`) VALUES ('10046362031','XYZ',NULL,NULL,NULL,0000001353,'X. Y. Z.','Av. Arequipa','','','','','','A');
 INSERT INTO `en_p4m_proveedor` (`PrvCod`,`PrvDet`,`PrvRazSoc`,`PrvNomCom`,`PrvDomFis`,`CueCod`,`PrvCon`,`PrvDir`,`PrvTelFij`,`PrvTelCel`,`PrvEmail`,`PrvPagWeb`,`PrvObs`,`EstRegCod`) VALUES ('10048325801','ABC',NULL,NULL,NULL,0000001354,'A. B. C.','Av. Arequipa','','','','','','A');
 INSERT INTO `en_p4m_proveedor` (`PrvCod`,`PrvDet`,`PrvRazSoc`,`PrvNomCom`,`PrvDomFis`,`CueCod`,`PrvCon`,`PrvDir`,`PrvTelFij`,`PrvTelCel`,`PrvEmail`,`PrvPagWeb`,`PrvObs`,`EstRegCod`) VALUES ('10722263061','J. MORAN',NULL,NULL,NULL,0000001352,'J. Moran','Av. Arequipa','','','','','','A');
-
+*/
 
 INSERT INTO `en_p3m_asiento_cab` (`LibDiaCod`,`AsiCabCod`,`AsiCabTip`,`AsiCabGlo`,`AsiCabFec`,`TipComCod`,`AsiCabNumCom`,`MonCod`,`EstRegCod`) VALUES (000001,0000000001,'M','Por la suscripción de capital','2016-11-28',NULL,'',01,'A');
 INSERT INTO `en_p3m_asiento_cab` (`LibDiaCod`,`AsiCabCod`,`AsiCabTip`,`AsiCabGlo`,`AsiCabFec`,`TipComCod`,`AsiCabNumCom`,`MonCod`,`EstRegCod`) VALUES (000001,0000000002,'M','Por el aporte recibido','2016-11-28',NULL,'',01,'A');
