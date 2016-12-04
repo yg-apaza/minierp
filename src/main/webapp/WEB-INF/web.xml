@@ -137,6 +137,16 @@
     </servlet-mapping>
     <servlet>
         <description/>
+        <display-name>SearchPurchaseBillCodeController</display-name>
+        <servlet-name>SearchPurchaseBillCodeController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.compras.SearchPurchaseBillCodeController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SearchPurchaseBillCodeController</servlet-name>
+        <url-pattern>/secured/compras/factura/verifyCode</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <description/>
         <display-name>BusquedaProveedorController</display-name>
         <servlet-name>BusquedaProveedorController</servlet-name>
         <servlet-class>org.epis.minierp.controller.compras.BusquedaProveedorController</servlet-class>
@@ -313,6 +323,17 @@
     <servlet-mapping>
         <servlet-name>DatosEmpresaController</servlet-name>
         <url-pattern>/secured/configuracion/datosEmpresa</url-pattern>
+    </servlet-mapping>
+    <!--Sub Modulo Canal Usuario-->
+    <servlet>
+        <description/>
+        <display-name>CanalUsuarioController</display-name>
+        <servlet-name>CanalUsuarioController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.configuracion.CanalUsuarioController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CanalUsuarioController</servlet-name>
+        <url-pattern>/secured/configuracion/canalUsuario</url-pattern>
     </servlet-mapping>
     <!--Sub Modulo Datos de Transportista-->
     <servlet>
@@ -660,6 +681,16 @@
     </servlet-mapping>
     <servlet>
         <description/>
+        <display-name>SearchPreVentaCodeController</display-name>
+        <servlet-name>SearchPreVentaCodeController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.ventas.SearchPreVentaCodeController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SearchPreVentaCodeController</servlet-name>
+        <url-pattern>/secured/ventas/preventa/addPreventa/verifyCode</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <description/>
         <display-name>ClienteController</display-name>
         <servlet-name>ClienteController</servlet-name>
         <servlet-class>org.epis.minierp.controller.ventas.ClienteController</servlet-class>
@@ -878,6 +909,17 @@
         <servlet-name>almacenController</servlet-name>
         <url-pattern>/secured/logistica/almacen</url-pattern>
     </servlet-mapping>
+        <servlet-mapping>
+        <servlet-name>BuscarProductosAlmacenController</servlet-name>
+        <url-pattern>/secured/ventas/buscarProductosAlmacen</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <description/>
+        <display-name>BuscarProductosAlmacenController</display-name>
+        <servlet-name>BuscarProductosAlmacenController</servlet-name>
+        <servlet-class>org.epis.minierp.controller.logistica.BuscarProductosAlmacenController</servlet-class>
+    </servlet>
+    
     <!--         ERRORS         -->
     <error-page>
         <location>/error.jsp</location>

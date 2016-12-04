@@ -30,13 +30,14 @@ public class ImpresoraFacturaController extends HttpServlet {
         FacturaPrinter fPrinter = facDAO.read();
         
         /* int size = Int.parseInteger(request.getParameter("size")); */
-        
+        String name = request.getParameter("name");
         float leftMargin = Float.parseFloat(request.getParameter("leftMargin"));
         float topMargin = Float.parseFloat(request.getParameter("topMargin"));       
         float botMargin = Float.parseFloat(request.getParameter("botMargin"));
         float topFacCab = Float.parseFloat(request.getParameter("topFacCab"));
         float topFacDet = Float.parseFloat(request.getParameter("topFacDet"));
-        
+        float topFacTot = Float.parseFloat(request.getParameter("topFacTot"));
+        int maxProducts = Integer.parseInt(request.getParameter("maxProducts"));
         float totalMargin = Float.parseFloat(request.getParameter("totalMargin"));
         
         float cliNom = Float.parseFloat(request.getParameter("cliNom"));
@@ -60,7 +61,8 @@ public class ImpresoraFacturaController extends HttpServlet {
         float proDes1 = Float.parseFloat(request.getParameter("proDes1"));
         float proDes2 = Float.parseFloat(request.getParameter("proDes2"));
         float proValNet = Float.parseFloat(request.getParameter("proValNet"));
-               
+       
+        fPrinter.setName(name);
         fPrinter.setCliNom(cliNom);
         fPrinter.setCliDir(cliDir);
         fPrinter.setFecEmi(fecEmi);
@@ -88,6 +90,9 @@ public class ImpresoraFacturaController extends HttpServlet {
         fPrinter.setBotMargin(botMargin);
         fPrinter.setTopFacCab(topFacCab);
         fPrinter.setTopFacDet(topFacDet);
+        fPrinter.setTopFacTot(topFacTot);
+
+        fPrinter.setMaxProducts(maxProducts);
         fPrinter.setTotalMargin(totalMargin);
         facDAO.save(fPrinter);
         

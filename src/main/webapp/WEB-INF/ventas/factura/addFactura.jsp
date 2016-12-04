@@ -12,8 +12,7 @@
             <form id="registerBill" method="post" action="${pageContext.request.contextPath}/secured/ventas/factura/addFactura">
                 <input type="hidden" class="form-control" name="productsAmounts" id="proAmo">
                 <input type="hidden" class="form-control" name="productsCodes" id="proCodes">
-                <input type="hidden" class="form-control" name="productsPrices" id="proPrices">
-                <input class="hidden" type="text" name="cliCod" id="facCli">
+                <input type="hidden" class="form-control" name="productsPrices" id="proPrices">                
                 <div class="row">
                     <div class="col-md-4">
                         <br><h1 class="page-header">Factura de Venta</h1>
@@ -77,8 +76,9 @@
                                                 </div>
                                             </div>
                                         </div>  
-                                        <div class="row">
+                                        <div class="row">                                            
                                             <div class="col-md-12">
+                                                <input class="hidden" type="text" name="cliCod" id="facCli">
                                                 <div class="form-group input-group" >                                                    
                                                     <span class="input-group-addon">Cliente</span>
                                                     <select class="form-control" id="desClienteCode" disabled>
@@ -93,7 +93,7 @@
                                                         </c:forEach>
                                                     </select> 
                                                     <input class="form-control" type="text" id="cliCodShow" placeholder="Código" readOnly>
-                                                </div>                                                
+                                                </div>                                                  
                                             </div>
                                         </div>
                                         <div class="row">                                            
@@ -141,7 +141,7 @@
                                 <div class="row">
                                     <div class="col-xs-12 col-md-12">
                                         <div class="row">
-                                            <div class="col-md-7">
+                                            <div class="col-md-5">
                                                 <div class="form-group input-group" >
                                                     <span class="input-group-addon">Producto</span>
                                                     <input class="form-control" type="text" name="proDes" id="proDesShow" placeholder="Descripción" size="100" readOnly>                                                    
@@ -154,6 +154,12 @@
                                                     <span class="input-group-addon"><i class="fa fa-money"></i></span>
                                                     <input type="number" class="form-control" id="priceShow" readOnly>        
                                                     <input type="hidden" class="form-control" id="unitShow" readOnly>     
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group input-group" >
+                                                    <span class="input-group-addon">Stock</span>
+                                                    <input type="number" class="form-control" id="stockShow" readOnly>
                                                 </div>
                                             </div>
                                             <div class="col-md-2">
@@ -257,7 +263,7 @@
             <div class="modal-dialog modal-md">
                 <div class="modal-content" style="overflow-y: auto">
                     <div class="modal-body">
-                        <p class="text-center text-success">La factura de compra ha sido agregada correctamente</p>
+                        <p class="text-center text-success">La factura de venta ha sido agregada correctamente</p>
                     </div>
                 </div>         
             </div>
@@ -327,6 +333,7 @@
                             $('#proDesShow').val("");
                             $('#proCodShow').val("");
                             $('#priceShow').val("");
+                            $('#stockShow').val("");
                             $('#amountShow').val(1);
                             updateAll();
                         }
@@ -390,6 +397,7 @@
                 $('#proDesShow').val("");
                 $('#proCodShow').val("");
                 $('#priceShow').val("");
+                $('#stockShow').val("");
                 $('#amountShow').val(1);
             }
             
@@ -500,7 +508,8 @@
                 source: productDescriptions
             });
 
-            $('#proCodShow').on('keyup click',function () {
+            //$('#proCodShow').on('keyup click',function () {
+            $('#proCodShow').keyup(function () {
                 if(codeCriteria) {
                     $.post(
                         "${pageContext.request.contextPath}/secured/ventas/searchProduct", {
@@ -508,10 +517,15 @@
                             proDet: ""
                         }
                     ).done(function (data) {
-                            $('#proCodShow').click();
+                            //$('#proCodShow').click();
+                            var e = jQuery.Event("keypress");
+                            e.which = 13;
+                            e.keyCode = 13;
+                            $("#proCodShow").trigger(e);
                             if (data.proCod != null) {
                                 $("#proDesShow").val(data.proDet);
                                 $("#priceShow").val(data.proPreUni);
+                                $("#stockShow").val(data.proStk);
                                 $('#amountShow')[0].max = data.proStk;
                                 $('#unitShow').val(data.proUnit);
                             }
@@ -522,7 +536,8 @@
                 }
             });
             
-            $('#proDesShow').on('keyup click',function () {
+            //$('#proDesShow').on('keyup click',function () {
+            $('#proDesShow').keyup(function () {
                 if(!codeCriteria) {
                     $.post(
                         "${pageContext.request.contextPath}/secured/ventas/searchProduct", {
@@ -530,10 +545,15 @@
                             proDet: $("#proDesShow").val()
                         }
                     ).done(function (data) {
-                            $('#proDesShow').click();
+                            //$('#proDesShow').click();
+                            var e = jQuery.Event("keypress");
+                            e.which = 13;
+                            e.keyCode = 13;
+                            $("#proDesShow").trigger(e);
                             if (data.proCod != null) {
                                 $("#proCodShow").val(data.proCod);
                                 $("#priceShow").val(data.proPreUni);
+                                $("#stockShow").val(data.proStk);
                                 $('#amountShow')[0].max = data.proStk;
                                 $('#unitShow').val(data.proUnit);
                             }
@@ -543,8 +563,9 @@
                         });
                 }
             });
-
-            $('#cliCodShow').on('keyup click',function () {
+            
+            //$('#cliCodShow').on('keyup click',function () {
+            $('#cliCodShow').keyup(function () {
                 if(codeClientCriteria) {
                     $.post(
                             "${pageContext.request.contextPath}/secured/ventas/searchClient", {
@@ -553,7 +574,11 @@
                                 cliCod: $("#cliCodShow").val()
                             }
                         ).done(function (data) {
-                                $('#cliCodShow').click();
+                                //$('#cliCodShow').click();
+                                var e = jQuery.Event("keypress");
+                                e.which = 13;
+                                e.keyCode = 13;
+                                $("#cliCodShow").trigger(e);                               
                                 if(data.cliCod != null) {
                                     $("#facCli").val(data.cliCod);
                                     $("#cliDesShow").val(data.cliRazSoc);                                      
@@ -563,9 +588,10 @@
                                 }
                             });
                 }
-            });    
+            });   
             
-            $('#cliDesShow').on('keyup click',function () {
+            //$('#cliDesShow').on('keyup click',function () {
+            $('#cliDesShow').keyup(function () {
                 if(!codeClientCriteria) {
                     $.post(
                             "${pageContext.request.contextPath}/secured/ventas/searchClient", {
@@ -574,7 +600,11 @@
                                 cliDes: $("#cliDesShow").val()
                             }
                         ).done(function (data) {
-                                $('#cliDesShow').click();
+                                //$('#cliDesShow').click();
+                                var e = jQuery.Event("keypress");
+                                e.which = 13;
+                                e.keyCode = 13;
+                                $("#cliDesShow").trigger(e);
                                 if(data.cliCod != null) {
                                     $("#facCli").val(data.cliCod);
                                     $("#cliCodShow").val(data.cliCod);    
@@ -634,22 +664,24 @@
             });  
             
             $("#registerBill").submit(function(e) {
-                $('#loading').modal('show');
-                e.preventDefault();
-                $.ajax({
-                    type: 'POST',
-                    url: $(this).attr('action'),
-                    data: $(this).serialize(),
-                    success: function(data) {
-                        $('#loading').modal('hide');    
-                        if(data.state == true) {
-                            $("#fvSuccess").modal('show');
-                            newDirection = data.redirect;
+                if($("#registerBill").valid()) {
+                    $('#loading').modal('show');
+                    e.preventDefault();
+                    $.ajax({
+                        type: 'POST',
+                        url: $(this).attr('action'),
+                        data: $(this).serialize(),
+                        success: function(data) {
+                            $('#loading').modal('hide');    
+                            if(data.state == true) {
+                                $("#fvSuccess").modal('show');
+                                newDirection = data.redirect;
+                            }
                         }
-                    }
-                });
-                
-                return false;
+                    });
+
+                    return false;
+                }
             });
             
             $("#fvSuccess").on("hidden.bs.modal", function (){

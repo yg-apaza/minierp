@@ -2,7 +2,7 @@
 
 DROP PROCEDURE IF EXISTS `kardex_prom_ponderado`;
 DELIMITER $$
-CREATE  PROCEDURE `kardex_prom_ponderado`(IN idProducto CHAR(15))
+CREATE  PROCEDURE `kardex_prom_ponderado`(IN idProducto CHAR(15),IN idInventario CHAR(15))
 BEGIN
 
 DECLARE saldoCantidad DOUBLE default 0;
@@ -14,8 +14,9 @@ SET @saldoPrecioUni :=0;
 SET @saldoPrecioTot :=0;
 
 
-SET @fechaInventario := (SELECT MAX(ic.InvCabFec) FROM en_p2m_inventario_cab ic
-INNER JOIN en_p2t_inventario_det id ON id.ProCod=idProducto AND ic.EstRegCod='A');
+/**SET @fechaInventario := (SELECT MAX(ic.InvCabFec) FROM en_p2m_inventario_cab ic
+INNER JOIN en_p2t_inventario_det id ON id.ProCod=idProducto AND ic.EstRegCod='A');**/
+SET @fechaInventario := (SELECT ic.InvCabFec FROM en_p2m_inventario_cab ic WHERE ic.InvCabCod=idInventario);
 
 IF COALESCE(@fechaInventario,0) =0
 THEN
@@ -201,7 +202,7 @@ DELIMITER ;
 
 DROP PROCEDURE IF EXISTS `kardex_peps`;
 DELIMITER $$
-CREATE  PROCEDURE `kardex_peps`(IN idProducto CHAR(15))
+CREATE  PROCEDURE `kardex_peps`(IN idProducto CHAR(15),IN idInventario CHAR(15))
 BEGIN
 
 
@@ -223,8 +224,9 @@ SET @saldoPrecioUni :=0;
 SET @saldoPrecioTot :=0;
 
 
-SET @fechaInventario := (SELECT MAX(ic.InvCabFec) FROM en_p2m_inventario_cab ic
-INNER JOIN en_p2t_inventario_det id ON id.ProCod=idProducto AND ic.EstRegCod='A');
+/**SET @fechaInventario := (SELECT MAX(ic.InvCabFec) FROM en_p2m_inventario_cab ic
+INNER JOIN en_p2t_inventario_det id ON id.ProCod=idProducto AND ic.EstRegCod='A');**/
+SET @fechaInventario := (SELECT ic.InvCabFec FROM en_p2m_inventario_cab ic WHERE ic.InvCabCod=idInventario);
 
 IF COALESCE(@fechaInventario,0) =0
 THEN

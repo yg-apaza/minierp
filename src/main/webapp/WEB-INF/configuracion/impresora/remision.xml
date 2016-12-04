@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <remisionPrinter>
+    <name>Epson</name>
     <size>2</size>
-    <leftMargin>2</leftMargin>
-    <rightMargin>1</rightMargin>
-    <topMargin>4.5</topMargin>
+    <maxProducts>23</maxProducts>
+    <leftMargin>0.5</leftMargin>
+    <rightMargin>0.3</rightMargin>
+    <topMargin>2.9</topMargin>
     <botMargin>0.5</botMargin>
     <cliNom>1.4</cliNom>
     <punPar>2.4</punPar>

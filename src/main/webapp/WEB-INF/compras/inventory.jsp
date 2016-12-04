@@ -17,22 +17,9 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-2">
-                            
+                        <div class="col-md-2">  
                             <a href="${pageContext.request.contextPath}/secured/compras/addInventario" class="btn btn-success">Nuevo Inventario <i class="fa fa-plus"></i></a>
-                            
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group input-group" >
-                                <span class="input-group-addon">Flujo Efectivo:</span>
-                                <a  href="${pageContext.request.contextPath}/secured/general/reporte?type=pdf&&report=flujoefectivo&&jdbc=true&&key=null&&value=null" class="btn btn-danger" >
-                                    <i class="fa fa-file-pdf-o"></i>
-                                </a>
-                                <a  href="${pageContext.request.contextPath}/secured/general/reporte?type=doc&&report=flujoefectivo&&jdbc=true&&key=null&&value=null" class="btn  btn-primary" >
-                                    <i class="fa fa-file-word-o"></i>
-                                </a>
-                            </div>
-                        </div>
+                         </div>
                     </div><br>
                     <div class="row">
                         <div class="col-lg-12">

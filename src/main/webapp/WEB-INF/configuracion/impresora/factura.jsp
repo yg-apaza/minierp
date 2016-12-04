@@ -9,23 +9,25 @@
         <div class="pagel-body">
             <h1 class="page-header"> Configuración de Factura </h1>
             <form id="updateFactura" method="post" action="${pageContext.request.contextPath}/secured/configuracion/impresora/factura">  
-                <div class="col-md-6">
+                <div class="col-md-9">
                     <div class="table-responsive">
                         <table class="table table-bordered table-striped table-hover table-condensed" id="tablaFacMar">
                             <tr>
+                                <th>NOMBRE IMPRESORA</th>
                                 <th>MARGEN IZQUIERDO</th>
                                 <th>MARGEN SUPERIOR</th>
-                                <th hidden>MARGEN INFERIOR</th>
+                                <th>MARGEN INFERIOR</th>
                             </tr>
                             <tr>
+                                <td><input type="text" name="name" value="${fac.getName()}"></td>
                                 <td><input min="0" step="0.1" type="number" name="leftMargin" value="${fac.getLeftMargin()}">cm</td>
                                 <td><input min="0" step="0.1" type="number" name="topMargin" value="${fac.getTopMargin()}">cm</td>
-                                <td hidden><input min="0" step="0.1" type="number" name="botMargin" value="${fac.getBotMargin()}">cm</td>                            
+                                <td><input min="0" step="0.1" type="number" name="botMargin" value="${fac.getBotMargin()}">cm</td>                            
                             </tr>
                         </table>
                     </div>
                 </div>
-                <div class="col-md-6 text-center">
+                <div class="col-md-3 text-center">
                     <button type="submit" formnovalidate="formnovalidate" id="update" class="btn btn-primary">Actualizar cambios</button>       
                 </div>  
                 <div class="col-md-12">
@@ -135,6 +137,30 @@
                         </table>
                     </div>
                 </div>
+                <div class="col-md-12">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped table-hover table-condensed" id="tablaMaxPro">
+                            <tr>
+                                <th style="text-align: center">NÚMERO MÁXIMO DE PRODUCTOS</th>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center"><input min="0" step="1" type="number" name="maxProducts" value="${fac.getMaxProducts()}"></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>              
+                <div class="col-md-12">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped table-hover table-condensed" id="tablaTopFacTot">
+                            <tr>
+                                <th style="text-align: center">SEPARACIÓN</th>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center"><input min="0" step="0.1" type="number" name="topFacTot" value="${fac.getTopFacTot()}">cm</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>              
                 <div class="col-md-12">
                     <div class="table-responsive">
                         <table class="table table-bordered table-striped table-hover table-condensed" id="tablaFacTot">            

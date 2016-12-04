@@ -30,13 +30,15 @@ public class ImpresoraBoletaController extends HttpServlet {
         BoletaPrinter bPrinter = bolDAO.read();
         
         /* int size = Int.parseInteger(request.getParameter("size")); */
-        
+        String name = request.getParameter("name");
         float leftMargin = Float.parseFloat(request.getParameter("leftMargin"));
         float topMargin = Float.parseFloat(request.getParameter("topMargin"));
         float botMargin = Float.parseFloat(request.getParameter("botMargin"));
         float topBolCab = Float.parseFloat(request.getParameter("topBolCab"));
         float topBolDet = Float.parseFloat(request.getParameter("topBolDet"));
-        
+        float topBolTot = Float.parseFloat(request.getParameter("topBolTot"));
+        int maxProducts = Integer.parseInt(request.getParameter("maxProducts"));
+
         float totalMargin = Float.parseFloat(request.getParameter("totalMargin"));
         
         float cliNom = Float.parseFloat(request.getParameter("cliNom"));
@@ -57,7 +59,8 @@ public class ImpresoraBoletaController extends HttpServlet {
         float proValVen = Float.parseFloat(request.getParameter("proValVen"));
         float proDes1 = Float.parseFloat(request.getParameter("proDes1"));
         float proPreNet = Float.parseFloat(request.getParameter("proPreNet"));
-               
+        
+        bPrinter.setName(name);
         bPrinter.setCliNom(cliNom);
         bPrinter.setCliDir(cliDir);
         bPrinter.setFecEmi(fecEmi);
@@ -82,6 +85,9 @@ public class ImpresoraBoletaController extends HttpServlet {
         bPrinter.setBotMargin(botMargin);
         bPrinter.setTopBolCab(topBolCab);
         bPrinter.setTopBolDet(topBolDet);
+        bPrinter.setTopBolTot(topBolTot);
+        
+        bPrinter.setMaxProducts(maxProducts);
         bPrinter.setTotalMargin(totalMargin);
         bolDAO.save(bPrinter);
         

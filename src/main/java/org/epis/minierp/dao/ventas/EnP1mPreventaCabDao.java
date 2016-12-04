@@ -41,7 +41,7 @@ public class EnP1mPreventaCabDao {
     public EnP1mPreventaCab getById(String id) {
         EnP1mPreventaCab estado = null;
         try {
-            estado = (EnP1mPreventaCab) session.load(EnP1mPreventaCab.class, id);
+            estado = (EnP1mPreventaCab) session.get(EnP1mPreventaCab.class, id);
         } catch (ObjectNotFoundException e) {
             return null;
         }

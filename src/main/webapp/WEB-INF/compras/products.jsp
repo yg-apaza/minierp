@@ -1,6 +1,8 @@
 <%@ taglib tagdir="/WEB-INF/tags" prefix="minierptemplate" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix='cc' uri='http://java.sun.com/jsp/jstl/core' %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <minierptemplate:template>
     <jsp:attribute name="titulo">
         <title>Logística - Productos</title>
@@ -59,7 +61,12 @@
                                 <td>${p.proCodBar}</td>
                                 <td>${p.proDet}</td>
                                 <td>${p.taGzzUnidadMed.uniMedSim}</td>
-                                <td>${p.proPreUniVen}</td>
+                                <td>
+                                    <fmt:formatNumber type="number" 
+                                                      minFractionDigits="2" 
+                                                      maxFractionDigits="2" 
+                                                      value="${(p.proPreUniVen * listaprecio)}" />
+                                </td>
                                 <td>${p.proPesNet}</td>
                                 <td>${p.enP2mAlmacen.almDet}</td>
                                 <td>${p.proStk}</td>

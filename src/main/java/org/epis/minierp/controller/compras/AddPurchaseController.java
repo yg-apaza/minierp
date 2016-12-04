@@ -17,6 +17,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.epis.minierp.business.contabilidad.RegistroAsientoBusiness;
 import org.epis.minierp.dao.general.TaGzzEstadoFacturaDao;
 import org.epis.minierp.dao.compras.EnP4mFacturaCompraCabDao;
 import org.epis.minierp.dao.compras.EnP4tFacturaCompraDetDao;
@@ -150,8 +151,16 @@ public class AddPurchaseController extends HttpServlet {
                 det.setFacComDetCan(Double.parseDouble(productsAmounts.get(i)));
                 det.setFacComDetValUni(Double.parseDouble(productsPrices.get(i)));
                 
-                detalles.save(det);                                
+                detalles.save(det); 
+                header.getEnP4tFacturaCompraDets().add(det);
             } 
+            
+            try {
+                RegistroAsientoBusiness registroAsientoBusiness = new RegistroAsientoBusiness();
+                registroAsientoBusiness.generarAsientosAmarre(header);
+            } catch (Exception e) {
+                System.out.println(":( error generar Amarre");
+            }
             
             JsonObject data = new JsonObject();
             data.addProperty("state", true);

@@ -48,10 +48,11 @@
                     <table class="table table-bordered table-striped table-hover" id="tablaUsuarios">
                         <thead>
                             <tr>
-                                <th>Código</th>
+                                <th>Cod</th>
                                 <th>Documentos</th>
                                 <th>Nombres y Apellidos</th>
                                 <th>Tipo</th>
+                                <th>Canal de Venta</th>
                                 <th>Catálogo de Clientes</th>
                                 <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                                     <th>Acciones</th>
@@ -64,14 +65,15 @@
                                     <td>${u.usuCod}</td>
                                     <td>
                                         <c:forEach var="docs" items="${u.enP1mDocumentoUsuarios}">
-                                            ${docs.taGzzTipoDocUsuario.tipDocUsuDet} - ${docs.docUsuNum} <br>
+                                            * ${docs.taGzzTipoDocUsuario.tipDocUsuDet} - ${docs.docUsuNum} <br>
                                         </c:forEach>
                                     </td>
                                     <td>${u.usuNom} ${u.usuApePat} ${u.usuApeMat}</td>
                                     <td>${u.taGzzTipoUsuario.tipUsuDet}</td>
+                                    <td>${u.taGzzCanalUsuario.canUsuDet}</td>
                                     <td>
                                         <c:forEach var="cli" items="${u.enP1mCarteraClienteses}">
-                                           ${cli.enP1mCliente.cliCod} - ${cli.enP1mCliente.cliRazSoc}<br>
+                                            * ${cli.enP1mCliente.cliRazSoc}<br>
                                         </c:forEach>
                                     </td>
                                     <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
@@ -87,6 +89,7 @@
                                            data-usufecnac="${u.usuFecNac}"
                                            data-estcivcod="${u.taGzzEstadoCivil.estCivCod}" 
                                            data-ususex="${u.usuSex}"
+                                           data-canusucod="${u.taGzzCanalUsuario.canUsuCod}"
                                            data-usulog="${u.usuLog}">
                                            <i class="fa fa-pencil-square-o fa-lg" style="color: black;"></i>
                                         </a>
@@ -183,6 +186,14 @@
                                             </c:forEach>
                                         </select>
                                     </div>
+                                    <div class="col-sm-4">                               
+                                        <label class="control-label">Canal de Venta</label>
+                                        <select class="form-control" name="canUsuCod">
+                                            <c:forEach var="c" items="${canalesUsuarios}">
+                                                <option value="${c.canUsuCod}">${c.canUsuCod} - ${c.canUsuDet}</option>
+                                            </c:forEach>
+                                        </select>
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-4"> 
@@ -233,9 +244,19 @@
                             <div class=form-horizontal>
                                 <input type="hidden" name="accion" value="update">
                                 <div class="form-group">
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-12">
                                         <label class="control-label">Código Usuario</label>
                                         <input class="form-control" name="usuCod" id="updateUsuCod" readonly>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-6">
+                                        <label class="control-label">Canal de Venta</label>
+                                        <select class="form-control" name="canUsuCod" id="updateCanUsuCod">
+                                            <c:forEach var="c" items="${canalesUsuarios}">
+                                                <option value="${c.canUsuCod}">${c.canUsuCod} - ${c.canUsuDet}</option>
+                                            </c:forEach>
+                                        </select>
                                     </div>
                                     <div class="col-sm-6">                               
                                         <label class="control-label">Nombre Usuario</label>
@@ -837,6 +858,7 @@
             var updateUsuFecNac = $("#updateUsuFecNac");
             var updateEstCivCod = $("#updateEstCivCod");
             var updateUsuSex = $("#updateUsuSex");
+            var updateCanUsuCod = $("#updateCanUsuCod");
 
             var disableUsuCod = $("#disableUsuCod");
             var disableUsuNomCom = $("#disableUsuNomCom");
@@ -858,8 +880,9 @@
                 updateUsuFecNac.val($(e.relatedTarget).data('usufecnac'));
                 updateEstCivCod.val($(e.relatedTarget).data('estcivcod'));
                 updateUsuSex.val($(e.relatedTarget).data('ususex'));
-
+                updateCanUsuCod.val($(e.relatedTarget).data('canusucod'));
             });
+            
             disableModal.on('show.bs.modal', function (e) {
                 disableUsuCod.val($(e.relatedTarget).data('usucod'));
                 disableUsuNomCom.text($(e.relatedTarget).data('usuapepat') + " " + $(e.relatedTarget).data('usuapemat') + ", " + $(e.relatedTarget).data('usunom'));

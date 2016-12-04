@@ -12,8 +12,7 @@
             <form id="registerBill" method="post" action="${pageContext.request.contextPath}/secured/ventas/preventa/addPreventa">
                 <input type="hidden" class="form-control" name="productsAmounts" id="proAmo">
                 <input type="hidden" class="form-control" name="productsCodes" id="proCodes">
-                <input type="hidden" class="form-control" name="productsPrices" id="proPrices">
-                <input class="hidden" type="text" name="cliCod" id="preCli">
+                <input type="hidden" class="form-control" name="productsPrices" id="proPrices">                
                 <div class="row">
                     <div class="col-md-8">
                         <br><h1 class="page-header">Preventa</h1>
@@ -36,7 +35,7 @@
                                     <div class="col-md-4">
                                         <div class="form-group input-group">
                                             <span class="input-group-addon"><i class="fa fa-clipboard"></i></span>
-                                            <input type="text" class="form-control" name="preVenCabCod" placeholder="Número de Preventa">
+                                            <input type="text" class="form-control" id="codePreVenCabCod" name="preVenCabCod" placeholder="Número de Preventa">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
@@ -60,6 +59,7 @@
                                     <div class="col-xs-12 col-md-9">
                                         <div class="row">
                                             <div class="col-md-12">
+                                                <input class="hidden" type="text" name="cliCod" id="preCli">
                                                 <div class="form-group input-group" >                                                    
                                                     <span class="input-group-addon">Cliente</span>
                                                     <select class="form-control" id="desClienteCode" disabled>
@@ -108,7 +108,7 @@
                                 <div class="row">
                                     <div class="col-xs-12 col-md-12">
                                         <div class="row">
-                                            <div class="col-md-7">
+                                            <div class="col-md-5">
                                                 <div class="form-group input-group" >
                                                     <span class="input-group-addon">Producto</span>
                                                     <input class="form-control" type="text" name="proDes" id="proDesShow" placeholder="Descripción" size="100" readOnly>
@@ -121,6 +121,12 @@
                                                     <span class="input-group-addon"><i class="fa fa-money"></i></span>
                                                     <input type="number" class="form-control" id="priceShow" readOnly>        
                                                     <input type="hidden" class="form-control" id="unitShow">     
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group input-group" >
+                                                    <span class="input-group-addon">Stock</span>
+                                                    <input type="number" class="form-control" id="stockShow" readOnly>
                                                 </div>
                                             </div>
                                             <div class="col-md-2">
@@ -294,6 +300,7 @@
                             $('#proDesShow').val("");
                             $('#proCodShow').val("");
                             $('#priceShow').val("");
+                            $('#stockShow').val("");
                             $('#amountShow').val(1);
                             updateAll();
                         }
@@ -357,6 +364,7 @@
                 $('#proCodShow').val("");
                 $('#proDesShow').val("");
                 $('#priceShow').val("");
+                $('#stockShow').val("");
                 $('#amountShow').val(1);
             }
 
@@ -467,7 +475,8 @@
                 source: productDescriptions
             });
 
-            $('#proCodShow').on('keyup click',function () {
+            //$('#proCodShow').on('keyup click',function () {
+            $('#proCodShow').keyup(function () {
                 if (codeCriteria) {
                     $.post(
                             "${pageContext.request.contextPath}/secured/ventas/searchProduct", {
@@ -475,10 +484,15 @@
                                 proDet: ""
                             }
                     ).done(function (data) {
-                        $('#proCodShow').click();
+                        //$('#proCodShow').click();
+                        var e = jQuery.Event("keypress");
+                        e.which = 13;
+                        e.keyCode = 13;
+                        $("#proCodShow").trigger(e);
                         if (data.proCod != null) {
                             $("#proDesShow").val(data.proDet);
                             $("#priceShow").val(data.proPreUni);
+                            $("#stockShow").val(data.proStk);
                             $('#amountShow')[0].max = data.proStk;
                             $('#unitShow').val(data.proUnit);
                         } else {
@@ -487,8 +501,9 @@
                     });
                 }
             });
-
-            $('#proDesShow').on('keyup click',function () {
+            
+            //$('#proDesShow').on('keyup click',function () {
+            $('#proDesShow').keyup(function () {
                 if (!codeCriteria) {
                     $.post(
                             "${pageContext.request.contextPath}/secured/ventas/searchProduct", {
@@ -496,10 +511,15 @@
                                 proDet: $("#proDesShow").val()
                             }
                     ).done(function (data) {
-                        $('#proDesShow').click();
+                        //$('#proDesShow').click();
+                        var e = jQuery.Event("keypress");
+                        e.which = 13;
+                        e.keyCode = 13;
+                        $("#proDesShow").trigger(e);
                         if (data.proCod != null) {
                             $("#proCodShow").val(data.proCod);
                             $("#priceShow").val(data.proPreUni);
+                            $("#stockShow").val(data.proStk);
                             $('#amountShow')[0].max = data.proStk;
                             $('#unitShow').val(data.proUnit);
                         } else {
@@ -508,8 +528,9 @@
                     });
                 }
             });
-
-            $('#cliCodShow').on('keyup click',function () {
+            
+            //$('#cliCodShow').on('keyup click',function () {
+            $('#cliCodShow').keyup(function () {
                 if (codeClientCriteria) {
                     $.post(
                             "${pageContext.request.contextPath}/secured/ventas/searchClient", {
@@ -518,7 +539,11 @@
                                 cliCod: $("#cliCodShow").val()
                             }
                     ).done(function (data) {
-                        $('#cliCodShow').click();
+                        //$('#cliCodShow').click();
+                        var e = jQuery.Event("keypress");
+                        e.which = 13;
+                        e.keyCode = 13;
+                        $("#cliCodShow").trigger(e);
                         if (data.cliCod != null) {
                             $("#preCli").val(data.cliCod);
                             $("#cliDesShow").val(data.cliRazSoc);
@@ -529,8 +554,9 @@
                     });
                 }
             });
-
-            $('#cliDesShow').on('keyup click',function () {
+            
+            //$('#cliDesShow').on('keyup click',function () {
+            $('#cliDesShow').keyup(function () {
                 if (!codeClientCriteria) {
                     $.post(
                             "${pageContext.request.contextPath}/secured/ventas/searchClient", {
@@ -539,7 +565,11 @@
                                 cliDes: $("#cliDesShow").val()
                             }
                     ).done(function (data) {
-                        $('#cliDesShow').click();
+                        //$('#cliDesShow').click();
+                        var e = jQuery.Event("keypress");
+                        e.which = 13;
+                        e.keyCode = 13;
+                        $("#cliDesShow").trigger(e);
                         if (data.cliCod != null) {
                             $("#preCli").val(data.cliCod);
                             $("#cliCodShow").val(data.cliCod);
@@ -557,7 +587,12 @@
                 rules: {
                     preVenCabCod: {
                         required: true,
-                        codePattern: true
+                        codePattern: true,
+                        remote: {
+                            type: "POST",
+                            url: "${pageContext.request.contextPath}/secured/ventas/preventa/addPreventa/verifyCode",
+                            data: {preVenCabCod: function() {return $("#codePreVenCabCod").val();}}
+                        }
                     },
                     cliCod: {
                         verifiedValue: true,
@@ -575,7 +610,8 @@
                 },
                 messages: {
                     preVenCabCod: {
-                        required: "Ingrese el código de la preventa"
+                        required: "Ingrese el código de la preventa",
+                        remote: "Código ya registrado"
                     },
                     cliCod: {
                         required: "Ingrese cliente válido",
@@ -593,22 +629,24 @@
             });
             
             $("#registerBill").submit(function(e) {
-                $('#loading').modal('show');
-                e.preventDefault();
-                $.ajax({
-                    type: 'POST',
-                    url: $(this).attr('action'),
-                    data: $(this).serialize(),
-                    success: function(data) {
-                        $('#loading').modal('hide');    
-                        if(data.state == true) {
-                            $("#pSuccess").modal('show');
-                            newDirection = data.redirect;
+                if($("#registerBill").valid()) {
+                    $('#loading').modal('show');
+                    e.preventDefault();
+                    $.ajax({
+                        type: 'POST',
+                        url: $(this).attr('action'),
+                        data: $(this).serialize(),
+                        success: function(data) {
+                            $('#loading').modal('hide');    
+                            if(data.state == true) {
+                                $("#pSuccess").modal('show');
+                                newDirection = data.redirect;
+                            }
                         }
-                    }
-                });
-                
-                return false;
+                    });
+
+                    return false;
+                }                
             });
             
             $("#pSuccess").on("hidden.bs.modal", function (){

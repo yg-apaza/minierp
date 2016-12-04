@@ -9,7 +9,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import org.epis.minierp.dao.logistica.EnP2mProductoDao;
+import org.epis.minierp.model.EnP1mUsuario;
 import org.epis.minierp.model.EnP2mProducto;
 import org.epis.minierp.model.EnP2mProductoId;
 
@@ -20,6 +22,16 @@ public class SearchProductController extends HttpServlet {
         String proCod = request.getParameter("proCod");
         String proDet = request.getParameter("proDet");
         EnP2mProducto product = null;
+        
+        HttpSession session = request.getSession(true);
+        EnP1mUsuario usuario = (EnP1mUsuario) session.getAttribute("usuario");
+        double canUsuPorAdd;
+        try {
+            canUsuPorAdd = usuario.getTaGzzCanalUsuario().getCanUsuPorAdd();
+        } catch (Exception e) {
+            canUsuPorAdd = 1;
+        }
+
         if(!proCod.isEmpty()) {
             StringTokenizer st = new StringTokenizer(proCod,"-");
             EnP2mProductoId productId = new EnP2mProductoId();
@@ -43,8 +55,8 @@ public class SearchProductController extends HttpServlet {
             data.put("proCod", product.getId().getClaProCod() + "-" + product.getId().getSubClaProCod() + "-" + product.getId().getProCod());
             data.put("proDet", product.getProDet());
             data.put("proStk", product.getProStk()-product.getProStkPreVen());
-            data.put("proPreUni", product.getProPreUniVen());
-            data.put("proUnit", product.getTaGzzUnidadMed().getUniMedDet());
+            data.put("proPreUni", product.getProPreUniVen()*canUsuPorAdd);
+            data.put("proUnit", product.getTaGzzUnidadMed().getUniMedSim());
         }
         
         response.setContentType("application/json");

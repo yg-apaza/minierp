@@ -18,7 +18,7 @@ public class EnP4mFacturaCompraCabDao {
     
     public EnP4mFacturaCompraCab getById(String id) {      
         EnP4mFacturaCompraCab facturaCompraCabecera = null;
-        facturaCompraCabecera = (EnP4mFacturaCompraCab)session.load(EnP4mFacturaCompraCab.class, id);
+        facturaCompraCabecera = (EnP4mFacturaCompraCab)session.get(EnP4mFacturaCompraCab.class, id);
         return facturaCompraCabecera;
     }
     

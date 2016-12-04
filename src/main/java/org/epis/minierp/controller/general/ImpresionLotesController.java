@@ -26,19 +26,22 @@ public class ImpresionLotesController extends HttpServlet {
         Impresora generador = new Impresora(path);
 
         String fileGenerated = "";
-
+        String printerName = "";
         switch(report){
             case "factura": 
-                fileGenerated = generador.generateFacturas(codigos);
+                fileGenerated = generador.generateFacturas(codigos)[0];
+                printerName = generador.generateFacturas(codigos)[1];
                 break;
             case "boleta":
-                fileGenerated = generador.generateBoletas(codigos);
+                fileGenerated = generador.generateBoletas(codigos)[0];
+                printerName = generador.generateBoletas(codigos)[1];
                 break;
             case "guiaRemision":
-                fileGenerated =  generador.generateGuiaRemision(codigos);
+                fileGenerated =  generador.generateGuiaRemision(codigos)[0];
+                printerName = generador.generateGuiaRemision(codigos)[1];
                 break;
         }
-        generador.sendToPrinter(new File(fileGenerated));
+        generador.sendToPrinter(new File(fileGenerated), printerName);
         response.sendRedirect(request.getContextPath() + "/secured/ventas/factura");
 
         /*response.addHeader("Content-Disposition", "attachment; filename=" + file.getName());

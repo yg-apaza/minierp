@@ -37,7 +37,7 @@
                                     <div class="col-md-4">
                                         <div class="form-group input-group">
                                             <span class="input-group-addon"><i class="fa fa-clipboard"></i></span>
-                                            <input type="text" class="form-control" name="facComCabCod" placeholder="Número de Factura">
+                                            <input type="text" class="form-control" id="codeFacComCabCod" name="facComCabCod" placeholder="Número de Factura">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
@@ -320,7 +320,7 @@
             <div class="modal-dialog modal-md">
                 <div class="modal-content" style="overflow-y: auto">
                     <div class="modal-body">
-                        <p class="text-center text-success">La factura de venta ha sido agregada correctamente</p>
+                        <p class="text-center text-success">La factura de compra ha sido agregada correctamente</p>
                     </div>
                 </div>         
             </div>
@@ -395,7 +395,7 @@
             $.validator.addMethod("verifiedValue", function (value, element) {
                 return value != "";
             }, "Ingrese datos correctos");
-
+            
             function updateAll() {
                     var productsCodes = new Array();
                     var amounts = new Array();
@@ -453,7 +453,7 @@
                             data.suppliers.forEach(function (supplier) {
                                 suppliersRS.push(supplier.prvRazSoc);
                             });
-
+                            
                             $("#prvDesShow").autocomplete({
                                 source: suppliersRS
                             });
@@ -515,7 +515,7 @@
                 source: productDescriptions
             });
 
-            $('#proCodShow').keyup(function () {
+            $('#proCodShow').on('keyup',function () { //No click porque sobrecarga con multiples llamadas
                 if (codeProductCriteria) {
                     $.post(
                             "${pageContext.request.contextPath}/secured/ventas/searchProduct", {
@@ -523,6 +523,7 @@
                                 proDet: ""
                             }
                     ).done(function (data) {
+                        $('#proCodShow').click();                        
                         if (data.proCod != null) {
                             $("#proDesShow").val(data.proDet);
                             $('#unitShow').val(data.proUnit);
@@ -533,7 +534,7 @@
                 }
             });
 
-            $('#proDesShow').keyup(function () {
+            $('#proDesShow').on('keyup',function () { //No click porque sobrecarga con multiples llamadas
                 if (!codeProductCriteria) {
                     $.post(
                             "${pageContext.request.contextPath}/secured/ventas/searchProduct", {
@@ -541,6 +542,7 @@
                                 proDet: $("#proDesShow").val()
                             }
                     ).done(function (data) {
+                        $('#proDesShow').click();                        
                         if (data.proCod != null) {
                             $("#proCodShow").val(data.proCod);
                             $('#unitShow').val(data.proUnit);
@@ -573,7 +575,12 @@
                 rules: {
                     facComCabCod: {
                         required: true,
-                        codePattern: true
+                        codePattern: true,
+                        remote: {
+                            type: "POST",
+                            url: "${pageContext.request.contextPath}/secured/compras/factura/verifyCode",
+                            data: {facComCabCod: function() {return $("#codeFacComCabCod").val();}}
+                        }
                     },
                     prvDes: {
                         required: true
@@ -590,10 +597,11 @@
                 },
                 messages: {
                     facComCabCod: {
-                        required: "Ingrese el código de la factura"
+                        required: "Ingrese el código de la factura",
+                        remote: "Código ya registrado"
                     },
                     prvDes: {
-                        required: "Ingrese cliente válido"
+                        required: "Ingrese proveedor válido"
                     },
                     facComCabFecEmi: {
                         required: "Seleccione una fecha"
@@ -608,22 +616,24 @@
             });
             
             $("#registerBill").submit(function(e) {
-                $('#loading').modal('show');
-                e.preventDefault();
-                $.ajax({
-                    type: 'POST',
-                    url: $(this).attr('action'),
-                    data: $(this).serialize(),
-                    success: function(data) {
-                        $('#loading').modal('hide');    
-                        if(data.state == true) {
-                            $("#fcSuccess").modal('show');
-                            newDirection = data.redirect;
+                if($("#registerBill").valid()) {
+                    $('#loading').modal('show');
+                    e.preventDefault();
+                    $.ajax({
+                        type: 'POST',
+                        url: $(this).attr('action'),
+                        data: $(this).serialize(),
+                        success: function(data) {
+                            $('#loading').modal('hide');    
+                            if(data.state == true) {
+                                $("#fcSuccess").modal('show');
+                                newDirection = data.redirect;
+                            }
                         }
-                    }
-                });
-                
-                return false;
+                    });
+
+                    return false;
+                }                
             });
             
             $("#fcSuccess").on("hidden.bs.modal", function (){

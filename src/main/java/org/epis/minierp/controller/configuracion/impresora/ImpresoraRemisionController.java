@@ -30,13 +30,14 @@ public class ImpresoraRemisionController extends HttpServlet {
         RemisionPrinter rPrinter = remDAO.read();
         
         /* int size = Int.parseInteger(request.getParameter("size")); */
-        
+        String name = request.getParameter("name");
         float leftMargin = Float.parseFloat(request.getParameter("leftMargin"));
         float topMargin = Float.parseFloat(request.getParameter("topMargin"));
         float botMargin = Float.parseFloat(request.getParameter("botMargin"));
         float topRemCab = Float.parseFloat(request.getParameter("topRemCab"));
         float topRemDet = Float.parseFloat(request.getParameter("topRemDet"));
-        
+        int maxProducts = Integer.parseInt(request.getParameter("maxProducts"));
+
         float totalMargin = Float.parseFloat(request.getParameter("totalMargin"));
         
         float cliNom = Float.parseFloat(request.getParameter("cliNom"));
@@ -61,7 +62,8 @@ public class ImpresoraRemisionController extends HttpServlet {
         float proValUni = Float.parseFloat(request.getParameter("proValUni"));
         float proDes1 = Float.parseFloat(request.getParameter("proDes1"));
         float proValNet = Float.parseFloat(request.getParameter("proValNet"));
-               
+        
+        rPrinter.setName(name);
         rPrinter.setCliNom(cliNom);
         rPrinter.setPunPar(punPar);
         rPrinter.setPunLle(punLle);
@@ -90,6 +92,8 @@ public class ImpresoraRemisionController extends HttpServlet {
         rPrinter.setBotMargin(botMargin);
         rPrinter.setTopRemCab(topRemCab);
         rPrinter.setTopRemDet(topRemDet);
+        
+        rPrinter.setMaxProducts(maxProducts);
         rPrinter.setTotalMargin(totalMargin);
         remDAO.save(rPrinter);
         

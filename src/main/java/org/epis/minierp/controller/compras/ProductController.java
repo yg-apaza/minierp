@@ -5,6 +5,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import org.epis.minierp.business.logistica.EnP2mProductoBusiness;
 import org.epis.minierp.dao.general.TaGzzMonedaDao;
 import org.epis.minierp.dao.general.TaGzzUnidadMedDao;
@@ -12,6 +13,7 @@ import org.epis.minierp.dao.logistica.EnP2mAlmacenDao;
 import org.epis.minierp.dao.logistica.EnP2mClaseProductoDao;
 import org.epis.minierp.dao.logistica.EnP2mProductoDao;
 import org.epis.minierp.dao.logistica.EnP2mSubclaseProductoDao;
+import org.epis.minierp.model.EnP1mUsuario;
 
 public class ProductController extends HttpServlet {
 
@@ -36,6 +38,15 @@ public class ProductController extends HttpServlet {
         monDao = new TaGzzMonedaDao();
         uniMedDao = new TaGzzUnidadMedDao();
         
+        HttpSession session = request.getSession(true);
+        EnP1mUsuario usuario = (EnP1mUsuario) session.getAttribute("usuario");
+        double canUsuPorAdd;
+        try {
+            canUsuPorAdd = usuario.getTaGzzCanalUsuario().getCanUsuPorAdd();
+        } catch (Exception e) {
+            canUsuPorAdd = 1;
+        }
+        
         request.setAttribute("productos", proDao.getAllActive());
         request.setAttribute("clases", claProDao.getAllActive());
         request.setAttribute("subclases", subClaProDao.getAllActive());
@@ -43,7 +54,8 @@ public class ProductController extends HttpServlet {
         request.setAttribute("monedas", monDao.getAllActive());
         request.setAttribute("medidas", uniMedDao.getAllActive());
         request.setAttribute("inactivos", proDao.getAllInactive());
-        
+        request.setAttribute("inactivos", proDao.getAllInactive());
+        request.setAttribute("listaprecio", canUsuPorAdd);
         
         request.getRequestDispatcher("/WEB-INF/compras/products.jsp").forward(request, response);
     }

@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="subreporte_kardex_valorizado" pageWidth="802" pageHeight="555" orientation="Landscape" columnWidth="802" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="720e7502-c91e-4486-8ca5-9974e7003448">
 	<property name="ireport.zoom" value="1.3310000000000008"/>
-	<property name="ireport.x" value="241"/>
+	<property name="ireport.x" value="376"/>
 	<property name="ireport.y" value="0"/>
 	<style name="Crosstab Data Text" hAlign="Center"/>
 	<parameter name="PRODUCTO_ID" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
+	<parameter name="INVENTARIO_ID" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
 	<queryString>
-		<![CDATA[{call kardex_prom_ponderado ($P{PRODUCTO_ID})}]]>
+		<![CDATA[{call kardex_prom_ponderado ($P{PRODUCTO_ID},$P{INVENTARIO_ID})}]]>
 	</queryString>
 	<field name="fecha" class="java.sql.Date"/>
 	<field name="numero_factura" class="java.lang.Short"/>

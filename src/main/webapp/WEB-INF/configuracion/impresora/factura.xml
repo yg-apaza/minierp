@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <facturaPrinter>
+    <name>Epson</name>
     <size>2</size>
-    <leftMargin>2</leftMargin>
-    <rightMargin>1</rightMargin>
-    <topMargin>4.0</topMargin>
-    <botMargin>0.5</botMargin>
+    <maxProducts>24</maxProducts>
+    <leftMargin>0.5</leftMargin>
+    <rightMargin>0.3</rightMargin>
+    <topMargin>3.85</topMargin>
+    <botMargin>0.7</botMargin>
     <cliNom>1.8</cliNom>
     <cliDir>1.8</cliDir>
     <fecEmi>16.5</fecEmi>
@@ -17,7 +19,7 @@
     <dis>4.3</dis>
     <rut>1.5</rut>
     <tra>4.9</tra>
-    <topFacDet>0.8</topFacDet>
+    <topFacDet>1.0</topFacDet>
     <proCod>2.0</proCod>
     <proCan>1.6</proCan>
     <proUni>1.2</proUni>
@@ -26,5 +28,6 @@
     <proDes1>1.2</proDes1>
     <proDes2>1.7</proDes2>
     <proValNet>2.5</proValNet>
+    <topFacTot>1.0</topFacTot>
     <totalMargin>18.4</totalMargin>
 </facturaPrinter>

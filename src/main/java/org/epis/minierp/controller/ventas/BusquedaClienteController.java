@@ -116,12 +116,12 @@ public class BusquedaClienteController extends HttpServlet {
                     if(tipCliDes == 1) { //Razón Social
                         cliente = (new EnP1mClienteDao()).getByRazonSocial_UsuCod(cliDes, usuCod);
                     } else if(tipCliDes == 2) { //Nombre Comercial
-                        cliente = (new EnP1mClienteDao()).getByNombreComercial(cliDes);
+                        cliente = (new EnP1mClienteDao()).getByNombreComercial_UsuCod(cliDes, usuCod);
                     }                    
                     break;
                 default:
                     if(tipCliDes == 1) { //Razón Social
-                        cliente = (new EnP1mClienteDao()).getByRazonSocial_UsuCod(cliDes, usuCod);
+                        cliente = (new EnP1mClienteDao()).getByRazonSocial(cliDes);
                     } else if(tipCliDes == 2) { //Nombre Comercial
                         cliente = (new EnP1mClienteDao()).getByNombreComercial(cliDes);
                     }                    

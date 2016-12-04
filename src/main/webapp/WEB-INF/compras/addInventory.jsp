@@ -11,27 +11,52 @@
 
         <div class="panel-body">
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-md-8">
                     <h1 class="page-header"> Inventario </h1>
                 </div>
             </div>
             <form id="preventaLoteForm" role="form" action="${pageContext.request.contextPath}/secured/compras/addInventario" method="post">
-           <div class="row">
-                <div class="col-md-6">
-                    <label>Código del producto</label>
-                    <div class="form-group input-group">
-                        <span class="input-group-addon"><i class="fa fa-barcode"></i></span>
-                        <input type="text" class="form-control" id="proCod" name="proCod" placeholder="Código del producto">
+            <div class = "row">
+                <div class="col-md-4">
+                    <div class="form-group input-group col-md-12">
+                        <span class="input-group-addon">Responsable:</span>
+                        <span class="input-group-addon"><i class="fa fa-child"></i></span>
+                        <input type="hidden" class="form-control" name="usuCod" value="${usuario.usuCod}" readonly>
+                        <input type="text" class="form-control" value="${usuario.usuCod} - ${usuario.usuNom}" readonly>
                     </div>
                 </div>
-                <div class="col-md-3">
-                    <button type="submit" onclick="return updateInventory()" class="btn btn-success"> Actualizar inventario</button>  
+                <div class="col-md-8">
+                    <div class="form-group input-group  col-md-3">
+                        <span class="input-group-addon">Fecha</span>
+                        <input type="date" class="form-control" name="fecEmi" value="${fechaEmision}">
+                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-7">
+                    <div class="form-group input-group col-md-7">
+                        <span class="input-group-addon">Código</span>
+                        <input type="text" class="form-control" id="proCod" name="proCod" placeholder="Código del producto">
+                        <span class="input-group-addon"><i class="fa fa-barcode"></i></span>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <button type="submit" onclick="return updateInventory()" class="btn btn-primary"> Actualizar inventario</button>  
                 </div>
                 <div class="col-md-3">
-                    <a href="${pageContext.request.contextPath}/secured/general/reporte?type=pdf&&report=inventario&&jdbc=true&&key=null&&value=null" class="btn btn-outline btn-danger">
-                        <i class="fa fa-file-pdf-o"></i>
-                        Descargar Reporte [PDF]
-                    </a>
+                     <div class="form-group input-group">
+                        <span class="input-group-addon">Reportes</span>
+                        <a href="${pageContext.request.contextPath}/secured/general/reporte?type=pdf&&report=inventario&&jdbc=true&&key=null&&value=null" class="btn btn-danger">
+                           <i class="fa fa-file-pdf-o"></i>
+                        </a>
+                        <a href="${pageContext.request.contextPath}/secured/general/reporte?type=xls&&report=inventario&&jdbc=true&&key=null&&value=null" class="btn btn-success">
+                            <i class="fa fa-file-excel-o"></i>
+                        </a> 
+                        <a href="${pageContext.request.contextPath}/secured/general/reporte?type=doc&&report=inventario&&jdbc=true&&key=null&&value=null" class="btn  btn-primary">
+                            <i class="fa fa-file-word-o"></i>
+                        </a>
+                    </div> 
                 </div>
            </div>
             <br>
@@ -85,11 +110,11 @@
         <script language="javascript"> 
             $('#proCod').bind('input', function(){
                 var length = $("#proCod").val().length;
-                if (length >= 13) {  
+                //if (length >= 13) {  
                     var actualValue = $("#id_table").find('tr#'+$("#proCod").val()).find('td:eq(4)').html();
                     $("#id_table").find('tr#'+$("#proCod").val()).find('td:eq(4)').html(parseInt(actualValue)+1);
                     $("#proCod").val('');
-                }
+                //}
             });
             
             $('#id_table').DataTable({

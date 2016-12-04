@@ -6,10 +6,13 @@
 	<parameter name="PRODUCTO_ID" class="java.lang.String">
 		<defaultValueExpression><![CDATA[1]]></defaultValueExpression>
 	</parameter>
+	<parameter name="INVENTARIO_ID" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
 	<queryString>
 		<![CDATA[SELECT YEAR(NOW()) periodo,pe.EmpRUC ruc,pe.EmpRazSoc apellidos_nombres,pe.EmpDir establecimiento, "10A" existencia,"A" tipo,"01" unidadMedida, p.ProDet descripcion
  FROM en_p2m_producto p,en_p1m_empresa pe
- WHERE p.ProCod=$P{PRODUCTO_ID} LIMIT 1 ]]>
+ WHERE p.ProCod=$P{PRODUCTO_ID} LIMIT 1]]>
 	</queryString>
 	<field name="periodo" class="java.lang.Long"/>
 	<field name="ruc" class="java.lang.String"/>
@@ -89,6 +92,9 @@
 					<reportElement x="4" y="184" width="798" height="59" uuid="9ac30fa0-1cc7-4f5d-a4bf-7a5176b43f57"/>
 					<subreportParameter name="PRODUCTO_ID">
 						<subreportParameterExpression><![CDATA[$P{PRODUCTO_ID}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="INVENTARIO_ID">
+						<subreportParameterExpression><![CDATA[$P{INVENTARIO_ID}]]></subreportParameterExpression>
 					</subreportParameter>
 					<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 					<subreportExpression><![CDATA["subreporte_kardex_valorizado_peps.jasper"]]></subreportExpression>

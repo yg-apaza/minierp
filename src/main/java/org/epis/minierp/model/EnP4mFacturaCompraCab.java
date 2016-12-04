@@ -225,7 +225,7 @@ public class EnP4mFacturaCompraCab  implements java.io.Serializable {
         this.enP4tFacturaCompraDets = enP4tFacturaCompraDets;
     }
 
-
+    
 
 
 }

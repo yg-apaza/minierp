@@ -101,6 +101,30 @@ public class ImpresoraMatricial {
         }       
     }
     
+    public int getMax(){
+        switch(type){
+            case "factura":
+                return fP.getMaxProducts();
+            case "boleta":
+                return bP.getMaxProducts();
+            case "remision":
+                return gP.getMaxProducts();
+        }
+        return 10;
+    }
+    
+    public String getName(){
+        switch(type){
+            case "factura":
+                return fP.getName();
+            case "boleta":
+                return bP.getName();
+            case "remision":
+                return gP.getName();
+        }
+        return "Epson";
+    }
+    
     public void setSize(int v) throws IOException{
         switch (v){
             case 0: select10CPI(); break;
@@ -471,7 +495,7 @@ public class ImpresoraMatricial {
     }
 
     public void writeFacTotal(String subTotal, String igv, String total) throws IOException{
-        advanceVertical(1.0f);
+        advanceVertical(fP.getTopFacTot());
         setAbsoluteHorizontalPosition(fP.getTotalMargin());
         writer.write(subTotal);
         newLine();
@@ -481,13 +505,23 @@ public class ImpresoraMatricial {
         setAbsoluteHorizontalPosition(fP.getTotalMargin());
         writer.write(total);
         newLine();
+        advanceHorizontal(fP.getBotMargin());
+        writer.write("");
     }
     
     public void writeBolTotal(String total) throws IOException{
-        advanceVertical(1.0f);
+        advanceVertical(bP.getTopBolTot());
         setAbsoluteHorizontalPosition(bP.getTotalMargin());
         writer.write(total);
         newLine();
+        advanceHorizontal(bP.getBotMargin());
+        writer.write("");
+    }
+    
+    public void writeGuiRemTotal() throws IOException{
+        newLine();
+        advanceHorizontal(gP.getBotMargin());
+        writer.write("");
     }
     
     public void close() throws IOException{

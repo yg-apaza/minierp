@@ -13,7 +13,6 @@ import org.epis.minierp.model.EnP1mFacturaVentaCab;
 import org.epis.minierp.model.EnP2mGuiaRemTransportista;
 import org.epis.minierp.model.EnP2mTransportista;
 import org.epis.minierp.model.EnP2mUnidadTransporte;
-import org.epis.minierp.model.EnP4mFacturaCompraCab;
 import org.epis.minierp.model.TaGzzTipoDestinatario;
 
 
@@ -149,6 +148,21 @@ public class EnP2mGuiaRemTransportistaBusiness {
         EnP2mGuiaRemTransportista guiaRemTran = guiRemTraDao.getById(guiRemTraNum);
         guiaRemTran.setEstRegCod(estRegCod);
         guiRemTraDao.update(guiaRemTran);
+    }
+    
+    public void actualizarEstRegCod(){
+        //inactivando guias de remision transportista q no tengan facturas asociadas
+        List<EnP2mGuiaRemTransportista>  guias = guiRemTraDao.getAllActive();
+        List<EnP1mFacturaVentaCab> cabs = new ArrayList<>();
+        int tempSize;
+        for (EnP2mGuiaRemTransportista guia : guias) {
+            cabs.addAll(guia.getEnP1mFacturaVentaCabs());
+            tempSize = cabs.size();
+            if (tempSize == 0) {
+                disable(guia.getGuiRemTraNum());
+            }
+            cabs.clear();
+        }
     }
     
     public void activate(String guiRemTraNum){

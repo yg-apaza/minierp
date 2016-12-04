@@ -38,8 +38,6 @@ public class CatalogoRutasController extends HttpServlet
                 catRutCod = Integer.parseInt(request.getParameter("catRutCod"));
                 
                 catRutDet = request.getParameter("catRutDet");
-                System.out.println("hakunamatata: " + catRutCod);
-                System.out.println("glogloglu: " + catRutDet);
                 catRutBusiness.create(catRutCod, catRutDet);
                 break;
                 
