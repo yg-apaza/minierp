@@ -10,8 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.epis.minierp.business.contabilidad.RegistroAsientoBusiness;
+import org.epis.minierp.dao.contabilidad.PlantillaCabDao;
 import org.epis.minierp.dao.general.TaGzzMonedaDao;
 import org.epis.minierp.dao.general.TaGzzTipoComprobanteDao;
+import org.epis.minierp.model.EnP3mPlantillaCab;
 
 public class RegistroAsientoController  extends HttpServlet
 {
@@ -20,11 +22,19 @@ public class RegistroAsientoController  extends HttpServlet
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
+        PlantillaCabDao plantillasDao = new PlantillaCabDao();
+        request.setAttribute("plantillas", plantillasDao.getAllActive());
         TaGzzTipoComprobanteDao comDao = new TaGzzTipoComprobanteDao();
         request.setAttribute("comprobantes", comDao.getAllActive());
         TaGzzMonedaDao monDao = new TaGzzMonedaDao();
         request.setAttribute("monedas", monDao.getAllActive());
         request.getRequestDispatcher("/WEB-INF/contabilidad/registroAsientos.jsp").forward(request, response);
+        
+        if(request.getParameter("plaCod") != null)
+        {
+            EnP3mPlantillaCab p = plantillasDao.getById(Integer.parseInt(request.getParameter("plaCod")));
+            request.setAttribute("glosa", p.getPlaGlo());
+        }
     }
     
     @Override

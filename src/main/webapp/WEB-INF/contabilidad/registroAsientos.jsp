@@ -9,105 +9,128 @@
         <div class="panel-body">
             <h1 class="page-header">Registro de Asientos</h1>
             <br>
-            <form id="createForm" method="post" action="${pageContext.request.contextPath}/secured/contabilidad/asientos">
-                <div class="row">
-                    <div class="col-md-8 col-sm-8">
-                        <div class="form-group">
-                            <label>Glosa:</label>
-                            <input class="form-control" name="asiCabGlo">
-                        </div>
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h4>Configuración a partir de plantilla de asiento</h4>
+                    <div class="row">
+                        <form method="get" action="${pageContext.request.contextPath}/secured/contabilidad/asientos">
+                            <div class="col-md-8">
+                                <select name="plaCod" id="plaCod" class="form-control">
+                                    <option value="0">Ninguno</option>
+                                    <c:forEach var="p" items="${plantillas}">
+                                        <option value="${p.plaCod}">${p.plaDet}</option>
+                                    </c:forEach>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <button type="submit" class="btn btn-info btn-block">Utilizar esta plantilla</button>
+                            </div>
+                        </form>
                     </div>
-                    <div class="col-md-4 col-sm-4">
-                        <div class="form-group">
-                            <label>Fecha:</label>
-                            <div class='input-group date' id='asiCabFec'>
-                                <input type='text' name="asiCabFec" class="form-control" />
-                                <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-calendar"></span>
-                                </span>
+                </div>
+                <div class="panel-body">
+                    <h4>Configuración manual</h4>
+                    <form id="createForm" method="post" action="${pageContext.request.contextPath}/secured/contabilidad/asientos">
+                        <div class="row">
+                            <div class="col-md-8 col-sm-8">
+                                <div class="form-group">
+                                    <label>Glosa:</label>
+                                    <input class="form-control" name="asiCabGlo" value="${glosa}">
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-4">
+                                <div class="form-group">
+                                    <label>Fecha:</label>
+                                    <div class='input-group date' id='asiCabFec'>
+                                        <input type='text' name="asiCabFec" class="form-control" />
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-4">
+                                <div class="form-group">
+                                    <label>Tipo de Comprobante:</label>
+                                    <select name="tipComCod" id="tipComCod" class="form-control">
+                                        <option value="0">Ninguno</option>
+                                        <c:forEach var="c" items="${comprobantes}">
+                                            <option value="${c.tipComCod}">${c.tipComDet}</option>
+                                        </c:forEach>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-4">
+                                <div class="form-group">
+                                    <label>Nro. de Documento:</label>
+                                    <input id="asiCabNumCom" class="form-control" name="asiCabNumCom" readonly>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-4">
+                                <div class="form-group">
+                                    <label>Moneda:</label>
+                                    <select id="monCod" name="monCod" class="form-control">
+                                        <c:forEach var="m" items="${monedas}">
+                                            <option value="${m.monCod}">${m.monSim} - ${m.monDet}</option>
+                                        </c:forEach>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-sm-12">
+                                <label>Detalle de Asiento</label>
+                            </div>
+                            <div class="col-md-7 col-sm-12">
+                                <div class="form-group input-group">
+                                    <span class="input-group-addon">Cuenta</span>
+                                    <input class="form-control" id="cueNum" placeholder="Nro de Cuenta">
+                                    <span class="input-group-addon">-</span>
+                                    <input class="form-control" id="cueDes" placeholder="Descripción" disabled>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-sm-5">
+                                <div class="form-group">
+                                    <select id="asiDetDebHab" class="form-control">
+                                        <option value="DEBE">DEBE</option>
+                                        <option value="HABER">HABER</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-sm-5">
+                                <div class="form-group">
+                                    <input id="asiDetMon" type="number" min="0" placeholder="Monto" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-1 col-sm-2">
+                                <div class="form-group">
+                                    <button type="button" id="addDetail" class="btn btn-success"><i class="fa fa-plus fa-1x"></i></button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-4 col-sm-4">
-                        <div class="form-group">
-                            <label>Tipo de Comprobante:</label>
-                            <select name="tipComCod" id="tipComCod" class="form-control">
-                                <option value="0">Ninguno</option>
-                                <c:forEach var="c" items="${comprobantes}">
-                                    <option value="${c.tipComCod}">${c.tipComDet}</option>
-                                </c:forEach>
-                            </select>
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12">
+                                <div class="table-responsive">
+                                    <table id="detallesTable" class="table table-striped table-bordered table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th width="20%">Cuenta</th>
+                                                <th width="40%">Denominación</th>
+                                                <th width="15%">Debe</th>
+                                                <th width="15%">Haber</th>
+                                                <th width="10%">Acciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <input type="hidden" name="numDet" value="0" id="numDet">
+                                <input type="hidden" name="cuadre" value="0" id="cuadre">
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-4 col-sm-4">
-                        <div class="form-group">
-                            <label>Nro. de Documento:</label>
-                            <input id="asiCabNumCom" class="form-control" name="asiCabNumCom" readonly>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-4">
-                        <div class="form-group">
-                            <label>Moneda:</label>
-                            <select id="monCod" name="monCod" class="form-control">
-                                <c:forEach var="m" items="${monedas}">
-                                    <option value="${m.monCod}">${m.monSim} - ${m.monDet}</option>
-                                </c:forEach>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-md-12 col-sm-12">
-                        <label>Detalle de Asiento</label>
-                    </div>
-                    <div class="col-md-7 col-sm-12">
-                        <div class="form-group input-group">
-                            <span class="input-group-addon">Cuenta</span>
-                            <input class="form-control" id="cueNum" placeholder="Nro de Cuenta">
-                            <span class="input-group-addon">-</span>
-                            <input class="form-control" id="cueDes" placeholder="Descripción" disabled>
-                        </div>
-                    </div>
-                    <div class="col-md-2 col-sm-5">
-                        <div class="form-group">
-                            <select id="asiDetDebHab" class="form-control">
-                                <option value="DEBE">DEBE</option>
-                                <option value="HABER">HABER</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-md-2 col-sm-5">
-                        <div class="form-group">
-                            <input id="asiDetMon" type="number" min="0" placeholder="Monto" class="form-control">
-                        </div>
-                    </div>
-                    <div class="col-md-1 col-sm-2">
-                        <div class="form-group">
-                            <button type="button" id="addDetail" class="btn btn-success"><i class="fa fa-plus fa-1x"></i></button>
-                        </div>
-                    </div>
+                        <button type="submit" class="btn btn-outline btn-success">Agregar</button>
+                    </form>
                 </div>
-                <div class="row">
-                    <div class="col-md-12 col-sm-12">
-                        <div class="table-responsive">
-                            <table id="detallesTable" class="table table-striped table-bordered table-hover">
-                                <thead>
-                                    <tr>
-                                        <th width="20%">Cuenta</th>
-                                        <th width="40%">Denominación</th>
-                                        <th width="15%">Debe</th>
-                                        <th width="15%">Haber</th>
-                                        <th width="10%">Acciones</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                </tbody>
-                            </table>
-                        </div>
-                        <input type="hidden" name="numDet" value="0" id="numDet">
-                        <input type="hidden" name="cuadre" value="0" id="cuadre">
-                    </div>
-                </div>
-                <button type="submit" class="btn btn-outline btn-success">Agregar</button>
-            </form>
+            </div>
         </div>
         <div id="errorMessageModal" class="modal fade">
             <div class="modal-dialog modal-sm">
@@ -120,7 +143,7 @@
                         <p align="center"><span id="errorMessage"></span></p>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-success" data-dismiss="modal">Aceptar</button>                                            
+                        <button type="submit" class="btn btn-success" data-dismiss="modal">Aceptar</button>                
                     </div>
                 </div>
             </div>

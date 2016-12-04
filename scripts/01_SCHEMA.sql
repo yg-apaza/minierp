@@ -11,7 +11,7 @@ USE `episerp` ;
 
 -- Create tables section -------------------------------------------------
 
--- Table episerp.en_p1m_preventa_cab
+-- Table minierp.en_p1m_preventa_cab
 
 CREATE TABLE en_p1m_preventa_cab
 (
@@ -51,7 +51,7 @@ CREATE INDEX IX_Relationship104 ON en_p1m_preventa_cab (TipDesCod)
 CREATE INDEX IX_Relationship110 ON en_p1m_preventa_cab (CatRutCod)
 ;
 
--- Table episerp.en_p1t_preventa_det
+-- Table minierp.en_p1t_preventa_det
 
 CREATE TABLE en_p1t_preventa_det
 (
@@ -71,7 +71,7 @@ ALTER TABLE en_p1t_preventa_det ADD PRIMARY KEY (PreVenDetCod,PreVenCabCod)
 CREATE INDEX IX_Relationship9 ON en_p1t_preventa_det (ProCod,SubClaProCod,ClaProCod)
 ;
 
--- Table episerp.en_p1c_preventa_realizadas
+-- Table minierp.en_p1c_preventa_realizadas
 
 CREATE TABLE en_p1c_preventa_realizadas
 (
@@ -84,7 +84,7 @@ CREATE TABLE en_p1c_preventa_realizadas
 ALTER TABLE en_p1c_preventa_realizadas ADD PRIMARY KEY (PreVenCabCod,FacVenCabCod)
 ;
 
--- Table episerp.en_p1m_factura_venta_cab
+-- Table minierp.en_p1m_factura_venta_cab
 
 CREATE TABLE en_p1m_factura_venta_cab
 (
@@ -144,7 +144,7 @@ CREATE INDEX IX_Relationship100 ON en_p1m_factura_venta_cab (GuiRemRemNum)
 CREATE INDEX IX_Relationship109 ON en_p1m_factura_venta_cab (CatRutCod)
 ;
 
--- Table episerp.en_p1t_factura_venta_det
+-- Table minierp.en_p1t_factura_venta_det
 
 CREATE TABLE en_p1t_factura_venta_det
 (
@@ -164,7 +164,7 @@ ALTER TABLE en_p1t_factura_venta_det ADD PRIMARY KEY (FacVenDetCod,FacVenCabCod)
 CREATE INDEX IX_Relationship19 ON en_p1t_factura_venta_det (ProCod,SubClaProCod,ClaProCod)
 ;
 
--- Table episerp.en_p1m_pagos_cuotas_cab
+-- Table minierp.en_p1m_pagos_cuotas_cab
 
 CREATE TABLE en_p1m_pagos_cuotas_cab
 (
@@ -184,7 +184,7 @@ CREATE TABLE en_p1m_pagos_cuotas_cab
 ALTER TABLE en_p1m_pagos_cuotas_cab ADD PRIMARY KEY (FacVenCabCod)
 ;
 
--- Table episerp.en_p1t_pagos_cuotas_det
+-- Table minierp.en_p1t_pagos_cuotas_det
 
 CREATE TABLE en_p1t_pagos_cuotas_det
 (
@@ -195,7 +195,7 @@ CREATE TABLE en_p1t_pagos_cuotas_det
 )
 ;
 
--- Table episerp.en_p1m_cliente
+-- Table minierp.en_p1m_cliente
 
 CREATE TABLE en_p1m_cliente
 (
@@ -230,7 +230,7 @@ CREATE INDEX IX_Relationship95 ON en_p1m_cliente (TipCliCod)
 CREATE INDEX IX_Relationship119 ON en_p1m_cliente (CanCliCod)
 ;
 
--- Table episerp.en_p1m_documento_cliente
+-- Table minierp.en_p1m_documento_cliente
 
 CREATE TABLE en_p1m_documento_cliente
 (
@@ -244,7 +244,7 @@ CREATE TABLE en_p1m_documento_cliente
 ALTER TABLE en_p1m_documento_cliente ADD PRIMARY KEY (CliCod,TipDocCliCod)
 ;
 
--- Table episerp.en_p1m_usuario
+-- Table minierp.en_p1m_usuario
 
 CREATE TABLE en_p1m_usuario
 (
@@ -279,7 +279,7 @@ CREATE INDEX IX_Relationship60 ON en_p1m_usuario (SucCod)
 CREATE INDEX IX_Relationship136 ON en_p1m_usuario (CanUsuCod)
 ;
 
--- Table episerp.en_p1m_documento_usuario
+-- Table minierp.en_p1m_documento_usuario
 
 CREATE TABLE en_p1m_documento_usuario
 (
@@ -293,7 +293,7 @@ CREATE TABLE en_p1m_documento_usuario
 ALTER TABLE en_p1m_documento_usuario ADD PRIMARY KEY (UsuCod,TipDocUsuCod)
 ;
 
--- Table episerp.en_p2m_clase_producto
+-- Table minierp.en_p2m_clase_producto
 
 CREATE TABLE en_p2m_clase_producto
 (
@@ -314,7 +314,7 @@ CREATE INDEX IX_Relationship133 ON en_p2m_clase_producto (CueComCod)
 CREATE INDEX IX_Relationship134 ON en_p2m_clase_producto (CueVenCod)
 ;
 
--- Table episerp.en_p2m_subclase_producto
+-- Table minierp.en_p2m_subclase_producto
 
 CREATE TABLE en_p2m_subclase_producto
 (
@@ -336,7 +336,7 @@ CREATE INDEX IX_Relationship131 ON en_p2m_subclase_producto (CueComCod)
 CREATE INDEX IX_Relationship132 ON en_p2m_subclase_producto (CueVenCod)
 ;
 
--- Table episerp.en_p2m_producto
+-- Table minierp.en_p2m_producto
 
 CREATE TABLE en_p2m_producto
 (
@@ -384,7 +384,7 @@ CREATE INDEX IX_Relationship129 ON en_p2m_producto (CueComCod)
 CREATE INDEX IX_Relationship130 ON en_p2m_producto (CueVenCod)
 ;
 
--- Table episerp.en_p2m_almacen
+-- Table minierp.en_p2m_almacen
 
 CREATE TABLE en_p2m_almacen
 (
@@ -403,7 +403,7 @@ ALTER TABLE en_p2m_almacen ADD PRIMARY KEY (AlmCod)
 CREATE INDEX IX_Relationship61 ON en_p2m_almacen (SucCod)
 ;
 
--- Table episerp.en_p3m_plantilla_cab
+-- Table minierp.en_p3m_plantilla_cab
 
 CREATE TABLE en_p3m_plantilla_cab
 (
@@ -415,7 +415,7 @@ CREATE TABLE en_p3m_plantilla_cab
 )
 ;
 
--- Table episerp.en_p3t_plantilla_det
+-- Table minierp.en_p3t_plantilla_det
 
 CREATE TABLE en_p3t_plantilla_det
 (
@@ -431,7 +431,7 @@ CREATE TABLE en_p3t_plantilla_det
 CREATE INDEX IX_Relationship36 ON en_p3t_plantilla_det (CueCod)
 ;
 
--- Table episerp.en_p3m_cuenta
+-- Table minierp.en_p3m_cuenta
 
 CREATE TABLE en_p3m_cuenta
 (
@@ -456,7 +456,7 @@ CREATE INDEX IX_Relationship111 ON en_p3m_cuenta (CueAmaDeb)
 CREATE INDEX IX_Relationship113 ON en_p3m_cuenta (CueAmaHab)
 ;
 
--- Table episerp.en_p3m_cuenta_banco
+-- Table minierp.en_p3m_cuenta_banco
 
 CREATE TABLE en_p3m_cuenta_banco
 (
@@ -475,7 +475,7 @@ CREATE INDEX IX_Relationship38 ON en_p3m_cuenta_banco (BanCod)
 CREATE INDEX IX_Relationship39 ON en_p3m_cuenta_banco (CueCod)
 ;
 
--- Table episerp.en_p3m_libro_diario
+-- Table minierp.en_p3m_libro_diario
 
 CREATE TABLE en_p3m_libro_diario
 (
@@ -486,7 +486,7 @@ CREATE TABLE en_p3m_libro_diario
 )
 ;
 
--- Table episerp.en_p3m_asiento_cab
+-- Table minierp.en_p3m_asiento_cab
 
 CREATE TABLE en_p3m_asiento_cab
 (
@@ -509,7 +509,7 @@ CREATE INDEX IX_Relationship41 ON en_p3m_asiento_cab (MonCod)
 CREATE INDEX IX_Relationship59 ON en_p3m_asiento_cab (TipComCod)
 ;
 
--- Table episerp.en_p3t_asiento_det
+-- Table minierp.en_p3t_asiento_det
 
 CREATE TABLE en_p3t_asiento_det
 (
@@ -526,7 +526,7 @@ CREATE TABLE en_p3t_asiento_det
 CREATE INDEX IX_Relationship43 ON en_p3t_asiento_det (CueCod)
 ;
 
--- Table episerp.en_p4m_factura_compra_cab
+-- Table minierp.en_p4m_factura_compra_cab
 
 CREATE TABLE en_p4m_factura_compra_cab
 (
@@ -581,7 +581,7 @@ CREATE INDEX IX_Relationship101 ON en_p4m_factura_compra_cab (GuiRemTraNum)
 CREATE INDEX IX_Relationship102 ON en_p4m_factura_compra_cab (GuiRemRemNum)
 ;
 
--- Table episerp.en_p4t_factura_compra_det
+-- Table minierp.en_p4t_factura_compra_det
 
 CREATE TABLE en_p4t_factura_compra_det
 (
@@ -601,7 +601,7 @@ ALTER TABLE en_p4t_factura_compra_det ADD PRIMARY KEY (FacComDetCod,FacComCabCod
 CREATE INDEX IX_Relationship56 ON en_p4t_factura_compra_det (ProCod,SubClaProCod,ClaProCod)
 ;
 
--- Table episerp.en_p4m_proveedor
+-- Table minierp.en_p4m_proveedor
 
 CREATE TABLE en_p4m_proveedor
 (
@@ -628,7 +628,7 @@ ALTER TABLE en_p4m_proveedor ADD PRIMARY KEY (PrvCod)
 CREATE INDEX IX_Relationship122 ON en_p4m_proveedor (CueCod)
 ;
 
--- Table episerp.en_p4m_documento_proveedor
+-- Table minierp.en_p4m_documento_proveedor
 
 CREATE TABLE en_p4m_documento_proveedor
 (
@@ -642,7 +642,7 @@ CREATE TABLE en_p4m_documento_proveedor
 ALTER TABLE en_p4m_documento_proveedor ADD PRIMARY KEY (PrvCod,TipDocProCod)
 ;
 
--- Table episerp.ta_gzz_unidad_med
+-- Table minierp.ta_gzz_unidad_med
 
 CREATE TABLE ta_gzz_unidad_med
 (
@@ -654,7 +654,7 @@ CREATE TABLE ta_gzz_unidad_med
 )
 ;
 
--- Table episerp.ta_gzz_moneda
+-- Table minierp.ta_gzz_moneda
 
 CREATE TABLE ta_gzz_moneda
 (
@@ -666,7 +666,7 @@ CREATE TABLE ta_gzz_moneda
 )
 ;
 
--- Table episerp.ta_gzz_estado_factura
+-- Table minierp.ta_gzz_estado_factura
 
 CREATE TABLE ta_gzz_estado_factura
 (
@@ -677,7 +677,7 @@ CREATE TABLE ta_gzz_estado_factura
 )
 ;
 
--- Table episerp.ta_gzz_metodo_pago_factura
+-- Table minierp.ta_gzz_metodo_pago_factura
 
 CREATE TABLE ta_gzz_metodo_pago_factura
 (
@@ -688,7 +688,7 @@ CREATE TABLE ta_gzz_metodo_pago_factura
 )
 ;
 
--- Table episerp.ta_gzz_tipo_pago_factura
+-- Table minierp.ta_gzz_tipo_pago_factura
 
 CREATE TABLE ta_gzz_tipo_pago_factura
 (
@@ -699,7 +699,7 @@ CREATE TABLE ta_gzz_tipo_pago_factura
 )
 ;
 
--- Table episerp.ta_gzz_tipo_usuario
+-- Table minierp.ta_gzz_tipo_usuario
 
 CREATE TABLE ta_gzz_tipo_usuario
 (
@@ -710,7 +710,7 @@ CREATE TABLE ta_gzz_tipo_usuario
 )
 ;
 
--- Table episerp.ta_gzz_estado_civil
+-- Table minierp.ta_gzz_estado_civil
 
 CREATE TABLE ta_gzz_estado_civil
 (
@@ -721,7 +721,7 @@ CREATE TABLE ta_gzz_estado_civil
 )
 ;
 
--- Table episerp.ta_gzz_banco
+-- Table minierp.ta_gzz_banco
 
 CREATE TABLE ta_gzz_banco
 (
@@ -732,7 +732,7 @@ CREATE TABLE ta_gzz_banco
 )
 ;
 
--- Table episerp.ta_gzz_tipo_doc_usuario
+-- Table minierp.ta_gzz_tipo_doc_usuario
 
 CREATE TABLE ta_gzz_tipo_doc_usuario
 (
@@ -743,7 +743,7 @@ CREATE TABLE ta_gzz_tipo_doc_usuario
 )
 ;
 
--- Table episerp.ta_gzz_tipo_doc_proveedor
+-- Table minierp.ta_gzz_tipo_doc_proveedor
 
 CREATE TABLE ta_gzz_tipo_doc_proveedor
 (
@@ -754,7 +754,7 @@ CREATE TABLE ta_gzz_tipo_doc_proveedor
 )
 ;
 
--- Table episerp.ta_gzz_tipo_doc_cliente
+-- Table minierp.ta_gzz_tipo_doc_cliente
 
 CREATE TABLE ta_gzz_tipo_doc_cliente
 (
@@ -765,7 +765,7 @@ CREATE TABLE ta_gzz_tipo_doc_cliente
 )
 ;
 
--- Table episerp.ta_gzz_tipo_comprobante
+-- Table minierp.ta_gzz_tipo_comprobante
 
 CREATE TABLE ta_gzz_tipo_comprobante
 (
@@ -776,7 +776,7 @@ CREATE TABLE ta_gzz_tipo_comprobante
 )
 ;
 
--- Table episerp.en_p1m_sucursal
+-- Table minierp.en_p1m_sucursal
 
 CREATE TABLE en_p1m_sucursal
 (
@@ -788,7 +788,7 @@ CREATE TABLE en_p1m_sucursal
 )
 ;
 
--- Table episerp.en_p1m_punto_venta
+-- Table minierp.en_p1m_punto_venta
 
 CREATE TABLE en_p1m_punto_venta
 (
@@ -800,7 +800,7 @@ CREATE TABLE en_p1m_punto_venta
 )
 ;
 
--- Table episerp.en_p1m_empresa
+-- Table minierp.en_p1m_empresa
 
 CREATE TABLE en_p1m_empresa
 (
@@ -818,11 +818,14 @@ CREATE TABLE en_p1m_empresa
   EmpRUC Char(11) NOT NULL,
   EmpLot Int(3),
   EmpImgURL Char(100),
+  EmpNumDetGuiRemTra Int(3) ZEROFILL DEFAULT 23,
+  EmpNumDetFacVen Int(3) ZEROFILL DEFAULT 23,
+  EmpNumDetBolVen Int(3) ZEROFILL DEFAULT 10,
  PRIMARY KEY (EmpCod)
 )
 ;
 
--- Table episerp.ta_gzz_motivo_traslado
+-- Table minierp.ta_gzz_motivo_traslado
 
 CREATE TABLE ta_gzz_motivo_traslado
 (
@@ -833,7 +836,7 @@ CREATE TABLE ta_gzz_motivo_traslado
 )
 ;
 
--- Table episerp.ta_gzz_tipo_destinatario
+-- Table minierp.ta_gzz_tipo_destinatario
 
 CREATE TABLE ta_gzz_tipo_destinatario
 (
@@ -844,7 +847,7 @@ CREATE TABLE ta_gzz_tipo_destinatario
 )
 ;
 
--- Table episerp.ta_gzz_tipo_uni_transporte
+-- Table minierp.ta_gzz_tipo_uni_transporte
 
 CREATE TABLE ta_gzz_tipo_uni_transporte
 (
@@ -855,7 +858,7 @@ CREATE TABLE ta_gzz_tipo_uni_transporte
 )
 ;
 
--- Table episerp.ta_gzz_estado_uni_transporte
+-- Table minierp.ta_gzz_estado_uni_transporte
 
 CREATE TABLE ta_gzz_estado_uni_transporte
 (
@@ -866,7 +869,7 @@ CREATE TABLE ta_gzz_estado_uni_transporte
 )
 ;
 
--- Table episerp.ta_gzz_tipo_doc_transportista
+-- Table minierp.ta_gzz_tipo_doc_transportista
 
 CREATE TABLE ta_gzz_tipo_doc_transportista
 (
@@ -877,7 +880,7 @@ CREATE TABLE ta_gzz_tipo_doc_transportista
 )
 ;
 
--- Table episerp.ta_gzz_tipo_devolucion
+-- Table minierp.ta_gzz_tipo_devolucion
 
 CREATE TABLE ta_gzz_tipo_devolucion
 (
@@ -888,7 +891,7 @@ CREATE TABLE ta_gzz_tipo_devolucion
 )
 ;
 
--- Table episerp.ta_gzz_tipo_cliente
+-- Table minierp.ta_gzz_tipo_cliente
 
 CREATE TABLE ta_gzz_tipo_cliente
 (
@@ -899,7 +902,7 @@ CREATE TABLE ta_gzz_tipo_cliente
 )
 ;
 
--- Table episerp.ta_gzz_tipo_descuento
+-- Table minierp.ta_gzz_tipo_descuento
 
 CREATE TABLE ta_gzz_tipo_descuento
 (
@@ -910,7 +913,7 @@ CREATE TABLE ta_gzz_tipo_descuento
 )
 ;
 
--- Table episerp.en_p2m_guia_rem_remitente
+-- Table minierp.en_p2m_guia_rem_remitente
 
 CREATE TABLE en_p2m_guia_rem_remitente
 (
@@ -936,7 +939,7 @@ CREATE INDEX IX_Relationship72 ON en_p2m_guia_rem_remitente (TipDstCod)
 CREATE INDEX IX_Relationship73 ON en_p2m_guia_rem_remitente (EmpCod)
 ;
 
--- Table episerp.en_p2m_guia_rem_transportista
+-- Table minierp.en_p2m_guia_rem_transportista
 
 CREATE TABLE en_p2m_guia_rem_transportista
 (
@@ -967,7 +970,7 @@ CREATE INDEX IX_Relationship76 ON en_p2m_guia_rem_transportista (EmpCod)
 CREATE INDEX IX_Relationship77 ON en_p2m_guia_rem_transportista (TipDstCod)
 ;
 
--- Table episerp.en_p2m_unidad_transporte
+-- Table minierp.en_p2m_unidad_transporte
 
 CREATE TABLE en_p2m_unidad_transporte
 (
@@ -991,7 +994,7 @@ CREATE INDEX IX_Relationship69 ON en_p2m_unidad_transporte (TipUniTraCod)
 CREATE INDEX IX_Relationship70 ON en_p2m_unidad_transporte (EstUniTraCod)
 ;
 
--- Table episerp.en_p2m_transportista
+-- Table minierp.en_p2m_transportista
 
 CREATE TABLE en_p2m_transportista
 (
@@ -1012,7 +1015,7 @@ CREATE TABLE en_p2m_transportista
 ALTER TABLE en_p2m_transportista ADD PRIMARY KEY (TraCod)
 ;
 
--- Table episerp.en_p2m_documento_transportista
+-- Table minierp.en_p2m_documento_transportista
 
 CREATE TABLE en_p2m_documento_transportista
 (
@@ -1026,7 +1029,7 @@ CREATE TABLE en_p2m_documento_transportista
 ALTER TABLE en_p2m_documento_transportista ADD PRIMARY KEY (TipDocTraCod,TraCod)
 ;
 
--- Table episerp.en_p2m_inventario_cab
+-- Table minierp.en_p2m_inventario_cab
 
 CREATE TABLE en_p2m_inventario_cab
 (
@@ -1044,7 +1047,7 @@ ALTER TABLE en_p2m_inventario_cab ADD PRIMARY KEY (InvCabCod)
 CREATE INDEX IX_Relationship78 ON en_p2m_inventario_cab (UsuCod)
 ;
 
--- Table episerp.en_p2t_inventario_det
+-- Table minierp.en_p2t_inventario_det
 
 CREATE TABLE en_p2t_inventario_det
 (
@@ -1065,7 +1068,7 @@ CREATE INDEX IX_Relationship80 ON en_p2t_inventario_det (ProCod,SubClaProCod,Cla
 CREATE INDEX IX_Relationship121 ON en_p2t_inventario_det (TipFallProCod)
 ;
 
--- Table episerp.en_p1c_devolucion_ventas
+-- Table minierp.en_p1c_devolucion_ventas
 
 CREATE TABLE en_p1c_devolucion_ventas
 (
@@ -1087,7 +1090,7 @@ CREATE INDEX IX_Relationship81 ON en_p1c_devolucion_ventas (TipDevCod)
 CREATE INDEX IX_Relationship115 ON en_p1c_devolucion_ventas (DevVenNewFac)
 ;
 
--- Table episerp.en_p2c_devolucion_compras
+-- Table minierp.en_p2c_devolucion_compras
 
 CREATE TABLE en_p2c_devolucion_compras
 (
@@ -1109,7 +1112,7 @@ CREATE INDEX IX_Relationship82 ON en_p2c_devolucion_compras (TipDevCod)
 CREATE INDEX IX_Relationship116 ON en_p2c_devolucion_compras (DevComNewFac)
 ;
 
--- Table episerp.en_p1m_catalogo_ruta
+-- Table minierp.en_p1m_catalogo_ruta
 
 CREATE TABLE en_p1m_catalogo_ruta
 (
@@ -1122,7 +1125,7 @@ CREATE TABLE en_p1m_catalogo_ruta
 ALTER TABLE en_p1m_catalogo_ruta ADD PRIMARY KEY (CatRutCod)
 ;
 
--- Table episerp.en_p1m_clientes_rutas
+-- Table minierp.en_p1m_clientes_rutas
 
 CREATE TABLE en_p1m_clientes_rutas
 (
@@ -1136,7 +1139,7 @@ CREATE TABLE en_p1m_clientes_rutas
 ALTER TABLE en_p1m_clientes_rutas ADD PRIMARY KEY (CatRutCod,CliCod)
 ;
 
--- Table episerp.en_p1m_cartera_clientes
+-- Table minierp.en_p1m_cartera_clientes
 
 CREATE TABLE en_p1m_cartera_clientes
 (
@@ -1150,7 +1153,7 @@ CREATE TABLE en_p1m_cartera_clientes
 ALTER TABLE en_p1m_cartera_clientes ADD PRIMARY KEY (CliCod,UsuCod)
 ;
 
--- Table episerp.ta_gzz_canal_cliente
+-- Table minierp.ta_gzz_canal_cliente
 
 CREATE TABLE ta_gzz_canal_cliente
 (
@@ -1161,7 +1164,7 @@ CREATE TABLE ta_gzz_canal_cliente
 )
 ;
 
--- Table episerp.ta_gzz_tipo_falla_producto
+-- Table minierp.ta_gzz_tipo_falla_producto
 
 CREATE TABLE ta_gzz_tipo_falla_producto
 (
@@ -1172,7 +1175,7 @@ CREATE TABLE ta_gzz_tipo_falla_producto
 )
 ;
 
--- Table episerp.ta_gzz_canal_usuario
+-- Table minierp.ta_gzz_canal_usuario
 
 CREATE TABLE ta_gzz_canal_usuario
 (
