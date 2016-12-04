@@ -1,5 +1,5 @@
 package org.epis.minierp.model;
-// Generated 27/11/2016 07:10:37 PM by Hibernate Tools 4.3.1
+// Generated 04/12/2016 10:29:37 AM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -25,6 +25,9 @@ public class EnP1mEmpresa  implements java.io.Serializable {
      private String empRuc;
      private Integer empLot;
      private String empImgUrl;
+     private Integer empNumDetGuiRemTra;
+     private Integer empNumDetFacVen;
+     private Integer empNumDetBolVen;
      private Set enP2mGuiaRemTransportistas = new HashSet(0);
      private Set enP2mGuiaRemRemitentes = new HashSet(0);
 
@@ -39,7 +42,7 @@ public class EnP1mEmpresa  implements java.io.Serializable {
         this.empIgv = empIgv;
         this.empRuc = empRuc;
     }
-    public EnP1mEmpresa(String empRazSoc, String empNomCom, String empDomFis, String empDes, String empDir, String empTel, String empEmail, double empIgv, Double empTipCamCom, Double empTipCamVen, String empRuc, Integer empLot, String empImgUrl, Set enP2mGuiaRemTransportistas, Set enP2mGuiaRemRemitentes) {
+    public EnP1mEmpresa(String empRazSoc, String empNomCom, String empDomFis, String empDes, String empDir, String empTel, String empEmail, double empIgv, Double empTipCamCom, Double empTipCamVen, String empRuc, Integer empLot, String empImgUrl, Integer empNumDetGuiRemTra, Integer empNumDetFacVen, Integer empNumDetBolVen, Set enP2mGuiaRemTransportistas, Set enP2mGuiaRemRemitentes) {
        this.empRazSoc = empRazSoc;
        this.empNomCom = empNomCom;
        this.empDomFis = empDomFis;
@@ -53,6 +56,9 @@ public class EnP1mEmpresa  implements java.io.Serializable {
        this.empRuc = empRuc;
        this.empLot = empLot;
        this.empImgUrl = empImgUrl;
+       this.empNumDetGuiRemTra = empNumDetGuiRemTra;
+       this.empNumDetFacVen = empNumDetFacVen;
+       this.empNumDetBolVen = empNumDetBolVen;
        this.enP2mGuiaRemTransportistas = enP2mGuiaRemTransportistas;
        this.enP2mGuiaRemRemitentes = enP2mGuiaRemRemitentes;
     }
@@ -154,6 +160,27 @@ public class EnP1mEmpresa  implements java.io.Serializable {
     
     public void setEmpImgUrl(String empImgUrl) {
         this.empImgUrl = empImgUrl;
+    }
+    public Integer getEmpNumDetGuiRemTra() {
+        return this.empNumDetGuiRemTra;
+    }
+    
+    public void setEmpNumDetGuiRemTra(Integer empNumDetGuiRemTra) {
+        this.empNumDetGuiRemTra = empNumDetGuiRemTra;
+    }
+    public Integer getEmpNumDetFacVen() {
+        return this.empNumDetFacVen;
+    }
+    
+    public void setEmpNumDetFacVen(Integer empNumDetFacVen) {
+        this.empNumDetFacVen = empNumDetFacVen;
+    }
+    public Integer getEmpNumDetBolVen() {
+        return this.empNumDetBolVen;
+    }
+    
+    public void setEmpNumDetBolVen(Integer empNumDetBolVen) {
+        this.empNumDetBolVen = empNumDetBolVen;
     }
     public Set getEnP2mGuiaRemTransportistas() {
         return this.enP2mGuiaRemTransportistas;
