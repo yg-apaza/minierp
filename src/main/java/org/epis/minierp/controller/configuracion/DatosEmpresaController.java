@@ -28,14 +28,11 @@ public class DatosEmpresaController extends HttpServlet {
         request.setAttribute("emp",emp);
         File af;
         if(emp.getEmpImgUrl()!=null ){
-            // Decode data on other side, by processing encoded data
-            //byte[] valueDecoded = emp.getEmpImgUrl();
-            String empImg = emp.getEmpImgUrl();//new String(valueDecoded);
+            String empImg = emp.getEmpImgUrl();
             af = new File(request.getSession().getServletContext().getRealPath("/")+"/img/"+empImg);
             
             if(af.exists()){
                 request.setAttribute("empImg", empImg);
-                System.out.println("si existe la imagen: "+af.getPath());
             }
             else request.setAttribute("empImg", "nada");
         }
@@ -59,27 +56,23 @@ public class DatosEmpresaController extends HttpServlet {
             for (Object item : items) {
                 FileItem uploaded = (FileItem) item;
 
-                // Hay que comprobar si es un campo de formulario. Si no lo es, se guarda el fichero
-                // subido donde nos interese
                 if (!uploaded.isFormField()) {
-                   // No es campo de formulario, guardamos el fichero en algún sitio
                     String path=request.getSession().getServletContext().getRealPath("/")+"/img";
                     
-                    // encode data on your side using BASE64Base
                     File fichero;
                     if(uploaded.getName().contains(".jpg")){
                         fichero = new File(path, "logo.jpg");
-                        e.setEmpImgUrl("logo.jpg");//.getBytes());
+                        e.setEmpImgUrl("logo.jpg");
                         uploaded.write(fichero);
                     }
                     else if(uploaded.getName().contains(".jpeg")){
                         fichero = new File(path, "logo.jpeg");
-                        e.setEmpImgUrl("logo.jpg");//.getBytes());
+                        e.setEmpImgUrl("logo.jpg");
                         uploaded.write(fichero);
                     }
                     else{
                         fichero=null;
-                        e.setEmpImgUrl("nada");//.getBytes());
+                        e.setEmpImgUrl("nada");
                     }
                 }
                 else{

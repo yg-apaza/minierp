@@ -25,7 +25,7 @@
             <div class="col-md-4 col-md-offset-4">
                 <div class="login-panel panel panel-default">
                     <div class="panel-heading">
-                        <img src="${pageContext.request.contextPath}/img/logo.png" class="img-responsive" alt="MiniERP"/>
+                        <img id="logoEmp" src="${pageContext.request.contextPath}/img/" class="img-responsive" alt="MiniERP"/>
                     </div>
                     <div class="panel-body">
                         <form role="form" method="post" action="${pageContext.request.contextPath}/">
@@ -51,5 +51,12 @@
     <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 
 </body>
-
+<script>
+    if("nada"!="${empImg}"){
+        $('#logoEmp')[0].src="${pageContext.request.contextPath}/img/${empImg}";
+    }
+    else{
+        $('#logoEmp')[0].src="${pageContext.request.contextPath}/img/logo.png";
+    }
+</script>
 </html>
