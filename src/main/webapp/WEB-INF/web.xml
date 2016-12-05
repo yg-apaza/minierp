@@ -379,16 +379,6 @@
         <servlet-name>SucursalController</servlet-name>
         <url-pattern>/secured/configuracion/sucursal</url-pattern>
     </servlet-mapping>
-    <servlet>
-        <description/>
-        <display-name>AddSucursalController</display-name>
-        <servlet-name>AddSucursalController</servlet-name>
-        <servlet-class>org.epis.minierp.controller.configuracion.AddSucursalController</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>AddSucursalController</servlet-name>
-        <url-pattern>/secured/configuracion/addsucursal</url-pattern>
-    </servlet-mapping>
     <!--Sub Modulo Documento cliente-->
     <servlet>
         <description/>

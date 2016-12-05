@@ -7,89 +7,106 @@
     <jsp:attribute name="contenido">
         <div class="panel-body">
             <div class="container col-md-12">
-                <h2>Datos de la empresa</h2>
-                <form id="empForm" enctype="multipart/form-data" method="post" action="${pageContext.request.contextPath}/secured/configuracion/datosEmpresa">
-                    <div class="container" align="center" style="max-width:300px; margin: 0 auto;">
-                        <label for="imgProd" class="control-label">Logo de la empresa</label><br/>
-                        <label id="noHay"></label>
+                <h1>Datos de la empresa</h1>
+                <form id="empForm" method="post" enctype='multipart/form-data' action="${pageContext.request.contextPath}/secured/configuracion/datosEmpresa">
+                    <div class="form-horizontal" align="center">
                         <div class="form-group">
-                            <img id="img" src="" style="max-width: 297px;" border="3"/><br/>
+                        <img id="preview" src="${pageContext.request.contextPath}/img/${urlimagenlogo}" class="img-responsive" alt="Logo de la Empresa" Style="width: 300px; height: 120px">
                         </div>
-                        <input name="imgProd" id="imgProd" type="file" class="form-control-file" accept=".jpg,.jpeg"><br/>
+                        <input name="imgProd" id="imgProd" type="file" class="form-control-file" accept="image/x-jpg,image/x-jpeg"><br/>
                     </div>
-                    <div class="container col-md-8">
+                    <div class="form-horizontal">
                         <div class="form-group">
-                            <label for="empNomCom">Nombre:</label>
-                            <input type="text" class="form-control" id="empNomCom" name="empNomCom" value="${emp.getEmpNomCom()}">
-                        </div>
-                        <div class="form-group">
-                            <label >Descripción:</label><br/>
-                            <input type="text" class="form-control" id="empDes" name="empDes" value="${emp.getEmpDes()}">
-                        </div>
-                        <div class="form-group">
-                            <label >Razón social:</label><br/>
-                            <input type="text" class="form-control" id="empRazSoc" name="empRazSoc" value="${emp.getEmpRazSoc()}">
+                            <div class="col-md-6">
+                                <label>Razón Social:</label>
+                                <input type="text" class="form-control" id="UpdateempRazSoc" name="empRazSoc" value="${empresa.empRazSoc}">
+                            </div>
+                            <div class="col-md-6">
+                                <label>Nombre Comercial:</label>
+                                <input type="text" class="form-control" id="UpdateempNomCom"  name="empNomCom" value="${empresa.empNomCom}">
+                            </div>
                         </div>
                         <div class="form-group">
-                            <label>Dirección:</label><br/>
-                            <input type="text" class="form-control" id="empDir" name="empDir" value="${emp.getEmpDir()}">
+                            <div class="col-md-6">
+                                <label>Dominio Fiscal:</label>
+                                <input type="text" class="form-control" id="UpdateempDomFis" name="empDomFis" value="${empresa.empDomFis}">
+                            </div>
+                            <div class="col-md-6">
+                                <label>Descripcion:</label>
+                                <input type="text" class="form-control" id="UpdateempDes"  name="empDes" value="${empresa.empDes}">
+                            </div>
                         </div>
                         <div class="form-group">
-                            <label>Dominio fiscal:</label><br/>
-                            <input type="text" class="form-control" id="empDomFis" name="empDomFis" value="${emp.getEmpDomFis()}">
+                            <div class="col-md-6">
+                                <label>Direccion:</label>
+                                <input type="text" class="form-control" id="UpdateempDir" name="empDir" value="${empresa.empDir}">
+                            </div>
+                            <div class="col-md-3">
+                                <label>Telefono:</label>
+                                <input type="text" class="form-control" id="UpdateempTel"  name="empTel" value="${empresa.empTel}">
+                            </div>
+                            <div class="col-md-3">
+                                <label>Email:</label>
+                                <input type="text" class="form-control" id="UpdateempEmail"  name="empEmail" value="${empresa.empEmail}">
+                            </div>
                         </div>
                         <div class="form-group">
-                            <label>Teléfono:</label><br/>
-                            <input class="form-control" id="empTel" name="empTel" value="${emp.getEmpTel()}">
+                            <div class="col-md-3">
+                                <label>Tipo de Cambio $ Compra:</label>
+                                <input type="text" class="form-control" id="UpdateempTipCamCom"  name="empTipCamCom" value="${empresa.empTipCamCom}">
+                            </div>
+                            <div class="col-md-3">
+                                <label>Tipo de Cambio $ Venta:</label>
+                                <input type="text" class="form-control" id="UpdateempTipCamVen"  name="empTipCamVen" value="${empresa.empTipCamVen}">
+                            </div>
+                            <div class="col-md-3">
+                                <label>I.G.V.:</label>
+                                <input type="number" class="form-control" id="UpdateempIgv" name="empIgv">
+                            </div>
+                            <div class="col-md-3">
+                                <label># Lote:</label>
+                                <input type="number" class="form-control" id="UpdateempLot"  name="empLot"  min="0.0" step="any" value="0.0">
+                            </div>
                         </div>
                         <div class="form-group">
-                            <label>IGV:</label><br/>
-                            <input class="form-control" id="empIgv" name="empIgv" value="${emp.getEmpIgv()}">
+                            <div class="col-md-6">
+                                <label>R.U.C.:</label>
+                                <input type="text" class="form-control" id="UpdateempRuc"  name="empRuc" value="${empresa.empRuc}">
+                            </div>
+                            <div class="col-md-2">
+                                <label># Det G. Transportista:</label><br/>
+                                <input type="number" class="form-control" name="empNumDetGuiRemTra" min="0.0" step="any" value="0.0" id="UpdateempNumDetGuiRemTra">
+                            </div>
+                            <div class="col-md-2">
+                                <label># Det Factura de Venta:</label><br/>
+                                <input type="number" class="form-control" name="empNumDetFacVen" min="0.0" step="any" value="0.0" id="UpdateempNumDetFacVen">
+                            </div>
+                            <div class="col-md-2">
+                                <label># Det Boleta de Venta:</label><br/>
+                                <input type="number" class="form-control" name="empNumDetBolVen" min="0.0" step="any" value="0.0" id="UpdateempNumDetBolVen">
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label>Correo electrónico</label><br/>
-                            <input type="email" class="form-control" id="empEmail" name="empEmail" value="${emp.getEmpEmail()}">
-                        </div>
-                        <div class="form-group">
-                            <label>R.U.C:</label><br/>
-                            <input type="text" class="form-control" id="empRuc" name="empRuc" value="${emp.getEmpRuc()}">
-                        </div>
-                        <div class="form-group">
-                            <label>Tipo de cambio (compra):</label><br/>
-                            <input type="text" class="form-control" id="empTipCamCom" name="empTipCamCom" value="${emp.getEmpTipCamCom()}">
-                        </div>
-                        <div class="form-group">
-                            <label>Tipo de cambio (venta):</label><br/>
-                            <input type="text" class="form-control" id="empTipCamVen" name="empTipCamVen" value="${emp.getEmpTipCamVen()}">
-                        </div>
-                        <div class="form-group">
-                            <label>Lote:</label><br/>
-                            <input type="text" class="form-control" id="empLot" name="empLot" value="${emp.getEmpLot()}">
-                        </div>
-                        <div class="form-group" align="center">
-                            <button type="submit" align="center" class="btn btn-default">Guardar</button>
-                            <button align="center" class="btn btn-default">Cancelar</button>
-                        </div>
+                    </div>
+                    <div class="form-group" Style="text-align: right">
+                        <button type="submit" class="btn btn-outline btn-success">Guardar Datos</button>
+                        <input type="button" class="btn btn-outline btn-info" value="Actualizar Imagen" onClick="window.location.reload()">
                     </div>
                 </form>
             </div>
         </div>
         <script>
-            function changeImg(){
-                $('#img')[0].src="/minierp/img/"+$('#imgProd').val();
-            }
-            var src="";
-            console.log("${empImg}");
-            if("${empImg}"=="nada"){
-                console.log("src nada: "+src);
-                $('#noHay')[0].innerHTML="No ha definido un logo...";
-            }
-            else{
-                console.log("src encuentra: "+"${empImg}");
-                src="/minierp/img/"+"${empImg}";
-            }
-            $('#img')[0].src=src;
-            console.log("src setea: "+src);
+            var UpdateempNumDetGuiRemTra = $("#UpdateempNumDetGuiRemTra");
+            var UpdateempNumDetFacVen = $("#UpdateempNumDetFacVen");
+            var UpdateempNumDetBolVen = $("#UpdateempNumDetBolVen");
+            var UpdateempLot = $("#UpdateempLot");
+            var UpdateempIgv = $("#UpdateempIgv");
+            
+            UpdateempNumDetGuiRemTra.val(${empresa.empNumDetGuiRemTra});
+            UpdateempNumDetFacVen.val(${empresa.empNumDetFacVen});
+            UpdateempNumDetBolVen.val(${empresa.empNumDetBolVen});
+            UpdateempLot.val(${empresa.empLot});
+            UpdateempIgv.val(${empresa.empIgv});
+            
             $("#empForm").validate({
                 rules: {
                     empTel: {
@@ -113,6 +130,18 @@
                     },
                     empTipCamVen: {
                         number: true
+                    },
+                    empNumDetGuiRemTra: {
+                        number: true,
+                        greaterThan: "#UpdateempNumDetFacVen"
+                    },
+                    empNumDetFacVen: {
+                        number: true,
+                        greaterThan: 0
+                    },
+                    empNumDetBolVen: {
+                        number: true,
+                        greaterThan: 0
                     }
                 },
                 messages: {
@@ -134,6 +163,15 @@
                         number: "Ingrese sólo números."
                     },
                     empTipCamVen: {
+                        number: "Ingrese sólo números."
+                    },
+                    empNumDetGuiRemTra: {
+                        number: "Ingrese sólo números."
+                    },
+                    empNumDetFacVen: {
+                        number: "Ingrese sólo números."
+                    },
+                    empNumDetBolVen: {
                         number: "Ingrese sólo números."
                     }
                 },

@@ -57,10 +57,8 @@ public class EnP1mSucursalDao {
         session.saveOrUpdate(clase);
     }
     
-    public void delete(int deleteSucCod, char EstRegCod){
-        EnP1mSucursal sucursal = (EnP1mSucursal)session.get(EnP1mSucursal.class, deleteSucCod);
-        sucursal.setEstRegCod(EstRegCod);
-	session.update(sucursal);
+    public void delete(EnP1mSucursal clase){
+	session.delete(clase);
     }
     
 }

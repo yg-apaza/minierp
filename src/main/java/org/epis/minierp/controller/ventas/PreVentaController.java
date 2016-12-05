@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.epis.minierp.business.ventas.EnP1mPreventaBusiness;
+import org.epis.minierp.dao.general.EnP1mEmpresaDao;
 import org.epis.minierp.dao.general.TaGzzEstadoFacturaDao;
 import org.epis.minierp.dao.general.TaGzzMetodoPagoFacturaDao;
 import org.epis.minierp.dao.general.TaGzzTipoPagoFacturaDao;
@@ -24,6 +25,7 @@ public class PreVentaController extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
     EnP1mPreventaBusiness preventaBusiness;
+    EnP1mEmpresaDao empDao;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -57,6 +59,7 @@ public class PreVentaController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         preventaBusiness = new EnP1mPreventaBusiness();
+        empDao = new EnP1mEmpresaDao();
         
         String[] preventas = request.getParameterValues("preventas");
         int estFacCod = Integer.parseInt(request.getParameter("estFacCod"));
@@ -74,9 +77,12 @@ public class PreVentaController extends HttpServlet {
         
         //maxDet4FacVen std = 15
         int maxDet4FacVen = 15;
-        if(facVenCabModVen == 'F') maxDet4FacVen = 23;
-        if(facVenCabModVen == 'B') maxDet4FacVen = 11;    
-        
+        if(facVenCabModVen == 'F') {
+            maxDet4FacVen = empDao.getById(01).getEmpNumDetFacVen();
+        }
+        if(facVenCabModVen == 'B') {
+            maxDet4FacVen = empDao.getById(01).getEmpNumDetBolVen();
+        }
         preventaBusiness.preVenta2Venta4Lotes(preventas, iniFacVenCabCod, estFacCod, 
                 metPagCod, tipPagCod, facVenCabModVen, pagCuoNum, maxDet4FacVen);
         

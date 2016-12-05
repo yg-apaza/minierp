@@ -10,6 +10,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import org.epis.minierp.dao.ventas.EnP1mFacturaVentaCabDao;
 import org.epis.minierp.model.EnP1mCliente;
 import org.epis.minierp.model.EnP1mFacturaVentaCab;
@@ -22,6 +23,15 @@ public class SearchSaleBillController extends HttpServlet {
         String facVenCabCod = request.getParameter("facVenCabCod");
         EnP1mFacturaVentaCab bill = (new EnP1mFacturaVentaCabDao()).getById(facVenCabCod);
         JsonObject data = new JsonObject(); 
+        
+        HttpSession session = request.getSession(true);
+        EnP1mUsuario usuario = (EnP1mUsuario) session.getAttribute("usuario");
+        double canUsuPorAdd;
+        try {
+            canUsuPorAdd = usuario.getTaGzzCanalUsuario().getCanUsuPorAdd();
+        } catch (Exception e) {
+            canUsuPorAdd = 1;
+        }
         
         EnP1mUsuario u = bill.getEnP1mUsuario();
         String vendedor = u.getUsuNom() + " " + u.getUsuApePat() + " " + u.getUsuApeMat();

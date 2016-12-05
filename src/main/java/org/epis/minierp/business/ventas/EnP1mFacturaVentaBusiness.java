@@ -393,6 +393,63 @@ public class EnP1mFacturaVentaBusiness {
                 createFacVenDet(tempFacVenCabCod, i+1, claProCod, subClaProCod, proCod, 
                         tempFvd.getFacVenDetCan(), tempFvd.getFacVenDetValUni());
                 
+                tempDets++;
+                tempFacVenCabTot = tempFacVenCabTot + tempFvd.getFacVenDetValUni()*tempFvd.getFacVenDetCan();
+            }
+
+            tempFacVenCabTot = tempFacVenCabTot * ((100.0 + (double)facVenCabIGV) / 100.0); //Agregando Costo del IGV
+            tempFacVenCabSubTot = tempFacVenCabTot * ((100.0 - (double)facVenPorDes) / 100.0); //Agregando el descuento
+            
+            //cambiando los valores de total y subtotal con respecto a sus detalles
+            setFacVenCabTot(tempFacVenCabCod, tempFacVenCabTot);
+            setFacVenCabSubTot(tempFacVenCabCod, tempFacVenCabSubTot);
+
+            //reinicianod variables
+            tempFacVenCabTot = 0;
+            tempFacVenCabSubTot = 0;
+        }
+    }
+    
+    public void create4Preventa(String facVenCabCod, String cliCod, String usuCod, char facVenCabModVen,
+            Date facVenCabFecEmi, Date facVenCabFecVen, int tipDesCod, int facVenPorDes,
+            int facVenCabIGV, String facVenCabObs, int estFacCod, int metPagFac, int tipPagCod,
+            int monCod, int pagCuoNum, char estRegCod,
+            List<EnP1tFacturaVentaDet> detalles, int maxDet4FacVen) {
+
+        //se calcula el numero de facturas totales
+        int size = detalles.size(); //cantidad de detalles insertados;
+        int numFacs = size / maxDet4FacVen;
+        if (size % maxDet4FacVen > 0 || size < maxDet4FacVen) {
+            numFacs++;
+        }
+
+        EnP1tFacturaVentaDet tempFvd;
+        String tempFacVenCabCod;
+        int tempDets = 0;
+        double tempFacVenCabTot = 0;
+        double tempFacVenCabSubTot = 0;
+
+        for (int j = 0; j < numFacs; j++) {
+            //creando cabecera facVenCabTot= 0 y facVenCabSubTot = 0
+            tempFacVenCabCod = GenerateFacVenCabCod(facVenCabCod, j);
+            
+            createFacVenCab(tempFacVenCabCod, cliCod, usuCod, facVenCabModVen, facVenCabFecEmi,
+                    facVenCabFecVen, 0, tipDesCod, facVenPorDes, 0,
+                    facVenCabIGV, facVenCabObs, estFacCod, metPagFac, tipPagCod, monCod,
+                    pagCuoNum, estRegCod);
+
+            String claProCod;
+            String subClaProCod;
+            String proCod;
+            for (int i = 0; i < maxDet4FacVen && tempDets < size; i++) {
+                tempFvd = detalles.get(tempDets);
+                claProCod = tempFvd.getEnP2mProducto().getId().getClaProCod();
+                subClaProCod = tempFvd.getEnP2mProducto().getId().getSubClaProCod();
+                proCod = tempFvd.getEnP2mProducto().getId().getProCod();
+                
+                createFacVenDet(tempFacVenCabCod, i+1, claProCod, subClaProCod, proCod, 
+                        tempFvd.getFacVenDetCan(), tempFvd.getFacVenDetValUni());
+                
                 reducirproStkPreVen(claProCod, subClaProCod, proCod, tempFvd.getFacVenDetCan());
                 tempDets++;
                 tempFacVenCabTot = tempFacVenCabTot + tempFvd.getFacVenDetValUni()*tempFvd.getFacVenDetCan();

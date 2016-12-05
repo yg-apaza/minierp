@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -29,12 +28,12 @@ public class LoginController extends HttpServlet
             af = new File(request.getSession().getServletContext().getRealPath("/")+"/img/"+empImg);
             
             if(af.exists()){
-                request.setAttribute("empImg", empImg);
+                request.setAttribute("logoempresa", empImg);
             }
-            else request.setAttribute("empImg", "nada");
+            else request.setAttribute("logoempresa", "no_imagen.jpg");
         }
         else{
-            request.setAttribute("empImg", "nada");
+            request.setAttribute("logoempresa", "no_imagen.jpg");
         }
         if (session == null || session.getAttribute("usuario") == null)
             request.getRequestDispatcher("/login.jsp").forward(request, response);

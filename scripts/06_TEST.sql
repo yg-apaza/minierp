@@ -3,7 +3,11 @@
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `episerp`;
-INSERT INTO `en_p1m_empresa` (`EmpCod`,`EmpRazSoc`,`EmpNomCom`,`EmpDomFis`,`EmpDes`,`EmpDir`,`EmpTel`,`EmpEmail`,`EmpIGV`,`EmpTipCamCom`,`EmpTipCamVen`,`EmpRUC`,`EmpLot`,`EmpImgURL`) VALUES (2,"Amet Company","Rutrum Institute","P.O. Box 739, 8802 Auctor. Av.","Ninguna","P.O. Box 726, 2750 Elit Av.","(389) 01-2280","gravida.Praesent@disparturient.ca",19,12,13,"57733020499",2,"Crestor"),(3,"Vivamus Nisi LLC","Arcu Aliquam Ltd","Ap #306-9657 Nec, Ave","Ninguna","Ap #254-6721 Aliquet Rd.","(518) 53-4236","sed@CrasinterdumNunc.com",19,13,11,"65245964599",3,"Prednisone"),(4,"At Velit Cras Corporation","Porttitor Vulputate Foundation","9780 Sed Rd.","Ninguna","731-2531 Maecenas St.","(112) 08-0254","Pellentesque.habitant.morbi@at.com",19,15,14,"88207288999",4,"Klor-Con M20"),(5,"Semper Tellus Consulting","Sem Magna Institute","Ap #714-3248 Donec St.","Ninguna","406-4486 Sed Ave","(664) 49-0426","Nulla.dignissim.Maecenas@Donecfelis.ca",19,15,18,"94608674199",5,"Furosemide");
+INSERT INTO `en_p1m_empresa` (`EmpCod`,`EmpRazSoc`,`EmpNomCom`,`EmpDomFis`,`EmpDes`,`EmpDir`,`EmpTel`,`EmpEmail`,`EmpIGV`,`EmpTipCamCom`,`EmpTipCamVen`,`EmpRUC`,`EmpLot`,`EmpImgURL`) VALUES 
+(2,"Amet Company","Rutrum Institute","P.O. Box 739, 8802 Auctor. Av.","Ninguna","P.O. Box 726, 2750 Elit Av.","(389) 01-2280","gravida.Praesent@disparturient.ca",19,12,13,"57733020499",2,"Crestor"),
+(3,"Vivamus Nisi LLC","Arcu Aliquam Ltd","Ap #306-9657 Nec, Ave","Ninguna","Ap #254-6721 Aliquet Rd.","(518) 53-4236","sed@CrasinterdumNunc.com",19,13,11,"65245964599",3,"Prednisone"),
+(4,"At Velit Cras Corporation","Porttitor Vulputate Foundation","9780 Sed Rd.","Ninguna","731-2531 Maecenas St.","(112) 08-0254","Pellentesque.habitant.morbi@at.com",19,15,14,"88207288999",4,"Klor-Con M20"),
+(5,"Semper Tellus Consulting","Sem Magna Institute","Ap #714-3248 Donec St.","Ninguna","406-4486 Sed Ave","(664) 49-0426","Nulla.dignissim.Maecenas@Donecfelis.ca",19,15,18,"94608674199",5,"Furosemide");
 COMMIT;
 
 -- -----------------------------------------------------

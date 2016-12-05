@@ -90,6 +90,7 @@ public class AddFacturaController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         facturaBusiness = new EnP1mFacturaVentaBusiness();
+        empDao = new EnP1mEmpresaDao();
         
         String facVenCabCod = request.getParameter("facVenCabCod");
         String cliCod = request.getParameter("cliCod");
@@ -154,10 +155,16 @@ public class AddFacturaController extends HttpServlet {
 
         }
         
+        
+                
         //maxDet4FacVen std = 15
         int maxDet4FacVen = 15;
-        if(facVenCabModVen == 'F') maxDet4FacVen = 23;
-        if(facVenCabModVen == 'B') maxDet4FacVen = 11;
+        if(facVenCabModVen == 'F') {
+            maxDet4FacVen = empDao.getById(01).getEmpNumDetFacVen();
+        }
+        if(facVenCabModVen == 'B') {
+            maxDet4FacVen = empDao.getById(01).getEmpNumDetBolVen();
+        }
         
         facturaBusiness.create(facVenCabCod, cliCod, usuCod, facVenCabModVen, 
                 facVenCabFecEmi, facVenCabFecVen, tipDesCod, facVenPorDes, 

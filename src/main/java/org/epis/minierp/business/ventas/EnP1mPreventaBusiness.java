@@ -188,7 +188,7 @@ public class EnP1mPreventaBusiness {
             detalles.add(tempFacturaVentaDet);
         }
 
-        facturaBusiness.create(facVenCabCod, cliCod, usuCod, facVenCabModVen,
+        facturaBusiness.create4Preventa(facVenCabCod, cliCod, usuCod, facVenCabModVen,
                 facVenCabFecEmi, facVenCabFecVen, tipDesCod, facVenPorDes,
                 facVenCabIGV, facVenCabObs, estFacCod, metPagCod, tipPagCod,
                 monCod, pagCuoNum, 'A', detalles, maxDet4FacVen);
