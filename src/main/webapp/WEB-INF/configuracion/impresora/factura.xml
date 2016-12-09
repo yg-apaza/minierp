@@ -2,7 +2,7 @@
 <facturaPrinter>
     <name>Epson</name>
     <size>2</size>
-    <maxProducts>24</maxProducts>
+    <maxProducts>23</maxProducts>
     <leftMargin>0.5</leftMargin>
     <rightMargin>0.3</rightMargin>
     <topMargin>3.85</topMargin>
@@ -28,6 +28,6 @@
     <proDes1>1.2</proDes1>
     <proDes2>1.7</proDes2>
     <proValNet>2.5</proValNet>
-    <topFacTot>1.0</topFacTot>
+    <topFacTot>1.5</topFacTot>
     <totalMargin>18.4</totalMargin>
 </facturaPrinter>

@@ -505,7 +505,7 @@ public class ImpresoraMatricial {
         setAbsoluteHorizontalPosition(fP.getTotalMargin());
         writer.write(total);
         newLine();
-        advanceVertical(fP.getBotMargin());
+        advanceVertical(fP.getBotMargin());writeLine(" ");
     }
     
     public void writeBolTotal(String total) throws IOException{
@@ -513,12 +513,12 @@ public class ImpresoraMatricial {
         setAbsoluteHorizontalPosition(bP.getTotalMargin());
         writer.write(total);
         newLine();
-        advanceVertical(bP.getBotMargin());
+        advanceVertical(bP.getBotMargin());writeLine(" ");
     }
     
     public void writeGuiRemTotal() throws IOException{
         newLine();
-        advanceVertical(gP.getBotMargin());
+        advanceVertical(gP.getBotMargin());writeLine(" ");
     }
     
     public void close() throws IOException{

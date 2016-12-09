@@ -2,7 +2,7 @@
 <boletaPrinter>
     <name>Epson</name>
     <size>2</size>
-    <maxProducts>11</maxProducts>
+    <maxProducts>10</maxProducts>
     <leftMargin>0.6</leftMargin>
     <rightMargin>0.3</rightMargin>
     <topMargin>1.85</topMargin>
@@ -25,6 +25,6 @@
     <proValVen>1.4</proValVen>
     <proDes1>1.3</proDes1>
     <proPreNet>1.4</proPreNet>
-    <topBolTot>0.4</topBolTot>
+    <topBolTot>0.9</topBolTot>
     <totalMargin>12.5</totalMargin>
 </boletaPrinter>
