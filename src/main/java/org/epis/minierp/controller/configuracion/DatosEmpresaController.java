@@ -31,7 +31,11 @@ public class DatosEmpresaController extends HttpServlet {
             
 
         EnP1mEmpresa e = empDao.getById(01);// primera empresa
-        request.setAttribute("urlimagenlogo", e.getEmpImgUrl());
+        String urlLogo = e.getEmpImgUrl();
+        if(urlLogo == null){
+            urlLogo = "no_imagen.jpg";
+        }
+        request.setAttribute("urlimagenlogo", urlLogo);
         request.setAttribute("empresa", e);
 
         if (e.getEmpImgUrl() != null) {
@@ -131,7 +135,7 @@ public class DatosEmpresaController extends HttpServlet {
         empTipCamCom = Double.parseDouble(itmMap.get("empTipCamCom"));
         empTipCamVen = Double.parseDouble(itmMap.get("empTipCamVen"));
         empRuc = itmMap.get("empRuc");
-        empLot = Integer.parseInt(itmMap.get("empLot"));
+        empLot = (int)Double.parseDouble(itmMap.get("empLot"));
         empNumDetGuiRemTra = Integer.parseInt(itmMap.get("empNumDetGuiRemTra"));
         empNumDetFacVen = Integer.parseInt(itmMap.get("empNumDetFacVen"));
         empNumDetBolVen = Integer.parseInt(itmMap.get("empNumDetBolVen"));
