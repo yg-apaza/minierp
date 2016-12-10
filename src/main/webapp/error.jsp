@@ -24,7 +24,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="error-template">
-                    <img src="${pageContext.request.contextPath}/img/logo.png" width=25% alt="MiniERP">
+                    <img src="${pageContext.request.contextPath}/img/${empImg}" width=25% alt="MiniERP">
                     <h1>Oops!</h1>
                     <h2>Error</h2>
                     <div class="error-details">

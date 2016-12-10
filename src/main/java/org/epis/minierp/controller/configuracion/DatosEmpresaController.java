@@ -26,28 +26,8 @@ public class DatosEmpresaController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         empDao = new EnP1mEmpresaDao();
-        File logoEmp;
-        File noImagen = new File(request.getSession().getServletContext().getRealPath("/") + "/img/" + "no_imagen.jpg");
-            
-
-        EnP1mEmpresa e = empDao.getById(01);// primera empresa
-        String urlLogo = e.getEmpImgUrl();
-        if(urlLogo == null){
-            urlLogo = "no_imagen.jpg";
-        }
-        request.setAttribute("urlimagenlogo", urlLogo);
+        EnP1mEmpresa e = empDao.getById(1);
         request.setAttribute("empresa", e);
-
-        if (e.getEmpImgUrl() != null) {
-            logoEmp = new File(request.getSession().getServletContext().getRealPath("/") + "/img/" + e.getEmpImgUrl());
-            if (logoEmp.exists()) {
-                request.setAttribute("empImg", logoEmp);
-            } else {
-                request.setAttribute("empImg", noImagen);
-            }
-        } else {
-            request.setAttribute("empImg", noImagen);
-        }
         request.getRequestDispatcher("/WEB-INF/configuracion/datosEmpresa.jsp").forward(request, response);
     }
 
@@ -154,6 +134,5 @@ public class DatosEmpresaController extends HttpServlet {
         }
 
         response.sendRedirect(request.getContextPath() + "/secured/configuracion/datosEmpresa");
-
     }
 }

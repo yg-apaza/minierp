@@ -47,7 +47,7 @@
                         <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand" href="${pageContext.request.contextPath}/">
-                        <img id="logoEmp" src="${pageContext.request.contextPath}/img/">
+                        <img id="logoEmp" src="${pageContext.request.contextPath}/img/${empImg}">
                     </a>
                 </div>
                 
@@ -269,11 +269,3 @@
         </div>
     </body>
 </html>
-<script>
-    if("nada"!="${empImg}"){
-        $('#logoEmp')[0].src="${pageContext.request.contextPath}/img/${empImg}";
-    }
-    else{
-        $('#logoEmp')[0].src="${pageContext.request.contextPath}/img/logo.png";
-    }
-</script>

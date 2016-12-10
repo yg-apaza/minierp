@@ -19,14 +19,12 @@ import org.hibernate.StaleObjectStateException;
 public class HibernateSessionRequestFilter implements Filter
 {
     private static Log log = LogFactory.getLog(HibernateSessionRequestFilter.class);  
-
     private SessionFactory sf;  
     
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException
     {
         try {
-            log.debug("Starting a database transaction");
             sf.getCurrentSession().beginTransaction();
             // Encoding
             request.setCharacterEncoding("UTF-8");
@@ -34,32 +32,22 @@ public class HibernateSessionRequestFilter implements Filter
             EnP1mEmpresaDao empDAO = new EnP1mEmpresaDao();
             EnP1mEmpresa emp = empDAO.getById(1);
             File af;
-            if(emp.getEmpImgUrl()!=null ){
-                String empImg = emp.getEmpImgUrl();//new String(valueDecoded);
-                af = new File(request.getRealPath("/")+"/img/"+empImg);
-                if(af.exists()){
+            if(emp.getEmpImgUrl() != null )
+            {
+                String empImg = emp.getEmpImgUrl();
+                af = new File(request.getRealPath("/img"), empImg);
+                if(af.exists())
                     request.setAttribute("empImg", empImg);
-                    System.out.println("si existe la imagen: "+af.getPath());
-                }
-                else request.setAttribute("empImg", "nada");
+                else request.setAttribute("empImg", "default_logo.png");
             }
-            else{
-                request.setAttribute("empImg", "nada");
-            }
-            // Call the next filter (continue request processing)
+            else
+                request.setAttribute("empImg", "default_logo.png");
             chain.doFilter(request, response);
-
-            // Commit and cleanup
-            log.debug("Committing the database transaction");
             sf.getCurrentSession().getTransaction().commit();
 
         } catch (StaleObjectStateException staleEx) {
             log.error("This interceptor does not implement optimistic concurrency control!");
             log.error("Your application will not work until you add compensation actions!");
-            // Rollback, close everything, possibly compensate for any permanent changes
-            // during the conversation, and finally restart business conversation. Maybe
-            // give the user of the application a chance to merge some of his work with
-            // fresh data... what you do here depends on your applications design.
             throw staleEx;
         } catch (Throwable ex) {
             // Rollback only
@@ -86,6 +74,5 @@ public class HibernateSessionRequestFilter implements Filter
     }
 
     @Override
-    public void destroy() {}  
-
+    public void destroy() {}
 }

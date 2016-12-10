@@ -6,12 +6,12 @@
     </jsp:attribute>
     <jsp:attribute name="contenido">
         <div class="panel-body">
-            <div class="container col-md-12">
+            <div class="col-md-12">
                 <h1>Datos de la empresa</h1>
                 <form id="empForm" method="post" enctype='multipart/form-data' action="${pageContext.request.contextPath}/secured/configuracion/datosEmpresa">
                     <div class="form-horizontal" align="center">
                         <div class="form-group">
-                        <img id="preview" src="${pageContext.request.contextPath}/img/${urlimagenlogo}" class="img-responsive" alt="Logo de la Empresa" Style="width: 300px; height: 120px">
+                        <img id="preview" src="${pageContext.request.contextPath}/img/${empImg}" class="img-responsive center-block" alt="Logo de la Empresa">
                         </div>
                         <input name="imgProd" id="imgProd" type="file" class="form-control-file" accept="image/x-jpg,image/x-jpeg"><br/>
                     </div>
@@ -89,7 +89,6 @@
                     </div>
                     <div class="form-group" Style="text-align: right">
                         <button type="submit" class="btn btn-outline btn-success">Guardar Datos</button>
-                        <input type="button" class="btn btn-outline btn-info" value="Actualizar Imagen" onClick="window.location.reload()">
                     </div>
                 </form>
             </div>

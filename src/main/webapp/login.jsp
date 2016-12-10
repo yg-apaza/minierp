@@ -25,7 +25,7 @@
                 <div class="col-md-4 col-md-offset-4">
                     <div class="login-panel panel panel-default">
                         <div class="panel-heading">
-                            <img id="logoEmp" src="${pageContext.request.contextPath}/img/${logoempresa}" class="img-responsive" alt="MiniERP"/>
+                            <img id="logoEmp" src="${pageContext.request.contextPath}/img/${empImg}" class="img-responsive center-block" alt="MiniERP"/>
                         </div>
                         <div class="panel-body">
                             <form role="form" method="post" action="${pageContext.request.contextPath}/">
