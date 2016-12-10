@@ -83,36 +83,11 @@ public class EnP1mEmpresaBusiness {
         e.setEmpTipCamVen(empTipCamVen);
         e.setEmpRuc(empRUC);
         e.setEmpLot(empLot);
-        e.setEmpImgUrl(EmpImgURL);
+        if(EmpImgURL != null && !EmpImgURL.equals(""))
+            e.setEmpImgUrl(EmpImgURL);
         e.setEmpNumDetGuiRemTra(empNumDetGuiRemTra);
         e.setEmpNumDetFacVen(empNumDetFacVen);
         e.setEmpNumDetBolVen(empNumDetBolVen);
         empDao.saveOrUpdate(e);
-    }
-    
-    public void saveOrUpdate(int empCod, String empRazSoc, String empNomCom, 
-            String empDomFis, String empDes, String empDir, String empTel, 
-            String empEmail, double empIGV, double empTipCamCom, 
-            double empTipCamVen, String  empRUC, int empLot,
-            int empNumDetGuiRemTra, int empNumDetFacVen, int empNumDetBolVen) {
-        
-        EnP1mEmpresa e = empDao.getById(empCod);
-        e.setEmpRazSoc(empRazSoc);
-        e.setEmpNomCom(empNomCom);
-        e.setEmpDomFis(empDomFis);
-        e.setEmpDes(empDes);
-        e.setEmpDir(empDir);
-        e.setEmpTel(empTel);
-        e.setEmpEmail(empEmail);
-        e.setEmpIgv(empIGV);
-        e.setEmpTipCamCom(empTipCamCom);
-        e.setEmpTipCamVen(empTipCamVen);
-        e.setEmpRuc(empRUC);
-        e.setEmpLot(empLot);
-        e.setEmpNumDetGuiRemTra(empNumDetGuiRemTra);
-        e.setEmpNumDetFacVen(empNumDetFacVen);
-        e.setEmpNumDetBolVen(empNumDetBolVen);
-        empDao.saveOrUpdate(e);
-    }
-    
+    }    
 }

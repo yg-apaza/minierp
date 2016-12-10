@@ -1,7 +1,12 @@
 package org.epis.minierp.controller.configuracion;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,18 +15,17 @@ import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.FileItemFactory;
-import org.apache.commons.fileupload.FileUploadException;
-import org.apache.commons.fileupload.disk.DiskFileItemFactory;
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import javax.servlet.http.Part;
 import org.epis.minierp.business.configuracion.EnP1mEmpresaBusiness;
 import org.epis.minierp.dao.general.EnP1mEmpresaDao;
 import org.epis.minierp.model.EnP1mEmpresa;
 
-@MultipartConfig
+@MultipartConfig(
+    location="/tmp", 
+    fileSizeThreshold=100*1024, // 100 KB
+    maxFileSize=500*1024,       // 500 KB 
+    maxRequestSize=1024*1024)   // 1MB
 public class DatosEmpresaController extends HttpServlet {
-
     EnP1mEmpresaDao empDao;
     EnP1mEmpresaBusiness empBusiness;
 
@@ -35,69 +39,30 @@ public class DatosEmpresaController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        FileItemFactory factory = new DiskFileItemFactory();
-        ServletFileUpload upload = new ServletFileUpload(factory);
-        String empImgUrl = null;
-        List items;
-        Map<String, String> itmMap = new HashMap<>();
+        
+        Part filePart = request.getPart("empImg");
+        String empImgUrl = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
+        InputStream fileContent = filePart.getInputStream();
+        OutputStream out = null;
         
         try {
-            items = upload.parseRequest(request); //lista del contenido del request
-            for (Object item : items) {
-                FileItem uploaded = (FileItem) item;
-
-                if (!uploaded.isFormField()) {
-                    String path = request.getSession().getServletContext().getRealPath("/") + "img";
-
-                    File fichero;
-                    if (uploaded.getName().contains(".jpg")) {
-                        fichero = new File(path, "logo.jpg");
-                        empImgUrl = "logo.jpg";
-                        uploaded.write(fichero);
-                    }
-                    if (uploaded.getName().contains(".JPG")) {
-                        fichero = new File(path, "logo.jpg");
-                        empImgUrl = "logo.jpg";
-                        uploaded.write(fichero);
-                    }
-                    if (uploaded.getName().contains(".jpeg")) {
-                        fichero = new File(path, "logo.jpeg");
-                        empImgUrl = "logo.jpg";
-                        uploaded.write(fichero);
-                    }
-                    if (uploaded.getName().contains(".JPEG")) {
-                        fichero = new File(path, "logo.jpeg");
-                        empImgUrl = "logo.jpg";
-                        uploaded.write(fichero);
-                    } 
-                    if (uploaded.getName().contains(".png")){
-                        fichero = new File(path, "logo.png");
-                        empImgUrl = "logo.png";
-                        uploaded.write(fichero);
-                    }
-                    if (uploaded.getName().contains(".PNG")){
-                        fichero = new File(path, "logo.png");
-                        empImgUrl = "logo.png";
-                        uploaded.write(fichero);
-                    }
-                    if (!uploaded.getName().contains(".jpg") && 
-                            !uploaded.getName().contains(".jpeg") && 
-                            !uploaded.getName().contains(".png") &&
-                            !uploaded.getName().contains(".JPG") &&
-                            !uploaded.getName().contains(".JPEG") &&
-                            !uploaded.getName().contains(".PNG")
-                            ){
-                        fichero = null;
-                    }
-
-                } else {
-                    itmMap.put(uploaded.getFieldName(), uploaded.getString());
-                }
+            out = new FileOutputStream(new File(request.getRealPath("/img"), empImgUrl));
+            int read = 0;
+            final byte[] bytes = new byte[1024];
+            while ((read = fileContent.read(bytes)) != -1) {
+                out.write(bytes, 0, read);
             }
-        } catch (FileUploadException ex) {
-        } catch (Exception ex) {
+        } catch (FileNotFoundException fne) {
+            
+        } finally {
+            if (out != null) {
+                out.close();
+            }
+            if (fileContent != null) {
+                fileContent.close();
+            }
         }
-
+        
         //Guardando los Datos de la Empresa
         String empRazSoc, empNomCom, empDomFis, empDes, empDir, empTel,
                 empEmail, empRuc;
@@ -105,35 +70,28 @@ public class DatosEmpresaController extends HttpServlet {
         int empCod, empLot, empNumDetGuiRemTra, empNumDetFacVen, empNumDetBolVen;
         double empIgv, empTipCamCom, empTipCamVen;
 
-        empCod = 01; //primera empresa
-        empRazSoc = itmMap.get("empRazSoc");
-        empNomCom = itmMap.get("empNomCom");
-        empDomFis = itmMap.get("empDomFis");
-        empDes = itmMap.get("empDes");
-        empDir = itmMap.get("empDir");
-        empTel = itmMap.get("empTel");
-        empEmail = itmMap.get("empEmail");
-        empIgv = Double.parseDouble(itmMap.get("empIgv"));
-        empTipCamCom = Double.parseDouble(itmMap.get("empTipCamCom"));
-        empTipCamVen = Double.parseDouble(itmMap.get("empTipCamVen"));
-        empRuc = itmMap.get("empRuc");
-        empLot = (int)Double.parseDouble(itmMap.get("empLot"));
-        empNumDetGuiRemTra = Integer.parseInt(itmMap.get("empNumDetGuiRemTra"));
-        empNumDetFacVen = Integer.parseInt(itmMap.get("empNumDetFacVen"));
-        empNumDetBolVen = Integer.parseInt(itmMap.get("empNumDetBolVen"));
+        empCod = 1; //primera empresa
+        empRazSoc = request.getParameter("empRazSoc");
+        empNomCom = request.getParameter("empNomCom");
+        empDomFis = request.getParameter("empDomFis");
+        empDes = request.getParameter("empDes");
+        empDir = request.getParameter("empDir");
+        empTel = request.getParameter("empTel");
+        empEmail = request.getParameter("empEmail");
+        empIgv = Double.parseDouble(request.getParameter("empIgv"));
+        empTipCamCom = Double.parseDouble(request.getParameter("empTipCamCom"));
+        empTipCamVen = Double.parseDouble(request.getParameter("empTipCamVen"));
+        empRuc = request.getParameter("empRuc");
+        empLot = (int)Double.parseDouble(request.getParameter("empLot"));
+        empNumDetGuiRemTra = Integer.parseInt(request.getParameter("empNumDetGuiRemTra"));
+        empNumDetFacVen = Integer.parseInt(request.getParameter("empNumDetFacVen"));
+        empNumDetBolVen = Integer.parseInt(request.getParameter("empNumDetBolVen"));
 
         empBusiness = new EnP1mEmpresaBusiness();
-        if(empImgUrl != null){
-            empBusiness.saveOrUpdate(empCod, empRazSoc, empNomCom, empDomFis,
-                empDes, empDir, empTel, empEmail, empIgv, empTipCamCom,
-                empTipCamVen, empRuc, empLot, empImgUrl, empNumDetGuiRemTra,
-                empNumDetFacVen, empNumDetBolVen);
-        }else{
-            empBusiness.saveOrUpdate(empCod, empRazSoc, empNomCom, empDomFis,
-                empDes, empDir, empTel, empEmail, empIgv, empTipCamCom,
-                empTipCamVen, empRuc, empLot, empNumDetGuiRemTra,
-                empNumDetFacVen, empNumDetBolVen);
-        }
+        empBusiness.saveOrUpdate(empCod, empRazSoc, empNomCom, empDomFis,
+            empDes, empDir, empTel, empEmail, empIgv, empTipCamCom,
+            empTipCamVen, empRuc, empLot, empImgUrl, empNumDetGuiRemTra,
+            empNumDetFacVen, empNumDetBolVen);
 
         response.sendRedirect(request.getContextPath() + "/secured/configuracion/datosEmpresa");
     }
