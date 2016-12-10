@@ -2,7 +2,6 @@
 <boletaPrinter>
     <name>Epson</name>
     <size>2</size>
-    <maxProducts>10</maxProducts>
     <leftMargin>0.6</leftMargin>
     <rightMargin>0.3</rightMargin>
     <topMargin>1.85</topMargin>

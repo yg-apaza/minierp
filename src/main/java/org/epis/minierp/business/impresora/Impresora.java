@@ -15,6 +15,7 @@ import javax.print.PrintService;
 import javax.print.PrintServiceLookup;
 import org.epis.minierp.dao.general.EnP1mEmpresaDao;
 import org.epis.minierp.dao.ventas.EnP1mFacturaVentaCabDao;
+import org.epis.minierp.model.EnP1mEmpresa;
 import org.epis.minierp.model.EnP1mFacturaVentaCab;
 import org.epis.minierp.model.EnP1tFacturaVentaDet;
 import org.epis.minierp.util.DateUtil;
@@ -48,6 +49,9 @@ public class Impresora {
     }
 
     public String generateFactura(String cod){
+        EnP1mEmpresaDao empDao = new EnP1mEmpresaDao();
+        EnP1mEmpresa e = empDao.getById(01);
+        
         String file = "Factura_"+sf.format(date.getTime())+extension;
         ImpresoraMatricial fac = new ImpresoraMatricial(file, path, "factura");
         try {
@@ -81,7 +85,7 @@ public class Impresora {
                 proValNet = proCan * proValUni;
                 fac.writeFacDetalle(Integer.toString(proCod), proCan, proUni, proDes, proValUni, proDes1, proDes2, df.format(proValNet));
             }
-            fac.addLines(fac.getMax() - proCod); 
+            fac.addLines(e.getEmpNumDetFacVen() - proCod); 
             subTotal = f.getFacVenCabSubTot();
             igv = subTotal * f.getFacVenCabIgv() / 100;
             total = f.getFacVenCabTot();
@@ -94,6 +98,8 @@ public class Impresora {
     }
     
     public String[] generateFacturas(String[] cods){
+        EnP1mEmpresaDao empDao = new EnP1mEmpresaDao();
+        EnP1mEmpresa e = empDao.getById(01);
         String file = "Facturas_"+sf.format(date.getTime())+extension;
         ImpresoraMatricial fac = new ImpresoraMatricial(file, path, "factura");
         try {
@@ -131,7 +137,7 @@ public class Impresora {
                     proValNet = proCan * proValUni;
                     fac.writeFacDetalle(Integer.toString(proCod), proCan, proUni, proDes, proValUni, proDes1, proDes2, df.format(proValNet));
                 }
-                fac.addLines(fac.getMax() - proCod); 
+                fac.addLines(e.getEmpNumDetFacVen() - proCod); 
                 subTotal = f.getFacVenCabSubTot();
                 igv = subTotal * f.getFacVenCabIgv() / 100;
                 total = f.getFacVenCabTot();
@@ -146,6 +152,8 @@ public class Impresora {
     }
     
     public String[] generateBoletas(String[] cods){
+        EnP1mEmpresaDao empDao = new EnP1mEmpresaDao();
+        EnP1mEmpresa e = empDao.getById(01);
         String file = "Boletas_"+sf.format(date.getTime())+extension;
         ImpresoraMatricial bol = new ImpresoraMatricial(file, path, "boleta");
         try {
@@ -179,7 +187,7 @@ public class Impresora {
                     proValNet = proCan * proValUni;
                     bol.writeBolDetalle(Integer.toString(proCod), proCan, proUni, proDes, proValUni, proDes1, df.format(proValNet));
                 }
-                bol.addLines(bol.getMax() - proCod); 
+                bol.addLines(e.getEmpNumDetBolVen() - proCod); 
                 total = f.getFacVenCabTot();
                 bol.writeBolTotal(df.format(total));
             }
@@ -192,6 +200,8 @@ public class Impresora {
     }
     
     public String[] generateGuiaRemision(String[] cods){
+        EnP1mEmpresaDao empDao = new EnP1mEmpresaDao();
+        EnP1mEmpresa e = empDao.getById(01);
         String file = "Remision_"+sf.format(date.getTime())+extension;
         ImpresoraMatricial rem = new ImpresoraMatricial(file, path, "remision");
         try {
@@ -230,7 +240,7 @@ public class Impresora {
                     
                     rem.writeGuiRemDetalle(Integer.toString(proCod), proCan, proUni, proDes, proValUni, proDes1, df.format(proValNet));
                 }
-                rem.addLines(rem.getMax() - proCod);
+                rem.addLines(e.getEmpNumDetGuiRemTra() - proCod);
                 rem.writeGuiRemTotal();
             }
         rem.close();

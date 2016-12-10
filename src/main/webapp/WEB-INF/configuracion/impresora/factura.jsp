@@ -136,18 +136,6 @@
                             </tr>
                         </table>
                     </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="table-responsive">
-                        <table class="table table-bordered table-striped table-hover table-condensed" id="tablaMaxPro">
-                            <tr>
-                                <th style="text-align: center">NÚMERO MÁXIMO DE PRODUCTOS</th>
-                            </tr>
-                            <tr>
-                                <td style="text-align: center"><input min="0" step="1" type="number" name="maxProducts" value="${fac.getMaxProducts()}"></td>
-                            </tr>
-                        </table>
-                    </div>
                 </div>              
                 <div class="col-md-12">
                     <div class="table-responsive">

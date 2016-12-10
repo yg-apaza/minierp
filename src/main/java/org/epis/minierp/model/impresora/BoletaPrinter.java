@@ -7,7 +7,6 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(propOrder = {
     "name",
     "size",
-    "maxProducts",
     "leftMargin",
     "rightMargin",
     "botMargin",
@@ -37,7 +36,6 @@ import javax.xml.bind.annotation.XmlType;
 public class BoletaPrinter {
     String name;
     int size;
-    int maxProducts;
     float leftMargin;
     float rightMargin;
     float topMargin;
@@ -82,14 +80,6 @@ public class BoletaPrinter {
         this.size = size;
     }
 
-    public int getMaxProducts() {
-        return maxProducts;
-    }
-
-    public void setMaxProducts(int maxProducts) {
-        this.maxProducts = maxProducts;
-    }
-    
     public float getLeftMargin() {
         return leftMargin;
     }

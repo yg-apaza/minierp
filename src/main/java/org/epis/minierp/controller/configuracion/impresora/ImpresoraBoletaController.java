@@ -37,7 +37,6 @@ public class ImpresoraBoletaController extends HttpServlet {
         float topBolCab = Float.parseFloat(request.getParameter("topBolCab"));
         float topBolDet = Float.parseFloat(request.getParameter("topBolDet"));
         float topBolTot = Float.parseFloat(request.getParameter("topBolTot"));
-        int maxProducts = Integer.parseInt(request.getParameter("maxProducts"));
 
         float totalMargin = Float.parseFloat(request.getParameter("totalMargin"));
         
@@ -87,7 +86,6 @@ public class ImpresoraBoletaController extends HttpServlet {
         bPrinter.setTopBolDet(topBolDet);
         bPrinter.setTopBolTot(topBolTot);
         
-        bPrinter.setMaxProducts(maxProducts);
         bPrinter.setTotalMargin(totalMargin);
         bolDAO.save(bPrinter);
         
