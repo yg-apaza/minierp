@@ -31,7 +31,8 @@
         <script src="${pageContext.request.contextPath}/js/sb-admin-2.min.js"></script>
         <script src="${pageContext.request.contextPath}/js/select2.min.js"></script>
         <script src="${pageContext.request.contextPath}/js/jquery.dataTables.min.js"></script>
-            
+        <script src="${pageContext.request.contextPath}/js/bootstrap-filestyle.min.js"></script>
+        
         <link rel="shortcut icon" href="${pageContext.request.contextPath}/favicon.ico" />
         <jsp:invoke fragment="titulo"/>
     </head>

@@ -7,13 +7,19 @@
     <jsp:attribute name="contenido">
         <div class="panel-body">
             <div class="col-md-12">
-                <h1>Datos de la empresa</h1>
+                <h1 class="page-header">Datos de la empresa</h1>
                 <form id="empForm" method="post" enctype='multipart/form-data' action="${pageContext.request.contextPath}/secured/configuracion/datosEmpresa">
-                    <div class="form-horizontal" align="center">
-                        <div class="form-group">
-                        <img id="preview" src="${pageContext.request.contextPath}/img/${empImg}" class="img-responsive center-block" alt="Logo de la Empresa">
+                    <div class="col-md-offset-3 col-md-6">
+                        <div class="form-horizontal" align="center">
+                            <div id="message"></div>
+                            <div id="image-preview-div">
+                                <label for="empImg">Logo seleccionado:</label>
+                                <br>
+                                <img id="preview-img" class="img-responsive center-block" src="${pageContext.request.contextPath}/img/${empImg}">
+                            </div>
+                            <input type="hidden" name="empImgVal" value="0" id="empImgVal">
+                            <div class="form-group"><input type="file" name="empImg" id="empImg" class="filestyle" data-buttonBefore="true" data-iconName="glyphicon glyphicon-picture" data-buttonText="Selecciona una imagen"></div>
                         </div>
-                        <input name="imgProd" id="imgProd" type="file" class="form-control-file" accept="image/x-jpg,image/x-jpeg"><br/>
                     </div>
                     <div class="form-horizontal">
                         <div class="form-group">
@@ -87,8 +93,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-group" Style="text-align: right">
-                        <button type="submit" class="btn btn-outline btn-success">Guardar Datos</button>
+                    <div class="form-group" style="text-align: right">
+                        <button type="submit" class="btn btn-lg btn-outline btn-success">Guardar Datos</button>
                     </div>
                 </form>
             </div>
@@ -117,6 +123,7 @@
             },'Debe ser mayor que {1}.');
             
             $("#empForm").validate({
+                ignore: "",
                 rules: {
                     empTel: {
                         number: true,
@@ -151,6 +158,9 @@
                     empNumDetBolVen: {
                         number: true,
                         min: 0
+                    },
+                    empImgVal: {
+                        range: [0, 0]
                     }
                 },
                 messages: {
@@ -184,12 +194,60 @@
                     empNumDetBolVen: {
                         number: "Ingrese sólo números.",
                         min: "Debe ser mayor a 0"
+                    },
+                    empImgVal: {
+                        range: "Imagen inválida."
                     }
                 },
                 submitHandler: function(form) {
                     form.submit();
                 }
             });
+            
+        function noPreview() {
+            $('#image-preview-div').css("display", "none");
+            $('#preview-img').attr('src', '');
+            $('upload-button').attr('disabled', '');
+        }
+
+        function selectImage(e) {
+            $('#empImg').css("color", "green");
+            $('#image-preview-div').css("display", "block");
+            $('#preview-img').attr('src', e.target.result);
+        }
+
+        $(document).ready(function (e)
+        {
+            var maxsize = 500 * 1024; // 500 KB
+            $('#max-size').html((maxsize/1024).toFixed(2));
+            $('#empImg').change(function()
+            {
+                $('#message').empty();
+                var file = this.files[0];
+                var match = ["image/jpeg", "image/png", "image/jpg"];
+
+                if ( !( (file.type == match[0]) || (file.type == match[1]) || (file.type == match[2]) ) )
+                {
+                    noPreview();
+                    $('#message').html('<div class="alert alert-warning" role="alert">Formato de imagen inválido. Formatos permitidos: JPG, JPEG, PNG.</div>');
+                    $('#empImgVal').val(1);
+                    return false;
+                }
+
+                if ( file.size > maxsize )
+                {
+                    noPreview();
+                    $('#message').html('<div class=\"alert alert-warning\" role=\"alert\">El tamaño de la imagen que intentas subir es de ' + (file.size/1024).toFixed(2) + ' KB, el máximo permitido es de ' + (maxsize/1024).toFixed(2) + ' KB</div>');
+                    $('#empImgVal').val(1);
+                    return false;
+                }
+
+                var reader = new FileReader();
+                reader.onload = selectImage;
+                reader.readAsDataURL(this.files[0]);
+                $('#empImgVal').val(0);
+            });
+        });
         </script>
     </jsp:attribute>
 </minierptemplate:template>

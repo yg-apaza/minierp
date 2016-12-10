@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,8 +17,9 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.epis.minierp.business.configuracion.EnP1mEmpresaBusiness;
 import org.epis.minierp.dao.general.EnP1mEmpresaDao;
-import org.epis.minierp.model   .EnP1mEmpresa;
+import org.epis.minierp.model.EnP1mEmpresa;
 
+@MultipartConfig
 public class DatosEmpresaController extends HttpServlet {
 
     EnP1mEmpresaDao empDao;
