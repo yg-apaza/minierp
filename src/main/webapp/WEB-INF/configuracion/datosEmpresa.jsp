@@ -107,6 +107,16 @@
             UpdateempLot.val(${empresa.empLot});
             UpdateempIgv.val(${empresa.empIgv});
             
+            jQuery.validator.addMethod("greaterThan", function(value, element, params) {
+                if ($(params[0]).val() != '') {    
+                    if (!/Invalid|NaN/.test(new Date(value))) {
+                        return new Date(value) > new Date($(params[0]).val());
+                    }    
+                    return isNaN(value) && isNaN($(params[0]).val()) || (Number(value) > Number($(params[0]).val()));
+                };
+                return true; 
+            },'Debe ser mayor que {1}.');
+            
             $("#empForm").validate({
                 rules: {
                     empTel: {
@@ -133,15 +143,15 @@
                     },
                     empNumDetGuiRemTra: {
                         number: true,
-                        greaterThan: "#UpdateempNumDetFacVen"
+                        greaterThan: ["#UpdateempNumDetFacVen", 'Número de factura de venta']
                     },
                     empNumDetFacVen: {
                         number: true,
-                        greaterThan: 0
+                        min: 0
                     },
                     empNumDetBolVen: {
                         number: true,
-                        greaterThan: 0
+                        min: 0
                     }
                 },
                 messages: {
@@ -169,10 +179,12 @@
                         number: "Ingrese sólo números."
                     },
                     empNumDetFacVen: {
-                        number: "Ingrese sólo números."
+                        number: "Ingrese sólo números.",
+                        min: "Debe ser mayor a 0"
                     },
                     empNumDetBolVen: {
-                        number: "Ingrese sólo números."
+                        number: "Ingrese sólo números.",
+                        min: "Debe ser mayor a 0"
                     }
                 },
                 submitHandler: function(form) {
