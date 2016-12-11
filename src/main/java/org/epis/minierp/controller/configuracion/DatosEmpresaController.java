@@ -19,8 +19,6 @@ import org.epis.minierp.dao.general.EnP1mEmpresaDao;
 import org.epis.minierp.model.EnP1mEmpresa;
 
 @MultipartConfig(
-    location="/tmp", 
-    fileSizeThreshold=100*1024, // 100 KB
     maxFileSize=500*1024,       // 500 KB 
     maxRequestSize=1024*1024)   // 1MB
 public class DatosEmpresaController extends HttpServlet {

@@ -320,10 +320,8 @@
         <servlet-name>DatosEmpresaController</servlet-name>
         <servlet-class>org.epis.minierp.controller.configuracion.DatosEmpresaController</servlet-class>
         <multipart-config>
-            <location>/tmp</location>
             <max-file-size>512000</max-file-size>
             <max-request-size>1048576</max-request-size>
-            <file-size-threshold>102400</file-size-threshold>
         </multipart-config>
     </servlet>
     <servlet-mapping>
