@@ -18,7 +18,7 @@
                                 <img id="preview-img" class="img-responsive center-block" src="${pageContext.request.contextPath}/img/${empImg}">
                             </div>
                             <input type="hidden" name="empImgVal" value="0" id="empImgVal">
-                            <div class="form-group"><input type="file" name="empImg" id="empImg" class="filestyle" data-buttonBefore="true" data-iconName="glyphicon glyphicon-picture" data-buttonText="Selecciona una imagen"></div>
+                            <div class="form-group"><input type="file" name="empImg" id="empImg" class="filestyle" data-buttonBefore="true" data-iconName="glyphicon glyphicon-picture" data-buttonText="Selecciona una imagen" accept="image/jpeg,image/png"></div>
                         </div>
                     </div>
                     <div class="form-horizontal">
