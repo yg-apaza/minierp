@@ -15,6 +15,7 @@ import javax.print.PrintService;
 import javax.print.PrintServiceLookup;
 import org.epis.minierp.dao.general.EnP1mEmpresaDao;
 import org.epis.minierp.dao.ventas.EnP1mFacturaVentaCabDao;
+import org.epis.minierp.model.EnP1mDocumentoCliente;
 import org.epis.minierp.model.EnP1mEmpresa;
 import org.epis.minierp.model.EnP1mFacturaVentaCab;
 import org.epis.minierp.model.EnP1tFacturaVentaDet;
@@ -30,12 +31,13 @@ public class Impresora {
     
     EnP1mEmpresaDao empDao;
     
-    String cliNom, cliDir, fecEmi;
+    String cliNom, cliDir, cliRuc, fecEmi;
     //Factura
     String cliCod, conPag, fecVen, venZon, numSec, dis, rut, traNom;
     int proCod;
     String proUni, proDes, proDes1, proDes2;
     Double proCan, proValUni, proValNet;
+    String totLet;
     Double subTotal, igv, total;
     //Boleta
     String venRut, pdv, obs;
@@ -59,8 +61,9 @@ public class Impresora {
             
             cliNom = f.getEnP1mCliente().getCliNom();
             cliDir = f.getEnP1mCliente().getCliDir();
+            cliRuc = "45678912345";
             fecEmi = fecha.format(f.getFacVenCabFecEmi());
-            fac.writeFacSobCab(cliNom, cliDir, fecEmi);
+            fac.writeFacSobCab(cliNom, cliDir, cliRuc, fecEmi);
             
             cliCod = f.getEnP1mCliente().getCliCod();
             conPag = f.getTaGzzMetodoPagoFactura().getMetPagDet();
@@ -85,7 +88,9 @@ public class Impresora {
                 proValNet = proCan * proValUni;
                 fac.writeFacDetalle(Integer.toString(proCod), proCan, proUni, proDes, proValUni, proDes1, proDes2, df.format(proValNet));
             }
-            fac.addLines(e.getEmpNumDetFacVen() - proCod); 
+            fac.addLines(e.getEmpNumDetFacVen() - proCod);
+            totLet = "SON: "+"VEINTICINCO SOLES Y TREINTA CÉNTIMOS.";
+            fac.writeFacLetras(totLet);
             subTotal = f.getFacVenCabSubTot();
             igv = subTotal * f.getFacVenCabIgv() / 100;
             total = f.getFacVenCabTot();
@@ -108,8 +113,9 @@ public class Impresora {
 
                 cliNom = f.getEnP1mCliente().getCliNom();
                 cliDir = f.getEnP1mCliente().getCliDir();
+                cliRuc = "45678912345";
                 fecEmi = fecha.format(f.getFacVenCabFecEmi());
-                fac.writeFacSobCab(cliNom, cliDir, fecEmi);
+                fac.writeFacSobCab(cliNom, cliDir, cliRuc, fecEmi);
 
                 cliCod = f.getEnP1mCliente().getCliCod();
                 conPag = f.getTaGzzMetodoPagoFactura().getMetPagDet();
@@ -137,7 +143,9 @@ public class Impresora {
                     proValNet = proCan * proValUni;
                     fac.writeFacDetalle(Integer.toString(proCod), proCan, proUni, proDes, proValUni, proDes1, proDes2, df.format(proValNet));
                 }
-                fac.addLines(e.getEmpNumDetFacVen() - proCod); 
+                fac.addLines(e.getEmpNumDetFacVen() - proCod - 1);
+                totLet = "SON: "+"VEINTICINCO SOLES Y TREINTA CÉNTIMOS.";
+                fac.writeFacLetras(totLet);
                 subTotal = f.getFacVenCabSubTot();
                 igv = subTotal * f.getFacVenCabIgv() / 100;
                 total = f.getFacVenCabTot();

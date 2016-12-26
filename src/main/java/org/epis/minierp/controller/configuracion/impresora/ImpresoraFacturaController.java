@@ -41,6 +41,7 @@ public class ImpresoraFacturaController extends HttpServlet {
         
         float cliNom = Float.parseFloat(request.getParameter("cliNom"));
         float cliDir = Float.parseFloat(request.getParameter("cliDir"));
+        float cliRuc = Float.parseFloat(request.getParameter("cliRuc"));
         float fecEmi = Float.parseFloat(request.getParameter("fecEmi"));
         
         float cliCod = Float.parseFloat(request.getParameter("cliCod"));
@@ -64,6 +65,7 @@ public class ImpresoraFacturaController extends HttpServlet {
         fPrinter.setName(name);
         fPrinter.setCliNom(cliNom);
         fPrinter.setCliDir(cliDir);
+        fPrinter.setCliRuc(cliRuc);
         fPrinter.setFecEmi(fecEmi);
         
         fPrinter.setCliCod(cliCod);

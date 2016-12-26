@@ -13,6 +13,7 @@ import javax.xml.bind.annotation.XmlType;
     "botMargin",
     "cliNom",
     "cliDir",
+    "cliRuc",
     "fecEmi",
     "topFacCab",
     "cliCod",
@@ -45,6 +46,7 @@ public class FacturaPrinter {
     float botMargin;
     float cliNom;
     float cliDir;
+    float cliRuc;
     float fecEmi;
     float topFacCab;
     float cliCod;
@@ -132,6 +134,14 @@ public class FacturaPrinter {
 
     public void setCliDir(float cliDir) {
         this.cliDir = cliDir;
+    }
+
+    public float getCliRuc() {
+        return cliRuc;
+    }
+
+    public void setCliRuc(float cliRuc) {
+        this.cliRuc = cliRuc;
     }
 
     public float getFecEmi() {

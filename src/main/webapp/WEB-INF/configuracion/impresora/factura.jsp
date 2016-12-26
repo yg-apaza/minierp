@@ -50,13 +50,14 @@
                                 <td><input min="0" step="0.1" type="number" name="cliDir" value="${fac.getCliDir()}">cm</td>
                             </tr>
                             <tr>
-                                <td colspan="2"></td>
+                                <td>RUC:</td>
+                                <td rowspan="2" style="vertical-align:middle">R.U.C.</td>
                                 <td>FECHA EMISION<br></td>
                                 <td rowspan="2" style="vertical-align:middle">10/11/2016</td>
                             </tr>
                             <tr>
-                                <td colspan="3" style="text-align: right"><input min="0" step="0.1" type="number" name="fecEmi" value="${fac.getFecEmi()}">cm</td>
-                                <td></td>
+                                <td rowspan="2"><input min="0" step="0.1" type="number" name="cliRuc" value="${fac.getCliRuc()}">cm</td>
+                                <td rowspan="2" style="text-align: right"><input min="0" step="0.1" type="number" name="fecEmi" value="${fac.getFecEmi()}">cm</td>          
                             </tr>
                         </table>
                     </div>

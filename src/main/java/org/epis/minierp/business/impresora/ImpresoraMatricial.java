@@ -292,12 +292,14 @@ public class ImpresoraMatricial {
         newLine();
     }
     
-    public void writeFacSobCab(String cliNom, String cliDir, String fecEmi) throws IOException{
+    public void writeFacSobCab(String cliNom, String cliDir, String cliRuc, String fecEmi) throws IOException{
         advanceVertical(fP.getTopMargin());
         advanceHorizontal(fP.getCliNom());
         writeLine(cliNom);
         advanceHorizontal(fP.getCliDir());
         writeLine(cliDir);
+        advanceHorizontal(fP.getCliRuc());
+        writer.write(cliRuc);
         advanceHorizontal(fP.getFecEmi());
         writeLine(fecEmi);
     }
@@ -507,6 +509,11 @@ public class ImpresoraMatricial {
     public void writeGuiRemTotal() throws IOException{
         newLine();
         advanceVertical(gP.getBotMargin());writeLine(" ");
+    }
+    
+    public void writeFacLetras(String letras)throws IOException{
+        advanceHorizontal(fP.getProCan()+fP.getProCod()+fP.getProUni());
+        writeLine(letras);
     }
     
     public void close() throws IOException{
