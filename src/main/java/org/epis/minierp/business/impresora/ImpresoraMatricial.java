@@ -314,16 +314,20 @@ public class ImpresoraMatricial {
         writeLine(fecEmi);
     }
     
-    public void writeGuiRemSobCab(String cliNom, String punPar, String punLle, String traNom) throws IOException{
+    public void writeGuiRemSobCab(String cliNom, String punPar, String punLle, String traNom, String traLic, String traPla) throws IOException{
         advanceVertical(gP.getTopMargin());
         advanceHorizontal(gP.getCliNom());
         writeLine(cliNom);
         advanceHorizontal(gP.getPunPar());
-        writeLine(punPar);
-        advanceHorizontal(gP.getPunLle());
-        writeLine(punLle);
-        advanceHorizontal(gP.getTraNom());
+        writer.write(punPar);
+        setAbsoluteHorizontalPosition(gP.getTraNom());
         writeLine(traNom);
+        advanceHorizontal(gP.getPunLle());
+        writer.write(punLle);
+        setAbsoluteHorizontalPosition(gP.getTraNom());
+        writeLine(traLic);
+        setAbsoluteHorizontalPosition(gP.getTraNom());
+        writeLine(traPla);
     }
 
     public void writeFacCabecera(String cliCod, String conPag, String fecVen, String venZon, String numSec, String dis, String rut, String traNom) throws IOException{

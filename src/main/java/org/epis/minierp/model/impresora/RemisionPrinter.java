@@ -15,6 +15,8 @@ import javax.xml.bind.annotation.XmlType;
     "punPar",
     "punLle",
     "traNom",
+    "traLic",
+    "traPla",
     "topRemCab",
     "fecVen",
     "ven",
@@ -47,6 +49,8 @@ public class RemisionPrinter {
     float punPar;
     float punLle;
     float traNom;
+    float traLic;
+    float traPla;
     float topRemCab;
     float fecVen;
     float ven;
@@ -150,6 +154,22 @@ public class RemisionPrinter {
         this.traNom = traNom;
     }
 
+    public float getTraLic() {
+        return traLic;
+    }
+
+    public void setTraLic(float traLic) {
+        this.traLic = traLic;
+    }
+
+    public float getTraPla() {
+        return traPla;
+    }
+
+    public void setTraPla(float traPla) {
+        this.traPla = traPla;
+    }
+  
     public float getTopRemCab() {
         return topRemCab;
     }

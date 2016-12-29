@@ -30,45 +30,46 @@
                 <div class="col-md-3 text-center">
                     <button type="submit" formnovalidate="formnovalidate" id="update" class="btn btn-primary">Actualizar cambios</button>       
                 </div>              
-                <div class="col-md-12">
-                    <div class="table-responsive">
+                <div class="col-md-6">
+                    <div class="table-responsive">   
                         <table class="table table-bordered table-striped table-hover table-condensed" id="tablaRemSobCab">
                             <tr>
                                 <td>Señor(es):</td>
-                                <td rowspan="2" style="vertical-align:middle">Nombres y apellidos</td>
-                                <td colspan="2" rowspan="2"></td>
+                                <td colspan="3" rowspan="2" style="vertical-align:middle">Nombres y apellidos</td>
                             </tr>
                             <tr>
                                 <td><input min="0" step="0.1" type="number" name="cliNom" value="${rem.getCliNom()}">cm</td>
                             </tr>
                             <tr>
+                                <td text-align="right" colspan="3">Trabajador Nombre</td>
+                                <td>Nombres</td>
+                            </tr>
+                            <tr>
+                                <td colspan="3"><input min="0" step="0.1" type="number" name="traNom" value="${rem.getTraNom()}">cm</td>
+                              <td></td>
+                            </tr>
+                            <tr>
                                 <td>PUNTO DE PARTIDA:</td>
                                 <td rowspan="2" style="vertical-align:middle">Dirección</td>
-                                <td colspan="2" rowspan="2"></td>
+                                <td rowspan="2">Placa</td>
+                                <td rowspan="2">Placa</td>
                             </tr>
                             <tr>
                                 <td><input min="0" step="0.1" type="number" name="punPar" value="${rem.getPunPar()}">cm</td>
                             </tr>
                             <tr>
-                                <td>PUNTO DE LLEGADA</td>
+                                <td>PUNTO DE LLEGADA:</td>
                                 <td rowspan="2" style="vertical-align:middle">Dirección</td>
-                                <td colspan="2" rowspan="2"></td>
+                                <td rowspan="2">Licencia</td>
+                                <td rowspan="2">Licencia</td>
                             </tr>
                             <tr>
                                 <td><input min="0" step="0.1" type="number" name="punLle" value="${rem.getPunLle()}">cm</td>
                             </tr>
-                            <tr>
-                                <td colspan="3"></td>
-                                <td>Transportista</td>
-                            </tr>
-                            <tr>
-                                <td colspan="3" style="text-align: right"><input min="0" step="0.1" type="number" name="traNom" value="${rem.getTraNom()}">cm</td>
-                                <td>Nombres y apellidos</td>
-                            </tr>
                         </table>
                     </div>
                 </div>
-                <div class="col-md-12">
+                <div class="col-md-8">
                     <div class="table-responsive">
                         <table class="table table-bordered table-striped table-hover table-condensed" id="tablaTopRemCab">
                             <tr>

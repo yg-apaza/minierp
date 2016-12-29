@@ -19,7 +19,9 @@ import org.epis.minierp.model.EnP1mDocumentoCliente;
 import org.epis.minierp.model.EnP1mEmpresa;
 import org.epis.minierp.model.EnP1mFacturaVentaCab;
 import org.epis.minierp.model.EnP1tFacturaVentaDet;
+import org.epis.minierp.model.EnP2mDocumentoTransportista;
 import org.epis.minierp.util.DateUtil;
+import static org.epis.minierp.util.NumberToLetterConverter.convertNumberToLetter;
 
 public class Impresora {
     String extension = ".prn";
@@ -43,6 +45,7 @@ public class Impresora {
     String venRut, pdv, obs;
     //Guia remisión
     String punPar, punLle;
+    String traLic, traPla;
     String ven, zon, con, oc, facNum, hora, numInt;
 
     public Impresora(String path) {
@@ -61,10 +64,10 @@ public class Impresora {
             
             cliNom = f.getEnP1mCliente().getCliNom();
             cliDir = f.getEnP1mCliente().getCliDir();
-            cliRuc = "45678912345";
+            cliRuc = ((EnP1mDocumentoCliente) f.getEnP1mCliente().getEnP1mDocumentoClientes().iterator().next()).getDocCliNum();
             fecEmi = fecha.format(f.getFacVenCabFecEmi());
             fac.writeFacSobCab(cliNom, cliDir, cliRuc, fecEmi);
-            
+
             cliCod = f.getEnP1mCliente().getCliCod();
             conPag = f.getTaGzzMetodoPagoFactura().getMetPagDet();
             fecVen = fecha.format(f.getFacVenCabFecVen());
@@ -72,11 +75,14 @@ public class Impresora {
             numSec = " ";
             dis = " ";
             rut = Integer.toString(f.getEnP1mCatalogoRuta().getCatRutCod());
-            traNom = f.getEnP2mGuiaRemTransportista().getEnP2mTransportista().getTraNom();
+            if (f.getEnP2mGuiaRemTransportista() == null)
+                traNom = " ";
+            else
+                traNom = f.getEnP2mGuiaRemTransportista().getEnP2mTransportista().getTraNom();
             fac.writeFacCabecera(cliCod, conPag, fecVen, venZon, numSec, dis, rut, traNom);
-            
+
             proCod = 0;
-            List<EnP1tFacturaVentaDet> detalles = (new EnP1mFacturaVentaCabDao()).getFacVenDets(cod);
+            List<EnP1tFacturaVentaDet> detalles = (new EnP1mFacturaVentaCabDao()).getFacVenDets(cod);            
             for(EnP1tFacturaVentaDet d : detalles){
                 proCod++;
                 proCan = d.getFacVenDetCan();
@@ -88,12 +94,12 @@ public class Impresora {
                 proValNet = proCan * proValUni;
                 fac.writeFacDetalle(Integer.toString(proCod), proCan, proUni, proDes, proValUni, proDes1, proDes2, df.format(proValNet));
             }
-            fac.addLines(e.getEmpNumDetFacVen() - proCod);
-            totLet = "SON: "+"VEINTICINCO SOLES Y TREINTA CÉNTIMOS.";
+            fac.addLines(e.getEmpNumDetFacVen() - proCod - 1);
+            total = f.getFacVenCabTot();
+            totLet = convertNumberToLetter(total);
             fac.writeFacLetras(totLet);
             subTotal = f.getFacVenCabSubTot();
             igv = subTotal * f.getFacVenCabIgv() / 100;
-            total = f.getFacVenCabTot();
             fac.writeFacTotal(df.format(subTotal), df.format(igv), df.format(total));
             fac.close();
         } catch (IOException ex) {
@@ -113,7 +119,7 @@ public class Impresora {
 
                 cliNom = f.getEnP1mCliente().getCliNom();
                 cliDir = f.getEnP1mCliente().getCliDir();
-                cliRuc = "45678912345";
+                cliRuc = ((EnP1mDocumentoCliente) f.getEnP1mCliente().getEnP1mDocumentoClientes().iterator().next()).getDocCliNum();
                 fecEmi = fecha.format(f.getFacVenCabFecEmi());
                 fac.writeFacSobCab(cliNom, cliDir, cliRuc, fecEmi);
 
@@ -125,9 +131,9 @@ public class Impresora {
                 dis = " ";
                 rut = Integer.toString(f.getEnP1mCatalogoRuta().getCatRutCod());
                 if (f.getEnP2mGuiaRemTransportista() == null)
-                        traNom = " ";
-                    else
-                        traNom = f.getEnP2mGuiaRemTransportista().getEnP2mTransportista().getTraNom();
+                    traNom = " ";
+                else
+                    traNom = f.getEnP2mGuiaRemTransportista().getEnP2mTransportista().getTraNom();
                 fac.writeFacCabecera(cliCod, conPag, fecVen, venZon, numSec, dis, rut, traNom);
 
                 proCod = 0;
@@ -144,11 +150,11 @@ public class Impresora {
                     fac.writeFacDetalle(Integer.toString(proCod), proCan, proUni, proDes, proValUni, proDes1, proDes2, df.format(proValNet));
                 }
                 fac.addLines(e.getEmpNumDetFacVen() - proCod - 1);
-                totLet = "SON: "+"VEINTICINCO SOLES Y TREINTA CÉNTIMOS.";
+                total = f.getFacVenCabTot();
+                totLet = convertNumberToLetter(total);
                 fac.writeFacLetras(totLet);
                 subTotal = f.getFacVenCabSubTot();
                 igv = subTotal * f.getFacVenCabIgv() / 100;
-                total = f.getFacVenCabTot();
                 fac.writeFacTotal(df.format(subTotal), df.format(igv), df.format(total));
             }
             fac.close();
@@ -220,11 +226,17 @@ public class Impresora {
                 cliNom = f.getEnP1mCliente().getCliNom();
                 punPar = empDao.getAll().get(0).getEmpDomFis();
                 punLle = f.getEnP1mCliente().getCliDir();
-                if (f.getEnP2mGuiaRemTransportista() == null)
+                if (f.getEnP2mGuiaRemTransportista() == null){
                     traNom = " ";
-                else 
+                    traLic = " ";
+                    traPla = " ";
+                }
+                else{ 
                     traNom = f.getEnP2mGuiaRemTransportista().getEnP2mTransportista().getTraNom();
-                rem.writeGuiRemSobCab(cliNom, punPar, punLle, traNom);
+                    traLic = ((EnP2mDocumentoTransportista) f.getEnP2mGuiaRemTransportista().getEnP2mTransportista().getEnP2mDocumentoTransportistas().iterator().next()).getDocTraNum();
+                    traPla = f.getEnP2mGuiaRemTransportista().getEnP2mUnidadTransporte().getUniTraNumPla();
+                }
+                rem.writeGuiRemSobCab(cliNom, punPar, punLle, traNom, traLic, traPla);
 
                 fecVen = fecha.format(f.getFacVenCabFecVen());
                 ven = f.getEnP1mUsuario().getUsuCod();
