@@ -41,18 +41,18 @@
                                 <td><input min="0" step="0.1" type="number" name="cliNom" value="${rem.getCliNom()}">cm</td>
                             </tr>
                             <tr>
-                                <td text-align="right" colspan="3">Trabajador Nombre</td>
+                                <td style="text-align: center" colspan="3">TRABAJADOR NOMBRE</td>
                                 <td>Nombres</td>
                             </tr>
                             <tr>
-                                <td colspan="3"><input min="0" step="0.1" type="number" name="traNom" value="${rem.getTraNom()}">cm</td>
+                                <td colspan="3" style="text-align: center"><input min="0" step="0.1" type="number" name="traNom" value="${rem.getTraNom()}">cm</td>
                               <td></td>
                             </tr>
                             <tr>
                                 <td>PUNTO DE PARTIDA:</td>
                                 <td rowspan="2" style="vertical-align:middle">Dirección</td>
-                                <td rowspan="2">Placa</td>
-                                <td rowspan="2">Placa</td>
+                                <td rowspan="2" style="vertical-align:middle">PLACA</td>
+                                <td rowspan="2" style="vertical-align:middle">A1A-602</td>
                             </tr>
                             <tr>
                                 <td><input min="0" step="0.1" type="number" name="punPar" value="${rem.getPunPar()}">cm</td>
@@ -60,8 +60,8 @@
                             <tr>
                                 <td>PUNTO DE LLEGADA:</td>
                                 <td rowspan="2" style="vertical-align:middle">Dirección</td>
-                                <td rowspan="2">Licencia</td>
-                                <td rowspan="2">Licencia</td>
+                                <td rowspan="2" style="vertical-align:middle">LICENCIA</td>
+                                <td rowspan="2" style="vertical-align:middle">E48845222</td>
                             </tr>
                             <tr>
                                 <td><input min="0" step="0.1" type="number" name="punLle" value="${rem.getPunLle()}">cm</td>

@@ -52,7 +52,7 @@
                             <tr>
                                 <td>RUC:</td>
                                 <td rowspan="2" style="vertical-align:middle">R.U.C.</td>
-                                <td>FECHA EMISION<br></td>
+                                <td style="text-align: right">FECHA EMISION<br></td>
                                 <td rowspan="2" style="vertical-align:middle">10/11/2016</td>
                             </tr>
                             <tr>
