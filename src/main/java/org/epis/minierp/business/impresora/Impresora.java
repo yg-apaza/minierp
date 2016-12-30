@@ -14,12 +14,16 @@ import java.util.logging.Logger;
 import javax.print.PrintService;
 import javax.print.PrintServiceLookup;
 import org.epis.minierp.dao.general.EnP1mEmpresaDao;
+import org.epis.minierp.dao.logistica.EnP2mDocumentoTransportistaDao;
+import org.epis.minierp.dao.ventas.EnP1mDocumentoClienteDao;
 import org.epis.minierp.dao.ventas.EnP1mFacturaVentaCabDao;
 import org.epis.minierp.model.EnP1mDocumentoCliente;
+import org.epis.minierp.model.EnP1mDocumentoClienteId;
 import org.epis.minierp.model.EnP1mEmpresa;
 import org.epis.minierp.model.EnP1mFacturaVentaCab;
 import org.epis.minierp.model.EnP1tFacturaVentaDet;
 import org.epis.minierp.model.EnP2mDocumentoTransportista;
+import org.epis.minierp.model.EnP2mDocumentoTransportistaId;
 import org.epis.minierp.util.DateUtil;
 import static org.epis.minierp.util.NumberToLetterConverter.convertNumberToLetter;
 
@@ -119,7 +123,12 @@ public class Impresora {
 
                 cliNom = f.getEnP1mCliente().getCliNom();
                 cliDir = f.getEnP1mCliente().getCliDir();
-                cliRuc = ((EnP1mDocumentoCliente) f.getEnP1mCliente().getEnP1mDocumentoClientes().iterator().next()).getDocCliNum();
+                String cliCod = f.getEnP1mCliente().getCliCod();
+                try {
+                    cliRuc = (new EnP1mDocumentoClienteDao()).getById(new EnP1mDocumentoClienteId(cliCod, 2)).getDocCliNum();
+                } catch (Exception fa) {
+                    cliRuc = "Desconocido";
+                }
                 fecEmi = fecha.format(f.getFacVenCabFecEmi());
                 fac.writeFacSobCab(cliNom, cliDir, cliRuc, fecEmi);
 
@@ -233,8 +242,17 @@ public class Impresora {
                 }
                 else{ 
                     traNom = f.getEnP2mGuiaRemTransportista().getEnP2mTransportista().getTraNom();
-                    traLic = ((EnP2mDocumentoTransportista) f.getEnP2mGuiaRemTransportista().getEnP2mTransportista().getEnP2mDocumentoTransportistas().iterator().next()).getDocTraNum();
-                    traPla = f.getEnP2mGuiaRemTransportista().getEnP2mUnidadTransporte().getUniTraNumPla();
+                    String traCod = f.getEnP2mGuiaRemTransportista().getEnP2mTransportista().getTraCod();
+                    try{
+                       traLic = (new EnP2mDocumentoTransportistaDao()).getById(new EnP2mDocumentoTransportistaId(3, traCod)).getDocTraNum();
+                    } catch (Exception p) {
+                        traLic = "Desconocido";
+                    }
+                    try {
+                        traPla = f.getEnP2mGuiaRemTransportista().getEnP2mUnidadTransporte().getUniTraNumPla();
+                    } catch (Exception g) {
+                        traPla = "Desconocido";
+                    }
                 }
                 rem.writeGuiRemSobCab(cliNom, punPar, punLle, traNom, traLic, traPla);
 
