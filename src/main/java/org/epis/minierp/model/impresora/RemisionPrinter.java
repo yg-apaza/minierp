@@ -35,7 +35,8 @@ import javax.xml.bind.annotation.XmlType;
     "proValUni",
     "proDes1",
     "proValNet",
-    "totalMargin"
+    "topMotTra",
+    "motTra"
 })
 
 public class RemisionPrinter {
@@ -69,7 +70,8 @@ public class RemisionPrinter {
     float proValUni;
     float proDes1;
     float proValNet;
-    float totalMargin;
+    float topMotTra;
+    float motTra;
 
     public RemisionPrinter() {
     }
@@ -314,13 +316,19 @@ public class RemisionPrinter {
         this.proValNet = proValNet;
     }
 
-    public float getTotalMargin() {
-        return totalMargin;
+    public float getTopMotTra() {
+        return topMotTra;
     }
 
-    public void setTotalMargin(float totalMargin) {
-        this.totalMargin = totalMargin;
+    public void setTopMotTra(float topMotTra) {
+        this.topMotTra = topMotTra;
     }
 
-    
+    public float getMotTra() {
+        return motTra;
+    }
+
+    public void setMotTra(float motTra) {
+        this.motTra = motTra;
+    }
 }

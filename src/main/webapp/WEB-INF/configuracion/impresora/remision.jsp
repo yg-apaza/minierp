@@ -30,7 +30,7 @@
                 <div class="col-md-3 text-center">
                     <button type="submit" formnovalidate="formnovalidate" id="update" class="btn btn-primary">Actualizar cambios</button>       
                 </div>              
-                <div class="col-md-6">
+                <div class="col-md-8">
                     <div class="table-responsive">   
                         <table class="table table-bordered table-striped table-hover table-condensed" id="tablaRemSobCab">
                             <tr>
@@ -144,13 +144,25 @@
                             </tr>
                         </table>
                     </div>
-                </div>           
+                </div>
                 <div class="col-md-12">
                     <div class="table-responsive">
-                        <table class="table table-bordered table-striped table-hover table-condensed" id="tablaRemTot">            
+                        <table class="table table-bordered table-striped table-hover table-condensed" id="tablaTopMotTra">
                             <tr>
-                                <td style="text-align: right"><input min="0" step="0.1" type="number" name="totalMargin" value="${rem.getTotalMargin()}">cm</td>
-                                <td>TOTAL</td>                                
+                                <th style="text-align: center">SEPARACIÓN</th>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center"><input min="0" step="0.1" type="number" name="topMotTra" value="${rem.getTopMotTra()}">cm</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>            
+                <div class="col-md-12">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped table-hover table-condensed" id="tablaMotTra">            
+                            <tr>
+                                <td style="text-align: right"><input min="0" step="0.1" type="number" name="motTra" value="${rem.getMotTra()}">cm</td>
+                                <td>MOTIVO DE TRASLADO</td>                                
                             </tr>
                         </table>
                     </div>

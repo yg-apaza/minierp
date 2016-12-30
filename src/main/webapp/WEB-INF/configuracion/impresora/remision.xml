@@ -2,16 +2,16 @@
 <remisionPrinter>
     <name>Epson</name>
     <size>2</size>
-    <leftMargin>0.5</leftMargin>
+    <leftMargin>1.0</leftMargin>
     <rightMargin>0.3</rightMargin>
-    <topMargin>2.9</topMargin>
-    <botMargin>0.5</botMargin>
-    <cliNom>1.4</cliNom>
+    <topMargin>4.5</topMargin>
+    <botMargin>1</botMargin>
+    <cliNom>2.4</cliNom>
     <punPar>2.4</punPar>
     <punLle>2.4</punLle>
-    <traNom>9</traNom>
-    <traLic>9</traLic>
-    <traPla>9</traPla>
+    <traNom>11.5</traNom>
+    <traLic>11.5</traLic>
+    <traPla>11.5</traPla>
     <topRemCab>0.5</topRemCab>
     <fecVen>2.05</fecVen>
     <ven>1.2</ven>
@@ -30,5 +30,6 @@
     <proValUni>1.85</proValUni>
     <proDes1>1.6</proDes1>
     <proValNet>2.8</proValNet>
-    <totalMargin>19.0</totalMargin>
+    <topMotTra>3</topMotTra>
+    <motTra>16</motTra>
 </remisionPrinter>

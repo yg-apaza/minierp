@@ -261,7 +261,7 @@ public class Impresora {
                     rem.writeGuiRemDetalle(Integer.toString(proCod), proCan, proUni, proDes, proValUni, proDes1, df.format(proValNet));
                 }
                 rem.addLines(e.getEmpNumDetGuiRemTra() - proCod);
-                rem.writeGuiRemTotal();
+                rem.writeGuiRemMotTra(Integer.toString(f.getEnP2mGuiaRemRemitente().getTaGzzMotivoTraslado().getMotTraCod()));
             }
         rem.close();
         } catch (IOException ex) {

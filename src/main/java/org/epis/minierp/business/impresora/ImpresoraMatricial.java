@@ -510,7 +510,10 @@ public class ImpresoraMatricial {
         advanceVertical(bP.getBotMargin());writeLine(" ");
     }
     
-    public void writeGuiRemTotal() throws IOException{
+    public void writeGuiRemMotTra(String motTra) throws IOException{
+        advanceVertical(gP.getTopMotTra());
+        setAbsoluteHorizontalPosition(gP.getMotTra());
+        writer.write(motTra);
         newLine();
         advanceVertical(gP.getBotMargin());writeLine(" ");
     }

@@ -36,8 +36,6 @@ public class ImpresoraRemisionController extends HttpServlet {
         float botMargin = Float.parseFloat(request.getParameter("botMargin"));
         float topRemCab = Float.parseFloat(request.getParameter("topRemCab"));
         float topRemDet = Float.parseFloat(request.getParameter("topRemDet"));
-
-        float totalMargin = Float.parseFloat(request.getParameter("totalMargin"));
         
         float cliNom = Float.parseFloat(request.getParameter("cliNom"));
         float punPar = Float.parseFloat(request.getParameter("punPar"));
@@ -61,6 +59,9 @@ public class ImpresoraRemisionController extends HttpServlet {
         float proValUni = Float.parseFloat(request.getParameter("proValUni"));
         float proDes1 = Float.parseFloat(request.getParameter("proDes1"));
         float proValNet = Float.parseFloat(request.getParameter("proValNet"));
+        
+        float topMotTra = Float.parseFloat(request.getParameter("topMotTra"));
+        float motTra = Float.parseFloat(request.getParameter("motTra"));
         
         rPrinter.setName(name);
         rPrinter.setCliNom(cliNom);
@@ -92,7 +93,8 @@ public class ImpresoraRemisionController extends HttpServlet {
         rPrinter.setTopRemCab(topRemCab);
         rPrinter.setTopRemDet(topRemDet);
         
-        rPrinter.setTotalMargin(totalMargin);
+        rPrinter.setTopMotTra(topMotTra);
+        rPrinter.setMotTra(motTra);
         remDAO.save(rPrinter);
         
         response.sendRedirect(request.getContextPath() + "/secured/ventas/factura");    
