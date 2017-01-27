@@ -4,12 +4,12 @@
     <size>2</size>
     <leftMargin>0.6</leftMargin>
     <rightMargin>0.3</rightMargin>
-    <topMargin>1.85</topMargin>
-    <botMargin>0.4</botMargin>
+    <topMargin>0.9</topMargin>
+    <botMargin>1.3</botMargin>
     <cliNom>1.8</cliNom>
     <cliDir>1.8</cliDir>
-    <fecEmi>8.9</fecEmi>
-    <topBolCab>0.3</topBolCab>
+    <fecEmi>4.9</fecEmi>
+    <topBolCab>0.35</topBolCab>
     <cliCod>2.1</cliCod>
     <conPag>2.2</conPag>
     <fecVen>2.8</fecVen>
