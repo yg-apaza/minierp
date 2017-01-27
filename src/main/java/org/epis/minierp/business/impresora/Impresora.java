@@ -40,7 +40,8 @@ public class Impresora {
     String cliNom, cliDir, cliRuc, fecEmi;
     //Factura
     String cliCod, conPag, fecVen, venZon, numSec, dis, rut, traNom;
-    int proCod;
+    String proCod;
+    int proNum;
     String proUni, proDes, proDes1, proDes2;
     Double proCan, proValUni, proValNet;
     String totLet;
@@ -86,10 +87,11 @@ public class Impresora {
             }
             fac.writeFacCabecera(cliCod, conPag, fecVen, venZon, numSec, dis, rut, traNom);
 
-            proCod = 0;
-            List<EnP1tFacturaVentaDet> detalles = (new EnP1mFacturaVentaCabDao()).getFacVenDets(cod);
-            for (EnP1tFacturaVentaDet d : detalles) {
-                proCod++;
+            proNum = 0;
+            List<EnP1tFacturaVentaDet> detalles = (new EnP1mFacturaVentaCabDao()).getFacVenDets(cod);            
+            for(EnP1tFacturaVentaDet d : detalles){
+                proNum++;
+                proCod = d.getEnP2mProducto().getId().getProCod();
                 proCan = d.getFacVenDetCan();
                 proUni = d.getEnP2mProducto().getTaGzzUnidadMed().getUniMedSim();
                 proDes = d.getEnP2mProducto().getProDet();
@@ -97,9 +99,9 @@ public class Impresora {
                 proDes1 = Integer.toString(f.getFacVenPorDes()) + "%";
                 proDes2 = "0%";
                 proValNet = proCan * proValUni;
-                fac.writeFacDetalle(Integer.toString(proCod), proCan, proUni, proDes, proValUni, proDes1, proDes2, df.format(proValNet));
+                fac.writeFacDetalle(proCod, proCan, proUni, proDes, proValUni, proDes1, proDes2, df.format(proValNet));
             }
-            fac.addLines(e.getEmpNumDetFacVen() - proCod - 1);
+            fac.addLines(e.getEmpNumDetFacVen() - proNum - 1);
             total = f.getFacVenCabTot();
             totLet = convertNumberToLetter(total);
             fac.writeFacLetras(totLet);
@@ -153,10 +155,11 @@ public class Impresora {
                 }
                 fac.writeFacCabecera(cliCod, conPag, fecVen, venZon, numSec, dis, rut, traNom);
 
-                proCod = 0;
-                List<EnP1tFacturaVentaDet> detalles = (new EnP1mFacturaVentaCabDao()).getFacVenDets(cod);
-                for (EnP1tFacturaVentaDet d : detalles) {
-                    proCod++;
+                proNum = 0;
+                List<EnP1tFacturaVentaDet> detalles = (new EnP1mFacturaVentaCabDao()).getFacVenDets(cod);            
+                for(EnP1tFacturaVentaDet d : detalles){
+                    proNum++;
+                    proCod = d.getEnP2mProducto().getId().getProCod();
                     proCan = d.getFacVenDetCan();
                     proUni = d.getEnP2mProducto().getTaGzzUnidadMed().getUniMedSim();
                     proDes = d.getEnP2mProducto().getProDet();
@@ -164,9 +167,9 @@ public class Impresora {
                     proDes1 = Integer.toString(f.getFacVenPorDes()) + "%";
                     proDes2 = "0%";
                     proValNet = proCan * proValUni;
-                    fac.writeFacDetalle(Integer.toString(proCod), proCan, proUni, proDes, proValUni, proDes1, proDes2, df.format(proValNet));
+                    fac.writeFacDetalle(proCod, proCan, proUni, proDes, proValUni, proDes1, proDes2, df.format(proValNet));
                 }
-                fac.addLines(e.getEmpNumDetFacVen() - proCod - 1);
+                fac.addLines(e.getEmpNumDetFacVen() - proNum - 1);
                 total = f.getFacVenCabTot();
                 totLet = convertNumberToLetter(total);
                 fac.writeFacLetras(totLet);
@@ -207,19 +210,20 @@ public class Impresora {
                 obs = f.getFacVenCabObs();
                 bol.writeBolCabecera(cliCod, conPag, fecVen, venRut, pdv, obs);
 
-                proCod = 0;
-                List<EnP1tFacturaVentaDet> detalles = (new EnP1mFacturaVentaCabDao()).getFacVenDets(cod);
-                for (EnP1tFacturaVentaDet d : detalles) {
-                    proCod++;
+                proNum = 0;
+                List<EnP1tFacturaVentaDet> detalles = (new EnP1mFacturaVentaCabDao()).getFacVenDets(cod);            
+                for(EnP1tFacturaVentaDet d : detalles){
+                    proNum++;
+                    proCod = d.getEnP2mProducto().getId().getProCod();
                     proCan = d.getFacVenDetCan();
                     proUni = d.getEnP2mProducto().getTaGzzUnidadMed().getUniMedSim();
                     proDes = d.getEnP2mProducto().getProDet();
                     proValUni = d.getFacVenDetValUni();
                     proDes1 = Integer.toString(f.getFacVenPorDes());
                     proValNet = proCan * proValUni;
-                    bol.writeBolDetalle(Integer.toString(proCod), proCan, proUni, proDes, proValUni, proDes1, df.format(proValNet));
+                    bol.writeBolDetalle(proCod, proCan, proUni, proDes, proValUni, proDes1, df.format(proValNet));
                 }
-                bol.addLines(e.getEmpNumDetBolVen() - proCod);
+                bol.addLines(e.getEmpNumDetBolVen() - proNum); 
                 total = f.getFacVenCabTot();
                 bol.writeBolTotal(df.format(total));
             }
@@ -274,19 +278,20 @@ public class Impresora {
                 numInt = " ";
                 rem.writeGuiRemCabecera(fecVen, ven, zon, con, cliCod, oc, facNum, hora, numInt);
 
-                proCod = 0;
-                for (EnP1tFacturaVentaDet d : (Set<EnP1tFacturaVentaDet>) f.getEnP1tFacturaVentaDets()) {
-                    proCod++;
+                proNum = 0;
+                for(EnP1tFacturaVentaDet d : (Set<EnP1tFacturaVentaDet>)f.getEnP1tFacturaVentaDets()){
+                    proNum++;
+                    proCod = d.getEnP2mProducto().getId().getProCod();
                     proCan = d.getFacVenDetCan();
                     proUni = d.getEnP2mProducto().getTaGzzUnidadMed().getUniMedSim();
                     proDes = d.getEnP2mProducto().getProDet();
                     proValUni = d.getFacVenDetValUni();
                     proDes1 = Integer.toString(f.getFacVenPorDes());
                     proValNet = proCan * proValUni;
-
-                    rem.writeGuiRemDetalle(Integer.toString(proCod), proCan, proUni, proDes, proValUni, proDes1, df.format(proValNet));
+                    
+                    rem.writeGuiRemDetalle(proCod, proCan, proUni, proDes, proValUni, proDes1, df.format(proValNet));
                 }
-                rem.addLines(e.getEmpNumDetGuiRemTra() - proCod);
+                rem.addLines(e.getEmpNumDetGuiRemTra() - proNum);
                 rem.writeGuiRemMotTra(Integer.toString(f.getEnP2mGuiaRemRemitente().getTaGzzMotivoTraslado().getMotTraCod()));
             }
             rem.close();
