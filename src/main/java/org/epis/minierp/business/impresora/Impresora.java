@@ -147,7 +147,11 @@ public class Impresora {
                 venZon = f.getEnP1mUsuario().getUsuNom();
                 numSec = " ";
                 dis = " ";
-                rut = Integer.toString(f.getEnP1mCatalogoRuta().getCatRutCod());
+                if (f.getEnP1mCatalogoRuta() == null){
+                    rut = " ";
+                } else {
+                    rut = Integer.toString(f.getEnP1mCatalogoRuta().getCatRutCod());
+                }
                 if (f.getEnP2mGuiaRemTransportista() == null) {
                     traNom = " ";
                 } else {
@@ -170,11 +174,11 @@ public class Impresora {
                     fac.writeFacDetalle(tipCod, proNum, proCod, proCan, proUni, proDes, proValUni, proDes1, proDes2, df.format(proValNet));
                 }
                 fac.addLines(e.getEmpNumDetFacVen() - proNum - 1);
-                total = f.getFacVenCabTot();
+                subTotal = f.getFacVenCabTot();
+                igv = f.getFacVenCabSubTot();
+                total = subTotal + igv;
                 totLet = convertNumberToLetter(total);
-                fac.writeFacLetras(totLet);
-                subTotal = f.getFacVenCabSubTot();
-                igv = subTotal * f.getFacVenCabIgv() / 100;
+                fac.writeFacLetras(totLet); 
                 fac.writeFacTotal(df.format(subTotal), df.format(igv), df.format(total));
             }
             fac.close();
