@@ -35,7 +35,7 @@ public class Impresora {
     DecimalFormat df = new DecimalFormat("0.00"); 
     
     EnP1mEmpresaDao empDao;
-    
+    int tipCod = 1; 
     String cliNom, cliDir, cliRuc, fecEmi;
     //Factura
     String cliCod, conPag, fecVen, venZon, numSec, dis, rut, traNom;
@@ -97,7 +97,7 @@ public class Impresora {
                 proDes1 = Integer.toString(f.getFacVenPorDes())+"%";
                 proDes2 = "0%";
                 proValNet = proCan * proValUni;
-                fac.writeFacDetalle(proCod, proCan, proUni, proDes, proValUni, proDes1, proDes2, df.format(proValNet));
+                fac.writeFacDetalle(tipCod, proNum, proCod, proCan, proUni, proDes, proValUni, proDes1, proDes2, df.format(proValNet));
             }
             fac.addLines(e.getEmpNumDetFacVen() - proNum - 1);
             total = f.getFacVenCabTot();
@@ -164,7 +164,7 @@ public class Impresora {
                     proDes1 = Integer.toString(f.getFacVenPorDes())+"%";
                     proDes2 = "0%";
                     proValNet = proCan * proValUni;
-                    fac.writeFacDetalle(proCod, proCan, proUni, proDes, proValUni, proDes1, proDes2, df.format(proValNet));
+                    fac.writeFacDetalle(tipCod, proNum, proCod, proCan, proUni, proDes, proValUni, proDes1, proDes2, df.format(proValNet));
                 }
                 fac.addLines(e.getEmpNumDetFacVen() - proNum - 1);
                 total = f.getFacVenCabTot();
@@ -217,7 +217,7 @@ public class Impresora {
                     proValUni = d.getFacVenDetValUni();
                     proDes1 = Integer.toString(f.getFacVenPorDes());
                     proValNet = proCan * proValUni;
-                    bol.writeBolDetalle(proCod, proCan, proUni, proDes, proValUni, proDes1, df.format(proValNet));
+                    bol.writeBolDetalle(tipCod, proNum,proCod, proCan, proUni, proDes, proValUni, proDes1, df.format(proValNet));
                 }
                 bol.addLines(e.getEmpNumDetBolVen() - proNum); 
                 total = f.getFacVenCabTot();
@@ -286,7 +286,7 @@ public class Impresora {
                     proDes1 = Integer.toString(f.getFacVenPorDes());
                     proValNet = proCan * proValUni;
                     
-                    rem.writeGuiRemDetalle(proCod, proCan, proUni, proDes, proValUni, proDes1, df.format(proValNet));
+                    rem.writeGuiRemDetalle(tipCod, proNum, proCod, proCan, proUni, proDes, proValUni, proDes1, df.format(proValNet));
                 }
                 rem.addLines(e.getEmpNumDetGuiRemTra() - proNum);
                 rem.writeGuiRemMotTra(Integer.toString(f.getEnP2mGuiaRemRemitente().getTaGzzMotivoTraslado().getMotTraCod()));

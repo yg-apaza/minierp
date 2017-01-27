@@ -413,9 +413,16 @@ public class ImpresoraMatricial {
         newLine();
     }
     
-    public void writeFacDetalle(String proCod, double proCan, String proUni, String proDes, 
+    public void writeFacDetalle(int tipCod, int proNum, String proCod, double proCan, String proUni, String proDes, 
             double proValUni, String proDes1, String proDes2, String proValNet) throws IOException{
-        writer.write(proCod);
+        switch (tipCod){
+            case 1:
+                writer.write(proCod);
+                break;
+            case 2:
+                writer.write(Integer.toString(proNum));
+                break;
+        }
         float val = fP.getProCod();
         setAbsoluteHorizontalPosition(val);
         writer.write(Double.toString(proCan));
@@ -440,9 +447,16 @@ public class ImpresoraMatricial {
         newLine();
     }
     
-    public void writeBolDetalle(String proCod, double proCan, String proUni, String proDes, 
+    public void writeBolDetalle(int tipCod, int proNum, String proCod, double proCan, String proUni, String proDes, 
             double proValVen, String proDes1, String proValNet) throws IOException{
-        writer.write(proCod);
+        switch (tipCod){
+            case 1:
+                writer.write(proCod);
+                break;
+            case 2:
+                writer.write(Integer.toString(proNum));
+                break;
+        }
         float val = bP.getProCod();
         setAbsoluteHorizontalPosition(val);
         writer.write(Double.toString(proCan));
@@ -464,9 +478,16 @@ public class ImpresoraMatricial {
         newLine();
     }
     
-    public void writeGuiRemDetalle(String proCod, double proCan, String proUni, String proDes, 
+    public void writeGuiRemDetalle(int tipCod, int proNum, String proCod, double proCan, String proUni, String proDes, 
             double proValUni, String proDes1, String proValNet) throws IOException{
-        writer.write(proCod);
+        switch (tipCod){
+            case 1:
+                writer.write(proCod);
+                break;
+            case 2:
+                writer.write(Integer.toString(proNum));
+                break;
+        }
         float val = gP.getProCod();
         setAbsoluteHorizontalPosition(val);
         writer.write(Double.toString(proCan));
