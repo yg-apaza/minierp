@@ -22,7 +22,6 @@ import org.epis.minierp.model.EnP1mDocumentoClienteId;
 import org.epis.minierp.model.EnP1mEmpresa;
 import org.epis.minierp.model.EnP1mFacturaVentaCab;
 import org.epis.minierp.model.EnP1tFacturaVentaDet;
-import org.epis.minierp.model.EnP2mDocumentoTransportista;
 import org.epis.minierp.model.EnP2mDocumentoTransportistaId;
 import org.epis.minierp.util.DateUtil;
 import static org.epis.minierp.util.NumberToLetterConverter.convertNumberToLetter;
@@ -58,8 +57,8 @@ public class Impresora {
         empDao = new EnP1mEmpresaDao();
     }
 
-    public String generateFactura(String cod) {
-        EnP1mEmpresaDao empDao = new EnP1mEmpresaDao();
+    public String generateFactura(String cod){
+        empDao = new EnP1mEmpresaDao();
         EnP1mEmpresa e = empDao.getById(01);
 
         String file = "Factura_" + sf.format(date.getTime()) + extension;
@@ -113,19 +112,26 @@ public class Impresora {
         }
         return file;
     }
-
-    public String[] generateFacturas(String[] cods) {
-        EnP1mEmpresaDao empDao = new EnP1mEmpresaDao();
+    
+    public String[] generateFacturas(String[] cods){
+        empDao = new EnP1mEmpresaDao();
         EnP1mEmpresa e = empDao.getById(01);
         String file = "Facturas_" + sf.format(date.getTime()) + extension;
         ImpresoraMatricial fac = new ImpresoraMatricial(file, path, "factura");
         try {
-            for (String cod : cods) {
-                EnP1mFacturaVentaCab f = (new EnP1mFacturaVentaCabDao()).getById(cod);
-
-                cliNom = f.getEnP1mCliente().getCliRazSoc();
-                cliDir = f.getEnP1mCliente().getCliDir();
-                String cliCod = f.getEnP1mCliente().getCliCod();
+            for (String cod : cods){
+                EnP1mFacturaVentaCab f = (new EnP1mFacturaVentaCabDao()).getById(cod);     
+                cliCod = f.getEnP1mCliente().getCliCod();
+                try {
+                    cliNom = f.getEnP1mCliente().getCliRazSoc();
+                } catch (Exception fa) {
+                    cliNom = "NN";
+                }
+                try {
+                     cliDir = f.getEnP1mCliente().getCliDir();
+                } catch (Exception fa) {
+                     cliDir = "Desconocida";
+                }
                 try {
                     cliRuc = (new EnP1mDocumentoClienteDao()).getById(new EnP1mDocumentoClienteId(cliCod, 2)).getDocCliNum();
                 } catch (Exception fa) {
@@ -134,7 +140,6 @@ public class Impresora {
                 fecEmi = fecha.format(f.getFacVenCabFecEmi());
                 fac.writeFacSobCab(cliNom, cliDir, cliRuc, fecEmi);
 
-                cliCod = f.getEnP1mCliente().getCliCod();
                 conPag = f.getTaGzzMetodoPagoFactura().getMetPagDet();
                 fecVen = fecha.format(f.getFacVenCabFecVen());
                 venZon = f.getEnP1mUsuario().getUsuNom();
@@ -176,9 +181,9 @@ public class Impresora {
         String params[] = {file, fac.getName()};
         return params;
     }
-
-    public String[] generateBoletas(String[] cods) {
-        EnP1mEmpresaDao empDao = new EnP1mEmpresaDao();
+    
+    public String[] generateBoletas(String[] cods){
+        empDao = new EnP1mEmpresaDao();
         EnP1mEmpresa e = empDao.getById(01);
         String file = "Boletas_" + sf.format(date.getTime()) + extension;
         ImpresoraMatricial bol = new ImpresoraMatricial(file, path, "boleta");
@@ -225,9 +230,9 @@ public class Impresora {
         String params[] = {file, bol.getName()};
         return params;
     }
-
-    public String[] generateGuiaRemision(String[] cods) {
-        EnP1mEmpresaDao empDao = new EnP1mEmpresaDao();
+    
+    public String[] generateGuiaRemision(String[] cods){
+        empDao = new EnP1mEmpresaDao();
         EnP1mEmpresa e = empDao.getById(01);
         String file = "Remision_" + sf.format(date.getTime()) + extension;
         ImpresoraMatricial rem = new ImpresoraMatricial(file, path, "remision");
