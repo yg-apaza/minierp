@@ -397,9 +397,9 @@ public class EnP1mFacturaVentaBusiness {
                 tempFacVenCabTot = tempFacVenCabTot + tempFvd.getFacVenDetValUni()*tempFvd.getFacVenDetCan();
             }
 
-            tempFacVenCabTot = tempFacVenCabTot * ((100.0 + (double)facVenCabIGV) / 100.0); //Agregando Costo del IGV
-            tempFacVenCabSubTot = tempFacVenCabTot * ((100.0 - (double)facVenPorDes) / 100.0); //Agregando el descuento
-            
+            tempFacVenCabTot = tempFacVenCabTot * ((100.0 - (double)facVenPorDes) / 100.0); //Agregando Costo del IGV
+            tempFacVenCabSubTot = tempFacVenCabTot * ((double)facVenCabIGV / 100.0); //Agregando el descuento
+                  
             //cambiando los valores de total y subtotal con respecto a sus detalles
             setFacVenCabTot(tempFacVenCabCod, tempFacVenCabTot);
             setFacVenCabSubTot(tempFacVenCabCod, tempFacVenCabSubTot);
@@ -455,8 +455,8 @@ public class EnP1mFacturaVentaBusiness {
                 tempFacVenCabTot = tempFacVenCabTot + tempFvd.getFacVenDetValUni()*tempFvd.getFacVenDetCan();
             }
 
-            tempFacVenCabTot = tempFacVenCabTot * ((100.0 + (double)facVenCabIGV) / 100.0); //Agregando Costo del IGV
-            tempFacVenCabSubTot = tempFacVenCabTot * ((100.0 - (double)facVenPorDes) / 100.0); //Agregando el descuento
+            tempFacVenCabTot = tempFacVenCabTot * ((100.0 - (double)facVenPorDes) / 100.0); //Agregando Costo del IGV
+            tempFacVenCabSubTot = tempFacVenCabTot * ((double)facVenCabIGV / 100.0); //Agregando el descuento
             
             //cambiando los valores de total y subtotal con respecto a sus detalles
             setFacVenCabTot(tempFacVenCabCod, tempFacVenCabTot);

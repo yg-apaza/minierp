@@ -210,17 +210,24 @@
                                     </div>
                                     <div class="col-md-4">      
                                         <div class="form-group input-group" >
-                                            <span class="input-group-addon">Total + IGV</span>
+                                            <span class="input-group-addon">Valor Neto:</span>
                                             <input type="number" class="form-control" name="facVenCabTot" id="facSub" value="0" readonly>
                                             <span class="input-group-addon"><i class="fa fa-usd"></i></span>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-3 col-md-offset-9">
+                                    <div class="col-md-4 col-md-offset-4">
                                         <div class="form-group input-group" >
-                                            <span class="input-group-addon">SubTotal</i></span>
+                                            <span class="input-group-addon">I.G.V.:</span>
                                             <input type="number" class="form-control" name="facVenCabSubTot" id="facTot" value="0" readonly>
+                                            <span class="input-group-addon"><i class="fa fa-usd"></i></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group input-group" >
+                                            <span class="input-group-addon">Total:</span>
+                                            <input type="number" class="form-control" name="totalFact" id="totalFactura" value="0" readonly>
                                             <span class="input-group-addon"><i class="fa fa-usd"></i></span>
                                         </div>
                                     </div>
@@ -274,6 +281,7 @@
             var productCodes = new Array();
             var productDescriptions = new Array();
             var newDirection = "";
+            var valorNeto = 0;
             
             <c:forEach items="${productos}" var="p" varStatus="loop">
                 productCodes.push("${p.id.claProCod}-${p.id.subClaProCod}-${p.id.proCod}");
@@ -369,10 +377,13 @@
                 $('#proCodes').val(productsCodes);
                 $('#proAmo').val(amounts);
                 $('#proPrices').val(prices);
-                subTotal = (subTotal * (1 + Number($('#facIgv').val() / 100))).toFixed(2);
+                valorNeto = subTotal;
+                subTotal = (valorNeto * (1 - Number($('#porDes').val() / 100))).toFixed(2);
                 $('#facSub').val(subTotal);
-                var total = ((1 - Number($('#porDes').val() / 100))*subTotal).toFixed(2);
+                var total = (Number($('#facSub').val() * 0.18)).toFixed(2);
                 $('#facTot').val(total);
+                var myTotalFactura = (Number($('#facTot').val()) + Number($('#facSub').val())).toFixed(2);
+                $('#totalFactura').val(myTotalFactura);
 
                 if ($("#productTable tr").length > 1) {
                     $("#register").prop('disabled', false);
@@ -476,8 +487,12 @@
             } 
             
             function changeDiscount() {
-                var total = ((1 - Number($('#porDes').val() / 100))*Number($('#facSub').val())).toFixed(2);
+                var subTotal = (valorNeto * (1 - Number($('#porDes').val() / 100))).toFixed(2);
+                $('#facSub').val(subTotal);
+                var total = (Number($('#facSub').val() * 0.18)).toFixed(2);
                 $('#facTot').val(total);
+                var myTotalFactura = (Number($('#facTot').val()) + Number($('#facSub').val())).toFixed(2);
+                $('#totalFactura').val(myTotalFactura);
             }
             
             $('#porDes').on('change', function() {

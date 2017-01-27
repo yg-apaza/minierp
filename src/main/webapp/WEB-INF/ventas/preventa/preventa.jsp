@@ -42,11 +42,12 @@
                                         <th style="text-align: center"></th>
                                         </cc:if>
                                         <th style="text-align: center">Código</th>
-                                        <th style="text-align: center">Cliente</th>
+                                        <th style="text-align: center">Cliente RZ</th>
                                         <th style="text-align: center">Usuario</th>
                                         <th style="text-align: center">Fecha</th>
-                                        <th style="text-align: center">Total+IGV</th>
-                                        <th style="text-align: center">SubTotal</th>
+                                        <th style="text-align: center">Valor Neto</th>
+                                        <th style="text-align: center">I.G.V.</th>
+                                        <th style="text-align: center">Total</th>
                                         <th style="text-align: center">Vista</th>
                                     </tr>    
                                 </thead>
@@ -57,11 +58,12 @@
                                             <td width="3%" align="center"><input type="checkbox" name="preventas" value="${preventa.preVenCabCod}"></td>
                                             </cc:if>
                                             <td><c:out value="${preventa.preVenCabCod}"/> </td>
-                                            <td><c:out value="${preventa.enP1mCliente.cliNom} ${preventa.enP1mCliente.cliApePat}"/></td>
+                                            <td><c:out value="${preventa.enP1mCliente.cliRazSoc}"/></td>
                                             <td><c:out value="${preventa.enP1mUsuario.usuNom} ${preventa.enP1mUsuario.usuApePat}"/></td>
                                             <td><c:out value="${preventa.preVenCabFecEmi}"/></td>
                                             <td><c:out value="${preventa.taGzzMoneda.monSim} ${preventa.preVenCabTot}"/></td>
                                             <td><c:out value="${preventa.taGzzMoneda.monSim} ${preventa.preVenCabSubTot}"/></td>
+                                            <td><c:out value="${preventa.taGzzMoneda.monSim} ${preventa.preVenCabTot + preventa.preVenCabSubTot}"/></td>
                                             <td>
                                                 <a onclick='viewPreVen("${preventa.preVenCabCod}")' title="Vista Detallada de Pre-Venta">
                                                     <i class="fa fa-list-alt fa-lg" style="color: black;"></i>

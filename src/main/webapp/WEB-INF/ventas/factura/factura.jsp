@@ -19,12 +19,12 @@
                     <div class="row">
                         <div class="col-md-2">
                             <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
-                            <a href="${pageContext.request.contextPath}/secured/ventas/factura/addFactura" class="btn btn-success">Crear Factura <i class="fa fa-plus"></i></a>
-                            </cc:if>
+                                <a href="${pageContext.request.contextPath}/secured/ventas/factura/addFactura" class="btn btn-success">Crear Factura <i class="fa fa-plus"></i></a>
+                                </cc:if>
                         </div>
                         <div class="col-md-3">
                             <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
-                            <button type="button" id="guiaTranportista" class="btn btn-primary btn-block">Generar Guías de Remisión</button>
+                                <button type="button" id="guiaTranportista" class="btn btn-primary btn-block">Generar Guías de Remisión</button>
                             </cc:if>
                         </div>
                         <div class="col-md-3">
@@ -59,34 +59,40 @@
                                     <thead>
                                         <tr>
                                             <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
-                                            <th style="text-align: center"></th>
-                                            </cc:if>
+                                                <th style="text-align: center"></th>
+                                                </cc:if>
                                             <th style="text-align: center">Código</th>
                                             <th style="text-align: center">F/B</th>
                                             <th style="text-align: center">Cliente</th>
                                             <th style="text-align: center">Vendedor</th>
                                             <th style="text-align: center">Fecha</th>
-                                            <th style="text-align: center">Tot+IGV</th>
-                                            <th style="text-align: center">SubTot</th>
+                                            <th style="text-align: center">Valor Neto</th>
+                                            <th style="text-align: center">I.G.V.</th>
+                                            <th style="text-align: center">Total</th>
                                             <th style="text-align: center">Vista</th>
-                                            <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
-                                            <th>Dev</th>
-                                            </cc:if>
+                                                <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
+                                                <th>Dev</th>
+                                                </cc:if>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <c:forEach items="${facturasVenta}" var="c">
                                             <tr>
                                                 <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
-                                                <td width="3%" align="center"><input type="checkbox" name="codigos" value="${c.facVenCabCod}"></td>
-                                                </cc:if>
-                                                <td> <c:out value="${c.facVenCabCod}"/></td>
-                                                <td> <c:out value="${c.facVenCabModVen}"/></td>
-                                                <td> <c:out value="${c.enP1mCliente.cliNom} ${c.enP1mCliente.cliApePat}"/></td>
-                                                <td> <c:out value="${c.enP1mUsuario.usuNom} ${c.enP1mUsuario.usuApePat}"/></td>
-                                                <td> <c:out value="${c.facVenCabFecEmi}"/></td>
-                                                <td> <c:out value="${c.facVenCabTot}"/></td>
-                                                <td> <c:out value="${c.facVenCabSubTot}"/></td>
+                                                    <td width="3%" align="center"><input type="checkbox" name="codigos" value="${c.facVenCabCod}"></td>
+                                                    </cc:if>
+                                                <td> ${c.facVenCabCod}</td>
+                                                <td> ${c.facVenCabModVen}</td>
+                                                <td> ${c.enP1mCliente.cliNom} ${c.enP1mCliente.cliApePat}</td>
+                                                <td> ${c.enP1mUsuario.usuNom} ${c.enP1mUsuario.usuApePat}</td>
+                                                <td> ${c.facVenCabFecEmi}</td>
+                                                <td> ${c.taGzzMoneda.monSim} ${c.facVenCabTot}</td>
+                                                <td> ${c.taGzzMoneda.monSim} ${c.facVenCabSubTot}</td>
+                                                <td> ${c.taGzzMoneda.monSim} <fmt:formatNumber type="number" 
+                                                                  minFractionDigits="2" 
+                                                                  maxFractionDigits="2" 
+                                                                  value="${c.facVenCabTot + c.facVenCabSubTot}" /> 
+                                                </td>
                                                 <td>
                                                     <a onclick='viewSaleBill("${c.facVenCabCod}")' title="Vista Detallada de Factura de Venta">
                                                         <i class="fa fa-list-alt fa-lg" style="color: black;"></i>
@@ -100,10 +106,10 @@
                                                 </td>
                                                 <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                                                     <td>
-                                                        <a onclick='makeDoRefund("${c.facVenCabCod}","partial")' title="Devolucion Parcial">
+                                                        <a onclick='makeDoRefund("${c.facVenCabCod}", "partial")' title="Devolucion Parcial">
                                                             <i class="fa fa-wrench fa-lg" style="color: black;"></i>
                                                         </a>
-                                                        <a onclick='makeDoRefund("${c.facVenCabCod}","total")' title="Devolucion Total">
+                                                        <a onclick='makeDoRefund("${c.facVenCabCod}", "total")' title="Devolucion Total">
                                                             <i class="fa fa-trash fa-lg" style="color: black;"></i>
                                                         </a>
                                                     </td>
@@ -169,11 +175,11 @@
                             <div class="col-xs-12 col-md-12">
                                 <div class="form-group input-group">
                                     <span class="input-group-addon">Destinatario(Main Cliente)</span>
-                                        <select class="form-control" name="guiTraMainCli">
-                                            <c:forEach items="${clientes}" var="t">
+                                    <select class="form-control" name="guiTraMainCli">
+                                        <c:forEach items="${clientes}" var="t">
                                             <option value="${t.cliCod}">${t.cliNomCom}</option>
-                                            </c:forEach>
-                                        </select>
+                                        </c:forEach>
+                                    </select>
                                     <span class="input-group-addon"><i class="fa fa-child"></i></span>
                                 </div>
                             </div>
@@ -182,7 +188,7 @@
                                     <span class="input-group-addon">Transportista</span>
                                     <select class="form-control" name="guiTraLotTraDat">
                                         <c:forEach items="${transportistas}" var="t">
-                                        <option value="${t.traCod}">${t.traNomCom}</option>
+                                            <option value="${t.traCod}">${t.traNomCom}</option>
                                         </c:forEach>
                                     </select>
                                     <span class="input-group-addon"><i class="fa fa-truck"></i></span>
@@ -193,7 +199,7 @@
                                     <span class="input-group-addon">Vehículo</span>
                                     <select class="form-control" name="guiTraLotNumPla">
                                         <c:forEach items="${unidades}" var="u">
-                                        <option value="${u.uniTraCod}">${u.uniTraNumPla}</option>    
+                                            <option value="${u.uniTraCod}">${u.uniTraNumPla}</option>    
                                         </c:forEach>
                                     </select> 
                                     <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
@@ -204,7 +210,7 @@
                                     <span class="input-group-addon">Ruta</span>
                                     <select class="form-control" name="guiTraLotRutDes">
                                         <c:forEach items="${rutas}" var="r">
-                                        <option value="${r.catRutCod}">${r.catRutDet}</option>       
+                                            <option value="${r.catRutCod}">${r.catRutDet}</option>       
                                         </c:forEach>
                                     </select> 
                                     <span class="input-group-addon"><i class="fa fa-road"></i></span>
@@ -215,7 +221,7 @@
                                     <span class="input-group-addon">Motivo de Traslado</span>
                                     <select class="form-control" name="motTraCod">
                                         <c:forEach items="${motivos}" var="m">
-                                        <option value="${m.motTraCod}">${m.motTraDet}</option>       
+                                            <option value="${m.motTraCod}">${m.motTraDet}</option>       
                                         </c:forEach>
                                     </select> 
                                     <span class="input-group-addon"><i class="fa fa-road"></i></span>
@@ -338,72 +344,72 @@
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         <h3 class="modal-title">Guía de Remisión Remitente</h3>
                     </div>
-                        <div class="modal-body">
-                            <div class="panel-body">
+                    <div class="modal-body">
+                        <div class="panel-body">
                             <ul class="nav nav-pills">
                                 <li class="active"><a href="#generalGuiRem" data-toggle="tab">Información General</a></li>
                                 <li><a href="#detailGuiRem" data-toggle="tab">Detalle de Guía de Remitente</a></li>
                             </ul>
-                                <div class="tab-content">
-                                    <div class="tab-pane fade in active" id="generalGuiRem"><br>
-                                        <div class="col-xs-12 col-md-12">
-                                            <div class="form-group input-group">
-                                                <span class="input-group-addon">Número de Guía de Remitente</span>
-                                                <input type="text" class="form-control" id="guiRemRemNum" readOnly>
-                                                <span class="input-group-addon"><i class="fa fa-file-text-o"></i></span>
-                                            </div>
+                            <div class="tab-content">
+                                <div class="tab-pane fade in active" id="generalGuiRem"><br>
+                                    <div class="col-xs-12 col-md-12">
+                                        <div class="form-group input-group">
+                                            <span class="input-group-addon">Número de Guía de Remitente</span>
+                                            <input type="text" class="form-control" id="guiRemRemNum" readOnly>
+                                            <span class="input-group-addon"><i class="fa fa-file-text-o"></i></span>
                                         </div>
-                                        <div class="col-xs-12 col-md-12">
-                                            <div class="form-group input-group">
-                                                <span class="input-group-addon">Remitente(Empresa)</span>
-                                                <input type="text" class="form-control" id="guiRemEmpDes" readOnly>
-                                                <span class="input-group-addon"><i class="fa fa-building-o"></i></span>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-12 col-md-12">
-                                            <div class="form-group input-group">
-                                                <span class="input-group-addon">Destinatario(Cliente)</span>
-                                                <input type="text" class="form-control" id="guiRemCliCod" readOnly>
-                                                <span class="input-group-addon"><i class="fa fa-clipboard"></i></span>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-12 col-md-12">
-                                            <div class="form-group input-group">
-                                                <span class="input-group-addon">Factura Asociada</span>
-                                                <input type="text" class="form-control" id="guiRemFacCod" readOnly>
-                                                <span class="input-group-addon"><i class="fa fa-clipboard"></i></span>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-12 col-md-12">
-                                            <div class="form-group input-group">
-                                                <span class="input-group-addon">Motivo de Traslado</span>
-                                                <input type="text" class="form-control" id="guiRemMotTra" readOnly>
-                                                <span class="input-group-addon"><i class="fa fa-send-o"></i></span>
-                                            </div>
-                                        </div>                            
                                     </div>
-                                    <div class="tab-pane fade" id="detailGuiRem"><br>
-                                        <div class="col-xs-12 col-md-12">
-                                            <div class="table-responsive">
-                                                <table width="100%" class="table table-striped table-bordered table-hover" id="GuiRemDetPro">
-                                                    <thead align="center">
-                                                        <tr >
-                                                            <th>Cant.</th>
-                                                            <th>Descripción</th>
-                                                            <th>Precio</th>
-                                                            <th>Importe</th>
-                                                        </tr>
-                                                    </thead>
-                                                </table>
-                                            </div>
+                                    <div class="col-xs-12 col-md-12">
+                                        <div class="form-group input-group">
+                                            <span class="input-group-addon">Remitente(Empresa)</span>
+                                            <input type="text" class="form-control" id="guiRemEmpDes" readOnly>
+                                            <span class="input-group-addon"><i class="fa fa-building-o"></i></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-md-12">
+                                        <div class="form-group input-group">
+                                            <span class="input-group-addon">Destinatario(Cliente)</span>
+                                            <input type="text" class="form-control" id="guiRemCliCod" readOnly>
+                                            <span class="input-group-addon"><i class="fa fa-clipboard"></i></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-md-12">
+                                        <div class="form-group input-group">
+                                            <span class="input-group-addon">Factura Asociada</span>
+                                            <input type="text" class="form-control" id="guiRemFacCod" readOnly>
+                                            <span class="input-group-addon"><i class="fa fa-clipboard"></i></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-md-12">
+                                        <div class="form-group input-group">
+                                            <span class="input-group-addon">Motivo de Traslado</span>
+                                            <input type="text" class="form-control" id="guiRemMotTra" readOnly>
+                                            <span class="input-group-addon"><i class="fa fa-send-o"></i></span>
+                                        </div>
+                                    </div>                            
+                                </div>
+                                <div class="tab-pane fade" id="detailGuiRem"><br>
+                                    <div class="col-xs-12 col-md-12">
+                                        <div class="table-responsive">
+                                            <table width="100%" class="table table-striped table-bordered table-hover" id="GuiRemDetPro">
+                                                <thead align="center">
+                                                    <tr >
+                                                        <th>Cant.</th>
+                                                        <th>Descripción</th>
+                                                        <th>Precio</th>
+                                                        <th>Importe</th>
+                                                    </tr>
+                                                </thead>
+                                            </table>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-success" data-dismiss="modal">Aceptar</button>
-                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" data-dismiss="modal">Aceptar</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -749,11 +755,11 @@
                 </div>         
             </div>
         </div>
-                    
+
         <script language="javascript">
             var codeRefund = "";
             var typeRefund = "";
-            
+
             $(document).ready(function () {
                 $('#tablePurchases').DataTable({
                     responsive: true
@@ -772,7 +778,7 @@
                         $('#errorMessageModal').modal('show');
                     }
                 });
-                
+
                 $('#guiaTranportista').on('click', function () {
                     $('#formLote').attr('action', '${pageContext.request.contextPath}/secured/ventas/carrierGuideLote');
                     if ($(':checkbox:checked').length > 0)
@@ -785,7 +791,7 @@
                     }
                 });
             });
-            
+
             function viewSaleBill(facVenCabCod) {
                 $("#loading").modal('show');
                 $.post(
@@ -799,7 +805,7 @@
                     $("#facVenCabCliNomCom").val(data.facVenCabCliNomCom);
                     $("#tipDesDet").val(data.tipDesDet);
                     $("#facVenPorDes").val(data.facVenPorDes);
-                    
+
                     $('#facVenDetPro').DataTable().clear().draw();
                     $('#facVenDetPro').DataTable().destroy();
                     data.detailList.forEach(function (detail) {
@@ -816,7 +822,7 @@
                     $("#viewSaleBill").modal('show');
                 });
             }
-            
+
             function viewReferralGuide(facVenCabCod) {
                 $("#loading").modal('show');
                 $.post(
@@ -830,7 +836,7 @@
                     $("#guiRemCliCod").val(data.guiRemCliCod);
                     $("#guiRemFacCod").val(data.guiRemFacCod);
                     $("#guiRemMotTra").val(data.guiRemMotTra);
-                    
+
                     $('#GuiRemDetPro').DataTable().clear().draw();
                     $('#GuiRemDetPro').DataTable().destroy();
                     data.remList.forEach(function (detailguirem) {
@@ -843,12 +849,12 @@
                     $('#GuiRemDetPro').DataTable({
                         responsive: true
                     });
-                    
+
                     $("#loading").modal('hide');
                     $("#viewReferralGuide").modal('show');
                 });
             }
-            
+
             function viewCarrierGuide(facVenCabCod) {
                 $("#loading").modal('show');
                 $.post(
@@ -863,7 +869,7 @@
                     $("#remitente").val(data.remitente);
                     $("#destinatario").val(data.destinatario);
                     $("#ruta").val(data.ruta);
-                    
+
                     $('#guiTraDetPro').DataTable().clear().draw();
                     $('#guiTraDetPro').DataTable().destroy();
                     data.traList.forEach(function (detailgui) {
@@ -872,11 +878,11 @@
                         $('#guiTraDetPro tr:last td:eq(1)').html(detailgui.proDet);
                         $('#guiTraDetPro tr:last td:eq(2)').html(detailgui.preUniVen);
                         $('#guiTraDetPro tr:last td:eq(3)').html((Number(detailgui.detImp)).toFixed(2));
-                    }); 
+                    });
                     $('#guiTraDetPro').DataTable({
                         responsive: true
                     });
-                    
+
                     $('#guiTraCli').DataTable().clear().draw();
                     $('#guiTraCli').DataTable().destroy();
                     data.traCliList.forEach(function (client) {
@@ -887,7 +893,7 @@
                     $('#guiTraCli').DataTable({
                         responsive: true
                     });
-                    
+
                     $('#guiTraFac').DataTable().clear().draw();
                     $('#guiTraFac').DataTable().destroy();
                     data.facVenList.forEach(function (guiTraFac) {
@@ -900,12 +906,12 @@
                     $('#guiTraFac').DataTable({
                         responsive: true
                     });
-                    
+
                     $("#loading").modal('hide');
                     $("#viewCarrierGuide").modal('show');
                 });
             }
-            
+
             function loadNewReferralGuide(data) {
                 $("#guiRemAddEmpDes").val(data.empDes);
                 $("#guiRemAddFacCod").val(data.facCod);
@@ -1010,45 +1016,45 @@
                     }
                 });
             }
-            
-            function makeDoRefund(facVenCod,type) {
+
+            function makeDoRefund(facVenCod, type) {
                 $("#messageRefund").modal({
                     backdrop: 'static',
                     keyboard: true
                 });
                 codeRefund = facVenCod;
-                
-                if(type == "partial") {
+
+                if (type == "partial") {
                     typeRefund = "partial";
                     $("#refund").text("¿Desea realizar una devolución parcial de los productos asociados a la factura " + facVenCod + " ? Tener en cuenta que solo podrà modificar su detalle ");
-                } else if(type == "total") {
+                } else if (type == "total") {
                     typeRefund = "total";
-                    $("#refund").text("¿Desea realizar una devolución total de todos los productos de la factura " + facVenCod + " ? Tener en cuenta que la factura se eliminará ");                    
+                    $("#refund").text("¿Desea realizar una devolución total de todos los productos de la factura " + facVenCod + " ? Tener en cuenta que la factura se eliminará ");
                 }
-                
+
                 $("#messageRefund").modal('show');
             }
-            
+
             function evaluateRefund() {
-                $("#refundDiss").prop('disabled',true);
-                $("#refundCancel").prop('disabled',true);
-                $("#refundAccept").prop('disabled',true);
-                        
-                if(typeRefund == "partial") {
+                $("#refundDiss").prop('disabled', true);
+                $("#refundCancel").prop('disabled', true);
+                $("#refundAccept").prop('disabled', true);
+
+                if (typeRefund == "partial") {
                     $("#refund").text("Redireccionando ...");
-                    window.location = "${pageContext.request.contextPath}/secured/ventas/partialRefund?code=" + codeRefund;                    
-                } else if(typeRefund == "total") {                               
-                    $("#refund").text("Espere mientras se realiza la devolución");                    
+                    window.location = "${pageContext.request.contextPath}/secured/ventas/partialRefund?code=" + codeRefund;
+                } else if (typeRefund == "total") {
+                    $("#refund").text("Espere mientras se realiza la devolución");
                     $.post(
-                        "${pageContext.request.contextPath}/secured/ventas/totalRefund", {
-                            facVenCabCod: codeRefund
-                        }
-                    ).done(function(){
+                            "${pageContext.request.contextPath}/secured/ventas/totalRefund", {
+                                facVenCabCod: codeRefund
+                            }
+                    ).done(function () {
                         location.reload();
                     });
                 }
             }
-            
+
             function deleteReferralGuide() {
                 $.post(
                         "${pageContext.request.contextPath}/secured/ventas/removeReferralGuide", {
@@ -1070,7 +1076,7 @@
                     $("#addCarrierGuide").modal('show');
                 });
             }
-            
+
             $.validator.addMethod("codePattern", function (value, element) {
                 return /^[0-9]{3}-[0-9]{6}$/.test(value);
             }, "Patrón: [0-9]{3}-[0-9]{6}");

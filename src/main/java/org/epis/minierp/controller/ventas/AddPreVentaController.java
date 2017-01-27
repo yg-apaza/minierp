@@ -141,7 +141,6 @@ public class AddPreVentaController extends HttpServlet{
             response.setCharacterEncoding("UTF-8");
             response.getWriter().write(new Gson().toJson(data));
         } catch (ParseException ex) {
-            Logger.getLogger(AddPreVentaController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }
