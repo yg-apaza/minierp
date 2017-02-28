@@ -19,6 +19,7 @@ public class AddReferralGuideController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String guiRemEmpDes = request.getParameter("guiRemEmpDes");
         String guiRemFacCod = request.getParameter("guiRemFacCod");
+        int facVebCabCod = Integer.parseInt(request.getParameter("facVenCabCod"));
         String guiRemRemNum = request.getParameter("guiRemRemNum");
         String guiRemRemDen = request.getParameter("guiRemRemDen");
         int guiRemMotTra = Integer.parseInt(request.getParameter("guiRemMotTra"));
@@ -39,7 +40,7 @@ public class AddReferralGuideController extends HttpServlet {
         guide.save(referralGuide);
         
         EnP1mFacturaVentaCabDao billDao = new EnP1mFacturaVentaCabDao();
-        EnP1mFacturaVentaCab bill = billDao.getById(guiRemFacCod);
+        EnP1mFacturaVentaCab bill = billDao.getById(facVebCabCod);
         bill.setEnP2mGuiaRemRemitente(referralGuide);
         billDao.update(bill);
         

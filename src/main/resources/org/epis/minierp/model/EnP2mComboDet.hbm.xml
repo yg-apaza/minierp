@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 26/02/2017 07:56:25 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="org.epis.minierp.model.EnP2mComboDet" table="en_p2m_combo_det" catalog="episerp" optimistic-lock="version">
+        <composite-id name="id" class="org.epis.minierp.model.EnP2mComboDetId">
+            <key-property name="comCod" type="string">
+                <column name="ComCod" length="15" />
+            </key-property>
+            <key-property name="proCod" type="string">
+                <column name="ProCod" length="15" />
+            </key-property>
+            <key-property name="subClaProCod" type="string">
+                <column name="SubClaProCod" length="2" />
+            </key-property>
+            <key-property name="claProCod" type="string">
+                <column name="ClaProCod" length="2" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="enP2mCombos" class="org.epis.minierp.model.EnP2mCombos" update="false" insert="false" fetch="select">
+            <column name="ComCod" length="15" not-null="true" />
+        </many-to-one>
+        <many-to-one name="enP2mProducto" class="org.epis.minierp.model.EnP2mProducto" update="false" insert="false" fetch="select">
+            <column name="ProCod" length="15" not-null="true" />
+            <column name="SubClaProCod" length="2" not-null="true" />
+            <column name="ClaProCod" length="2" not-null="true" />
+        </many-to-one>
+        <property name="comDetCan" type="java.lang.Double">
+            <column name="ComDetCan" precision="10" />
+        </property>
+    </class>
+</hibernate-mapping>

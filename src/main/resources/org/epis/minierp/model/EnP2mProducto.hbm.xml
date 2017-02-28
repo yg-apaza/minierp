@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 04/12/2016 10:29:38 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 26/02/2017 07:56:25 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="org.epis.minierp.model.EnP2mProducto" table="en_p2m_producto" catalog="episerp" optimistic-lock="version">
         <composite-id name="id" class="org.epis.minierp.model.EnP2mProductoId">
@@ -37,20 +37,11 @@
         <property name="proCodBar" type="string">
             <column name="ProCodBar" length="30" />
         </property>
+        <property name="proCom" type="java.lang.Boolean">
+            <column name="ProCom" />
+        </property>
         <property name="proDet" type="string">
             <column name="ProDet" length="90" not-null="true" />
-        </property>
-        <property name="proPreUniVen" type="double">
-            <column name="ProPreUniVen" precision="10" not-null="true" />
-        </property>
-        <property name="proPreUniCom" type="double">
-            <column name="ProPreUniCom" precision="10" not-null="true" />
-        </property>
-        <property name="proPreUniMar" type="double">
-            <column name="ProPreUniMar" precision="10" not-null="true" />
-        </property>
-        <property name="proPreUniFle" type="double">
-            <column name="ProPreUniFle" precision="10" not-null="true" />
         </property>
         <property name="proPesNet" type="java.lang.Double">
             <column name="ProPesNet" precision="10" />
@@ -79,6 +70,22 @@
         <property name="estRegCod" type="char">
             <column name="EstRegCod" length="1" not-null="true" />
         </property>
+        <set name="enP2mPrecioUnitarios" table="en_p2m_precio_unitario" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ProCod" length="15" not-null="true" />
+                <column name="SubClaProCod" length="2" not-null="true" />
+                <column name="ClaProCod" length="2" not-null="true" />
+            </key>
+            <one-to-many class="org.epis.minierp.model.EnP2mPrecioUnitario" />
+        </set>
+        <set name="enP2mComboDets" table="en_p2m_combo_det" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ProCod" length="15" not-null="true" />
+                <column name="SubClaProCod" length="2" not-null="true" />
+                <column name="ClaProCod" length="2" not-null="true" />
+            </key>
+            <one-to-many class="org.epis.minierp.model.EnP2mComboDet" />
+        </set>
         <set name="enP1tFacturaVentaDets" table="en_p1t_factura_venta_det" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="ProCod" length="15" not-null="true" />

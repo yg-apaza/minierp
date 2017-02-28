@@ -34,7 +34,7 @@ public class CarrierGuideController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
-        String facVenCabCod = request.getParameter("facVenCabCod");
+        int facVenCabCod = Integer.parseInt(request.getParameter("facVenCabCod"));
         String guiRemTraNum = request.getParameter("guiRemTraNum");
         EnP1mFacturaVentaCab bill = null;
         EnP2mGuiaRemTransportista carrierGuide = null;

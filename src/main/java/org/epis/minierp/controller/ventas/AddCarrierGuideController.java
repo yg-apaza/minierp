@@ -20,7 +20,7 @@ public class AddCarrierGuideController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String guiTraEmpDes = request.getParameter("guiTraEmpDes");
-        String guiTraFacCod = request.getParameter("guiTraFacCod");
+        int guiTraFacCod = Integer.parseInt(request.getParameter("guiTraFacCod"));
         String guiTraTraNum = request.getParameter("guiTraTraNum");
         String guiTraTraDen = request.getParameter("guiTraTraDen");
         String guiTraNumReg = request.getParameter("guiTraNumReg");

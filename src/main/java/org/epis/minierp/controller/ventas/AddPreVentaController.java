@@ -12,8 +12,6 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.StringTokenizer;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -68,7 +66,7 @@ public class AddPreVentaController extends HttpServlet{
             List <String> productsAmounts = Arrays.asList((request.getParameter("productsAmounts")).split("\\s*,\\s*"));
             List <String> productsCodes = Arrays.asList((request.getParameter("productsCodes")).split("\\s*,\\s*"));
             List <String> productsPrices = Arrays.asList((request.getParameter("productsPrices")).split("\\s*,\\s*"));
-            String preVenCabCod = request.getParameter("preVenCabCod");
+            int preVenCabCod = Integer.parseInt(request.getParameter("preVenCabCod"));
             String cliCod = request.getParameter("cliCod");
             int preVenCabIgv = (int)Double.parseDouble(request.getParameter("preVenCabIgv"));
             DateFormat format = new SimpleDateFormat("yyyy-MM-dd");

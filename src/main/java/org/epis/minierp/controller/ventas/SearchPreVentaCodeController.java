@@ -11,7 +11,7 @@ import org.epis.minierp.model.EnP1mPreventaCab;
 public class SearchPreVentaCodeController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String preVenCabCod = request.getParameter("preVenCabCod");
+        int preVenCabCod = Integer.parseInt(request.getParameter("preVenCabCod"));
         EnP1mPreventaCab bill = (new EnP1mPreventaCabDao()).getById(preVenCabCod);
         
         if(bill == null)

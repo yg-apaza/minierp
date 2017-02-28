@@ -1,22 +1,22 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 04/12/2016 10:29:38 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 26/02/2017 07:56:25 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="org.epis.minierp.model.EnP1cPreventaRealizadas" table="en_p1c_preventa_realizadas" catalog="episerp" optimistic-lock="version">
         <composite-id name="id" class="org.epis.minierp.model.EnP1cPreventaRealizadasId">
-            <key-property name="preVenCabCod" type="string">
-                <column name="PreVenCabCod" length="10" />
+            <key-property name="preVenCabCod" type="int">
+                <column name="PreVenCabCod" />
             </key-property>
-            <key-property name="facVenCabCod" type="string">
-                <column name="FacVenCabCod" length="10" />
+            <key-property name="facVenCabCod" type="int">
+                <column name="FacVenCabCod" />
             </key-property>
         </composite-id>
         <many-to-one name="enP1mFacturaVentaCab" class="org.epis.minierp.model.EnP1mFacturaVentaCab" update="false" insert="false" fetch="select">
-            <column name="FacVenCabCod" length="10" not-null="true" />
+            <column name="FacVenCabCod" not-null="true" />
         </many-to-one>
         <many-to-one name="enP1mPreventaCab" class="org.epis.minierp.model.EnP1mPreventaCab" update="false" insert="false" fetch="select">
-            <column name="PreVenCabCod" length="10" not-null="true" />
+            <column name="PreVenCabCod" not-null="true" />
         </many-to-one>
         <property name="preVenReaFec" type="date">
             <column name="PreVenReaFec" length="10" not-null="true" />

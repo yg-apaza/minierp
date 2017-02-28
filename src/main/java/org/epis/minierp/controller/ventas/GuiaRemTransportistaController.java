@@ -33,8 +33,14 @@ public class GuiaRemTransportistaController extends HttpServlet {
         EnP1mFacturaVentaBusiness facturaVBusiness = new EnP1mFacturaVentaBusiness();
         EnP2mGuiaRemRemitenteBusiness guiaRBusiness = new EnP2mGuiaRemRemitenteBusiness();
 
+        int[] intCodigos = new int[codigos.length];
         for (int i = 0; i < codigos.length; i++) {
-            facturaVBusiness.setCatRutCod(codigos[i], catRutCod);
+            intCodigos[i] = Integer.parseInt(codigos[i]);
+        }
+        
+        
+        for (int i = 0; i < codigos.length; i++) {
+            facturaVBusiness.setCatRutCod(intCodigos[i], catRutCod);
             guiaRBusiness.create4Ventas(codigos[i], codigos[i], motTraCod, cliCod, 'A');
         }
 

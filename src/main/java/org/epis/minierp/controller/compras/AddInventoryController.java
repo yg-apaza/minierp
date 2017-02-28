@@ -50,7 +50,7 @@ public class AddInventoryController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         productoBusiness = new EnP2mProductoBusiness();
-        HttpSession session = request.getSession(true);
+        HttpSession session = request.getSession(false);
         
         EnP2mProductoDao daoPro = new EnP2mProductoDao();
         List<EnP2mProducto> productos = daoPro.getAllActive();

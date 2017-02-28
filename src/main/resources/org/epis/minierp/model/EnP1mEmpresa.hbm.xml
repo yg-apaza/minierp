@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 04/12/2016 10:29:38 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 26/02/2017 07:56:25 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="org.epis.minierp.model.EnP1mEmpresa" table="en_p1m_empresa" catalog="episerp" optimistic-lock="version">
-        <id name="empCod" type="java.lang.Integer">
+        <id name="empCod" type="int">
             <column name="EmpCod" />
-            <generator class="identity" />
+            <generator class="assigned" />
         </id>
         <property name="empRazSoc" type="string">
             <column name="EmpRazSoc" length="90" not-null="true" />
@@ -55,6 +55,9 @@
         </property>
         <property name="empNumDetBolVen" type="java.lang.Integer">
             <column name="EmpNumDetBolVen" />
+        </property>
+        <property name="empHorCier" type="java.lang.Boolean">
+            <column name="EmpHorCier" />
         </property>
         <set name="enP2mGuiaRemTransportistas" table="en_p2m_guia_rem_transportista" inverse="true" lazy="true" fetch="select">
             <key>

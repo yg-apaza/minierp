@@ -9,8 +9,7 @@ import org.epis.minierp.dao.ventas.EnP1mFacturaVentaCabDao;
 import org.epis.minierp.dao.ventas.EnP1mPreventaCabDao;
 import org.epis.minierp.dao.ventas.EnP1tFacturaVentaDetDao;
 import org.epis.minierp.dao.ventas.EnP1tPreventaDetDao;
-import org.epis.minierp.model.EnP1cPreventaRealizadas;
-import org.epis.minierp.model.EnP1cPreventaRealizadasId;
+import org.epis.minierp.dao.ventas.EnP2mPrecioUnitarioDao;
 import org.epis.minierp.model.EnP1mCatalogoRuta;
 import org.epis.minierp.model.EnP1mCliente;
 import org.epis.minierp.model.EnP1mPreventaCab;
@@ -19,6 +18,8 @@ import org.epis.minierp.model.EnP1tFacturaVentaDet;
 import org.epis.minierp.model.EnP1tFacturaVentaDetId;
 import org.epis.minierp.model.EnP1tPreventaDet;
 import org.epis.minierp.model.EnP1tPreventaDetId;
+import org.epis.minierp.model.EnP2mPrecioUnitario;
+import org.epis.minierp.model.EnP2mPrecioUnitarioId;
 import org.epis.minierp.model.EnP2mProducto;
 import org.epis.minierp.model.EnP2mProductoId;
 import org.epis.minierp.model.TaGzzMoneda;
@@ -36,6 +37,9 @@ public class EnP1mPreventaBusiness {
     EnP1cPreventaRealizadasDao preOkDao;
     EnP1mPagosCuotasBusiness pagosCuoBusiness;
     EnP1mFacturaVentaBusiness facturaBusiness;
+    EnP1mFacturaVentaCabDao facturaDao;
+    
+    EnP2mPrecioUnitarioDao preUniDao;
 
     public EnP1mPreventaBusiness() {
         preVenCabDao = new EnP1mPreventaCabDao();
@@ -47,9 +51,11 @@ public class EnP1mPreventaBusiness {
         preOkDao = new EnP1cPreventaRealizadasDao();
         pagosCuoBusiness = new EnP1mPagosCuotasBusiness();
         facturaBusiness = new EnP1mFacturaVentaBusiness();
+        preUniDao = new EnP2mPrecioUnitarioDao();
+        facturaDao = new EnP1mFacturaVentaCabDao();
     }
 
-    private void createPreVenCab(String preVenCabCod, String cliCod, int catRutCod, String usuCod,
+    private void createPreVenCab(int preVenCabCod, String cliCod, int catRutCod, String usuCod,
             Date preVenCabFecEmi, Date preVenCabFecVen, int preVenCabPla, double preVenCabTot,
             int tipDesCod, double preVenCabSubTot, int preVenCabIGV, String preVenCabObs,
             int monCod, char estRegCod) {
@@ -95,8 +101,8 @@ public class EnP1mPreventaBusiness {
 
     }
 
-    private void createPreVenDet(String preVenCabCod, String claProCod,
-            String subClaProCod, String proCod, double preVenDetCan) {
+    private void createPreVenDet(int preVenCabCod, String claProCod,
+            String subClaProCod, String proCod, int lisPreCod, double preVenDetCan) {
 
         //Actualiza StkPreVen del producto
         EnP2mProducto pro = proDao.getById(new EnP2mProductoId(proCod, subClaProCod, claProCod));
@@ -107,8 +113,10 @@ public class EnP1mPreventaBusiness {
         }
         proDao.update(pro);
 
+        EnP2mPrecioUnitario precio = preUniDao.getById(new EnP2mPrecioUnitarioId(proCod, subClaProCod, claProCod, lisPreCod));
+        
         //Crea el detalle
-        double proValUni = pro.getProPreUniVen();
+        double proValUni = precio.getPreUniVen();
         EnP1tPreventaDet preVenDet = new EnP1tPreventaDet();
         int preVenDetCod = preVenDetDao.getLastPreVenDetCod(preVenCabCod);
         preVenDet.setId(new EnP1tPreventaDetId(preVenDetCod, preVenCabCod));
@@ -138,7 +146,7 @@ public class EnP1mPreventaBusiness {
         preVenDetDao.save(preVenDet);
     }
 
-    public void create(String preVenCabCod, String cliCod, int catRutCod, String usuCod,
+    public void create(int preVenCabCod, String cliCod, int catRutCod, String usuCod,
             Date preVenCabFecEmi, Date preVenCabFecVen, int preVenCabPla, double preVenCabTot,
             int tipDesCod, double preVenCabSubTot, int preVenCabIGV, String preVenCabObs,
             int monCod, char estRegCod, List<EnP1tPreventaDet> preVenDets) {
@@ -152,7 +160,7 @@ public class EnP1mPreventaBusiness {
         }
     }
 
-    public void preVenta2Venta(String preVenCabCod, String facVenCabCod,
+    public void preVenta2Venta(int preVenCabCod, String facVenCabNum,
             int estFacCod, int metPagCod, int tipPagCod, char facVenCabModVen,
             int pagCuoNum, int maxDet4FacVen) {
 
@@ -176,35 +184,28 @@ public class EnP1mPreventaBusiness {
 
         EnP1tFacturaVentaDet tempFacturaVentaDet;
         EnP1tPreventaDet tempPreventaDet;
-
         for (int i = 0; i < preventaDets.size(); i++) {
             tempPreventaDet = preventaDets.get(i);
 
             tempFacturaVentaDet = new EnP1tFacturaVentaDet();
-            tempFacturaVentaDet.setId(new EnP1tFacturaVentaDetId(i + 1, facVenCabCod));
+            tempFacturaVentaDet.setId(new EnP1tFacturaVentaDetId(i + 1, 1)); //1 reprecenta cualquier numero
             tempFacturaVentaDet.setEnP2mProducto(tempPreventaDet.getEnP2mProducto());
             tempFacturaVentaDet.setFacVenDetCan(tempPreventaDet.getPreVenDetCan());
             tempFacturaVentaDet.setFacVenDetValUni(tempPreventaDet.getPreVenDetValUni());
             detalles.add(tempFacturaVentaDet);
         }
 
-        facturaBusiness.create4Preventa(facVenCabCod, cliCod, usuCod, facVenCabModVen,
+        facturaBusiness.create4Preventa(facVenCabNum, cliCod, usuCod, facVenCabModVen,
                 facVenCabFecEmi, facVenCabFecVen, tipDesCod, facVenPorDes,
                 facVenCabIGV, facVenCabObs, estFacCod, metPagCod, tipPagCod,
                 monCod, pagCuoNum, 'A', detalles, maxDet4FacVen);
-
-        //documento de transicion
-        EnP1cPreventaRealizadas preOk = new EnP1cPreventaRealizadas();
-        preOk.setId(new EnP1cPreventaRealizadasId(preVenCabCod, facVenCabCod));
-        preOk.setPreVenReaFec(facVenCabFecEmi);
-        preOkDao.save(preOk);
 
         //inactiva la preventa una vez finalizado el proceso
         pvc.setEstRegCod('I');
         preVenCabDao.update(pvc);
     }
 
-    public void preVenta2Venta4Lotes(String[] preVenCabCod, String iniFacVenCabCod,
+    public void preVenta2Venta4Lotes(int[] preVenCabCod, String iniFacVenCabNum,
             int estFacCod, int metPagCod, int tipPagCod, char facVenCabModVen,
             int pagCuoNum, int maxDet4FacVen) {
 
@@ -213,9 +214,9 @@ public class EnP1mPreventaBusiness {
         int tempSizeDet4PreVen = 0; //numero de detalles por preventa
         int tempNumFac4PreVen = 0; //numero de facturas por preventa
 
-        String facVenCabCod = iniFacVenCabCod;
+        String facVenCabNum = iniFacVenCabNum;
         for (int i = 0; i < size; i++) {
-            preVenta2Venta(preVenCabCod[i], facVenCabCod, estFacCod, metPagCod,
+            preVenta2Venta(preVenCabCod[i], facVenCabNum, estFacCod, metPagCod,
                     tipPagCod, facVenCabModVen, pagCuoNum, maxDet4FacVen);
 
             //se calcula el siguiente numero de factura para el proximo lote de facturas por preventa
@@ -226,7 +227,7 @@ public class EnP1mPreventaBusiness {
                 tempNumFac4PreVen++;
             }
             //nuevo codigo de factura considerando las facturas previas generadas
-            facVenCabCod = facturaBusiness.GenerateFacVenCabCod(facVenCabCod, tempNumFac4PreVen);
+            facVenCabNum = facturaBusiness.GenerateFacVenCabNum(facVenCabNum, tempNumFac4PreVen);
         }
     }
 

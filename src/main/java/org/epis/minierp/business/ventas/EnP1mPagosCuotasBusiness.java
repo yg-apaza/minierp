@@ -23,7 +23,7 @@ public class EnP1mPagosCuotasBusiness {
         facVenDao = new EnP1mFacturaVentaCabDao();
     }
     
-    public void create(String facVenCabCod, int pagCuoNum, 
+    public void create(int facVenCabCod, int pagCuoNum, 
             double pagCuoDeuTot, Date pagCuoFecIni){
         
         EnP1mPagosCuotasCab cabcuo = new EnP1mPagosCuotasCab();
@@ -51,7 +51,7 @@ public class EnP1mPagosCuotasBusiness {
         EnP1tPagosCuotasDet detcuo = new EnP1tPagosCuotasDet();
         
         int pagCuoDetCod = pagCuoDetDao.getLastpagCuoDetCod(facVenCabCod);
-        detcuo.setId(new EnP1tPagosCuotasDetId(pagCuoDetCod, facVenCabCod));
+        detcuo.setId(new EnP1tPagosCuotasDetId(pagCuoDetCod, cabcuo.getFacVenCabCod()));
         detcuo.setPagCuoDetTotPag(montoPagado);
         pagCuoDetDao.save(detcuo);
         
@@ -66,7 +66,7 @@ public class EnP1mPagosCuotasBusiness {
             cabcuo.setEstRegCod('I');
             
             //pasando a pagado la factura
-            EnP1mFacturaVentaCab facVenCab = facVenDao.getById(facVenCabCod);
+            EnP1mFacturaVentaCab facVenCab = facVenDao.getById(cabcuo.getFacVenCabCod());
             TaGzzEstadoFactura pagado = new TaGzzEstadoFactura();
             pagado.setEstFacCod(1);//estado cancelado
             facVenCab.setTaGzzEstadoFactura(pagado);

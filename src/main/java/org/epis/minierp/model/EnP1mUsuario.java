@@ -1,5 +1,5 @@
 package org.epis.minierp.model;
-// Generated 04/12/2016 10:29:37 AM by Hibernate Tools 4.3.1
+// Generated 26/02/2017 07:56:21 PM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -16,7 +16,9 @@ public class EnP1mUsuario  implements java.io.Serializable {
      private EnP1mSucursal enP1mSucursal;
      private TaGzzCanalUsuario taGzzCanalUsuario;
      private TaGzzEstadoCivil taGzzEstadoCivil;
+     private TaGzzListaPrecios taGzzListaPrecios;
      private TaGzzTipoUsuario taGzzTipoUsuario;
+     private TaGzzUnidadTrabajo taGzzUnidadTrabajo;
      private String usuNom;
      private String usuApePat;
      private String usuApeMat;
@@ -28,6 +30,7 @@ public class EnP1mUsuario  implements java.io.Serializable {
      private Set enP1mPreventaCabs = new HashSet(0);
      private Set enP4mFacturaCompraCabs = new HashSet(0);
      private Set enP1mDocumentoUsuarios = new HashSet(0);
+     private Set enP1mListaPreciosUsuarioses = new HashSet(0);
      private Set enP1mCarteraClienteses = new HashSet(0);
      private Set enP1mFacturaVentaCabs = new HashSet(0);
      private Set enP2mInventarioCabs = new HashSet(0);
@@ -45,12 +48,14 @@ public class EnP1mUsuario  implements java.io.Serializable {
         this.usuSex = usuSex;
         this.estRegCod = estRegCod;
     }
-    public EnP1mUsuario(String usuCod, EnP1mSucursal enP1mSucursal, TaGzzCanalUsuario taGzzCanalUsuario, TaGzzEstadoCivil taGzzEstadoCivil, TaGzzTipoUsuario taGzzTipoUsuario, String usuNom, String usuApePat, String usuApeMat, String usuLog, String usuPas, Date usuFecNac, char usuSex, char estRegCod, Set enP1mPreventaCabs, Set enP4mFacturaCompraCabs, Set enP1mDocumentoUsuarios, Set enP1mCarteraClienteses, Set enP1mFacturaVentaCabs, Set enP2mInventarioCabs) {
+    public EnP1mUsuario(String usuCod, EnP1mSucursal enP1mSucursal, TaGzzCanalUsuario taGzzCanalUsuario, TaGzzEstadoCivil taGzzEstadoCivil, TaGzzListaPrecios taGzzListaPrecios, TaGzzTipoUsuario taGzzTipoUsuario, TaGzzUnidadTrabajo taGzzUnidadTrabajo, String usuNom, String usuApePat, String usuApeMat, String usuLog, String usuPas, Date usuFecNac, char usuSex, char estRegCod, Set enP1mPreventaCabs, Set enP4mFacturaCompraCabs, Set enP1mDocumentoUsuarios, Set enP1mListaPreciosUsuarioses, Set enP1mCarteraClienteses, Set enP1mFacturaVentaCabs, Set enP2mInventarioCabs) {
        this.usuCod = usuCod;
        this.enP1mSucursal = enP1mSucursal;
        this.taGzzCanalUsuario = taGzzCanalUsuario;
        this.taGzzEstadoCivil = taGzzEstadoCivil;
+       this.taGzzListaPrecios = taGzzListaPrecios;
        this.taGzzTipoUsuario = taGzzTipoUsuario;
+       this.taGzzUnidadTrabajo = taGzzUnidadTrabajo;
        this.usuNom = usuNom;
        this.usuApePat = usuApePat;
        this.usuApeMat = usuApeMat;
@@ -62,6 +67,7 @@ public class EnP1mUsuario  implements java.io.Serializable {
        this.enP1mPreventaCabs = enP1mPreventaCabs;
        this.enP4mFacturaCompraCabs = enP4mFacturaCompraCabs;
        this.enP1mDocumentoUsuarios = enP1mDocumentoUsuarios;
+       this.enP1mListaPreciosUsuarioses = enP1mListaPreciosUsuarioses;
        this.enP1mCarteraClienteses = enP1mCarteraClienteses;
        this.enP1mFacturaVentaCabs = enP1mFacturaVentaCabs;
        this.enP2mInventarioCabs = enP2mInventarioCabs;
@@ -95,12 +101,26 @@ public class EnP1mUsuario  implements java.io.Serializable {
     public void setTaGzzEstadoCivil(TaGzzEstadoCivil taGzzEstadoCivil) {
         this.taGzzEstadoCivil = taGzzEstadoCivil;
     }
+    public TaGzzListaPrecios getTaGzzListaPrecios() {
+        return this.taGzzListaPrecios;
+    }
+    
+    public void setTaGzzListaPrecios(TaGzzListaPrecios taGzzListaPrecios) {
+        this.taGzzListaPrecios = taGzzListaPrecios;
+    }
     public TaGzzTipoUsuario getTaGzzTipoUsuario() {
         return this.taGzzTipoUsuario;
     }
     
     public void setTaGzzTipoUsuario(TaGzzTipoUsuario taGzzTipoUsuario) {
         this.taGzzTipoUsuario = taGzzTipoUsuario;
+    }
+    public TaGzzUnidadTrabajo getTaGzzUnidadTrabajo() {
+        return this.taGzzUnidadTrabajo;
+    }
+    
+    public void setTaGzzUnidadTrabajo(TaGzzUnidadTrabajo taGzzUnidadTrabajo) {
+        this.taGzzUnidadTrabajo = taGzzUnidadTrabajo;
     }
     public String getUsuNom() {
         return this.usuNom;
@@ -178,6 +198,13 @@ public class EnP1mUsuario  implements java.io.Serializable {
     
     public void setEnP1mDocumentoUsuarios(Set enP1mDocumentoUsuarios) {
         this.enP1mDocumentoUsuarios = enP1mDocumentoUsuarios;
+    }
+    public Set getEnP1mListaPreciosUsuarioses() {
+        return this.enP1mListaPreciosUsuarioses;
+    }
+    
+    public void setEnP1mListaPreciosUsuarioses(Set enP1mListaPreciosUsuarioses) {
+        this.enP1mListaPreciosUsuarioses = enP1mListaPreciosUsuarioses;
     }
     public Set getEnP1mCarteraClienteses() {
         return this.enP1mCarteraClienteses;

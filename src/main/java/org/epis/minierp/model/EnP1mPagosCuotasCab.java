@@ -1,5 +1,5 @@
 package org.epis.minierp.model;
-// Generated 04/12/2016 10:29:37 AM by Hibernate Tools 4.3.1
+// Generated 26/02/2017 07:56:21 PM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -12,7 +12,7 @@ import java.util.Set;
 public class EnP1mPagosCuotasCab  implements java.io.Serializable {
 
 
-     private String facVenCabCod;
+     private int facVenCabCod;
      private EnP1mFacturaVentaCab enP1mFacturaVentaCab;
      private int pagCuoNum;
      private int pagCuoNumPag;
@@ -55,11 +55,11 @@ public class EnP1mPagosCuotasCab  implements java.io.Serializable {
        this.enP1tPagosCuotasDets = enP1tPagosCuotasDets;
     }
    
-    public String getFacVenCabCod() {
+    public int getFacVenCabCod() {
         return this.facVenCabCod;
     }
     
-    public void setFacVenCabCod(String facVenCabCod) {
+    public void setFacVenCabCod(int facVenCabCod) {
         this.facVenCabCod = facVenCabCod;
     }
     public EnP1mFacturaVentaCab getEnP1mFacturaVentaCab() {

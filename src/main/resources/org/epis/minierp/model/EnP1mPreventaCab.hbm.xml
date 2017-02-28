@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 04/12/2016 10:29:38 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 26/02/2017 07:56:25 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="org.epis.minierp.model.EnP1mPreventaCab" table="en_p1m_preventa_cab" catalog="episerp" optimistic-lock="version">
-        <id name="preVenCabCod" type="string">
-            <column name="PreVenCabCod" length="10" />
+        <id name="preVenCabCod" type="int">
+            <column name="PreVenCabCod" />
             <generator class="assigned" />
         </id>
         <many-to-one name="enP1mCatalogoRuta" class="org.epis.minierp.model.EnP1mCatalogoRuta" fetch="select">
@@ -23,6 +23,9 @@
         <many-to-one name="taGzzTipoDescuento" class="org.epis.minierp.model.TaGzzTipoDescuento" fetch="select">
             <column name="TipDesCod" />
         </many-to-one>
+        <property name="preVenCabNum" type="string">
+            <column name="PreVenCabNum" length="20" />
+        </property>
         <property name="preVenCabFecEmi" type="date">
             <column name="PreVenCabFecEmi" length="10" not-null="true" />
         </property>
@@ -52,13 +55,13 @@
         </property>
         <set name="enP1cPreventaRealizadases" table="en_p1c_preventa_realizadas" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="PreVenCabCod" length="10" not-null="true" />
+                <column name="PreVenCabCod" not-null="true" />
             </key>
             <one-to-many class="org.epis.minierp.model.EnP1cPreventaRealizadas" />
         </set>
         <set name="enP1tPreventaDets" table="en_p1t_preventa_det" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="PreVenCabCod" length="10" not-null="true" />
+                <column name="PreVenCabCod" not-null="true" />
             </key>
             <one-to-many class="org.epis.minierp.model.EnP1tPreventaDet" />
         </set>

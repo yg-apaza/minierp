@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 04/12/2016 10:29:38 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 26/02/2017 07:56:25 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="org.epis.minierp.model.EnP1mPagosCuotasCab" table="en_p1m_pagos_cuotas_cab" catalog="episerp" optimistic-lock="version">
-        <id name="facVenCabCod" type="string">
-            <column name="FacVenCabCod" length="10" />
+        <id name="facVenCabCod" type="int">
+            <column name="FacVenCabCod" />
             <generator class="foreign">
                 <param name="property">enP1mFacturaVentaCab</param>
             </generator>
@@ -40,7 +40,7 @@
         </property>
         <set name="enP1tPagosCuotasDets" table="en_p1t_pagos_cuotas_det" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="FacVenCabCod" length="10" not-null="true" />
+                <column name="FacVenCabCod" not-null="true" />
             </key>
             <one-to-many class="org.epis.minierp.model.EnP1tPagosCuotasDet" />
         </set>

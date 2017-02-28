@@ -1,5 +1,5 @@
 package org.epis.minierp.model;
-// Generated 04/12/2016 10:29:37 AM by Hibernate Tools 4.3.1
+// Generated 26/02/2017 07:56:21 PM by Hibernate Tools 4.3.1
 
 
 
@@ -10,12 +10,12 @@ public class EnP1tPreventaDetId  implements java.io.Serializable {
 
 
      private int preVenDetCod;
-     private String preVenCabCod;
+     private int preVenCabCod;
 
     public EnP1tPreventaDetId() {
     }
 
-    public EnP1tPreventaDetId(int preVenDetCod, String preVenCabCod) {
+    public EnP1tPreventaDetId(int preVenDetCod, int preVenCabCod) {
        this.preVenDetCod = preVenDetCod;
        this.preVenCabCod = preVenCabCod;
     }
@@ -27,11 +27,11 @@ public class EnP1tPreventaDetId  implements java.io.Serializable {
     public void setPreVenDetCod(int preVenDetCod) {
         this.preVenDetCod = preVenDetCod;
     }
-    public String getPreVenCabCod() {
+    public int getPreVenCabCod() {
         return this.preVenCabCod;
     }
     
-    public void setPreVenCabCod(String preVenCabCod) {
+    public void setPreVenCabCod(int preVenCabCod) {
         this.preVenCabCod = preVenCabCod;
     }
 
@@ -43,14 +43,14 @@ public class EnP1tPreventaDetId  implements java.io.Serializable {
 		 EnP1tPreventaDetId castOther = ( EnP1tPreventaDetId ) other; 
          
 		 return (this.getPreVenDetCod()==castOther.getPreVenDetCod())
- && ( (this.getPreVenCabCod()==castOther.getPreVenCabCod()) || ( this.getPreVenCabCod()!=null && castOther.getPreVenCabCod()!=null && this.getPreVenCabCod().equals(castOther.getPreVenCabCod()) ) );
+ && (this.getPreVenCabCod()==castOther.getPreVenCabCod());
    }
    
    public int hashCode() {
          int result = 17;
          
          result = 37 * result + this.getPreVenDetCod();
-         result = 37 * result + ( getPreVenCabCod() == null ? 0 : this.getPreVenCabCod().hashCode() );
+         result = 37 * result + this.getPreVenCabCod();
          return result;
    }   
 

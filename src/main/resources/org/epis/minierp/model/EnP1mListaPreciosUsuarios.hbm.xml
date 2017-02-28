@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 26/02/2017 07:56:25 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="org.epis.minierp.model.EnP1mListaPreciosUsuarios" table="en_p1m_lista_precios_usuarios" catalog="episerp" optimistic-lock="version">
+        <composite-id name="id" class="org.epis.minierp.model.EnP1mListaPreciosUsuariosId">
+            <key-property name="usuCod" type="string">
+                <column name="UsuCod" length="15" />
+            </key-property>
+            <key-property name="lisPreCod" type="int">
+                <column name="LisPreCod" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="enP1mUsuario" class="org.epis.minierp.model.EnP1mUsuario" update="false" insert="false" fetch="select">
+            <column name="UsuCod" length="15" not-null="true" />
+        </many-to-one>
+        <many-to-one name="taGzzListaPrecios" class="org.epis.minierp.model.TaGzzListaPrecios" update="false" insert="false" fetch="select">
+            <column name="LisPreCod" not-null="true" />
+        </many-to-one>
+        <property name="lisPreUsuDes" type="string">
+            <column name="LisPreUsuDes" length="90" />
+        </property>
+        <property name="estRegCod" type="java.lang.Character">
+            <column name="EstRegCod" length="1" />
+        </property>
+    </class>
+</hibernate-mapping>

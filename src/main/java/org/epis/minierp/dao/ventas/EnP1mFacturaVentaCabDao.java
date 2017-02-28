@@ -51,7 +51,7 @@ public class EnP1mFacturaVentaCabDao {
         return facs;
     }
     
-    public EnP1mFacturaVentaCab getById(String id) {
+    public EnP1mFacturaVentaCab getById(int id) {
         EnP1mFacturaVentaCab estado = null;
         try {
             estado = (EnP1mFacturaVentaCab) session.load(EnP1mFacturaVentaCab.class, id);
@@ -61,7 +61,7 @@ public class EnP1mFacturaVentaCabDao {
         return estado;
     }
         
-    public boolean verifyReferralGuide(String id) {
+    public boolean verifyReferralGuide(int id) {
         EnP1mFacturaVentaCab factura = null;
         try {
             factura = (EnP1mFacturaVentaCab) session.load(EnP1mFacturaVentaCab.class, id);
@@ -72,7 +72,7 @@ public class EnP1mFacturaVentaCabDao {
         return (factura.getEnP2mGuiaRemRemitente() == null);
     }
     
-    public boolean verifyCarrierGuide(String id) {
+    public boolean verifyCarrierGuide(int id) {
         EnP1mFacturaVentaCab factura = null;
         try {
             factura = (EnP1mFacturaVentaCab) session.load(EnP1mFacturaVentaCab.class, id);
@@ -94,10 +94,28 @@ public class EnP1mFacturaVentaCabDao {
         List<EnP1mFacturaVentaCab> estados = query.list();
         try {
             Set<Integer> lista = new HashSet<>();
-            String temp;
+            int temp;
             for(int i=0; i<estados.size(); i++){
                 temp = estados.get(i).getFacVenCabCod();
-                lista.add(Integer.parseInt(temp.substring(4)));
+                lista.add(temp);
+            }
+            return Collections.max(lista)+1;
+        } catch (Exception e) {
+            return 1;
+        }
+        
+    }
+    
+  
+    public int getMaxFacCabCod(){
+        Query query = session.createQuery("from EnP1mFacturaVentaCab'");
+        List<EnP1mFacturaVentaCab> estados = query.list();
+        try {
+            Set<Integer> lista = new HashSet<>();
+            int temp;
+            for(int i=0; i<estados.size(); i++){
+                temp = estados.get(i).getFacVenCabCod();
+                lista.add(temp);
             }
             return Collections.max(lista)+1;
         } catch (Exception e) {

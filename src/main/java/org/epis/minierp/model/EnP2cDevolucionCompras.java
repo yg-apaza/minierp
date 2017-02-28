@@ -1,5 +1,5 @@
 package org.epis.minierp.model;
-// Generated 04/12/2016 10:29:37 AM by Hibernate Tools 4.3.1
+// Generated 26/02/2017 07:56:21 PM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -10,7 +10,7 @@ import java.util.Date;
 public class EnP2cDevolucionCompras  implements java.io.Serializable {
 
 
-     private String facComCabCod;
+     private int facComCabCod;
      private EnP4mFacturaCompraCab enP4mFacturaCompraCabByFacComCabCod;
      private EnP4mFacturaCompraCab enP4mFacturaCompraCabByDevComNewFac;
      private TaGzzTipoDevolucion taGzzTipoDevolucion;
@@ -36,11 +36,11 @@ public class EnP2cDevolucionCompras  implements java.io.Serializable {
        this.devComMon = devComMon;
     }
    
-    public String getFacComCabCod() {
+    public int getFacComCabCod() {
         return this.facComCabCod;
     }
     
-    public void setFacComCabCod(String facComCabCod) {
+    public void setFacComCabCod(int facComCabCod) {
         this.facComCabCod = facComCabCod;
     }
     public EnP4mFacturaCompraCab getEnP4mFacturaCompraCabByFacComCabCod() {

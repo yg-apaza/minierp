@@ -1,5 +1,5 @@
 package org.epis.minierp.model;
-// Generated 04/12/2016 10:29:37 AM by Hibernate Tools 4.3.1
+// Generated 26/02/2017 07:56:21 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -19,11 +19,8 @@ public class EnP2mProducto  implements java.io.Serializable {
      private TaGzzMoneda taGzzMoneda;
      private TaGzzUnidadMed taGzzUnidadMed;
      private String proCodBar;
+     private Boolean proCom;
      private String proDet;
-     private double proPreUniVen;
-     private double proPreUniCom;
-     private double proPreUniMar;
-     private double proPreUniFle;
      private Double proPesNet;
      private double proStk;
      private Double proStkRea;
@@ -33,6 +30,8 @@ public class EnP2mProducto  implements java.io.Serializable {
      private Double proStkMax;
      private String proObs;
      private char estRegCod;
+     private Set enP2mPrecioUnitarios = new HashSet(0);
+     private Set enP2mComboDets = new HashSet(0);
      private Set enP1tFacturaVentaDets = new HashSet(0);
      private Set enP2tInventarioDets = new HashSet(0);
      private Set enP1tPreventaDets = new HashSet(0);
@@ -42,21 +41,17 @@ public class EnP2mProducto  implements java.io.Serializable {
     }
 
 	
-    public EnP2mProducto(EnP2mProductoId id, EnP2mSubclaseProducto enP2mSubclaseProducto, TaGzzUnidadMed taGzzUnidadMed, String proDet, double proPreUniVen, double proPreUniCom, double proPreUniMar, double proPreUniFle, double proStk, double proStkPreVen, String proObs, char estRegCod) {
+    public EnP2mProducto(EnP2mProductoId id, EnP2mSubclaseProducto enP2mSubclaseProducto, TaGzzUnidadMed taGzzUnidadMed, String proDet, double proStk, double proStkPreVen, String proObs, char estRegCod) {
         this.id = id;
         this.enP2mSubclaseProducto = enP2mSubclaseProducto;
         this.taGzzUnidadMed = taGzzUnidadMed;
         this.proDet = proDet;
-        this.proPreUniVen = proPreUniVen;
-        this.proPreUniCom = proPreUniCom;
-        this.proPreUniMar = proPreUniMar;
-        this.proPreUniFle = proPreUniFle;
         this.proStk = proStk;
         this.proStkPreVen = proStkPreVen;
         this.proObs = proObs;
         this.estRegCod = estRegCod;
     }
-    public EnP2mProducto(EnP2mProductoId id, EnP2mAlmacen enP2mAlmacen, EnP2mSubclaseProducto enP2mSubclaseProducto, EnP3mCuenta enP3mCuentaByCueComCod, EnP3mCuenta enP3mCuentaByCueVenCod, TaGzzMoneda taGzzMoneda, TaGzzUnidadMed taGzzUnidadMed, String proCodBar, String proDet, double proPreUniVen, double proPreUniCom, double proPreUniMar, double proPreUniFle, Double proPesNet, double proStk, Double proStkRea, double proStkPreVen, Double volUniAlm, Double proStkMin, Double proStkMax, String proObs, char estRegCod, Set enP1tFacturaVentaDets, Set enP2tInventarioDets, Set enP1tPreventaDets, Set enP4tFacturaCompraDets) {
+    public EnP2mProducto(EnP2mProductoId id, EnP2mAlmacen enP2mAlmacen, EnP2mSubclaseProducto enP2mSubclaseProducto, EnP3mCuenta enP3mCuentaByCueComCod, EnP3mCuenta enP3mCuentaByCueVenCod, TaGzzMoneda taGzzMoneda, TaGzzUnidadMed taGzzUnidadMed, String proCodBar, Boolean proCom, String proDet, Double proPesNet, double proStk, Double proStkRea, double proStkPreVen, Double volUniAlm, Double proStkMin, Double proStkMax, String proObs, char estRegCod, Set enP2mPrecioUnitarios, Set enP2mComboDets, Set enP1tFacturaVentaDets, Set enP2tInventarioDets, Set enP1tPreventaDets, Set enP4tFacturaCompraDets) {
        this.id = id;
        this.enP2mAlmacen = enP2mAlmacen;
        this.enP2mSubclaseProducto = enP2mSubclaseProducto;
@@ -65,11 +60,8 @@ public class EnP2mProducto  implements java.io.Serializable {
        this.taGzzMoneda = taGzzMoneda;
        this.taGzzUnidadMed = taGzzUnidadMed;
        this.proCodBar = proCodBar;
+       this.proCom = proCom;
        this.proDet = proDet;
-       this.proPreUniVen = proPreUniVen;
-       this.proPreUniCom = proPreUniCom;
-       this.proPreUniMar = proPreUniMar;
-       this.proPreUniFle = proPreUniFle;
        this.proPesNet = proPesNet;
        this.proStk = proStk;
        this.proStkRea = proStkRea;
@@ -79,6 +71,8 @@ public class EnP2mProducto  implements java.io.Serializable {
        this.proStkMax = proStkMax;
        this.proObs = proObs;
        this.estRegCod = estRegCod;
+       this.enP2mPrecioUnitarios = enP2mPrecioUnitarios;
+       this.enP2mComboDets = enP2mComboDets;
        this.enP1tFacturaVentaDets = enP1tFacturaVentaDets;
        this.enP2tInventarioDets = enP2tInventarioDets;
        this.enP1tPreventaDets = enP1tPreventaDets;
@@ -141,40 +135,19 @@ public class EnP2mProducto  implements java.io.Serializable {
     public void setProCodBar(String proCodBar) {
         this.proCodBar = proCodBar;
     }
+    public Boolean getProCom() {
+        return this.proCom;
+    }
+    
+    public void setProCom(Boolean proCom) {
+        this.proCom = proCom;
+    }
     public String getProDet() {
         return this.proDet;
     }
     
     public void setProDet(String proDet) {
         this.proDet = proDet;
-    }
-    public double getProPreUniVen() {
-        return this.proPreUniVen;
-    }
-    
-    public void setProPreUniVen(double proPreUniVen) {
-        this.proPreUniVen = proPreUniVen;
-    }
-    public double getProPreUniCom() {
-        return this.proPreUniCom;
-    }
-    
-    public void setProPreUniCom(double proPreUniCom) {
-        this.proPreUniCom = proPreUniCom;
-    }
-    public double getProPreUniMar() {
-        return this.proPreUniMar;
-    }
-    
-    public void setProPreUniMar(double proPreUniMar) {
-        this.proPreUniMar = proPreUniMar;
-    }
-    public double getProPreUniFle() {
-        return this.proPreUniFle;
-    }
-    
-    public void setProPreUniFle(double proPreUniFle) {
-        this.proPreUniFle = proPreUniFle;
     }
     public Double getProPesNet() {
         return this.proPesNet;
@@ -238,6 +211,20 @@ public class EnP2mProducto  implements java.io.Serializable {
     
     public void setEstRegCod(char estRegCod) {
         this.estRegCod = estRegCod;
+    }
+    public Set getEnP2mPrecioUnitarios() {
+        return this.enP2mPrecioUnitarios;
+    }
+    
+    public void setEnP2mPrecioUnitarios(Set enP2mPrecioUnitarios) {
+        this.enP2mPrecioUnitarios = enP2mPrecioUnitarios;
+    }
+    public Set getEnP2mComboDets() {
+        return this.enP2mComboDets;
+    }
+    
+    public void setEnP2mComboDets(Set enP2mComboDets) {
+        this.enP2mComboDets = enP2mComboDets;
     }
     public Set getEnP1tFacturaVentaDets() {
         return this.enP1tFacturaVentaDets;

@@ -1,15 +1,15 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 04/12/2016 10:29:38 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 26/02/2017 07:56:25 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="org.epis.minierp.model.EnP4tFacturaCompraDet" table="en_p4t_factura_compra_det" catalog="episerp" optimistic-lock="version">
         <composite-id name="id" class="org.epis.minierp.model.EnP4tFacturaCompraDetId">
             <key-property name="facComDetCod" type="int">
                 <column name="FacComDetCod" />
             </key-property>
-            <key-property name="facComCabCod" type="string">
-                <column name="FacComCabCod" length="10" />
+            <key-property name="facComCabCod" type="int">
+                <column name="FacComCabCod" />
             </key-property>
         </composite-id>
         <many-to-one name="enP2mProducto" class="org.epis.minierp.model.EnP2mProducto" fetch="select">
@@ -18,7 +18,7 @@
             <column name="ClaProCod" length="2" not-null="true" />
         </many-to-one>
         <many-to-one name="enP4mFacturaCompraCab" class="org.epis.minierp.model.EnP4mFacturaCompraCab" update="false" insert="false" fetch="select">
-            <column name="FacComCabCod" length="10" not-null="true" />
+            <column name="FacComCabCod" not-null="true" />
         </many-to-one>
         <property name="facComDetCan" type="double">
             <column name="FacComDetCan" precision="10" not-null="true" />

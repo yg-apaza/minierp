@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 26/02/2017 07:56:25 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="org.epis.minierp.model.TaGzzListaPrecios" table="ta_gzz_lista_precios" catalog="episerp" optimistic-lock="version">
+        <id name="lisPreCod" type="int">
+            <column name="LisPreCod" />
+            <generator class="assigned" />
+        </id>
+        <property name="lisPreDet" type="string">
+            <column name="LisPreDet" length="90" />
+        </property>
+        <property name="estRegCod" type="java.lang.Character">
+            <column name="EstRegCod" length="1" />
+        </property>
+        <set name="enP2mPrecioUnitarios" table="en_p2m_precio_unitario" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="LisPreCod" not-null="true" />
+            </key>
+            <one-to-many class="org.epis.minierp.model.EnP2mPrecioUnitario" />
+        </set>
+        <set name="enP1mListaPreciosUsuarioses" table="en_p1m_lista_precios_usuarios" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="LisPreCod" not-null="true" />
+            </key>
+            <one-to-many class="org.epis.minierp.model.EnP1mListaPreciosUsuarios" />
+        </set>
+        <set name="enP1mUsuarios" table="en_p1m_usuario" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="LisPreCod" />
+            </key>
+            <one-to-many class="org.epis.minierp.model.EnP1mUsuario" />
+        </set>
+    </class>
+</hibernate-mapping>

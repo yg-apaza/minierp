@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 04/12/2016 10:29:38 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 26/02/2017 07:56:25 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="org.epis.minierp.model.EnP1mUsuario" table="en_p1m_usuario" catalog="episerp" optimistic-lock="version">
         <id name="usuCod" type="string">
@@ -17,8 +17,14 @@
         <many-to-one name="taGzzEstadoCivil" class="org.epis.minierp.model.TaGzzEstadoCivil" fetch="select">
             <column name="EstCivCod" not-null="true" />
         </many-to-one>
+        <many-to-one name="taGzzListaPrecios" class="org.epis.minierp.model.TaGzzListaPrecios" fetch="select">
+            <column name="LisPreCod" />
+        </many-to-one>
         <many-to-one name="taGzzTipoUsuario" class="org.epis.minierp.model.TaGzzTipoUsuario" fetch="select">
             <column name="TipUsuCod" not-null="true" />
+        </many-to-one>
+        <many-to-one name="taGzzUnidadTrabajo" class="org.epis.minierp.model.TaGzzUnidadTrabajo" fetch="select">
+            <column name="UniTraCod" />
         </many-to-one>
         <property name="usuNom" type="string">
             <column name="UsuNom" length="90" />
@@ -61,6 +67,12 @@
                 <column name="UsuCod" length="15" not-null="true" />
             </key>
             <one-to-many class="org.epis.minierp.model.EnP1mDocumentoUsuario" />
+        </set>
+        <set name="enP1mListaPreciosUsuarioses" table="en_p1m_lista_precios_usuarios" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="UsuCod" length="15" not-null="true" />
+            </key>
+            <one-to-many class="org.epis.minierp.model.EnP1mListaPreciosUsuarios" />
         </set>
         <set name="enP1mCarteraClienteses" table="en_p1m_cartera_clientes" inverse="true" lazy="true" fetch="select">
             <key>

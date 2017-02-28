@@ -38,7 +38,7 @@ public class EnP1mPreventaCabDao {
         return estados;
     }
 
-    public EnP1mPreventaCab getById(String id) {
+    public EnP1mPreventaCab getById(int id) {
         EnP1mPreventaCab estado = null;
         try {
             estado = (EnP1mPreventaCab) session.get(EnP1mPreventaCab.class, id);

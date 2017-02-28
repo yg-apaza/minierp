@@ -85,7 +85,7 @@ public class CuentaBusiness
     private String getNextCueNum(Integer cuePad){
         EnP3mCuenta cuenta = cuentaDao.getById(cuePad);
         try{
-            EnP3mCuenta ultimo = (EnP3mCuenta) cuenta.getEnP3mCuentasForCuePad().last();
+            EnP3mCuenta ultimo = (EnP3mCuenta) cuenta.getEnP3mCuentasForCuePad();
             return String.valueOf(Long.parseLong(ultimo.getCueNum()) + 1);
         }
         catch(NoSuchElementException ex){

@@ -1,5 +1,5 @@
 package org.epis.minierp.model;
-// Generated 04/12/2016 10:29:37 AM by Hibernate Tools 4.3.1
+// Generated 26/02/2017 07:56:21 PM by Hibernate Tools 4.3.1
 
 
 
@@ -10,12 +10,12 @@ public class EnP1tPagosCuotasDetId  implements java.io.Serializable {
 
 
      private int pagCuoDetCod;
-     private String facVenCabCod;
+     private int facVenCabCod;
 
     public EnP1tPagosCuotasDetId() {
     }
 
-    public EnP1tPagosCuotasDetId(int pagCuoDetCod, String facVenCabCod) {
+    public EnP1tPagosCuotasDetId(int pagCuoDetCod, int facVenCabCod) {
        this.pagCuoDetCod = pagCuoDetCod;
        this.facVenCabCod = facVenCabCod;
     }
@@ -27,11 +27,11 @@ public class EnP1tPagosCuotasDetId  implements java.io.Serializable {
     public void setPagCuoDetCod(int pagCuoDetCod) {
         this.pagCuoDetCod = pagCuoDetCod;
     }
-    public String getFacVenCabCod() {
+    public int getFacVenCabCod() {
         return this.facVenCabCod;
     }
     
-    public void setFacVenCabCod(String facVenCabCod) {
+    public void setFacVenCabCod(int facVenCabCod) {
         this.facVenCabCod = facVenCabCod;
     }
 
@@ -43,14 +43,14 @@ public class EnP1tPagosCuotasDetId  implements java.io.Serializable {
 		 EnP1tPagosCuotasDetId castOther = ( EnP1tPagosCuotasDetId ) other; 
          
 		 return (this.getPagCuoDetCod()==castOther.getPagCuoDetCod())
- && ( (this.getFacVenCabCod()==castOther.getFacVenCabCod()) || ( this.getFacVenCabCod()!=null && castOther.getFacVenCabCod()!=null && this.getFacVenCabCod().equals(castOther.getFacVenCabCod()) ) );
+ && (this.getFacVenCabCod()==castOther.getFacVenCabCod());
    }
    
    public int hashCode() {
          int result = 17;
          
          result = 37 * result + this.getPagCuoDetCod();
-         result = 37 * result + ( getFacVenCabCod() == null ? 0 : this.getFacVenCabCod().hashCode() );
+         result = 37 * result + this.getFacVenCabCod();
          return result;
    }   
 

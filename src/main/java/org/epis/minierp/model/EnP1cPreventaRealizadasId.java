@@ -1,5 +1,5 @@
 package org.epis.minierp.model;
-// Generated 04/12/2016 10:29:37 AM by Hibernate Tools 4.3.1
+// Generated 26/02/2017 07:56:21 PM by Hibernate Tools 4.3.1
 
 
 
@@ -9,29 +9,29 @@ package org.epis.minierp.model;
 public class EnP1cPreventaRealizadasId  implements java.io.Serializable {
 
 
-     private String preVenCabCod;
-     private String facVenCabCod;
+     private int preVenCabCod;
+     private int facVenCabCod;
 
     public EnP1cPreventaRealizadasId() {
     }
 
-    public EnP1cPreventaRealizadasId(String preVenCabCod, String facVenCabCod) {
+    public EnP1cPreventaRealizadasId(int preVenCabCod, int facVenCabCod) {
        this.preVenCabCod = preVenCabCod;
        this.facVenCabCod = facVenCabCod;
     }
    
-    public String getPreVenCabCod() {
+    public int getPreVenCabCod() {
         return this.preVenCabCod;
     }
     
-    public void setPreVenCabCod(String preVenCabCod) {
+    public void setPreVenCabCod(int preVenCabCod) {
         this.preVenCabCod = preVenCabCod;
     }
-    public String getFacVenCabCod() {
+    public int getFacVenCabCod() {
         return this.facVenCabCod;
     }
     
-    public void setFacVenCabCod(String facVenCabCod) {
+    public void setFacVenCabCod(int facVenCabCod) {
         this.facVenCabCod = facVenCabCod;
     }
 
@@ -42,15 +42,15 @@ public class EnP1cPreventaRealizadasId  implements java.io.Serializable {
 		 if ( !(other instanceof EnP1cPreventaRealizadasId) ) return false;
 		 EnP1cPreventaRealizadasId castOther = ( EnP1cPreventaRealizadasId ) other; 
          
-		 return ( (this.getPreVenCabCod()==castOther.getPreVenCabCod()) || ( this.getPreVenCabCod()!=null && castOther.getPreVenCabCod()!=null && this.getPreVenCabCod().equals(castOther.getPreVenCabCod()) ) )
- && ( (this.getFacVenCabCod()==castOther.getFacVenCabCod()) || ( this.getFacVenCabCod()!=null && castOther.getFacVenCabCod()!=null && this.getFacVenCabCod().equals(castOther.getFacVenCabCod()) ) );
+		 return (this.getPreVenCabCod()==castOther.getPreVenCabCod())
+ && (this.getFacVenCabCod()==castOther.getFacVenCabCod());
    }
    
    public int hashCode() {
          int result = 17;
          
-         result = 37 * result + ( getPreVenCabCod() == null ? 0 : this.getPreVenCabCod().hashCode() );
-         result = 37 * result + ( getFacVenCabCod() == null ? 0 : this.getFacVenCabCod().hashCode() );
+         result = 37 * result + this.getPreVenCabCod();
+         result = 37 * result + this.getFacVenCabCod();
          return result;
    }   
 

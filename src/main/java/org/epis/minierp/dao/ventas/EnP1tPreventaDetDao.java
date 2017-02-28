@@ -32,7 +32,7 @@ public class EnP1tPreventaDetDao {
         return estado;
     }
     
-    public int getLastPreVenDetCod(String preVenCabCod){
+    public int getLastPreVenDetCod(int preVenCabCod){
         Query query = session.createQuery("select max(E.id.preVenDetCod) from EnP1tPreventaDet E "
                 + "where E.id.preVenCabCod = '" + preVenCabCod + "'");        
         List<EnP1tPreventaDet> maximo = query.list();

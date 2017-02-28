@@ -14,7 +14,7 @@ public class RemoveCarrierGuideController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String facVenCabCod = request.getParameter("facVenCabCod");
+        int facVenCabCod = Integer.parseInt(request.getParameter("facVenCabCod"));
         EnP1mFacturaVentaCabDao billDao = new EnP1mFacturaVentaCabDao();
         EnP1mFacturaVentaCab bill = billDao.getById(facVenCabCod);
         

@@ -28,7 +28,7 @@ public class ReferralGuideController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
-        String facVenCabCod = request.getParameter("facVenCabCod");
+        int facVenCabCod = Integer.parseInt(request.getParameter("facVenCabCod"));
         JsonObject data = null;
         EnP1mFacturaVentaCab bill = null;
         EnP2mGuiaRemRemitente referralGuide = null;

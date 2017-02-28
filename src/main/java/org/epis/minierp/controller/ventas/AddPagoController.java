@@ -33,7 +33,7 @@ public class AddPagoController extends HttpServlet {
         EnP1tPagosCuotasDet det=new EnP1tPagosCuotasDet();                
         EnP1tPagosCuotasDetId t=new EnP1tPagosCuotasDetId();
         
-        t.setFacVenCabCod(request.getParameter("CodCabFac"));
+        t.setFacVenCabCod(Integer.parseInt(request.getParameter("CodCabFac")));
         t.setPagCuoDetCod(Integer.parseInt(request.getParameter("codPagCuo")));
         
         det.setId(t);        

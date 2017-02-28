@@ -20,7 +20,7 @@ import org.epis.minierp.model.EnP1tFacturaVentaDet;
 public class SearchSaleBillController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String facVenCabCod = request.getParameter("facVenCabCod");
+        int facVenCabCod = Integer.parseInt(request.getParameter("facVenCabCod"));
         EnP1mFacturaVentaCab bill = (new EnP1mFacturaVentaCabDao()).getById(facVenCabCod);
         JsonObject data = new JsonObject(); 
         

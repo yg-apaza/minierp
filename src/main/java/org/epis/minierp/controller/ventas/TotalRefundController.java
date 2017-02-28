@@ -11,7 +11,7 @@ public class TotalRefundController extends HttpServlet {
     
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String facVenCabCod = request.getParameter("facVenCabCod");
+        int facVenCabCod = Integer.parseInt(request.getParameter("facVenCabCod"));
         (new EnP1mFacturaVentaBusiness()).devolucionTotal(facVenCabCod);
     }
 }

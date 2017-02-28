@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 26/02/2017 07:56:25 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="org.epis.minierp.model.EnP2mCombos" table="en_p2m_combos" catalog="episerp" optimistic-lock="version">
+        <id name="comCod" type="string">
+            <column name="ComCod" length="15" />
+            <generator class="assigned" />
+        </id>
+        <property name="comDet" type="string">
+            <column name="ComDet" length="90" />
+        </property>
+        <property name="comTot" type="java.lang.Double">
+            <column name="ComTot" precision="10" />
+        </property>
+        <property name="estRegCod" type="java.lang.Character">
+            <column name="EstRegCod" length="1" />
+        </property>
+        <set name="enP2mComboDets" table="en_p2m_combo_det" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ComCod" length="15" not-null="true" />
+            </key>
+            <one-to-many class="org.epis.minierp.model.EnP2mComboDet" />
+        </set>
+    </class>
+</hibernate-mapping>

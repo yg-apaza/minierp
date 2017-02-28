@@ -21,7 +21,7 @@ public class SearchPreVentaController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         preVenCabDao = new EnP1mPreventaCabDao();
         
-        String preVenCabCod = request.getParameter("preVenCabCod");
+        int preVenCabCod = Integer.parseInt(request.getParameter("preVenCabCod"));
         EnP1mPreventaCab preventa = preVenCabDao.getById(preVenCabCod);
         JsonObject data = new JsonObject();
         

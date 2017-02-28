@@ -1,5 +1,5 @@
 package org.epis.minierp.model;
-// Generated 04/12/2016 10:29:37 AM by Hibernate Tools 4.3.1
+// Generated 26/02/2017 07:56:21 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -11,7 +11,7 @@ import java.util.Set;
 public class EnP1mEmpresa  implements java.io.Serializable {
 
 
-     private Integer empCod;
+     private int empCod;
      private String empRazSoc;
      private String empNomCom;
      private String empDomFis;
@@ -28,6 +28,7 @@ public class EnP1mEmpresa  implements java.io.Serializable {
      private Integer empNumDetGuiRemTra;
      private Integer empNumDetFacVen;
      private Integer empNumDetBolVen;
+     private Boolean empHorCier;
      private Set enP2mGuiaRemTransportistas = new HashSet(0);
      private Set enP2mGuiaRemRemitentes = new HashSet(0);
 
@@ -35,14 +36,16 @@ public class EnP1mEmpresa  implements java.io.Serializable {
     }
 
 	
-    public EnP1mEmpresa(String empRazSoc, String empNomCom, String empDir, double empIgv, String empRuc) {
+    public EnP1mEmpresa(int empCod, String empRazSoc, String empNomCom, String empDir, double empIgv, String empRuc) {
+        this.empCod = empCod;
         this.empRazSoc = empRazSoc;
         this.empNomCom = empNomCom;
         this.empDir = empDir;
         this.empIgv = empIgv;
         this.empRuc = empRuc;
     }
-    public EnP1mEmpresa(String empRazSoc, String empNomCom, String empDomFis, String empDes, String empDir, String empTel, String empEmail, double empIgv, Double empTipCamCom, Double empTipCamVen, String empRuc, Integer empLot, String empImgUrl, Integer empNumDetGuiRemTra, Integer empNumDetFacVen, Integer empNumDetBolVen, Set enP2mGuiaRemTransportistas, Set enP2mGuiaRemRemitentes) {
+    public EnP1mEmpresa(int empCod, String empRazSoc, String empNomCom, String empDomFis, String empDes, String empDir, String empTel, String empEmail, double empIgv, Double empTipCamCom, Double empTipCamVen, String empRuc, Integer empLot, String empImgUrl, Integer empNumDetGuiRemTra, Integer empNumDetFacVen, Integer empNumDetBolVen, Boolean empHorCier, Set enP2mGuiaRemTransportistas, Set enP2mGuiaRemRemitentes) {
+       this.empCod = empCod;
        this.empRazSoc = empRazSoc;
        this.empNomCom = empNomCom;
        this.empDomFis = empDomFis;
@@ -59,15 +62,16 @@ public class EnP1mEmpresa  implements java.io.Serializable {
        this.empNumDetGuiRemTra = empNumDetGuiRemTra;
        this.empNumDetFacVen = empNumDetFacVen;
        this.empNumDetBolVen = empNumDetBolVen;
+       this.empHorCier = empHorCier;
        this.enP2mGuiaRemTransportistas = enP2mGuiaRemTransportistas;
        this.enP2mGuiaRemRemitentes = enP2mGuiaRemRemitentes;
     }
    
-    public Integer getEmpCod() {
+    public int getEmpCod() {
         return this.empCod;
     }
     
-    public void setEmpCod(Integer empCod) {
+    public void setEmpCod(int empCod) {
         this.empCod = empCod;
     }
     public String getEmpRazSoc() {
@@ -181,6 +185,13 @@ public class EnP1mEmpresa  implements java.io.Serializable {
     
     public void setEmpNumDetBolVen(Integer empNumDetBolVen) {
         this.empNumDetBolVen = empNumDetBolVen;
+    }
+    public Boolean getEmpHorCier() {
+        return this.empHorCier;
+    }
+    
+    public void setEmpHorCier(Boolean empHorCier) {
+        this.empHorCier = empHorCier;
     }
     public Set getEnP2mGuiaRemTransportistas() {
         return this.enP2mGuiaRemTransportistas;

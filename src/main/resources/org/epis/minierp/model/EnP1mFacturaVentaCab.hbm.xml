@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 04/12/2016 10:29:38 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 26/02/2017 07:56:25 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="org.epis.minierp.model.EnP1mFacturaVentaCab" table="en_p1m_factura_venta_cab" catalog="episerp" optimistic-lock="version">
-        <id name="facVenCabCod" type="string">
-            <column name="FacVenCabCod" length="10" />
+        <id name="facVenCabCod" type="int">
+            <column name="FacVenCabCod" />
             <generator class="assigned" />
         </id>
         <many-to-one name="enP1mCatalogoRuta" class="org.epis.minierp.model.EnP1mCatalogoRuta" fetch="select">
@@ -38,6 +38,9 @@
         <many-to-one name="taGzzTipoPagoFactura" class="org.epis.minierp.model.TaGzzTipoPagoFactura" fetch="select">
             <column name="TipPagCod" not-null="true" />
         </many-to-one>
+        <property name="facVenCabNum" type="string">
+            <column name="FacVenCabNum" length="20" />
+        </property>
         <property name="facVenCabModVen" type="java.lang.Character">
             <column name="FacVenCabModVen" length="1" />
         </property>
@@ -68,20 +71,20 @@
         <one-to-one name="enP1mPagosCuotasCab" class="org.epis.minierp.model.EnP1mPagosCuotasCab"></one-to-one>
         <set name="enP1cDevolucionVentasesForDevVenNewFac" table="en_p1c_devolucion_ventas" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="DevVenNewFac" length="10" />
+                <column name="DevVenNewFac" />
             </key>
             <one-to-many class="org.epis.minierp.model.EnP1cDevolucionVentas" />
         </set>
         <one-to-one name="enP1cDevolucionVentasByFacVenCabCod" class="org.epis.minierp.model.EnP1cDevolucionVentas"></one-to-one>
         <set name="enP1tFacturaVentaDets" table="en_p1t_factura_venta_det" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="FacVenCabCod" length="10" not-null="true" />
+                <column name="FacVenCabCod" not-null="true" />
             </key>
             <one-to-many class="org.epis.minierp.model.EnP1tFacturaVentaDet" />
         </set>
         <set name="enP1cPreventaRealizadases" table="en_p1c_preventa_realizadas" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="FacVenCabCod" length="10" not-null="true" />
+                <column name="FacVenCabCod" not-null="true" />
             </key>
             <one-to-many class="org.epis.minierp.model.EnP1cPreventaRealizadas" />
         </set>

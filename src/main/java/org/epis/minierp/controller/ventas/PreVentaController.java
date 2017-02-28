@@ -1,7 +1,6 @@
 package org.epis.minierp.controller.ventas;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -83,7 +82,13 @@ public class PreVentaController extends HttpServlet {
         if(facVenCabModVen == 'B') {
             maxDet4FacVen = empDao.getById(01).getEmpNumDetBolVen();
         }
-        preventaBusiness.preVenta2Venta4Lotes(preventas, iniFacVenCabCod, estFacCod, 
+        
+        int[] intCodigos = new int[preventas.length];
+        for (int i = 0; i < preventas.length; i++) {
+            intCodigos[i] = Integer.parseInt(preventas[i]);
+        }
+        
+        preventaBusiness.preVenta2Venta4Lotes(intCodigos, iniFacVenCabCod, estFacCod, 
                 metPagCod, tipPagCod, facVenCabModVen, pagCuoNum, maxDet4FacVen);
         
         response.sendRedirect(request.getContextPath() + "/secured/ventas/factura");

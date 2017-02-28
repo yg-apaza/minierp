@@ -92,7 +92,7 @@ public class AddFacturaController extends HttpServlet {
         facturaBusiness = new EnP1mFacturaVentaBusiness();
         empDao = new EnP1mEmpresaDao();
         
-        String facVenCabCod = request.getParameter("facVenCabCod");
+        String facVenCabNum = request.getParameter("facVenCabCod");
         String cliCod = request.getParameter("cliCod");
         String usuCod = request.getParameter("usuCod");
         char facVenCabModVen = request.getParameter("facVenCabModVen").charAt(0);
@@ -134,7 +134,7 @@ public class AddFacturaController extends HttpServlet {
             p.setId(pId);
             
             temp = new EnP1tFacturaVentaDet();
-            temp.setId(new EnP1tFacturaVentaDetId(i+1, facVenCabCod));
+            temp.setId(new EnP1tFacturaVentaDetId(i+1, 1)); //1 es relativo
             temp.setEnP2mProducto(p);
             temp.setFacVenDetCan(Double.parseDouble(productsAmounts.get(i)));
             temp.setFacVenDetValUni(Double.parseDouble(productsPrices.get(i)));
@@ -166,7 +166,7 @@ public class AddFacturaController extends HttpServlet {
             maxDet4FacVen = empDao.getById(01).getEmpNumDetBolVen();
         }
         
-        facturaBusiness.create(facVenCabCod, cliCod, usuCod, facVenCabModVen, 
+        facturaBusiness.create(facVenCabNum, cliCod, usuCod, facVenCabModVen, 
                 facVenCabFecEmi, facVenCabFecVen, tipDesCod, facVenPorDes, 
                 facVenCabIgv, facVenCabObs, estFacCod, metPagCod, tipPagCod, 
                 monCod, pagCuoNum, 'A', detalles, maxDet4FacVen);        
