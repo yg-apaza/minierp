@@ -11,6 +11,13 @@
     <property name="hibernate.format_sql">true</property>
     <property name="hibernate.current_session_context_class">thread</property>
     <property name="hibernate.enable_lazy_load_no_trans">true</property>
+    
+    <!-- Vistas -->
+    <mapping class="org.epis.minierp.model.contabilidad.CajaView"/>
+    <mapping class="org.epis.minierp.model.contabilidad.BancosView"/>
+    <mapping class="org.epis.minierp.model.contabilidad.LibroDiarioView"/>
+    <mapping class="org.epis.minierp.model.compras.Kardex"/>
+    
     <mapping resource="org/epis/minierp/model/TaGzzTipoCliente.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP1mPuntoVenta.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/TaGzzUnidadMed.hbm.xml"/>

@@ -12,18 +12,18 @@
         <div class="panel-body">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header"> Usuarios </h1>
+                    <h1 class="page-header">Usuarios</h1>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-12">
                     <div class="col-xs-12 col-md-12 text-center">
                         <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
-                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregarModal"> Agregar Nuevo <i class="fa fa-plus"></i></button>                
-                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#estadosModal"> Ver Inhabilitados <i class="fa fa-eye"></i></button>
-                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#viewDocumentoModal"> Gestionar Documentos Asociados <i class="fa fa-file-text"></i></button>
-                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#viewClienteModal"> Gestionar Clientes Asociados <i class="fa fa-child"></i></button>
-                        </cc:if>
+                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregarModal"> Agregar Nuevo <i class="fa fa-plus"></i></button>                
+                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#estadosModal"> Ver Inhabilitados <i class="fa fa-eye"></i></button>
+                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#viewDocumentoModal"> Gestionar Documentos Asociados <i class="fa fa-file-text"></i></button>
+                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#viewClienteModal"> Gestionar Clientes Asociados <i class="fa fa-child"></i></button>
+                            </cc:if>
                     </div>
                     <!--
                     <div class="col-xs-12 col-md-3">
@@ -42,7 +42,7 @@
                     </div>  -->  
                 </div>
             </div><br>
-                                
+
             <div class="col-md-12">
                 <div class="table-responsive">
                     <table class="table table-bordered table-striped table-hover" id="tablaUsuarios">
@@ -54,9 +54,9 @@
                                 <th>Tipo</th>
                                 <th>Canal de Venta</th>
                                 <th>Catálogo de Clientes</th>
-                                <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
+                                    <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                                     <th>Acciones</th>
-                                </cc:if>
+                                    </cc:if>
                             </tr>
                         </thead>
                         <tbody>
@@ -77,47 +77,47 @@
                                         </c:forEach>
                                     </td>
                                     <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
-                                    <td>
-                                        <a href="#" data-toggle="modal" data-target="#modificarModal" 
-                                           title="Modificar Usuario" 
-                                           data-usucod="${u.usuCod}" 
-                                           data-usunom="${u.usuNom}" 
-                                           data-usuapepat="${u.usuApePat}" 
-                                           data-usuapemat="${u.usuApeMat}" 
-                                           data-tipusucod="${u.taGzzTipoUsuario.tipUsuCod}" 
-                                           data-succod="${u.enP1mSucursal.sucCod}" 
-                                           data-usufecnac="${u.usuFecNac}"
-                                           data-estcivcod="${u.taGzzEstadoCivil.estCivCod}" 
-                                           data-ususex="${u.usuSex}"
-                                           data-canusucod="${u.taGzzCanalUsuario.canUsuCod}"
-                                           data-usulog="${u.usuLog}">
-                                           <i class="fa fa-pencil-square-o fa-lg" style="color: black;"></i>
-                                        </a>
-                                        <a href="#" data-toggle="modal" data-target="#disableModal" 
-                                           title="InHabilitar Usuario"
-                                           data-usucod="${u.usuCod}" 
-                                           data-usunom="${u.usuNom}" 
-                                           data-usuapepat="${u.usuApePat}" 
-                                           data-usuapemat="${u.usuApeMat}">
-                                            <i class="fa fa-trash-o fa-lg" style="color: black;"></i>
-                                        </a>
-                                        <a href="#" data-toggle="modal" data-target="#documentoModal" 
-                                           title="Agregar Documentos al Usuario"
-                                           data-usucod="${u.usuCod}" 
-                                           data-usunom="${u.usuNom}" 
-                                           data-usuapepat="${u.usuApePat}" 
-                                           data-usuapemat="${u.usuApeMat}">
-                                            <i class="fa fa-file-text fa-lg" style="color: black;"></i>
-                                        </a>
-                                        <a href="#" data-toggle="modal" data-target="#clienteModal" 
-                                           title="Agregar Clientes al Usuario"
-                                           data-usucod="${u.usuCod}" 
-                                           data-usunom="${u.usuNom}" 
-                                           data-usuapepat="${u.usuApePat}" 
-                                           data-usuapemat="${u.usuApeMat}">
-                                            <i class="fa fa-child fa-lg" style="color: black;"></i>
-                                        </a>
-                                    </td>
+                                        <td>
+                                            <a href="#" data-toggle="modal" data-target="#modificarModal" 
+                                               title="Modificar Usuario" 
+                                               data-usucod="${u.usuCod}" 
+                                               data-usunom="${u.usuNom}" 
+                                               data-usuapepat="${u.usuApePat}" 
+                                               data-usuapemat="${u.usuApeMat}" 
+                                               data-tipusucod="${u.taGzzTipoUsuario.tipUsuCod}" 
+                                               data-succod="${u.enP1mSucursal.sucCod}" 
+                                               data-usufecnac="${u.usuFecNac}"
+                                               data-estcivcod="${u.taGzzEstadoCivil.estCivCod}" 
+                                               data-ususex="${u.usuSex}"
+                                               data-canusucod="${u.taGzzCanalUsuario.canUsuCod}"
+                                               data-usulog="${u.usuLog}">
+                                                <i class="fa fa-pencil-square-o fa-lg" style="color: black;"></i>
+                                            </a>
+                                            <a href="#" data-toggle="modal" data-target="#disableModal" 
+                                               title="InHabilitar Usuario"
+                                               data-usucod="${u.usuCod}" 
+                                               data-usunom="${u.usuNom}" 
+                                               data-usuapepat="${u.usuApePat}" 
+                                               data-usuapemat="${u.usuApeMat}">
+                                                <i class="fa fa-trash-o fa-lg" style="color: black;"></i>
+                                            </a>
+                                            <a href="#" data-toggle="modal" data-target="#documentoModal" 
+                                               title="Agregar Documentos al Usuario"
+                                               data-usucod="${u.usuCod}" 
+                                               data-usunom="${u.usuNom}" 
+                                               data-usuapepat="${u.usuApePat}" 
+                                               data-usuapemat="${u.usuApeMat}">
+                                                <i class="fa fa-file-text fa-lg" style="color: black;"></i>
+                                            </a>
+                                            <a href="#" data-toggle="modal" data-target="#clienteModal" 
+                                               title="Agregar Clientes al Usuario"
+                                               data-usucod="${u.usuCod}" 
+                                               data-usunom="${u.usuNom}" 
+                                               data-usuapepat="${u.usuApePat}" 
+                                               data-usuapemat="${u.usuApeMat}">
+                                                <i class="fa fa-child fa-lg" style="color: black;"></i>
+                                            </a>
+                                        </td>
                                     </cc:if>
                                 </tr>
                             </c:forEach>
@@ -301,7 +301,7 @@
                                         <div class="input-group">                                            
                                             <input type="date" class="form-control" name="usuFecNac" id="updateUsuFecNac" <fmt:formatDate value="${updateFecNacUsu}" pattern="dd/MM/yyyy"/>>
                                             <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                            <fmt:formatDate value="${u.usuFecNac}" pattern="dd/MM/yyyy"/>
+                                                <fmt:formatDate value="${u.usuFecNac}" pattern="dd/MM/yyyy"/>
                                         </div>  
                                     </div>
                                 </div>
@@ -355,7 +355,7 @@
                 </div>
             </div>
         </div>
-                        
+
         <div id="estadosModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content" >
@@ -374,9 +374,9 @@
                                         <th>Estado Civil</th>
                                         <th>Login</th>
                                         <th>Tipo Usuario</th>
-                                        <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
-                                        <th>Acciones</th>
-                                        </cc:if>
+                                            <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
+                                            <th>Acciones</th>
+                                            </cc:if>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -421,7 +421,7 @@
                 </div>                                        
             </div>
         </div>
-                        
+
         <div id="activateModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-md">
                 <div class="modal-content" style="overflow-y: auto">
@@ -465,7 +465,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div id="clienteModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-md">
                 <div class="modal-content" style="overflow-y: auto">
@@ -508,7 +508,7 @@
                 </div>                                        
             </div>
         </div>                
-                        
+
         <div id="documentoModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-md">
                 <div class="modal-content" style="overflow-y: auto">
@@ -551,7 +551,7 @@
                 </div>                                        
             </div>
         </div>                
-        
+
         <div id="viewDocumentoModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content" style="overflow-y: auto">
@@ -571,9 +571,9 @@
                                                         <th>Usuario</th>
                                                         <th>Tipo de Documento</th>
                                                         <th>Número del Documento</th>
-                                                        <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
+                                                            <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                                                             <th>Acciones</th>
-                                                        </cc:if>
+                                                            </cc:if>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -620,7 +620,7 @@
                 </div>                                        
             </div>
         </div>                
-        
+
         <div id="viewClienteModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content" style="overflow-y: auto">
@@ -640,9 +640,9 @@
                                                         <th>Usuario</th>
                                                         <th>Cartera de Clientes</th>
                                                         <th>Descripcion</th>
-                                                        <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
+                                                            <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
                                                             <th>Acciones</th>
-                                                        </cc:if>
+                                                            </cc:if>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -689,7 +689,7 @@
                 </div>                                        
             </div>
         </div> 
-                        
+
         <div id="modClienteModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-md">
                 <div class="modal-content" style="overflow-y: auto">
@@ -729,7 +729,7 @@
                 </div>                                        
             </div>
         </div>    
-                        
+
         <div id="modDocumentoModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-md">
                 <div class="modal-content" style="overflow-y: auto">
@@ -769,7 +769,7 @@
                 </div>                                        
             </div>
         </div>                
-                        
+
         <div id="delClienteModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-md">
                 <div class="modal-content" style="overflow-y: auto">
@@ -792,7 +792,7 @@
                 </div>
             </div>
         </div>
-                        
+
         <div id="delDocumentoModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-md">
                 <div class="modal-content" style="overflow-y: auto">
@@ -815,32 +815,32 @@
                 </div>
             </div>
         </div>                
-                        
+
         <script language="javascript">
-            
+
             $(document).ready(function () {
                 $('#tablaUsuarios').DataTable({
-                responsive: true
-                });   
+                    responsive: true
+                });
                 $('#tablaUsuariosInactivos').DataTable({
-                responsive: true
+                    responsive: true
                 });
                 $('#tablaViewDocumento').DataTable({
-                responsive: true
+                    responsive: true
                 });
                 $('#tablaViewCliente').DataTable({
-                responsive: true
+                    responsive: true
                 });
             });
-            
+
             var updateModal = $("#modificarModal");
             var disableModal = $("#disableModal");
             var activateModal = $("#activateModal");
             var deleteModal = $("#deleteModal");
-            
+
             var viewDocumentoModal = $("#viewDocumentoModal");
             var viewClienteModal = $("#viewClienteModal");
-            
+
             var clienteModal = $("#clienteModal");
             var documentoModal = $("#documentoModal");
             var modClienteModal = $("#modClienteModal");
@@ -865,10 +865,10 @@
 
             var activateUsuCod = $("#activateUsuCod");
             var activateUsuNomCom = $("#activateUsuNomCom");
-            
+
             var deleteUsuCod = $("#deleteUsuCod");
             var deleteUsuNomCom = $("#deleteUsuNomCom");
-            
+
             updateModal.on('show.bs.modal', function (e) {
                 updateUsuCod.val($(e.relatedTarget).data('usucod'));
                 updateUsuNom.val($(e.relatedTarget).data('usunom'));
@@ -882,7 +882,7 @@
                 updateUsuSex.val($(e.relatedTarget).data('ususex'));
                 updateCanUsuCod.val($(e.relatedTarget).data('canusucod'));
             });
-            
+
             disableModal.on('show.bs.modal', function (e) {
                 disableUsuCod.val($(e.relatedTarget).data('usucod'));
                 disableUsuNomCom.text($(e.relatedTarget).data('usuapepat') + " " + $(e.relatedTarget).data('usuapemat') + ", " + $(e.relatedTarget).data('usunom'));
@@ -897,29 +897,29 @@
                 deleteUsuCod.val($(e.relatedTarget).data('usucod'));
                 deleteUsuNomCom.text($(e.relatedTarget).data('usuapepat') + " " + $(e.relatedTarget).data('usuapemat') + ", " + $(e.relatedTarget).data('usunom'));
             });
-            
+
             var clienteUsuCod = $("#clienteUsuCod");
             var clienteUsuCodShow = $("#clienteUsuCodShow");
-            
+
             clienteModal.on('show.bs.modal', function (e) {
                 clienteUsuCod.val($(e.relatedTarget).data('usucod'));
                 clienteUsuCodShow.val($(e.relatedTarget).data('usuapepat') + " " + $(e.relatedTarget).data('usuapemat') + ", " + $(e.relatedTarget).data('usunom'));
             });
-            
+
             var documentoUsuCod = $("#documentoUsuCod");
             var documentoUsuCodShow = $("#documentoUsuCodShow");
-            
+
             documentoModal.on('show.bs.modal', function (e) {
                 documentoUsuCod.val($(e.relatedTarget).data('usucod'));
                 documentoUsuCodShow.val($(e.relatedTarget).data('usuapepat') + " " + $(e.relatedTarget).data('usuapemat') + ", " + $(e.relatedTarget).data('usunom'));
             });
-            
+
             var modClienteUsuCod = $("#modClienteUsuCod");
             var modClienteCliCod = $("#modClienteCliCod");
             var modClienteUsuAll = $("#modClienteUsuAll");
             var modClienteCliAll = $("#modClienteCliAll");
             var modClienteUsuCliDes = $("#modClienteUsuCliDes");
-            
+
             modClienteModal.on('show.bs.modal', function (e) {
                 modClienteUsuCod.val($(e.relatedTarget).data('usucod'));
                 modClienteCliCod.val($(e.relatedTarget).data('clicod'));
@@ -927,13 +927,13 @@
                 modClienteUsuAll.val($(e.relatedTarget).data('usuapepat') + " " + $(e.relatedTarget).data('usuapemat') + ", " + $(e.relatedTarget).data('usunom'));
                 modClienteCliAll.val($(e.relatedTarget).data('clicod') + " - " + $(e.relatedTarget).data('clirazsoc'));
             });
-            
+
             var modDocumentoUsuCod = $("#modDocumentoUsuCod");
             var modDocumentotipDocUsuCod = $("#modDocumentotipDocUsuCod");
             var modDocumentoUsuAll = $("#modDocumentoUsuAll");
             var modDocumentoTipDocAll = $("#modDocumentoTipDocAll");
             var modDocumentoDocUsuNum = $("#modDocumentoDocUsuNum");
-            
+
             modDocumentoModal.on('show.bs.modal', function (e) {
                 modDocumentoUsuCod.val($(e.relatedTarget).data('usucod'));
                 modDocumentotipDocUsuCod.val($(e.relatedTarget).data('tipdocusucod'));
@@ -941,31 +941,31 @@
                 modDocumentoUsuAll.val($(e.relatedTarget).data('usuapepat') + " " + $(e.relatedTarget).data('usuapemat') + ", " + $(e.relatedTarget).data('usunom'));
                 modDocumentoTipDocAll.val($(e.relatedTarget).data('tipdocusucod') + " - " + $(e.relatedTarget).data('tipdocusudet'));
             });
-            
+
             var delClienteUsuCod = $("#delClienteUsuCod");
             var delClienteCliCod = $("#delClienteCliCod");
             var delClienteCliAll = $("#delClienteCliAll");
             var delClienteUsuAll = $("#delClienteUsuAll");
-            
+
             delClienteModal.on('show.bs.modal', function (e) {
                 delClienteUsuCod.val($(e.relatedTarget).data('usucod'));
                 delClienteCliCod.val($(e.relatedTarget).data('clicod'));
                 delClienteUsuAll.text($(e.relatedTarget).data('usuapepat') + " " + $(e.relatedTarget).data('usuapemat') + ", " + $(e.relatedTarget).data('usunom'));
                 delClienteCliAll.text($(e.relatedTarget).data('clicod') + " - " + $(e.relatedTarget).data('clirazsoc'));
             });
-            
+
             var delDocumentoUsuCod = $("#delDocumentoUsuCod");
             var delDocumentoTipDocUsuCod = $("#delDocumentoTipDocUsuCod");
             var delDocumentoDocUsuAll = $("#delDocumentoDocUsuAll");
             var delDocumentoUsuAll = $("#delDocumentoUsuAll");
-            
+
             delDocumentoModal.on('show.bs.modal', function (e) {
                 delDocumentoUsuCod.val($(e.relatedTarget).data('usucod'));
                 delDocumentoTipDocUsuCod.val($(e.relatedTarget).data('tipdocusucod'));
                 delDocumentoUsuAll.text($(e.relatedTarget).data('usuapepat') + " " + $(e.relatedTarget).data('usuapemat') + ", " + $(e.relatedTarget).data('usunom'));
                 delDocumentoDocUsuAll.text($(e.relatedTarget).data('tipdocusucod') + " - " + $(e.relatedTarget).data('tipdocusudet'));
             });
-            
+
             $("#createForm").validate({
                 rules: {
                     usuCod: {
