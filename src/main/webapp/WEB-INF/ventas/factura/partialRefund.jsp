@@ -39,7 +39,8 @@
                                         <div class="col-md-6">
                                             <div class="form-group input-group">
                                                 <span class="input-group-addon">Número de Factura Antigua</span>
-                                                <input type="text" class="form-control" name="facVenCabCodOld" value="${facVenCabCod}" readonly>
+                                                <input type="text" class="form-control" name="facVenCabCodNum" value="${facVenCabCodNum}" readonly>
+                                                <input type="hidden"  name="facVenCabCodOld" value="${facVenCabCod}">
                                                 <span class="input-group-addon"><i class="fa fa-clipboard"></i></span>
                                             </div>
                                         </div>

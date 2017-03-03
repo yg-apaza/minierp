@@ -1,6 +1,10 @@
 package org.epis.minierp.dao.ventas;
 
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import org.epis.minierp.model.EnP1mFacturaVentaCab;
 import org.epis.minierp.model.EnP1mPreventaCab;
 import org.epis.minierp.util.HibernateUtil;
 import org.hibernate.ObjectNotFoundException;
@@ -46,6 +50,23 @@ public class EnP1mPreventaCabDao {
             return null;
         }
         return estado;
+    }
+    
+    public int getMaxPreVenCabCod(){
+        Query query = session.createQuery("from EnP1mPreventaCab");
+        List<EnP1mPreventaCab> estados = query.list();
+        try {
+            Set<Integer> lista = new HashSet<>();
+            int temp;
+            for(int i=0; i<estados.size(); i++){
+                temp = estados.get(i).getPreVenCabCod();
+                lista.add(temp);
+            }
+            return Collections.max(lista)+1;
+        } catch (Exception e) {
+            return 1;
+        }
+        
     }
     
     public void save(EnP1mPreventaCab preventaCab) {

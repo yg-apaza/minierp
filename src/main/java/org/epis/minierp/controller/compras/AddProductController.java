@@ -133,9 +133,10 @@ public class AddProductController extends HttpServlet {
                 producto.save(product);
 
                 EnP2mPrecioUnitarioDao preUniDao = new EnP2mPrecioUnitarioDao();
-                EnP2mPrecioUnitario precio;
-                aaagregar el producto a todas las listas de precios
-
+                
+                //agrega el producto con precios 0
+                preUniDao.agregarProducto(product, 0, 0, 0, 0);
+                
                 data = new JsonObject();
                 JsonArray products = new JsonArray();
                 List<EnP2mProducto> productos = producto.getAllActive();

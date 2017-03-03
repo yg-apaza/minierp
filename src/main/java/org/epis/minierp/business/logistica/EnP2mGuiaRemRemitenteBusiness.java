@@ -5,8 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 import org.epis.minierp.dao.compras.EnP4mFacturaCompraCabDao;
 import org.epis.minierp.dao.general.EnP1mEmpresaDao;
-import org.epis.minierp.dao.general.TaGzzMotivoTrasladoDao;
-import org.epis.minierp.dao.general.TaGzzTipoDestinatarioDao;
 import org.epis.minierp.dao.logistica.EnP2mGuiaRemRemitenteDao;
 import org.epis.minierp.dao.ventas.EnP1mFacturaVentaCabDao;
 import org.epis.minierp.model.EnP1mEmpresa;
@@ -61,7 +59,7 @@ public class EnP2mGuiaRemRemitenteBusiness {
         guiRemRemDao.save(guiaRemRem);
     }
     
-    public void create4Ventas(String facVenCabCod, String guiRemRemNum, 
+    public void create4Ventas(int facVenCabCod, String guiRemRemNum, 
             int motTraCod, String cliCod, char estRegCod){
         
         

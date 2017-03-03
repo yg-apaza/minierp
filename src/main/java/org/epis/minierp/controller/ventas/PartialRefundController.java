@@ -23,6 +23,7 @@ public class PartialRefundController extends HttpServlet {
         List <EnP1tFacturaVentaDet> details = new ArrayList <>(bill.getEnP1tFacturaVentaDets());
         
         request.setAttribute("facVenCabCod", facVenCabCod);
+        request.setAttribute("facVenCabCodNum", bill.getFacVenCabNum());
         request.setAttribute("details", details);
         request.setAttribute("igv", bill.getFacVenCabIgv());
         request.setAttribute("descuento", bill.getFacVenPorDes());
@@ -35,13 +36,13 @@ public class PartialRefundController extends HttpServlet {
         List <String> productsAmountsNew = Arrays.asList((request.getParameter("productsAmountsNew")).split("\\s*,\\s*"));
         List <String> productsCodes = Arrays.asList((request.getParameter("productsCodes")).split("\\s*,\\s*"));
         List <String> productsPrices = Arrays.asList((request.getParameter("productsPrices")).split("\\s*,\\s*"));
-        String facVenCabCodNew = request.getParameter("facVenCabCodNew");
+        String facVenCabCodNumNew = request.getParameter("facVenCabCodNew");
         int facVenCabCodOld = Integer.parseInt(request.getParameter("facVenCabCodOld"));
         double facVenTot = Double.parseDouble(request.getParameter("facVenTot"));
         double facVenSubTot = Double.parseDouble(request.getParameter("facVenSubTot"));
         
         EnP1mFacturaVentaBusiness bussiness = new EnP1mFacturaVentaBusiness();
-        bussiness.devolucionParcial(facVenCabCodOld, facVenCabCodNew, productsCodes, productsPrices, productsAmountsOld, productsAmountsNew, facVenSubTot, facVenTot);
+        bussiness.devolucionParcial(facVenCabCodOld, facVenCabCodNumNew, productsCodes, productsPrices, productsAmountsOld, productsAmountsNew, facVenSubTot, facVenTot);
         
         response.sendRedirect(request.getContextPath() + "/secured/ventas/factura");
     }

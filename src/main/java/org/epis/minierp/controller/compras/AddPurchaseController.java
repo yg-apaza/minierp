@@ -68,7 +68,7 @@ public class AddPurchaseController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
-            String facComCabCod = request.getParameter("facComCabCod");
+            int facComCabCod = Integer.parseInt(request.getParameter("facComCabCod"));
             String prvCod = request.getParameter("prvCod");
             String usuCod = request.getParameter("usuCod");
             DateFormat format = new SimpleDateFormat("yyyy-MM-dd");

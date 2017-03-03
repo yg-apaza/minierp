@@ -13,82 +13,90 @@
                 <div class="form-group">
                     <div class="row">
                         <div class="col-lg-12">
-                            <h1 class="page-header">Factura de Venta</h1>
+                            <h1 class="page-header">Boletas y/o Facturas</h1>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-2">
-                            <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
-                                <a href="${pageContext.request.contextPath}/secured/ventas/factura/addFactura" class="btn btn-success">Crear Factura <i class="fa fa-plus"></i></a>
+                    <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()== 1}">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
+                                    <a href="${pageContext.request.contextPath}/secured/ventas/factura/addFactura" class="btn btn-success btn-block">Crear Factura <i class="fa fa-plus"></i></a>
+                                    </cc:if>
+                            </div>
+                            <div class="col-md-3">
+                                <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
+                                    <button type="button" id="guiaTranportista" class="btn btn-primary btn-block">Generar Guías de Remisión</button>
                                 </cc:if>
-                        </div>
-                        <div class="col-md-3">
-                            <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
-                                <button type="button" id="guiaTranportista" class="btn btn-primary btn-block">Generar Guías de Remisión</button>
-                            </cc:if>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group input-group" >
-                                <span class="input-group-addon">Imprimir:</span>
-                                <select class="form-control" name="report" id="report">
-                                    <option value="factura">Factura</option>
-                                    <option value="boleta">Boleta</option>
-                                    <option value="guiaRemision">Guía de Remisión</option>
-                                </select>
                             </div>
-                        </div>
-                        <div class="col-md-1">
-                            <button type="button" id="imprimir" class="btn btn-primary btn-success"><i class="fa fa-print"></i></button>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group input-group" >
-                                <span class="input-group-addon">Flujo Efectivo:</span>
-                                <a  href="${pageContext.request.contextPath}/secured/general/reporte?type=pdf&&report=flujoefectivo&&jdbc=true&&key=null&&value=null" class="btn btn-danger" >
-                                    <i class="fa fa-file-pdf-o"></i>
-                                </a>
-                                <a  href="${pageContext.request.contextPath}/secured/general/reporte?type=doc&&report=flujoefectivo&&jdbc=true&&key=null&&value=null" class="btn  btn-primary" >
-                                    <i class="fa fa-file-word-o"></i>
-                                </a>
+                            <div class="col-md-3 col-md-offset-2">
+                                <div class="form-group input-group" >
+                                    <span class="input-group-addon">Imprimir:</span>
+                                    <select class="form-control" name="report" id="report">
+                                        <option value="factura">Factura</option>
+                                        <option value="boleta">Boleta</option>
+                                        <option value="guiaRemision">Guía de Remisión</option>
+                                    </select>
+                                </div>
                             </div>
+                            <div class="col-md-1">
+                                <button type="button" id="imprimir" class="btn btn-primary btn-success btn-block"><i class="fa fa-print"></i></button>
+                            </div>
+
+                            <!--<div class="col-md-3">
+                                <div class="form-group input-group" >
+                                    <span class="input-group-addon">Flujo Efectivo:</span>
+                                    <a  href="${pageContext.request.contextPath}/secured/general/reporte?type=pdf&&report=flujoefectivo&&jdbc=true&&key=null&&value=null" class="btn btn-danger" >
+                                        <i class="fa fa-file-pdf-o"></i>
+                                    </a>
+                                    <a  href="${pageContext.request.contextPath}/secured/general/reporte?type=doc&&report=flujoefectivo&&jdbc=true&&key=null&&value=null" class="btn  btn-primary" >
+                                        <i class="fa fa-file-word-o"></i>
+                                    </a>
+                                </div>
+                            </div>-->
                         </div>
-                    </div><br>
+                    </cc:if>
+                    <br />
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="table-responsive">    
                                 <table class="table table-striped table-bordered table-hover" id="tablePurchases">
                                     <thead>
                                         <tr>
-                                            <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
+                                            <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()==1}">
                                                 <th style="text-align: center"></th>
                                                 </cc:if>
-                                            <th style="text-align: center">Código</th>
-                                            <th style="text-align: center">F/B</th>
+                                            <th style="text-align: center">Codigo</th>
+                                            <th style="text-align: center">F/B/N</th>
                                             <th style="text-align: center">Cliente</th>
-                                            <th style="text-align: center">Vendedor</th>
+                                                <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()== 1}">
+                                                <th style="text-align: center">Vendedor</th>
+                                                </cc:if>
                                             <th style="text-align: center">Fecha</th>
                                             <th style="text-align: center">Valor Neto</th>
-                                            <th style="text-align: center">I.G.V.</th>
-                                            <th style="text-align: center">Total</th>
-                                            <th style="text-align: center">Vista</th>
-                                                <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
-                                                <th>Dev</th>
+                                            <th style="text-align: center">Valor IGV</th>
+                                            <th style="text-align: center">Valor Total</th>
+                                            <th style="text-align: center"></th>
+                                                <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()==1}">
+                                                <th>    </th>
                                                 </cc:if>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <c:forEach items="${facturasVenta}" var="c">
                                             <tr>
-                                                <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
+                                                <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()==1}">
                                                     <td width="3%" align="center"><input type="checkbox" name="codigos" value="${c.facVenCabCod}"></td>
                                                     </cc:if>
-                                                <td> ${c.facVenCabCod}</td>
+                                                <td> ${c.facVenCabNum}</td>
                                                 <td> ${c.facVenCabModVen}</td>
-                                                <td> ${c.enP1mCliente.cliNom} ${c.enP1mCliente.cliApePat}</td>
-                                                <td> ${c.enP1mUsuario.usuNom} ${c.enP1mUsuario.usuApePat}</td>
+                                                <td> ${c.enP1mCliente.cliRazSoc}</td>
+                                                <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()== 1}">
+                                                    <td> ${c.enP1mUsuario.usuNom} ${c.enP1mUsuario.usuApePat}</td>
+                                                </cc:if>
                                                 <td> ${c.facVenCabFecEmi}</td>
-                                                <td> ${c.taGzzMoneda.monSim} ${c.facVenCabTot}</td>
-                                                <td> ${c.taGzzMoneda.monSim} ${c.facVenCabSubTot}</td>
-                                                <td> ${c.taGzzMoneda.monSim} <fmt:formatNumber type="number" 
+                                                <td> ${c.facVenCabTot}</td>
+                                                <td> ${c.facVenCabSubTot}</td>
+                                                <td> <fmt:formatNumber type="number" 
                                                                   minFractionDigits="2" 
                                                                   maxFractionDigits="2" 
                                                                   value="${c.facVenCabTot + c.facVenCabSubTot}" /> 
@@ -96,15 +104,17 @@
                                                 <td>
                                                     <a onclick='viewSaleBill("${c.facVenCabCod}")' title="Vista Detallada de Factura de Venta">
                                                         <i class="fa fa-list-alt fa-lg" style="color: black;"></i>
-                                                    </a> 
-                                                    <a onclick='viewReferralGuide("${c.facVenCabCod}")' title="Vista Detallada de Guía R. Remitente">
-                                                        <i class="fa fa-book fa-lg" style="color: black;"></i>
                                                     </a>
-                                                    <a onclick='viewCarrierGuide("${c.facVenCabCod}")' title="Vista Detallada de Guía R. Transportista">
-                                                        <i class="fa fa-truck fa-lg" style="color: black;"></i>
-                                                    </a>
+                                                    <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()== 1}">
+                                                        <a onclick='viewReferralGuide("${c.facVenCabCod}")' title="Vista Detallada de Guía R. Remitente">
+                                                            <i class="fa fa-book fa-lg" style="color: black;"></i>
+                                                        </a>
+                                                        <a onclick='viewCarrierGuide("${c.facVenCabCod}")' title="Vista Detallada de Guía R. Transportista">
+                                                            <i class="fa fa-truck fa-lg" style="color: black;"></i>
+                                                        </a>
+                                                    </cc:if>
                                                 </td>
-                                                <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
+                                                <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()==1}">
                                                     <td>
                                                         <a onclick='makeDoRefund("${c.facVenCabCod}", "partial")' title="Devolucion Parcial">
                                                             <i class="fa fa-wrench fa-lg" style="color: black;"></i>
@@ -121,6 +131,7 @@
                             </div>
                         </div>
                     </div>
+                    <!--
                     <div class="row">
                         <div class="col-lg-4">
                             <a href="${pageContext.request.contextPath}/secured/general/reporte?type=pdf&&report=registroventas&&jdbc=false&&key=null&&value=null" class="btn btn-outline btn-danger">
@@ -128,8 +139,7 @@
                                 Descargar Registro [PDF]
                             </a>
                         </div>
-                        <div class="col-lg-4"></div>        
-                    </div>
+                    </div>-->
                 </div>
             </div>
             <div id="impresionLotesModal" class="modal fade">
@@ -352,13 +362,13 @@
                             </ul>
                             <div class="tab-content">
                                 <div class="tab-pane fade in active" id="generalGuiRem"><br>
-                                    <div class="col-xs-12 col-md-12">
+                                    <!--<div class="col-xs-12 col-md-12">
                                         <div class="form-group input-group">
                                             <span class="input-group-addon">Número de Guía de Remitente</span>
                                             <input type="text" class="form-control" id="guiRemRemNum" readOnly>
                                             <span class="input-group-addon"><i class="fa fa-file-text-o"></i></span>
                                         </div>
-                                    </div>
+                                    </div>-->
                                     <div class="col-xs-12 col-md-12">
                                         <div class="form-group input-group">
                                             <span class="input-group-addon">Remitente(Empresa)</span>

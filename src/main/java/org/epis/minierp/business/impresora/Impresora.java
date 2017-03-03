@@ -36,7 +36,7 @@ public class Impresora {
     DecimalFormat df = new DecimalFormat("0.00");
 
     EnP1mEmpresaDao empDao;
-    int tipCod = 1; 
+    int tipCod = 1;
     String cliNom, cliDir, cliRuc, fecEmi;
     //Factura
     String cliCod, conPag, fecVen, venZon, numSec, dis, rut, traNom;
@@ -58,7 +58,7 @@ public class Impresora {
         empDao = new EnP1mEmpresaDao();
     }
 
-    public String generateFactura(String cod){
+    public String generateFactura(int cod) {
         empDao = new EnP1mEmpresaDao();
         EnP1mEmpresa e = empDao.getById(01);
 
@@ -88,8 +88,8 @@ public class Impresora {
             fac.writeFacCabecera(cliCod, conPag, fecVen, venZon, numSec, dis, rut, traNom);
 
             proNum = 0;
-            List<EnP1tFacturaVentaDet> detalles = (new EnP1mFacturaVentaCabDao()).getFacVenDets(cod);            
-            for(EnP1tFacturaVentaDet d : detalles){
+            List<EnP1tFacturaVentaDet> detalles = (new EnP1mFacturaVentaCabDao()).getFacVenDets(cod);
+            for (EnP1tFacturaVentaDet d : detalles) {
                 proNum++;
                 proCod = d.getEnP2mProducto().getId().getProCod();
                 proCan = d.getFacVenDetCan();
@@ -114,15 +114,15 @@ public class Impresora {
         }
         return file;
     }
-    
-    public String[] generateFacturas(String[] cods){
+
+    public String[] generateFacturas(int[] cods) {
         empDao = new EnP1mEmpresaDao();
         EnP1mEmpresa e = empDao.getById(01);
         String file = "Facturas_" + sf.format(date.getTime()) + extension;
         ImpresoraMatricial fac = new ImpresoraMatricial(file, path, "factura");
         try {
-            for (String cod : cods){
-                EnP1mFacturaVentaCab f = (new EnP1mFacturaVentaCabDao()).getById(cod);     
+            for (int cod : cods) {
+                EnP1mFacturaVentaCab f = (new EnP1mFacturaVentaCabDao()).getById(cod);
                 cliCod = f.getEnP1mCliente().getCliCod();
                 try {
                     cliNom = f.getEnP1mCliente().getCliRazSoc();
@@ -130,9 +130,9 @@ public class Impresora {
                     cliNom = "NN";
                 }
                 try {
-                     cliDir = f.getEnP1mCliente().getCliDir();
+                    cliDir = f.getEnP1mCliente().getCliDir();
                 } catch (Exception fa) {
-                     cliDir = "Desconocida";
+                    cliDir = "Desconocida";
                 }
                 try {
                     cliRuc = (new EnP1mDocumentoClienteDao()).getById(new EnP1mDocumentoClienteId(cliCod, 2)).getDocCliNum();
@@ -147,7 +147,7 @@ public class Impresora {
                 venZon = f.getEnP1mUsuario().getUsuNom();
                 numSec = " ";
                 dis = " ";
-                if (f.getEnP1mCatalogoRuta() == null){
+                if (f.getEnP1mCatalogoRuta() == null) {
                     rut = " ";
                 } else {
                     rut = Integer.toString(f.getEnP1mCatalogoRuta().getCatRutCod());
@@ -160,8 +160,8 @@ public class Impresora {
                 fac.writeFacCabecera(cliCod, conPag, fecVen, venZon, numSec, dis, rut, traNom);
 
                 proNum = 0;
-                List<EnP1tFacturaVentaDet> detalles = (new EnP1mFacturaVentaCabDao()).getFacVenDets(cod);            
-                for(EnP1tFacturaVentaDet d : detalles){
+                List<EnP1tFacturaVentaDet> detalles = (new EnP1mFacturaVentaCabDao()).getFacVenDets(cod);
+                for (EnP1tFacturaVentaDet d : detalles) {
                     proNum++;
                     proCod = d.getEnP2mProducto().getId().getProCod();
                     proCan = d.getFacVenDetCan();
@@ -178,7 +178,7 @@ public class Impresora {
                 igv = f.getFacVenCabSubTot();
                 total = subTotal + igv;
                 totLet = convertNumberToLetter(total);
-                fac.writeFacLetras(totLet); 
+                fac.writeFacLetras(totLet);
                 fac.writeFacTotal(df.format(subTotal), df.format(igv), df.format(total));
             }
             fac.close();
@@ -188,14 +188,15 @@ public class Impresora {
         String params[] = {file, fac.getName()};
         return params;
     }
-    
-    public String[] generateBoletas(String[] cods){
+
+    public String[] generateBoletas(int[] cods) {
         empDao = new EnP1mEmpresaDao();
         EnP1mEmpresa e = empDao.getById(01);
+        String cliDni;
         String file = "Boletas_" + sf.format(date.getTime()) + extension;
         ImpresoraMatricial bol = new ImpresoraMatricial(file, path, "boleta");
         try {
-            for (String cod : cods) {
+            for (int cod : cods) {
                 EnP1mFacturaVentaCab f = (new EnP1mFacturaVentaCabDao()).getById(cod);
                 cliNom = f.getEnP1mCliente().getCliRazSoc();
                 cliDir = f.getEnP1mCliente().getCliDir();
@@ -211,24 +212,31 @@ public class Impresora {
                     venRut = Integer.toString(f.getEnP1mCatalogoRuta().getCatRutCod());
                 }
                 pdv = " ";
-                obs = f.getFacVenCabObs();
+
+                try {
+                    cliDni = (new EnP1mDocumentoClienteDao()).getById(new EnP1mDocumentoClienteId(cliCod, 1)).getDocCliNum();
+                } catch (Exception ee) {
+                    cliDni = "";
+                }
+                obs = f.getFacVenCabObs() + cliDni;
+
                 bol.writeBolCabecera(cliCod, conPag, fecVen, venRut, pdv, obs);
 
                 proNum = 0;
-                List<EnP1tFacturaVentaDet> detalles = (new EnP1mFacturaVentaCabDao()).getFacVenDets(cod);            
-                for(EnP1tFacturaVentaDet d : detalles){
+                List<EnP1tFacturaVentaDet> detalles = (new EnP1mFacturaVentaCabDao()).getFacVenDets(cod);
+                for (EnP1tFacturaVentaDet d : detalles) {
                     proNum++;
                     proCod = d.getEnP2mProducto().getId().getProCod();
                     proCan = d.getFacVenDetCan();
                     proUni = d.getEnP2mProducto().getTaGzzUnidadMed().getUniMedSim();
                     proDes = d.getEnP2mProducto().getProDet();
-                    proValUni = d.getFacVenDetValUni();
+                    proValUni = d.getFacVenDetValUni() * ((e.getEmpIgv() / 100) + 1);
                     proDes1 = Integer.toString(f.getFacVenPorDes());
                     proValNet = proCan * proValUni;
-                    bol.writeBolDetalle(tipCod, proNum,proCod, proCan, proUni, proDes, proValUni, proDes1, df.format(proValNet));
+                    bol.writeBolDetalle(tipCod, proNum, proCod, proCan, proUni, proDes, proValUni, proDes1, df.format(proValNet));
                 }
-                bol.addLines(e.getEmpNumDetBolVen() - proNum); 
-                total = f.getFacVenCabTot();
+                bol.addLines(e.getEmpNumDetBolVen() - proNum);
+                total = f.getFacVenCabSubTot() + f.getFacVenCabTot(); //neto + igv
                 bol.writeBolTotal(df.format(total));
             }
             bol.close();
@@ -238,14 +246,14 @@ public class Impresora {
         String params[] = {file, bol.getName()};
         return params;
     }
-    
-    public String[] generateGuiaRemision(String[] cods){
+
+    public String[] generateGuiaRemision(int[] cods) {
         empDao = new EnP1mEmpresaDao();
         EnP1mEmpresa e = empDao.getById(01);
         String file = "Remision_" + sf.format(date.getTime()) + extension;
         ImpresoraMatricial rem = new ImpresoraMatricial(file, path, "remision");
         try {
-            for (String cod : cods) {
+            for (int cod : cods) {
 
                 EnP1mFacturaVentaCab f = (new EnP1mFacturaVentaCabDao()).getById(cod);
                 cliCod = f.getEnP1mCliente().getCliCod();
@@ -277,13 +285,13 @@ public class Impresora {
                 zon = " ";
                 con = f.getTaGzzTipoPagoFactura().getTipPagDet();
                 oc = " ";
-                facNum = f.getFacVenCabCod();
+                facNum = f.getFacVenCabNum();
                 hora = DateUtil.getHoraActual();
                 numInt = " ";
                 rem.writeGuiRemCabecera(fecVen, ven, zon, con, cliCod, oc, facNum, hora, numInt);
 
                 proNum = 0;
-                for(EnP1tFacturaVentaDet d : (Set<EnP1tFacturaVentaDet>)f.getEnP1tFacturaVentaDets()){
+                for (EnP1tFacturaVentaDet d : (Set<EnP1tFacturaVentaDet>) f.getEnP1tFacturaVentaDets()) {
                     proNum++;
                     proCod = d.getEnP2mProducto().getId().getProCod();
                     proCan = d.getFacVenDetCan();
@@ -292,7 +300,7 @@ public class Impresora {
                     proValUni = d.getFacVenDetValUni();
                     proDes1 = Integer.toString(f.getFacVenPorDes());
                     proValNet = proCan * proValUni;
-                    
+
                     rem.writeGuiRemDetalle(tipCod, proNum, proCod, proCan, proUni, proDes, proValUni, proDes1, df.format(proValNet));
                 }
                 rem.addLines(e.getEmpNumDetGuiRemTra() - proNum);

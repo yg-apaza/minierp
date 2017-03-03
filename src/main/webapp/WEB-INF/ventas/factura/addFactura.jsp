@@ -51,7 +51,7 @@
                                             <div class="col-md-6">
                                                 <div class="form-group input-group" >
                                                     <span class="input-group-addon">Emisión</span>
-                                                    <input type="date" class="form-control" name="facVenCabFecEmi" value="${fechaEmision}" readonly>
+                                                    <input type="date" class="form-control" name="facVenCabFecEmi" value="${fechaEmision}">
                                                     <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                                                 </div>
                                             </div>  
@@ -125,6 +125,7 @@
                                                     <select class="form-control" name="facVenCabModVen">
                                                             <option value="F">Factura</option>
                                                             <option value="B">Boleta</option>
+                                                            <option value="N">Nota de Pedido</option>
                                                     </select>
                                                     <span class="input-group-addon"><i class="fa fa-sort-amount-asc"></i></span>
                                                 </div>

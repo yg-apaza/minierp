@@ -18,6 +18,10 @@ public class GuiaRemTransportistaController extends HttpServlet {
         empDao = new EnP1mEmpresaDao();
 
         String[] codigos = request.getParameterValues("codigos");
+        int[] cods = new int[codigos.length];
+        for (int i = 0;i < codigos.length ;i++) {
+            cods[i] = Integer.parseInt(codigos[i]);
+        }
         String guiRemTraNumIni = request.getParameter("guiTraLotTraNum");
         String traCod = request.getParameter("guiTraLotTraDat");
         String uniTraCod = request.getParameter("guiTraLotNumPla");
@@ -28,7 +32,7 @@ public class GuiaRemTransportistaController extends HttpServlet {
         int maxNumDet4GuiRemTra = empDao.getById(01).getEmpNumDetGuiRemTra();
 
         EnP2mGuiaRemTransportistaBusiness guiaTBusiness = new EnP2mGuiaRemTransportistaBusiness();
-        guiaTBusiness.create4Ventas(codigos, guiRemTraNumIni, traCod, uniTraCod, "", cliCod, 'A', maxNumDet4GuiRemTra);
+        guiaTBusiness.create4Ventas(cods, guiRemTraNumIni, traCod, uniTraCod, "", cliCod, 'A', maxNumDet4GuiRemTra);
 
         EnP1mFacturaVentaBusiness facturaVBusiness = new EnP1mFacturaVentaBusiness();
         EnP2mGuiaRemRemitenteBusiness guiaRBusiness = new EnP2mGuiaRemRemitenteBusiness();
@@ -41,7 +45,7 @@ public class GuiaRemTransportistaController extends HttpServlet {
         
         for (int i = 0; i < codigos.length; i++) {
             facturaVBusiness.setCatRutCod(intCodigos[i], catRutCod);
-            guiaRBusiness.create4Ventas(codigos[i], codigos[i], motTraCod, cliCod, 'A');
+            guiaRBusiness.create4Ventas(cods[i], codigos[i], motTraCod, cliCod, 'A');
         }
 
         response.sendRedirect(request.getContextPath() + "/secured/ventas/factura");

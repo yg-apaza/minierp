@@ -66,7 +66,6 @@ public class AddPreVentaController extends HttpServlet{
             List <String> productsAmounts = Arrays.asList((request.getParameter("productsAmounts")).split("\\s*,\\s*"));
             List <String> productsCodes = Arrays.asList((request.getParameter("productsCodes")).split("\\s*,\\s*"));
             List <String> productsPrices = Arrays.asList((request.getParameter("productsPrices")).split("\\s*,\\s*"));
-            int preVenCabCod = Integer.parseInt(request.getParameter("preVenCabCod"));
             String cliCod = request.getParameter("cliCod");
             int preVenCabIgv = (int)Double.parseDouble(request.getParameter("preVenCabIgv"));
             DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
@@ -83,9 +82,12 @@ public class AddPreVentaController extends HttpServlet{
             double preVenCabSubTot = Double.parseDouble(request.getParameter("preVenCabSubTot"));
             int tipDesCod = Integer.parseInt(request.getParameter("tipDesCod"));
             
-            EnP1mPreventaCabDao preventa = new EnP1mPreventaCabDao();
+            EnP1mPreventaCabDao preVenDao = new EnP1mPreventaCabDao();
+            int preVenCabCod =  preVenDao.getMaxPreVenCabCod();
             EnP1mPreventaCab header = new EnP1mPreventaCab();
             EnP1mUsuario user = (new EnP1mUsuarioDao()).getById(usuCod);
+            
+            
             
             header.setPreVenCabCod(preVenCabCod);
             header.setEnP1mCliente((new EnP1mClienteDao()).getById(cliCod));
@@ -102,7 +104,7 @@ public class AddPreVentaController extends HttpServlet{
             header.setTaGzzTipoDescuento((new TaGzzTipoDescuentoDao()).getById(tipDesCod));
             header.setEstRegCod('A');
 
-            preventa.save(header);
+            preVenDao.save(header);
             
             EnP1tPreventaDetDao detalles = new EnP1tPreventaDetDao();
             

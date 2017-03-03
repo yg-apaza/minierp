@@ -70,7 +70,7 @@ public class EnP2mGuiaRemTransportistaBusiness {
         
     }
     
-    public void create4Ventas(String[] facVenCabCod, String guiRemTraNumIni, 
+    public void create4Ventas(int[] facVenCabCod, String guiRemTraNumIni, 
             String traCod, String uniTraCod, String guiRemTraNumReg, 
             String cliCod, char estRegCod, int numMaxDet4GuiRemTra){
                
@@ -102,7 +102,7 @@ public class EnP2mGuiaRemTransportistaBusiness {
                     facturaBusiness.setGuiRemTraNum(facVenCabCod[a], guiRemTraNum);
                 }
                 ini = i;
-                guiRemTraNum = facturaBusiness.GenerateFacVenCabCod(guiRemTraNum,1);
+                guiRemTraNum = facturaBusiness.GenerateFacVenCabNum(guiRemTraNum,1);
                 numDets4Gui = 0;
                 i=i-1;
             }

@@ -15,19 +15,21 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <div class="col-xs-6 col-md-4">
-                        <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
-                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregarModal"> Agregar Nuevo <i class="fa fa-plus"></i></button>                
-                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#estadosModal"> Ver Inhabilitados <i class="fa fa-eye"></i></button>
-                        </cc:if>
+                    <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
+                        <div class="col-md-3">
+                            <button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#agregarModal"> Agregar Nuevo <i class="fa fa-plus"></i></button>                
+                        </div>
+                    </cc:if>
+                    <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()==1}">
+                        <div class="col-md-3">
+                            <button type="button" class="btn btn-info btn-block" data-toggle="modal" data-target="#estadosModal"> Ver Inhabilitados <i class="fa fa-eye"></i></button>
+                        </div>
+                    </cc:if>
+                    <div class="col-md-3 col-md-offset-3">
+                        <!--<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delRutaModal"> Gestionar Rutas <i class="fa fa-automobile"></i></button>-->
+                        <button type="button" class="btn btn-danger btn-block" data-toggle="modal" data-target="#delDocumentoModal"> Gestionar Documentos <i class="fa fa-file-text"></i></button>
                     </div>
-                    <div class="col-xs-6 col-md-5">
-                        <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
-                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delRutaModal"> Gestionar Rutas <i class="fa fa-automobile"></i></button>
-                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delDocumentoModal"> Gestionar Documentos <i class="fa fa-file-text"></i></button>
-                        </cc:if>
-                    </div>
-                    <div class="col-xs-12 col-md-3">
+                    <!--<div class="col-xs-12 col-md-3">
                         <div class="form-group input-group"  >
                             <span class="input-group-addon">Reportes</span>
                             <a href="${pageContext.request.contextPath}/secured/general/reporte?type=pdf&&report=clientes&&jdbc=false&&key=null&&value=null" class="btn btn-danger">
@@ -40,25 +42,24 @@
                                 <i class="fa fa-file-word-o"></i>
                             </a>
                         </div>
-                    </div>    
+                    </div> -->   
                 </div>
             </div>
             <br>
-            
+
             <div class="col-md-12">
                 <div class="table-responsive">
                     <table class="table table-bordered table-striped table-hover" id="tablaClientes">
                         <thead>
                             <tr>
-                                <th style="text-align: center">C</th>
-                                <th style="text-align: center">Docs</th>
+                                <th style="text-align: center">Codigo</th>
+                                <th style="text-align: center">Documentos</th>
                                 <th style="text-align: center">Razón Social</th>
-                                <th style="text-align: center">Nombre Comercial</th>
-                                <th style="text-align: center">Rutas Asociadas</th>
+                                <!--<th style="text-align: center">Rutas Asociadas</th>-->
                                 <th style="text-align: center">Tipo</th>
-                                <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
-                                <th style="text-align: center">Acciones</th>
-                                </cc:if>
+                                    <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
+                                    <th style="text-align: center">Acciones</th>
+                                    </cc:if>
                             </tr>
                         </thead>
                         <tbody>
@@ -67,56 +68,86 @@
                                     <td>${cli.cliCod}</td>
                                     <td>
                                         <c:forEach var="docs" items="${cli.enP1mDocumentoClientes}">
-                                           ${docs.taGzzTipoDocCliente.tipDocCliDet} - ${docs.docCliNum} <br>
+                                            ${docs.taGzzTipoDocCliente.tipDocCliDet} - ${docs.docCliNum} <br>
                                         </c:forEach>
                                     </td>
                                     <td>${cli.cliRazSoc}</td>
-                                    <td>${cli.cliNomCom}</td>
-                                    <td>
-                                        <c:forEach var="ruts" items="${cli.enP1mClientesRutases}">
-                                           ${ruts.enP1mCatalogoRuta.catRutDet} <br>
-                                        </c:forEach>
-                                    </td>
+                                    <!--<td>
+                                    <c:forEach var="ruts" items="${cli.enP1mClientesRutases}">
+                                        ${ruts.enP1mCatalogoRuta.catRutDet} <br>
+                                    </c:forEach>
+                                </td>-->
                                     <td>${cli.taGzzTipoCliente.tipCliDet}</td>
-                                    <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
-                                    <td>
-                                        <a href="#" data-toggle="modal" data-target="#modificarModal" title="Modificar Cliente" 
-                                           data-clicod="${cli.cliCod}" 
-                                           data-tipclicod="${cli.taGzzTipoCliente.tipCliCod}" 
-                                           data-clirazsoc="${cli.cliRazSoc}" 
-                                           data-clinomcom="${cli.cliNomCom}" 
-                                           data-clidomfis="${cli.cliDomFis}" 
-                                           data-clinom="${cli.cliNom}" 
-                                           data-cliapepat="${cli.cliApePat}" 
-                                           data-cliapemat="${cli.cliApeMat}" 
-                                           data-clisex="${cli.cliSex}" 
-                                           data-clidir="${cli.cliDir}" 
-                                           data-clitelfij="${cli.cliTelFij}" 
-                                           data-clitelcel="${cli.cliTelCel}" 
-                                           data-cliemail="${cli.cliEmail}" 
-                                           data-estcivcod="${cli.taGzzEstadoCivil.estCivCod}" 
-                                           data-estcivdet="${cli.taGzzEstadoCivil.estCivDet}" 
-                                           data-enp1mclientesrutases="${cli.enP1mClientesRutases}" 
-                                           data-enp1mdocumentoclientes="${cli.enP1mClientesRutases}" 
-                                           data-cancod="${cli.taGzzCanalCliente.canCliCod}">
-                                            <i class="fa fa-pencil-square-o fa-lg" style="color: black;"></i>
-                                        </a>
-                                        <a href="#" data-toggle="modal" data-target="#disableModal" title="Inhabilitar Cliente" 
-                                           data-clicod="${cli.cliCod}" 
-                                           data-clirazsoc="${cli.cliRazSoc}" >
-                                            <i class="fa fa-trash-o fa-lg" style="color: black;"></i>
-                                        </a>
-                                        <a href="#" data-toggle="modal" data-target="#rutaModal" title="Agregar Ruta al Cliente" 
-                                           data-clicod="${cli.cliCod}" 
-                                           data-clirazsoc="${cli.cliRazSoc}">
-                                            <i class="fa fa-automobile fa-lg" style="color: black;"></i>
-                                        </a>
-                                        <a href="#" data-toggle="modal" data-target="#documentoModal" title="Agregar Documentos al Cliente"
-                                           data-clicod="${cli.cliCod}" 
-                                           data-clirazsoc="${cli.cliRazSoc}">
-                                            <i class="fa fa-file-text fa-lg" style="color: black;"></i>
-                                        </a>
-                                    </td>
+                                    <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()==1}">
+                                        <td>
+                                            <a href="#" data-toggle="modal" data-target="#modificarModal" title="Modificar Cliente" 
+                                               data-clicod="${cli.cliCod}" 
+                                               data-tipclicod="${cli.taGzzTipoCliente.tipCliCod}" 
+                                               data-clirazsoc="${cli.cliRazSoc}" 
+                                               data-clinomcom="${cli.cliNomCom}" 
+                                               data-clidomfis="${cli.cliDomFis}" 
+                                               data-clinom="${cli.cliNom}" 
+                                               data-cliapepat="${cli.cliApePat}" 
+                                               data-cliapemat="${cli.cliApeMat}" 
+                                               data-clisex="${cli.cliSex}" 
+                                               data-clidir="${cli.cliDir}" 
+                                               data-clitelfij="${cli.cliTelFij}" 
+                                               data-clitelcel="${cli.cliTelCel}" 
+                                               data-cliemail="${cli.cliEmail}" 
+                                               data-estcivcod="${cli.taGzzEstadoCivil.estCivCod}" 
+                                               data-estcivdet="${cli.taGzzEstadoCivil.estCivDet}" 
+                                               data-enp1mclientesrutases="${cli.enP1mClientesRutases}" 
+                                               data-enp1mdocumentoclientes="${cli.enP1mClientesRutases}" 
+                                               data-cancod="${cli.taGzzCanalCliente.canCliCod}">
+                                                <i class="fa fa-pencil-square-o fa-lg" style="color: black;"></i>
+                                            </a>
+                                            <a href="#" data-toggle="modal" data-target="#disableModal" title="Inhabilitar Cliente" 
+                                               data-clicod="${cli.cliCod}" 
+                                               data-clirazsoc="${cli.cliRazSoc}" >
+                                                <i class="fa fa-trash-o fa-lg" style="color: black;"></i>
+                                            </a>
+                                            <a href="#" data-toggle="modal" data-target="#rutaModal" title="Agregar Ruta al Cliente" 
+                                               data-clicod="${cli.cliCod}" 
+                                               data-clirazsoc="${cli.cliRazSoc}">
+                                                <i class="fa fa-automobile fa-lg" style="color: black;"></i>
+                                            </a>
+                                            <a href="#" data-toggle="modal" data-target="#documentoModal" title="Agregar Documentos al Cliente"
+                                               data-clicod="${cli.cliCod}" 
+                                               data-clirazsoc="${cli.cliRazSoc}">
+                                                <i class="fa fa-file-text fa-lg" style="color: black;"></i>
+                                            </a>
+                                        </td>
+                                    </cc:if>
+                                    <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()==2}">
+                                        <td>
+                                            <a href="#" data-toggle="modal" data-target="#modificarModal" title="Modificar Cliente" 
+                                               data-clicod="${cli.cliCod}" 
+                                               data-tipclicod="${cli.taGzzTipoCliente.tipCliCod}" 
+                                               data-clirazsoc="${cli.cliRazSoc}" 
+                                               data-clinomcom="${cli.cliNomCom}" 
+                                               data-clidomfis="${cli.cliDomFis}" 
+                                               data-clinom="${cli.cliNom}" 
+                                               data-cliapepat="${cli.cliApePat}" 
+                                               data-cliapemat="${cli.cliApeMat}" 
+                                               data-clisex="${cli.cliSex}" 
+                                               data-clidir="${cli.cliDir}" 
+                                               data-clitelfij="${cli.cliTelFij}" 
+                                               data-clitelcel="${cli.cliTelCel}" 
+                                               data-cliemail="${cli.cliEmail}" 
+                                               data-estcivcod="${cli.taGzzEstadoCivil.estCivCod}" 
+                                               data-estcivdet="${cli.taGzzEstadoCivil.estCivDet}" 
+                                               data-enp1mclientesrutases="${cli.enP1mClientesRutases}" 
+                                               data-enp1mdocumentoclientes="${cli.enP1mClientesRutases}" 
+                                               data-cancod="${cli.taGzzCanalCliente.canCliCod}">
+                                                <i class="fa fa-pencil-square-o fa-3x" style="color: black;"></i>
+                                            </a>
+
+                                            <a href="#" data-toggle="modal" data-target="#documentoModal" title="Agregar Documentos al Cliente"
+                                               data-clicod="${cli.cliCod}" 
+                                               data-clirazsoc="${cli.cliRazSoc}">
+                                                <i class="fa fa-file-text fa-3x" style="color: black;"></i>
+                                            </a>
+                                        </td>
                                     </cc:if>
                                 </tr>
                             </c:forEach>
@@ -172,7 +203,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    
+
                                     <div class="col-sm-12">
                                         <label>Nombres:</label>
                                         <input type="text" class="form-control" placeholder="Nombre Comercial" name="cliNom">
@@ -405,7 +436,7 @@
                                             <td>${cli.cliCod}</td>
                                             <td>
                                                 <c:forEach var="docs" items="${cli.enP1mDocumentoClientes}">
-                                                   ${docs.taGzzTipoDocCliente.tipDocCliDet} - ${docs.docCliNum} <br>
+                                                    ${docs.taGzzTipoDocCliente.tipDocCliDet} - ${docs.docCliNum} <br>
                                                 </c:forEach>
                                             </td>
                                             <td>${cli.cliRazSoc}</td>
@@ -478,7 +509,7 @@
                 </div>
             </div>
         </div>
-                        
+
         <div id="rutaModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-md">
                 <div class="modal-content" style="overflow-y: auto">
@@ -521,7 +552,7 @@
                 </div>                                        
             </div>
         </div>
-                        
+
         <div id="documentoModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-md">
                 <div class="modal-content" style="overflow-y: auto">
@@ -563,7 +594,7 @@
                 </div>                                        
             </div>
         </div>
-        
+
         <div id="delRutaModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content" style="overflow-y: auto">
@@ -593,7 +624,7 @@
                                                             <td>${cliRut.enP1mCliente.cliCod} - ${cliRut.enP1mCliente.cliRazSoc}</td>
                                                             <td>${cliRut.enP1mCatalogoRuta.catRutCod} - ${cliRut.enP1mCatalogoRuta.catRutDet}</td>
                                                             <td>${cliRut.cliRutDes}</td>
-                                                            
+
                                                             <td>
                                                                 <a href="#" data-toggle="modal" data-target="#modRutClienteModal" title="Modificar Descripcion de la Ruta del Cliente"
                                                                    data-clicod="${cliRut.enP1mCliente.cliCod}" data-clirazsoc="${cliRut.enP1mCliente.cliRazSoc}"
@@ -620,7 +651,7 @@
                 </div>                                        
             </div>
         </div>                
-                        
+
         <div id="delDocumentoModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content" style="overflow-y: auto">
@@ -650,8 +681,9 @@
                                                             <td>${cliDoc.enP1mCliente.cliCod} - ${cliDoc.enP1mCliente.cliRazSoc}</td>
                                                             <td>${cliDoc.taGzzTipoDocCliente.tipDocCliCod} - ${cliDoc.taGzzTipoDocCliente.tipDocCliDet}</td>
                                                             <td>${cliDoc.docCliNum}</td>
-                                                            
+
                                                             <td>
+                                                                <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()==1}">
                                                                 <a href="#" data-toggle="modal" data-target="#modDocClienteModal" title="Modificar # del Documento del Cliente" 
                                                                    data-clicod="${cliDoc.enP1mCliente.cliCod}" data-clirazsoc="${cliDoc.enP1mCliente.cliRazSoc}"
                                                                    data-tipdocclicod="${cliDoc.taGzzTipoDocCliente.tipDocCliCod}" data-tipdocclidet="${cliDoc.taGzzTipoDocCliente.tipDocCliDet}"
@@ -663,6 +695,15 @@
                                                                    data-tipdocclicod="${cliDoc.taGzzTipoDocCliente.tipDocCliCod}" data-tipdocclidet="${cliDoc.taGzzTipoDocCliente.tipDocCliDet}">
                                                                     <i class="fa fa-trash-o fa-lg" style="color: red;"></i>
                                                                 </a>
+                                                                </cc:if>
+                                                                <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()==2}">
+                                                                <a href="#" data-toggle="modal" data-target="#modDocClienteModal" title="Modificar # del Documento del Cliente" 
+                                                                   data-clicod="${cliDoc.enP1mCliente.cliCod}" data-clirazsoc="${cliDoc.enP1mCliente.cliRazSoc}"
+                                                                   data-tipdocclicod="${cliDoc.taGzzTipoDocCliente.tipDocCliCod}" data-tipdocclidet="${cliDoc.taGzzTipoDocCliente.tipDocCliDet}"
+                                                                   data-docclinum="${cliDoc.docCliNum}">
+                                                                    <i class="fa fa-pencil-square-o fa-3x" style="color: black;"></i>
+                                                                </a>
+                                                                </cc:if>
                                                             </td>
                                                         </tr>
                                                     </c:forEach>
@@ -677,7 +718,7 @@
                 </div>                                        
             </div>
         </div>
-                        
+
         <div id="modRutClienteModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-md">
                 <div class="modal-content" style="overflow-y: auto">
@@ -717,7 +758,7 @@
                 </div>                                        
             </div>
         </div>
-                        
+
         <div id="modDocClienteModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-md">
                 <div class="modal-content" style="overflow-y: auto">
@@ -757,7 +798,7 @@
                 </div>                                        
             </div>
         </div>
-                        
+
         <div id="delRutClienteModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-md">
                 <div class="modal-content" style="overflow-y: auto">
@@ -780,7 +821,7 @@
                 </div>
             </div>
         </div>
-                        
+
         <div id="delDocClienteModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-md">
                 <div class="modal-content" style="overflow-y: auto">
@@ -808,16 +849,16 @@
             $(document).ready(function () {
                 $('#tablaClientes').DataTable({
                     responsive: true
-                    });
+                });
                 $('#tablaEstadosModal').DataTable({
                     responsive: true
-                    }); 
+                });
                 $('#tablaDelRutaForm').DataTable({
                     responsive: true
-                    });    
+                });
                 $('#tablaDelDocumentoForm').DataTable({
                     responsive: true
-                    });       
+                });
             });
 
             var updateModal = $("#modificarModal");
@@ -826,10 +867,10 @@
             var deleteModal = $("#deleteModal");
             var rutaModal = $("#rutaModal");
             var documentoModal = $("#documentoModal");
-            
+
             var modRutClienteModal = $("#modRutClienteModal");
             var delRutClienteModal = $("#delRutClienteModal");
-            
+
             var modDocClienteModal = $("#modDocClienteModal");
             var delDocClienteModal = $("#delDocClienteModal");
 
@@ -848,7 +889,7 @@
             var updateCliEmail = $("#updateCliEmail");
             var updateEstCivCod = $("#updateEstCivCod");
             var updateCanCod = $("#updateCanCod");
-                    
+
             var disableCliCod = $("#disableCliCod");
             var disableCliRazSoc = $("#disableCliRazSoc");
 
@@ -857,39 +898,39 @@
 
             var deleteCliCod = $("#deleteCliCod");
             var deleteCliRazSoc = $("#deleteCliRazSoc");
-            
+
             var rutaCliCod = $("#rutaCliCod");
             var rutaCliShow = $("#rutaCliShow");
-            
+
             var documentoCliCod = $("#documentoCliCod");
             var documentoCliShow = $("#documentoCliShow");
-            
+
             var rutas = $("#rutas");
             var documentos = $("#documentos");
-            
+
             var modRutCliCod = $("#modRutCliCod");
             var modRutCliAll = $("#modRutCliAll");
             var modRutCatRutCod = $("#modRutCatRutCod");
             var modRutCatRutAll = $("#modRutCatRutAll");
             var modRutCliRutDes = $("#modRutCliRutDes");
-            
+
             var modDocCliCod = $("#modDocCliCod");
             var modDocCliAll = $("#modDocCliAll");
             var modDocTipDocCliCod = $("#modDocTipDocCliCod");
             var modDocTipDocCliAll = $("#modDocTipDocCliAll");
             var modDocDocCliNum = $("#modDocDocCliNum");
-            
+
             var delRutCliCod = $("#delRutCliCod");
             var delRutCliAll = $("#delRutCliAll");
             var delRutCatRutCod = $("#delRutCatRutCod");
             var delRutCatRutAll = $("#delRutCatRutAll");
-            
+
             var delDocCliCod = $("#delDocCliCod");
             var delDocCliAll = $("#delDocCliAll");
             var delDocTipDocCliCod = $("#delDocTipDocCliCod");
             var delDocTipDocCliAll = $("#delDocTipDocCliAll");
-            
-            
+
+
             updateModal.on('show.bs.modal', function (e) {
                 updateCliCod.val($(e.relatedTarget).data('clicod'));
                 updateTipCliCod.val($(e.relatedTarget).data('tipclicod'));
@@ -906,7 +947,7 @@
                 updateCliEmail.val($(e.relatedTarget).data('cliemail'));
                 updateEstCivCod.val($(e.relatedTarget).data('estcivcod'));
                 updateCanCod.val($(e.relatedTarget).data('cancod'));
-                
+
                 rutas.val($(e.relatedTarget).data('enp1mclientesrutases'));
                 documentos.val($(e.relatedTarget).data('enp1mdocumentoclientes'));
             });
@@ -925,17 +966,17 @@
                 deleteCliCod.val($(e.relatedTarget).data('clicod'));
                 deleteCliRazSoc.text($(e.relatedTarget).data('clirazsoc'));
             });
-            
+
             rutaModal.on('show.bs.modal', function (e) {
                 rutaCliCod.val($(e.relatedTarget).data('clicod'));
-                rutaCliShow.val($(e.relatedTarget).data('clicod') +" - " + $(e.relatedTarget).data('clirazsoc'));
+                rutaCliShow.val($(e.relatedTarget).data('clicod') + " - " + $(e.relatedTarget).data('clirazsoc'));
             });
-            
+
             documentoModal.on('show.bs.modal', function (e) {
                 documentoCliCod.val($(e.relatedTarget).data('clicod'));
-                documentoCliShow.val($(e.relatedTarget).data('clicod') +" - " + $(e.relatedTarget).data('clirazsoc'));
+                documentoCliShow.val($(e.relatedTarget).data('clicod') + " - " + $(e.relatedTarget).data('clirazsoc'));
             });
-            
+
             modRutClienteModal.on('show.bs.modal', function (e) {
                 modRutCliCod.val($(e.relatedTarget).data('clicod'));
                 modRutCliAll.val($(e.relatedTarget).data('clicod') + " - " + $(e.relatedTarget).data('clirazsoc'));
@@ -943,14 +984,14 @@
                 modRutCatRutAll.val($(e.relatedTarget).data('catrutcod') + " - " + $(e.relatedTarget).data('catrutdet'));
                 modRutCliRutDes.val($(e.relatedTarget).data('clirutdes'));
             });
-            
+
             delRutClienteModal.on('show.bs.modal', function (e) {
                 delRutCliCod.val($(e.relatedTarget).data('clicod'));
                 delRutCliAll.text($(e.relatedTarget).data('clicod') + " - " + $(e.relatedTarget).data('clirazsoc'));
                 delRutCatRutCod.val($(e.relatedTarget).data('catrutcod'));
                 delRutCatRutAll.text($(e.relatedTarget).data('catrutcod') + " - " + $(e.relatedTarget).data('catrutdet'));
             });
-            
+
             modDocClienteModal.on('show.bs.modal', function (e) {
                 modDocCliCod.val($(e.relatedTarget).data('clicod'));
                 modDocCliAll.val($(e.relatedTarget).data('clicod') + " - " + $(e.relatedTarget).data('clirazsoc'));
@@ -958,7 +999,7 @@
                 modDocTipDocCliAll.val($(e.relatedTarget).data('tipdocclicod') + " - " + $(e.relatedTarget).data('tipdocclidet'));
                 modDocDocCliNum.val($(e.relatedTarget).data('docclinum'));
             });
-            
+
             delDocClienteModal.on('show.bs.modal', function (e) {
                 delDocCliCod.val($(e.relatedTarget).data('clicod'));
                 delDocCliAll.text($(e.relatedTarget).data('clicod') + " - " + $(e.relatedTarget).data('clirazsoc'));

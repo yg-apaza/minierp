@@ -108,7 +108,7 @@ public class EnP1mFacturaVentaCabDao {
     
   
     public int getMaxFacCabCod(){
-        Query query = session.createQuery("from EnP1mFacturaVentaCab'");
+        Query query = session.createQuery("from EnP1mFacturaVentaCab");
         List<EnP1mFacturaVentaCab> estados = query.list();
         try {
             Set<Integer> lista = new HashSet<>();
@@ -161,7 +161,7 @@ public class EnP1mFacturaVentaCabDao {
         return estados;
     }
     
-    public List<EnP1tFacturaVentaDet> getFacVenDets(String facVenCabCod){
+    public List<EnP1tFacturaVentaDet> getFacVenDets(int facVenCabCod){
         Query query = session.createQuery("from EnP1tFacturaVentaDet E "
                 + "where E.id.facVenCabCod = '"+facVenCabCod+"' "
                 + "order by E.id.facVenDetCod asc");

@@ -7,13 +7,17 @@ import org.epis.minierp.util.HibernateUtil;
 import org.hibernate.ObjectNotFoundException;
 import org.hibernate.Query;
 import org.hibernate.Session;
-
+import org.epis.minierp.dao.general.TaGzzListaPreciosDao;
+import org.epis.minierp.model.EnP2mProducto;
+import org.epis.minierp.model.TaGzzListaPrecios;
 public class EnP2mPrecioUnitarioDao {
 
     private Session session;
-
+    private TaGzzListaPreciosDao lisPreDao;
+    
     public EnP2mPrecioUnitarioDao() {
         session = HibernateUtil.getSessionFactory().getCurrentSession();
+        lisPreDao = new TaGzzListaPreciosDao();
     }
 
     public List<EnP2mPrecioUnitario> getAll() {
@@ -42,6 +46,24 @@ public class EnP2mPrecioUnitarioDao {
             return null;
         }
         return estado;
+    }
+    
+    public void agregarProducto(EnP2mProducto producto, double preUniVen, double preUniCom, double preUniMar, double preUniFle){
+        List<TaGzzListaPrecios> listas = lisPreDao.getAll();
+        EnP2mPrecioUnitario temp;
+        EnP2mPrecioUnitarioId idTemp;
+        String proCod = producto.getId().getProCod();
+        String claProCod = producto.getId().getClaProCod();
+        String subClaProCod = producto.getId().getSubClaProCod();
+        
+        for (TaGzzListaPrecios lista : listas) {
+            idTemp = new EnP2mPrecioUnitarioId(proCod, subClaProCod, claProCod, 
+                    lista.getLisPreCod());
+            temp = new EnP2mPrecioUnitario(
+                    idTemp, producto, lista, 
+                    preUniVen, preUniCom, preUniMar, preUniFle);
+            saveOrUpdate(temp);
+        }
     }
 
     public void save(EnP2mPrecioUnitario precioUnitario) {

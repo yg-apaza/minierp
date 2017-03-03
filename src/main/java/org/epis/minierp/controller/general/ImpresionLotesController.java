@@ -19,6 +19,10 @@ public class ImpresionLotesController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String[] codigos = request.getParameterValues("codigos");
+        int[] cods = new int[codigos.length];
+        for (int i = 0;i < codigos.length ;i++) {
+            cods[i] = Integer.parseInt(codigos[i]);
+        }
         String report = request.getParameter("report");
 
         String path = getServletContext().getRealPath("/WEB-INF/");
@@ -29,16 +33,16 @@ public class ImpresionLotesController extends HttpServlet {
         String printerName = "";
         switch(report){
             case "factura": 
-                fileGenerated = generador.generateFacturas(codigos)[0];
-                printerName = generador.generateFacturas(codigos)[1];
+                fileGenerated = generador.generateFacturas(cods)[0];
+                printerName = generador.generateFacturas(cods)[1];
                 break;
             case "boleta":
-                fileGenerated = generador.generateBoletas(codigos)[0];
-                printerName = generador.generateBoletas(codigos)[1];
-                break;
+                fileGenerated = generador.generateBoletas(cods)[0];
+                printerName = generador.generateBoletas(cods)[1];
+                break;  
             case "guiaRemision":
-                fileGenerated =  generador.generateGuiaRemision(codigos)[0];
-                printerName = generador.generateGuiaRemision(codigos)[1];
+                fileGenerated =  generador.generateGuiaRemision(cods)[0];
+                printerName = generador.generateGuiaRemision(cods)[1];
                 break;
         }
         generador.sendToPrinter(new File(fileGenerated), printerName);

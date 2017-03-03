@@ -12,6 +12,7 @@ import org.epis.minierp.dao.general.TaGzzTipoFallaProductoDao;
 import org.epis.minierp.dao.logistica.EnP2mInventarioCabDao;
 import org.epis.minierp.dao.logistica.EnP2mProductoDao;
 import org.epis.minierp.dao.logistica.EnP2tInventarioDetDao;
+import org.epis.minierp.dao.ventas.EnP2mPrecioUnitarioDao;
 import org.epis.minierp.model.EnP2mAlmacen;
 import org.epis.minierp.model.EnP2mInventarioCab;
 import org.epis.minierp.model.EnP2mProducto;
@@ -42,7 +43,7 @@ public class EnP2mProductoBusiness {
 
     public void create(String claProCod, String subClaProCod, String proCod,
             String proCodBar, String almCod, String proDet, int uniMedCod,
-            int monCod, double proStk, double volUniAlm, double proStkMin,
+            int monCod, double preUniVen, double preUniCom, double preUniMar, double preUniFle, double proStk, double volUniAlm, double proStkMin,
             double proStkMax, String proObs, double proPesNet, boolean proCom, char estRegCod) {
 
         EnP2mProductoId id = new EnP2mProductoId(proCod, subClaProCod, claProCod);
@@ -85,6 +86,11 @@ public class EnP2mProductoBusiness {
         producto.setEstRegCod(estRegCod);
 
         proDao.save(producto);
+
+        EnP2mPrecioUnitarioDao preUniDao = new EnP2mPrecioUnitarioDao();
+
+        //agrega el producto
+        preUniDao.agregarProducto(producto, preUniVen, preUniCom, preUniMar, preUniFle);
 
     }
 
