@@ -12,8 +12,10 @@ import org.epis.minierp.dao.general.EnP1mSucursalDao;
 import org.epis.minierp.dao.general.EnP1mUsuarioDao;
 import org.epis.minierp.dao.general.TaGzzCanalUsuarioDao;
 import org.epis.minierp.dao.general.TaGzzEstadoCivilDao;
+import org.epis.minierp.dao.general.TaGzzListaPreciosDao;
 import org.epis.minierp.dao.general.TaGzzTipoDocUsuarioDao;
 import org.epis.minierp.dao.general.TaGzzTipoUsuarioDao;
+import org.epis.minierp.dao.general.TaGzzUnidadTrabajoDao;
 import org.epis.minierp.dao.ventas.EnP1mCarteraClientesDao;
 import org.epis.minierp.dao.ventas.EnP1mClienteDao;
 import org.epis.minierp.dao.ventas.EnP1mDocumentoUsuarioDao;
@@ -32,6 +34,8 @@ public class UsuariosController extends HttpServlet
     TaGzzTipoDocUsuarioDao tipDocUsu;
     EnP1mClienteDao cliDao;
     TaGzzCanalUsuarioDao canUsuDao;
+    TaGzzListaPreciosDao lisPreDao;
+    TaGzzUnidadTrabajoDao uniTraDao;
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -44,6 +48,8 @@ public class UsuariosController extends HttpServlet
         cliDao = new EnP1mClienteDao();
         tipDocUsu = new TaGzzTipoDocUsuarioDao();
         canUsuDao = new TaGzzCanalUsuarioDao();
+        lisPreDao = new TaGzzListaPreciosDao();
+        uniTraDao = new TaGzzUnidadTrabajoDao();
         
         request.setAttribute("estados", daoEstCiv.getAllActive());                
         request.setAttribute("usuarios", daoUsu.getAllActive());
@@ -55,7 +61,8 @@ public class UsuariosController extends HttpServlet
         request.setAttribute("documentos",tipDocUsu.getAllActive());
         request.setAttribute("documentosUsuarios",docUsuDao.getAllActive());
         request.setAttribute("canalesUsuarios",canUsuDao.getAllActive());
-        
+        request.setAttribute("unidadesTrabajo",uniTraDao.getAllActive());
+        request.setAttribute("listasPrecios",lisPreDao.getAllActive());
         
         request.getRequestDispatcher("/WEB-INF/configuracion/usuario/usuarios.jsp").forward(request, response);
     }
@@ -65,8 +72,8 @@ public class UsuariosController extends HttpServlet
         String action = request.getParameter("accion");
         usuarioBusiness=new EnP1mUsuarioBusiness();
         
-        String usuCod, usuNom, usuApePat, usuApeMat, usuLog, usuPas, docUsuNum, cliCod, usuCliDes;
-        int tipUsuCod, sucCod, tipDocUsuCod, estCivCod, canUsuCod;
+        String usuCod, usuNom, usuApePat, usuApeMat, usuLog, usuPas, docUsuNum, cliCod, usuCliDes, newPassword;
+        int tipUsuCod, sucCod, tipDocUsuCod, estCivCod, canUsuCod, lisPreCod, uniTraCod;
         Date usuFecNac;
         char usuSex;
         
@@ -84,10 +91,12 @@ public class UsuariosController extends HttpServlet
                 estCivCod = Integer.parseInt(request.getParameter("estCivCod"));
                 canUsuCod = Integer.parseInt(request.getParameter("canUsuCod")); //canal
                 usuSex = request.getParameter("usuSex").charAt(0);
+                lisPreCod = Integer.parseInt(request.getParameter("lisPreCod"));
+                uniTraCod = Integer.parseInt(request.getParameter("uniTraCod"));
                 
                 usuarioBusiness.create(usuCod, usuNom, usuApePat, usuApeMat, 
                         usuLog, usuPas,tipUsuCod, sucCod, usuFecNac, 
-                        estCivCod, usuSex, canUsuCod, 'A');
+                        estCivCod, usuSex, canUsuCod,lisPreCod, uniTraCod);
                 break;
 
             case "update":
@@ -102,10 +111,12 @@ public class UsuariosController extends HttpServlet
                 estCivCod = Integer.parseInt(request.getParameter("estCivCod"));
                 canUsuCod = Integer.parseInt(request.getParameter("canUsuCod")); //canal
                 usuSex= request.getParameter("usuSex").charAt(0);
+                lisPreCod = Integer.parseInt(request.getParameter("lisPreCod"));
+                uniTraCod = Integer.parseInt(request.getParameter("uniTraCod"));
                 
                 usuarioBusiness.update(usuCod, usuNom, usuApePat, usuApeMat, 
                         usuLog, tipUsuCod, sucCod, usuFecNac,estCivCod, 
-                        usuSex, canUsuCod);
+                        usuSex, canUsuCod,lisPreCod, uniTraCod);
                 break;
                 
             case "disable":{
@@ -169,6 +180,13 @@ public class UsuariosController extends HttpServlet
                 usuCod = request.getParameter("usuCod");
                 cliCod =request.getParameter("cliCod");
                 usuarioBusiness.deleteCarteraCli(usuCod, cliCod);
+                break;
+            }
+            
+            case "updatePassword":{
+                usuCod = request.getParameter("usuCod");
+                newPassword = request.getParameter("newPassword");
+                usuarioBusiness.changePassword(usuCod,newPassword);
                 break;
             }
         }

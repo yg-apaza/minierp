@@ -1,10 +1,10 @@
 <%@tag description="Overall Page Login template" pageEncoding="UTF-8"%>
-<%@attribute name="head" fragment="true" %>
-<%@attribute name="header" fragment="true" %>
-<%@attribute name="footer" fragment="true" %>
-<%@attribute name="jsresources" fragment="true" %>
-<%@attribute name="cssresources" fragment="true" %>
-<%@attribute name="favicon" fragment="true" %>
+<%@attribute name="head" fragment="true"%>
+<%@attribute name="header" fragment="true"%>
+<%@attribute name="footer" fragment="true"%>
+<%@attribute name="jsresources" fragment="true"%>
+<%@attribute name="cssresources" fragment="true"%>
+<%@attribute name="favicon" fragment="true"%>
 
 <!DOCTYPE html>
 <html lang="es">

@@ -1,6 +1,8 @@
-<%@tag description="User Page template" pageEncoding="UTF-8"%>
-<%@taglib prefix="t" tagdir="/WEB-INF/tags"%>
+<%@tag description='User Page template' pageEncoding='UTF-8'%>
+<%@taglib prefix='t' tagdir='/WEB-INF/tags'%>
 <%@taglib prefix='cc' uri='http://java.sun.com/jsp/jstl/core'%>
+<%@attribute name='myscripts' fragment='true' %>
+<%@attribute name='mybody' fragment='true' %>
 
 
 <t:template-page>
@@ -50,6 +52,9 @@
         <script src="${pageContext.request.contextPath}/js/jquery.dataTables.min.js"></script>
         <script src="${pageContext.request.contextPath}/js/bootstrap-filestyle.min.js"></script>
         <script src="${pageContext.request.contextPath}/js/sidebar_menu.js"></script>
+        
+        <jsp:invoke fragment="myscripts"/>
+        
     </jsp:attribute>
 
     <jsp:attribute name="navegation">  
@@ -80,17 +85,17 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li>
                             <a href="${pageContext.request.contextPath}/">
-                                <i class="fa fa-home" aria-hidden="true"></i>Inicio
+                                <i class="fa fa-home" aria-hidden="true"></i> Panel de Inicio
                             </a>
                         </li>
                         <li>
                             <a href="${pageContext.request.contextPath}/secured/general/perfil">
-                                <i class="fa fa-user" aria-hidden="true"></i>Perfil
+                                <i class="fa fa-user" aria-hidden="true"></i> Mi Perfil
                             </a>
                         </li>
                         <li>
                             <a href="${pageContext.request.contextPath}/logout">
-                                <i class="fa fa-sign-out" aria-hidden="true"></i>Salir
+                                <i class="fa fa-sign-out" aria-hidden="true"></i> Terminar Sesion
                             </a>
                         </li>
                     </ul>
@@ -276,7 +281,7 @@
     <jsp:body>
         <div id="page-content-wrapper">
             <div class="container-fluid xyz">
-                <jsp:doBody/>
+                <jsp:invoke fragment="mybody"/>
             </div>
         </div>
     </jsp:body>

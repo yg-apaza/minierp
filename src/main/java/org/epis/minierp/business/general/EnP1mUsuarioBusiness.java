@@ -1,7 +1,6 @@
 package org.epis.minierp.business.general;
 
 import java.util.Date;
-import org.apache.commons.codec.digest.DigestUtils;
 import org.epis.minierp.dao.general.EnP1mUsuarioDao;
 import org.epis.minierp.dao.ventas.EnP1mCarteraClientesDao;
 import org.epis.minierp.dao.ventas.EnP1mDocumentoUsuarioDao;
@@ -14,6 +13,9 @@ import org.epis.minierp.model.EnP1mUsuario;
 import org.epis.minierp.model.TaGzzCanalUsuario;
 import org.epis.minierp.model.TaGzzEstadoCivil;
 import org.epis.minierp.model.TaGzzTipoUsuario;
+import org.apache.commons.codec.digest.DigestUtils;
+import org.epis.minierp.model.TaGzzListaPrecios;
+import org.epis.minierp.model.TaGzzUnidadTrabajo;
 
 public class EnP1mUsuarioBusiness {
     EnP1mUsuarioDao usuDao;
@@ -28,7 +30,7 @@ public class EnP1mUsuarioBusiness {
     
     public void create(String usuCod, String usuNom, String usuApePat, String usuApeMat, 
             String usuLog, String usuPas, int tipUsuCod, int sucCod, Date usuFecNac, 
-            int estCivCod, char usuSex, int canUsuCod, char estRegCod){
+            int estCivCod, char usuSex, int canUsuCod, int lisPreCod, int uniTraCod){
         EnP1mUsuario usu = new EnP1mUsuario();  
         TaGzzTipoUsuario tu = new TaGzzTipoUsuario();
         tu.setTipUsuCod(tipUsuCod);
@@ -38,6 +40,10 @@ public class EnP1mUsuarioBusiness {
         ec.setEstCivCod(estCivCod);
         TaGzzCanalUsuario cu = new TaGzzCanalUsuario();
         cu.setCanUsuCod(canUsuCod);
+        TaGzzListaPrecios lp = new TaGzzListaPrecios();
+        lp.setLisPreCod(lisPreCod);
+        TaGzzUnidadTrabajo ut = new TaGzzUnidadTrabajo();
+        ut.setUniTraCod(uniTraCod);
                
         usu.setUsuCod(usuCod);
         usu.setUsuNom(usuNom);
@@ -51,14 +57,17 @@ public class EnP1mUsuarioBusiness {
         usu.setTaGzzEstadoCivil(ec);
         usu.setUsuSex(usuSex);
         usu.setTaGzzCanalUsuario(cu);
-        usu.setEstRegCod(estRegCod);
+        usu.setTaGzzListaPrecios(lp);
+        usu.setTaGzzUnidadTrabajo(ut);
+        
+        usu.setEstRegCod('A');
         usuDao.save(usu);
        
     }
     
     public void update(String usuCod, String usuNom, String usuApePat, String usuApeMat, 
             String usuLog, int tipUsuCod, int sucCod, Date usuFecNac, 
-            int estCivCod, char usuSex, int canUsuCod){
+            int estCivCod, char usuSex, int canUsuCod , int lisPreCod, int uniTraCod){
         EnP1mUsuario usuUpdate = usuDao.getById(usuCod);
         TaGzzTipoUsuario tuUpdate = new TaGzzTipoUsuario();
         tuUpdate.setTipUsuCod(tipUsuCod);
@@ -68,6 +77,10 @@ public class EnP1mUsuarioBusiness {
         ecUpdate.setEstCivCod(estCivCod);
         TaGzzCanalUsuario cu = new TaGzzCanalUsuario();
         cu.setCanUsuCod(canUsuCod);
+        TaGzzListaPrecios lp = new TaGzzListaPrecios();
+        lp.setLisPreCod(lisPreCod);
+        TaGzzUnidadTrabajo ut = new TaGzzUnidadTrabajo();
+        ut.setUniTraCod(uniTraCod);
         
         usuUpdate.setUsuNom(usuNom);
         usuUpdate.setUsuApePat(usuApePat);
@@ -79,6 +92,8 @@ public class EnP1mUsuarioBusiness {
         usuUpdate.setTaGzzEstadoCivil(ecUpdate);
         usuUpdate.setUsuSex(usuSex);
         usuUpdate.setTaGzzCanalUsuario(cu);
+        usuUpdate.setTaGzzListaPrecios(lp);
+        usuUpdate.setTaGzzUnidadTrabajo(ut);
         usuDao.update(usuUpdate);
     }
     
@@ -142,5 +157,11 @@ public class EnP1mUsuarioBusiness {
     
     public void delete(String usuCod){
         setEstRegCod(usuCod, '*'); 
+    }
+    
+    public void changePassword(String usuCod, String newPassword){
+        EnP1mUsuario usu = usuDao.getById(usuCod);
+        usu.setUsuPas(DigestUtils.sha256Hex(newPassword));
+        usuDao.update(usu);
     }
 }

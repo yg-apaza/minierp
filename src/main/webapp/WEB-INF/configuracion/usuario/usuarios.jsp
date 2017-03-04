@@ -1,128 +1,127 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib tagdir="/WEB-INF/tags" prefix="minierptemplate" %>
-<%@ taglib prefix='cc' uri='http://java.sun.com/jsp/jstl/core' %>
+<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib prefix="t" tagdir='/WEB-INF/tags'%>
+<%@taglib prefix="cc" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<minierptemplate:template>
-    <jsp:attribute name="titulo">
-        <title>MiniERP - Usuarios</title>
-    </jsp:attribute>
-    <jsp:attribute name="contenido">
-        <div class="panel-body">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="page-header">Usuarios</h1>
-                </div>
+<t:template-page-nav>
+    <jsp:attribute name="mybody">
+        <div class="panel panel-default class">
+            <div class="panel-heading">
+                <h1 class="text-left">Usuarios</h1>
             </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="col-xs-12 col-md-12 text-center">
-                        <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
-                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregarModal"> Agregar Nuevo <i class="fa fa-plus"></i></button>                
-                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#estadosModal"> Ver Inhabilitados <i class="fa fa-eye"></i></button>
-                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#viewDocumentoModal"> Gestionar Documentos Asociados <i class="fa fa-file-text"></i></button>
-                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#viewClienteModal"> Gestionar Clientes Asociados <i class="fa fa-child"></i></button>
-                            </cc:if>
-                    </div>
-                    <!--
-                    <div class="col-xs-12 col-md-3">
-                        <div class="form-group input-group" >
-                            <span class="input-group-addon">Reportes</span>
-                            <a href="${pageContext.request.contextPath}/secured/general/reporte?type=pdf&&report=clientes&&jdbc=false&&key=null&&value=null" class="btn btn-danger">
-                                <i class="fa fa-file-pdf-o"></i>
-                            </a> 
-                            <a href="${pageContext.request.contextPath}/secured/general/reporte?type=xls&&report=clientes&&jdbc=false&&key=null&&value=null" class="btn btn-success">
-                                <i class="fa fa-file-excel-o"></i>
-                            </a> 
-                            <a href="${pageContext.request.contextPath}/secured/general/reporte?type=doc&&report=clientes&&jdbc=false&&key=null&&value=null" class="btn  btn-primary">
-                                <i class="fa fa-file-word-o"></i>
-                            </a>
+            <div class="panel-body">
+                <div class="row">
+                    <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod() == 1}">
+                        <div class="col-md-12">
+                            <div class="col-md-3 text-center">
+                                <button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#agregarModal">Agregar Nuevo <i class="fa fa-plus"></i></button>                
+                            </div>
+                            <div class="col-md-3 text-center">
+                                <button type="button" class="btn btn-info btn-block" data-toggle="modal" data-target="#estadosModal">Ver Inhabilitados <i class="fa fa-eye"></i></button>
+                            </div>
+                            <div class="col-md-3 text-center">
+                                <button type="button" class="btn btn-warning btn-block" data-toggle="modal" data-target="#viewDocumentoModal">Documentos <i class="fa fa-file-text"></i></button>
+                            </div>
+                            <div class="col-md-3 text-center">
+                                <button type="button" class="btn btn-warning btn-block" data-toggle="modal" data-target="#viewClienteModal">Clientes <i class="fa fa-child"></i></button>
+                            </div>
                         </div>
-                    </div>  -->  
-                </div>
-            </div><br>
+                        <br />
+                        <br />
+                        <br />
+                    </cc:if>
 
-            <div class="col-md-12">
-                <div class="table-responsive">
-                    <table class="table table-bordered table-striped table-hover" id="tablaUsuarios">
-                        <thead>
-                            <tr>
-                                <th>Cod</th>
-                                <th>Documentos</th>
-                                <th>Nombres y Apellidos</th>
-                                <th>Tipo</th>
-                                <th>Canal de Venta</th>
-                                <th>Catálogo de Clientes</th>
-                                    <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
-                                    <th>Acciones</th>
-                                    </cc:if>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <c:forEach var="u" items="${usuarios}">
-                                <tr>
-                                    <td>${u.usuCod}</td>
-                                    <td>
-                                        <c:forEach var="docs" items="${u.enP1mDocumentoUsuarios}">
-                                            * ${docs.taGzzTipoDocUsuario.tipDocUsuDet} - ${docs.docUsuNum} <br>
-                                        </c:forEach>
-                                    </td>
-                                    <td>${u.usuNom} ${u.usuApePat} ${u.usuApeMat}</td>
-                                    <td>${u.taGzzTipoUsuario.tipUsuDet}</td>
-                                    <td>${u.taGzzCanalUsuario.canUsuDet}</td>
-                                    <td>
-                                        <c:forEach var="cli" items="${u.enP1mCarteraClienteses}">
-                                            * ${cli.enP1mCliente.cliRazSoc}<br>
-                                        </c:forEach>
-                                    </td>
-                                    <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
-                                        <td>
-                                            <a href="#" data-toggle="modal" data-target="#modificarModal" 
-                                               title="Modificar Usuario" 
-                                               data-usucod="${u.usuCod}" 
-                                               data-usunom="${u.usuNom}" 
-                                               data-usuapepat="${u.usuApePat}" 
-                                               data-usuapemat="${u.usuApeMat}" 
-                                               data-tipusucod="${u.taGzzTipoUsuario.tipUsuCod}" 
-                                               data-succod="${u.enP1mSucursal.sucCod}" 
-                                               data-usufecnac="${u.usuFecNac}"
-                                               data-estcivcod="${u.taGzzEstadoCivil.estCivCod}" 
-                                               data-ususex="${u.usuSex}"
-                                               data-canusucod="${u.taGzzCanalUsuario.canUsuCod}"
-                                               data-usulog="${u.usuLog}">
-                                                <i class="fa fa-pencil-square-o fa-lg" style="color: black;"></i>
-                                            </a>
-                                            <a href="#" data-toggle="modal" data-target="#disableModal" 
-                                               title="InHabilitar Usuario"
-                                               data-usucod="${u.usuCod}" 
-                                               data-usunom="${u.usuNom}" 
-                                               data-usuapepat="${u.usuApePat}" 
-                                               data-usuapemat="${u.usuApeMat}">
-                                                <i class="fa fa-trash-o fa-lg" style="color: black;"></i>
-                                            </a>
-                                            <a href="#" data-toggle="modal" data-target="#documentoModal" 
-                                               title="Agregar Documentos al Usuario"
-                                               data-usucod="${u.usuCod}" 
-                                               data-usunom="${u.usuNom}" 
-                                               data-usuapepat="${u.usuApePat}" 
-                                               data-usuapemat="${u.usuApeMat}">
-                                                <i class="fa fa-file-text fa-lg" style="color: black;"></i>
-                                            </a>
-                                            <a href="#" data-toggle="modal" data-target="#clienteModal" 
-                                               title="Agregar Clientes al Usuario"
-                                               data-usucod="${u.usuCod}" 
-                                               data-usunom="${u.usuNom}" 
-                                               data-usuapepat="${u.usuApePat}" 
-                                               data-usuapemat="${u.usuApeMat}">
-                                                <i class="fa fa-child fa-lg" style="color: black;"></i>
-                                            </a>
-                                        </td>
-                                    </cc:if>
-                                </tr>
-                            </c:forEach>
-                        </tbody>
-                    </table>
+                    <div class="col-md-12">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped table-hover" id="tablaUsuarios">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">Codigo</th>
+                                        <th class="text-center">Documentos</th>
+                                        <th class="text-center">Nombres y Apellidos</th>
+                                        <th class="text-center">Tipo</th>
+                                        <th class="text-center">Lista de Precios</th>
+                                        <th class="text-center">Clientes(Razon Social)</th>
+                                            <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()== 1}">
+                                            <th class="text-center">Acciones</th>
+                                            </cc:if>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <cc:forEach var="u" items="${usuarios}">
+                                        <tr>
+                                            <td nowrap="nowrap">${u.usuCod}</td>
+                                            <td nowrap="nowrap"><cc:forEach var="docs" items="${u.enP1mDocumentoUsuarios}">
+                                                    ${docs.taGzzTipoDocUsuario.tipDocUsuDet}:${docs.docUsuNum}<br>
+                                                </cc:forEach>
+                                            </td>
+                                            <td nowrap="nowrap">${u.usuNom} ${u.usuApePat} ${u.usuApeMat}</td>
+                                            <td nowrap="nowrap">${u.taGzzTipoUsuario.tipUsuDet}</td>
+                                            <td nowrap="nowrap">${u.taGzzListaPrecios.lisPreDet}</td>
+                                            <td nowrap="nowrap"><cc:forEach var="cli" items="${u.enP1mCarteraClienteses}">
+                                                    ${cli.enP1mCliente.cliRazSoc}<br>
+                                                </cc:forEach>
+                                            </td>
+                                            <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()== 1}">
+                                                <td class="text-center">
+                                                    <a href="#" data-toggle="modal" data-target="#modificarModal" 
+                                                       title="Modificar Usuario" 
+                                                       data-usucod="${u.usuCod}" 
+                                                       data-usunom="${u.usuNom}" 
+                                                       data-usuapepat="${u.usuApePat}" 
+                                                       data-usuapemat="${u.usuApeMat}" 
+                                                       data-tipusucod="${u.taGzzTipoUsuario.tipUsuCod}" 
+                                                       data-succod="${u.enP1mSucursal.sucCod}" 
+                                                       data-usufecnac="${u.usuFecNac}"
+                                                       data-estcivcod="${u.taGzzEstadoCivil.estCivCod}" 
+                                                       data-ususex="${u.usuSex}"
+                                                       data-canusucod="${u.taGzzCanalUsuario.canUsuCod}"
+                                                       data-usulog="${u.usuLog}"
+                                                       data-lisprecod="${u.taGzzListaPrecios.lisPreCod}"
+                                                       data-unitracod="${u.taGzzUnidadTrabajo.uniTraCod}"
+                                                       data-mylispreusu="${u.enP1mListaPreciosUsuarioses}">
+                                                        <i class="fa fa-pencil-square-o fa-lg" style="color: black;"></i>
+                                                    </a>
+                                                    <a href="#" data-toggle="modal" data-target="#documentoModal" 
+                                                       title="Agregar Documentos al Usuario"
+                                                       data-usucod="${u.usuCod}" 
+                                                       data-usunom="${u.usuNom}" 
+                                                       data-usuapepat="${u.usuApePat}" 
+                                                       data-usuapemat="${u.usuApeMat}">
+                                                        <i class="fa fa-file-text fa-lg" style="color: black;"></i>
+                                                    </a>
+                                                    <a href="#" data-toggle="modal" data-target="#clienteModal" 
+                                                       title="Agregar Clientes al Usuario"
+                                                       data-usucod="${u.usuCod}" 
+                                                       data-usunom="${u.usuNom}" 
+                                                       data-usuapepat="${u.usuApePat}" 
+                                                       data-usuapemat="${u.usuApeMat}">
+                                                        <i class="fa fa-child fa-lg" style="color: black;"></i>
+                                                    </a>
+                                                    <a href="#" data-toggle="modal" data-target="#passwordModal" 
+                                                       title="Cambiar Contraseña"
+                                                       data-usucod="${u.usuCod}" 
+                                                       data-usunom="${u.usuNom}" 
+                                                       data-usuapepat="${u.usuApePat}" 
+                                                       data-usuapemat="${u.usuApeMat}">
+                                                        <i class="fa fa-book fa-lg" style="color: black;"></i>
+                                                    </a>
+                                                    <a href="#" data-toggle="modal" data-target="#disableModal" 
+                                                       title="InHabilitar Usuario"
+                                                       data-usucod="${u.usuCod}" 
+                                                       data-usunom="${u.usuNom}" 
+                                                       data-usuapepat="${u.usuApePat}" 
+                                                       data-usuapemat="${u.usuApeMat}">
+                                                        <i class="fa fa-trash-o fa-lg" style="color: black;"></i>
+                                                    </a>
+                                                </td>
+                                            </cc:if>
+                                        </tr>
+                                    </cc:forEach>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -161,37 +160,55 @@
                                 <div class="form-group">
                                     <div class="col-sm-6"> 
                                         <label class="control-label">Login</label>
-                                        <input type="text" class="form-control" placeholder="Login" name="usuLog">
+                                        <input type="text" class="form-control" placeholder="Login de Usuario" name="usuLog" autocomplete="off">
                                     </div>
                                     <div class="col-sm-6">                               
                                         <label class="control-label">Password</label>
-                                        <input type="password" class="form-control" placeholder="Password" name="usuPas">
+                                        <input type="password" class="form-control" placeholder="Password de Usuario" name="usuPas" autocomplete="off">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-4"> 
                                         <label class="control-label">Tipo Usuario</label>
                                         <select class="form-control" name="tipUsuCod">
-                                            <c:forEach var="u" items="${tipos}">
+                                            <cc:forEach var="u" items="${tipos}">
                                                 <option value="${u.tipUsuCod}">${u.tipUsuCod} - ${u.tipUsuDet}</option>
-                                            </c:forEach>
+                                            </cc:forEach>
                                         </select>
 
                                     </div>
                                     <div class="col-sm-4">                               
                                         <label class="control-label">Sucursal</label>
                                         <select class="form-control" name="sucCod">
-                                            <c:forEach var="u" items="${sucursales}">
+                                            <cc:forEach var="u" items="${sucursales}">
                                                 <option value="${u.sucCod}">${u.sucCod} - ${u.sucDes}</option>
-                                            </c:forEach>
+                                            </cc:forEach>
                                         </select>
                                     </div>
                                     <div class="col-sm-4">                               
                                         <label class="control-label">Canal de Venta</label>
                                         <select class="form-control" name="canUsuCod">
-                                            <c:forEach var="c" items="${canalesUsuarios}">
+                                            <cc:forEach var="c" items="${canalesUsuarios}">
                                                 <option value="${c.canUsuCod}">${c.canUsuCod} - ${c.canUsuDet}</option>
-                                            </c:forEach>
+                                            </cc:forEach>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-6"> 
+                                        <label class="control-label">Unidad de Trabajo</label>
+                                        <select class="form-control" name="uniTraCod">
+                                            <cc:forEach var="u" items="${unidadesTrabajo}">
+                                                <option value="${u.uniTraCod}">${u.uniTraCod} - ${u.uniTraDet}</option>
+                                            </cc:forEach>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-6"> 
+                                        <label class="control-label">Lista de Precios</label>
+                                        <select class="form-control" name="lisPreCod">
+                                            <cc:forEach var="l" items="${listasPrecios}">
+                                                <option value="${l.lisPreCod}">${l.lisPreCod} - ${l.lisPreDet}</option>
+                                            </cc:forEach>
                                         </select>
                                     </div>
                                 </div>
@@ -207,9 +224,9 @@
                                     <div class="col-sm-4">                               
                                         <label class="control-label">Estado Civil</label>
                                         <select class="form-control" name="estCivCod">
-                                            <c:forEach var="u" items="${estados}">
+                                            <cc:forEach var="u" items="${estados}">
                                                 <option value="${u.estCivCod}">${u.estCivCod} - ${u.estCivDet}</option>
-                                            </c:forEach>
+                                            </cc:forEach>
                                         </select>
                                     </div>
                                     <div class="col-sm-4">                               
@@ -253,9 +270,9 @@
                                     <div class="col-sm-6">
                                         <label class="control-label">Canal de Venta</label>
                                         <select class="form-control" name="canUsuCod" id="updateCanUsuCod">
-                                            <c:forEach var="c" items="${canalesUsuarios}">
+                                            <cc:forEach var="c" items="${canalesUsuarios}">
                                                 <option value="${c.canUsuCod}">${c.canUsuCod} - ${c.canUsuDet}</option>
-                                            </c:forEach>
+                                            </cc:forEach>
                                         </select>
                                     </div>
                                     <div class="col-sm-6">                               
@@ -281,9 +298,27 @@
                                     <div class="col-sm-6"> 
                                         <label class="control-label">Tipo Usuario</label>
                                         <select class="form-control" name="tipUsuCod" id="updateTipUsuCod">
-                                            <c:forEach var="u" items="${tipos}">
+                                            <cc:forEach var="u" items="${tipos}">
                                                 <option value="${u.tipUsuCod}">${u.tipUsuCod} - ${u.tipUsuDet}</option>
-                                            </c:forEach>
+                                            </cc:forEach>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-6"> 
+                                        <label class="control-label">Unidad de Trabajo</label>
+                                        <select class="form-control" name="uniTraCod" id="updateUniTraCod">
+                                            <cc:forEach var="u" items="${unidadesTrabajo}">
+                                                <option value="${u.uniTraCod}">${u.uniTraCod} - ${u.uniTraDet}</option>
+                                            </cc:forEach>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-6"> 
+                                        <label class="control-label">Lista de Precios</label>
+                                        <select class="form-control" name="lisPreCod" id="updateLisPreCod">
+                                            <cc:forEach var="l" items="${listasPrecios}">
+                                                <option value="${l.lisPreCod}">${l.lisPreCod} - ${l.lisPreDet}</option>
+                                            </cc:forEach>
                                         </select>
                                     </div>
                                 </div>
@@ -291,9 +326,9 @@
                                     <div class="col-sm-6">                               
                                         <label class="control-label" >Sucursal</label>
                                         <select class="form-control" name="sucCod" id="updateSucCod">
-                                            <c:forEach var="u" items="${sucursales}">
+                                            <cc:forEach var="u" items="${sucursales}">
                                                 <option value="${u.sucCod}">${u.sucCod} - ${u.sucDes}</option>
-                                            </c:forEach>
+                                            </cc:forEach>
                                         </select>
                                     </div>
                                     <div class="col-sm-6"> 
@@ -309,9 +344,9 @@
                                     <div class="col-sm-6">                               
                                         <label class="control-label" >Estado Civil</label>
                                         <select class="form-control" name="estCivCod" id="updateEstCivCod">
-                                            <c:forEach var="u" items="${estados}">
+                                            <cc:forEach var="u" items="${estados}">
                                                 <option value="${u.estCivCod}">${u.estCivCod} - ${u.estCivDet}</option>
-                                            </c:forEach>
+                                            </cc:forEach>
                                         </select>
                                     </div>
                                     <div class="col-sm-6">                               
@@ -380,7 +415,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <c:forEach var="u" items="${inactivos}">
+                                    <cc:forEach var="u" items="${inactivos}">
                                         <tr>
                                             <td>${u.usuCod}</td>
                                             <td>${u.usuNom} ${u.usuApePat} ${u.usuApeMat}</td>
@@ -409,7 +444,7 @@
                                                 </td>
                                             </cc:if>
                                         </tr>
-                                    </c:forEach>
+                                    </cc:forEach>
                                 </tbody>
 
                             </table>
@@ -486,9 +521,9 @@
                                     <div class="col-sm-6">
                                         <label>Catalogo de Clientes:</label>
                                         <select class="form-control" name="cliCod">
-                                            <c:forEach var="cli" items="${clientes}">
+                                            <cc:forEach var="cli" items="${clientes}">
                                                 <option value="${cli.cliCod}">${cli.cliCod} - ${cli.cliRazSoc}</option>
-                                            </c:forEach>
+                                            </cc:forEach>
                                         </select>
                                     </div>
                                 </div>
@@ -529,9 +564,9 @@
                                     <div class="col-sm-6">
                                         <label>Documentos Disponibles:</label>
                                         <select class="form-control" name="tipDocUsuCod">
-                                            <c:forEach var="docs" items="${documentos}">
+                                            <cc:forEach var="docs" items="${documentos}">
                                                 <option value="${docs.tipDocUsuCod}">${docs.tipDocUsuCod} - ${docs.tipDocUsuDet}</option>
-                                            </c:forEach>
+                                            </cc:forEach>
                                         </select>
                                     </div>
                                 </div>
@@ -577,7 +612,7 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <c:forEach var="docUsu" items="${documentosUsuarios}">
+                                                    <cc:forEach var="docUsu" items="${documentosUsuarios}">
                                                         <tr>
                                                             <td>${docUsu.enP1mUsuario.usuCod} - ${docUsu.enP1mUsuario.usuApePat} ${docUsu.enP1mUsuario.usuApeMat}, ${docUsu.enP1mUsuario.usuNom}</td>
                                                             <td>${docUsu.taGzzTipoDocUsuario.tipDocUsuCod} - ${docUsu.taGzzTipoDocUsuario.tipDocUsuDet}</td>
@@ -608,7 +643,7 @@
                                                                 </td>
                                                             </cc:if>
                                                         </tr>
-                                                    </c:forEach>
+                                                    </cc:forEach>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -646,7 +681,7 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <c:forEach var="carCli" items="${carteraCli}">
+                                                    <cc:forEach var="carCli" items="${carteraCli}">
                                                         <tr>
                                                             <td>${carCli.enP1mUsuario.usuCod} - ${carCli.enP1mUsuario.usuApePat} ${carCli.enP1mUsuario.usuApeMat}, ${carCli.enP1mUsuario.usuNom}</td>
                                                             <td>${carCli.enP1mCliente.cliCod} - ${carCli.enP1mCliente.cliRazSoc}</td>
@@ -677,7 +712,7 @@
                                                                 </td>
                                                             </cc:if>
                                                         </tr>
-                                                    </c:forEach>
+                                                    </cc:forEach>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -814,10 +849,47 @@
                     </form>
                 </div>
             </div>
-        </div>                
+        </div>
 
+        <div id="passwordModal" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-md">
+                <div class="modal-content" style="overflow-y: auto">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Cambiar Password</h4>
+                    </div>
+                    <form id="passwordForm" method="post" action="${pageContext.request.contextPath}/secured/configuracion/usuario/usuarios">
+                        <div class="modal-body">
+                            <input type="hidden" name="accion" value="updatePassword">
+                            <input type="hidden" name="usuCod" id="changeUsuCod">
+                            <p>Usuario: <span id="changeUsuNomCom"></span></p>
+                            <div class="form-horizontal">   
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <label>Nuevo Password</label>
+                                        <input type="password" class="form-control"  name="newPassword" id="newPassword_1" placeholder="Password">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <label>Escribalo Nuevamente</label>
+                                        <input type="password" class="form-control" name="newPasswordAgain" id="newPassword_2" placeholder="Password">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-outline btn-success">Si</button>
+                            <button type="button" class="btn btn-outline btn-danger" data-dismiss="modal">Cancelar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </jsp:attribute>
+
+    <jsp:attribute name="myscripts">
         <script language="javascript">
-
             $(document).ready(function () {
                 $('#tablaUsuarios').DataTable({
                     responsive: true
@@ -837,6 +909,7 @@
             var disableModal = $("#disableModal");
             var activateModal = $("#activateModal");
             var deleteModal = $("#deleteModal");
+            var passwordModal = $("#passwordModal");
 
             var viewDocumentoModal = $("#viewDocumentoModal");
             var viewClienteModal = $("#viewClienteModal");
@@ -859,6 +932,8 @@
             var updateEstCivCod = $("#updateEstCivCod");
             var updateUsuSex = $("#updateUsuSex");
             var updateCanUsuCod = $("#updateCanUsuCod");
+            var updateLisPreCod = $("#updateLisPreCod");
+            var updateUniTraCod = $("#updateUniTraCod");
 
             var disableUsuCod = $("#disableUsuCod");
             var disableUsuNomCom = $("#disableUsuNomCom");
@@ -868,6 +943,11 @@
 
             var deleteUsuCod = $("#deleteUsuCod");
             var deleteUsuNomCom = $("#deleteUsuNomCom");
+
+            var changeUsuCod = $("#changeUsuCod");
+            var changeUsuNomCom = $("#changeUsuNomCom");
+
+            var myLisPreUsu = $("#myLisPreUsu");
 
             updateModal.on('show.bs.modal', function (e) {
                 updateUsuCod.val($(e.relatedTarget).data('usucod'));
@@ -881,6 +961,10 @@
                 updateEstCivCod.val($(e.relatedTarget).data('estcivcod'));
                 updateUsuSex.val($(e.relatedTarget).data('ususex'));
                 updateCanUsuCod.val($(e.relatedTarget).data('canusucod'));
+                updateLisPreCod.val($(e.relatedTarget).data('lisprecod'));
+                updateUniTraCod.val($(e.relatedTarget).data('unitracod'));
+                myLisPreUsu.val($(e.relatedTarget).data('mylispreusu'));
+
             });
 
             disableModal.on('show.bs.modal', function (e) {
@@ -896,6 +980,11 @@
             deleteModal.on('show.bs.modal', function (e) {
                 deleteUsuCod.val($(e.relatedTarget).data('usucod'));
                 deleteUsuNomCom.text($(e.relatedTarget).data('usuapepat') + " " + $(e.relatedTarget).data('usuapemat') + ", " + $(e.relatedTarget).data('usunom'));
+            });
+
+            passwordModal.on('show.bs.modal', function (e) {
+                changeUsuCod.val($(e.relatedTarget).data('usucod'));
+                changeUsuNomCom.text($(e.relatedTarget).data('usuapepat') + " " + $(e.relatedTarget).data('usuapemat') + ", " + $(e.relatedTarget).data('usunom'));
             });
 
             var clienteUsuCod = $("#clienteUsuCod");
@@ -969,14 +1058,37 @@
             $("#createForm").validate({
                 rules: {
                     usuCod: {
-                        required: true,
-                        number: true
+                        required: true
                     }
                 },
                 messages: {
                     usuCod: {
-                        required: "El Código de Usuario es Requerido",
-                        number: "El Código de Usuario debe ser Numérico"
+                        required: "El Código de Usuario es Requerido"
+                    }
+                },
+                submitHandler: function (form) {
+                    form.submit();
+                }
+            });
+
+            $("#passwordForm").validate({
+                rules: {
+                    newPassword: {
+                        required: true
+                    },
+                    newPasswordAgain: {
+                        required: true,
+                        equalTo: "#newPassword_1"
+                    }
+                },
+                messages: {
+                    newPassword: {
+                        required: "El campo es requerido"
+
+                    },
+                    newPasswordAgain: {
+                        required: "El campo es requerido",
+                        equalTo: "Contraseñas Diferentes"
                     }
                 },
                 submitHandler: function (form) {
@@ -986,4 +1098,4 @@
 
         </script>
     </jsp:attribute>
-</minierptemplate:template>
+</t:template-page-nav>
