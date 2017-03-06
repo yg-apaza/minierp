@@ -14,7 +14,7 @@ public class EnP1mEmpresaBusiness {
     public void create(int empCod, String empRazSoc, String empNomCom, 
             String empDomFis, String empDes, String empDir, String empTel, 
             String empEmail, double empIGV, double empTipCamCom, 
-            double empTipCamVen, String  empRUC, int empLot, String EmpImgURL,
+            double empTipCamVen, String  empRUC, int empNumDec, String EmpImgURL,
             int empNumDetGuiRemTra, int empNumDetFacVen, int empNumDetBolVen) {
         
         EnP1mEmpresa e = new EnP1mEmpresa();
@@ -30,7 +30,7 @@ public class EnP1mEmpresaBusiness {
         e.setEmpTipCamCom(empTipCamCom);
         e.setEmpTipCamVen(empTipCamVen);
         e.setEmpRuc(empRUC);
-        e.setEmpLot(empLot);
+        e.setEmpNumDec(empNumDec);
         e.setEmpImgUrl(EmpImgURL);
         e.setEmpNumDetGuiRemTra(empNumDetGuiRemTra);
         e.setEmpNumDetFacVen(empNumDetFacVen);
@@ -41,7 +41,7 @@ public class EnP1mEmpresaBusiness {
     public void update(int empCod, String empRazSoc, String empNomCom, 
             String empDomFis, String empDes, String empDir, String empTel, 
             String empEmail, double empIGV, double empTipCamCom, 
-            double empTipCamVen, String  empRUC, int empLot, String EmpImgURL,
+            double empTipCamVen, String  empRUC, int empNumDec, String EmpImgURL,
             int empNumDetGuiRemTra, int empNumDetFacVen, int empNumDetBolVen) {
         
         EnP1mEmpresa e = empDao.getById(empCod);
@@ -56,7 +56,7 @@ public class EnP1mEmpresaBusiness {
         e.setEmpTipCamCom(empTipCamCom);
         e.setEmpTipCamVen(empTipCamVen);
         e.setEmpRuc(empRUC);
-        e.setEmpLot(empLot);
+        e.setEmpNumDec(empNumDec);
         e.setEmpImgUrl(EmpImgURL);
         e.setEmpNumDetGuiRemTra(empNumDetGuiRemTra);
         e.setEmpNumDetFacVen(empNumDetFacVen);
@@ -67,7 +67,7 @@ public class EnP1mEmpresaBusiness {
     public void saveOrUpdate(int empCod, String empRazSoc, String empNomCom, 
             String empDomFis, String empDes, String empDir, String empTel, 
             String empEmail, double empIGV, double empTipCamCom, 
-            double empTipCamVen, String  empRUC, int empLot, String EmpImgURL,
+            double empTipCamVen, String  empRUC, int empNumDec, String EmpImgURL,
             int empNumDetGuiRemTra, int empNumDetFacVen, int empNumDetBolVen) {
         
         EnP1mEmpresa e = empDao.getById(empCod);
@@ -82,7 +82,7 @@ public class EnP1mEmpresaBusiness {
         e.setEmpTipCamCom(empTipCamCom);
         e.setEmpTipCamVen(empTipCamVen);
         e.setEmpRuc(empRUC);
-        e.setEmpLot(empLot);
+        e.setEmpNumDec(empNumDec);
         if(EmpImgURL != null && !EmpImgURL.equals(""))
             e.setEmpImgUrl(EmpImgURL);
         e.setEmpNumDetGuiRemTra(empNumDetGuiRemTra);

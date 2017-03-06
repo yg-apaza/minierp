@@ -1,8 +1,10 @@
 package org.epis.minierp.business.ventas;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import org.epis.minierp.dao.general.EnP1mEmpresaDao;
 import org.epis.minierp.dao.logistica.EnP2mProductoDao;
 import org.epis.minierp.dao.ventas.EnP1cPreventaRealizadasDao;
 import org.epis.minierp.dao.ventas.EnP1mFacturaVentaCabDao;
@@ -24,6 +26,7 @@ import org.epis.minierp.model.EnP2mProducto;
 import org.epis.minierp.model.EnP2mProductoId;
 import org.epis.minierp.model.TaGzzMoneda;
 import org.epis.minierp.model.TaGzzTipoDescuento;
+import org.epis.minierp.util.BigDecimalUtil;
 import org.epis.minierp.util.DateUtil;
 
 public class EnP1mPreventaBusiness {
@@ -38,7 +41,8 @@ public class EnP1mPreventaBusiness {
     EnP1mPagosCuotasBusiness pagosCuoBusiness;
     EnP1mFacturaVentaBusiness facturaBusiness;
     EnP1mFacturaVentaCabDao facturaDao;
-    
+    EnP1mEmpresaDao empDao;
+    int empNumDec;
     EnP2mPrecioUnitarioDao preUniDao;
 
     public EnP1mPreventaBusiness() {
@@ -53,11 +57,13 @@ public class EnP1mPreventaBusiness {
         facturaBusiness = new EnP1mFacturaVentaBusiness();
         preUniDao = new EnP2mPrecioUnitarioDao();
         facturaDao = new EnP1mFacturaVentaCabDao();
+        empDao = new EnP1mEmpresaDao();
+        empNumDec = empDao.getById(01).getEmpNumDec();
     }
 
     private void createPreVenCab(int preVenCabCod, String cliCod, int catRutCod, String usuCod,
-            Date preVenCabFecEmi, Date preVenCabFecVen, int preVenCabPla, double preVenCabTot,
-            int tipDesCod, double preVenCabSubTot, int preVenCabIGV, String preVenCabObs,
+            Date preVenCabFecEmi, Date preVenCabFecVen, int preVenCabPla, BigDecimal preVenCabTot,
+            int tipDesCod, BigDecimal preVenCabSubTot, int preVenCabIGV, String preVenCabObs,
             int monCod, char estRegCod) {
 
         EnP1mPreventaCab preVenCab = new EnP1mPreventaCab();
@@ -102,21 +108,23 @@ public class EnP1mPreventaBusiness {
     }
 
     private void createPreVenDet(int preVenCabCod, String claProCod,
-            String subClaProCod, String proCod, int lisPreCod, double preVenDetCan) {
+            String subClaProCod, String proCod, int lisPreCod, BigDecimal preVenDetCan) {
 
         //Actualiza StkPreVen del producto
         EnP2mProducto pro = proDao.getById(new EnP2mProductoId(proCod, subClaProCod, claProCod));
         double proStkPreVen = pro.getProStkPreVen();
         double proStk = pro.getProStk();
-        if (proStk >= proStkPreVen + preVenDetCan) {//verifica no sobrepasar el stock para prevender
-            pro.setProStkPreVen(proStkPreVen + preVenDetCan);
+        BigDecimal suma = BigDecimalUtil.sumar(BigDecimalUtil.get(proStkPreVen), preVenDetCan, empNumDec);
+        double sumaDouble = BigDecimalUtil.get(suma);
+        if (proStk >= sumaDouble) {//verifica no sobrepasar el stock para prevender
+            pro.setProStkPreVen(sumaDouble);
         }
         proDao.update(pro);
 
         EnP2mPrecioUnitario precio = preUniDao.getById(new EnP2mPrecioUnitarioId(proCod, subClaProCod, claProCod, lisPreCod));
         
         //Crea el detalle
-        double proValUni = precio.getPreUniVen();
+        BigDecimal proValUni = precio.getPreUniVen();
         EnP1tPreventaDet preVenDet = new EnP1tPreventaDet();
         int preVenDetCod = preVenDetDao.getLastPreVenDetCod(preVenCabCod);
         preVenDet.setId(new EnP1tPreventaDetId(preVenDetCod, preVenCabCod));
@@ -130,15 +138,17 @@ public class EnP1mPreventaBusiness {
         String proCod = preVenDet.getEnP2mProducto().getId().getProCod();
         String subClaProCod = preVenDet.getEnP2mProducto().getId().getSubClaProCod();
         String claProCod = preVenDet.getEnP2mProducto().getId().getClaProCod();
-        double preVenDetCan = preVenDet.getPreVenDetCan();
+        BigDecimal preVenDetCan = preVenDet.getPreVenDetCan();
 
         //Actualiza StkPreVen del producto
         EnP2mProductoId pId = new EnP2mProductoId(proCod, subClaProCod, claProCod);
         EnP2mProducto p = proDao.getById(pId);
         double proStkPreVen = p.getProStkPreVen();
         double proStk = p.getProStk();
-        if (proStk >= proStkPreVen + preVenDetCan) {//verifica no sobrepasar el stock para prevender
-            p.setProStkPreVen(proStkPreVen + preVenDetCan);
+        BigDecimal suma = BigDecimalUtil.sumar(BigDecimalUtil.get(proStkPreVen), preVenDetCan, empNumDec);
+        double sumaDouble = BigDecimalUtil.get(suma);
+        if (proStk >= sumaDouble) {//verifica no sobrepasar el stock para prevender
+            p.setProStkPreVen(sumaDouble);
         }
         proDao.update(p);
 
@@ -147,8 +157,8 @@ public class EnP1mPreventaBusiness {
     }
 
     public void create(int preVenCabCod, String cliCod, int catRutCod, String usuCod,
-            Date preVenCabFecEmi, Date preVenCabFecVen, int preVenCabPla, double preVenCabTot,
-            int tipDesCod, double preVenCabSubTot, int preVenCabIGV, String preVenCabObs,
+            Date preVenCabFecEmi, Date preVenCabFecVen, int preVenCabPla, BigDecimal preVenCabTot,
+            int tipDesCod, BigDecimal preVenCabSubTot, int preVenCabIGV, String preVenCabObs,
             int monCod, char estRegCod, List<EnP1tPreventaDet> preVenDets) {
 
         createPreVenCab(preVenCabCod, cliCod, catRutCod, usuCod, preVenCabFecEmi, preVenCabFecVen,

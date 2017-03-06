@@ -22,6 +22,7 @@ import org.epis.minierp.dao.general.TaGzzTipoPagoFacturaDao;
 import org.epis.minierp.dao.logistica.EnP2mProductoDao;
 import org.epis.minierp.dao.general.TaGzzTipoClienteDao;
 import org.epis.minierp.dao.general.TaGzzTipoDescuentoDao;
+import org.epis.minierp.model.EnP1mEmpresa;
 import org.epis.minierp.model.EnP1mPuntoVenta;
 import org.epis.minierp.model.EnP1mSucursal;
 import org.epis.minierp.model.EnP1mUsuario;
@@ -29,6 +30,7 @@ import org.epis.minierp.model.EnP1tFacturaVentaDet;
 import org.epis.minierp.model.EnP1tFacturaVentaDetId;
 import org.epis.minierp.model.EnP2mProducto;
 import org.epis.minierp.model.EnP2mProductoId;
+import org.epis.minierp.util.BigDecimalUtil;
 import org.epis.minierp.util.DateUtil;
 
 public class AddFacturaController extends HttpServlet {	
@@ -91,6 +93,8 @@ public class AddFacturaController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         facturaBusiness = new EnP1mFacturaVentaBusiness();
         empDao = new EnP1mEmpresaDao();
+        EnP1mEmpresa empresa = (new EnP1mEmpresaDao()).getById(01);
+        int empNumDec = empresa.getEmpNumDec();
         
         String facVenCabNum = request.getParameter("facVenCabCod");
         String cliCod = request.getParameter("cliCod");
@@ -136,8 +140,8 @@ public class AddFacturaController extends HttpServlet {
             temp = new EnP1tFacturaVentaDet();
             temp.setId(new EnP1tFacturaVentaDetId(i+1, 1)); //1 es relativo
             temp.setEnP2mProducto(p);
-            temp.setFacVenDetCan(Double.parseDouble(productsAmounts.get(i)));
-            temp.setFacVenDetValUni(Double.parseDouble(productsPrices.get(i)));
+            temp.setFacVenDetCan(BigDecimalUtil.get(productsAmounts.get(i), empNumDec));
+            temp.setFacVenDetValUni(BigDecimalUtil.get(productsPrices.get(i), empNumDec));
             detalles.add(temp);
         }
         

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 26/02/2017 07:56:25 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 04/03/2017 10:43:22 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="org.epis.minierp.model.EnP2mProducto" table="en_p2m_producto" catalog="episerp" optimistic-lock="version">
         <composite-id name="id" class="org.epis.minierp.model.EnP2mProductoId">
@@ -44,25 +44,25 @@
             <column name="ProDet" length="90" not-null="true" />
         </property>
         <property name="proPesNet" type="java.lang.Double">
-            <column name="ProPesNet" precision="10" />
+            <column name="ProPesNet" precision="10" scale="5" />
         </property>
         <property name="proStk" type="double">
-            <column name="ProStk" precision="10" not-null="true" />
+            <column name="ProStk" precision="10" scale="5" not-null="true" />
         </property>
         <property name="proStkRea" type="java.lang.Double">
-            <column name="ProStkRea" precision="10" />
+            <column name="ProStkRea" precision="10" scale="5" />
         </property>
         <property name="proStkPreVen" type="double">
-            <column name="ProStkPreVen" precision="10" not-null="true" />
+            <column name="ProStkPreVen" precision="10" scale="5" not-null="true" />
         </property>
         <property name="volUniAlm" type="java.lang.Double">
-            <column name="VolUniAlm" precision="10" />
+            <column name="VolUniAlm" precision="10" scale="5" />
         </property>
         <property name="proStkMin" type="java.lang.Double">
-            <column name="ProStkMin" precision="10" />
+            <column name="ProStkMin" precision="10" scale="5" />
         </property>
         <property name="proStkMax" type="java.lang.Double">
-            <column name="ProStkMax" precision="10" />
+            <column name="ProStkMax" precision="10" scale="5" />
         </property>
         <property name="proObs" type="string">
             <column name="ProObs" length="90" not-null="true" />

@@ -1,5 +1,5 @@
 package org.epis.minierp.model;
-// Generated 26/02/2017 07:56:21 PM by Hibernate Tools 4.3.1
+// Generated 04/03/2017 10:43:21 PM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;

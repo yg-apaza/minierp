@@ -4,21 +4,27 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.epis.minierp.dao.general.EnP1mEmpresaDao;
 import org.epis.minierp.dao.ventas.EnP1mPreventaCabDao;
+import org.epis.minierp.model.EnP1mEmpresa;
 import org.epis.minierp.model.EnP1mPreventaCab;
 import org.epis.minierp.model.EnP1tPreventaDet;
+import org.epis.minierp.util.BigDecimalUtil;
 
 public class SearchPreVentaController extends HttpServlet {
     EnP1mPreventaCabDao preVenCabDao;
     
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        EnP1mEmpresa empresa = (new EnP1mEmpresaDao()).getById(01);
+        int empNumDec = empresa.getEmpNumDec();
         preVenCabDao = new EnP1mPreventaCabDao();
         
         int preVenCabCod = Integer.parseInt(request.getParameter("preVenCabCod"));
@@ -43,7 +49,7 @@ public class SearchPreVentaController extends HttpServlet {
             detailObject.addProperty("detCan", detail.getPreVenDetCan());
             detailObject.addProperty("proDet", detail.getEnP2mProducto().getProDet());
             detailObject.addProperty("preUniVen", detail.getPreVenDetValUni());
-            detailObject.addProperty("detImp", detail.getPreVenDetCan()*detail.getPreVenDetValUni());
+            detailObject.addProperty("detImp", BigDecimalUtil.multiplicar(detail.getPreVenDetCan(), detail.getPreVenDetValUni(), empNumDec));
             detailList.add(detailObject);
         }
         

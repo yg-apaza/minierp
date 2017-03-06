@@ -1,7 +1,8 @@
 package org.epis.minierp.model;
-// Generated 26/02/2017 07:56:21 PM by Hibernate Tools 4.3.1
+// Generated 04/03/2017 10:43:21 PM by Hibernate Tools 4.3.1
 
 
+import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -13,7 +14,7 @@ public class EnP2mCombos  implements java.io.Serializable {
 
      private String comCod;
      private String comDet;
-     private Double comTot;
+     private BigDecimal comTot;
      private Character estRegCod;
      private Set enP2mComboDets = new HashSet(0);
 
@@ -24,7 +25,7 @@ public class EnP2mCombos  implements java.io.Serializable {
     public EnP2mCombos(String comCod) {
         this.comCod = comCod;
     }
-    public EnP2mCombos(String comCod, String comDet, Double comTot, Character estRegCod, Set enP2mComboDets) {
+    public EnP2mCombos(String comCod, String comDet, BigDecimal comTot, Character estRegCod, Set enP2mComboDets) {
        this.comCod = comCod;
        this.comDet = comDet;
        this.comTot = comTot;
@@ -46,11 +47,11 @@ public class EnP2mCombos  implements java.io.Serializable {
     public void setComDet(String comDet) {
         this.comDet = comDet;
     }
-    public Double getComTot() {
+    public BigDecimal getComTot() {
         return this.comTot;
     }
     
-    public void setComTot(Double comTot) {
+    public void setComTot(BigDecimal comTot) {
         this.comTot = comTot;
     }
     public Character getEstRegCod() {

@@ -1,4 +1,11 @@
-package org.epis.minierp.model;
+package org.epis.minierp.model.ventas;
+
+import java.math.BigDecimal;
+import org.epis.minierp.model.EnP2mAlmacen;
+import org.epis.minierp.model.EnP2mProductoId;
+import org.epis.minierp.model.EnP2mSubclaseProducto;
+import org.epis.minierp.model.TaGzzMoneda;
+import org.epis.minierp.model.TaGzzUnidadMed;
 
 public class EnP2mProductoTemp  implements java.io.Serializable {
 
@@ -21,10 +28,10 @@ public class EnP2mProductoTemp  implements java.io.Serializable {
      private char estRegCod;
      
      //datos adicionales
-     private double proPreUniVen;
-     private double proPreUniCom;
-     private double proPreUniFle;
-     private double proPreUniMar;
+     private BigDecimal proPreUniVen;
+     private BigDecimal proPreUniCom;
+     private BigDecimal proPreUniFle;
+     private BigDecimal proPreUniMar;
 
     public EnP2mProductoTemp() {
     }
@@ -183,35 +190,35 @@ public class EnP2mProductoTemp  implements java.io.Serializable {
     
     //funciones agregadas
 
-    public double getProPreUniVen() {
+    public BigDecimal getProPreUniVen() {
         return proPreUniVen;
     }
 
-    public double getProPreUniCom() {
+    public BigDecimal getProPreUniCom() {
         return proPreUniCom;
     }
 
-    public double getProPreUniFle() {
+    public BigDecimal getProPreUniFle() {
         return proPreUniFle;
     }
 
-    public double getProPreUniMar() {
+    public BigDecimal getProPreUniMar() {
         return proPreUniMar;
     }
 
-    public void setProPreUniVen(double proPreUniVen) {
+    public void setProPreUniVen(BigDecimal proPreUniVen) {
         this.proPreUniVen = proPreUniVen;
     }
 
-    public void setProPreUniCom(double proPreUniCom) {
+    public void setProPreUniCom(BigDecimal proPreUniCom) {
         this.proPreUniCom = proPreUniCom;
     }
 
-    public void setProPreUniFle(double proPreUniFle) {
+    public void setProPreUniFle(BigDecimal proPreUniFle) {
         this.proPreUniFle = proPreUniFle;
     }
 
-    public void setProPreUniMar(double proPreUniMar) {
+    public void setProPreUniMar(BigDecimal proPreUniMar) {
         this.proPreUniMar = proPreUniMar;
     }
     

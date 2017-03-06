@@ -5,14 +5,11 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.print.PrintService;
-import javax.print.PrintServiceLookup;
 import org.epis.minierp.dao.general.EnP1mEmpresaDao;
 import org.epis.minierp.dao.logistica.EnP2mDocumentoTransportistaDao;
 import org.epis.minierp.dao.ventas.EnP1mDocumentoClienteDao;
@@ -23,6 +20,7 @@ import org.epis.minierp.model.EnP1mEmpresa;
 import org.epis.minierp.model.EnP1mFacturaVentaCab;
 import org.epis.minierp.model.EnP1tFacturaVentaDet;
 import org.epis.minierp.model.EnP2mDocumentoTransportistaId;
+import org.epis.minierp.util.BigDecimalUtil;
 import org.epis.minierp.util.DateUtil;
 import static org.epis.minierp.util.NumberToLetterConverter.convertNumberToLetter;
 
@@ -92,20 +90,20 @@ public class Impresora {
             for (EnP1tFacturaVentaDet d : detalles) {
                 proNum++;
                 proCod = d.getEnP2mProducto().getId().getProCod();
-                proCan = d.getFacVenDetCan();
+                proCan = BigDecimalUtil.get(d.getFacVenDetCan());
                 proUni = d.getEnP2mProducto().getTaGzzUnidadMed().getUniMedSim();
                 proDes = d.getEnP2mProducto().getProDet();
-                proValUni = d.getFacVenDetValUni();
+                proValUni = BigDecimalUtil.get(d.getFacVenDetValUni());
                 proDes1 = Integer.toString(f.getFacVenPorDes()) + "%";
                 proDes2 = "0%";
                 proValNet = proCan * proValUni;
                 fac.writeFacDetalle(tipCod, proNum, proCod, proCan, proUni, proDes, proValUni, proDes1, proDes2, df.format(proValNet));
             }
             fac.addLines(e.getEmpNumDetFacVen() - proNum - 1);
-            total = f.getFacVenCabTot();
+            total = BigDecimalUtil.get(f.getFacVenCabTot());
             totLet = convertNumberToLetter(total);
             fac.writeFacLetras(totLet);
-            subTotal = f.getFacVenCabSubTot();
+            subTotal = BigDecimalUtil.get(f.getFacVenCabSubTot());
             igv = subTotal * f.getFacVenCabIgv() / 100;
             fac.writeFacTotal(df.format(subTotal), df.format(igv), df.format(total));
             fac.close();
@@ -164,18 +162,18 @@ public class Impresora {
                 for (EnP1tFacturaVentaDet d : detalles) {
                     proNum++;
                     proCod = d.getEnP2mProducto().getId().getProCod();
-                    proCan = d.getFacVenDetCan();
+                    proCan = BigDecimalUtil.get(d.getFacVenDetCan());
                     proUni = d.getEnP2mProducto().getTaGzzUnidadMed().getUniMedSim();
                     proDes = d.getEnP2mProducto().getProDet();
-                    proValUni = d.getFacVenDetValUni();
+                    proValUni = BigDecimalUtil.get(d.getFacVenDetValUni());
                     proDes1 = Integer.toString(f.getFacVenPorDes()) + "%";
                     proDes2 = "0%";
                     proValNet = proCan * proValUni;
                     fac.writeFacDetalle(tipCod, proNum, proCod, proCan, proUni, proDes, proValUni, proDes1, proDes2, df.format(proValNet));
                 }
                 fac.addLines(e.getEmpNumDetFacVen() - proNum - 1);
-                subTotal = f.getFacVenCabTot();
-                igv = f.getFacVenCabSubTot();
+                subTotal = BigDecimalUtil.get(f.getFacVenCabTot());
+                igv = BigDecimalUtil.get(f.getFacVenCabSubTot());
                 total = subTotal + igv;
                 totLet = convertNumberToLetter(total);
                 fac.writeFacLetras(totLet);
@@ -190,6 +188,8 @@ public class Impresora {
     }
 
     public String[] generateBoletas(int[] cods) {
+        EnP1mEmpresa empresa = (new EnP1mEmpresaDao()).getById(01);
+        int empNumDec = empresa.getEmpNumDec();
         empDao = new EnP1mEmpresaDao();
         EnP1mEmpresa e = empDao.getById(01);
         String cliDni;
@@ -227,16 +227,16 @@ public class Impresora {
                 for (EnP1tFacturaVentaDet d : detalles) {
                     proNum++;
                     proCod = d.getEnP2mProducto().getId().getProCod();
-                    proCan = d.getFacVenDetCan();
+                    proCan = BigDecimalUtil.get(d.getFacVenDetCan());
                     proUni = d.getEnP2mProducto().getTaGzzUnidadMed().getUniMedSim();
                     proDes = d.getEnP2mProducto().getProDet();
-                    proValUni = d.getFacVenDetValUni() * ((e.getEmpIgv() / 100) + 1);
+                    proValUni = BigDecimalUtil.get(BigDecimalUtil.multiplicar(d.getFacVenDetValUni(), BigDecimalUtil.get((e.getEmpIgv() / 100) + 1, empNumDec), empNumDec));
                     proDes1 = Integer.toString(f.getFacVenPorDes());
                     proValNet = proCan * proValUni;
                     bol.writeBolDetalle(tipCod, proNum, proCod, proCan, proUni, proDes, proValUni, proDes1, df.format(proValNet));
                 }
                 bol.addLines(e.getEmpNumDetBolVen() - proNum);
-                total = f.getFacVenCabSubTot() + f.getFacVenCabTot(); //neto + igv
+                total = BigDecimalUtil.get(BigDecimalUtil.sumar(f.getFacVenCabSubTot(), f.getFacVenCabTot(), empNumDec), empNumDec); //neto + igv
                 bol.writeBolTotal(df.format(total));
             }
             bol.close();
@@ -294,10 +294,10 @@ public class Impresora {
                 for (EnP1tFacturaVentaDet d : (Set<EnP1tFacturaVentaDet>) f.getEnP1tFacturaVentaDets()) {
                     proNum++;
                     proCod = d.getEnP2mProducto().getId().getProCod();
-                    proCan = d.getFacVenDetCan();
+                    proCan = BigDecimalUtil.get(d.getFacVenDetCan());
                     proUni = d.getEnP2mProducto().getTaGzzUnidadMed().getUniMedSim();
                     proDes = d.getEnP2mProducto().getProDet();
-                    proValUni = d.getFacVenDetValUni();
+                    proValUni = BigDecimalUtil.get(d.getFacVenDetValUni());
                     proDes1 = Integer.toString(f.getFacVenPorDes());
                     proValNet = proCan * proValUni;
 
@@ -314,23 +314,18 @@ public class Impresora {
         return params;
     }
 
+    //La impresora debe ser un recursos compartido
     public void sendToPrinter(File f, String printerName) {
         try {
             //String printerName;
             String ipAddress = "localhost";
-
-            PrintService printer = PrintServiceLookup.lookupDefaultPrintService();
-            //printerName = printer.getName();
-            String printerDevice = "\\\\" + ipAddress + "\\" + printerName;
-
             String file = f.getAbsolutePath();
-            ArrayList<String> commands = new ArrayList<>();
-            commands.add("cmd.exe");
-            commands.add("/B");
-            commands.add("/C");
-            commands.add("copy " + file + " " + printerDevice);
-            ProcessBuilder pb = new ProcessBuilder(commands);
-            Process p = pb.start();
+
+            //PrintService printer = PrintServiceLookup.lookupDefaultPrintService();
+            //printerName = printer.getName();
+            //String printerDevice = "\\\\" + ipAddress + "\\" + printerName;
+            String printCmd = "print /d:\\\\" + ipAddress + "\\" + printerName + " \"" + file + "\"";
+            Process proceso = Runtime.getRuntime().exec(printCmd);
         } catch (IOException ex) {
             Logger.getLogger(Impresora.class.getName()).log(Level.SEVERE, null, ex);
         }

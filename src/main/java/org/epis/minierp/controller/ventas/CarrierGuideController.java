@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -27,12 +28,15 @@ import org.epis.minierp.model.EnP2mGuiaRemTransportista;
 import org.epis.minierp.model.EnP2mTransportista;
 import org.epis.minierp.model.EnP2mUnidadTransporte;
 import org.epis.minierp.model.TaGzzTipoDestinatario;
+import org.epis.minierp.util.BigDecimalUtil;
 import org.epis.minierp.util.DateUtil;
 
 public class CarrierGuideController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        EnP1mEmpresa empresa = (new EnP1mEmpresaDao()).getById(01);
+        int empNumDec = empresa.getEmpNumDec();
         String action = request.getParameter("action");
         int facVenCabCod = Integer.parseInt(request.getParameter("facVenCabCod"));
         String guiRemTraNum = request.getParameter("guiRemTraNum");
@@ -101,7 +105,8 @@ public class CarrierGuideController extends HttpServlet {
                         detailObject.addProperty("detCan", detail.getFacVenDetCan());
                         detailObject.addProperty("proDet", detail.getEnP2mProducto().getProDet());
                         detailObject.addProperty("preUniVen", detail.getFacVenDetValUni());
-                        detailObject.addProperty("detImp", detail.getFacVenDetCan()*detail.getFacVenDetValUni());
+                        
+                        detailObject.addProperty("detImp", BigDecimalUtil.multiplicar(detail.getFacVenDetCan(), detail.getFacVenDetValUni(), empNumDec));
                         traList.add(detailObject);
                     }
                     for(EnP1mCliente cli: clients) {
@@ -192,7 +197,7 @@ public class CarrierGuideController extends HttpServlet {
                         detailObject.addProperty("detCan", detail.getFacVenDetCan());
                         detailObject.addProperty("proDet", detail.getEnP2mProducto().getProDet());
                         detailObject.addProperty("preUniVen", detail.getFacVenDetValUni());
-                        detailObject.addProperty("detImp", detail.getFacVenDetCan()*detail.getFacVenDetValUni());
+                        detailObject.addProperty("detImp",BigDecimalUtil.multiplicar(detail.getFacVenDetCan(), detail.getFacVenDetValUni()));
                         traList.add(detailObject);
                     }
                     for(EnP1mCliente cli: clients) {

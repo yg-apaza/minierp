@@ -1,7 +1,8 @@
 package org.epis.minierp.model;
-// Generated 26/02/2017 07:56:21 PM by Hibernate Tools 4.3.1
+// Generated 04/03/2017 10:43:21 PM by Hibernate Tools 4.3.1
 
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -16,18 +17,18 @@ public class EnP1cDevolucionVentas  implements java.io.Serializable {
      private TaGzzTipoDevolucion taGzzTipoDevolucion;
      private String devVenDet;
      private Date devVenFec;
-     private double devVenMon;
+     private BigDecimal devVenMon;
 
     public EnP1cDevolucionVentas() {
     }
 
 	
-    public EnP1cDevolucionVentas(EnP1mFacturaVentaCab enP1mFacturaVentaCabByFacVenCabCod, Date devVenFec, double devVenMon) {
+    public EnP1cDevolucionVentas(EnP1mFacturaVentaCab enP1mFacturaVentaCabByFacVenCabCod, Date devVenFec, BigDecimal devVenMon) {
         this.enP1mFacturaVentaCabByFacVenCabCod = enP1mFacturaVentaCabByFacVenCabCod;
         this.devVenFec = devVenFec;
         this.devVenMon = devVenMon;
     }
-    public EnP1cDevolucionVentas(EnP1mFacturaVentaCab enP1mFacturaVentaCabByDevVenNewFac, EnP1mFacturaVentaCab enP1mFacturaVentaCabByFacVenCabCod, TaGzzTipoDevolucion taGzzTipoDevolucion, String devVenDet, Date devVenFec, double devVenMon) {
+    public EnP1cDevolucionVentas(EnP1mFacturaVentaCab enP1mFacturaVentaCabByDevVenNewFac, EnP1mFacturaVentaCab enP1mFacturaVentaCabByFacVenCabCod, TaGzzTipoDevolucion taGzzTipoDevolucion, String devVenDet, Date devVenFec, BigDecimal devVenMon) {
        this.enP1mFacturaVentaCabByDevVenNewFac = enP1mFacturaVentaCabByDevVenNewFac;
        this.enP1mFacturaVentaCabByFacVenCabCod = enP1mFacturaVentaCabByFacVenCabCod;
        this.taGzzTipoDevolucion = taGzzTipoDevolucion;
@@ -78,11 +79,11 @@ public class EnP1cDevolucionVentas  implements java.io.Serializable {
     public void setDevVenFec(Date devVenFec) {
         this.devVenFec = devVenFec;
     }
-    public double getDevVenMon() {
+    public BigDecimal getDevVenMon() {
         return this.devVenMon;
     }
     
-    public void setDevVenMon(double devVenMon) {
+    public void setDevVenMon(BigDecimal devVenMon) {
         this.devVenMon = devVenMon;
     }
 

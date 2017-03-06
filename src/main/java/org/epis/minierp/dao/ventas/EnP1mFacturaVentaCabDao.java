@@ -33,7 +33,7 @@ public class EnP1mFacturaVentaCabDao {
         System.out.println(estados);
         return estados;
     }
-    
+
     public List<EnP1mFacturaVentaCab> getAllActive4UsuCod(String usuCod) {
         Query query = session.createQuery("from EnP1mFacturaVentaCab E "
                 + "where E.estRegCod = 'A' and E.enP1mUsuario.usuCod = '"
@@ -42,17 +42,17 @@ public class EnP1mFacturaVentaCabDao {
         System.out.println(estados);
         return estados;
     }
-    
-    public List<EnP1mFacturaVentaCab> getByGuiaRemTransportista(EnP2mGuiaRemTransportista t){
-        Query q=session.createQuery("from EnP1mFacturaVentaCab E where E.enP2mGuiaRemTransportista=:p1");
+
+    public List<EnP1mFacturaVentaCab> getByGuiaRemTransportista(EnP2mGuiaRemTransportista t) {
+        Query q = session.createQuery("from EnP1mFacturaVentaCab E where E.enP2mGuiaRemTransportista=:p1");
         q.setParameter("p1", t);
-        List<EnP1mFacturaVentaCab> facs= q.list();
+        List<EnP1mFacturaVentaCab> facs = q.list();
         System.out.println(facs);
         return facs;
     }
-    
+
     public EnP1mFacturaVentaCab getById(int id) {
-        EnP1mFacturaVentaCab estado = null;
+        EnP1mFacturaVentaCab estado;
         try {
             estado = (EnP1mFacturaVentaCab) session.load(EnP1mFacturaVentaCab.class, id);
         } catch (ObjectNotFoundException e) {
@@ -60,18 +60,18 @@ public class EnP1mFacturaVentaCabDao {
         }
         return estado;
     }
-        
+
     public boolean verifyReferralGuide(int id) {
-        EnP1mFacturaVentaCab factura = null;
+        EnP1mFacturaVentaCab factura;
         try {
             factura = (EnP1mFacturaVentaCab) session.load(EnP1mFacturaVentaCab.class, id);
         } catch (ObjectNotFoundException e) {
             return false;
         }
-        
+
         return (factura.getEnP2mGuiaRemRemitente() == null);
     }
-    
+
     public boolean verifyCarrierGuide(int id) {
         EnP1mFacturaVentaCab factura = null;
         try {
@@ -79,110 +79,112 @@ public class EnP1mFacturaVentaCabDao {
         } catch (ObjectNotFoundException e) {
             return false;
         }
-        
+
         return (factura.getEnP2mGuiaRemTransportista() == null);
     }
-    
+
     /**
-     * Devuelve el mayor numero de factura emitida por lote, maximo 3 caracteres (999)
+     * Devuelve el mayor numero de factura emitida por lote, maximo 3 caracteres
+     * (999)
+     *
      * @param lote numero del lote 001-123456 lote=001
-     * @return 
+     * @return
      */
-    public int getMaxValue4Lote(int lote){
-        String loteCadena = String.format("%03d",lote);
-        Query query = session.createQuery("from EnP1mFacturaVentaCab E where E.facVenCabCod like '"+loteCadena+"-%'");
+    public int getMaxValue4Lote(int lote) {
+        String loteCadena = String.format("%03d", lote);
+        Query query = session.createQuery("from EnP1mFacturaVentaCab E where E.facVenCabCod like '" + loteCadena + "-%'");
         List<EnP1mFacturaVentaCab> estados = query.list();
         try {
             Set<Integer> lista = new HashSet<>();
             int temp;
-            for(int i=0; i<estados.size(); i++){
+            for (int i = 0; i < estados.size(); i++) {
                 temp = estados.get(i).getFacVenCabCod();
                 lista.add(temp);
             }
-            return Collections.max(lista)+1;
+            return Collections.max(lista) + 1;
         } catch (Exception e) {
             return 1;
         }
-        
+
     }
-    
-  
-    public int getMaxFacCabCod(){
+
+    public int getMaxFacCabCod() {
         Query query = session.createQuery("from EnP1mFacturaVentaCab");
         List<EnP1mFacturaVentaCab> estados = query.list();
         try {
             Set<Integer> lista = new HashSet<>();
             int temp;
-            for(int i=0; i<estados.size(); i++){
+            for (int i = 0; i < estados.size(); i++) {
                 temp = estados.get(i).getFacVenCabCod();
                 lista.add(temp);
             }
-            return Collections.max(lista)+1;
+            return Collections.max(lista) + 1;
         } catch (Exception e) {
             return 1;
         }
-        
+
     }
-    
+
     /**
-     * Retorna array[usuCod, usuApePat, usuApeMat, usuNom, fecVenCabTot, 
-     * facVenCabSubTot - facVenCabTot,  tipDesCod]
+     * Retorna array[usuCod, usuApePat, usuApeMat, usuNom, fecVenCabTot,
+     * facVenCabSubTot - facVenCabTot, tipDesCod]
+     *
      * @param usuCod codigo de usuario
      * @param fecIni fecha de inicio
      * @param fecFin fecha de fin
-     * @return 
+     * @return
      */
-    public List ingresos4Usuario(String usuCod, Date fecIni, Date fecFin){
+    public List ingresos4Usuario(String usuCod, Date fecIni, Date fecFin) {
         String myQuery = null;
-        if(usuCod.equals("-1")){//todos
+        if (usuCod.equals("-1")) {//todos
             myQuery = "select E.enP1mUsuario.usuCod, E.enP1mUsuario.usuApePat, "
-                + "E.enP1mUsuario.usuApeMat, E.enP1mUsuario.usuNom, "
-                + "sum(E.facVenCabSubTot), sum(E.facVenCabTot), sum(E.facVenCabTot - E.facVenCabSubTot) "
-                + "from EnP1mFacturaVentaCab E "
-                + "where E.estRegCod = 'A' and "
-                + "E.facVenCabFecEmi between :_fecIni and :_fecFin "
-                + "group by E.enP1mUsuario.usuCod "
-                + "order by E.enP1mUsuario.usuCod";
-        }else{
+                    + "E.enP1mUsuario.usuApeMat, E.enP1mUsuario.usuNom, "
+                    + "sum(E.facVenCabSubTot), sum(E.facVenCabTot), sum(E.facVenCabTot - E.facVenCabSubTot) "
+                    + "from EnP1mFacturaVentaCab E "
+                    + "where E.estRegCod = 'A' and "
+                    + "E.facVenCabFecEmi between :_fecIni and :_fecFin "
+                    + "group by E.enP1mUsuario.usuCod "
+                    + "order by E.enP1mUsuario.usuCod";
+        } else {
             myQuery = "select E.enP1mUsuario.usuCod, E.enP1mUsuario.usuApePat, "
-                + "E.enP1mUsuario.usuApeMat, E.enP1mUsuario.usuNom, "
-                + "sum(E.facVenCabSubTot), sum(E.facVenCabTot), sum(E.facVenCabTot - E.facVenCabSubTot) "
-                + "from EnP1mFacturaVentaCab E "
-                + "where E.estRegCod = 'A' and "
-                + "E.facVenCabFecEmi between :_fecIni and :_fecFin and "
-                + "E.enP1mUsuario.usuCod = '"+usuCod+"' "
-                + "order by E.enP1mUsuario.usuCod";
+                    + "E.enP1mUsuario.usuApeMat, E.enP1mUsuario.usuNom, "
+                    + "sum(E.facVenCabSubTot), sum(E.facVenCabTot), sum(E.facVenCabTot - E.facVenCabSubTot) "
+                    + "from EnP1mFacturaVentaCab E "
+                    + "where E.estRegCod = 'A' and "
+                    + "E.facVenCabFecEmi between :_fecIni and :_fecFin and "
+                    + "E.enP1mUsuario.usuCod = '" + usuCod + "' "
+                    + "order by E.enP1mUsuario.usuCod";
         }
         Query query = session.createQuery(myQuery);
-        
+
         query.setParameter("_fecIni", fecIni);
         query.setParameter("_fecFin", fecFin);
         List estados = query.list();
         return estados;
     }
-    
-    public List<EnP1tFacturaVentaDet> getFacVenDets(int facVenCabCod){
+
+    public List<EnP1tFacturaVentaDet> getFacVenDets(int facVenCabCod) {
         Query query = session.createQuery("from EnP1tFacturaVentaDet E "
-                + "where E.id.facVenCabCod = '"+facVenCabCod+"' "
+                + "where E.id.facVenCabCod = '" + facVenCabCod + "' "
                 + "order by E.id.facVenDetCod asc");
         List<EnP1tFacturaVentaDet> estados = query.list();
         return estados;
     }
-    
+
     public void save(EnP1mFacturaVentaCab facturaCab) {
-        session.save(facturaCab);     
+        session.save(facturaCab);
     }
-    
-    public void update(EnP1mFacturaVentaCab facturaCab){
+
+    public void update(EnP1mFacturaVentaCab facturaCab) {
         session.update(facturaCab);
     }
-    
-    public void saveOrUpdate(EnP1mFacturaVentaCab facturaCab){
+
+    public void saveOrUpdate(EnP1mFacturaVentaCab facturaCab) {
         session.saveOrUpdate(facturaCab);
     }
-    
-    public void delete(EnP1mFacturaVentaCab facturaCab){
+
+    public void delete(EnP1mFacturaVentaCab facturaCab) {
         session.delete(facturaCab);
     }
-    
+
 }

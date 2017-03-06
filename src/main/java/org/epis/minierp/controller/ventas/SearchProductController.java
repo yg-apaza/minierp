@@ -10,8 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import org.epis.minierp.dao.general.EnP1mEmpresaDao;
 import org.epis.minierp.dao.logistica.EnP2mProductoDao;
 import org.epis.minierp.dao.ventas.EnP2mPrecioUnitarioDao;
+import org.epis.minierp.model.EnP1mEmpresa;
 import org.epis.minierp.model.EnP1mListaPreciosUsuarios;
 import org.epis.minierp.model.EnP1mUsuario;
 import org.epis.minierp.model.EnP2mPrecioUnitario;
@@ -19,11 +21,15 @@ import org.epis.minierp.model.EnP2mPrecioUnitarioId;
 import org.epis.minierp.model.EnP2mProducto;
 import org.epis.minierp.model.EnP2mProductoId;
 import org.epis.minierp.model.TaGzzListaPrecios;
+import org.epis.minierp.util.BigDecimalUtil;
 
 public class SearchProductController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        EnP1mEmpresa empresa = (new EnP1mEmpresaDao()).getById(01);
+        int empNumDec = empresa.getEmpNumDec();
+        
         String selectProcCod = request.getParameter("proCod");
         String proDet = request.getParameter("proDet");
         EnP2mProducto product = null;
@@ -71,7 +77,8 @@ public class SearchProductController extends HttpServlet {
             data.put("proCod", product.getId().getClaProCod() + "-" + product.getId().getSubClaProCod() + "-" + product.getId().getProCod());
             data.put("proDet", product.getProDet());
             data.put("proStk", product.getProStk() - product.getProStkPreVen());
-            data.put("proPreUni", precioUni.getPreUniVen() * canUsuPorAdd);
+            
+            data.put("proPreUni",BigDecimalUtil.multiplicar(precioUni.getPreUniVen(), BigDecimalUtil.get(canUsuPorAdd, empNumDec), empNumDec));
             data.put("proUnit", product.getTaGzzUnidadMed().getUniMedSim());
         }
         response.setContentType("application/json");

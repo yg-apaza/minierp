@@ -1,7 +1,8 @@
 package org.epis.minierp.model;
-// Generated 26/02/2017 07:56:21 PM by Hibernate Tools 4.3.1
+// Generated 04/03/2017 10:43:21 PM by Hibernate Tools 4.3.1
 
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -16,9 +17,9 @@ public class EnP1mPagosCuotasCab  implements java.io.Serializable {
      private EnP1mFacturaVentaCab enP1mFacturaVentaCab;
      private int pagCuoNum;
      private int pagCuoNumPag;
-     private double pagCuoDeuTot;
-     private double pagCuoTotPag;
-     private double pagCuoMonXcuo;
+     private BigDecimal pagCuoDeuTot;
+     private BigDecimal pagCuoTotPag;
+     private BigDecimal pagCuoMonXcuo;
      private Date pagCuoFecIni;
      private Date pagCuoFecFin;
      private Date pagCuoFecPag;
@@ -29,7 +30,7 @@ public class EnP1mPagosCuotasCab  implements java.io.Serializable {
     }
 
 	
-    public EnP1mPagosCuotasCab(EnP1mFacturaVentaCab enP1mFacturaVentaCab, int pagCuoNum, int pagCuoNumPag, double pagCuoDeuTot, double pagCuoTotPag, double pagCuoMonXcuo, Date pagCuoFecIni, Date pagCuoFecFin, Date pagCuoFecPag, char estRegCod) {
+    public EnP1mPagosCuotasCab(EnP1mFacturaVentaCab enP1mFacturaVentaCab, int pagCuoNum, int pagCuoNumPag, BigDecimal pagCuoDeuTot, BigDecimal pagCuoTotPag, BigDecimal pagCuoMonXcuo, Date pagCuoFecIni, Date pagCuoFecFin, Date pagCuoFecPag, char estRegCod) {
         this.enP1mFacturaVentaCab = enP1mFacturaVentaCab;
         this.pagCuoNum = pagCuoNum;
         this.pagCuoNumPag = pagCuoNumPag;
@@ -41,7 +42,7 @@ public class EnP1mPagosCuotasCab  implements java.io.Serializable {
         this.pagCuoFecPag = pagCuoFecPag;
         this.estRegCod = estRegCod;
     }
-    public EnP1mPagosCuotasCab(EnP1mFacturaVentaCab enP1mFacturaVentaCab, int pagCuoNum, int pagCuoNumPag, double pagCuoDeuTot, double pagCuoTotPag, double pagCuoMonXcuo, Date pagCuoFecIni, Date pagCuoFecFin, Date pagCuoFecPag, char estRegCod, Set enP1tPagosCuotasDets) {
+    public EnP1mPagosCuotasCab(EnP1mFacturaVentaCab enP1mFacturaVentaCab, int pagCuoNum, int pagCuoNumPag, BigDecimal pagCuoDeuTot, BigDecimal pagCuoTotPag, BigDecimal pagCuoMonXcuo, Date pagCuoFecIni, Date pagCuoFecFin, Date pagCuoFecPag, char estRegCod, Set enP1tPagosCuotasDets) {
        this.enP1mFacturaVentaCab = enP1mFacturaVentaCab;
        this.pagCuoNum = pagCuoNum;
        this.pagCuoNumPag = pagCuoNumPag;
@@ -83,25 +84,25 @@ public class EnP1mPagosCuotasCab  implements java.io.Serializable {
     public void setPagCuoNumPag(int pagCuoNumPag) {
         this.pagCuoNumPag = pagCuoNumPag;
     }
-    public double getPagCuoDeuTot() {
+    public BigDecimal getPagCuoDeuTot() {
         return this.pagCuoDeuTot;
     }
     
-    public void setPagCuoDeuTot(double pagCuoDeuTot) {
+    public void setPagCuoDeuTot(BigDecimal pagCuoDeuTot) {
         this.pagCuoDeuTot = pagCuoDeuTot;
     }
-    public double getPagCuoTotPag() {
+    public BigDecimal getPagCuoTotPag() {
         return this.pagCuoTotPag;
     }
     
-    public void setPagCuoTotPag(double pagCuoTotPag) {
+    public void setPagCuoTotPag(BigDecimal pagCuoTotPag) {
         this.pagCuoTotPag = pagCuoTotPag;
     }
-    public double getPagCuoMonXcuo() {
+    public BigDecimal getPagCuoMonXcuo() {
         return this.pagCuoMonXcuo;
     }
     
-    public void setPagCuoMonXcuo(double pagCuoMonXcuo) {
+    public void setPagCuoMonXcuo(BigDecimal pagCuoMonXcuo) {
         this.pagCuoMonXcuo = pagCuoMonXcuo;
     }
     public Date getPagCuoFecIni() {

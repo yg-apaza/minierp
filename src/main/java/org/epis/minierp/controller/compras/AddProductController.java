@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -12,12 +13,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.epis.minierp.business.contabilidad.CuentaBusiness;
+import org.epis.minierp.dao.general.EnP1mEmpresaDao;
 import org.epis.minierp.dao.general.TaGzzMonedaDao;
 import org.epis.minierp.dao.general.TaGzzUnidadMedDao;
 import org.epis.minierp.dao.logistica.EnP2mClaseProductoDao;
 import org.epis.minierp.dao.logistica.EnP2mProductoDao;
 import org.epis.minierp.dao.logistica.EnP2mSubclaseProductoDao;
 import org.epis.minierp.dao.ventas.EnP2mPrecioUnitarioDao;
+import org.epis.minierp.model.EnP1mEmpresa;
 import org.epis.minierp.model.EnP1mUsuario;
 import org.epis.minierp.model.EnP2mClaseProducto;
 import org.epis.minierp.model.EnP2mPrecioUnitario;
@@ -133,10 +136,10 @@ public class AddProductController extends HttpServlet {
                 producto.save(product);
 
                 EnP2mPrecioUnitarioDao preUniDao = new EnP2mPrecioUnitarioDao();
-                
+
                 //agrega el producto con precios 0
-                preUniDao.agregarProducto(product, 0, 0, 0, 0);
-                
+                preUniDao.agregarProducto(product, BigDecimal.ZERO, BigDecimal.ZERO, BigDecimal.ZERO, BigDecimal.ZERO);
+
                 data = new JsonObject();
                 JsonArray products = new JsonArray();
                 List<EnP2mProducto> productos = producto.getAllActive();

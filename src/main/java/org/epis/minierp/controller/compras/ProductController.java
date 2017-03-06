@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.epis.minierp.business.logistica.EnP2mProductoBusiness;
+import org.epis.minierp.dao.general.EnP1mEmpresaDao;
 import org.epis.minierp.dao.general.TaGzzListaPreciosDao;
 import org.epis.minierp.dao.general.TaGzzMonedaDao;
 import org.epis.minierp.dao.general.TaGzzUnidadMedDao;
@@ -17,19 +18,21 @@ import org.epis.minierp.dao.logistica.EnP2mClaseProductoDao;
 import org.epis.minierp.dao.logistica.EnP2mProductoDao;
 import org.epis.minierp.dao.logistica.EnP2mSubclaseProductoDao;
 import org.epis.minierp.dao.ventas.EnP2mPrecioUnitarioDao;
+import org.epis.minierp.model.EnP1mEmpresa;
 import org.epis.minierp.model.EnP1mUsuario;
 import org.epis.minierp.model.EnP2mPrecioUnitario;
 import org.epis.minierp.model.EnP2mPrecioUnitarioId;
 import org.epis.minierp.model.EnP2mProducto;
 import org.epis.minierp.model.EnP2mProductoId;
-import org.epis.minierp.model.EnP2mProductoTemp;
+import org.epis.minierp.model.ventas.EnP2mProductoTemp;
 import org.epis.minierp.model.EnP2mSubclaseProducto;
 import org.epis.minierp.model.TaGzzListaPrecios;
+import org.epis.minierp.util.BigDecimalUtil;
 
 public class ProductController extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
-    
+
     EnP2mProductoDao proDao;
     EnP2mClaseProductoDao claProDao;
     EnP2mSubclaseProductoDao subClaProDao;
@@ -37,7 +40,6 @@ public class ProductController extends HttpServlet {
     TaGzzMonedaDao monDao;
     TaGzzUnidadMedDao uniMedDao;
     EnP2mProductoBusiness proBusiness;
-    
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -48,7 +50,7 @@ public class ProductController extends HttpServlet {
         almDao = new EnP2mAlmacenDao();
         monDao = new TaGzzMonedaDao();
         uniMedDao = new TaGzzUnidadMedDao();
-        
+
         HttpSession session = request.getSession(true);
         EnP1mUsuario usuario = (EnP1mUsuario) session.getAttribute("usuario");
         double canUsuPorAdd;
@@ -58,16 +60,16 @@ public class ProductController extends HttpServlet {
         } catch (Exception e) {
             canUsuPorAdd = 1;
         }
-        
+
         EnP2mPrecioUnitarioDao preUniDao = new EnP2mPrecioUnitarioDao();
         EnP2mPrecioUnitario preUniTemp;
-        
+
         List<EnP2mProducto> normalProducts = proDao.getAllActive();
         List<EnP2mProducto> disableProducts = proDao.getAllInactive();
         List<EnP2mProductoTemp> myProductsActives = new ArrayList<>();
         List<EnP2mProductoTemp> myProductsDisables = new ArrayList<>();
-        
-        for(EnP2mProducto prd : normalProducts){
+
+        for (EnP2mProducto prd : normalProducts) {
             EnP2mProductoTemp temp = new EnP2mProductoTemp();
             temp.setId(prd.getId());
             temp.setEnP2mAlmacen(prd.getEnP2mAlmacen());
@@ -87,17 +89,17 @@ public class ProductController extends HttpServlet {
             temp.setProStkMax(prd.getProStkMax());
             temp.setProObs(prd.getProObs());
             temp.setEstRegCod(prd.getEstRegCod());
-            
+
             preUniTemp = preUniDao.getById(new EnP2mPrecioUnitarioId(prd.getId().getProCod(), prd.getId().getSubClaProCod(), prd.getId().getClaProCod(), myListCod));
             temp.setProPreUniVen(preUniTemp.getPreUniVen());
             temp.setProPreUniCom(preUniTemp.getPreUniCom());
             temp.setProPreUniMar(preUniTemp.getPreUniMar());
             temp.setProPreUniFle(preUniTemp.getPreUniFle());
-            
+
             myProductsActives.add(temp);
         }
-        
-        for(EnP2mProducto prdd : disableProducts){
+
+        for (EnP2mProducto prdd : disableProducts) {
             EnP2mProductoTemp temp = new EnP2mProductoTemp();
             temp.setId(prdd.getId());
             temp.setEnP2mAlmacen(prdd.getEnP2mAlmacen());
@@ -117,16 +119,16 @@ public class ProductController extends HttpServlet {
             temp.setProStkMax(prdd.getProStkMax());
             temp.setProObs(prdd.getProObs());
             temp.setEstRegCod(prdd.getEstRegCod());
-            
+
             preUniTemp = preUniDao.getById(new EnP2mPrecioUnitarioId(prdd.getId().getProCod(), prdd.getId().getSubClaProCod(), prdd.getId().getClaProCod(), myListCod));
             temp.setProPreUniVen(preUniTemp.getPreUniVen());
             temp.setProPreUniCom(preUniTemp.getPreUniCom());
             temp.setProPreUniMar(preUniTemp.getPreUniMar());
             temp.setProPreUniFle(preUniTemp.getPreUniFle());
-            
+
             myProductsDisables.add(temp);
         }
-        
+
         request.setAttribute("productos", myProductsActives);
         request.setAttribute("clases", claProDao.getAllActive());
         request.setAttribute("subclases", subClaProDao.getAllActive());
@@ -135,23 +137,24 @@ public class ProductController extends HttpServlet {
         request.setAttribute("medidas", uniMedDao.getAllActive());
         request.setAttribute("inactivos", myProductsDisables);
         request.setAttribute("listaprecio", canUsuPorAdd);
-        
+
         request.getRequestDispatcher("/WEB-INF/compras/products.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        
-        proBusiness = new EnP2mProductoBusiness();
 
+        proBusiness = new EnP2mProductoBusiness();
+        EnP1mEmpresa empresa = (new EnP1mEmpresaDao()).getById(01);
+        int empNumDec = empresa.getEmpNumDec();
         String action = request.getParameter("action");
-        
+
         String claProCod, subClaProCod, proCod, proCodBar, almCod, proDet, proObs;
         int uniMedCod;
         double proPreUniCom, proPreUniMar, proPreUniFle, proPesNet,
                 volUniAlm, proStkMin, proStkMax, proPreUniVen;
         boolean proCom;
-        
+
         switch (action) {
             case "create":
                 claProCod = request.getParameter("claProCod");
@@ -164,75 +167,75 @@ public class ProductController extends HttpServlet {
                 uniMedCod = Integer.parseInt(request.getParameter("uniMedCod"));
                 proPreUniCom = Double.parseDouble(request.getParameter("proPreUniCom"));
                 proPreUniMar = Double.parseDouble(request.getParameter("proPreUniMar"));
-                
+
                 proPreUniFle = Double.parseDouble(request.getParameter("proPreUniFle"));
                 volUniAlm = Double.parseDouble(request.getParameter("volUniAlm"));
                 proStkMin = Double.parseDouble(request.getParameter("proStkMin"));
-                
+
                 proStkMax = Double.parseDouble(request.getParameter("proStkMax"));
                 proObs = request.getParameter("proObs");
                 proPesNet = Double.parseDouble(request.getParameter("proPesNet"));
-                
+
                 proPreUniVen = proPreUniCom + proPreUniMar + proPreUniFle;
                 //iniciando con proStk = 0 y monCod = 1 Soles
-                proBusiness.create(claProCod, subClaProCod, proCod, proCodBar, 
-                        almCod, proDet, uniMedCod, 1,proPreUniVen,proPreUniCom, 
-                        proPreUniMar,proPreUniFle, 0, volUniAlm, proStkMin, 
+                proBusiness.create(claProCod, subClaProCod, proCod, proCodBar,
+                        almCod, proDet, uniMedCod, 1, BigDecimalUtil.get(proPreUniVen, empNumDec), BigDecimalUtil.get(proPreUniCom, empNumDec),
+                        BigDecimalUtil.get(proPreUniMar, empNumDec), BigDecimalUtil.get(proPreUniFle, empNumDec), 0, volUniAlm, proStkMin,
                         proStkMax, proObs, proPesNet, proCom, 'A');
-                
+
                 break;
-            
+
             case "update":
                 claProCod = request.getParameter("claProCod");
                 subClaProCod = request.getParameter("subClaProCod");
                 proCod = request.getParameter("proCod");
                 proCodBar = request.getParameter("proCodBar");
                 proCom = Boolean.parseBoolean(request.getParameter("proCom"));
-                    
+
                 almCod = request.getParameter("almCod");
                 proDet = request.getParameter("proDet");
                 uniMedCod = Integer.parseInt(request.getParameter("uniMedCod"));
                 proPreUniCom = Double.parseDouble(request.getParameter("proPreUniCom"));
                 proPreUniMar = Double.parseDouble(request.getParameter("proPreUniMar"));
-                
+
                 proPreUniFle = Double.parseDouble(request.getParameter("proPreUniFle"));
                 volUniAlm = Double.parseDouble(request.getParameter("volUniAlm"));
                 proStkMin = Double.parseDouble(request.getParameter("proStkMin"));
-                
+
                 proStkMax = Double.parseDouble(request.getParameter("proStkMax"));
                 proObs = request.getParameter("proObs");
                 proPesNet = Double.parseDouble(request.getParameter("proPesNet"));
-                
+
                 //monCod = 1 Soles
-                proBusiness.update(claProCod, subClaProCod, proCod, proCodBar, 
-                        almCod, proDet, uniMedCod, 1, volUniAlm, proStkMin, proStkMax, 
+                proBusiness.update(claProCod, subClaProCod, proCod, proCodBar,
+                        almCod, proDet, uniMedCod, 1, volUniAlm, proStkMin, proStkMax,
                         proObs, proPesNet, proCom);
-                
+
                 break;
-                
+
             case "disable":
                 claProCod = request.getParameter("claProCod");
                 subClaProCod = request.getParameter("subClaProCod");
                 proCod = request.getParameter("proCod");
                 proBusiness.disable(claProCod, subClaProCod, proCod);
                 break;
-                
+
             case "activate":
                 claProCod = request.getParameter("claProCod");
                 subClaProCod = request.getParameter("subClaProCod");
                 proCod = request.getParameter("proCod"); //falta
                 proBusiness.activate(claProCod, subClaProCod, proCod);
                 break;
-                
+
             case "delete":
                 claProCod = request.getParameter("claProCod");
                 subClaProCod = request.getParameter("subClaProCod");
                 proCod = request.getParameter("proCod"); //falta
                 proBusiness.delete(claProCod, subClaProCod, proCod);
                 break;
-               
+
         }
-        
+
         response.sendRedirect(request.getContextPath() + "/secured/compras/productos");
     }
 }

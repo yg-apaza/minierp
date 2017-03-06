@@ -25,9 +25,11 @@ import org.epis.minierp.dao.general.TaGzzMetodoPagoFacturaDao;
 import org.epis.minierp.dao.general.TaGzzMonedaDao;
 import org.epis.minierp.dao.logistica.EnP2mProductoDao;
 import org.epis.minierp.dao.compras.EnP4mProveedorDao;
+import org.epis.minierp.dao.general.EnP1mEmpresaDao;
 import org.epis.minierp.dao.general.TaGzzTipoPagoFacturaDao;
 import org.epis.minierp.dao.general.EnP1mUsuarioDao;
 import org.epis.minierp.dao.general.TaGzzTipoDescuentoDao;
+import org.epis.minierp.model.EnP1mEmpresa;
 import org.epis.minierp.model.EnP2mProducto;
 import org.epis.minierp.model.EnP2mProductoId;
 import org.epis.minierp.model.EnP4mFacturaCompraCab;
@@ -39,21 +41,23 @@ import org.epis.minierp.model.EnP4tFacturaCompraDetId;
 import org.epis.minierp.model.TaGzzEstadoFactura;
 import org.epis.minierp.model.TaGzzTipoDescuento;
 import org.epis.minierp.model.TaGzzTipoPagoFactura;
+import org.epis.minierp.util.BigDecimalUtil;
 
 public class AddPurchaseController extends HttpServlet {
+
     private static final long serialVersionUID = 1L;
-    
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List <TaGzzMetodoPagoFactura> metodosPagoFactura = (new TaGzzMetodoPagoFacturaDao()).getAll();
-        List <TaGzzMoneda> monedas = (new TaGzzMonedaDao()).getAll();
-        List <TaGzzTipoPagoFactura> tiposPagoFactura = (new TaGzzTipoPagoFacturaDao()).getAll(); 
-        List <EnP2mProducto> productos = (new EnP2mProductoDao()).getAll(); 
-        List <TaGzzEstadoFactura> estadosFactura = (new TaGzzEstadoFacturaDao().getAll());
-        List <TaGzzTipoDescuento> tiposDescuentos = (new TaGzzTipoDescuentoDao()).getAllActive();
+        List<TaGzzMetodoPagoFactura> metodosPagoFactura = (new TaGzzMetodoPagoFacturaDao()).getAll();
+        List<TaGzzMoneda> monedas = (new TaGzzMonedaDao()).getAll();
+        List<TaGzzTipoPagoFactura> tiposPagoFactura = (new TaGzzTipoPagoFacturaDao()).getAll();
+        List<EnP2mProducto> productos = (new EnP2mProductoDao()).getAll();
+        List<TaGzzEstadoFactura> estadosFactura = (new TaGzzEstadoFacturaDao().getAll());
+        List<TaGzzTipoDescuento> tiposDescuentos = (new TaGzzTipoDescuentoDao()).getAllActive();
         DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         String fechaActual = format.format(Calendar.getInstance().getTime());
-            
+
         request.setAttribute("metodosPagoFactura", metodosPagoFactura);
         request.setAttribute("monedas", monedas);
         request.setAttribute("tiposPagoFactura", tiposPagoFactura);
@@ -61,13 +65,15 @@ public class AddPurchaseController extends HttpServlet {
         request.setAttribute("estadosFactura", estadosFactura);
         request.setAttribute("tiposDescuentos", tiposDescuentos);
         request.setAttribute("fechaActual", fechaActual);
-        
+
         request.getRequestDispatcher("/WEB-INF/compras/factura/addPurchase.jsp").forward(request, response);
     }
-    
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
+            EnP1mEmpresa empresa = (new EnP1mEmpresaDao()).getById(01);
+            int empNumDec = empresa.getEmpNumDec();
             int facComCabCod = Integer.parseInt(request.getParameter("facComCabCod"));
             String prvCod = request.getParameter("prvCod");
             String usuCod = request.getParameter("usuCod");
@@ -86,22 +92,22 @@ public class AddPurchaseController extends HttpServlet {
             int facComCabIgv = Integer.parseInt(request.getParameter("facComCabIgv"));
             double facComCabSubTot = Double.parseDouble(request.getParameter("facComCabSubTot"));
             double facComCabTot = Double.parseDouble(request.getParameter("facComCabTot"));
-            List <String> productsAmounts = Arrays.asList((request.getParameter("productsAmounts")).split("\\s*,\\s*"));
-            List <String> productsCodes = Arrays.asList((request.getParameter("productsCodes")).split("\\s*,\\s*"));
-            List <String> productsPrices = Arrays.asList((request.getParameter("productsPrices")).split("\\s*,\\s*"));
-            
+            List<String> productsAmounts = Arrays.asList((request.getParameter("productsAmounts")).split("\\s*,\\s*"));
+            List<String> productsCodes = Arrays.asList((request.getParameter("productsCodes")).split("\\s*,\\s*"));
+            List<String> productsPrices = Arrays.asList((request.getParameter("productsPrices")).split("\\s*,\\s*"));
+
             EnP4mFacturaCompraCabDao factura = new EnP4mFacturaCompraCabDao();
             EnP4mFacturaCompraCab header = new EnP4mFacturaCompraCab();
             EnP4mProveedorDao proveedorDao = new EnP4mProveedorDao();
-            
+
             header.setFacComCabCod(facComCabCod);
-            if(prvCod.isEmpty()) {
+            if (prvCod.isEmpty()) {
                 EnP4mProveedor newSupplier = new EnP4mProveedor();
                 newSupplier.setPrvCod(String.valueOf(System.currentTimeMillis()));
                 newSupplier.setPrvDet(prvDes);
-                if(prvType.equals("1")) {
+                if (prvType.equals("1")) {
                     newSupplier.setPrvRazSoc(prvDes);
-                } else if(prvType.equals("2")) {
+                } else if (prvType.equals("2")) {
                     newSupplier.setPrvNomCom(prvDes);
                 }
                 newSupplier.setEstRegCod('A');
@@ -115,32 +121,33 @@ public class AddPurchaseController extends HttpServlet {
             header.setFacComCabFecVen(facComCabFecVen);
             header.setTaGzzMoneda((new TaGzzMonedaDao()).getById(monCod));
             header.setTaGzzMetodoPagoFactura((new TaGzzMetodoPagoFacturaDao()).getById(metPagCod));
-            header.setTaGzzEstadoFactura((new TaGzzEstadoFacturaDao()).getById(estFacCod));            
+            header.setTaGzzEstadoFactura((new TaGzzEstadoFacturaDao()).getById(estFacCod));
             header.setTaGzzTipoPagoFactura((new TaGzzTipoPagoFacturaDao()).getById(tipPagCod));
             header.setTaGzzTipoDescuento((new TaGzzTipoDescuentoDao()).getById(tipDesCod));
             header.setFacComCabObs(facComCabObs);
             header.setFacComPorDes(facComCabPorDes);
             header.setFacComCabIgv(facComCabIgv);
-            header.setFacComCabSubTot(facComCabSubTot);
-            header.setFacComCabTot(facComCabTot);
-            header.setEstRegCod('A');            
+            header.setFacComCabSubTot(BigDecimalUtil.get(facComCabSubTot,empNumDec));
+            header.setFacComCabTot(BigDecimalUtil.get(facComCabTot,empNumDec));
+            header.setEstRegCod('A');
             factura.save(header);
-            
+
             EnP4tFacturaCompraDetDao detalles = new EnP4tFacturaCompraDetDao();
-            
-            for(int i = 0;i < productsCodes.size();i++) {
-                StringTokenizer st = new StringTokenizer(productsCodes.get(i),"-");
-                
+
+            for (int i = 0; i < productsCodes.size(); i++) {
+                StringTokenizer st = new StringTokenizer(productsCodes.get(i), "-");
+
                 EnP2mProductoId productId = new EnP2mProductoId();
                 productId.setClaProCod(st.nextToken());
-                productId.setSubClaProCod(st.nextToken());                
+                productId.setSubClaProCod(st.nextToken());
                 productId.setProCod(st.nextToken());
-            
+
                 EnP2mProductoDao productDao = new EnP2mProductoDao();
                 EnP2mProducto product = productDao.getById(productId);
-                product.setProStk(product.getProStk() + Double.parseDouble(productsAmounts.get(i))); /* Updating stock */
+                product.setProStk(product.getProStk() + Double.parseDouble(productsAmounts.get(i)));
+                /* Updating stock */
                 productDao.update(product);
-                                
+
                 EnP4tFacturaCompraDet det = new EnP4tFacturaCompraDet();
                 EnP4tFacturaCompraDetId detId = new EnP4tFacturaCompraDetId();
                 detId.setFacComCabCod(facComCabCod);
@@ -148,26 +155,26 @@ public class AddPurchaseController extends HttpServlet {
                 det.setId(detId);
                 det.setEnP4mFacturaCompraCab(header);
                 det.setEnP2mProducto(product);
-                det.setFacComDetCan(Double.parseDouble(productsAmounts.get(i)));
-                det.setFacComDetValUni(Double.parseDouble(productsPrices.get(i)));
-                
-                detalles.save(det); 
+                det.setFacComDetCan(BigDecimalUtil.get(productsAmounts.get(i),empNumDec));
+                det.setFacComDetValUni(BigDecimalUtil.get(productsPrices.get(i),empNumDec));
+
+                detalles.save(det);
                 header.getEnP4tFacturaCompraDets().add(det);
-            } 
-            
+            }
+
             try {
                 RegistroAsientoBusiness registroAsientoBusiness = new RegistroAsientoBusiness();
                 registroAsientoBusiness.generarAsientosAmarre(header);
             } catch (Exception e) {
                 System.out.println(":( error generar Amarre");
             }
-            
+
             JsonObject data = new JsonObject();
             data.addProperty("state", true);
             data.addProperty("redirect", request.getContextPath() + "/secured/compras/factura/addFactura");
             response.setContentType("application/json");
             response.setCharacterEncoding("UTF-8");
-            response.getWriter().write(new Gson().toJson(data));  
+            response.getWriter().write(new Gson().toJson(data));
         } catch (ParseException ex) {
             Logger.getLogger(AddPurchaseController.class.getName()).log(Level.SEVERE, null, ex);
         }

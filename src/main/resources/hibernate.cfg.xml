@@ -18,6 +18,7 @@
     <mapping class="org.epis.minierp.model.contabilidad.LibroDiarioView"/>
     <mapping class="org.epis.minierp.model.compras.Kardex"/>
     
+    <!-- Mapeo -->
     <mapping resource="org/epis/minierp/model/TaGzzTipoCliente.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP1mPuntoVenta.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/TaGzzUnidadMed.hbm.xml"/>
@@ -33,10 +34,10 @@
     <mapping resource="org/epis/minierp/model/EnP1mEmpresa.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP2cDevolucionCompras.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP3mAsientoCab.hbm.xml"/>
-    <mapping resource="org/epis/minierp/model/EnP1tPreventaDet.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP2mTransportista.hbm.xml"/>
-    <mapping resource="org/epis/minierp/model/TaGzzEstadoCivil.hbm.xml"/>
+    <mapping resource="org/epis/minierp/model/EnP1tPreventaDet.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP4mDocumentoProveedor.hbm.xml"/>
+    <mapping resource="org/epis/minierp/model/TaGzzEstadoCivil.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP1mSucursal.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/TaGzzBanco.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/TaGzzTipoDocTransportista.hbm.xml"/>
@@ -46,8 +47,8 @@
     <mapping resource="org/epis/minierp/model/EnP1tFacturaVentaDet.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP1mPagosCuotasCab.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP2mClaseProducto.hbm.xml"/>
-    <mapping resource="org/epis/minierp/model/EnP4mFacturaCompraCab.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/TaGzzTipoDevolucion.hbm.xml"/>
+    <mapping resource="org/epis/minierp/model/EnP4mFacturaCompraCab.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/TaGzzMetodoPagoFactura.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP1mListaPreciosUsuarios.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP2mSubclaseProducto.hbm.xml"/>
@@ -55,16 +56,16 @@
     <mapping resource="org/epis/minierp/model/EnP2mProducto.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP3tAsientoDet.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP2mUnidadTransporte.hbm.xml"/>
-    <mapping resource="org/epis/minierp/model/EnP2mAlmacen.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/TaGzzEstadoUniTransporte.hbm.xml"/>
+    <mapping resource="org/epis/minierp/model/EnP2mAlmacen.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP3mCuentaBanco.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/TaGzzMotivoTraslado.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP4tFacturaCompraDet.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP2mComboDet.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP1mCliente.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/TaGzzCanalCliente.hbm.xml"/>
-    <mapping resource="org/epis/minierp/model/TaGzzMoneda.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/TaGzzListaPrecios.hbm.xml"/>
+    <mapping resource="org/epis/minierp/model/TaGzzMoneda.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP1mCarteraClientes.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/TaGzzTipoDescuento.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP2mDocumentoTransportista.hbm.xml"/>
@@ -75,8 +76,8 @@
     <mapping resource="org/epis/minierp/model/TaGzzUnidadTrabajo.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP1mDocumentoCliente.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/TaGzzTipoDocCliente.hbm.xml"/>
-    <mapping resource="org/epis/minierp/model/EnP1cPreventaRealizadas.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP1cDevolucionVentas.hbm.xml"/>
+    <mapping resource="org/epis/minierp/model/EnP1cPreventaRealizadas.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP2mGuiaRemRemitente.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP1mPreventaCab.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP3mLibroDiario.hbm.xml"/>
@@ -86,7 +87,7 @@
     <mapping resource="org/epis/minierp/model/EnP3mPlantillaCab.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP2mPrecioUnitario.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/EnP2tInventarioDet.hbm.xml"/>
-    <mapping resource="org/epis/minierp/model/TaGzzTipoDocProveedor.hbm.xml"/>
     <mapping resource="org/epis/minierp/model/TaGzzTipoDestinatario.hbm.xml"/>
+    <mapping resource="org/epis/minierp/model/TaGzzTipoDocProveedor.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

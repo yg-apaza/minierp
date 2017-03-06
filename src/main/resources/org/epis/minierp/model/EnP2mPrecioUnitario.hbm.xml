@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 26/02/2017 07:56:25 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 04/03/2017 10:43:22 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="org.epis.minierp.model.EnP2mPrecioUnitario" table="en_p2m_precio_unitario" catalog="episerp" optimistic-lock="version">
         <composite-id name="id" class="org.epis.minierp.model.EnP2mPrecioUnitarioId">
@@ -26,17 +26,17 @@
         <many-to-one name="taGzzListaPrecios" class="org.epis.minierp.model.TaGzzListaPrecios" update="false" insert="false" fetch="select">
             <column name="LisPreCod" not-null="true" />
         </many-to-one>
-        <property name="preUniVen" type="double">
-            <column name="PreUniVen" precision="10" not-null="true" />
+        <property name="preUniVen" type="big_decimal">
+            <column name="PreUniVen" precision="30" scale="10" not-null="true" />
         </property>
-        <property name="preUniCom" type="java.lang.Double">
-            <column name="PreUniCom" precision="10" />
+        <property name="preUniCom" type="big_decimal">
+            <column name="PreUniCom" precision="30" scale="10" />
         </property>
-        <property name="preUniMar" type="java.lang.Double">
-            <column name="PreUniMar" precision="10" />
+        <property name="preUniMar" type="big_decimal">
+            <column name="PreUniMar" precision="30" scale="10" />
         </property>
-        <property name="preUniFle" type="java.lang.Double">
-            <column name="PreUniFle" precision="10" />
+        <property name="preUniFle" type="big_decimal">
+            <column name="PreUniFle" precision="30" scale="10" />
         </property>
     </class>
 </hibernate-mapping>

@@ -1,5 +1,6 @@
 package org.epis.minierp.business.logistica;
 
+import java.math.BigDecimal;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -43,7 +44,7 @@ public class EnP2mProductoBusiness {
 
     public void create(String claProCod, String subClaProCod, String proCod,
             String proCodBar, String almCod, String proDet, int uniMedCod,
-            int monCod, double preUniVen, double preUniCom, double preUniMar, double preUniFle, double proStk, double volUniAlm, double proStkMin,
+            int monCod, BigDecimal preUniVen, BigDecimal preUniCom, BigDecimal preUniMar, BigDecimal preUniFle, double proStk, double volUniAlm, double proStkMin,
             double proStkMax, String proObs, double proPesNet, boolean proCom, char estRegCod) {
 
         EnP2mProductoId id = new EnP2mProductoId(proCod, subClaProCod, claProCod);

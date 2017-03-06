@@ -8,9 +8,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.epis.minierp.business.ventas.EnP1mPagosCuotasBusiness;
+import org.epis.minierp.dao.general.EnP1mEmpresaDao;
 import org.epis.minierp.dao.ventas.EnP1mPagosCuotasCabDao;
 import org.epis.minierp.dao.ventas.EnP1tPagosCuotasDetDao;
+import org.epis.minierp.model.EnP1mEmpresa;
 import org.epis.minierp.model.EnP1mPagosCuotasCab;
+import org.epis.minierp.util.BigDecimalUtil;
 
 public class PagosController extends HttpServlet {
         private static final long serialVersionUID = 1L;
@@ -30,6 +33,8 @@ public class PagosController extends HttpServlet {
     }
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        EnP1mEmpresa empresa = (new EnP1mEmpresaDao()).getById(01);
+        int empNumDec = empresa.getEmpNumDec();
         String action = request.getParameter("accion");
         pagosCuotasBusiness = new EnP1mPagosCuotasBusiness();
         pagosCuotasCabDao = new EnP1mPagosCuotasCabDao();
@@ -40,7 +45,7 @@ public class PagosController extends HttpServlet {
             case "addPago":
                 String facVenCabCod = request.getParameter("facVenCabCod"); 
                 double montoPagado = Double.parseDouble(request.getParameter("pagCuoTotPag"));
-                pagosCuotasBusiness.update4pagos(facVenCabCod, montoPagado);
+                pagosCuotasBusiness.update4pagos(facVenCabCod, BigDecimalUtil.get(montoPagado, empNumDec));
                 response.sendRedirect(request.getContextPath() + "/secured/ventas/pagos");
                 break;
             

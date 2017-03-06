@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 26/02/2017 07:56:25 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 04/03/2017 10:43:22 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="org.epis.minierp.model.EnP2mAlmacen" table="en_p2m_almacen" catalog="episerp" optimistic-lock="version">
         <id name="almCod" type="string">
@@ -15,7 +15,7 @@
             <column name="AlmDet" length="90" />
         </property>
         <property name="almVolTot" type="java.lang.Double">
-            <column name="AlmVolTot" precision="10" />
+            <column name="AlmVolTot" precision="10" scale="5" />
         </property>
         <property name="almObs" type="string">
             <column name="AlmObs" length="90" not-null="true" />

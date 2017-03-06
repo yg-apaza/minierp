@@ -1,5 +1,6 @@
 package org.epis.minierp.dao.ventas;
 
+import java.math.BigDecimal;
 import java.util.List;
 import org.epis.minierp.model.EnP2mPrecioUnitario;
 import org.epis.minierp.model.EnP2mPrecioUnitarioId;
@@ -48,7 +49,7 @@ public class EnP2mPrecioUnitarioDao {
         return estado;
     }
     
-    public void agregarProducto(EnP2mProducto producto, double preUniVen, double preUniCom, double preUniMar, double preUniFle){
+    public void agregarProducto(EnP2mProducto producto, BigDecimal preUniVen, BigDecimal preUniCom, BigDecimal preUniMar, BigDecimal preUniFle){
         List<TaGzzListaPrecios> listas = lisPreDao.getAll();
         EnP2mPrecioUnitario temp;
         EnP2mPrecioUnitarioId idTemp;

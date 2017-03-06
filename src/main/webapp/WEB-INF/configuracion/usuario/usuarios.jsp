@@ -13,17 +13,19 @@
                 <div class="row">
                     <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod() == 1}">
                         <div class="col-md-12">
-                            <div class="col-md-3 text-center">
-                                <button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#agregarModal">Agregar Nuevo <i class="fa fa-plus"></i></button>                
-                            </div>
-                            <div class="col-md-3 text-center">
-                                <button type="button" class="btn btn-info btn-block" data-toggle="modal" data-target="#estadosModal">Ver Inhabilitados <i class="fa fa-eye"></i></button>
-                            </div>
-                            <div class="col-md-3 text-center">
-                                <button type="button" class="btn btn-warning btn-block" data-toggle="modal" data-target="#viewDocumentoModal">Documentos <i class="fa fa-file-text"></i></button>
-                            </div>
-                            <div class="col-md-3 text-center">
-                                <button type="button" class="btn btn-warning btn-block" data-toggle="modal" data-target="#viewClienteModal">Clientes <i class="fa fa-child"></i></button>
+                            <div class="btn-group btn-group-justified" role="group" aria-label="First group">
+                                <div class="col-md-3 text-center">
+                                    <button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#agregarModal">Agregar Nuevo <i class="fa fa-plus"></i></button>                
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <button type="button" class="btn btn-info btn-block" data-toggle="modal" data-target="#estadosModal">Ver Inhabilitados <i class="fa fa-eye"></i></button>
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <button type="button" class="btn btn-warning btn-block" data-toggle="modal" data-target="#viewDocumentoModal">Documentos <i class="fa fa-file-text"></i></button>
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <button type="button" class="btn btn-warning btn-block" data-toggle="modal" data-target="#viewClienteModal">Clientes <i class="fa fa-child"></i></button>
+                                </div>
                             </div>
                         </div>
                         <br />

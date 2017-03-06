@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 26/02/2017 07:56:25 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 04/03/2017 10:43:22 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="org.epis.minierp.model.EnP4tFacturaCompraDet" table="en_p4t_factura_compra_det" catalog="episerp" optimistic-lock="version">
         <composite-id name="id" class="org.epis.minierp.model.EnP4tFacturaCompraDetId">
@@ -20,11 +20,11 @@
         <many-to-one name="enP4mFacturaCompraCab" class="org.epis.minierp.model.EnP4mFacturaCompraCab" update="false" insert="false" fetch="select">
             <column name="FacComCabCod" not-null="true" />
         </many-to-one>
-        <property name="facComDetCan" type="double">
-            <column name="FacComDetCan" precision="10" not-null="true" />
+        <property name="facComDetCan" type="big_decimal">
+            <column name="FacComDetCan" precision="30" scale="10" not-null="true" />
         </property>
-        <property name="facComDetValUni" type="double">
-            <column name="FacComDetValUni" precision="10" not-null="true" />
+        <property name="facComDetValUni" type="big_decimal">
+            <column name="FacComDetValUni" precision="30" scale="10" not-null="true" />
         </property>
     </class>
 </hibernate-mapping>

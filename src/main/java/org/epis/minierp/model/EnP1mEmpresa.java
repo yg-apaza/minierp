@@ -1,5 +1,5 @@
 package org.epis.minierp.model;
-// Generated 26/02/2017 07:56:21 PM by Hibernate Tools 4.3.1
+// Generated 04/03/2017 10:43:21 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -23,7 +23,7 @@ public class EnP1mEmpresa  implements java.io.Serializable {
      private Double empTipCamCom;
      private Double empTipCamVen;
      private String empRuc;
-     private Integer empLot;
+     private Integer empNumDec;
      private String empImgUrl;
      private Integer empNumDetGuiRemTra;
      private Integer empNumDetFacVen;
@@ -44,7 +44,7 @@ public class EnP1mEmpresa  implements java.io.Serializable {
         this.empIgv = empIgv;
         this.empRuc = empRuc;
     }
-    public EnP1mEmpresa(int empCod, String empRazSoc, String empNomCom, String empDomFis, String empDes, String empDir, String empTel, String empEmail, double empIgv, Double empTipCamCom, Double empTipCamVen, String empRuc, Integer empLot, String empImgUrl, Integer empNumDetGuiRemTra, Integer empNumDetFacVen, Integer empNumDetBolVen, Boolean empHorCier, Set enP2mGuiaRemTransportistas, Set enP2mGuiaRemRemitentes) {
+    public EnP1mEmpresa(int empCod, String empRazSoc, String empNomCom, String empDomFis, String empDes, String empDir, String empTel, String empEmail, double empIgv, Double empTipCamCom, Double empTipCamVen, String empRuc, Integer empNumDec, String empImgUrl, Integer empNumDetGuiRemTra, Integer empNumDetFacVen, Integer empNumDetBolVen, Boolean empHorCier, Set enP2mGuiaRemTransportistas, Set enP2mGuiaRemRemitentes) {
        this.empCod = empCod;
        this.empRazSoc = empRazSoc;
        this.empNomCom = empNomCom;
@@ -57,7 +57,7 @@ public class EnP1mEmpresa  implements java.io.Serializable {
        this.empTipCamCom = empTipCamCom;
        this.empTipCamVen = empTipCamVen;
        this.empRuc = empRuc;
-       this.empLot = empLot;
+       this.empNumDec = empNumDec;
        this.empImgUrl = empImgUrl;
        this.empNumDetGuiRemTra = empNumDetGuiRemTra;
        this.empNumDetFacVen = empNumDetFacVen;
@@ -151,12 +151,12 @@ public class EnP1mEmpresa  implements java.io.Serializable {
     public void setEmpRuc(String empRuc) {
         this.empRuc = empRuc;
     }
-    public Integer getEmpLot() {
-        return this.empLot;
+    public Integer getEmpNumDec() {
+        return this.empNumDec;
     }
     
-    public void setEmpLot(Integer empLot) {
-        this.empLot = empLot;
+    public void setEmpNumDec(Integer empNumDec) {
+        this.empNumDec = empNumDec;
     }
     public String getEmpImgUrl() {
         return this.empImgUrl;

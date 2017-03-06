@@ -1,7 +1,8 @@
 package org.epis.minierp.model;
-// Generated 26/02/2017 07:56:21 PM by Hibernate Tools 4.3.1
+// Generated 04/03/2017 10:43:21 PM by Hibernate Tools 4.3.1
 
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -22,9 +23,9 @@ public class EnP1mPreventaCab  implements java.io.Serializable {
      private Date preVenCabFecEmi;
      private Date preVenCabFecVen;
      private int preVenCabPla;
-     private double preVenCabTot;
+     private BigDecimal preVenCabTot;
      private Integer preVenPorDes;
-     private double preVenCabSubTot;
+     private BigDecimal preVenCabSubTot;
      private int preVenCabIgv;
      private String preVenCabObs;
      private char estRegCod;
@@ -35,7 +36,7 @@ public class EnP1mPreventaCab  implements java.io.Serializable {
     }
 
 	
-    public EnP1mPreventaCab(int preVenCabCod, EnP1mCliente enP1mCliente, EnP1mUsuario enP1mUsuario, TaGzzMoneda taGzzMoneda, Date preVenCabFecEmi, int preVenCabPla, double preVenCabTot, double preVenCabSubTot, int preVenCabIgv, String preVenCabObs, char estRegCod) {
+    public EnP1mPreventaCab(int preVenCabCod, EnP1mCliente enP1mCliente, EnP1mUsuario enP1mUsuario, TaGzzMoneda taGzzMoneda, Date preVenCabFecEmi, int preVenCabPla, BigDecimal preVenCabTot, BigDecimal preVenCabSubTot, int preVenCabIgv, String preVenCabObs, char estRegCod) {
         this.preVenCabCod = preVenCabCod;
         this.enP1mCliente = enP1mCliente;
         this.enP1mUsuario = enP1mUsuario;
@@ -48,7 +49,7 @@ public class EnP1mPreventaCab  implements java.io.Serializable {
         this.preVenCabObs = preVenCabObs;
         this.estRegCod = estRegCod;
     }
-    public EnP1mPreventaCab(int preVenCabCod, EnP1mCatalogoRuta enP1mCatalogoRuta, EnP1mCliente enP1mCliente, EnP1mUsuario enP1mUsuario, TaGzzMoneda taGzzMoneda, TaGzzTipoDescuento taGzzTipoDescuento, String preVenCabNum, Date preVenCabFecEmi, Date preVenCabFecVen, int preVenCabPla, double preVenCabTot, Integer preVenPorDes, double preVenCabSubTot, int preVenCabIgv, String preVenCabObs, char estRegCod, Set enP1cPreventaRealizadases, Set enP1tPreventaDets) {
+    public EnP1mPreventaCab(int preVenCabCod, EnP1mCatalogoRuta enP1mCatalogoRuta, EnP1mCliente enP1mCliente, EnP1mUsuario enP1mUsuario, TaGzzMoneda taGzzMoneda, TaGzzTipoDescuento taGzzTipoDescuento, String preVenCabNum, Date preVenCabFecEmi, Date preVenCabFecVen, int preVenCabPla, BigDecimal preVenCabTot, Integer preVenPorDes, BigDecimal preVenCabSubTot, int preVenCabIgv, String preVenCabObs, char estRegCod, Set enP1cPreventaRealizadases, Set enP1tPreventaDets) {
        this.preVenCabCod = preVenCabCod;
        this.enP1mCatalogoRuta = enP1mCatalogoRuta;
        this.enP1mCliente = enP1mCliente;
@@ -139,11 +140,11 @@ public class EnP1mPreventaCab  implements java.io.Serializable {
     public void setPreVenCabPla(int preVenCabPla) {
         this.preVenCabPla = preVenCabPla;
     }
-    public double getPreVenCabTot() {
+    public BigDecimal getPreVenCabTot() {
         return this.preVenCabTot;
     }
     
-    public void setPreVenCabTot(double preVenCabTot) {
+    public void setPreVenCabTot(BigDecimal preVenCabTot) {
         this.preVenCabTot = preVenCabTot;
     }
     public Integer getPreVenPorDes() {
@@ -153,11 +154,11 @@ public class EnP1mPreventaCab  implements java.io.Serializable {
     public void setPreVenPorDes(Integer preVenPorDes) {
         this.preVenPorDes = preVenPorDes;
     }
-    public double getPreVenCabSubTot() {
+    public BigDecimal getPreVenCabSubTot() {
         return this.preVenCabSubTot;
     }
     
-    public void setPreVenCabSubTot(double preVenCabSubTot) {
+    public void setPreVenCabSubTot(BigDecimal preVenCabSubTot) {
         this.preVenCabSubTot = preVenCabSubTot;
     }
     public int getPreVenCabIgv() {

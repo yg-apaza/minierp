@@ -1,7 +1,8 @@
 package org.epis.minierp.model;
-// Generated 26/02/2017 07:56:21 PM by Hibernate Tools 4.3.1
+// Generated 04/03/2017 10:43:21 PM by Hibernate Tools 4.3.1
 
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -16,18 +17,18 @@ public class EnP2cDevolucionCompras  implements java.io.Serializable {
      private TaGzzTipoDevolucion taGzzTipoDevolucion;
      private String devComDet;
      private Date devComFec;
-     private double devComMon;
+     private BigDecimal devComMon;
 
     public EnP2cDevolucionCompras() {
     }
 
 	
-    public EnP2cDevolucionCompras(EnP4mFacturaCompraCab enP4mFacturaCompraCabByFacComCabCod, Date devComFec, double devComMon) {
+    public EnP2cDevolucionCompras(EnP4mFacturaCompraCab enP4mFacturaCompraCabByFacComCabCod, Date devComFec, BigDecimal devComMon) {
         this.enP4mFacturaCompraCabByFacComCabCod = enP4mFacturaCompraCabByFacComCabCod;
         this.devComFec = devComFec;
         this.devComMon = devComMon;
     }
-    public EnP2cDevolucionCompras(EnP4mFacturaCompraCab enP4mFacturaCompraCabByFacComCabCod, EnP4mFacturaCompraCab enP4mFacturaCompraCabByDevComNewFac, TaGzzTipoDevolucion taGzzTipoDevolucion, String devComDet, Date devComFec, double devComMon) {
+    public EnP2cDevolucionCompras(EnP4mFacturaCompraCab enP4mFacturaCompraCabByFacComCabCod, EnP4mFacturaCompraCab enP4mFacturaCompraCabByDevComNewFac, TaGzzTipoDevolucion taGzzTipoDevolucion, String devComDet, Date devComFec, BigDecimal devComMon) {
        this.enP4mFacturaCompraCabByFacComCabCod = enP4mFacturaCompraCabByFacComCabCod;
        this.enP4mFacturaCompraCabByDevComNewFac = enP4mFacturaCompraCabByDevComNewFac;
        this.taGzzTipoDevolucion = taGzzTipoDevolucion;
@@ -78,11 +79,11 @@ public class EnP2cDevolucionCompras  implements java.io.Serializable {
     public void setDevComFec(Date devComFec) {
         this.devComFec = devComFec;
     }
-    public double getDevComMon() {
+    public BigDecimal getDevComMon() {
         return this.devComMon;
     }
     
-    public void setDevComMon(double devComMon) {
+    public void setDevComMon(BigDecimal devComMon) {
         this.devComMon = devComMon;
     }
 

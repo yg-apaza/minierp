@@ -18,6 +18,7 @@ import org.epis.minierp.model.EnP4mFacturaCompraCab;
 import org.epis.minierp.model.EnP4tFacturaCompraDet;
 import org.epis.minierp.model.TaGzzMoneda;
 import org.epis.minierp.model.TaGzzTipoComprobante;
+import org.epis.minierp.util.BigDecimalUtil;
 
 public class RegistroAsientoBusiness
 {
@@ -85,7 +86,7 @@ public class RegistroAsientoBusiness
 
             EnP3tAsientoDet asiDet1 = new EnP3tAsientoDet();
             asiDet1.setAsiDetDebHab(true);
-            asiDet1.setAsiDetMon(facturaCompraDet.getFacComDetValUni());
+            asiDet1.setAsiDetMon(BigDecimalUtil.get(facturaCompraDet.getFacComDetValUni()));
             asiDet1.setEnP3mCuenta(enP3mCuentaDebe);
             asiDet1.setId(asientoDetId1);
             daoAsientoDet.save(asiDet1); 
@@ -99,7 +100,7 @@ public class RegistroAsientoBusiness
 
             EnP3tAsientoDet asiDet2 = new EnP3tAsientoDet();
             asiDet2.setAsiDetDebHab(false);
-            asiDet2.setAsiDetMon(facturaCompraDet.getFacComDetValUni());
+            asiDet2.setAsiDetMon(BigDecimalUtil.get(facturaCompraDet.getFacComDetValUni()));
             asiDet2.setEnP3mCuenta(enP3mCuentaHaber);
             asiDet2.setId(asientoDetId2);
             daoAsientoDet.save(asiDet2);            

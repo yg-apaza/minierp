@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 26/02/2017 07:56:25 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 04/03/2017 10:43:22 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="org.epis.minierp.model.EnP1cDevolucionVentas" table="en_p1c_devolucion_ventas" catalog="episerp" optimistic-lock="version">
         <id name="facVenCabCod" type="int">
@@ -23,8 +23,8 @@
         <property name="devVenFec" type="date">
             <column name="DevVenFec" length="10" not-null="true" />
         </property>
-        <property name="devVenMon" type="double">
-            <column name="DevVenMon" precision="10" not-null="true" />
+        <property name="devVenMon" type="big_decimal">
+            <column name="DevVenMon" precision="30" scale="10" not-null="true" />
         </property>
     </class>
 </hibernate-mapping>

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 26/02/2017 07:56:25 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 04/03/2017 10:43:22 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="org.epis.minierp.model.EnP1mPagosCuotasCab" table="en_p1m_pagos_cuotas_cab" catalog="episerp" optimistic-lock="version">
         <id name="facVenCabCod" type="int">
@@ -17,14 +17,14 @@
         <property name="pagCuoNumPag" type="int">
             <column name="PagCuoNumPag" not-null="true" />
         </property>
-        <property name="pagCuoDeuTot" type="double">
-            <column name="PagCuoDeuTot" precision="10" not-null="true" />
+        <property name="pagCuoDeuTot" type="big_decimal">
+            <column name="PagCuoDeuTot" precision="30" scale="10" not-null="true" />
         </property>
-        <property name="pagCuoTotPag" type="double">
-            <column name="PagCuoTotPag" precision="10" not-null="true" />
+        <property name="pagCuoTotPag" type="big_decimal">
+            <column name="PagCuoTotPag" precision="30" scale="10" not-null="true" />
         </property>
-        <property name="pagCuoMonXcuo" type="double">
-            <column name="PagCuoMonXCuo" precision="10" not-null="true" />
+        <property name="pagCuoMonXcuo" type="big_decimal">
+            <column name="PagCuoMonXCuo" precision="30" scale="10" not-null="true" />
         </property>
         <property name="pagCuoFecIni" type="date">
             <column name="PagCuoFecIni" length="10" not-null="true" />

@@ -22,11 +22,14 @@ import org.epis.minierp.model.EnP1tFacturaVentaDet;
 import org.epis.minierp.model.EnP2mGuiaRemRemitente;
 import org.epis.minierp.model.TaGzzMotivoTraslado;
 import org.epis.minierp.model.TaGzzTipoDestinatario;
+import org.epis.minierp.util.BigDecimalUtil;
 
 public class ReferralGuideController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        EnP1mEmpresa empresa = (new EnP1mEmpresaDao()).getById(01);
+        int empNumDec = empresa.getEmpNumDec();
         String action = request.getParameter("action");
         int facVenCabCod = Integer.parseInt(request.getParameter("facVenCabCod"));
         JsonObject data = null;
@@ -54,7 +57,8 @@ public class ReferralGuideController extends HttpServlet {
                         detailObject.addProperty("detCan", detail.getFacVenDetCan());
                         detailObject.addProperty("proDet", detail.getEnP2mProducto().getProDet());
                         detailObject.addProperty("preUniVen", detail.getFacVenDetValUni());
-                        detailObject.addProperty("detImp", detail.getFacVenDetCan()*detail.getFacVenDetValUni());
+                        
+                        detailObject.addProperty("detImp", BigDecimalUtil.multiplicar(detail.getFacVenDetCan(), detail.getFacVenDetValUni(), empNumDec));
                         remList.add(detailObject);
                     }
                     

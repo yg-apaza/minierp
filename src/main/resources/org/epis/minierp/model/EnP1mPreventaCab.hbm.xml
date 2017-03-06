@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 26/02/2017 07:56:25 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 04/03/2017 10:43:22 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="org.epis.minierp.model.EnP1mPreventaCab" table="en_p1m_preventa_cab" catalog="episerp" optimistic-lock="version">
         <id name="preVenCabCod" type="int">
@@ -35,14 +35,14 @@
         <property name="preVenCabPla" type="int">
             <column name="PreVenCabPla" not-null="true" />
         </property>
-        <property name="preVenCabTot" type="double">
-            <column name="PreVenCabTot" precision="10" not-null="true" />
+        <property name="preVenCabTot" type="big_decimal">
+            <column name="PreVenCabTot" precision="30" scale="10" not-null="true" />
         </property>
         <property name="preVenPorDes" type="java.lang.Integer">
             <column name="PreVenPorDes" />
         </property>
-        <property name="preVenCabSubTot" type="double">
-            <column name="PreVenCabSubTot" precision="10" not-null="true" />
+        <property name="preVenCabSubTot" type="big_decimal">
+            <column name="PreVenCabSubTot" precision="30" scale="10" not-null="true" />
         </property>
         <property name="preVenCabIgv" type="int">
             <column name="PreVenCabIGV" not-null="true" />

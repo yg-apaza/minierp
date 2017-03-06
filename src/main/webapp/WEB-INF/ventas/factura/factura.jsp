@@ -1,64 +1,58 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib tagdir="/WEB-INF/tags" prefix="minierptemplate" %>
-<%@ taglib prefix='cc' uri='http://java.sun.com/jsp/jstl/core' %>
-<minierptemplate:template>
-    <jsp:attribute name="titulo">
-        <title>Ventas - Factura</title>
-    </jsp:attribute>
-    <jsp:attribute name="contenido">
-        <form id="formLote" role="form" action="" method="post">
-            <div class="panel-body">
-                <div class="form-group">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <h1 class="page-header">Boletas y/o Facturas</h1>
-                        </div>
-                    </div>
-                    <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()== 1}">
-                        <div class="row">
-                            <div class="col-md-3">
-                                <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
-                                    <a href="${pageContext.request.contextPath}/secured/ventas/factura/addFactura" class="btn btn-success btn-block">Crear Factura <i class="fa fa-plus"></i></a>
-                                    </cc:if>
-                            </div>
-                            <div class="col-md-3">
-                                <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
-                                    <button type="button" id="guiaTranportista" class="btn btn-primary btn-block">Generar Guías de Remisión</button>
-                                </cc:if>
-                            </div>
-                            <div class="col-md-3 col-md-offset-2">
-                                <div class="form-group input-group" >
-                                    <span class="input-group-addon">Imprimir:</span>
-                                    <select class="form-control" name="report" id="report">
-                                        <option value="factura">Factura</option>
-                                        <option value="boleta">Boleta</option>
-                                        <option value="guiaRemision">Guía de Remisión</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-1">
-                                <button type="button" id="imprimir" class="btn btn-primary btn-success btn-block"><i class="fa fa-print"></i></button>
-                            </div>
+<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib prefix="t" tagdir='/WEB-INF/tags'%>
+<%@taglib prefix="cc" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-                            <!--<div class="col-md-3">
-                                <div class="form-group input-group" >
-                                    <span class="input-group-addon">Flujo Efectivo:</span>
-                                    <a  href="${pageContext.request.contextPath}/secured/general/reporte?type=pdf&&report=flujoefectivo&&jdbc=true&&key=null&&value=null" class="btn btn-danger" >
-                                        <i class="fa fa-file-pdf-o"></i>
-                                    </a>
-                                    <a  href="${pageContext.request.contextPath}/secured/general/reporte?type=doc&&report=flujoefectivo&&jdbc=true&&key=null&&value=null" class="btn  btn-primary" >
-                                        <i class="fa fa-file-word-o"></i>
-                                    </a>
+<t:template-page-nav>
+    <jsp:attribute name="mybody">
+        <div class="panel panel-default class">
+            <div class="panel-heading">
+                <h1 class="text-left">Facturas de Venta</h1>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <form id="formLote" role="form" action="" method="post">
+                        <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod() == 1}">
+                            <div class="col-md-12">
+                                <div class="btn-group btn-group-justified" role="group" aria-label="First group">
+                                    <div class="col-md-3 text-center">
+                                        <a href="${pageContext.request.contextPath}/secured/ventas/factura/addFactura" 
+                                           class="btn btn-success btn-block">Crear Factura 
+                                            <i class="fa fa-plus"></i>
+                                        </a>                                
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <button type="button" 
+                                                id="guiaTranportista" 
+                                                class="btn btn-primary btn-block">Guías de Remisión 
+                                            <i class="fa fa-eye"></i>
+                                        </button>
+                                    </div>
+                                    <div class="col-md-3 col-md-offset-1">
+                                        <div class="form-group input-group" >
+                                            <span class="input-group-addon">Tipo:</span>
+                                            <select class="form-control" name="report" id="report">
+                                                <option value="factura">Factura</option>
+                                                <option value="boleta">Boleta</option>
+                                                <option value="guiaRemision">Guía de Remisión</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <button type="button" id="imprimir" 
+                                                class="btn btn-primary btn-warning btn-block">Imprimir 
+                                            <i class="fa fa-print"></i>
+                                        </button>
+                                    </div>
                                 </div>
-                            </div>-->
-                        </div>
-                    </cc:if>
-                    <br />
-                    <div class="row">
+                            </div>
+                            <br />
+                            <br />
+                            <br />
+                        </cc:if>
+
                         <div class="col-lg-12">
-                            <div class="table-responsive">    
+                            <div class="table-responsive">
                                 <table class="table table-striped table-bordered table-hover" id="tablePurchases">
                                     <thead>
                                         <tr>
@@ -82,7 +76,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <c:forEach items="${facturasVenta}" var="c">
+                                        <cc:forEach items="${facturasVenta}" var="c">
                                             <tr>
                                                 <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()==1}">
                                                     <td width="3%" align="center"><input type="checkbox" name="codigos" value="${c.facVenCabCod}"></td>
@@ -125,127 +119,124 @@
                                                     </td>
                                                 </cc:if>
                                             </tr>
-                                        </c:forEach>
+                                        </cc:forEach>
                                     </tbody>
-                                </table>  
+                                </table>
                             </div>
                         </div>
-                    </div>
-                    <!--
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <a href="${pageContext.request.contextPath}/secured/general/reporte?type=pdf&&report=registroventas&&jdbc=false&&key=null&&value=null" class="btn btn-outline btn-danger">
-                                <i class="fa fa-file-pdf-o"></i>
-                                Descargar Registro [PDF]
-                            </a>
+
+                        <div id="impresionLotesModal" class="modal fade">
+                            <div class="modal-dialog modal-sm">
+                                <div class="modal-content" style="overflow-y: auto">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title">Impresión</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p align="center">Desea confirmar la impresion de las Facturas/Boletas seleccionadas?</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-outline btn-success"> Imprimir </button>
+                                        <button type="button" class="btn btn-outline btn-danger" data-dismiss="modal"> Cancelar </button>
+                                    </div>
+                                </div>              
+                            </div>
                         </div>
-                    </div>-->
+
+                        <div id="guiaTransportistaModal" class="modal fade">
+                            <div class="modal-dialog modal-md">
+                                <div class="modal-content" style="overflow-y: auto">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title">Guía de Transportista</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <!-- inputs -->
+                                        <div class="col-xs-12 col-md-12">
+                                            <div class="form-group input-group">
+                                                <span class="input-group-addon">Código de Guía Transportista</span>
+                                                <input type="text" class="form-control" id="guiTraLotTraNum" name="guiTraLotTraNum">
+                                                <span class="input-group-addon"><i class="fa fa-file-text-o"></i></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-md-12">
+                                            <div class="form-group input-group">
+                                                <span class="input-group-addon">Remitente(Empresa)</span>
+                                                <input type="text" class="form-control" value="${remitente}" readonly>
+                                                <span class="input-group-addon"><i class="fa fa-building"></i></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-md-12">
+                                            <div class="form-group input-group">
+                                                <span class="input-group-addon">Destinatario(Main Cliente)</span>
+                                                <select class="form-control" name="guiTraMainCli">
+                                                    <cc:forEach items="${clientes}" var="t">
+                                                        <option value="${t.cliCod}">${t.cliNomCom}</option>
+                                                    </cc:forEach>
+                                                </select>
+                                                <span class="input-group-addon"><i class="fa fa-child"></i></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-md-12">
+                                            <div class="form-group input-group">
+                                                <span class="input-group-addon">Transportista</span>
+                                                <select class="form-control" name="guiTraLotTraDat">
+                                                    <cc:forEach items="${transportistas}" var="t">
+                                                        <option value="${t.traCod}">${t.traNomCom}</option>
+                                                    </cc:forEach>
+                                                </select>
+                                                <span class="input-group-addon"><i class="fa fa-truck"></i></span>
+                                            </div>
+                                        </div>      
+                                        <div class="col-xs-12 col-md-12">
+                                            <div class="form-group input-group">
+                                                <span class="input-group-addon">Vehículo</span>
+                                                <select class="form-control" name="guiTraLotNumPla">
+                                                    <cc:forEach items="${unidades}" var="u">
+                                                        <option value="${u.uniTraCod}">${u.uniTraNumPla}</option>    
+                                                    </cc:forEach>
+                                                </select> 
+                                                <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-md-12">
+                                            <div class="form-group input-group">
+                                                <span class="input-group-addon">Ruta</span>
+                                                <select class="form-control" name="guiTraLotRutDes">
+                                                    <cc:forEach items="${rutas}" var="r">
+                                                        <option value="${r.catRutCod}">${r.catRutDet}</option>       
+                                                    </cc:forEach>
+                                                </select> 
+                                                <span class="input-group-addon"><i class="fa fa-road"></i></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-md-12">
+                                            <div class="form-group input-group">
+                                                <span class="input-group-addon">Motivo de Traslado</span>
+                                                <select class="form-control" name="motTraCod">
+                                                    <cc:forEach items="${motivos}" var="m">
+                                                        <option value="${m.motTraCod}">${m.motTraDet}</option>       
+                                                    </cc:forEach>
+                                                </select> 
+                                                <span class="input-group-addon"><i class="fa fa-road"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-outline btn-danger" data-dismiss="modal"> Cancelar </button>
+                                        <button type="submit" class="btn btn-outline btn-success"> Aceptar </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
                 </div>
             </div>
-            <div id="impresionLotesModal" class="modal fade">
-                <div class="modal-dialog modal-sm">
-                    <div class="modal-content" style="overflow-y: auto">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Impresión</h4>
-                        </div>
-                        <div class="modal-body">
-                            <p align="center">¿Desea continuar descargando el archivo de impresión?</p>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-outline btn-danger" data-dismiss="modal"> Cancelar </button>
-                            <button type="submit" class="btn btn-outline btn-success"> Imprimir </button>
-                        </div>
-                    </div>              
-                </div>
-            </div>
-            <div id="guiaTransportistaModal" class="modal fade">
-                <div class="modal-dialog modal-md">
-                    <div class="modal-content" style="overflow-y: auto">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Guía de Transportista</h4>
-                        </div>
-                        <div class="modal-body">
-                            <!-- inputs -->
-                            <div class="col-xs-12 col-md-12">
-                                <div class="form-group input-group">
-                                    <span class="input-group-addon">Código de Guía Transportista</span>
-                                    <input type="text" class="form-control" id="guiTraLotTraNum" name="guiTraLotTraNum">
-                                    <span class="input-group-addon"><i class="fa fa-file-text-o"></i></span>
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-md-12">
-                                <div class="form-group input-group">
-                                    <span class="input-group-addon">Remitente(Empresa)</span>
-                                    <input type="text" class="form-control" value="${remitente}" readonly>
-                                    <span class="input-group-addon"><i class="fa fa-building"></i></span>
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-md-12">
-                                <div class="form-group input-group">
-                                    <span class="input-group-addon">Destinatario(Main Cliente)</span>
-                                    <select class="form-control" name="guiTraMainCli">
-                                        <c:forEach items="${clientes}" var="t">
-                                            <option value="${t.cliCod}">${t.cliNomCom}</option>
-                                        </c:forEach>
-                                    </select>
-                                    <span class="input-group-addon"><i class="fa fa-child"></i></span>
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-md-12">
-                                <div class="form-group input-group">
-                                    <span class="input-group-addon">Transportista</span>
-                                    <select class="form-control" name="guiTraLotTraDat">
-                                        <c:forEach items="${transportistas}" var="t">
-                                            <option value="${t.traCod}">${t.traNomCom}</option>
-                                        </c:forEach>
-                                    </select>
-                                    <span class="input-group-addon"><i class="fa fa-truck"></i></span>
-                                </div>
-                            </div>      
-                            <div class="col-xs-12 col-md-12">
-                                <div class="form-group input-group">
-                                    <span class="input-group-addon">Vehículo</span>
-                                    <select class="form-control" name="guiTraLotNumPla">
-                                        <c:forEach items="${unidades}" var="u">
-                                            <option value="${u.uniTraCod}">${u.uniTraNumPla}</option>    
-                                        </c:forEach>
-                                    </select> 
-                                    <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-md-12">
-                                <div class="form-group input-group">
-                                    <span class="input-group-addon">Ruta</span>
-                                    <select class="form-control" name="guiTraLotRutDes">
-                                        <c:forEach items="${rutas}" var="r">
-                                            <option value="${r.catRutCod}">${r.catRutDet}</option>       
-                                        </c:forEach>
-                                    </select> 
-                                    <span class="input-group-addon"><i class="fa fa-road"></i></span>
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-md-12">
-                                <div class="form-group input-group">
-                                    <span class="input-group-addon">Motivo de Traslado</span>
-                                    <select class="form-control" name="motTraCod">
-                                        <c:forEach items="${motivos}" var="m">
-                                            <option value="${m.motTraCod}">${m.motTraDet}</option>       
-                                        </c:forEach>
-                                    </select> 
-                                    <span class="input-group-addon"><i class="fa fa-road"></i></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-outline btn-danger" data-dismiss="modal"> Cancelar </button>
-                            <button type="submit" class="btn btn-outline btn-success"> Aceptar </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </form>
+        </div>
+
+
+
         <div id="errorMessageModal" class="modal fade">
             <div class="modal-dialog modal-sm">
                 <div class="modal-content" style="overflow-y: auto">
@@ -262,6 +253,7 @@
                 </div>         
             </div>
         </div>
+
         <div class="modal fade" id="viewSaleBill">
             <div class="modal-dialog modal-md">
                 <div class="modal-content" style="overflow-y: auto">
@@ -347,6 +339,7 @@
                 </div>
             </div>
         </div>
+
         <div class="modal fade" id="viewReferralGuide">
             <div class="modal-dialog">
                 <div class="modal-content" style="overflow-y: auto">
@@ -423,6 +416,7 @@
                 </div>
             </div>
         </div>
+
         <div class="modal fade" id="addReferralGuide">
             <div class="modal-dialog modal-md">
                 <form id="addReferralGuideForm" role="form" action="${pageContext.request.contextPath}/secured/ventas/addReferralGuide" method="post">
@@ -494,6 +488,7 @@
                 </form>
             </div>
         </div>
+
         <div class="modal fade" id="viewCarrierGuide">
             <div class="modal-dialog modal-md">
                 <div class="modal-content" style="overflow-y: auto">
@@ -611,6 +606,7 @@
                 </div>
             </div>
         </div>
+
         <div class="modal fade" id="addCarrierGuide">
             <div class="modal-dialog modal-md">
                 <form id="addCarrierGuideForm" role="form" action="${pageContext.request.contextPath}/secured/ventas/addCarrierGuide" method="post">
@@ -705,6 +701,7 @@
                 </form>
             </div>
         </div>
+
         <div id="messageReferralGuide" class="modal fade">
             <div class="modal-dialog modal-sm">
                 <div class="modal-content" style="overflow-y: auto">
@@ -721,7 +718,8 @@
                     </div>
                 </div>         
             </div>
-        </div>        
+        </div>
+
         <div id="messageCarrierGuide" class="modal fade">
             <div class="modal-dialog modal-sm">
                 <div class="modal-content" style="overflow-y: auto">
@@ -739,6 +737,7 @@
                 </div>         
             </div>
         </div>
+
         <div id="messageRefund" class="modal fade">
             <div class="modal-dialog modal-sm">
                 <div class="modal-content" style="overflow-y: auto">
@@ -756,6 +755,7 @@
                 </div>         
             </div>
         </div>
+
         <div id="loading" class="modal fade">
             <div class="modal-dialog modal-sm">
                 <div class="modal-content" style="overflow-y: auto">
@@ -765,7 +765,9 @@
                 </div>         
             </div>
         </div>
+    </jsp:attribute>
 
+    <jsp:attribute name="myscripts">
         <script language="javascript">
             var codeRefund = "";
             var typeRefund = "";
@@ -784,7 +786,7 @@
                         $('#impresionLotesModal').modal('show');
                     } else
                     {
-                        $("#errorMessage").text("Debe seleccionar al menos una factura ");
+                        $("#errorMessage").text("Debe seleccionar al menos una factura!");
                         $('#errorMessageModal').modal('show');
                     }
                 });
@@ -1150,4 +1152,4 @@
             });
         </script>
     </jsp:attribute>
-</minierptemplate:template>
+</t:template-page-nav>

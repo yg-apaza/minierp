@@ -19,6 +19,8 @@ public class ImpresionLotesController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String[] codigos = request.getParameterValues("codigos");
+        String[] tipoDocumento = request.getParameterValues("tipos");
+        
         int[] cods = new int[codigos.length];
         for (int i = 0;i < codigos.length ;i++) {
             cods[i] = Integer.parseInt(codigos[i]);
@@ -47,16 +49,5 @@ public class ImpresionLotesController extends HttpServlet {
         }
         generador.sendToPrinter(new File(fileGenerated), printerName);
         response.sendRedirect(request.getContextPath() + "/secured/ventas/factura");
-
-        /*response.addHeader("Content-Disposition", "attachment; filename=" + file.getName());
-        response.setContentLength((int) file.length());
-        //response.setContentType("text/plain; charset=utf-8");
-        //response.setCharacterEncoding("utf-8");
-        FileInputStream fileInputStream = new FileInputStream(file);
-        OutputStream responseOutputStream = response.getOutputStream();
-        int bytes;
-        while ((bytes = fileInputStream.read()) != -1) {
-            responseOutputStream.write(bytes);
-        }*/
     }
 }

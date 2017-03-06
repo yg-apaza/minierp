@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 26/02/2017 07:56:25 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 04/03/2017 10:43:22 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="org.epis.minierp.model.EnP1mFacturaVentaCab" table="en_p1m_factura_venta_cab" catalog="episerp" optimistic-lock="version">
         <id name="facVenCabCod" type="int">
@@ -50,14 +50,14 @@
         <property name="facVenCabFecVen" type="date">
             <column name="FacVenCabFecVen" length="10" />
         </property>
-        <property name="facVenCabTot" type="double">
-            <column name="FacVenCabTot" precision="10" not-null="true" />
+        <property name="facVenCabTot" type="big_decimal">
+            <column name="FacVenCabTot" precision="30" scale="10" not-null="true" />
         </property>
         <property name="facVenPorDes" type="java.lang.Integer">
             <column name="FacVenPorDes" />
         </property>
-        <property name="facVenCabSubTot" type="double">
-            <column name="FacVenCabSubTot" precision="10" not-null="true" />
+        <property name="facVenCabSubTot" type="big_decimal">
+            <column name="FacVenCabSubTot" precision="30" scale="10" not-null="true" />
         </property>
         <property name="facVenCabIgv" type="int">
             <column name="FacVenCabIGV" not-null="true" />

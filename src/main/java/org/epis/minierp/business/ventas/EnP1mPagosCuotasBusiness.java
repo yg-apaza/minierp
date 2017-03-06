@@ -1,30 +1,38 @@
 
 package org.epis.minierp.business.ventas;
 
+import java.math.BigDecimal;
 import java.util.Date;
+import org.epis.minierp.dao.general.EnP1mEmpresaDao;
 import org.epis.minierp.dao.ventas.EnP1mFacturaVentaCabDao;
 import org.epis.minierp.dao.ventas.EnP1mPagosCuotasCabDao;
 import org.epis.minierp.dao.ventas.EnP1tPagosCuotasDetDao;
+import org.epis.minierp.model.EnP1mEmpresa;
 import org.epis.minierp.model.EnP1mFacturaVentaCab;
 import org.epis.minierp.model.EnP1mPagosCuotasCab;
 import org.epis.minierp.model.EnP1tPagosCuotasDet;
 import org.epis.minierp.model.EnP1tPagosCuotasDetId;
 import org.epis.minierp.model.TaGzzEstadoFactura;
+import org.epis.minierp.util.BigDecimalUtil;
 import org.epis.minierp.util.DateUtil;
 
 public class EnP1mPagosCuotasBusiness {
     EnP1mPagosCuotasCabDao pagCuoCabDao;
     EnP1tPagosCuotasDetDao pagCuoDetDao;
     EnP1mFacturaVentaCabDao facVenDao;
-
+    EnP1mEmpresaDao empDao;
+    int empNumDec;
+    
     public EnP1mPagosCuotasBusiness() {
         pagCuoCabDao = new EnP1mPagosCuotasCabDao();
         pagCuoDetDao = new EnP1tPagosCuotasDetDao();
         facVenDao = new EnP1mFacturaVentaCabDao();
+        empDao = new EnP1mEmpresaDao();
+        empNumDec = empDao.getById(01).getEmpNumDec();
     }
     
     public void create(int facVenCabCod, int pagCuoNum, 
-            double pagCuoDeuTot, Date pagCuoFecIni){
+            BigDecimal pagCuoDeuTot, Date pagCuoFecIni){
         
         EnP1mPagosCuotasCab cabcuo = new EnP1mPagosCuotasCab();
         EnP1mFacturaVentaCab facCab = new EnP1mFacturaVentaCab();
@@ -35,8 +43,8 @@ public class EnP1mPagosCuotasBusiness {
         cabcuo.setPagCuoNum(pagCuoNum);
         cabcuo.setPagCuoNumPag(0); //0 cuotas pagadas
         cabcuo.setPagCuoDeuTot(pagCuoDeuTot);
-        cabcuo.setPagCuoTotPag(0); //0 pagado
-        cabcuo.setPagCuoMonXcuo(pagCuoDeuTot/pagCuoNum);
+        cabcuo.setPagCuoTotPag(BigDecimal.ZERO); //0 pagado
+        cabcuo.setPagCuoMonXcuo(BigDecimalUtil.dividir(pagCuoDeuTot, BigDecimalUtil.get(pagCuoNum), empNumDec));
         cabcuo.setPagCuoFecIni(pagCuoFecIni);
         cabcuo.setPagCuoFecFin(DateUtil.addDays(pagCuoFecIni, 30*pagCuoNum));
         cabcuo.setPagCuoFecPag(DateUtil.addDays(pagCuoFecIni, 30));
@@ -46,7 +54,7 @@ public class EnP1mPagosCuotasBusiness {
         
     }
     
-    public void update4pagos(String facVenCabCod, double montoPagado) {
+    public void update4pagos(String facVenCabCod, BigDecimal montoPagado) {
         EnP1mPagosCuotasCab cabcuo = pagCuoCabDao.getById(facVenCabCod);
         EnP1tPagosCuotasDet detcuo = new EnP1tPagosCuotasDet();
         
@@ -55,14 +63,15 @@ public class EnP1mPagosCuotasBusiness {
         detcuo.setPagCuoDetTotPag(montoPagado);
         pagCuoDetDao.save(detcuo);
         
-        double totalPagado = cabcuo.getPagCuoTotPag();
-        double totalDeuda = cabcuo.getPagCuoDeuTot();
+        BigDecimal totalPagado = cabcuo.getPagCuoTotPag();
+        BigDecimal totalDeuda = cabcuo.getPagCuoDeuTot();
+        BigDecimal suma = BigDecimalUtil.sumar(totalPagado, montoPagado, empNumDec);
         int numPagTot = cabcuo.getPagCuoNumPag();
         Date diaNextPago = cabcuo.getPagCuoFecPag();
-        cabcuo.setPagCuoTotPag(totalPagado+montoPagado);
+        cabcuo.setPagCuoTotPag(suma);
         cabcuo.setPagCuoNumPag(numPagTot+1);
         cabcuo.setPagCuoFecPag(DateUtil.addDays(diaNextPago, 30));
-        if(totalPagado + montoPagado >= totalDeuda){
+        if(suma.compareTo(totalDeuda) >= 0){
             cabcuo.setEstRegCod('I');
             
             //pasando a pagado la factura
