@@ -1,126 +1,122 @@
-<%@ taglib tagdir="/WEB-INF/tags" prefix="minierptemplate" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix='cc' uri='http://java.sun.com/jsp/jstl/core' %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib prefix="t" tagdir='/WEB-INF/tags'%>
+<%@taglib prefix="cc" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<minierptemplate:template>
-    <jsp:attribute name="titulo">
-        <title>Log韘tica - Productos</title>
-    </jsp:attribute>
-    <jsp:attribute name="contenido">
-        <div class="panel-body">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="page-header"> Productos </h1>
+<t:template-page-nav>
+    <jsp:attribute name="mybody">
+        <div class="panel panel-default class">
+            <div class="panel-heading">
+                <h1 class="text-left">Productos</h1>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod() == 1}">
+                        <div class="col-md-12">
+                            <div class="btn-group btn-group-justified" role="group" aria-label="First group">
+                                <div class="col-md-3 text-center">
+                                    <button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#addProduct">Agregar Nuevo <i class="fa fa-plus"></i></button>                
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <button type="button" class="btn btn-info btn-block" data-toggle="modal" data-target="#viewModal">Ver Inhabilitados <i class="fa fa-eye"></i></button>                
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <br />
+                        <br />
+                    </cc:if>
+                    <div class="col-md-12">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped table-hover" id="tableSuppliers">                
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">C贸digo</th>
+                                        <th class="text-center">Barras</th>
+                                        <th class="text-center">Detalle</th>
+                                        <th class="text-center">Unidad</th>
+                                        <th class="text-center">Precio</th>
+                                        <th class="text-center">Stock</th>
+                                        <th class="text-center">Preventa</th>
+                                            <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod() == 1}">
+                                            <th class="text-center">Acciones</th>
+                                            </cc:if>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <cc:forEach items="${productos}" var="p">
+                                        <tr>
+                                            <td nowrap="nowrap">${p.id.proCod}</td>
+                                            <td nowrap="nowrap">${p.proCodBar}</td>
+                                            <td nowrap="nowrap">${p.proDet}</td>
+                                            <td nowrap="nowrap">${p.taGzzUnidadMed.uniMedSim}</td>
+                                            <td nowrap="nowrap">
+                                                <fmt:formatNumber type="number" 
+                                                                  minFractionDigits="2" 
+                                                                  maxFractionDigits="2" 
+                                                                  value="${(p.proPreUniVen * listaprecio)}" />
+                                            </td>
+                                            <td nowrap="nowrap">
+                                                <fmt:formatNumber type="number" 
+                                                                  minFractionDigits="2" 
+                                                                  maxFractionDigits="2" 
+                                                                  value="${p.proStk}" />
+                                            </td>
+                                            <td nowrap="nowrap">
+                                                <fmt:formatNumber type="number" 
+                                                                  minFractionDigits="2" 
+                                                                  maxFractionDigits="2" 
+                                                                  value="${p.proStkPreVen}" />
+                                            </td>
+                                            <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod() == 1}">
+                                                <td nowrap="nowrap" class="text-center">
+                                                    <a href="#" data-toggle="modal" data-target="#updateModal" 
+                                                       title="Modificar Producto" 
+                                                       data-claprocod="${p.id.claProCod}"
+                                                       data-claprodet="${p.enP2mSubclaseProducto.enP2mClaseProducto.claProDet}"
+                                                       data-subclaprocod="${p.id.subClaProCod}"
+                                                       data-subclaprodet="${p.enP2mSubclaseProducto.subClaProDet}"
+                                                       data-procod="${p.id.proCod}"
+                                                       data-procodbar="${p.proCodBar}"
+                                                       data-prodet="${p.proDet}"
+                                                       data-almcod="${p.enP2mAlmacen.almCod}"
+                                                       data-unimedcod="${p.taGzzUnidadMed.uniMedCod}"
+                                                       data-volunialm="${p.volUniAlm}"
+                                                       data-prostkmax="${p.proStkMax}"
+                                                       data-prostkmin="${p.proStkMin}"
+                                                       data-propesnet="${p.proPesNet}"
+                                                       data-propreunicom="${p.proPreUniCom}"
+                                                       data-propreunifle="${p.proPreUniFle}"
+                                                       data-propreunimar="${p.proPreUniMar}"
+                                                       data-proobs="${p.proObs}">
+                                                        <i class="fa fa-pencil-square-o fa-lg" style="color: black;"></i>
+                                                    </a>
+                                                    <a href="#" data-toggle="modal" data-target="#disableModal" 
+                                                       title="Inhabilitar Producto"
+                                                       data-claprocod="${p.id.claProCod}"
+                                                       data-subclaprocod="${p.id.subClaProCod}"
+                                                       data-procod="${p.id.proCod}"
+                                                       data-prodet="${p.proDet}">
+                                                        <i class="fa fa-trash-o fa-lg" style="color: black;"></i>
+                                                    </a>
+                                                </td>
+                                            </cc:if>
+                                        </tr>
+                                    </cc:forEach>
+                                </tbody>
+                            </table>     
+                        </div>
+                    </div>
                 </div>
-            </div>            
-            <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()==1}">
-                <div class="col-md-3">
-                    <button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#addProduct">Agregar Nuevo <i class="fa fa-plus"></i></button>                
-                </div>
-                <div class="col-md-3">
-                    <button type="button" class="btn btn-info btn-block" data-toggle="modal" data-target="#viewModal">Ver Inhabilitados <i class="fa fa-eye"></i></button>                
-                </div>
-            </cc:if>
-            <!--<div class="col-xs-12 col-md-3">
-                <div class="form-group input-group" >
-                    <span class="input-group-addon">Reportes</span>
-                    <a href="${pageContext.request.contextPath}/secured/general/reporte?type=pdf&&report=productos&&jdbc=false&&key=null&&value=null" class="btn btn-danger">
-                        <i class="fa fa-file-pdf-o"></i>
-                    </a>
-                    <a href="${pageContext.request.contextPath}/secured/general/reporte?type=xls&&report=productos&&jdbc=false&&key=null&&value=null" class="btn btn-success">
-                        <i class="fa fa-file-excel-o"></i>
-                    </a>
-                    <a href="${pageContext.request.contextPath}/secured/general/reporte?type=doc&&report=productos&&jdbc=false&&key=null&&value=null" class="btn  btn-primary">
-                        <i class="fa fa-file-word-o"></i>
-                    </a>
-                </div>-->
+            </div>
         </div>
-        <div class="table-responsive">
-            <table width="100%" class="table table-striped table-bordered table-hover" id="tableSuppliers">
-                <thead>
-                    <tr>
-                        <th>C骴igo</th>
-                        <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()==1}">
-                        <th>C骴igo de Barras</th></cc:if>
-                        <th>Detalle</th>
-                        <th>Unidad</th>
-                        <th>Precio</th>
-                            <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()==1}">
-                            <th>Peso</th>    
-                            <th>Almac閚</th>
-                            </cc:if>
-                        <th>Stock</th>
-                        <th>Preventa</th>
-                            <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()==1}">
-                            <th>Acciones</th>
-                            </cc:if>
-                    </tr>
-                </thead>
-                <tbody>
-                    <c:forEach items="${productos}" var="p">
-                        <tr>
-                            <td>${p.id.proCod}</td>
-                            <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()==1}">
-                            <td>${p.proCodBar}</td></cc:if>
-                            <td>${p.proDet}</td>
-                            <td>${p.taGzzUnidadMed.uniMedSim}</td>
-                            <td>
-                                <fmt:formatNumber type="number" 
-                                                  minFractionDigits="2" 
-                                                  maxFractionDigits="2" 
-                                                  value="${(p.proPreUniVen * listaprecio)}" />
-                            </td>
-                            <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()==1}">
-                            <td>${p.proPesNet}</td>
-                            <td>${p.enP2mAlmacen.almDet}</td>
-                            </cc:if>
-                            <td>${p.proStk}</td>
-                            <td>${p.proStkPreVen}</td>
-                            <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()==1}">
-                                <td>
-                                    <a href="#" data-toggle="modal" data-target="#updateModal" 
-                                       title="Modificar Producto" 
-                                       data-claprocod="${p.id.claProCod}"
-                                       data-claprodet="${p.enP2mSubclaseProducto.enP2mClaseProducto.claProDet}"
-                                       data-subclaprocod="${p.id.subClaProCod}"
-                                       data-subclaprodet="${p.enP2mSubclaseProducto.subClaProDet}"
-                                       data-procod="${p.id.proCod}"
-                                       data-procodbar="${p.proCodBar}"
-                                       data-prodet="${p.proDet}"
-                                       data-almcod="${p.enP2mAlmacen.almCod}"
-                                       data-unimedcod="${p.taGzzUnidadMed.uniMedCod}"
-                                       data-volunialm="${p.volUniAlm}"
-                                       data-prostkmax="${p.proStkMax}"
-                                       data-prostkmin="${p.proStkMin}"
-                                       data-propesnet="${p.proPesNet}"
-                                       data-propreunicom="${p.proPreUniCom}"
-                                       data-propreunifle="${p.proPreUniFle}"
-                                       data-propreunimar="${p.proPreUniMar}"
-                                       data-proobs="${p.proObs}">
-                                        <i class="fa fa-pencil-square-o fa-lg" style="color: black;"></i>
-                                    </a>
-                                    <a href="#" data-toggle="modal" data-target="#disableModal" 
-                                       title="Inhabilitar Producto"
-                                       data-claprocod="${p.id.claProCod}"
-                                       data-subclaprocod="${p.id.subClaProCod}"
-                                       data-procod="${p.id.proCod}"
-                                       data-prodet="${p.proDet}">
-                                        <i class="fa fa-trash-o fa-lg" style="color: black;"></i>
-                                    </a>
-                                </td>
-                            </cc:if>
-                        </tr>
-                    </c:forEach>
-                </tbody>
-            </table>     
-        </div>
+
         <div class="modal fade" id="addProduct">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content" style="overflow-y: auto">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="myModalLabel">A馻dir Producto</h4>
+                        <h4 class="modal-title" id="myModalLabel">A帽adir Producto</h4>
                     </div>
                     <form id="addForm" method="post" action="${pageContext.request.contextPath}/secured/compras/productos">
                         <div class="modal-body">
@@ -130,9 +126,9 @@
                                     <div class="form-group input-group">
                                         <span class="input-group-addon">Clase</span>
                                         <select class="form-control" id="addClaProCod" name="claProCod" onchange="changingValues()">
-                                            <c:forEach items="${clases}" var="clase">
+                                            <cc:forEach items="${clases}" var="clase">
                                                 <option value="${clase.claProCod}">${clase.claProDet}</option>
-                                            </c:forEach>
+                                            </cc:forEach>
                                         </select> 
                                         <span class="input-group-addon"><i class="fa fa-book"></i></span>
                                     </div>
@@ -149,7 +145,7 @@
 
                                 <div class="col-xs-12 col-md-6">
                                     <div class="form-group input-group" >
-                                        <span class="input-group-addon">C骴igo</span>
+                                        <span class="input-group-addon">C贸digo</span>
                                         <input type="text" class="form-control" name="proCod" >
                                         <span class="input-group-addon"><i class="fa fa-th"></i></span>
                                     </div>
@@ -157,7 +153,7 @@
 
                                 <div class="col-xs-12 col-md-6">
                                     <div class="form-group input-group" >
-                                        <span class="input-group-addon">C骴igo de Barras</span>
+                                        <span class="input-group-addon">C贸digo de Barras</span>
                                         <input type="text" class="form-control" name="proCodBar" >
                                         <span class="input-group-addon"><i class="fa fa-th"></i></span>
                                     </div>
@@ -165,18 +161,18 @@
 
                                 <div class="col-xs-12 col-md-12">
                                     <div class="form-group input-group" >
-                                        <span class="input-group-addon">Descripci髇</span>
+                                        <span class="input-group-addon">Descripci贸n</span>
                                         <input type="text" class="form-control" name="proDet" placeholder="Descripcion del producto">
                                     </div>
                                 </div>
 
                                 <div class="col-xs-12 col-md-4">
                                     <div class="form-group input-group" >
-                                        <span class="input-group-addon">Almac閚</span>
+                                        <span class="input-group-addon">Almac茅n</span>
                                         <select class="form-control" name="almCod">
-                                            <c:forEach items="${almacenes}" var="almacen">
+                                            <cc:forEach items="${almacenes}" var="almacen">
                                                 <option value="${almacen.almCod}">${almacen.almDet}</option>
-                                            </c:forEach>
+                                            </cc:forEach>
                                         </select> 
                                     </div>
                                 </div>
@@ -185,9 +181,9 @@
                                     <div class="form-group input-group" >
                                         <span class="input-group-addon">Unidad</span>
                                         <select class="form-control" name="uniMedCod">
-                                            <c:forEach items="${medidas}" var="medida">
+                                            <cc:forEach items="${medidas}" var="medida">
                                                 <option value="${medida.uniMedCod}">${medida.uniMedDet}</option>
-                                            </c:forEach>
+                                            </cc:forEach>
                                         </select> 
                                     </div>
                                 </div>
@@ -202,14 +198,14 @@
 
                                 <div class="col-xs-12 col-md-4">
                                     <div class="form-group input-group" >
-                                        <span class="input-group-addon">Stock M醲imo</span>                                                            
+                                        <span class="input-group-addon">Stock M谩ximo</span>                                                            
                                         <input type="number" class="form-control" name="proStkMax" min="0.0" step="any" value="0.0">
                                         <span class="input-group-addon"><i class="fa fa-chevron-up"></i></span>
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-md-4">
                                     <div class="form-group input-group" >
-                                        <span class="input-group-addon">Stock M韓imo</span>                                                           
+                                        <span class="input-group-addon">Stock M铆nimo</span>                                                           
                                         <input type="number" class="form-control" id="addProStkMin" name="proStkMin" min="0.0" step="any" value="0.0">
                                         <span class="input-group-addon"><i class="fa fa-chevron-down"></i></span>
                                     </div>
@@ -293,7 +289,7 @@
 
                                 <div class="col-xs-12 col-md-6">
                                     <div class="form-group input-group" >
-                                        <span class="input-group-addon">C骴igo</span>
+                                        <span class="input-group-addon">C贸digo</span>
                                         <input type="text" class="form-control" name="proCod" id="updateProCod" readonly>
                                         <span class="input-group-addon"><i class="fa fa-th"></i></span>
                                     </div>
@@ -301,7 +297,7 @@
 
                                 <div class="col-xs-12 col-md-6">
                                     <div class="form-group input-group" >
-                                        <span class="input-group-addon">C骴igo de Barras</span>
+                                        <span class="input-group-addon">C贸digo de Barras</span>
                                         <input type="text" class="form-control" name="proCodBar" id="updateProCodBar">
                                         <span class="input-group-addon"><i class="fa fa-th"></i></span>
                                     </div>
@@ -309,18 +305,18 @@
 
                                 <div class="col-xs-12 col-md-12">
                                     <div class="form-group input-group" >
-                                        <span class="input-group-addon">Descripci髇</span>
+                                        <span class="input-group-addon">Descripci贸n</span>
                                         <input type="text" class="form-control" name="proDet" id="updateProDet">
                                     </div>
                                 </div>
 
                                 <div class="col-xs-12 col-md-4">
                                     <div class="form-group input-group" >
-                                        <span class="input-group-addon">Almac閚</span>
+                                        <span class="input-group-addon">Almac茅n</span>
                                         <select class="form-control" name="almCod" id="updateAlmCod">
-                                            <c:forEach items="${almacenes}" var="almacen">
+                                            <cc:forEach items="${almacenes}" var="almacen">
                                                 <option value="${almacen.almCod}">${almacen.almDet}</option>
-                                            </c:forEach>
+                                            </cc:forEach>
                                         </select> 
                                     </div>
                                 </div>
@@ -329,9 +325,9 @@
                                     <div class="form-group input-group" >
                                         <span class="input-group-addon">Unidad</span>
                                         <select class="form-control" name="uniMedCod" id="updateUniMedCod">
-                                            <c:forEach items="${medidas}" var="medida">
+                                            <cc:forEach items="${medidas}" var="medida">
                                                 <option value="${medida.uniMedCod}">${medida.uniMedDet}</option>
-                                            </c:forEach>
+                                            </cc:forEach>
                                         </select> 
                                     </div>
                                 </div>
@@ -346,14 +342,14 @@
 
                                 <div class="col-xs-12 col-md-4">
                                     <div class="form-group input-group" >
-                                        <span class="input-group-addon">Stock M醲imo</span>                                                            
+                                        <span class="input-group-addon">Stock M谩ximo</span>                                                            
                                         <input type="number" class="form-control" name="proStkMax" min="0.0" step="any" value="0.0" id="updateProStkMax">
                                         <span class="input-group-addon"><i class="fa fa-chevron-up"></i></span>
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-md-4">
                                     <div class="form-group input-group" >
-                                        <span class="input-group-addon">Stock M韓imo</span>                                                           
+                                        <span class="input-group-addon">Stock M铆nimo</span>                                                           
                                         <input type="number" class="form-control" name="proStkMin" min="0.0" step="any" value="0.0" id="updateProStkMin" >
                                         <span class="input-group-addon"><i class="fa fa-chevron-down"></i></span>
                                     </div>
@@ -418,7 +414,7 @@
                             <input type="hidden" name="claProCod" id="disableClaProCod">
                             <input type="hidden" name="subClaProCod" id="disableSubClaProCod">
                             <input type="hidden" name="proCod" id="disableProCod">
-                            <p> 緿esea Inhabilitar el producto: <span id="disableProAll"></span> ?</p>                                
+                            <p> 驴Desea Inhabilitar el producto: <span id="disableProAll"></span> ?</p>                                
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
@@ -442,11 +438,11 @@
                                 <table class="table table-striped table-bordered table-hover" id="tableInactives">
                                     <thead>
                                         <tr>
-                                            <th>C骴igo</th>
-                                            <th>C骴igo de Barras</th>
+                                            <th>C贸digo</th>
+                                            <th>C贸digo de Barras</th>
                                             <th>Detalle</th>
                                             <th>Precio</th>
-                                            <th>Almac閚</th>
+                                            <th>Almac茅n</th>
                                             <th>Stock</th>
                                             <th>Preventa</th>
                                                 <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
@@ -455,7 +451,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <c:forEach items="${inactivos}" var="p">
+                                        <cc:forEach items="${inactivos}" var="p">
                                             <tr>
                                                 <td>${p.id.proCod}</td>                                        
                                                 <td>${p.proCodBar}</td>
@@ -485,7 +481,7 @@
                                                     </td>
                                                 </cc:if>
                                             </tr>
-                                        </c:forEach>
+                                        </cc:forEach>
                                     </tbody>
                                 </table>     
                             </div>
@@ -508,7 +504,7 @@
                             <input type="hidden" name="claProCod" id="activateClaProCod">
                             <input type="hidden" name="subClaProCod" id="activateSubClaProCod">
                             <input type="hidden" name="proCod" id="activateProCod">
-                            <p> 緿esea Activar el producto: <span id="activateProAll"></span> ?</p>                                
+                            <p> 驴Desea Activar el producto: <span id="activateProAll"></span> ?</p>                                
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
@@ -532,7 +528,7 @@
                             <input type="hidden" name="claProCod" id="deleteClaProCod">
                             <input type="hidden" name="subClaProCod" id="deleteSubClaProCod">
                             <input type="hidden" name="proCod" id="deleteProCod">
-                            <p> 緿esea Eliminar el producto: <span id="deleteProAll"></span> ?</p>                                
+                            <p> 驴Desea Eliminar el producto: <span id="deleteProAll"></span> ?</p>                                
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
@@ -542,8 +538,9 @@
                 </div>              
             </div>
         </div>                
+    </jsp:attribute>
 
-    </div>       
+    <jsp:attribute name="myscripts">
     <script language="javascript">
         $(document).ready(function () {
             changingValues();
@@ -559,7 +556,7 @@
             $('#addSubClaProCod').empty();
             var code = Number($("#addClaProCod").val());
             var tag = true;
-        <c:forEach items="${subclases}" var="subclass">
+        <cc:forEach items="${subclases}" var="subclass">
             if (${subclass.id.claProCod} == code) {
                 tag = false;
                 $('#addSubClaProCod').append($('<option>', {
@@ -567,14 +564,14 @@
                     text: "${subclass.subClaProDet}"
                 }));
             }
-        </c:forEach>
+        </cc:forEach>
             if (tag) {
                 $('#addSubClaProCod').append($('<option>', {
                     value: "",
                     text: "No existen subclases"
                 }));
             }
-        }
+        };
 
         $.validator.addMethod("greaterThan", function (value, element, param) {
             return parseFloat(value, 10) > parseFloat($(param).val(), 10);
@@ -594,7 +591,7 @@
             },
             messages: {
                 proDet: {
-                    required: "Ingrese una descripci髇 para el producto"
+                    required: "Ingrese una descripci贸n para el producto"
                 },
                 subClaProCod: {
                     required: ""
@@ -690,8 +687,6 @@
             updateProObs.val($(e.relatedTarget).data('proobs'));
         });
 
-
-
         $("#updateForm").validate({
             rules: {
                 proDet: {
@@ -703,7 +698,7 @@
             },
             messages: {
                 proDet: {
-                    required: "Ingrese una descripci髇 para el producto"
+                    required: "Ingrese una descripci贸n para el producto"
                 },
                 proStkMax: {
                     greaterThan: "> Minimo"
@@ -714,5 +709,5 @@
             }
         });
     </script>
-</jsp:attribute>
-</minierptemplate:template>
+    </jsp:attribute>
+</t:template-page-nav>

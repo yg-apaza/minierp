@@ -380,9 +380,13 @@ public class EnP1mFacturaVentaBusiness {
         EnP1tFacturaVentaDet tempFvd;
         String tempFacVenCabNum;
         int tempDets = 0;
-        BigDecimal tempFacVenCabTot = BigDecimal.ZERO;
-        BigDecimal tempFacVenCabSubTot = BigDecimal.ZERO;
+        BigDecimal tempFacVenCabValNet = BigDecimal.ZERO;
+        BigDecimal tempFacVenCabValIGV = BigDecimal.ZERO;
+        BigDecimal tempFacVenCabValTot = BigDecimal.ZERO;
+        BigDecimal tempPreUniAddIGV;
         int newFacCabCod;
+        BigDecimal temp100AddIGV = BigDecimalUtil.get(((100.0 + (double) facVenCabIGV) / 100.0), empNumDec);
+        BigDecimal tempPorDes = BigDecimalUtil.get(((100.0 - (double) facVenPorDes) / 100.0), empNumDec);
         for (int j = 0; j < numFacs; j++) {
             //creando cabecera facVenCabTot= 0 y facVenCabSubTot = 0
             tempFacVenCabNum = GenerateFacVenCabNum(facVenCabNum, j);
@@ -395,29 +399,102 @@ public class EnP1mFacturaVentaBusiness {
             String claProCod;
             String subClaProCod;
             String proCod;
-            for (int i = 0; i < maxDet4FacVen && tempDets < size; i++) {
-                tempFvd = detalles.get(tempDets);
-                claProCod = tempFvd.getEnP2mProducto().getId().getClaProCod();
-                subClaProCod = tempFvd.getEnP2mProducto().getId().getSubClaProCod();
-                proCod = tempFvd.getEnP2mProducto().getId().getProCod();
+            switch (facVenCabModVen) {
+                case 'F': {
+                    for (int i = 0; i < maxDet4FacVen && tempDets < size; i++) {
+                        tempFvd = detalles.get(tempDets);
+                        claProCod = tempFvd.getEnP2mProducto().getId().getClaProCod();
+                        subClaProCod = tempFvd.getEnP2mProducto().getId().getSubClaProCod();
+                        proCod = tempFvd.getEnP2mProducto().getId().getProCod();
 
-                createFacVenDet(newFacCabCod, i + 1, claProCod, subClaProCod, proCod,
-                        tempFvd.getFacVenDetCan(), tempFvd.getFacVenDetValUni());
+                        //Precio de producto para el conseguir un detalle con IGV agregado
+                        tempPreUniAddIGV = BigDecimalUtil.multiplicar(tempFvd.getFacVenDetValUni(), temp100AddIGV, empNumDec);
 
-                tempDets++;
-                tempFacVenCabTot = BigDecimalUtil.sumar(tempFacVenCabTot, BigDecimalUtil.multiplicar(tempFvd.getFacVenDetValUni(), tempFvd.getFacVenDetCan(), empNumDec), empNumDec);
+                        createFacVenDet(newFacCabCod, i + 1, claProCod, subClaProCod, proCod,
+                                tempFvd.getFacVenDetCan(), tempFvd.getFacVenDetValUni());
+
+                        tempDets++;
+                        tempFacVenCabValNet = BigDecimalUtil.sumar(tempFacVenCabValNet, BigDecimalUtil.multiplicar(tempFvd.getFacVenDetValUni(), tempFvd.getFacVenDetCan(), empNumDec));
+                        tempFacVenCabValTot = BigDecimalUtil.sumar(tempFacVenCabValTot, BigDecimalUtil.multiplicar(tempPreUniAddIGV, tempFvd.getFacVenDetCan(), empNumDec));
+
+                    }
+                    //aplicando descuento
+                    tempFacVenCabValNet = BigDecimalUtil.multiplicar(tempFacVenCabValNet, tempPorDes, empNumDec);
+                    tempFacVenCabValTot = BigDecimalUtil.multiplicar(tempFacVenCabValTot, tempPorDes, empNumDec);
+
+                    //calculando IGV
+                    tempFacVenCabValIGV = BigDecimalUtil.restar(tempFacVenCabValTot, tempFacVenCabValNet);
+
+                    //cambiando los valores de total y subtotal con respecto a sus detalles
+                    setFacVenCabTot(newFacCabCod, tempFacVenCabValNet);
+                    setFacVenCabSubTot(newFacCabCod, tempFacVenCabValIGV);
+                    break;
+                }
+                case 'B': {
+                    for (int i = 0; i < maxDet4FacVen && tempDets < size; i++) {
+                        tempFvd = detalles.get(tempDets);
+                        claProCod = tempFvd.getEnP2mProducto().getId().getClaProCod();
+                        subClaProCod = tempFvd.getEnP2mProducto().getId().getSubClaProCod();
+                        proCod = tempFvd.getEnP2mProducto().getId().getProCod();
+
+                        //Precio de producto para el conseguir un detalle con IGV agregado
+                        tempPreUniAddIGV = BigDecimalUtil.multiplicar(tempFvd.getFacVenDetValUni(), temp100AddIGV, empNumDec);
+
+                        createFacVenDet(newFacCabCod, i + 1, claProCod, subClaProCod, proCod,
+                                tempFvd.getFacVenDetCan(), tempPreUniAddIGV);
+
+                        tempDets++;
+                        tempFacVenCabValNet = BigDecimalUtil.sumar(tempFacVenCabValNet, BigDecimalUtil.multiplicar(tempFvd.getFacVenDetValUni(), tempFvd.getFacVenDetCan(), empNumDec));
+                        tempFacVenCabValTot = BigDecimalUtil.sumar(tempFacVenCabValTot, BigDecimalUtil.multiplicar(tempPreUniAddIGV, tempFvd.getFacVenDetCan(), empNumDec));
+
+                    }
+                    //aplicando descuento
+                    tempFacVenCabValNet = BigDecimalUtil.multiplicar(tempFacVenCabValNet, tempPorDes, empNumDec);
+                    tempFacVenCabValTot = BigDecimalUtil.multiplicar(tempFacVenCabValTot, tempPorDes, empNumDec);
+
+                    //calculando IGV
+                    tempFacVenCabValIGV = BigDecimalUtil.restar(tempFacVenCabValTot, tempFacVenCabValNet);
+
+                    //cambiando los valores de total y subtotal con respecto a sus detalles
+                    setFacVenCabTot(newFacCabCod, tempFacVenCabValNet);
+                    setFacVenCabSubTot(newFacCabCod, tempFacVenCabValIGV);
+                    break;
+                }
+                case 'N': {
+                    for (int i = 0; i < maxDet4FacVen && tempDets < size; i++) {
+                        tempFvd = detalles.get(tempDets);
+                        claProCod = tempFvd.getEnP2mProducto().getId().getClaProCod();
+                        subClaProCod = tempFvd.getEnP2mProducto().getId().getSubClaProCod();
+                        proCod = tempFvd.getEnP2mProducto().getId().getProCod();
+
+                        //Precio de producto para el conseguir un detalle con IGV agregado
+                        tempPreUniAddIGV = BigDecimalUtil.multiplicar(tempFvd.getFacVenDetValUni(), temp100AddIGV, empNumDec);
+
+                        createFacVenDet(newFacCabCod, i + 1, claProCod, subClaProCod, proCod,
+                                tempFvd.getFacVenDetCan(), tempFvd.getFacVenDetValUni());
+
+                        tempDets++;
+                        tempFacVenCabValNet = BigDecimalUtil.sumar(tempFacVenCabValNet, BigDecimalUtil.multiplicar(tempFvd.getFacVenDetValUni(), tempFvd.getFacVenDetCan(), empNumDec));
+                        tempFacVenCabValTot = BigDecimalUtil.sumar(tempFacVenCabValTot, BigDecimalUtil.multiplicar(tempPreUniAddIGV, tempFvd.getFacVenDetCan(), empNumDec));
+
+                    }
+                    //aplicando descuento
+                    tempFacVenCabValNet = BigDecimalUtil.multiplicar(tempFacVenCabValNet, tempPorDes, empNumDec);
+                    tempFacVenCabValTot = BigDecimalUtil.multiplicar(tempFacVenCabValTot, tempPorDes, empNumDec);
+
+                    //calculando IGV
+                    tempFacVenCabValIGV = BigDecimalUtil.restar(tempFacVenCabValTot, tempFacVenCabValNet);
+
+                    //cambiando los valores de total y subtotal con respecto a sus detalles
+                    setFacVenCabTot(newFacCabCod, tempFacVenCabValNet);
+                    setFacVenCabSubTot(newFacCabCod, tempFacVenCabValIGV);
+                    break;
+                }
             }
 
-            tempFacVenCabTot = BigDecimalUtil.multiplicar(tempFacVenCabTot, BigDecimalUtil.get(((100.0 - (double) facVenPorDes) / 100.0), empNumDec), empNumDec); //Agregando Costo del IGV
-            tempFacVenCabSubTot = BigDecimalUtil.multiplicar(tempFacVenCabTot, BigDecimalUtil.get(((double) facVenCabIGV / 100.0), empNumDec), empNumDec); //Agregando el descuento
-
-            //cambiando los valores de total y subtotal con respecto a sus detalles
-            setFacVenCabTot(newFacCabCod, tempFacVenCabTot);
-            setFacVenCabSubTot(newFacCabCod, tempFacVenCabSubTot);
-
             //reinicianod variables
-            tempFacVenCabTot = BigDecimal.ZERO;
-            tempFacVenCabSubTot = BigDecimal.ZERO;
+            tempFacVenCabValNet = BigDecimal.ZERO;
+            tempFacVenCabValTot = BigDecimal.ZERO;
         }
     }
 
@@ -437,9 +514,13 @@ public class EnP1mFacturaVentaBusiness {
         EnP1tFacturaVentaDet tempFvd;
         String tempFacVenCabNum;
         int tempDets = 0;
-        BigDecimal tempFacVenCabTot = BigDecimal.ZERO;
-        BigDecimal tempFacVenCabSubTot = BigDecimal.ZERO;
+        BigDecimal tempFacVenCabValNet = BigDecimal.ZERO;
+        BigDecimal tempFacVenCabValIGV = BigDecimal.ZERO;
+        BigDecimal tempFacVenCabValTot = BigDecimal.ZERO;
+        BigDecimal tempPreUniAddIGV;
         int newFacCabCod;
+        BigDecimal temp100AddIGV = BigDecimalUtil.get(((100.0 + (double) facVenCabIGV) / 100.0), empNumDec);
+        BigDecimal tempPorDes = BigDecimalUtil.get(((100.0 - (double) facVenPorDes) / 100.0), empNumDec);
         for (int j = 0; j < numFacs; j++) {
             //creando cabecera facVenCabTot= 0 y facVenCabSubTot = 0
             tempFacVenCabNum = GenerateFacVenCabNum(facVenCabNum, j);
@@ -452,31 +533,105 @@ public class EnP1mFacturaVentaBusiness {
             String claProCod;
             String subClaProCod;
             String proCod;
-            for (int i = 0; i < maxDet4FacVen && tempDets < size; i++) {
-                tempFvd = detalles.get(tempDets);
-                claProCod = tempFvd.getEnP2mProducto().getId().getClaProCod();
-                subClaProCod = tempFvd.getEnP2mProducto().getId().getSubClaProCod();
-                proCod = tempFvd.getEnP2mProducto().getId().getProCod();
+            switch (facVenCabModVen) {
+                case 'F': {
+                    for (int i = 0; i < maxDet4FacVen && tempDets < size; i++) {
+                        tempFvd = detalles.get(tempDets);
+                        claProCod = tempFvd.getEnP2mProducto().getId().getClaProCod();
+                        subClaProCod = tempFvd.getEnP2mProducto().getId().getSubClaProCod();
+                        proCod = tempFvd.getEnP2mProducto().getId().getProCod();
 
-                createFacVenDet(newFacCabCod, i + 1, claProCod, subClaProCod, proCod,
-                        tempFvd.getFacVenDetCan(), tempFvd.getFacVenDetValUni());
+                        //Precio de producto para el conseguir un detalle con IGV agregado
+                        tempPreUniAddIGV = BigDecimalUtil.multiplicar(tempFvd.getFacVenDetValUni(), temp100AddIGV, empNumDec);
 
-                reducirproStkPreVen(claProCod, subClaProCod, proCod, BigDecimalUtil.get(tempFvd.getFacVenDetCan(), empNumDec));
-                tempDets++;
-                tempFacVenCabTot = BigDecimalUtil.sumar(tempFacVenCabTot, BigDecimalUtil.multiplicar(tempFvd.getFacVenDetValUni(), tempFvd.getFacVenDetCan(), empNumDec), empNumDec);
+                        createFacVenDet(newFacCabCod, i + 1, claProCod, subClaProCod, proCod,
+                                tempFvd.getFacVenDetCan(), tempFvd.getFacVenDetValUni());
 
+                        reducirproStkPreVen(claProCod, subClaProCod, proCod, BigDecimalUtil.get(tempFvd.getFacVenDetCan(), empNumDec));
+                        tempDets++;
+                        tempFacVenCabValNet = BigDecimalUtil.sumar(tempFacVenCabValNet, BigDecimalUtil.multiplicar(tempFvd.getFacVenDetValUni(), tempFvd.getFacVenDetCan(), empNumDec));
+                        tempFacVenCabValTot = BigDecimalUtil.sumar(tempFacVenCabValTot, BigDecimalUtil.multiplicar(tempPreUniAddIGV, tempFvd.getFacVenDetCan(), empNumDec));
+
+                    }
+                    //aplicando descuento
+                    tempFacVenCabValNet = BigDecimalUtil.multiplicar(tempFacVenCabValNet, tempPorDes, empNumDec);
+                    tempFacVenCabValTot = BigDecimalUtil.multiplicar(tempFacVenCabValTot, tempPorDes, empNumDec);
+
+                    //calculando IGV
+                    tempFacVenCabValIGV = BigDecimalUtil.restar(tempFacVenCabValTot, tempFacVenCabValNet);
+
+                    //cambiando los valores de total y subtotal con respecto a sus detalles
+                    setFacVenCabTot(newFacCabCod, tempFacVenCabValNet);
+                    setFacVenCabSubTot(newFacCabCod, tempFacVenCabValIGV);
+                    break;
+                }
+                case 'B': {
+                    for (int i = 0; i < maxDet4FacVen && tempDets < size; i++) {
+                        tempFvd = detalles.get(tempDets);
+                        claProCod = tempFvd.getEnP2mProducto().getId().getClaProCod();
+                        subClaProCod = tempFvd.getEnP2mProducto().getId().getSubClaProCod();
+                        proCod = tempFvd.getEnP2mProducto().getId().getProCod();
+
+                        //Precio de producto para el conseguir un detalle con IGV agregado
+                        tempPreUniAddIGV = BigDecimalUtil.multiplicar(tempFvd.getFacVenDetValUni(), temp100AddIGV, empNumDec);
+
+                        createFacVenDet(newFacCabCod, i + 1, claProCod, subClaProCod, proCod,
+                                tempFvd.getFacVenDetCan(), tempPreUniAddIGV);
+
+                        reducirproStkPreVen(claProCod, subClaProCod, proCod, BigDecimalUtil.get(tempFvd.getFacVenDetCan(), empNumDec));
+                        tempDets++;
+                        tempFacVenCabValNet = BigDecimalUtil.sumar(tempFacVenCabValNet, BigDecimalUtil.multiplicar(tempFvd.getFacVenDetValUni(), tempFvd.getFacVenDetCan(), empNumDec));
+                        tempFacVenCabValTot = BigDecimalUtil.sumar(tempFacVenCabValTot, BigDecimalUtil.multiplicar(tempPreUniAddIGV, tempFvd.getFacVenDetCan(), empNumDec));
+
+                    }
+                    //aplicando descuento
+                    tempFacVenCabValNet = BigDecimalUtil.multiplicar(tempFacVenCabValNet, tempPorDes, empNumDec);
+                    tempFacVenCabValTot = BigDecimalUtil.multiplicar(tempFacVenCabValTot, tempPorDes, empNumDec);
+
+                    //calculando IGV
+                    tempFacVenCabValIGV = BigDecimalUtil.restar(tempFacVenCabValTot, tempFacVenCabValNet);
+
+                    //cambiando los valores de total y subtotal con respecto a sus detalles
+                    setFacVenCabTot(newFacCabCod, tempFacVenCabValNet);
+                    setFacVenCabSubTot(newFacCabCod, tempFacVenCabValIGV);
+                    break;
+                }
+                case 'N': {
+                    for (int i = 0; i < maxDet4FacVen && tempDets < size; i++) {
+                        tempFvd = detalles.get(tempDets);
+                        claProCod = tempFvd.getEnP2mProducto().getId().getClaProCod();
+                        subClaProCod = tempFvd.getEnP2mProducto().getId().getSubClaProCod();
+                        proCod = tempFvd.getEnP2mProducto().getId().getProCod();
+
+                        //Precio de producto para el conseguir un detalle con IGV agregado
+                        tempPreUniAddIGV = BigDecimalUtil.multiplicar(tempFvd.getFacVenDetValUni(), temp100AddIGV, empNumDec);
+
+                        createFacVenDet(newFacCabCod, i + 1, claProCod, subClaProCod, proCod,
+                                tempFvd.getFacVenDetCan(), tempFvd.getFacVenDetValUni());
+
+                        reducirproStkPreVen(claProCod, subClaProCod, proCod, BigDecimalUtil.get(tempFvd.getFacVenDetCan(), empNumDec));
+                        tempDets++;
+                        tempFacVenCabValNet = BigDecimalUtil.sumar(tempFacVenCabValNet, BigDecimalUtil.multiplicar(tempFvd.getFacVenDetValUni(), tempFvd.getFacVenDetCan(), empNumDec));
+                        tempFacVenCabValTot = BigDecimalUtil.sumar(tempFacVenCabValTot, BigDecimalUtil.multiplicar(tempPreUniAddIGV, tempFvd.getFacVenDetCan(), empNumDec));
+
+                    }
+                    //aplicando descuento
+                    tempFacVenCabValNet = BigDecimalUtil.multiplicar(tempFacVenCabValNet, tempPorDes, empNumDec);
+                    tempFacVenCabValTot = BigDecimalUtil.multiplicar(tempFacVenCabValTot, tempPorDes, empNumDec);
+
+                    //calculando IGV
+                    tempFacVenCabValIGV = BigDecimalUtil.restar(tempFacVenCabValTot, tempFacVenCabValNet);
+
+                    //cambiando los valores de total y subtotal con respecto a sus detalles
+                    setFacVenCabTot(newFacCabCod, tempFacVenCabValNet);
+                    setFacVenCabSubTot(newFacCabCod, tempFacVenCabValIGV);
+                    break;
+                }
             }
 
-            tempFacVenCabTot = BigDecimalUtil.multiplicar(tempFacVenCabTot, BigDecimalUtil.get(((100.0 - (double) facVenPorDes) / 100.0), empNumDec), empNumDec); //Agregando Costo del IGV
-            tempFacVenCabSubTot = BigDecimalUtil.multiplicar(tempFacVenCabTot, BigDecimalUtil.get(((double) facVenCabIGV / 100.0), empNumDec), empNumDec); //Agregando el descuento
-
-            //cambiando los valores de total y subtotal con respecto a sus detalles
-            setFacVenCabTot(newFacCabCod, tempFacVenCabTot);
-            setFacVenCabSubTot(newFacCabCod, tempFacVenCabSubTot);
-
             //reinicianod variables
-            tempFacVenCabTot = BigDecimal.ZERO;
-            tempFacVenCabSubTot = BigDecimal.ZERO;
+            tempFacVenCabValNet = BigDecimal.ZERO;
+            tempFacVenCabValTot = BigDecimal.ZERO;
         }
     }
 

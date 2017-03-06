@@ -7,14 +7,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-public class LogoutController extends HttpServlet
-{
+public class LogoutController extends HttpServlet {
+
     private static final long serialVersionUID = 1L;
-    
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession(false);
-        session.invalidate();
-        response.sendRedirect(request.getContextPath() + "/login");
+        try {
+            HttpSession session = request.getSession(false);
+            session.invalidate();
+        } catch (Exception e) {
+        } finally {
+            response.sendRedirect(request.getContextPath() + "/login");
+        }
     }
 }

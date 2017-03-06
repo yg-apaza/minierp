@@ -385,7 +385,7 @@
                             <p> ¿Desea inhabilitar el Usuario <span id="disableUsuNomCom"></span> ?</p>
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-outline btn-success">Si</button>
+                            <button type="submit" class="btn btn-outline btn-success">Inhabilitar</button>
                             <button type="button" class="btn btn-outline btn-danger" data-dismiss="modal">Cancelar</button>
                         </div>
                     </form>
@@ -473,7 +473,7 @@
                             <p> ¿Desea Habilitar el Usuario <span id="activateUsuNomCom"></span> ?</p>
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-outline btn-success">Si</button>
+                            <button type="submit" class="btn btn-outline btn-success">Activar</button>
                             <button type="button" class="btn btn-outline btn-danger" data-dismiss="modal">Cancelar</button>
                         </div>
                     </form>
@@ -495,7 +495,7 @@
                             <p> ¿Desea Habilitar el Usuario <span id="deleteUsuNomCom"></span> ?</p>
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-outline btn-success">Si</button>
+                            <button type="submit" class="btn btn-outline btn-success">Eliminar</button>
                             <button type="button" class="btn btn-outline btn-danger" data-dismiss="modal">Cancelar</button>
                         </div>
                     </form>
@@ -822,7 +822,7 @@
                             <p> ¿Desea Eliminar el cliente: <span id="delClienteCliAll"></span> del catalogo del usuario: <span id="delClienteUsuAll"></span> ?</p>
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-outline btn-success">Si</button>
+                            <button type="submit" class="btn btn-outline btn-success">Eliminar</button>
                             <button type="button" class="btn btn-outline btn-danger" data-dismiss="modal">Cancelar</button>
                         </div>
                     </form>
@@ -845,7 +845,7 @@
                             <p> ¿Desea Eliminar el Documento <span id="delDocumentoDocUsuAll"></span> del catalogo del usuario: <span id="delDocumentoUsuAll"></span> ?</p>
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-outline btn-success">Si</button>
+                            <button type="submit" class="btn btn-outline btn-success">Eliminar</button>
                             <button type="button" class="btn btn-outline btn-danger" data-dismiss="modal">Cancelar</button>
                         </div>
                     </form>
@@ -881,7 +881,7 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-outline btn-success">Si</button>
+                            <button type="submit" class="btn btn-outline btn-success">Cambiar Password</button>
                             <button type="button" class="btn btn-outline btn-danger" data-dismiss="modal">Cancelar</button>
                         </div>
                     </form>

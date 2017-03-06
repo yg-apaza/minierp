@@ -25,7 +25,7 @@
                                         <button type="button" 
                                                 id="guiaTranportista" 
                                                 class="btn btn-primary btn-block">Guías de Remisión 
-                                            <i class="fa fa-eye"></i>
+                                            <i class="fa fa-book"></i>
                                         </button>
                                     </div>
                                     <div class="col-md-3 col-md-offset-1">
@@ -57,21 +57,24 @@
                                     <thead>
                                         <tr>
                                             <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()==1}">
-                                                <th style="text-align: center"></th>
+                                                <th></th>
                                                 </cc:if>
-                                            <th style="text-align: center">Codigo</th>
-                                            <th style="text-align: center">F/B/N</th>
-                                            <th style="text-align: center">Cliente</th>
+                                            <th class="text-center">Numero Factura</th>
+                                            <th class="text-center">F/B/N</th>
+                                            <th class="text-center">Cliente</th>
                                                 <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()== 1}">
-                                                <th style="text-align: center">Vendedor</th>
+                                                <th class="text-center">Vendedor</th>
                                                 </cc:if>
-                                            <th style="text-align: center">Fecha</th>
-                                            <th style="text-align: center">Valor Neto</th>
-                                            <th style="text-align: center">Valor IGV</th>
-                                            <th style="text-align: center">Valor Total</th>
-                                            <th style="text-align: center"></th>
+                                            <th class="text-center">Fecha</th>
+                                            <th class="text-center">Valor Neto</th>
+                                            <th class="text-center">Valor IGV</th>
+                                            <th class="text-center">Valor Total</th>
+                                                <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=1}">
+                                                <th class="text-center">Vista</th>
+                                                </cc:if>
                                                 <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()==1}">
-                                                <th>    </th>
+                                                <th class="text-center">Operaciones</th>
+                                                <th>Devoluciones</th>
                                                 </cc:if>
                                         </tr>
                                     </thead>
@@ -79,23 +82,36 @@
                                         <cc:forEach items="${facturasVenta}" var="c">
                                             <tr>
                                                 <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()==1}">
-                                                    <td width="3%" align="center"><input type="checkbox" name="codigos" value="${c.facVenCabCod}"></td>
-                                                    </cc:if>
-                                                <td> ${c.facVenCabNum}</td>
-                                                <td> ${c.facVenCabModVen}</td>
-                                                <td> ${c.enP1mCliente.cliRazSoc}</td>
-                                                <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()== 1}">
-                                                    <td> ${c.enP1mUsuario.usuNom} ${c.enP1mUsuario.usuApePat}</td>
+                                                    <td width="3%" class="text-center">
+                                                        <input type="checkbox" name="codigos" value="${c.facVenCabCod}">
+                                                    </td>
                                                 </cc:if>
-                                                <td> ${c.facVenCabFecEmi}</td>
-                                                <td> ${c.facVenCabTot}</td>
-                                                <td> ${c.facVenCabSubTot}</td>
-                                                <td> <fmt:formatNumber type="number" 
-                                                                  minFractionDigits="2" 
-                                                                  maxFractionDigits="2" 
-                                                                  value="${c.facVenCabTot + c.facVenCabSubTot}" /> 
+                                                <td nowrap="nowrap"> ${c.facVenCabNum}</td>
+                                                <td nowrap="nowrap" class="text-center"> ${c.facVenCabModVen}</td>
+                                                <td nowrap="nowrap"> ${c.enP1mCliente.cliRazSoc}</td>
+                                                <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()== 1}">
+                                                    <td nowrap="nowrap"> ${c.enP1mUsuario.usuNom} ${c.enP1mUsuario.usuApePat}</td>
+                                                </cc:if>
+                                                <td nowrap="nowrap"> ${c.facVenCabFecEmi}</td>
+                                                <td nowrap="nowrap"> 
+                                                    <fmt:formatNumber type="number" 
+                                                                      minFractionDigits="2" 
+                                                                      maxFractionDigits="2" 
+                                                                      value="${c.facVenCabTot}" />
                                                 </td>
-                                                <td>
+                                                <td nowrap="nowrap">
+                                                    <fmt:formatNumber type="number" 
+                                                                      minFractionDigits="2" 
+                                                                      maxFractionDigits="2" 
+                                                                      value="${c.facVenCabSubTot}" />
+                                                </td>
+                                                <td nowrap="nowrap"> 
+                                                    <fmt:formatNumber type="number" 
+                                                                      minFractionDigits="2" 
+                                                                      maxFractionDigits="2" 
+                                                                      value="${c.facVenCabTot + c.facVenCabSubTot}" /> 
+                                                </td>
+                                                <td nowrap="nowrap" class="text-center">
                                                     <a onclick='viewSaleBill("${c.facVenCabCod}")' title="Vista Detallada de Factura de Venta">
                                                         <i class="fa fa-list-alt fa-lg" style="color: black;"></i>
                                                     </a>
@@ -108,8 +124,8 @@
                                                         </a>
                                                     </cc:if>
                                                 </td>
-                                                <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()==1}">
-                                                    <td>
+                                                <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()== 1}">
+                                                    <td nowrap="nowrap" class="text-center">
                                                         <a onclick='makeDoRefund("${c.facVenCabCod}", "partial")' title="Devolucion Parcial">
                                                             <i class="fa fa-wrench fa-lg" style="color: black;"></i>
                                                         </a>
@@ -1036,10 +1052,10 @@
                 });
                 codeRefund = facVenCod;
 
-                if (type == "partial") {
+                if (type === "partial") {
                     typeRefund = "partial";
                     $("#refund").text("¿Desea realizar una devolución parcial de los productos asociados a la factura " + facVenCod + " ? Tener en cuenta que solo podrà modificar su detalle ");
-                } else if (type == "total") {
+                } else if (type === "total") {
                     typeRefund = "total";
                     $("#refund").text("¿Desea realizar una devolución total de todos los productos de la factura " + facVenCod + " ? Tener en cuenta que la factura se eliminará ");
                 }
@@ -1052,10 +1068,10 @@
                 $("#refundCancel").prop('disabled', true);
                 $("#refundAccept").prop('disabled', true);
 
-                if (typeRefund == "partial") {
+                if (typeRefund === "partial") {
                     $("#refund").text("Redireccionando ...");
                     window.location = "${pageContext.request.contextPath}/secured/ventas/partialRefund?code=" + codeRefund;
-                } else if (typeRefund == "total") {
+                } else if (typeRefund === "total") {
                     $("#refund").text("Espere mientras se realiza la devolución");
                     $.post(
                             "${pageContext.request.contextPath}/secured/ventas/totalRefund", {
@@ -1137,7 +1153,7 @@
                 },
                 messages: {
                     guiTraTraNum: {
-                        required: "Número de Guía de Remisión",
+                        required: "Número de Guía de Remisión"
                     },
                     guiTraTraDen: {
                         required: "Denominación"

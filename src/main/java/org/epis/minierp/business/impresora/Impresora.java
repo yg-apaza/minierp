@@ -214,7 +214,7 @@ public class Impresora {
                 pdv = " ";
 
                 try {
-                    cliDni = (new EnP1mDocumentoClienteDao()).getById(new EnP1mDocumentoClienteId(cliCod, 1)).getDocCliNum();
+                    cliDni = "DNI: " + (new EnP1mDocumentoClienteDao()).getById(new EnP1mDocumentoClienteId(cliCod, 1)).getDocCliNum();
                 } catch (Exception ee) {
                     cliDni = "";
                 }
@@ -224,19 +224,21 @@ public class Impresora {
 
                 proNum = 0;
                 List<EnP1tFacturaVentaDet> detalles = (new EnP1mFacturaVentaCabDao()).getFacVenDets(cod);
+                double tempValorTotal = 0;
                 for (EnP1tFacturaVentaDet d : detalles) {
                     proNum++;
                     proCod = d.getEnP2mProducto().getId().getProCod();
                     proCan = BigDecimalUtil.get(d.getFacVenDetCan());
                     proUni = d.getEnP2mProducto().getTaGzzUnidadMed().getUniMedSim();
                     proDes = d.getEnP2mProducto().getProDet();
-                    proValUni = BigDecimalUtil.get(BigDecimalUtil.multiplicar(d.getFacVenDetValUni(), BigDecimalUtil.get((e.getEmpIgv() / 100) + 1, empNumDec), empNumDec));
+                    proValUni = BigDecimalUtil.get(d.getFacVenDetValUni());
                     proDes1 = Integer.toString(f.getFacVenPorDes());
-                    proValNet = proCan * proValUni;
+                    proValNet = BigDecimalUtil.get(BigDecimalUtil.multiplicar(proCan, proValUni, empNumDec));
+                    tempValorTotal = tempValorTotal + proValNet;
                     bol.writeBolDetalle(tipCod, proNum, proCod, proCan, proUni, proDes, proValUni, proDes1, df.format(proValNet));
                 }
                 bol.addLines(e.getEmpNumDetBolVen() - proNum);
-                total = BigDecimalUtil.get(BigDecimalUtil.sumar(f.getFacVenCabSubTot(), f.getFacVenCabTot(), empNumDec), empNumDec); //neto + igv
+                total = tempValorTotal;
                 bol.writeBolTotal(df.format(total));
             }
             bol.close();

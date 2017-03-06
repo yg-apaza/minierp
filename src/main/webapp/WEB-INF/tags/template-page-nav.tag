@@ -227,6 +227,23 @@
                             </li>
                         </ul>
                     </li>
+                    <li class="active">
+                        <a href="#">
+                            <span class="fa-stack fa-lg pull-left">
+                                <i class="fa fa-dashboard fa-stack-1x "></i>
+                            </span>Menu General</a>
+                        <ul class="nav-pills nav-stacked" style="list-style-type:none;">
+                            <li>
+                                <a href="${pageContext.request.contextPath}/">Panel de Inicio</a>
+                            </li>
+                            <li>
+                                <a href="${pageContext.request.contextPath}/secured/general/perfil">Mi Perfil</a>
+                            </li>
+                            <li>
+                                <a href="${pageContext.request.contextPath}/logout">Terminar Sesion</a>
+                            </li>
+                        </ul>
+                    </li>
                 </cc:if>
                 <!-- Menu Vendedor -->
                 <cc:if test="${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()==2}">

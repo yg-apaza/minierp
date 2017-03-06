@@ -7,6 +7,22 @@ public class BigDecimalUtil {
 
     private static RoundingMode roundingMode = RoundingMode.UP;
 
+    public static BigDecimal round2BigDecimal(double number, int decimal ) {
+        return BigDecimal.valueOf(number).setScale(decimal, roundingMode);
+    }
+    
+    public static BigDecimal round2BigDecimal(BigDecimal number, int decimal) {
+        return number.setScale(decimal, roundingMode);
+    }
+    
+    public static double round2Double(double number, int decimal ) {
+        return BigDecimal.valueOf(number).setScale(decimal, roundingMode).doubleValue();
+    }
+    
+    public static double round2Double(BigDecimal number, int decimal) {
+        return number.setScale(decimal, roundingMode).doubleValue();
+    }
+    
     public static double get(BigDecimal number) {
         return number.doubleValue();
     }
