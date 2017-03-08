@@ -8,12 +8,15 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
+import java.util.TimeZone;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.epis.minierp.dao.general.EnP1mEmpresaDao;
 import org.epis.minierp.dao.logistica.EnP2mDocumentoTransportistaDao;
+import org.epis.minierp.dao.ventas.EnP1mClienteDao;
 import org.epis.minierp.dao.ventas.EnP1mDocumentoClienteDao;
 import org.epis.minierp.dao.ventas.EnP1mFacturaVentaCabDao;
+import org.epis.minierp.model.EnP1mCliente;
 import org.epis.minierp.model.EnP1mDocumentoCliente;
 import org.epis.minierp.model.EnP1mDocumentoClienteId;
 import org.epis.minierp.model.EnP1mEmpresa;
@@ -34,6 +37,7 @@ public class Impresora {
     DecimalFormat df = new DecimalFormat("0.00");
 
     EnP1mEmpresaDao empDao;
+    EnP1mClienteDao cliDao;
     int tipCod = 1;
     String cliNom, cliDir, cliRuc, fecEmi;
     //Factura
@@ -50,10 +54,14 @@ public class Impresora {
     String punPar, punLle;
     String traLic, traPla;
     String ven, zon, con, oc, facNum, hora, numInt;
+    DateFormat converter;
 
     public Impresora(String path) {
         this.path = path;
         empDao = new EnP1mEmpresaDao();
+        cliDao = new EnP1mClienteDao();
+        converter = new SimpleDateFormat("dd/MM/yyyy");
+        converter.setTimeZone(TimeZone.getTimeZone("UTC"));
     }
 
     public String generateFactura(int cod) {
@@ -62,18 +70,22 @@ public class Impresora {
 
         String file = "Factura_" + sf.format(date.getTime()) + extension;
         ImpresoraMatricial fac = new ImpresoraMatricial(file, path, "factura");
+
         try {
             EnP1mFacturaVentaCab f = (new EnP1mFacturaVentaCabDao()).getById(cod);
+
+            String myDateEmi = converter.format(f.getFacVenCabFecEmi());
+            String myDateVen = converter.format(f.getFacVenCabFecVen());
 
             cliNom = f.getEnP1mCliente().getCliNom();
             cliDir = f.getEnP1mCliente().getCliDir();
             cliRuc = ((EnP1mDocumentoCliente) f.getEnP1mCliente().getEnP1mDocumentoClientes().iterator().next()).getDocCliNum();
-            fecEmi = fecha.format(f.getFacVenCabFecEmi());
+            fecEmi = myDateEmi;
             fac.writeFacSobCab(cliNom, cliDir, cliRuc, fecEmi);
 
             cliCod = f.getEnP1mCliente().getCliCod();
             conPag = f.getTaGzzMetodoPagoFactura().getMetPagDet();
-            fecVen = fecha.format(f.getFacVenCabFecVen());
+            fecVen = myDateVen;
             venZon = f.getEnP1mUsuario().getUsuNom();
             numSec = " ";
             dis = " ";
@@ -118,9 +130,13 @@ public class Impresora {
         EnP1mEmpresa e = empDao.getById(01);
         String file = "Facturas_" + sf.format(date.getTime()) + extension;
         ImpresoraMatricial fac = new ImpresoraMatricial(file, path, "factura");
+
         try {
             for (int cod : cods) {
                 EnP1mFacturaVentaCab f = (new EnP1mFacturaVentaCabDao()).getById(cod);
+                String myDateEmi = converter.format(f.getFacVenCabFecEmi());
+                String myDateVen = converter.format(f.getFacVenCabFecVen());
+
                 cliCod = f.getEnP1mCliente().getCliCod();
                 try {
                     cliNom = f.getEnP1mCliente().getCliRazSoc();
@@ -137,11 +153,11 @@ public class Impresora {
                 } catch (Exception fa) {
                     cliRuc = "Desconocido";
                 }
-                fecEmi = fecha.format(f.getFacVenCabFecEmi());
+                fecEmi = myDateEmi;
                 fac.writeFacSobCab(cliNom, cliDir, cliRuc, fecEmi);
 
                 conPag = f.getTaGzzMetodoPagoFactura().getMetPagDet();
-                fecVen = fecha.format(f.getFacVenCabFecVen());
+                fecVen = myDateVen;
                 venZon = f.getEnP1mUsuario().getUsuNom();
                 numSec = " ";
                 dis = " ";
@@ -195,17 +211,21 @@ public class Impresora {
         String cliDni;
         String file = "Boletas_" + sf.format(date.getTime()) + extension;
         ImpresoraMatricial bol = new ImpresoraMatricial(file, path, "boleta");
+
         try {
             for (int cod : cods) {
                 EnP1mFacturaVentaCab f = (new EnP1mFacturaVentaCabDao()).getById(cod);
+                String myDateEmi = converter.format(f.getFacVenCabFecEmi());
+                String myDateVen = converter.format(f.getFacVenCabFecVen());
+                
                 cliNom = f.getEnP1mCliente().getCliRazSoc();
                 cliDir = f.getEnP1mCliente().getCliDir();
-                fecEmi = fecha.format(f.getFacVenCabFecEmi());
+                fecEmi = myDateEmi;
                 bol.writeBolSobCab(cliNom, cliDir, fecEmi);
 
                 cliCod = f.getEnP1mCliente().getCliCod();
                 conPag = f.getTaGzzMetodoPagoFactura().getMetPagDet();
-                fecVen = fecha.format(f.getFacVenCabFecVen());
+                fecVen = myDateVen;
                 if (f.getEnP1mCatalogoRuta() == null) {
                     venRut = " ";
                 } else {
@@ -258,16 +278,30 @@ public class Impresora {
             for (int cod : cods) {
 
                 EnP1mFacturaVentaCab f = (new EnP1mFacturaVentaCabDao()).getById(cod);
-                cliCod = f.getEnP1mCliente().getCliCod();
-                cliNom = f.getEnP1mCliente().getCliNom();
+                String myDateEmi = converter.format(f.getFacVenCabFecEmi());
+                String myDateVen = converter.format(f.getFacVenCabFecVen());
                 punPar = empDao.getAll().get(0).getEmpDomFis();
-                punLle = f.getEnP1mCliente().getCliDir();
+
                 if (f.getEnP2mGuiaRemTransportista() == null) {
                     traNom = " ";
                     traLic = " ";
                     traPla = " ";
+                    cliCod = " ";
+                    cliNom = " ";
+                    punLle = " ";
                 } else {
                     traNom = f.getEnP2mGuiaRemTransportista().getEnP2mTransportista().getTraNom();
+                    EnP1mCliente cli = cliDao.getById(f.getEnP2mGuiaRemTransportista().getGuiRemTraDes());
+                    String cliDni;
+                    cliCod = cli.getCliCod();
+                    try {
+                        cliDni = "DNI: " + (new EnP1mDocumentoClienteDao()).getById(new EnP1mDocumentoClienteId(cliCod, 1)).getDocCliNum();
+                    } catch (Exception ee) {
+                        cliDni = "";
+                    }
+                    cliNom = cli.getCliRazSoc() + "\n                    " + cliDni + "\n";
+                    punLle = cli.getCliDir();
+
                     String traCod = f.getEnP2mGuiaRemTransportista().getEnP2mTransportista().getTraCod();
                     try {
                         traLic = (new EnP2mDocumentoTransportistaDao()).getById(new EnP2mDocumentoTransportistaId(3, traCod)).getDocTraNum();
@@ -282,12 +316,12 @@ public class Impresora {
                 }
                 rem.writeGuiRemSobCab(cliNom, punPar, punLle, traNom, traLic, traPla);
 
-                fecVen = fecha.format(f.getFacVenCabFecVen());
+                fecVen = myDateVen;
                 ven = f.getEnP1mUsuario().getUsuCod();
                 zon = " ";
                 con = f.getTaGzzTipoPagoFactura().getTipPagDet();
                 oc = " ";
-                facNum = f.getFacVenCabNum();
+                facNum = "";
                 hora = DateUtil.getHoraActual();
                 numInt = " ";
                 rem.writeGuiRemCabecera(fecVen, ven, zon, con, cliCod, oc, facNum, hora, numInt);
@@ -300,17 +334,17 @@ public class Impresora {
                     proUni = d.getEnP2mProducto().getTaGzzUnidadMed().getUniMedSim();
                     proDes = d.getEnP2mProducto().getProDet();
                     proValUni = BigDecimalUtil.get(d.getFacVenDetValUni());
-                    proDes1 = Integer.toString(f.getFacVenPorDes());
+                    proDes1 = "";
                     proValNet = proCan * proValUni;
 
-                    rem.writeGuiRemDetalle(tipCod, proNum, proCod, proCan, proUni, proDes, proValUni, proDes1, df.format(proValNet));
+                    rem.writeGuiRemDetalle(tipCod, proNum, proCod, proCan, proUni, proDes, proDes1);
                 }
                 rem.addLines(e.getEmpNumDetGuiRemTra() - proNum);
                 rem.writeGuiRemMotTra(Integer.toString(f.getEnP2mGuiaRemRemitente().getTaGzzMotivoTraslado().getMotTraCod()));
             }
             rem.close();
         } catch (IOException ex) {
-            Logger.getLogger(Impresora.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("ERROR IMPRIMIENDO GUIA DE REMISION");
         }
         String params[] = {file, rem.getName()};
         return params;

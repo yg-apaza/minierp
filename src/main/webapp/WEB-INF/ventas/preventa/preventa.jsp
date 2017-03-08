@@ -1,158 +1,180 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib tagdir="/WEB-INF/tags" prefix="minierptemplate" %>
-<%@ taglib prefix='cc' uri='http://java.sun.com/jsp/jstl/core' %>
-<minierptemplate:template>
-    <jsp:attribute name="titulo">
-        <title>Ventas - Preventa</title>
-    </jsp:attribute>
-    <jsp:attribute name="contenido">
-        <div class ="panel-body">
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h1 class="page-header">Preventas</h1>
-                    </div>
+<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib prefix="t" tagdir='/WEB-INF/tags'%>
+<%@taglib prefix="cc" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
+<t:template-page-nav>
+    <jsp:attribute name="mybody">
+        <form id="preventaLoteForm" role="form" action="${pageContext.request.contextPath}/secured/ventas/preventa" method="post">
+            <div class="panel panel-default class">
+                <div class="panel-heading">
+                    <h1 class="text-left">Preventas</h1>
                 </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
-                            <form role="form" method="get" action="${pageContext.request.contextPath}/secured/ventas/preventa/addPreventa">
-                                <div class="col-md-3">
-                                    <button type="submit" class="btn btn-success  btn-block">Crear Preventa <i class="fa fa-plus"></i></button>   
-                                </div>
-                            </form>
-                            <div class="col-md-3">
-                                <button type="button" id="transformar" class="btn btn-info btn-block">Transformar a Ventas <i class="fa fa-arrow-right"></i></button>
-                            </div>
-                        </cc:if>
-                    </div>
-                </div>
-                <br />                
-                <form id="preventaLoteForm" role="form" action="${pageContext.request.contextPath}/secured/ventas/preventa" method="post">
+                <div class="panel-body">
                     <div class="row">
-                        <div class = "col-lg-12">
+                        <div class="col-md-12">
+                            <div class="btn-group btn-group-justified" role="group" aria-label="First group">
+                                <div class="col-md-3 text-center">
+                                    <a href="${pageContext.request.contextPath}/secured/ventas/preventa/addPreventa" 
+                                       class="btn btn-success btn-block">Crear Preventa  
+                                        <i class="fa fa-plus"></i>
+                                    </a>                                
+                                </div>
+                                <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod() == 1}">
+                                    <div class="col-md-3 text-center">
+                                        <button type="button" 
+                                                id="transformar" 
+                                                class="btn btn-info btn-block">Transformar a Ventas 
+                                            <i class="fa fa-arrow-right"></i></button>
+                                        </button>
+                                    </div>
+                                </cc:if>
+                            </div>
+                        </div>
+                        <br />
+                        <br />
+                        <br />
+                        <div class="col-lg-12">
                             <div class="table-responsive">
-                                <table class = "table table-striped table-bordered table-hover"  id = "id_table">
+                                <table class="table table-striped table-bordered table-hover" id = "id_table">
                                     <thead>
                                         <tr>
-                                            <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
-                                                <th style="text-align: center"></th>
+                                            <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()== 1}">
+                                                <th></th>
                                                 </cc:if>
-                                            <th style="text-align: center">Cliente Razon Social</th>
-                                                <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()==1}">
-                                                <th style="text-align: center">Usuario</th>
+                                            <th class="text-center">Cliente Razon Social</th>
+                                                <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()== 1}">
+                                                <th class="text-center">Usuario</th>
                                                 </cc:if>
-                                            <th style="text-align: center">Fecha</th>
-                                            <th style="text-align: center">Valor Neto</th>
-                                            <th style="text-align: center">Valor IGV</th>
-                                            <th style="text-align: center">Valor Total</th>
-                                            <th style="text-align: center"></th>
+                                            <th class="text-center">Fecha</th>
+                                            <th class="text-center">Valor Neto</th>
+                                            <th class="text-center">Valor IGV</th>
+                                            <th class="text-center">Valor Total</th>
+                                            <th class="text-center">Operaciones</th>
                                         </tr>    
                                     </thead>
                                     <tbody>
-                                        <c:forEach items = "${preventas}" var = "preventa">    
+                                        <cc:forEach items = "${preventas}" var = "preventa">    
                                             <tr>
-                                                <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()!=5}">
-                                                    <td width="3%" align="center"><input type="checkbox" name="preventas" value="${preventa.preVenCabCod}"></td>
-                                                    </cc:if>
-                                                <td><c:out value="${preventa.enP1mCliente.cliRazSoc}"/></td>
-                                                <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()==1}">
-                                                    <td><c:out value="${preventa.enP1mUsuario.usuNom} ${preventa.enP1mUsuario.usuApePat}"/></td>
+                                                <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()== 1}">
+                                                    <td width="3%" class="text-center">
+                                                        <input type="checkbox" name="preventas" value="${preventa.preVenCabCod}">
+                                                    </td>
                                                 </cc:if>
-                                                <td><c:out value="${preventa.preVenCabFecEmi}"/></td>
-                                                <td><c:out value="${preventa.preVenCabTot}"/></td>
-                                                <td><c:out value="${preventa.preVenCabSubTot}"/></td>
-                                                <td><c:out value="${preventa.preVenCabTot + preventa.preVenCabSubTot}"/></td>
-                                                <td><a onclick='viewPreVen("${preventa.preVenCabCod}")' title="Vista Detallada de Pre-Venta">
+                                                <td nowrap="nowrap"> ${preventa.enP1mCliente.cliRazSoc}</td>
+                                                <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()== 1}">
+                                                    <td nowrap="nowrap"> ${preventa.enP1mUsuario.usuNom} ${preventa.enP1mUsuario.usuApePat}</td>
+                                                </cc:if>
+                                                <td nowrap="nowrap"> 
+                                                    <fmt:formatDate value="${preventa.preVenCabFecEmi}" pattern="dd/MM/yyyy" timeZone="UTC"/>
+                                                </td>
+                                                <td nowrap="nowrap"> 
+                                                    <fmt:formatNumber type="number" 
+                                                                      minFractionDigits="2" 
+                                                                      maxFractionDigits="2" 
+                                                                      value="${preventa.preVenCabTot}" />
+                                                </td>
+                                                <td nowrap="nowrap"> 
+                                                    <fmt:formatNumber type="number" 
+                                                                      minFractionDigits="2" 
+                                                                      maxFractionDigits="2" 
+                                                                      value="${preventa.preVenCabSubTot}"/>
+                                                </td>
+                                                <td nowrap="nowrap"> 
+                                                    <fmt:formatNumber type="number" 
+                                                                      minFractionDigits="2" 
+                                                                      maxFractionDigits="2" 
+                                                                      value="${preventa.preVenCabTot + preventa.preVenCabSubTot}"/>
+                                                </td>
+                                                <td nowrap="nowrap" class="text-center">
+                                                    <a onclick='viewPreVen("${preventa.preVenCabCod}")' title="Vista Detallada de Pre-Venta">
                                                         <i class="fa fa-list-alt fa-lg" style="color: black;"></i>
                                                     </a> 
                                                 </td>
                                             </tr>
-                                        </c:forEach>  
+                                        </cc:forEach>  
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
-                    <div class="modal fade" id="configurarModal" role="dialog">
-                        <div class="modal-dialog modal-sm">
-                            <div class="modal-content" style="overflow-y: auto">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    <h4 class="modal-title">Configurar pagos</h4>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="form-group">
-                                        <label> Factura Inicial</label>
-                                        <input id="numLot" class="form-control" name="iniFacVenCabCod" placeholder="Ejm. 001-000001">
-                                    </div>
-                                    <div class="form-group">
-                                        <label> Estado de las Facturas </label>
-                                        <select class="form-control" name="estFacCod">
-                                            <c:forEach items="${estados}" var="estado">
-                                                <option value="${estado.estFacCod}">${estado.estFacDet}</option>
-                                            </c:forEach>
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label> Método de Pago de las Facturas </label>
-                                        <select class="form-control" name="metPagCod">
-                                            <c:forEach items="${metodos}" var="metodo">
-                                                <option value="${metodo.metPagCod}">${metodo.metPagDet}</option>
-                                            </c:forEach>
-                                        </select>                          
-                                    </div>
-                                    <div class="form-group">
-                                        <label> Modalidad de Venta </label>
-                                        <select class="form-control" name="facVenCabModVen">
-                                            <option value="F">Factura</option>
-                                            <option value="B">Boleta</option>
-                                        </select>                          
-                                    </div>
-                                    <div class="form-group">
-                                        <label> Tipo de Pago de las Facturas </label>
-                                        <select class="form-control" name="tipPagCod" id="tipPagCod">
-                                            <c:forEach items="${tipos}" var="tipo">
-                                                <option value="${tipo.tipPagCod}">${tipo.tipPagDet}</option>
-                                            </c:forEach>
-                                        </select>
-                                    </div>
-                                    <div class="form-group" id="numCuoBlock">
-                                        <label> Número de cuotas </label>
-                                        <input id="numCuo" class="form-control" name="numCuo" disabled>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-outline btn-danger" data-dismiss="modal"> Cancelar </button>
-                                    <button type="submit" class="btn btn-outline btn-success"> Facturar </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </form>
+                </div>
             </div>
 
-            <div id="errorMessageModal" class="modal fade">
+            <div class="modal fade" id="configurarModal" role="dialog">
                 <div class="modal-dialog modal-sm">
                     <div class="modal-content" style="overflow-y: auto">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Transformar a Venta</h4>
+                            <h4 class="modal-title">Configurar pagos</h4>
                         </div>
                         <div class="modal-body">
-                            <p align="center"><span id="errorMessage"></span></p>
+                            <div class="form-group">
+                                <label> Factura Inicial</label>
+                                <input id="numLot" class="form-control" name="iniFacVenCabCod" placeholder="Ejm. 001-000001">
+                            </div>
+                            <div class="form-group">
+                                <label> Estado de las Facturas </label>
+                                <select class="form-control" name="estFacCod">
+                                    <cc:forEach items="${estados}" var="estado">
+                                        <option value="${estado.estFacCod}">${estado.estFacDet}</option>
+                                    </cc:forEach>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label> Método de Pago de las Facturas </label>
+                                <select class="form-control" name="metPagCod">
+                                    <cc:forEach items="${metodos}" var="metodo">
+                                        <option value="${metodo.metPagCod}">${metodo.metPagDet}</option>
+                                    </cc:forEach>
+                                </select>                          
+                            </div>
+                            <div class="form-group">
+                                <label> Modalidad de Venta </label>
+                                <select class="form-control" name="facVenCabModVen">
+                                    <option value="F">Factura</option>
+                                    <option value="B">Boleta</option>
+                                </select>                          
+                            </div>
+                            <div class="form-group">
+                                <label> Tipo de Pago de las Facturas </label>
+                                <select class="form-control" name="tipPagCod" id="tipPagCod">
+                                    <cc:forEach items="${tipos}" var="tipo">
+                                        <option value="${tipo.tipPagCod}">${tipo.tipPagDet}</option>
+                                    </cc:forEach>
+                                </select>
+                            </div>
+                            <div class="form-group" id="numCuoBlock">
+                                <label> Número de cuotas </label>
+                                <input id="numCuo" class="form-control" name="numCuo" disabled>
+                            </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-success" data-dismiss="modal">Aceptar</button>                                            
+                            <button type="button" class="btn btn-outline btn-danger" data-dismiss="modal"> Cancelar </button>
+                            <button type="submit" class="btn btn-outline btn-success"> Facturar </button>
                         </div>
-                    </div>              
+                    </div>
                 </div>
+            </div>
+        </form>
+
+        <div id="errorMessageModal" class="modal fade">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content" style="overflow-y: auto">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Transformar a Venta</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p align="center"><span id="errorMessage"></span></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-success" data-dismiss="modal">Aceptar</button>                                            
+                    </div>
+                </div>              
             </div>
         </div>
 
-        <!- Vista de Detalles ->        
         <div class="modal fade" id="viewPreVen">
             <div class="modal-dialog modal-md">
                 <div class="modal-content" style="overflow-y: auto">
@@ -248,9 +270,10 @@
                     </div>
                 </div>
             </div>
-        </div>        
+        </div>
+    </jsp:attribute>
 
-
+    <jsp:attribute name="myscripts">
         <script>
             function addFiltro() {
                 var filterName = $("#filterName").val();
@@ -288,6 +311,7 @@
                     $("#viewPreVen").modal('show');
                 });
             }
+            ;
 
             $(document).ready(function () {
                 $('#id_table').DataTable({
@@ -314,7 +338,7 @@
                 });
 
                 $('#tipPagCod').change(function () {
-                    if (this.value == 2) {
+                    if (this.value === 2) {
                         $('#numCuoBlock').show();
                         $('#numCuo').removeAttr('disabled');
                     } else {
@@ -351,7 +375,7 @@
                 });
             });
         </script>
-    </jsp:attribute>  
-</minierptemplate:template>   
+    </jsp:attribute>
+</t:template-page-nav>
 
 

@@ -52,9 +52,20 @@
         <script src="${pageContext.request.contextPath}/js/jquery.dataTables.min.js"></script>
         <script src="${pageContext.request.contextPath}/js/bootstrap-filestyle.min.js"></script>
         <script src="${pageContext.request.contextPath}/js/sidebar_menu.js"></script>
-        
+
+        <script>
+            function stopRKey(evt) {
+                var evt = (evt) ? evt : ((event) ? event : null);
+                var node = (evt.target) ? evt.target : ((evt.srcElement) ? evt.srcElement : null);
+                if ((evt.keyCode === 13) && (node.type === "text")) {
+                    return false;
+                }
+            };
+            document.onkeypress = stopRKey;
+        </script>
+
         <jsp:invoke fragment="myscripts"/>
-        
+
     </jsp:attribute>
 
     <jsp:attribute name="navegation">  

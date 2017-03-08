@@ -5,13 +5,13 @@
 
 <t:template-page-nav>
     <jsp:attribute name="mybody">
-        <div class="panel panel-default class">
-            <div class="panel-heading">
-                <h1 class="text-left">Facturas de Venta</h1>
-            </div>
-            <div class="panel-body">
-                <div class="row">
-                    <form id="formLote" role="form" action="" method="post">
+        <form id="formLote" role="form" action="" method="post">
+            <div class="panel panel-default class">
+                <div class="panel-heading">
+                    <h1 class="text-left">Facturas de Venta</h1>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
                         <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod() == 1}">
                             <div class="col-md-12">
                                 <div class="btn-group btn-group-justified" role="group" aria-label="First group">
@@ -61,7 +61,7 @@
                                                 </cc:if>
                                             <th class="text-center">Numero Factura</th>
                                             <th class="text-center">F/B/N</th>
-                                            <th class="text-center">Cliente</th>
+                                            <th class="text-center">Cliente Razon Social</th>
                                                 <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()== 1}">
                                                 <th class="text-center">Vendedor</th>
                                                 </cc:if>
@@ -74,7 +74,7 @@
                                                 </cc:if>
                                                 <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()==1}">
                                                 <th class="text-center">Operaciones</th>
-                                                <th>Devoluciones</th>
+                                                <th class="text-center">Devoluciones</th>
                                                 </cc:if>
                                         </tr>
                                     </thead>
@@ -92,7 +92,9 @@
                                                 <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod()== 1}">
                                                     <td nowrap="nowrap"> ${c.enP1mUsuario.usuNom} ${c.enP1mUsuario.usuApePat}</td>
                                                 </cc:if>
-                                                <td nowrap="nowrap"> ${c.facVenCabFecEmi}</td>
+                                                <td nowrap="nowrap"> 
+                                                    <fmt:formatDate value="${c.facVenCabFecEmi}" pattern="dd/MM/yyyy" timeZone="UTC"/>
+                                                    </td>
                                                 <td nowrap="nowrap"> 
                                                     <fmt:formatNumber type="number" 
                                                                       minFractionDigits="2" 
@@ -140,118 +142,114 @@
                                 </table>
                             </div>
                         </div>
-
-                        <div id="impresionLotesModal" class="modal fade">
-                            <div class="modal-dialog modal-sm">
-                                <div class="modal-content" style="overflow-y: auto">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                        <h4 class="modal-title">Impresión</h4>
-                                    </div>
-                                    <div class="modal-body">
-                                        <p align="center">Desea confirmar la impresion de las Facturas/Boletas seleccionadas?</p>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="submit" class="btn btn-outline btn-success"> Imprimir </button>
-                                        <button type="button" class="btn btn-outline btn-danger" data-dismiss="modal"> Cancelar </button>
-                                    </div>
-                                </div>              
-                            </div>
+                    </div>
+                </div>
+            </div>
+            <div id="impresionLotesModal" class="modal fade">
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content" style="overflow-y: auto">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Impresión</h4>
                         </div>
+                        <div class="modal-body">
+                            <p align="center">Desea confirmar la impresion de las Facturas/Boletas seleccionadas?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-outline btn-success"> Imprimir </button>
+                            <button type="button" class="btn btn-outline btn-danger" data-dismiss="modal"> Cancelar </button>
+                        </div>
+                    </div>              
+                </div>
+            </div>
 
-                        <div id="guiaTransportistaModal" class="modal fade">
-                            <div class="modal-dialog modal-md">
-                                <div class="modal-content" style="overflow-y: auto">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                        <h4 class="modal-title">Guía de Transportista</h4>
-                                    </div>
-                                    <div class="modal-body">
-                                        <!-- inputs -->
-                                        <div class="col-xs-12 col-md-12">
-                                            <div class="form-group input-group">
-                                                <span class="input-group-addon">Código de Guía Transportista</span>
-                                                <input type="text" class="form-control" id="guiTraLotTraNum" name="guiTraLotTraNum">
-                                                <span class="input-group-addon"><i class="fa fa-file-text-o"></i></span>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-12 col-md-12">
-                                            <div class="form-group input-group">
-                                                <span class="input-group-addon">Remitente(Empresa)</span>
-                                                <input type="text" class="form-control" value="${remitente}" readonly>
-                                                <span class="input-group-addon"><i class="fa fa-building"></i></span>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-12 col-md-12">
-                                            <div class="form-group input-group">
-                                                <span class="input-group-addon">Destinatario(Main Cliente)</span>
-                                                <select class="form-control" name="guiTraMainCli">
-                                                    <cc:forEach items="${clientes}" var="t">
-                                                        <option value="${t.cliCod}">${t.cliNomCom}</option>
-                                                    </cc:forEach>
-                                                </select>
-                                                <span class="input-group-addon"><i class="fa fa-child"></i></span>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-12 col-md-12">
-                                            <div class="form-group input-group">
-                                                <span class="input-group-addon">Transportista</span>
-                                                <select class="form-control" name="guiTraLotTraDat">
-                                                    <cc:forEach items="${transportistas}" var="t">
-                                                        <option value="${t.traCod}">${t.traNomCom}</option>
-                                                    </cc:forEach>
-                                                </select>
-                                                <span class="input-group-addon"><i class="fa fa-truck"></i></span>
-                                            </div>
-                                        </div>      
-                                        <div class="col-xs-12 col-md-12">
-                                            <div class="form-group input-group">
-                                                <span class="input-group-addon">Vehículo</span>
-                                                <select class="form-control" name="guiTraLotNumPla">
-                                                    <cc:forEach items="${unidades}" var="u">
-                                                        <option value="${u.uniTraCod}">${u.uniTraNumPla}</option>    
-                                                    </cc:forEach>
-                                                </select> 
-                                                <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-12 col-md-12">
-                                            <div class="form-group input-group">
-                                                <span class="input-group-addon">Ruta</span>
-                                                <select class="form-control" name="guiTraLotRutDes">
-                                                    <cc:forEach items="${rutas}" var="r">
-                                                        <option value="${r.catRutCod}">${r.catRutDet}</option>       
-                                                    </cc:forEach>
-                                                </select> 
-                                                <span class="input-group-addon"><i class="fa fa-road"></i></span>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-12 col-md-12">
-                                            <div class="form-group input-group">
-                                                <span class="input-group-addon">Motivo de Traslado</span>
-                                                <select class="form-control" name="motTraCod">
-                                                    <cc:forEach items="${motivos}" var="m">
-                                                        <option value="${m.motTraCod}">${m.motTraDet}</option>       
-                                                    </cc:forEach>
-                                                </select> 
-                                                <span class="input-group-addon"><i class="fa fa-road"></i></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-outline btn-danger" data-dismiss="modal"> Cancelar </button>
-                                        <button type="submit" class="btn btn-outline btn-success"> Aceptar </button>
-                                    </div>
+            <div class="modal fade" id="guiaTransportistaModal">
+                <div class="modal-dialog modal-md">
+                    <div class="modal-content" style="overflow-y: auto">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Guía de Transportista</h4>
+                        </div>
+                        <div class="modal-body">
+                            <!-- inputs -->
+                            <div class="col-xs-12 col-md-12">
+                                <div class="form-group input-group">
+                                    <span class="input-group-addon">Código de Guía Transportista</span>
+                                    <input type="text" class="form-control" id="guiTraLotTraNum" name="guiTraLotTraNum">
+                                    <span class="input-group-addon"><i class="fa fa-file-text-o"></i></span>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-md-12">
+                                <div class="form-group input-group">
+                                    <span class="input-group-addon">Remitente(Empresa)</span>
+                                    <input type="text" class="form-control" value="${remitente}" readonly>
+                                    <span class="input-group-addon"><i class="fa fa-building"></i></span>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-md-12">
+                                <div class="form-group input-group">
+                                    <span class="input-group-addon">Destinatario(Main Cliente)</span>
+                                    <select class="form-control" name="guiTraMainCli">
+                                        <cc:forEach items="${clientes}" var="t">
+                                            <option value="${t.cliCod}">${t.cliNomCom}</option>
+                                        </cc:forEach>
+                                    </select>
+                                    <span class="input-group-addon"><i class="fa fa-child"></i></span>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-md-12">
+                                <div class="form-group input-group">
+                                    <span class="input-group-addon">Transportista</span>
+                                    <select class="form-control" name="guiTraLotTraDat">
+                                        <cc:forEach items="${transportistas}" var="t">
+                                            <option value="${t.traCod}">${t.traNomCom}</option>
+                                        </cc:forEach>
+                                    </select>
+                                    <span class="input-group-addon"><i class="fa fa-truck"></i></span>
+                                </div>
+                            </div>      
+                            <div class="col-xs-12 col-md-12">
+                                <div class="form-group input-group">
+                                    <span class="input-group-addon">Vehículo</span>
+                                    <select class="form-control" name="guiTraLotNumPla">
+                                        <cc:forEach items="${unidades}" var="u">
+                                            <option value="${u.uniTraCod}">${u.uniTraNumPla}</option>    
+                                        </cc:forEach>
+                                    </select> 
+                                    <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-md-12">
+                                <div class="form-group input-group">
+                                    <span class="input-group-addon">Ruta</span>
+                                    <select class="form-control" name="guiTraLotRutDes">
+                                        <cc:forEach items="${rutas}" var="r">
+                                            <option value="${r.catRutCod}">${r.catRutDet}</option>       
+                                        </cc:forEach>
+                                    </select> 
+                                    <span class="input-group-addon"><i class="fa fa-road"></i></span>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-md-12">
+                                <div class="form-group input-group">
+                                    <span class="input-group-addon">Motivo de Traslado</span>
+                                    <select class="form-control" name="motTraCod">
+                                        <cc:forEach items="${motivos}" var="m">
+                                            <option value="${m.motTraCod}">${m.motTraDet}</option>       
+                                        </cc:forEach>
+                                    </select> 
+                                    <span class="input-group-addon"><i class="fa fa-road"></i></span>
                                 </div>
                             </div>
                         </div>
-
-                    </form>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline btn-danger" data-dismiss="modal"> Cancelar </button>
+                            <button type="submit" class="btn btn-outline btn-success"> Aceptar </button>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-
-
+        </form>
 
         <div id="errorMessageModal" class="modal fade">
             <div class="modal-dialog modal-sm">

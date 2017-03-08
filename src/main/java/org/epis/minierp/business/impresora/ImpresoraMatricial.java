@@ -479,7 +479,7 @@ public class ImpresoraMatricial {
     }
     
     public void writeGuiRemDetalle(int tipCod, int proNum, String proCod, double proCan, String proUni, String proDes, 
-            double proValUni, String proDes1, String proValNet) throws IOException{
+            String proDes1) throws IOException{
         switch (tipCod){
             case 1:
                 writer.write(proCod);
@@ -499,13 +499,11 @@ public class ImpresoraMatricial {
         writer.write(proDes);
         val += gP.getProDes();
         setAbsoluteHorizontalPosition(val);
-        writer.write(Double.toString(proValUni));
         val += gP.getProValUni();
         setAbsoluteHorizontalPosition(val);
         writer.write(proDes1);
         val += gP.getProDes1();
         setAbsoluteHorizontalPosition(val);
-        writer.write(proValNet);
         newLine();
     }
 

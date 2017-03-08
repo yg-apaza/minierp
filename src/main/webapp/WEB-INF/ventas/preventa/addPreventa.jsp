@@ -1,219 +1,206 @@
-<%@ taglib tagdir="/WEB-INF/tags" prefix="minierptemplate" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib tagdir="/WEB-INF/tags" prefix="minierptemplate" %>
-<%@ taglib prefix='cc' uri='http://java.sun.com/jsp/jstl/core' %>
-<minierptemplate:template>
-    <jsp:attribute name="titulo">
-        <title>Ventas - Preventa</title>
-    </jsp:attribute>
-    <jsp:attribute name="contenido">
-        <div class="panel-body">
+<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib prefix="t" tagdir='/WEB-INF/tags'%>
+<%@taglib prefix="cc" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
+<t:template-page-nav>
+    <jsp:attribute name="mybody">
+        <div class="panel panel-primary class">
+            <div class="panel-heading">
+                <h1 class="text-left">Preventa</h1>
+            </div>
             <form id="registerBill" method="post" action="${pageContext.request.contextPath}/secured/ventas/preventa/addPreventa">
                 <input type="hidden" class="form-control" name="productsAmounts" id="proAmo">
                 <input type="hidden" class="form-control" name="productsCodes" id="proCodes">
                 <input type="hidden" class="form-control" name="productsPrices" id="proPrices">                
-                <div class="row">
-                    <div class="col-md-8">
-                        <h1 class="page-header">Nueva Preventa</h1>
-                    </div>
-                    <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod() != 2}">
-                        <div class="col-md-4"><br>
-                            <div class="form-group input-group">
-                                <span class="input-group-addon">Vendedor</span>
-                                <span class="input-group-addon"><i class="fa fa-child"></i></span>
-                                <input type="hidden" class="form-control" name="usuCod" value="${usuario.usuCod}">
-                                <input type="text" class="form-control" value="${usuario.usuCod} - ${usuario.usuNom}" readonly>
-                            </div>
-                        </div>
-                    </cc:if>
-                    <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod() == 2}">
-                        <input type="hidden" name="usuCod" value="${usuario.usuCod}">
-                    </cc:if>
-                </div>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="panel panel-primary">
-                            <div class="panel-heading">
-                                <div class="row">
-                                    <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod() != 2}">
-                                        <div class="col-md-6">
-                                            <div class="form-group input-group" >
-                                                <span class="input-group-addon">Emisi髇</span>
-                                                <input type="date" class="form-control" name="preVenCabFecEmi" value="${fechaActual}">
-                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group input-group" >
-                                                <span class="input-group-addon">Moneda</span>
-                                                <select class="form-control" name="monCod">
-                                                    <c:forEach items="${monedas}" var="moneda">
-                                                        <option value="${moneda.monCod}">${moneda.monDet}</option>
-                                                    </c:forEach>
-                                                </select>
-                                                <span class="input-group-addon"><i class="fa fa-money"></i></span>
-                                            </div>
-                                        </div>
-                                    </cc:if>
-                                    <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod() == 2}">
-                                        <div class="col-md-12">
-                                            <div class="form-group input-group" >
-                                                <span class="input-group-addon">Emisi髇</span>
-                                                <input type="date" class="form-control" name="preVenCabFecEmi" value="${fechaActual}" readonly>
-                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                            </div>
-                                        </div>
-                                        <input type="hidden" class="form-control" name="monCod" value="1">        
-                                    </cc:if>
-                                    <div class="col-md-12">
-                                        <input class="hidden" type="text" name="cliCod" id="preCli">
+                <input type="hidden" name="usuCod" value="${usuario.usuCod}">
+
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">
+                                    <div class="row">
                                         <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod() != 2}">
-                                            <div class="form-group input-group" >                                                    
-                                                <span class="input-group-addon">Cliente</span>
-                                                <select class="form-control" id="desClienteCode" disabled>
-                                                    <option value="1">Raz髇 Social</option>
-                                                    <option value="2">Nombre Comercial</option>
-                                                </select> 
-                                                <input class="form-control" type="text" id="cliDesShow" placeholder="Descripci髇" readOnly>
-                                                <span class="input-group-addon" onclick="changeClientIcon()"><i class="fa" id="iconClientCriteria"></i></span>
-                                                <select class="form-control" id="tipoClienteCode" disabled>
-                                                    <c:forEach items="${tiposCliente}" var="tipoCliente">
-                                                        <option value="${tipoCliente.tipCliCod}">${tipoCliente.tipCliDet}</option>
-                                                    </c:forEach>
-                                                </select> 
-                                                <input class="form-control" type="text" id="cliCodShow" placeholder="C骴igo" readOnly>
+                                            <div class="col-md-6">
+                                                <div class="form-group input-group" >
+                                                    <span class="input-group-addon">Emisi贸n</span>
+                                                    <input type="date" class="form-control" name="preVenCabFecEmi" value="${fechaActual}">
+                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                </div>
                                             </div>
-                                        </cc:if>
-                                        <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod() == 2}">
-                                            <div class="form-group input-group" >                                                    
-                                                <span class="input-group-addon">Cliente</span>
-                                                <select class="form-control" id="desClienteCode" disabled>
-                                                    <option value="1">Raz髇 Social</option>
-                                                    <option value="2">Nombre Comercial</option>
-                                                </select> 
-                                                <input class="form-control" type="text" id="cliDesShow" placeholder="Descripci髇" readOnly>
-                                                <input class="form-control" type="text" id="cliCodShow" placeholder="C骴igo" readOnly>
-                                            </div>
-                                        </cc:if>
-                                        <div class="row">                                            
-                                            <div class="col-md-6" style='display:none;'>
+                                            <div class="col-md-6">
                                                 <div class="form-group input-group" >
                                                     <span class="input-group-addon">Moneda</span>
                                                     <select class="form-control" name="monCod">
-                                                        <c:forEach items="${monedas}" var="moneda">
+                                                        <cc:forEach items="${monedas}" var="moneda">
                                                             <option value="${moneda.monCod}">${moneda.monDet}</option>
-                                                        </c:forEach>
+                                                        </cc:forEach>
                                                     </select>
                                                     <span class="input-group-addon"><i class="fa fa-money"></i></span>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6" style='display:none;'>
+                                        </cc:if>
+                                        <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod() == 2}">
+                                            <div class="col-md-12">
                                                 <div class="form-group input-group" >
-                                                    <span class="input-group-addon">Plazo (d韆s)</span>
-                                                    <input type="number" class="form-control" name="preVenCabPla" value="1" min="1">
-                                                    <span class="input-group-addon"><i class="fa fa-thumb-tack"></i></span>
+                                                    <span class="input-group-addon">Emisi贸n</span>
+                                                    <input type="date" class="form-control" name="preVenCabFecEmi" value="${fechaActual}" readonly>
+                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                </div>
+                                            </div>
+                                            <input type="hidden" class="form-control" name="monCod" value="1">        
+                                        </cc:if>
+                                        <div class="col-md-12">
+                                            <input class="hidden" type="text" name="cliCod" id="preCli">
+                                            <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod() != 2}">
+                                                <div class="form-group input-group" >                                                    
+                                                    <span class="input-group-addon">Cliente</span>
+                                                    <select class="form-control" id="desClienteCode" disabled>
+                                                        <option value="1">Raz贸n Social</option>
+                                                        <option value="2">Nombre Comercial</option>
+                                                    </select> 
+                                                    <input class="form-control" type="text" id="cliDesShow" placeholder="Descripci贸n" readOnly>
+                                                    <span class="input-group-addon" onclick="changeClientIcon()"><i class="fa" id="iconClientCriteria"></i></span>
+                                                    <select class="form-control" id="tipoClienteCode" disabled>
+                                                        <cc:forEach items="${tiposCliente}" var="tipoCliente">
+                                                            <option value="${tipoCliente.tipCliCod}">${tipoCliente.tipCliDet}</option>
+                                                        </cc:forEach>
+                                                    </select> 
+                                                    <input class="form-control" type="text" id="cliCodShow" placeholder="C贸digo" readOnly>
+                                                </div>
+                                            </cc:if>
+                                            <cc:if test = "${sessionScope.usuario.getTaGzzTipoUsuario().getTipUsuCod() == 2}">
+                                                <div class="form-group input-group" >                                                    
+                                                    <span class="input-group-addon">Cliente</span>
+                                                    <select class="form-control" id="desClienteCode" disabled>
+                                                        <option value="1">Raz贸n Social</option>
+                                                        <option value="2">Nombre Comercial</option>
+                                                    </select> 
+                                                    <input class="form-control" type="text" id="cliDesShow" placeholder="Descripci贸n" readOnly>
+                                                    <input class="form-control" type="text" id="cliCodShow" placeholder="C贸digo" readOnly>
+                                                </div>
+                                            </cc:if>
+                                            <div class="row">                                            
+                                                <div class="col-md-6" style='display:none;'>
+                                                    <div class="form-group input-group" >
+                                                        <span class="input-group-addon">Moneda</span>
+                                                        <select class="form-control" name="monCod">
+                                                            <cc:forEach items="${monedas}" var="moneda">
+                                                                <option value="${moneda.monCod}">${moneda.monDet}</option>
+                                                            </cc:forEach>
+                                                        </select>
+                                                        <span class="input-group-addon"><i class="fa fa-money"></i></span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6" style='display:none;'>
+                                                    <div class="form-group input-group" >
+                                                        <span class="input-group-addon">Plazo (d铆as)</span>
+                                                        <input type="number" class="form-control" name="preVenCabPla" value="1" min="1">
+                                                        <span class="input-group-addon"><i class="fa fa-thumb-tack"></i></span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="col-md-12">                                        
+                                            <textarea class="form-control" rows="2" name="preVenCabObs" placeholder="Observaciones"></textarea>
+                                        </div>                                    
                                     </div>
-                                    <div class="col-md-12">                                        
-                                        <textarea class="form-control" rows="2" name="preVenCabObs" placeholder="Observaciones"></textarea>
-                                    </div>                                    
-                                </div>
-                            </div>
-                            <div class="panel-body">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group input-group" >
-                                            <span class="input-group-addon">Producto Detalle</span>
-                                            <input class="form-control" type="text" name="proDes" id="proDesShow" placeholder="Descripci髇" readOnly>
-                                            <span class="input-group-addon" onclick="changeIcon()"><i class="fa fa-arrow-down" id="iconCriteria"></i></span>
-                                        </div>
-                                        <div class="form-group input-group" >
-                                            <span class="input-group-addon">Producto Codigo</span>
-                                            <input class="form-control" type="text" name="proCod" id="proCodShow" placeholder="C骴igo" readOnly>
-                                            <span class="input-group-addon" onclick="changeIcon()"><i class="fa fa-arrow-up" id="iconCriteria"></i></span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group input-group" >
-                                            <span class="input-group-addon">Precio</span>
-                                            <input type="number" class="form-control" id="priceShow" readOnly>
-                                            <input type="hidden" class="form-control" id="unitShow">     
-
-                                            <span class="input-group-addon">Stock</span>
-                                            <input type="number" class="form-control" id="stockShow" readOnly>
-                                        </div>
-                                        <div class="form-group input-group" >
-                                            <span class="input-group-addon">Cantidad</span>
-                                            <input type="number" class="form-control" id="amountShow" min="1" step="any" value="1" name="canPro">
-                                            <span class="input-group-addon"><i class="fa fa-balance-scale"></i></span>
-                                        </div>
-                                    </div> 
-                                    <div class="col-md-3">
-                                        <button type="button" class="btn btn-success btn-block" id="addDetail">Agregar <i class="fa fa-plus"></i></button>
-                                    </div>
-                                </div>
-                                <br />
-                                <div class="table-responsive">
-                                    <table width="100%" class="table table-striped table-bordered table-hover" id="productTable">
-                                        <thead align="center">
-                                            <tr >
-                                                <th class="text-center">C骴igo</th>
-                                                <th class="text-center">#</th>
-                                                <th class="text-center" colspan="2">Descripci髇</th>
-                                                <th class="text-center" colspan="2">Precio Unitario</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>                                        
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group input-group" >
-                                            <span class="input-group-addon">Descuento</span>
-                                            <select class="form-control" name="tipDesCod" id="selectDiscount">
-                                                <c:forEach items="${tiposDescuentos}" var="tipoDescuentos">
-                                                    <option value="${tipoDescuentos.tipDesCod}">${tipoDescuentos.tipDesDet}</option>
-                                                </c:forEach>
-                                            </select> 
-                                        </div>
-                                        <div class="form-group input-group" >
-                                            <span class="input-group-addon">%</span>
-                                            <input type="number" class="form-control" name="preVenPorDes" id="porDes" min="0" step="any" value="0" discountTop="100">
-
-                                            <span class="input-group-addon">IGV</span>
-                                            <input class="form-control" name="preVenCabIgv" value="${empresa.empIgv}" id="preIgv" readOnly>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group input-group" >
-                                            <span class="input-group-addon">Valor IGV</span>
-                                            <input type="number" class="form-control" name="preVenCabSubTot" id="preTot" value="0" readonly>
-                                        </div>                                     
-                                        <div class="form-group input-group" >
-                                            <span class="input-group-addon">Valor Neto</span>
-                                            <input type="number" class="form-control" name="preVenCabTot" id="preSub" value="0" readonly>
-                                        </div>
-                                        <div class="form-group input-group" >
-                                            <span class="input-group-addon">Valor Total</span>
-                                            <input type="number" class="form-control" name="totalFact" id="totalFactura" value="0" readonly>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <button type="submit" id="register" class="btn btn-primary btn-block" disabled>Registrar Preventa</button>
-                                    </div>
-                                </div>
+                                </div>                                    
                             </div>
                         </div>
                     </div>
                 </div>
+                <div class="panel-footer">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group input-group" >
+                                <span class="input-group-addon">Producto Detalle</span>
+                                <input class="form-control" type="text" name="proDes" id="proDesShow" placeholder="Descripci贸n" readOnly>
+                                <span class="input-group-addon" onclick="changeIcon()"><i class="fa fa-arrow-down" id="iconCriteria"></i></span>
+                            </div>
+                            <div class="form-group input-group" >
+                                <span class="input-group-addon">Producto Codigo</span>
+                                <input class="form-control" type="text" name="proCod" id="proCodShow" placeholder="C贸digo" readOnly>
+                                <span class="input-group-addon" onclick="changeIcon()"><i class="fa fa-arrow-up" id="iconCriteria"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group input-group" >
+                                <span class="input-group-addon">Precio</span>
+                                <input type="number" class="form-control" id="priceShow" readOnly>
+                                <input type="hidden" class="form-control" id="unitShow">     
+
+                                <span class="input-group-addon">Stock</span>
+                                <input type="number" class="form-control" id="stockShow" readOnly>
+                            </div>
+                            <div class="form-group input-group" >
+                                <span class="input-group-addon">Cantidad</span>
+                                <input type="number" class="form-control" id="amountShow" min="1" step="any" value="1" name="canPro">
+                                <span class="input-group-addon"><i class="fa fa-balance-scale"></i></span>
+                            </div>
+                        </div> 
+                        <div class="col-md-3">
+                            <button type="button" class="btn btn-success btn-block" id="addDetail">Agregar <i class="fa fa-plus"></i></button>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="table-responsive">
+                        <table width="100%" class="table table-striped table-bordered table-hover" id="productTable">
+                            <thead align="center">
+                                <tr >
+                                    <th class="text-center">C贸digo</th>
+                                    <th class="text-center">#</th>
+                                    <th class="text-center" colspan="2">Descripci贸n</th>
+                                    <th class="text-center" colspan="2">Precio Unitario</th>
+                                </tr>
+                            </thead>
+                            <tbody>                                        
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group input-group" >
+                                <span class="input-group-addon">Descuento</span>
+                                <select class="form-control" name="tipDesCod" id="selectDiscount">
+                                    <cc:forEach items="${tiposDescuentos}" var="tipoDescuentos">
+                                        <option value="${tipoDescuentos.tipDesCod}">${tipoDescuentos.tipDesDet}</option>
+                                    </cc:forEach>
+                                </select> 
+                            </div>
+                            <div class="form-group input-group" >
+                                <span class="input-group-addon">%</span>
+                                <input type="number" class="form-control" name="preVenPorDes" id="porDes" min="0" step="any" value="0" discountTop="100">
+
+                                <span class="input-group-addon">IGV</span>
+                                <input class="form-control" name="preVenCabIgv" value="${empresa.empIgv}" id="preIgv" readOnly>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group input-group" >
+                                <span class="input-group-addon">Valor IGV</span>
+                                <input type="number" class="form-control" name="preVenCabSubTot" id="preTot" value="0" readonly>
+                            </div>                                     
+                            <div class="form-group input-group" >
+                                <span class="input-group-addon">Valor Neto</span>
+                                <input type="number" class="form-control" name="preVenCabTot" id="preSub" value="0" readonly>
+                            </div>
+                            <div class="form-group input-group" >
+                                <span class="input-group-addon">Valor Total</span>
+                                <input type="number" class="form-control" name="totalFact" id="totalFactura" value="0" readonly>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <button type="submit" id="register" class="btn btn-primary btn-block" disabled>Registrar Preventa</button>
+                        </div>
+                    </div>
+                </div>
             </form>
-        </div>                                  
+        </div>       
+
         <div id="errorMessageModal" class="modal fade">
             <div class="modal-dialog modal-sm">
                 <div class="modal-content" style="overflow-y: auto">
@@ -248,6 +235,10 @@
                 </div>         
             </div>
         </div>
+    </jsp:attribute>
+
+    <jsp:attribute name="myscripts">                               
+
         <script language="javascript">
             var codeCriteria = false;
             var codeClientCriteria = false;
@@ -256,10 +247,10 @@
             var newDirection = "";
             var valorNeto = 0;
 
-            <c:forEach items="${productos}" var="p" varStatus="loop">
+            <cc:forEach items="${productos}" var="p" varStatus="loop">
             productCodes.push("${p.id.claProCod}-${p.id.subClaProCod}-${p.id.proCod}");
                 productDescriptions.push("${p.proDet}");
-            </c:forEach>
+            </cc:forEach>
 
                 $(document).ready(function () {
                     changeClientDescription();
@@ -298,7 +289,7 @@
                             $("#productTable tr").find('td:eq(0)').each(function () {
                                 if (idRow == $(this).html()) {
                                     finalValidation = false;
-                                    $("#errorMessage").text("El producto ya ha sido ingresado en la descripci髇.");
+                                    $("#errorMessage").text("El producto ya ha sido ingresado en la descripci贸n.");
                                     $('#errorMessageModal').modal('show');
                                     return false;
                                 }
@@ -326,7 +317,7 @@
 
                 $.validator.addMethod("codePattern", function (value, element) {
                     return /^[0-9]{3}-[0-9]{6}$/.test(value);
-                }, "Patr髇: [0-9]{3}-[0-9]{6}");
+                }, "Patr贸n: [0-9]{3}-[0-9]{6}");
 
                 $.validator.addMethod("verifiedValue", function (value, element) {
                     return value != "";
@@ -436,7 +427,7 @@
                             }
                     ).done(function (data) {
                         if (data.clients != null) {
-                            if ($("#desClienteCode").val() == "1") { //Raz髇 Social
+                            if ($("#desClienteCode").val() == "1") { //Raz贸n Social
                                 var clientsRS = new Array();
                                 data.clients.forEach(function (client) {
                                     clientsRS.push(client.cliRazSoc);
@@ -633,11 +624,11 @@
                     },
                     messages: {
                         preVenCabCod: {
-                            required: "Ingrese el c骴igo de la preventa",
-                            remote: "C骴igo ya registrado"
+                            required: "Ingrese el c贸digo de la preventa",
+                            remote: "C贸digo ya registrado"
                         },
                         cliCod: {
-                            required: "Ingrese cliente v醠ido",
+                            required: "Ingrese cliente v谩lido",
                         },
                         preVenCabFecEmi: {
                             required: "Seleccione una fecha"
@@ -646,7 +637,7 @@
                             required: "Considere descuento 0"
                         },
                         preVenCabObs: {
-                            maxlength: "S髄o se admiten 90 caracteres"
+                            maxlength: "S贸lo se admiten 90 caracteres"
                         }
                     }
                 });
@@ -677,4 +668,4 @@
                 });
         </script>
     </jsp:attribute>
-</minierptemplate:template>
+</t:template-page-nav>
