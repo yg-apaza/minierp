@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -23,6 +24,7 @@ import org.epis.minierp.model.EnP1mEmpresa;
 import org.epis.minierp.model.EnP1mFacturaVentaCab;
 import org.epis.minierp.model.EnP1tFacturaVentaDet;
 import org.epis.minierp.model.EnP2mDocumentoTransportistaId;
+import org.epis.minierp.model.EnP2mGuiaRemTransportista;
 import org.epis.minierp.util.BigDecimalUtil;
 import org.epis.minierp.util.DateUtil;
 import static org.epis.minierp.util.NumberToLetterConverter.convertNumberToLetter;
@@ -79,22 +81,32 @@ public class Impresora {
 
             cliNom = f.getEnP1mCliente().getCliNom();
             cliDir = f.getEnP1mCliente().getCliDir();
-            cliRuc = ((EnP1mDocumentoCliente) f.getEnP1mCliente().getEnP1mDocumentoClientes().iterator().next()).getDocCliNum();
+            cliCod = f.getEnP1mCliente().getCliCod();
+            try {
+                cliRuc = (new EnP1mDocumentoClienteDao()).getById(new EnP1mDocumentoClienteId(cliCod, 2)).getDocCliNum();
+            } catch (Exception e1) {
+                cliRuc = "-";
+            }
+
             fecEmi = myDateEmi;
             fac.writeFacSobCab(cliNom, cliDir, cliRuc, fecEmi);
 
-            cliCod = f.getEnP1mCliente().getCliCod();
             conPag = f.getTaGzzMetodoPagoFactura().getMetPagDet();
             fecVen = myDateVen;
             venZon = f.getEnP1mUsuario().getUsuNom();
             numSec = " ";
             dis = " ";
-            rut = Integer.toString(f.getEnP1mCatalogoRuta().getCatRutCod());
-            if (f.getEnP2mGuiaRemTransportista() == null) {
-                traNom = " ";
-            } else {
-                traNom = f.getEnP2mGuiaRemTransportista().getEnP2mTransportista().getTraNom();
+            try {
+                rut = Integer.toString(f.getEnP1mCatalogoRuta().getCatRutCod());
+            } catch (Exception e2) {
+                rut = "-";
             }
+            try {
+                traNom = f.getEnP2mGuiaRemTransportista().getEnP2mTransportista().getTraNom();
+            } catch (Exception e3) {
+                traNom = "-";
+            }
+
             fac.writeFacCabecera(cliCod, conPag, fecVen, venZon, numSec, dis, rut, traNom);
 
             proNum = 0;
@@ -141,17 +153,17 @@ public class Impresora {
                 try {
                     cliNom = f.getEnP1mCliente().getCliRazSoc();
                 } catch (Exception fa) {
-                    cliNom = "NN";
+                    cliNom = "-";
                 }
                 try {
                     cliDir = f.getEnP1mCliente().getCliDir();
                 } catch (Exception fa) {
-                    cliDir = "Desconocida";
+                    cliDir = "-";
                 }
                 try {
                     cliRuc = (new EnP1mDocumentoClienteDao()).getById(new EnP1mDocumentoClienteId(cliCod, 2)).getDocCliNum();
                 } catch (Exception fa) {
-                    cliRuc = "Desconocido";
+                    cliRuc = "-";
                 }
                 fecEmi = myDateEmi;
                 fac.writeFacSobCab(cliNom, cliDir, cliRuc, fecEmi);
@@ -161,15 +173,15 @@ public class Impresora {
                 venZon = f.getEnP1mUsuario().getUsuNom();
                 numSec = " ";
                 dis = " ";
-                if (f.getEnP1mCatalogoRuta() == null) {
-                    rut = " ";
-                } else {
+                try {
                     rut = Integer.toString(f.getEnP1mCatalogoRuta().getCatRutCod());
+                } catch (Exception e2) {
+                    rut = "-";
                 }
-                if (f.getEnP2mGuiaRemTransportista() == null) {
-                    traNom = " ";
-                } else {
+                try {
                     traNom = f.getEnP2mGuiaRemTransportista().getEnP2mTransportista().getTraNom();
+                } catch (Exception e3) {
+                    traNom = "-";
                 }
                 fac.writeFacCabecera(cliCod, conPag, fecVen, venZon, numSec, dis, rut, traNom);
 
@@ -217,7 +229,7 @@ public class Impresora {
                 EnP1mFacturaVentaCab f = (new EnP1mFacturaVentaCabDao()).getById(cod);
                 String myDateEmi = converter.format(f.getFacVenCabFecEmi());
                 String myDateVen = converter.format(f.getFacVenCabFecVen());
-                
+
                 cliNom = f.getEnP1mCliente().getCliRazSoc();
                 cliDir = f.getEnP1mCliente().getCliDir();
                 fecEmi = myDateEmi;
@@ -226,17 +238,19 @@ public class Impresora {
                 cliCod = f.getEnP1mCliente().getCliCod();
                 conPag = f.getTaGzzMetodoPagoFactura().getMetPagDet();
                 fecVen = myDateVen;
-                if (f.getEnP1mCatalogoRuta() == null) {
-                    venRut = " ";
-                } else {
+                
+                try {
                     venRut = Integer.toString(f.getEnP1mCatalogoRuta().getCatRutCod());
+                } catch (Exception e2) {
+                    venRut = "-";
                 }
+                
                 pdv = " ";
 
                 try {
                     cliDni = "DNI: " + (new EnP1mDocumentoClienteDao()).getById(new EnP1mDocumentoClienteId(cliCod, 1)).getDocCliNum();
                 } catch (Exception ee) {
-                    cliDni = "";
+                    cliDni = "-";
                 }
                 obs = f.getFacVenCabObs() + cliDni;
 
@@ -278,11 +292,12 @@ public class Impresora {
             for (int cod : cods) {
 
                 EnP1mFacturaVentaCab f = (new EnP1mFacturaVentaCabDao()).getById(cod);
+                EnP2mGuiaRemTransportista guiaTra = f.getEnP2mGuiaRemTransportista();
                 String myDateEmi = converter.format(f.getFacVenCabFecEmi());
                 String myDateVen = converter.format(f.getFacVenCabFecVen());
                 punPar = empDao.getAll().get(0).getEmpDomFis();
 
-                if (f.getEnP2mGuiaRemTransportista() == null) {
+                if (guiaTra == null) {
                     traNom = " ";
                     traLic = " ";
                     traPla = " ";
@@ -327,7 +342,13 @@ public class Impresora {
                 rem.writeGuiRemCabecera(fecVen, ven, zon, con, cliCod, oc, facNum, hora, numInt);
 
                 proNum = 0;
-                for (EnP1tFacturaVentaDet d : (Set<EnP1tFacturaVentaDet>) f.getEnP1tFacturaVentaDets()) {
+                
+                List<EnP1tFacturaVentaDet> listaDets = new ArrayList<>();
+                for(EnP1mFacturaVentaCab facVen : (Set<EnP1mFacturaVentaCab>) guiaTra.getEnP1mFacturaVentaCabs()){
+                    listaDets.addAll(facVen.getEnP1tFacturaVentaDets());
+                }
+                
+                for (EnP1tFacturaVentaDet d : listaDets) {
                     proNum++;
                     proCod = d.getEnP2mProducto().getId().getProCod();
                     proCan = BigDecimalUtil.get(d.getFacVenDetCan());
