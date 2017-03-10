@@ -111,7 +111,7 @@
                                                     <fmt:formatNumber type="number" 
                                                                       minFractionDigits="2" 
                                                                       maxFractionDigits="2" 
-                                                                      value="${c.facVenCabTot + c.facVenCabSubTot}" /> 
+                                                                      value="${c.facVenCabTot * 1.18}" /> 
                                                 </td>
                                                 <td nowrap="nowrap" class="text-center">
                                                     <a onclick='viewSaleBill("${c.facVenCabCod}")' title="Vista Detallada de Factura de Venta">
@@ -571,10 +571,10 @@
                                             <table width="100%" class="table table-striped table-bordered table-hover" id="guiTraDetPro">
                                                 <thead align="center">
                                                     <tr >
-                                                        <th>Cant.</th>
-                                                        <th>Descripción</th>
-                                                        <th>Precio</th>
-                                                        <th>Importe</th>
+                                                        <th>Codigo</th>
+                                                        <th>Cantidad</th>
+                                                        <th>Unidad</th>
+                                                        <th>Detalle</th>
                                                     </tr>
                                                 </thead>
                                             </table>
@@ -899,11 +899,11 @@
                     $('#guiTraDetPro').DataTable().clear().draw();
                     $('#guiTraDetPro').DataTable().destroy();
                     data.traList.forEach(function (detailgui) {
-                        $('#guiTraDetPro tbody').append('<tr><td width="16%" align="center"></td><td width="44%"></td><td width="20%" align="center"></td><td width="20%" align="center"></td></tr>');
-                        $('#guiTraDetPro tr:last td:eq(0)').html(detailgui.detCan);
-                        $('#guiTraDetPro tr:last td:eq(1)').html(detailgui.proDet);
-                        $('#guiTraDetPro tr:last td:eq(2)').html(detailgui.preUniVen);
-                        $('#guiTraDetPro tr:last td:eq(3)').html((Number(detailgui.detImp)).toFixed(2));
+                        $('#guiTraDetPro tbody').append('<tr><td width="15%" align="center"></td><td width="15%" align="center"></td><td width="20%" align="center"></td><td width="50%"></td></tr>');
+                        $('#guiTraDetPro tr:last td:eq(0)').html(detailgui.proCod);
+                        $('#guiTraDetPro tr:last td:eq(1)').html(Number(detailgui.proCan).toFixed(2));
+                        $('#guiTraDetPro tr:last td:eq(2)').html(detailgui.proUniMed);
+                        $('#guiTraDetPro tr:last td:eq(3)').html(detailgui.proDet);
                     });
                     $('#guiTraDetPro').DataTable({
                         responsive: true

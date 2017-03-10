@@ -21,7 +21,7 @@ public class ImpresoraMatricial {
     private static final char FF = 12; //form feed
     private static final char CR = 13; //carriage return
     private static final char BACKSLASH = 92;
-    
+
     private static final char P = 80; //10cpi pitch
     private static final char M = 77; //12cpi pitch
     private static final char g = 103; //15cpi pitch
@@ -31,34 +31,35 @@ public class ImpresoraMatricial {
 
     private static final char C = 4; //bold font on
     private static final char D = 5; //bold font off
-     
+
     private static final char k = 107; //used for setting font
-    
+
     private static final char J = 74; //used for advancing paper vertically
-   
+
     private static final char l = 108; //used for setting left margin
     private static final char Q = 81; //used for setting right margin
-    
+
     private static final char $ = 36; //used for absolute horizontal positioning
 
     private static boolean escp24pin = false; // boolean to indicate whether
     // the printer is a 24 pin esc/p2 epson
 
-    private static int MAX_ADVANCE_9PIN = 216; 
+    private static int MAX_ADVANCE_9PIN = 216;
     private static int MAX_ADVANCE_24PIN = 180;
-    private static int MAX_UNITS = 127; 
+    private static int MAX_UNITS = 127;
     private static final float CM_PER_INCH = 2.54f;
-    
+
     private FileWriter writer;
     private BoletaPrinter bP;
     private RemisionPrinter gP;
     private String type;
     private FacturaPrinter fP;
+
     public ImpresoraMatricial(String file, String dir, String type) {
         try {
             writer = new FileWriter(file);
             this.type = type;
-            switch(type){
+            switch (type) {
                 case "factura":
                     fP = new FacturaDAO(dir).read();
                     break;
@@ -75,34 +76,34 @@ public class ImpresoraMatricial {
         }
     }
 
-    public void initialize() throws IOException{
+    public void initialize() throws IOException {
         writer.write(ESC);
         writer.write('C');
         writer.write(23);
     }
 
-    public void start() throws IOException{
+    public void start() throws IOException {
         initialize();
         clearStyle();
         setFont("Serif");
-        switch(type){
+        switch (type) {
             case "factura":
                 setSize(fP.getSize());
                 setMargins(fP.getLeftMargin(), fP.getRightMargin());
                 break;
             case "boleta":
-                setSize(bP.getSize()); 
+                setSize(bP.getSize());
                 setMargins(bP.getLeftMargin(), bP.getRightMargin());
                 break;
             case "remision":
                 setSize(gP.getSize());
                 setMargins(gP.getLeftMargin(), gP.getRightMargin());
                 break;
-        }       
+        }
     }
-    
-    public String getName(){
-        switch(type){
+
+    public String getName() {
+        switch (type) {
             case "factura":
                 return fP.getName();
             case "boleta":
@@ -112,12 +113,18 @@ public class ImpresoraMatricial {
         }
         return "Epson";
     }
-    
-    public void setSize(int v) throws IOException{
-        switch (v){
-            case 0: select10CPI(); break;
-            case 1: select12CPI(); break;
-            case 2: select15CPI(); break;
+
+    public void setSize(int v) throws IOException {
+        switch (v) {
+            case 0:
+                select10CPI();
+                break;
+            case 1:
+                select12CPI();
+                break;
+            case 2:
+                select15CPI();
+                break;
         }
     }
 
@@ -125,24 +132,25 @@ public class ImpresoraMatricial {
         bold(false);
         italic(false);
     }
-    
-    public void newLine() throws IOException{
+
+    public void newLine() throws IOException {
         writer.write(CR);
         writer.write(LF);
     }
-    
-    public void addLines(int n) throws IOException{
-        for(int i = 0; i < n; i++)
+
+    public void addLines(int n) throws IOException {
+        for (int i = 0; i < n; i++) {
             newLine();
+        }
     }
-    
-    public void newPage() throws IOException{
+
+    public void newPage() throws IOException {
         writer.write(CR);
         writer.write(FF);
     }
-    
-    public void setFont(String font) throws IOException{
-        switch(font){
+
+    public void setFont(String font) throws IOException {
+        switch (font) {
             case "Serif":
                 writer.write(ESC);
                 writer.write(k);
@@ -155,60 +163,62 @@ public class ImpresoraMatricial {
                 break;
         }
     }
-    
+
     public void select10CPI() throws IOException {
         writer.write(ESC);
         writer.write(P);
     }
-    
+
     public void select12CPI() throws IOException {
         writer.write(ESC);
         writer.write(M);
     }
-    
+
     public void select15CPI() throws IOException {
         writer.write(ESC);
         writer.write(g);
     }
-    
+
     public void bold(boolean bold) throws IOException {
         writer.write(ESC);
-        if (bold)
+        if (bold) {
             writer.write(E);
-        else
+        } else {
             writer.write(F);
+        }
     }
-    
+
     public void italic(boolean italic) throws IOException {
         writer.write(ESC);
-        if (italic)
+        if (italic) {
             writer.write(C);
-        else
+        } else {
             writer.write(D);
+        }
     }
-    
+
     public void advanceVertical(float centimeters) throws IOException {
         //pre: centimeters >= 0 (cm)
         //post: advances vertical print position approx. y centimeters (not precise due to truncation)
         float inches = centimeters / CM_PER_INCH;
         //float inches = (float) (Math.round((centimeters / CM_PER_INCH)*100)/100.0);//float inches = centimeters / CM_PER_INCH;
         int units = (int) (inches * (escp24pin ? MAX_ADVANCE_24PIN : MAX_ADVANCE_9PIN));
-        
+
         while (units > 0) {
             char n;
-            if (units > MAX_UNITS)
+            if (units > MAX_UNITS) {
                 n = (char) MAX_UNITS; //want to move more than range of parameter allows (0 - 255) so move max amount
-            else
+            } else {
                 n = (char) units; //want to move a distance which fits in range of parameter (0 - 255)
-                        
+            }
             writer.write(ESC);
             writer.write(J);
             writer.write(n);
-            
+
             units -= MAX_UNITS;
         }
     }
-    
+
     public void advanceHorizontal(float centimeters) throws IOException {
         //pre: centimeters >= 0
         //post: advances horizontal print position approx. centimeters
@@ -216,13 +226,13 @@ public class ImpresoraMatricial {
         //float inches = (float) (Math.round((centimeters / CM_PER_INCH)*100)/100.0);//float inches = centimeters / CM_PER_INCH;
         int units_low = (int) (inches * 120) % 256;
         int units_high = (int) (inches * 120) / 256;
-        
-        writer.write(ESC);       
+
+        writer.write(ESC);
         writer.write(BACKSLASH);
         writer.write((char) units_low);
         writer.write((char) units_high);
     }
-    
+
     public void setAbsoluteHorizontalPosition(float centimeters) throws IOException {
         //pre: centimenters >= 0 (cm)
         //post: sets absolute horizontal print position to x centimeters from left margin
@@ -230,35 +240,36 @@ public class ImpresoraMatricial {
         //float inches = (float) (Math.round((centimeters / CM_PER_INCH)*100)/100.0);//float inches = centimeters / CM_PER_INCH;
         int units_low = (int) (inches * 60) % 256;
         int units_high = (int) (inches * 60) / 256;
-        
+
         writer.write(ESC);
         writer.write($);
         writer.write((char) units_low);
         writer.write((char) units_high);
     }
-    
+
     public void setAbsoluteVerticalPosition(float centimeters) throws IOException {
         //pre: centimenters >= 0 (cm)
         //post: sets absolute vertical print position to x centimeters
-        float inches = centimeters / CM_PER_INCH;        
+        float inches = centimeters / CM_PER_INCH;
         //float inches = (float) (Math.round((centimeters / CM_PER_INCH)*100)/100.0);//float inches = centimeters / CM_PER_INCH;
         int units_low = (int) (inches * 60) % 256;
         int units_high = (int) (inches * 60) / 256;
-        
+
         writer.write(ESC);
         writer.write(40);
         writer.write(86);
         writer.write((char) units_low);
         writer.write((char) units_high);
     }
-    
+
     public void horizontalTab(int tabs) throws IOException {
         //pre: tabs >= 0
         //post: performs horizontal tabs tabs number of times
-        for (int i = 0; i < tabs; i++)
+        for (int i = 0; i < tabs; i++) {
             writer.write(TAB);
+        }
     }
-    
+
     public void setMargins(int columnsLeft, int columnsRight) throws IOException {
         //pre: columnsLeft > 0 && <= 255, columnsRight > 0 && <= 255
         //post: sets left margin to columnsLeft columns and right margin to columnsRight columns
@@ -266,33 +277,33 @@ public class ImpresoraMatricial {
         writer.write(ESC);
         writer.write(l);
         writer.write((char) columnsLeft);
-        
+
         //right
         writer.write(ESC);
         writer.write(Q);
         writer.write((char) columnsRight);
     }
-    
+
     public void setMargins(float centimetersL, float centimetersR) throws IOException {
         //left
-        int columnsLeft = ((int)(centimetersL))*2;
-        int columnsRight = ((int)(centimetersR))*2;
+        int columnsLeft = ((int) (centimetersL)) * 2;
+        int columnsRight = ((int) (centimetersR)) * 2;
         writer.write(ESC);
         writer.write(l);
         writer.write((char) columnsLeft);
-        
+
         //right
         writer.write(ESC);
         writer.write(Q);
         writer.write((char) columnsRight);
     }
-    
-    public void writeLine(String val) throws IOException{
+
+    public void writeLine(String val) throws IOException {
         writer.write(val);
         newLine();
     }
-    
-    public void writeFacSobCab(String cliNom, String cliDir, String cliRuc, String fecEmi) throws IOException{
+
+    public void writeFacSobCab(String cliNom, String cliDir, String cliRuc, String fecEmi) throws IOException {
         advanceVertical(fP.getTopMargin());
         advanceHorizontal(fP.getCliNom());
         writeLine(cliNom);
@@ -303,8 +314,8 @@ public class ImpresoraMatricial {
         advanceHorizontal(fP.getFecEmi());
         writeLine(fecEmi);
     }
-    
-    public void writeBolSobCab(String cliNom, String cliDir, String fecEmi) throws IOException{
+
+    public void writeBolSobCab(String cliNom, String cliDir, String fecEmi) throws IOException {
         advanceVertical(bP.getTopMargin());
         advanceHorizontal(bP.getCliNom());
         writeLine(cliNom);
@@ -313,24 +324,26 @@ public class ImpresoraMatricial {
         advanceHorizontal(bP.getFecEmi());
         writeLine(fecEmi);
     }
-    
-    public void writeGuiRemSobCab(String cliNom, String punPar, String punLle, String traNom, String traLic, String traPla) throws IOException{
+
+    public void writeGuiRemSobCab(String cliNom, String cliRUC, String punPar, String punLle, String traNom, String traLic, String traPla) throws IOException {
         advanceVertical(gP.getTopMargin());
         advanceHorizontal(gP.getCliNom());
         writeLine(cliNom);
+        advanceHorizontal(gP.getCliNom());
+        writeLine(cliRUC);
         advanceHorizontal(gP.getPunPar());
         writer.write(punPar);
         setAbsoluteHorizontalPosition(gP.getTraNom());
         writeLine(traNom);
-        advanceHorizontal(gP.getPunLle());
-        writer.write(punLle);
         setAbsoluteHorizontalPosition(gP.getTraNom());
         writeLine(traLic);
+        advanceHorizontal(gP.getPunLle());
+        writer.write(punLle);
         setAbsoluteHorizontalPosition(gP.getTraNom());
         writeLine(traPla);
     }
 
-    public void writeFacCabecera(String cliCod, String conPag, String fecVen, String venZon, String numSec, String dis, String rut, String traNom) throws IOException{
+    public void writeFacCabecera(String cliCod, String conPag, String fecVen, String venZon, String numSec, String dis, String rut, String traNom) throws IOException {
         advanceVertical(fP.getTopFacCab());
         writer.write(cliCod);
         float val = fP.getCliCod();
@@ -357,9 +370,9 @@ public class ImpresoraMatricial {
         advanceVertical(fP.getTopFacDet());
         newLine();
     }
-    
+
     public void writeBolCabecera(String cliCod, String conPag, String fecVen,
-            String venRut, String pdv, String obs) throws IOException{
+            String venRut, String pdv, String obs) throws IOException {
         advanceVertical(bP.getTopBolCab());
         writer.write(cliCod);
         float val = bP.getCliCod();
@@ -380,9 +393,9 @@ public class ImpresoraMatricial {
         advanceVertical(bP.getTopBolDet());
         newLine();
     }
-    
+
     public void writeGuiRemCabecera(String fecVen, String ven, String zon,
-            String con, String cliCod, String oc, String facNum, String hora, String numInt) throws IOException{
+            String con, String cliCod, String oc, String facNum, String hora, String numInt) throws IOException {
         advanceVertical(gP.getTopRemCab());
         writer.write(fecVen);
         float val = gP.getFecVen();
@@ -412,10 +425,10 @@ public class ImpresoraMatricial {
         advanceVertical(gP.getTopRemDet());
         newLine();
     }
-    
-    public void writeFacDetalle(int tipCod, int proNum, String proCod, double proCan, String proUni, String proDes, 
-            double proValUni, String proDes1, String proDes2, String proValNet) throws IOException{
-        switch (tipCod){
+
+    public void writeFacDetalle(int tipCod, int proNum, String proCod, double proCan, String proUni, String proDes,
+            double proValUni, String proDes1, String proDes2, String proValNet) throws IOException {
+        switch (tipCod) {
             case 1:
                 writer.write(proCod);
                 break;
@@ -428,8 +441,8 @@ public class ImpresoraMatricial {
         writer.write(Double.toString(proCan));
         val += fP.getProCan();
         setAbsoluteHorizontalPosition(val);
-        writer.write(proUni);   
-        val += fP.getProUni();    
+        writer.write(proUni);
+        val += fP.getProUni();
         setAbsoluteHorizontalPosition(val);
         writer.write(proDes);
         val += fP.getProDes();
@@ -446,10 +459,10 @@ public class ImpresoraMatricial {
         writer.write(proValNet);
         newLine();
     }
-    
-    public void writeBolDetalle(int tipCod, int proNum, String proCod, double proCan, String proUni, String proDes, 
-            double proValVen, String proDes1, String proValNet) throws IOException{
-        switch (tipCod){
+
+    public void writeBolDetalle(int tipCod, int proNum, String proCod, double proCan, String proUni, String proDes,
+            double proValVen, String proDes1, String proValNet) throws IOException {
+        switch (tipCod) {
             case 1:
                 writer.write(proCod);
                 break;
@@ -462,8 +475,8 @@ public class ImpresoraMatricial {
         writer.write(Double.toString(proCan));
         val += bP.getProCan();
         setAbsoluteHorizontalPosition(val);
-        writer.write(proUni);   
-        val += bP.getProUni();    
+        writer.write(proUni);
+        val += bP.getProUni();
         setAbsoluteHorizontalPosition(val);
         writer.write(proDes);
         val += bP.getProDes();
@@ -477,10 +490,10 @@ public class ImpresoraMatricial {
         writer.write(proValNet);
         newLine();
     }
-    
-    public void writeGuiRemDetalle(int tipCod, int proNum, String proCod, double proCan, String proUni, String proDes, 
-            String proDes1) throws IOException{
-        switch (tipCod){
+
+    public void writeGuiRemDetalle(int tipCod, int proNum, String proCod, double proCan, String proUni, String proDes,
+            String proDes1) throws IOException {
+        switch (tipCod) {
             case 1:
                 writer.write(proCod);
                 break;
@@ -493,8 +506,8 @@ public class ImpresoraMatricial {
         writer.write(Double.toString(proCan));
         val += gP.getProCan();
         setAbsoluteHorizontalPosition(val);
-        writer.write(proUni);   
-        val += gP.getProUni();    
+        writer.write(proUni);
+        val += gP.getProUni();
         setAbsoluteHorizontalPosition(val);
         writer.write(proDes);
         val += gP.getProDes();
@@ -507,7 +520,7 @@ public class ImpresoraMatricial {
         newLine();
     }
 
-    public void writeFacTotal(String subTotal, String igv, String total) throws IOException{
+    public void writeFacTotal(String subTotal, String igv, String total) throws IOException {
         advanceVertical(fP.getTopFacTot());
         setAbsoluteHorizontalPosition(fP.getTotalMargin());
         writer.write(subTotal);
@@ -518,31 +531,34 @@ public class ImpresoraMatricial {
         setAbsoluteHorizontalPosition(fP.getTotalMargin());
         writer.write(total);
         newLine();
-        advanceVertical(fP.getBotMargin());writeLine(" ");
+        advanceVertical(fP.getBotMargin());
+        writeLine(" ");
     }
-    
-    public void writeBolTotal(String total) throws IOException{
+
+    public void writeBolTotal(String total) throws IOException {
         advanceVertical(bP.getTopBolTot());
         setAbsoluteHorizontalPosition(bP.getTotalMargin());
         writer.write(total);
         newLine();
-        advanceVertical(bP.getBotMargin());writeLine(" ");
+        advanceVertical(bP.getBotMargin());
+        writeLine(" ");
     }
-    
-    public void writeGuiRemMotTra(String motTra) throws IOException{
+
+    public void writeGuiRemMotTra(String motTra) throws IOException {
         advanceVertical(gP.getTopMotTra());
         setAbsoluteHorizontalPosition(gP.getMotTra());
         writer.write(motTra);
         newLine();
-        advanceVertical(gP.getBotMargin());writeLine(" ");
+        advanceVertical(gP.getBotMargin());
+        writeLine(" ");
     }
-    
-    public void writeFacLetras(String letras)throws IOException{
-        advanceHorizontal(fP.getProCan()+fP.getProCod()+fP.getProUni());
+
+    public void writeFacLetras(String letras) throws IOException {
+        advanceHorizontal(fP.getProCan() + fP.getProCod() + fP.getProUni());
         writeLine(letras);
     }
-    
-    public void close() throws IOException{
+
+    public void close() throws IOException {
         writer.close();
-    }         
+    }
 }

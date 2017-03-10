@@ -2,6 +2,7 @@ package org.epis.minierp.business.impresora;
 
 import java.io.File;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
@@ -12,6 +13,7 @@ import java.util.Set;
 import java.util.TimeZone;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.epis.minierp.business.ventas.EnP1mFacturaVentaBusiness;
 import org.epis.minierp.dao.general.EnP1mEmpresaDao;
 import org.epis.minierp.dao.logistica.EnP2mDocumentoTransportistaDao;
 import org.epis.minierp.dao.ventas.EnP1mClienteDao;
@@ -28,6 +30,7 @@ import org.epis.minierp.model.EnP2mGuiaRemTransportista;
 import org.epis.minierp.util.BigDecimalUtil;
 import org.epis.minierp.util.DateUtil;
 import static org.epis.minierp.util.NumberToLetterConverter.convertNumberToLetter;
+import static org.epis.minierp.util.NumberToLetterConverter.convertNumberToLetter;
 
 public class Impresora {
 
@@ -40,6 +43,7 @@ public class Impresora {
 
     EnP1mEmpresaDao empDao;
     EnP1mClienteDao cliDao;
+    EnP1mFacturaVentaBusiness facVenBuss;
     int tipCod = 1;
     String cliNom, cliDir, cliRuc, fecEmi;
     //Factura
@@ -49,14 +53,15 @@ public class Impresora {
     String proUni, proDes, proDes1, proDes2;
     Double proCan, proValUni, proValNet;
     String totLet;
-    Double subTotal, igv, total;
+    Double neto, igv, total;
     //Boleta
     String venRut, pdv, obs;
     //Guia remisión
     String punPar, punLle;
-    String traLic, traPla;
+    String traLic, traPla, cliRUC;
     String ven, zon, con, oc, facNum, hora, numInt;
     DateFormat converter;
+    int empNumDec;
 
     public Impresora(String path) {
         this.path = path;
@@ -64,6 +69,8 @@ public class Impresora {
         cliDao = new EnP1mClienteDao();
         converter = new SimpleDateFormat("dd/MM/yyyy");
         converter.setTimeZone(TimeZone.getTimeZone("UTC"));
+        facVenBuss = new EnP1mFacturaVentaBusiness();
+        empNumDec = empDao.getById(01).getEmpNumDec();
     }
 
     public String generateFactura(int cod) {
@@ -83,7 +90,12 @@ public class Impresora {
             cliDir = f.getEnP1mCliente().getCliDir();
             cliCod = f.getEnP1mCliente().getCliCod();
             try {
-                cliRuc = (new EnP1mDocumentoClienteDao()).getById(new EnP1mDocumentoClienteId(cliCod, 2)).getDocCliNum();
+                String tempRUC = (new EnP1mDocumentoClienteDao()).getById(new EnP1mDocumentoClienteId(cliCod, 2)).getDocCliNum();
+                if (!tempRUC.trim().equals("")) {
+                    cliRuc = "RUC: " + tempRUC;
+                } else {
+                    cliRuc = "-";
+                }
             } catch (Exception e1) {
                 cliRuc = "-";
             }
@@ -124,12 +136,13 @@ public class Impresora {
                 fac.writeFacDetalle(tipCod, proNum, proCod, proCan, proUni, proDes, proValUni, proDes1, proDes2, df.format(proValNet));
             }
             fac.addLines(e.getEmpNumDetFacVen() - proNum - 1);
-            total = BigDecimalUtil.get(f.getFacVenCabTot());
+            neto = BigDecimalUtil.get(f.getFacVenCabTot());
+            igv = BigDecimalUtil.get(BigDecimalUtil.multiplicar(f.getFacVenCabTot(), BigDecimalUtil.get(0.18, empNumDec), empNumDec));
+            total = BigDecimalUtil.get(BigDecimalUtil.multiplicar(f.getFacVenCabTot(), new BigDecimal("1.18"), empNumDec));
             totLet = convertNumberToLetter(total);
             fac.writeFacLetras(totLet);
-            subTotal = BigDecimalUtil.get(f.getFacVenCabSubTot());
-            igv = subTotal * f.getFacVenCabIgv() / 100;
-            fac.writeFacTotal(df.format(subTotal), df.format(igv), df.format(total));
+
+            fac.writeFacTotal(df.format(neto), df.format(igv), df.format(total));
             fac.close();
         } catch (IOException ex) {
             Logger.getLogger(Impresora.class.getName()).log(Level.SEVERE, null, ex);
@@ -161,7 +174,12 @@ public class Impresora {
                     cliDir = "-";
                 }
                 try {
-                    cliRuc = (new EnP1mDocumentoClienteDao()).getById(new EnP1mDocumentoClienteId(cliCod, 2)).getDocCliNum();
+                    String tempRUC = (new EnP1mDocumentoClienteDao()).getById(new EnP1mDocumentoClienteId(cliCod, 2)).getDocCliNum();
+                    if (!tempRUC.trim().equals("")) {
+                        cliRuc = "RUC: " + tempRUC;
+                    } else {
+                        cliRuc = "-";
+                    }
                 } catch (Exception fa) {
                     cliRuc = "-";
                 }
@@ -200,12 +218,12 @@ public class Impresora {
                     fac.writeFacDetalle(tipCod, proNum, proCod, proCan, proUni, proDes, proValUni, proDes1, proDes2, df.format(proValNet));
                 }
                 fac.addLines(e.getEmpNumDetFacVen() - proNum - 1);
-                subTotal = BigDecimalUtil.get(f.getFacVenCabTot());
-                igv = BigDecimalUtil.get(f.getFacVenCabSubTot());
-                total = subTotal + igv;
+                neto = BigDecimalUtil.get(f.getFacVenCabTot());
+                igv = BigDecimalUtil.get(BigDecimalUtil.multiplicar(f.getFacVenCabTot(), BigDecimalUtil.get(0.18, empNumDec), empNumDec));
+                total = BigDecimalUtil.get(BigDecimalUtil.multiplicar(f.getFacVenCabTot(), new BigDecimal("1.18"), empNumDec));
                 totLet = convertNumberToLetter(total);
                 fac.writeFacLetras(totLet);
-                fac.writeFacTotal(df.format(subTotal), df.format(igv), df.format(total));
+                fac.writeFacTotal(df.format(neto), df.format(igv), df.format(total));
             }
             fac.close();
         } catch (IOException ex) {
@@ -216,8 +234,6 @@ public class Impresora {
     }
 
     public String[] generateBoletas(int[] cods) {
-        EnP1mEmpresa empresa = (new EnP1mEmpresaDao()).getById(01);
-        int empNumDec = empresa.getEmpNumDec();
         empDao = new EnP1mEmpresaDao();
         EnP1mEmpresa e = empDao.getById(01);
         String cliDni;
@@ -238,17 +254,23 @@ public class Impresora {
                 cliCod = f.getEnP1mCliente().getCliCod();
                 conPag = f.getTaGzzMetodoPagoFactura().getMetPagDet();
                 fecVen = myDateVen;
-                
+
                 try {
                     venRut = Integer.toString(f.getEnP1mCatalogoRuta().getCatRutCod());
                 } catch (Exception e2) {
                     venRut = "-";
                 }
-                
+
                 pdv = " ";
 
                 try {
-                    cliDni = "DNI: " + (new EnP1mDocumentoClienteDao()).getById(new EnP1mDocumentoClienteId(cliCod, 1)).getDocCliNum();
+                    String tempDNI = (new EnP1mDocumentoClienteDao()).getById(new EnP1mDocumentoClienteId(cliCod, 1)).getDocCliNum();
+                    if (!tempDNI.trim().equals("")) {
+                        cliDni = "DNI: " + tempDNI;
+                    } else {
+                        cliDni = "";
+                    }
+
                 } catch (Exception ee) {
                     cliDni = "-";
                 }
@@ -305,31 +327,48 @@ public class Impresora {
                     cliNom = " ";
                     punLle = " ";
                 } else {
-                    traNom = f.getEnP2mGuiaRemTransportista().getEnP2mTransportista().getTraNom();
+                    traNom = f.getEnP2mGuiaRemTransportista().getEnP2mTransportista().getTraNom() + " "
+                            + f.getEnP2mGuiaRemTransportista().getEnP2mTransportista().getTraApePat() + " "
+                            + f.getEnP2mGuiaRemTransportista().getEnP2mTransportista().getTraApeMat();
+
                     EnP1mCliente cli = cliDao.getById(f.getEnP2mGuiaRemTransportista().getGuiRemTraDes());
-                    String cliDni;
                     cliCod = cli.getCliCod();
                     try {
-                        cliDni = "DNI: " + (new EnP1mDocumentoClienteDao()).getById(new EnP1mDocumentoClienteId(cliCod, 1)).getDocCliNum();
+                        String tempRUC = (new EnP1mDocumentoClienteDao()).getById(new EnP1mDocumentoClienteId(cliCod, 2)).getDocCliNum();
+                        if (!tempRUC.trim().equals("")) {
+                            cliRUC = "RUC: " + tempRUC + "\n";
+                        } else {
+                            cliRUC = "-\n";
+                        }
                     } catch (Exception ee) {
-                        cliDni = "";
+                        cliRUC = "-\n";
                     }
-                    cliNom = cli.getCliRazSoc() + "\n                    " + cliDni + "\n";
+                    cliNom = cli.getCliRazSoc();
                     punLle = cli.getCliDir();
 
                     String traCod = f.getEnP2mGuiaRemTransportista().getEnP2mTransportista().getTraCod();
                     try {
                         traLic = (new EnP2mDocumentoTransportistaDao()).getById(new EnP2mDocumentoTransportistaId(3, traCod)).getDocTraNum();
                     } catch (Exception p) {
-                        traLic = "Desconocido";
+                        traLic = "-";
                     }
                     try {
-                        traPla = f.getEnP2mGuiaRemTransportista().getEnP2mUnidadTransporte().getUniTraNumPla();
+                        traPla = f.getEnP2mGuiaRemTransportista().getEnP2mUnidadTransporte().getUniTraNumPla() + " / "
+                                + f.getEnP2mGuiaRemTransportista().getEnP2mUnidadTransporte().getUniTraMar() + " / "
+                                + f.getEnP2mGuiaRemTransportista().getEnP2mUnidadTransporte().getUniTraMod();
                     } catch (Exception g) {
-                        traPla = "Desconocido";
+                        traPla = "-";
                     }
                 }
-                rem.writeGuiRemSobCab(cliNom, punPar, punLle, traNom, traLic, traPla);
+
+                Set<EnP1mFacturaVentaCab> FacVenCabs = f.getEnP2mGuiaRemTransportista().getEnP1mFacturaVentaCabs();
+
+                if (FacVenCabs.size() > 1) {
+                    cliNom = "Varios";
+                    cliRUC = "-\n";
+                }
+
+                rem.writeGuiRemSobCab(cliNom, cliRUC, punPar, punLle, traNom, traLic, traPla);
 
                 fecVen = myDateVen;
                 ven = f.getEnP1mUsuario().getUsuCod();
@@ -342,19 +381,17 @@ public class Impresora {
                 rem.writeGuiRemCabecera(fecVen, ven, zon, con, cliCod, oc, facNum, hora, numInt);
 
                 proNum = 0;
-                
-                List<EnP1tFacturaVentaDet> listaDets = new ArrayList<>();
-                for(EnP1mFacturaVentaCab facVen : (Set<EnP1mFacturaVentaCab>) guiaTra.getEnP1mFacturaVentaCabs()){
-                    listaDets.addAll(facVen.getEnP1tFacturaVentaDets());
-                }
-                
-                for (EnP1tFacturaVentaDet d : listaDets) {
+
+                //junta detalles
+                List<String[]> listaDets = facVenBuss.agruparFacVenDetsString(FacVenCabs);
+
+                for (String[] obj : listaDets) {
                     proNum++;
-                    proCod = d.getEnP2mProducto().getId().getProCod();
-                    proCan = BigDecimalUtil.get(d.getFacVenDetCan());
-                    proUni = d.getEnP2mProducto().getTaGzzUnidadMed().getUniMedSim();
-                    proDes = d.getEnP2mProducto().getProDet();
-                    proValUni = BigDecimalUtil.get(d.getFacVenDetValUni());
+                    proCod = obj[0];
+                    proCan = Double.parseDouble(obj[1]);
+                    proUni = obj[2];
+                    proDes = obj[3];
+                    proValUni = 0.0;
                     proDes1 = "";
                     proValNet = proCan * proValUni;
 
