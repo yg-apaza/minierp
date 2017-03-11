@@ -132,7 +132,7 @@ public class BigDecimalUtil {
     }
 
     public static BigDecimal dividir(BigDecimal number1, BigDecimal number2, int decimal) {
-        return number1.divide(number2).setScale(decimal, roundingMode);
+        return number1.divide(number2, roundingMode);
     }
 
 }
